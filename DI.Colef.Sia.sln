@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.Core", "app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj", "{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.ApplicationServices", "app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj", "{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.Data", "app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj", "{214434BA-B62E-4E97-A500-9175A5FB176E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.Web.Controllers", "app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj", "{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.Tests", "tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj", "{B27B2464-6690-425C-ACC8-3413A0814198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI.Colef.Sia.Web", "app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj", "{65EE3A62-516D-40A1-985E-78FFF826DCE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Generation", "Code Generation", "{C3C7CA8B-3150-47ED-BD36-1D41E485DBC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudScaffolding", "tools\CrudScaffolding\CrudScaffolding.csproj", "{8C8F6DEA-B6AA-48F9-A304-616BE41C9439}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{214434BA-B62E-4E97-A500-9175A5FB176E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214434BA-B62E-4E97-A500-9175A5FB176E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214434BA-B62E-4E97-A500-9175A5FB176E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214434BA-B62E-4E97-A500-9175A5FB176E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B27B2464-6690-425C-ACC8-3413A0814198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27B2464-6690-425C-ACC8-3413A0814198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27B2464-6690-425C-ACC8-3413A0814198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27B2464-6690-425C-ACC8-3413A0814198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65EE3A62-516D-40A1-985E-78FFF826DCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65EE3A62-516D-40A1-985E-78FFF826DCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65EE3A62-516D-40A1-985E-78FFF826DCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65EE3A62-516D-40A1-985E-78FFF826DCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C8F6DEA-B6AA-48F9-A304-616BE41C9439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8F6DEA-B6AA-48F9-A304-616BE41C9439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C8F6DEA-B6AA-48F9-A304-616BE41C9439} = {C3C7CA8B-3150-47ED-BD36-1D41E485DBC0}
+	EndGlobalSection
+EndGlobal
