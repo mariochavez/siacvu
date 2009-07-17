@@ -1,0 +1,11 @@
+*.bak
+*.*scc
+*.user
+*.suo
+*.webinfo
+bin/
+obj/
+*.resharper
+.svn
+_ReSharper*/
+Logs/
