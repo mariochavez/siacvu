@@ -5,7 +5,7 @@ namespace DI.Colef.Sia.Core
     /// can reference this assembly.  Feel free to delete this class and point AutoPersistenceModelGenerator
     /// to any other class within this assembly.
     /// </summary>
-    public class Class1
+    public class Role
     {
     }
 }
