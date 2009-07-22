@@ -16,9 +16,18 @@ namespace DI.Colef.Sia.Web.CastleWindsor
             AddGenericRepositoriesTo(container);
             AddCustomRepositoriesTo(container);
             AddApplicationServicesTo(container);
+            AddMappersTo(container);
 
             container.AddComponent("validator",
                 typeof(IValidator), typeof(Validator));
+        }
+
+        private static void AddMappersTo(IWindsorContainer container)
+        {
+            container.Register(
+                AllTypes.Pick()
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
+                    .WithService.FirstInterface());
         }
 
         private static void AddApplicationServicesTo(IWindsorContainer container)

@@ -12,7 +12,10 @@ namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
 
         public void Apply(IClassMap classMap)
         {
-            classMap.WithTable(Inflector.Net.Inflector.Pluralize(classMap.EntityType.Name));
+            if (classMap.EntityType.Name.EndsWith("l"))
+                classMap.WithTable(classMap.EntityType.Name + "es");
+            else
+                classMap.WithTable(Inflector.Net.Inflector.Pluralize(classMap.EntityType.Name));
         }
     }
 }

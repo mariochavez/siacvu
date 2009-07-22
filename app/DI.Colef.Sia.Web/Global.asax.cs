@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
+using DecisionesInteligentes.Colef.Sia.Web;
 using Microsoft.Practices.ServiceLocation;
 using MvcContrib.Castle;
 using NHibernate.Cfg;
@@ -38,6 +39,8 @@ namespace DI.Colef.Sia.Web
             InitializeServiceLocator();
 
             RouteRegistrar.RegisterRoutesTo(RouteTable.Routes);
+
+            AutoMapperConfiguration.Configure();
         }
 
         /// <summary>

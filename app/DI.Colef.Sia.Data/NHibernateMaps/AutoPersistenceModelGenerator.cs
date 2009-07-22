@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
+using DecisionesInteligentes.Colef.Sia.Core;
 using FluentNHibernate;
 using FluentNHibernate.AutoMap;
 using FluentNHibernate.Conventions;
 using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate.FluentNHibernate;
-using DI.Colef.Sia.Core;
 using DI.Colef.Sia.Data.NHibernateMaps.Conventions;
 
 namespace DI.Colef.Sia.Data.NHibernateMaps
@@ -16,7 +16,7 @@ namespace DI.Colef.Sia.Data.NHibernateMaps
         {
             AutoPersistenceModel mappings = AutoPersistenceModel
                 // If you delete the default class, simply point the following line to an entity within the .Core layer
-                .MapEntitiesFromAssemblyOf<Class1>()
+                .MapEntitiesFromAssemblyOf<Rol>()
                 .Where(GetAutoMappingFilter)
                 .ConventionDiscovery.Setup(GetConventions())
                 .WithSetup(GetSetup())

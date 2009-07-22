@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.3.1.71, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -76,12 +80,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerEnums.cs" />
+    <Compile Include="Helpers\ModelStateExtensions.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Mappers\AutoFormMapper.cs" />
+    <Compile Include="Mappers\IMapper.cs" />
+    <Compile Include="Mappers\IRolMapper.cs" />
+    <Compile Include="Mappers\Impl\RolMapper.cs" />
+    <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Models\RolForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="ViewData\BaseViewData.cs" />
+    <Compile Include="ViewData\GenericViewData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj">

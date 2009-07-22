@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.IO;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
+using NUnit.Framework;
 using SharpArch.Testing.NUnit.NHibernate;
 using SharpArch.Data.NHibernate;
 using System.Collections;
@@ -30,8 +33,7 @@ namespace Tests.DI.Colef.Sia.Data.NHibernateMaps
 
             string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
             NHibernateSession.Init(new SimpleSessionStorage(factoryKey), mappingAssemblies,
-                new AutoPersistenceModelGenerator().Generate(),
-                "../../../../app/DI.Colef.Sia.Web/NHibernate.config");
+                new AutoPersistenceModelGenerator().Generate(), LIVE_DB_CONFIG_PATH);
         }
 
         [Test]
@@ -47,6 +49,20 @@ namespace Tests.DI.Colef.Sia.Data.NHibernateMaps
             }
         }
 
+        [Test]
+        public void WriteMappingsToFile()
+        {
+            var mappings = new AutoPersistenceModelGenerator().Generate();
+            mappings.CompileMappings();
+            mappings.WriteMappingsTo(DB_FOLDER_PATH);
+        }
+
+        [Test]
+        public void ExportSchemaToFile()
+        {
+            PrepareSchemaExport(true).Execute(true, false, false, null, new StreamWriter(DB_FOLDER_PATH + "DbSchema.sql"));
+        }
+
         [TearDown]
         public virtual void TearDown()
         {
@@ -58,6 +74,32 @@ namespace Tests.DI.Colef.Sia.Data.NHibernateMaps
             NHibernateSession.SessionFactory = null;
             NHibernateSession.Storage = null;
         }
+
+        private static Configuration GetDatabaseCfg(bool useLiveDb)
+        {
+            var mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
+            return useLiveDb
+                       ? NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
+                                                new AutoPersistenceModelGenerator().Generate(),
+                                                LIVE_DB_CONFIG_PATH, LIVE_VAL_CONFIG_PATH)
+                       :
+                           NHibernateSession.Init(new SimpleSessionStorage(), mappingAssemblies,
+                                                  new AutoPersistenceModelGenerator().Generate());
+        }
+
+        private static SchemaExport PrepareSchemaExport(bool useLiveDb)
+        {
+            return new SchemaExport(GetDatabaseCfg(useLiveDb));
+        }
+
+        private static SchemaUpdate PrepareSchemaUpdate(bool useLiveDb)
+        {
+            return new SchemaUpdate(GetDatabaseCfg(useLiveDb));
+        }
+
+        private const string LIVE_DB_CONFIG_PATH = "../../../../app/DI.Colef.Sia.Web/NHibernate.config";
+        private const string LIVE_VAL_CONFIG_PATH = "../../../../app/DI.Colef.Sia.Web/NHvalidator.config";
+        private const string DB_FOLDER_PATH = "../../../../db/";
 
         string factoryKey = "nhibernate.tests_using_live_database";
     }
