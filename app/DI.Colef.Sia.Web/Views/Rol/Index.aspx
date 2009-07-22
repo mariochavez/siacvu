@@ -23,9 +23,9 @@
                     <td><%=Html.Encode(rol.Nombre) %></td>
                     <td>
                         <% if (rol.Activo) { %>
-                            <%=Html.ActionLink<RolController>(c => c.Deactivate(), "Desactivar", new { Id = rol.Id })%>
+                            <%=Html.ActionLink<RolController>(c => c.Deactivate(rol.Id), "Desactivar")%>
                         <% } else { %>
-                            <%=Html.ActionLink<RolController>(c => c.Activate(), "Activar", new { Id = rol.Id })%>
+                            <%=Html.ActionLink<RolController>(c => c.Activate(rol.Id), "Activar")%>
                         <% } %>
                     </td>
                 </tr>

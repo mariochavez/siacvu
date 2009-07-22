@@ -27,7 +27,8 @@ namespace DI.Colef.Sia.Web.CastleWindsor
             container.Register(
                 AllTypes.Pick()
                     .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
-                    .WithService.FirstInterface());
+                    .If(x => x.Name.EndsWith("Mapper"))
+                    .WithService.FirstNonGenericCoreInterface("DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers"));
         }
 
         private static void AddApplicationServicesTo(IWindsorContainer container)
