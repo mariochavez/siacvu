@@ -1,0 +1,27 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class RepositoryInterfaceTemplate : BaseTemplate
+{
+	public RepositoryInterfaceTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System;
+using DecisionesInteligentes.Colef.Sia.Core;
+
+namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
+{
+	public interface I<#= EntityScaffoldingDetails.EntityName #>Service
+    {
+        <#= EntityScaffoldingDetails.EntityName #> Get<#= EntityScaffoldingDetails.EntityName #>ById(int id);
+        <#= EntityScaffoldingDetails.EntityName #>[] GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>();
+        void Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityName #> <#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+    }
+}
+<#+
+	}
+}
+#>

@@ -1,0 +1,63 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class IndexTemplate : BaseTemplate
+{
+	public IndexTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <h2><%=Html.Encode(Model.Title) %></h2>
+    
+    <table>
+		<tr>
+			<#+
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			#>
+			<th><#= property.PropertyName #></th>
+			<#+
+			}
+			#>
+			<th>Acciones</th>
+        </tr>
+        
+        <% if(Model.List == null || Model.List.Length == 0) { %>
+            <tr>
+                <td colspan="2">No hay <#= EntityScaffoldingDetails.EntityNamePluralCamelCase #> definidos</td>
+            </tr>
+        <% } else { %>
+            <% foreach (var <#= EntityScaffoldingDetails.EntityNameCamelCase #> in Model.List) { %>
+                <tr>
+					<#+
+					foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					#>
+					<td><%= <#= EntityScaffoldingDetails.EntityNameCamelCase #>.<#= property.PropertyName #> %></td>
+					<#+
+					}
+					#>
+                    <td>
+                        <% if (<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo) { %>
+                            <%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(c => c.Deactivate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id), "Desactivar")%>
+                        <% } else { %>
+                            <%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(c => c.Activate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id), "Activar")%>
+                        <% } %>
+                    </td>
+                </tr>
+            <% } %>
+        <% } %>
+    </table>
+</asp:Content>
+<#+
+	}
+}
+#>

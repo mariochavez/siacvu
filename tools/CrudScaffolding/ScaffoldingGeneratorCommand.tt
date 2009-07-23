@@ -2,7 +2,7 @@
 <#@ import namespace="System.Collections.Specialized" #>
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="./Templates/ScaffoldingGenerator.tt" #> 
+<#@ include file="./CustomTemplates/ScaffoldingGenerator.tt" #> 
 <#@ include file="EntityScaffoldingDetails.tt" #> 
 
 <#
@@ -16,7 +16,7 @@
  * Examples:  Product, Organization.Employee, Financial.Costs.LedgerEntry
  */
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Organization.Worker");
+	new EntityScaffoldingDetails("Usuario");
  
 /*
  * Property names should be PascalCase.
@@ -31,15 +31,16 @@ entityScaffoldingDetails.EntityProperties.Add(
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("BirthDate", "DateTime", DateTime.Parse("1/1/1975"))
 );
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Manager", "Employee", null, "[NotNull]")
-);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Manager", "Employee", null, "[NotNull]")
+//);
 
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

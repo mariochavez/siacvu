@@ -1,0 +1,46 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class RepositoryImplementationTemplate : BaseTemplate
+{
+	public RepositoryImplementationTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System.Collections.Generic;
+using DecisionesInteligentes.Colef.Sia.Core;
+using SharpArch.Core.PersistenceSupport;
+
+namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
+{
+	public class <#= EntityScaffoldingDetails.EntityName #>Service : I<#= EntityScaffoldingDetails.EntityName #>Service
+    {
+        readonly IRepository<<#= EntityScaffoldingDetails.EntityName #>> <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository;
+
+        public <#= EntityScaffoldingDetails.EntityName #>Service(IRepository<<#= EntityScaffoldingDetails.EntityName #>> <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository)
+        {
+            this.<#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository;
+        }
+
+        public <#= EntityScaffoldingDetails.EntityName #> Get<#= EntityScaffoldingDetails.EntityName #>ById(int id)
+        {
+            return <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.Get(id);
+        }
+
+        public <#= EntityScaffoldingDetails.EntityName #>[] GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>()
+        {
+            return ((List<<#= EntityScaffoldingDetails.EntityName #>>) <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.GetAll()).ToArray();
+        }
+
+        public void Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityName #> <#= EntityScaffoldingDetails.EntityNameCamelCase #>)
+        {
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.SaveOrUpdate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+        }
+    }
+}
+<#+
+	}
+}
+#>
