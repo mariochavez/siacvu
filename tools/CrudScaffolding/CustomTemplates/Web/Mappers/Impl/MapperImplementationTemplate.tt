@@ -1,0 +1,47 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class MapperImplementationTemplate : BaseTemplate
+{
+	public MapperImplementationTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using SharpArch.Core.PersistenceSupport;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
+{
+    public class <#= EntityScaffoldingDetails.EntityName #>Mapper : AutoFormMapper<<#= EntityScaffoldingDetails.EntityName #>, <#= EntityScaffoldingDetails.EntityName #>Form>, I<#= EntityScaffoldingDetails.EntityName #>Mapper
+    {
+        public <#= EntityScaffoldingDetails.EntityName #>Mapper(IRepository<<#= EntityScaffoldingDetails.EntityName #>> repository) : base(repository)
+        {
+        }
+
+        protected override int GetIdFromMessage(<#= EntityScaffoldingDetails.EntityName #>Form message)
+        {
+            return message.Id;
+        }
+
+        protected override void MapToModel(<#= EntityScaffoldingDetails.EntityName #>Form message, <#= EntityScaffoldingDetails.EntityName #> model)
+        {
+            model.Activo = message.Activo;
+			<#+
+			PushIndent("\t\t");
+			
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ";");
+				}
+            
+			PopIndent();
+			#>
+        }
+    }
+}
+<#+
+	}
+}
+#>

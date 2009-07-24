@@ -1,0 +1,54 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class DomainObjectTemplate : BaseTemplate
+{
+	public DomainObjectTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System;
+using NHibernate.Validator.Constraints;
+using SharpArch.Core.DomainModel;
+
+namespace DecisionesInteligentes.Colef.Sia.Core
+{
+    public class <#= EntityScaffoldingDetails.EntityName #> : Entity, IBaseEntity
+    {
+        public <#= EntityScaffoldingDetails.EntityName #>() { }
+		<#+
+		PushIndent("\t\t");
+
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			WriteLine("");
+
+			if (property.IsPartOfDomainSignature)
+				WriteLine("[DomainSignature]");
+
+			if (! string.IsNullOrEmpty(property.PropertyAttributes))
+				WriteLine(property.PropertyAttributes);
+
+			WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+		}
+		
+		WriteLine("");
+		WriteLine("public virtual string CreadorPor { get; set; }");
+		WriteLine("");
+		WriteLine("public virtual DateTime CreadorEl { get; set; }");
+		WriteLine("");
+		WriteLine("public virtual string ModificadoPor { get; set; }");
+		WriteLine("");
+		WriteLine("public virtual DateTime ModificadoEl { get; set; }");
+		WriteLine("");
+		WriteLine("public virtual bool Activo { get; set; }");
+
+		PopIndent();
+		#>
+    }
+}
+<#+
+	}
+}
+#>

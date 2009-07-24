@@ -225,6 +225,9 @@ public class EntityProperty {
 public enum ArtifactToGenerate {
 	DomainObject,
 	Controller,
-	Views
+	Views,
+	Interface,
+	Mapper,
+	Model
 }
 #>

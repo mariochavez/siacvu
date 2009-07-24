@@ -1,0 +1,25 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class MapperInterfaceTemplate : BaseTemplate
+{
+	public MapperInterfaceTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
+{
+
+    public interface I<#= EntityScaffoldingDetails.EntityName #>Mapper : IMapper<<#= EntityScaffoldingDetails.EntityName #>, <#= EntityScaffoldingDetails.EntityName #>Form>
+    {
+    }
+}
+<#+
+	}
+}
+#>

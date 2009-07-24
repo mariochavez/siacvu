@@ -1,0 +1,133 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class ControllerTemplate : BaseTemplate
+{
+	public ControllerTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+{
+    [HandleError]
+    public class <#= EntityScaffoldingDetails.EntityName #>Controller : BaseController
+    {
+		readonly I<#= EntityScaffoldingDetails.EntityName #>Service <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service;
+        readonly I<#= EntityScaffoldingDetails.EntityName #>Mapper <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper;
+    
+        public <#= EntityScaffoldingDetails.EntityName #>Controller(I<#= EntityScaffoldingDetails.EntityName #>Service <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service, I<#= EntityScaffoldingDetails.EntityName #>Mapper <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper) 
+        {
+            this.<#= EntityScaffoldingDetails.EntityNameCamelCase #>Service = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service;
+            this.<#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper;
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Index() 
+        {
+			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Administracion de <#= EntityScaffoldingDetails.EntityNamePlural #>" };
+			var <#= EntityScaffoldingDetails.EntityNamePluralCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>();
+            data.List = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNamePluralCamelCase #>);
+
+            return View(data);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult New()
+        {
+			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> {Title = "Nuevo <#= EntityScaffoldingDetails.EntityName #>", Form = new <#= EntityScaffoldingDetails.EntityName #>Form()};
+			
+			return View(data);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Edit(int id)
+        {
+            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificar <#= EntityScaffoldingDetails.EntityName #>" };
+
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
+            data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+            return View(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Show(int id)
+        {
+            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Informacion de <#= EntityScaffoldingDetails.EntityName #>" };
+
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
+            data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+            return View(data);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
+        {
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
+            
+            ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
+            if (!ModelState.IsValid)
+            {
+                SetMessage("Se ha generado un error al crear el <#= EntityScaffoldingDetails.EntityName #>");
+                return View("New", form);
+            }
+
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            SetMessage(string.Format("El <#= EntityScaffoldingDetails.EntityName #> {0} ha sido creado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id));
+
+            return RedirectToAction("Index");
+        }
+        
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Update(<#= EntityScaffoldingDetails.EntityName #>Form form)
+        {
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
+
+            ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
+            if (!ModelState.IsValid)
+            {
+                SetMessage("Se ha generado un error al actualizar el <#= EntityScaffoldingDetails.EntityName #>");
+                return View("Edit", form);
+            }
+
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            SetMessage(string.Format("El <#= EntityScaffoldingDetails.EntityName #> {0} ha sido modificado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id));
+
+            return RedirectToAction("Index");
+        }
+        
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Activate(int id)
+        {
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = true;
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+            return RedirectToAction("Index");
+        }
+        
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Deactivate(int id)
+        {
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = false;
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+            return RedirectToAction("Index");
+        }
+    }
+}
+<#+
+	}
+}
+#>
