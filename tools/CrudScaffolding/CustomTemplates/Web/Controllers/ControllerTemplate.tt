@@ -113,7 +113,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = true;
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return RedirectToAction("Index");
+            var form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            
+            return Rjs(form);
         }
         
         [AcceptVerbs(HttpVerbs.Put)]
@@ -123,7 +125,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = false;
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return RedirectToAction("Index");
+            var form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            
+            return Rjs("Activate", form);
         }
     }
 }
