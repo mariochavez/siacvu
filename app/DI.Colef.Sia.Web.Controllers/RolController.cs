@@ -102,7 +102,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             rol.Activo = true;
             userService.SaveRol(rol);
 
-            return RedirectToAction("Index");
+            var form = rolMapper.Map(rol);
+
+            return Rjs(form);
         }
 
         [AcceptVerbs(HttpVerbs.Put)]
@@ -112,7 +114,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             rol.Activo = false;
             userService.SaveRol(rol);
 
-            return RedirectToAction("Index");
+            var form = rolMapper.Map(rol);
+
+            return Rjs("Activate", form);
         }
     }
 }

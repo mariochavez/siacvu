@@ -1,15 +1,12 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
 using DecisionesInteligentes.Colef.Sia.Web;
+using DecisionesInteligentes.Colef.Sia.Web.CastleWindsor;
 using Microsoft.Practices.ServiceLocation;
 using MvcContrib.Castle;
-using NHibernate.Cfg;
 using SharpArch.Data.NHibernate;
 using SharpArch.Web.NHibernate;
-using SharpArch.Web.Castle;
 using SharpArch.Web.Areas;
-using SharpArch.Web.CommonValidator;
 using SharpArch.Web.ModelBinder;
 using System;
 using System.Web;
@@ -18,7 +15,6 @@ using System.Web.Routing;
 using System.Reflection;
 using DI.Colef.Sia.Web.Controllers;
 using DI.Colef.Sia.Data.NHibernateMaps;
-using DI.Colef.Sia.Web.CastleWindsor;
 
 namespace DI.Colef.Sia.Web
 {

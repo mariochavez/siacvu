@@ -21,15 +21,21 @@
             <% foreach (var rol in Model.List) { %>
                 <tr>
                     <td><%=Html.Encode(rol.Nombre) %></td>
-                    <td>
+                    <td id="accion_<%=Html.Encode(rol.Id) %>">
                         <% if (rol.Activo) { %>
-                            <%=Html.ActionLink<RolController>(c => c.Deactivate(rol.Id), "Desactivar")%>
+                            <%=Html.ActionLink("Desactivar", "Deactivate", new { id = rol.Id }, new { @class = "remote put" })%>
                         <% } else { %>
-                            <%=Html.ActionLink<RolController>(c => c.Activate(rol.Id), "Activar")%>
+                            <%=Html.ActionLink("Activar", "Activate", new { id = rol.Id }, new { @class = "remote put" })%>
                         <% } %>
                     </td>
                 </tr>
             <% } %>
         <% } %>
     </table>
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        setUpRemoteLinks();
+    });
+</script>
 </asp:Content>

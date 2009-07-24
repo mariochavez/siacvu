@@ -275,3 +275,16 @@ ul#mainMenu li.selected a
     border: 1px solid #ff0000;
     background-color: #ffeeee;
 }
+
+
+/* CUSTOM  
+----------------------------------------------------------*/
+.ajax-loading
+{
+    background: url(/Content/images/ajax-loader.gif) no-repeat;
+    min-width: 16px;
+    min-height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2px;
+}

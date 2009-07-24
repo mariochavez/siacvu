@@ -7,7 +7,7 @@ using Castle.MicroKernel.Registration;
 using SharpArch.Core.CommonValidator;
 using SharpArch.Core.NHibernateValidator.CommonValidatorAdapter;
 
-namespace DI.Colef.Sia.Web.CastleWindsor
+namespace DecisionesInteligentes.Colef.Sia.Web.CastleWindsor
 {
     public class ComponentRegistrar
     {
@@ -19,7 +19,7 @@ namespace DI.Colef.Sia.Web.CastleWindsor
             AddMappersTo(container);
 
             container.AddComponent("validator",
-                typeof(IValidator), typeof(Validator));
+                                   typeof(IValidator), typeof(Validator));
         }
 
         private static void AddMappersTo(IWindsorContainer container)
@@ -35,30 +35,30 @@ namespace DI.Colef.Sia.Web.CastleWindsor
         {
             container.Register(
                 AllTypes.Pick()
-                .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.ApplicationServices")
-                .WithService.FirstInterface());
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.ApplicationServices")
+                    .WithService.FirstInterface());
         }
 
         private static void AddCustomRepositoriesTo(IWindsorContainer container)
         {
             container.Register(
                 AllTypes.Pick()
-                .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Data")
-                .WithService.FirstNonGenericCoreInterface("DecisionesInteligentes.Colef.Sia.Core"));
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Data")
+                    .WithService.FirstNonGenericCoreInterface("DecisionesInteligentes.Colef.Sia.Core"));
         }
 
         private static void AddGenericRepositoriesTo(IWindsorContainer container)
         {
             container.AddComponent("entityDuplicateChecker",
-                typeof(IEntityDuplicateChecker), typeof(EntityDuplicateChecker));
+                                   typeof(IEntityDuplicateChecker), typeof(EntityDuplicateChecker));
             container.AddComponent("repositoryType",
-                typeof(IRepository<>), typeof(Repository<>));
+                                   typeof(IRepository<>), typeof(Repository<>));
             container.AddComponent("nhibernateRepositoryType",
-                typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
+                                   typeof(INHibernateRepository<>), typeof(NHibernateRepository<>));
             container.AddComponent("repositoryWithTypedId",
-                typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
+                                   typeof(IRepositoryWithTypedId<,>), typeof(RepositoryWithTypedId<,>));
             container.AddComponent("nhibernateRepositoryWithTypedId",
-                typeof(INHibernateRepositoryWithTypedId<,>), typeof(NHibernateRepositoryWithTypedId<,>));
+                                   typeof(INHibernateRepositoryWithTypedId<,>), typeof(NHibernateRepositoryWithTypedId<,>));
         }
     }
 }
