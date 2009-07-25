@@ -7,36 +7,56 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    
-    <table>
-		<tr>
-				<th>Nombre</th>
-				<th>Acciones</th>
-        </tr>
-        
-        <% if(Model.List == null || Model.List.Length == 0) { %>
-            <tr>
-                <td colspan="2">No hay cargos definidos</td>
-            </tr>
-        <% } else { %>
-            <% foreach (var cargo in Model.List) { %>
+    <div id="message"></div>
+    <br />
+    <div id="datalist">   
+        <div class="btn_container">
+		    <span class="btn btn_medium_brown">
+			    <a href="#">+ Crear Cargo</a>
+		    </span>
+	    </div>
+        <br />
+        <div class="table_title">Cargos</div>
+        <table>
+             <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-						<td><%= cargo.Nombre %></td>
-			                    <td id="accion_<%= Html.Encode(cargo.Id) %>">
-                        <% if (cargo.Activo) { %>
-                            <%=Html.ActionLink("Desactivar", "Deactivate", new { id  = cargo.Id }, new { @class = "remote put" })%>
-                        <% } else { %>
-                            <%=Html.ActionLink("Activar", "Activate", new{ id = cargo.Id}, new { @class = "remote put" })%>
-                        <% } %>
-                    </td>
+                    <td>No hay cargos definidos</td>
                 </tr>
+            <% } else { %>
+                <% foreach (var cargo in Model.List) { %>
+                    <tr class="highlight">
+				        <td class="button" width="46">
+					        <div class="floatr btn_container">
+						        <span class="btn btn_small_white">
+							        <%=Html.ActionLink<CargoController>(x => x.Edit(cargo.Id), "Editar") %>
+						        </span>
+					        </div>
+				        </td>                
+                        <td class="single" width="70%">
+                            <%=Html.Encode(cargo.Nombre) %>
+                            <div class="meta_info">Modificado el <%=Html.Encode(cargo.Modificacion) %></div>
+                        </td>
+                        <td id="accion_<%=Html.Encode(cargo.Id) %>" class="button" width="140">
+                            <div class="floatr btn_container">
+                            <% if (cargo.Activo) { %>
+                                <span class="btn btn_small_white">
+                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = cargo.Id }, new { @class = "remote put" })%>
+                                </span>
+                            <% } else { %>
+                                <span class="btn btn_small_white">
+                                    <%=Html.ActionLink("Activar", "Activate", new { id = cargo.Id }, new { @class = "remote put" })%>
+                                </span>
+                            <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
             <% } %>
-        <% } %>
-    </table>
-    
-	<script type="text/javascript">
-		$(document).ready(function() {
-			setUpRemoteLinks();
-		});
-	</script>
+        </table>
+    </div>    
+<script type="text/javascript">
+    $(document).ready(function() {
+        setupDocument();
+    });
+</script>
 </asp:Content>

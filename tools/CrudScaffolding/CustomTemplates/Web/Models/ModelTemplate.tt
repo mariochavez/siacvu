@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		}
 		
 		WriteLine("public bool Activo { get; set; }");
+		WriteLine("public string Modificacion { get; set; }");
 
 		PopIndent();
 		#>

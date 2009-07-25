@@ -30,6 +30,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Rol, RolForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Cargo, CargoForm>()
+                                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Puesto, PuestoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Departamento, DepartamentoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Sede, SedeForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Categoria, CategoriaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<GradoAcademico, GradoAcademicoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<SNI, SNIForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<Rol, RolForm>();
             Mapper.CreateMap<Cargo, CargoForm>();

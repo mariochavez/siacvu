@@ -236,7 +236,7 @@ public class ScaffoldingGenerator : Generator
 			//GenerateCreateView(targetPath);
 			//GenerateEditView(targetPath);
 			GenerateIndexView(targetPath);
-			GeneratePartialViewActivate(targetPath);
+			GenerateJsViewActivate(targetPath);
 			//GenerateShowView(targetPath);
 		}
 		else {
@@ -257,8 +257,8 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 	
-	private void GeneratePartialViewActivate(string targetPath) {
-		string fileName = "Activate.ascx";
+	private void GenerateJsViewActivate(string targetPath) {
+		string fileName = "Activate.js.ascx";
 
 		if (! File.Exists(targetPath + fileName)) {
 			ActivateTemplate activateTemplate = 
