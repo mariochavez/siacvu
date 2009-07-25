@@ -16,21 +16,22 @@
  * Examples:  Product, Organization.Employee, Financial.Costs.LedgerEntry
  */
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Usuario");
+	new EntityScaffoldingDetails("SNI");
  
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
  */
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FirstName", "string", "Joe", "[NotNull, NotEmpty]", true) 
+	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]") 
 );
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LastName", "string", "Smith", "[NotNull, NotEmpty]", true)
-);
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("BirthDate", "DateTime", DateTime.Parse("1/1/1975"))
-);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("LastName", "string", "Smith", "[NotNull, NotEmpty]", true)
+//);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("BirthDate", "DateTime", DateTime.Parse("1/1/1975"))
+//);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Manager", "Employee", null, "[NotNull]")
@@ -40,7 +41,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

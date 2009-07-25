@@ -10,6 +10,7 @@
 <#@ include file="./CustomTemplates/Web/Views/CreateTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/EditTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/IndexTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/ActivateTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ShowTemplate.tt" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="EnvDTE" #>
@@ -235,6 +236,7 @@ public class ScaffoldingGenerator : Generator
 			//GenerateCreateView(targetPath);
 			//GenerateEditView(targetPath);
 			GenerateIndexView(targetPath);
+			GeneratePartialViewActivate(targetPath);
 			//GenerateShowView(targetPath);
 		}
 		else {
@@ -249,6 +251,19 @@ public class ScaffoldingGenerator : Generator
 			DomainObjectFormTemplate domainObjectFormTemplate = 
 				new DomainObjectFormTemplate(solutionName, entityScaffoldingDetails);
 			RenderViewFile(domainObjectFormTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+	
+	private void GeneratePartialViewActivate(string targetPath) {
+		string fileName = "Activate.ascx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			ActivateTemplate activateTemplate = 
+				new ActivateTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(activateTemplate, targetPath + fileName);
 		}
 		else {
 			Log("File already exists " + targetPath + fileName);

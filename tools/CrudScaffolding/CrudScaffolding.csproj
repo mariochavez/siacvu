@@ -79,6 +79,8 @@
     </None>
     <None Include="CustomTemplates\Web\Models\ModelTemplate.tt">
     </None>
+    <None Include="CustomTemplates\Web\Views\ActivateTemplate.tt">
+    </None>
     <None Include="CustomTemplates\Web\Views\CreateTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Views\DomainObjectFormTemplate.tt">

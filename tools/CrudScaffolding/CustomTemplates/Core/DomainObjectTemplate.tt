@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class <#= EntityScaffoldingDetails.EntityName #> : Entity, IBaseEntity
     {
-        public <#= EntityScaffoldingDetails.EntityName #>() { }
 		<#+
 		PushIndent("\t\t");
 

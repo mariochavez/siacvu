@@ -21,14 +21,14 @@ public class IndexTemplate : BaseTemplate
     
     <table>
 		<tr>
-			<#+
-			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-			#>
-			<th><#= property.PropertyName #></th>
-			<#+
-			}
-			#>
-			<th>Acciones</th>
+		<#+
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+		#>
+		<th><#= property.PropertyName #></th>
+		<#+
+		}
+		#>
+		<th>Acciones</th>
         </tr>
         
         <% if(Model.List == null || Model.List.Length == 0) { %>
@@ -38,24 +38,30 @@ public class IndexTemplate : BaseTemplate
         <% } else { %>
             <% foreach (var <#= EntityScaffoldingDetails.EntityNameCamelCase #> in Model.List) { %>
                 <tr>
-					<#+
-					foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-					#>
-					<td><%= <#= EntityScaffoldingDetails.EntityNameCamelCase #>.<#= property.PropertyName #> %></td>
-					<#+
-					}
-					#>
-                    <td>
+			<#+
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			#>
+			<td><%= <#= EntityScaffoldingDetails.EntityNameCamelCase #>.<#= property.PropertyName #> %></td>
+			<#+
+			}
+			#>
+                    <td id="accion_<%= Html.Encode(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id) %>">
                         <% if (<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo) { %>
-                            <%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(c => c.Deactivate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id), "Desactivar")%>
+                            <%=Html.ActionLink("Desactivar", "Deactivate", new { id  = <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id }, new { @class = "remote put" })%>
                         <% } else { %>
-                            <%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(c => c.Activate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id), "Activar")%>
+                            <%=Html.ActionLink("Activar", "Activate", new{ id = <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id}, new { @class = "remote put" })%>
                         <% } %>
                     </td>
                 </tr>
             <% } %>
         <% } %>
     </table>
+    
+	<script type="text/javascript">
+		$(document).ready(function() {
+			setUpRemoteLinks();
+		});
+	</script>
 </asp:Content>
 <#+
 	}

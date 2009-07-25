@@ -62,12 +62,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cargo.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="Departamento.cs" />
+    <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
+    <Compile Include="Puesto.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sede.cs" />
+    <Compile Include="SNI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataInterfaces\" />
