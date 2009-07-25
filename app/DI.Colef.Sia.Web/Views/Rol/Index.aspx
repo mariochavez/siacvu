@@ -8,25 +8,44 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
     
+    <div class="btn_container">
+		<span class="btn btn_medium_brown">
+			<a href="#">+ Crear Rol</a>
+		</span>
+	</div>
+
+    <div class="table_title">Roles</div>
     <table>
-        <tr>
-            <th>Rol</th>
-            <th>Acciones</th>
-        </tr>
-        <% if(Model.List == null || Model.List.Length == 0) { %>
+         <% if(Model.List == null || Model.List.Length == 0) { %>
             <tr>
-                <td colspan="2">No hay roles definidos</td>
+                <td>No hay roles definidos</td>
             </tr>
         <% } else { %>
             <% foreach (var rol in Model.List) { %>
-                <tr>
-                    <td><%=Html.Encode(rol.Nombre) %></td>
-                    <td id="accion_<%=Html.Encode(rol.Id) %>">
+                <tr class="highlight">
+				    <td class="button" width="46">
+					    <div class="floatr btn_container">
+						    <span class="btn btn_small_white">
+							    <a href="#">Editar</a>
+						    </span>
+					    </div>
+				    </td>                
+                    <td class="single" width="70%">
+                        <%=Html.Encode(rol.Nombre) %>
+                        <div class="meta_info">Creado el 45646</div>
+                    </td>
+                    <td id="accion_<%=Html.Encode(rol.Id) %>" class="button" width="140">
+                        <div class="floatr btn_container">
                         <% if (rol.Activo) { %>
-                            <%=Html.ActionLink("Desactivar", "Deactivate", new { id = rol.Id }, new { @class = "remote put" })%>
+                            <span class="btn btn_small_white">
+                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = rol.Id }, new { @class = "remote put" })%>
+                            </span>
                         <% } else { %>
-                            <%=Html.ActionLink("Activar", "Activate", new { id = rol.Id }, new { @class = "remote put" })%>
+                            <span class="btn btn_small_white">
+                                <%=Html.ActionLink("Activar", "Activate", new { id = rol.Id }, new { @class = "remote put" })%>
+                            </span>
                         <% } %>
+                        </div>
                     </td>
                 </tr>
             <% } %>

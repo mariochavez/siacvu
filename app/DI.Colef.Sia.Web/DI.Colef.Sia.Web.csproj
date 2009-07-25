@@ -203,7 +203,7 @@
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
     <Content Include="Scripts\jquery-ajaxloading.js" />
-    <Content Include="Views\Rol\Activate.ascx" />
+    <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

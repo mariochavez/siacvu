@@ -19,7 +19,7 @@
 
     $.fn.showLoading = function() {
         return this.each(function() {
-            $(this).removeLoading().after(new Loading().html());
+            $(this).removeLoading().parent().after(new Loading().html());
         });
     }
 })(jQuery);

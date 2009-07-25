@@ -1,5 +1,15 @@
 ﻿function setUpRemoteLinks() {
     $('a.remote').live("click", linkAjax);
+    $('tr.highlight').live("mouseover", setHighlight);
+    $('tr.highlight').live("mouseout", clearHighlight);
+}
+
+function setHighlight() {
+    $(this).addClass('rowHighlight');
+}
+
+function clearHighlight() {
+    $(this).removeClass('rowHighlight');
 }
 
 function linkAjax() {

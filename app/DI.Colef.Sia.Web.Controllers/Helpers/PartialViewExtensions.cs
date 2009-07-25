@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             ControllerContext controllerContext = controller.ControllerContext;
             var viewEngines = ViewEngines.Engines;
-            var viewEngineResult = viewEngines.FindPartialView(controllerContext, partialView);
+            var viewEngineResult = viewEngines.FindPartialView(controllerContext, partialView + ".js");
 
             ViewContext viewContext = new ViewContext(controllerContext, viewEngineResult.View, viewData,
                                                       tempData);
