@@ -79,8 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoriaController.cs" />
-    <Compile Include="GradoAcademicoController.cs" />
+    <Compile Include="Catalogos\CategoriaController.cs" />
+    <Compile Include="Catalogos\GradoAcademicoController.cs" />
     <Compile Include="Catalogos\CargoController.cs" />
     <Compile Include="ControllerEnums.cs" />
     <Compile Include="Catalogos\DepartamentoController.cs" />
@@ -122,7 +122,7 @@
     <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
     <Compile Include="BaseController.cs" />
-    <Compile Include="SNIController.cs" />
+    <Compile Include="Catalogos\SNIController.cs" />
     <Compile Include="Catalogos\SedeController.cs" />
     <Compile Include="ViewData\BaseViewData.cs" />
     <Compile Include="ViewData\GenericViewData.cs" />
