@@ -1,12 +1,12 @@
-04:35:15 p.m.	Started adding generated files
-04:35:15 p.m.	Added directory C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web\Views\Sede\
-04:35:15 p.m.	Added file C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web\Views\Sede\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-04:35:15 p.m.	Added file C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web\Views\Sede\Activate.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-04:35:15 p.m.	Added file Sede.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
-04:35:15 p.m.	Added file SedeController.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:35:15 p.m.	Added file ISedeService.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-04:35:15 p.m.	Added file Impl\SedeService.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-04:35:15 p.m.	Added file Models\SedeForm.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:35:15 p.m.	Added file Mappers\ISedeMapper.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:35:15 p.m.	Added file Mappers\Impl\SedeMapper.cs to project C:\Proyectos\DecisionesInteligentes.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:35:15 p.m.	Finished adding generated files
+05:55:40 p.m.	Started adding generated files
+05:55:40 p.m.	Added directory C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\
+05:55:40 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+05:55:40 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\Activate.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+05:55:40 p.m.	Added file SNI.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+05:55:40 p.m.	Added file SNIController.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+05:55:40 p.m.	Added file ISNIService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+05:55:40 p.m.	Added file Impl\SNIService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+05:55:40 p.m.	Added file Models\SNIForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+05:55:40 p.m.	Added file Mappers\ISNIMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+05:55:40 p.m.	Added file Mappers\Impl\SNIMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+05:55:40 p.m.	Finished adding generated files

@@ -28,6 +28,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Puesto, PuestoForm>();
             Mapper.CreateMap<Departamento, DepartamentoForm>();
             Mapper.CreateMap<Sede, SedeForm>();
+            Mapper.CreateMap<Categoria, CategoriaForm>();
+            Mapper.CreateMap<GradoAcademico, GradoAcademicoForm>();
+            Mapper.CreateMap<SNI, SNIForm>();
         }
     }
 }

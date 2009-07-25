@@ -205,14 +205,20 @@
     <Content Include="Scripts\jquery-ajaxloading.js" />
     <Content Include="Views\Cargo\Activate.ascx" />
     <Content Include="Views\Cargo\Index.aspx" />
+    <Content Include="Views\Categoria\Activate.ascx" />
+    <Content Include="Views\Categoria\Index.aspx" />
     <Content Include="Views\Departamento\Activate.ascx" />
     <Content Include="Views\Departamento\Index.aspx" />
+    <Content Include="Views\GradoAcademico\Activate.ascx" />
+    <Content Include="Views\GradoAcademico\Index.aspx" />
     <Content Include="Views\Puesto\Activate.ascx" />
     <Content Include="Views\Puesto\Index.aspx" />
     <Content Include="Views\Rol\Activate.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Sede\Activate.ascx" />
     <Content Include="Views\Sede\Index.aspx" />
+    <Content Include="Views\SNI\Activate.ascx" />
+    <Content Include="Views\SNI\Index.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

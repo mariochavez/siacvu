@@ -80,8 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CargoController.cs" />
+    <Compile Include="CategoriaController.cs" />
     <Compile Include="ControllerEnums.cs" />
     <Compile Include="DepartamentoController.cs" />
+    <Compile Include="GradoAcademicoController.cs" />
     <Compile Include="Helpers\ModelStateExtensions.cs" />
     <Compile Include="Helpers\PartialViewExtensions.cs" />
     <Compile Include="HomeController.cs" />
@@ -90,28 +92,38 @@
     </Compile>
     <Compile Include="Mappers\AutoFormMapper.cs" />
     <Compile Include="Mappers\ICargoMapper.cs" />
+    <Compile Include="Mappers\ICategoriaMapper.cs" />
     <Compile Include="Mappers\IDepartamentoMapper.cs" />
+    <Compile Include="Mappers\IGradoAcademicoMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\Impl\CargoMapper.cs" />
+    <Compile Include="Mappers\Impl\CategoriaMapper.cs" />
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
+    <Compile Include="Mappers\Impl\GradoAcademicoMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
     <Compile Include="Mappers\Impl\SedeMapper.cs" />
+    <Compile Include="Mappers\Impl\SNIMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
     <Compile Include="Mappers\IRolMapper.cs" />
     <Compile Include="Mappers\Impl\RolMapper.cs" />
     <Compile Include="Mappers\ISedeMapper.cs" />
+    <Compile Include="Mappers\ISNIMapper.cs" />
     <Compile Include="Mappers\Mapper.cs" />
     <Compile Include="Models\CargoForm.cs" />
+    <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
+    <Compile Include="Models\GradoAcademicoForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
     <Compile Include="Models\RolForm.cs" />
     <Compile Include="Models\SedeForm.cs" />
+    <Compile Include="Models\SNIForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuestoController.cs" />
     <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="SedeController.cs" />
+    <Compile Include="SNIController.cs" />
     <Compile Include="ViewData\BaseViewData.cs" />
     <Compile Include="ViewData\GenericViewData.cs" />
   </ItemGroup>
