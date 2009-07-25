@@ -24,6 +24,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         private void CreateMaps()
         {
             Mapper.CreateMap<Rol, RolForm>();
+            Mapper.CreateMap<Cargo, CargoForm>();
+            Mapper.CreateMap<Puesto, PuestoForm>();
+            Mapper.CreateMap<Departamento, DepartamentoForm>();
+            Mapper.CreateMap<Sede, SedeForm>();
         }
     }
 }

@@ -18,13 +18,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		<#+
 		PushIndent("\t\t");
 		
-		WriteLine("public virtual int Id { get; set; }");
+		WriteLine("public int Id { get; set; }");
 
 		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-			WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+			WriteLine("public " + property.TypeName + " " + property.PropertyName + " { get; set; }");
 		}
 		
-		WriteLine("public virtual bool Activo { get; set; }");
+		WriteLine("public bool Activo { get; set; }");
 
 		PopIndent();
 		#>
