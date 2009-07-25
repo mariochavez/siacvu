@@ -79,9 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CargoController.cs" />
+    <Compile Include="Catalogos\CargoController.cs" />
     <Compile Include="ControllerEnums.cs" />
-    <Compile Include="DepartamentoController.cs" />
+    <Compile Include="Catalogos\DepartamentoController.cs" />
     <Compile Include="Helpers\ModelStateExtensions.cs" />
     <Compile Include="Helpers\PartialViewExtensions.cs" />
     <Compile Include="HomeController.cs" />
@@ -107,11 +107,11 @@
     <Compile Include="Models\RolForm.cs" />
     <Compile Include="Models\SedeForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PuestoController.cs" />
+    <Compile Include="Catalogos\PuestoController.cs" />
     <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
     <Compile Include="BaseController.cs" />
-    <Compile Include="SedeController.cs" />
+    <Compile Include="Catalogos\SedeController.cs" />
     <Compile Include="ViewData\BaseViewData.cs" />
     <Compile Include="ViewData\GenericViewData.cs" />
   </ItemGroup>
