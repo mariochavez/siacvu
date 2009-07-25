@@ -293,7 +293,9 @@ ul#mainMenu li.selected a
 
 /* TABLES 
 ----------------------------------------------------------*/
-.table_title {
+.table_title 
+{
+    border: 1px solid rgb(185, 185, 185);
 	background-color: #dddddd;
 	font-size: 14px;
 	font-weight: bold;
@@ -328,14 +330,6 @@ table td.single {
 	font-weight: normal;
 	line-height: 1.4em;
 	margin-bottom: 1px;
-}
-
-.table_title {
-	background-color: #dddddd;
-	font-size: 14px;
-	font-weight: bold;
-	height: 25px;
-	padding: 10px 0px 0px 25px;
 }
 
 .rowHighlight {
@@ -396,4 +390,32 @@ table td.single {
 	border: 0px none;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
+}
+
+.icon {
+	padding-top: 2px;
+	padding-right: 4px;
+	float: left;
+	width: 20px;
+	border: 0px;
+}
+
+.message {
+	border: 1px solid rgb(162, 212, 153);
+	background-color: rgb(188, 223, 179);
+	color: rgb(54, 109, 22);
+	padding: 5px 0px 5px 20px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 2px;
+}
+
+.errormessage {
+	border: 1px solid rgb(208, 158, 158);
+	background-color: rgb(219, 183, 183);
+	color: rgb(172, 40, 36);
+	padding: 5px 0px 5px 20px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 2px
 }
