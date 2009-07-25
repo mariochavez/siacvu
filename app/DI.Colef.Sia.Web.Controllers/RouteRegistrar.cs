@@ -19,10 +19,10 @@ namespace DI.Colef.Sia.Web.Controllers
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}", new { action = "Index" }),
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}/{id}")
             //);
-            //routes.CreateArea("Organization", "DI.Colef.Sia.Web.Controllers.Organization",
-            //    routes.MapRoute(null, "Organization/{controller}/{action}", new { action = "Index" }),
-            //    routes.MapRoute(null, "Organization/{controller}/{action}/{id}")
-            //);
+            routes.CreateArea("Catalogos", "DI.Colef.Sia.Web.Controllers.Catalogos",
+                routes.MapRoute(null, "Catalogos/{controller}/{action}", new { action = "Index" }),
+                routes.MapRoute(null, "Catalogos/{controller}/{action}/{id}")
+            );
 
             // Routing config for the root area
             routes.CreateArea("Root", "DI.Colef.Sia.Web.Controllers",
