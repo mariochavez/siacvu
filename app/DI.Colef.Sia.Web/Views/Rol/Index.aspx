@@ -34,7 +34,7 @@
 				        </td>                
                         <td class="single" width="70%">
                             <%=Html.Encode(rol.Nombre) %>
-                            <div class="meta_info">Creado el 45646</div>
+                            <div class="meta_info">Modificado el <%=Html.Encode(rol.Modificacion) %></div>
                         </td>
                         <td id="accion_<%=Html.Encode(rol.Id) %>" class="button" width="140">
                             <div class="floatr btn_container">

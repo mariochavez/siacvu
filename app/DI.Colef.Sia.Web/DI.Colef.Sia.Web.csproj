@@ -154,6 +154,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Extensions\PrimitiveHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\create.png" />
+    <Content Include="Content\Images\medium-brown-button.png" />
+    <Content Include="Content\Images\small-white-button.png" />
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
     <Content Include="Scripts\jquery-ajaxloading.js" />
