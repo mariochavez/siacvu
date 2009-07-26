@@ -15,7 +15,7 @@ public class EntityScaffoldingDetails {
     /// </summary>
     /// <param name="namespacedEntityName">
     /// The entity name iself should be SINGULAR
-    /// </param>
+    /// </param>   
 	public EntityScaffoldingDetails(string namespacedEntityName) {
 		Check.Require(! string.IsNullOrEmpty(namespacedEntityName), "namespacedEntityName may not be null or empty");
 
@@ -155,7 +155,7 @@ public class EntityProperty {
 	/// If set to true, then gets the domain signature attribute added to it.  An entity does not 
 	/// have to have any domain signature properties; if none exist, only the Id will be used in the 
 	/// comparison of one entity to another.
-    /// </param>
+    /// </param>	
 	public EntityProperty(string propertyName, string typeName, object defaultValueForTests, string propertyAttributes, bool isPartOfDomainSignature) {
 		Check.Require(! string.IsNullOrEmpty(propertyName), "propertyName may not be null or empty");
 		Check.Require(! string.IsNullOrEmpty(typeName), "typeName may not be null or empty");
