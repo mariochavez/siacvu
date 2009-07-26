@@ -4,6 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -58,7 +59,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(PuestoForm form)
         {
@@ -76,7 +78,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(PuestoForm form)
         {
@@ -94,7 +97,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -106,7 +110,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             
             return Rjs(form);
         }
-        
+
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
