@@ -1,5 +1,7 @@
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -9,7 +11,7 @@ using SharpArch.Web.NHibernate;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
-    public class SNIController : BaseController
+    public class SNIController : BaseController<SNI, SNIForm>
     {
         readonly ICatalogoService catalogoService;
         readonly ISNIMapper sNIMapper;
@@ -23,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<SNIForm> { Title = "Administracion de SNIs" };
+            var data = CreateViewDataWithTitle(Title.Index);
             var sNIs = catalogoService.GetAllSNIs();
             data.List = sNIMapper.Map(sNIs);
 
@@ -33,69 +35,66 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<SNIForm> {Title = "Nuevo SNI", Form = new SNIForm()};
-			
-			return View(data);
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new SNIForm();
+
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<SNIForm> { Title = "Modificar SNI" };
+
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var sNI = catalogoService.GetSNIById(id);
             data.Form = sNIMapper.Map(sNI);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<SNIForm> { Title = "Informacion de SNI" };
+
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var sNI = catalogoService.GetSNIById(id);
             data.Form = sNIMapper.Map(sNI);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(SNIForm form)
         {
             var sNI = sNIMapper.Map(form);
-            
-            ModelState.AddModelErrors(sNI.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el SNI");
-                return View("New", form);
-            }
+
+            if (!IsValidateModel(sNI, form, Title.New))
+                return ViewNew();
 
             catalogoService.SaveSNI(sNI);
-            SetMessage(string.Format("El SNI {0} ha sido creado", sNI.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", sNI.Nombre));
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(SNIForm form)
         {
             var sNI = sNIMapper.Map(form);
 
-            ModelState.AddModelErrors(sNI.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el SNI");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(sNI, form, Title.Edit))
+                return ViewEdit();
 
             catalogoService.SaveSNI(sNI);
-            SetMessage(string.Format("El SNI {0} ha sido modificado", sNI.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", sNI.Nombre));
         }
 
         [Transaction]

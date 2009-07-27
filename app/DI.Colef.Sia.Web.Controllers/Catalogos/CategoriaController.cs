@@ -1,15 +1,14 @@
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
-    [HandleError]
-    public class CategoriaController : BaseController
+    public class CategoriaController : BaseController<Categoria, CategoriaForm>
     {
         readonly ICatalogoService catalogoService;
         readonly ICategoriaMapper categoriaMapper;
@@ -23,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<CategoriaForm> { Title = "Administracion de Categorias" };
+            var data = CreateViewDataWithTitle(Title.Index);
             var categorias = catalogoService.GetAllCategorias();
             data.List = categoriaMapper.Map(categorias);
 
@@ -33,69 +32,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<CategoriaForm> {Title = "Nuevo Categoria", Form = new CategoriaForm()};
-			
-			return View(data);
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new CategoriaForm();
+
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<CategoriaForm> { Title = "Modificar Categoria" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var categoria = catalogoService.GetCategoriaById(id);
             data.Form = categoriaMapper.Map(categoria);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<CategoriaForm> { Title = "Informacion de Categoria" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var categoria = catalogoService.GetCategoriaById(id);
             data.Form = categoriaMapper.Map(categoria);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CategoriaForm form)
         {
             var categoria = categoriaMapper.Map(form);
-            
-            ModelState.AddModelErrors(categoria.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el Categoria");
-                return View("New", form);
-            }
+
+            if (!IsValidateModel(categoria, form, Title.New))
+                return ViewNew();
 
             catalogoService.SaveCategoria(categoria);
-            SetMessage(string.Format("El Categoria {0} ha sido creado", categoria.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", categoria.Nombre));
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CategoriaForm form)
         {
             var categoria = categoriaMapper.Map(form);
 
-            ModelState.AddModelErrors(categoria.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el Categoria");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(categoria, form, Title.Edit))
+                return ViewEdit();
 
             catalogoService.SaveCategoria(categoria);
-            SetMessage(string.Format("El Categoria {0} ha sido modificado", categoria.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", categoria.Nombre));
         }
 
         [Transaction]

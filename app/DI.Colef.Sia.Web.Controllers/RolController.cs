@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var roles = userService.GetAllRoles();
             data.List = rolMapper.Map(roles);

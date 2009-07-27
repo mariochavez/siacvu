@@ -1,15 +1,14 @@
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
-    [HandleError]
-    public class CargoController : BaseController
+    public class CargoController : BaseController<Cargo, CargoForm>
     {
         readonly ICatalogoService catalogoService;
         readonly ICargoMapper cargoMapper;
@@ -23,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<CargoForm> { Title = "Administracion de Cargos" };
+            var data = CreateViewDataWithTitle(Title.Index);
 			var cargos = catalogoService.GetAllCargos();
             data.List = cargoMapper.Map(cargos);
 
@@ -33,69 +32,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<CargoForm> {Title = "Nuevo Cargo", Form = new CargoForm()};
-			
-			return View(data);
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new CargoForm();
+
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<CargoForm> { Title = "Modificar Cargo" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var cargo = catalogoService.GetCargoById(id);
             data.Form = cargoMapper.Map(cargo);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<CargoForm> { Title = "Informacion de Cargo" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var cargo = catalogoService.GetCargoById(id);
             data.Form = cargoMapper.Map(cargo);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CargoForm form)
         {
             var cargo = cargoMapper.Map(form);
-            
-            ModelState.AddModelErrors(cargo.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el Cargo");
-                return View("New", form);
-            }
+
+            if (!IsValidateModel(cargo, form, Title.New))
+                return ViewNew();
 
             catalogoService.SaveCargo(cargo);
-            SetMessage(string.Format("El Cargo {0} ha sido creado", cargo.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", cargo.Nombre));
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CargoForm form)
         {
             var cargo = cargoMapper.Map(form);
 
-            ModelState.AddModelErrors(cargo.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el Cargo");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(cargo, form, Title.Edit))
+                return ViewEdit();
 
             catalogoService.SaveCargo(cargo);
-            SetMessage(string.Format("El Cargo {0} ha sido modificado", cargo.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", cargo.Nombre));
         }
 
         [Transaction]

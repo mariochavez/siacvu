@@ -1,5 +1,7 @@
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -8,8 +10,7 @@ using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
-    [HandleError]
-    public class DepartamentoController : BaseController
+    public class DepartamentoController : BaseController<Departamento, DepartamentoForm>
     {
         readonly ICatalogoService catalogoService;
         readonly IDepartamentoMapper departamentoMapper;
@@ -23,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<DepartamentoForm> { Title = "Administracion de Departamentos" };
+            var data = CreateViewDataWithTitle(Title.Index);
             var departamentos = catalogoService.GetAllDepartamentos();
             data.List = departamentoMapper.Map(departamentos);
 
@@ -33,69 +34,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<DepartamentoForm> {Title = "Nuevo Departamento", Form = new DepartamentoForm()};
-			
-			return View(data);
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new DepartamentoForm();
+
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<DepartamentoForm> { Title = "Modificar Departamento" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var departamento = catalogoService.GetDepartamentoById(id);
             data.Form = departamentoMapper.Map(departamento);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<DepartamentoForm> { Title = "Informacion de Departamento" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var departamento = catalogoService.GetDepartamentoById(id);
             data.Form = departamentoMapper.Map(departamento);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DepartamentoForm form)
         {
             var departamento = departamentoMapper.Map(form);
-            
-            ModelState.AddModelErrors(departamento.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el Departamento");
-                return View("New", form);
-            }
+
+            if (!IsValidateModel(departamento, form, Title.New))
+                return ViewNew();
 
             catalogoService.SaveDepartamento(departamento);
-            SetMessage(string.Format("El Departamento {0} ha sido creado", departamento.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", departamento.Nombre));
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DepartamentoForm form)
         {
             var departamento = departamentoMapper.Map(form);
 
-            ModelState.AddModelErrors(departamento.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el Departamento");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(departamento, form, Title.Edit))
+                return ViewEdit();
 
             catalogoService.SaveDepartamento(departamento);
-            SetMessage(string.Format("El Departamento {0} ha sido modificado", departamento.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", departamento.Nombre));
         }
 
         [Transaction]

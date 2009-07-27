@@ -1,15 +1,15 @@
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
-    public class SedeController : BaseController
+    public class SedeController : BaseController<Sede, SedeForm>
     {
 		readonly ICatalogoService catalogoService;
         readonly ISedeMapper sedeMapper;
@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<SedeForm> { Title = "Administracion de Sedes" };
+            var data = CreateViewDataWithTitle(Title.Index);
             var sedes = catalogoService.GetAllSedes();
             data.List = sedeMapper.Map(sedes);
 
@@ -33,69 +33,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<SedeForm> {Title = "Nuevo Sede", Form = new SedeForm()};
-			
-			return View(data);
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new SedeForm();
+
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<SedeForm> { Title = "Modificar Sede" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var sede = catalogoService.GetSedeById(id);
             data.Form = sedeMapper.Map(sede);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<SedeForm> { Title = "Informacion de Sede" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var sede = catalogoService.GetSedeById(id);
             data.Form = sedeMapper.Map(sede);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(SedeForm form)
         {
             var sede = sedeMapper.Map(form);
-            
-            ModelState.AddModelErrors(sede.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el Sede");
-                return View("New", form);
-            }
+
+            if (!IsValidateModel(sede, form, Title.New))
+                return ViewNew();
 
             catalogoService.SaveSede(sede);
-            SetMessage(string.Format("El Sede {0} ha sido creado", sede.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", sede.Nombre));
         }
 
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(SedeForm form)
         {
             var sede = sedeMapper.Map(form);
 
-            ModelState.AddModelErrors(sede.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el Sede");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(sede, form, Title.Edit))
+                return ViewEdit();
 
             catalogoService.SaveSede(sede);
-            SetMessage(string.Format("El Sede {0} ha sido modificado", sede.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", sede.Nombre));
         }
 
         [Transaction]
