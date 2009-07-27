@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.SNI");
+	new EntityScaffoldingDetails("Prueba");
  
 /*
  * Property names should be PascalCase.
