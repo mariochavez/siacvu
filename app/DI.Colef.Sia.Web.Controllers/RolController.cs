@@ -86,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var rol = rolMapper.Map(form);
 
             if (!IsValidateModel(rol, form, Title.Edit))
-                return ViewNew();
+                return ViewEdit();
 
             userService.SaveRol(rol);
 
