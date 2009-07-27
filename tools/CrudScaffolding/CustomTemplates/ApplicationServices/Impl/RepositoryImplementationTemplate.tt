@@ -9,6 +9,7 @@ public class RepositoryImplementationTemplate : BaseTemplate
 	protected override void RenderCore()
 	{
 #>
+using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
 using SharpArch.Core.PersistenceSupport;
@@ -36,6 +37,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityName #> <#= EntityScaffoldingDetails.EntityNameCamelCase #>)
         {
+            if(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id == 0)
+            {
+                <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = true;
+                <#= EntityScaffoldingDetails.EntityNameCamelCase #>.CreadorEl = DateTime.Now;
+            }
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoEl = DateTime.Now;
+            
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.SaveOrUpdate(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
         }
     }

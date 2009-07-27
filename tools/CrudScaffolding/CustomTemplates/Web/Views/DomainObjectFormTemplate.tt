@@ -9,46 +9,37 @@ public class DomainObjectFormTemplate : BaseTemplate
 	protected override void RenderCore()
 	{
 #>
-<%@ Control Language="C#" AutoEventWireup="true"
-	Inherits="System.Web.Mvc.ViewUserControl<<#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>.<#= EntityScaffoldingDetails.EntityNamePlural #>Controller.<#= EntityScaffoldingDetails.EntityName #>FormViewModel>" %>
-<%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Core") #>" %>
-<%@ Import Namespace="<#= SolutionName #>.Web.Controllers" %>
-<#+ if (EntityScaffoldingDetails.NamespaceHierarchy != null) { 
-#><%@ Import Namespace="<#= AppendNamespaceHierarchyTo(SolutionName + ".Web.Controllers") #>" %><#+ 
-	} #> 
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<% if (ViewContext.TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()] != null) { %>
-    <p id="pageMessage"><%= ViewContext.TempData[ControllerEnums.GlobalViewDataProperty.PageMessage.ToString()]%></p>
-<% } %>
+<div id="form">
+    <%=Html.AntiForgeryToken() %>
+    <%=Html.Hidden("Id", Model.Form.Id) %>
 
-<%= Html.ValidationSummary() %>
-
-<% using (Html.BeginForm()) { %>
-    <%= Html.AntiForgeryToken() %>
-    <%= Html.Hidden("<#= EntityScaffoldingDetails.EntityName #>.Id", (ViewData.Model.<#= EntityScaffoldingDetails.EntityName #> != null) ? ViewData.Model.<#= EntityScaffoldingDetails.EntityName #>.Id : 0)%>
-
-    <ul>
-	<#+
-	foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-	#>
-	<li>
-			<label for="<#= EntityScaffoldingDetails.EntityName #>_<#= property.PropertyName #>"><#= property.PropertyName #>:</label>
-			<div>
-				<%= Html.TextBox("<#= EntityScaffoldingDetails.EntityName #>.<#= property.PropertyName #>", 
-					(ViewData.Model.<#= EntityScaffoldingDetails.EntityName #> != null) ? ViewData.Model.<#= EntityScaffoldingDetails.EntityName #>.<#= property.PropertyName #>.ToString() : "")%>
-			</div>
-			<%= Html.ValidationMessage("<#= EntityScaffoldingDetails.EntityName #>.<#= property.PropertyName #>")%>
-		</li>
-	<#+
-	}
-	#>
-    <li>
-            <%= Html.SubmitButton("btnSave", "Save <#= EntityScaffoldingDetails.EntityName #>") %>
-	        <%= Html.Button("btnCancel", "Cancel", HtmlButtonType.Button, 
-				    "window.location.href = '" + Html.BuildUrlFromExpression<<#= EntityScaffoldingDetails.EntityNamePlural #>Controller>(c => c.Index()) + "';") %>
-        </li>
-    </ul>
-<% } %>
+    <table class="form">
+        <tr>
+            <td class="label required">
+                <label for="Nombre">Nombre:<em>*</em></label>
+            </td>
+            <td class="field">
+                <%=Html.TextBox("Nombre", Model.Form.Nombre, new { @class = "big", size = 10, maxlength = 40 })%>
+                <span class="helper_message">(Debe de ser un nombre unico)</span>
+                <%=Html.ValidationMessage("Nombre") %>
+            </td>
+        </tr>
+    </table>
+    
+	<div class="btn_container_footer">
+		<span class="btn btn_normal_brown">
+			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
+		</span>
+		<span class="btn btn_normal_white">
+			<%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(x => x.Index(), "Regresar") %>
+		</span>
+	</div>    
+</div>
 <#+
 	}
 }

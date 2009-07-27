@@ -9,6 +9,7 @@ public class ControllerTemplate : BaseTemplate
 	protected override void RenderCore()
 	{
 #>
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
@@ -44,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> {Title = "Nuevo <#= EntityScaffoldingDetails.EntityName #>", Form = new <#= EntityScaffoldingDetails.EntityName #>Form()};
+			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> {Title = "Crear nuevo <#= EntityScaffoldingDetails.EntityNameCamelCase #>", Form = new <#= EntityScaffoldingDetails.EntityName #>Form()};
 			
 			return View(data);
         }
@@ -52,11 +53,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificar <#= EntityScaffoldingDetails.EntityName #>" };
+            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificacion de <#= EntityScaffoldingDetails.EntityNameCamelCase #>" };
 
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
+			ViewData.Model = data;
             return View(data);
         }
 
@@ -67,11 +69,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
-
+            
+            ViewData.Model = data;
             return View(data);
         }
         
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
@@ -79,9 +83,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             
             ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
             if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el <#= EntityScaffoldingDetails.EntityName #>");
-                return View("New", form);
+            {                
+                 var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificacion de <#= EntityScaffoldingDetails.EntityNameCamelCase #>", Form = form };
+                 SetError(string.Format("Se ha generado un error al actualizar el <#= EntityScaffoldingDetails.EntityName #>, por favor corrija los siguientes errores.\n{0}",
+                     ModelState.ContainsKey("Entity") ? ModelState["Entity"].Errors[0].ErrorMessage : String.Empty));
+ 
+                 ViewData.Model = data;
+                 return View("New");
             }
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
@@ -91,6 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
         
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
@@ -99,8 +108,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
             if (!ModelState.IsValid)
             {
-                SetMessage("Se ha generado un error al actualizar el <#= EntityScaffoldingDetails.EntityName #>");
-                return View("Edit", form);
+                 var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificacion de <#= EntityScaffoldingDetails.EntityNameCamelCase #>", Form = form };
+                 SetError("Se ha generado un error al actualizar el <#= EntityScaffoldingDetails.EntityName #>, por favor corrija los siguientes errores");
+ 
+                 ViewData.Model = data;
+                 return View("Edit");
             }
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
