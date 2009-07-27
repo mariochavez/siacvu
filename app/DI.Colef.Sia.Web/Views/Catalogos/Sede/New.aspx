@@ -1,14 +1,5 @@
-﻿<#+
-public class EditTemplate : BaseTemplate
-{
-	public EditTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
-		: base(solutionName, entityScaffoldingDetails) { }
-
-	protected override void RenderCore()
-	{
-#>
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<SedeForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -18,7 +9,7 @@ public class EditTemplate : BaseTemplate
     <h2><%=Html.Encode(Model.Title) %></h2>
     <% Html.RenderPartial("_Message"); %>
     <br />
-    <% using (Html.BeginForm("Update", "<#= EntityScaffoldingDetails.EntityName #>", new { Id = Model.Form.Id })) { %>
+    <% using (Html.BeginForm("Create", "Sede")) { %>
         <% Html.RenderPartial("_Form"); %>
     <% } %>
     
@@ -27,7 +18,4 @@ public class EditTemplate : BaseTemplate
         setupDocument();
     });
 </script>
-<#+
-	}
-}
-#>
+</asp:Content>

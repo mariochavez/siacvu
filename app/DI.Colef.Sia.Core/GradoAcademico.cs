@@ -1,13 +1,16 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
     public class GradoAcademico : Entity, IBaseEntity
     {
 		[NotNullNotEmpty]
         [Length(40)]
+        [DomainSignature]
 		public virtual string Nombre { get; set; }
 
 		public virtual string CreadorPor { get; set; }

@@ -9,18 +9,18 @@ public class ControllerTemplate : BaseTemplate
 	protected override void RenderCore()
 	{
 #>
+using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
-    public class <#= EntityScaffoldingDetails.EntityName #>Controller : BaseController
+    public class <#= EntityScaffoldingDetails.EntityName #>Controller : BaseController<<#= EntityScaffoldingDetails.EntityName #>, <#= EntityScaffoldingDetails.EntityName #>Form>
     {
 		readonly I<#= EntityScaffoldingDetails.EntityName #>Service <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service;
         readonly I<#= EntityScaffoldingDetails.EntityName #>Mapper <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper;
@@ -34,7 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Administracion de <#= EntityScaffoldingDetails.EntityNamePlural #>" };
+			var data = CreateViewDataWithTitle(Title.Index);
+			
 			var <#= EntityScaffoldingDetails.EntityNamePluralCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>();
             data.List = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNamePluralCamelCase #>);
 
@@ -43,8 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {
-			var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> {Title = "Nuevo <#= EntityScaffoldingDetails.EntityName #>", Form = new <#= EntityScaffoldingDetails.EntityName #>Form()};
+        {			
+			var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new <#= EntityScaffoldingDetails.EntityName #>Form();
 			
 			return View(data);
         }
@@ -52,61 +54,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Modificar <#= EntityScaffoldingDetails.EntityName #>" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return View(data);
+			ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form> { Title = "Informacion de <#= EntityScaffoldingDetails.EntityName #>" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
-
-            return View(data);
+            
+            ViewData.Model = data;
+            return View();
         }
         
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
+        
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
-            
-            ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al crear el <#= EntityScaffoldingDetails.EntityName #>");
-                return View("New", form);
-            }
+
+            if(!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.New))
+                return ViewNew();
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
-            SetMessage(string.Format("El <#= EntityScaffoldingDetails.EntityName #> {0} ha sido creado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
         }
         
         [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
+        
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
 
-            ModelState.AddModelErrors(<#= EntityScaffoldingDetails.EntityNameCamelCase #>.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                SetMessage("Se ha generado un error al actualizar el <#= EntityScaffoldingDetails.EntityName #>");
-                return View("Edit", form);
-            }
+            if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.Edit))
+                return ViewEdit();
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
-            SetMessage(string.Format("El <#= EntityScaffoldingDetails.EntityName #> {0} ha sido modificado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
         }
         
         [Transaction]

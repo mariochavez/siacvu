@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
 using SharpArch.Core.PersistenceSupport;
 
@@ -37,6 +38,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveCargo(Cargo cargo)
         {
+            if (cargo.Id == 0)
+            {
+                cargo.Activo = true;
+                cargo.CreadorEl = DateTime.Now;
+            }
+            cargo.ModificadoEl = DateTime.Now;
+
             cargoRepository.SaveOrUpdate(cargo);
         }
 
@@ -52,6 +60,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveDepartamento(Departamento departamento)
         {
+            if (departamento.Id == 0)
+            {
+                departamento.Activo = true;
+                departamento.CreadorEl = DateTime.Now;
+            }
+            departamento.ModificadoEl = DateTime.Now;
+
             departamentoRepository.SaveOrUpdate(departamento);
         }
 
@@ -67,6 +82,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SavePuesto(Puesto puesto)
         {
+            if (puesto.Id == 0)
+            {
+                puesto.Activo = true;
+                puesto.CreadorEl = DateTime.Now;
+            }
+            puesto.ModificadoEl = DateTime.Now;
+
             puestoRepository.SaveOrUpdate(puesto);
         }
 
@@ -82,6 +104,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveSede(Sede sede)
         {
+            if (sede.Id == 0)
+            {
+                sede.Activo = true;
+                sede.CreadorEl = DateTime.Now;
+            }
+            sede.ModificadoEl = DateTime.Now;
+
             sedeRepository.SaveOrUpdate(sede);
         }
 
@@ -97,6 +126,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveCategoria(Categoria categoria)
         {
+            if (categoria.Id == 0)
+            {
+                categoria.Activo = true;
+                categoria.CreadorEl = DateTime.Now;
+            }
+            categoria.ModificadoEl = DateTime.Now;
+
             categoriaRepository.SaveOrUpdate(categoria);
         }
 
@@ -112,6 +148,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveGradoAcademico(GradoAcademico gradoAcademico)
         {
+            if (gradoAcademico.Id == 0)
+            {
+                gradoAcademico.Activo = true;
+                gradoAcademico.CreadorEl = DateTime.Now;
+            }
+            gradoAcademico.ModificadoEl = DateTime.Now;
+
             gradoAcademicoRepository.SaveOrUpdate(gradoAcademico);
         }
 
@@ -127,6 +170,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveSNI(SNI sNI)
         {
+            if (sNI.Id == 0)
+            {
+                sNI.Activo = true;
+                sNI.CreadorEl = DateTime.Now;
+            }
+            sNI.ModificadoEl = DateTime.Now;
+
             sNIRepository.SaveOrUpdate(sNI);
         }
     }

@@ -7,7 +7,7 @@
 <#@ include file="./CustomTemplates/Web/Models/ModelTemplate.tt" #>
 <#@ include file="./CustomTemplates/Core/DomainObjectTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/DomainObjectFormTemplate.tt" #>
-<#@ include file="./CustomTemplates/Web/Views/CreateTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/NewTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/EditTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/IndexTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ActivateTemplate.tt" #>
@@ -230,9 +230,9 @@ public class ScaffoldingGenerator : Generator
 				Log("Added directory " + targetPath);
 			}
 			
-			//GenerateDomainObjectFormView(targetPath);
-			//GenerateCreateView(targetPath);
-			//GenerateEditView(targetPath);
+			GenerateDomainObjectFormView(targetPath);
+			GenerateNewView(targetPath);
+			GenerateEditView(targetPath);
 			GenerateIndexView(targetPath);
 			GenerateJsViewActivate(targetPath);
 			//GenerateShowView(targetPath);
@@ -243,7 +243,7 @@ public class ScaffoldingGenerator : Generator
 	}
 
 	private void GenerateDomainObjectFormView(string targetPath) {
-		string fileName = entityScaffoldingDetails.EntityName + "Form.ascx";
+		string fileName = "_Form.ascx";
 
 		if (! File.Exists(targetPath + fileName)) {
 			DomainObjectFormTemplate domainObjectFormTemplate = 
@@ -268,12 +268,12 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 
-	private void GenerateCreateView(string targetPath) {
-		string fileName = "Create.aspx";
+	private void GenerateNewView(string targetPath) {
+		string fileName = "New.aspx";
 
 		if (! File.Exists(targetPath + fileName)) {
-			CreateTemplate createTemplate = new CreateTemplate(solutionName, entityScaffoldingDetails);
-			RenderViewFile(createTemplate, targetPath + fileName);
+			NewTemplate newTemplate = new NewTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(newTemplate, targetPath + fileName);
 		}
 		else {
 			Log("File already exists " + targetPath + fileName);

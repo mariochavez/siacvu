@@ -1,15 +1,4 @@
-﻿<#@ import namespace="System.Collections" #>
-
-<#+
-public class DomainObjectFormTemplate : BaseTemplate
-{
-	public DomainObjectFormTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
-		: base(solutionName, entityScaffoldingDetails) { }
-
-	protected override void RenderCore()
-	{
-#>
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>>" %>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<SedeForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -36,11 +25,7 @@ public class DomainObjectFormTemplate : BaseTemplate
 			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
 		</span>
 		<span class="btn btn_normal_white">
-			<%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(x => x.Index(), "Regresar") %>
+			<%=Html.ActionLink<SedeController>(x => x.Index(), "Regresar") %>
 		</span>
 	</div>    
 </div>
-<#+
-	}
-}
-#>

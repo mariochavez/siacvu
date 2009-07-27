@@ -29,6 +29,11 @@ public class EntityScaffoldingDetails {
 		get { return entityName; }
 		protected set { entityName = value; }
 	}
+	
+	public bool HasUniqueDomainSignature {
+		get { return hasUniqueDomainSignature; }
+		protected set { hasUniqueDomainSignature = value; }
+	}
 
 	public string EntityNamePlural {
 		get { return Inflector.Net.Inflector.Pluralize(EntityName); }
@@ -89,8 +94,10 @@ public class EntityScaffoldingDetails {
 	public bool HasAnyDomainSignatureProperties {
 		get {
 			foreach (EntityProperty entityProperty in EntityProperties) {
-				if (entityProperty.IsPartOfDomainSignature)
+				if (entityProperty.IsPartOfDomainSignature){
+					HasUniqueDomainSignature = true;
 					return true;
+				}
 			}
 		
 			return false;
@@ -120,6 +127,7 @@ public class EntityScaffoldingDetails {
 		}
 	}
 	
+	private bool hasUniqueDomainSignature = false;
 	private string entityName;
 	private ArtifactToGenerate[] artifactsToGenerate;
 	private string[] namespaceHierarchy;

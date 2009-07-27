@@ -7,12 +7,12 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    <div id="message"></div>
+    <div id="message" class="<% if(TempData["message"] != null) { %>message<% } else if(TempData["error"] != null) { %>errormessage<% } %>"><%=Html.Encode(TempData["message"])%></div>
     <br />
     <div id="datalist">   
         <div class="btn_container">
 		    <span class="btn btn_medium_brown">
-			    <a href="#">+ Crear Departamento</a>
+			    <%=Html.ActionLink<DepartamentoController>(x => x.New(), "+ Crear Departamento") %>
 		    </span>
 	    </div>
         <br />

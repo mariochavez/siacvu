@@ -12,9 +12,13 @@ public class DomainObjectTemplate : BaseTemplate
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+if(<#= EntityScaffoldingDetails.HasUniqueDomainSignature #>)
+	using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+	if(<#= EntityScaffoldingDetails.HasUniqueDomainSignature #>)
+		[HasUniqueDomainSignature]
     public class <#= EntityScaffoldingDetails.EntityName #> : Entity, IBaseEntity
     {
 		<#+
