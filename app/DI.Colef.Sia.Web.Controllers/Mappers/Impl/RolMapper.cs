@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(RolForm message, Rol model)
         {
-            model.Activo = message.Activo;
             model.Nombre = message.Nombre;
         }
     }

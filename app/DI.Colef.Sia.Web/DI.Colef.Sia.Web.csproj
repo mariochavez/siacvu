@@ -203,6 +203,8 @@
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\create.png" />
     <Content Include="Content\Images\medium-brown-button.png" />
+    <Content Include="Content\Images\normal-brown-button.png" />
+    <Content Include="Content\Images\normal-white-button.png" />
     <Content Include="Content\Images\small-white-button.png" />
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
@@ -220,10 +222,13 @@
     <Content Include="Views\Catalogos\Departamento\Index.aspx" />
     <Content Include="Views\Catalogos\Puesto\Activate.ascx" />
     <Content Include="Views\Catalogos\Puesto\Index.aspx" />
-    <Content Include="Views\Rol\Activate.ascx" />
+    <Content Include="Views\Rol\New.aspx" />
+    <Content Include="Views\Rol\Edit.aspx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Catalogos\Sede\Activate.ascx" />
     <Content Include="Views\Catalogos\Sede\Index.aspx" />
+    <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_Message.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

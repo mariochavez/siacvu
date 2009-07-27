@@ -272,12 +272,6 @@ ul#mainMenu li.selected a
     clear: both;
 }
 
-.input-validation-error
-{
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
-}
-
 
 /* CUSTOM  
 ----------------------------------------------------------*/
@@ -336,6 +330,65 @@ table td.single {
     background-color: #eeeeee;
 }
 
+.helper_message {
+	color: rgb(102, 102, 102);
+	font-size: 11px;
+	line-height: 15px;
+}
+
+.field-validation-error 
+{
+    display: block;
+    color: rgb(172, 40, 36);
+}   
+
+table.form {
+	border-collapse: collapse;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	border-color: gray;
+	display: table;
+}
+
+table.form td {
+	border-bottom: 1px solid rgb(221, 221, 221);
+	font-size: 12px;
+	padding: 10px 5px 10px 0px;
+	line-height: 2em;
+	text-align: left;
+	margin: 0px;
+}
+
+table.form td.label {
+	color: rgb(102, 102, 102);
+	vertical-align: top;
+	width: 120px;
+}
+
+table.form td.required {
+	font-weight: bold;
+}
+
+table.form td.field input {
+	font-size: 12px;
+	width: auto;
+	border: 1px solid rgb(201, 201, 201);
+}
+
+table.form td.field input.big {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px;
+	width: 80%;
+}
+
+table.form td.field input.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
 /* BUTTONS  
 ----------------------------------------------------------*/
 .btn_container {
@@ -357,6 +410,22 @@ table td.single {
 	padding-left: 3px;
 }
 
+.btn a {
+	border: 0px none;
+	color: rgb(17, 17, 17);
+	font-family: 'Nimbus Sans L', Helvetica, Arial, Verdana, sans-serif;
+	text-decoration: none;
+	width: auto;
+}
+
+.btn input {
+	border: 0px none;
+	margin: 0px;
+	overflow: visible;
+	border-color: transparent;
+	cursor: pointer;	
+}
+
 .btn_small_white {
 	background: transparent url(/Content/Images/small-white-button.png) no-repeat scroll left top;
 	height: 20px;
@@ -372,7 +441,6 @@ table td.single {
 	width: auto;
 	border: 0px none;
 }
-
 
 .btn_medium_brown {
 	background: transparent url(/Content/Images/medium-brown-button.png) no-repeat scroll left top;
@@ -390,6 +458,44 @@ table td.single {
 	border: 0px none;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
+}
+
+.btn_container_footer {
+	padding-left: 125px;
+	margin-top: 15px;
+	overflow: hidden;
+}
+
+.btn_normal_brown {
+	background: url(/Content/Images/normal-brown-button.png) no-repeat scroll transparent;
+	height: 30px;
+	margin-right: 10px;
+	padding-left: 10px;
+}
+
+.btn_normal_brown input {
+	background: url(/Content/Images/normal-brown-button.png) no-repeat scroll right top;
+	color: #fff;
+	padding: 5px 15px 5px 5px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 29px;
+}
+
+.btn_normal_white {
+	background: url(/Content/Images/normal-white-button.png) no-repeat scroll transparent;
+	height: 30px;
+	margin-right: 10px;
+	padding-left: 10px;
+}
+
+.btn_normal_white a {
+	background: url(/Content/Images/normal-white-button.png) no-repeat scroll right top;
+	color: rgb(102, 102, 102);
+	display: block;
+	font-size: 14px;
+	line-height: 29px;
+	padding: 0px 15px 2px 5px;
 }
 
 .icon {

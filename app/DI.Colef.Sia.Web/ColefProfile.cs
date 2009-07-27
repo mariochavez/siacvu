@@ -31,7 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<Rol, RolForm>();
             Mapper.CreateMap<Cargo, CargoForm>();
             Mapper.CreateMap<Puesto, PuestoForm>();
             Mapper.CreateMap<Departamento, DepartamentoForm>();
@@ -47,8 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         protected override string ResolveCore(IBaseEntity source)
         {
             var date = source.CreadorEl > source.ModificadoEl ? source.CreadorEl : source.ModificadoEl;
-
-
             return date <= DateTime.Parse("1980-01-01") ? String.Empty : (date).ToString("dd MMM, yyyy");
         }
     }

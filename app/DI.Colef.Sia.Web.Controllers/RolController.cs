@@ -1,9 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -32,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = new GenericViewData<RolForm> {Title = "nuevo rol", Form = new RolForm()};
+            var data = new GenericViewData<RolForm> {Title = "Crear nuevo rol", Form = new RolForm()};
 
             return View(data);
         }
@@ -40,12 +42,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<RolForm> { Title = "Modificar rol" };
+            var data = new GenericViewData<RolForm> { Title = "Modificacion de rol" };
 
             var rol = userService.GetRolById(id);
             data.Form = rolMapper.Map(rol);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -56,9 +59,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var rol = userService.GetRolById(id);
             data.Form = rolMapper.Map(rol);
 
-            return View(data);
+            ViewData.Model = data;
+            return View();
         }
 
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(RolForm form)
         {
@@ -67,8 +72,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ModelState.AddModelErrors(rol.ValidationResults());
             if (!ModelState.IsValid)
             {
-                SetMessage("Se ha generado un error al crear el Rol");
-                return View("New", form);
+                var data = new GenericViewData<RolForm> { Title = "Modificacion de rol", Form = form };
+                SetError(string.Format("Se ha generado un error al actualizar el Rol, por favor corrija los siguientes errores.\n{0}",
+                    ModelState.ContainsKey("Entity") ? ModelState["Entity"].Errors[0].ErrorMessage : String.Empty));
+
+                ViewData.Model = data;
+                return View("New");
             }
 
             userService.SaveRol(rol);
@@ -77,6 +86,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Transaction]
+        [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(RolForm form)
         {
@@ -85,8 +96,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ModelState.AddModelErrors(rol.ValidationResults());
             if (!ModelState.IsValid)
             {
-                SetMessage("Se ha generado un error al actualizar el Rol");
-                return View("Edit", form);
+                var data = new GenericViewData<RolForm> { Title = "Modificacion de rol", Form = form };
+                SetError("Se ha generado un error al actualizar el Rol, por favor corrija los siguientes errores");
+
+                ViewData.Model = data;
+                return View("Edit");
             }
 
             userService.SaveRol(rol);
@@ -95,6 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -107,6 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
 
+        [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

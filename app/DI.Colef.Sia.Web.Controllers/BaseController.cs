@@ -10,6 +10,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             TempData["message"] = message;
         }
 
+        protected void SetError(string message)
+        {
+            TempData["error"] = message;
+        }
+
         protected ContentResult Rjs(string viewName, object model)
         {
             var output = this.RenderPartialToString(viewName, model);

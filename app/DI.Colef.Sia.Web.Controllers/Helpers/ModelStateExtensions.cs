@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             foreach (IValidationResult error in errors)
             {
-                state.AddModelError(error.PropertyName, error.PropertyName);
+                state.AddModelError(error.PropertyName ?? "Entity", error.Message);
             }
         }
     }
