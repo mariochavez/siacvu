@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DI.Colef.Sia.Web.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DecisionesInteligentes.Colef.Sia.Web.MvcApplication" Language="C#" %>

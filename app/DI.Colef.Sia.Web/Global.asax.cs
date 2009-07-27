@@ -1,7 +1,7 @@
 ﻿using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
-using DecisionesInteligentes.Colef.Sia.Web;
 using DecisionesInteligentes.Colef.Sia.Web.CastleWindsor;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers;
 using Microsoft.Practices.ServiceLocation;
 using MvcContrib.Castle;
 using SharpArch.Data.NHibernate;
@@ -16,11 +16,8 @@ using System.Reflection;
 using DI.Colef.Sia.Web.Controllers;
 using DI.Colef.Sia.Data.NHibernateMaps;
 
-namespace DI.Colef.Sia.Web
+namespace DecisionesInteligentes.Colef.Sia.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
