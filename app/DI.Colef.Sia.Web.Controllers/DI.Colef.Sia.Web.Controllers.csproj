@@ -108,7 +108,7 @@
     <Compile Include="Mappers\Impl\RolMapper.cs" />
     <Compile Include="Mappers\ISedeMapper.cs" />
     <Compile Include="Mappers\ISNIMapper.cs" />
-    <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Mappers\Impl\Mapper.cs" />
     <Compile Include="Models\CargoForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />

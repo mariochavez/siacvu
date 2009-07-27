@@ -1,12 +1,22 @@
-05:55:40 p.m.	Started adding generated files
-05:55:40 p.m.	Added directory C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\
-05:55:40 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-05:55:40 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\SNI\Activate.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-05:55:40 p.m.	Added file SNI.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
-05:55:40 p.m.	Added file SNIController.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-05:55:40 p.m.	Added file ISNIService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-05:55:40 p.m.	Added file Impl\SNIService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-05:55:40 p.m.	Added file Models\SNIForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-05:55:40 p.m.	Added file Mappers\ISNIMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-05:55:40 p.m.	Added file Mappers\Impl\SNIMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-05:55:40 p.m.	Finished adding generated files
+03:10:22 p.m.	Started adding generated files
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Admin\; exists? False
+03:10:22 p.m.	Added directory C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Admin\
+03:10:22 p.m.	Added directory C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Admin\Prueba\
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Admin\Prueba\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Admin\Prueba\Activate.js.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\Prueba.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Admin\; exists? False
+03:10:22 p.m.	Added directory C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Admin\
+03:10:22 p.m.	Added file Admin\PruebaController.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IPruebaService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\PruebaService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\PruebaForm.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IPruebaMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+03:10:22 p.m.	path = C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\Admin\; exists? True
+03:10:22 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\PruebaMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+03:10:22 p.m.	Finished adding generated files

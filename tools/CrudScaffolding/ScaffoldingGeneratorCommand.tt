@@ -13,17 +13,21 @@
  * Domain name should be PascalCaseSingular with no spaces.
  * You may qualify the domain object with a namespace; a folder structure reflecting the namespace structure will be created (or verified).
  * A log of created artifacts may be found in /DI.Colef.Sia/logs/CrudScaffolding.log
- * Examples:  Product, Organization.Employee, Financial.Costs.LedgerEntry
+ * Examples:  ("Usuario"), ("Admin.Usuario")
+ *			  (entityName), ("FolderName.entityName") 
  */
+
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("SNI");
+	new EntityScaffoldingDetails("Admin.Usuario");
  
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
  */
+ 
+//EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]") 
+	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]")
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
@@ -41,7 +45,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

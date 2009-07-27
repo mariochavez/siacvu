@@ -87,7 +87,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Transaction]
+<<<<<<< HEAD:app/DI.Colef.Sia.Web.Controllers/RolController.cs
         [ValidateAntiForgeryToken]
+=======
+>>>>>>> fb30aa7b5e7fb2d8f085d19603539566a69069d6:app/DI.Colef.Sia.Web.Controllers/RolController.cs
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(RolForm form)
         {

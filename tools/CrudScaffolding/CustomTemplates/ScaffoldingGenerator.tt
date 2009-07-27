@@ -81,7 +81,7 @@ public class ScaffoldingGenerator : Generator
 				DomainObjectTemplate domainObjectTemplate = 
 					new DomainObjectTemplate(solutionName, entityScaffoldingDetails);
 				
-				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile = appFolderPath + solutionName + ".Core\\" + fileName;
 				string outputProject = targetPathRoot + solutionName + ".Core.csproj";
 				RenderFileToProject(domainObjectTemplate, outputFile, outputProject);
 			}
@@ -127,7 +127,7 @@ public class ScaffoldingGenerator : Generator
 				RepositoryInterfaceTemplate repositoryInterfaceTemplate = 
 					new RepositoryInterfaceTemplate(solutionName, entityScaffoldingDetails);
 				
-				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile = appFolderPath + solutionName + ".ApplicationServices\\" + fileName;
 				string outputProject = targetPathRoot + solutionName + ".ApplicationServices.csproj";
 				RenderFileToProject(repositoryInterfaceTemplate, outputFile, outputProject);
 			}
@@ -143,8 +143,7 @@ public class ScaffoldingGenerator : Generator
 				RepositoryImplementationTemplate repositoryImplementationTemplate = 
 					new RepositoryImplementationTemplate(solutionName, entityScaffoldingDetails);
 
-				string outputFile =  "Impl\\" + 
-					entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile = appFolderPath + solutionName + ".ApplicationServices\\Impl\\" + fileName;
 				string outputProject = appFolderPath + solutionName + ".ApplicationServices\\" + solutionName + ".ApplicationServices.csproj";
 				RenderFileToProject(repositoryImplementationTemplate, outputFile, outputProject);
 			}
@@ -167,7 +166,7 @@ public class ScaffoldingGenerator : Generator
 				ModelTemplate modelTemplate = 
 					new ModelTemplate(solutionName, entityScaffoldingDetails);
 				
-				string outputFile = "Models\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile = appFolderPath + solutionName + ".Web.Controllers\\Models\\" + fileName;
 				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
 				RenderFileToProject(modelTemplate, outputFile, outputProject);
 			}
@@ -190,7 +189,7 @@ public class ScaffoldingGenerator : Generator
 				MapperInterfaceTemplate mapperInterfaceTemplate = 
 					new MapperInterfaceTemplate(solutionName, entityScaffoldingDetails);
 				
-				string outputFile = "Mappers\\" + entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile = appFolderPath + solutionName + ".Web.Controllers\\Mappers\\" + fileName;
 				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
 				RenderFileToProject(mapperInterfaceTemplate, outputFile, outputProject);
 			}
@@ -206,8 +205,7 @@ public class ScaffoldingGenerator : Generator
 				MapperImplementationTemplate mapperImplementationTemplate = 
 					new MapperImplementationTemplate(solutionName, entityScaffoldingDetails);
 
-				string outputFile =  "Mappers\\Impl\\" + 
-					entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputFile =  appFolderPath + solutionName + ".Web.Controllers\\Mappers\\Impl\\" + fileName;
 				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
 				RenderFileToProject(mapperImplementationTemplate, outputFile, outputProject);
 			}
@@ -220,23 +218,23 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 	
-	private void GenerateViews() {
+	private void GenerateViews() {		
 		if (DidRequestToGenerate(ArtifactToGenerate.Views)) {
-			string targetPathRoot = appFolderPath + solutionName + ".Web\\Views\\";
-			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot) + 
-				entityScaffoldingDetails.EntityName + "\\";
-
+				string targetPathRoot = appFolderPath + solutionName + ".Web\\Views\\";
+				string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot) + 
+					entityScaffoldingDetails.EntityName + "\\";
+			
 			if (! Directory.Exists(targetPath)) {
 				Directory.CreateDirectory(targetPath);
 
 				Log("Added directory " + targetPath);
 			}
-
+			
 			//GenerateDomainObjectFormView(targetPath);
 			//GenerateCreateView(targetPath);
 			//GenerateEditView(targetPath);
 			GenerateIndexView(targetPath);
-			GeneratePartialViewActivate(targetPath);
+			GenerateJsViewActivate(targetPath);
 			//GenerateShowView(targetPath);
 		}
 		else {
@@ -257,8 +255,8 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 	
-	private void GeneratePartialViewActivate(string targetPath) {
-		string fileName = "Activate.ascx";
+	private void GenerateJsViewActivate(string targetPath) {
+		string fileName = "Activate.js.ascx";
 
 		if (! File.Exists(targetPath + fileName)) {
 			ActivateTemplate activateTemplate = 
