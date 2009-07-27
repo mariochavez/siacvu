@@ -27,6 +27,7 @@ public class EditTemplate : BaseTemplate
         setupDocument();
     });
 </script>
+</asp:Content>
 <#+
 	}
 }
