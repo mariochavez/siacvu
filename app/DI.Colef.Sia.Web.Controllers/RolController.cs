@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
-    public class RolController : BaseController
+    public class RolController : BaseController<Rol, RolForm>
     {
         readonly IUserService userService;
         readonly IRolMapper rolMapper;
@@ -23,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<RolForm> { Title = "Administracion de roles" };
+            var data = CreateViewDataWithTitle(Title.New);
 
             var roles = userService.GetAllRoles();
             data.List = rolMapper.Map(roles);
@@ -34,7 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = new GenericViewData<RolForm> {Title = "Crear nuevo rol", Form = new RolForm()};
+            var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new RolForm();
 
             return View(data);
         }
@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = new GenericViewData<RolForm> { Title = "Modificacion de rol" };
+            var data = CreateViewDataWithTitle(Title.Edit);
 
             var rol = userService.GetRolById(id);
             data.Form = rolMapper.Map(rol);
@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = new GenericViewData<RolForm> { Title = "Informacion de rol" };
+            var data = CreateViewDataWithTitle(Title.Show);
 
             var rol = userService.GetRolById(id);
             data.Form = rolMapper.Map(rol);
@@ -64,27 +64,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Transaction]
-	[ValidateAntiForgeryToken]
+	    [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(RolForm form)
         {
             var rol = rolMapper.Map(form);
-            
-            ModelState.AddModelErrors(rol.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                var data = new GenericViewData<RolForm> { Title = "Modificacion de rol", Form = form };
-                SetError(string.Format("Se ha generado un error al actualizar el Rol, por favor corrija los siguientes errores.\n{0}",
-                    ModelState.ContainsKey("Entity") ? ModelState["Entity"].Errors[0].ErrorMessage : String.Empty));
 
-                ViewData.Model = data;
-                return View("New");
-            }
+            if(!IsValidateModel(rol, form, Title.New))
+                return ViewNew();
 
             userService.SaveRol(rol);
-            SetMessage(string.Format("El Rol {0} ha sido creado", rol.Nombre));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido creado", rol.Nombre));
         }
 
         [Transaction]
@@ -94,20 +85,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = rolMapper.Map(form);
 
-            ModelState.AddModelErrors(rol.ValidationResults());
-            if (!ModelState.IsValid)
-            {
-                var data = new GenericViewData<RolForm> { Title = "Modificacion de rol", Form = form };
-                SetError("Se ha generado un error al actualizar el Rol, por favor corrija los siguientes errores");
-
-                ViewData.Model = data;
-                return View("Edit");
-            }
+            if (!IsValidateModel(rol, form, Title.Edit))
+                return ViewNew();
 
             userService.SaveRol(rol);
-            SetMessage(string.Format("El Rol {0} ha sido modificado", rol.Nombre));
 
-            return RedirectToAction("Index");
+            return RedirectToIndex(String.Format("{0} ha sido modificado", rol.Nombre));
         }
 
         [Transaction]

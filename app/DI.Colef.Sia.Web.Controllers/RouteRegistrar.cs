@@ -21,13 +21,13 @@ namespace DI.Colef.Sia.Web.Controllers
             //);
             routes.CreateArea("Catalogos", "DI.Colef.Sia.Web.Controllers.Catalogos",
                 routes.MapRoute(null, "Catalogos/{controller}/{action}", new { action = "Index" }),
-                routes.MapRoute(null, "Catalogos/{controller}/{action}/{id}")
+                routes.MapRoute(null, "Catalogos/{controller}/{id}/{action}")
             );
 
             // Routing config for the root area
             routes.CreateArea("Root", "DI.Colef.Sia.Web.Controllers",
                 routes.MapRoute(null, "{controller}/{action}", new { controller = "Home", action = "Index" }),
-                routes.MapRoute(null, "{controller}/{action}/{id}")
+                routes.MapRoute(null, "{controller}/{id}/{action}")
             );
         }
     }
