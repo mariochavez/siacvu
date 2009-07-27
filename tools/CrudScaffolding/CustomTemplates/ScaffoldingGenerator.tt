@@ -230,9 +230,9 @@ public class ScaffoldingGenerator : Generator
 				Log("Added directory " + targetPath);
 			}
 			
-			//GenerateDomainObjectFormView(targetPath);
-			//GenerateNewView(targetPath);
-			//GenerateEditView(targetPath);
+			GenerateDomainObjectFormView(targetPath);
+			GenerateNewView(targetPath);
+			GenerateEditView(targetPath);
 			GenerateIndexView(targetPath);
 			GenerateJsViewActivate(targetPath);
 			//GenerateShowView(targetPath);

@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Admin.Usuario");
+	new EntityScaffoldingDetails("Catalogos.SNI");
  
 /*
  * Property names should be PascalCase.
