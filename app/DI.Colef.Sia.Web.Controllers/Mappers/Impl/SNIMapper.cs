@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(SNIForm message, SNI model)
         {
-            model.Activo = message.Activo;
 			model.Nombre = message.Nombre;
         }
     }
