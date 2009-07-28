@@ -49,19 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData.Model = data;
             return View();
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var cargo = catalogoService.GetCargoById(id);
-            data.Form = cargoMapper.Map(cargo);
-
-            ViewData.Model = data;
-            return View();
-        }
-
+        
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]

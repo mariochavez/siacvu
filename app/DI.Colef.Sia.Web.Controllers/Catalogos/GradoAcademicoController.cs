@@ -50,19 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData.Model = data;
             return View();
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var gradoAcademico = catalogoService.GetGradoAcademicoById(id);
-            data.Form = gradoAcademicoMapper.Map(gradoAcademico);
-
-            ViewData.Model = data;
-            return View();
-        }
-
+        
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
