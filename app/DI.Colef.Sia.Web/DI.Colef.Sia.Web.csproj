@@ -224,6 +224,11 @@
     <Content Include="Views\Catalogos\Departamento\Index.aspx" />
     <Content Include="Views\Catalogos\Departamento\New.aspx" />
     <Content Include="Views\Catalogos\Departamento\_Form.ascx" />
+    <Content Include="Views\Catalogos\Estado\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Estado\Edit.aspx" />
+    <Content Include="Views\Catalogos\Estado\Index.aspx" />
+    <Content Include="Views\Catalogos\Estado\New.aspx" />
+    <Content Include="Views\Catalogos\Estado\_Form.ascx" />
     <Content Include="Views\Catalogos\GradoAcademico\Activate.js.ascx" />
     <Content Include="Views\Catalogos\GradoAcademico\Edit.aspx" />
     <Content Include="Views\Catalogos\GradoAcademico\Index.aspx" />

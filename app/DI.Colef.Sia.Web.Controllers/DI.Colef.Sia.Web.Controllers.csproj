@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalogos\CategoriaController.cs" />
+    <Compile Include="Catalogos\EstadoController.cs" />
     <Compile Include="Catalogos\GradoAcademicoController.cs" />
     <Compile Include="Catalogos\CargoController.cs" />
     <Compile Include="ControllerEnums.cs" />
@@ -94,11 +95,13 @@
     <Compile Include="Mappers\ICargoMapper.cs" />
     <Compile Include="Mappers\ICategoriaMapper.cs" />
     <Compile Include="Mappers\IDepartamentoMapper.cs" />
+    <Compile Include="Mappers\IEstadoMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\Impl\CargoMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaMapper.cs" />
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
+    <Compile Include="Mappers\Impl\EstadoMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
     <Compile Include="Mappers\Impl\SedeMapper.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="Models\CargoForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
+    <Compile Include="Models\EstadoForm.cs" />
     <Compile Include="Models\GradoAcademicoForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
     <Compile Include="Models\RolForm.cs" />

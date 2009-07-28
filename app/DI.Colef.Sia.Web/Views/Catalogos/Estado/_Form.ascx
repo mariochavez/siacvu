@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<SedeForm>>" %>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<EstadoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -18,15 +18,6 @@
                 <%=Html.ValidationMessage("Nombre") %>
             </td>
         </tr>
-        <tr>
-            <td class="label required">
-                <label for="Descripcion">Descripcion:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Descripcion", Model.Form.Descripcion, new { @class = "big", size = 10, maxlength = 40 })%>
-                <%=Html.ValidationMessage("Descripcion")%>
-            </td>
-        </tr>
     </table>
     
 	<div class="btn_container_footer">
@@ -34,7 +25,7 @@
 			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
 		</span>
 		<span class="btn btn_normal_white">
-			<%=Html.ActionLink<SedeController>(x => x.Index(), "Regresar") %>
+			<%=Html.ActionLink<EstadoController>(x => x.Index(), "Regresar") %>
 		</span>
 	</div>    
 </div>

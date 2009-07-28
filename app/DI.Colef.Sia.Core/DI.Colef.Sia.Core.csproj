@@ -65,6 +65,7 @@
     <Compile Include="Cargo.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Departamento.cs" />
+    <Compile Include="Estado.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="Puesto.cs" />
