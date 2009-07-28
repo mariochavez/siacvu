@@ -1,4 +1,6 @@
-02:09:10 p.m.	Started adding generated files
-02:09:10 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IInvestigadorService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-02:09:10 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\InvestigadorService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-02:09:10 p.m.	Finished adding generated files
+02:20:52 p.m.	Started adding generated files
+02:20:52 p.m.	Added file InvestigadorController.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+02:20:52 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\InvestigadorForm.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+02:20:52 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IInvestigadorMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+02:20:52 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\InvestigadorMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+02:20:52 p.m.	Finished adding generated files

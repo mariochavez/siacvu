@@ -64,7 +64,7 @@ public class ScaffoldingGenerator : Generator
 		//GenerateViews();
 		//GenerateDomainObject();
 		//GenerateController();
-		GenerateRepositoryInterfaceAndImplementation();
+		//GenerateRepositoryInterfaceAndImplementation();
 		//GenerateWebModel();
 		//GenerateMapperInterfaceAndImplementation();
 		
