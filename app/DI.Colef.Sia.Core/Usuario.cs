@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using SharpArch.Core.NHibernateValidator;
@@ -18,7 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Persona Persona { get; set; }
 
-        public virtual Rol Rol { get; set; }
+        public virtual IList<Rol> Roles { get; private set; }
 
         public virtual string CreadorPor { get; set; }
 
