@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.Estado");
+	new EntityScaffoldingDetails("Investigador");
  
 /*
  * Property names should be PascalCase.

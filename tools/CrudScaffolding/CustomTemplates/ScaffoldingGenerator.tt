@@ -61,12 +61,12 @@ public class ScaffoldingGenerator : Generator
 		
 		Log("Started adding generated files");
 		
-		GenerateViews();
-		GenerateDomainObject();
-		GenerateController();
+		//GenerateViews();
+		//GenerateDomainObject();
+		//GenerateController();
 		GenerateRepositoryInterfaceAndImplementation();
-		GenerateWebModel();
-		GenerateMapperInterfaceAndImplementation();
+		//GenerateWebModel();
+		//GenerateMapperInterfaceAndImplementation();
 		
 		Log("Finished adding generated files");
 	}

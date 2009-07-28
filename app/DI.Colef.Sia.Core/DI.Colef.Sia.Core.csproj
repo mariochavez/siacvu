@@ -63,11 +63,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo.cs" />
+    <Compile Include="CargoAcademico.cs" />
     <Compile Include="Categoria.cs" />
+    <Compile Include="CategoriaAcademica.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Estado.cs" />
+    <Compile Include="EstatusInvestigador.cs" />
+    <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
+    <Compile Include="Investigador.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Rol.cs" />
@@ -77,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="SNI.cs" />
+    <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
