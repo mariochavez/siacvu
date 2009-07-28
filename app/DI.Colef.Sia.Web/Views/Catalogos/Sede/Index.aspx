@@ -32,8 +32,8 @@
 						        </span>
 					        </div>
 				        </td>                
-                        <td class="single" width="70%">
-                            <%=Html.Encode(sede.Nombre) %>
+                        <td class="single" width="70%">                        
+                            <%=Html.Encode(sede.Nombre)%> <span class="meta_more"><%=Html.Encode(sede.Descripcion)%></span>
                             <div class="meta_info">Modificado el <%=Html.Encode(sede.Modificacion) %></div>
                         </td>
                         <td id="accion_<%=Html.Encode(sede.Id) %>" class="button" width="140">
