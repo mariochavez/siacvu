@@ -11,7 +11,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Persona> personaRepository;
         readonly IRepository<Usuario> usuarioRepository;
 
-        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Persona> personaRepository, IRepository<Usuario> usuarioRepository)
+        public UsuarioService(IRepository<Rol> rolRepository, 
+            IRepository<Persona> personaRepository, 
+            IRepository<Usuario> usuarioRepository)
         {
             this.rolRepository = rolRepository;
             this.personaRepository = personaRepository;
@@ -52,7 +54,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Usuario GetUsuarioByUserName(string username)
         {
-            return null;
+            var parameters = new Dictionary<string, object> {{"UsuarioNombre", username}};
+
+            return usuarioRepository.FindOne(parameters);   
         }
     }
 }

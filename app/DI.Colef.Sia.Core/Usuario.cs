@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Linq;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using SharpArch.Core.NHibernateValidator;
