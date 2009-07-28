@@ -326,6 +326,14 @@ table td.single {
 	margin-bottom: 1px;
 }
 
+.meta_more {
+	color: rgb(136, 136, 136);
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.4em;
+	margin-bottom: 1px;
+}
+
 .rowHighlight {
     background-color: #eeeeee;
 }
