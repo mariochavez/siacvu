@@ -5,13 +5,17 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
-    public class UserService : IUserService
+    public class UsuarioService : IUsuarioService
     {
         readonly IRepository<Rol> rolRepository;
+        readonly IRepository<Persona> personaRepository;
+        readonly IRepository<Usuario> usuarioRepository;
 
-        public UserService(IRepository<Rol> rolRepository)
+        public UsuarioService(IRepository<Rol> rolRepository, IRepository<Persona> personaRepository, IRepository<Usuario> usuarioRepository)
         {
             this.rolRepository = rolRepository;
+            this.personaRepository = personaRepository;
+            this.usuarioRepository = usuarioRepository;
         }
 
         public Rol GetRolById(int id)
@@ -34,6 +38,21 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             rol.ModificadoEl = DateTime.Now;
 
             rolRepository.SaveOrUpdate(rol);
+        }
+
+        public Persona GetPersonaById(int id)
+        {
+            return personaRepository.Get(id);
+        }
+
+        public Usuario GetUsuarioById(int id)
+        {
+            return usuarioRepository.Get(id);
+        }
+
+        public Usuario GetUsuarioByUserName(string username)
+        {
+            return null;
         }
     }
 }

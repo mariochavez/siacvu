@@ -10,12 +10,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     public class RolController : BaseController<Rol, RolForm>
     {
-        readonly IUserService userService;
+        readonly IUsuarioService usuarioService;
         readonly IRolMapper rolMapper;
 
-        public RolController(IUserService userService, IRolMapper rolMapper)
+        public RolController(IUsuarioService usuarioService, IRolMapper rolMapper)
         {
-            this.userService = userService;
+            this.usuarioService = usuarioService;
             this.rolMapper = rolMapper;
         }
 
@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Index);
 
-            var roles = userService.GetAllRoles();
+            var roles = usuarioService.GetAllRoles();
             data.List = rolMapper.Map(roles);
 
             return View(data);
@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Edit);
 
-            var rol = userService.GetRolById(id);
+            var rol = usuarioService.GetRolById(id);
             data.Form = rolMapper.Map(rol);
 
             ViewData.Model = data;
@@ -61,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if(!IsValidateModel(rol, form, Title.New))
                 return ViewNew();
 
-            userService.SaveRol(rol);
+            usuarioService.SaveRol(rol);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", rol.Nombre));
         }
@@ -76,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (!IsValidateModel(rol, form, Title.Edit))
                 return ViewEdit();
 
-            userService.SaveRol(rol);
+            usuarioService.SaveRol(rol);
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", rol.Nombre));
         }
@@ -85,9 +85,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
-            var rol = userService.GetRolById(id);
+            var rol = usuarioService.GetRolById(id);
             rol.Activo = true;
-            userService.SaveRol(rol);
+            usuarioService.SaveRol(rol);
 
             var form = rolMapper.Map(rol);
 
@@ -98,9 +98,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
-            var rol = userService.GetRolById(id);
+            var rol = usuarioService.GetRolById(id);
             rol.Activo = false;
-            userService.SaveRol(rol);
+            usuarioService.SaveRol(rol);
 
             var form = rolMapper.Map(rol);
 
