@@ -51,18 +51,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 			ViewData.Model = data;
             return View();
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var estado = catalogoService.GetEstadoById(id);
-            data.Form = estadoMapper.Map(estado);
-            
-            ViewData.Model = data;
-            return View();
-        }
         
         [Transaction]
         [ValidateAntiForgeryToken]
