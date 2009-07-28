@@ -39,5 +39,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         SNI GetSNIById(int id);
         SNI[] GetAllSNIs();
         void SaveSNI(SNI sNI);
+
+        //Estatus
+        Estado GetEstadoById(int id);
+        Estado[] GetAllEstados();
+        void SaveEstado(Estado estado);
     }
 }

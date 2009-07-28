@@ -14,8 +14,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Categoria> categoriaRepository;
         readonly IRepository<GradoAcademico> gradoAcademicoRepository;
         readonly IRepository<SNI> sNIRepository;
+        readonly IRepository<Estado> estadoRepository;
 
-        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<Departamento> departamentoRepository, IRepository<Puesto> puestoRepository, IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository, IRepository<GradoAcademico> gradoAcademicoRepository, IRepository<SNI> sNIRepository)
+        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<Departamento> departamentoRepository, IRepository<Puesto> puestoRepository, IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository, IRepository<GradoAcademico> gradoAcademicoRepository, IRepository<SNI> sNIRepository, IRepository<Estado> estadoRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -24,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.categoriaRepository = categoriaRepository;
             this.gradoAcademicoRepository = gradoAcademicoRepository;
             this.sNIRepository = sNIRepository;
+            this.estadoRepository = estadoRepository;
         }
 
         public Cargo GetCargoById(int id)
@@ -178,6 +180,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             sNI.ModificadoEl = DateTime.Now;
 
             sNIRepository.SaveOrUpdate(sNI);
+        }
+
+        public Estado GetEstadoById(int id)
+        {
+            return estadoRepository.Get(id);
+        }
+
+        public Estado[] GetAllEstados()
+        {
+            return ((List<Estado>)estadoRepository.GetAll()).ToArray();
+        }
+
+        public void SaveEstado(Estado estado)
+        {
+            if (estado.Id == 0)
+            {
+                estado.Activo = true;
+                estado.CreadorEl = DateTime.Now;
+            }
+            estado.ModificadoEl = DateTime.Now;
+
+            estadoRepository.SaveOrUpdate(estado);
         }
     }
 }

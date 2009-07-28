@@ -51,6 +51,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<SNI, SNIForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Estado, EstadoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 

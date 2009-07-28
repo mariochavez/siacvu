@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Prueba");
+	new EntityScaffoldingDetails("Catalogos.Estado");
  
 /*
  * Property names should be PascalCase.
@@ -27,7 +27,7 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]")
+	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]", true)
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
