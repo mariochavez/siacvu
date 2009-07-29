@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", investigador.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creado"));//, investigador.Nombre));
         }
         
         [Transaction]
@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", investigador.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificado"));//, investigador.Nombre));
         }
         
         [Transaction]

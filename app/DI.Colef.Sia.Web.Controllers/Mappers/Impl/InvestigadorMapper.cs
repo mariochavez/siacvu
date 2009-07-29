@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(InvestigadorForm message, Investigador model)
         {
-			model.Nombre = message.Nombre;
+			//model.Nombre = message.Nombre;
         }
     }
 }

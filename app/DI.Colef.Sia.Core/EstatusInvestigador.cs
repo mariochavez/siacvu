@@ -5,7 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class EstatusInvestigador : Entity, IBaseEntity
     {
-        public DateTime Fecha { get; set; }
+        public virtual DateTime Fecha { get; set; }
 
         public virtual Estado Estado { get; set; }
 

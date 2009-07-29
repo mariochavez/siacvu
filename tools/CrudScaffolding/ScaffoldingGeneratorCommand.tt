@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Investigador");
+	new EntityScaffoldingDetails("Catalogos.LineaTematica");
  
 /*
  * Property names should be PascalCase.
@@ -30,11 +30,12 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]", true)
 );
 
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Descripcion", "string", "Descripcion", "[Length(40)]")
+);
+
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("LastName", "string", "Smith", "[NotNull, NotEmpty]", true)
-//);
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("BirthDate", "DateTime", DateTime.Parse("1/1/1975"))
+//	new EntityProperty("Puesto", "string", "Puesto", "[Length(40)]")
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
