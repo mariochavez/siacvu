@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.LineaTematica");
+	new EntityScaffoldingDetails("Catalogos.TipoParticipacion");
  
 /*
  * Property names should be PascalCase.
@@ -30,9 +30,9 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]", true)
 );
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Descripcion", "string", "Descripcion", "[Length(40)]")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Descripcion", "string", "Descripcion", "[Length(40)]")
+//);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Puesto", "string", "Puesto", "[Length(40)]")
@@ -46,7 +46,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

@@ -28,6 +28,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Disciplina> disciplinaRepository;
         readonly IRepository<Subdisciplina> subdisciplinaRepository;
         readonly IRepository<LineaTematica> lineaTematicaRepository;
+        readonly IRepository<CoautorExterno> coautorExternoRepository;
+        readonly IRepository<FormaParticipacion> formaParticipacionRepository;
+        readonly IRepository<ResponsableExterno> responsableExternoRepository;
+        readonly IRepository<TipoCapitulo> tipoCapituloRepository;
+        readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository, 
@@ -49,7 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Area> areaRepository,
             IRepository<Disciplina> disciplinaRepository,
             IRepository<Subdisciplina> subdisciplinaRepository,
-            IRepository<LineaTematica> lineaTematicaRepository)
+            IRepository<LineaTematica> lineaTematicaRepository,
+            IRepository<CoautorExterno> coautorExternoRepository,
+            IRepository<FormaParticipacion> formaParticipacionRepository,
+            IRepository<ResponsableExterno> responsableExternoRepository,
+            IRepository<TipoCapitulo> tipoCapituloRepository,
+            IRepository<TipoParticipacion> tipoParticipacionRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -72,6 +82,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.disciplinaRepository = disciplinaRepository;
             this.subdisciplinaRepository = subdisciplinaRepository;
             this.lineaTematicaRepository = lineaTematicaRepository;
+            this.coautorExternoRepository = coautorExternoRepository;
+            this.formaParticipacionRepository = formaParticipacionRepository;
+            this.responsableExternoRepository = responsableExternoRepository;
+            this.tipoCapituloRepository = tipoCapituloRepository;
+            this.tipoParticipacionRepository = tipoParticipacionRepository;
         }
 
         public Cargo GetCargoById(int id)
@@ -534,6 +549,116 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             lineaTematica.ModificadoEl = DateTime.Now;
 
             lineaTematicaRepository.SaveOrUpdate(lineaTematica);
+        }
+
+        public CoautorExterno GetCoautorExternoById(int id)
+        {
+            return coautorExternoRepository.Get(id);
+        }
+
+        public CoautorExterno[] GetAllCoautorExternos()
+        {
+            return ((List<CoautorExterno>) coautorExternoRepository.GetAll()).ToArray();
+        }
+
+        public void SaveCoautorExterno(CoautorExterno coautorExterno)
+        {
+            if(coautorExterno.Id == 0)
+            {
+                coautorExterno.Activo = true;
+                coautorExterno.CreadorEl = DateTime.Now;
+            }
+            coautorExterno.ModificadoEl = DateTime.Now;
+            
+            coautorExternoRepository.SaveOrUpdate(coautorExterno);
+        }
+
+        public FormaParticipacion GetFormaParticipacionById(int id)
+        {
+            return formaParticipacionRepository.Get(id);
+        }
+
+        public FormaParticipacion[] GetAllFormaParticipacions()
+        {
+            return ((List<FormaParticipacion>)formaParticipacionRepository.GetAll()).ToArray();
+        }
+
+        public void SaveFormaParticipacion(FormaParticipacion formaParticipacion)
+        {
+            if (formaParticipacion.Id == 0)
+            {
+                formaParticipacion.Activo = true;
+                formaParticipacion.CreadorEl = DateTime.Now;
+            }
+            formaParticipacion.ModificadoEl = DateTime.Now;
+
+            formaParticipacionRepository.SaveOrUpdate(formaParticipacion);
+        }
+
+        public ResponsableExterno GetResponsableExternoById(int id)
+        {
+            return responsableExternoRepository.Get(id);
+        }
+
+        public ResponsableExterno[] GetAllResponsableExternos()
+        {
+            return ((List<ResponsableExterno>)responsableExternoRepository.GetAll()).ToArray();
+        }
+
+        public void SaveResponsableExterno(ResponsableExterno responsableExterno)
+        {
+            if (responsableExterno.Id == 0)
+            {
+                responsableExterno.Activo = true;
+                responsableExterno.CreadorEl = DateTime.Now;
+            }
+            responsableExterno.ModificadoEl = DateTime.Now;
+
+            responsableExternoRepository.SaveOrUpdate(responsableExterno);
+        }
+
+        public TipoCapitulo GetTipoCapituloById(int id)
+        {
+            return tipoCapituloRepository.Get(id);
+        }
+
+        public TipoCapitulo[] GetAllTipoCapitulos()
+        {
+            return ((List<TipoCapitulo>)tipoCapituloRepository.GetAll()).ToArray();
+        }
+
+        public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
+        {
+            if (tipoCapitulo.Id == 0)
+            {
+                tipoCapitulo.Activo = true;
+                tipoCapitulo.CreadorEl = DateTime.Now;
+            }
+            tipoCapitulo.ModificadoEl = DateTime.Now;
+
+            tipoCapituloRepository.SaveOrUpdate(tipoCapitulo);
+        }
+
+        public TipoParticipacion GetTipoParticipacionById(int id)
+        {
+            return tipoParticipacionRepository.Get(id);
+        }
+
+        public TipoParticipacion[] GetAllTipoParticipacions()
+        {
+            return ((List<TipoParticipacion>)tipoParticipacionRepository.GetAll()).ToArray();
+        }
+
+        public void SaveTipoParticipacion(TipoParticipacion tipoParticipacion)
+        {
+            if (tipoParticipacion.Id == 0)
+            {
+                tipoParticipacion.Activo = true;
+                tipoParticipacion.CreadorEl = DateTime.Now;
+            }
+            tipoParticipacion.ModificadoEl = DateTime.Now;
+
+            tipoParticipacionRepository.SaveOrUpdate(tipoParticipacion);
         }
     }
 }

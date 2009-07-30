@@ -109,5 +109,30 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         LineaTematica GetLineaTematicaById(int id);
         LineaTematica[] GetAllLineaTematicas();
         void SaveLineaTematica(LineaTematica lineaTematica);
+
+        //Coautor Externo
+        CoautorExterno GetCoautorExternoById(int id);
+        CoautorExterno[] GetAllCoautorExternos();
+        void SaveCoautorExterno(CoautorExterno coautorExterno);
+
+        //Forma de participacion
+        FormaParticipacion GetFormaParticipacionById(int id);
+        FormaParticipacion[] GetAllFormaParticipacions();
+        void SaveFormaParticipacion(FormaParticipacion formaParticipacion);
+
+        //Responsable Externo del Libro
+        ResponsableExterno GetResponsableExternoById(int id);
+        ResponsableExterno[] GetAllResponsableExternos();
+        void SaveResponsableExterno(ResponsableExterno responsableExterno);
+
+        //Tipo de Capitulo
+        TipoCapitulo GetTipoCapituloById(int id);
+        TipoCapitulo[] GetAllTipoCapitulos();
+        void SaveTipoCapitulo(TipoCapitulo tipoCapitulo);
+
+        //Tipo de Participacion
+        TipoParticipacion GetTipoParticipacionById(int id);
+        TipoParticipacion[] GetAllTipoParticipacions();
+        void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
     }
 }

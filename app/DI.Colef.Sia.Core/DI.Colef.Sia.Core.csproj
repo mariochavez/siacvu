@@ -67,10 +67,12 @@
     <Compile Include="CargoAcademico.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaAcademica.cs" />
+    <Compile Include="CoautorExterno.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstatusInvestigador.cs" />
+    <Compile Include="FormaParticipacion.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Pais.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="ResponsableExterno.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -95,6 +98,8 @@
     <Compile Include="Subdisciplina.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoArticulo.cs" />
+    <Compile Include="TipoCapitulo.cs" />
+    <Compile Include="TipoParticipacion.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
