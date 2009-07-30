@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", lineaInvestigacion.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creada", lineaInvestigacion.Nombre));
         }
         
         [Transaction]
@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", lineaInvestigacion.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificada", lineaInvestigacion.Nombre));
         }
         
         [Transaction]

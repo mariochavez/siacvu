@@ -20,7 +20,7 @@
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay areas definidos</td>
+                    <td>No hay areas definidas</td>
                 </tr>
             <% } else { %>
                 <% foreach (var area in Model.List) { %>

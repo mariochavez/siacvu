@@ -16,4 +16,4 @@ var html = '
 ';
 
 $('#accion_<%=Html.Encode(Model.Id) %>').html(html);
-showMessage('Institucion <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Institucion <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');

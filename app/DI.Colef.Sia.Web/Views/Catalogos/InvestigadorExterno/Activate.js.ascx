@@ -16,4 +16,4 @@ var html = '
 ';
 
 $('#accion_<%=Html.Encode(Model.Id) %>').html(html);
-showMessage('InvestigadorExterno <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Investigador Externo <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

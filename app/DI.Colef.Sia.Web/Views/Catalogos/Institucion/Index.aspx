@@ -16,11 +16,11 @@
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">Institucions</div>
+        <div class="table_title">Instituciones</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay institucions definidos</td>
+                    <td>No hay instituciones definidas</td>
                 </tr>
             <% } else { %>
                 <% foreach (var institucion in Model.List) { %>

@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveLineaTematica(lineaTematica);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", lineaTematica.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creada", lineaTematica.Nombre));
         }
         
         [Transaction]
@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveLineaTematica(lineaTematica);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", lineaTematica.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificada", lineaTematica.Nombre));
         }
         
         [Transaction]

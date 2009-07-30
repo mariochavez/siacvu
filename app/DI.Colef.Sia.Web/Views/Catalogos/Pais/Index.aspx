@@ -16,11 +16,11 @@
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">Pais</div>
+        <div class="table_title">Paises</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay pais definidos</td>
+                    <td>No hay paises definidos</td>
                 </tr>
             <% } else { %>
                 <% foreach (var pais in Model.List) { %>

@@ -62,7 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCategoria(categoria);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", categoria.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creada", categoria.Nombre));
         }
 
         [Transaction]
@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCategoria(categoria);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", categoria.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificada", categoria.Nombre));
         }
 
         [Transaction]

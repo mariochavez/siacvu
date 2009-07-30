@@ -12,15 +12,15 @@
     <div id="datalist">   
         <div class="btn_container">
 		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<LineaInvestigacionController>(x => x.New(), "+ Crear LineaInvestigacion") %>
+			    <%=Html.ActionLink<LineaInvestigacionController>(x => x.New(), "+ Crear Linea Investigacion") %>
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">LineaInvestigacions</div>
+        <div class="table_title">Lineas de Investigacion</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay lineaInvestigacions definidos</td>
+                    <td>No hay lineas de Investigacion definidas</td>
                 </tr>
             <% } else { %>
                 <% foreach (var lineaInvestigacion in Model.List) { %>

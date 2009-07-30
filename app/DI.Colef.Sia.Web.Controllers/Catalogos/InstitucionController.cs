@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveInstitucion(institucion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", institucion.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creada", institucion.Nombre));
         }
         
         [Transaction]
@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveInstitucion(institucion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", institucion.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificada", institucion.Nombre));
         }
         
         [Transaction]

@@ -20,7 +20,7 @@
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay disciplinas definidos</td>
+                    <td>No hay disciplinas definidas</td>
                 </tr>
             <% } else { %>
                 <% foreach (var disciplina in Model.List) { %>
