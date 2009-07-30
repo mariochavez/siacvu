@@ -20,6 +20,8 @@ namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
                 classMap.WithTable(classMap.EntityType.Name + "es");
             else if (classMap.EntityType.Name.EndsWith("d"))
                 classMap.WithTable(classMap.EntityType.Name + "es");
+            else if(classMap.EntityType.Name.EndsWith("s"))
+                classMap.WithTable(classMap.EntityType.Name + "es");
             else
                 classMap.WithTable(Inflector.Net.Inflector.Pluralize(classMap.EntityType.Name));
         }

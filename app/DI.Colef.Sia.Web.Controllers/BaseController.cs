@@ -64,6 +64,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     objectName += "es";
                 else if (objectName.EndsWith("n"))
                     objectName += "es";
+                else if (objectName.EndsWith("d"))
+                    objectName += "es";
                 else
                     objectName += "s";
             }
