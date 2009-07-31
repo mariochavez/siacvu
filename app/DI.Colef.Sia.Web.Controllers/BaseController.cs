@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
@@ -62,14 +61,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var spanishInflector = new SpanishInflector();
             var objectName = typeof (TModel).Name;
-
-            objectName = objectName.Substring(0, 1).ToUpper() + objectName.Substring(1);
-            objectName = Regex.Replace(objectName, @"(\B[A-Z])", @" $1");
+            objectName = spanishInflector.Titleize(objectName);
 
             if (pluralize)
             {
-                objectName = spanishInflector.Pluralize(objectName);
+                var objectNames = objectName.Split(' ');
+                objectName = "";
 
+                foreach (var name in objectNames)
+                {
+                    objectName += spanishInflector.Pluralize(name);
+                }
+
+                objectName = spanishInflector.Titleize(objectName);
             }
             return objectName;
         }
