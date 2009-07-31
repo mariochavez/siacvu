@@ -5,6 +5,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Core.DomainModel;
+using uNhAddIns.Inflector;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -59,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected string GetObjectName(bool pluralize)
         {
+            var spanishInflector = new SpanishInflector();
             var objectName = typeof (TModel).Name;
 
             objectName = objectName.Substring(0, 1).ToUpper() + objectName.Substring(1);
@@ -66,18 +68,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (pluralize)
             {
-                if (objectName.EndsWith("l"))
-                    objectName += "es";
-                else if (objectName.EndsWith("s"))
-                    objectName += "es";
-                else if (objectName.EndsWith("r"))
-                    objectName += "es";
-                else if (objectName.EndsWith("n"))
-                    objectName += "es";
-                else if (objectName.EndsWith("d"))
-                    objectName += "es";
-                else
-                    objectName += "s";
+                objectName = spanishInflector.Pluralize(objectName);
+
             }
             return objectName;
         }
