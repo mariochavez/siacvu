@@ -1,4 +1,3 @@
-<<<<<<< HEAD:db/initdb.sql
 INSERT Personas VALUES('Administrador', null, null, 'admin@mail.com', 1, GETDATE(), 1, GETDATE(), 1)
 INSERT Personas VALUES('Peter', 'Parker', null, 'admin@mail.com', 1, GETDATE(), 1, GETDATE(), 1)
 
@@ -16,66 +15,6 @@ insert into Departamentos values('Departament 1',1,GETDATE(),1,GETDATE(),1);
 insert into Departamentos values('Departament 2',1,GETDATE(),1,GETDATE(),1);
 insert into Departamentos values('Departament 3',1,GETDATE(),1,GETDATE(),1);
 
-insert into Estados values('Activo',1,GETDATE(),1,GETDATE(),1);
-insert into Estados values('Baja',1,GETDATE(),1,GETDATE(),1);
-insert into Estados values('Sabático',1,GETDATE(),1,GETDATE(),1);
-insert into Estados values('Licencia c/ sueldo',1,GETDATE(),1,GETDATE(),1);
-insert into Estados values('Licencia s/ sueldo',1,GETDATE(),1,GETDATE(),1);
-insert into Estados values('Superación académica',1,GETDATE(),1,GETDATE(),1);
-
-insert into GradoAcademicos values('Licenciatura',1,GETDATE(),1,GETDATE(),1);
-insert into GradoAcademicos values('Maestría',1,GETDATE(),1,GETDATE(),1);
-insert into GradoAcademicos values('Doctor',1,GETDATE(),1,GETDATE(),1);
-
-insert into Categorias values('Titular A',1,GETDATE(),1,GETDATE(),1);
-insert into Categorias values('Titular B',1,GETDATE(),1,GETDATE(),1);
-insert into Categorias values('Titular C',1,GETDATE(),1,GETDATE(),1);
-insert into Categorias values('Asociado A',1,GETDATE(),1,GETDATE(),1);
-insert into Categorias values('Asociado B',1,GETDATE(),1,GETDATE(),1);
-insert into Categorias values('Asociado C',1,GETDATE(),1,GETDATE(),1);
-
-insert into Cargos values('Investigador',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director de Departamento',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director Regional',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Coordinador de Programa',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Presidente',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Secretario General Académico',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Coordinador de Departamento de Apoyo',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Coordinador de Oficinas de Enlace y Vinculación',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director de Posgrado',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director General de Vinculación y Apoyo Académico',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director General Académico',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Becario de Alto Nivel',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Investigador por Proyecto',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Secretario General de Planeación y Desarrollo Institucional',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Direccion General de Administracion y Finanzas',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Direccion General Regional Noroeste',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Direccion de Area',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Otros',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Coordinador de Posgrado',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Coordinador de EcoParque',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Asistente de Director',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Estudiante Becario',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Investigador visitante',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director General de Docencia',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director General de Vinculación Institucional',1,GETDATE(),1,GETDATE(),1);
-insert into Cargos values('Director General de Asuntos Académicos',1,GETDATE(),1,GETDATE(),1);
-
-insert into SNIs values('Candidato',1,GETDATE(),1,GETDATE(),1);
-insert into SNIs values('Nivel 1',1,GETDATE(),1,GETDATE(),1);
-insert into SNIs values('Nivel 2',1,GETDATE(),1,GETDATE(),1);
-insert into SNIs values('Nivel 3',1,GETDATE(),1,GETDATE(),1);
-insert into SNIs values('Emerito',1,GETDATE(),1,GETDATE(),1);
-
-insert into Sedes values('Matamoros','Dirección General Regional Noreste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Nuevo Laredo','Dirección General Regional Noreste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Piedras Negras','Dirección General Regional Noreste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Monterrey','Dirección General Regional Noreste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Ciudad Juarez','Dirección General Regional Noroeste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Tijuana','Tijuana',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Mexicali','Dirección General Regional Noroeste',1,GETDATE(),1,GETDATE(),1);
-insert into Sedes values('Nogales','Dirección General Regional Noroeste',1,GETDATE(),1,GETDATE(),1);
-=======
 insert into Estados values('Activo',null,GETDATE(),null,GETDATE(),1);
 insert into Estados values('Baja',null,GETDATE(),null,GETDATE(),1);
 insert into Estados values('Sabático',null,GETDATE(),null,GETDATE(),1);
@@ -1321,4 +1260,3 @@ insert into InvestigadorExternos values('ZEPEDA EDUARDO', null, null, null, GETD
 insert into InvestigadorExternos values('Ziccardi Alicia', null, null, null, GETDATE(), null, GETDATE(),1)
 insert into InvestigadorExternos values('Zuniga Gil Clemente', null, null, null, GETDATE(), null, GETDATE(),1)
 insert into InvestigadorExternos values('Zúñiga González Víctor', null, null, null, GETDATE(), null, GETDATE(),1)
->>>>>>> d4375a21b0db2bc0f7e8df22b2ccc202e13012b6:db/initdb.sql
