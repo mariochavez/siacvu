@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -53,6 +54,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected string GetObjectName(bool pluralize)
         {
             var objectName = typeof (TModel).Name;
+
+            objectName = objectName.Substring(0, 1).ToUpper() + objectName.Substring(1);
+            objectName = Regex.Replace(objectName, @"(\B[A-Z])", @" $1");
 
             if (pluralize)
             {
