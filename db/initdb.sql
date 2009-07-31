@@ -10,10 +10,13 @@ INSERT Roles VALUES('Investigadores', 1, GETDATE(), 1, GETDATE(), 1)
 INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
 
-/* Faltan estos valores */
-insert into Departamentos values('Departament 1',1,GETDATE(),1,GETDATE(),1);
-insert into Departamentos values('Departament 2',1,GETDATE(),1,GETDATE(),1);
-insert into Departamentos values('Departament 3',1,GETDATE(),1,GETDATE(),1);
+insert into Departamentos values('Dirección Regional de Nuevo Laredo',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Dirección Regional de Matamoros',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Estudios de Población',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Estudios Culturales',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Maestría en Economía Regional',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Dirección General Regional Noreste',null,GETDATE(),null,GETDATE(),1);
+insert into Departamentos values('Estancia Infantil',null,GETDATE(),null,GETDATE(),1);
 
 insert into Estados values('Activo',null,GETDATE(),null,GETDATE(),1);
 insert into Estados values('Baja',null,GETDATE(),null,GETDATE(),1);
@@ -49,6 +52,7 @@ insert into Cargos values('Investigador por Proyecto',null,GETDATE(),null,GETDAT
 insert into Cargos values('Secretario General de Planeación y Desarrollo Institucional',null,GETDATE(),null,GETDATE(),1);
 insert into Cargos values('Direccion General de Administracion y Finanzas',null,GETDATE(),null,GETDATE(),1);
 insert into Cargos values('Direccion General Regional Noroeste',null,GETDATE(),null,GETDATE(),1);
+insert into Cargos values('Direccion General Regional Noreste',null,GETDATE(),null,GETDATE(),1);
 insert into Cargos values('Direccion de Area',null,GETDATE(),null,GETDATE(),1);
 insert into Cargos values('Otros',null,GETDATE(),null,GETDATE(),1);
 insert into Cargos values('Coordinador de Posgrado',null,GETDATE(),null,GETDATE(),1);
