@@ -70,23 +70,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
+    <Compile Include="CoautorExterno.cs" />
     <Compile Include="Departamento.cs" />
+    <Compile Include="Disciplina.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
+    <Compile Include="FormaParticipacion.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
+    <Compile Include="Idioma.cs" />
+    <Compile Include="Indice.cs" />
+    <Compile Include="Institucion.cs" />
     <Compile Include="Investigador.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
+    <Compile Include="InvestigadorExterno.cs" />
+    <Compile Include="LineaInvestigacion.cs" />
+    <Compile Include="LineaTematica.cs" />
+    <Compile Include="Pais.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="ResponsableExterno.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
@@ -95,6 +107,12 @@
     <Compile Include="Sede.cs" />
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
+    <Compile Include="Subdisciplina.cs" />
+    <Compile Include="TipoActividad.cs" />
+    <Compile Include="TipoArticulo.cs" />
+    <Compile Include="TipoCapitulo.cs" />
+    <Compile Include="TipoParticipacion.cs" />
+    <Compile Include="TipoParticipante.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

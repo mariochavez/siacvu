@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
@@ -60,9 +61,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var objectName = typeof (TModel).Name;
 
+            objectName = objectName.Substring(0, 1).ToUpper() + objectName.Substring(1);
+            objectName = Regex.Replace(objectName, @"(\B[A-Z])", @" $1");
+
             if (pluralize)
             {
                 if (objectName.EndsWith("l"))
+                    objectName += "es";
+                else if (objectName.EndsWith("s"))
+                    objectName += "es";
+                else if (objectName.EndsWith("r"))
+                    objectName += "es";
+                else if (objectName.EndsWith("n"))
+                    objectName += "es";
+                else if (objectName.EndsWith("d"))
                     objectName += "es";
                 else
                     objectName += "s";
