@@ -1,13 +1,17 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [SNIInvestigadorValidator]
     public class SNIInvestigador : Entity, IBaseEntity
     {
+        [NotEmptyDate]
         public virtual DateTime FechaInicial { get; set; }
 
+        [NotEmptyDate]
         public virtual DateTime FechaFinal { get; set; }
 
         [Length(40)]
@@ -21,7 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Length(20)]
         public virtual string ClaveCVU { get; set; }
-        
+
+        [NotNull]
         public virtual SNI SNI { get; set; }
 
         public virtual string CreadorPor { get; set; }

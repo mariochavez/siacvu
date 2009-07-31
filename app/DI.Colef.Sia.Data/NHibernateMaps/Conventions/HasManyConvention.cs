@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
 
-namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
+namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions
 {
     public class HasManyConvention : IHasManyConvention
     {
@@ -14,6 +14,7 @@ namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
         {
             oneToManyPart.KeyColumnNames.Clear();
             oneToManyPart.KeyColumnNames.Add(oneToManyPart.EntityType.Name + "Fk");
+            oneToManyPart.Cascade.All();
         }
     }
 }

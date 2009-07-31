@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Core.DomainModel;
@@ -34,7 +35,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected bool IsValidateModel(TModel model, TForm form, Title title)
         {
-            ModelState.AddModelErrors(model.ValidationResults());
+            return IsValidateModel(model, form, title, null);
+        }
+
+        protected bool IsValidateModel(TModel model, TForm form, Title title, string excludePrefix)
+        {
+            ModelState.AddModelErrors(model.ValidationResults(), !excludePrefix.IsNullOrEmpty(), excludePrefix);
             if (!ModelState.IsValid)
             {
                 var data = CreateViewDataWithTitle(title); 

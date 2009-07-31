@@ -1,4 +1,5 @@
-﻿using Castle.Windsor;
+﻿using System;
+using Castle.Windsor;
 using SharpArch.Core.PersistenceSupport.NHibernate;
 using SharpArch.Data.NHibernate;
 using SharpArch.Core.PersistenceSupport;
@@ -17,9 +18,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.CastleWindsor
             AddCustomRepositoriesTo(container);
             AddApplicationServicesTo(container);
             AddMappersTo(container);
+            AddQueryingTo(container);
 
             container.AddComponent("validator",
                                    typeof(IValidator), typeof(Validator));
+        }
+
+        static void AddQueryingTo(IWindsorContainer container)
+        {
+            container.Register(
+                AllTypes.Pick()
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Core")
+                    .WithService.FirstNonGenericCoreInterface("DecisionesInteligentes.Colef.Sia.Core.DataInterfaces"));
         }
 
         private static void AddMappersTo(IWindsorContainer container)

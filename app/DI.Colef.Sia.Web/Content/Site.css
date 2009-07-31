@@ -397,6 +397,29 @@ table.form td.field input.input-validation-error
     background-color: #ffeeee;
 }
 
+table.form td.field select.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+table.form td.field textarea.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+table.form td.field select  
+{
+    width: 300px;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+table.form td.field textarea  
+{
+    border: 1px solid rgb(201, 201, 201);
+}
+
 /* BUTTONS  
 ----------------------------------------------------------*/
 .btn_container {

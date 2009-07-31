@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.Validator, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate.Validator.dll</HintPath>
@@ -50,6 +54,10 @@
     <Reference Include="SharpArch.Core.NHibernateValidator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SharpArch.Core.NHibernateValidator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -63,16 +71,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo.cs" />
-    <Compile Include="CargoAcademico.cs" />
+    <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
-    <Compile Include="CategoriaAcademica.cs" />
+    <Compile Include="CategoriaInvestigador.cs" />
+    <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Estado.cs" />
-    <Compile Include="EstatusInvestigador.cs" />
+    <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="Investigador.cs" />
+    <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
+    <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Rol.cs" />
@@ -84,9 +96,6 @@
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Usuario.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataInterfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

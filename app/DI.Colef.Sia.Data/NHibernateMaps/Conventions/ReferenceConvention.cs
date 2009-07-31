@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
 
-namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
+namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions
 {
     public class ReferenceConvention : IReferenceConvention
     {

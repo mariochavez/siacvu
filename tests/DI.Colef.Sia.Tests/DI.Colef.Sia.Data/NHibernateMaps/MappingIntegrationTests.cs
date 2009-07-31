@@ -1,15 +1,12 @@
 ﻿using System.IO;
+using DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
-using SharpArch.Testing.NUnit.NHibernate;
 using SharpArch.Data.NHibernate;
-using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Metadata;
-using System;
-using DI.Colef.Sia.Data.NHibernateMaps;
 using SharpArch.Testing.NHibernate;
 
 namespace Tests.DI.Colef.Sia.Data.NHibernateMaps

@@ -1,5 +1,6 @@
 ﻿using Castle.Windsor;
 using CommonServiceLocator.WindsorAdapter;
+using DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps;
 using DecisionesInteligentes.Colef.Sia.Web.CastleWindsor;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers;
 using Microsoft.Practices.ServiceLocation;
@@ -14,7 +15,6 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Reflection;
 using DI.Colef.Sia.Web.Controllers;
-using DI.Colef.Sia.Data.NHibernateMaps;
 
 namespace DecisionesInteligentes.Colef.Sia.Web
 {

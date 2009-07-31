@@ -154,7 +154,6 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Extensions\PrimitiveHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,6 +248,7 @@
     <Content Include="Views\Catalogos\SNI\Index.aspx" />
     <Content Include="Views\Catalogos\SNI\New.aspx" />
     <Content Include="Views\Catalogos\SNI\_Form.ascx" />
+    <Content Include="Views\Investigador\New.aspx" />
     <Content Include="Views\Rol\New.aspx" />
     <Content Include="Views\Rol\Edit.aspx" />
     <Content Include="Views\Rol\Activate.js.ascx" />

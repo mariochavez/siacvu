@@ -13,10 +13,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Sede> sedeRepository;
         readonly IRepository<Categoria> categoriaRepository;
         readonly IRepository<GradoAcademico> gradoAcademicoRepository;
-        readonly IRepository<SNI> sNIRepository;
+        readonly IRepository<SNI> sniRepository;
         readonly IRepository<Estado> estadoRepository;
 
-        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<Departamento> departamentoRepository, IRepository<Puesto> puestoRepository, IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository, IRepository<GradoAcademico> gradoAcademicoRepository, IRepository<SNI> sNIRepository, IRepository<Estado> estadoRepository)
+        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<Departamento> departamentoRepository, 
+            IRepository<Puesto> puestoRepository, IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository, 
+            IRepository<GradoAcademico> gradoAcademicoRepository, IRepository<SNI> sniRepository, IRepository<Estado> estadoRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -24,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.sedeRepository = sedeRepository;
             this.categoriaRepository = categoriaRepository;
             this.gradoAcademicoRepository = gradoAcademicoRepository;
-            this.sNIRepository = sNIRepository;
+            this.sniRepository = sniRepository;
             this.estadoRepository = estadoRepository;
         }
 
@@ -36,6 +38,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Cargo[] GetAllCargos()
         {
             return ((List<Cargo>)cargoRepository.GetAll()).ToArray();
+        }
+
+        public Cargo[] GetActiveCargos()
+        {
+            return ((List<Cargo>)cargoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveCargo(Cargo cargo)
@@ -58,6 +65,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Departamento[] GetAllDepartamentos()
         {
             return ((List<Departamento>)departamentoRepository.GetAll()).ToArray();
+        }
+
+        public Departamento[] GetActiveDepartamentos()
+        {
+            return ((List<Departamento>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveDepartamento(Departamento departamento)
@@ -104,6 +116,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<Sede>)sedeRepository.GetAll()).ToArray();
         }
 
+        public Sede[] GetActiveSedes()
+        {
+            return ((List<Sede>)sedeRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
         public void SaveSede(Sede sede)
         {
             if (sede.Id == 0)
@@ -124,6 +141,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Categoria[] GetAllCategorias()
         {
             return ((List<Categoria>)categoriaRepository.GetAll()).ToArray();
+        }
+
+        public Categoria[] GetActiveCategorias()
+        {
+            return ((List<Categoria>)categoriaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveCategoria(Categoria categoria)
@@ -148,6 +170,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<GradoAcademico>)gradoAcademicoRepository.GetAll()).ToArray();
         }
 
+        public GradoAcademico[] GetActiveGrados()
+        {
+            return ((List<GradoAcademico>)gradoAcademicoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
         public void SaveGradoAcademico(GradoAcademico gradoAcademico)
         {
             if (gradoAcademico.Id == 0)
@@ -162,24 +189,29 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public SNI GetSNIById(int id)
         {
-            return sNIRepository.Get(id);
+            return sniRepository.Get(id);
         }
 
         public SNI[] GetAllSNIs()
         {
-            return ((List<SNI>)sNIRepository.GetAll()).ToArray();
+            return ((List<SNI>)sniRepository.GetAll()).ToArray();
         }
 
-        public void SaveSNI(SNI sNI)
+        public SNI[] GetActiveSNIs()
         {
-            if (sNI.Id == 0)
-            {
-                sNI.Activo = true;
-                sNI.CreadorEl = DateTime.Now;
-            }
-            sNI.ModificadoEl = DateTime.Now;
+            return ((List<SNI>)sniRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
 
-            sNIRepository.SaveOrUpdate(sNI);
+        public void SaveSNI(SNI sni)
+        {
+            if (sni.Id == 0)
+            {
+                sni.Activo = true;
+                sni.CreadorEl = DateTime.Now;
+            }
+            sni.ModificadoEl = DateTime.Now;
+
+            sniRepository.SaveOrUpdate(sni);
         }
 
         public Estado GetEstadoById(int id)
@@ -190,6 +222,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Estado[] GetAllEstados()
         {
             return ((List<Estado>)estadoRepository.GetAll()).ToArray();
+        }
+
+        public Estado[] GetActiveEstados()
+        {
+            return ((List<Estado>)estadoRepository.FindAll(new Dictionary<string, object> {{ "Activo", true}})).ToArray();
         }
 
         public void SaveEstado(Estado estado)

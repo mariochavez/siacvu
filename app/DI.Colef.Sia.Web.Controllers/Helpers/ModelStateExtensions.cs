@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.CommonValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
@@ -22,10 +22,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static void AddModelErrors(this ModelStateDictionary state, ICollection<IValidationResult> errors)
         {
+            AddModelErrors(state, errors, false, String.Empty);
+        }
+
+        public static void AddModelErrors(this ModelStateDictionary state, ICollection<IValidationResult> errors,
+            bool includePrefix, string excludePrefix)
+        {
+            string[] prefixes = {};
+            if (!excludePrefix.IsNullOrEmpty())
+                prefixes = excludePrefix.Split(',');
+
             foreach (IValidationResult error in errors)
             {
-                state.AddModelError(error.PropertyName ?? "Entity", error.Message);
+                string property = InferPropertyName(error.PropertyName, error.Message);
+                if (includePrefix && !prefixes.Contains(error.ClassContext.Name))
+                {
+                    property = string.Format("{0}.{1}", error.ClassContext.Name, InferPropertyName(error.PropertyName, error.Message));
+                }
+                
+                state.AddModelError(property, StripMessage(error.Message));
             }
+        }
+
+        static string InferPropertyName(string propertyName, string message)
+        {
+            var values = message.Split('|');
+            return values.Length == 2 ? values[1] : "Entity";
+        }
+
+        static string StripMessage(string message)
+        {
+            var values = message.Split('|');
+            return values[0];
         }
     }
 

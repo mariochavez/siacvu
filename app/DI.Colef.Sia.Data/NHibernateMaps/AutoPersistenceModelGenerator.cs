@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions;
 using FluentNHibernate;
 using FluentNHibernate.AutoMap;
 using FluentNHibernate.Conventions;
@@ -8,7 +9,7 @@ using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate.FluentNHibernate;
 using DI.Colef.Sia.Data.NHibernateMaps.Conventions;
 
-namespace DI.Colef.Sia.Data.NHibernateMaps
+namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps
 {
     public class AutoPersistenceModelGenerator : IAutoPersistenceModelGenerator
     {
@@ -28,21 +29,22 @@ namespace DI.Colef.Sia.Data.NHibernateMaps
         private Action<AutoMappingExpressions> GetSetup()
         {
             return c =>
-            {
-                c.FindIdentity = type => type.Name == "Id";
-                c.IsBaseType = IsBaseTypeConvention;
-            };
+                {
+                    c.FindIdentity = type => type.Name == "Id";
+                    c.IsBaseType = IsBaseTypeConvention;
+                };
         }
 
         private Action<IConventionFinder> GetConventions()
         {
             return c =>
-            {
-                c.Add<PrimaryKeyConvention>();
-                c.Add<ReferenceConvention>();
-                c.Add<HasManyConvention>();
-                c.Add<TableNameConvention>();
-            };
+                {
+                    c.Add<PrimaryKeyConvention>();
+                    c.Add<ReferenceConvention>();
+                    c.Add<HasManyConvention>();
+                    c.Add<TableNameConvention>();
+                    c.Add<HasManyToManyConvention>();
+                };
         }
 
         /// <summary>
@@ -51,14 +53,14 @@ namespace DI.Colef.Sia.Data.NHibernateMaps
         private bool GetAutoMappingFilter(Type t)
         {
             return t.GetInterfaces().Any(x =>
-                 x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEntityWithTypedId<>));
+                                         x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEntityWithTypedId<>));
         }
 
         private bool IsBaseTypeConvention(Type arg)
         {
             bool derivesFromEntity = arg == typeof(Entity);
             bool derivesFromEntityWithTypedId = arg.IsGenericType &&
-                (arg.GetGenericTypeDefinition() == typeof(EntityWithTypedId<>));
+                                                (arg.GetGenericTypeDefinition() == typeof(EntityWithTypedId<>));
 
             return derivesFromEntity || derivesFromEntityWithTypedId;
         }

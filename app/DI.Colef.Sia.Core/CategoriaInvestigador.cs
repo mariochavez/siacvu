@@ -1,13 +1,17 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
+using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class EstatusInvestigador : Entity, IBaseEntity
+    public class CategoriaInvestigador : Entity, IBaseEntity
     {
-        public DateTime Fecha { get; set; }
+        [NotEmptyDate]
+        public virtual DateTime Fecha { get; set; }
 
-        public virtual Estado Estado { get; set; }
+        [NotNull]
+        public virtual Categoria Categoria { get; set; }
 
         public virtual string CreadorPor { get; set; }
 
