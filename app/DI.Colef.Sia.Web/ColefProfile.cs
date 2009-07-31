@@ -38,7 +38,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaIngreso,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Usuario,
+                           o => o.Ignore())
+                .ForMember(d => d.Nombre,
+                           o => o.Ignore());
 
             Mapper.CreateMap<EstadoInvestigador, EstadoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
