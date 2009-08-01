@@ -56,6 +56,10 @@
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
+    <Compile Include="Impl\PeriodoReferenciaService.cs" />
+    <Compile Include="Impl\RevistaPublicacionService.cs" />
+    <Compile Include="IPeriodoReferenciaService.cs" />
+    <Compile Include="IRevistaPublicacionService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\UsuarioService.cs" />

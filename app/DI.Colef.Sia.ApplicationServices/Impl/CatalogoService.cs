@@ -33,6 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<ResponsableExterno> responsableExternoRepository;
         readonly IRepository<TipoCapitulo> tipoCapituloRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
+        readonly IRepository<PeriodoReferencia> periodoReferenciaRepository;
+        readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository, 
@@ -59,7 +61,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<FormaParticipacion> formaParticipacionRepository,
             IRepository<ResponsableExterno> responsableExternoRepository,
             IRepository<TipoCapitulo> tipoCapituloRepository,
-            IRepository<TipoParticipacion> tipoParticipacionRepository)
+            IRepository<TipoParticipacion> tipoParticipacionRepository,
+            IRepository<PeriodoReferencia> periodoReferenciaRepository,
+            IRepository<RevistaPublicacion> revistaPublicacionRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -87,6 +91,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.responsableExternoRepository = responsableExternoRepository;
             this.tipoCapituloRepository = tipoCapituloRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
+            this.periodoReferenciaRepository = periodoReferenciaRepository;
+            this.revistaPublicacionRepository = revistaPublicacionRepository;
         }
 
         public Cargo GetCargoById(int id)
@@ -694,6 +700,50 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoParticipacion.ModificadoEl = DateTime.Now;
 
             tipoParticipacionRepository.SaveOrUpdate(tipoParticipacion);
+        }
+
+        public PeriodoReferencia GetPeriodoReferenciaById(int id)
+        {
+            return periodoReferenciaRepository.Get(id);
+        }
+
+        public PeriodoReferencia[] GetAllPeriodoReferencias()
+        {
+            return ((List<PeriodoReferencia>)periodoReferenciaRepository.GetAll()).ToArray();
+        }
+
+        public void SavePeriodoReferencia(PeriodoReferencia periodoReferencia)
+        {
+            if (periodoReferencia.Id == 0)
+            {
+                periodoReferencia.Activo = true;
+                periodoReferencia.CreadorEl = DateTime.Now;
+            }
+            periodoReferencia.ModificadoEl = DateTime.Now;
+
+            periodoReferenciaRepository.SaveOrUpdate(periodoReferencia);
+        }
+
+        public RevistaPublicacion GetRevistaPublicacionById(int id)
+        {
+            return revistaPublicacionRepository.Get(id);
+        }
+
+        public RevistaPublicacion[] GetAllRevistaPublicacions()
+        {
+            return ((List<RevistaPublicacion>)revistaPublicacionRepository.GetAll()).ToArray();
+        }
+
+        public void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion)
+        {
+            if (revistaPublicacion.Id == 0)
+            {
+                revistaPublicacion.Activo = true;
+                revistaPublicacion.CreadorEl = DateTime.Now;
+            }
+            revistaPublicacion.ModificadoEl = DateTime.Now;
+
+            revistaPublicacionRepository.SaveOrUpdate(revistaPublicacion);
         }
     }
 }

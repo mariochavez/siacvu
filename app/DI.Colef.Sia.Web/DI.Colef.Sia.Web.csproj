@@ -288,6 +288,11 @@
     <Content Include="Views\Catalogos\Pais\Index.aspx" />
     <Content Include="Views\Catalogos\Pais\New.aspx" />
     <Content Include="Views\Catalogos\Pais\_Form.ascx" />
+    <Content Include="Views\Catalogos\PeriodoReferencia\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\PeriodoReferencia\Edit.aspx" />
+    <Content Include="Views\Catalogos\PeriodoReferencia\Index.aspx" />
+    <Content Include="Views\Catalogos\PeriodoReferencia\New.aspx" />
+    <Content Include="Views\Catalogos\PeriodoReferencia\_Form.ascx" />
     <Content Include="Views\Catalogos\Puesto\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Puesto\Edit.aspx" />
     <Content Include="Views\Catalogos\Puesto\Index.aspx" />
@@ -298,6 +303,11 @@
     <Content Include="Views\Catalogos\ResponsableExterno\Index.aspx" />
     <Content Include="Views\Catalogos\ResponsableExterno\New.aspx" />
     <Content Include="Views\Catalogos\ResponsableExterno\_Form.ascx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
     <Content Include="Views\Catalogos\Sede\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sede\Edit.aspx" />
     <Content Include="Views\Catalogos\Sede\Index.aspx" />

@@ -18,7 +18,7 @@
  */
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.TipoParticipacion");
+	new EntityScaffoldingDetails("Catalogos.PeriodoReferencia");
  
 /*
  * Property names should be PascalCase.
@@ -27,19 +27,27 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]", true)
+	new EntityProperty("Periodo", "string", "Periodo", "[NotNullNotEmpty]", true)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Orden", "int", "Orden", "null")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaInicial", "DateTime", "FechaInicial", "null")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaFinal", "DateTime", "FechaFinal", "null")
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Descripcion", "string", "Descripcion", "[Length(40)]")
+//	new EntityProperty("Tipo", "string", "Tipo", "[Length(50)]")
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Puesto", "string", "Puesto", "[Length(40)]")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Manager", "Employee", null, "[NotNull]")
+//	new EntityProperty("Estado", "bool", "Estado", "null")
 //);
 
 ///////////////////////////////////////////////////
