@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Core.DomainModel;
+using uNhAddIns.Inflector;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -59,25 +59,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected string GetObjectName(bool pluralize)
         {
+            var spanishInflector = new SpanishInflector();
             var objectName = typeof (TModel).Name;
-
-            objectName = objectName.Substring(0, 1).ToUpper() + objectName.Substring(1);
-            objectName = Regex.Replace(objectName, @"(\B[A-Z])", @" $1");
+            objectName = spanishInflector.Titleize(objectName);
 
             if (pluralize)
             {
-                if (objectName.EndsWith("l"))
-                    objectName += "es";
-                else if (objectName.EndsWith("s"))
-                    objectName += "es";
-                else if (objectName.EndsWith("r"))
-                    objectName += "es";
-                else if (objectName.EndsWith("n"))
-                    objectName += "es";
-                else if (objectName.EndsWith("d"))
-                    objectName += "es";
-                else
-                    objectName += "s";
+                var objectNames = objectName.Split(' ');
+                objectName = "";
+
+                foreach (var name in objectNames)
+                {
+                    objectName += spanishInflector.Pluralize(name);
+                }
+
+                objectName = spanishInflector.Titleize(objectName);
             }
             return objectName;
         }

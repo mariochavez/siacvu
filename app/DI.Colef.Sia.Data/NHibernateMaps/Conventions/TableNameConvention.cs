@@ -1,5 +1,6 @@
 ﻿using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
+using uNhAddIns.Inflector;
 
 namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
 {
@@ -12,20 +13,9 @@ namespace DI.Colef.Sia.Data.NHibernateMaps.Conventions
 
         public void Apply(IClassMap classMap)
         {
-            if (classMap.EntityType.Name.EndsWith("l"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else if (classMap.EntityType.Name.EndsWith("r"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else if (classMap.EntityType.Name.EndsWith("n"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else if (classMap.EntityType.Name.EndsWith("r"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else if (classMap.EntityType.Name.EndsWith("d"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else if(classMap.EntityType.Name.EndsWith("s"))
-                classMap.WithTable(classMap.EntityType.Name + "es");
-            else
-                classMap.WithTable(Inflector.Net.Inflector.Pluralize(classMap.EntityType.Name));
+            var spanishInflector = new SpanishInflector();
+
+            classMap.WithTable(spanishInflector.Pluralize(classMap.EntityType.Name));
         }
     }
 }
