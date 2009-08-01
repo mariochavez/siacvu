@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         static string InferPropertyName(string propertyName, string message)
         {
             var values = message.Split('|');
-            return values.Length == 2 ? values[1] : "Entity";
+            return values.Length == 2 ? values[1] : propertyName ?? "Entity";
         }
 
         static string StripMessage(string message)
