@@ -1,5 +1,6 @@
 ﻿function setupDocument() {
-    $('a.remote').live("click", linkAjax);
+    RemoteLink.setup();
+    DateTimePicker.setup();
     
     $('tr.highlight').live("mouseover", setHighlight);
     $('tr.highlight').live("mouseout", clearHighlight);
@@ -18,29 +19,43 @@ function clearHighlight() {
     $(this).removeClass('rowHighlight');
 }
 
-function linkAjax() {
-    var method = "post";
-    
-    if ($(this).hasClass('put')) {
-        method = "put";
-    } else if ($(this).hasClass('delete')) {
-        method = "delete";
+var DateTimePicker = {
+    setup: function() {
+        $('input.datetime').each(function() {
+            $(this).datepicker($.datepicker.regional['es']);
+            $(this).datepicker('option', { dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true });
+        });
     }
+};
 
-    var url = $(this).attr('href');
-    var currentLink = $(this);
+var RemoteLink = {
+    setup: function() {
+        $('a.remote').live("click", RemoteLink.linkAjax);
+    },
+    linkAjax: function() {
+        var method = "post";
 
-    currentLink.showLoading();
-    $.ajax({
-        url: url,
-        type: method,
-        dataType: 'script',
-        success: function(msg) {
-            currentLink.removeLoading();
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(textStatus);
+        if ($(this).hasClass('put')) {
+            method = "put";
+        } else if ($(this).hasClass('delete')) {
+            method = "delete";
         }
-    });
-    return false;
-}
+
+        var url = $(this).attr('href');
+        var currentLink = $(this);
+
+        currentLink.showLoading();
+        $.ajax({
+            url: url,
+            type: method,
+            dataType: 'script',
+            success: function(msg) {
+                currentLink.removeLoading();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus);
+            }
+        });
+        return false;
+    }
+};

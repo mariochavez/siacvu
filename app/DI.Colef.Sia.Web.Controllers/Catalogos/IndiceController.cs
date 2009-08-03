@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly IIndiceMapper indiceMapper;
 
-        public IndiceController(ICatalogoService catalogoService, IIndiceMapper indiceMapper) 
+        public IndiceController(IUsuarioService usuarioService, ICatalogoService catalogoService, IIndiceMapper indiceMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.indiceMapper = indiceMapper;

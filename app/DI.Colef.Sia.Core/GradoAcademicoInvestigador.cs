@@ -24,11 +24,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(100)]
         public virtual string Detalle { get; set; }
 
-        public virtual string CreadorPor { get; set; }
+        public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }
 
-        public virtual string ModificadoPor { get; set; }
+        public virtual Usuario ModificadoPor { get; set; }
 
         public virtual DateTime ModificadoEl { get; set; }
 

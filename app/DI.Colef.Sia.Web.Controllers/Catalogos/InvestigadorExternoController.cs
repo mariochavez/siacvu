@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
-        public InvestigadorExternoController(ICatalogoService catalogoService, IInvestigadorExternoMapper investigadorExternoMapper) 
+        public InvestigadorExternoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IInvestigadorExternoMapper investigadorExternoMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.investigadorExternoMapper = investigadorExternoMapper;

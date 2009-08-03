@@ -31,7 +31,7 @@
                    <label>Fecha de Ingreso:<em>*</em></label>
                 </td>                
                 <td class="field">
-                    <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { maxlength = 10 })%>
+                    <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class="datetime", maxlength = 10 })%>
                     <span class="helper_message">(Formato dd/mm/yyyy)</span>
                     <%=Html.ValidationMessage("FechaIngreso")%>
                 </td>
@@ -41,28 +41,7 @@
                    <label>Estado:<em>*</em></label>
                 </td>
                 <td class="field">
-                    <table class="subform">
-                        <tr>
-                            <td class="label">
-                                Estado:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("EstadoInvestigador.Estado", Model.Form.Estados.CreateSelectList<EstadoForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("EstadoInvestigador.Estado")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Fecha:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("EstadoInvestigador.Fecha", Model.Form.EstadoInvestigador.Fecha, new { maxlength = 10 })%>
-                                <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                                <%=Html.ValidationMessage("EstadoInvestigador.Fecha")%>
-                            </td>
-                        </tr>                                
-                    </table>
+                    <% Html.RenderPartial("_NewEstado", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -70,55 +49,7 @@
                    <label>Grado:<em>*</em></label>
                 </td>
                 <td class="field">
-                    <table class="subform">
-                        <tr>
-                            <td class="label">
-                                Grado:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("GradoAcademicoInvestigador.GradoAcademico", Model.Form.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("GradoAcademicoInvestigador.GradoAcademico")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Fecha:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("GradoAcademicoInvestigador.Fecha", Model.Form.GradoAcademicoInvestigador.Fecha, new { maxlength = 10 })%>
-                                <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                                <%=Html.ValidationMessage("GradoAcademicoInvestigador.Fecha")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Descripcion:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("GradoAcademicoInvestigador.Descripcion", Model.Form.GradoAcademicoInvestigador.Descripcion, new { maxlength = 40 })%>
-                                <%=Html.ValidationMessage("GradoAcademicoInvestigador.Descripcion")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Area:
-                            </td>
-                            <td>
-                                <%=Html.TextBox("GradoAcademicoInvestigador.AreaInvestigacion", Model.Form.GradoAcademicoInvestigador.AreaInvestigacion, new { maxlength = 40 })%>
-                                <%=Html.ValidationMessage("GradoAcademicoInvestigador.AreaInvestigacion")%>
-                            </td>
-                        </tr> 
-                        <tr>
-                            <td class="label">                        
-                                Detalle:
-                            </td>
-                            <td>
-                                <%=Html.TextArea("GradoAcademicoInvestigador.Detalle", Model.Form.GradoAcademicoInvestigador.Detalle, 3, 35, new { maxlength = 100 })%>
-                                <br /><span class="helper_message">(Descripcion narrativa)</span>
-                            </td>
-                        </tr>                                                                                                      
-                    </table>
+                    <% Html.RenderPartial("_NewGrado", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -126,28 +57,7 @@
                    <label>Categoria:<em>*</em></label>
                 </td>
                 <td class="field">
-                    <table class="subform">
-                        <tr>
-                            <td class="label">
-                                Categoria:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("CategoriaInvestigador.Categoria", Model.Form.Categorias.CreateSelectList<CategoriaForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("CategoriaInvestigador.Categoria")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Fecha:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("CategoriaInvestigador.Fecha", Model.Form.CategoriaInvestigador.Fecha, new { maxlength = 10 })%>
-                                <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                                <%=Html.ValidationMessage("CategoriaInvestigador.Fecha")%>
-                            </td>
-                        </tr>                                
-                    </table>
+                    <% Html.RenderPartial("_NewCategoria", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -155,48 +65,7 @@
                    <label>Cargo:<em>*</em></label>
                 </td>
                 <td class="field">
-                    <table class="subform">
-                        <tr>
-                            <td class="label">
-                                Cargo:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("CargoInvestigador.Cargo", Model.Form.Cargos.CreateSelectList<CargoForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("CargoInvestigador.Cargo")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>                        
-                                Fecha:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("CargoInvestigador.Fecha", Model.Form.CargoInvestigador.Fecha, new { maxlength = 10 })%>
-                                <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                                <%=Html.ValidationMessage("CargoInvestigador.Fecha")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Departamento:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("CargoInvestigador.Departamento", Model.Form.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("CargoInvestigador.Departamento")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Sede:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("CargoInvestigador.Sede", Model.Form.Sedes.CreateSelectList<SedeForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("CargoInvestigador.Sede")%>
-                            </td>
-                        </tr>                                                                                 
-                    </table>
+                    <% Html.RenderPartial("_NewCargo", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -204,62 +73,7 @@
                    <label>SNI:<em>*</em></label>
                 </td>
                 <td class="field">
-                    <table class="subform">
-                        <tr>
-                            <td class="label">
-                                SNI:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.DropDownList("SNIInvestigador.SNI", Model.Form.SNIs.CreateSelectList<SNIForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-                                <%=Html.ValidationMessage("SNIInvestigador.SNI")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Periodo:<em>*</em>
-                            </td>
-                            <td>
-                                <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.Form.SNIInvestigador.FechaInicial, new { maxlength = 10 })%> a 
-                                <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.Form.SNIInvestigador.FechaFinal, new { maxlength = 10 })%>
-                                <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                                <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
-                                <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Expediente SNI:
-                            </td>
-                            <td>
-                                <%=Html.TextBox("SNIInvestigador.ExpedienteSNI", Model.Form.SNIInvestigador.ExpedienteSNI, new { maxlength = 40 })%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="label">                        
-                                Expediente Produccion:
-                            </td>
-                            <td>
-                                <%=Html.TextBox("SNIInvestigador.ExpedienteProduccion", Model.Form.SNIInvestigador.ExpedienteProduccion, new { maxlength = 40 })%>
-                            </td>
-                        </tr> 
-                        <tr>
-                            <td class="label">                        
-                                Expediente Academico:
-                            </td>
-                            <td>
-                                <%=Html.TextBox("SNIInvestigador.ExpedienteAcademico", Model.Form.SNIInvestigador.ExpedienteAcademico, new { maxlength = 40 })%>
-                            </td>
-                        </tr>                         
-                        <tr>
-                            <td class="label">                        
-                                Clave CVU:
-                            </td>
-                            <td>
-                                <%=Html.TextBox("SNIInvestigador.ClaveCVU", Model.Form.SNIInvestigador.ClaveCVU, new { maxlength = 40 })%>
-                            </td>
-                        </tr>                                                                                                      
-                    </table>
+                    <% Html.RenderPartial("_NewSni", Model.Form); %>
                 </td>
             </tr>                                               
         </table>

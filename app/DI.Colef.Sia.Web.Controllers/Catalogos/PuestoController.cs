@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IPuestoMapper puestoMapper;
 
-        public PuestoController(ICatalogoService catalogoService, IPuestoMapper puestoMapper) 
+        public PuestoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPuestoMapper puestoMapper) : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.puestoMapper = puestoMapper;

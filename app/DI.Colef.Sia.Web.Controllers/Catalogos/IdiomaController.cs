@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
 
-        public IdiomaController(ICatalogoService catalogoService, IIdiomaMapper idiomaMapper) 
+        public IdiomaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IIdiomaMapper idiomaMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.idiomaMapper = idiomaMapper;

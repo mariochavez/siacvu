@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
-        public SubdisciplinaController(ICatalogoService catalogoService, ISubdisciplinaMapper subdisciplinaMapper) 
+        public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISubdisciplinaMapper subdisciplinaMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.subdisciplinaMapper = subdisciplinaMapper;

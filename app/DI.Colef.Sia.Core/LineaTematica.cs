@@ -16,11 +16,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		[Length(40)]
 		public virtual string Descripcion { get; set; }
 
-		public virtual string CreadorPor { get; set; }
+        public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }
 
-		public virtual string ModificadoPor { get; set; }
+        public virtual Usuario ModificadoPor { get; set; }
 
 		public virtual DateTime ModificadoEl { get; set; }
 

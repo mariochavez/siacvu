@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Core.CommonValidator;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -26,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISNIMapper sniMapper;
 
         public InvestigadorController(IInvestigadorService investigadorService,
+            IUsuarioService usuarioService,
             ICatalogoService catalogoService,
             IInvestigadorMapper investigadorMapper,
             IUsuarioMapper usuarioMapper,
@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ICargoMapper cargoMapper,
             ISedeMapper sedeMapper,
             IDepartamentoMapper departamentoMapper,
-            ISNIMapper sniMapper) 
+            ISNIMapper sniMapper) : base(usuarioService)
         {
             this.investigadorService = investigadorService;
             this.catalogoService = catalogoService;
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(InvestigadorForm form)
         {
-            var investigador = investigadorMapper.Map(form);
+            var investigador = investigadorMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(investigador, form, Title.New, "Investigador"))
             {
@@ -109,7 +109,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "investigador.Nombre"));
+            return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Persona.Nombre,
+                investigador.Usuario.Persona.ApellidoPaterno, investigador.Usuario.Persona.ApellidoMaterno));
         }
         
         [Transaction]
@@ -117,7 +118,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(InvestigadorForm form)
         {
-        
             var investigador = investigadorMapper.Map(form);
 
             if (!IsValidateModel(investigador, form, Title.Edit))

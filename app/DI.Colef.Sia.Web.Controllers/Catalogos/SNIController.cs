@@ -2,10 +2,8 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -14,20 +12,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     public class SNIController : BaseController<SNI, SNIForm>
     {
         readonly ICatalogoService catalogoService;
-        readonly ISNIMapper sNIMapper;
+        readonly ISNIMapper sniMapper;
 
-        public SNIController(ICatalogoService catalogoService, ISNIMapper sNIMapper) 
+        public SNIController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISNIMapper sniMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
-            this.sNIMapper = sNIMapper;
+            this.sniMapper = sniMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
             var data = CreateViewDataWithTitle(Title.Index);
-            var sNIs = catalogoService.GetAllSNIs();
-            data.List = sNIMapper.Map(sNIs);
+            var snis = catalogoService.GetAllSNIs();
+            data.List = sniMapper.Map(snis);
 
             return View(data);
         }
@@ -47,8 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var data = CreateViewDataWithTitle(Title.Edit);
 
-            var sNI = catalogoService.GetSNIById(id);
-            data.Form = sNIMapper.Map(sNI);
+            var sni = catalogoService.GetSNIById(id);
+            data.Form = sniMapper.Map(sni);
 
             ViewData.Model = data;
             return View();
@@ -59,14 +58,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(SNIForm form)
         {
-            var sNI = sNIMapper.Map(form);
+            var sni = sniMapper.Map(form);
 
-            if (!IsValidateModel(sNI, form, Title.New))
+            if (!IsValidateModel(sni, form, Title.New))
                 return ViewNew();
 
-            catalogoService.SaveSNI(sNI);
+            catalogoService.SaveSNI(sni);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", sNI.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido creado", sni.Nombre));
         }
 
         [Transaction]
@@ -74,25 +73,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(SNIForm form)
         {
-            var sNI = sNIMapper.Map(form);
+            var sni = sniMapper.Map(form);
 
-            if (!IsValidateModel(sNI, form, Title.Edit))
+            if (!IsValidateModel(sni, form, Title.Edit))
                 return ViewEdit();
 
-            catalogoService.SaveSNI(sNI);
+            catalogoService.SaveSNI(sni);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", sNI.Nombre));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", sni.Nombre));
         }
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
-            var sNI = catalogoService.GetSNIById(id);
-            sNI.Activo = true;
-            catalogoService.SaveSNI(sNI);
+            var sni = catalogoService.GetSNIById(id);
+            sni.Activo = true;
+            catalogoService.SaveSNI(sni);
 
-            var form = sNIMapper.Map(sNI);
+            var form = sniMapper.Map(sni);
             
             return Rjs(form);
         }
@@ -101,11 +100,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
-            var sNI = catalogoService.GetSNIById(id);
-            sNI.Activo = false;
-            catalogoService.SaveSNI(sNI);
+            var sni = catalogoService.GetSNIById(id);
+            sni.Activo = false;
+            catalogoService.SaveSNI(sni);
 
-            var form = sNIMapper.Map(sNI);
+            var form = sniMapper.Map(sni);
             
             return Rjs("Activate", form);
         }

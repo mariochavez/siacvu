@@ -58,5 +58,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (message.SNIInvestigador != null)
                 model.AddSNI(sniInvestigadorMapper.Map(message.SNIInvestigador));
         }
+
+        public Investigador Map(InvestigadorForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            if (model.IsTransient())
+            {
+                model.CreadorPor = usuario;
+                model.CargosAcademicosInvestigador[0].CreadorPor = usuario;
+                model.CategoriasInvestigador[0].CreadorPor = usuario;
+                model.EstadosInvestigador[0].CreadorPor = usuario;
+                model.GradosAcademicosInvestigador[0].CreadorPor = usuario;
+                model.SNIsInvestigador[0].CreadorPor = usuario;
+            }
+
+            model.ModificadoPor = usuario;
+            model.CargosAcademicosInvestigador[0].ModificadoPor = usuario;
+            model.CategoriasInvestigador[0].ModificadoPor = usuario;
+            model.EstadosInvestigador[0].ModificadoPor = usuario;
+            model.GradosAcademicosInvestigador[0].ModificadoPor = usuario;
+            model.SNIsInvestigador[0].ModificadoPor = usuario;
+
+            return model;
+        }
     }
 }

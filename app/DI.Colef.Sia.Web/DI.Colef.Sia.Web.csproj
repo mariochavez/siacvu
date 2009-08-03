@@ -309,6 +309,11 @@
     <Content Include="Views\Catalogos\SNI\New.aspx" />
     <Content Include="Views\Catalogos\SNI\_Form.ascx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
+    <Content Include="Views\Investigador\_NewCategoria.ascx" />
+    <Content Include="Views\Investigador\_NewCargo.ascx" />
+    <Content Include="Views\Investigador\_NewSni.ascx" />
+    <Content Include="Views\Investigador\_NewGrado.ascx" />
+    <Content Include="Views\Investigador\_NewEstado.ascx" />
     <Content Include="Views\Investigador\Index.aspx" />
     <Content Include="Views\Investigador\New.aspx" />
     <Content Include="Views\Catalogos\Subdisciplina\Activate.js.ascx" />

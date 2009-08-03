@@ -21,11 +21,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<Rol> Roles { get; private set; }
 
-        public virtual string CreadorPor { get; set; }
+        public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }
 
-        public virtual string ModificadoPor { get; set; }
+        public virtual Usuario ModificadoPor { get; set; }
 
         public virtual DateTime ModificadoEl { get; set; }
 

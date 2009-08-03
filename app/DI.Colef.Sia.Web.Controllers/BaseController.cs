@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -18,6 +20,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
     public class BaseController<TModel, TForm> : Controller where TModel : Entity
     {
+        readonly IUsuarioService usuarioService;
+
+        public BaseController(IUsuarioService usuarioService)
+        {
+            this.usuarioService = usuarioService;
+        }
+
+        protected Usuario CurrentUser()
+        {
+            // TODO: Get username from authentication cookie
+            var username = "admin";
+
+            return usuarioService.GetUsuarioByUserName(username);
+        }
+
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(string.Format("El {0} {1}", GetObjectName(false), message));

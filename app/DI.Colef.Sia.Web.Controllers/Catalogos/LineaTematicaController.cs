@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
 
-        public LineaTematicaController(ICatalogoService catalogoService, ILineaTematicaMapper lineaTematicaMapper) 
+        public LineaTematicaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ILineaTematicaMapper lineaTematicaMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.lineaTematicaMapper = lineaTematicaMapper;

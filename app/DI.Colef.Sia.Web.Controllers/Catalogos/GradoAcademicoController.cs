@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
 
-        public GradoAcademicoController(ICatalogoService catalogoService, IGradoAcademicoMapper gradoAcademicoMapper) 
+        public GradoAcademicoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IGradoAcademicoMapper gradoAcademicoMapper)
+            : base(usuarioService)
         {
             this.catalogoService = catalogoService;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
