@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     
         public <#= EntityScaffoldingDetails.EntityName #>Controller(I<#= EntityScaffoldingDetails.EntityName #>Service <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service, 
 			I<#= EntityScaffoldingDetails.EntityName #>Mapper <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper, 
-			ICatalogoService catalogoService
+			ICatalogoService catalogoService, IUsuarioService usuarioService
 			<#+ 
 			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
 				if(property.CatalogName != null){
@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 				}
 			}
 			#>
-			) 
+			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.<#= EntityScaffoldingDetails.EntityNameCamelCase #>Service = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service;
@@ -120,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
-            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.New, "<#= EntityScaffoldingDetails.EntityName #>"))
             {

@@ -88,11 +88,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		}
 		
 		WriteLine("");
-		WriteLine("public virtual string CreadorPor { get; set; }");
+		WriteLine("public virtual Usuario CreadorPor { get; set; }");
 		WriteLine("");
 		WriteLine("public virtual DateTime CreadorEl { get; set; }");
 		WriteLine("");
-		WriteLine("public virtual string ModificadoPor { get; set; }");
+		WriteLine("public virtual Usuario ModificadoPor { get; set; }");
 		WriteLine("");
 		WriteLine("public virtual DateTime ModificadoEl { get; set; }");
 		WriteLine("");
