@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         <#= EntityScaffoldingDetails.EntityName #> Get<#= EntityScaffoldingDetails.EntityName #>ById(int id);
         <#= EntityScaffoldingDetails.EntityName #>[] GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>();
+        <#= EntityScaffoldingDetails.EntityName #>[] GetActive<#= EntityScaffoldingDetails.EntityNamePlural #>();
         void Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityName #> <#= EntityScaffoldingDetails.EntityNameCamelCase #>);
     }
 }

@@ -59,6 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var gradoAcademico = gradoAcademicoMapper.Map(form);
 
+            gradoAcademico.CreadorPor = CurrentUser();
+            gradoAcademico.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(gradoAcademico, form, Title.New))
                 return ViewNew();
 
@@ -74,6 +77,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var gradoAcademico = gradoAcademicoMapper.Map(form);
 
+            gradoAcademico.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(gradoAcademico, form, Title.Edit))
                 return ViewEdit();
 
@@ -88,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var gradoAcademico = catalogoService.GetGradoAcademicoById(id);
             gradoAcademico.Activo = true;
+            gradoAcademico.ModificadoPor = CurrentUser();
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
             var form = gradoAcademicoMapper.Map(gradoAcademico);
@@ -101,6 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var gradoAcademico = catalogoService.GetGradoAcademicoById(id);
             gradoAcademico.Activo = false;
+            gradoAcademico.ModificadoPor = CurrentUser();
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
             var form = gradoAcademicoMapper.Map(gradoAcademico);

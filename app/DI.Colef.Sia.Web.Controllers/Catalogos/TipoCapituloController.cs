@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoCapituloForm form)
         {
-        
             var tipoCapitulo = tipoCapituloMapper.Map(form);
+
+            tipoCapitulo.CreadorPor = CurrentUser();
+            tipoCapitulo.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoCapitulo, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoCapituloForm form)
         {
-        
             var tipoCapitulo = tipoCapituloMapper.Map(form);
+
+            tipoCapitulo.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoCapitulo, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoCapitulo = catalogoService.GetTipoCapituloById(id);
             tipoCapitulo.Activo = true;
+            tipoCapitulo.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
             var form = tipoCapituloMapper.Map(tipoCapitulo);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoCapitulo = catalogoService.GetTipoCapituloById(id);
             tipoCapitulo.Activo = false;
+            tipoCapitulo.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
             var form = tipoCapituloMapper.Map(tipoCapitulo);

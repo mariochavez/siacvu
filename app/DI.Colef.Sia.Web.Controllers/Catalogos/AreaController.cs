@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(AreaForm form)
         {
-        
             var area = areaMapper.Map(form);
+
+            area.CreadorPor = CurrentUser();
+            area.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(area, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(AreaForm form)
         {
-        
             var area = areaMapper.Map(form);
+
+            area.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(area, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var area = catalogoService.GetAreaById(id);
             area.Activo = true;
+            area.ModificadoPor = CurrentUser();
             catalogoService.SaveArea(area);
 
             var form = areaMapper.Map(area);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var area = catalogoService.GetAreaById(id);
             area.Activo = false;
+            area.ModificadoPor = CurrentUser();
             catalogoService.SaveArea(area);
 
             var form = areaMapper.Map(area);

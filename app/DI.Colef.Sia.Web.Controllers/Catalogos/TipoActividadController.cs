@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var tipoActividads = catalogoService.GetAllTipoActividads();
+            var tipoActividads = catalogoService.GetAllTipoActividades();
             data.List = tipoActividadMapper.Map(tipoActividads);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoActividadForm form)
         {
-        
             var tipoActividad = tipoActividadMapper.Map(form);
+
+            tipoActividad.CreadorPor = CurrentUser();
+            tipoActividad.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoActividad, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoActividadForm form)
         {
-        
             var tipoActividad = tipoActividadMapper.Map(form);
+
+            tipoActividad.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoActividad, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoActividad = catalogoService.GetTipoActividadById(id);
             tipoActividad.Activo = true;
+            tipoActividad.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoActividad(tipoActividad);
 
             var form = tipoActividadMapper.Map(tipoActividad);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoActividad = catalogoService.GetTipoActividadById(id);
             tipoActividad.Activo = false;
+            tipoActividad.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoActividad(tipoActividad);
 
             var form = tipoActividadMapper.Map(tipoActividad);

@@ -59,6 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sede = sedeMapper.Map(form);
 
+            sede.CreadorPor = CurrentUser();
+            sede.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(sede, form, Title.New))
                 return ViewNew();
 
@@ -74,6 +77,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sede = sedeMapper.Map(form);
 
+            sede.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(sede, form, Title.Edit))
                 return ViewEdit();
 
@@ -88,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sede = catalogoService.GetSedeById(id);
             sede.Activo = true;
+            sede.ModificadoPor = CurrentUser();
             catalogoService.SaveSede(sede);
 
             var form = sedeMapper.Map(sede);
@@ -101,6 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sede = catalogoService.GetSedeById(id);
             sede.Activo = false;
+            sede.ModificadoPor = CurrentUser();
             catalogoService.SaveSede(sede);
 
             var form = sedeMapper.Map(sede);

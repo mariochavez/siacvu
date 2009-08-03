@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ResponsableExternoForm form)
         {
-        
             var responsableExterno = responsableExternoMapper.Map(form);
+
+            responsableExterno.CreadorPor = CurrentUser();
+            responsableExterno.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(responsableExterno, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResponsableExternoForm form)
         {
-        
             var responsableExterno = responsableExternoMapper.Map(form);
+
+            responsableExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(responsableExterno, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var responsableExterno = catalogoService.GetResponsableExternoById(id);
             responsableExterno.Activo = true;
+            responsableExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveResponsableExterno(responsableExterno);
 
             var form = responsableExternoMapper.Map(responsableExterno);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var responsableExterno = catalogoService.GetResponsableExternoById(id);
             responsableExterno.Activo = false;
+            responsableExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveResponsableExterno(responsableExterno);
 
             var form = responsableExternoMapper.Map(responsableExterno);

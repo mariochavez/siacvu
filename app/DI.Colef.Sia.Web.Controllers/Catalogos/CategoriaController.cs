@@ -58,6 +58,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var categoria = categoriaMapper.Map(form);
 
+            categoria.CreadorPor = CurrentUser();
+            categoria.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(categoria, form, Title.New))
                 return ViewNew();
 
@@ -73,6 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var categoria = categoriaMapper.Map(form);
 
+            categoria.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(categoria, form, Title.Edit))
                 return ViewEdit();
 
@@ -87,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var categoria = catalogoService.GetCategoriaById(id);
             categoria.Activo = true;
+            categoria.ModificadoPor = CurrentUser();
             catalogoService.SaveCategoria(categoria);
 
             var form = categoriaMapper.Map(categoria);
@@ -100,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var categoria = catalogoService.GetCategoriaById(id);
             categoria.Activo = false;
+            categoria.ModificadoPor = CurrentUser();
             catalogoService.SaveCategoria(categoria);
 
             var form = categoriaMapper.Map(categoria);

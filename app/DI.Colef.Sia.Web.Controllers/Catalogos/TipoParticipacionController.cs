@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var tipoParticipacions = catalogoService.GetAllTipoParticipacions();
+            var tipoParticipacions = catalogoService.GetAllTipoParticipaciones();
             data.List = tipoParticipacionMapper.Map(tipoParticipacions);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoParticipacionForm form)
         {
-        
             var tipoParticipacion = tipoParticipacionMapper.Map(form);
+
+            tipoParticipacion.CreadorPor = CurrentUser();
+            tipoParticipacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoParticipacion, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoParticipacionForm form)
         {
-        
             var tipoParticipacion = tipoParticipacionMapper.Map(form);
+
+            tipoParticipacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoParticipacion, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
             tipoParticipacion.Activo = true;
+            tipoParticipacion.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
             var form = tipoParticipacionMapper.Map(tipoParticipacion);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
             tipoParticipacion.Activo = false;
+            tipoParticipacion.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
             var form = tipoParticipacionMapper.Map(tipoParticipacion);

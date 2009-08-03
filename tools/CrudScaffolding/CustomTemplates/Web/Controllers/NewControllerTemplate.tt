@@ -120,7 +120,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
-            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form, CurrentUser());
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
+            
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.CreadorPor = CurrentUser();
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.New, "<#= EntityScaffoldingDetails.EntityName #>"))
             {
@@ -139,6 +142,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Update(<#= EntityScaffoldingDetails.EntityName #>Form form)
         {
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
+            
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.Edit))
                 return ViewEdit();
@@ -154,6 +159,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {            
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = true;
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoPor = CurrentUser();
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
             var form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
@@ -167,6 +173,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Activo = false;
+            <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoPor = CurrentUser();
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
             var form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);

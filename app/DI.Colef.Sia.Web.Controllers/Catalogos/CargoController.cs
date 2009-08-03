@@ -57,6 +57,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var cargo = cargoMapper.Map(form);
 
+            cargo.CreadorPor = CurrentUser();
+            cargo.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(cargo, form, Title.New))
                 return ViewNew();
 
@@ -72,6 +75,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var cargo = cargoMapper.Map(form);
 
+            cargo.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(cargo, form, Title.Edit))
                 return ViewEdit();
 
@@ -86,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var cargo = catalogoService.GetCargoById(id);
             cargo.Activo = true;
+            cargo.ModificadoPor = CurrentUser();
             catalogoService.SaveCargo(cargo);
 
             var form = cargoMapper.Map(cargo);
@@ -99,6 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var cargo = catalogoService.GetCargoById(id);
             cargo.Activo = false;
+            cargo.ModificadoPor = CurrentUser();
             catalogoService.SaveCargo(cargo);
 
             var form = cargoMapper.Map(cargo);

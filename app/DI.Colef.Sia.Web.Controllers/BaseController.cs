@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected Usuario CurrentUser()
         {
             // TODO: Get username from authentication cookie
-            var username = "admin";
+            var username = "administrador";
 
             return usuarioService.GetUsuarioByUserName(username);
         }

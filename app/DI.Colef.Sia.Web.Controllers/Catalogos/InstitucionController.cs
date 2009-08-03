@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var institucions = catalogoService.GetAllInstitucions();
+            var institucions = catalogoService.GetAllInstituciones();
             data.List = institucionMapper.Map(institucions);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(InstitucionForm form)
         {
-        
             var institucion = institucionMapper.Map(form);
+
+            institucion.CreadorPor = CurrentUser();
+            institucion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(institucion, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(InstitucionForm form)
         {
-        
             var institucion = institucionMapper.Map(form);
+
+            institucion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(institucion, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var institucion = catalogoService.GetInstitucionById(id);
             institucion.Activo = true;
+            institucion.ModificadoPor = CurrentUser();
             catalogoService.SaveInstitucion(institucion);
 
             var form = institucionMapper.Map(institucion);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var institucion = catalogoService.GetInstitucionById(id);
             institucion.Activo = false;
+            institucion.ModificadoPor = CurrentUser();
             catalogoService.SaveInstitucion(institucion);
 
             var form = institucionMapper.Map(institucion);

@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var pais = catalogoService.GetAllPais();
+            var pais = catalogoService.GetAllPaises();
             data.List = paisMapper.Map(pais);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(PaisForm form)
         {
-        
             var pais = paisMapper.Map(form);
+
+            pais.CreadorPor = CurrentUser();
+            pais.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(pais, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(PaisForm form)
         {
-        
             var pais = paisMapper.Map(form);
+
+            pais.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(pais, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var pais = catalogoService.GetPaisById(id);
             pais.Activo = true;
+            pais.ModificadoPor = CurrentUser();
             catalogoService.SavePais(pais);
 
             var form = paisMapper.Map(pais);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var pais = catalogoService.GetPaisById(id);
             pais.Activo = false;
+            pais.ModificadoPor = CurrentUser();
             catalogoService.SavePais(pais);
 
             var form = paisMapper.Map(pais);

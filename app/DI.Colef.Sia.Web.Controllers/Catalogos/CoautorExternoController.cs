@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CoautorExternoForm form)
         {
-        
             var coautorExterno = coautorExternoMapper.Map(form);
+
+            coautorExterno.CreadorPor = CurrentUser();
+            coautorExterno.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(coautorExterno, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CoautorExternoForm form)
         {
-        
             var coautorExterno = coautorExternoMapper.Map(form);
+
+            coautorExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(coautorExterno, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var coautorExterno = catalogoService.GetCoautorExternoById(id);
             coautorExterno.Activo = true;
+            coautorExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveCoautorExterno(coautorExterno);
 
             var form = coautorExternoMapper.Map(coautorExterno);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var coautorExterno = catalogoService.GetCoautorExternoById(id);
             coautorExterno.Activo = false;
+            coautorExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveCoautorExterno(coautorExterno);
 
             var form = coautorExternoMapper.Map(coautorExterno);

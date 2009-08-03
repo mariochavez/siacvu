@@ -60,6 +60,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sni = sniMapper.Map(form);
 
+            sni.CreadorPor = CurrentUser();
+            sni.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(sni, form, Title.New))
                 return ViewNew();
 
@@ -75,6 +78,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sni = sniMapper.Map(form);
 
+            sni.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(sni, form, Title.Edit))
                 return ViewEdit();
 
@@ -89,6 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sni = catalogoService.GetSNIById(id);
             sni.Activo = true;
+            sni.ModificadoPor = CurrentUser();
             catalogoService.SaveSNI(sni);
 
             var form = sniMapper.Map(sni);
@@ -102,6 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var sni = catalogoService.GetSNIById(id);
             sni.Activo = false;
+            sni.ModificadoPor = CurrentUser();
             catalogoService.SaveSNI(sni);
 
             var form = sniMapper.Map(sni);

@@ -69,9 +69,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoParticipanteForm form)
-        {
-        
+        {        
             var tipoParticipante = tipoParticipanteMapper.Map(form);
+
+            tipoParticipante.CreadorPor = CurrentUser();
+            tipoParticipante.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoParticipante, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoParticipanteForm form)
         {
-        
             var tipoParticipante = tipoParticipanteMapper.Map(form);
+
+            tipoParticipante.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoParticipante, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoParticipante = catalogoService.GetTipoParticipanteById(id);
             tipoParticipante.Activo = true;
+            tipoParticipante.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoParticipante(tipoParticipante);
 
             var form = tipoParticipanteMapper.Map(tipoParticipante);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoParticipante = catalogoService.GetTipoParticipanteById(id);
             tipoParticipante.Activo = false;
+            tipoParticipante.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoParticipante(tipoParticipante);
 
             var form = tipoParticipanteMapper.Map(tipoParticipante);
