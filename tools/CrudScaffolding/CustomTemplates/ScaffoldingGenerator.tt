@@ -2,12 +2,16 @@
 <#@ include file="./CustomTemplates/ApplicationServices/RepositoryInterfaceTemplate.tt" #>
 <#@ include file="./CustomTemplates/ApplicationServices/Impl/RepositoryImplementationTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Controllers/ControllerTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Controllers/NewControllerTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Mappers/MapperInterfaceTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Mappers/Impl/MapperImplementationTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Mappers/Impl/NewMapperImplementationTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Models/ModelTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Models/NewModelTemplate.tt" #>
 <#@ include file="./CustomTemplates/Core/DomainObjectTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/DomainObjectFormTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/NewTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/NewNewTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/EditTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/IndexTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ActivateTemplate.tt" #>
@@ -61,12 +65,26 @@ public class ScaffoldingGenerator : Generator
 		
 		Log("Started adding generated files");
 		
-		GenerateViews();
 		GenerateDomainObject();
-		GenerateController();
-		GenerateRepositoryInterfaceAndImplementation();
-		GenerateWebModel();
-		GenerateMapperInterfaceAndImplementation();
+		
+		if(entityScaffoldingDetails.ScaffoldType == 1){
+			GenerateViews();
+			GenerateWebModel();
+			GenerateController();
+			GenerateRepositoryInterfaceAndImplementation();
+			GenerateMapperInterfaceAndImplementation();
+		}
+		if(entityScaffoldingDetails.ScaffoldType == 2){			
+			GenerateNewWebModel();
+			GenerateNewMapperInterfaceAndImplementation();
+		}
+		if(entityScaffoldingDetails.ScaffoldType == 3){
+			GenerateRepositoryInterfaceAndImplementation();
+			GenerateNewWebModel();
+			GenerateNewMapperInterfaceAndImplementation();
+			GenerateNewController();
+			GenerateViews();
+		}
 		
 		Log("Finished adding generated files");
 	}
@@ -107,6 +125,29 @@ public class ScaffoldingGenerator : Generator
 				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
 				string outputProject = targetPathRoot + solutionName + ".Web.Controllers.csproj";
 				RenderFileToProject(controllerTemplate, outputFile, outputProject);
+			}
+			else {
+				Log("File already exists " + targetPath + fileName);
+			}
+		}
+		else {
+			Log("Skipped generation of controller and controller tests");
+		}
+	}
+	
+	private void GenerateNewController() {
+		if (DidRequestToGenerate(ArtifactToGenerate.Controller)) {
+			string fileName = entityScaffoldingDetails.EntityName + "Controller.cs";
+			string targetPathRoot = appFolderPath + solutionName + ".Web.Controllers\\";
+			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
+
+			if (! File.Exists(targetPath + fileName)) {
+				NewControllerTemplate newControllerTemplate = 
+					new NewControllerTemplate(solutionName, entityScaffoldingDetails);
+				
+				string outputFile = entityScaffoldingDetails.GetNamespaceDelimitedWith("\\") + fileName;
+				string outputProject = targetPathRoot + solutionName + ".Web.Controllers.csproj";
+				RenderFileToProject(newControllerTemplate, outputFile, outputProject);
 			}
 			else {
 				Log("File already exists " + targetPath + fileName);
@@ -179,6 +220,29 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 	
+	private void GenerateNewWebModel() {
+		if (DidRequestToGenerate(ArtifactToGenerate.Model)) {
+			string fileName = entityScaffoldingDetails.EntityName + "Form.cs";
+			string targetPathRoot = appFolderPath + solutionName + ".Web.Controllers\\Models\\";
+			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
+
+			if (! File.Exists(targetPath + fileName)) {
+				NewModelTemplate newModelTemplate = 
+					new NewModelTemplate(solutionName, entityScaffoldingDetails);
+				
+				string outputFile = appFolderPath + solutionName + ".Web.Controllers\\Models\\" + fileName;
+				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
+				RenderFileToProject(newModelTemplate, outputFile, outputProject);
+			}
+			else {
+				Log("File already exists " + targetPath + fileName);
+			}
+		}
+		else {
+			Log("Skipped generation of domain and domain tests");
+		}
+	}
+	
 	private void GenerateMapperInterfaceAndImplementation() {
 		if (DidRequestToGenerate(ArtifactToGenerate.Mapper)) {
 			string fileName = "I" + entityScaffoldingDetails.EntityName + "Mapper.cs";
@@ -218,6 +282,45 @@ public class ScaffoldingGenerator : Generator
 		}
 	}
 	
+	private void GenerateNewMapperInterfaceAndImplementation() {
+		if (DidRequestToGenerate(ArtifactToGenerate.Mapper)) {
+			string fileName = "I" + entityScaffoldingDetails.EntityName + "Mapper.cs";
+			string targetPathRoot = appFolderPath + solutionName + ".Web.Controllers\\Mappers\\";
+			string targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
+
+			if (! File.Exists(targetPath + fileName)) {
+				MapperInterfaceTemplate mapperInterfaceTemplate = 
+					new MapperInterfaceTemplate(solutionName, entityScaffoldingDetails);
+				
+				string outputFile = appFolderPath + solutionName + ".Web.Controllers\\Mappers\\" + fileName;
+				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
+				RenderFileToProject(mapperInterfaceTemplate, outputFile, outputProject);
+			}
+			else {
+				Log("File already exists " + targetPath + fileName);
+			}
+			
+			fileName = entityScaffoldingDetails.EntityName + "Mapper.cs";
+			targetPathRoot = appFolderPath + solutionName + ".Web.Controllers\\Mappers\\Impl\\";
+			targetPath = CreateDirectoriesAndAppendNamespacePathTo(targetPathRoot);
+
+			if (! File.Exists(targetPath + fileName)) {
+				NewMapperImplementationTemplate newMapperImplementationTemplate = 
+					new NewMapperImplementationTemplate(solutionName, entityScaffoldingDetails);
+
+				string outputFile =  appFolderPath + solutionName + ".Web.Controllers\\Mappers\\Impl\\" + fileName;
+				string outputProject = appFolderPath + solutionName + ".Web.Controllers\\" + solutionName + ".Web.Controllers.csproj";
+				RenderFileToProject(newMapperImplementationTemplate, outputFile, outputProject);
+			}
+			else {
+				Log("File already exists " + targetPath + fileName);
+			}
+		}
+		else {
+			Log("Skipped generation of interface and heir classes");
+		}
+	}
+	
 	private void GenerateViews() {		
 		if (DidRequestToGenerate(ArtifactToGenerate.Views)) {
 				string targetPathRoot = appFolderPath + solutionName + ".Web\\Views\\";
@@ -230,12 +333,19 @@ public class ScaffoldingGenerator : Generator
 				Log("Added directory " + targetPath);
 			}
 			
-			GenerateDomainObjectFormView(targetPath);
-			GenerateNewView(targetPath);
-			GenerateEditView(targetPath);
-			GenerateIndexView(targetPath);
-			GenerateJsViewActivate(targetPath);
-			//GenerateShowView(targetPath);
+			if(entityScaffoldingDetails.ScaffoldType == 1){
+				GenerateDomainObjectFormView(targetPath);
+				GenerateNewView(targetPath);
+				GenerateEditView(targetPath);
+				GenerateIndexView(targetPath);
+				GenerateJsViewActivate(targetPath);
+				//GenerateShowView(targetPath);
+			}
+			else{
+				GenerateIndexView(targetPath);
+				GenerateJsViewActivate(targetPath);
+				GenerateNewNewView(targetPath);
+			}
 		}
 		else {
 			Log("Skipped generation of views");
@@ -274,6 +384,18 @@ public class ScaffoldingGenerator : Generator
 		if (! File.Exists(targetPath + fileName)) {
 			NewTemplate newTemplate = new NewTemplate(solutionName, entityScaffoldingDetails);
 			RenderViewFile(newTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+	
+	private void GenerateNewNewView(string targetPath) {
+		string fileName = "New.aspx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			NewNewTemplate newNewTemplate = new NewNewTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(newNewTemplate, targetPath + fileName);
 		}
 		else {
 			Log("File already exists " + targetPath + fileName);

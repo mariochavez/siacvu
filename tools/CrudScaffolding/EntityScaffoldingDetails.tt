@@ -16,15 +16,24 @@ public class EntityScaffoldingDetails {
     /// <param name="namespacedEntityName">
     /// The entity name iself should be SINGULAR
     /// </param>   
-	public EntityScaffoldingDetails(string namespacedEntityName) {
+    
+    
+	public EntityScaffoldingDetails(string namespacedEntityName, int scaffoldType) {
 		Check.Require(! string.IsNullOrEmpty(namespacedEntityName), "namespacedEntityName may not be null or empty");
 
 		InitializeNamespaceHierarchyAndEntityNameWith(namespacedEntityName);
+		
+		this.ScaffoldType = scaffoldType;
 	}
 
     /// <summary>
 	/// Singular name of the entity, set in the constructor
     /// </summary>
+	public int ScaffoldType {
+		get { return scaffoldType; }
+		protected set { scaffoldType = value; }
+	}    
+    
 	public string EntityName {
 		get { return entityName; }
 		protected set { entityName = value; }
@@ -121,18 +130,25 @@ public class EntityScaffoldingDetails {
 	}
 	
 	private string entityName;
+	private int scaffoldType=0;
 	private ArtifactToGenerate[] artifactsToGenerate;
 	private string[] namespaceHierarchy;
 	private IList<EntityProperty> entityProperties = new List<EntityProperty>();
 }
 
 public class EntityProperty {
-	public EntityProperty(string propertyName, string typeName, object defaultValueForTests) 
-		: this(propertyName, typeName, defaultValueForTests, null, false) { }
+	public EntityProperty(string propertyName, string typeName, string catalogName)
+		: this(propertyName, typeName, catalogName, null, null, false) { }
+		
+	public EntityProperty(string propertyName, string typeName, bool isPartOfDomainSignature)
+		: this(propertyName, typeName, null, null, null, isPartOfDomainSignature) { }
 
-	public EntityProperty(string propertyName, string typeName, object defaultValueForTests, string propertyAttributes) 
-		: this(propertyName, typeName, defaultValueForTests, propertyAttributes, false) { }
+	public EntityProperty(string propertyName, string typeName, string catalogName, string propertyAttributes) 
+		: this(propertyName, typeName, catalogName, null, propertyAttributes, false) { }
 
+	public EntityProperty(string propertyName, string typeName, string catalogName, bool isPartOfDomainSignature) 
+		: this(propertyName, typeName, catalogName, null, null, isPartOfDomainSignature) { }
+		
     /// <summary>
     /// Constructor for setting up entity properties
     /// </summary>
@@ -155,8 +171,11 @@ public class EntityProperty {
 	/// If set to true, then gets the domain signature attribute added to it.  An entity does not 
 	/// have to have any domain signature properties; if none exist, only the Id will be used in the 
 	/// comparison of one entity to another.
-    /// </param>	
-	public EntityProperty(string propertyName, string typeName, object defaultValueForTests, string propertyAttributes, bool isPartOfDomainSignature) {
+    /// </param> 
+	public EntityProperty(string propertyName, string typeName, string catalogName, string propertyAttributes, bool isPartOfDomainSignature) 
+		: this(propertyName, typeName, catalogName, null, propertyAttributes, isPartOfDomainSignature) { }
+    
+	public EntityProperty(string propertyName, string typeName, string catalogName, object defaultValueForTests, string propertyAttributes, bool isPartOfDomainSignature) {
 		Check.Require(! string.IsNullOrEmpty(propertyName), "propertyName may not be null or empty");
 		Check.Require(! string.IsNullOrEmpty(typeName), "typeName may not be null or empty");
 		Check.Require(propertyName.ToLower() != "id", "An Id property should not be added as it is already included");
@@ -165,7 +184,13 @@ public class EntityProperty {
 		TypeName = typeName;
 		PropertyAttributes = propertyAttributes;
 		IsPartOfDomainSignature = isPartOfDomainSignature;
+		CatalogName = catalogName;
 		this.defaultValueForTests = defaultValueForTests;
+	}
+	
+	public string CatalogName {
+		get { return catalogName; }
+		protected set { catalogName = value; }
 	}
 
 	public string PropertyName {
@@ -218,6 +243,7 @@ public class EntityProperty {
 	private string propertyName;
 	private string typeName;
 	private object defaultValueForTests;
+	private string catalogName;
 	private string propertyAttributes;
 	private bool isPartOfDomainSignature = false;
 }
