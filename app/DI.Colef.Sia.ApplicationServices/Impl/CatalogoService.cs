@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using NHibernate;
+using NHibernate.Criterion;
+using SharpArch.Core.DomainModel;
 using SharpArch.Core.PersistenceSupport;
+using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -33,6 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<ResponsableExterno> responsableExternoRepository;
         readonly IRepository<TipoCapitulo> tipoCapituloRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
+        readonly IRepository<PeriodoReferencia> periodoReferenciaRepository;
+        readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository, 
@@ -59,7 +65,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<FormaParticipacion> formaParticipacionRepository,
             IRepository<ResponsableExterno> responsableExternoRepository,
             IRepository<TipoCapitulo> tipoCapituloRepository,
-            IRepository<TipoParticipacion> tipoParticipacionRepository)
+            IRepository<TipoParticipacion> tipoParticipacionRepository,
+            IRepository<PeriodoReferencia> periodoReferenciaRepository,
+            IRepository<RevistaPublicacion> revistaPublicacionRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -87,6 +95,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.responsableExternoRepository = responsableExternoRepository;
             this.tipoCapituloRepository = tipoCapituloRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
+            this.periodoReferenciaRepository = periodoReferenciaRepository;
+            this.revistaPublicacionRepository = revistaPublicacionRepository;
+        }
+
+        protected virtual ISession Session
+        {
+            get
+            {
+                string factoryKey = SessionFactoryAttribute.GetKeyFrom(this);
+                return NHibernateSession.CurrentFor(factoryKey);
+            }
         }
 
         public Cargo GetCargoById(int id)
@@ -94,9 +113,18 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return cargoRepository.Get(id);
         }
 
+        protected IList<T> OrderCatalog<T>(T model) where T : Entity
+        {
+            var list = Session.CreateCriteria(typeof(T))
+                .AddOrder(Order.Asc("Nombre"))
+                .List<T>();
+
+            return list;
+        }
+
         public Cargo[] GetAllCargos()
         {
-            return ((List<Cargo>)cargoRepository.GetAll()).ToArray();
+            return ((List<Cargo>)OrderCatalog(new Cargo())).ToArray();
         }
 
         public Cargo[] GetActiveCargos()
@@ -123,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Departamento[] GetAllDepartamentos()
         {
-            return ((List<Departamento>)departamentoRepository.GetAll()).ToArray();
+            return ((List<Departamento>)OrderCatalog(new Departamento())).ToArray();
         }
 
         public Departamento[] GetActiveDepartamentos()
@@ -150,7 +178,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Puesto[] GetAllPuestos()
         {
-            return ((List<Puesto>)puestoRepository.GetAll()).ToArray();
+            return ((List<Puesto>)OrderCatalog(new Puesto())).ToArray();
         }
 
         public void SavePuesto(Puesto puesto)
@@ -172,7 +200,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Sede[] GetAllSedes()
         {
-            return ((List<Sede>)sedeRepository.GetAll()).ToArray();
+            return ((List<Sede>)OrderCatalog(new Sede())).ToArray();
         }
 
         public Sede[] GetActiveSedes()
@@ -199,7 +227,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Categoria[] GetAllCategorias()
         {
-            return ((List<Categoria>)categoriaRepository.GetAll()).ToArray();
+            return ((List<Categoria>)OrderCatalog(new Categoria())).ToArray();
         }
 
         public Categoria[] GetActiveCategorias()
@@ -226,7 +254,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public GradoAcademico[] GetAllGradoAcademicos()
         {
-            return ((List<GradoAcademico>)gradoAcademicoRepository.GetAll()).ToArray();
+            return ((List<GradoAcademico>)OrderCatalog(new GradoAcademico())).ToArray();
         }
 
         public GradoAcademico[] GetActiveGrados()
@@ -253,7 +281,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public SNI[] GetAllSNIs()
         {
-            return ((List<SNI>)sniRepository.GetAll()).ToArray();
+            return ((List<SNI>)OrderCatalog(new SNI())).ToArray();
         }
 
         public SNI[] GetActiveSNIs()
@@ -280,7 +308,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Estado[] GetAllEstados()
         {
-            return ((List<Estado>)estadoRepository.GetAll()).ToArray();
+            return ((List<Estado>)OrderCatalog(new Estado())).ToArray();
         }
 
         public Estado[] GetActiveEstados()
@@ -307,7 +335,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Idioma[] GetAllIdiomas()
         {
-            return ((List<Idioma>)idiomaRepository.GetAll()).ToArray();
+            return ((List<Idioma>)OrderCatalog(new Idioma())).ToArray();
         }
 
         public void SaveIdioma(Idioma idioma)
@@ -329,7 +357,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Pais[] GetAllPais()
         {
-            return ((List<Pais>)paisRepository.GetAll()).ToArray();
+            return ((List<Pais>)OrderCatalog(new Pais())).ToArray();
         }
 
         public void SavePais(Pais pais)
@@ -351,7 +379,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoArticulo[] GetAllTipoArticulos()
         {
-            return ((List<TipoArticulo>)tipoArticuloRepository.GetAll()).ToArray();
+            return ((List<TipoArticulo>)OrderCatalog(new TipoArticulo())).ToArray();
         }
 
         public void SaveTipoArticulo(TipoArticulo tipoArticulo)
@@ -373,7 +401,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Institucion[] GetAllInstitucions()
         {
-            return ((List<Institucion>)institucionRepository.GetAll()).ToArray();
+            return ((List<Institucion>)OrderCatalog(new Institucion())).ToArray();
         }
 
         public void SaveInstitucion(Institucion institucion)
@@ -395,7 +423,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Indice[] GetAllIndices()
         {
-            return ((List<Indice>)indiceRepository.GetAll()).ToArray();
+            return ((List<Indice>)OrderCatalog(new Indice())).ToArray();
         }
 
         public void SaveIndice(Indice indice)
@@ -417,7 +445,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public InvestigadorExterno[] GetAllInvestigadorExternos()
         {
-            return ((List<InvestigadorExterno>)investigadorExternoRepository.GetAll()).ToArray();
+            return ((List<InvestigadorExterno>)OrderCatalog(new InvestigadorExterno())).ToArray();
         }
 
         public void SaveInvestigadorExterno(InvestigadorExterno investigadorExterno)
@@ -439,7 +467,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipante[] GetAllTipoParticipantes()
         {
-            return ((List<TipoParticipante>)tipoParticipanteRepository.GetAll()).ToArray();
+            return ((List<TipoParticipante>)OrderCatalog(new TipoParticipante())).ToArray();
         }
 
         public void SaveTipoParticipante(TipoParticipante tipoParticipante)
@@ -461,7 +489,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaInvestigacion[] GetAllLineaInvestigacions()
         {
-            return ((List<LineaInvestigacion>)lineaInvestigacionRepository.GetAll()).ToArray();
+            return ((List<LineaInvestigacion>)OrderCatalog(new LineaInvestigacion())).ToArray();
         }
 
         public void SaveLineaInvestigacion(LineaInvestigacion lineaInvestigacion)
@@ -483,7 +511,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoActividad[] GetAllTipoActividads()
         {
-            return ((List<TipoActividad>)tipoActividadRepository.GetAll()).ToArray();
+            return ((List<TipoActividad>)OrderCatalog(new TipoActividad())).ToArray();
         }
 
         public void SaveTipoActividad(TipoActividad tipoActividad)
@@ -505,7 +533,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Area[] GetAllAreas()
         {
-            return ((List<Area>)areaRepository.GetAll()).ToArray();
+            return ((List<Area>)OrderCatalog(new Area())).ToArray();
         }
 
         public void SaveArea(Area area)
@@ -527,7 +555,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Disciplina[] GetAllDisciplinas()
         {
-            return ((List<Disciplina>)disciplinaRepository.GetAll()).ToArray();
+            return ((List<Disciplina>)OrderCatalog(new Disciplina())).ToArray();
         }
 
         public void SaveDisciplina(Disciplina disciplina)
@@ -549,7 +577,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Subdisciplina[] GetAllSubdisciplinas()
         {
-            return ((List<Subdisciplina>)subdisciplinaRepository.GetAll()).ToArray();
+            return ((List<Subdisciplina>)OrderCatalog(new Subdisciplina())).ToArray();
         }
 
         public void SaveSubdisciplina(Subdisciplina subdisciplina)
@@ -571,7 +599,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaTematica[] GetAllLineaTematicas()
         {
-            return ((List<LineaTematica>)lineaTematicaRepository.GetAll()).ToArray();
+            return ((List<LineaTematica>)OrderCatalog(new LineaTematica())).ToArray();
         }
 
         public void SaveLineaTematica(LineaTematica lineaTematica)
@@ -593,7 +621,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public CoautorExterno[] GetAllCoautorExternos()
         {
-            return ((List<CoautorExterno>) coautorExternoRepository.GetAll()).ToArray();
+            return ((List<CoautorExterno>)OrderCatalog(new CoautorExterno())).ToArray();
         }
 
         public void SaveCoautorExterno(CoautorExterno coautorExterno)
@@ -615,7 +643,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FormaParticipacion[] GetAllFormaParticipacions()
         {
-            return ((List<FormaParticipacion>)formaParticipacionRepository.GetAll()).ToArray();
+            return ((List<FormaParticipacion>)OrderCatalog(new FormaParticipacion())).ToArray();
         }
 
         public void SaveFormaParticipacion(FormaParticipacion formaParticipacion)
@@ -637,7 +665,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ResponsableExterno[] GetAllResponsableExternos()
         {
-            return ((List<ResponsableExterno>)responsableExternoRepository.GetAll()).ToArray();
+            return ((List<ResponsableExterno>)OrderCatalog(new ResponsableExterno())).ToArray();
         }
 
         public void SaveResponsableExterno(ResponsableExterno responsableExterno)
@@ -659,7 +687,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoCapitulo[] GetAllTipoCapitulos()
         {
-            return ((List<TipoCapitulo>)tipoCapituloRepository.GetAll()).ToArray();
+            return ((List<TipoCapitulo>)OrderCatalog(new TipoCapitulo())).ToArray();
         }
 
         public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
@@ -681,7 +709,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipacion[] GetAllTipoParticipacions()
         {
-            return ((List<TipoParticipacion>)tipoParticipacionRepository.GetAll()).ToArray();
+            return ((List<TipoParticipacion>)OrderCatalog(new TipoParticipacion())).ToArray();
         }
 
         public void SaveTipoParticipacion(TipoParticipacion tipoParticipacion)
@@ -694,6 +722,50 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoParticipacion.ModificadoEl = DateTime.Now;
 
             tipoParticipacionRepository.SaveOrUpdate(tipoParticipacion);
+        }
+
+        public PeriodoReferencia GetPeriodoReferenciaById(int id)
+        {
+            return periodoReferenciaRepository.Get(id);
+        }
+
+        public PeriodoReferencia[] GetAllPeriodoReferencias()
+        {
+            return ((List<PeriodoReferencia>)OrderCatalog(new PeriodoReferencia())).ToArray();
+        }
+
+        public void SavePeriodoReferencia(PeriodoReferencia periodoReferencia)
+        {
+            if (periodoReferencia.Id == 0)
+            {
+                periodoReferencia.Activo = true;
+                periodoReferencia.CreadorEl = DateTime.Now;
+            }
+            periodoReferencia.ModificadoEl = DateTime.Now;
+
+            periodoReferenciaRepository.SaveOrUpdate(periodoReferencia);
+        }
+
+        public RevistaPublicacion GetRevistaPublicacionById(int id)
+        {
+            return revistaPublicacionRepository.Get(id);
+        }
+
+        public RevistaPublicacion[] GetAllRevistaPublicacions()
+        {
+            return ((List<RevistaPublicacion>)OrderCatalog(new RevistaPublicacion())).ToArray();
+        }
+
+        public void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion)
+        {
+            if (revistaPublicacion.Id == 0)
+            {
+                revistaPublicacion.Activo = true;
+                revistaPublicacion.CreadorEl = DateTime.Now;
+            }
+            revistaPublicacion.ModificadoEl = DateTime.Now;
+
+            revistaPublicacionRepository.SaveOrUpdate(revistaPublicacion);
         }
     }
 }

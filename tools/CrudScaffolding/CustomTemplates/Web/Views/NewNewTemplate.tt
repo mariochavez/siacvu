@@ -1,0 +1,104 @@
+﻿<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
+
+<#+
+public class NewNewTemplate : BaseTemplate
+{
+	public NewNewTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
+<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <h2><%=Html.Encode(Model.Title) %></h2>
+    <% Html.RenderPartial("_Message"); %>
+    <br />
+    <% using (Html.BeginForm("Create", "<#= EntityScaffoldingDetails.EntityName #>")) { %>
+		<div id="form">
+		<#+ foreach(EntityProperty property in EntityScaffoldingDetails.EntityProperties){
+			SpanishInflector spanishInflector = new SpanishInflector();
+			string titleize = spanishInflector.Titleize(property.PropertyName);
+		  #>
+			<tr>
+				<td>
+					<label><#= titleize #>:<em>*</em></label>
+				</td>
+				<td>
+					<#+ if(property.TypeName == "string"){#>
+						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 100 })%>
+						<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
+					<#+ } #>
+					
+					<#+ if(property.TypeName == "DateTime"){#>
+						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 10 })%>
+                        <span class="helper_message">(Formato dd/mm/yyyy)</span>
+                        <%=Html.ValidationMessage("<#= property.PropertyName #>")%>
+					<#+ } #>
+					
+					<#+ if(property.CatalogName != null && property.TypeName.Contains("IList")){
+						//SpanishInflector spanishInflector = new SpanishInflector();
+						string catalogName = property.CatalogName;
+						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+						
+						titleize = spanishInflector.Titleize(catalogName);
+						string[] addName = titleize.Split(' ');
+						
+						string pluralize = "";
+						foreach(string name in addName){
+							pluralize += spanishInflector.Pluralize(name);
+						}
+					#>
+						<%=Html.DropDownList("<#= typeName #>.<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
+                        "Seleccione ...")%>
+						<%=Html.ValidationMessage("<#= typeName #>.<#= catalogName #>") %>
+					<#+ } #>
+					
+					<#+ if(property.TypeName == property.PropertyName){ 
+						string catalogName = property.CatalogName;
+						titleize = spanishInflector.Titleize(catalogName);
+						string[] addName = titleize.Split(' ');
+						
+						string pluralize = "";
+						foreach(string name in addName){
+							pluralize += spanishInflector.Pluralize(name);
+						}
+					#>
+						<%=Html.DropDownList("<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
+							"Seleccione ...")%>
+						<%=Html.ValidationMessage("<#= catalogName #>") %>
+					<#+ } #>
+				</td>
+			</tr>
+		
+		<#+ } #>
+		
+			<div class="btn_container_footer">
+				<span class="btn btn_normal_brown">
+					<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
+				</span>
+				<span class="btn btn_normal_white">
+					<%=Html.ActionLink<<#= EntityScaffoldingDetails.EntityName #>Controller>(x => x.Index(), "Regresar") %>
+				</span>
+			</div>
+	    </div>
+    <% } %>
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        setupDocument();
+    });
+</script>
+</asp:Content>
+<#+
+	}
+}
+#>

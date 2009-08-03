@@ -1,0 +1,125 @@
+using System;
+using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using SharpArch.Web.NHibernate;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+{
+    [HandleError]
+    public class RevistaPublicacionController : BaseController<RevistaPublicacion, RevistaPublicacionForm>
+    {
+        readonly ICatalogoService catalogoService;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+
+        public RevistaPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, IRevistaPublicacionMapper revistaPublicacionMapper)
+            : base(usuarioService)
+        {
+            this.catalogoService = catalogoService;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Index() 
+        {
+			var data = CreateViewDataWithTitle(Title.Index);
+
+            var revistaPublicacions = catalogoService.GetAllRevistaPublicacions();
+            data.List = revistaPublicacionMapper.Map(revistaPublicacions);
+
+            return View(data);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult New()
+        {			
+			var data = CreateViewDataWithTitle(Title.New);
+            data.Form = new RevistaPublicacionForm();
+			
+			return View(data);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Edit(int id)
+        {
+            var data = CreateViewDataWithTitle(Title.Edit);
+
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
+            data.Form = revistaPublicacionMapper.Map(revistaPublicacion);
+
+			ViewData.Model = data;
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Show(int id)
+        {
+            var data = CreateViewDataWithTitle(Title.Show);
+
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
+            data.Form = revistaPublicacionMapper.Map(revistaPublicacion);
+            
+            ViewData.Model = data;
+            return View();
+        }
+        
+        [Transaction]
+        [ValidateAntiForgeryToken]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Create(RevistaPublicacionForm form)
+        {
+            var revistaPublicacion = revistaPublicacionMapper.Map(form);
+
+            if(!IsValidateModel(revistaPublicacion, form, Title.New))
+                return ViewNew();
+
+            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+
+            return RedirectToIndex(String.Format("{0} ha sido creado", revistaPublicacion.Titulo));
+        }
+        
+        [Transaction]
+        [ValidateAntiForgeryToken]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Update(RevistaPublicacionForm form)
+        {
+        
+            var revistaPublicacion = revistaPublicacionMapper.Map(form);
+
+            if (!IsValidateModel(revistaPublicacion, form, Title.Edit))
+                return ViewEdit();
+
+            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+
+            return RedirectToIndex(String.Format("{0} ha sido modificado", revistaPublicacion.Titulo));
+        }
+        
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Activate(int id)
+        {
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
+            revistaPublicacion.Activo = true;
+            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+
+            var form = revistaPublicacionMapper.Map(revistaPublicacion);
+            
+            return Rjs(form);
+        }
+        
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Deactivate(int id)
+        {
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
+            revistaPublicacion.Activo = false;
+            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+
+            var form = revistaPublicacionMapper.Map(revistaPublicacion);
+            
+            return Rjs("Activate", form);
+        }
+    }
+}

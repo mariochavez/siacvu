@@ -2,8 +2,8 @@
 <#@ import namespace="System.Collections.Specialized" #>
 <#@ output extension="txt" #>
 <#@ include file="T4Toolbox.tt" #>
-<#@ include file="./CustomTemplates/ScaffoldingGenerator.tt" #> 
-<#@ include file="EntityScaffoldingDetails.tt" #> 
+<#@ include file="./CustomTemplates/ScaffoldingGenerator.tt" #>
+<#@ include file="EntityScaffoldingDetails.tt" #>
 
 <#
 ///////////////////////////////////////////////////
@@ -16,9 +16,14 @@
  * Examples:  ("Usuario"), ("Admin.Usuario")
  *			  (entityName), ("FolderName.entityName") 
  */
+ 
+//EntityScaffoldingDetails(Entidad, scaffoldType)
+//(FolderName.EntityName, 1) Catalogo
+//(Name, 2) Objeto con Form y Mappers con referencia a catalogo
+//(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.TipoParticipacion");
+	new EntityScaffoldingDetails("Prueba", 3);
  
 /*
  * Property names should be PascalCase.
@@ -27,26 +32,47 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", "Nombre", "[NotNullNotEmpty]", true)
+	new EntityProperty("Nombre", "string", null ,"[NotNullNotEmpty]", true)
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Descripcion", "string", "Descripcion", "[Length(40)]")
+//	new EntityProperty("Descripcion", "DateTime", "Usuario", null, null)
+//);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("EstadoInvestigadores", "IList<EstadoInvestigador>", "Estado")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("GradoAcedmicoInvestigadores", "IList<GradoAcademicoInvestigador>", "GradoAcademico")
+);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Fecha", "DateTime", "LineaTematica", "[NotNull]")
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Puesto", "string", "Puesto", "[Length(40)]")
+//	new EntityProperty("FechaIngreso", "DateTime", true)
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Manager", "Employee", null, "[NotNull]")
+//	new EntityProperty("Descripcion", "DateTime", null, "[NotNull]", true)
 //);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Nombre", "string", "Departamento", "[NotNull]", true)
+//);
+
+//Para agregar catalogos hay que declarar las variables asi
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Idioma", "Idioma", "Idioma")
+);
 
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

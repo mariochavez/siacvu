@@ -96,9 +96,11 @@
     <Compile Include="LineaInvestigacion.cs" />
     <Compile Include="LineaTematica.cs" />
     <Compile Include="Pais.cs" />
+    <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="ResponsableExterno.cs" />
+    <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>

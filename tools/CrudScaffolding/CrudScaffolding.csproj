@@ -55,6 +55,10 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="uNhAddIns, Version=2.0.0.24301, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\uNhAddIns.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\CommonAssemblyInfo.cs">
@@ -73,13 +77,21 @@
     </None>
     <None Include="CustomTemplates\Web\Controllers\ControllerTemplate.tt">
     </None>
+    <None Include="CustomTemplates\Web\Controllers\NewControllerTemplate.tt">
+    </None>
+    <None Include="CustomTemplates\Web\Mappers\Impl\NewMapperImplementationTemplate.tt">
+    </None>
     <None Include="CustomTemplates\Web\Mappers\Impl\MapperImplementationTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Mappers\MapperInterfaceTemplate.tt">
     </None>
+    <None Include="CustomTemplates\Web\Models\NewModelTemplate.tt">
+    </None>
     <None Include="CustomTemplates\Web\Models\ModelTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Views\ActivateTemplate.tt">
+    </None>
+    <None Include="CustomTemplates\Web\Views\NewNewTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Views\NewTemplate.tt">
     </None>

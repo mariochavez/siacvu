@@ -1,4 +1,7 @@
 ﻿<#@ import namespace="System.Collections" #>
+<#@ import namespace="System" #>
+<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
 
 <#+
 public class DomainObjectTemplate : BaseTemplate
@@ -13,7 +16,11 @@ using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 <#+ if(EntityScaffoldingDetails.HasAnyDomainSignatureProperties)
-WriteLine("using SharpArch.Core.NHibernateValidator;"); #>
+WriteLine("using SharpArch.Core.NHibernateValidator;");
+
+	if(EntityScaffoldingDetails.ScaffoldType == 3)
+WriteLine("using System.Collections.Generic;");
+#>
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
@@ -21,19 +28,63 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		WriteLine("[HasUniqueDomainSignature]"); #>
     public class <#= EntityScaffoldingDetails.EntityName #> : Entity, IBaseEntity
     {
+	<#+ if(EntityScaffoldingDetails.ScaffoldType == 3 ){ #>
+	public <#= EntityScaffoldingDetails.EntityName #>()
+		{
+			<#+
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+				if(property.TypeName.Contains("IList"))
+					WriteLine(property.PropertyName + " = new " + property.TypeName.Substring(1) + "();");
+			} #>
+		}
+		
+		<#+
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			if(property.TypeName.Contains("IList")){
+				SpanishInflector spanishInflector = new SpanishInflector();
+				string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+				string titleize = spanishInflector.Titleize(typeName);
+				string[] addName = titleize.Split(' ');
+				
+				WriteLine("public virtual void Add" + addName[0]  +"(" + typeName + " " + spanishInflector.Camelize(typeName) + ")");
+				WriteLine("{");
+					WriteLine(property.PropertyName + ".Add(" + spanishInflector.Camelize(typeName) + ");");
+				WriteLine("}");
+			}
+		} #>
+	<#+ } #>
+		
 		<#+
 		PushIndent("\t\t");
+		
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {			
+			if(EntityScaffoldingDetails.ScaffoldType == 3){
+				WriteLine("");
 
-		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-			WriteLine("");
+				if (property.IsPartOfDomainSignature)
+					WriteLine("[DomainSignature]");
 
-			if (property.IsPartOfDomainSignature)
-				WriteLine("[DomainSignature]");
+				if (! string.IsNullOrEmpty(property.PropertyAttributes))
+					WriteLine(property.PropertyAttributes);
+				
+				if(property.TypeName.Contains("IList"))
+					WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; private set; }");
+				else
+					WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+			}
+			else{
+				if(property.TypeName.Contains("IList"))
+					continue;
+					
+				WriteLine("");
 
-			if (! string.IsNullOrEmpty(property.PropertyAttributes))
-				WriteLine(property.PropertyAttributes);
+				if (property.IsPartOfDomainSignature)
+					WriteLine("[DomainSignature]");
 
-			WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+				if (! string.IsNullOrEmpty(property.PropertyAttributes))
+					WriteLine(property.PropertyAttributes);
+				WriteLine("public virtual " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+			}
 		}
 		
 		WriteLine("");

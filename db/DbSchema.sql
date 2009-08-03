@@ -167,6 +167,14 @@ alter table Departamentos  drop constraint FKDF172AB885102A57
 alter table Departamentos  drop constraint FKDF172AB874E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829385102A57]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B4829385102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829374E8BAB7]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B4829374E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK371BC04385102A57]') AND parent_object_id = OBJECT_ID('ResponsableExternos'))
 alter table ResponsableExternos  drop constraint FK371BC04385102A57
 
@@ -221,6 +229,14 @@ alter table Cargos  drop constraint FKA8E8D63E85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E74E8BAB7]') AND parent_object_id = OBJECT_ID('Cargos'))
 alter table Cargos  drop constraint FKA8E8D63E74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F85102A57]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
+alter table PeriodoReferencias  drop constraint FK91FCA7F85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F74E8BAB7]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
+alter table PeriodoReferencias  drop constraint FK91FCA7F74E8BAB7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE85102A57]') AND parent_object_id = OBJECT_ID('Paises'))
@@ -379,6 +395,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'RevistaPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RevistaPublicaciones
+
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Instituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Instituciones
@@ -390,6 +408,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Cargos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cargos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'PeriodoReferencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table PeriodoReferencias
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Paises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Paises
 
@@ -622,6 +642,22 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table RevistaPublicaciones (
+        Id INT IDENTITY NOT NULL,
+       Titulo NVARCHAR(255) null,
+       Periodicidad NVARCHAR(255) null,
+       Issn NVARCHAR(255) null,
+       Detalle NVARCHAR(255) null,
+       Tipo NVARCHAR(255) null,
+       Estado BIT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table ResponsableExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -684,6 +720,20 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Cargos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table PeriodoReferencias (
+        Id INT IDENTITY NOT NULL,
+       Periodo NVARCHAR(255) null,
+       Orden INT null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -1047,6 +1097,16 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table RevistaPublicaciones 
+        add constraint FK40B4829385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B4829374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table ResponsableExternos 
         add constraint FK371BC04385102A57 
         foreign key (CreadorPorFk) 
@@ -1117,6 +1177,16 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table PeriodoReferencias 
+        add constraint FK91FCA7F85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table PeriodoReferencias 
+        add constraint FK91FCA7F74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table Paises 
         add constraint FKFF6108EE85102A57 
         foreign key (CreadorPorFk) 
@@ -1136,7 +1206,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKE112A3FE74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+/*
     alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
@@ -1146,7 +1216,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+*/
     alter table Disciplinas 
         add constraint FK6CD232B385102A57 
         foreign key (CreadorPorFk) 

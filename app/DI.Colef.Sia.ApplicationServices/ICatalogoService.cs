@@ -141,5 +141,15 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoParticipacion GetTipoParticipacionById(int id);
         TipoParticipacion[] GetAllTipoParticipacions();
         void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
+
+        //Periodo de Referencia
+        PeriodoReferencia GetPeriodoReferenciaById(int id);
+        PeriodoReferencia[] GetAllPeriodoReferencias();
+        void SavePeriodoReferencia(PeriodoReferencia periodoReferencia);
+
+        //Revista de Publicacion
+        RevistaPublicacion GetRevistaPublicacionById(int id);
+        RevistaPublicacion[] GetAllRevistaPublicacions();
+        void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion);
     }
 }
