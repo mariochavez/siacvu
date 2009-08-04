@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var formaParticipacions = catalogoService.GetAllFormaParticipacions();
+            var formaParticipacions = catalogoService.GetAllFormaParticipaciones();
             data.List = formaParticipacionMapper.Map(formaParticipacions);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(FormaParticipacionForm form)
         {
-        
             var formaParticipacion = formaParticipacionMapper.Map(form);
+
+            formaParticipacion.CreadorPor = CurrentUser();
+            formaParticipacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(formaParticipacion, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(FormaParticipacionForm form)
         {
-        
             var formaParticipacion = formaParticipacionMapper.Map(form);
+
+            formaParticipacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(formaParticipacion, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var formaParticipacion = catalogoService.GetFormaParticipacionById(id);
             formaParticipacion.Activo = true;
+            formaParticipacion.ModificadoPor = CurrentUser();
             catalogoService.SaveFormaParticipacion(formaParticipacion);
 
             var form = formaParticipacionMapper.Map(formaParticipacion);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var formaParticipacion = catalogoService.GetFormaParticipacionById(id);
             formaParticipacion.Activo = false;
+            formaParticipacion.ModificadoPor = CurrentUser();
             catalogoService.SaveFormaParticipacion(formaParticipacion);
 
             var form = formaParticipacionMapper.Map(formaParticipacion);

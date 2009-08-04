@@ -58,8 +58,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(IdiomaForm form)
         {
-        
             var idioma = idiomaMapper.Map(form);
+
+            idioma.CreadorPor = CurrentUser();
+            idioma.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(idioma, form, Title.New))
                 return ViewNew();
@@ -74,8 +76,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(IdiomaForm form)
         {
-        
             var idioma = idiomaMapper.Map(form);
+
+            idioma.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(idioma, form, Title.Edit))
                 return ViewEdit();
@@ -91,6 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var idioma = catalogoService.GetIdiomaById(id);
             idioma.Activo = true;
+            idioma.ModificadoPor = CurrentUser();
             catalogoService.SaveIdioma(idioma);
 
             var form = idiomaMapper.Map(idioma);
@@ -104,6 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var idioma = catalogoService.GetIdiomaById(id);
             idioma.Activo = false;
+            idioma.ModificadoPor = CurrentUser();
             catalogoService.SaveIdioma(idioma);
 
             var form = idiomaMapper.Map(idioma);

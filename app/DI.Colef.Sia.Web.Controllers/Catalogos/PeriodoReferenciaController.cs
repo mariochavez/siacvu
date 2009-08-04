@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(PeriodoReferenciaForm form)
         {
-        
             var periodoReferencia = periodoReferenciaMapper.Map(form);
+
+            periodoReferencia.CreadorPor = CurrentUser();
+            periodoReferencia.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(periodoReferencia, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(PeriodoReferenciaForm form)
         {
-        
             var periodoReferencia = periodoReferenciaMapper.Map(form);
+
+            periodoReferencia.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(periodoReferencia, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var periodoReferencia = catalogoService.GetPeriodoReferenciaById(id);
             periodoReferencia.Activo = true;
+            periodoReferencia.ModificadoPor = CurrentUser();
             catalogoService.SavePeriodoReferencia(periodoReferencia);
 
             var form = periodoReferenciaMapper.Map(periodoReferencia);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var periodoReferencia = catalogoService.GetPeriodoReferenciaById(id);
             periodoReferencia.Activo = false;
+            periodoReferencia.ModificadoPor = CurrentUser();
             catalogoService.SavePeriodoReferencia(periodoReferencia);
 
             var form = periodoReferenciaMapper.Map(periodoReferencia);

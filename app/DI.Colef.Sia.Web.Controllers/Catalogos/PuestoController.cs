@@ -49,13 +49,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(PuestoForm form)
         {
             var puesto = puestoMapper.Map(form);
+
+            puesto.CreadorPor = CurrentUser();
+            puesto.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(puesto, form, Title.New))
                 return ViewNew();
@@ -72,6 +75,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var puesto = puestoMapper.Map(form);
 
+            puesto.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(puesto, form, Title.Edit))
                 return ViewEdit();
 
@@ -86,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var puesto = catalogoService.GetPuestoById(id);
             puesto.Activo = true;
+            puesto.ModificadoPor = CurrentUser();
             catalogoService.SavePuesto(puesto);
 
             var form = puestoMapper.Map(puesto);
@@ -99,6 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var puesto = catalogoService.GetPuestoById(id);
             puesto.Activo = false;
+            puesto.ModificadoPor = CurrentUser();
             catalogoService.SavePuesto(puesto);
 
             var form = puestoMapper.Map(puesto);

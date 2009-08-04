@@ -58,6 +58,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = rolMapper.Map(form);
 
+            rol.CreadorPor = CurrentUser();
+            rol.ModificadoPor = CurrentUser();
+
             if(!IsValidateModel(rol, form, Title.New))
                 return ViewNew();
 
@@ -73,6 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = rolMapper.Map(form);
 
+            rol.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(rol, form, Title.Edit))
                 return ViewEdit();
 
@@ -87,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = usuarioService.GetRolById(id);
             rol.Activo = true;
+            rol.ModificadoPor = CurrentUser();
             usuarioService.SaveRol(rol);
 
             var form = rolMapper.Map(rol);
@@ -100,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = usuarioService.GetRolById(id);
             rol.Activo = false;
+            rol.ModificadoPor = CurrentUser();
             usuarioService.SaveRol(rol);
 
             var form = rolMapper.Map(rol);

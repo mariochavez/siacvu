@@ -20,6 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         //Puesto
         Puesto GetPuestoById(int id);
         Puesto[] GetAllPuestos();
+        Puesto[] GetActivePuestos();
         void SavePuesto(Puesto puesto);
 
         //Sede
@@ -55,101 +56,121 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         //Idioma
         Idioma GetIdiomaById(int id);
         Idioma[] GetAllIdiomas();
+        Idioma[] GetActiveIdiomas();
         void SaveIdioma(Idioma idioma);
 
         //Pais
         Pais GetPaisById(int id);
-        Pais[] GetAllPais();
+        Pais[] GetAllPaises();
+        Pais[] GetActivePaises();
         void SavePais(Pais pais);
 
         //TipoArticulo
         TipoArticulo GetTipoArticuloById(int id);
         TipoArticulo[] GetAllTipoArticulos();
+        TipoArticulo[] GetActiveArticulos();
         void SaveTipoArticulo(TipoArticulo tipoArticulo);
 
         //Institucion
         Institucion GetInstitucionById(int id);
-        Institucion[] GetAllInstitucions();
+        Institucion[] GetAllInstituciones();
+        Institucion[] GetActiveInstituciones();
         void SaveInstitucion(Institucion institucion);
 
         //Indice
         Indice GetIndiceById(int id);
         Indice[] GetAllIndices();
+        Indice[] GetActiveIndices();
         void SaveIndice(Indice indice);
 
         //Investigador Externo
         InvestigadorExterno GetInvestigadorExternoById(int id);
         InvestigadorExterno[] GetAllInvestigadorExternos();
+        InvestigadorExterno[] GetActiveInvestigadorExternos();
         void SaveInvestigadorExterno(InvestigadorExterno investigadorExterno);
 
         //Tipo Participante
         TipoParticipante GetTipoParticipanteById(int id);
         TipoParticipante[] GetAllTipoParticipantes();
+        TipoParticipante[] GetActiveParticipantes();
         void SaveTipoParticipante(TipoParticipante tipoParticipante);
 
         //Linea Investigacion
         LineaInvestigacion GetLineaInvestigacionById(int id);
-        LineaInvestigacion[] GetAllLineaInvestigacions();
+        LineaInvestigacion[] GetAllLineaInvestigaciones();
+        LineaInvestigacion[] GetActiveLineaInvestigaciones();
         void SaveLineaInvestigacion(LineaInvestigacion lineaInvestigacion);
 
         //Tipo Actividad
         TipoActividad GetTipoActividadById(int id);
-        TipoActividad[] GetAllTipoActividads();
+        TipoActividad[] GetAllTipoActividades();
+        TipoActividad[] GetActiveActividades();
         void SaveTipoActividad(TipoActividad tipoActividad);
 
         //Area
         Area GetAreaById(int id);
         Area[] GetAllAreas();
+        Area[] GetActiveAreas();
         void SaveArea(Area area);
 
         //Disciplina
         Disciplina GetDisciplinaById(int id);
         Disciplina[] GetAllDisciplinas();
+        Disciplina[] GetActiveDisciplinas();
         void SaveDisciplina(Disciplina disciplina);
 
         //Subdisciplina
         Subdisciplina GetSubdisciplinaById(int id);
         Subdisciplina[] GetAllSubdisciplinas();
+        Subdisciplina[] GetActiveSubdisciplinas();
         void SaveSubdisciplina(Subdisciplina subdisciplina);
 
         //Linea Tematica
         LineaTematica GetLineaTematicaById(int id);
         LineaTematica[] GetAllLineaTematicas();
+        LineaTematica[] GetActiveLineaTematicas();
         void SaveLineaTematica(LineaTematica lineaTematica);
 
         //Coautor Externo
         CoautorExterno GetCoautorExternoById(int id);
         CoautorExterno[] GetAllCoautorExternos();
+        CoautorExterno[] GetActiveCoautorExternos();
         void SaveCoautorExterno(CoautorExterno coautorExterno);
 
         //Forma de participacion
         FormaParticipacion GetFormaParticipacionById(int id);
-        FormaParticipacion[] GetAllFormaParticipacions();
+        FormaParticipacion[] GetAllFormaParticipaciones();
+        FormaParticipacion[] GetActiveFormaParticipaciones();
         void SaveFormaParticipacion(FormaParticipacion formaParticipacion);
 
         //Responsable Externo del Libro
         ResponsableExterno GetResponsableExternoById(int id);
         ResponsableExterno[] GetAllResponsableExternos();
+        ResponsableExterno[] GetActiveResponsableExternos();
         void SaveResponsableExterno(ResponsableExterno responsableExterno);
 
         //Tipo de Capitulo
         TipoCapitulo GetTipoCapituloById(int id);
         TipoCapitulo[] GetAllTipoCapitulos();
+        TipoCapitulo[] GetActiveTipoCapitulos();
         void SaveTipoCapitulo(TipoCapitulo tipoCapitulo);
 
         //Tipo de Participacion
         TipoParticipacion GetTipoParticipacionById(int id);
-        TipoParticipacion[] GetAllTipoParticipacions();
+        TipoParticipacion[] GetAllTipoParticipaciones();
+        TipoParticipacion[] GetActiveTipoParticipaciones();
         void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
 
         //Periodo de Referencia
         PeriodoReferencia GetPeriodoReferenciaById(int id);
         PeriodoReferencia[] GetAllPeriodoReferencias();
+        PeriodoReferencia[] GetActivePeriodoReferencias();
         void SavePeriodoReferencia(PeriodoReferencia periodoReferencia);
 
         //Revista de Publicacion
         RevistaPublicacion GetRevistaPublicacionById(int id);
-        RevistaPublicacion[] GetAllRevistaPublicacions();
+        RevistaPublicacion[] GetAllRevistaPublicaciones();
+        RevistaPublicacion[] GetActiveRevistaPublicaciones();
         void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion);
     }
 }

@@ -58,8 +58,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EstadoForm form)
         {
-        
             var estado = estadoMapper.Map(form);
+
+            estado.CreadorPor = CurrentUser();
+            estado.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(estado, form, Title.New))
                 return ViewNew();
@@ -74,8 +76,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EstadoForm form)
         {
-        
             var estado = estadoMapper.Map(form);
+
+            estado.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(estado, form, Title.Edit))
                 return ViewEdit();
@@ -91,6 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var estado = catalogoService.GetEstadoById(id);
             estado.Activo = true;
+            estado.ModificadoPor = CurrentUser();
             catalogoService.SaveEstado(estado);
 
             var form = estadoMapper.Map(estado);
@@ -104,6 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var estado = catalogoService.GetEstadoById(id);
             estado.Activo = false;
+            estado.ModificadoPor = CurrentUser();
             catalogoService.SaveEstado(estado);
 
             var form = estadoMapper.Map(estado);

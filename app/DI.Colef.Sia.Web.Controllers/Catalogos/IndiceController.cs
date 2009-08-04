@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(IndiceForm form)
         {
-        
             var indice = indiceMapper.Map(form);
+
+            indice.CreadorPor = CurrentUser();
+            indice.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(indice, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(IndiceForm form)
         {
-        
             var indice = indiceMapper.Map(form);
+
+            indice.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(indice, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var indice = catalogoService.GetIndiceById(id);
             indice.Activo = true;
+            indice.ModificadoPor = CurrentUser();
             catalogoService.SaveIndice(indice);
 
             var form = indiceMapper.Map(indice);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var indice = catalogoService.GetIndiceById(id);
             indice.Activo = false;
+            indice.ModificadoPor = CurrentUser();
             catalogoService.SaveIndice(indice);
 
             var form = indiceMapper.Map(indice);

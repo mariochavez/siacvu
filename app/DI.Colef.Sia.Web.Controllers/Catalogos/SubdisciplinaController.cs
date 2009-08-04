@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(SubdisciplinaForm form)
         {
-        
             var subdisciplina = subdisciplinaMapper.Map(form);
+
+            subdisciplina.CreadorPor = CurrentUser();
+            subdisciplina.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(subdisciplina, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(SubdisciplinaForm form)
         {
-        
             var subdisciplina = subdisciplinaMapper.Map(form);
+
+            subdisciplina.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(subdisciplina, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var subdisciplina = catalogoService.GetSubdisciplinaById(id);
             subdisciplina.Activo = true;
+            subdisciplina.ModificadoPor = CurrentUser();
             catalogoService.SaveSubdisciplina(subdisciplina);
 
             var form = subdisciplinaMapper.Map(subdisciplina);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var subdisciplina = catalogoService.GetSubdisciplinaById(id);
             subdisciplina.Activo = false;
+            subdisciplina.ModificadoPor = CurrentUser();
             catalogoService.SaveSubdisciplina(subdisciplina);
 
             var form = subdisciplinaMapper.Map(subdisciplina);

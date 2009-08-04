@@ -2,10 +2,8 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -60,6 +58,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var departamento = departamentoMapper.Map(form);
 
+            departamento.CreadorPor = CurrentUser();
+            departamento.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(departamento, form, Title.New))
                 return ViewNew();
 
@@ -75,6 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var departamento = departamentoMapper.Map(form);
 
+            departamento.ModificadoPor = CurrentUser();
+
             if (!IsValidateModel(departamento, form, Title.Edit))
                 return ViewEdit();
 
@@ -89,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var departamento = catalogoService.GetDepartamentoById(id);
             departamento.Activo = true;
+            departamento.ModificadoPor = CurrentUser();
             catalogoService.SaveDepartamento(departamento);
 
             var form = departamentoMapper.Map(departamento);
@@ -102,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var departamento = catalogoService.GetDepartamentoById(id);
             departamento.Activo = false;
+            departamento.ModificadoPor = CurrentUser();
             catalogoService.SaveDepartamento(departamento);
 
             var form = departamentoMapper.Map(departamento);

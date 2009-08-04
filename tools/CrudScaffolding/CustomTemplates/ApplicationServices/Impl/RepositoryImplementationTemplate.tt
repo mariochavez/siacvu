@@ -32,7 +32,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public <#= EntityScaffoldingDetails.EntityName #>[] GetAll<#= EntityScaffoldingDetails.EntityNamePlural #>()
         {
-            return ((List<<#= EntityScaffoldingDetails.EntityName #>>) <#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.GetAll()).ToArray();
+			return ((List<<#= EntityScaffoldingDetails.EntityName #>>)OrderCatalog<<#= EntityScaffoldingDetails.EntityName #>>()).ToArray();
+        }
+        
+        public <#= EntityScaffoldingDetails.EntityName #>[] GetActive<#= EntityScaffoldingDetails.EntityNamePlural #>()
+        {
+            return ((List<<#= EntityScaffoldingDetails.EntityName #>>)<#= EntityScaffoldingDetails.EntityNameCamelCase #>Repository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityName #> <#= EntityScaffoldingDetails.EntityNameCamelCase #>)

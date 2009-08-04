@@ -39,7 +39,7 @@ public class NewNewTemplate : BaseTemplate
 					<#+ } #>
 					
 					<#+ if(property.TypeName == "DateTime"){#>
-						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 10 })%>
+						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { @class="datetime", maxlength = 10 })%>
                         <span class="helper_message">(Formato dd/mm/yyyy)</span>
                         <%=Html.ValidationMessage("<#= property.PropertyName #>")%>
 					<#+ } #>

@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoArticuloForm form)
         {
-        
             var tipoArticulo = tipoArticuloMapper.Map(form);
+
+            tipoArticulo.CreadorPor = CurrentUser();
+            tipoArticulo.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoArticulo, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoArticuloForm form)
         {
-        
             var tipoArticulo = tipoArticuloMapper.Map(form);
+
+            tipoArticulo.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoArticulo, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoArticulo = catalogoService.GetTipoArticuloById(id);
             tipoArticulo.Activo = true;
+            tipoArticulo.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoArticulo(tipoArticulo);
 
             var form = tipoArticuloMapper.Map(tipoArticulo);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var tipoArticulo = catalogoService.GetTipoArticuloById(id);
             tipoArticulo.Activo = false;
+            tipoArticulo.ModificadoPor = CurrentUser();
             catalogoService.SaveTipoArticulo(tipoArticulo);
 
             var form = tipoArticuloMapper.Map(tipoArticulo);

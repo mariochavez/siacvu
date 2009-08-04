@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(InvestigadorExternoForm form)
         {
-        
             var investigadorExterno = investigadorExternoMapper.Map(form);
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(investigadorExterno, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(InvestigadorExternoForm form)
         {
-        
             var investigadorExterno = investigadorExternoMapper.Map(form);
+
+            investigadorExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(investigadorExterno, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var investigadorExterno = catalogoService.GetInvestigadorExternoById(id);
             investigadorExterno.Activo = true;
+            investigadorExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
             var form = investigadorExternoMapper.Map(investigadorExterno);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var investigadorExterno = catalogoService.GetInvestigadorExternoById(id);
             investigadorExterno.Activo = false;
+            investigadorExterno.ModificadoPor = CurrentUser();
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
             var form = investigadorExternoMapper.Map(investigadorExterno);

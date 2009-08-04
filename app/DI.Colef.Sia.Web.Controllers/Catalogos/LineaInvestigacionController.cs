@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var lineaInvestigacions = catalogoService.GetAllLineaInvestigacions();
+            var lineaInvestigacions = catalogoService.GetAllLineaInvestigaciones();
             data.List = lineaInvestigacionMapper.Map(lineaInvestigacions);
 
             return View(data);
@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(LineaInvestigacionForm form)
         {
-        
             var lineaInvestigacion = lineaInvestigacionMapper.Map(form);
+
+            lineaInvestigacion.CreadorPor = CurrentUser();
+            lineaInvestigacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(lineaInvestigacion, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LineaInvestigacionForm form)
         {
-        
             var lineaInvestigacion = lineaInvestigacionMapper.Map(form);
+
+            lineaInvestigacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(lineaInvestigacion, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var lineaInvestigacion = catalogoService.GetLineaInvestigacionById(id);
             lineaInvestigacion.Activo = true;
+            lineaInvestigacion.ModificadoPor = CurrentUser();
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
             var form = lineaInvestigacionMapper.Map(lineaInvestigacion);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var lineaInvestigacion = catalogoService.GetLineaInvestigacionById(id);
             lineaInvestigacion.Activo = false;
+            lineaInvestigacion.ModificadoPor = CurrentUser();
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
             var form = lineaInvestigacionMapper.Map(lineaInvestigacion);

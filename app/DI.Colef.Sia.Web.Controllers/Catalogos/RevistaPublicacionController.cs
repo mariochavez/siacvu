@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var revistaPublicacions = catalogoService.GetAllRevistaPublicacions();
+            var revistaPublicacions = catalogoService.GetAllRevistaPublicaciones();
             data.List = revistaPublicacionMapper.Map(revistaPublicacions);
 
             return View(data);
@@ -72,6 +72,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var revistaPublicacion = revistaPublicacionMapper.Map(form);
 
+            revistaPublicacion.CreadorPor = CurrentUser();
+            revistaPublicacion.ModificadoPor = CurrentUser();
+
             if(!IsValidateModel(revistaPublicacion, form, Title.New))
                 return ViewNew();
 
@@ -85,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(RevistaPublicacionForm form)
         {
-        
             var revistaPublicacion = revistaPublicacionMapper.Map(form);
+
+            revistaPublicacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(revistaPublicacion, form, Title.Edit))
                 return ViewEdit();
@@ -102,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             revistaPublicacion.Activo = true;
+            revistaPublicacion.ModificadoPor = CurrentUser();
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
             var form = revistaPublicacionMapper.Map(revistaPublicacion);
@@ -115,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             revistaPublicacion.Activo = false;
+            revistaPublicacion.ModificadoPor = CurrentUser();
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
             var form = revistaPublicacionMapper.Map(revistaPublicacion);

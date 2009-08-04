@@ -70,8 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(LineaTematicaForm form)
         {
-        
             var lineaTematica = lineaTematicaMapper.Map(form);
+
+            lineaTematica.CreadorPor = CurrentUser();
+            lineaTematica.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(lineaTematica, form, Title.New))
                 return ViewNew();
@@ -86,8 +88,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LineaTematicaForm form)
         {
-        
             var lineaTematica = lineaTematicaMapper.Map(form);
+
+            lineaTematica.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(lineaTematica, form, Title.Edit))
                 return ViewEdit();
@@ -103,6 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var lineaTematica = catalogoService.GetLineaTematicaById(id);
             lineaTematica.Activo = true;
+            lineaTematica.ModificadoPor = CurrentUser();
             catalogoService.SaveLineaTematica(lineaTematica);
 
             var form = lineaTematicaMapper.Map(lineaTematica);
@@ -116,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var lineaTematica = catalogoService.GetLineaTematicaById(id);
             lineaTematica.Activo = false;
+            lineaTematica.ModificadoPor = CurrentUser();
             catalogoService.SaveLineaTematica(lineaTematica);
 
             var form = lineaTematicaMapper.Map(lineaTematica);
