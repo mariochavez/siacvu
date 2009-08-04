@@ -110,8 +110,15 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         protected IList<T> OrderCatalog<T>()
         {
+            return OrderCatalog<T>(null);
+        }
+
+        protected IList<T> OrderCatalog<T>(string campo)
+        {
+            campo = campo ?? "Nombre";
+
             var list = Session.CreateCriteria(typeof(T))
-                .AddOrder(Order.Asc("Nombre"))
+                .AddOrder(Order.Asc(campo))
                 .List<T>();
 
             return list;
@@ -826,7 +833,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public PeriodoReferencia[] GetAllPeriodoReferencias()
         {
-            return ((List<PeriodoReferencia>)OrderCatalog<PeriodoReferencia>()).ToArray();
+            return ((List<PeriodoReferencia>)OrderCatalog<PeriodoReferencia>("Orden")).ToArray();
         }
 
         public PeriodoReferencia[] GetActivePeriodoReferencias()
@@ -853,7 +860,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public RevistaPublicacion[] GetAllRevistaPublicaciones()
         {
-            return ((List<RevistaPublicacion>)OrderCatalog<RevistaPublicacion>()).ToArray();
+            return ((List<RevistaPublicacion>)OrderCatalog<RevistaPublicacion>("Titulo")).ToArray();
         }
 
         public RevistaPublicacion[] GetActiveRevistaPublicaciones()
