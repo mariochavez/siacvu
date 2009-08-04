@@ -40,7 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(InvestigadorForm message, Investigador model)
         {
-            model.Usuario = usuarioService.GetUsuarioById(message.Usuario);
+            if (model.IsTransient())
+            {
+                model.Usuario = usuarioService.GetUsuarioById(message.Usuario);
+            }
             model.FechaIngreso = message.FechaIngreso.FromShortDateToDateTime();
 
             if(message.CargoInvestigador != null)

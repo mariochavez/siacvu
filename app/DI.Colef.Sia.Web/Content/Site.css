@@ -352,11 +352,40 @@ table td.single {
 
 table.form {
 	border-collapse: collapse;
-	margin: 0px;
+	margin: 0px 0px 5px 0px;
 	padding: 0px;
 	width: 100%;
 	border-color: gray;
 	display: table;
+}
+
+table.form th 
+{
+    border-bottom: 1px solid rgb(221, 221, 221);
+    background-color: #dddddd;
+	font-size: 14px;
+	font-weight: bold;
+	height: 25px;
+	padding: 10px 0px 0px 25px;
+}
+
+table.form th.subform 
+{
+    border-bottom: 1px solid rgb(221, 221, 221);
+    background-color: #eeeeee;
+	font-size: 10px;
+	font-weight: bold;
+	height: 10px;
+	padding: 0px 0px 0px 10px;
+}
+
+table.form td.subform {
+	border-bottom: 1px solid rgb(221, 221, 221);
+	font-size: 12px;
+	padding: 5px 5px 5px 5px;
+	line-height: 2em;
+	text-align: left;
+	margin: 0px;
 }
 
 table.form td {
@@ -471,6 +500,31 @@ table.form td.field textarea
 	display: block;
 	width: auto;
 	border: 0px none;
+}
+
+.btn_small_brown {
+	background: transparent url(/Content/Images/small-brown-button.png) no-repeat scroll left top;
+	height: 20px;
+	font-family: Helvetica, Arial, 'Lucida Grande', Verdana, sans-serif;
+	font-size: 10px;
+}
+
+.btn_small_brown a {
+	background: transparent url(/Content/Images/small-brown-button.png) no-repeat scroll right top;
+	line-height: 20px;
+	padding: 0px 10px 2px 7px;
+	display: block;
+	width: auto;
+	border: 0px none;
+	color: rgb(255, 255, 255);
+}
+
+.btn_small_brown input {
+	background: transparent url(/Content/Images/small-brown-button.png) no-repeat scroll right top;
+	line-height: 0em;
+	padding: 0px 10px 5px 7px;
+    border: 0px none;
+	color: rgb(255, 255, 255);
 }
 
 .btn_medium_brown {

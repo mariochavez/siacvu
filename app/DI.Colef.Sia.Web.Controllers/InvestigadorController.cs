@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -23,6 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISedeMapper sedeMapper;
         readonly IDepartamentoMapper departamentoMapper;
         readonly ISNIMapper sniMapper;
+        readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
 
         public InvestigadorController(IInvestigadorService investigadorService,
             IUsuarioService usuarioService,
@@ -35,7 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ICargoMapper cargoMapper,
             ISedeMapper sedeMapper,
             IDepartamentoMapper departamentoMapper,
-            ISNIMapper sniMapper) : base(usuarioService)
+            ISNIMapper sniMapper,
+            IEstadoInvestigadorMapper estadoInvestigadorMapper) : base(usuarioService)
         {
             this.investigadorService = investigadorService;
             this.catalogoService = catalogoService;
@@ -48,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.sedeMapper = sedeMapper;
             this.departamentoMapper = departamentoMapper;
             this.sniMapper = sniMapper;
+            this.estadoInvestigadorMapper = estadoInvestigadorMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -76,6 +80,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var investigador = investigadorService.GetInvestigadorById(id);
+            if(investigador == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
             data.Form = investigadorMapper.Map(investigador);
 
 			ViewData.Model = data;
@@ -125,7 +132,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "investigador.Nombre"));
+            return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Persona.Nombre,
+                investigador.Usuario.Persona.ApellidoPaterno, investigador.Usuario.Persona.ApellidoMaterno));
         }
         
         [Transaction]
@@ -153,6 +161,45 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             
             return Rjs("Activate", form);
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewEstado(int id)
+        {
+            var investigador = investigadorService.GetInvestigadorById(id);
+            var form = new InvestigadorForm
+                           {
+                               Id = investigador.Id,
+                               EstadoInvestigador = new EstadoInvestigadorForm(),
+                               Estados = estadoMapper.Map(catalogoService.GetActiveEstados())
+                           };
+
+            return Rjs("NewEstado", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEstado([Bind(Prefix = "EstadoInvestigador")]EstadoInvestigadorForm form, int investigadorId)
+        {
+            var estadoInvestigador =  estadoInvestigadorMapper.Map(form);
+
+            ModelState.AddModelErrors(estadoInvestigador.ValidationResults(), true, String.Empty);
+            if(!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            estadoInvestigador.CreadorPor = CurrentUser();
+            estadoInvestigador.ModificadoPor = CurrentUser();
+
+            var investigador = investigadorService.GetInvestigadorById(investigadorId);
+            investigador.AddEstado(estadoInvestigador);
+            investigadorService.SaveInvestigador(investigador);
+
+            var estadoInvestigadorForm = estadoInvestigadorMapper.Map(estadoInvestigador);
+
+            return Rjs("AddEstado", estadoInvestigadorForm);
+        }
+
 
         InvestigadorForm SetupNewForm()
         {

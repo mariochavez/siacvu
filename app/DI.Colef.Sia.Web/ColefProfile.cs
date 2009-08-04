@@ -48,7 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Fecha,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Estado,
+                           o => o.Ignore());
 
             Mapper.CreateMap<GradoAcademicoInvestigador, GradoAcademicoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,

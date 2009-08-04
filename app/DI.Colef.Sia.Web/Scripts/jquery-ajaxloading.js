@@ -13,7 +13,7 @@
 
     $.fn.removeLoading = function() {
         return this.each(function() {
-            $(this).parent().find('.ajax-loading').remove();
+            $(this).parent().parent().find('.ajax-loading').remove();
         });
     }
 

@@ -319,6 +319,9 @@
     <Content Include="Views\Catalogos\SNI\New.aspx" />
     <Content Include="Views\Catalogos\SNI\_Form.ascx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
+    <Content Include="Views\Investigador\AddEstado.js.ascx" />
+    <Content Include="Views\Investigador\NewEstado.js.ascx" />
+    <Content Include="Views\Investigador\Edit.aspx" />
     <Content Include="Views\Investigador\_NewCategoria.ascx" />
     <Content Include="Views\Investigador\_NewCargo.ascx" />
     <Content Include="Views\Investigador\_NewSni.ascx" />
@@ -361,6 +364,7 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\ModelError.js.ascx" />
     <Content Include="Views\Shared\_Message.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

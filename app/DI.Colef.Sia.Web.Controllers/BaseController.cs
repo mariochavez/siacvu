@@ -30,14 +30,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected Usuario CurrentUser()
         {
             // TODO: Get username from authentication cookie
-            var username = "admin";
+            var username = "administrador";
 
             return usuarioService.GetUsuarioByUserName(username);
         }
 
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
-            SetMessage(string.Format("El {0} {1}", GetObjectName(false), message));
+            return RedirectToAction(message, false);
+        }
+
+        protected RedirectToRouteResult RedirectToIndex(string message, bool error)
+        {
+            if (error)
+                SetError(String.Format("El {0} {1}", GetObjectName(false), message));
+            else
+                SetMessage(String.Format("El {0} {1}", GetObjectName(false), message));
             return RedirectToAction("Index");
         }
 
@@ -128,12 +136,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected void SetError(string message)
         {
-            ViewData["error"] = message;
+            TempData["error"] = message;
         }
 
-        protected ContentResult Rjs(string viewName, object model)
+        protected ContentResult Rjs(string viewName, ViewDataDictionary viewdata)
         {
-            var output = this.RenderPartialToString(viewName, model);
+            var output = this.RenderPartialToString(viewName, viewdata);
             output = output.Replace("\n", " ");
             output = output.Replace("\r", " ");
 
@@ -141,15 +149,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(output);
         }
 
+        protected ContentResult Rjs(string viewName, object model)
+        {
+            ViewData.Model = model;
+            return Rjs(viewName, ViewData);
+        }
+
         protected ContentResult Rjs(string viewName)
         {
-            return Rjs(viewName, null);
+            return Rjs(viewName, ViewData);
         }
 
         protected ContentResult Rjs(object model)
         {
             var viewName = ControllerContext.RouteData.Values["action"].ToString();
-            return Rjs(viewName, model);
+            ViewData.Model = model;
+            return Rjs(viewName, ViewData);
         }
+
+        //protected ContentResult Rjs(ViewDataDictionary viewData)
+        //{
+        //    var viewName = ControllerContext.RouteData.Values["action"].ToString();
+        //    return Rjs(viewName, viewData);
+        //}
+
+        //protected ContentResult Rjs(string viewName, ViewDataDictionary viewData)
+        //{
+        //    var output = this.RenderPartialToString(viewName, viewData);
+        //    output = output.Replace("\n", " ");
+        //    output = output.Replace("\r", " ");
+
+        //    output = "try { " + output + " } catch(e) { alert(e); }";
+        //    return Content(output);
+        //}
     }
 }
