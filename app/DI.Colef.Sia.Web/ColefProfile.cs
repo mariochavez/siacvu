@@ -56,19 +56,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Fecha,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.GradoAcademico,
+                           o => o.Ignore());
 
             Mapper.CreateMap<CategoriaInvestigador, CategoriaInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Fecha,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Categoria,
+                           o => o.Ignore());
 
             Mapper.CreateMap<CargoInvestigador, CargoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Fecha,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Cargo,
+                           o => o.Ignore())
+                .ForMember(d => d.Departamento,
+                           o => o.Ignore())
+                .ForMember(d => d.Sede,
+                           o => o.Ignore());
 
             Mapper.CreateMap<SNIInvestigador, SNIInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
@@ -76,7 +86,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaInicial,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.SNI,
+                           o => o.Ignore());
         }
 
         void CreateCatalogosMaps()

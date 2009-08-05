@@ -11,6 +11,9 @@ var html = '
     </tr>
 ';
 
+$('#message').html('');
+$('#message').removeClass('errormessage');
+
 $('#estado_form').hide();
 $('#estado_new').show();
 $('#estado_form').html('');

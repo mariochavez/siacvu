@@ -39,24 +39,7 @@
                    <label>Estados:</label>
                 </td>
                 <td class="field">
-                    <table class="form" id="estadoList">
-                        <tr>
-                            <th class="subform">Estado</th>
-                        </tr>
-                        <% foreach(var estado in Model.Form.EstadosInvestigador) { %>
-                        <tr id="estado_<%=Html.Encode(estado.Id) %>">
-                            <td class="subform">
-                                <%=Html.Encode(estado.EstadoNombre) %> <span class="meta_info"><%=Html.Encode(estado.Fecha) %></span>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </table>
-                    <div id="estado_new" class="floatl btn_container">
-					    <span class="btn btn_small_white">
-						    <%=Html.ActionLink("+ Nuevo Estado", "NewEstado", new { Id = Model.Form.Id }, new { @class = "remote get" })%>
-						</span>
-					</div>
-					<div id="estado_form" class="display:hidden;"></div>
+                    <% Html.RenderPartial("_EditEstado", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -64,7 +47,7 @@
                    <label>Grado:<em>*</em></label>
                 </td>
                 <td class="field">
-                    
+                    <% Html.RenderPartial("_EditGrado", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -72,7 +55,7 @@
                    <label>Categoria:<em>*</em></label>
                 </td>
                 <td class="field">
-                    
+                    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -80,7 +63,7 @@
                    <label>Cargo:<em>*</em></label>
                 </td>
                 <td class="field">
-                    
+                    <% Html.RenderPartial("_EditCargo", Model.Form); %>
                 </td>
             </tr>
             <tr>
@@ -88,7 +71,7 @@
                    <label>SNI:<em>*</em></label>
                 </td>
                 <td class="field">
-                    
+                    <% Html.RenderPartial("_EditSni", Model.Form); %>
                 </td>
             </tr>                                               
         </table>

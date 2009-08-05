@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             EstadosInvestigador = new List<EstadoInvestigador>();
             GradosAcademicosInvestigador = new List<GradoAcademicoInvestigador>();
-            CargosAcademicosInvestigador = new List<CargoInvestigador>();
+            CargosInvestigador = new List<CargoInvestigador>();
             SNIsInvestigador = new List<SNIInvestigador>();
             CategoriasInvestigador = new List<CategoriaInvestigador>();
         }
@@ -31,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddCargo(CargoInvestigador cargoInvestigador)
         {
-            CargosAcademicosInvestigador.Add(cargoInvestigador);
+            CargosInvestigador.Add(cargoInvestigador);
         }
 
         public virtual void AddSNI(SNIInvestigador sniInvestigador)
@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotEmpty]
         [Valid]
-        public virtual IList<CargoInvestigador> CargosAcademicosInvestigador { get; private set; }
+        public virtual IList<CargoInvestigador> CargosInvestigador { get; private set; }
 
         [NotEmpty]
         [Valid]

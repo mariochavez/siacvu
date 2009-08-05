@@ -23,7 +23,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         }
 
         public EstadoInvestigadorForm[] EstadosInvestigador { get; set; }
-
+        public GradoAcademicoInvestigadorForm[] GradosAcademicosInvestigador { get; set; }
+        public CategoriaInvestigadorForm[] CategoriasInvestigador { get; set; }
+        public CargoInvestigadorForm[] CargosInvestigador { get; set; }
+        public SNIInvestigadorForm[] SNIsInvestigador { get; set; }
 
         /* New */
         public EstadoInvestigadorForm EstadoInvestigador { get; set; }

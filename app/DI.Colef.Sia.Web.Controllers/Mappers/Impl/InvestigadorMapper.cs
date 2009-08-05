@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -69,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.CreadorPor = usuario;
-                model.CargosAcademicosInvestigador[0].CreadorPor = usuario;
+                model.CargosInvestigador[0].CreadorPor = usuario;
                 model.CategoriasInvestigador[0].CreadorPor = usuario;
                 model.EstadosInvestigador[0].CreadorPor = usuario;
                 model.GradosAcademicosInvestigador[0].CreadorPor = usuario;
@@ -77,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             model.ModificadoPor = usuario;
-            model.CargosAcademicosInvestigador[0].ModificadoPor = usuario;
+            model.CargosInvestigador[0].ModificadoPor = usuario;
             model.CategoriasInvestigador[0].ModificadoPor = usuario;
             model.EstadosInvestigador[0].ModificadoPor = usuario;
             model.GradosAcademicosInvestigador[0].ModificadoPor = usuario;

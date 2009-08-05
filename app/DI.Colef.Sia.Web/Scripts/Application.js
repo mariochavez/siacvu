@@ -37,11 +37,16 @@ var SubForm = {
 
 var DateTimePicker = {
     setup: function() {
-        $('input.datetime').each(function() {
-            $(this).datepicker($.datepicker.regional['es']);
-            $(this).datepicker('option', { dateFormat: 'dd/mm/yy', changeMonth: true, changeYear: true });
+        $.datepicker.setDefaults($.datepicker.regional['fr']);
+        $.datepicker.setDefaults({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true, 
+            changeYear: true
         });
-    }
+    $('input.datetime').each(function() {
+        $(this).datepicker();
+    });
+}
 };
 
 var RemoteForm = {

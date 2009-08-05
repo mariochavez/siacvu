@@ -37,7 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
-            return RedirectToAction(message, false);
+            SetMessage(message);
+            return RedirectToAction("Index");
         }
 
         protected RedirectToRouteResult RedirectToIndex(string message, bool error)
@@ -166,21 +167,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData.Model = model;
             return Rjs(viewName, ViewData);
         }
-
-        //protected ContentResult Rjs(ViewDataDictionary viewData)
-        //{
-        //    var viewName = ControllerContext.RouteData.Values["action"].ToString();
-        //    return Rjs(viewName, viewData);
-        //}
-
-        //protected ContentResult Rjs(string viewName, ViewDataDictionary viewData)
-        //{
-        //    var output = this.RenderPartialToString(viewName, viewData);
-        //    output = output.Replace("\n", " ");
-        //    output = output.Replace("\r", " ");
-
-        //    output = "try { " + output + " } catch(e) { alert(e); }";
-        //    return Content(output);
-        //}
     }
 }
