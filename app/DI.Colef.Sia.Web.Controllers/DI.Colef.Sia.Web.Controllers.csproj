@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticuloController.cs" />
     <Compile Include="Catalogos\AreaController.cs" />
     <Compile Include="Catalogos\CategoriaController.cs" />
     <Compile Include="Catalogos\CoautorExternoController.cs" />
@@ -119,8 +120,12 @@
     </Compile>
     <Compile Include="InvestigadorController.cs" />
     <Compile Include="Mappers\AutoFormMapper.cs" />
+    <Compile Include="Mappers\IArticuloMapper.cs" />
     <Compile Include="Mappers\ICargoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\ICoautorExternoArticuloMapper.cs" />
+    <Compile Include="Mappers\ICoautorInternoArticuloMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\Impl\ArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CargoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaInvestigadorMapper.cs" />
     <Compile Include="Mappers\Formatters\StandardDateFormatter.cs" />
@@ -148,7 +153,9 @@
     <Compile Include="Mappers\Impl\AreaMapper.cs" />
     <Compile Include="Mappers\Impl\CargoMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaMapper.cs" />
+    <Compile Include="Mappers\Impl\CoautorExternoArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoMapper.cs" />
+    <Compile Include="Mappers\Impl\CoautorInternoArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoInvestigadorMapper.cs" />
@@ -198,11 +205,14 @@
     <Compile Include="Mappers\ITipoParticipacionMapper.cs" />
     <Compile Include="Mappers\ITipoParticipanteMapper.cs" />
     <Compile Include="Models\AreaForm.cs" />
+    <Compile Include="Models\ArticuloForm.cs" />
     <Compile Include="Models\CargoForm.cs" />
     <Compile Include="Models\CargoInvestigadorForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\CategoriaInvestigadorForm.cs" />
+    <Compile Include="Models\CoautorExternoArticuloForm.cs" />
     <Compile Include="Models\CoautorExternoForm.cs" />
+    <Compile Include="Models\CoautorInternoArticuloForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
     <Compile Include="Models\DisciplinaForm.cs" />
     <Compile Include="Models\EstadoForm.cs" />

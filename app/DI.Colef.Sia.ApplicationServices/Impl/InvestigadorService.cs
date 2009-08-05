@@ -6,26 +6,31 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
-	public class InvestigadorService : IInvestigadorService
+    public class InvestigadorService : IInvestigadorService
     {
         readonly IRepository<Investigador> investigadorRepository;
-	    readonly IUsuarioQuerying usuarioQuerying;
+        readonly IUsuarioQuerying usuarioQuerying;
 
-	    public InvestigadorService(IRepository<Investigador> investigadorRepository,
+        public InvestigadorService(IRepository<Investigador> investigadorRepository,
             IUsuarioQuerying usuarioQuerying)
         {
             this.investigadorRepository = investigadorRepository;
             this.usuarioQuerying = usuarioQuerying;
         }
 
-	    public Investigador GetInvestigadorById(int id)
+        public Investigador GetInvestigadorById(int id)
         {
             return investigadorRepository.Get(id);
         }
 
         public Investigador[] GetAllInvestigadors()
         {
-            return ((List<Investigador>) investigadorRepository.GetAll()).ToArray();
+            return ((List<Investigador>)investigadorRepository.GetAll()).ToArray();
+        }
+
+        public Investigador[] GetActiveInvestigadorInternos()
+        {
+            return ((List<Investigador>)investigadorRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveInvestigador(Investigador investigador)
@@ -40,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             investigadorRepository.SaveOrUpdate(investigador);
         }
 
-	    public Usuario[] FindUsuariosToBeInvestigador()
+        public Usuario[] FindUsuariosToBeInvestigador()
         {
             return usuarioQuerying.FindUsuariosToBeInvestigador();
         }

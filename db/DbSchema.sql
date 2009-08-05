@@ -343,6 +343,114 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14FC6EB68FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulos'))
+alter table CoautorExternoArticulos  drop constraint FK14FC6EB68FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14FC6EB685102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulos'))
+alter table CoautorExternoArticulos  drop constraint FK14FC6EB685102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14FC6EB674E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulos'))
+alter table CoautorExternoArticulos  drop constraint FK14FC6EB674E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14FC6EB6FCE29076]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulos'))
+alter table CoautorExternoArticulos  drop constraint FK14FC6EB6FCE29076
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2AED08208336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulos'))
+alter table CoautorInternoArticulos  drop constraint FK2AED08208336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2AED082085102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulos'))
+alter table CoautorInternoArticulos  drop constraint FK2AED082085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2AED082074E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulos'))
+alter table CoautorInternoArticulos  drop constraint FK2AED082074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2AED0820FCE29076]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulos'))
+alter table CoautorInternoArticulos  drop constraint FK2AED0820FCE29076
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D73C5C6337]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D73C5C6337
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D76425E2FD]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D76425E2FD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7C6BB3B45]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7C6BB3B45
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D711666E2A]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D711666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D71EDC2D3B]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D71EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D77A8488F7]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D77A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D72AF31B56]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D72AF31B56
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D764F7D1CD]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D764F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D741CFD2F4]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D741CFD2F4
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7B9B574C5]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7B9B574C5
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D761CF922]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D761CF922
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D720BCCBEB]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D720BCCBEB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D71BCB3374]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D71BCB3374
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7437DED87]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7437DED87
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7295BC133]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7295BC133
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7BC063744]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7BC063744
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7F4FE4035]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7F4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D785102A57]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D774E8BAB7]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D774E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -419,6 +527,12 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoArticulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoArticulos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoArticulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoArticulos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Articulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Articulos
+
     create table SNIs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -449,7 +563,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        Issn NVARCHAR(255) null,
        Detalle NVARCHAR(255) null,
        Tipo NVARCHAR(255) null,
-       Estado BIT null,
+       Estado NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -547,7 +661,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table LineaTematicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       Descripcion NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -868,6 +981,67 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorExternoArticulos (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ArticuloFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorInternoArticulos (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ArticuloFk INT null,
+       primary key (Id)
+    )
+
+    create table Articulos (
+        Id INT IDENTITY NOT NULL,
+       FechaAceptacion DATETIME null,
+       Titulo NVARCHAR(255) null,
+       Volumen NVARCHAR(255) null,
+       Numero INT null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       FechaEdicion DATETIME null,
+       Particpantes INT null,
+       PalabrasClaves NVARCHAR(255) null,
+       FechaPublicacion DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoArticuloFk INT null,
+       IdiomaFk INT null,
+       EstadoFk INT null,
+       PeriodoReferenciaFk INT null,
+       LineaTematicaFk INT null,
+       PaisFk INT null,
+       RevistaPublicacionFk INT null,
+       InstitucionFk INT null,
+       Indice1Fk INT null,
+       Indice2Fk INT null,
+       Indice3Fk INT null,
+       LineaInvestigacionFk INT null,
+       TipoActividadFk INT null,
+       TipoParticipanteFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
+       SubdisciplinaFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -1300,3 +1474,138 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table CoautorExternoArticulos 
+        add constraint FK14FC6EB68FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoArticulos 
+        add constraint FK14FC6EB685102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoArticulos 
+        add constraint FK14FC6EB674E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoArticulos 
+        add constraint FK14FC6EB6FCE29076 
+        foreign key (ArticuloFk) 
+        references Articulos
+
+    alter table CoautorInternoArticulos 
+        add constraint FK2AED08208336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoArticulos 
+        add constraint FK2AED082085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoArticulos 
+        add constraint FK2AED082074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoArticulos 
+        add constraint FK2AED0820FCE29076 
+        foreign key (ArticuloFk) 
+        references Articulos
+
+    alter table Articulos 
+        add constraint FK3EB394D73C5C6337 
+        foreign key (TipoArticuloFk) 
+        references TipoArticulos
+
+    alter table Articulos 
+        add constraint FK3EB394D76425E2FD 
+        foreign key (IdiomaFk) 
+        references Idiomas
+
+    alter table Articulos 
+        add constraint FK3EB394D7C6BB3B45 
+        foreign key (EstadoFk) 
+        references Estados
+
+    alter table Articulos 
+        add constraint FK3EB394D711666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Articulos 
+        add constraint FK3EB394D71EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Articulos 
+        add constraint FK3EB394D77A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Articulos 
+        add constraint FK3EB394D72AF31B56 
+        foreign key (RevistaPublicacionFk) 
+        references RevistaPublicaciones
+
+    alter table Articulos 
+        add constraint FK3EB394D764F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Articulos 
+        add constraint FK3EB394D741CFD2F4 
+        foreign key (Indice1Fk) 
+        references Indices
+
+    alter table Articulos 
+        add constraint FK3EB394D7B9B574C5 
+        foreign key (Indice2Fk) 
+        references Indices
+
+    alter table Articulos 
+        add constraint FK3EB394D761CF922 
+        foreign key (Indice3Fk) 
+        references Indices
+
+    alter table Articulos 
+        add constraint FK3EB394D720BCCBEB 
+        foreign key (LineaInvestigacionFk) 
+        references LineaInvestigaciones
+
+    alter table Articulos 
+        add constraint FK3EB394D71BCB3374 
+        foreign key (TipoActividadFk) 
+        references TipoActividades
+
+    alter table Articulos 
+        add constraint FK3EB394D7437DED87 
+        foreign key (TipoParticipanteFk) 
+        references TipoParticipantes
+
+    alter table Articulos 
+        add constraint FK3EB394D7295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Articulos 
+        add constraint FK3EB394D7BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Articulos 
+        add constraint FK3EB394D7F4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table Articulos 
+        add constraint FK3EB394D785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Articulos 
+        add constraint FK3EB394D774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios

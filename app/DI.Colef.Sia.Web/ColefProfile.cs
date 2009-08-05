@@ -31,6 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         {
 
             CreateCatalogosMaps();
+            CreateArticulosMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -89,6 +90,61 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
                            o => o.Ignore());
+        }
+
+        void CreateArticulosMaps()
+        {
+            Mapper.CreateMap<Articulo, ArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoArticulo,
+                           o => o.Ignore())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore())
+                .ForMember(d => d.Estado,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.RevistaPublicacion,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaInvestigacion,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoActividad,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoParticipante,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice1,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice2,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice3,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateCatalogosMaps()
