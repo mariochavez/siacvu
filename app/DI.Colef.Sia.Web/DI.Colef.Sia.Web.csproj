@@ -208,6 +208,12 @@
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
     <Content Include="Scripts\jquery-ajaxloading.js" />
+    <Content Include="Views\Articulo\Activate.js.ascx" />
+    <Content Include="Views\Articulo\_DatosOpcionales.ascx" />
+    <Content Include="Views\Articulo\_ReferenciaBibligrafica.ascx" />
+    <Content Include="Views\Articulo\Index.aspx" />
+    <Content Include="Views\Articulo\New.aspx" />
+    <Content Include="Views\Articulo\_DatosArticulo.ascx" />
     <Content Include="Views\Catalogos\Area\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Area\Edit.aspx" />
     <Content Include="Views\Catalogos\Area\Index.aspx" />
@@ -380,7 +386,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1062</DevelopmentServerPort>
+          <DevelopmentServerPort>7047</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

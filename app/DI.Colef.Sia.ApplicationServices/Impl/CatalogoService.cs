@@ -41,14 +41,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
-            IRepository<Departamento> departamentoRepository, 
-            IRepository<Puesto> puestoRepository, 
-            IRepository<Sede> sedeRepository, 
-            IRepository<Categoria> categoriaRepository, 
-            IRepository<GradoAcademico> gradoAcademicoRepository, 
-            IRepository<SNI> sniRepository, 
-            IRepository<Estado> estadoRepository, 
-            IRepository<Idioma> idiomaRepository, 
+            IRepository<Departamento> departamentoRepository,
+            IRepository<Puesto> puestoRepository,
+            IRepository<Sede> sedeRepository,
+            IRepository<Categoria> categoriaRepository,
+            IRepository<GradoAcademico> gradoAcademicoRepository,
+            IRepository<SNI> sniRepository,
+            IRepository<Estado> estadoRepository,
+            IRepository<Idioma> idiomaRepository,
             IRepository<Pais> paisRepository,
             IRepository<TipoArticulo> tipoArticuloRepository,
             IRepository<Institucion> institucionRepository,
@@ -185,12 +185,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Puesto[] GetAllPuestos()
         {
-            return ((List<Puesto>) OrderCatalog<Puesto>()).ToArray();
+            return ((List<Puesto>)OrderCatalog<Puesto>()).ToArray();
         }
 
         public Puesto[] GetActivePuestos()
         {
-            return ((List<Puesto>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Puesto>)puestoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SavePuesto(Puesto puesto)
@@ -325,7 +325,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Estado[] GetActiveEstados()
         {
-            return ((List<Estado>)estadoRepository.FindAll(new Dictionary<string, object> {{ "Activo", true}})).ToArray();
+            return ((List<Estado>)estadoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveEstado(Estado estado)
@@ -352,7 +352,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Idioma[] GetActiveIdiomas()
         {
-            return ((List<Idioma>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Idioma>)idiomaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveIdioma(Idioma idioma)
@@ -379,7 +379,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Pais[] GetActivePaises()
         {
-            return ((List<Pais>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Pais>)paisRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SavePais(Pais pais)
@@ -406,7 +406,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoArticulo[] GetActiveArticulos()
         {
-            return ((List<TipoArticulo>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoArticulo>)tipoArticuloRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveTipoArticulo(TipoArticulo tipoArticulo)
@@ -433,7 +433,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Institucion[] GetActiveInstituciones()
         {
-            return ((List<Institucion>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Institucion>)institucionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveInstitucion(Institucion institucion)
@@ -460,7 +460,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Indice[] GetActiveIndices()
         {
-            return ((List<Indice>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Indice>)indiceRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveIndice(Indice indice)
@@ -487,7 +487,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public InvestigadorExterno[] GetActiveInvestigadorExternos()
         {
-            return ((List<InvestigadorExterno>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<InvestigadorExterno>)investigadorExternoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveInvestigadorExterno(InvestigadorExterno investigadorExterno)
@@ -514,7 +514,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipante[] GetActiveParticipantes()
         {
-            return ((List<TipoParticipante>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoParticipante>)tipoParticipanteRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveTipoParticipante(TipoParticipante tipoParticipante)
@@ -541,7 +541,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaInvestigacion[] GetActiveLineaInvestigaciones()
         {
-            return ((List<LineaInvestigacion>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<LineaInvestigacion>)lineaInvestigacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveLineaInvestigacion(LineaInvestigacion lineaInvestigacion)
@@ -568,7 +568,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoActividad[] GetActiveActividades()
         {
-            return ((List<TipoActividad>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoActividad>)tipoActividadRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveTipoActividad(TipoActividad tipoActividad)
@@ -595,7 +595,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Area[] GetActiveAreas()
         {
-            return ((List<Area>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Area>)areaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveArea(Area area)
@@ -622,7 +622,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Disciplina[] GetActiveDisciplinas()
         {
-            return ((List<Disciplina>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Disciplina>)disciplinaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveDisciplina(Disciplina disciplina)
@@ -649,7 +649,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Subdisciplina[] GetActiveSubdisciplinas()
         {
-            return ((List<Subdisciplina>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Subdisciplina>)subdisciplinaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveSubdisciplina(Subdisciplina subdisciplina)
@@ -676,7 +676,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaTematica[] GetActiveLineaTematicas()
         {
-            return ((List<LineaTematica>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<LineaTematica>)lineaTematicaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveLineaTematica(LineaTematica lineaTematica)
@@ -703,18 +703,18 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public CoautorExterno[] GetActiveCoautorExternos()
         {
-            return ((List<CoautorExterno>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<CoautorExterno>)coautorExternoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveCoautorExterno(CoautorExterno coautorExterno)
         {
-            if(coautorExterno.Id == 0)
+            if (coautorExterno.Id == 0)
             {
                 coautorExterno.Activo = true;
                 coautorExterno.CreadorEl = DateTime.Now;
             }
             coautorExterno.ModificadoEl = DateTime.Now;
-            
+
             coautorExternoRepository.SaveOrUpdate(coautorExterno);
         }
 
@@ -730,7 +730,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FormaParticipacion[] GetActiveFormaParticipaciones()
         {
-            return ((List<FormaParticipacion>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<FormaParticipacion>)formaParticipacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveFormaParticipacion(FormaParticipacion formaParticipacion)
@@ -757,7 +757,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ResponsableExterno[] GetActiveResponsableExternos()
         {
-            return ((List<ResponsableExterno>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<ResponsableExterno>)responsableExternoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveResponsableExterno(ResponsableExterno responsableExterno)
@@ -784,7 +784,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoCapitulo[] GetActiveTipoCapitulos()
         {
-            return ((List<TipoCapitulo>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoCapitulo>)tipoCapituloRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
@@ -811,7 +811,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipacion[] GetActiveTipoParticipaciones()
         {
-            return ((List<TipoParticipacion>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoParticipacion>)tipoParticipacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveTipoParticipacion(TipoParticipacion tipoParticipacion)
@@ -838,7 +838,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public PeriodoReferencia[] GetActivePeriodoReferencias()
         {
-            return ((List<PeriodoReferencia>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<PeriodoReferencia>)periodoReferenciaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SavePeriodoReferencia(PeriodoReferencia periodoReferencia)
@@ -865,7 +865,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public RevistaPublicacion[] GetActiveRevistaPublicaciones()
         {
-            return ((List<RevistaPublicacion>)departamentoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<RevistaPublicacion>)revistaPublicacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
         public void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion)

@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Prueba", 3);
+	new EntityScaffoldingDetails("Articulo", 3);
  
 /*
  * Property names should be PascalCase.
@@ -32,40 +32,103 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", null ,"[NotNullNotEmpty]", true)
+	new EntityProperty("TipoArticulo", "TipoArticulo", "TipoArticulo")
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Descripcion", "DateTime", "Usuario", null, null)
-//);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("EstadoInvestigadores", "IList<EstadoInvestigador>", "Estado")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("GradoAcedmicoInvestigadores", "IList<GradoAcademicoInvestigador>", "GradoAcademico")
-);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Fecha", "DateTime", "LineaTematica", "[NotNull]")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaIngreso", "DateTime", true)
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Descripcion", "DateTime", null, "[NotNull]", true)
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Nombre", "string", "Departamento", "[NotNull]", true)
-//);
-
-//Para agregar catalogos hay que declarar las variables asi
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Idioma", "Idioma", "Idioma")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Estado", "Estado", "Estado")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PeriodoReferencia", "PeriodoReferencia", "PeriodoReferencia")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaAceptacion", "DateTime", null, "[NotEmptyDate]")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Titulo", "string", null, "[NotNullNotEmpty]", true)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Pais", "Pais", "Pais")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Volumen", "string", null, "[NotNullNotEmpty]")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Numero", "int", null, "[NotNull]")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("RevistaPublicacion", "RevistaPublicacion", "RevistaPublicacion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Institucion", "Institucion", "Institucion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Indice1", "Indice", "Indice")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Indice2", "Indice", "Indice")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Indice2", "Indice", "Indice")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEdicion", "DateTime", null, "[NotEmptyDate]")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorExternoArticulos", "IList<CoautorExternoArticulo>", "CoautorExterno")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorInternoArticulos", "IList<CoautorInternoArticulo>", "CoautorInterno")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LineaInvestigacion", "LineaInvestigacion", "LineaInvestigacion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoActividad", "TipoActividad", "TipoActividad")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoParticipante", "TipoParticipante", "TipoParticipante")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Area", "Area", "Area")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Disciplina", "Disciplina", "Disciplina")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Subdisciplina", "Subdisciplina", "Subdisciplina")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaPublicacion", "DateTime", null, "[NotEmptyDate]")
 );
 
 ///////////////////////////////////////////////////
