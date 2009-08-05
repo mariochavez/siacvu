@@ -35,6 +35,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return usuarioService.GetUsuarioByUserName(username);
         }
 
+        protected Investigador CurrentInvestigador()
+        {
+            var usuario = usuarioService.GetUsuarioByUserName("pparker");
+            return usuarioService.GetInvestigadorByUsuario(usuario);
+        }
+
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(message);

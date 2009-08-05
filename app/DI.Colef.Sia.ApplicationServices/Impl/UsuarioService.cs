@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -10,14 +11,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Rol> rolRepository;
         readonly IRepository<Persona> personaRepository;
         readonly IRepository<Usuario> usuarioRepository;
+        readonly IInvestigadorQuerying investigadorQuerying;
 
         public UsuarioService(IRepository<Rol> rolRepository, 
             IRepository<Persona> personaRepository, 
-            IRepository<Usuario> usuarioRepository)
+            IRepository<Usuario> usuarioRepository,
+            IInvestigadorQuerying investigadorQuerying)
         {
             this.rolRepository = rolRepository;
             this.personaRepository = personaRepository;
             this.usuarioRepository = usuarioRepository;
+            this.investigadorQuerying = investigadorQuerying;
         }
 
         public Rol GetRolById(int id)
@@ -57,6 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             var parameters = new Dictionary<string, object> {{"UsuarioNombre", username}};
 
             return usuarioRepository.FindOne(parameters);   
+        }
+
+        public Investigador GetInvestigadorByUsuario(Usuario usuario)
+        {
+            return investigadorQuerying.FindInvestigadorByUsuario(usuario);
         }
     }
 }

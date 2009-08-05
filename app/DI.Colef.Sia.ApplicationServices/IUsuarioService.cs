@@ -15,5 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         //Usuario
         Usuario GetUsuarioById(int id);
         Usuario GetUsuarioByUserName(string username);
+
+        Investigador GetInvestigadorByUsuario(Usuario usuario);
     }
 }
