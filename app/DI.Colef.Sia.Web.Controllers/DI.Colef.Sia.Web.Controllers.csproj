@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticuloController.cs" />
+    <Compile Include="CapituloController.cs" />
     <Compile Include="Catalogos\AreaController.cs" />
     <Compile Include="Catalogos\CategoriaController.cs" />
     <Compile Include="Catalogos\CoautorExternoController.cs" />
@@ -121,11 +122,15 @@
     <Compile Include="InvestigadorController.cs" />
     <Compile Include="Mappers\AutoFormMapper.cs" />
     <Compile Include="Mappers\IArticuloMapper.cs" />
+    <Compile Include="Mappers\ICapituloMapper.cs" />
     <Compile Include="Mappers\ICargoInvestigadorMapper.cs" />
     <Compile Include="Mappers\ICoautorExternoArticuloMapper.cs" />
+    <Compile Include="Mappers\ICoautorExternoCapituloMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoArticuloMapper.cs" />
+    <Compile Include="Mappers\ICoautorInternoCapituloMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\ArticuloMapper.cs" />
+    <Compile Include="Mappers\Impl\CapituloMapper.cs" />
     <Compile Include="Mappers\Impl\CargoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaInvestigadorMapper.cs" />
     <Compile Include="Mappers\Formatters\StandardDateFormatter.cs" />
@@ -154,8 +159,10 @@
     <Compile Include="Mappers\Impl\CargoMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoArticuloMapper.cs" />
+    <Compile Include="Mappers\Impl\CoautorExternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorInternoArticuloMapper.cs" />
+    <Compile Include="Mappers\Impl\CoautorInternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoInvestigadorMapper.cs" />
@@ -173,7 +180,9 @@
     <Compile Include="Mappers\Impl\PaisMapper.cs" />
     <Compile Include="Mappers\Impl\PeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
+    <Compile Include="Mappers\Impl\ResponsableExternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\ResponsableExternoMapper.cs" />
+    <Compile Include="Mappers\Impl\ResponsableInternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\RevistaPublicacionMapper.cs" />
     <Compile Include="Mappers\Impl\SedeMapper.cs" />
     <Compile Include="Mappers\Impl\SNIInvestigadorMapper.cs" />
@@ -188,7 +197,9 @@
     <Compile Include="Mappers\IPaisMapper.cs" />
     <Compile Include="Mappers\IPeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
+    <Compile Include="Mappers\IResponsableExternoCapituloMapper.cs" />
     <Compile Include="Mappers\IResponsableExternoMapper.cs" />
+    <Compile Include="Mappers\IResponsableInternoCapituloMapper.cs" />
     <Compile Include="Mappers\IRevistaPublicacionMapper.cs" />
     <Compile Include="Mappers\IRolMapper.cs" />
     <Compile Include="Mappers\Impl\RolMapper.cs" />
@@ -206,13 +217,16 @@
     <Compile Include="Mappers\ITipoParticipanteMapper.cs" />
     <Compile Include="Models\AreaForm.cs" />
     <Compile Include="Models\ArticuloForm.cs" />
+    <Compile Include="Models\CapituloForm.cs" />
     <Compile Include="Models\CargoForm.cs" />
     <Compile Include="Models\CargoInvestigadorForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\CategoriaInvestigadorForm.cs" />
     <Compile Include="Models\CoautorExternoArticuloForm.cs" />
+    <Compile Include="Models\CoautorExternoCapituloForm.cs" />
     <Compile Include="Models\CoautorExternoForm.cs" />
     <Compile Include="Models\CoautorInternoArticuloForm.cs" />
+    <Compile Include="Models\CoautorInternoCapituloForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
     <Compile Include="Models\DisciplinaForm.cs" />
     <Compile Include="Models\EstadoForm.cs" />
@@ -230,7 +244,9 @@
     <Compile Include="Models\PaisForm.cs" />
     <Compile Include="Models\PeriodoReferenciaForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
+    <Compile Include="Models\ResponsableExternoCapituloForm.cs" />
     <Compile Include="Models\ResponsableExternoForm.cs" />
+    <Compile Include="Models\ResponsableInternoCapituloForm.cs" />
     <Compile Include="Models\RevistaPublicacionForm.cs" />
     <Compile Include="Models\RolForm.cs" />
     <Compile Include="Models\SedeForm.cs" />

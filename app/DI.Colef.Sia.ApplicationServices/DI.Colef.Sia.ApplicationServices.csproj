@@ -65,9 +65,11 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="IArticuloService.cs" />
+    <Compile Include="ICapituloService.cs" />
     <Compile Include="ICatalogoService.cs" />
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="Impl\ArticuloService.cs" />
+    <Compile Include="Impl\CapituloService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
     <Compile Include="IUsuarioService.cs" />

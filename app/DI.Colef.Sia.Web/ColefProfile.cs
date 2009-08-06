@@ -32,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             CreateCatalogosMaps();
             CreateArticulosMaps();
+            CreateCapitulosMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -143,6 +144,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        void CreateCapitulosMaps()
+        {
+            Mapper.CreateMap<Capitulo, CapituloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoCapitulo,
+                           o => o.Ignore())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore())
+                .ForMember(d => d.Estado,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoParticipante,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.FormaParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<ResponsableInternoCapitulo, ResponsableInternoCapituloForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<ResponsableExternoCapitulo, ResponsableExternoCapituloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

@@ -72,12 +72,15 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Articulo.cs" />
+    <Compile Include="Capitulo.cs" />
     <Compile Include="Cargo.cs" />
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
     <Compile Include="CoautorExternoArticulo.cs" />
+    <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorInternoArticulo.cs" />
+    <Compile Include="CoautorInternoCapitulo.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
@@ -105,6 +108,8 @@
     <Compile Include="Persona.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="ResponsableExterno.cs" />
+    <Compile Include="ResponsableExternoCapitulo.cs" />
+    <Compile Include="ResponsableInternoCapitulo.cs" />
     <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
