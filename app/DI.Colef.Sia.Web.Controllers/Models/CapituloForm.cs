@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Area { get; set; }
         public int Disciplina { get; set; }
         public int Subdisciplina { get; set; }
+        public int Investigador { get; set; }
 		
 		/* New */
 		public CoautorExternoCapituloForm CoautorExternoCapitulo { get; set; }

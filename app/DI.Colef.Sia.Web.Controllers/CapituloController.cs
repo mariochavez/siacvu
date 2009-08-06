@@ -32,7 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         
-    
         public CapituloController(ICapituloService capituloService, 
 			ICapituloMapper capituloMapper, 
 			ICatalogoService catalogoService, 
@@ -57,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 			this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
+
             this.capituloMapper = capituloMapper;
 			this.tipoCapituloMapper = tipoCapituloMapper;
             this.estadoMapper = estadoMapper;
@@ -123,10 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form);
-            
-            capitulo.CreadorPor = CurrentUser();
-            capitulo.ModificadoPor = CurrentUser();
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {

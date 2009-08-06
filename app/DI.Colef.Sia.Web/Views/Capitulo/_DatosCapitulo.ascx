@@ -4,7 +4,7 @@
 <table class="subform">
     <tr>
 		<td>
-			<label>Tipo Capitulo:<em>*</em></label>
+			<label>Tipo de Capitulo:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.DropDownList("TipoCapitulo", Model.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
@@ -15,7 +15,7 @@
 		
 	<tr>
 		<td>
-			<label>Nombre Capitulo:<em>*</em></label>
+			<label>Nombre del Capitulo:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { maxlength = 100 })%>
@@ -25,7 +25,7 @@
 		
 	<tr>
 		<td>
-			<label>Fecha Aceptacion:<em>*</em></label>
+			<label>Fecha de Aceptacion:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class="datetime", maxlength = 10 })%>
@@ -36,7 +36,7 @@
 		
 	<tr>
 		<td>
-			<label>Fecha Edicion:<em>*</em></label>
+			<label>Fecha de Edicion:<em>*</em></label>
 		</td>
 	    <td>
 			<%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class="datetime", maxlength = 10 })%>
@@ -47,7 +47,7 @@
 		
 	<tr>
 		<td>
-			<label>Estado:<em>*</em></label>
+			<label>Estado actual:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Estado", Model.Estados.CreateSelectList<EstadoForm>("Id", "Nombre"),
@@ -58,7 +58,7 @@
 		
 	<tr>
 		<td>
-			<label>Periodo Referencia:<em>*</em></label>
+			<label>Periodo de Referencia:<em>*</em></label>
 		</td>
 	    <td>
 			<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
@@ -80,12 +80,19 @@
 		
 	<tr>
 		<td>
-			<label>Idioma:<em>*</em></label>
+			<label>Idioma al que se tradujo:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
 				"Seleccione ...")%>
 			<%=Html.ValidationMessage("Idioma") %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Proyecto de Referencia:<em>*</em></label>
+		</td>
+		<td>
 		</td>
 	</tr>
 </table>

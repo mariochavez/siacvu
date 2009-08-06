@@ -182,6 +182,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FormaParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()

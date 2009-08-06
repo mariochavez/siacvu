@@ -24,7 +24,7 @@
 	
 	<tr>
 		<td>
-			<label>Tipo Participacion:<em>*</em></label>
+			<label>Tipo de Participacion:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
@@ -35,7 +35,7 @@
 	
 	<tr>
 	    <td>
-			<label>Tipo Participante:<em>*</em></label>
+			<label>Tipo de Participante:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
@@ -79,7 +79,7 @@
 	
 	<tr>
 		<td>
-			<label>Traductor:<em>*</em></label>
+			<label>Traductor/Co-Traductor:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.TextBox("Traductor", Model.Traductor, new { maxlength = 100 })%>
@@ -89,7 +89,7 @@
 	
 	<tr>
 		<td>
-			<label>Nombre Traductor:<em>*</em></label>
+			<label>Nombre del Traductor:<em>*</em></label>
 		</td>
 		<td>
 			<%=Html.TextBox("NombreTraductor", Model.NombreTraductor, new { maxlength = 100 })%>
