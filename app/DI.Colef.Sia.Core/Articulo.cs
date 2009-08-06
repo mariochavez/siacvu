@@ -27,6 +27,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         }
 
         [NotNull]
+        public virtual Investigador Investigador { get; set; }
+
+        [NotNull]
         public virtual TipoArticulo TipoArticulo { get; set; }
 
         [NotNull]

@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Indice1 { get; set; }
         public int Indice2 { get; set; }
         public int Indice3 { get; set; }
+        public int Investigador { get; set; }
 
 
         /* New */

@@ -14,6 +14,7 @@
         <div id="form">
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
+        <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
         
 		    <table class="form">
                 <tr>
@@ -30,6 +31,15 @@
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_ReferenciaBibligrafica", Model.Form); %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label required">
+                       <label>Coautores:</label>
+                    </td>
+                    <td class="field">
+                        <% Html.RenderPartial("_NewCoautorExterno", Model.Form); %>
+                        <% Html.RenderPartial("_NewCoautorInterno", Model.Form); %>
                     </td>
                 </tr>
                 <tr>

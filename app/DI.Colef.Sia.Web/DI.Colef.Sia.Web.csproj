@@ -209,7 +209,9 @@
     <Content Include="Scripts\Application.js" />
     <Content Include="Scripts\jquery-ajaxloading.js" />
     <Content Include="Views\Articulo\Activate.js.ascx" />
+    <Content Include="Views\Articulo\_NewCoautorInterno.ascx" />
     <Content Include="Views\Articulo\_DatosOpcionales.ascx" />
+    <Content Include="Views\Articulo\_NewCoautorExterno.ascx" />
     <Content Include="Views\Articulo\_ReferenciaBibligrafica.ascx" />
     <Content Include="Views\Articulo\Index.aspx" />
     <Content Include="Views\Articulo\New.aspx" />

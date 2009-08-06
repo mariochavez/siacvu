@@ -119,10 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ArticuloForm form)
         {
-            var articulo = articuloMapper.Map(form);
-
-            articulo.CreadorPor = CurrentUser();
-            articulo.ModificadoPor = CurrentUser();
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
             {
@@ -184,7 +181,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             return new ArticuloForm
             {
-
                 CoautorExternoArticulo = new CoautorExternoArticuloForm(),
                 CoautorInternoArticulo = new CoautorInternoArticuloForm(),
 
