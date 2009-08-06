@@ -30,7 +30,7 @@
                        <label>Referencia Bibliografica:<em>*</em></label>
                     </td>
                     <td class="field">
-                        <% Html.RenderPartial("_ReferenciaBibligrafica", Model.Form); %>
+                        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                     </td>
                 </tr>
                 <tr>

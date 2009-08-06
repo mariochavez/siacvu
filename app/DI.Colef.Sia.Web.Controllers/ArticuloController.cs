@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -33,6 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
+        readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
 
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
@@ -42,13 +45,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, 
             ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
             ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
-            IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper
+            IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
+            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper
             )
             : base(usuarioService)
         {
+            this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
-            //this.usuarioMapper = usuarioMapper;
             this.catalogoService = catalogoService;
             this.articuloService = articuloService;
             this.investigadorService = investigadorService;
@@ -68,6 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -96,6 +101,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var articulo = articuloService.GetArticuloById(id);
+            if (articulo == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
             data.Form = articuloMapper.Map(articulo);
 
             ViewData.Model = data;
@@ -137,16 +145,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ArticuloForm form)
         {
-            var articulo = articuloMapper.Map(form);
-
-            articulo.ModificadoPor = CurrentUser();
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(articulo, form, Title.Edit))
                 return ViewEdit();
 
             articuloService.SaveArticulo(articulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "articulo.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", articulo.Titulo));
         }
 
         [Transaction]
@@ -175,6 +181,84 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = articuloMapper.Map(articulo);
 
             return Rjs("Activate", form);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewCoautorInterno(int id)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            var form = new ArticuloForm
+                           {
+                               Id = articulo.Id,
+                               CoautorInternoArticulo = new CoautorInternoArticuloForm(),
+                               CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
+                           };
+
+            return Rjs("NewCoautorInterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoArticulo")]CoautorInternoArticuloForm form, int articuloId)
+        {
+            var coautorInternoArticulo = coautorInternoArticuloMapper.Map(form);
+
+            ModelState.AddModelErrors(coautorInternoArticulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            coautorInternoArticulo.CreadorPor = CurrentUser();
+            coautorInternoArticulo.ModificadoPor = CurrentUser();
+
+            var articulo = articuloService.GetArticuloById(articuloId);
+            articulo.AddCoautorInterno(coautorInternoArticulo);
+            articuloService.SaveArticulo(articulo);
+
+            var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
+
+            return Rjs("AddCoautorInterno", coautorInternoArticuloForm);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewCoautorExterno(int id)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            var form = new ArticuloForm
+            {
+                Id = articulo.Id,
+                CoautorExternoArticulo = new CoautorExternoArticuloForm(),
+                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
+            };
+
+            return Rjs("NewCoautorExterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoArticulo")]CoautorExternoArticuloForm form, int articuloId)
+        {
+            var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
+
+            ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            coautorExternoArticulo.CreadorPor = CurrentUser();
+            coautorExternoArticulo.ModificadoPor = CurrentUser();
+
+            var articulo = articuloService.GetArticuloById(articuloId);
+            articulo.AddCoautorExterno(coautorExternoArticulo);
+            articuloService.SaveArticulo(articulo);
+
+            var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
+
+            return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
         }
 
         ArticuloForm SetupNewForm()
