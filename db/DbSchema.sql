@@ -299,6 +299,10 @@ alter table Idiomas  drop constraint FKB635BD3C85102A57
 alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD8336201B]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD8336201B
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADE5A51EE5]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEADE5A51EE5
 
@@ -1068,6 +1072,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       InvestigadorFk INT null,
        TipoCapituloFk INT null,
        EstadoFk INT null,
        PeriodoReferenciaFk INT null,
@@ -1438,7 +1443,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ArticuloFk) 
         references Articulos
 
- /*   alter table Usuarios 
+/*    alter table Usuarios 
         add constraint FKB984B9FD1687D84E 
         foreign key (PersonaFk) 
         references Personas
@@ -1451,7 +1456,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     alter table Usuarios 
         add constraint FKB984B9FD74E8BAB7 
         foreign key (ModificadoPorFk) 
-        references Usuarios */
+        references Usuarios
+        */
 
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
@@ -1593,7 +1599,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-/*    alter table Personas 
+/*   alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -1601,7 +1607,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     alter table Personas 
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
-        references Usuarios  */
+        references Usuarios
+        */
 
     alter table Indices 
         add constraint FKC50D919985102A57 
@@ -1652,6 +1659,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKB635BD3C74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Capitulos 
+        add constraint FK3165FEAD8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table Capitulos 
         add constraint FK3165FEADE5A51EE5 

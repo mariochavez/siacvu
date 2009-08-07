@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(ResponsableInternoCapituloForm message, ResponsableInternoCapitulo model)
         {
-            model.Investigador = investigadorService.GetInvestigadorById(message.Investigador);
+            model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
 			
 			if (model.IsTransient())
             {

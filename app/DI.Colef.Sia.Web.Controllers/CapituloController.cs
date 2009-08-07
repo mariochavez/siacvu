@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -31,8 +32,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
+        readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
+        readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
+        readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
         
-    
         public CapituloController(ICapituloService capituloService, 
 			ICapituloMapper capituloMapper, 
 			ICatalogoService catalogoService, 
@@ -51,12 +55,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             IAreaMapper areaMapper,
             IDisciplinaMapper disciplinaMapper,
             ISubdisciplinaMapper subdisciplinaMapper,
+            ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
+            ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
+            IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
+            IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
             IInvestigadorService investigadorService
 			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
+
             this.capituloMapper = capituloMapper;
 			this.tipoCapituloMapper = tipoCapituloMapper;
             this.estadoMapper = estadoMapper;
@@ -72,6 +81,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
+            this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
+            this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
+            this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -100,7 +113,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var capitulo = capituloService.GetCapituloById(id);
-            data.Form = capituloMapper.Map(capitulo);
+            if (capitulo == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
+            var capituloForm = capituloMapper.Map(capitulo);
+
+            //data.Form = SetupNewForm(capituloForm);
+
+            //FormSetCombos(data.Form);
 
 			ViewData.Model = data;
             return View();
@@ -123,10 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form);
-            
-            capitulo.CreadorPor = CurrentUser();
-            capitulo.ModificadoPor = CurrentUser();
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {
@@ -144,9 +161,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form);
-            
-            capitulo.ModificadoPor = CurrentUser();
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(capitulo, form, Title.Edit))
                 return ViewEdit();
@@ -154,6 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             capituloService.SaveCapitulo(capitulo);
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", capitulo.NombreCapitulo));
+            
         }
         
         [Transaction]
@@ -182,6 +198,166 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = capituloMapper.Map(capitulo);
             
             return Rjs("Activate", form);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewCoautorInterno(int id)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var form = new CapituloForm
+            {
+                Id = capitulo.Id,
+                CoautorInternoCapitulo = new CoautorInternoCapituloForm(),
+                CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
+            };
+
+            return Rjs("NewCoautorInterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")]CoautorInternoCapituloForm form, int capituloId)
+        {
+            var coautorInternoCapitulo = coautorInternoCapituloMapper.Map(form);
+
+            ModelState.AddModelErrors(coautorInternoCapitulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            coautorInternoCapitulo.CreadorPor = CurrentUser();
+            coautorInternoCapitulo.ModificadoPor = CurrentUser();
+
+            var capitulo = capituloService.GetCapituloById(capituloId);
+
+            capitulo.AddCoautorInterno(coautorInternoCapitulo);
+            capituloService.SaveCapitulo(capitulo);
+
+            var coautorInternoCapituloForm = coautorInternoCapituloMapper.Map(coautorInternoCapitulo);
+
+            return Rjs("AddCoautorInterno", coautorInternoCapituloForm);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewCoautorExterno(int id)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var form = new CapituloForm
+            {
+                Id = capitulo.Id,
+                CoautorExternoCapitulo = new CoautorExternoCapituloForm(),
+                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
+            };
+
+            return Rjs("NewCoautorExterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")]CoautorExternoCapituloForm form, int capituloId)
+        {
+            var coautorExternoCapitulo = coautorExternoCapituloMapper.Map(form);
+
+            ModelState.AddModelErrors(coautorExternoCapitulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            coautorExternoCapitulo.CreadorPor = CurrentUser();
+            coautorExternoCapitulo.ModificadoPor = CurrentUser();
+
+            var capitulo = capituloService.GetCapituloById(capituloId);
+
+            capitulo.AddCoautorExterno(coautorExternoCapitulo);
+            capituloService.SaveCapitulo(capitulo);
+
+            var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
+
+            return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewResponsableInterno(int id)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var form = new CapituloForm
+            {
+                Id = capitulo.Id,
+                ResponsableInternoCapitulo = new ResponsableInternoCapituloForm(),
+                ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
+            };
+
+            return Rjs("NewResponsableInterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddResponsableInterno([Bind(Prefix = "ResponsableInternoCapitulo")]ResponsableInternoCapituloForm form, int capituloId)
+        {
+            var responsableInternoCapitulo = responsableInternoCapituloMapper.Map(form);
+
+            ModelState.AddModelErrors(responsableInternoCapitulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            responsableInternoCapitulo.CreadorPor = CurrentUser();
+            responsableInternoCapitulo.ModificadoPor = CurrentUser();
+
+            var capitulo = capituloService.GetCapituloById(capituloId);
+
+            capitulo.AddResponsableInterno(responsableInternoCapitulo);
+            capituloService.SaveCapitulo(capitulo);
+
+            var responsableInternoCapituloForm = responsableInternoCapituloMapper.Map(responsableInternoCapitulo);
+
+            return Rjs("AddResponsableInterno", responsableInternoCapituloForm);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewResponsableExterno(int id)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var form = new CapituloForm
+            {
+                Id = capitulo.Id,
+                ResponsableExternoCapitulo = new ResponsableExternoCapituloForm(),
+                ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
+            };
+
+            return Rjs("NewResponsableExterno", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddResponsableExterno([Bind(Prefix = "ResponsableExternoCapitulo")]ResponsableExternoCapituloForm form, int capituloId)
+        {
+            var responsableExternoCapitulo = responsableExternoCapituloMapper.Map(form);
+
+            ModelState.AddModelErrors(responsableExternoCapitulo.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            responsableExternoCapitulo.CreadorPor = CurrentUser();
+            responsableExternoCapitulo.ModificadoPor = CurrentUser();
+
+            var capitulo = capituloService.GetCapituloById(capituloId);
+
+            capitulo.AddResponsableExterno(responsableExternoCapitulo);
+            capituloService.SaveCapitulo(capitulo);
+
+            var responsableExternoCapituloForm = responsableExternoCapituloMapper.Map(responsableExternoCapitulo);
+
+            return Rjs("AddResponsableExterno", responsableExternoCapituloForm);
         }
         
         CapituloForm SetupNewForm()
