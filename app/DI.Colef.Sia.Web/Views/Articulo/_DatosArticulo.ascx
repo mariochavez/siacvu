@@ -4,14 +4,14 @@
 <table class="subform">
     <tr>
         <td class="label">
-            <label>Tipo Articulo:<em>*</em></label>
+            <label>Tipo Articulo:</label>
             <br />
             <%=Html.DropDownList("TipoArticulo", Model.TiposArticulos.CreateSelectList<TipoArticuloForm>("Id", "Nombre"),
                 "Seleccione ...")%>
             <%=Html.ValidationMessage("TipoArticulo") %>
         </td>
         <td class="label">
-            <label>Idioma:<em>*</em></label>
+            <label>Idioma:</label>
             <br />
             <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
@@ -20,14 +20,14 @@
     </tr>
     <tr>
         <td class="label">
-            <label>Estado Actual:<em>*</em></label>
+            <label>Estado Actual:</label>
             <br />
             <%=Html.DropDownList("Estado", Model.Estados.CreateSelectList<EstadoForm>("Id", "Nombre"),
                 "Seleccione ...")%>
             <%=Html.ValidationMessage("Estado") %>
         </td>
         <td class="label">
-            <label>Periodo Referencia:<em>*</em></label>
+            <label>Periodo Referencia:</label>
             <br />
             <%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
                 "Seleccione ...")%>
@@ -36,26 +36,26 @@
     </tr>
     <tr>
         <td class="label">
-            <label>Fecha Aceptacion:<em>*</em></label>
+            <label>Fecha Aceptacion:</label>
             <br />
             <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class="datetime", maxlength = 10 })%>
             <span class="helper_message">(Formato dd/mm/yyyy)</span>
             <%=Html.ValidationMessage("FechaAceptacion")%>
         </td>
         <td class="label">
-            <label>Proyecto Referencia:<em>*</em></label>
+            <label>Proyecto Referencia:</label>
         </td>
     </tr> 
     <tr>
         <td class="label">
-            <label>Linea Tematica:<em>*</em></label>
+            <label>Linea Tematica:</label>
             <br />
             <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
             <%=Html.ValidationMessage("LineaTematica") %>
         </td>
         <td class="label" colspan="2">
-            <label>Titulo Articulo:<em>*</em></label>
+            <label>Titulo Articulo:</label>
             <br />
             <%=Html.TextBox("Titulo", Model.Titulo, new { maxlength = 100 })%>
             <%=Html.ValidationMessage("Titulo")%>

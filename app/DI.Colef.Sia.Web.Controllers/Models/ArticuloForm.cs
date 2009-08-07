@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -15,25 +17,59 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabrasClaves { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
-        public int TipoArticuloId { get; set; }
 
         public int TipoArticulo { get; set; }
+        public int TipoArticuloId { get; set; }
+
         public int Idioma { get; set; }
+        public int IdiomaId { get; set; }
+
         public int Estado { get; set; }
+        public int EstadoId { get; set; }
+
         public int PeriodoReferencia { get; set; }
+        public int PeriodoReferenciaId { get; set; }
+
         public int LineaTematica { get; set; }
+        public int LineaTematicaId { get; set; }
+
+
         public int Pais { get; set; }
+        public int PaisId { get; set; }
+
         public int RevistaPublicacion { get; set; }
-        public int LineaInvestigacion { get; set; }
-        public int TipoActividad { get; set; }
-        public int TipoParticipante { get; set; }
-        public int Area { get; set; }
-        public int Disciplina { get; set; }
-        public int Subdisciplina { get; set; }
+        public int RevistaPublicacionId { get; set; }
+
         public int Institucion { get; set; }
+        public int InstitucionId { get; set; }
+
         public int Indice1 { get; set; }
+        public int Indice1Id { get; set; }
+
         public int Indice2 { get; set; }
+        public int Indice2Id { get; set; }
+
         public int Indice3 { get; set; }
+        public int Indice3Id { get; set; }
+
+        public int LineaInvestigacion { get; set; }
+        public int LineaInvestigacionId { get; set; }
+
+        public int TipoActividad { get; set; }
+        public int TipoActividadId { get; set; }
+
+        public int TipoParticipante { get; set; }
+        public int TipoParticipanteId { get; set; }
+
+        public int Area { get; set; }
+        public int AreaId { get; set; }
+
+        public int Disciplina { get; set; }
+        public int DisciplinaId { get; set; }
+
+        public int Subdisciplina { get; set; }
+        public int SubdisciplinaId { get; set; }
+
         public int Investigador { get; set; }
 
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }

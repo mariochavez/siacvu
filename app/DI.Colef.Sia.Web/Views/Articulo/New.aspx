@@ -19,7 +19,7 @@
 		    <table class="form">
                 <tr>
                     <td class="label required">
-                       <label>Datos Articulo:<em>*</em></label>
+                       <label>Datos Articulo:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
@@ -34,17 +34,24 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label required">
-                       <label>Coautores:</label>
+                    <td class="label">
+                       <label>Coautores Externos:</label>
                     </td>
                     <td class="field">
-                        <% Html.RenderPartial("_NewCoautorExterno", Model.Form); %>
-                        <% Html.RenderPartial("_NewCoautorInterno", Model.Form); %>
+                        <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                     </td>
-                </tr>
+                </tr> 
+                <tr>
+                    <td class="label">
+                       <label>Coautores Externos:</label>
+                    </td>
+                    <td class="field">
+                        <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+                    </td>
+                </tr>   
                 <tr>
                     <td class="label required">
-                       <label>Datos Opcionales:<em>*</em></label>
+                       <label>Datos Opcionales:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
