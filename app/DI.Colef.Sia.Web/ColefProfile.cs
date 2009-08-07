@@ -222,7 +222,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<Cargo, CargoForm>()
-                                .ForMember(d => d.Modificacion,
+                .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<Puesto, PuestoForm>()
@@ -319,6 +319,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<ProgramaEstudio, ProgramaEstudioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Organizacion, OrganizacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Dependencia, DependenciaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

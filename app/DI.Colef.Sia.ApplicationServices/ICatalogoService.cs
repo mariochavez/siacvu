@@ -190,5 +190,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProgramaEstudio[] GetAllProgramaEstudios();
         ProgramaEstudio[] GetActiveProgramaEstudios();
         void SaveProgramaEstudio(ProgramaEstudio programaEstudio);
+
+        //Organizacion
+        Organizacion GetOrganizacionById(int id);
+        Organizacion[] GetAllOrganizaciones();
+        Organizacion[] GetActiveOrganizaciones();
+        void SaveOrganizacion(Organizacion organizacion);
+
+        //Dependencia
+        Dependencia GetDependenciaById(int id);
+        Dependencia[] GetAllDependencias();
+        Dependencia[] GetActiveDependencias();
+        void SaveDependencia(Dependencia dependencia);
     }
 }

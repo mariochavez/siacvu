@@ -7,7 +7,7 @@ using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    [HasUniqueDomainSignature]
+    //[HasUniqueDomainSignature]
     public class Investigador : Entity, IBaseEntity
     {
         public Investigador()

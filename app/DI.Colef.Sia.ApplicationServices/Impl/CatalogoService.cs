@@ -42,6 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
         readonly IRepository<PeriodoReferencia> periodoReferenciaRepository;
         readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
+        readonly IRepository<Organizacion> organizacionRepository;
+        readonly IRepository<Dependencia> dependenciaRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository,
@@ -73,7 +75,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Nivel> nivelRepository,
             IRepository<Sector> sectorRepository,
             IRepository<ProgramaEstudio> programaEstudioRepository,
-            IRepository<RevistaPublicacion> revistaPublicacionRepository)
+            IRepository<RevistaPublicacion> revistaPublicacionRepository,
+            IRepository<Organizacion> organizacionRepository,
+            IRepository<Dependencia> dependenciaRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -106,6 +110,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
             this.nivelRepository = nivelRepository;
+            this.organizacionRepository = organizacionRepository;
+            this.dependenciaRepository = dependenciaRepository;
         }
 
         protected virtual ISession Session
@@ -968,6 +974,60 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivel.ModificadoEl = DateTime.Now;
 
             nivelRepository.SaveOrUpdate(nivel);
+        }
+
+        public Organizacion GetOrganizacionById(int id)
+        {
+            return organizacionRepository.Get(id);
+        }
+
+        public Organizacion[] GetAllOrganizaciones()
+        {
+            return ((List<Organizacion>)OrderCatalog<Organizacion>()).ToArray();
+        }
+
+        public Organizacion[] GetActiveOrganizaciones()
+        {
+            return ((List<Organizacion>)organizacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveOrganizacion(Organizacion organizacion)
+        {
+            if (organizacion.Id == 0)
+            {
+                organizacion.Activo = true;
+                organizacion.CreadorEl = DateTime.Now;
+            }
+            organizacion.ModificadoEl = DateTime.Now;
+
+            organizacionRepository.SaveOrUpdate(organizacion);
+        }
+
+        public Dependencia GetDependenciaById(int id)
+        {
+            return dependenciaRepository.Get(id);
+        }
+
+        public Dependencia[] GetAllDependencias()
+        {
+            return ((List<Dependencia>)OrderCatalog<Dependencia>()).ToArray();
+        }
+
+        public Dependencia[] GetActiveDependencias()
+        {
+            return ((List<Dependencia>)dependenciaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveDependencia(Dependencia dependencia)
+        {
+            if (dependencia.Id == 0)
+            {
+                dependencia.Activo = true;
+                dependencia.CreadorEl = DateTime.Now;
+            }
+            dependencia.ModificadoEl = DateTime.Now;
+
+            dependenciaRepository.SaveOrUpdate(dependencia);
         }
     }
 }
