@@ -172,5 +172,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         RevistaPublicacion[] GetAllRevistaPublicaciones();
         RevistaPublicacion[] GetActiveRevistaPublicaciones();
         void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion);
+
+        //Organizacion
+        Organizacion GetOrganizacionById(int id);
+        Organizacion[] GetAllOrganizaciones();
+        Organizacion[] GetActiveOrganizaciones();
+        void SaveOrganizacion(Organizacion organizacion);
+
+        //Dependencia
+        Dependencia GetDependenciaById(int id);
+        Dependencia[] GetAllDependencias();
+        Dependencia[] GetActiveDependencias();
+        void SaveDependencia(Dependencia dependencia);
     }
 }

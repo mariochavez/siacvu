@@ -88,6 +88,7 @@
     <Compile Include="Catalogos\AreaController.cs" />
     <Compile Include="Catalogos\CategoriaController.cs" />
     <Compile Include="Catalogos\CoautorExternoController.cs" />
+    <Compile Include="Catalogos\DependenciaController.cs" />
     <Compile Include="Catalogos\DisciplinaController.cs" />
     <Compile Include="Catalogos\EstadoController.cs" />
     <Compile Include="Catalogos\FormaParticipacionController.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Catalogos\InvestigadorExternoController.cs" />
     <Compile Include="Catalogos\LineaInvestigacionController.cs" />
     <Compile Include="Catalogos\LineaTematicaController.cs" />
+    <Compile Include="Catalogos\OrganizacionController.cs" />
     <Compile Include="Catalogos\PaisController.cs" />
     <Compile Include="Catalogos\PeriodoReferenciaController.cs" />
     <Compile Include="Catalogos\ResponsableExternoController.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Mappers\ICoautorExternoCapituloMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoArticuloMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoCapituloMapper.cs" />
+    <Compile Include="Mappers\IDependenciaMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\ArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CapituloMapper.cs" />
@@ -164,6 +167,7 @@
     <Compile Include="Mappers\Impl\CoautorInternoArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorInternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
+    <Compile Include="Mappers\Impl\DependenciaMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\DisciplinaMapper.cs" />
@@ -177,6 +181,7 @@
     <Compile Include="Mappers\Impl\InvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\LineaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\LineaTematicaMapper.cs" />
+    <Compile Include="Mappers\Impl\OrganizacionMapper.cs" />
     <Compile Include="Mappers\Impl\PaisMapper.cs" />
     <Compile Include="Mappers\Impl\PeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
@@ -194,6 +199,7 @@
     <Compile Include="Mappers\Impl\TipoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\TipoParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoParticipanteMapper.cs" />
+    <Compile Include="Mappers\IOrganizacionMapper.cs" />
     <Compile Include="Mappers\IPaisMapper.cs" />
     <Compile Include="Mappers\IPeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
@@ -228,6 +234,7 @@
     <Compile Include="Models\CoautorInternoArticuloForm.cs" />
     <Compile Include="Models\CoautorInternoCapituloForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
+    <Compile Include="Models\DependenciaForm.cs" />
     <Compile Include="Models\DisciplinaForm.cs" />
     <Compile Include="Models\EstadoForm.cs" />
     <Compile Include="Models\EstadoInvestigadorForm.cs" />
@@ -241,6 +248,7 @@
     <Compile Include="Models\InvestigadorForm.cs" />
     <Compile Include="Models\LineaInvestigacionForm.cs" />
     <Compile Include="Models\LineaTematicaForm.cs" />
+    <Compile Include="Models\OrganizacionForm.cs" />
     <Compile Include="Models\PaisForm.cs" />
     <Compile Include="Models\PeriodoReferenciaForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />

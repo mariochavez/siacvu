@@ -87,6 +87,7 @@
     <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
     <Compile Include="CoautorExterno.cs" />
     <Compile Include="Departamento.cs" />
+    <Compile Include="Dependencia.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="InvestigadorExterno.cs" />
     <Compile Include="LineaInvestigacion.cs" />
     <Compile Include="LineaTematica.cs" />
+    <Compile Include="Organizacion.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="Persona.cs" />

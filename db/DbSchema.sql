@@ -595,6 +595,22 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5985102A57]') AND parent_object_id = OBJECT_ID('Organizaciones'))
+alter table Organizaciones  drop constraint FK66FEAE5985102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5974E8BAB7]') AND parent_object_id = OBJECT_ID('Organizaciones'))
+alter table Organizaciones  drop constraint FK66FEAE5974E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B85102A57]') AND parent_object_id = OBJECT_ID('Dependencias'))
+alter table Dependencias  drop constraint FK4ECBCD2B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B74E8BAB7]') AND parent_object_id = OBJECT_ID('Dependencias'))
+alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -686,6 +702,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Organizaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Organizaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -1283,6 +1303,28 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table Organizaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Dependencias (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     alter table SNIs 
         add constraint FKF16DB6DA85102A57 
         foreign key (CreadorPorFk) 
@@ -1443,7 +1485,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ArticuloFk) 
         references Articulos
 
-/*    alter table Usuarios 
+ /*   alter table Usuarios 
         add constraint FKB984B9FD1687D84E 
         foreign key (PersonaFk) 
         references Personas
@@ -1456,8 +1498,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     alter table Usuarios 
         add constraint FKB984B9FD74E8BAB7 
         foreign key (ModificadoPorFk) 
-        references Usuarios
-        */
+        references Usuarios*/
 
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
@@ -1599,7 +1640,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-/*   alter table Personas 
+ /*   alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -1607,8 +1648,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     alter table Personas 
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
-        references Usuarios
-        */
+        references Usuarios*/
 
     alter table Indices 
         add constraint FKC50D919985102A57 
@@ -2029,3 +2069,23 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table Organizaciones 
+        add constraint FK66FEAE5985102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Organizaciones 
+        add constraint FK66FEAE5974E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Dependencias 
+        add constraint FK4ECBCD2B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Dependencias 
+        add constraint FK4ECBCD2B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
