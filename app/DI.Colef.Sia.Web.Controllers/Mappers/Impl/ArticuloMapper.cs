@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Numero = message.Numero;
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
-            model.Particpantes = message.Participantes;
+            model.Participantes = message.Participantes;
             model.PalabrasClaves = message.PalabrasClaves;
 
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();

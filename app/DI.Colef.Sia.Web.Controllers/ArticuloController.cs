@@ -90,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            data.Form = SetupNewForm(new ArticuloForm());
 
             return View(data);
         }
@@ -104,7 +104,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            data.Form = articuloMapper.Map(articulo);
+            var articuloForm = articuloMapper.Map(articulo);
+
+            data.Form = SetupNewForm(articuloForm);
 
             ViewData.Model = data;
             return View();
@@ -261,10 +263,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
         }
 
-        ArticuloForm SetupNewForm()
+
+        private ArticuloForm SetupNewForm()
         {
+            return SetupNewForm(null);
+        }
+
+        ArticuloForm SetupNewForm(ArticuloForm form)
+        {
+            //var forms = form ?? new ArticuloForm();
+
             return new ArticuloForm
             {
+                Id = form.Id,
+                Activo = form.Activo,
+                Modificacion = form.Modificacion,
+                Titulo = form.Titulo,
+                FechaAceptacion = form.FechaAceptacion,
+                FechaEdicion = form.FechaEdicion,
+                FechaPublicacion = form.FechaPublicacion,
+                Volumen = form.Volumen,
+                Numero = form.Numero,
+                PaginaInicial = form.PaginaInicial,
+                PaginaFinal = form.PaginaFinal,
+                Participantes = form.Participantes,
+                PalabrasClaves = form.PalabrasClaves,
+                CoautorExternoArticulos = form.CoautorExternoArticulos,
+                CoautorInternoArticulos = form.CoautorInternoArticulos,
+
                 CoautorExternoArticulo = new CoautorExternoArticuloForm(),
                 CoautorInternoArticulo = new CoautorInternoArticuloForm(),
 
