@@ -7,7 +7,7 @@
     </tr>
     <% foreach (var responsableInterno in Model.ResponsableInternoCapitulos)
        { %>
-    <tr id="coautorinterno_<%=Html.Encode(responsableInterno.Id) %>">
+    <tr id="responsableinterno_<%=Html.Encode(responsableInterno.Id) %>">
         <td class="subform">
             <%=Html.Encode(responsableInterno.InvestigadorUsuarioPersonaNombre)%>
         </td>

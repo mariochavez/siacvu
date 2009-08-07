@@ -14,10 +14,10 @@ var html = '
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#coautorexterno_form').hide();
-$('#coautorexterno_new').show();
-$('#coautorexterno_form').html('');
-$('#coautorexternoList tr:first').after(html);
+$('#responsableexterno_form').hide();
+$('#responsableexterno_new').show();
+$('#responsableexterno_form').html('');
+$('#responsableexternoList tr:first').after(html);
 
-$('#coautorexterno_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
-$('#coautorexterno_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+$('#responsableexterno_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
+$('#responsableexterno_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');

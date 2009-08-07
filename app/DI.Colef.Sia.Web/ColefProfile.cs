@@ -312,6 +312,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Nivel, NivelForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Sector, SectorForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<ProgramaEstudio, ProgramaEstudioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

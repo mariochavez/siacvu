@@ -6,7 +6,7 @@
         <th class="subform">Responsable Externo</th>
     </tr>
     <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
-    <tr id="coautorexterno_<%=Html.Encode(responsableExterno.Id) %>">
+    <tr id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
         <td class="subform">
             <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
         </td>

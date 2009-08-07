@@ -118,9 +118,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var capituloForm = capituloMapper.Map(capitulo);
 
-            //data.Form = SetupNewForm(capituloForm);
+            data.Form = SetupNewForm(capituloForm);
 
-            //FormSetCombos(data.Form);
+            FormSetCombos(data.Form);
 
 			ViewData.Model = data;
             return View();
@@ -204,14 +204,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult NewCoautorInterno(int id)
         {
             var capitulo = capituloService.GetCapituloById(id);
+            var form = new CapituloForm();
 
-            var form = new CapituloForm
-            {
-                Id = capitulo.Id,
-                CoautorInternoCapitulo = new CoautorInternoCapituloForm(),
-                CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
-            };
+            if (capitulo != null)
+                form.Id = capitulo.Id;
 
+            form.CoautorInternoCapitulo = new CoautorInternoCapituloForm();
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            
             return Rjs("NewCoautorInterno", form);
         }
 
@@ -230,10 +230,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             coautorInternoCapitulo.CreadorPor = CurrentUser();
             coautorInternoCapitulo.ModificadoPor = CurrentUser();
 
-            var capitulo = capituloService.GetCapituloById(capituloId);
+            if (capituloId != 0)
+            {
+                var capitulo = capituloService.GetCapituloById(capituloId);
 
-            capitulo.AddCoautorInterno(coautorInternoCapitulo);
-            capituloService.SaveCapitulo(capitulo);
+                capitulo.AddCoautorInterno(coautorInternoCapitulo);
+                capituloService.SaveCapitulo(capitulo);
+            }
 
             var coautorInternoCapituloForm = coautorInternoCapituloMapper.Map(coautorInternoCapitulo);
 
@@ -245,12 +248,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            var form = new CapituloForm
-            {
-                Id = capitulo.Id,
-                CoautorExternoCapitulo = new CoautorExternoCapituloForm(),
-                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
-            };
+            var form = new CapituloForm();
+            
+            if (capitulo != null)
+                form.Id = capitulo.Id;
+                
+            form.CoautorExternoCapitulo = new CoautorExternoCapituloForm();
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -270,10 +274,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             coautorExternoCapitulo.CreadorPor = CurrentUser();
             coautorExternoCapitulo.ModificadoPor = CurrentUser();
 
-            var capitulo = capituloService.GetCapituloById(capituloId);
-
-            capitulo.AddCoautorExterno(coautorExternoCapitulo);
-            capituloService.SaveCapitulo(capitulo);
+            if (capituloId != 0)
+            {
+                var capitulo = capituloService.GetCapituloById(capituloId);
+                capitulo.AddCoautorExterno(coautorExternoCapitulo);
+                capituloService.SaveCapitulo(capitulo);
+            }
 
             var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
 
@@ -285,12 +291,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            var form = new CapituloForm
-            {
-                Id = capitulo.Id,
-                ResponsableInternoCapitulo = new ResponsableInternoCapituloForm(),
-                ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
-            };
+            var form = new CapituloForm();
+            
+            if (capitulo != null)
+                form.Id = capitulo.Id;
+
+            form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
+            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
 
             return Rjs("NewResponsableInterno", form);
         }
@@ -310,10 +317,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             responsableInternoCapitulo.CreadorPor = CurrentUser();
             responsableInternoCapitulo.ModificadoPor = CurrentUser();
 
-            var capitulo = capituloService.GetCapituloById(capituloId);
-
-            capitulo.AddResponsableInterno(responsableInternoCapitulo);
-            capituloService.SaveCapitulo(capitulo);
+            if (capituloId != 0)
+            {
+                var capitulo = capituloService.GetCapituloById(capituloId);
+                capitulo.AddResponsableInterno(responsableInternoCapitulo);
+                capituloService.SaveCapitulo(capitulo);
+            }
 
             var responsableInternoCapituloForm = responsableInternoCapituloMapper.Map(responsableInternoCapitulo);
 
@@ -325,12 +334,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            var form = new CapituloForm
-            {
-                Id = capitulo.Id,
-                ResponsableExternoCapitulo = new ResponsableExternoCapituloForm(),
-                ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
-            };
+            var form = new CapituloForm();
+            
+            if (capitulo != null)
+                form.Id = capitulo.Id;
+
+            form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
+            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewResponsableExterno", form);
         }
@@ -350,43 +360,67 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             responsableExternoCapitulo.CreadorPor = CurrentUser();
             responsableExternoCapitulo.ModificadoPor = CurrentUser();
 
-            var capitulo = capituloService.GetCapituloById(capituloId);
-
-            capitulo.AddResponsableExterno(responsableExternoCapitulo);
-            capituloService.SaveCapitulo(capitulo);
+            if (capituloId != 0)
+            {
+                var capitulo = capituloService.GetCapituloById(capituloId);
+                capitulo.AddResponsableExterno(responsableExternoCapitulo);
+                capituloService.SaveCapitulo(capitulo);
+            }
 
             var responsableExternoCapituloForm = responsableExternoCapituloMapper.Map(responsableExternoCapitulo);
 
             return Rjs("AddResponsableExterno", responsableExternoCapituloForm);
         }
-        
+
         CapituloForm SetupNewForm()
         {
-            return new CapituloForm
-            {
-				CoautorExternoCapitulo = new CoautorExternoCapituloForm(),
-                CoautorInternoCapitulo = new CoautorInternoCapituloForm(),
-                ResponsableInternoCapitulo = new ResponsableInternoCapituloForm(),
-                ResponsableExternoCapitulo = new ResponsableExternoCapituloForm(),
-                
-                //Lista de Catalogos Pendientes
-                TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos()),
-                Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
-                PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-                LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
-                Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas()),
-                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos()),
-                CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos()),
-                Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos()),
-                ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos()),
-                FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones()),
-                TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones()),
-                TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes()),
-                Areas = areaMapper.Map(catalogoService.GetActiveAreas()),
-                Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas()),
-                Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas()),
-            };
+            return SetupNewForm(null);
+        }
+
+        CapituloForm SetupNewForm(CapituloForm form)
+        {
+            form = form ?? new CapituloForm();
+
+            form.CoautorExternoCapitulo = new CoautorExternoCapituloForm();
+            form.CoautorInternoCapitulo = new CoautorInternoCapituloForm();
+            form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
+            form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
+            
+            //Lista de Catalogos Pendientes
+            form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
+            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+
+            return form;
+        }
+
+        private void FormSetCombos(CapituloForm form)
+        {
+            ViewData["TipoCapitulo"] = form.TipoCapituloId;
+            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["Estado"] = form.EstadoId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+            ViewData["TipoParticipante"] = form.TipoParticipanteId;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

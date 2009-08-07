@@ -18,17 +18,41 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Modificacion { get; set; }
 
         public int TipoCapitulo { get; set; }
+        public int TipoCapituloId { get; set; }
+
         public int Estado { get; set; }
+        public int EstadoId { get; set; }
+
         public int PeriodoReferencia { get; set; }
+        public int PeriodoReferenciaId { get; set; }
+
         public int LineaTematica { get; set; }
+        public int LineaTematicaId { get; set; }
+
         public int Idioma { get; set; }
+        public int IdiomaId { get; set; }
+
         public int Pais { get; set; }
+        public int PaisId { get; set; }
+
         public int FormaParticipacion { get; set; }
+        public int FormaParticipacionId { get; set; }
+
         public int TipoParticipacion { get; set; }
+        public int TipoParticipacionId { get; set; }
+
         public int TipoParticipante { get; set; }
+        public int TipoParticipanteId { get; set; }
+
         public int Area { get; set; }
+        public int AreaId { get; set; }
+
         public int Disciplina { get; set; }
+        public int DisciplinaId { get; set; }
+
         public int Subdisciplina { get; set; }
+        public int SubdisciplinaId { get; set; }
+
         public int Investigador { get; set; }
 
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }

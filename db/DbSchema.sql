@@ -595,6 +595,30 @@ alter table Instituciones  drop constraint FK7E69627C85102A57
 alter table Instituciones  drop constraint FK7E69627C74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869085102A57]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
+alter table ProgramaEstudios  drop constraint FK51F4869085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869074E8BAB7]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
+alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3ED3F785102A57]') AND parent_object_id = OBJECT_ID('Niveles'))
+alter table Niveles  drop constraint FKCE3ED3F785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3ED3F774E8BAB7]') AND parent_object_id = OBJECT_ID('Niveles'))
+alter table Niveles  drop constraint FKCE3ED3F774E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948085102A57]') AND parent_object_id = OBJECT_ID('Sectores'))
+alter table Sectores  drop constraint FK57A9948085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948074E8BAB7]') AND parent_object_id = OBJECT_ID('Sectores'))
+alter table Sectores  drop constraint FK57A9948074E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Personas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Personas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'LineaTematicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table LineaTematicas
@@ -686,6 +710,12 @@ alter table Instituciones  drop constraint FK7E69627C74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Instituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Instituciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Niveles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Niveles
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Sectores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sectores
 
     create table Personas (
         Id INT IDENTITY NOT NULL,
@@ -1274,6 +1304,39 @@ alter table Instituciones  drop constraint FK7E69627C74E8BAB7
        Nombre NVARCHAR(255) null,
        Responsable NVARCHAR(255) null,
        Email NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table ProgramaEstudios (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Niveles (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Sectores (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -2024,5 +2087,35 @@ alter table Instituciones  drop constraint FK7E69627C74E8BAB7
 
     alter table Instituciones 
         add constraint FK7E69627C74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table ProgramaEstudios 
+        add constraint FK51F4869085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ProgramaEstudios 
+        add constraint FK51F4869074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Niveles 
+        add constraint FKCE3ED3F785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Niveles 
+        add constraint FKCE3ED3F774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Sectores 
+        add constraint FK57A9948085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Sectores 
+        add constraint FK57A9948074E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios

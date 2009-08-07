@@ -172,5 +172,23 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         RevistaPublicacion[] GetAllRevistaPublicaciones();
         RevistaPublicacion[] GetActiveRevistaPublicaciones();
         void SaveRevistaPublicacion(RevistaPublicacion revistaPublicacion);
+
+        //Sector
+        Sector GetSectorById(int id);
+        Sector[] GetAllSectors();
+        Sector[] GetActiveSectors();
+        void SaveSector(Sector sector);
+
+        //Nivel
+        Nivel GetNivelById(int id);
+        Nivel[] GetAllNivels();
+        Nivel[] GetActiveNivels();
+        void SaveNivel(Nivel nivel);
+
+        //Programa de estudio
+        ProgramaEstudio GetProgramaEstudioById(int id);
+        ProgramaEstudio[] GetAllProgramaEstudios();
+        ProgramaEstudio[] GetActiveProgramaEstudios();
+        void SaveProgramaEstudio(ProgramaEstudio programaEstudio);
     }
 }

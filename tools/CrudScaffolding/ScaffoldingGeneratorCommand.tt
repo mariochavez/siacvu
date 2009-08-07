@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Capitulo", 3);
+	new EntityScaffoldingDetails("Catalogos.Sector", 1);
  
 /*
  * Property names should be PascalCase.
@@ -32,111 +32,7 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoCapitulo", "TipoCapitulo", "TipoCapitulo")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreCapitulo","string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaAceptacion", "DateTime", null, "[NotEmptyDate]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaEdicion", "DateTime", null, "[NotEmptyDate]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Estado", "Estado", "Estado")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PeriodoReferencia", "PeriodoReferencia", "PeriodoReferencia")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Idioma", "Idioma", "Idioma")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorExternoCapitulos", "IList<CoautorExternoCapitulo>", "InvestigadorExterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorInternoCapitulos", "IList<CoautorInternoCapitulo>", "Investigador")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreLibro", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editorial", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Pais", "Pais", "Pais")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NoPaginas", "int", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ResponsableInternoCapitulos", "IList<ResponsableInternoCapitulo>", "Investigador")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ResponsableExternoCapitulos", "IList<ResponsableExternoCapitulo>", "InvestigadorExterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FormaParticipacion", "FormaParticipacion", "FormaParticipacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Volumen", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editores", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoParticipacion", "TipoParticipacion", "TipoParticipacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoParticipante", "TipoParticipante", "TipoParticipante")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Area", "Area", "Area")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Disciplina", "Disciplina", "Disciplina")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Subdisciplina", "Subdisciplina", "Subdisciplina")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Traductor", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreTraductor", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Resumen", "string", null, "[NotNullNotEmpty]")
+	new EntityProperty("Nombre", "string", null,"[NotNullNotEmpty]",true)
 );
 
 ///////////////////////////////////////////////////

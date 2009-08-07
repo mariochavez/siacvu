@@ -11,6 +11,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
     public class CatalogoService : ICatalogoService
     {
+        readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<Sector> sectorRepository;
+        readonly IRepository<Nivel> nivelRepository;
         readonly IRepository<Cargo> cargoRepository;
         readonly IRepository<Departamento> departamentoRepository;
         readonly IRepository<Puesto> puestoRepository;
@@ -67,6 +70,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoCapitulo> tipoCapituloRepository,
             IRepository<TipoParticipacion> tipoParticipacionRepository,
             IRepository<PeriodoReferencia> periodoReferenciaRepository,
+            IRepository<Nivel> nivelRepository,
+            IRepository<Sector> sectorRepository,
+            IRepository<ProgramaEstudio> programaEstudioRepository,
             IRepository<RevistaPublicacion> revistaPublicacionRepository)
         {
             this.cargoRepository = cargoRepository;
@@ -97,6 +103,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoParticipacionRepository = tipoParticipacionRepository;
             this.periodoReferenciaRepository = periodoReferenciaRepository;
             this.revistaPublicacionRepository = revistaPublicacionRepository;
+            this.programaEstudioRepository = programaEstudioRepository;
+            this.sectorRepository = sectorRepository;
+            this.nivelRepository = nivelRepository;
         }
 
         protected virtual ISession Session
@@ -878,6 +887,87 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             revistaPublicacion.ModificadoEl = DateTime.Now;
 
             revistaPublicacionRepository.SaveOrUpdate(revistaPublicacion);
+        }
+
+        public ProgramaEstudio GetProgramaEstudioById(int id)
+        {
+            return programaEstudioRepository.Get(id);
+        }
+
+        public ProgramaEstudio[] GetAllProgramaEstudios()
+        {
+            return ((List<ProgramaEstudio>)OrderCatalog<ProgramaEstudio>()).ToArray();
+        }
+
+        public ProgramaEstudio[] GetActiveProgramaEstudios()
+        {
+            return ((List<ProgramaEstudio>)programaEstudioRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveProgramaEstudio(ProgramaEstudio programaEstudio)
+        {
+            if (programaEstudio.Id == 0)
+            {
+                programaEstudio.Activo = true;
+                programaEstudio.CreadorEl = DateTime.Now;
+            }
+            programaEstudio.ModificadoEl = DateTime.Now;
+
+            programaEstudioRepository.SaveOrUpdate(programaEstudio);
+        }
+
+        public Sector GetSectorById(int id)
+        {
+            return sectorRepository.Get(id);
+        }
+
+        public Sector[] GetAllSectors()
+        {
+            return ((List<Sector>)OrderCatalog<Sector>()).ToArray();
+        }
+
+        public Sector[] GetActiveSectors()
+        {
+            return ((List<Sector>)sectorRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveSector(Sector sector)
+        {
+            if (sector.Id == 0)
+            {
+                sector.Activo = true;
+                sector.CreadorEl = DateTime.Now;
+            }
+            sector.ModificadoEl = DateTime.Now;
+
+            sectorRepository.SaveOrUpdate(sector);
+        }
+
+        public Nivel GetNivelById(int id)
+        {
+            return nivelRepository.Get(id);
+        }
+
+        public Nivel[] GetAllNivels()
+        {
+            return ((List<Nivel>)OrderCatalog<Nivel>()).ToArray();
+        }
+
+        public Nivel[] GetActiveNivels()
+        {
+            return ((List<Nivel>)nivelRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveNivel(Nivel nivel)
+        {
+            if (nivel.Id == 0)
+            {
+                nivel.Activo = true;
+                nivel.CreadorEl = DateTime.Now;
+            }
+            nivel.ModificadoEl = DateTime.Now;
+
+            nivelRepository.SaveOrUpdate(nivel);
         }
     }
 }

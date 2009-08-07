@@ -322,6 +322,11 @@
     <Content Include="Views\Catalogos\LineaTematica\Index.aspx" />
     <Content Include="Views\Catalogos\LineaTematica\New.aspx" />
     <Content Include="Views\Catalogos\LineaTematica\_Form.ascx" />
+    <Content Include="Views\Catalogos\Nivel\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Nivel\Edit.aspx" />
+    <Content Include="Views\Catalogos\Nivel\Index.aspx" />
+    <Content Include="Views\Catalogos\Nivel\New.aspx" />
+    <Content Include="Views\Catalogos\Nivel\_Form.ascx" />
     <Content Include="Views\Catalogos\Pais\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Pais\Edit.aspx" />
     <Content Include="Views\Catalogos\Pais\Index.aspx" />
@@ -332,6 +337,11 @@
     <Content Include="Views\Catalogos\PeriodoReferencia\Index.aspx" />
     <Content Include="Views\Catalogos\PeriodoReferencia\New.aspx" />
     <Content Include="Views\Catalogos\PeriodoReferencia\_Form.ascx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Edit.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Index.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\New.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\_Form.ascx" />
     <Content Include="Views\Catalogos\Puesto\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Puesto\Edit.aspx" />
     <Content Include="Views\Catalogos\Puesto\Index.aspx" />
@@ -347,6 +357,11 @@
     <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Sector\Edit.aspx" />
+    <Content Include="Views\Catalogos\Sector\Index.aspx" />
+    <Content Include="Views\Catalogos\Sector\New.aspx" />
+    <Content Include="Views\Catalogos\Sector\_Form.ascx" />
     <Content Include="Views\Catalogos\Sede\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sede\Edit.aspx" />
     <Content Include="Views\Catalogos\Sede\Index.aspx" />
