@@ -46,8 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
 
-            if (model.IsTransient())
-            {
+            //if (model.IsTransient())
+           // {
                 model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
                 model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
                 model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
                 model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
                 model.Investigador = investigadorService.GetInvestigadorById(message.Investigador);
-            }
+            //}
 
             if (message.CoautorExternoArticulo != null)
                 model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
