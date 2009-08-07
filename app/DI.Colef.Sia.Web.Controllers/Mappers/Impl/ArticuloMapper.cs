@@ -46,27 +46,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
 
-            //if (model.IsTransient())
-           // {
-                model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
-                model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
-                model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
-                model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
-                model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-                model.Estado = catalogoService.GetEstadoById(message.Estado);
-                model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
-                model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
-                model.Pais = catalogoService.GetPaisById(message.Pais);
-                model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacion);
-                model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
-                model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
-                model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
-                model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
-                model.Area = catalogoService.GetAreaById(message.Area);
-                model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-                model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-                model.Investigador = investigadorService.GetInvestigadorById(message.Investigador);
-            //}
+            model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
+            model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
+            model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
+            model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
+            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
+            model.Estado = catalogoService.GetEstadoById(message.Estado);
+            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacion);
+            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+            model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
+            model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
+            model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
+            model.Area = catalogoService.GetAreaById(message.Area);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
 
             if (message.CoautorExternoArticulo != null)
                 model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
@@ -82,8 +78,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
-                model.CoautorExternoArticulos[0].CreadorPor = usuario;
-                model.CoautorInternoArticulos[0].CreadorPor = usuario;
+                //model.CoautorExternoArticulos[0].CreadorPor = usuario;
+                //model.CoautorInternoArticulos[0].CreadorPor = usuario;
             }
 
             model.ModificadoPor = usuario;
