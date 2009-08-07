@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var sectors = catalogoService.GetAllSectors();
+            var sectors = catalogoService.GetAllSectores();
             data.List = sectorMapper.Map(sectors);
 
             return View(data);

@@ -81,6 +81,7 @@
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorInternoArticulo.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
+    <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Subdisciplina.cs" />
+    <Compile Include="Tesis.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />

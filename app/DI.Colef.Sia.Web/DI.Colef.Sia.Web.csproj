@@ -382,6 +382,9 @@
     <Content Include="Views\Catalogos\SNI\Index.aspx" />
     <Content Include="Views\Catalogos\SNI\New.aspx" />
     <Content Include="Views\Catalogos\SNI\_Form.ascx" />
+    <Content Include="Views\Curso\Activate.js.ascx" />
+    <Content Include="Views\Curso\Index.aspx" />
+    <Content Include="Views\Curso\New.aspx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
     <Content Include="Views\Investigador\AddEstado.js.ascx" />
     <Content Include="Views\Investigador\AddGrado.js.ascx" />
@@ -443,6 +446,9 @@
     <Content Include="Views\Rol\_Form.ascx" />
     <Content Include="Views\Shared\ModelError.js.ascx" />
     <Content Include="Views\Shared\_Message.ascx" />
+    <Content Include="Views\Tesis\Activate.js.ascx" />
+    <Content Include="Views\Tesis\Index.aspx" />
+    <Content Include="Views\Tesis\New.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

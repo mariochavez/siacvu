@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.Dependencia", 1);
+	new EntityScaffoldingDetails("Curso", 3);
  
 /*
  * Property names should be PascalCase.
@@ -32,15 +32,7 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre", "string", null,"[NotNullNotEmpty]",true)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaEdicion", "DateTime", null, "[NotEmptyDate]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Estado", "Estado", "Estado")
+	new EntityProperty("NumeroHoras","int", null, "[NotNullNotEmpty]")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -48,63 +40,43 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
+	new EntityProperty("ProgramaEstudio", "ProgramaEstudio", "ProgramaEstudio")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Idioma", "Idioma", "Idioma")
+	new EntityProperty("Institucion", "Institucion", "Institucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorExternoCapitulos", "IList<CoautorExternoCapitulo>", "InvestigadorExterno")
+	new EntityProperty("Nivel", "Nivel", "Nivel")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorInternoCapitulos", "IList<CoautorInternoCapitulo>", "Investigador")
+	new EntityProperty("Sector", "Sector", "Sector")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreLibro", "string", null, "[NotNullNotEmpty]")
+	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editorial", "string", null, "[NotNullNotEmpty]")
+	new EntityProperty("Nivel2", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel3", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel4", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel5", "Nivel", "Nivel")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Pais", "Pais", "Pais")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NoPaginas", "int", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ResponsableInternoCapitulos", "IList<ResponsableInternoCapitulo>", "Investigador")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ResponsableExternoCapitulos", "IList<ResponsableExternoCapitulo>", "InvestigadorExterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FormaParticipacion", "FormaParticipacion", "FormaParticipacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Volumen", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editores", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoParticipacion", "TipoParticipacion", "TipoParticipacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoParticipante", "TipoParticipante", "TipoParticipante")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -118,20 +90,6 @@ entityScaffoldingDetails.EntityProperties.Add(
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Subdisciplina", "Subdisciplina", "Subdisciplina")
 );
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Traductor", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreTraductor", "string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Resumen", "string", null, "[NotNullNotEmpty]")
-);
-
-
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution

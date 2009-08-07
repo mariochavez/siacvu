@@ -67,11 +67,15 @@
     <Compile Include="IArticuloService.cs" />
     <Compile Include="ICapituloService.cs" />
     <Compile Include="ICatalogoService.cs" />
+    <Compile Include="ICursoService.cs" />
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="Impl\ArticuloService.cs" />
     <Compile Include="Impl\CapituloService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
+    <Compile Include="Impl\CursoService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
+    <Compile Include="Impl\TesisService.cs" />
+    <Compile Include="ITesisService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\UsuarioService.cs" />

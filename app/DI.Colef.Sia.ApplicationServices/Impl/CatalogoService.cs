@@ -927,12 +927,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return sectorRepository.Get(id);
         }
 
-        public Sector[] GetAllSectors()
+        public Sector[] GetAllSectores()
         {
             return ((List<Sector>)OrderCatalog<Sector>()).ToArray();
         }
 
-        public Sector[] GetActiveSectors()
+        public Sector[] GetActiveSectores()
         {
             return ((List<Sector>)sectorRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
@@ -954,12 +954,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return nivelRepository.Get(id);
         }
 
-        public Nivel[] GetAllNivels()
+        public Nivel[] GetAllNiveles()
         {
             return ((List<Nivel>)OrderCatalog<Nivel>()).ToArray();
         }
 
-        public Nivel[] GetActiveNivels()
+        public Nivel[] GetActiveNiveles()
         {
             return ((List<Nivel>)nivelRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }

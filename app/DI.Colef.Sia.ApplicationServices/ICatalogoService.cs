@@ -175,14 +175,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         //Sector
         Sector GetSectorById(int id);
-        Sector[] GetAllSectors();
-        Sector[] GetActiveSectors();
+        Sector[] GetAllSectores();
+        Sector[] GetActiveSectores();
         void SaveSector(Sector sector);
 
         //Nivel
         Nivel GetNivelById(int id);
-        Nivel[] GetAllNivels();
-        Nivel[] GetActiveNivels();
+        Nivel[] GetAllNiveles();
+        Nivel[] GetActiveNiveles();
         void SaveNivel(Nivel nivel);
 
         //Programa de estudio

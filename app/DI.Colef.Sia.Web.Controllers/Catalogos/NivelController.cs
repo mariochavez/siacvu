@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 
-            var nivels = catalogoService.GetAllNivels();
+            var nivels = catalogoService.GetAllNiveles();
             data.List = nivelMapper.Map(nivels);
 
             return View(data);
