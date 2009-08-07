@@ -32,7 +32,7 @@
                     <td class="field">
                         <% Html.RenderPartial("_NewCoautorInterno", Model.Form); %>
                         <% Html.RenderPartial("_NewCoautorExterno", Model.Form); %>
-                        <% Html.RenderPartial("_ReferenciaBibligrafica", Model.Form); %>
+                        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                     </td>
                 </tr>
                 <tr>

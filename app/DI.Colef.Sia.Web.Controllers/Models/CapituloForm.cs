@@ -30,6 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Disciplina { get; set; }
         public int Subdisciplina { get; set; }
         public int Investigador { get; set; }
+
+        public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
+        public CoautorInternoCapituloForm[] CoautorInternoCapitulos { get; set; }
+        public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
+        public ResponsableExternoCapituloForm[] ResponsableExternoCapitulos { get; set; }
 		
 		/* New */
 		public CoautorExternoCapituloForm CoautorExternoCapitulo { get; set; }

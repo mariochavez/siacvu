@@ -71,16 +71,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             if(message.CoautorExternoCapitulo != null)
-		        model.AddCoautor(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
+                model.AddCoautorExterno(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
 
 		    if(message.CoautorInternoCapitulo != null)
-		        model.AddCoautor(coautorInternoCapituloMapper.Map(message.CoautorInternoCapitulo));
+                model.AddCoautorInterno(coautorInternoCapituloMapper.Map(message.CoautorInternoCapitulo));
 
 		    if(message.ResponsableInternoCapitulo != null)
-		        model.AddResponsable(responsableInternoCapituloMapper.Map(message.ResponsableInternoCapitulo));
+                model.AddResponsableInterno(responsableInternoCapituloMapper.Map(message.ResponsableInternoCapitulo));
 
 		    if(message.ResponsableExternoCapitulo != null)
-		        model.AddResponsable(responsableExternoCapituloMapper.Map(message.ResponsableExternoCapitulo));
+                model.AddResponsableExterno(responsableExternoCapituloMapper.Map(message.ResponsableExternoCapitulo));
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)

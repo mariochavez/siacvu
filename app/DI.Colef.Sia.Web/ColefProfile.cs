@@ -190,21 +190,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()
+            Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoCapituloForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
 
-            Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
+            Mapper.CreateMap<CoautorExternoCapitulo, CoautorExternoCapituloForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
+                           o => o.Ignore());
 
             Mapper.CreateMap<ResponsableInternoCapitulo, ResponsableInternoCapituloForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
 
             Mapper.CreateMap<ResponsableExternoCapitulo, ResponsableExternoCapituloForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
+                           o => o.Ignore());
         }
 
         void CreateCatalogosMaps()

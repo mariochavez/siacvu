@@ -8,6 +8,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
+    //[CapituloValidator]
 	public class Capitulo : Entity, IBaseEntity
     {
 		public Capitulo()
@@ -18,19 +19,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ResponsableExternoCapitulos = new List<ResponsableExternoCapitulo>();
 		}
 		
-		public virtual void AddCoautor(CoautorExternoCapitulo coautorExternoCapitulo)
+		public virtual void AddCoautorExterno(CoautorExternoCapitulo coautorExternoCapitulo)
         {
             CoautorExternoCapitulos.Add(coautorExternoCapitulo);
         }
-        public virtual void AddCoautor(CoautorInternoCapitulo coautorInternoCapitulo)
+        public virtual void AddCoautorInterno(CoautorInternoCapitulo coautorInternoCapitulo)
         {
             CoautorInternoCapitulos.Add(coautorInternoCapitulo);
         }
-        public virtual void AddResponsable(ResponsableInternoCapitulo responsableInternoCapitulo)
+        public virtual void AddResponsableInterno(ResponsableInternoCapitulo responsableInternoCapitulo)
         {
             ResponsableInternoCapitulos.Add(responsableInternoCapitulo);
         }
-        public virtual void AddResponsable(ResponsableExternoCapitulo responsableExternoCapitulo)
+        public virtual void AddResponsableExterno(ResponsableExternoCapitulo responsableExternoCapitulo)
         {
             ResponsableExternoCapitulos.Add(responsableExternoCapitulo);
         }
@@ -89,36 +90,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotNull]
 		public virtual FormaParticipacion FormaParticipacion { get; set; }
-
-		[NotNullNotEmpty]
+		
 		public virtual string Volumen { get; set; }
-
-		[NotNullNotEmpty]
+		
 		public virtual string Editores { get; set; }
-
-        [NotNull]
+        
 		public virtual TipoParticipacion TipoParticipacion { get; set; }
-
-        [NotNull]
+        
 		public virtual TipoParticipante TipoParticipante { get; set; }
-
-        [NotNull]
+        
 		public virtual Area Area { get; set; }
-
-        [NotNull]
+        
 		public virtual Disciplina Disciplina { get; set; }
-
-        [NotNull]
+        
 		public virtual Subdisciplina Subdisciplina { get; set; }
-
-        [NotNull]
+        
 		public virtual string Traductor { get; set; }
-
-        [NotNull]
+        
 		public virtual string NombreTraductor { get; set; }
-
-		[NotNullNotEmpty]
+		
 		public virtual string Resumen { get; set; }
+
 
 		public virtual Usuario CreadorPor { get; set; }
 

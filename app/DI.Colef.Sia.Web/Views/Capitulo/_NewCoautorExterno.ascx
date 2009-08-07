@@ -6,9 +6,9 @@
         <td class="label">
             <label>Coautores Externos:</label>
             <br />
-            <%=Html.DropDownList("CoautorExternoArticulo.InvestigadorExterno", Model.CoautoresExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
+            <%=Html.DropDownList("CoautorExternoCapitulo.InvestigadorExternoId", Model.CoautoresExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
                 "Seleccione ...")%>
-            <%=Html.ValidationMessage("CoautorExternoArticulo.InvestigadorExterno")%>
+            <%=Html.ValidationMessage("CoautorExternoCapitulo.InvestigadorExternoId")%>
         </td>
     </tr>                              
 </table>

@@ -98,6 +98,7 @@
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
     <Compile Include="Investigador.cs" />
+    <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
     <Compile Include="InvestigadorExterno.cs" />

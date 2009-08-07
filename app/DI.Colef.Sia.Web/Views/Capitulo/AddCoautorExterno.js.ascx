@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CoautorExternoArticuloForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CoautorExternoCapituloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -17,7 +17,6 @@ $('#message').removeClass('errormessage');
 $('#coautorexterno_form').hide();
 $('#coautorexterno_new').show();
 $('#coautorexterno_form').html('');
-$('#coautorexternoEmptyList_form').html('');
 $('#coautorexternoList tr:first').after(html);
 
 $('#coautorexterno_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

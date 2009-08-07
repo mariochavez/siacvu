@@ -104,7 +104,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            data.Form = articuloMapper.Map(articulo);
+            var articuloForm = articuloMapper.Map(articulo);
+
+            data.Form = SetupNewForm(articuloForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -187,13 +191,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult NewCoautorInterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
+            var form = new ArticuloForm();
 
-            var form = new ArticuloForm
-                           {
-                               Id = articulo.Id,
-                               CoautorInternoArticulo = new CoautorInternoArticuloForm(),
-                               CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos())
-                           };
+            if (articulo != null)
+                form.Id = articulo.Id;
+
+            form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -213,9 +217,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             coautorInternoArticulo.CreadorPor = CurrentUser();
             coautorInternoArticulo.ModificadoPor = CurrentUser();
 
-            var articulo = articuloService.GetArticuloById(articuloId);
-            articulo.AddCoautorInterno(coautorInternoArticulo);
-            articuloService.SaveArticulo(articulo);
+            if (articuloId != 0)
+            {
+                var articulo = articuloService.GetArticuloById(articuloId);
+                articulo.AddCoautorInterno(coautorInternoArticulo);
+                articuloService.SaveArticulo(articulo);
+            }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
 
@@ -226,13 +233,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult NewCoautorExterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
+            var form = new ArticuloForm();
 
-            var form = new ArticuloForm
-            {
-                Id = articulo.Id,
-                CoautorExternoArticulo = new CoautorExternoArticuloForm(),
-                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos())
-            };
+            if (articulo != null)
+                form.Id = articulo.Id;
+
+            form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -252,9 +259,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             coautorExternoArticulo.CreadorPor = CurrentUser();
             coautorExternoArticulo.ModificadoPor = CurrentUser();
 
-            var articulo = articuloService.GetArticuloById(articuloId);
-            articulo.AddCoautorExterno(coautorExternoArticulo);
-            articuloService.SaveArticulo(articulo);
+            if (articuloId != 0)
+            {
+                var articulo = articuloService.GetArticuloById(articuloId);
+                articulo.AddCoautorExterno(coautorExternoArticulo);
+                articuloService.SaveArticulo(articulo);
+            }
 
             var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
 
@@ -263,32 +273,63 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         ArticuloForm SetupNewForm()
         {
-            return new ArticuloForm
-            {
-                CoautorExternoArticulo = new CoautorExternoArticuloForm(),
-                CoautorInternoArticulo = new CoautorInternoArticuloForm(),
+            return SetupNewForm(null);
+        }
 
-                //Lista de Catalogos
-                TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos()),
-                Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas()),
-                Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
-                PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-                LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
-                Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                RevistasPublicaciones = revistaPublicacionMapper.Map(catalogoService.GetActiveRevistaPublicaciones()),
-                Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones()),
-                Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos()),
-                CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos()),
-                LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones()),
-                TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades()),
-                TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes()),
-                Areas = areaMapper.Map(catalogoService.GetActiveAreas()),
-                Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas()),
-                Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas())
-            };
+        ArticuloForm SetupNewForm(ArticuloForm form)
+        {
+            form = form ?? new ArticuloForm();
+
+            form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
+            form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
+
+            //Lista de Catalogos
+            form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
+            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.RevistasPublicaciones = revistaPublicacionMapper.Map(catalogoService.GetActiveRevistaPublicaciones());
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
+            form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
+            form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+
+            return form;
+        }
+
+        private void FormSetCombos(ArticuloForm form)
+        {
+            ViewData["TipoArticulo"] = form.TipoArticuloId;
+            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["Estado"] = form.EstadoId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["LineaTematica"] = form.LineaTematicaId;
+
+            ViewData["Pais"] = form.PaisId;
+            ViewData["RevistaPublicacion"] = form.RevistaPublicacionId;
+            ViewData["Institucion"] = form.InstitucionId;
+            ViewData["Indice1"] = form.Indice1Id;
+            ViewData["Indice2"] = form.Indice2Id;
+            ViewData["Indice3"] = form.Indice3Id;
+
+            ViewData["LineaInvestigacion"] = form.LineaInvestigacionId;
+            ViewData["TipoActividad"] = form.TipoActividadId;
+            ViewData["TipoParticipante"] = form.TipoParticipanteId;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+
+
         }
     }
 }

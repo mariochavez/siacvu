@@ -8,6 +8,7 @@ using System.Collections.Generic;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
+    [ArticuloValidator]
     public class Articulo : Entity, IBaseEntity
     {
         public Articulo()
@@ -58,15 +59,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string Volumen { get; set; }
 
         [NotNull]
-        //[IsNumeric]
         public virtual int Numero { get; set; }
 
         [NotNull]
-        //[IsNumeric]
         public virtual int PaginaInicial { get; set; }
 
         [NotNull]
-        //[IsNumeric]
         public virtual int PaginaFinal { get; set; }
 
         [NotNull]
@@ -93,29 +91,22 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
-        [NotNull]
         public virtual LineaInvestigacion LineaInvestigacion { get; set; }
 
-        [NotNull]
         public virtual TipoActividad TipoActividad { get; set; }
 
-        [NotNull]
         public virtual TipoParticipante TipoParticipante { get; set; }
 
-        public virtual int Particpantes { get; set; }
+        public virtual int Participantes { get; set; }
 
         public virtual string PalabrasClaves { get; set; }
 
-        [NotNull]
         public virtual Area Area { get; set; }
 
-        [NotNull]
         public virtual Disciplina Disciplina { get; set; }
 
-        [NotNull]
         public virtual Subdisciplina Subdisciplina { get; set; }
 
-        [NotEmptyDate]
         public virtual DateTime FechaPublicacion { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }

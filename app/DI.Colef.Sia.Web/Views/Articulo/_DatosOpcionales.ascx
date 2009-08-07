@@ -4,14 +4,14 @@
 <table class="subform">
     <tr>
         <td class="label">
-            <label>Linea de Investigacion personal:<em>*</em></label>
+            <label>Linea de Investigacion personal:</label>
             <br />
             <%=Html.DropDownList("LineaInvestigacion", Model.LineasInvestigaciones.CreateSelectList<LineaInvestigacionForm>("Id", "Nombre"),
                 "Seleccione ...")%>
             <%=Html.ValidationMessage("LineaInvestigacion") %>
         </td>
         <td class="label">
-            <label>Tipo de Actividad:<em>*</em></label>
+            <label>Tipo de Actividad:</label>
             <br />
             <%=Html.DropDownList("TipoActividad", Model.TiposActividades.CreateSelectList<TipoActividadForm>("Id", "Nombre"),
                 "Seleccione ...")%>
@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <td class="label">
-            <label>Tipo de Participante:<em>*</em></label>
+            <label>Tipo de Participante:</label>
             <br />
             <%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
                 "Seleccione ...")%>
@@ -41,7 +41,7 @@
             <%=Html.ValidationMessage("PalabrasClaves")%>
         </td>
         <td class="label">
-            <label>Area:<em>*</em></label>
+            <label>Area:</label>
             <br />
             <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
@@ -50,14 +50,14 @@
     </tr>
     <tr>
         <td class="label">
-            <label>Disciplina:<em>*</em></label>
+            <label>Disciplina:</label>
             <br />
             <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
             <%=Html.ValidationMessage("Disciplina") %>
         </td>
         <td class="label">
-            <label>Subdisciplina:<em>*</em></label>
+            <label>Subdisciplina:</label>
             <br />
             <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
@@ -65,8 +65,8 @@
         </td>
     </tr>
     <tr>
-        <td class="label required">
-            <label>Fecha Publicacion:<em>*</em></label>
+        <td class="label">
+            <label>Fecha Publicacion:</label>
             <br />
             <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class="datetime", maxlength = 10 })%>
             <span class="helper_message">(Formato dd/mm/yyyy)</span>

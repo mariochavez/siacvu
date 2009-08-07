@@ -6,9 +6,9 @@
         <td class="label">
             <label>Responsables Internos:</label>
             <br />
-            <%=Html.DropDownList("ResponsableInternoCapitulo.Investigador", Model.ResponsablesInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
+            <%=Html.DropDownList("ResponsableInternoCapitulo.InvestigadorId", Model.ResponsablesInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
                 "Seleccione ...")%>
-			<%=Html.ValidationMessage("ResponsableInternoCapitulo.Investigador") %>
+			<%=Html.ValidationMessage("ResponsableInternoCapitulo.InvestigadorId") %>
         </td>
     </tr>
 </table>

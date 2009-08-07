@@ -1005,7 +1005,7 @@ alter table Instituciones  drop constraint FK7E69627C74E8BAB7
        PaginaInicial INT null,
        PaginaFinal INT null,
        FechaEdicion DATETIME null,
-       Particpantes INT null,
+       Participantes INT null,
        PalabrasClaves NVARCHAR(255) null,
        FechaPublicacion DATETIME null,
        CreadorEl DATETIME null,

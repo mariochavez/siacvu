@@ -6,9 +6,9 @@
         <td class="label">
             <label>Responsables Externos:</label>
             <br />
-            <%=Html.DropDownList("ResponsableExternoCapitulo.InvestigadorExterno", Model.ResponsablesExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
+            <%=Html.DropDownList("ResponsableExternoCapitulo.InvestigadorExternoId", Model.ResponsablesExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
                 "Seleccione ...")%>
-			<%=Html.ValidationMessage("ResponsableExternoCapitulo.InvestigadorExterno") %>
+			<%=Html.ValidationMessage("ResponsableExternoCapitulo.InvestigadorExternoId") %>
         </td>
     </tr>
 </table>
