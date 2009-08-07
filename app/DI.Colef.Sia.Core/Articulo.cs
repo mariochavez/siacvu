@@ -102,7 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual TipoParticipante TipoParticipante { get; set; }
 
-        public virtual int Particpantes { get; set; }
+        public virtual int Participantes { get; set; }
 
         public virtual string PalabrasClaves { get; set; }
 
