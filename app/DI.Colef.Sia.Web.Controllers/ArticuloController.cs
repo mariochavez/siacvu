@@ -90,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm(new ArticuloForm());
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -108,6 +108,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             data.Form = SetupNewForm(articuloForm);
 
+            /*****************************************************/
+            /* *
+             * Mover esta parte a un metodo que se le pase el Form
+             * SetCombos(data.Form);
+             * */
+            ViewData["TipoArticulo"] = data.Form.TipoArticuloId;
+
+            /*****************************************************/
             ViewData.Model = data;
             return View();
         }
@@ -263,58 +271,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
         }
 
-
-        private ArticuloForm SetupNewForm()
+        ArticuloForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
         ArticuloForm SetupNewForm(ArticuloForm form)
         {
-            //var forms = form ?? new ArticuloForm();
+            form = form ?? new ArticuloForm();
 
-            return new ArticuloForm
-            {
-                Id = form.Id,
-                Activo = form.Activo,
-                Modificacion = form.Modificacion,
-                Titulo = form.Titulo,
-                FechaAceptacion = form.FechaAceptacion,
-                FechaEdicion = form.FechaEdicion,
-                FechaPublicacion = form.FechaPublicacion,
-                Volumen = form.Volumen,
-                Numero = form.Numero,
-                PaginaInicial = form.PaginaInicial,
-                PaginaFinal = form.PaginaFinal,
-                Participantes = form.Participantes,
-                PalabrasClaves = form.PalabrasClaves,
-                CoautorExternoArticulos = form.CoautorExternoArticulos,
-                CoautorInternoArticulos = form.CoautorInternoArticulos,
+            form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
+            form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
 
-                CoautorExternoArticulo = new CoautorExternoArticuloForm(),
-                CoautorInternoArticulo = new CoautorInternoArticuloForm(),
+            //Lista de Catalogos
+            form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
+            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.RevistasPublicaciones = revistaPublicacionMapper.Map(catalogoService.GetActiveRevistaPublicaciones());
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
+            form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
+            form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
-                //Lista de Catalogos
-                TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos()),
-                Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas()),
-                Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
-                PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-                LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
-                Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                RevistasPublicaciones = revistaPublicacionMapper.Map(catalogoService.GetActiveRevistaPublicaciones()),
-                Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones()),
-                Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices()),
-                CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos()),
-                CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos()),
-                LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones()),
-                TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades()),
-                TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes()),
-                Areas = areaMapper.Map(catalogoService.GetActiveAreas()),
-                Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas()),
-                Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas())
-            };
+            return form;
         }
     }
 }
