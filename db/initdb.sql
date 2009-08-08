@@ -10,6 +10,84 @@ INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
 
+insert into Proyectos values('Proyecto 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Proyectos values('Proyecto 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Proyectos values('Proyecto 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Proyectos values('Proyecto 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Proyectos values('Proyecto 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into EstadoPaises values('EstadoPaises 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into EstadoPaises values('EstadoPaises 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into EstadoPaises values('EstadoPaises 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into EstadoPaises values('EstadoPaises 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into EstadoPaises values('EstadoPaises 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into MedioImpresos values('Periodico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioImpresos values('Tabloide',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioImpresos values('Revista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioImpresos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into MedioElectronicos values('Radio',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Television',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Internet',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Generos values('Entrevista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Columna',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Articulo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Comentario',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Mesa de Analisis',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Ambitos values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Internacional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Binacional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Local',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Regional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Estatal',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoOrganos values('Comision',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comite',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Consejo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Junta',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Subcomite',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Consorsio',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Red',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Grupo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into OtraParticipaciones values('Presentacion de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Presentacion de resultados de investigacion',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Platicas',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoPresentaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoDictamenes values('Libros',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Articulos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Proyectos de investigación',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Capitulos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Reportes técnicos',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoDistinciones values('Reconocimientos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDistinciones values('Premios',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDistinciones values('Becas para estancias',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDistinciones values('Cátedras académicas / Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoEventos values('Congreso',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Foro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Seminario',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Taller',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Presentación de Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoFinanciamientos values('Fiscal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoFinanciamientos values('Complementario',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoFinanciamientos values('Financiamiento externo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoFinanciamientos values('Mixto',GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 1, 1);
