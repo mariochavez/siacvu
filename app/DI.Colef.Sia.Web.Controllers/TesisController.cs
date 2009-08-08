@@ -31,22 +31,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
 
-        public TesisController(ITesisService tesisService,
-            ITesisMapper tesisMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService
-            , IGradoAcademicoMapper gradoAcademicoMapper
-, IPaisMapper paisMapper
-, IFormaParticipacionMapper formaParticipacionMapper
-, IInstitucionMapper institucionMapper
-, IProgramaEstudioMapper programaEstudioMapper
-, ILineaTematicaMapper lineaTematicaMapper
-, IPeriodoReferenciaMapper periodoReferenciaMapper
-, ISectorMapper sectorMapper
-, IDependenciaMapper dependenciaMapper
-, IDepartamentoMapper departamentoMapper
-, IAreaMapper areaMapper
-, IDisciplinaMapper disciplinaMapper
-, ISubdisciplinaMapper subdisciplinaMapper
+        public TesisController(ITesisService tesisService, ITesisMapper tesisMapper, ICatalogoService catalogoService, 
+            IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper, IPaisMapper paisMapper, 
+            IFormaParticipacionMapper formaParticipacionMapper, IInstitucionMapper institucionMapper, 
+            IProgramaEstudioMapper programaEstudioMapper, ILineaTematicaMapper lineaTematicaMapper, 
+            IPeriodoReferenciaMapper periodoReferenciaMapper, ISectorMapper sectorMapper, 
+            IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper, 
+            IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
+            ISubdisciplinaMapper subdisciplinaMapper
             )
             : base(usuarioService)
         {
@@ -94,7 +86,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var tesis = tesisService.GetTesisById(id);
-            data.Form = tesisMapper.Map(tesis);
+
+            if (tesis == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
+            var tesisForm = tesisMapper.Map(tesis);
+
+            data.Form = SetupNewForm(tesisForm);
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -117,10 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisForm form)
         {
-            var tesis = tesisMapper.Map(form);
-
-            tesis.CreadorPor = CurrentUser();
-            tesis.ModificadoPor = CurrentUser();
+            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(tesis, form, Title.New, "Tesis"))
             {
@@ -130,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             tesisService.SaveTesis(tesis);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "tesis.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido creada", tesis.Titulo));
         }
 
         [Transaction]
@@ -138,16 +136,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisForm form)
         {
-            var tesis = tesisMapper.Map(form);
-
-            tesis.ModificadoPor = CurrentUser();
+            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(tesis, form, Title.Edit))
-                return ViewEdit();
+            {
+                var tesisForm = tesisMapper.Map(tesis);
+                ((GenericViewData<TesisForm>)ViewData.Model).Form = SetupNewForm(tesisForm);
+                FormSetCombos(tesisForm);
+                return ViewEdit();   
+            }
 
             tesisService.SaveTesis(tesis);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "tesis.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificada", tesis.Titulo));
         }
 
         [Transaction]
@@ -155,6 +156,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {
             var tesis = tesisService.GetTesisById(id);
+
+            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             tesis.Activo = true;
             tesis.ModificadoPor = CurrentUser();
             tesisService.SaveTesis(tesis);
@@ -169,6 +174,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var tesis = tesisService.GetTesisById(id);
+
+            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             tesis.Activo = false;
             tesis.ModificadoPor = CurrentUser();
             tesisService.SaveTesis(tesis);
@@ -180,23 +189,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         TesisForm SetupNewForm()
         {
-            return new TesisForm
-            {
+            return SetupNewForm(null);
+        }
+
+        TesisForm SetupNewForm(TesisForm form)
+        {
+            form = form ?? new TesisForm();
+
                 //Lista de Catalogos Pendientes
-                GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
-                Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones()),
-                Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones()),
-                ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios()),
-                LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
-                PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-                Sectores = sectorMapper.Map(catalogoService.GetActiveSectores()),
-                Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias()),
-                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
-                Areas = areaMapper.Map(catalogoService.GetActiveAreas()),
-                Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas()),
-                Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas()),
-            };
+            form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias());
+            form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+
+            return form;
+
+        }
+
+        private void FormSetCombos(TesisForm form)
+        {
+            ViewData["GradoAcademico"] = form.GradoAcademicoId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+            ViewData["Institucion"] = form.InstitucionId;
+            ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
+            ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+
+
+            ViewData["Sector"] = form.SectorId;
+            ViewData["Dependencia"] = form.DependenciaId;
+            ViewData["Departamento"] = form.DepartamentoId;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }
