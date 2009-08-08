@@ -4,7 +4,7 @@
 <table class="subform">    	
 	<tr>
 		<td>
-			<label>Nombre del Libro:<em>*</em></label>
+			<label>Nombre del Libro:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("NombreLibro", Model.NombreLibro, new { maxlength = 100 })%>
@@ -14,7 +14,7 @@
 		
 	<tr>
 		<td>
-			<label>Editorial:<em>*</em></label>
+			<label>Editorial:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("Editorial", Model.Editorial, new { maxlength = 100 })%>
@@ -24,7 +24,7 @@
 		
     <tr>
 		<td>
-			<label>Pais:<em>*</em></label>
+			<label>Pais:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
@@ -35,7 +35,7 @@
 	
 	<tr>
 		<td>
-			<label>No. de Paginas:<em>*</em></label>
+			<label>No. de Paginas:</label>
 		</td>
 	    <td>
 	        <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { maxlength = 100 })%>

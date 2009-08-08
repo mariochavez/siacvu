@@ -5,13 +5,23 @@
     <tr>
         <th class="subform">Coautor Externo</th>
     </tr>
-    <% foreach(var coautorExterno in Model.CoautorExternoCapitulos) { %>
-    <tr id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
-        <td class="subform">
-            <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
-        </td>
-    </tr>
+    <% if (Model.CoautorExternoCapitulos != null){%>
+        <% foreach(var coautorExterno in Model.CoautorExternoCapitulos) { %>
+        <tr id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
+            <td class="subform">
+                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
+            </td>
+        </tr>
+        <% } %>
+    <% } else { %>
+        <tr id="coautorexternoEmptyList_form">
+            <td class="subform">
+                No hay coautores externos definidos
+            </td>
+        </tr>
     <% } %>
+    
+    
 </table>
 <div id="coautorexterno_new" class="floatl btn_container">
     <span class="btn btn_small_white">

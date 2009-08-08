@@ -14,13 +14,12 @@
        { %>
         <div id="form">
         <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
-        <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
+        <%=Html.Hidden("Id", Model.Form.Id) %>        
 
         <table class="form">
             <tr>
                 <td class="label required">
-                   <label>Datos Capitulo:<em>*</em></label>
+                   <label>Capitulo:</label>
                 </td>
                 <td class="field">
                     <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
@@ -44,7 +43,7 @@
             </tr>
             <tr>
                 <td class="label required">
-                   <label>Referencia Bibliografica:<em>*</em></label>
+                   <label>Referencia Bibliografica:</label>
                 </td>
                 <td class="field">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
@@ -68,7 +67,7 @@
             </tr>
             <tr>
                 <td class="label required">
-                   <label>Responsables del libro:<em>*</em></label>
+                   <label>Responsables del libro:</label>
                 </td>
                 <td class="field">
                     <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
@@ -76,7 +75,7 @@
             </tr>
             <tr>
                 <td class="label required">
-                   <label>Datos Opcionales:<em>*</em></label>
+                   <label>Datos Opcionales:</label>
                 </td>
                 <td class="field">
                     <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>

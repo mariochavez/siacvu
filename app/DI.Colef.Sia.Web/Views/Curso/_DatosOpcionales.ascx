@@ -4,7 +4,7 @@
 <table class="subform">
 	<tr>
 		<td>
-			<label>Sector:<em>*</em></label>
+			<label>Sector:</label>
 		</td>
 	    <td>
 			<%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
@@ -15,7 +15,7 @@
 		
 	<tr>
 		<td>
-			<label>Organizacion:<em>*</em></label>
+			<label>Organizacion:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Organizacion", Model.Organizaciones.CreateSelectList<OrganizacionForm>("Id", "Nombre"),
@@ -26,7 +26,7 @@
 		
 	<tr>
 		<td>
-			<label>Nivel 2:<em>*</em></label>
+			<label>Nivel 2:</label>
 		</td>    		
 		<td>
 		    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -37,7 +37,7 @@
 		
 	<tr>
 		<td>
-			<label>Nivel 3:<em>*</em></label>
+			<label>Nivel 3:</label>
 		</td>		    
 		<td>
 		    <%=Html.DropDownList("Nivel3", Model.Niveles3.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -48,7 +48,7 @@
 		
 	<tr>
 		<td>
-			<label>Nivel 4:<em>*</em></label>
+			<label>Nivel 4:</label>
 		</td>		    
 		<td>
 		    <%=Html.DropDownList("Nivel4", Model.Niveles4.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -59,7 +59,7 @@
 		
 	<tr>
 		<td>
-			<label>Nivel 5:<em>*</em></label>
+			<label>Nivel 5:</label>
 		</td>
 	    <td>
 	        <%=Html.DropDownList("Nivel5", Model.Niveles5.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -70,7 +70,7 @@
 		
 	<tr>
 		<td>
-			<label>Pais:<em>*</em></label>
+			<label>Pais:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
@@ -81,7 +81,7 @@
 		
 	<tr>
 		<td>
-			<label>Area:<em>*</em></label>
+			<label>Area:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
@@ -92,7 +92,7 @@
 		
 	<tr>
 		<td>
-			<label>Disciplina:<em>*</em></label>
+			<label>Disciplina:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
@@ -103,7 +103,7 @@
 		
 	<tr>
 		<td>
-			<label>Subdisciplina:<em>*</em></label>
+			<label>Subdisciplina:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),

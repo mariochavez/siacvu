@@ -89,6 +89,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (curso == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
+            if (curso.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             var cursoForm = cursoMapper.Map(curso);
 
             data.Form = SetupNewForm(cursoForm);

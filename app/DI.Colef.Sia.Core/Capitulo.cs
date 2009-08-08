@@ -90,7 +90,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotNull]
 		public virtual FormaParticipacion FormaParticipacion { get; set; }
-		
+
+        public virtual int Puntuacion { get; set; }
+
 		public virtual string Volumen { get; set; }
 		
 		public virtual string Editores { get; set; }
@@ -110,7 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string NombreTraductor { get; set; }
 		
 		public virtual string Resumen { get; set; }
-
 
 		public virtual Usuario CreadorPor { get; set; }
 

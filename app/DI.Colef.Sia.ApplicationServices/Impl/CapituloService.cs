@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if (capitulo.IsTransient())
             {
+                capitulo.Puntuacion = 0;
                 capitulo.Activo = true;
                 capitulo.CreadorEl = DateTime.Now;
             }

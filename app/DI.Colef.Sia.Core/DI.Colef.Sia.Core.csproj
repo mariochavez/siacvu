@@ -106,6 +106,7 @@
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
+    <Compile Include="NHibernateValidator\CapituloValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
     <Compile Include="InvestigadorExterno.cs" />

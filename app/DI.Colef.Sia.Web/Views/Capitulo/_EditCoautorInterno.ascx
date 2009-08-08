@@ -5,12 +5,20 @@
     <tr>
         <th class="subform">Coautor Interno</th>
     </tr>
-    <% foreach(var coautorInterno in Model.CoautorInternoCapitulos) { %>
-    <tr id="coautorinterno_<%=Html.Encode(coautorInterno.Id) %>">
-        <td class="subform">
-            <%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%>
-        </td>
-    </tr>
+    <% if (Model.CoautorInternoCapitulos != null){%>
+        <% foreach(var coautorInterno in Model.CoautorInternoCapitulos) { %>
+        <tr id="coautorinterno_<%=Html.Encode(coautorInterno.Id) %>">
+            <td class="subform">
+                <%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%>
+            </td>
+        </tr>
+        <% } %>
+    <% } else { %>
+        <tr id="coautorinternoEmptyList_form">
+            <td class="subform">
+                No hay coautores internos definidos
+            </td>
+        </tr>
     <% } %>
 </table>
 <div id="coautorinterno_new" class="floatl btn_container">
