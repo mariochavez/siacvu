@@ -98,38 +98,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         private void CreateTesisMaps()
         {
             Mapper.CreateMap<Tesis, TesisForm>()
-            .ForMember(d => d.Modificacion,
-                       o => o.ResolveUsing<ModificadoResolver>())
-            .ForMember(d => d.FechaConclusion,
-                       o => o.AddFormatter<StandardDateFormatter>())
-            .ForMember(d => d.FechaGrado,
-                       o => o.AddFormatter<StandardDateFormatter>())
-            .ForMember(d => d.GradoAcademico,
-                       o => o.Ignore())
-            .ForMember(d => d.Pais,
-                       o => o.Ignore())
-            .ForMember(d => d.FormaParticipacion,
-                       o => o.Ignore())
-            .ForMember(d => d.Institucion,
-                       o => o.Ignore())
-            .ForMember(d => d.ProgramaEstudio,
-                       o => o.Ignore())
-            .ForMember(d => d.LineaTematica,
-                       o => o.Ignore())
-            .ForMember(d => d.PeriodoReferencia,
-                       o => o.Ignore())
-            .ForMember(d => d.Sector,
-                       o => o.Ignore())
-            .ForMember(d => d.Dependencia,
-                       o => o.Ignore())
-            .ForMember(d => d.Departamento,
-                       o => o.Ignore())
-            .ForMember(d => d.Area,
-                       o => o.Ignore())
-            .ForMember(d => d.Disciplina,
-                       o => o.Ignore())
-            .ForMember(d => d.Subdisciplina,
-                       o => o.Ignore());
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaConclusion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaGrado,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.GradoAcademico,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.FormaParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.ProgramaEstudio,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
+                .ForMember(d => d.Dependencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Departamento,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
         }
 
         private void CreateCursosMaps()

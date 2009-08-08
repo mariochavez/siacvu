@@ -24,8 +24,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(TesisForm message, Tesis model)
         {
+            model.Titulo = message.Titulo;
+            model.Autor = message.Autor;
             model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
+
+
+
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
@@ -39,6 +44,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+        }
+
+        public Tesis Map(TesisForm message, Usuario usuario, Investigador investigador)
+        {
+            var model = Map(message);
+
+            if (model.IsTransient())
+            {
+                model.Investigador = investigador;
+                model.CreadorPor = usuario;
+            }
+
+            model.ModificadoPor = usuario;
+
+            return model;
         }
     }
 }
