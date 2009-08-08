@@ -8,7 +8,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
-    //[CapituloValidator]
+    [CapituloValidator]
 	public class Capitulo : Entity, IBaseEntity
     {
 		public Capitulo()
@@ -90,7 +90,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotNull]
 		public virtual FormaParticipacion FormaParticipacion { get; set; }
-		
+
+        public virtual int Puntuacion { get; set; }
+
 		public virtual string Volumen { get; set; }
 		
 		public virtual string Editores { get; set; }
