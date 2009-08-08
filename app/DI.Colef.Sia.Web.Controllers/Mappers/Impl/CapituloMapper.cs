@@ -9,7 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class CapituloMapper : AutoFormMapper<Capitulo, CapituloForm>, ICapituloMapper
     {
 		readonly ICatalogoService catalogoService;
-        readonly IInvestigadorService investigadorService;
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
@@ -17,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		    ICatalogoService catalogoService,
-            IInvestigadorService investigadorService,
             ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
             ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
             IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
@@ -26,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
-            this.investigadorService = investigadorService;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
@@ -52,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-
             
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.Estado = catalogoService.GetEstadoById(message.Estado);
@@ -66,8 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Investigador = investigadorService.GetInvestigadorById(message.Investigador);
-            
 
             if(message.CoautorExternoCapitulo != null)
                 model.AddCoautorExterno(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
@@ -90,10 +84,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
-                model.CoautorExternoCapitulos[0].CreadorPor = usuario;
-                model.CoautorInternoCapitulos[0].CreadorPor = usuario;
-                model.ResponsableExternoCapitulos[0].CreadorPor = usuario;
-                model.ResponsableInternoCapitulos[0].CreadorPor = usuario;
+                //model.CoautorExternoCapitulos[0].CreadorPor = usuario;
+                //model.CoautorInternoCapitulos[0].CreadorPor = usuario;
+                //model.ResponsableExternoCapitulos[0].CreadorPor = usuario;
+                //model.ResponsableInternoCapitulos[0].CreadorPor = usuario;
             }
 
             model.ModificadoPor = usuario;

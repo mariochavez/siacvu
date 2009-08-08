@@ -12,6 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual int NumeroHoras { get; set; }
 
+        public virtual int Puntuacion { get; set; }
+
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
         
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }

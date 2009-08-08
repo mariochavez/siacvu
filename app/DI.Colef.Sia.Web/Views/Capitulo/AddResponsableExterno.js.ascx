@@ -17,6 +17,7 @@ $('#message').removeClass('errormessage');
 $('#responsableexterno_form').hide();
 $('#responsableexterno_new').show();
 $('#responsableexterno_form').html('');
+$('#responsableexternoEmptyList_form').html('');
 $('#responsableexternoList tr:first').after(html);
 
 $('#responsableexterno_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

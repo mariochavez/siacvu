@@ -113,8 +113,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var capitulo = capituloService.GetCapituloById(id);
+
             if (capitulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
+            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
 
             var capituloForm = capituloMapper.Map(capitulo);
 
@@ -164,12 +167,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(capitulo, form, Title.Edit))
+            {
+                var capituloForm = capituloMapper.Map(capitulo);
+
+                ((GenericViewData<CapituloForm>)ViewData.Model).Form = SetupNewForm(capituloForm);
+                FormSetCombos(capituloForm);
                 return ViewEdit();
+            }
 
             capituloService.SaveCapitulo(capitulo);
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", capitulo.NombreCapitulo));
-            
         }
         
         [Transaction]
@@ -177,6 +185,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {            
             var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+            
             capitulo.Activo = true;
             capitulo.ModificadoPor = CurrentUser();
             capituloService.SaveCapitulo(capitulo);
@@ -191,6 +203,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+            
             capitulo.Activo = false;
             capitulo.ModificadoPor = CurrentUser();
             capituloService.SaveCapitulo(capitulo);

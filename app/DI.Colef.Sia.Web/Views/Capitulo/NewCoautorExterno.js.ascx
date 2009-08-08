@@ -4,8 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <% using (Html.BeginForm("AddCoautorExterno", "Capitulo", FormMethod.Post, new { id = "coautorexternoform" }))
-       { %>
+    <% using (Html.BeginForm("AddCoautorExterno", "Capitulo", FormMethod.Post, new { id = "coautorexternoform" })){ %>
     <%=Html.Hidden("CapituloId", Model.Id)%>
     <% Html.RenderPartial("_NewCoautorExterno"); %>
     <div class="btn_container_footer">

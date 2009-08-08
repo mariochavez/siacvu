@@ -19,6 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		[NotEmptyDate]
 		public virtual DateTime FechaGrado { get; set; }
 
+        public virtual int Puntuacion { get; set; }
+
 		public virtual GradoAcademico GradoAcademico { get; set; }
 
 		public virtual Pais Pais { get; set; }

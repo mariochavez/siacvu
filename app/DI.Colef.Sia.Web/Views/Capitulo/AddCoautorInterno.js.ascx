@@ -17,6 +17,7 @@ $('#message').removeClass('errormessage');
 $('#coautorinterno_form').hide();
 $('#coautorinterno_new').show();
 $('#coautorinterno_form').html('');
+$('#coautorinternoEmptyList_form').html('');
 $('#coautorinternoList tr:first').after(html);
 
 $('#coautorinterno_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

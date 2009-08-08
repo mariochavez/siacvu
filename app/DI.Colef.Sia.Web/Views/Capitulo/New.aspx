@@ -13,41 +13,69 @@
     <% using (Html.BeginForm("Create", "Capitulo")) { %>
 		<div id="form">
 		<%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
-        <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
+        <%=Html.Hidden("Id", Model.Form.Id) %>        
         
 		    <table class="form">
                 <tr>
                     <td class="label required">
-                       <label>Datos de Capitulo:<em>*</em></label>
+                       <label>Capitulo:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
                     </td>
                 </tr>
                 <tr>
+                    <td class="label">
+                       <label>Coautores Internos:</label>
+                    </td>
+                    <td class="field">
+                        <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                       <label>Coautores Externos:</label>
+                    </td>
+                    <td class="field">
+                        <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+                    </td>
+                </tr>                
+                <tr>
                     <td class="label required">
                        <label>Referencia bibliografica:</label>
                     </td>
-                    <td class="field">
-                        <% Html.RenderPartial("_NewCoautorInterno", Model.Form); %>
-                        <% Html.RenderPartial("_NewCoautorExterno", Model.Form); %>
+                    <td class="field">                        
                         <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                     </td>
                 </tr>
                 <tr>
-                    <td class="label required">
-                       <label>Responsables del libro:<em>*</em></label>
+                    <td class="label">
+                       <label>Responsables Internos del libro:</label>
                     </td>
                     <td class="field">
-                        <% Html.RenderPartial("_NewResponsableInterno", Model.Form); %>
-                        <% Html.RenderPartial("_NewResponsableExterno", Model.Form); %>
+                        <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label">
+                       <label>Responsables Externos:</label>
+                    </td>
+                    <td class="field">
+                        <% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label required">
+                       <label>Referencia Bibliografica:</label>
+                    </td>
+                    <td class="field">                        
                         <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
                     </td>
                 </tr>
                 <tr>
                     <td class="label required">
-                       <label>Opcionales:<em>*</em></label>
+                       <label>Opcionales:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>

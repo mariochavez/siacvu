@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(curso.Id == 0)
             {
+                curso.Puntuacion = 0;
                 curso.Activo = true;
                 curso.CreadorEl = DateTime.Now;
             }

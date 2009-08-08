@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(tesis.Id == 0)
             {
+                tesis.Puntuacion = 0;
                 tesis.Activo = true;
                 tesis.CreadorEl = DateTime.Now;
             }

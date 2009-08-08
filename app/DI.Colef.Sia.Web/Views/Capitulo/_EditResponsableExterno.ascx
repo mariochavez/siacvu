@@ -5,12 +5,20 @@
     <tr>
         <th class="subform">Responsable Externo</th>
     </tr>
-    <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
-    <tr id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
-        <td class="subform">
-            <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
-        </td>
-    </tr>
+    <% if (Model.ResponsableExternoCapitulos != null){%>
+        <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
+        <tr id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
+            <td class="subform">
+                <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
+            </td>
+        </tr>
+        <% } %>
+    <% } else { %>
+        <tr id="responsableexternoEmptyList_form">
+            <td class="subform">
+                No hay responsables externos definidos
+            </td>
+        </tr>
     <% } %>
 </table>
 <div id="responsableexterno_new" class="floatl btn_container">

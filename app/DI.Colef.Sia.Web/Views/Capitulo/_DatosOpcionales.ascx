@@ -4,7 +4,7 @@
 <table class="subform">
     <tr>
 		<td>
-			<label>Volumen:<em>*</em></label>
+			<label>Volumen:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("Volumen", Model.Volumen, new { maxlength = 100 })%>
@@ -14,7 +14,7 @@
 	
 	<tr>
 		<td>
-			<label>Editores:<em>*</em></label>
+			<label>Editores:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("Editores", Model.Editores, new { maxlength = 100 })%>
@@ -24,7 +24,7 @@
 	
 	<tr>
 		<td>
-			<label>Tipo de Participacion:<em>*</em></label>
+			<label>Tipo de Participacion:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
@@ -35,7 +35,7 @@
 	
 	<tr>
 	    <td>
-			<label>Tipo de Participante:<em>*</em></label>
+			<label>Tipo de Participante:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
@@ -46,7 +46,7 @@
 	
 	<tr>
 		<td>
-			<label>Area:<em>*</em></label>
+			<label>Area:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
@@ -57,7 +57,7 @@
 	
 	<tr>
 		<td>
-			<label>Disciplina:<em>*</em></label>
+			<label>Disciplina:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
@@ -68,7 +68,7 @@
 	
 	<tr>
 		<td>
-			<label>Subdisciplina:<em>*</em></label>
+			<label>Subdisciplina:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
@@ -79,7 +79,7 @@
 	
 	<tr>
 		<td>
-			<label>Traductor/Co-Traductor:<em>*</em></label>
+			<label>Traductor/Co-Traductor:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("Traductor", Model.Traductor, new { maxlength = 100 })%>
@@ -89,7 +89,7 @@
 	
 	<tr>
 		<td>
-			<label>Nombre del Traductor:<em>*</em></label>
+			<label>Nombre del Traductor:</label>
 		</td>
 		<td>
 			<%=Html.TextBox("NombreTraductor", Model.NombreTraductor, new { maxlength = 100 })%>
@@ -99,7 +99,7 @@
 	
 	<tr>
 		<td>
-			<label>Resumen:<em>*</em></label>
+			<label>Resumen:</label>
 		</td>
 		<td>
 		    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { maxlength = 100 })%>			

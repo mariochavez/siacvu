@@ -18,7 +18,7 @@
         <table class="form">
                 <tr>
                     <td class="label required">
-                       <label>Datos de Curso:<em>*</em></label>
+                       <label>Curso:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosCurso", Model.Form); %>
@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td class="label required">
-                       <label>Datos Opcionales:<em>*</em></label>
+                       <label>Opcionales:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>

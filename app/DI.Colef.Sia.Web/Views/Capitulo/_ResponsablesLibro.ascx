@@ -4,7 +4,7 @@
 <table class="subform">	
 	<tr>
 		<td>
-			<label>Forma de Participacion:<em>*</em></label>
+			<label>Forma de Participacion:</label>
 		</td>
 		<td>
 			<%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
