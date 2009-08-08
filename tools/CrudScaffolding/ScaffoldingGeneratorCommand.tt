@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("TipoFinanciamiento", 1);
+	new EntityScaffoldingDetails("Dictamen", 3);
  
 /*
  * Property names should be PascalCase.
@@ -36,15 +36,11 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NumeroHoras","int", null, "[NotNullNotEmpty]")
+	new EntityProperty("TipoDictamen", "TipoDictamen", "TipoDictamen")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PeriodoReferencia", "PeriodoReferencia", "PeriodoReferencia")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ProgramaEstudio", "ProgramaEstudio", "ProgramaEstudio")
+	new EntityProperty("TipoParticipacion", "TipoParticipacion", "TipoParticipacion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -52,53 +48,13 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel", "Nivel", "Nivel")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Sector", "Sector", "Sector")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel2", "Nivel", "Nivel")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel3", "Nivel", "Nivel")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel4", "Nivel", "Nivel")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel5", "Nivel", "Nivel")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Pais", "Pais", "Pais")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Area", "Area", "Area")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Disciplina", "Disciplina", "Disciplina")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Subdisciplina", "Subdisciplina", "Subdisciplina")
+	new EntityProperty("PeriodoReferencia", "PeriodoReferencia", "PeriodoReferencia")
 );
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

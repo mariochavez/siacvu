@@ -90,6 +90,7 @@
     <Compile Include="CoautorExterno.cs" />
     <Compile Include="Departamento.cs" />
     <Compile Include="Dependencia.cs" />
+    <Compile Include="Dictamen.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
@@ -116,6 +117,8 @@
     <Compile Include="Organizacion.cs" />
     <Compile Include="OtraParticipacion.cs" />
     <Compile Include="Pais.cs" />
+    <Compile Include="Participacion.cs" />
+    <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="ProgramaEstudio.cs" />
