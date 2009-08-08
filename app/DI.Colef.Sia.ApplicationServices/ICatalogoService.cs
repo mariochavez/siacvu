@@ -202,5 +202,83 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Dependencia[] GetAllDependencias();
         Dependencia[] GetActiveDependencias();
         void SaveDependencia(Dependencia dependencia);
+
+        //Ambito
+        Ambito GetAmbitoById(int id);
+        Ambito[] GetAllAmbitos();
+        Ambito[] GetActiveAmbitos();
+        void SaveAmbito(Ambito ambito);
+
+        //Estados del Pais
+        EstadoPais GetEstadoPaisById(int id);
+        EstadoPais[] GetAllEstadoPaises();
+        EstadoPais[] GetActiveEstadoPaises();
+        void SaveEstadoPais(EstadoPais estadoPais);
+
+        //Genero
+        Genero GetGeneroById(int id);
+        Genero[] GetAllGeneros();
+        Genero[] GetActiveGeneros();
+        void SaveGenero(Genero genero);
+
+        //Medio Electronico
+        MedioElectronico GetMedioElectronicoById(int id);
+        MedioElectronico[] GetAllMedioElectronicos();
+        MedioElectronico[] GetActiveMedioElectronicos();
+        void SaveMedioElectronico(MedioElectronico medioElectronico);
+
+        //Medio Impreso
+        MedioImpreso GetMedioImpresoById(int id);
+        MedioImpreso[] GetAllMedioImpresos();
+        MedioImpreso[] GetActiveMedioImpresos();
+        void SaveMedioImpreso(MedioImpreso medioImpreso);
+
+        //Otras Participaciones
+        OtraParticipacion GetOtraParticipacionById(int id);
+        OtraParticipacion[] GetAllOtraParticipaciones();
+        OtraParticipacion[] GetActiveOtraParticipaciones();
+        void SaveOtraParticipacion(OtraParticipacion otraParticipacion);
+
+        //Proyectos
+        Proyecto GetProyectoById(int id);
+        Proyecto[] GetAllProyectos();
+        Proyecto[] GetActiveProyectos();
+        void SaveProyecto(Proyecto proyecto);
+
+        //Tipo Dictamen
+        TipoDictamen GetTipoDictamenById(int id);
+        TipoDictamen[] GetAllTipoDictamenes();
+        TipoDictamen[] GetActiveTipoDictamenes();
+        void SaveTipoDictamen(TipoDictamen tipoDictamen);
+
+        //Tipo Distincion
+        TipoDistincion GetTipoDistincionById(int id);
+        TipoDistincion[] GetAllTipoDistinciones();
+        TipoDistincion[] GetActiveTipoDistinciones();
+        void SaveTipoDistincion(TipoDistincion tipoDistincion);
+
+        //Tipo Evento
+        TipoEvento GetTipoEventoById(int id);
+        TipoEvento[] GetAllTipoEventos();
+        TipoEvento[] GetActiveTipoEventos();
+        void SaveTipoEvento(TipoEvento tipoEvento);
+
+        //Tipo Financiamiento
+        TipoFinanciamiento GetTipoFinanciamientoById(int id);
+        TipoFinanciamiento[] GetAllTipoFinanciamientos();
+        TipoFinanciamiento[] GetActiveTipoFinanciamientos();
+        void SaveTipoFinanciamiento(TipoFinanciamiento tipoFinanciamiento);
+
+        //Tipo Organo
+        TipoOrgano GetTipoOrganoById(int id);
+        TipoOrgano[] GetAllTipoOrganos();
+        TipoOrgano[] GetActiveTipoOrganos();
+        void SaveTipoOrgano(TipoOrgano tipoOrgano);
+
+        //Tipo Presentacion
+        TipoPresentacion GetTipoPresentacionById(int id);
+        TipoPresentacion[] GetAllTipoPresentaciones();
+        TipoPresentacion[] GetActiveTipoPresentaciones();
+        void SaveTipoPresentacion(TipoPresentacion tipoPresentacion);
     }
 }

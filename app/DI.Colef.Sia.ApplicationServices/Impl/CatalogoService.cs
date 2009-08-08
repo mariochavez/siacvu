@@ -44,6 +44,19 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
         readonly IRepository<Organizacion> organizacionRepository;
         readonly IRepository<Dependencia> dependenciaRepository;
+        readonly IRepository<Ambito> ambitoRepository;
+        readonly IRepository<EstadoPais> estadoPaisRepository;
+        readonly IRepository<Genero> generoRepository;
+        readonly IRepository<MedioElectronico> medioElectronicoRepository;
+        readonly IRepository<MedioImpreso> medioImpresoRepository;
+        readonly IRepository<OtraParticipacion> otraParticipacionRepository;
+        readonly IRepository<Proyecto> proyectoRepository;
+        readonly IRepository<TipoDictamen> tipoDictamenRepository;
+        readonly IRepository<TipoDistincion> tipoDistincionRepository;
+        readonly IRepository<TipoEvento> tipoEventoRepository;
+        readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
+        readonly IRepository<TipoOrgano> tipoOrganoRepository;
+        readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository,
@@ -77,7 +90,20 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<ProgramaEstudio> programaEstudioRepository,
             IRepository<RevistaPublicacion> revistaPublicacionRepository,
             IRepository<Organizacion> organizacionRepository,
-            IRepository<Dependencia> dependenciaRepository)
+            IRepository<Dependencia> dependenciaRepository,
+            IRepository<Ambito> ambitoRepository,
+            IRepository<EstadoPais> estadoPaisRepository,
+            IRepository<Genero> generoRepository,
+            IRepository<MedioElectronico> medioElectronicoRepository,
+            IRepository<MedioImpreso> medioImpresoRepository,
+            IRepository<OtraParticipacion> otraParticipacionRepository,
+            IRepository<Proyecto> proyectoRepository,
+            IRepository<TipoDictamen> tipoDictamenRepository,
+            IRepository<TipoDistincion> tipoDistincionRepository,
+            IRepository<TipoEvento> tipoEventoRepository,
+            IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
+            IRepository<TipoOrgano> tipoOrganoRepository,
+            IRepository<TipoPresentacion> tipoPresentacionRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -112,6 +138,19 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.nivelRepository = nivelRepository;
             this.organizacionRepository = organizacionRepository;
             this.dependenciaRepository = dependenciaRepository;
+            this.ambitoRepository = ambitoRepository;
+            this.estadoPaisRepository = estadoPaisRepository;
+            this.generoRepository = generoRepository;
+            this.medioElectronicoRepository = medioElectronicoRepository;
+            this.medioImpresoRepository = medioImpresoRepository;
+            this.otraParticipacionRepository = otraParticipacionRepository;
+            this.proyectoRepository = proyectoRepository;
+            this.tipoDictamenRepository = tipoDictamenRepository;
+            this.tipoDistincionRepository = tipoDistincionRepository;
+            this.tipoEventoRepository = tipoEventoRepository;
+            this.tipoFinanciamientoRepository = tipoFinanciamientoRepository;
+            this.tipoOrganoRepository = tipoOrganoRepository;
+            this.tipoPresentacionRepository = tipoPresentacionRepository;
         }
 
         protected virtual ISession Session
@@ -1028,6 +1067,357 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             dependencia.ModificadoEl = DateTime.Now;
 
             dependenciaRepository.SaveOrUpdate(dependencia);
+        }
+
+        public Ambito GetAmbitoById(int id)
+        {
+            return ambitoRepository.Get(id);
+        }
+
+        public Ambito[] GetAllAmbitos()
+        {
+            return ((List<Ambito>)OrderCatalog<Ambito>()).ToArray();
+        }
+
+        public Ambito[] GetActiveAmbitos()
+        {
+            return ((List<Ambito>)ambitoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveAmbito(Ambito ambito)
+        {
+            if (ambito.Id == 0)
+            {
+                ambito.Activo = true;
+                ambito.CreadorEl = DateTime.Now;
+            }
+            ambito.ModificadoEl = DateTime.Now;
+
+            ambitoRepository.SaveOrUpdate(ambito);
+        }
+
+        public EstadoPais GetEstadoPaisById(int id)
+        {
+            return estadoPaisRepository.Get(id);
+        }
+
+        public EstadoPais[] GetAllEstadoPaises()
+        {
+            return ((List<EstadoPais>)OrderCatalog<EstadoPais>()).ToArray();
+        }
+
+        public EstadoPais[] GetActiveEstadoPaises()
+        {
+            return ((List<EstadoPais>)estadoPaisRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveEstadoPais(EstadoPais estadoPais)
+        {
+            if (estadoPais.Id == 0)
+            {
+                estadoPais.Activo = true;
+                estadoPais.CreadorEl = DateTime.Now;
+            }
+            estadoPais.ModificadoEl = DateTime.Now;
+
+            estadoPaisRepository.SaveOrUpdate(estadoPais);
+        }
+
+        public Genero GetGeneroById(int id)
+        {
+            return generoRepository.Get(id);
+        }
+
+        public Genero[] GetAllGeneros()
+        {
+            return ((List<Genero>)OrderCatalog<Genero>()).ToArray();
+        }
+
+        public Genero[] GetActiveGeneros()
+        {
+            return ((List<Genero>)generoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveGenero(Genero genero)
+        {
+            if (genero.Id == 0)
+            {
+                genero.Activo = true;
+                genero.CreadorEl = DateTime.Now;
+            }
+            genero.ModificadoEl = DateTime.Now;
+
+            generoRepository.SaveOrUpdate(genero);
+        }
+
+        public MedioElectronico GetMedioElectronicoById(int id)
+        {
+            return medioElectronicoRepository.Get(id);
+        }
+
+        public MedioElectronico[] GetAllMedioElectronicos()
+        {
+            return ((List<MedioElectronico>)OrderCatalog<MedioElectronico>()).ToArray();
+        }
+
+        public MedioElectronico[] GetActiveMedioElectronicos()
+        {
+            return ((List<MedioElectronico>)medioElectronicoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveMedioElectronico(MedioElectronico medioElectronico)
+        {
+            if (medioElectronico.Id == 0)
+            {
+                medioElectronico.Activo = true;
+                medioElectronico.CreadorEl = DateTime.Now;
+            }
+            medioElectronico.ModificadoEl = DateTime.Now;
+
+            medioElectronicoRepository.SaveOrUpdate(medioElectronico);
+        }
+
+        public MedioImpreso GetMedioImpresoById(int id)
+        {
+            return medioImpresoRepository.Get(id);
+        }
+
+        public MedioImpreso[] GetAllMedioImpresos()
+        {
+            return ((List<MedioImpreso>)OrderCatalog<MedioImpreso>()).ToArray();
+        }
+
+        public MedioImpreso[] GetActiveMedioImpresos()
+        {
+            return ((List<MedioImpreso>)medioImpresoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveMedioImpreso(MedioImpreso medioImpreso)
+        {
+            if (medioImpreso.Id == 0)
+            {
+                medioImpreso.Activo = true;
+                medioImpreso.CreadorEl = DateTime.Now;
+            }
+            medioImpreso.ModificadoEl = DateTime.Now;
+
+            medioImpresoRepository.SaveOrUpdate(medioImpreso);
+        }
+
+        public OtraParticipacion GetOtraParticipacionById(int id)
+        {
+            return otraParticipacionRepository.Get(id);
+        }
+
+        public OtraParticipacion[] GetAllOtraParticipaciones()
+        {
+            return ((List<OtraParticipacion>)OrderCatalog<OtraParticipacion>()).ToArray();
+        }
+
+        public OtraParticipacion[] GetActiveOtraParticipaciones()
+        {
+            return ((List<OtraParticipacion>)otraParticipacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveOtraParticipacion(OtraParticipacion otraParticipacion)
+        {
+            if (otraParticipacion.Id == 0)
+            {
+                otraParticipacion.Activo = true;
+                otraParticipacion.CreadorEl = DateTime.Now;
+            }
+            otraParticipacion.ModificadoEl = DateTime.Now;
+
+            otraParticipacionRepository.SaveOrUpdate(otraParticipacion);
+        }
+
+        public Proyecto GetProyectoById(int id)
+        {
+            return proyectoRepository.Get(id);
+        }
+
+        public Proyecto[] GetAllProyectos()
+        {
+            return ((List<Proyecto>)OrderCatalog<Proyecto>()).ToArray();
+        }
+
+        public Proyecto[] GetActiveProyectos()
+        {
+            return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveProyecto(Proyecto proyecto)
+        {
+            if (proyecto.Id == 0)
+            {
+                proyecto.Activo = true;
+                proyecto.CreadorEl = DateTime.Now;
+            }
+            proyecto.ModificadoEl = DateTime.Now;
+
+            proyectoRepository.SaveOrUpdate(proyecto);
+        }
+
+        public TipoDictamen GetTipoDictamenById(int id)
+        {
+            return tipoDictamenRepository.Get(id);
+        }
+
+        public TipoDictamen[] GetAllTipoDictamenes()
+        {
+            return ((List<TipoDictamen>)OrderCatalog<TipoDictamen>()).ToArray();
+        }
+
+        public TipoDictamen[] GetActiveTipoDictamenes()
+        {
+            return ((List<TipoDictamen>)tipoDictamenRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoDictamen(TipoDictamen tipoDictamen)
+        {
+            if (tipoDictamen.Id == 0)
+            {
+                tipoDictamen.Activo = true;
+                tipoDictamen.CreadorEl = DateTime.Now;
+            }
+            tipoDictamen.ModificadoEl = DateTime.Now;
+
+            tipoDictamenRepository.SaveOrUpdate(tipoDictamen);
+        }
+
+        public TipoDistincion GetTipoDistincionById(int id)
+        {
+            return tipoDistincionRepository.Get(id);
+        }
+
+        public TipoDistincion[] GetAllTipoDistinciones()
+        {
+            return ((List<TipoDistincion>)OrderCatalog<TipoDistincion>()).ToArray();
+        }
+
+        public TipoDistincion[] GetActiveTipoDistinciones()
+        {
+            return ((List<TipoDistincion>)tipoDistincionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoDistincion(TipoDistincion tipoDistincion)
+        {
+            if (tipoDistincion.Id == 0)
+            {
+                tipoDistincion.Activo = true;
+                tipoDistincion.CreadorEl = DateTime.Now;
+            }
+            tipoDistincion.ModificadoEl = DateTime.Now;
+
+            tipoDistincionRepository.SaveOrUpdate(tipoDistincion);
+        }
+
+        public TipoEvento GetTipoEventoById(int id)
+        {
+            return tipoEventoRepository.Get(id);
+        }
+
+        public TipoEvento[] GetAllTipoEventos()
+        {
+            return ((List<TipoEvento>)OrderCatalog<TipoEvento>()).ToArray();
+        }
+
+        public TipoEvento[] GetActiveTipoEventos()
+        {
+            return ((List<TipoEvento>)tipoEventoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoEvento(TipoEvento tipoEvento)
+        {
+            if (tipoEvento.Id == 0)
+            {
+                tipoEvento.Activo = true;
+                tipoEvento.CreadorEl = DateTime.Now;
+            }
+            tipoEvento.ModificadoEl = DateTime.Now;
+
+            tipoEventoRepository.SaveOrUpdate(tipoEvento);
+        }
+
+        public TipoFinanciamiento GetTipoFinanciamientoById(int id)
+        {
+            return tipoFinanciamientoRepository.Get(id);
+        }
+
+        public TipoFinanciamiento[] GetAllTipoFinanciamientos()
+        {
+            return ((List<TipoFinanciamiento>)OrderCatalog<TipoFinanciamiento>()).ToArray();
+        }
+
+        public TipoFinanciamiento[] GetActiveTipoFinanciamientos()
+        {
+            return ((List<TipoFinanciamiento>)tipoFinanciamientoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoFinanciamiento(TipoFinanciamiento tipoFinanciamiento)
+        {
+            if (tipoFinanciamiento.Id == 0)
+            {
+                tipoFinanciamiento.Activo = true;
+                tipoFinanciamiento.CreadorEl = DateTime.Now;
+            }
+            tipoFinanciamiento.ModificadoEl = DateTime.Now;
+
+            tipoFinanciamientoRepository.SaveOrUpdate(tipoFinanciamiento);
+        }
+
+        public TipoOrgano GetTipoOrganoById(int id)
+        {
+            return tipoOrganoRepository.Get(id);
+        }
+
+        public TipoOrgano[] GetAllTipoOrganos()
+        {
+            return ((List<TipoOrgano>)OrderCatalog<TipoOrgano>()).ToArray();
+        }
+
+        public TipoOrgano[] GetActiveTipoOrganos()
+        {
+            return ((List<TipoOrgano>)tipoOrganoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoOrgano(TipoOrgano tipoOrgano)
+        {
+            if (tipoOrgano.Id == 0)
+            {
+                tipoOrgano.Activo = true;
+                tipoOrgano.CreadorEl = DateTime.Now;
+            }
+            tipoOrgano.ModificadoEl = DateTime.Now;
+
+            tipoOrganoRepository.SaveOrUpdate(tipoOrgano);
+        }
+
+        public TipoPresentacion GetTipoPresentacionById(int id)
+        {
+            return tipoPresentacionRepository.Get(id);
+        }
+
+        public TipoPresentacion[] GetAllTipoPresentaciones()
+        {
+            return ((List<TipoPresentacion>)OrderCatalog<TipoPresentacion>()).ToArray();
+        }
+
+        public TipoPresentacion[] GetActiveTipoPresentaciones()
+        {
+            return ((List<TipoPresentacion>)tipoPresentacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoPresentacion(TipoPresentacion tipoPresentacion)
+        {
+            if (tipoPresentacion.Id == 0)
+            {
+                tipoPresentacion.Activo = true;
+                tipoPresentacion.CreadorEl = DateTime.Now;
+            }
+            tipoPresentacion.ModificadoEl = DateTime.Now;
+
+            tipoPresentacionRepository.SaveOrUpdate(tipoPresentacion);
         }
     }
 }

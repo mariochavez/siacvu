@@ -767,6 +767,110 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D7785102A57]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D7785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D7774E8BAB7]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D7774E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3B80B5285102A57]') AND parent_object_id = OBJECT_ID('EstadoPaises'))
+alter table EstadoPaises  drop constraint FKD3B80B5285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3B80B5274E8BAB7]') AND parent_object_id = OBJECT_ID('EstadoPaises'))
+alter table EstadoPaises  drop constraint FKD3B80B5274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D78AB6085102A57]') AND parent_object_id = OBJECT_ID('MedioImpresos'))
+alter table MedioImpresos  drop constraint FK3D78AB6085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D78AB6074E8BAB7]') AND parent_object_id = OBJECT_ID('MedioImpresos'))
+alter table MedioImpresos  drop constraint FK3D78AB6074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2185102A57]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
+alter table MedioElectronicos  drop constraint FKC3FA1F2185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2174E8BAB7]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
+alter table MedioElectronicos  drop constraint FKC3FA1F2174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8085102A57]') AND parent_object_id = OBJECT_ID('Generos'))
+alter table Generos  drop constraint FK34B67F8085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8074E8BAB7]') AND parent_object_id = OBJECT_ID('Generos'))
+alter table Generos  drop constraint FK34B67F8074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B085102A57]') AND parent_object_id = OBJECT_ID('Ambitos'))
+alter table Ambitos  drop constraint FKB422A0B085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B074E8BAB7]') AND parent_object_id = OBJECT_ID('Ambitos'))
+alter table Ambitos  drop constraint FKB422A0B074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3185102A57]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
+alter table TipoOrganos  drop constraint FK75A1DA3185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
+alter table TipoOrganos  drop constraint FK75A1DA3174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF8D374185102A57]') AND parent_object_id = OBJECT_ID('OtraParticipaciones'))
+alter table OtraParticipaciones  drop constraint FKEF8D374185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF8D374174E8BAB7]') AND parent_object_id = OBJECT_ID('OtraParticipaciones'))
+alter table OtraParticipaciones  drop constraint FKEF8D374174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC85102A57]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
+alter table TipoPresentaciones  drop constraint FK900A4EAC85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
+alter table TipoPresentaciones  drop constraint FK900A4EAC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716385102A57]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
+alter table TipoDictamenes  drop constraint FK8937716385102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716374E8BAB7]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
+alter table TipoDictamenes  drop constraint FK8937716374E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79885102A57]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
+alter table TipoDistinciones  drop constraint FK6F92D79885102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79874E8BAB7]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
+alter table TipoDistinciones  drop constraint FK6F92D79874E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B85102A57]') AND parent_object_id = OBJECT_ID('TipoEventos'))
+alter table TipoEventos  drop constraint FK952D666B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEventos'))
+alter table TipoEventos  drop constraint FK952D666B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463785102A57]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
+alter table TipoFinanciamientos  drop constraint FK2D5E463785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463774E8BAB7]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
+alter table TipoFinanciamientos  drop constraint FK2D5E463774E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -872,6 +976,32 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Proyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Proyectos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstadoPaises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstadoPaises
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'MedioImpresos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioImpresos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'MedioElectronicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioElectronicos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Generos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Generos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Ambitos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Ambitos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoOrganos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'OtraParticipaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OtraParticipaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoPresentaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoPresentaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoDictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDictamenes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoDistinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDistinciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoFinanciamientos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoFinanciamientos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -1575,6 +1705,149 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
+       primary key (Id)
+    )
+
+    create table Proyectos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table EstadoPaises (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table MedioImpresos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table MedioElectronicos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Generos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Ambitos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoOrganos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table OtraParticipaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoPresentaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoDictamenes (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoDistinciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoEventos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoFinanciamientos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -2537,3 +2810,133 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table Proyectos 
+        add constraint FK8BA36D7785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Proyectos 
+        add constraint FK8BA36D7774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table EstadoPaises 
+        add constraint FKD3B80B5285102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EstadoPaises 
+        add constraint FKD3B80B5274E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table MedioImpresos 
+        add constraint FK3D78AB6085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table MedioImpresos 
+        add constraint FK3D78AB6074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table MedioElectronicos 
+        add constraint FKC3FA1F2185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table MedioElectronicos 
+        add constraint FKC3FA1F2174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Generos 
+        add constraint FK34B67F8085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Generos 
+        add constraint FK34B67F8074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Ambitos 
+        add constraint FKB422A0B085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Ambitos 
+        add constraint FKB422A0B074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoOrganos 
+        add constraint FK75A1DA3185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoOrganos 
+        add constraint FK75A1DA3174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table OtraParticipaciones 
+        add constraint FKEF8D374185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table OtraParticipaciones 
+        add constraint FKEF8D374174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoPresentaciones 
+        add constraint FK900A4EAC85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoPresentaciones 
+        add constraint FK900A4EAC74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoDictamenes 
+        add constraint FK8937716385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoDictamenes 
+        add constraint FK8937716374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoDistinciones 
+        add constraint FK6F92D79885102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoDistinciones 
+        add constraint FK6F92D79874E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoEventos 
+        add constraint FK952D666B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoEventos 
+        add constraint FK952D666B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoFinanciamientos 
+        add constraint FK2D5E463785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoFinanciamientos 
+        add constraint FK2D5E463774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios

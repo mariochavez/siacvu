@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogos\AmbitoController.cs" />
     <Compile Include="ArticuloController.cs" />
     <Compile Include="CapituloController.cs" />
     <Compile Include="Catalogos\AreaController.cs" />
@@ -117,8 +118,10 @@
     <Compile Include="ControllerEnums.cs" />
     <Compile Include="Catalogos\DepartamentoController.cs" />
     <Compile Include="CursoController.cs" />
+    <Compile Include="Catalogos\EstadoPaisController.cs" />
     <Compile Include="Extensions\DropDownListExtensions.cs" />
     <Compile Include="Extensions\PrimitiveHelperExtensions.cs" />
+    <Compile Include="Catalogos\GeneroController.cs" />
     <Compile Include="Helpers\ModelStateExtensions.cs" />
     <Compile Include="Helpers\PartialViewExtensions.cs" />
     <Compile Include="HomeController.cs" />
@@ -127,6 +130,7 @@
     </Compile>
     <Compile Include="InvestigadorController.cs" />
     <Compile Include="Mappers\AutoFormMapper.cs" />
+    <Compile Include="Mappers\IAmbitoMapper.cs" />
     <Compile Include="Mappers\IArticuloMapper.cs" />
     <Compile Include="Mappers\ICapituloMapper.cs" />
     <Compile Include="Mappers\ICargoInvestigadorMapper.cs" />
@@ -136,7 +140,12 @@
     <Compile Include="Mappers\ICoautorInternoCapituloMapper.cs" />
     <Compile Include="Mappers\ICursoMapper.cs" />
     <Compile Include="Mappers\IDependenciaMapper.cs" />
+    <Compile Include="Mappers\IEstadoPaisMapper.cs" />
+    <Compile Include="Mappers\IGeneroMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\IMedioElectronicoMapper.cs" />
+    <Compile Include="Mappers\IMedioImpresoMapper.cs" />
+    <Compile Include="Mappers\Impl\AmbitoMapper.cs" />
     <Compile Include="Mappers\Impl\ArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CapituloMapper.cs" />
     <Compile Include="Mappers\Impl\CargoInvestigadorMapper.cs" />
@@ -175,6 +184,8 @@
     <Compile Include="Mappers\Impl\DepartamentoMapper.cs" />
     <Compile Include="Mappers\Impl\DependenciaMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\Impl\EstadoPaisMapper.cs" />
+    <Compile Include="Mappers\Impl\GeneroMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\DisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoMapper.cs" />
@@ -187,11 +198,15 @@
     <Compile Include="Mappers\Impl\InvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\LineaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\LineaTematicaMapper.cs" />
+    <Compile Include="Mappers\Impl\MedioElectronicoMapper.cs" />
+    <Compile Include="Mappers\Impl\MedioImpresoMapper.cs" />
     <Compile Include="Mappers\Impl\NivelMapper.cs" />
     <Compile Include="Mappers\Impl\OrganizacionMapper.cs" />
+    <Compile Include="Mappers\Impl\OtraParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\PaisMapper.cs" />
     <Compile Include="Mappers\Impl\PeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\Impl\ProgramaEstudioMapper.cs" />
+    <Compile Include="Mappers\Impl\ProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
     <Compile Include="Mappers\Impl\ResponsableExternoCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\ResponsableExternoMapper.cs" />
@@ -202,6 +217,12 @@
     <Compile Include="Mappers\Impl\SNIInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\SNIMapper.cs" />
     <Compile Include="Mappers\Impl\TesisMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoDictamenMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoDistincionMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoEventoMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoFinanciamientoMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoOrganoMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoPresentacionMapper.cs" />
     <Compile Include="Mappers\Impl\UsuarioMapper.cs" />
     <Compile Include="Mappers\Impl\SubdisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoActividadMapper.cs" />
@@ -211,9 +232,11 @@
     <Compile Include="Mappers\Impl\TipoParticipanteMapper.cs" />
     <Compile Include="Mappers\INivelMapper.cs" />
     <Compile Include="Mappers\IOrganizacionMapper.cs" />
+    <Compile Include="Mappers\IOtraParticipacionMapper.cs" />
     <Compile Include="Mappers\IPaisMapper.cs" />
     <Compile Include="Mappers\IPeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\IProgramaEstudioMapper.cs" />
+    <Compile Include="Mappers\IProyectoMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
     <Compile Include="Mappers\IResponsableExternoCapituloMapper.cs" />
     <Compile Include="Mappers\IResponsableExternoMapper.cs" />
@@ -227,6 +250,12 @@
     <Compile Include="Mappers\ISNIMapper.cs" />
     <Compile Include="Mappers\Impl\Mapper.cs" />
     <Compile Include="Mappers\ITesisMapper.cs" />
+    <Compile Include="Mappers\ITipoDictamenMapper.cs" />
+    <Compile Include="Mappers\ITipoDistincionMapper.cs" />
+    <Compile Include="Mappers\ITipoEventoMapper.cs" />
+    <Compile Include="Mappers\ITipoFinanciamientoMapper.cs" />
+    <Compile Include="Mappers\ITipoOrganoMapper.cs" />
+    <Compile Include="Mappers\ITipoPresentacionMapper.cs" />
     <Compile Include="Mappers\IUsuarioMapper.cs" />
     <Compile Include="Mappers\Resolvers\ModificadoResolver.cs" />
     <Compile Include="Mappers\ISubdisciplinaMapper.cs" />
@@ -235,6 +264,9 @@
     <Compile Include="Mappers\ITipoCapituloMapper.cs" />
     <Compile Include="Mappers\ITipoParticipacionMapper.cs" />
     <Compile Include="Mappers\ITipoParticipanteMapper.cs" />
+    <Compile Include="Catalogos\MedioElectronicoController.cs" />
+    <Compile Include="Catalogos\MedioImpresoController.cs" />
+    <Compile Include="Models\AmbitoForm.cs" />
     <Compile Include="Models\AreaForm.cs" />
     <Compile Include="Models\ArticuloForm.cs" />
     <Compile Include="Models\CapituloForm.cs" />
@@ -253,6 +285,8 @@
     <Compile Include="Models\DisciplinaForm.cs" />
     <Compile Include="Models\EstadoForm.cs" />
     <Compile Include="Models\EstadoInvestigadorForm.cs" />
+    <Compile Include="Models\EstadoPaisForm.cs" />
+    <Compile Include="Models\GeneroForm.cs" />
     <Compile Include="Models\GradoAcademicoInvestigadorForm.cs" />
     <Compile Include="Models\FormaParticipacionForm.cs" />
     <Compile Include="Models\GradoAcademicoForm.cs" />
@@ -263,11 +297,15 @@
     <Compile Include="Models\InvestigadorForm.cs" />
     <Compile Include="Models\LineaInvestigacionForm.cs" />
     <Compile Include="Models\LineaTematicaForm.cs" />
+    <Compile Include="Models\MedioElectronicoForm.cs" />
+    <Compile Include="Models\MedioImpresoForm.cs" />
     <Compile Include="Models\NivelForm.cs" />
     <Compile Include="Models\OrganizacionForm.cs" />
+    <Compile Include="Models\OtraParticipacionForm.cs" />
     <Compile Include="Models\PaisForm.cs" />
     <Compile Include="Models\PeriodoReferenciaForm.cs" />
     <Compile Include="Models\ProgramaEstudioForm.cs" />
+    <Compile Include="Models\ProyectoForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
     <Compile Include="Models\ResponsableExternoCapituloForm.cs" />
     <Compile Include="Models\ResponsableExternoForm.cs" />
@@ -279,6 +317,12 @@
     <Compile Include="Models\SNIForm.cs" />
     <Compile Include="Models\SNIInvestigadorForm.cs" />
     <Compile Include="Models\TesisForm.cs" />
+    <Compile Include="Models\TipoDictamenForm.cs" />
+    <Compile Include="Models\TipoDistincionForm.cs" />
+    <Compile Include="Models\TipoEventoForm.cs" />
+    <Compile Include="Models\TipoFinanciamientoForm.cs" />
+    <Compile Include="Models\TipoOrganoForm.cs" />
+    <Compile Include="Models\TipoPresentacionForm.cs" />
     <Compile Include="Models\UsuarioForm.cs" />
     <Compile Include="Models\SubdisciplinaForm.cs" />
     <Compile Include="Models\TipoActividadForm.cs" />
@@ -286,14 +330,22 @@
     <Compile Include="Models\TipoCapituloForm.cs" />
     <Compile Include="Models\TipoParticipacionForm.cs" />
     <Compile Include="Models\TipoParticipanteForm.cs" />
+    <Compile Include="Catalogos\OtraParticipacionController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Catalogos\PuestoController.cs" />
+    <Compile Include="Catalogos\ProyectoController.cs" />
     <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="Catalogos\SNIController.cs" />
     <Compile Include="Catalogos\SedeController.cs" />
     <Compile Include="TesisController.cs" />
+    <Compile Include="Catalogos\TipoDictamenController.cs" />
+    <Compile Include="Catalogos\TipoDistincionController.cs" />
+    <Compile Include="Catalogos\TipoEventoController.cs" />
+    <Compile Include="Catalogos\TipoFinanciamientoController.cs" />
+    <Compile Include="Catalogos\TipoOrganoController.cs" />
+    <Compile Include="Catalogos\TipoPresentacionController.cs" />
     <Compile Include="ViewData\BaseViewData.cs" />
     <Compile Include="ViewData\GenericViewData.cs" />
   </ItemGroup>
