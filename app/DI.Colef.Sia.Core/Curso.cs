@@ -12,16 +12,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual int NumeroHoras { get; set; }
 
-        [NotNull]
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
         
-        [NotNull]
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }
         
-        [NotNull]
         public virtual Institucion Institucion { get; set; }
         
-        [NotNull]
         public virtual Nivel Nivel { get; set; }
 
         public virtual Sector Sector { get; set; }

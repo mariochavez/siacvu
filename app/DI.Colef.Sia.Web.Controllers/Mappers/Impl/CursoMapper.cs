@@ -8,14 +8,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class CursoMapper : AutoFormMapper<Curso, CursoForm>, ICursoMapper
     {
         readonly ICatalogoService catalogoService;
-        readonly IInvestigadorService investigadorService;
 
-        public CursoMapper(IRepository<Curso> repository, ICatalogoService catalogoService,
-            IInvestigadorService investigadorService)
+        public CursoMapper(IRepository<Curso> repository, ICatalogoService catalogoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
-            this.investigadorService = investigadorService;
         }
 
         protected override int GetIdFromMessage(CursoForm message)
@@ -43,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            //model.Investigador = investigadorService.GetInvestigadorById(message.Investigador);
         }
 
         public Curso Map(CursoForm message, Usuario usuario, Investigador investigador)

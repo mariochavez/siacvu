@@ -26,45 +26,45 @@
 		
 	<tr>
 		<td>
-			<label>Nivel2:<em>*</em></label>
+			<label>Nivel 2:<em>*</em></label>
 		</td>    		
 		<td>
-		    <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
+		    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
 				"Seleccione ...")%>
-			<%=Html.ValidationMessage("Nivel") %>
+			<%=Html.ValidationMessage("Nivel2") %>
 		</td>
 	</tr>
 		
 	<tr>
 		<td>
-			<label>Nivel3:<em>*</em></label>
+			<label>Nivel 3:<em>*</em></label>
 		</td>		    
 		<td>
-		    <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
+		    <%=Html.DropDownList("Nivel3", Model.Niveles3.CreateSelectList<NivelForm>("Id", "Nombre"),
 				"Seleccione ...")%>
-			<%=Html.ValidationMessage("Nivel") %>
+			<%=Html.ValidationMessage("Nivel3") %>
 		</td>
 	</tr>
 		
 	<tr>
 		<td>
-			<label>Nivel4:<em>*</em></label>
+			<label>Nivel 4:<em>*</em></label>
 		</td>		    
 		<td>
-		    <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
+		    <%=Html.DropDownList("Nivel4", Model.Niveles4.CreateSelectList<NivelForm>("Id", "Nombre"),
 				"Seleccione ...")%>
-			<%=Html.ValidationMessage("Nivel") %>
+			<%=Html.ValidationMessage("Nivel4") %>
 		</td>
 	</tr>
 		
 	<tr>
 		<td>
-			<label>Nivel5:<em>*</em></label>
+			<label>Nivel 5:<em>*</em></label>
 		</td>
 	    <td>
-	        <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
+	        <%=Html.DropDownList("Nivel5", Model.Niveles5.CreateSelectList<NivelForm>("Id", "Nombre"),
 				"Seleccione ...")%>
-			<%=Html.ValidationMessage("Nivel") %>
+			<%=Html.ValidationMessage("Nivel5") %>
 		</td>
 	</tr>
 		
