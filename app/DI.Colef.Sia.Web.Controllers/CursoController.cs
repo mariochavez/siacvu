@@ -30,17 +30,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public CursoController(ICursoService cursoService,
             ICursoMapper cursoMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService
-            , IPeriodoReferenciaMapper periodoReferenciaMapper
-        , IProgramaEstudioMapper programaEstudioMapper
-        , IInstitucionMapper institucionMapper
-        , INivelMapper nivelMapper
-        , ISectorMapper sectorMapper
-        , IOrganizacionMapper organizacionMapper
-        , IPaisMapper paisMapper
-        , IAreaMapper areaMapper
-        , IDisciplinaMapper disciplinaMapper
-        , ISubdisciplinaMapper subdisciplinaMapper
+            ICatalogoService catalogoService, IUsuarioService usuarioService,
+            IPeriodoReferenciaMapper periodoReferenciaMapper,
+            IProgramaEstudioMapper programaEstudioMapper,
+            IInstitucionMapper institucionMapper,
+            INivelMapper nivelMapper,
+            ISectorMapper sectorMapper,
+            IOrganizacionMapper organizacionMapper,
+            IPaisMapper paisMapper,
+            IAreaMapper areaMapper,
+            IDisciplinaMapper disciplinaMapper,
+            ISubdisciplinaMapper subdisciplinaMapper
             )
             : base(usuarioService)
         {
@@ -85,7 +85,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var curso = cursoService.GetCursoById(id);
-            data.Form = cursoMapper.Map(curso);
+
+            if (curso == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
+            var cursoForm = cursoMapper.Map(curso);
+
+            data.Form = SetupNewForm(cursoForm);
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -108,10 +115,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
         {
-            var curso = cursoMapper.Map(form);
-
-            curso.CreadorPor = CurrentUser();
-            curso.ModificadoPor = CurrentUser();
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            
 
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
@@ -121,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "curso.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido creado", curso.NumeroHoras));
         }
 
         [Transaction]
@@ -129,16 +134,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
         {
-            var curso = cursoMapper.Map(form);
-
-            curso.ModificadoPor = CurrentUser();
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(curso, form, Title.Edit))
+            {
+                var cursoForm = cursoMapper.Map(curso);
+
+                ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
+                FormSetCombos(cursoForm);
                 return ViewEdit();
+            }
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "curso.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", curso.NumeroHoras));
         }
 
         [Transaction]
@@ -146,6 +155,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {
             var curso = cursoService.GetCursoById(id);
+
+            if (curso.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             curso.Activo = true;
             curso.ModificadoPor = CurrentUser();
             cursoService.SaveCurso(curso);
@@ -160,6 +173,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var curso = cursoService.GetCursoById(id);
+
+            if (curso.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             curso.Activo = false;
             curso.ModificadoPor = CurrentUser();
             cursoService.SaveCurso(curso);
@@ -171,26 +188,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         CursoForm SetupNewForm()
         {
-            return new CursoForm
-            {
+            return SetupNewForm(null);
+        }
 
+        CursoForm SetupNewForm(CursoForm form)
+        {
+            form = form ?? new CursoForm();
 
-                //Lista de Catalogos Pendientes
-                PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-                ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios()),
-                Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones()),
-                Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles()),
-                Sectores = sectorMapper.Map(catalogoService.GetActiveSectores()),
-                Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones()),
-                Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles()),
-                Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles()),
-                Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles()),
-                Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles()),
-                Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                Areas = areaMapper.Map(catalogoService.GetActiveAreas()),
-                Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas()),
-                Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas()),
-            };
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            
+            return form;
+        }
+
+        private void FormSetCombos(CursoForm form)
+        {
+            ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
+            ViewData["Sector"] = form.SectorId;
+            ViewData["Organizacion"] = form.OrganizacionId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["Nivel"] = form.NivelId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["Institucion"] = form.InstitucionId;
+            ViewData["Nivel2"] = form.Nivel2Id;
+            ViewData["Nivel3"] = form.Nivel3Id;
+            ViewData["Nivel4"] = form.Nivel4Id;
+            ViewData["Nivel5"] = form.Nivel5Id;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

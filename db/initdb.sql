@@ -10,6 +10,28 @@ INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
 
+insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Sectores values('Sector 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sector 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sector 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sector 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sector 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ProgramaEstudios values('Programa Estudios 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProgramaEstudios values('Programa Estudios 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProgramaEstudios values('Programa Estudios 3',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Organizaciones values('Organizacion 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Organizaciones values('Organizacion 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Organizaciones values('Organizacion 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Organizaciones values('Organizacion 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Organizaciones values('Organizacion 5',GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into Departamentos values('Dirección Regional de Nuevo Laredo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Dirección Regional de Matamoros',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Estudios de Población',GETDATE(), GETDATE(), 1, 1, 1);

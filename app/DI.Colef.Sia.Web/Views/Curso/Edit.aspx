@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CursoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
@@ -10,14 +10,15 @@
     <h2><%=Html.Encode(Model.Title) %></h2>
     <% Html.RenderPartial("_Message"); %>
     <br />
-    <% using (Html.BeginForm("Create", "Curso")) { %>
-		<div id="form">					
-		<%=Html.AntiForgeryToken() %>
+    <% using (Html.BeginForm("Update", "Curso"))
+       { %>
+        <div id="form">
+        <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
         <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
-        
+
         <table class="form">
-                <tr>
+            <tr>
                     <td class="label required">
                        <label>Datos de Curso:<em>*</em></label>
                     </td>
@@ -34,16 +35,16 @@
                     </td>
                 </tr>
         </table>
-				
-			<div class="btn_container_footer">
-				<span class="btn btn_normal_brown">
-					<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-				</span>
-				<span class="btn btn_normal_white">
-					<%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>
-				</span>
-			</div>
-	    </div>
+        
+	    <div class="btn_container_footer">
+		    <span class="btn btn_normal_brown">
+			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
+		    </span>
+		    <span class="btn btn_normal_white">
+			    <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar")%>
+		    </span>
+	    </div>    
+    </div>
     <% } %>
     
 <script type="text/javascript">

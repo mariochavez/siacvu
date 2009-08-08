@@ -16,4 +16,4 @@ var html = '
 ';
 
 $('#accion_<%=Html.Encode(Model.Id) %>').html(html);
-showMessage('Curso <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Curso <%=Html.Encode(Model.NumeroHoras) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

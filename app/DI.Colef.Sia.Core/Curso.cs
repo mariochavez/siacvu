@@ -1,22 +1,27 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class Curso : Entity, IBaseEntity
     {
+        [NotNull]
+        public virtual Investigador Investigador { get; set; }
 
-        [NotNullNotEmpty]
+        [NotNull]
         public virtual int NumeroHoras { get; set; }
 
+        [NotNull]
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
+        
+        [NotNull]
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }
-
+        
+        [NotNull]
         public virtual Institucion Institucion { get; set; }
-
+        
+        [NotNull]
         public virtual Nivel Nivel { get; set; }
 
         public virtual Sector Sector { get; set; }
