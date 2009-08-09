@@ -5,7 +5,7 @@
     <tr>
         <th class="subform">Coautor Interno</th>
     </tr>
-    <% if (Model.CoautorExternoArticulos != null){%>
+    <% if (Model.CoautorInternoArticulos != null){%>
         <% foreach(var coautorInterno in Model.CoautorInternoArticulos) { %>
         <tr id="coautorinterno_<%=Html.Encode(coautorInterno.Id) %>">
             <td class="subform">

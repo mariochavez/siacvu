@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorExternoArticuloForm
@@ -8,7 +6,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //public int CoautorExterno { get; set; }
         public int InvestigadorExternoId { get; set; }
         public string InvestigadorExternoNombre { get; set; }
     }

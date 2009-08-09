@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			var data = CreateViewDataWithTitle(Title.Index);
 			
-			var investigadors = investigadorService.GetAllInvestigadors();
+			var investigadors = investigadorService.GetAllInvestigadores();
             data.List = investigadorMapper.Map(investigadors);
 
             return View(data);

@@ -16,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
         readonly IInvestigadorService investigadorService;
-        
         readonly ICapituloMapper capituloMapper;
         readonly ITipoCapituloMapper tipoCapituloMapper;
         readonly IEstadoMapper estadoMapper;
@@ -226,7 +225,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.Id = capitulo.Id;
 
             form.CoautorInternoCapitulo = new CoautorInternoCapituloForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             
             return Rjs("NewCoautorInterno", form);
         }
@@ -313,7 +312,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.Id = capitulo.Id;
 
             form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
-            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
 
             return Rjs("NewResponsableInterno", form);
         }
@@ -409,9 +408,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());

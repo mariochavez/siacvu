@@ -35,6 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateCapitulosMaps();
             CreateCursosMaps();
             CreateTesisMaps();
+            CreateDistincionMaps();
+            CreateOrganosExternosMaps();
+            CreateEventosMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -92,6 +95,89 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
+                           o => o.Ignore());
+        }
+
+        private void CreateEventosMaps()
+        {
+            Mapper.CreateMap<Evento, EventoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoEvento,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoFinanciamiento,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoEvento, CoautorInternoEventoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorExternoEvento, CoautorExternoEventoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<TipoParticipacionEvento, TipoParticipacionEventoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore());
+        }
+
+        private void CreateOrganosExternosMaps()
+        {
+            Mapper.CreateMap<OrganoExterno, OrganoExternoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoOrgano,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel,
+                           o => o.Ignore())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+        }
+
+        private void CreateDistincionMaps()
+        {
+            Mapper.CreateMap<Distincion, DistincionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaOtorgamiento,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoDistincion,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoPais,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
