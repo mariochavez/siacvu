@@ -38,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateDistincionMaps();
             CreateOrganosExternosMaps();
             CreateEventosMaps();
+            CreateReportesMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -98,6 +99,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
         }
 
+        private void CreateReportesMaps()
+        {
+            Mapper.CreateMap<Reporte, ReporteForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Fecha,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoReporte,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoProducto,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoReporte, CoautorInternoReporteForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorExternoReporte, CoautorExternoReporteForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
+                           o => o.Ignore());
+        }
+
         private void CreateEventosMaps()
         {
             Mapper.CreateMap<Evento, EventoForm>()
@@ -116,6 +158,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
                 .ForMember(d => d.TipoFinanciamiento,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoEvento, CoautorInternoEventoForm>()
@@ -528,6 +572,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoFinanciamiento, TipoFinanciamientoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoReporte, TipoReporteForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<EstadoProducto, EstadoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

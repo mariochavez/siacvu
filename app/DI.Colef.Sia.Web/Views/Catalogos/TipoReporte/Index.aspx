@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<EstadoPaisForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<TipoReporteForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,39 +12,39 @@
     <div id="datalist">   
         <div class="btn_container">
 		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<EstadoPaisController>(x => x.New(), "+ Crear Estado") %>
+			    <%=Html.ActionLink<TipoReporteController>(x => x.New(), "+ Crear Reporte") %>
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">Estados</div>
+        <div class="table_title">Reportes</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay estados definidos</td>
+                    <td>No hay tipos de reportes definidos</td>
                 </tr>
             <% } else { %>
-                <% foreach (var estadoPais in Model.List) { %>
+                <% foreach (var tipoReporte in Model.List) { %>
                     <tr class="highlight">
 				        <td class="button" width="46">
 					        <div class="floatr btn_container">
 						        <span class="btn btn_small_white">
-							        <%=Html.ActionLink<EstadoPaisController>(x => x.Edit(estadoPais.Id), "Editar") %>
+							        <%=Html.ActionLink<TipoReporteController>(x => x.Edit(tipoReporte.Id), "Editar") %>
 						        </span>
 					        </div>
 				        </td>                
                         <td class="single" width="70%">
-                            <%=Html.Encode(estadoPais.Nombre) %>
-                            <div class="meta_info">Modificado el <%=Html.Encode(estadoPais.Modificacion) %></div>
+                            <%=Html.Encode(tipoReporte.Nombre) %>
+                            <div class="meta_info">Modificado el <%=Html.Encode(tipoReporte.Modificacion) %></div>
                         </td>
-                        <td id="accion_<%=Html.Encode(estadoPais.Id) %>" class="button" width="140">
+                        <td id="accion_<%=Html.Encode(tipoReporte.Id) %>" class="button" width="140">
                             <div class="floatr btn_container">
-                            <% if (estadoPais.Activo) { %>
+                            <% if (tipoReporte.Activo) { %>
                                 <span class="btn btn_small_white">
-                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = estadoPais.Id }, new { @class = "remote put" })%>
+                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
                                 </span>
                             <% } else { %>
                                 <span class="btn btn_small_white">
-                                    <%=Html.ActionLink("Activar", "Activate", new { id = estadoPais.Id }, new { @class = "remote put" })%>
+                                    <%=Html.ActionLink("Activar", "Activate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
                                 </span>
                             <% } %>
                             </div>

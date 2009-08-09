@@ -84,6 +84,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (evento == null)
                 return RedirectToIndex("no ha sido encontrado", true);
+            if (evento.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
 
             var eventoForm = eventoMapper.Map(evento);
 
@@ -151,6 +153,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {
             var evento = eventoService.GetEventoById(id);
+
+            if (evento.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             evento.Activo = true;
             evento.ModificadoPor = CurrentUser();
             eventoService.SaveEvento(evento);
@@ -165,6 +171,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var evento = eventoService.GetEventoById(id);
+
+            if (evento.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             evento.Activo = false;
             evento.ModificadoPor = CurrentUser();
             eventoService.SaveEvento(evento);

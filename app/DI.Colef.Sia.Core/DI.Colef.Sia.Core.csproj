@@ -81,9 +81,11 @@
     <Compile Include="CoautorExternoArticulo.cs" />
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
+    <Compile Include="CoautorExternoReporte.cs" />
     <Compile Include="CoautorInternoArticulo.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
     <Compile Include="CoautorInternoEvento.cs" />
+    <Compile Include="CoautorInternoReporte.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />
+    <Compile Include="EstadoProducto.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="FormaParticipacion.cs" />
     <Compile Include="Genero.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="ProgramaEstudio.cs" />
     <Compile Include="Proyecto.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="Reporte.cs" />
     <Compile Include="ResponsableExterno.cs" />
     <Compile Include="ResponsableExternoCapitulo.cs" />
     <Compile Include="ResponsableInternoCapitulo.cs" />
@@ -156,6 +160,7 @@
     <Compile Include="TipoParticipacionEvento.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
+    <Compile Include="TipoReporte.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

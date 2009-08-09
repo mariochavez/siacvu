@@ -60,10 +60,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             if (model.IsTransient())
             {
-                //model.Investigador = investigador;
+                model.Investigador = investigador;
                 model.CreadorPor = usuario;
-                //model.CoautorExternoArticulos[0].CreadorPor = usuario;
-                //model.CoautorInternoArticulos[0].CreadorPor = usuario;
             }
 
             model.ModificadoPor = usuario;

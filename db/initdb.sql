@@ -2026,3 +2026,8 @@ insert into ProgramaEstudios values('Vivienda', GETDATE(), GETDATE(), 1, 1, 1)
 insert into ProgramaEstudios values('Women''s Rights and Citizenship in Latin America', GETDATE(), GETDATE(), 1, 1, 1)
 insert into ProgramaEstudios values('zonas +AOE-ridaS', GETDATE(), GETDATE(), 1, 1, 1)
 
+insert into TipoReportes values('Cuaderno de trabajo', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoReportes values('Informe técnico', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into EstadoProductos values('Aceptado', GETDATE(), GETDATE(), 1, 1, 1)
+insert into EstadoProductos values('Publicado', GETDATE(), GETDATE(), 1, 1, 1)

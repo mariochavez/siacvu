@@ -83,10 +83,12 @@
     <Compile Include="Impl\OrganoExternoService.cs" />
     <Compile Include="Impl\ParticipacionMedioService.cs" />
     <Compile Include="Impl\ParticipacionService.cs" />
+    <Compile Include="Impl\ReporteService.cs" />
     <Compile Include="Impl\TesisService.cs" />
     <Compile Include="IOrganoExternoService.cs" />
     <Compile Include="IParticipacionMedioService.cs" />
     <Compile Include="IParticipacionService.cs" />
+    <Compile Include="IReporteService.cs" />
     <Compile Include="ITesisService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

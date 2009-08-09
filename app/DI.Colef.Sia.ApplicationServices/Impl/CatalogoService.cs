@@ -57,6 +57,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
         readonly IRepository<TipoOrgano> tipoOrganoRepository;
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
+        readonly IRepository<TipoReporte> tipoReporteRepository;
+        readonly IRepository<EstadoProducto> estadoProductoRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository,
@@ -103,7 +105,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoEvento> tipoEventoRepository,
             IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
             IRepository<TipoOrgano> tipoOrganoRepository,
-            IRepository<TipoPresentacion> tipoPresentacionRepository)
+            IRepository<TipoPresentacion> tipoPresentacionRepository,
+            IRepository<TipoReporte> tipoReporteRepository,
+            IRepository<EstadoProducto> estadoProductoRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -151,6 +155,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoFinanciamientoRepository = tipoFinanciamientoRepository;
             this.tipoOrganoRepository = tipoOrganoRepository;
             this.tipoPresentacionRepository = tipoPresentacionRepository;
+            this.tipoReporteRepository = tipoReporteRepository;
+            this.estadoProductoRepository = estadoProductoRepository;
         }
 
         protected virtual ISession Session
@@ -1418,6 +1424,60 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoPresentacion.ModificadoEl = DateTime.Now;
 
             tipoPresentacionRepository.SaveOrUpdate(tipoPresentacion);
+        }
+
+        public TipoReporte GetTipoReporteById(int id)
+        {
+            return tipoReporteRepository.Get(id);
+        }
+
+        public TipoReporte[] GetAllTipoReportes()
+        {
+            return ((List<TipoReporte>)OrderCatalog<TipoReporte>()).ToArray();
+        }
+
+        public TipoReporte[] GetActiveTipoReportes()
+        {
+            return ((List<TipoReporte>)tipoReporteRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoReporte(TipoReporte tipoReporte)
+        {
+            if (tipoReporte.Id == 0)
+            {
+                tipoReporte.Activo = true;
+                tipoReporte.CreadorEl = DateTime.Now;
+            }
+            tipoReporte.ModificadoEl = DateTime.Now;
+
+            tipoReporteRepository.SaveOrUpdate(tipoReporte);
+        }
+
+        public EstadoProducto GetEstadoProductoById(int id)
+        {
+            return estadoProductoRepository.Get(id);
+        }
+
+        public EstadoProducto[] GetAllEstadoProductos()
+        {
+            return ((List<EstadoProducto>)OrderCatalog<EstadoProducto>()).ToArray();
+        }
+
+        public EstadoProducto[] GetActiveEstadoProductos()
+        {
+            return ((List<EstadoProducto>)estadoProductoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveEstadoProducto(EstadoProducto estadoProducto)
+        {
+            if (estadoProducto.Id == 0)
+            {
+                estadoProducto.Activo = true;
+                estadoProducto.CreadorEl = DateTime.Now;
+            }
+            estadoProducto.ModificadoEl = DateTime.Now;
+
+            estadoProductoRepository.SaveOrUpdate(estadoProducto);
         }
     }
 }

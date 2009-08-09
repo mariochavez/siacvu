@@ -28,6 +28,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoFinanciamiento { get; set; }
         public int TipoFinanciamientoId { get; set; }
 
+        public int Investigador { get; set; }
+
         public TipoParticipacionEventoForm[] TipoParticipacionEventos { get; set; }
         public CoautorExternoEventoForm[] CoautorExternoEventos { get; set; }
         public CoautorInternoEventoForm[] CoautorInternoEventos { get; set; }
