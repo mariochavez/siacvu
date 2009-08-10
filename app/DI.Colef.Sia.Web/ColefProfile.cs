@@ -393,7 +393,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Estado,
+                .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
@@ -452,7 +452,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Estado,
+                .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())

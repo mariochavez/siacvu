@@ -84,8 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalogos\AmbitoController.cs" />
-    <Compile Include="ArticuloController.cs" />
-    <Compile Include="CapituloController.cs" />
+    <Compile Include="Productos\ArticuloController.cs" />
+    <Compile Include="Productos\CapituloController.cs" />
     <Compile Include="Catalogos\AreaController.cs" />
     <Compile Include="Catalogos\CategoriaController.cs" />
     <Compile Include="Catalogos\CoautorExternoController.cs" />
@@ -400,8 +400,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Catalogos\PuestoController.cs" />
     <Compile Include="Catalogos\ProyectoController.cs" />
-    <Compile Include="ReporteController.cs" />
-    <Compile Include="ReseñaController.cs" />
+    <Compile Include="Productos\ReporteController.cs" />
+    <Compile Include="Productos\ReseñaController.cs" />
     <Compile Include="RolController.cs" />
     <Compile Include="RouteRegistrar.cs" />
     <Compile Include="BaseController.cs" />

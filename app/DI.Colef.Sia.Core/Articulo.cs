@@ -37,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Idioma Idioma { get; set; }
 
         [NotNull]
-        public virtual Estado Estado { get; set; }
+        public virtual EstadoProducto EstadoProducto { get; set; }
 
         [NotNull]
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }

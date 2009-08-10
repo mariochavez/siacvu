@@ -35,6 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
         
         public CapituloController(ICapituloService capituloService, 
 			ICapituloMapper capituloMapper, 
@@ -58,12 +59,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
             IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
             IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-            IInvestigadorService investigadorService
+            IInvestigadorService investigadorService,
+            IEstadoProductoMapper estadoProductoMapper
 			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
+            this.estadoProductoMapper = estadoProductoMapper;
 
             this.capituloMapper = capituloMapper;
 			this.tipoCapituloMapper = tipoCapituloMapper;
@@ -403,7 +406,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
-            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
@@ -426,7 +429,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["Estado"] = form.EstadoId;
+            ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;

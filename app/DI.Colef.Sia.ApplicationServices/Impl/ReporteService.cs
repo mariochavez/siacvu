@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(reporte.Id == 0)
             {
+                reporte.Puntuacion = 0;
                 reporte.Activo = true;
                 reporte.CreadorEl = DateTime.Now;
             }

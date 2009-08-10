@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
 
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
@@ -46,7 +47,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
             ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
             IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
-            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper
+            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+            IEstadoProductoMapper estadoProductoMapper
             )
             : base(usuarioService)
         {
@@ -73,6 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
+            this.estadoProductoMapper = estadoProductoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -303,7 +306,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
+            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
@@ -328,7 +331,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoArticulo"] = form.TipoArticuloId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["Estado"] = form.EstadoId;
+            ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
 

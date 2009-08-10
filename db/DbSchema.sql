@@ -39,6 +39,58 @@ alter table MedioImpresos  drop constraint FK3D78AB6085102A57
 alter table MedioImpresos  drop constraint FK3D78AB6074E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA2BAFDC96]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA2BAFDC96
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA64F7D1CD]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA64F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA1EDC2D3B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA1EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA7A8488F7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA7A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAC0410E89]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEAC0410E89
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA3E082BED]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA3E082BED
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAEC222BA6]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEAEC222BA6
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA295BC133]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA295BC133
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEABC063744]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEABC063744
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAF4FE4035]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEAF4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA8336201B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA85102A57]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA74E8BAB7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC298336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
 alter table CoautorInternoReseñas  drop constraint FKF35EBC298336201B
 
@@ -401,6 +453,14 @@ alter table Proyectos  drop constraint FK8BA36D7785102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D7774E8BAB7]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D7774E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B985102A57]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
+alter table NivelEstudios  drop constraint FKD8EB52B985102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B974E8BAB7]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
+alter table NivelEstudios  drop constraint FKD8EB52B974E8BAB7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE803FA562]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
@@ -899,8 +959,8 @@ alter table Capitulos  drop constraint FK3165FEAD8336201B
 alter table Capitulos  drop constraint FK3165FEADE5A51EE5
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADC6BB3B45]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEADC6BB3B45
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD4B54D394
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD11666E2A]') AND parent_object_id = OBJECT_ID('Capitulos'))
@@ -1051,8 +1111,8 @@ alter table Articulos  drop constraint FK3EB394D73C5C6337
 alter table Articulos  drop constraint FK3EB394D76425E2FD
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7C6BB3B45]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D7C6BB3B45
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D74B54D394]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D74B54D394
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D711666E2A]') AND parent_object_id = OBJECT_ID('Articulos'))
@@ -1295,66 +1355,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B985102A57]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
-alter table NivelEstudios  drop constraint FKD8EB52B985102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B974E8BAB7]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
-alter table NivelEstudios  drop constraint FKD8EB52B974E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA2BAFDC96]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA2BAFDC96
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA64F7D1CD]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA64F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA1EDC2D3B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA1EDC2D3B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA7A8488F7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA7A8488F7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAC0410E89]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAC0410E89
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA3E082BED]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA3E082BED
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAEC222BA6]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAEC222BA6
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA295BC133]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA295BC133
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEABC063744]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEABC063744
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAF4FE4035]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAF4FE4035
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA8336201B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA8336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA85102A57]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA74E8BAB7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -1364,6 +1364,8 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'MedioImpresos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioImpresos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'FormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormacionAcademicas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReseñas
 
@@ -1408,6 +1410,8 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Reportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reportes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Proyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Proyectos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'NivelEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table NivelEstudios
 
     if exists (select * from dbo.sysobjects where id = object_id(N'OrganoExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoExternos
 
@@ -1521,10 +1525,6 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'NivelEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table NivelEstudios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormacionAcademicas
-
     create table SNIs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -1581,6 +1581,33 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table FormacionAcademicas (
+        Id INT IDENTITY NOT NULL,
+       NumeroCedula INT null,
+       TituloGrado NVARCHAR(255) null,
+       FechaObtencion DATETIME null,
+       TituloTesis NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
+       Estatus NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       NivelEstudioFk INT null,
+       InstitucionFk INT null,
+       LineaTematicaFk INT null,
+       PaisFk INT null,
+       EstadoPaisFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
+       SubdisciplinaFk INT null,
+       InvestigadorFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -1853,6 +1880,7 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
        Descripcion NVARCHAR(255) null,
        Objetivo NVARCHAR(255) null,
        PalabarasClave NVARCHAR(255) null,
+       Puntuacion INT null,
        Fecha DATETIME null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -1871,6 +1899,17 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
     )
 
     create table Proyectos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table NivelEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2351,7 +2390,7 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
        Activo BIT null,
        InvestigadorFk INT null,
        TipoCapituloFk INT null,
-       EstadoFk INT null,
+       EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        LineaTematicaFk INT null,
        IdiomaFk INT null,
@@ -2477,7 +2516,7 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
        InvestigadorFk INT null,
        TipoArticuloFk INT null,
        IdiomaFk INT null,
-       EstadoFk INT null,
+       EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        LineaTematicaFk INT null,
        PaisFk INT null,
@@ -2669,44 +2708,6 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
        primary key (Id)
     )
 
-    create table NivelEstudios (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table FormacionAcademicas (
-        Id INT IDENTITY NOT NULL,
-       NumeroCedula INT null,
-       TituloGrado NVARCHAR(255) null,
-       FechaObtencion DATETIME null,
-       TituloTesis NVARCHAR(255) null,
-       Ciudad NVARCHAR(255) null,
-       Estatus NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       NivelEstudioFk INT null,
-       InstitucionFk INT null,
-       LineaTematicaFk INT null,
-       PaisFk INT null,
-       EstadoPaisFk INT null,
-       SectorFk INT null,
-       OrganizacionFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     alter table SNIs 
         add constraint FKF16DB6DA85102A57 
         foreign key (CreadorPorFk) 
@@ -2754,6 +2755,71 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
 
     alter table MedioImpresos 
         add constraint FK3D78AB6074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA2BAFDC96 
+        foreign key (NivelEstudioFk) 
+        references NivelEstudios
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA1EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAC0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEABC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAF4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -3209,6 +3275,16 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
 
     alter table Proyectos 
         add constraint FK8BA36D7774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table NivelEstudios 
+        add constraint FKD8EB52B985102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table NivelEstudios 
+        add constraint FKD8EB52B974E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -3833,9 +3909,9 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
         references TipoCapitulos
 
     alter table Capitulos 
-        add constraint FK3165FEADC6BB3B45 
-        foreign key (EstadoFk) 
-        references Estados
+        add constraint FK3165FEAD4B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
 
     alter table Capitulos 
         add constraint FK3165FEAD11666E2A 
@@ -4023,9 +4099,9 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
         references Idiomas
 
     alter table Articulos 
-        add constraint FK3EB394D7C6BB3B45 
-        foreign key (EstadoFk) 
-        references Estados
+        add constraint FK3EB394D74B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
 
     alter table Articulos 
         add constraint FK3EB394D711666E2A 
@@ -4326,78 +4402,3 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table NivelEstudios 
-        add constraint FKD8EB52B985102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table NivelEstudios 
-        add constraint FKD8EB52B974E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA2BAFDC96 
-        foreign key (NivelEstudioFk) 
-        references NivelEstudios
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA1EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAC0410E89 
-        foreign key (EstadoPaisFk) 
-        references EstadoPaises
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA3E082BED 
-        foreign key (SectorFk) 
-        references Sectores
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAEC222BA6 
-        foreign key (OrganizacionFk) 
-        references Organizaciones
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEABC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAF4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
