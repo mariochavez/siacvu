@@ -35,6 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateCapitulosMaps();
             CreateCursosMaps();
             CreateTesisMaps();
+            CreateDictamenMaps();
+            CreateParticipacionMaps();
+            CreateParticipacionMedioMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -290,6 +293,77 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.InvestigadorExternoId,
+                           o => o.Ignore());
+        }
+
+        void CreateDictamenMaps()
+        {
+            Mapper.CreateMap<Dictamen, DictamenForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.TipoDictamen,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+        }
+
+        void CreateParticipacionMaps()
+        {
+            Mapper.CreateMap<Participacion, ParticipacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaPresentacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Autor,
+                           o => o.Ignore())
+                .ForMember(d => d.OtraParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoPresentacion,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoPais,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+        }
+
+        void CreateParticipacionMedioMaps()
+        {
+            Mapper.CreateMap<ParticipacionMedio, ParticipacionMedioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaDifusion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.MedioImpreso,
+                           o => o.Ignore())
+                .ForMember(d => d.MedioElectronico,
+                           o => o.Ignore())
+                .ForMember(d => d.Genero,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoPais,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 

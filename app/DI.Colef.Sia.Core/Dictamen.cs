@@ -1,30 +1,30 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
-using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-	[HasUniqueDomainSignature]
     public class Dictamen : Entity, IBaseEntity
     {
-		public Dictamen()
-		{
-					}
-		
-					
-		
 		[DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
 
+        [NotNull]
+        public virtual Investigador Investigador { get; set; }
+
+        public virtual int Puntuacion { get; set; }
+
+        [NotNull]
 		public virtual TipoDictamen TipoDictamen { get; set; }
 
+        [NotNull]
 		public virtual TipoParticipacion TipoParticipacion { get; set; }
 
+        [NotNull]
 		public virtual Institucion Institucion { get; set; }
 
+        [NotNull]
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }

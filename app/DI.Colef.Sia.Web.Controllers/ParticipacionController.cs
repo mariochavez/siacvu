@@ -17,36 +17,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IParticipacionMapper participacionMapper;
         readonly ICatalogoService catalogoService;
         readonly IInvestigadorMapper investigadorMapper;
-readonly IOtraParticipacionMapper otraParticipacionMapper;
-readonly ITipoPresentacionMapper tipoPresentacionMapper;
-readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-readonly IProyectoMapper proyectoMapper;
-readonly IPaisMapper paisMapper;
-readonly IEstadoPaisMapper estadoPaisMapper;
-        
+        readonly IOtraParticipacionMapper otraParticipacionMapper;
+        readonly ITipoPresentacionMapper tipoPresentacionMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IInvestigadorService investigadorService;
     
         public ParticipacionController(IParticipacionService participacionService, 
 			IParticipacionMapper participacionMapper, 
-			ICatalogoService catalogoService, IUsuarioService usuarioService
-			, IInvestigadorMapper investigadorMapper
-, IOtraParticipacionMapper otraParticipacionMapper
-, ITipoPresentacionMapper tipoPresentacionMapper
-, IPeriodoReferenciaMapper periodoReferenciaMapper
-, IProyectoMapper proyectoMapper
-, IPaisMapper paisMapper
-, IEstadoPaisMapper estadoPaisMapper
+			ICatalogoService catalogoService,
+            IUsuarioService usuarioService,
+			IInvestigadorMapper investigadorMapper,
+            IOtraParticipacionMapper otraParticipacionMapper,
+            ITipoPresentacionMapper tipoPresentacionMapper,
+            IPeriodoReferenciaMapper periodoReferenciaMapper,
+            IProyectoMapper proyectoMapper,
+            IPaisMapper paisMapper,
+            IInvestigadorService investigadorService,
+            IEstadoPaisMapper estadoPaisMapper
 			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.participacionService = participacionService;
             this.participacionMapper = participacionMapper;
 			this.investigadorMapper = investigadorMapper;
-this.otraParticipacionMapper = otraParticipacionMapper;
-this.tipoPresentacionMapper = tipoPresentacionMapper;
-this.periodoReferenciaMapper = periodoReferenciaMapper;
-this.proyectoMapper = proyectoMapper;
-this.paisMapper = paisMapper;
-this.estadoPaisMapper = estadoPaisMapper;
+            this.otraParticipacionMapper = otraParticipacionMapper;
+            this.tipoPresentacionMapper = tipoPresentacionMapper;
+            this.periodoReferenciaMapper = periodoReferenciaMapper;
+            this.proyectoMapper = proyectoMapper;
+            this.paisMapper = paisMapper;
+            this.estadoPaisMapper = estadoPaisMapper;
+            this.investigadorService = investigadorService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -75,7 +78,17 @@ this.estadoPaisMapper = estadoPaisMapper;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var participacion = participacionService.GetParticipacionById(id);
-            data.Form = participacionMapper.Map(participacion);
+            
+            if (participacion == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
+            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
+            var participacionForm = participacionMapper.Map(participacion);
+
+            data.Form = SetupNewForm(participacionForm);
+            FormSetCombos(data.Form);
 
 			ViewData.Model = data;
             return View();
@@ -98,11 +111,8 @@ this.estadoPaisMapper = estadoPaisMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form);
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-            participacion.CreadorPor = CurrentUser();
-            participacion.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(participacion, form, Title.New, "Participacion"))
             {
                 ((GenericViewData<ParticipacionForm>)ViewData.Model).Form = SetupNewForm();
@@ -111,7 +121,7 @@ this.estadoPaisMapper = estadoPaisMapper;
 
             participacionService.SaveParticipacion(participacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "participacion.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido creado", participacion.Titulo));
         }
         
         [Transaction]
@@ -119,16 +129,20 @@ this.estadoPaisMapper = estadoPaisMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form);
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-            participacion.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(participacion, form, Title.Edit))
+            {
+                var participacionForm = participacionMapper.Map(participacion);
+
+                ((GenericViewData<ParticipacionForm>)ViewData.Model).Form = SetupNewForm(participacionForm);
+                FormSetCombos(participacionForm);
                 return ViewEdit();
+            }
 
             participacionService.SaveParticipacion(participacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "participacion.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", participacion.Titulo));
         }
         
         [Transaction]
@@ -136,6 +150,10 @@ this.estadoPaisMapper = estadoPaisMapper;
         public ActionResult Activate(int id)
         {            
             var participacion = participacionService.GetParticipacionById(id);
+
+            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+            
             participacion.Activo = true;
             participacion.ModificadoPor = CurrentUser();
             participacionService.SaveParticipacion(participacion);
@@ -150,6 +168,10 @@ this.estadoPaisMapper = estadoPaisMapper;
         public ActionResult Deactivate(int id)
         {
             var participacion = participacionService.GetParticipacionById(id);
+
+            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             participacion.Activo = false;
             participacion.ModificadoPor = CurrentUser();
             participacionService.SaveParticipacion(participacion);
@@ -158,22 +180,36 @@ this.estadoPaisMapper = estadoPaisMapper;
             
             return Rjs("Activate", form);
         }
-        
+
         ParticipacionForm SetupNewForm()
         {
-            return new ParticipacionForm
-            {
-            
-				                
-                //Lista de Catalogos Pendientes
-                //Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores()),
-OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones()),
-TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones()),
-PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos()),
-Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises()),
-            };
+            return SetupNewForm(null);
+        }
+
+        ParticipacionForm SetupNewForm(ParticipacionForm form)
+        {
+            form = form ?? new ParticipacionForm();
+
+            form.Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
+            form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+         
+            return form;
+        }
+
+        private void FormSetCombos(ParticipacionForm form)
+        {
+            ViewData["Autor"] = form.AutorId;
+            ViewData["OtraParticipacion"] = form.OtraParticipacionId;
+            ViewData["TipoPresentacion"] = form.TipoPresentacionId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["Proyecto"] = form.ProyectoId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["EstadoPais"] = form.EstadoPaisId;
         }
     }
 }

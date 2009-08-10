@@ -404,8 +404,10 @@
     <Content Include="Views\Catalogos\Genero\New.aspx" />
     <Content Include="Views\Catalogos\Genero\_Form.ascx" />
     <Content Include="Views\Dictamen\Activate.js.ascx" />
+    <Content Include="Views\Dictamen\Edit.aspx" />
     <Content Include="Views\Dictamen\Index.aspx" />
     <Content Include="Views\Dictamen\New.aspx" />
+    <Content Include="Views\Dictamen\_DatosDictamen.ascx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
     <Content Include="Views\Investigador\AddEstado.js.ascx" />
     <Content Include="Views\Investigador\AddGrado.js.ascx" />
@@ -481,11 +483,15 @@
     <Content Include="Views\Catalogos\Proyecto\New.aspx" />
     <Content Include="Views\Catalogos\Proyecto\_Form.ascx" />
     <Content Include="Views\ParticipacionMedio\Activate.js.ascx" />
+    <Content Include="Views\ParticipacionMedio\Edit.aspx" />
     <Content Include="Views\ParticipacionMedio\Index.aspx" />
     <Content Include="Views\ParticipacionMedio\New.aspx" />
+    <Content Include="Views\ParticipacionMedio\_DatosParticipacionMedio.ascx" />
     <Content Include="Views\Participacion\Activate.js.ascx" />
+    <Content Include="Views\Participacion\Edit.aspx" />
     <Content Include="Views\Participacion\Index.aspx" />
     <Content Include="Views\Participacion\New.aspx" />
+    <Content Include="Views\Participacion\_DatosParticipacion.ascx" />
     <Content Include="Views\Rol\New.aspx" />
     <Content Include="Views\Rol\Edit.aspx" />
     <Content Include="Views\Rol\Activate.js.ascx" />

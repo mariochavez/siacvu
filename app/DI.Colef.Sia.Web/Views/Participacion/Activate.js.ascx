@@ -16,4 +16,4 @@ var html = '
 ';
 
 $('#accion_<%=Html.Encode(Model.Id) %>').html(html);
-showMessage('Participacion <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Participacion <%=Html.Encode(Model.Titulo) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
