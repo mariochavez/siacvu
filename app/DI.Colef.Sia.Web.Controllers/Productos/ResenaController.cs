@@ -11,10 +11,10 @@ using SharpArch.Web.NHibernate;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
-    public class ReseñaController : BaseController<Reseña, ReseñaForm>
+    public class ResenaController : BaseController<Resena, ResenaForm>
     {
-        readonly IReseñaService reseñaService;
-        readonly IReseñaMapper reseñaMapper;
+        readonly IResenaService _resenaService;
+        readonly IResenaMapper _resenaMapper;
         readonly IInvestigadorService investigadorService;
         readonly ICatalogoService catalogoService;
         readonly IEstadoProductoMapper estadoProductoMapper;
@@ -27,21 +27,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly ICoautorExternoReseñaMapper coautorExternoReseñaMapper;
-        readonly ICoautorInternoReseñaMapper coautorInternoReseñaMapper;
+        readonly ICoautorExternoResenaMapper _coautorExternoResenaMapper;
+        readonly ICoautorInternoResenaMapper _coautorInternoResenaMapper;
 
 
-        public ReseñaController(IReseñaService reseñaService, IReseñaMapper reseñaMapper, ICatalogoService catalogoService, 
+        public ResenaController(IResenaService _resenaService, IResenaMapper _resenaMapper, ICatalogoService catalogoService, 
             IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper, IPeriodoReferenciaMapper periodoReferenciaMapper,
             IProyectoMapper proyectoMapper, ILineaTematicaMapper lineaTematicaMapper, IInvestigadorExternoMapper investigadorExternoMapper,
             IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-            ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService, ICoautorExternoReseñaMapper coautorExternoReseñaMapper,
-            ICoautorInternoReseñaMapper coautorInternoReseñaMapper)
+            ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService, ICoautorExternoResenaMapper _coautorExternoResenaMapper,
+            ICoautorInternoResenaMapper _coautorInternoResenaMapper)
             : base(usuarioService)
         {
             this.catalogoService = catalogoService;
-            this.reseñaService = reseñaService;
-            this.reseñaMapper = reseñaMapper;
+            this._resenaService = _resenaService;
+            this._resenaMapper = _resenaMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
@@ -53,8 +53,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
-            this.coautorExternoReseñaMapper = coautorExternoReseñaMapper;
-            this.coautorInternoReseñaMapper = coautorInternoReseñaMapper;
+            this._coautorExternoResenaMapper = _coautorExternoResenaMapper;
+            this._coautorInternoResenaMapper = _coautorInternoResenaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -62,8 +62,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Index);
 
-            var reseñas = reseñaService.GetAllReseñas();
-            data.List = reseñaMapper.Map(reseñas);
+            var resenas = _resenaService.GetAllResenas();
+            data.List = _resenaMapper.Map(resenas);
 
             return View(data);
         }
@@ -82,16 +82,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Edit);
 
-            var reseña = reseñaService.GetReseñaById(id);
+            var resena = _resenaService.GetResenaById(id);
 
-            if (reseña == null)
+            if (resena == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (reseña.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            var reseñaForm = reseñaMapper.Map(reseña);
+            var resenaForm = _resenaMapper.Map(resena);
 
-            data.Form = SetupNewForm(reseñaForm);
+            data.Form = SetupNewForm(resenaForm);
 
             FormSetCombos(data.Form);
 
@@ -104,8 +104,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Show);
 
-            var reseña = reseñaService.GetReseñaById(id);
-            data.Form = reseñaMapper.Map(reseña);
+            var resena = _resenaService.GetResenaById(id);
+            data.Form = _resenaMapper.Map(resena);
 
             ViewData.Model = data;
             return View();
@@ -114,56 +114,56 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ReseñaForm form)
+        public ActionResult Create(ResenaForm form)
         {
-            var reseña = reseñaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var resena = _resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(reseña, form, Title.New, "Reseña"))
+            if (!IsValidateModel(resena, form, Title.New, "Resena"))
             {
-                ((GenericViewData<ReseñaForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<ResenaForm>)ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
-            reseñaService.SaveReseña(reseña);
+            _resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", reseña.NombreRevista));
+            return RedirectToIndex(String.Format("{0} ha sido creado", resena.NombreRevista));
         }
 
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Update(ReseñaForm form)
+        public ActionResult Update(ResenaForm form)
         {
-            var reseña = reseñaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var resena = _resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(reseña, form, Title.Edit))
+            if (!IsValidateModel(resena, form, Title.Edit))
             {
-                var reseñaForm = reseñaMapper.Map(reseña);
+                var resenaForm = _resenaMapper.Map(resena);
 
-                ((GenericViewData<ReseñaForm>)ViewData.Model).Form = SetupNewForm(reseñaForm);
-                FormSetCombos(reseñaForm);
+                ((GenericViewData<ResenaForm>)ViewData.Model).Form = SetupNewForm(resenaForm);
+                FormSetCombos(resenaForm);
                 return ViewEdit();
             }
 
-            reseñaService.SaveReseña(reseña);
+            _resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", reseña.NombreRevista));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", resena.NombreRevista));
         }
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
-            var reseña = reseñaService.GetReseñaById(id);
+            var resena = _resenaService.GetResenaById(id);
 
-            if (reseña.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            reseña.Activo = true;
-            reseña.ModificadoPor = CurrentUser();
-            reseñaService.SaveReseña(reseña);
+            resena.Activo = true;
+            resena.ModificadoPor = CurrentUser();
+            _resenaService.SaveResena(resena);
 
-            var form = reseñaMapper.Map(reseña);
+            var form = _resenaMapper.Map(resena);
 
             return Rjs(form);
         }
@@ -172,16 +172,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
-            var reseña = reseñaService.GetReseñaById(id);
+            var resena = _resenaService.GetResenaById(id);
 
-            if (reseña.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            reseña.Activo = false;
-            reseña.ModificadoPor = CurrentUser();
-            reseñaService.SaveReseña(reseña);
+            resena.Activo = false;
+            resena.ModificadoPor = CurrentUser();
+            _resenaService.SaveResena(resena);
 
-            var form = reseñaMapper.Map(reseña);
+            var form = _resenaMapper.Map(resena);
 
             return Rjs("Activate", form);
         }
@@ -189,13 +189,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
-            var reseña = reseñaService.GetReseñaById(id);
-            var form = new ReseñaForm();
+            var resena = _resenaService.GetResenaById(id);
+            var form = new ResenaForm();
 
-            if (reseña != null)
-                form.Id = reseña.Id;
+            if (resena != null)
+                form.Id = resena.Id;
 
-            form.CoautorInternoReseña = new CoautorInternoReseñaForm();
+            form.CoautorInternoResena = new CoautorInternoResenaForm();
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
 
             return Rjs("NewCoautorInterno", form);
@@ -203,41 +203,41 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReseña")]CoautorInternoReseñaForm form, int reseñaId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoResena")]CoautorInternoResenaForm form, int resenaId)
         {
-            var coautorInternoReseña = coautorInternoReseñaMapper.Map(form);
+            var coautorInternoResena = _coautorInternoResenaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorInternoReseña.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorInternoResena.ValidationResults(), true, String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorInternoReseña.CreadorPor = CurrentUser();
-            coautorInternoReseña.ModificadoPor = CurrentUser();
+            coautorInternoResena.CreadorPor = CurrentUser();
+            coautorInternoResena.ModificadoPor = CurrentUser();
 
-            if (reseñaId != 0)
+            if (resenaId != 0)
             {
-                var reseña = reseñaService.GetReseñaById(reseñaId);
-                reseña.AddCoautorInterno(coautorInternoReseña);
-                reseñaService.SaveReseña(reseña);
+                var resena = _resenaService.GetResenaById(resenaId);
+                resena.AddCoautorInterno(coautorInternoResena);
+                _resenaService.SaveResena(resena);
             }
 
-            var coautorInternoReseñaForm = coautorInternoReseñaMapper.Map(coautorInternoReseña);
+            var coautorInternoResenaForm = _coautorInternoResenaMapper.Map(coautorInternoResena);
 
-            return Rjs("AddCoautorInterno", coautorInternoReseñaForm);
+            return Rjs("AddCoautorInterno", coautorInternoResenaForm);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
-            var reseña = reseñaService.GetReseñaById(id);
-            var form = new ReseñaForm();
+            var resena = _resenaService.GetResenaById(id);
+            var form = new ResenaForm();
 
-            if (reseña != null)
-                form.Id = reseña.Id;
+            if (resena != null)
+                form.Id = resena.Id;
 
-            form.CoautorExternoReseña = new CoautorExternoReseñaForm();
+            form.CoautorExternoResena = new CoautorExternoResenaForm();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
@@ -245,43 +245,43 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReseña")]CoautorExternoReseñaForm form, int reseñaId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoResena")]CoautorExternoResenaForm form, int resenaId)
         {
-            var coautorExternoReseña = coautorExternoReseñaMapper.Map(form);
+            var coautorExternoResena = _coautorExternoResenaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoReseña.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoResena.ValidationResults(), true, String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorExternoReseña.CreadorPor = CurrentUser();
-            coautorExternoReseña.ModificadoPor = CurrentUser();
+            coautorExternoResena.CreadorPor = CurrentUser();
+            coautorExternoResena.ModificadoPor = CurrentUser();
 
-            if (reseñaId != 0)
+            if (resenaId != 0)
             {
-                var reseña = reseñaService.GetReseñaById(reseñaId);
-                reseña.AddCoautorExterno(coautorExternoReseña);
-                reseñaService.SaveReseña(reseña);
+                var resena = _resenaService.GetResenaById(resenaId);
+                resena.AddCoautorExterno(coautorExternoResena);
+                _resenaService.SaveResena(resena);
             }
 
-            var coautorExternoReseñaForm = coautorExternoReseñaMapper.Map(coautorExternoReseña);
+            var coautorExternoResenaForm = _coautorExternoResenaMapper.Map(coautorExternoResena);
 
-            return Rjs("AddCoautorExterno", coautorExternoReseñaForm);
+            return Rjs("AddCoautorExterno", coautorExternoResenaForm);
         }
 
-        ReseñaForm SetupNewForm()
+        ResenaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        ReseñaForm SetupNewForm(ReseñaForm form)
+        ResenaForm SetupNewForm(ResenaForm form)
         {
-            form = form ?? new ReseñaForm();
+            form = form ?? new ResenaForm();
 
 
-            form.CoautorExternoReseña = new CoautorExternoReseñaForm();
-            form.CoautorInternoReseña = new CoautorInternoReseñaForm();
+            form.CoautorExternoResena = new CoautorExternoResenaForm();
+            form.CoautorInternoResena = new CoautorInternoResenaForm();
 
                 //Lista de Catalogos Pendientes
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
@@ -298,7 +298,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(ReseñaForm form)
+        private void FormSetCombos(ResenaForm form)
         {
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;

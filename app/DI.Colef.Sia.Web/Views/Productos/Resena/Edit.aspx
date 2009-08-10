@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReseñaForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ResenaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -10,7 +10,7 @@
     <h2><%=Html.Encode(Model.Title) %></h2>
     <% Html.RenderPartial("_Message"); %>
     <br />
-    <% using (Html.BeginForm("Update", "Reseña")){ %>
+    <% using (Html.BeginForm("Update", "Resena")){ %>
         <div id="form">
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
@@ -21,7 +21,7 @@
                        <label>Datos Articulo:<em>*</em></label>
                     </td>
                     <td class="field">
-                        <% Html.RenderPartial("_DatosReseña", Model.Form); %>
+                        <% Html.RenderPartial("_DatosResena", Model.Form); %>
                     </td>
                 </tr>
                 <tr>

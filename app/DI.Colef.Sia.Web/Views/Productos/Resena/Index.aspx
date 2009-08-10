@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReseñaForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ResenaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
     <div id="datalist">   
         <div class="btn_container">
 		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<ReseñaController>(x => x.New(), "+ Crear Reseña") %>
+			    <%=Html.ActionLink<ResenaController>(x => x.New(), "+ Crear Reseña") %>
 		    </span>
 	    </div>
         <br />
@@ -28,7 +28,7 @@
 				        <td class="button" width="46">
 					        <div class="floatr btn_container">
 						        <span class="btn btn_small_white">
-							        <%=Html.ActionLink<ReseñaController>(x => x.Edit(reseña.Id), "Editar") %>
+							        <%=Html.ActionLink<ResenaController>(x => x.Edit(reseña.Id), "Editar") %>
 						        </span>
 					        </div>
 				        </td>                

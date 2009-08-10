@@ -6,22 +6,22 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class CoautorInternoReseñaMapper : AutoFormMapper<CoautorInternoReseña, CoautorInternoReseñaForm>, ICoautorInternoReseñaMapper
+    public class CoautorInternoResenaMapper : AutoFormMapper<CoautorInternoResena, CoautorInternoResenaForm>, ICoautorInternoResenaMapper
     {
         readonly IInvestigadorService investigadorService;
 
-        public CoautorInternoReseñaMapper(IRepository<CoautorInternoReseña> repository, IInvestigadorService investigadorService)
+        public CoautorInternoResenaMapper(IRepository<CoautorInternoResena> repository, IInvestigadorService investigadorService)
             : base(repository)
         {
             this.investigadorService = investigadorService;
         }
 
-        protected override int GetIdFromMessage(CoautorInternoReseñaForm message)
+        protected override int GetIdFromMessage(CoautorInternoResenaForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CoautorInternoReseñaForm message, CoautorInternoReseña model)
+        protected override void MapToModel(CoautorInternoResenaForm message, CoautorInternoResena model)
         {
             model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
 
