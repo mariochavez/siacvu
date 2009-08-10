@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Reporte", 3);
+	new EntityScaffoldingDetails("Reseña", 3);
  
 /*
  * Property names should be PascalCase.
@@ -31,10 +31,6 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  */
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoReporte", "TipoReporte", "TipoReporte")
-);
-
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("EstadoProducto", "EstadoProducto", "EstadoProducto")
 );
@@ -56,27 +52,27 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Titulo","string", null, "[NotNullNotEmpty]")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("FechaEdicion","DateTime", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorExternoReportes", "IList<CoautorExternoReporte>", "CoautorExterno")
+	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorInternoReportes", "IList<CoautorInternoReporte>", "CoautorInterno")
+	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Institucion","Institucion", "Institucion")
+	new EntityProperty("ReferenciaBibliograficaLibro","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editorial","string", null)
+	new EntityProperty("ReferenciaBibliograficaRevista","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreProducto","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -84,23 +80,39 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NoPaginas","int", null)
+	new EntityProperty("PaginaInicial","int", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Descripcion","string", null)
+	new EntityProperty("PaginaFinal","int", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Objetivo","string", null)
+	new EntityProperty("TituloLibro","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabarasClave","string", null)
+	new EntityProperty("NombreRevista","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Fecha","DateTime", null)
+	new EntityProperty("Editorial","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabrasClave","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Area","Area", "Area")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Disciplina","Disciplina", "Disciplina")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
 );
 ///////////////////////////////////////////////////
 

@@ -39,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateOrganosExternosMaps();
             CreateEventosMaps();
             CreateReportesMaps();
+            CreateReseñasMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -96,6 +97,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
+                           o => o.Ignore());
+        }
+
+        private void CreateReseñasMaps()
+        {
+            Mapper.CreateMap<Reseña, ReseñaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.EstadoProducto,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoReseña, CoautorInternoReseñaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorExternoReseña, CoautorExternoReseñaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
                            o => o.Ignore());
         }
 
