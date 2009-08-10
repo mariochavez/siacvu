@@ -32,7 +32,8 @@
                 <label for="FechaInicial">FechaInicial:<em>*</em></label>
             </td>
             <td class="field">
-                <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class = "big", size = 10, maxlength = 40 })%>                
+                <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class="datetime", maxlength = 10 })%>
+                <span class="helper_message">(Formato dd/mm/yyyy)</span>
                 <%=Html.ValidationMessage("FechaInicial")%>
             </td>
         </tr>
@@ -41,8 +42,10 @@
                 <label for="FechaFinal">FechaFinal:<em>*</em></label>
             </td>
             <td class="field">
-                <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("FechaFinal")%>
+            <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class="datetime", maxlength = 10 })%>
+            <span class="helper_message">(Formato dd/mm/yyyy)</span>
+            <%=Html.ValidationMessage("FechaFinal")%>
+                
             </td>
         </tr>
     </table>

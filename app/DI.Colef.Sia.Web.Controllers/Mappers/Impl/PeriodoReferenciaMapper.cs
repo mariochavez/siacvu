@@ -1,5 +1,6 @@
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
@@ -19,8 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
 			model.Periodo = message.Periodo;
 		    model.Orden = message.Orden;
-		    model.FechaInicial = message.FechaInicial;
-		    model.FechaFinal = message.FechaFinal;
+            model.FechaInicial = message.FechaInicial.FromShortDateToDateTime(); ;
+            model.FechaFinal = message.FechaFinal.FromShortDateToDateTime(); ;
         }
     }
 }
