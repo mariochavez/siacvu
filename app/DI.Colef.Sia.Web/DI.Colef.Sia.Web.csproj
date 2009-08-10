@@ -337,6 +337,11 @@
     <Content Include="Views\Catalogos\LineaTematica\Index.aspx" />
     <Content Include="Views\Catalogos\LineaTematica\New.aspx" />
     <Content Include="Views\Catalogos\LineaTematica\_Form.ascx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Edit.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Index.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\New.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\_Form.ascx" />
     <Content Include="Views\Catalogos\Nivel\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Nivel\Edit.aspx" />
     <Content Include="Views\Catalogos\Nivel\Index.aspx" />
@@ -436,6 +441,12 @@
     <Content Include="Views\Evento\_EditCoautorInterno.ascx" />
     <Content Include="Views\Evento\_NewCoautorExterno.ascx" />
     <Content Include="Views\Evento\_NewCoautorInterno.ascx" />
+    <Content Include="Views\FormacionAcademica\Activate.js.ascx" />
+    <Content Include="Views\FormacionAcademica\Edit.aspx" />
+    <Content Include="Views\FormacionAcademica\Index.aspx" />
+    <Content Include="Views\FormacionAcademica\New.aspx" />
+    <Content Include="Views\FormacionAcademica\_DatosFormacionAcademica.ascx" />
+    <Content Include="Views\FormacionAcademica\_DatosOpcionales.ascx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
     <Content Include="Views\Investigador\AddEstado.js.ascx" />
     <Content Include="Views\Investigador\AddGrado.js.ascx" />
