@@ -6,6 +6,11 @@
     
     $('tr.highlight').live("mouseover", setHighlight);
     $('tr.highlight').live("mouseout", clearHighlight);
+
+    $('#tabs').tabs();
+    $('.clearField').clearField();
+
+    AutoComplete.setup();
 }
 
 function showMessage(message) {
@@ -43,11 +48,66 @@ var DateTimePicker = {
             changeMonth: true, 
             changeYear: true
         });
-    $('input.datetime').each(function() {
-        $(this).datepicker();
-    });
-}
+        $('input.datetime').each(function() {
+            $(this).datepicker();
+        });
+    }
 };
+
+var AutoComplete = {
+    setup: function() {
+        $('a.autoComplete').each(function() {
+            var url = $(this).attr('href');
+            var textbox = $(this).attr('rel');
+
+            $(textbox).autocomplete(url,
+                {
+                    minChars: 5,
+                    delay: 400,
+                    matchSubset: 1,
+                    matchContains: 1,
+                    cacheLength: 10,
+                    onItemSelect: AutoComplete.selectItem,
+                    onFindValue: AutoComplete.findValue,
+                    //formatItem: AutoComplete.formatItem,
+                    autoFill: true
+                });
+            $(textbox).blur(AutoComplete.setId);
+        });
+
+        $('a.autoComplete').live("click", AutoComplete.click);
+    },
+    setId: function() {
+        var autocomplete = $(this)[0].autocompleter;
+        autocomplete.findValue();
+    },
+    click: function() {
+        if ($('#SearchId').val() == '')
+            return false;
+
+        $('#SearchForm').submit();
+        $('#SearchId').val('');
+
+        return false;
+    },
+    selectItem: function(li) {
+        AutoComplete.findValue(li);
+    },
+    findValue: function(li) {
+        if (li == null) {
+            $('#SearchId').val();
+            return;
+        }
+
+        if (!!li.extra) var sValue = li.extra[0];
+        else var sValue = li.selectValue;
+
+        $('#SearchId').val(sValue);
+    },
+    formatItem: function(row) {
+        return row[0] + " (id: " + row[1] + ")";
+    }
+}
 
 var RemoteForm = {
     setup: function() {

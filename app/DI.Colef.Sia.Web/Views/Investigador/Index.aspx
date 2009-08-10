@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<InvestigadorForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -9,12 +10,26 @@
     <h2><%=Html.Encode(Model.Title) %></h2>
     <% Html.RenderPartial("_Message"); %>
     <br />
-    <div id="datalist">   
-        <div class="btn_container">
-		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Crear Investigador") %>
-		    </span>
-	    </div>
+    <div id="datalist">
+        <div> 
+            <div class="floatr btn_container">
+                <span class="inputSearchField">
+                    <% using (Html.BeginForm("Search", null, FormMethod.Post, new { Id = "SearchForm"} )) { %>
+                        <%=Html.Hidden("SearchId") %>
+                    <% } %>
+                    <%=Html.TextBox("SearchValue", "Buscar ...",
+                        new { @class = "clearField inputSearch" })%>
+                </span>
+		        <span class="btn btn_small_white">
+			        <%=Html.ActionLink("Editar", "Search", null, new { @class = "autoComplete", rel = "#SearchValue" })%>
+		        </span>
+	        </div>
+            <div class="floatl btn_container">
+		        <span class="btn btn_medium_brown">
+			        <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Crear Investigador") %>
+		        </span>
+	        </div>
+	    </div>  
         <br />
         <div class="table_title">Investigadores</div>
         <table>

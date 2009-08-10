@@ -39,7 +39,7 @@ p, ul
 }
 
 /* HEADINGS   
-----------------------------------------------------------*/
+
 h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
@@ -610,3 +610,30 @@ table.form td.field textarea
 	font-weight: bold;
 	margin: 2px
 }
+
+/* INPUTS 
+----------------------------------------------------------*/
+input {
+  font-size: 12px;
+  border: 1px solid #c9c9c9;
+}
+input .big {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px;
+}
+input .invalid {
+  border: 1px solid #ac2824;
+  background-color: #ffeeee;
+}
+.inputSearch { width: 200px; }
+.inputSearchField {
+  float: left;
+  margin-right: 5px;
+  padding-left: 3px;
+}
+.clearFieldBlurred {
+  color: #666666;
+  font-style: italic;
+}
+.clearFieldActive { color: #000000; }

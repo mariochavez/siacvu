@@ -35,45 +35,35 @@
                 </td>
             </tr>
             <tr>
-                <td class="label">
-                   <label>Estados:</label>
+                <td colspan="2">
+                    <div id="tabs" style="min-height: 380px;">
+                        <ul>
+		                    <li><a href="#estadoTab">Estado</a></li>
+		                    <li><a href="#gradoTab">Grado</a></li>
+		                    <li><a href="#categoriaTab">Categoria</a></li>
+		                    <li><a href="#cargoTab">Grado</a></li>
+		                    <li><a href="#sniTab">Categoria</a></li>
+	                    </ul>
+                        
+                        <div id="estadoTab">
+                            <% Html.RenderPartial("_EditEstado", Model.Form); %>
+                        </div>
+                        <div id="gradoTab">
+                            <% Html.RenderPartial("_EditGrado", Model.Form); %>
+                        </div>
+                        <div id="categoriaTab">
+                            <% Html.RenderPartial("_EditCategoria", Model.Form); %>
+                        </div>
+                        <div id="cargoTab">
+                            <% Html.RenderPartial("_EditCargo", Model.Form); %>
+                        </div>
+                        <div id="sniTab">
+                            <% Html.RenderPartial("_EditSni", Model.Form); %>
+                        </div>
+                    </div>
                 </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditEstado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Grado:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditGrado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Categoria:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Cargo:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCargo", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>SNI:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditSni", Model.Form); %>
-                </td>
-            </tr>                                               
+            </tr>  
+                                                        
         </table>
         
 	    <div class="btn_container_footer">

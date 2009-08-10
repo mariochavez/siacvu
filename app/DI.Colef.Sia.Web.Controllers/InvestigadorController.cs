@@ -366,6 +366,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("AddSni", sniInvestigadorForm);
         }
+
+        public ActionResult Search(string q)
+        {
+            return Content("Hello|1\nHoy|2");
+        }
+
         InvestigadorForm SetupNewForm()
         {
             return new InvestigadorForm

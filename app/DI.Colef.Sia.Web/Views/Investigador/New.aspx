@@ -37,45 +37,34 @@
                 </td>
             </tr>
             <tr>
-                <td class="label required">
-                   <label>Estado:<em>*</em></label>
+                <td colspan="2">
+                    <div id="tabs" style="min-height: 380px;">
+                        <ul>
+		                    <li><a href="#estadoTab">Estado</a></li>
+		                    <li><a href="#gradoTab">Grado</a></li>
+		                    <li><a href="#categoriaTab">Categoria</a></li>
+		                    <li><a href="#cargoTab">Grado</a></li>
+		                    <li><a href="#sniTab">Categoria</a></li>
+	                    </ul>
+                        
+                        <div id="estadoTab">
+                            <% Html.RenderPartial("_NewEstado", Model.Form); %>
+                        </div>
+                        <div id="gradoTab">
+                            <% Html.RenderPartial("_NewGrado", Model.Form); %>
+                        </div>
+                        <div id="categoriaTab">
+                            <% Html.RenderPartial("_NewCategoria", Model.Form); %>
+                        </div>
+                        <div id="cargoTab">
+                            <% Html.RenderPartial("_NewCargo", Model.Form); %>
+                        </div>
+                        <div id="sniTab">
+                            <% Html.RenderPartial("_NewSni", Model.Form); %>
+                        </div>
+                    </div>
                 </td>
-                <td class="field">
-                    <% Html.RenderPartial("_NewEstado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Grado:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_NewGrado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Categoria:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_NewCategoria", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Cargo:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_NewCargo", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>SNI:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_NewSni", Model.Form); %>
-                </td>
-            </tr>                                               
+            </tr>                                             
         </table>
         
 	    <div class="btn_container_footer">
@@ -83,7 +72,7 @@
 			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
 		    </span>
 		    <span class="btn btn_normal_white">
-			    <%=Html.ActionLink<RolController>(x => x.Index(), "Regresar") %>
+			    <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
 		    </span>
 	    </div>    
     </div>

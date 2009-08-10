@@ -1,14 +1,17 @@
 INSERT Personas VALUES('Administrador', null, null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Personas VALUES('Peter', 'Parker', null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Personas VALUES('Investigador', 'Primero', null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT Usuarios VALUES('administrador', 'admin', GETDATE(), GETDATE(), 1, 1, 1, 1)
-INSERT Usuarios VALUES('pparker', 'parker', GETDATE(), GETDATE(), 1, 1, 1, 2)
+INSERT Usuarios VALUES('pparker', 'parker', GETDATE(), GETDATE(), 1, 2, 1, 1)
+INSERT Usuarios VALUES('inv1', 'inv1', GETDATE(), GETDATE(), 1, 3, 1, 1)
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
+INSERT UsuarioRol VALUES(3, 2)
 
 insert into Departamentos values('Dirección Regional de Nuevo Laredo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Dirección Regional de Matamoros',GETDATE(), GETDATE(), 1, 1, 1);

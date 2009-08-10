@@ -115,6 +115,7 @@
     <Compile Include="Extensions\PrimitiveHelperExtensions.cs" />
     <Compile Include="Helpers\ModelStateExtensions.cs" />
     <Compile Include="Helpers\PartialViewExtensions.cs" />
+    <Compile Include="Helpers\URLHelperExtensions.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
