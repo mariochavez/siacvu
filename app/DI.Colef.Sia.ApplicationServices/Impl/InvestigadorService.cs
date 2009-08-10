@@ -23,12 +23,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return investigadorRepository.Get(id);
         }
 
-        public Investigador[] GetAllInvestigadors()
+        public Investigador[] GetAllInvestigadores()
         {
             return ((List<Investigador>)investigadorRepository.GetAll()).ToArray();
         }
 
-        public Investigador[] GetActiveInvestigadorInternos()
+        public Investigador[] GetActiveInvestigadores()
         {
             return ((List<Investigador>)investigadorRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }

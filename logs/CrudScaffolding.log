@@ -1,13 +1,12 @@
-04:05:22 p.m.	Started adding generated files
-04:05:22 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\Dictamen.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
-04:05:22 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IDictamenService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-04:05:22 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\DictamenService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-04:05:22 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\DictamenForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:05:22 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IDictamenMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:05:23 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\DictamenMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:05:24 p.m.	Added file DictamenController.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-04:05:24 p.m.	Added directory C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Dictamen\
-04:05:24 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Dictamen\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-04:05:24 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Dictamen\Activate.js.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-04:05:24 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Dictamen\New.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-04:05:24 p.m.	Finished adding generated files
+01:53:36 p.m.	Started adding generated files
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\Reporte.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IReporteService.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\ReporteService.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\ReporteForm.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IReporteMapper.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\ReporteMapper.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\ReporteController.cs
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Reporte\Index.aspx
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Reporte\Activate.js.ascx
+01:53:36 p.m.	File already exists C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Reporte\New.aspx
+01:53:36 p.m.	Finished adding generated files

@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -12,16 +11,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
-        readonly IInvestigadorService investigadorService;
 
         public ArticuloMapper(IRepository<Articulo> repository,
             ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
             ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-            ICatalogoService catalogoService, IInvestigadorService investigadorService
+            ICatalogoService catalogoService
         )
             : base(repository)
         {
-            this.investigadorService = investigadorService;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.catalogoService = catalogoService;

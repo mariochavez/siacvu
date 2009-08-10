@@ -42,7 +42,7 @@
                 </tr> 
                 <tr>
                     <td class="label">
-                       <label>Coautores Externos:</label>
+                       <label>Coautores Internos:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>

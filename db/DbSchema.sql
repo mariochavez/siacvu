@@ -79,8 +79,37 @@ alter table CoautorExternoCapitulos  drop constraint FKE9BFF75774E8BAB7
 alter table CoautorExternoCapitulos  drop constraint FKE9BFF757A1B3F60D
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463785102A57]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
 alter table TipoFinanciamientos  drop constraint FK2D5E463785102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E85102A57]') AND parent_object_id = OBJECT_ID('Cargos'))
+alter table Cargos  drop constraint FKA8E8D63E85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E74E8BAB7]') AND parent_object_id = OBJECT_ID('Cargos'))
+alter table Cargos  drop constraint FKA8E8D63E74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D2261429F]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
+alter table TipoParticipacionEventos  drop constraint FK87E86B1D2261429F
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D85102A57]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
+alter table TipoParticipacionEventos  drop constraint FK87E86B1D85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
+alter table TipoParticipacionEventos  drop constraint FK87E86B1D74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D3BA127C1]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
+alter table TipoParticipacionEventos  drop constraint FK87E86B1D3BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE9CF67963]') AND parent_object_id = OBJECT_ID('Tesis'))
+alter table Tesis  drop constraint FKEA414CDE9CF67963
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463774E8BAB7]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
@@ -151,8 +180,49 @@ alter table Disciplinas  drop constraint FK6CD232B385102A57
 alter table Disciplinas  drop constraint FK6CD232B374E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC85102A57]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
 alter table TipoPresentaciones  drop constraint FK900A4EAC85102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B748E7AD9]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B748E7AD9
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B7CEC3F4]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B7CEC3F4
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B90FFB19B]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B90FFB19B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B11666E2A]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B11666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B70EA6C9E]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B70EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B7A8488F7]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B7A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1BC0410E89]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1BC0410E89
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B85102A57]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B74E8BAB7]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3ED3F785102A57]') AND parent_object_id = OBJECT_ID('Niveles'))
+alter table Niveles  drop constraint FKCE3ED3F785102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
@@ -167,8 +237,29 @@ alter table TipoDistinciones  drop constraint FK6F92D79885102A57
 alter table TipoDistinciones  drop constraint FK6F92D79874E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A185102A57]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
 alter table TipoCapitulos  drop constraint FKE5A612A185102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
+alter table CoautorInternoReportes  drop constraint FK276A11CD8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
+alter table CoautorInternoReportes  drop constraint FK276A11CD85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
+alter table CoautorInternoReportes  drop constraint FK276A11CD74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD13FE2142]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
+alter table CoautorInternoReportes  drop constraint FK276A11CD13FE2142
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
+alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
@@ -259,8 +350,45 @@ alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 alter table Generos  drop constraint FK34B67F8085102A57
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8074E8BAB7]') AND parent_object_id = OBJECT_ID('Generos'))
 alter table Generos  drop constraint FK34B67F8074E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE803FA562]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE803FA562
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE2261429F]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE2261429F
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE3E082BED]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE3E082BED
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7DBF823E]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE7DBF823E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAEC93A1EF1]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAEC93A1EF1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE8336201B]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE74E8BAB7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7004441E85102A57]') AND parent_object_id = OBJECT_ID('LineaTematicas'))
+alter table LineaTematicas  drop constraint FK7004441E85102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B8336201B]') AND parent_object_id = OBJECT_ID('Dictamenes'))
@@ -299,8 +427,45 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D136FF2CA
 alter table CargoInvestigadores  drop constraint FKC1D5F88D7D866EAB
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D3E391E13]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
 alter table CargoInvestigadores  drop constraint FKC1D5F88D3E391E13
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EECB2CAFCD8]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EECB2CAFCD8
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC64F7D1CD]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC64F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EECC93A1EF1]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EECC93A1EF1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC7A8488F7]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC7A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EECC0410E89]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EECC0410E89
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC8336201B]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC85102A57]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC74E8BAB7]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425185102A57]') AND parent_object_id = OBJECT_ID('TipoActividades'))
+alter table TipoActividades  drop constraint FKF88C425185102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D85102A57]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
@@ -323,8 +488,205 @@ alter table Paises  drop constraint FKFF6108EE85102A57
 alter table Paises  drop constraint FKFF6108EE74E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5985102A57]') AND parent_object_id = OBJECT_ID('Organizaciones'))
 alter table Organizaciones  drop constraint FK66FEAE5985102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2185102A57]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
+alter table MedioElectronicos  drop constraint FKC3FA1F2185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2174E8BAB7]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
+alter table MedioElectronicos  drop constraint FKC3FA1F2174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C85102A57]') AND parent_object_id = OBJECT_ID('Instituciones'))
+alter table Instituciones  drop constraint FK7E69627C85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C74E8BAB7]') AND parent_object_id = OBJECT_ID('Instituciones'))
+alter table Instituciones  drop constraint FK7E69627C74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343C93A1EF1]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD52343C93A1EF1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234342002BEE]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD5234342002BEE
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234364F7D1CD]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD5234364F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523431EDC2D3B]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD523431EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343FA1D058B]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD52343FA1D058B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523438336201B]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD523438336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234385102A57]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD5234385102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234374E8BAB7]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD5234374E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B85102A57]') AND parent_object_id = OBJECT_ID('Dependencias'))
+alter table Dependencias  drop constraint FK4ECBCD2B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B74E8BAB7]') AND parent_object_id = OBJECT_ID('Dependencias'))
+alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC85102A57]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
+alter table TipoPresentaciones  drop constraint FK900A4EAC85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
+alter table TipoPresentaciones  drop constraint FK900A4EAC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716385102A57]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
+alter table TipoDictamenes  drop constraint FK8937716385102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716374E8BAB7]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
+alter table TipoDictamenes  drop constraint FK8937716374E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB62F52AD85102A57]') AND parent_object_id = OBJECT_ID('Subdisciplinas'))
+alter table Subdisciplinas  drop constraint FKB62F52AD85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB62F52AD74E8BAB7]') AND parent_object_id = OBJECT_ID('Subdisciplinas'))
+alter table Subdisciplinas  drop constraint FKB62F52AD74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F85102A57]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
+alter table PeriodoReferencias  drop constraint FK91FCA7F85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F74E8BAB7]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
+alter table PeriodoReferencias  drop constraint FK91FCA7F74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF8D374185102A57]') AND parent_object_id = OBJECT_ID('OtraParticipaciones'))
+alter table OtraParticipaciones  drop constraint FKEF8D374185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF8D374174E8BAB7]') AND parent_object_id = OBJECT_ID('OtraParticipaciones'))
+alter table OtraParticipaciones  drop constraint FKEF8D374174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A185102A57]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
+alter table TipoCapitulos  drop constraint FKE5A612A185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
+alter table TipoCapitulos  drop constraint FKE5A612A174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259085102A57]') AND parent_object_id = OBJECT_ID('Puestos'))
+alter table Puestos  drop constraint FK45EB259085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259074E8BAB7]') AND parent_object_id = OBJECT_ID('Puestos'))
+alter table Puestos  drop constraint FK45EB259074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8608BEE085102A57]') AND parent_object_id = OBJECT_ID('FormaParticipaciones'))
+alter table FormaParticipaciones  drop constraint FK8608BEE085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8608BEE074E8BAB7]') AND parent_object_id = OBJECT_ID('FormaParticipaciones'))
+alter table FormaParticipaciones  drop constraint FK8608BEE074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BF1AEE935]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7BF1AEE935
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B2261429F]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B2261429F
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B64F7D1CD]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B64F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B11666E2A]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B11666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B85102A57]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B74E8BAB7]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
+alter table CoautorInternoEventos  drop constraint FKDB55786B8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
+alter table CoautorInternoEventos  drop constraint FKDB55786B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
+alter table CoautorInternoEventos  drop constraint FKDB55786B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B3BA127C1]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
+alter table CoautorInternoEventos  drop constraint FKDB55786B3BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA78FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
+alter table CoautorExternoEventos  drop constraint FKE25BBDA78FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA785102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
+alter table CoautorExternoEventos  drop constraint FKE25BBDA785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA774E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
+alter table CoautorExternoEventos  drop constraint FKE25BBDA774E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA73BA127C1]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
+alter table CoautorExternoEventos  drop constraint FKE25BBDA73BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948085102A57]') AND parent_object_id = OBJECT_ID('Sectores'))
+alter table Sectores  drop constraint FK57A9948085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948074E8BAB7]') AND parent_object_id = OBJECT_ID('Sectores'))
+alter table Sectores  drop constraint FK57A9948074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1261169485102A57]') AND parent_object_id = OBJECT_ID('Personas'))
+alter table Personas  drop constraint FK1261169485102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1261169474E8BAB7]') AND parent_object_id = OBJECT_ID('Personas'))
+alter table Personas  drop constraint FK1261169474E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC50D919985102A57]') AND parent_object_id = OBJECT_ID('Indices'))
+alter table Indices  drop constraint FKC50D919985102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5974E8BAB7]') AND parent_object_id = OBJECT_ID('Organizaciones'))
@@ -399,6 +761,93 @@ alter table Cursos  drop constraint FK8E38D63E85102A57
 alter table Cursos  drop constraint FK8E38D63E74E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AD9767285102A57]') AND parent_object_id = OBJECT_ID('Categorias'))
+alter table Categorias  drop constraint FK9AD9767285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AD9767274E8BAB7]') AND parent_object_id = OBJECT_ID('Categorias'))
+alter table Categorias  drop constraint FK9AD9767274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980285102A57]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
+alter table TipoArticulos  drop constraint FK26B980285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
+alter table TipoArticulos  drop constraint FK26B980274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC412B6A2801]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC412B6A2801
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41FEB3CEEC]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC41FEB3CEEC
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41D93EC5CD]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC41D93EC5CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4111666E2A]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC4111666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4170EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC4170EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC411EDC2D3B]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC411EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41C93A1EF1]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC41C93A1EF1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC417A8488F7]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC417A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41C0410E89]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC41C0410E89
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4185102A57]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC4185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4174E8BAB7]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC4174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE85102A57]') AND parent_object_id = OBJECT_ID('Paises'))
+alter table Paises  drop constraint FKFF6108EE85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE74E8BAB7]') AND parent_object_id = OBJECT_ID('Paises'))
+alter table Paises  drop constraint FKFF6108EE74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5985102A57]') AND parent_object_id = OBJECT_ID('Organizaciones'))
+alter table Organizaciones  drop constraint FK66FEAE5985102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5974E8BAB7]') AND parent_object_id = OBJECT_ID('Organizaciones'))
+alter table Organizaciones  drop constraint FK66FEAE5974E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C85102A57]') AND parent_object_id = OBJECT_ID('Idiomas'))
+alter table Idiomas  drop constraint FKB635BD3C85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C74E8BAB7]') AND parent_object_id = OBJECT_ID('Idiomas'))
+alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
+
+
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD8336201B]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD8336201B
 
@@ -459,8 +908,53 @@ alter table Capitulos  drop constraint FK3165FEAD85102A57
 alter table Capitulos  drop constraint FK3165FEAD74E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980285102A57]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
 alter table TipoArticulos  drop constraint FK26B980285102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574585102A57]') AND parent_object_id = OBJECT_ID('TipoReportes'))
+alter table TipoReportes  drop constraint FK6D81574585102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574574E8BAB7]') AND parent_object_id = OBJECT_ID('TipoReportes'))
+alter table TipoReportes  drop constraint FK6D81574574E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53D2CF3C8336201B]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulos'))
+alter table ResponsableInternoCapitulos  drop constraint FK53D2CF3C8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53D2CF3C85102A57]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulos'))
+alter table ResponsableInternoCapitulos  drop constraint FK53D2CF3C85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53D2CF3C74E8BAB7]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulos'))
+alter table ResponsableInternoCapitulos  drop constraint FK53D2CF3C74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53D2CF3CA1B3F60D]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulos'))
+alter table ResponsableInternoCapitulos  drop constraint FK53D2CF3CA1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK539D878E8FDBB774]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulos'))
+alter table ResponsableExternoCapitulos  drop constraint FK539D878E8FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK539D878E85102A57]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulos'))
+alter table ResponsableExternoCapitulos  drop constraint FK539D878E85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK539D878E74E8BAB7]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulos'))
+alter table ResponsableExternoCapitulos  drop constraint FK539D878E74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK539D878EA1B3F60D]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulos'))
+alter table ResponsableExternoCapitulos  drop constraint FK539D878EA1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4C871ABE85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicos'))
+alter table GradoAcademicos  drop constraint FK4C871ABE85102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
@@ -489,6 +983,22 @@ alter table Estados  drop constraint FKE112A3FE85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE112A3FE74E8BAB7]') AND parent_object_id = OBJECT_ID('Estados'))
 alter table Estados  drop constraint FKE112A3FE74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C18FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
+alter table CoautorExternoReportes  drop constraint FK797B39C18FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C185102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
+alter table CoautorExternoReportes  drop constraint FK797B39C185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C174E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
+alter table CoautorExternoReportes  drop constraint FK797B39C174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C113FE2142]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
+alter table CoautorExternoReportes  drop constraint FK797B39C113FE2142
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D78336201B]') AND parent_object_id = OBJECT_ID('Articulos'))
@@ -655,8 +1165,21 @@ alter table Investigadores  drop constraint FKE67B58B985102A57
 alter table Investigadores  drop constraint FKE67B58B974E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27DF9BD685102A57]') AND parent_object_id = OBJECT_ID('TipoParticipantes'))
 alter table TipoParticipantes  drop constraint FK27DF9BD685102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD667359285102A57]') AND parent_object_id = OBJECT_ID('EstadoProductos'))
+alter table EstadoProductos  drop constraint FKD667359285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD667359274E8BAB7]') AND parent_object_id = OBJECT_ID('EstadoProductos'))
+alter table EstadoProductos  drop constraint FKD667359274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F85102A57]') AND parent_object_id = OBJECT_ID('Roles'))
+alter table Roles  drop constraint FK1A2E670F85102A57
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27DF9BD674E8BAB7]') AND parent_object_id = OBJECT_ID('TipoParticipantes'))
@@ -747,8 +1270,52 @@ alter table MedioImpresos  drop constraint FK3D78AB6085102A57
 alter table MedioImpresos  drop constraint FK3D78AB6074E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B085102A57]') AND parent_object_id = OBJECT_ID('Ambitos'))
 alter table Ambitos  drop constraint FKB422A0B085102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE177237615]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE177237615
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE14B54D394]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE14B54D394
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE111666E2A]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE111666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE170EA6C9E]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE170EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE11EDC2D3B]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE11EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE164F7D1CD]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE164F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE17A8488F7]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE17A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE18336201B]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE18336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE185102A57]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE174E8BAB7]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE174E8BAB7
+
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B074E8BAB7]') AND parent_object_id = OBJECT_ID('Ambitos'))
@@ -763,16 +1330,34 @@ alter table Roles  drop constraint FK1A2E670F85102A57
 alter table Roles  drop constraint FK1A2E670F74E8BAB7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869085102A57]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
 alter table ProgramaEstudios  drop constraint FK51F4869085102A57
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionEventos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Tesis') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Tesis
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869074E8BAB7]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
 alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'Participaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Participaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Niveles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Niveles
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F85102A57]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
 alter table PeriodoReferencias  drop constraint FK91FCA7F85102A57
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReportes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F74E8BAB7]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
@@ -790,6 +1375,12 @@ alter table Participaciones  drop constraint FK56CA0A1B748E7AD9
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B7CEC3F4]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B7CEC3F4
 
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'OrganoExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoExternos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'LineaTematicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table LineaTematicas
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B90FFB19B]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B90FFB19B
@@ -798,6 +1389,12 @@ alter table Participaciones  drop constraint FK56CA0A1B90FFB19B
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B11666E2A]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B11666E2A
 
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'Distinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Distinciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoActividades') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoActividades
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B70EA6C9E]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B70EA6C9E
@@ -806,6 +1403,12 @@ alter table Participaciones  drop constraint FK56CA0A1B70EA6C9E
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B7A8488F7]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B7A8488F7
 
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'Eventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Eventos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1BC0410E89]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1BC0410E89
@@ -823,8 +1426,18 @@ alter table Participaciones  drop constraint FK56CA0A1B74E8BAB7
 alter table Cargos  drop constraint FKA8E8D63E85102A57
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E74E8BAB7]') AND parent_object_id = OBJECT_ID('Cargos'))
 alter table Cargos  drop constraint FKA8E8D63E74E8BAB7
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'Dictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dictamenes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoEventos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoEventos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Sectores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sectores
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE9CF67963]') AND parent_object_id = OBJECT_ID('Tesis'))
@@ -835,16 +1448,28 @@ alter table Tesis  drop constraint FKEA414CDE9CF67963
 alter table Tesis  drop constraint FKEA414CDE7A8488F7
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE103EADB1]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDE103EADB1
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipacionMedios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipacionMedios
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Paises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Paises
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE64F7D1CD]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDE64F7D1CD
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE5ECF193D]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDE5ECF193D
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoReportes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoCapitulos
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE1EDC2D3B]') AND parent_object_id = OBJECT_ID('Tesis'))
@@ -855,8 +1480,14 @@ alter table Tesis  drop constraint FKEA414CDE1EDC2D3B
 alter table Tesis  drop constraint FKEA414CDE11666E2A
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE3E082BED]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDE3E082BED
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReportes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Articulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Articulos
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE88D0C162]') AND parent_object_id = OBJECT_ID('Tesis'))
@@ -874,13 +1505,34 @@ alter table Tesis  drop constraint FKEA414CDE295BC133
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDEBC063744]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDEBC063744
 
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstadoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstadoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDEF4FE4035]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDEF4FE4035
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE8336201B]') AND parent_object_id = OBJECT_ID('Tesis'))
 alter table Tesis  drop constraint FKEA414CDE8336201B
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'Reportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reportes
+
+    create table SNIs (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE85102A57]') AND parent_object_id = OBJECT_ID('Tesis'))
@@ -1174,7 +1826,23 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table Puestos (
+=======
+    create table TipoParticipacionEventos (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoParticipacionFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       EventoFk INT null,
+       primary key (Id)
+    )
+
+    create table Tesis (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1197,7 +1865,33 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table CoautorExternoCapitulos (
+=======
+    create table Participaciones (
+        Id INT IDENTITY NOT NULL,
+       Titulo NVARCHAR(255) null,
+       Institucion NVARCHAR(255) null,
+       FechaPresentacion DATETIME null,
+       Lugar NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       AutorFk INT null,
+       OtraParticipacionFk INT null,
+       TipoPresentacionFk INT null,
+       PeriodoReferenciaFk INT null,
+       ProyectoFk INT null,
+       PaisFk INT null,
+       EstadoPaisFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Niveles (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -1220,7 +1914,23 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table TipoDictamenes (
+=======
+    create table CoautorInternoReportes (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ReporteFk INT null,
+       primary key (Id)
+    )
+
+    create table InvestigadorExternos (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1315,7 +2025,31 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table TipoDistinciones (
+=======
+    create table OrganoExternos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       Siglas NVARCHAR(255) null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoOrganoFk INT null,
+       TipoParticipacionFk INT null,
+       SectorFk INT null,
+       NivelFk INT null,
+       AmbitoFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table LineaTematicas (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1360,7 +2094,30 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table CoautorExternoArticulos (
+=======
+    create table Distinciones (
+        Id INT IDENTITY NOT NULL,
+       Descripcion NVARCHAR(255) null,
+       FechaOtorgamiento DATETIME null,
+       Ciudad NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoDistincionFk INT null,
+       InstitucionFk INT null,
+       AmbitoFk INT null,
+       PaisFk INT null,
+       EstadoPaisFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoActividades (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -1407,7 +2164,33 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table Generos (
+=======
+    create table Eventos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       Titulo NVARCHAR(255) null,
+       Invitacion BIT null,
+       Lugar NVARCHAR(255) null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       AmbitoFk INT null,
+       TipoEventoFk INT null,
+       InstitucionFk INT null,
+       LineaTematicaFk INT null,
+       TipoFinanciamientoFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Dependencias (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1556,7 +2339,50 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table EstadoPaises (
+=======
+    create table Dictamenes (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoDictamenFk INT null,
+       TipoParticipacionFk INT null,
+       InstitucionFk INT null,
+       PeriodoReferenciaFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorInternoEventos (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       EventoFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorExternoEventos (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       EventoFk INT null,
+       primary key (Id)
+    )
+
+    create table Sectores (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1655,12 +2481,41 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table Areas (
+    create table TipoArticulos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+<<<<<<< HEAD:db/DbSchema.sql
+    create table Areas (
+=======
+    create table ParticipacionMedios (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
+        Id INT IDENTITY NOT NULL,
+       Titulo NVARCHAR(255) null,
+       Nombre NVARCHAR(255) null,
+       Especificacion NVARCHAR(255) null,
+       Tema NVARCHAR(255) null,
+       FechaDifusion DATETIME null,
+       Ciudad NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       MedioImpresoFk INT null,
+       MedioElectronicoFk INT null,
+       GeneroFk INT null,
+       PeriodoReferenciaFk INT null,
+       ProyectoFk INT null,
+       LineaTematicaFk INT null,
+       AmbitoFk INT null,
+       PaisFk INT null,
+       EstadoPaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -1711,7 +2566,22 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table Usuarios (
+=======
+    create table TipoReportes (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table ResponsableInternoCapitulos (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        UsuarioNombre NVARCHAR(255) null,
        Clave NVARCHAR(255) null,
@@ -1820,6 +2690,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table ProgramaEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -1846,6 +2717,21 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     )
 
     create table Participaciones (
+=======
+    create table CoautorExternoReportes (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ReporteFk INT null,
+       primary key (Id)
+    )
+
+    create table Articulos (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(255) null,
        Puntuacion INT null,
@@ -2009,7 +2895,22 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table TipoOrganos (
+=======
+    create table EstadoProductos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Roles (
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2044,8 +2945,40 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table Personas 
         add constraint FK1261169485102A57 
+=======
+    create table Reportes (
+        Id INT IDENTITY NOT NULL,
+       FechaAceptacion DATETIME null,
+       Titulo NVARCHAR(255) null,
+       FechaEdicion DATETIME null,
+       Editorial NVARCHAR(255) null,
+       NoPaginas INT null,
+       Descripcion NVARCHAR(255) null,
+       Objetivo NVARCHAR(255) null,
+       PalabarasClave NVARCHAR(255) null,
+       Fecha DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoReporteFk INT null,
+       EstadoProductoFk INT null,
+       PeriodoReferenciaFk INT null,
+       ProyectoFk INT null,
+       LineaTematicaFk INT null,
+       InstitucionFk INT null,
+       PaisFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    alter table SNIs 
+        add constraint FKF16DB6DA85102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2079,8 +3012,298 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table CategoriaInvestigadores 
         add constraint FK211006478336201B 
+=======
+    alter table ResponsableExternos 
+        add constraint FK371BC04385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ResponsableExternos 
+        add constraint FK371BC04374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table MedioImpresos 
+        add constraint FK3D78AB6085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table MedioImpresos 
+        add constraint FK3D78AB6074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoCapitulos 
+        add constraint FK453645C58336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoCapitulos 
+        add constraint FK453645C585102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoCapitulos 
+        add constraint FK453645C574E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoCapitulos 
+        add constraint FK453645C5A1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos
+
+    alter table CoautorExternoCapitulos 
+        add constraint FKE9BFF7578FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoCapitulos 
+        add constraint FKE9BFF75785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoCapitulos 
+        add constraint FKE9BFF75774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoCapitulos 
+        add constraint FKE9BFF757A1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos
+
+    alter table Cargos 
+        add constraint FKA8E8D63E85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Cargos 
+        add constraint FKA8E8D63E74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoParticipacionEventos 
+        add constraint FK87E86B1D2261429F 
+        foreign key (TipoParticipacionFk) 
+        references TipoParticipaciones
+
+    alter table TipoParticipacionEventos 
+        add constraint FK87E86B1D85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoParticipacionEventos 
+        add constraint FK87E86B1D74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoParticipacionEventos 
+        add constraint FK87E86B1D3BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table Tesis 
+        add constraint FKEA414CDE9CF67963 
+        foreign key (GradoAcademicoFk) 
+        references GradoAcademicos
+
+    alter table Tesis 
+        add constraint FKEA414CDE7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Tesis 
+        add constraint FKEA414CDE103EADB1 
+        foreign key (FormaParticipacionFk) 
+        references FormaParticipaciones
+
+    alter table Tesis 
+        add constraint FKEA414CDE64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Tesis 
+        add constraint FKEA414CDE5ECF193D 
+        foreign key (ProgramaEstudioFk) 
+        references ProgramaEstudios
+
+    alter table Tesis 
+        add constraint FKEA414CDE1EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Tesis 
+        add constraint FKEA414CDE11666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Tesis 
+        add constraint FKEA414CDE3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table Tesis 
+        add constraint FKEA414CDE88D0C162 
+        foreign key (DependenciaFk) 
+        references Dependencias
+
+    alter table Tesis 
+        add constraint FKEA414CDE7D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table Tesis 
+        add constraint FKEA414CDE295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Tesis 
+        add constraint FKEA414CDEBC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Tesis 
+        add constraint FKEA414CDEF4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table Tesis 
+        add constraint FKEA414CDE8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Tesis 
+        add constraint FKEA414CDE85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Tesis 
+        add constraint FKEA414CDE74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table ProgramaEstudios 
+        add constraint FK51F4869085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ProgramaEstudios 
+        add constraint FK51F4869074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B748E7AD9 
+        foreign key (AutorFk) 
+        references Investigadores
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B7CEC3F4 
+        foreign key (OtraParticipacionFk) 
+        references OtraParticipaciones
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B90FFB19B 
+        foreign key (TipoPresentacionFk) 
+        references TipoPresentaciones
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B11666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B70EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Participaciones 
+        add constraint FK56CA0A1BC0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Niveles 
+        add constraint FKCE3ED3F785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Niveles 
+        add constraint FKCE3ED3F774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternos 
+        add constraint FKFFA20BAC85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternos 
+        add constraint FKFFA20BAC74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoReportes 
+        add constraint FK276A11CD8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoReportes 
+        add constraint FK276A11CD85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoReportes 
+        add constraint FK276A11CD74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoReportes 
+        add constraint FK276A11CD13FE2142 
+        foreign key (ReporteFk) 
+        references Reportes
+
+    alter table InvestigadorExternos 
+        add constraint FK2FE0968885102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table InvestigadorExternos 
+        add constraint FK2FE0968874E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Disciplinas 
+        add constraint FK6CD232B385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Disciplinas 
+        add constraint FK6CD232B374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoArticulos 
+        add constraint FK2AED08208336201B 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (InvestigadorFk) 
         references Investigadores
 
@@ -2104,6 +3327,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table CoautorInternoCapitulos 
         add constraint FK453645C58336201B 
         foreign key (InvestigadorFk) 
@@ -2111,6 +3335,50 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     alter table CoautorInternoCapitulos 
         add constraint FK453645C585102A57 
+=======
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE803FA562 
+        foreign key (TipoOrganoFk) 
+        references TipoOrganos
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE2261429F 
+        foreign key (TipoParticipacionFk) 
+        references TipoParticipaciones
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE7DBF823E 
+        foreign key (NivelFk) 
+        references Niveles
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAEC93A1EF1 
+        foreign key (AmbitoFk) 
+        references Ambitos
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table LineaTematicas 
+        add constraint FK7004441E85102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2164,8 +3432,53 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table Subdisciplinas 
         add constraint FKB62F52AD85102A57 
+=======
+    alter table Distinciones 
+        add constraint FKEF821EECB2CAFCD8 
+        foreign key (TipoDistincionFk) 
+        references TipoDistinciones
+
+    alter table Distinciones 
+        add constraint FKEF821EEC64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Distinciones 
+        add constraint FKEF821EECC93A1EF1 
+        foreign key (AmbitoFk) 
+        references Ambitos
+
+    alter table Distinciones 
+        add constraint FKEF821EEC7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Distinciones 
+        add constraint FKEF821EECC0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table Distinciones 
+        add constraint FKEF821EEC8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Distinciones 
+        add constraint FKEF821EEC85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Distinciones 
+        add constraint FKEF821EEC74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoActividades 
+        add constraint FKF88C425185102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2224,8 +3537,53 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table Disciplinas 
         add constraint FK6CD232B385102A57 
+=======
+    alter table Eventos 
+        add constraint FK9DD52343C93A1EF1 
+        foreign key (AmbitoFk) 
+        references Ambitos
+
+    alter table Eventos 
+        add constraint FK9DD5234342002BEE 
+        foreign key (TipoEventoFk) 
+        references TipoEventos
+
+    alter table Eventos 
+        add constraint FK9DD5234364F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Eventos 
+        add constraint FK9DD523431EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Eventos 
+        add constraint FK9DD52343FA1D058B 
+        foreign key (TipoFinanciamientoFk) 
+        references TipoFinanciamientos
+
+    alter table Eventos 
+        add constraint FK9DD523438336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Eventos 
+        add constraint FK9DD5234385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Eventos 
+        add constraint FK9DD5234374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Dependencias 
+        add constraint FK4ECBCD2B85102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2349,6 +3707,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table ResponsableExternoCapitulos 
         add constraint FK539D878EA1B3F60D 
         foreign key (CapituloFk) 
@@ -2356,6 +3715,80 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     alter table Idiomas 
         add constraint FKB635BD3C85102A57 
+=======
+    alter table Dictamenes 
+        add constraint FKE29ADD7BF1AEE935 
+        foreign key (TipoDictamenFk) 
+        references TipoDictamenes
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7B2261429F 
+        foreign key (TipoParticipacionFk) 
+        references TipoParticipaciones
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7B64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7B11666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoEventos 
+        add constraint FKDB55786B8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoEventos 
+        add constraint FKDB55786B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoEventos 
+        add constraint FKDB55786B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoEventos 
+        add constraint FKDB55786B3BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table CoautorExternoEventos 
+        add constraint FKE25BBDA78FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoEventos 
+        add constraint FKE25BBDA785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoEventos 
+        add constraint FKE25BBDA774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoEventos 
+        add constraint FKE25BBDA73BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table Sectores 
+        add constraint FK57A9948085102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2839,8 +4272,68 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table TipoParticipaciones 
         add constraint FK20CDD2C585102A57 
+=======
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC412B6A2801 
+        foreign key (MedioImpresoFk) 
+        references MedioImpresos
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC41FEB3CEEC 
+        foreign key (MedioElectronicoFk) 
+        references MedioElectronicos
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC41D93EC5CD 
+        foreign key (GeneroFk) 
+        references Generos
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC4111666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC4170EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC411EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC41C93A1EF1 
+        foreign key (AmbitoFk) 
+        references Ambitos
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC417A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC41C0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC4185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC4174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Paises 
+        add constraint FKFF6108EE85102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -2934,8 +4427,23 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table EstadoInvestigadores 
         add constraint FK667DBFD98336201B 
+=======
+    alter table TipoReportes 
+        add constraint FK6D81574585102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoReportes 
+        add constraint FK6D81574574E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table ResponsableInternoCapitulos 
+        add constraint FK53D2CF3C8336201B 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (InvestigadorFk) 
         references Investigadores
 
@@ -3019,8 +4527,33 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table Participaciones 
         add constraint FK56CA0A1B8336201B 
+=======
+    alter table CoautorExternoReportes 
+        add constraint FK797B39C18FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoReportes 
+        add constraint FK797B39C185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoReportes 
+        add constraint FK797B39C174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoReportes 
+        add constraint FK797B39C113FE2142 
+        foreign key (ReporteFk) 
+        references Reportes
+
+    alter table Articulos 
+        add constraint FK3EB394D78336201B 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (InvestigadorFk) 
         references Investigadores
 
@@ -3239,8 +4772,23 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table InvestigadorExternos 
         add constraint FK2FE0968885102A57 
+=======
+    alter table EstadoProductos 
+        add constraint FKD667359285102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EstadoProductos 
+        add constraint FKD667359274E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Roles 
+        add constraint FK1A2E670F85102A57 
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -3278,3 +4826,61 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK4ECBCD2B74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+<<<<<<< HEAD:db/DbSchema.sql
+=======
+
+    alter table CargoInvestigadores 
+        add constraint FKC1D5F88D8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Reportes 
+        add constraint FK26728BE177237615 
+        foreign key (TipoReporteFk) 
+        references TipoReportes
+
+    alter table Reportes 
+        add constraint FK26728BE14B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
+
+    alter table Reportes 
+        add constraint FK26728BE111666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Reportes 
+        add constraint FK26728BE170EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Reportes 
+        add constraint FK26728BE11EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Reportes 
+        add constraint FK26728BE164F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Reportes 
+        add constraint FK26728BE17A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Reportes 
+        add constraint FK26728BE18336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Reportes 
+        add constraint FK26728BE185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Reportes 
+        add constraint FK26728BE174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+>>>>>>> c6bcb75ba47190b42c47a60ddc79f9ac995ce433:db/DbSchema.sql

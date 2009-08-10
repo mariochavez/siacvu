@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Dictamen", 3);
+	new EntityScaffoldingDetails("Reporte", 3);
  
 /*
  * Property names should be PascalCase.
@@ -32,29 +32,81 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+	new EntityProperty("TipoReporte", "TipoReporte", "TipoReporte")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoDictamen", "TipoDictamen", "TipoDictamen")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoParticipacion", "TipoParticipacion", "TipoParticipacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Institucion", "Institucion", "Institucion")
+	new EntityProperty("EstadoProducto", "EstadoProducto", "EstadoProducto")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("PeriodoReferencia", "PeriodoReferencia", "PeriodoReferencia")
 );
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaAceptacion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Proyecto", "Proyecto", "Proyecto")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Titulo","string", null, "[NotNullNotEmpty]")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEdicion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorExternoReportes", "IList<CoautorExternoReporte>", "CoautorExterno")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorInternoReportes", "IList<CoautorInternoReporte>", "CoautorInterno")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Institucion","Institucion", "Institucion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Editorial","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Pais","Pais", "Pais")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NoPaginas","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Descripcion","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Objetivo","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabarasClave","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Fecha","DateTime", null)
+);
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

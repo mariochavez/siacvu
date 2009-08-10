@@ -24,62 +24,67 @@ public class NewNewTemplate : BaseTemplate
     <br />
     <% using (Html.BeginForm("Create", "<#= EntityScaffoldingDetails.EntityName #>")) { %>
 		<div id="form">
-		<#+ foreach(EntityProperty property in EntityScaffoldingDetails.EntityProperties){
-			SpanishInflector spanishInflector = new SpanishInflector();
-			string titleize = spanishInflector.Titleize(property.PropertyName);
-		  #>
-			<tr>
-				<td>
-					<label><#= titleize #>:<em>*</em></label>
-				</td>
-				<td>
-					<#+ if(property.TypeName == "string"){#>
-						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 100 })%>
-						<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
-					<#+ } #>
-					
-					<#+ if(property.TypeName == "DateTime"){#>
-						<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { @class="datetime", maxlength = 10 })%>
-                        <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                        <%=Html.ValidationMessage("<#= property.PropertyName #>")%>
-					<#+ } #>
-					
-					<#+ if(property.CatalogName != null && property.TypeName.Contains("IList")){
-						//SpanishInflector spanishInflector = new SpanishInflector();
-						string catalogName = property.CatalogName;
-						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+		<%=Html.AntiForgeryToken() %>
+        <%=Html.Hidden("Id", Model.Form.Id) %>
+        
+			<table class="form">
+			<#+ foreach(EntityProperty property in EntityScaffoldingDetails.EntityProperties){
+				SpanishInflector spanishInflector = new SpanishInflector();
+				string titleize = spanishInflector.Titleize(property.PropertyName);
+			  #>
+				<tr>
+					<td>
+						<label><#= titleize #>:<em>*</em></label>
+					</td>
+					<td>
+						<#+ if(property.TypeName == "string"){#>
+							<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 100 })%>
+							<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
+						<#+ } #>
 						
-						titleize = spanishInflector.Titleize(catalogName);
-						string[] addName = titleize.Split(' ');
+						<#+ if(property.TypeName == "DateTime"){#>
+							<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { @class="datetime", maxlength = 10 })%>
+							<span class="helper_message">(Formato dd/mm/yyyy)</span>
+							<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
+						<#+ } #>
 						
-						string pluralize = "";
-						foreach(string name in addName){
-							pluralize += spanishInflector.Pluralize(name);
-						}
-					#>
-						<%=Html.DropDownList("<#= typeName #>.<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
-                        "Seleccione ...")%>
-						<%=Html.ValidationMessage("<#= typeName #>.<#= catalogName #>") %>
-					<#+ } #>
-					
-					<#+ if(property.TypeName == property.PropertyName){ 
-						string catalogName = property.CatalogName;
-						titleize = spanishInflector.Titleize(catalogName);
-						string[] addName = titleize.Split(' ');
-						
-						string pluralize = "";
-						foreach(string name in addName){
-							pluralize += spanishInflector.Pluralize(name);
-						}
-					#>
-						<%=Html.DropDownList("<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
+						<#+ if(property.CatalogName != null && property.TypeName.Contains("IList")){
+							//SpanishInflector spanishInflector = new SpanishInflector();
+							string catalogName = property.CatalogName;
+							string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+							
+							titleize = spanishInflector.Titleize(catalogName);
+							string[] addName = titleize.Split(' ');
+							
+							string pluralize = "";
+							foreach(string name in addName){
+								pluralize += spanishInflector.Pluralize(name);
+							}
+						#>
+							<%=Html.DropDownList("<#= typeName #>.<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
 							"Seleccione ...")%>
-						<%=Html.ValidationMessage("<#= catalogName #>") %>
-					<#+ } #>
-				</td>
-			</tr>
-		
-		<#+ } #>
+							<%=Html.ValidationMessage("<#= typeName #>.<#= catalogName #>") %>
+						<#+ } #>
+						
+						<#+ if(property.TypeName == property.PropertyName){ 
+							string catalogName = property.CatalogName;
+							titleize = spanishInflector.Titleize(catalogName);
+							string[] addName = titleize.Split(' ');
+							
+							string pluralize = "";
+							foreach(string name in addName){
+								pluralize += spanishInflector.Pluralize(name);
+							}
+						#>
+							<%=Html.DropDownList("<#= catalogName #>", Model.Form.<#= pluralize #>.CreateSelectList<<#= catalogName #>Form>("Id", "Nombre"),
+								"Seleccione ...")%>
+							<%=Html.ValidationMessage("<#= catalogName #>") %>
+						<#+ } #>
+					</td>
+				</tr>
+			
+			<#+ } #>
+			<table>
 		
 			<div class="btn_container_footer">
 				<span class="btn btn_normal_brown">

@@ -280,5 +280,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoPresentacion[] GetAllTipoPresentaciones();
         TipoPresentacion[] GetActiveTipoPresentaciones();
         void SaveTipoPresentacion(TipoPresentacion tipoPresentacion);
+
+        //Tipo Reporte
+        TipoReporte GetTipoReporteById(int id);
+        TipoReporte[] GetAllTipoReportes();
+        TipoReporte[] GetActiveTipoReportes();
+        void SaveTipoReporte(TipoReporte tipoReporte);
+
+        //Estado Producto
+        EstadoProducto GetEstadoProductoById(int id);
+        EstadoProducto[] GetAllEstadoProductos();
+        EstadoProducto[] GetActiveEstadoProductos();
+        void SaveEstadoProducto(EstadoProducto estadoProducto);
     }
 }
