@@ -10,7 +10,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InvestigadorId { get; set; }
         public string InvestigadorUsuarioPersonaNombre { get; set; }
-
-
     }
 }

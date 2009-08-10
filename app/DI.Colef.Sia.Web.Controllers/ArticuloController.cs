@@ -101,8 +101,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var articulo = articuloService.GetArticuloById(id);
+
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
+            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
 
             var articuloForm = articuloMapper.Map(articulo);
 
@@ -152,7 +155,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(articulo, form, Title.Edit))
+            {
+                var articuloForm = articuloMapper.Map(articulo);
+
+                ((GenericViewData<ArticuloForm>)ViewData.Model).Form = SetupNewForm(articuloForm);
+                FormSetCombos(articuloForm);
                 return ViewEdit();
+            }
 
             articuloService.SaveArticulo(articulo);
 
@@ -164,6 +173,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
+
+            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             articulo.Activo = true;
             articulo.ModificadoPor = CurrentUser();
             articuloService.SaveArticulo(articulo);
@@ -178,6 +191,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
+
+            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             articulo.Activo = false;
             articulo.ModificadoPor = CurrentUser();
             articuloService.SaveArticulo(articulo);
@@ -197,7 +214,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.Id = articulo.Id;
 
             form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -296,7 +313,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
@@ -328,8 +345,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
-
-
         }
     }
 }

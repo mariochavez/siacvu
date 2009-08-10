@@ -91,6 +91,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
+        public virtual int Puntuacion { get; set; }
+
         public virtual LineaInvestigacion LineaInvestigacion { get; set; }
 
         public virtual TipoActividad TipoActividad { get; set; }

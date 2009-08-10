@@ -14,7 +14,6 @@
         <div id="form">
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
-        <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
 
         <table class="form">
             <tr>

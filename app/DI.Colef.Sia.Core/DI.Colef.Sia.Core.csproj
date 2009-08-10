@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ambito.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="Articulo.cs" />
     <Compile Include="Capitulo.cs" />
@@ -79,18 +80,32 @@
     <Compile Include="CategoriaInvestigador.cs" />
     <Compile Include="CoautorExternoArticulo.cs" />
     <Compile Include="CoautorExternoCapitulo.cs" />
+    <Compile Include="CoautorExternoEvento.cs" />
+    <Compile Include="CoautorExternoReporte.cs" />
+    <Compile Include="CoautorExternoReseña.cs" />
     <Compile Include="CoautorInternoArticulo.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
+    <Compile Include="CoautorInternoEvento.cs" />
+    <Compile Include="CoautorInternoReporte.cs" />
+    <Compile Include="CoautorInternoReseña.cs" />
+    <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
     <Compile Include="CoautorExterno.cs" />
     <Compile Include="Departamento.cs" />
+    <Compile Include="Dependencia.cs" />
+    <Compile Include="Dictamen.cs" />
     <Compile Include="Disciplina.cs" />
+    <Compile Include="Distincion.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
+    <Compile Include="EstadoPais.cs" />
+    <Compile Include="EstadoProducto.cs" />
+    <Compile Include="Evento.cs" />
     <Compile Include="FormaParticipacion.cs" />
+    <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
@@ -98,16 +113,29 @@
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
     <Compile Include="Investigador.cs" />
+    <Compile Include="MedioElectronico.cs" />
+    <Compile Include="MedioImpreso.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
+    <Compile Include="NHibernateValidator\CapituloValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
     <Compile Include="InvestigadorExterno.cs" />
     <Compile Include="LineaInvestigacion.cs" />
     <Compile Include="LineaTematica.cs" />
+    <Compile Include="Nivel.cs" />
+    <Compile Include="Organizacion.cs" />
+    <Compile Include="OrganoExterno.cs" />
+    <Compile Include="OtraParticipacion.cs" />
     <Compile Include="Pais.cs" />
+    <Compile Include="Participacion.cs" />
+    <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="ProgramaEstudio.cs" />
+    <Compile Include="Proyecto.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="Reporte.cs" />
+    <Compile Include="Reseña.cs" />
     <Compile Include="ResponsableExterno.cs" />
     <Compile Include="ResponsableExternoCapitulo.cs" />
     <Compile Include="ResponsableInternoCapitulo.cs" />
@@ -117,15 +145,25 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sector.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Subdisciplina.cs" />
+    <Compile Include="Tesis.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
+    <Compile Include="TipoDictamen.cs" />
+    <Compile Include="TipoDistincion.cs" />
+    <Compile Include="TipoEvento.cs" />
+    <Compile Include="TipoFinanciamiento.cs" />
+    <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
+    <Compile Include="TipoParticipacionEvento.cs" />
     <Compile Include="TipoParticipante.cs" />
+    <Compile Include="TipoPresentacion.cs" />
+    <Compile Include="TipoReporte.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

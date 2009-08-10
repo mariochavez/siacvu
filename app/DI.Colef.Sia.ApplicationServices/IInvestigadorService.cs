@@ -5,8 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public interface IInvestigadorService
     {
         Investigador GetInvestigadorById(int id);
-        Investigador[] GetAllInvestigadors();
-        Investigador[] GetActiveInvestigadorInternos();
+        Investigador[] GetAllInvestigadores();
+        Investigador[] GetActiveInvestigadores();
         void SaveInvestigador(Investigador investigador);
 
         // Querying

@@ -14,7 +14,6 @@
         <div id="form">
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
-        <%=Html.Hidden("Investigador", Model.Form.Investigador) %>
         
 		    <table class="form">
                 <tr>
@@ -43,7 +42,7 @@
                 </tr> 
                 <tr>
                     <td class="label">
-                       <label>Coautores Externos:</label>
+                       <label>Coautores Internos:</label>
                     </td>
                     <td class="field">
                         <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>

@@ -49,12 +49,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-
-			model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
-		    model.Estado = catalogoService.GetEstadoById(message.Estado);
-		    model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
-		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
-		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
+            
+            model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
+            model.Estado = catalogoService.GetEstadoById(message.Estado);
+            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
@@ -62,19 +62,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            
-		
+
             if(message.CoautorExternoCapitulo != null)
-		        model.AddCoautor(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
+                model.AddCoautorExterno(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
 
 		    if(message.CoautorInternoCapitulo != null)
-		        model.AddCoautor(coautorInternoCapituloMapper.Map(message.CoautorInternoCapitulo));
+                model.AddCoautorInterno(coautorInternoCapituloMapper.Map(message.CoautorInternoCapitulo));
 
 		    if(message.ResponsableInternoCapitulo != null)
-		        model.AddResponsable(responsableInternoCapituloMapper.Map(message.ResponsableInternoCapitulo));
+                model.AddResponsableInterno(responsableInternoCapituloMapper.Map(message.ResponsableInternoCapitulo));
 
 		    if(message.ResponsableExternoCapitulo != null)
-		        model.AddResponsable(responsableExternoCapituloMapper.Map(message.ResponsableExternoCapitulo));
+                model.AddResponsableExterno(responsableExternoCapituloMapper.Map(message.ResponsableExternoCapitulo));
+        }
+
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)
+        {
+            var model = Map(message);
+
+            if (model.IsTransient())
+            {
+                model.Investigador = investigador;
+                model.CreadorPor = usuario;
+                //model.CoautorExternoCapitulos[0].CreadorPor = usuario;
+                //model.CoautorInternoCapitulos[0].CreadorPor = usuario;
+                //model.ResponsableExternoCapitulos[0].CreadorPor = usuario;
+                //model.ResponsableInternoCapitulos[0].CreadorPor = usuario;
+            }
+
+            model.ModificadoPor = usuario;
+
+            return model;
         }
     }
 }
