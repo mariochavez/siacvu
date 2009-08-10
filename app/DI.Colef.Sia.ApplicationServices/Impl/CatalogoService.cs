@@ -59,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
         readonly IRepository<TipoReporte> tipoReporteRepository;
         readonly IRepository<EstadoProducto> estadoProductoRepository;
+        readonly IRepository<NivelEstudio> nivelEstudioRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<Departamento> departamentoRepository,
@@ -107,7 +108,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoOrgano> tipoOrganoRepository,
             IRepository<TipoPresentacion> tipoPresentacionRepository,
             IRepository<TipoReporte> tipoReporteRepository,
-            IRepository<EstadoProducto> estadoProductoRepository)
+            IRepository<EstadoProducto> estadoProductoRepository,
+            IRepository<NivelEstudio> nivelEstudioRepository)
         {
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
@@ -157,6 +159,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoPresentacionRepository = tipoPresentacionRepository;
             this.tipoReporteRepository = tipoReporteRepository;
             this.estadoProductoRepository = estadoProductoRepository;
+            this.nivelEstudioRepository = nivelEstudioRepository;
         }
 
         protected virtual ISession Session
@@ -1478,6 +1481,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             estadoProducto.ModificadoEl = DateTime.Now;
 
             estadoProductoRepository.SaveOrUpdate(estadoProducto);
+        }
+
+        public NivelEstudio GetNivelEstudioById(int id)
+        {
+            return nivelEstudioRepository.Get(id);
+        }
+
+        public NivelEstudio[] GetAllNivelEstudios()
+        {
+            return ((List<NivelEstudio>)OrderCatalog<NivelEstudio>()).ToArray();
+        }
+
+        public NivelEstudio[] GetActiveNivelEstudios()
+        {
+            return ((List<NivelEstudio>)nivelEstudioRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveNivelEstudio(NivelEstudio nivelEstudio)
+        {
+            if (nivelEstudio.Id == 0)
+            {
+                nivelEstudio.Activo = true;
+                nivelEstudio.CreadorEl = DateTime.Now;
+            }
+            nivelEstudio.ModificadoEl = DateTime.Now;
+
+            nivelEstudioRepository.SaveOrUpdate(nivelEstudio);
         }
     }
 }

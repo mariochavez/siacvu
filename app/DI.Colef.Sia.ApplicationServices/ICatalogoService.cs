@@ -292,5 +292,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         EstadoProducto[] GetAllEstadoProductos();
         EstadoProducto[] GetActiveEstadoProductos();
         void SaveEstadoProducto(EstadoProducto estadoProducto);
+
+        //Nivel de Estudios
+        NivelEstudio GetNivelEstudioById(int id);
+        NivelEstudio[] GetAllNivelEstudios();
+        NivelEstudio[] GetActiveNivelEstudios();
+        void SaveNivelEstudio(NivelEstudio nivelEstudio);
     }
 }

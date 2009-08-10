@@ -104,6 +104,7 @@
     <Compile Include="EstadoPais.cs" />
     <Compile Include="EstadoProducto.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="LineaInvestigacion.cs" />
     <Compile Include="LineaTematica.cs" />
     <Compile Include="Nivel.cs" />
+    <Compile Include="NivelEstudio.cs" />
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
     <Compile Include="OtraParticipacion.cs" />

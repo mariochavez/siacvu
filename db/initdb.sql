@@ -2034,3 +2034,10 @@ insert into TipoReportes values('Informe técnico', GETDATE(), GETDATE(), 1, 1, 1
 
 insert into EstadoProductos values('Aceptado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into EstadoProductos values('Publicado', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into NivelEstudios values('Licenciatura', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Maestria', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Doctorado', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Posdoctorado', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Especialidad', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
