@@ -21,8 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ParticipacionMedio[] GetAllParticipacionMedios()
         {
-            return null;
-			//return ((List<ParticipacionMedio>)OrderCatalog<ParticipacionMedio>()).ToArray();
+            return ((List<ParticipacionMedio>)participacionMedioRepository.GetAll()).ToArray();
         }
         
         public ParticipacionMedio[] GetActiveParticipacionMedios()
@@ -34,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(participacionMedio.Id == 0)
             {
+                participacionMedio.Puntuacion = 0;
                 participacionMedio.Activo = true;
                 participacionMedio.CreadorEl = DateTime.Now;
             }

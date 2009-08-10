@@ -17,42 +17,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly ICatalogoService catalogoService;
         readonly IMedioImpresoMapper medioImpresoMapper;
-readonly IMedioElectronicoMapper medioElectronicoMapper;
-readonly IGeneroMapper generoMapper;
-readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-readonly IProyectoMapper proyectoMapper;
-readonly ILineaTematicaMapper lineaTematicaMapper;
-readonly IAmbitoMapper ambitoMapper;
-readonly IPaisMapper paisMapper;
-readonly IEstadoPaisMapper estadoPaisMapper;
-        
+        readonly IMedioElectronicoMapper medioElectronicoMapper;
+        readonly IGeneroMapper generoMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAmbitoMapper ambitoMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IEstadoPaisMapper estadoPaisMapper;
     
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService, 
 			IParticipacionMedioMapper participacionMedioMapper, 
-			ICatalogoService catalogoService, IUsuarioService usuarioService
-			, IMedioImpresoMapper medioImpresoMapper
-, IMedioElectronicoMapper medioElectronicoMapper
-, IGeneroMapper generoMapper
-, IPeriodoReferenciaMapper periodoReferenciaMapper
-, IProyectoMapper proyectoMapper
-, ILineaTematicaMapper lineaTematicaMapper
-, IAmbitoMapper ambitoMapper
-, IPaisMapper paisMapper
-, IEstadoPaisMapper estadoPaisMapper
+			ICatalogoService catalogoService,
+            IUsuarioService usuarioService,
+			IMedioImpresoMapper medioImpresoMapper,
+            IMedioElectronicoMapper medioElectronicoMapper,
+            IGeneroMapper generoMapper,
+            IPeriodoReferenciaMapper periodoReferenciaMapper,
+            IProyectoMapper proyectoMapper,
+            ILineaTematicaMapper lineaTematicaMapper,
+            IAmbitoMapper ambitoMapper,
+            IPaisMapper paisMapper,
+            IEstadoPaisMapper estadoPaisMapper
 			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.participacionMedioService = participacionMedioService;
             this.participacionMedioMapper = participacionMedioMapper;
 			this.medioImpresoMapper = medioImpresoMapper;
-this.medioElectronicoMapper = medioElectronicoMapper;
-this.generoMapper = generoMapper;
-this.periodoReferenciaMapper = periodoReferenciaMapper;
-this.proyectoMapper = proyectoMapper;
-this.lineaTematicaMapper = lineaTematicaMapper;
-this.ambitoMapper = ambitoMapper;
-this.paisMapper = paisMapper;
-this.estadoPaisMapper = estadoPaisMapper;
+            this.medioElectronicoMapper = medioElectronicoMapper;
+            this.generoMapper = generoMapper;
+            this.periodoReferenciaMapper = periodoReferenciaMapper;
+            this.proyectoMapper = proyectoMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.ambitoMapper = ambitoMapper;
+            this.paisMapper = paisMapper;
+            this.estadoPaisMapper = estadoPaisMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -81,9 +81,18 @@ this.estadoPaisMapper = estadoPaisMapper;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-            data.Form = participacionMedioMapper.Map(participacionMedio);
+            if (participacionMedio == null)
+                return RedirectToIndex("no ha sido encontrado", true);
 
-			ViewData.Model = data;
+            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
+            var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
+
+            data.Form = SetupNewForm(participacionMedioForm);
+            FormSetCombos(data.Form);
+            
+            ViewData.Model = data;
             return View();
         }
 
@@ -104,11 +113,8 @@ this.estadoPaisMapper = estadoPaisMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form);
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-            participacionMedio.CreadorPor = CurrentUser();
-            participacionMedio.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(participacionMedio, form, Title.New, "ParticipacionMedio"))
             {
                 ((GenericViewData<ParticipacionMedioForm>)ViewData.Model).Form = SetupNewForm();
@@ -117,7 +123,7 @@ this.estadoPaisMapper = estadoPaisMapper;
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "participacionMedio.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido creado", participacionMedio.Nombre));
         }
         
         [Transaction]
@@ -125,16 +131,20 @@ this.estadoPaisMapper = estadoPaisMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form);
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-            participacionMedio.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(participacionMedio, form, Title.Edit))
+            {
+                var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
+
+                ((GenericViewData<ParticipacionMedioForm>)ViewData.Model).Form = SetupNewForm(participacionMedioForm);
+                FormSetCombos(participacionMedioForm);
                 return ViewEdit();
+            }
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "participacionMedio.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", participacionMedio.Nombre));
         }
         
         [Transaction]
@@ -142,6 +152,10 @@ this.estadoPaisMapper = estadoPaisMapper;
         public ActionResult Activate(int id)
         {            
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
+            
+            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             participacionMedio.Activo = true;
             participacionMedio.ModificadoPor = CurrentUser();
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
@@ -156,6 +170,10 @@ this.estadoPaisMapper = estadoPaisMapper;
         public ActionResult Deactivate(int id)
         {
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
+
+            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             participacionMedio.Activo = false;
             participacionMedio.ModificadoPor = CurrentUser();
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
@@ -164,24 +182,40 @@ this.estadoPaisMapper = estadoPaisMapper;
             
             return Rjs("Activate", form);
         }
-        
+
         ParticipacionMedioForm SetupNewForm()
         {
-            return new ParticipacionMedioForm
-            {
+            return SetupNewForm(null);
+        }
+        
+        ParticipacionMedioForm SetupNewForm(ParticipacionMedioForm form)
+        {
+            form = form ?? new ParticipacionMedioForm();
+
+            form.MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos());
+            form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
+            form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
             
-				                
-                //Lista de Catalogos Pendientes
-                MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos()),
-MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos()),
-Generos = generoMapper.Map(catalogoService.GetActiveGeneros()),
-PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos()),
-LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
-Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos()),
-Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises()),
-            };
+            return form;
+        }
+
+        private void FormSetCombos(ParticipacionMedioForm form)
+        {
+            ViewData["MedioImpreso"] = form.MedioImpresoId;
+            ViewData["MedioElectronico"] = form.MedioElectronicoId;
+            ViewData["Genero"] = form.GeneroId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["Proyecto"] = form.ProyectoId;
+            ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["Ambito"] = form.AmbitoId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["EstadoPais"] = form.EstadoPaisId;
         }
     }
 }

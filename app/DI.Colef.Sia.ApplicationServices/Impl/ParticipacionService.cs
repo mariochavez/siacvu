@@ -21,8 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Participacion[] GetAllParticipacions()
         {
-            return null;
-			//return ((List<Participacion>)OrderCatalog<Participacion>()).ToArray();
+            return ((List<Participacion>)participacionRepository.GetAll()).ToArray();
         }
         
         public Participacion[] GetActiveParticipacions()
@@ -34,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(participacion.Id == 0)
             {
+                participacion.Puntuacion = 0;
                 participacion.Activo = true;
                 participacion.CreadorEl = DateTime.Now;
             }

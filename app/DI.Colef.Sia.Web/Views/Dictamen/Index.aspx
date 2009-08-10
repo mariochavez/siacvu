@@ -16,11 +16,11 @@
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">Dictamens</div>
+        <div class="table_title">Dictamenes</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay dictamens definidos</td>
+                    <td>No hay dictamenes definidos</td>
                 </tr>
             <% } else { %>
                 <% foreach (var dictamen in Model.List) { %>

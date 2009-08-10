@@ -21,8 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Dictamen[] GetAllDictamens()
         {
-            return null;
-			//return ((List<Dictamen>)OrderCatalog<Dictamen>()).ToArray();
+            return ((List<Dictamen>)dictamenRepository.GetAll()).ToArray();
         }
         
         public Dictamen[] GetActiveDictamens()
@@ -34,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(dictamen.Id == 0)
             {
+                dictamen.Puntuacion = 0;
                 dictamen.Activo = true;
                 dictamen.CreadorEl = DateTime.Now;
             }

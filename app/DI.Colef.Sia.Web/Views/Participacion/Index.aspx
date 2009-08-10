@@ -16,11 +16,11 @@
 		    </span>
 	    </div>
         <br />
-        <div class="table_title">Participacions</div>
+        <div class="table_title">Participaciones</div>
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay participacions definidos</td>
+                    <td>No hay participaciones definidas</td>
                 </tr>
             <% } else { %>
                 <% foreach (var participacion in Model.List) { %>
@@ -33,7 +33,7 @@
 					        </div>
 				        </td>                
                         <td class="single" width="70%">
-                            <%=Html.Encode(participacion.Nombre) %>
+                            <%=Html.Encode(participacion.Titulo) %>
                             <div class="meta_info">Modificado el <%=Html.Encode(participacion.Modificacion) %></div>
                         </td>
                         <td id="accion_<%=Html.Encode(participacion.Id) %>" class="button" width="140">

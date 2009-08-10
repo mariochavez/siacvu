@@ -39,6 +39,22 @@ alter table MedioImpresos  drop constraint FK3D78AB6085102A57
 alter table MedioImpresos  drop constraint FK3D78AB6074E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC298336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
+alter table CoautorInternoReseñas  drop constraint FKF35EBC298336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2985102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
+alter table CoautorInternoReseñas  drop constraint FKF35EBC2985102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2974E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
+alter table CoautorInternoReseñas  drop constraint FKF35EBC2974E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2918B0DBD9]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
+alter table CoautorInternoReseñas  drop constraint FKF35EBC2918B0DBD9
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK453645C58336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoCapitulos'))
 alter table CoautorInternoCapitulos  drop constraint FK453645C58336201B
 
@@ -53,6 +69,22 @@ alter table CoautorInternoCapitulos  drop constraint FK453645C574E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK453645C5A1B3F60D]') AND parent_object_id = OBJECT_ID('CoautorInternoCapitulos'))
 alter table CoautorInternoCapitulos  drop constraint FK453645C5A1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA13618FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
+alter table CoautorExternoReseñas  drop constraint FK15DA13618FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136185102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
+alter table CoautorExternoReseñas  drop constraint FK15DA136185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136174E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
+alter table CoautorExternoReseñas  drop constraint FK15DA136174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136118B0DBD9]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
+alter table CoautorExternoReseñas  drop constraint FK15DA136118B0DBD9
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE9BFF7578FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulos'))
@@ -165,6 +197,10 @@ alter table ProgramaEstudios  drop constraint FK51F4869085102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869074E8BAB7]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
 alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B8336201B]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B8336201B
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B748E7AD9]') AND parent_object_id = OBJECT_ID('Participaciones'))
@@ -615,6 +651,10 @@ alter table FormaParticipaciones  drop constraint FK8608BEE085102A57
 alter table FormaParticipaciones  drop constraint FK8608BEE074E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B8336201B]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B8336201B
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BF1AEE935]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7BF1AEE935
 
@@ -777,6 +817,10 @@ alter table TipoArticulos  drop constraint FK26B980285102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
 alter table TipoArticulos  drop constraint FK26B980274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC418336201B]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC418336201B
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC412B6A2801]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
@@ -1159,6 +1203,50 @@ alter table TipoEventos  drop constraint FK952D666B85102A57
 alter table TipoEventos  drop constraint FK952D666B74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF74B54D394]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF74B54D394
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF711666E2A]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF711666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF770EA6C9E]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF770EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF71EDC2D3B]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF71EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF77A8488F7]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF77A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7295BC133]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF7295BC133
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7BC063744]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF7BC063744
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7F4FE4035]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF7F4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF78336201B]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF78336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF785102A57]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF774E8BAB7]') AND parent_object_id = OBJECT_ID('Reseñas'))
+alter table Reseñas  drop constraint FKF708ADF774E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD667359285102A57]') AND parent_object_id = OBJECT_ID('EstadoProductos'))
 alter table EstadoProductos  drop constraint FKD667359285102A57
 
@@ -1207,82 +1295,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA13618FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
-alter table CoautorExternoReseñas  drop constraint FK15DA13618FDBB774
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136185102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
-alter table CoautorExternoReseñas  drop constraint FK15DA136185102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136174E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
-alter table CoautorExternoReseñas  drop constraint FK15DA136174E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15DA136118B0DBD9]') AND parent_object_id = OBJECT_ID('CoautorExternoReseñas'))
-alter table CoautorExternoReseñas  drop constraint FK15DA136118B0DBD9
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC298336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
-alter table CoautorInternoReseñas  drop constraint FKF35EBC298336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2985102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
-alter table CoautorInternoReseñas  drop constraint FKF35EBC2985102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2974E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
-alter table CoautorInternoReseñas  drop constraint FKF35EBC2974E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35EBC2918B0DBD9]') AND parent_object_id = OBJECT_ID('CoautorInternoReseñas'))
-alter table CoautorInternoReseñas  drop constraint FKF35EBC2918B0DBD9
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF74B54D394]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF74B54D394
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF711666E2A]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF711666E2A
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF770EA6C9E]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF770EA6C9E
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF71EDC2D3B]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF71EDC2D3B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF77A8488F7]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF77A8488F7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7295BC133]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF7295BC133
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7BC063744]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF7BC063744
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF7F4FE4035]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF7F4FE4035
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF78336201B]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF78336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF785102A57]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF785102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708ADF774E8BAB7]') AND parent_object_id = OBJECT_ID('Reseñas'))
-alter table Reseñas  drop constraint FKF708ADF774E8BAB7
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -1293,7 +1305,11 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'MedioImpresos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioImpresos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReseñas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoCapitulos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReseñas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoCapitulos
 
@@ -1435,6 +1451,8 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Reseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reseñas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'EstadoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstadoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
@@ -1442,12 +1460,6 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReseñas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReseñas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Reseñas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reseñas
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -1510,6 +1522,18 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        primary key (Id)
     )
 
+    create table CoautorInternoReseñas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ReseñaFk INT null,
+       primary key (Id)
+    )
+
     create table CoautorInternoCapitulos (
         Id INT IDENTITY NOT NULL,
        CreadorEl DATETIME null,
@@ -1519,6 +1543,18 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        CapituloFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorExternoReseñas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ReseñaFk INT null,
        primary key (Id)
     )
 
@@ -1600,6 +1636,7 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
     create table Participaciones (
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(255) null,
+       Puntuacion INT null,
        Institucion NVARCHAR(255) null,
        FechaPresentacion DATETIME null,
        Lugar NVARCHAR(255) null,
@@ -1607,6 +1644,7 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       InvestigadorFk INT null,
        AutorFk INT null,
        OtraParticipacionFk INT null,
        TipoPresentacionFk INT null,
@@ -2047,9 +2085,11 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
     create table Dictamenes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       InvestigadorFk INT null,
        TipoDictamenFk INT null,
        TipoParticipacionFk INT null,
        InstitucionFk INT null,
@@ -2171,6 +2211,7 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
     create table ParticipacionMedios (
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(255) null,
+       Puntuacion INT null,
        Nombre NVARCHAR(255) null,
        Especificacion NVARCHAR(255) null,
        Tema NVARCHAR(255) null,
@@ -2179,6 +2220,7 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       InvestigadorFk INT null,
        MedioImpresoFk INT null,
        MedioElectronicoFk INT null,
        GeneroFk INT null,
@@ -2484,6 +2526,37 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        primary key (Id)
     )
 
+    create table Reseñas (
+        Id INT IDENTITY NOT NULL,
+       FechaAceptacion DATETIME null,
+       FechaEdicion DATETIME null,
+       ReferenciaBibliograficaLibro NVARCHAR(255) null,
+       ReferenciaBibliograficaRevista NVARCHAR(255) null,
+       NombreProducto NVARCHAR(255) null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       TituloLibro NVARCHAR(255) null,
+       NombreRevista NVARCHAR(255) null,
+       Editorial NVARCHAR(255) null,
+       PalabrasClave NVARCHAR(255) null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       EstadoProductoFk INT null,
+       PeriodoReferenciaFk INT null,
+       ProyectoFk INT null,
+       LineaTematicaFk INT null,
+       PaisFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
+       SubdisciplinaFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table EstadoProductos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2529,61 +2602,6 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoReseñas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ReseñaFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorInternoReseñas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ReseñaFk INT null,
-       primary key (Id)
-    )
-
-    create table Reseñas (
-        Id INT IDENTITY NOT NULL,
-       FechaAceptacion DATETIME null,
-       FechaEdicion DATETIME null,
-       ReferenciaBibliograficaLibro NVARCHAR(255) null,
-       ReferenciaBibliograficaRevista NVARCHAR(255) null,
-       NombreProducto NVARCHAR(255) null,
-       PaginaInicial INT null,
-       PaginaFinal INT null,
-       TituloLibro NVARCHAR(255) null,
-       NombreRevista NVARCHAR(255) null,
-       Editorial NVARCHAR(255) null,
-       PalabrasClave NVARCHAR(255) null,
-       Puntuacion INT null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
-       ProyectoFk INT null,
-       LineaTematicaFk INT null,
-       PaisFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -2637,6 +2655,26 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table CoautorInternoReseñas 
+        add constraint FKF35EBC298336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoReseñas 
+        add constraint FKF35EBC2985102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoReseñas 
+        add constraint FKF35EBC2974E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoReseñas 
+        add constraint FKF35EBC2918B0DBD9 
+        foreign key (ReseñaFk) 
+        references Reseñas
+
     alter table CoautorInternoCapitulos 
         add constraint FK453645C58336201B 
         foreign key (InvestigadorFk) 
@@ -2656,6 +2694,26 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         add constraint FK453645C5A1B3F60D 
         foreign key (CapituloFk) 
         references Capitulos
+
+    alter table CoautorExternoReseñas 
+        add constraint FK15DA13618FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoReseñas 
+        add constraint FK15DA136185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoReseñas 
+        add constraint FK15DA136174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoReseñas 
+        add constraint FK15DA136118B0DBD9 
+        foreign key (ReseñaFk) 
+        references Reseñas
 
     alter table CoautorExternoCapitulos 
         add constraint FKE9BFF7578FDBB774 
@@ -2796,6 +2854,11 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         add constraint FK51F4869074E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table Participaciones 
         add constraint FK56CA0A1B748E7AD9 
@@ -3358,6 +3421,11 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         references Usuarios
 
     alter table Dictamenes 
+        add constraint FKE29ADD7B8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Dictamenes 
         add constraint FKE29ADD7BF1AEE935 
         foreign key (TipoDictamenFk) 
         references TipoDictamenes
@@ -3561,6 +3629,11 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         add constraint FK26B980274E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC418336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table ParticipacionMedios 
         add constraint FK6CE1FC412B6A2801 
@@ -4037,6 +4110,61 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table Reseñas 
+        add constraint FKF708ADF74B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
+
+    alter table Reseñas 
+        add constraint FKF708ADF711666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Reseñas 
+        add constraint FKF708ADF770EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Reseñas 
+        add constraint FKF708ADF71EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Reseñas 
+        add constraint FKF708ADF77A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Reseñas 
+        add constraint FKF708ADF7295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Reseñas 
+        add constraint FKF708ADF7BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Reseñas 
+        add constraint FKF708ADF7F4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table Reseñas 
+        add constraint FKF708ADF78336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Reseñas 
+        add constraint FKF708ADF785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Reseñas 
+        add constraint FKF708ADF774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table EstadoProductos 
         add constraint FKD667359285102A57 
         foreign key (CreadorPorFk) 
@@ -4096,98 +4224,3 @@ alter table Reseñas  drop constraint FKF708ADF774E8BAB7
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table CoautorExternoReseñas 
-        add constraint FK15DA13618FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoReseñas 
-        add constraint FK15DA136185102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table CoautorExternoReseñas 
-        add constraint FK15DA136174E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table CoautorExternoReseñas 
-        add constraint FK15DA136118B0DBD9 
-        foreign key (ReseñaFk) 
-        references Reseñas
-
-    alter table CoautorInternoReseñas 
-        add constraint FKF35EBC298336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoReseñas 
-        add constraint FKF35EBC2985102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoReseñas 
-        add constraint FKF35EBC2974E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoReseñas 
-        add constraint FKF35EBC2918B0DBD9 
-        foreign key (ReseñaFk) 
-        references Reseñas
-
-    alter table Reseñas 
-        add constraint FKF708ADF74B54D394 
-        foreign key (EstadoProductoFk) 
-        references EstadoProductos
-
-    alter table Reseñas 
-        add constraint FKF708ADF711666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Reseñas 
-        add constraint FKF708ADF770EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table Reseñas 
-        add constraint FKF708ADF71EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Reseñas 
-        add constraint FKF708ADF77A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Reseñas 
-        add constraint FKF708ADF7295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table Reseñas 
-        add constraint FKF708ADF7BC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Reseñas 
-        add constraint FKF708ADF7F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table Reseñas 
-        add constraint FKF708ADF78336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table Reseñas 
-        add constraint FKF708ADF785102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Reseñas 
-        add constraint FKF708ADF774E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios

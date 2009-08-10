@@ -1,31 +1,38 @@
-using System;
-using DecisionesInteligentes.Colef.Sia.Core;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ParticipacionForm
     {
 		public int Id { get; set; }
 		public string Titulo { get; set; }
-		public Investigador Autor { get; set; }
-		public int OtraParticipacion { get; set; }
+        public string Institucion { get; set; }
+        public string FechaPresentacion { get; set; }
+        public string Lugar { get; set; }
+        public string Ciudad { get; set; }
+        public bool Activo { get; set; }
+        public string Modificacion { get; set; }
+
+		public int Autor { get; set; }
+        public int AutorId { get; set; }
+
+        public int OtraParticipacion { get; set; }
+        public int OtraParticipacionId { get; set; }
+
 		public int TipoPresentacion { get; set; }
-		public string Institucion { get; set; }
-		public string FechaPresentacion { get; set; }
+        public int TipoPresentacionId { get; set; }
+
 		public int PeriodoReferencia { get; set; }
+        public int PeriodoReferenciaId { get; set; }
+
 		public int Proyecto { get; set; }
-		public string Lugar { get; set; }
+        public int ProyectoId { get; set; }
+
 		public int Pais { get; set; }
+        public int PaisId { get; set; }
+
 		public int EstadoPais { get; set; }
-		public string Ciudad { get; set; }
-		public bool Activo { get; set; }
-		public string Modificacion { get; set; }
-		
-		//Espacio para Agregar Mapeos
-		
-		
-				
-		/* New */
+        public int EstadoPaisId { get; set; }
+
+        public int Investigador { get; set; }
 				
 		/* Catalogos */
 		public InvestigadorForm[] Investigadores { get; set; }
@@ -35,7 +42,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public ProyectoForm[] Proyectos { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }
-	
-		
-		    }
+    }
 }

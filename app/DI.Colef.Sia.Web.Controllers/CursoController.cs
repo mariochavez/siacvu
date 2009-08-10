@@ -120,7 +120,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
                 ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm();

@@ -17,27 +17,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IDictamenMapper dictamenMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
-readonly ITipoParticipacionMapper tipoParticipacionMapper;
-readonly IInstitucionMapper institucionMapper;
-readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        
+        readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
     
         public DictamenController(IDictamenService dictamenService, 
 			IDictamenMapper dictamenMapper, 
-			ICatalogoService catalogoService, IUsuarioService usuarioService
-			, ITipoDictamenMapper tipoDictamenMapper
-, ITipoParticipacionMapper tipoParticipacionMapper
-, IInstitucionMapper institucionMapper
-, IPeriodoReferenciaMapper periodoReferenciaMapper
+			ICatalogoService catalogoService,
+            IUsuarioService usuarioService,
+			ITipoDictamenMapper tipoDictamenMapper,
+            ITipoParticipacionMapper tipoParticipacionMapper,
+            IInstitucionMapper institucionMapper,
+            IPeriodoReferenciaMapper periodoReferenciaMapper
 			) : base(usuarioService)
         {
 			this.catalogoService = catalogoService;
             this.dictamenService = dictamenService;
             this.dictamenMapper = dictamenMapper;
 			this.tipoDictamenMapper = tipoDictamenMapper;
-this.tipoParticipacionMapper = tipoParticipacionMapper;
-this.institucionMapper = institucionMapper;
-this.periodoReferenciaMapper = periodoReferenciaMapper;
+            this.tipoParticipacionMapper = tipoParticipacionMapper;
+            this.institucionMapper = institucionMapper;
+            this.periodoReferenciaMapper = periodoReferenciaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -66,7 +66,17 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var dictamen = dictamenService.GetDictamenById(id);
-            data.Form = dictamenMapper.Map(dictamen);
+
+            if (dictamen == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+
+            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
+            var dictamenForm = dictamenMapper.Map(dictamen);
+
+            data.Form = SetupNewForm(dictamenForm);
+            FormSetCombos(data.Form);
 
 			ViewData.Model = data;
             return View();
@@ -89,10 +99,7 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form);
-            
-            dictamen.CreadorPor = CurrentUser();
-            dictamen.ModificadoPor = CurrentUser();
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -102,7 +109,7 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "dictamen.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido creado", dictamen.Nombre));
         }
         
         [Transaction]
@@ -110,16 +117,20 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form);
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-            dictamen.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(dictamen, form, Title.Edit))
+            {
+                var dictamenForm = dictamenMapper.Map(dictamen);
+
+                ((GenericViewData<DictamenForm>)ViewData.Model).Form = SetupNewForm(dictamenForm);
+                FormSetCombos(dictamenForm);
                 return ViewEdit();
+            }
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "dictamen.Nombre"));
+            return RedirectToIndex(String.Format("{0} ha sido modificado", dictamen.Nombre));
         }
         
         [Transaction]
@@ -127,6 +138,10 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
         public ActionResult Activate(int id)
         {            
             var dictamen = dictamenService.GetDictamenById(id);
+
+            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             dictamen.Activo = true;
             dictamen.ModificadoPor = CurrentUser();
             dictamenService.SaveDictamen(dictamen);
@@ -141,6 +156,10 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
         public ActionResult Deactivate(int id)
         {
             var dictamen = dictamenService.GetDictamenById(id);
+
+            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             dictamen.Activo = false;
             dictamen.ModificadoPor = CurrentUser();
             dictamenService.SaveDictamen(dictamen);
@@ -149,19 +168,30 @@ this.periodoReferenciaMapper = periodoReferenciaMapper;
             
             return Rjs("Activate", form);
         }
-        
+
         DictamenForm SetupNewForm()
         {
-            return new DictamenForm
-            {
+            return SetupNewForm(null);
+        }
+        
+        DictamenForm SetupNewForm(DictamenForm form)
+        {
+            form = form ?? new DictamenForm();
             
-				                
-                //Lista de Catalogos Pendientes
-                TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes()),
-TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones()),
-Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones()),
-PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias()),
-            };
+            form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+
+            return form;
+        }
+
+        private void FormSetCombos(DictamenForm form)
+        {
+            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+            ViewData["TipoDictamen"] = form.TipoDictamenId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["Institucion"] = form.InstitucionId;
         }
     }
 }
