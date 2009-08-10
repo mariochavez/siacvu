@@ -20,8 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoCapitulo { get; set; }
         public int TipoCapituloId { get; set; }
 
-        public int Estado { get; set; }
-        public int EstadoId { get; set; }
+        public int EstadoProducto { get; set; }
+        public int EstadoProductoId { get; set; }
 
         public int PeriodoReferencia { get; set; }
         public int PeriodoReferenciaId { get; set; }
@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		/* Catalogos */
 		public TipoCapituloForm[] TiposCapitulos { get; set; }
-		public EstadoForm[] Estados { get; set; }
+        public EstadoProductoForm[] EstadosProductos { get; set; }
 		public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
 		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }

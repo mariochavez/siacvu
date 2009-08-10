@@ -22,9 +22,9 @@
         <td class="label">
             <label>Estado Actual:</label>
             <br />
-            <%=Html.DropDownList("Estado", Model.Estados.CreateSelectList<EstadoForm>("Id", "Nombre"),
+            <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
                 "Seleccione ...")%>
-            <%=Html.ValidationMessage("Estado") %>
+            <%=Html.ValidationMessage("EstadoProducto")%>
         </td>
         <td class="label">
             <label>Periodo Referencia:</label>

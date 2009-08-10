@@ -50,9 +50,9 @@
 			<label>Estado actual:<em>*</em></label>
 		</td>
 		<td>
-			<%=Html.DropDownList("Estado", Model.Estados.CreateSelectList<EstadoForm>("Id", "Nombre"),
+			<%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
 				"Seleccione ...")%>
-			<%=Html.ValidationMessage("Estado") %>
+			<%=Html.ValidationMessage("EstadoProducto")%>
 	    </td>
 	</tr>
 		
