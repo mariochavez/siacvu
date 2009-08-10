@@ -35,12 +35,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Investigador { get; set; }
 				
 		/* Catalogos */
-		public InvestigadorForm[] Investigadores { get; set; }
 		public OtraParticipacionForm[] OtrasParticipaciones { get; set; }
 		public TipoPresentacionForm[] TiposPresentaciones { get; set; }
 		public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
 		public ProyectoForm[] Proyectos { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }
+        public InvestigadorForm[] Autores { get; set; }
     }
 }

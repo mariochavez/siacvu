@@ -190,7 +190,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new ParticipacionForm();
 
-            form.Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadorInternos());
+            form.Autores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());

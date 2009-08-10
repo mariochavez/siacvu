@@ -17,7 +17,7 @@
 			<label>Autor:<em>*</em></label>
 		</td>
 		<td>
-		    <%=Html.DropDownList("Autor", Model.Investigadores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
+		    <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
 				"Seleccione ...")%>
 			<%=Html.ValidationMessage("Autor")%>
 		</td>
