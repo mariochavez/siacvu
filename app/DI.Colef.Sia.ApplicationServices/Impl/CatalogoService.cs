@@ -12,6 +12,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
+        readonly IRepository<Convenio> convenioRepository;
+        readonly IRepository<TipoEstancia> tipoEstanciaRepository;
+        readonly IRepository<TipoInstitucion> tipoInstitucionRepository;
+        readonly IRepository<TipoProyecto> tipoProyectoRepository;
+        readonly IRepository<TipoPublicacion> tipoPublicacionRepository;
         readonly IRepository<Sector> sectorRepository;
         readonly IRepository<Nivel> nivelRepository;
         readonly IRepository<Cargo> cargoRepository;
@@ -62,6 +68,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<NivelEstudio> nivelEstudioRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
+            IRepository<TipoProyecto> tipoProyectoRepository,
+            IRepository<IdentificadorLibro> identificadorLibroRepository,
+            IRepository<Convenio> convenioRepository,
+            IRepository<TipoInstitucion> tipoInstitucionRepository,
             IRepository<Departamento> departamentoRepository,
             IRepository<Puesto> puestoRepository,
             IRepository<Sede> sedeRepository,
@@ -97,6 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Ambito> ambitoRepository,
             IRepository<EstadoPais> estadoPaisRepository,
             IRepository<Genero> generoRepository,
+            IRepository<TipoEstancia> tipoEstanciaRepository,
             IRepository<MedioElectronico> medioElectronicoRepository,
             IRepository<MedioImpreso> medioImpresoRepository,
             IRepository<OtraParticipacion> otraParticipacionRepository,
@@ -109,8 +120,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoPresentacion> tipoPresentacionRepository,
             IRepository<TipoReporte> tipoReporteRepository,
             IRepository<EstadoProducto> estadoProductoRepository,
+            IRepository<TipoPublicacion> tipoPublicacionRepository,
             IRepository<NivelEstudio> nivelEstudioRepository)
         {
+            this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.cargoRepository = cargoRepository;
             this.departamentoRepository = departamentoRepository;
             this.puestoRepository = puestoRepository;
@@ -121,6 +134,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.estadoRepository = estadoRepository;
             this.idiomaRepository = idiomaRepository;
             this.paisRepository = paisRepository;
+            this.identificadorLibroRepository = identificadorLibroRepository;
+            this.tipoInstitucionRepository = tipoInstitucionRepository;
             this.tipoArticuloRepository = tipoArticuloRepository;
             this.institucionRepository = institucionRepository;
             this.indiceRepository = indiceRepository;
@@ -141,10 +156,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
+            this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
             this.organizacionRepository = organizacionRepository;
             this.dependenciaRepository = dependenciaRepository;
             this.ambitoRepository = ambitoRepository;
+            this.convenioRepository = convenioRepository;
             this.estadoPaisRepository = estadoPaisRepository;
             this.generoRepository = generoRepository;
             this.medioElectronicoRepository = medioElectronicoRepository;
@@ -160,6 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoReporteRepository = tipoReporteRepository;
             this.estadoProductoRepository = estadoProductoRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
+            this.tipoProyectoRepository = tipoProyectoRepository;
         }
 
         protected virtual ISession Session
@@ -1508,6 +1526,168 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelEstudio.ModificadoEl = DateTime.Now;
 
             nivelEstudioRepository.SaveOrUpdate(nivelEstudio);
+        }
+
+        public TipoPublicacion GetTipoPublicacionById(int id)
+        {
+            return tipoPublicacionRepository.Get(id);
+        }
+
+        public TipoPublicacion[] GetAllTipoPublicacions()
+        {
+            return ((List<TipoPublicacion>)OrderCatalog<TipoPublicacion>()).ToArray();
+        }
+
+        public TipoPublicacion[] GetActiveTipoPublicacions()
+        {
+            return ((List<TipoPublicacion>)tipoPublicacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoPublicacion(TipoPublicacion tipoPublicacion)
+        {
+            if (tipoPublicacion.Id == 0)
+            {
+                tipoPublicacion.Activo = true;
+                tipoPublicacion.CreadorEl = DateTime.Now;
+            }
+            tipoPublicacion.ModificadoEl = DateTime.Now;
+
+            tipoPublicacionRepository.SaveOrUpdate(tipoPublicacion);
+        }
+
+        public TipoProyecto GetTipoProyectoById(int id)
+        {
+            return tipoProyectoRepository.Get(id);
+        }
+
+        public TipoProyecto[] GetAllTipoProyectos()
+        {
+            return ((List<TipoProyecto>)OrderCatalog<TipoProyecto>()).ToArray();
+        }
+
+        public TipoProyecto[] GetActiveTipoProyectos()
+        {
+            return ((List<TipoProyecto>)tipoProyectoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoProyecto(TipoProyecto tipoProyecto)
+        {
+            if (tipoProyecto.Id == 0)
+            {
+                tipoProyecto.Activo = true;
+                tipoProyecto.CreadorEl = DateTime.Now;
+            }
+            tipoProyecto.ModificadoEl = DateTime.Now;
+
+            tipoProyectoRepository.SaveOrUpdate(tipoProyecto);
+        }
+
+        public TipoInstitucion GetTipoInstitucionById(int id)
+        {
+            return tipoInstitucionRepository.Get(id);
+        }
+
+        public TipoInstitucion[] GetAllTipoInstitucions()
+        {
+            return ((List<TipoInstitucion>)OrderCatalog<TipoInstitucion>()).ToArray();
+        }
+
+        public TipoInstitucion[] GetActiveTipoInstitucions()
+        {
+            return ((List<TipoInstitucion>)tipoInstitucionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoInstitucion(TipoInstitucion tipoInstitucion)
+        {
+            if (tipoInstitucion.Id == 0)
+            {
+                tipoInstitucion.Activo = true;
+                tipoInstitucion.CreadorEl = DateTime.Now;
+            }
+            tipoInstitucion.ModificadoEl = DateTime.Now;
+
+            tipoInstitucionRepository.SaveOrUpdate(tipoInstitucion);
+        }
+
+        public TipoEstancia GetTipoEstanciaById(int id)
+        {
+            return tipoEstanciaRepository.Get(id);
+        }
+
+        public TipoEstancia[] GetAllTipoEstancias()
+        {
+            return ((List<TipoEstancia>)OrderCatalog<TipoEstancia>()).ToArray();
+        }
+
+        public TipoEstancia[] GetActiveTipoEstancias()
+        {
+            return ((List<TipoEstancia>)tipoEstanciaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoEstancia(TipoEstancia tipoEstancia)
+        {
+            if (tipoEstancia.Id == 0)
+            {
+                tipoEstancia.Activo = true;
+                tipoEstancia.CreadorEl = DateTime.Now;
+            }
+            tipoEstancia.ModificadoEl = DateTime.Now;
+
+            tipoEstanciaRepository.SaveOrUpdate(tipoEstancia);
+        }
+
+        public Convenio GetConvenioById(int id)
+        {
+            return convenioRepository.Get(id);
+        }
+
+        public Convenio[] GetAllConvenios()
+        {
+            return ((List<Convenio>)OrderCatalog<Convenio>()).ToArray();
+        }
+
+        public Convenio[] GetActiveConvenios()
+        {
+            return ((List<Convenio>)convenioRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveConvenio(Convenio convenio)
+        {
+            if (convenio.Id == 0)
+            {
+                convenio.Activo = true;
+                convenio.CreadorEl = DateTime.Now;
+            }
+            convenio.ModificadoEl = DateTime.Now;
+
+            convenioRepository.SaveOrUpdate(convenio);
+        }
+
+        public IdentificadorLibro GetIdentificadorLibroById(int id)
+        {
+            return identificadorLibroRepository.Get(id);
+        }
+
+        public IdentificadorLibro[] GetAllIdentificadorLibros()
+        {
+            return ((List<IdentificadorLibro>)OrderCatalog<IdentificadorLibro>()).ToArray();
+        }
+
+        public IdentificadorLibro[] GetActiveIdentificadorLibros()
+        {
+            return ((List<IdentificadorLibro>)identificadorLibroRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveIdentificadorLibro(IdentificadorLibro identificadorLibro)
+        {
+            if (identificadorLibro.Id == 0)
+            {
+                identificadorLibro.Activo = true;
+                identificadorLibro.CreadorEl = DateTime.Now;
+            }
+            identificadorLibro.ModificadoEl = DateTime.Now;
+
+            identificadorLibroRepository.SaveOrUpdate(identificadorLibro);
         }
     }
 }

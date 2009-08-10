@@ -88,6 +88,7 @@
     <Compile Include="CoautorInternoEvento.cs" />
     <Compile Include="CoautorInternoReporte.cs" />
     <Compile Include="CoautorInternoReseña.cs" />
+    <Compile Include="Convenio.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="IBaseEntity.cs" />
+    <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
@@ -158,13 +160,17 @@
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />
     <Compile Include="TipoDistincion.cs" />
+    <Compile Include="TipoEstancia.cs" />
     <Compile Include="TipoEvento.cs" />
     <Compile Include="TipoFinanciamiento.cs" />
+    <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
     <Compile Include="TipoParticipacionEvento.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
+    <Compile Include="TipoProyecto.cs" />
+    <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

@@ -10,6 +10,40 @@ INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
 
+insert into TipoEstancias values('Academica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEstancias values('Sabatica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEstancias values('Postdoctoral',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoInstituciones values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoInstituciones values('Extranjera',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Convenios values('Convenio 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Convenios values('Convenio 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Convenios values('Convenio 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Convenios values('Convenio 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Convenios values('Convenio 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoProyectos values('TipoProyecto 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProyectos values('TipoProyecto 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProyectos values('TipoProyecto 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProyectos values('TipoProyecto 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProyectos values('TipoProyecto 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoPublicaciones values('Libro con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Libro sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Libro traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Coordinación de libro con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Coordinación de libro sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Coordinación de un número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Coordinación de memoria',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Reedición de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into Proyectos values('Proyecto 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('Proyecto 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('Proyecto 3',GETDATE(), GETDATE(), 1, 1, 1);

@@ -84,6 +84,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalogos\AmbitoController.cs" />
+    <Compile Include="Catalogos\ConvenioController.cs" />
+    <Compile Include="Catalogos\IdentificadorLibroController.cs" />
+    <Compile Include="Catalogos\TipoEstanciaController.cs" />
+    <Compile Include="Catalogos\TipoInstitucionController.cs" />
+    <Compile Include="Catalogos\TipoProyectoController.cs" />
+    <Compile Include="Catalogos\TipoPublicacionController.cs" />
+    <Compile Include="Mappers\IConvenioMapper.cs" />
+    <Compile Include="Mappers\IIdentificadorLibroMapper.cs" />
+    <Compile Include="Mappers\Impl\ConvenioMapper.cs" />
+    <Compile Include="Mappers\Impl\IdentificadorLibroMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoEstanciaMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoInstitucionMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoProyectoMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoPublicacionMapper.cs" />
+    <Compile Include="Mappers\ITipoEstanciaMapper.cs" />
+    <Compile Include="Mappers\ITipoInstitucionMapper.cs" />
+    <Compile Include="Mappers\ITipoProyectoMapper.cs" />
+    <Compile Include="Mappers\ITipoPublicacionMapper.cs" />
+    <Compile Include="Models\ConvenioForm.cs" />
+    <Compile Include="Models\IdentificadorLibroForm.cs" />
+    <Compile Include="Models\TipoEstanciaForm.cs" />
+    <Compile Include="Models\TipoInstitucionForm.cs" />
+    <Compile Include="Models\TipoProyectoForm.cs" />
+    <Compile Include="Models\TipoPublicacionForm.cs" />
     <Compile Include="Productos\ArticuloController.cs" />
     <Compile Include="Productos\CapituloController.cs" />
     <Compile Include="Catalogos\AreaController.cs" />
