@@ -192,6 +192,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.SearchMovilidadAcademica(q);
+            return Content(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewTipoActividad(int id)
         {
             var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(id);
@@ -313,13 +320,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var proyectoMovilidadAcademicaForm = proyectoMovilidadAcademicaMapper.Map(proyectoMovilidadAcademica);
 
             return Rjs("AddProyecto", proyectoMovilidadAcademicaForm);
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public override ActionResult Search(string q)
-        {
-            var data = searchService.Search<MovilidadAcademica>(x => x.LineaTematica.Nombre, q);
-            return Content(data);
         }
 
         MovilidadAcademicaForm SetupNewForm()
