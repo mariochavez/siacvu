@@ -4,5 +4,6 @@
     {
         Search[] Search<TEntity>(string fieldName, string value);
         Search[] SearchInvestigador(string value);
+        Search[] SearchMovilidadAcademica(string value);
     }
 }

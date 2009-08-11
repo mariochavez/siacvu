@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .SetMaxResults(20)
                 .SetProjection(Projections.ProjectionList()
                                    .Add(Projections.Property("Id"), "Id")
-                                   .Add(Projections.Property("Nombre"), "Nombre"))
+                                   .Add(Projections.Property(fieldName), "Nombre"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (Search)))
                 .Add(Expression.Like(fieldName, "%" + value + "%"))
                 .List<Search>();
@@ -85,6 +85,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchMovilidadAcademica(string value)
+        {
+            var criteria = DetachedCriteria.For(typeof(MovilidadAcademica))
+                .CreateAlias("LineaTematica", "lt", JoinType.InnerJoin)
+                .SetFetchMode("LineaTematica", FetchMode.Eager)
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("lt.Nombre"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("lt.Nombre"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(MovilidadAcademicaDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<MovilidadAcademicaDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search { Id = item.Id, Nombre = item.Nombre });
+            }
+
+            return result.ToArray();
+        }
+
         class InvestigadorDTO
         {
             public int Id { get; set; }
@@ -96,6 +120,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             {
                 return String.Format("{0} {1} {2}", ApellidoPaterno, ApellidoMaterno, Nombre).Trim();
             }
+        }
+
+        class MovilidadAcademicaDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
         }
     }
 }

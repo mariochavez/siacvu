@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.Index);
 
-            var tipoInstitucions = catalogoService.GetAllTipoInstitucions();
+            var tipoInstitucions = catalogoService.GetAllTipoInstituciones();
             data.List = tipoInstitucionMapper.Map(tipoInstitucions);
 
             return View(data);

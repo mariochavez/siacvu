@@ -24,7 +24,7 @@
 
 EntityScaffoldingDetails entityScaffoldingDetails =
 	new EntityScaffoldingDetails("Libro", 3);
- 
+
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
@@ -32,23 +32,23 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoPublicacion","TipoPublicacion", "TipoPublicacion")
+	new EntityProperty("NumeroCedula","int", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("EstadoProducto","EstadoProducto", "EstadoProducto")
+	new EntityProperty("TituloGrado","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PeriodoReferencia","PeriodoReferencia", "PeriodoReferencia")
+	new EntityProperty("FechaObtencion","DateTime", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TieneProyecto", "bool", null)
+	new EntityProperty("Institucion", "Institucion", "Institucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Proyecto","Proyecto", "Proyecto")
+	new EntityProperty("TituloTesis","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -56,67 +56,27 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaAceptacion","DateTime", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ISBN","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Editorial","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaEdicion","DateTime", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Pais","Pais", "Pais")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NoPaginas","int", null)
+	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Tiraje","string", null)
+	new EntityProperty("Ciudad","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Idioma","Idioma", "Idioma")
+	new EntityProperty("Estatus","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FormaParticipacion","FormaParticipacion", "FormaParticipacion")
+	new EntityProperty("Sector","Sector", "Sector")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorExternoLibros", "IList<CoautorExternoLibro>", "CoautorExterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorInternoLibros", "IList<CoautorInternoLibro>", "CoautorInterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("IdentificadorLibro","IdentificadorLibro", "IdentificadorLibro")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabrasClave","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoTraductor","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Traductor","string", null)
+	new EntityProperty("Organizacion","Organizacion", "Organizacion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -130,6 +90,14 @@ entityScaffoldingDetails.EntityProperties.Add(
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
 );
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
+//);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
+//);
 
 ///////////////////////////////////////////////////
 
