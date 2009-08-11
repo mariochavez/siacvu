@@ -168,6 +168,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Distincion>(x => x.Descripcion, q);
+            return Content(data);
+        }
+
         DistincionForm SetupNewForm()
         {
             return SetupNewForm(null);

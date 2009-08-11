@@ -180,6 +180,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Participacion>(x => x.Titulo, q);
+            return Content(data);
+        }
+
         ParticipacionForm SetupNewForm()
         {
             return SetupNewForm(null);

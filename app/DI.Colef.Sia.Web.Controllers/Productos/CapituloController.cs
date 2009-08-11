@@ -209,6 +209,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Capitulo>(x => x.NombreCapitulo, q);
+            return Content(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var capitulo = capituloService.GetCapituloById(id);

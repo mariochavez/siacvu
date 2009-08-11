@@ -187,6 +187,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<FormacionAcademica>(x => x.TituloGrado, q);
+            return Content(data);
+        }
+
         FormacionAcademicaForm SetupNewForm()
         {
             return SetupNewForm(null);
