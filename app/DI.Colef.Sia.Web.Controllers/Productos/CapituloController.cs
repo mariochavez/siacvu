@@ -18,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInvestigadorService investigadorService;
         readonly ICapituloMapper capituloMapper;
         readonly ITipoCapituloMapper tipoCapituloMapper;
-        readonly IEstadoMapper estadoMapper;
         readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IIdiomaMapper idiomaMapper;
@@ -35,8 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-	readonly IEstadoProductoMapper estadoProductoMapper;
-
+	    readonly IEstadoProductoMapper estadoProductoMapper;
 
         public CapituloController(ICapituloService capituloService,
                                   ICapituloMapper capituloMapper,
@@ -70,7 +68,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             this.capituloMapper = capituloMapper;
             this.tipoCapituloMapper = tipoCapituloMapper;
-            this.estadoMapper = estadoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.idiomaMapper = idiomaMapper;

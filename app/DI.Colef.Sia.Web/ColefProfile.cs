@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateReportesMaps();
             CreateResenasMaps();
             CreateFormacionAcademicaMaps();
+            CreateLibrosMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -539,6 +540,55 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoPais,
                            o => o.Ignore())
                 .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+        }
+
+        void CreateLibrosMaps()
+        {
+            Mapper.CreateMap<Libro, LibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoPublicacion,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoProducto,
+                           o => o.Ignore())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore())
+                .ForMember(d => d.PeriodoReferencia,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.FormaParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.IdentificadorLibro,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoLibro, CoautorInternoLibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorId,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorExternoLibro, CoautorExternoLibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.InvestigadorExternoId,
                            o => o.Ignore());
         }
 
