@@ -5,21 +5,21 @@ using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class Reseña : Entity, IBaseEntity
+    public class Resena : Entity, IBaseEntity
     {
-        public Reseña()
+        public Resena()
         {
-            CoautorExternoReseñas = new List<CoautorExternoReseña>();
-            CoautorInternoReseñas = new List<CoautorInternoReseña>();
+            CoautorExternoResenas = new List<CoautorExternoResena>();
+            CoautorInternoResenas = new List<CoautorInternoResena>();
         }
 
-        public virtual void AddCoautorExterno(CoautorExternoReseña coautorExternoReseña)
+        public virtual void AddCoautorExterno(CoautorExternoResena coautorExternoResena)
         {
-            CoautorExternoReseñas.Add(coautorExternoReseña);
+            CoautorExternoResenas.Add(coautorExternoResena);
         }
-        public virtual void AddCoautorInterno(CoautorInternoReseña coautorInternoReseña)
+        public virtual void AddCoautorInterno(CoautorInternoResena coautorInternoResena)
         {
-            CoautorInternoReseñas.Add(coautorInternoReseña);
+            CoautorInternoResenas.Add(coautorInternoResena);
         }
 
 
@@ -35,9 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaEdicion { get; set; }
 
-        public virtual IList<CoautorExternoReseña> CoautorExternoReseñas { get; private set; }
+        public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
 
-        public virtual IList<CoautorInternoReseña> CoautorInternoReseñas { get; private set; }
+        public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
 
         public virtual string ReferenciaBibliograficaLibro { get; set; }
 

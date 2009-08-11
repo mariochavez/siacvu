@@ -2,7 +2,7 @@ using System;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ReseñaForm
+    public class ResenaForm
     {
         public int Id { get; set; }
         public string ReferenciaBibliograficaLibro { get; set; }
@@ -49,11 +49,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Investigador { get; set; }
 
         /* New */
-        public CoautorExternoReseñaForm[] CoautorExternoReseñas { get; set; }
-        public CoautorInternoReseñaForm[] CoautorInternoReseñas { get; set; }
+        public CoautorExternoResenaForm[] CoautorExternoResenas { get; set; }
+        public CoautorInternoResenaForm[] CoautorInternoResenas { get; set; }
 
-        public CoautorExternoReseñaForm CoautorExternoReseña { get; set; }
-        public CoautorInternoReseñaForm CoautorInternoReseña { get; set; }
+        public CoautorExternoResenaForm CoautorExternoResena { get; set; }
+        public CoautorInternoResenaForm CoautorInternoResena { get; set; }
 
         /* Catalogos */
         public EstadoProductoForm[] EstadosProductos { get; set; }

@@ -4,8 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface IReseñaMapper : IMapper<Reseña, ReseñaForm>
+    public interface ICoautorExternoResenaMapper : IMapper<CoautorExternoResena, CoautorExternoResenaForm>
     {
-        Reseña Map(ReseñaForm message, Usuario usuario, Investigador investigador);
     }
 }

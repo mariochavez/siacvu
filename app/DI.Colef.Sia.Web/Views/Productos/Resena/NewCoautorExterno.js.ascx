@@ -1,11 +1,11 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ReseñaForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ResenaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <% using (Html.BeginForm("AddCoautorExterno", "Reseña", FormMethod.Post, new { id = "coautorexternoform" })){ %>
-    <%=Html.Hidden("ReseñaId", Model.Id)%>
+    <% using (Html.BeginForm("AddCoautorExterno", "Resena", FormMethod.Post, new { id = "coautorexternoform" })){ %>
+    <%=Html.Hidden("ResenaId", Model.Id)%>
     <% Html.RenderPartial("_NewCoautorExterno"); %>
     <div class="btn_container_footer">
         <span class="btn btn_small_brown">

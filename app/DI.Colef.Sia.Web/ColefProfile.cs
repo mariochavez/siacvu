@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateOrganosExternosMaps();
             CreateEventosMaps();
             CreateReportesMaps();
-            CreateReseñasMaps();
+            CreateResenasMaps();
             CreateFormacionAcademicaMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
@@ -135,9 +135,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
         }
 
-        private void CreateReseñasMaps()
+        private void CreateResenasMaps()
         {
-            Mapper.CreateMap<Reseña, ReseñaForm>()
+            Mapper.CreateMap<Resena, ResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
@@ -163,13 +163,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorInternoReseña, CoautorInternoReseñaForm>()
+            Mapper.CreateMap<CoautorInternoResena, CoautorInternoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.InvestigadorId,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorExternoReseña, CoautorExternoReseñaForm>()
+            Mapper.CreateMap<CoautorExternoResena, CoautorExternoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.InvestigadorExternoId,

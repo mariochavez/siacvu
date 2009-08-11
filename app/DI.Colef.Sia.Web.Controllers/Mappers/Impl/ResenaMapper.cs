@@ -7,28 +7,28 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class ReseñaMapper : AutoFormMapper<Reseña, ReseñaForm>, IReseñaMapper
+    public class ResenaMapper : AutoFormMapper<Resena, ResenaForm>, IResenaMapper
     {
         readonly ICatalogoService catalogoService;
-        readonly ICoautorExternoReseñaMapper coautorExternoReseñaMapper;
-        readonly ICoautorInternoReseñaMapper coautorInternoReseñaMapper;
+        readonly ICoautorExternoResenaMapper _coautorExternoResenaMapper;
+        readonly ICoautorInternoResenaMapper _coautorInternoResenaMapper;
 
 
-        public ReseñaMapper(IRepository<Reseña> repository, ICatalogoService catalogoService, 
-            ICoautorExternoReseñaMapper coautorExternoReseñaMapper, ICoautorInternoReseñaMapper coautorInternoReseñaMapper)
+        public ResenaMapper(IRepository<Resena> repository, ICatalogoService catalogoService, 
+            ICoautorExternoResenaMapper _coautorExternoResenaMapper, ICoautorInternoResenaMapper _coautorInternoResenaMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
-            this.coautorExternoReseñaMapper = coautorExternoReseñaMapper;
-            this.coautorInternoReseñaMapper = coautorInternoReseñaMapper;
+            this._coautorExternoResenaMapper = _coautorExternoResenaMapper;
+            this._coautorInternoResenaMapper = _coautorInternoResenaMapper;
         }
 
-        protected override int GetIdFromMessage(ReseñaForm message)
+        protected override int GetIdFromMessage(ResenaForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(ReseñaForm message, Reseña model)
+        protected override void MapToModel(ResenaForm message, Resena model)
         {
             model.ReferenciaBibliograficaLibro = message.ReferenciaBibliograficaLibro;
             model.ReferenciaBibliograficaRevista = message.ReferenciaBibliograficaRevista;
@@ -51,13 +51,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
 
-            if (message.CoautorExternoReseña != null)
-                model.AddCoautorExterno(coautorExternoReseñaMapper.Map(message.CoautorExternoReseña));
-            if (message.CoautorInternoReseña != null)
-                model.AddCoautorInterno(coautorInternoReseñaMapper.Map(message.CoautorInternoReseña));
+            if (message.CoautorExternoResena != null)
+                model.AddCoautorExterno(_coautorExternoResenaMapper.Map(message.CoautorExternoResena));
+            if (message.CoautorInternoResena != null)
+                model.AddCoautorInterno(_coautorInternoResenaMapper.Map(message.CoautorInternoResena));
         }
 
-        public Reseña Map(ReseñaForm message, Usuario usuario, Investigador investigador)
+        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 

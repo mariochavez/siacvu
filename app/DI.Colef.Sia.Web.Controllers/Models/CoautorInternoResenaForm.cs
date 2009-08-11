@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class CoautorInternoReseñaForm
+    public class CoautorInternoResenaForm
     {
         public int Id { get; set; }
         public bool Activo { get; set; }

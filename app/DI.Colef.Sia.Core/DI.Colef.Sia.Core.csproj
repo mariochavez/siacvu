@@ -82,13 +82,13 @@
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
     <Compile Include="CoautorExternoReporte.cs" />
-    <Compile Include="CoautorExternoReseña.cs" />
+    <Compile Include="CoautorExternoResena.cs" />
     <Compile Include="CoautorInternoArticulo.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
     <Compile Include="CoautorInternoEvento.cs" />
     <Compile Include="CoautorInternoReporte.cs" />
-    <Compile Include="CoautorInternoReseña.cs" />
     <Compile Include="Convenio.cs" />
+    <Compile Include="CoautorInternoResena.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
@@ -139,7 +139,7 @@
     <Compile Include="Proyecto.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Reporte.cs" />
-    <Compile Include="Reseña.cs" />
+    <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
     <Compile Include="ResponsableExternoCapitulo.cs" />
     <Compile Include="ResponsableInternoCapitulo.cs" />

@@ -3,9 +3,9 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class CoautorInternoReseña : Entity, IBaseEntity
+    public class CoautorExternoResena : Entity, IBaseEntity
     {
-        public virtual Investigador Investigador { get; set; }
+        public virtual InvestigadorExterno InvestigadorExterno { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 
