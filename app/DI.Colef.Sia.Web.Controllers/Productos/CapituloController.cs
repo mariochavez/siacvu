@@ -13,64 +13,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class CapituloController : BaseController<Capitulo, CapituloForm>
     {
+        readonly IAreaMapper areaMapper;
+        readonly ICapituloMapper capituloMapper;
         readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
-        readonly IInvestigadorService investigadorService;
-        readonly ICapituloMapper capituloMapper;
-        readonly ITipoCapituloMapper tipoCapituloMapper;
-        readonly IEstadoMapper estadoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IIdiomaMapper idiomaMapper;
-        readonly IPaisMapper paisMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IFormaParticipacionMapper formaParticipacionMapper;
-        readonly ITipoParticipacionMapper tipoParticipacionMapper;
-        readonly ITipoParticipanteMapper tipoParticipanteMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IFormaParticipacionMapper formaParticipacionMapper;
+        readonly IIdiomaMapper idiomaMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-	readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ITipoCapituloMapper tipoCapituloMapper;
+        readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly ITipoParticipanteMapper tipoParticipanteMapper;
 
-
-        public CapituloController(ICapituloService capituloService,
-                                  ICapituloMapper capituloMapper,
-                                  ICatalogoService catalogoService,
-                                  IUsuarioService usuarioService,
+        public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
+                                  ICatalogoService catalogoService, IUsuarioService usuarioService,
                                   ITipoCapituloMapper tipoCapituloMapper,
-                                  IEstadoMapper estadoMapper,
                                   IPeriodoReferenciaMapper periodoReferenciaMapper,
-                                  ILineaTematicaMapper lineaTematicaMapper,
-                                  IIdiomaMapper idiomaMapper,
-                                  IPaisMapper paisMapper,
-                                  IInvestigadorMapper investigadorMapper,
+                                  ILineaTematicaMapper lineaTematicaMapper, IIdiomaMapper idiomaMapper,
+                                  IPaisMapper paisMapper, IInvestigadorMapper investigadorMapper,
                                   IInvestigadorExternoMapper investigadorExternoMapper,
                                   IFormaParticipacionMapper formaParticipacionMapper,
                                   ITipoParticipacionMapper tipoParticipacionMapper,
-                                  ITipoParticipanteMapper tipoParticipanteMapper,
-                                  IAreaMapper areaMapper,
-                                  IDisciplinaMapper disciplinaMapper,
-                                  ISubdisciplinaMapper subdisciplinaMapper,
+                                  ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper,
+                                  IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
                                   ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                                   ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-                                  IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper, ISearchService searchService)
+                                  IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
+                                  ISearchService searchService)
             : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
             this.estadoProductoMapper = estadoProductoMapper;
-
             this.capituloMapper = capituloMapper;
             this.tipoCapituloMapper = tipoCapituloMapper;
-            this.estadoMapper = estadoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.idiomaMapper = idiomaMapper;
