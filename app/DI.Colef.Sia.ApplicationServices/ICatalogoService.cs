@@ -313,8 +313,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         //Tipo de Institucion
         TipoInstitucion GetTipoInstitucionById(int id);
-        TipoInstitucion[] GetAllTipoInstitucions();
-        TipoInstitucion[] GetActiveTipoInstitucions();
+        TipoInstitucion[] GetAllTipoInstituciones();
+        TipoInstitucion[] GetActiveTipoInstituciones();
         void SaveTipoInstitucion(TipoInstitucion tipoInstitucion);
 
         //Tipo de Estancia
@@ -334,5 +334,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Convenio[] GetAllConvenios();
         Convenio[] GetActiveConvenios();
         void SaveConvenio(Convenio convenio);
+
+        //Producto Derivado
+        ProductoDerivado GetProductoDerivadoById(int id);
+        ProductoDerivado[] GetAllProductoDerivados();
+        ProductoDerivado[] GetActiveProductoDerivados();
+        void SaveProductoDerivado(ProductoDerivado productoDerivado);
     }
 }

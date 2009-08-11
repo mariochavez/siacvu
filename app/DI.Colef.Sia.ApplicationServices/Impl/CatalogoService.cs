@@ -66,6 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoReporte> tipoReporteRepository;
         readonly IRepository<EstadoProducto> estadoProductoRepository;
         readonly IRepository<NivelEstudio> nivelEstudioRepository;
+        readonly IRepository<ProductoDerivado> productoDerivadoRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -121,7 +122,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoReporte> tipoReporteRepository,
             IRepository<EstadoProducto> estadoProductoRepository,
             IRepository<TipoPublicacion> tipoPublicacionRepository,
-            IRepository<NivelEstudio> nivelEstudioRepository)
+            IRepository<NivelEstudio> nivelEstudioRepository,
+            IRepository<ProductoDerivado> productoDerivadoRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.cargoRepository = cargoRepository;
@@ -178,6 +180,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.estadoProductoRepository = estadoProductoRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
+            this.productoDerivadoRepository = productoDerivadoRepository;
         }
 
         protected virtual ISession Session
@@ -1587,12 +1590,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return tipoInstitucionRepository.Get(id);
         }
 
-        public TipoInstitucion[] GetAllTipoInstitucions()
+        public TipoInstitucion[] GetAllTipoInstituciones()
         {
             return ((List<TipoInstitucion>)OrderCatalog<TipoInstitucion>()).ToArray();
         }
 
-        public TipoInstitucion[] GetActiveTipoInstitucions()
+        public TipoInstitucion[] GetActiveTipoInstituciones()
         {
             return ((List<TipoInstitucion>)tipoInstitucionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
@@ -1688,6 +1691,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             identificadorLibro.ModificadoEl = DateTime.Now;
 
             identificadorLibroRepository.SaveOrUpdate(identificadorLibro);
+        }
+
+        public ProductoDerivado GetProductoDerivadoById(int id)
+        {
+            return productoDerivadoRepository.Get(id);
+        }
+
+        public ProductoDerivado[] GetAllProductoDerivados()
+        {
+            return ((List<ProductoDerivado>)OrderCatalog<ProductoDerivado>()).ToArray();
+        }
+
+        public ProductoDerivado[] GetActiveProductoDerivados()
+        {
+            return ((List<ProductoDerivado>)productoDerivadoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveProductoDerivado(ProductoDerivado productoDerivado)
+        {
+            if (productoDerivado.Id == 0)
+            {
+                productoDerivado.Activo = true;
+                productoDerivado.CreadorEl = DateTime.Now;
+            }
+            productoDerivado.ModificadoEl = DateTime.Now;
+
+            productoDerivadoRepository.SaveOrUpdate(productoDerivado);
         }
     }
 }

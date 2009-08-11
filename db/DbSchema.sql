@@ -39,46 +39,6 @@ alter table MedioImpresos  drop constraint FK3D78AB6085102A57
 alter table MedioImpresos  drop constraint FK3D78AB6074E8BAB7
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7004441E85102A57]') AND parent_object_id = OBJECT_ID('LineaTematicas'))
-alter table LineaTematicas  drop constraint FK7004441E85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7004441E74E8BAB7]') AND parent_object_id = OBJECT_ID('LineaTematicas'))
-alter table LineaTematicas  drop constraint FK7004441E74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK21100647CC4BEB17]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK21100647CC4BEB17
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064785102A57]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK2110064785102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064774E8BAB7]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK2110064774E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK211006478336201B]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK211006478336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425185102A57]') AND parent_object_id = OBJECT_ID('TipoActividades'))
-alter table TipoActividades  drop constraint FKF88C425185102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoActividades'))
-alter table TipoActividades  drop constraint FKF88C425174E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259085102A57]') AND parent_object_id = OBJECT_ID('Puestos'))
-alter table Puestos  drop constraint FK45EB259085102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259074E8BAB7]') AND parent_object_id = OBJECT_ID('Puestos'))
-alter table Puestos  drop constraint FK45EB259074E8BAB7
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA2BAFDC96]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
 alter table FormacionAcademicas  drop constraint FK824D8BEA2BAFDC96
 
@@ -129,7 +89,6 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA74E8BAB7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
 alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK453645C58336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoCapitulos'))
@@ -186,6 +145,14 @@ alter table TipoParticipacionEventos  drop constraint FK87E86B1D74E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D3BA127C1]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
 alter table TipoParticipacionEventos  drop constraint FK87E86B1D3BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E185102A57]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
+alter table TipoInstituciones  drop constraint FK77542E185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
+alter table TipoInstituciones  drop constraint FK77542E174E8BAB7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA414CDE9CF67963]') AND parent_object_id = OBJECT_ID('Tesis'))
@@ -332,6 +299,14 @@ alter table CoautorInternoReportes  drop constraint FK276A11CD74E8BAB7
 alter table CoautorInternoReportes  drop constraint FK276A11CD13FE2142
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
+alter table TipoProyectos  drop constraint FK1E50E26A85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
+alter table TipoProyectos  drop constraint FK1E50E26A74E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
 alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
 
@@ -416,6 +391,50 @@ alter table TipoParticipaciones  drop constraint FK20CDD2C585102A57
 alter table TipoParticipaciones  drop constraint FK20CDD2C574E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE624B54D394]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE624B54D394
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6211666E2A]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6211666E2A
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6270EA6C9E]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6270EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE621EDC2D3B]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE621EDC2D3B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627A8488F7]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE627A8488F7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62295BC133]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62295BC133
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62BC063744]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62BC063744
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62F4FE4035]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62F4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628336201B]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE628336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6285102A57]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6274E8BAB7]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6274E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE177237615]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE177237615
 
@@ -464,10 +483,6 @@ alter table Proyectos  drop constraint FK8BA36D7785102A57
 alter table Proyectos  drop constraint FK8BA36D7774E8BAB7
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EEC222BA6]') AND parent_object_id = OBJECT_ID('Cursos'))
-alter table Cursos  drop constraint FK8E38D63EEC222BA6
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B985102A57]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
 alter table NivelEstudios  drop constraint FKD8EB52B985102A57
 
@@ -476,9 +491,16 @@ alter table NivelEstudios  drop constraint FKD8EB52B985102A57
 alter table NivelEstudios  drop constraint FKD8EB52B974E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067785102A57]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
+alter table IdentificadorLibros  drop constraint FK7A9B067785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067774E8BAB7]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
+alter table IdentificadorLibros  drop constraint FK7A9B067774E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE803FA562]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
 alter table OrganoExternos  drop constraint FK55BF0AAE803FA562
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE2261429F]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
@@ -561,13 +583,8 @@ alter table Distinciones  drop constraint FKEF821EEC64F7D1CD
 alter table Distinciones  drop constraint FKEF821EECC93A1EF1
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD4B54D394
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC7A8488F7]') AND parent_object_id = OBJECT_ID('Distinciones'))
 alter table Distinciones  drop constraint FKEF821EEC7A8488F7
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EECC0410E89]') AND parent_object_id = OBJECT_ID('Distinciones'))
@@ -584,6 +601,38 @@ alter table Distinciones  drop constraint FKEF821EEC85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC74E8BAB7]') AND parent_object_id = OBJECT_ID('Distinciones'))
 alter table Distinciones  drop constraint FKEF821EEC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D499948336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
+alter table CoautorInternoResenas  drop constraint FK17D499948336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999485102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
+alter table CoautorInternoResenas  drop constraint FK17D4999485102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999474E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
+alter table CoautorInternoResenas  drop constraint FK17D4999474E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D49994FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
+alter table CoautorInternoResenas  drop constraint FK17D49994FF48CC4D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA2968108FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
+alter table CoautorExternoResenas  drop constraint FKDA2968108FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681085102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
+alter table CoautorExternoResenas  drop constraint FKDA29681085102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681074E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
+alter table CoautorExternoResenas  drop constraint FKDA29681074E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA296810FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
+alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425185102A57]') AND parent_object_id = OBJECT_ID('TipoActividades'))
@@ -666,6 +715,14 @@ alter table Dependencias  drop constraint FK4ECBCD2B85102A57
 alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D85102A57]') AND parent_object_id = OBJECT_ID('Convenios'))
+alter table Convenios  drop constraint FKF35B3A2D85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D74E8BAB7]') AND parent_object_id = OBJECT_ID('Convenios'))
+alter table Convenios  drop constraint FKF35B3A2D74E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK900A4EAC85102A57]') AND parent_object_id = OBJECT_ID('TipoPresentaciones'))
 alter table TipoPresentaciones  drop constraint FK900A4EAC85102A57
 
@@ -702,13 +759,8 @@ alter table PeriodoReferencias  drop constraint FK91FCA7F74E8BAB7
 alter table OtraParticipaciones  drop constraint FKEF8D374185102A57
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D74B54D394]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D74B54D394
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF8D374174E8BAB7]') AND parent_object_id = OBJECT_ID('OtraParticipaciones'))
 alter table OtraParticipaciones  drop constraint FKEF8D374174E8BAB7
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A185102A57]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
@@ -983,13 +1035,8 @@ alter table Capitulos  drop constraint FK3165FEAD8336201B
 alter table Capitulos  drop constraint FK3165FEADE5A51EE5
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF062672774E8BAB7]') AND parent_object_id = OBJECT_ID('LineaInvestigaciones'))
-alter table LineaInvestigaciones  drop constraint FKF062672774E8BAB7
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD4B54D394
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD11666E2A]') AND parent_object_id = OBJECT_ID('Capitulos'))
@@ -1140,13 +1187,8 @@ alter table Articulos  drop constraint FK3EB394D73C5C6337
 alter table Articulos  drop constraint FK3EB394D76425E2FD
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B85102A57]') AND parent_object_id = OBJECT_ID('Participaciones'))
-alter table Participaciones  drop constraint FK56CA0A1B85102A57
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D74B54D394]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D74B54D394
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D711666E2A]') AND parent_object_id = OBJECT_ID('Articulos'))
@@ -1257,6 +1299,14 @@ alter table Areas  drop constraint FK1527E7985102A57
 alter table Areas  drop constraint FK1527E7974E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7522403185102A57]') AND parent_object_id = OBJECT_ID('TipoPublicaciones'))
+alter table TipoPublicaciones  drop constraint FK7522403185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7522403174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoPublicaciones'))
+alter table TipoPublicaciones  drop constraint FK7522403174E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27DF9BD685102A57]') AND parent_object_id = OBJECT_ID('TipoParticipantes'))
 alter table TipoParticipantes  drop constraint FK27DF9BD685102A57
 
@@ -1289,64 +1339,20 @@ alter table TipoOrganos  drop constraint FK75A1DA3185102A57
 alter table TipoOrganos  drop constraint FK75A1DA3174E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA2BAFDC96]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA2BAFDC96
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA64F7D1CD]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA64F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA1EDC2D3B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA1EDC2D3B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA7A8488F7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA7A8488F7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAC0410E89]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAC0410E89
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA3E082BED]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA3E082BED
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAEC222BA6]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAEC222BA6
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA295BC133]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA295BC133
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEABC063744]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEABC063744
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAF4FE4035]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEAF4FE4035
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA8336201B]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA8336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA85102A57]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA74E8BAB7]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA74E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B85102A57]') AND parent_object_id = OBJECT_ID('TipoEventos'))
 alter table TipoEventos  drop constraint FK952D666B85102A57
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEventos'))
 alter table TipoEventos  drop constraint FK952D666B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616285102A57]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
+alter table TipoEstancias  drop constraint FK53E7616285102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
+alter table TipoEstancias  drop constraint FK53E7616274E8BAB7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD667359285102A57]') AND parent_object_id = OBJECT_ID('EstadoProductos'))
@@ -1357,21 +1363,8 @@ alter table EstadoProductos  drop constraint FKD667359285102A57
 alter table EstadoProductos  drop constraint FKD667359274E8BAB7
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B985102A57]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
-alter table NivelEstudios  drop constraint FKD8EB52B985102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B974E8BAB7]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
-alter table NivelEstudios  drop constraint FKD8EB52B974E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
-alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
-=======
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F85102A57]') AND parent_object_id = OBJECT_ID('Roles'))
 alter table Roles  drop constraint FK1A2E670F85102A57
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F74E8BAB7]') AND parent_object_id = OBJECT_ID('Roles'))
@@ -1410,136 +1403,92 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE624B54D394]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE624B54D394
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK913A1E0A85102A57]') AND parent_object_id = OBJECT_ID('ProductoDerivados'))
+alter table ProductoDerivados  drop constraint FK913A1E0A85102A57
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6211666E2A]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6211666E2A
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK913A1E0A74E8BAB7]') AND parent_object_id = OBJECT_ID('ProductoDerivados'))
+alter table ProductoDerivados  drop constraint FK913A1E0A74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6270EA6C9E]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6270EA6C9E
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB644A341BCB3374]') AND parent_object_id = OBJECT_ID('TipoActividadMovilidadAcademicas'))
+alter table TipoActividadMovilidadAcademicas  drop constraint FKDB644A341BCB3374
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE621EDC2D3B]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE621EDC2D3B
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB644A3485102A57]') AND parent_object_id = OBJECT_ID('TipoActividadMovilidadAcademicas'))
+alter table TipoActividadMovilidadAcademicas  drop constraint FKDB644A3485102A57
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627A8488F7]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE627A8488F7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB644A3474E8BAB7]') AND parent_object_id = OBJECT_ID('TipoActividadMovilidadAcademicas'))
+alter table TipoActividadMovilidadAcademicas  drop constraint FKDB644A3474E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62295BC133]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62295BC133
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB644A342C7CB987]') AND parent_object_id = OBJECT_ID('TipoActividadMovilidadAcademicas'))
+alter table TipoActividadMovilidadAcademicas  drop constraint FKDB644A342C7CB987
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62BC063744]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62BC063744
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56549E488718AE0E]') AND parent_object_id = OBJECT_ID('ProductoDerivadoMovilidadAcademicas'))
+alter table ProductoDerivadoMovilidadAcademicas  drop constraint FK56549E488718AE0E
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62F4FE4035]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62F4FE4035
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56549E4885102A57]') AND parent_object_id = OBJECT_ID('ProductoDerivadoMovilidadAcademicas'))
+alter table ProductoDerivadoMovilidadAcademicas  drop constraint FK56549E4885102A57
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628336201B]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE628336201B
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56549E4874E8BAB7]') AND parent_object_id = OBJECT_ID('ProductoDerivadoMovilidadAcademicas'))
+alter table ProductoDerivadoMovilidadAcademicas  drop constraint FK56549E4874E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6285102A57]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56549E482C7CB987]') AND parent_object_id = OBJECT_ID('ProductoDerivadoMovilidadAcademicas'))
+alter table ProductoDerivadoMovilidadAcademicas  drop constraint FK56549E482C7CB987
 
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616285102A57]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
-alter table TipoEstancias  drop constraint FK53E7616285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC93E6F3A70EA6C9E]') AND parent_object_id = OBJECT_ID('ProyectoMovilidadAcademicas'))
+alter table ProyectoMovilidadAcademicas  drop constraint FKC93E6F3A70EA6C9E
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
-alter table TipoEstancias  drop constraint FK53E7616274E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC93E6F3A85102A57]') AND parent_object_id = OBJECT_ID('ProyectoMovilidadAcademicas'))
+alter table ProyectoMovilidadAcademicas  drop constraint FKC93E6F3A85102A57
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E185102A57]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
-alter table TipoInstituciones  drop constraint FK77542E185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC93E6F3A74E8BAB7]') AND parent_object_id = OBJECT_ID('ProyectoMovilidadAcademicas'))
+alter table ProyectoMovilidadAcademicas  drop constraint FKC93E6F3A74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
-alter table TipoInstituciones  drop constraint FK77542E174E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC93E6F3A2C7CB987]') AND parent_object_id = OBJECT_ID('ProyectoMovilidadAcademicas'))
+alter table ProyectoMovilidadAcademicas  drop constraint FKC93E6F3A2C7CB987
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D85102A57]') AND parent_object_id = OBJECT_ID('Convenios'))
-alter table Convenios  drop constraint FKF35B3A2D85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B07A8C3DE5]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B07A8C3DE5
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D74E8BAB7]') AND parent_object_id = OBJECT_ID('Convenios'))
-alter table Convenios  drop constraint FKF35B3A2D74E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B08BB69942]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B08BB69942
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
-alter table TipoProyectos  drop constraint FK1E50E26A85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B064F7D1CD]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B064F7D1CD
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
-alter table TipoProyectos  drop constraint FK1E50E26A74E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B01EDC2D3B]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B01EDC2D3B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7522403185102A57]') AND parent_object_id = OBJECT_ID('TipoPublicaciones'))
-alter table TipoPublicaciones  drop constraint FK7522403185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B0201EE7BB]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B0201EE7BB
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7522403174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoPublicaciones'))
-alter table TipoPublicaciones  drop constraint FK7522403174E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B08336201B]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B08336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067785102A57]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
-alter table IdentificadorLibros  drop constraint FK7A9B067785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B085102A57]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B085102A57
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067774E8BAB7]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
-alter table IdentificadorLibros  drop constraint FK7A9B067774E8BAB7
-
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Personas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Personas
-=======
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6274E8BAB7]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6274E8BAB7
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D499948336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D499948336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999485102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D4999485102A57
-
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select * from dbo.sysobjects where id = object_id(N'Puestos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Puestos
-=======
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999474E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D4999474E8BAB7
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D49994FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D49994FF48CC4D
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA2968108FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA2968108FDBB774
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681085102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA29681085102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681074E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA29681074E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA296810FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK684440B074E8BAB7]') AND parent_object_id = OBJECT_ID('MovilidadAcademicas'))
+alter table MovilidadAcademicas  drop constraint FK684440B074E8BAB7
 
 
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
@@ -1562,13 +1511,11 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionEventos
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select * from dbo.sysobjects where id = object_id(N'Dictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dictamenes
-=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Tesis') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Tesis
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Participaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Participaciones
 
@@ -1577,6 +1524,8 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReportes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
 
@@ -1594,11 +1543,15 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipaciones
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Resenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Resenas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Reportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reportes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Proyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Proyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'NivelEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table NivelEstudios
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'IdentificadorLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table IdentificadorLibros
 
     if exists (select * from dbo.sysobjects where id = object_id(N'OrganoExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoExternos
 
@@ -1612,6 +1565,10 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Distinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Distinciones
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoResenas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoResenas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoActividades') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoActividades
 
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIInvestigadores
@@ -1623,6 +1580,8 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
     if exists (select * from dbo.sysobjects where id = object_id(N'Eventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Eventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Convenios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Convenios
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoPresentaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoPresentaciones
 
@@ -1672,27 +1631,15 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoCapitulos
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select * from dbo.sysobjects where id = object_id(N'FormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormacionAcademicas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
-=======
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableExternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableExternoCapitulos
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     if exists (select * from dbo.sysobjects where id = object_id(N'GradoAcademicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GradoAcademicos
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select * from dbo.sysobjects where id = object_id(N'NivelEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table NivelEstudios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
-=======
     if exists (select * from dbo.sysobjects where id = object_id(N'Generos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Generos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoDistinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDistinciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Estados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Estados
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReportes
 
@@ -1706,6 +1653,8 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Areas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Areas
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoPublicaciones
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipantes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipantes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CategoriaInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CategoriaInvestigadores
@@ -1714,37 +1663,27 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoEstancias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEstancias
+
     if exists (select * from dbo.sysobjects where id = object_id(N'EstadoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstadoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
 
-<<<<<<< HEAD:db/DbSchema.sql
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoEstancias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEstancias
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Convenios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Convenios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoPublicaciones
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'IdentificadorLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table IdentificadorLibros
-
-    create table Personas (
-=======
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'Resenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Resenas
+    if exists (select * from dbo.sysobjects where id = object_id(N'ProductoDerivados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProductoDerivados
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoResenas
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoActividadMovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoActividadMovilidadAcademicas
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoResenas
+    if exists (select * from dbo.sysobjects where id = object_id(N'ProductoDerivadoMovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProductoDerivadoMovilidadAcademicas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ProyectoMovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProyectoMovilidadAcademicas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'MovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MovilidadAcademicas
 
     create table SNIs (
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -1805,14 +1744,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-<<<<<<< HEAD:db/DbSchema.sql
-    create table Puestos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-=======
     create table FormacionAcademicas (
         Id INT IDENTITY NOT NULL,
        NumeroCedula INT null,
@@ -1835,7 +1766,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        InvestigadorFk INT null,
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -1885,6 +1815,17 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        EventoFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoInstituciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -1986,6 +1927,17 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
+    create table TipoProyectos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table InvestigadorExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2074,11 +2026,39 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
+    create table Resenas (
+        Id INT IDENTITY NOT NULL,
+       FechaAceptacion DATETIME null,
+       FechaEdicion DATETIME null,
+       ReferenciaBibliograficaLibro NVARCHAR(255) null,
+       ReferenciaBibliograficaRevista NVARCHAR(255) null,
+       NombreProducto NVARCHAR(255) null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       TituloLibro NVARCHAR(255) null,
+       NombreRevista NVARCHAR(255) null,
+       Editorial NVARCHAR(255) null,
+       PalabrasClave NVARCHAR(255) null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       EstadoProductoFk INT null,
+       PeriodoReferenciaFk INT null,
+       ProyectoFk INT null,
+       LineaTematicaFk INT null,
+       PaisFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
+       SubdisciplinaFk INT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table Reportes (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/DbSchema.sql
-       Nombre NVARCHAR(255) null,
-=======
        FechaAceptacion DATETIME null,
        Titulo NVARCHAR(255) null,
        FechaEdicion DATETIME null,
@@ -2089,7 +2069,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        PalabarasClave NVARCHAR(255) null,
        Puntuacion INT null,
        Fecha DATETIME null,
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -2117,9 +2096,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-<<<<<<< HEAD:db/DbSchema.sql
-    create table Dictamenes (
-=======
     create table NivelEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2131,8 +2107,18 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
+    create table IdentificadorLibros (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table OrganoExternos (
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        Siglas NVARCHAR(255) null,
@@ -2220,6 +2206,30 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
+    create table CoautorInternoResenas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ResenaFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorExternoResenas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ResenaFk INT null,
+       primary key (Id)
+    )
+
     create table TipoActividades (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2255,22 +2265,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-<<<<<<< HEAD:db/DbSchema.sql
-       InvestigadorFk INT null,
-       TipoCapituloFk INT null,
-       EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
-       LineaTematicaFk INT null,
-       IdiomaFk INT null,
-       PaisFk INT null,
-       FormaParticipacionFk INT null,
-       TipoParticipacionFk INT null,
-       TipoParticipanteFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-=======
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2312,6 +2306,17 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
     )
 
     create table Dependencias (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Convenios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2364,27 +2369,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-<<<<<<< HEAD:db/DbSchema.sql
-       InvestigadorFk INT null,
-       TipoArticuloFk INT null,
-       IdiomaFk INT null,
-       EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
-       LineaTematicaFk INT null,
-       PaisFk INT null,
-       RevistaPublicacionFk INT null,
-       InstitucionFk INT null,
-       Indice1Fk INT null,
-       Indice2Fk INT null,
-       Indice3Fk INT null,
-       LineaInvestigacionFk INT null,
-       TipoActividadFk INT null,
-       TipoParticipanteFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-=======
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2502,20 +2486,7 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     create table Indices (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/DbSchema.sql
-       FechaAceptacion DATETIME null,
-       Titulo NVARCHAR(255) null,
-       FechaEdicion DATETIME null,
-       Editorial NVARCHAR(255) null,
-       NoPaginas INT null,
-       Descripcion NVARCHAR(255) null,
-       Objetivo NVARCHAR(255) null,
-       PalabarasClave NVARCHAR(255) null,
-       Puntuacion INT null,
-       Fecha DATETIME null,
-=======
        Nombre NVARCHAR(255) null,
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -2651,8 +2622,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorFk INT null,
-<<<<<<< HEAD:db/DbSchema.sql
-=======
        TipoCapituloFk INT null,
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
@@ -2665,7 +2634,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2778,16 +2746,12 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-<<<<<<< HEAD:db/DbSchema.sql
-       GradoAcademicoFk INT null,
-=======
        InvestigadorFk INT null,
        TipoArticuloFk INT null,
        IdiomaFk INT null,
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        LineaTematicaFk INT null,
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
        PaisFk INT null,
        RevistaPublicacionFk INT null,
        InstitucionFk INT null,
@@ -2852,6 +2816,17 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
+    create table TipoPublicaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table TipoParticipantes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2876,38 +2851,7 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-<<<<<<< HEAD:db/DbSchema.sql
-    create table FormacionAcademicas (
-=======
     create table TipoOrganos (
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
-        Id INT IDENTITY NOT NULL,
-       NumeroCedula INT null,
-       TituloGrado NVARCHAR(255) null,
-       FechaObtencion DATETIME null,
-       TituloTesis NVARCHAR(255) null,
-       Ciudad NVARCHAR(255) null,
-       Estatus NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       NivelEstudioFk INT null,
-       InstitucionFk INT null,
-       LineaTematicaFk INT null,
-       PaisFk INT null,
-       EstadoPaisFk INT null,
-       SectorFk INT null,
-       OrganizacionFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoEventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2929,8 +2873,7 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-<<<<<<< HEAD:db/DbSchema.sql
-    create table NivelEstudios (
+    create table TipoEstancias (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2941,10 +2884,7 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-    create table InvestigadorExternos (
-=======
     create table EstadoProductos (
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2992,148 +2932,70 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
        primary key (Id)
     )
 
-    create table Resenas (
+    create table ProductoDerivados (
         Id INT IDENTITY NOT NULL,
-       FechaAceptacion DATETIME null,
-       FechaEdicion DATETIME null,
-       ReferenciaBibliograficaLibro NVARCHAR(255) null,
-       ReferenciaBibliograficaRevista NVARCHAR(255) null,
-       NombreProducto NVARCHAR(255) null,
-       PaginaInicial INT null,
-       PaginaFinal INT null,
-       TituloLibro NVARCHAR(255) null,
-       NombreRevista NVARCHAR(255) null,
-       Editorial NVARCHAR(255) null,
-       PalabrasClave NVARCHAR(255) null,
-       Puntuacion INT null,
+       Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoActividadMovilidadAcademicas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoActividadFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       MovilidadAcademicaFk INT null,
+       primary key (Id)
+    )
+
+    create table ProductoDerivadoMovilidadAcademicas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       ProductoDerivadoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       MovilidadAcademicaFk INT null,
+       primary key (Id)
+    )
+
+    create table ProyectoMovilidadAcademicas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
        ProyectoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       MovilidadAcademicaFk INT null,
+       primary key (Id)
+    )
+
+    create table MovilidadAcademicas (
+        Id INT IDENTITY NOT NULL,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoEstanciaFk INT null,
+       TipoInstitucionFk INT null,
+       InstitucionFk INT null,
        LineaTematicaFk INT null,
-       PaisFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
+       ConvenioFk INT null,
        InvestigadorFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
-
-    create table CoautorInternoResenas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ResenaFk INT null,
-       primary key (Id)
-    )
-
-<<<<<<< HEAD:db/DbSchema.sql
-    create table TipoEstancias (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoInstituciones (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table Convenios (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoProyectos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoPublicaciones (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table IdentificadorLibros (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    alter table Personas 
-        add constraint FK1261169485102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Personas 
-        add constraint FK1261169474E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE803FA562 
-        foreign key (TipoOrganoFk) 
-        references TipoOrganos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE2261429F 
-        foreign key (TipoParticipacionFk) 
-        references TipoParticipaciones
-=======
-    create table CoautorExternoResenas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ResenaFk INT null,
-       primary key (Id)
-    )
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     alter table SNIs 
         add constraint FKF16DB6DA85102A57 
@@ -3185,30 +3047,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table CategoriaInvestigadores 
-        add constraint FK211006478336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table TipoActividades 
-        add constraint FKF88C425185102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoActividades 
-        add constraint FKF88C425174E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table Puestos 
-        add constraint FK45EB259085102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Puestos 
-        add constraint FK45EB259074E8BAB7 
-=======
     alter table FormacionAcademicas 
         add constraint FK824D8BEA2BAFDC96 
         foreign key (NivelEstudioFk) 
@@ -3271,7 +3109,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     alter table FormacionAcademicas 
         add constraint FK824D8BEA74E8BAB7 
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -3344,6 +3181,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         add constraint FK87E86B1D3BA127C1 
         foreign key (EventoFk) 
         references Eventos
+
+    alter table TipoInstituciones 
+        add constraint FK77542E185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoInstituciones 
+        add constraint FK77542E174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
 
     alter table Tesis 
         add constraint FKEA414CDE9CF67963 
@@ -3525,6 +3372,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ReporteFk) 
         references Reportes
 
+    alter table TipoProyectos 
+        add constraint FK1E50E26A85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoProyectos 
+        add constraint FK1E50E26A74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table InvestigadorExternos 
         add constraint FK2FE0968885102A57 
         foreign key (CreadorPorFk) 
@@ -3630,6 +3487,61 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table Resenas 
+        add constraint FKF708AE624B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
+
+    alter table Resenas 
+        add constraint FKF708AE6211666E2A 
+        foreign key (PeriodoReferenciaFk) 
+        references PeriodoReferencias
+
+    alter table Resenas 
+        add constraint FKF708AE6270EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Resenas 
+        add constraint FKF708AE621EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table Resenas 
+        add constraint FKF708AE627A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Resenas 
+        add constraint FKF708AE62295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Resenas 
+        add constraint FKF708AE62BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Resenas 
+        add constraint FKF708AE62F4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table Resenas 
+        add constraint FKF708AE628336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table Resenas 
+        add constraint FKF708AE6285102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Resenas 
+        add constraint FKF708AE6274E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table Reportes 
         add constraint FK26728BE177237615 
         foreign key (TipoReporteFk) 
@@ -3690,10 +3602,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table CoautorInternoReportes 
-        add constraint FK276A11CD8336201B 
-=======
     alter table NivelEstudios 
         add constraint FKD8EB52B985102A57 
         foreign key (CreadorPorFk) 
@@ -3701,6 +3609,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     alter table NivelEstudios 
         add constraint FKD8EB52B974E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table IdentificadorLibros 
+        add constraint FK7A9B067785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table IdentificadorLibros 
+        add constraint FK7A9B067774E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -3731,7 +3649,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     alter table OrganoExternos 
         add constraint FK55BF0AAE8336201B 
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         foreign key (InvestigadorFk) 
         references Investigadores
 
@@ -3775,93 +3692,8 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (InvestigadorFk) 
         references Investigadores
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table Capitulos 
-        add constraint FK3165FEADE5A51EE5 
-        foreign key (TipoCapituloFk) 
-        references TipoCapitulos
-
-    alter table Capitulos 
-        add constraint FK3165FEAD4B54D394 
-        foreign key (EstadoProductoFk) 
-        references EstadoProductos
-
-    alter table Capitulos 
-        add constraint FK3165FEAD11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Capitulos 
-        add constraint FK3165FEAD1EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Capitulos 
-        add constraint FK3165FEAD6425E2FD 
-        foreign key (IdiomaFk) 
-        references Idiomas
-
-    alter table Capitulos 
-        add constraint FK3165FEAD7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Capitulos 
-        add constraint FK3165FEAD103EADB1 
-        foreign key (FormaParticipacionFk) 
-        references FormaParticipaciones
-
-    alter table Capitulos 
-        add constraint FK3165FEAD2261429F 
-        foreign key (TipoParticipacionFk) 
-        references TipoParticipaciones
-
-    alter table Capitulos 
-        add constraint FK3165FEAD437DED87 
-        foreign key (TipoParticipanteFk) 
-        references TipoParticipantes
-
-    alter table Capitulos 
-        add constraint FK3165FEAD295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table Capitulos 
-        add constraint FK3165FEADBC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Capitulos 
-        add constraint FK3165FEADF4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table Capitulos 
-        add constraint FK3165FEAD85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Capitulos 
-        add constraint FK3165FEAD74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table TipoArticulos 
-        add constraint FK26B980285102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoArticulos 
-        add constraint FK26B980274E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table FormaParticipaciones 
-        add constraint FK8608BEE085102A57 
-=======
     alter table TipoFinanciamientos 
         add constraint FK2D5E463785102A57 
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -3920,6 +3752,46 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table CoautorInternoResenas 
+        add constraint FK17D499948336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoResenas 
+        add constraint FK17D4999485102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoResenas 
+        add constraint FK17D4999474E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoResenas 
+        add constraint FK17D49994FF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
+
+    alter table CoautorExternoResenas 
+        add constraint FKDA2968108FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoResenas 
+        add constraint FKDA29681085102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoResenas 
+        add constraint FKDA29681074E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorExternoResenas 
+        add constraint FKDA296810FF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
+
     alter table TipoActividades 
         add constraint FKF88C425185102A57 
         foreign key (CreadorPorFk) 
@@ -3960,17 +3832,10 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table Articulos 
-        add constraint FK3EB394D74B54D394 
-        foreign key (EstadoProductoFk) 
-        references EstadoProductos
-=======
     alter table Instituciones 
         add constraint FK7E69627C85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     alter table Instituciones 
         add constraint FK7E69627C74E8BAB7 
@@ -4024,6 +3889,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     alter table Dependencias 
         add constraint FK4ECBCD2B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Convenios 
+        add constraint FKF35B3A2D85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table Convenios 
+        add constraint FKF35B3A2D74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -4412,12 +4287,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (InvestigadorFk) 
         references Investigadores
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table Departamentos 
-        add constraint FKDF172AB885102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-=======
     alter table Capitulos 
         add constraint FK3165FEADE5A51EE5 
         foreign key (TipoCapituloFk) 
@@ -4462,7 +4331,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         add constraint FK3165FEAD437DED87 
         foreign key (TipoParticipanteFk) 
         references TipoParticipantes
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     alter table Capitulos 
         add constraint FK3165FEAD295BC133 
@@ -4614,17 +4482,10 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (IdiomaFk) 
         references Idiomas
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table TipoParticipacionEventos 
-        add constraint FK87E86B1D74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-=======
     alter table Articulos 
         add constraint FK3EB394D74B54D394 
         foreign key (EstadoProductoFk) 
         references EstadoProductos
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
 
     alter table Articulos 
         add constraint FK3EB394D711666E2A 
@@ -4761,6 +4622,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table TipoPublicaciones 
+        add constraint FK7522403185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoPublicaciones 
+        add constraint FK7522403174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table TipoParticipantes 
         add constraint FK27DF9BD685102A57 
         foreign key (CreadorPorFk) 
@@ -4791,70 +4662,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (InvestigadorFk) 
         references Investigadores
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA2BAFDC96 
-        foreign key (NivelEstudioFk) 
-        references NivelEstudios
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA1EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAC0410E89 
-        foreign key (EstadoPaisFk) 
-        references EstadoPaises
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA3E082BED 
-        foreign key (SectorFk) 
-        references Sectores
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAEC222BA6 
-        foreign key (OrganizacionFk) 
-        references Organizaciones
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEABC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEAF4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table FormacionAcademicas 
-        add constraint FK824D8BEA74E8BAB7 
-=======
     alter table TipoOrganos 
         add constraint FK75A1DA3185102A57 
         foreign key (CreadorPorFk) 
@@ -4862,7 +4669,6 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
 
     alter table TipoOrganos 
         add constraint FK75A1DA3174E8BAB7 
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -4876,6 +4682,16 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table TipoEstancias 
+        add constraint FK53E7616285102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoEstancias 
+        add constraint FK53E7616274E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
     alter table EstadoProductos 
         add constraint FKD667359285102A57 
         foreign key (CreadorPorFk) 
@@ -4886,23 +4702,8 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table NivelEstudios 
-        add constraint FKD8EB52B985102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table NivelEstudios 
-        add constraint FKD8EB52B974E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table InvestigadorExternos 
-        add constraint FK2FE0968885102A57 
-=======
     alter table Roles 
         add constraint FK1A2E670F85102A57 
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 
@@ -4951,159 +4752,112 @@ alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
         foreign key (InvestigadorFk) 
         references Investigadores
 
-    alter table Resenas 
-        add constraint FKF708AE624B54D394 
-        foreign key (EstadoProductoFk) 
-        references EstadoProductos
+    alter table ProductoDerivados 
+        add constraint FK913A1E0A85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
 
-    alter table Resenas 
-        add constraint FKF708AE6211666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
+    alter table ProductoDerivados 
+        add constraint FK913A1E0A74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
 
-    alter table Resenas 
-        add constraint FKF708AE6270EA6C9E 
+    alter table TipoActividadMovilidadAcademicas 
+        add constraint FKDB644A341BCB3374 
+        foreign key (TipoActividadFk) 
+        references TipoActividades
+
+    alter table TipoActividadMovilidadAcademicas 
+        add constraint FKDB644A3485102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoActividadMovilidadAcademicas 
+        add constraint FKDB644A3474E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table TipoActividadMovilidadAcademicas 
+        add constraint FKDB644A342C7CB987 
+        foreign key (MovilidadAcademicaFk) 
+        references MovilidadAcademicas
+
+    alter table ProductoDerivadoMovilidadAcademicas 
+        add constraint FK56549E488718AE0E 
+        foreign key (ProductoDerivadoFk) 
+        references ProductoDerivados
+
+    alter table ProductoDerivadoMovilidadAcademicas 
+        add constraint FK56549E4885102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ProductoDerivadoMovilidadAcademicas 
+        add constraint FK56549E4874E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table ProductoDerivadoMovilidadAcademicas 
+        add constraint FK56549E482C7CB987 
+        foreign key (MovilidadAcademicaFk) 
+        references MovilidadAcademicas
+
+    alter table ProyectoMovilidadAcademicas 
+        add constraint FKC93E6F3A70EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
 
-    alter table Resenas 
-        add constraint FKF708AE621EDC2D3B 
+    alter table ProyectoMovilidadAcademicas 
+        add constraint FKC93E6F3A85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table ProyectoMovilidadAcademicas 
+        add constraint FKC93E6F3A74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table ProyectoMovilidadAcademicas 
+        add constraint FKC93E6F3A2C7CB987 
+        foreign key (MovilidadAcademicaFk) 
+        references MovilidadAcademicas
+
+    alter table MovilidadAcademicas 
+        add constraint FK684440B07A8C3DE5 
+        foreign key (TipoEstanciaFk) 
+        references TipoEstancias
+
+    alter table MovilidadAcademicas 
+        add constraint FK684440B08BB69942 
+        foreign key (TipoInstitucionFk) 
+        references TipoInstituciones
+
+    alter table MovilidadAcademicas 
+        add constraint FK684440B064F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table MovilidadAcademicas 
+        add constraint FK684440B01EDC2D3B 
         foreign key (LineaTematicaFk) 
         references LineaTematicas
 
-    alter table Resenas 
-        add constraint FKF708AE627A8488F7 
-        foreign key (PaisFk) 
-        references Paises
+    alter table MovilidadAcademicas 
+        add constraint FK684440B0201EE7BB 
+        foreign key (ConvenioFk) 
+        references Convenios
 
-    alter table Resenas 
-        add constraint FKF708AE62295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table Resenas 
-        add constraint FKF708AE62BC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Resenas 
-        add constraint FKF708AE62F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table Resenas 
-        add constraint FKF708AE628336201B 
+    alter table MovilidadAcademicas 
+        add constraint FK684440B08336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
 
-    alter table Resenas 
-        add constraint FKF708AE6285102A57 
+    alter table MovilidadAcademicas 
+        add constraint FK684440B085102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
 
-    alter table Resenas 
-        add constraint FKF708AE6274E8BAB7 
+    alter table MovilidadAcademicas 
+        add constraint FK684440B074E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
-    alter table CoautorInternoResenas 
-        add constraint FK17D499948336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoResenas 
-        add constraint FK17D4999485102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoResenas 
-        add constraint FK17D4999474E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoResenas 
-        add constraint FK17D49994FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
-
-    alter table CoautorExternoResenas 
-        add constraint FKDA2968108FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoResenas 
-        add constraint FKDA29681085102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table CoautorExternoResenas 
-        add constraint FKDA29681074E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-<<<<<<< HEAD:db/DbSchema.sql
-    alter table TipoEstancias 
-        add constraint FK53E7616285102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoEstancias 
-        add constraint FK53E7616274E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table TipoInstituciones 
-        add constraint FK77542E185102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoInstituciones 
-        add constraint FK77542E174E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table Convenios 
-        add constraint FKF35B3A2D85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Convenios 
-        add constraint FKF35B3A2D74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table TipoProyectos 
-        add constraint FK1E50E26A85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoProyectos 
-        add constraint FK1E50E26A74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table TipoPublicaciones 
-        add constraint FK7522403185102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoPublicaciones 
-        add constraint FK7522403174E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table IdentificadorLibros 
-        add constraint FK7A9B067785102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table IdentificadorLibros 
-        add constraint FK7A9B067774E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-=======
-    alter table CoautorExternoResenas 
-        add constraint FKDA296810FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
->>>>>>> b9089521820fbabd3e7df2a015a75ba61f9839fc:db/DbSchema.sql

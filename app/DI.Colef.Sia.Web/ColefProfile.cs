@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateReportesMaps();
             CreateResenasMaps();
             CreateFormacionAcademicaMaps();
+            CreateMovilidadAcademicaMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -101,6 +102,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
+                           o => o.Ignore());
+        }
+
+        private void CreateMovilidadAcademicaMaps()
+        {
+            Mapper.CreateMap<MovilidadAcademica, MovilidadAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoEstancia,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoInstitucion,
+                           o => o.Ignore())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Convenio,
+                           o => o.Ignore())
+                .ForMember(d => d.Investigador,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<TipoActividadMovilidadAcademica, TipoActividadMovilidadAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.TipoActividad,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<ProductoDerivadoMovilidadAcademica, ProductoDerivadoMovilidadAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.ProductoDerivado,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<ProyectoMovilidadAcademica, ProyectoMovilidadAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Proyecto,
                            o => o.Ignore());
         }
 
@@ -751,6 +793,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoPublicacion, TipoPublicacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<ProductoDerivado, ProductoDerivadoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

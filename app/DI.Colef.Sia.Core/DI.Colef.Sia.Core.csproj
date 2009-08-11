@@ -121,6 +121,7 @@
     <Compile Include="Investigador.cs" />
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
+    <Compile Include="MovilidadAcademica.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
@@ -138,8 +139,11 @@
     <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="Persona.cs" />
+    <Compile Include="ProductoDerivado.cs" />
+    <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />
     <Compile Include="Proyecto.cs" />
+    <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
@@ -160,6 +164,7 @@
     <Compile Include="Subdisciplina.cs" />
     <Compile Include="Tesis.cs" />
     <Compile Include="TipoActividad.cs" />
+    <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />

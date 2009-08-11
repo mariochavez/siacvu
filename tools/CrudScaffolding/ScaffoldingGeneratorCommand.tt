@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Prueba", 3);
+	new EntityScaffoldingDetails("MovilidadAcademica", 3);
  
 /*
  * Property names should be PascalCase.
@@ -32,27 +32,23 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NivelEstudio", "NivelEstudio", "NivelEstudio")
+	new EntityProperty("TipoEstancia", "TipoEstancia", "TipoEstancia")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NumeroCedula","int", null)
+	new EntityProperty("TipoInstitucion","TipoInstitucion", "TipoInstitucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TituloGrado","string", null)
+	new EntityProperty("Institucion","Institucion", "Institucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaObtencion","DateTime", null)
+	new EntityProperty("FechaInicial","DateTime", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Institucion", "Institucion", "Institucion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TituloTesis","string", null)
+	new EntityProperty("FechaFinal","DateTime", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -60,47 +56,19 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Pais","Pais", "Pais")
+	new EntityProperty("Convenio","Convenio", "Convenio")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
+	new EntityProperty("TipoActividadMovilidadAcademicas", "IList<TipoActividadMovilidadAcademica>", "TipoActividad")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Ciudad","string", null)
+	new EntityProperty("ProductoDerivadoMovilidadAcademicas", "IList<ProductoDerivadoMovilidadAcademica>", "ProductoDerivado")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Estatus","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Sector","Sector", "Sector")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Organizacion","Organizacion", "Organizacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Area","Area", "Area")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Disciplina","Disciplina", "Disciplina")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
+	new EntityProperty("ProyectoMovilidadAcademicas", "IList<ProyectoMovilidadAcademica>", "Proyecto")
 );
 ///////////////////////////////////////////////////
 
