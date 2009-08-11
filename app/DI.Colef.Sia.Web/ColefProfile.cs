@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateOrganosExternosMaps();
             CreateEventosMaps();
             CreateReportesMaps();
-            CreateReseñasMaps();
+            CreateResenasMaps();
             CreateFormacionAcademicaMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
@@ -135,9 +135,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
         }
 
-        private void CreateReseñasMaps()
+        private void CreateResenasMaps()
         {
-            Mapper.CreateMap<Reseña, ReseñaForm>()
+            Mapper.CreateMap<Resena, ResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
@@ -163,13 +163,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorInternoReseña, CoautorInternoReseñaForm>()
+            Mapper.CreateMap<CoautorInternoResena, CoautorInternoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.InvestigadorId,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorExternoReseña, CoautorExternoReseñaForm>()
+            Mapper.CreateMap<CoautorExternoResena, CoautorExternoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.InvestigadorExternoId,
@@ -393,7 +393,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Estado,
+                .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
@@ -452,7 +452,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Estado,
+                .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
@@ -664,7 +664,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<PeriodoReferencia, PeriodoReferenciaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>());
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -729,6 +733,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<NivelEstudio, NivelEstudioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Convenio, ConvenioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<IdentificadorLibro, IdentificadorLibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoEstancia, TipoEstanciaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoInstitucion, TipoInstitucionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoProyecto, TipoProyectoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoPublicacion, TipoPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

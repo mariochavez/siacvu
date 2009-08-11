@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 			
 			if(property.TypeName == property.PropertyName){
 				WriteLine("public int " + property.PropertyName + " { get; set; }");
+				WriteLine("public int " + property.PropertyName + "Id { get; set; }");
 				continue;
 			}
 			
@@ -58,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
 			if(property.TypeName.Contains("IList")){
 				string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+				WriteLine("public " + typeName + "Form[] " + property.PropertyName + " { get; set; }");
 				WriteLine("public " + typeName + "Form " + typeName + " { get; set; }");
 			}
 		}

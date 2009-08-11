@@ -298,5 +298,41 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         NivelEstudio[] GetAllNivelEstudios();
         NivelEstudio[] GetActiveNivelEstudios();
         void SaveNivelEstudio(NivelEstudio nivelEstudio);
+
+        //Tipo de publicacion
+        TipoPublicacion GetTipoPublicacionById(int id);
+        TipoPublicacion[] GetAllTipoPublicacions();
+        TipoPublicacion[] GetActiveTipoPublicacions();
+        void SaveTipoPublicacion(TipoPublicacion tipoPublicacion);
+
+        //Tipo de Proyecto
+        TipoProyecto GetTipoProyectoById(int id);
+        TipoProyecto[] GetAllTipoProyectos();
+        TipoProyecto[] GetActiveTipoProyectos();
+        void SaveTipoProyecto(TipoProyecto tipoProyecto);
+
+        //Tipo de Institucion
+        TipoInstitucion GetTipoInstitucionById(int id);
+        TipoInstitucion[] GetAllTipoInstitucions();
+        TipoInstitucion[] GetActiveTipoInstitucions();
+        void SaveTipoInstitucion(TipoInstitucion tipoInstitucion);
+
+        //Tipo de Estancia
+        TipoEstancia GetTipoEstanciaById(int id);
+        TipoEstancia[] GetAllTipoEstancias();
+        TipoEstancia[] GetActiveTipoEstancias();
+        void SaveTipoEstancia(TipoEstancia tipoEstancia);
+
+        //Idenificador del Libro
+        IdentificadorLibro GetIdentificadorLibroById(int id);
+        IdentificadorLibro[] GetAllIdentificadorLibros();
+        IdentificadorLibro[] GetActiveIdentificadorLibros();
+        void SaveIdentificadorLibro(IdentificadorLibro identificadorLibro);
+
+        //Convenio
+        Convenio GetConvenioById(int id);
+        Convenio[] GetAllConvenios();
+        Convenio[] GetActiveConvenios();
+        void SaveConvenio(Convenio convenio);
     }
 }

@@ -105,6 +105,28 @@ public class EntityScaffoldingDetails {
 			return false;
 		}
 	}
+	
+	public bool HasAnyCatalogNames {
+		get {
+			foreach (EntityProperty entityProperty in EntityProperties) {
+				if (entityProperty.CatalogName != "")
+					return true;
+			}
+		
+			return false;
+		}
+	}
+	
+	public bool HasAnyIList {
+		get {
+			foreach (EntityProperty entityProperty in EntityProperties) {
+				if (entityProperty.TypeName.Contains("IList"))
+					return true;
+			}
+		
+			return false;
+		}
+	}
 
     /// <summary>
 	/// Parses the namespaced entity name into the namespace hierarchy and entity name

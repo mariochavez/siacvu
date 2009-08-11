@@ -91,6 +91,14 @@
     </None>
     <None Include="CustomTemplates\Web\Views\ActivateTemplate.tt">
     </None>
+    <None Include="CustomTemplates\Web\Views\AddTemplate.tt">
+    </None>
+    <None Include="CustomTemplates\Web\Views\NewjsTemplate.tt">
+    </None>
+    <None Include="CustomTemplates\Web\Views\NewPartialView.tt">
+    </None>
+    <None Include="CustomTemplates\Web\Views\EditPartialView.tt">
+    </None>
     <None Include="CustomTemplates\Web\Views\NewNewTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Views\NewTemplate.tt">

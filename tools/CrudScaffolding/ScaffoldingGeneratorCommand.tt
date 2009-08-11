@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("FormacionAcademica", 3);
+	new EntityScaffoldingDetails("Prueba", 3);
  
 /*
  * Property names should be PascalCase.
@@ -95,13 +95,13 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
+);
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution

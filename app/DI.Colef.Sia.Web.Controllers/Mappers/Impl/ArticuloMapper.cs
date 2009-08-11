@@ -48,7 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Estado = catalogoService.GetEstadoById(message.Estado);
+            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Pais = catalogoService.GetPaisById(message.Pais);

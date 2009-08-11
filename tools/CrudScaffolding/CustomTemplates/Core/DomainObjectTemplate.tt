@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 				string titleize = spanishInflector.Titleize(typeName);
 				string[] addName = titleize.Split(' ');
 				
-				WriteLine("public virtual void Add" + addName[0]  +"(" + typeName + " " + spanishInflector.Camelize(typeName) + ")");
+				WriteLine("public virtual void Add" + property.CatalogName  +"(" + typeName + " " + spanishInflector.Camelize(typeName) + ")");
 				WriteLine("{");
 					WriteLine(property.PropertyName + ".Add(" + spanishInflector.Camelize(typeName) + ");");
 				WriteLine("}");

@@ -18,6 +18,24 @@
                 <%=Html.ValidationMessage("Nombre") %>
             </td>
         </tr>
+        <tr>
+            <td class="label required">
+                <label for="Puesto">Puesto:<em>*</em></label>
+            </td>
+            <td class="field">
+                <%=Html.TextBox("Puesto", Model.Form.Puesto, new { @class = "big", size = 10, maxlength = 40 })%>                
+                <%=Html.ValidationMessage("Puesto")%>
+            </td>
+        </tr>
+        <tr>
+            <td class="label required">
+                <label for="Email">Email:<em>*</em></label>
+            </td>
+            <td class="field">
+                <%=Html.TextBox("Email", Model.Form.Email, new { @class = "big", size = 10, maxlength = 40 })%>
+                <%=Html.ValidationMessage("Email")%>
+            </td>
+        </tr>
     </table>
     
 	<div class="btn_container_footer">

@@ -37,6 +37,16 @@ public class NewNewTemplate : BaseTemplate
 						<label><#= titleize #>:<em>*</em></label>
 					</td>
 					<td>
+						<#+ if(property.TypeName == "bool"){ #>
+							<%= Html.CheckBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>) %>
+							<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
+						<#+ } #>
+						
+						<#+ if(property.TypeName == "int"){ #>
+							<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 100, size = 14 })%>
+							<%=Html.ValidationMessage("<#= property.PropertyName #>")%>						
+						<#+ } #>
+						
 						<#+ if(property.TypeName == "string"){#>
 							<%=Html.TextBox("<#= property.PropertyName #>", Model.Form.<#= property.PropertyName #>, new { maxlength = 100 })%>
 							<%=Html.ValidationMessage("<#= property.PropertyName #>")%>
@@ -84,7 +94,7 @@ public class NewNewTemplate : BaseTemplate
 				</tr>
 			
 			<#+ } #>
-			<table>
+			</table>
 		
 			<div class="btn_container_footer">
 				<span class="btn btn_normal_brown">

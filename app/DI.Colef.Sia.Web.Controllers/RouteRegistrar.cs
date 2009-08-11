@@ -19,6 +19,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}", new { action = "Index" }),
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}/{id}")
             //);
+            routes.CreateArea("Productos", "DI.Colef.Sia.Web.Controllers.Productos",
+                              routes.MapRoute(null, "Productos/{controller}/{action}", new { action = "Index" }),
+                              routes.MapRoute(null, "Productos/{controller}/{id}/{action}")
+                );
+
             routes.CreateArea("Catalogos", "DI.Colef.Sia.Web.Controllers.Catalogos",
                               routes.MapRoute(null, "Catalogos/{controller}/{action}", new { action = "Index" }),
                               routes.MapRoute(null, "Catalogos/{controller}/{id}/{action}")
