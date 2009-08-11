@@ -37,6 +37,7 @@
 		    <label>Invitacion:<em>*</em></label>
 		    <br />
 	        <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
+	        <%=Html.ValidationMessage("Invitacion")%>
         </td>
     </tr>
 </table>

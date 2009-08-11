@@ -31,10 +31,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			this.catalogoService = catalogoService;
         }
 		<#+ } else { 
+			if(EntityScaffoldingDetails.HasAnyCatalogNames){
+				WriteLine("readonly ICatalogoService catalogoService;");
+			}
 			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-				if(property.TypeName == property.PropertyName){
-					WriteLine("readonly ICatalogoService catalogoService;");
-				}
 				if(property.TypeName.Contains("IList")){
 					SpanishInflector spanishInflector = new SpanishInflector();
 					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
@@ -43,10 +43,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			}
 		#>
 		public <#= EntityScaffoldingDetails.EntityName #>Mapper(IRepository<<#= EntityScaffoldingDetails.EntityName #>> repository
-		<#+ foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-				if(property.TypeName == property.PropertyName){
-					WriteLine(", ICatalogoService catalogoService");
-				}
+		
+		<#+ 
+			if(EntityScaffoldingDetails.HasAnyCatalogNames){
+				WriteLine(", ICatalogoService catalogoService");
+			}
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
 				if(property.TypeName.Contains("IList")){
 					SpanishInflector spanishInflector = new SpanishInflector();
 					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
@@ -57,10 +59,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		) 
 			: base(repository)
         {
-			<#+ foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
-					if(property.TypeName == property.PropertyName){
-						WriteLine("this.catalogoService = catalogoService;");
-					}
+			<#+ 
+				if(EntityScaffoldingDetails.HasAnyCatalogNames){
+					WriteLine("this.catalogoService = catalogoService;");
+				}
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
 					if(property.TypeName.Contains("IList")){
 						SpanishInflector spanishInflector = new SpanishInflector();
 						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
@@ -112,6 +115,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			PushIndent("\t\t");
 			
 				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.TypeName == "int" || property.TypeName == "string" || property.TypeName == "bool"){
+						WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ";");
+					}
+					
 					if(property.TypeName == "DateTime"){
 						WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ".FromShortDateToDateTime();");
 						continue;

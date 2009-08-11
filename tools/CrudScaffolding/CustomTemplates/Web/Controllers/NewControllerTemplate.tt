@@ -15,6 +15,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -37,6 +38,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 				
 				WriteLine("readonly I" + property.CatalogName + "Mapper " + camelize + "Mapper;");
 			}
+			if(property.TypeName.Contains("IList")){
+				SpanishInflector spanishInflector = new SpanishInflector();
+				string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+				string camelizeTypeName = spanishInflector.Camelize(typeName);
+				string camelize = spanishInflector.Camelize(property.CatalogName);
+				
+				WriteLine("readonly I" + typeName + "Mapper " + camelizeTypeName + "Mapper;");
+			}
 		}
 		#>
         
@@ -52,6 +61,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 					
 					WriteLine(", I" + property.CatalogName + "Mapper " + camelize + "Mapper");
 				}
+				if(property.TypeName.Contains("IList")){
+					SpanishInflector spanishInflector = new SpanishInflector();
+					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+					string camelizeTypeName = spanishInflector.Camelize(typeName);
+					string camelize = spanishInflector.Camelize(property.CatalogName);
+					
+					WriteLine(", I" + typeName + "Mapper " + camelizeTypeName + "Mapper");
+				}
 			}
 			#>
 			) : base(usuarioService)
@@ -66,6 +83,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 					string camelize = spanishInflector.Camelize(property.CatalogName);
 					
 					WriteLine("this." + camelize + "Mapper = " + camelize + "Mapper;");
+				}
+				if(property.TypeName.Contains("IList")){
+					SpanishInflector spanishInflector = new SpanishInflector();
+					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+					string camelizeTypeName = spanishInflector.Camelize(typeName);
+					string camelize = spanishInflector.Camelize(property.CatalogName);
+					
+					WriteLine("this." + camelizeTypeName + "Mapper = " + camelizeTypeName + "Mapper;");
 				}
 			}
 			#>
@@ -97,7 +122,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
-            data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            
+            <#+ if(!EntityScaffoldingDetails.HasAnyCatalogNames){ #>
+			data.Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            <#+ } else { #>
+            
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #>Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+            data.Form = SetupNewForm(<#= EntityScaffoldingDetails.EntityNameCamelCase #>Form);
+
+            FormSetCombos(data.Form);
+            <#+ } #>
 
 			ViewData.Model = data;
             return View();
@@ -144,9 +179,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(form);
             
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>.ModificadoPor = CurrentUser();
-
+            
+			<#+ if(!EntityScaffoldingDetails.HasAnyCatalogNames){ #>
             if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.Edit))
                 return ViewEdit();
+            <#+ } else { #>
+            if (!IsValidateModel(<#= EntityScaffoldingDetails.EntityNameCamelCase #>, form, Title.Edit))
+            {
+                var <#= EntityScaffoldingDetails.EntityNameCamelCase #>Form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+
+                ((GenericViewData<<#= EntityScaffoldingDetails.EntityName #>Form>)ViewData.Model).Form = SetupNewForm(<#= EntityScaffoldingDetails.EntityNameCamelCase #>Form);
+                FormSetCombos(<#= EntityScaffoldingDetails.EntityNameCamelCase #>Form);
+                return ViewEdit();
+            }
+            <#+ } #>
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
@@ -181,6 +227,68 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
         
+		<#+ 
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			if(property.TypeName.Contains("IList")){
+				SpanishInflector spanishInflector = new SpanishInflector();
+				string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+				string camelizeTypeName = spanishInflector.Camelize(typeName);
+				string catalogName = property.CatalogName;
+				string titleize = spanishInflector.Titleize(catalogName);				
+				string[] addName = titleize.Split(' ');
+				
+				catalogName = "";
+				foreach(string name in addName){
+					catalogName += spanishInflector.Pluralize(name);
+				}
+				#>
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult New<#= property.CatalogName #>(int id)
+        {
+            var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(id);
+            var form = new <#= EntityScaffoldingDetails.EntityName #>Form();
+
+            if (<#= EntityScaffoldingDetails.EntityNameCamelCase #> != null)
+                form.Id = <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Id;
+
+            form.<#= typeName #> = new <#= typeName #>Form();
+            form.<#= catalogName #> = <#= camelizeTypeName #>Mapper.Map(catalogoService.GetActive<#= catalogName #>());
+
+            return Rjs("New<#= property.CatalogName #>", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Add<#= property.CatalogName #>([Bind(Prefix = "<#= typeName #>")]<#= typeName #>Form form, int <#= EntityScaffoldingDetails.EntityNameCamelCase #>Id)
+        {
+            var <#= camelizeTypeName #> = <#= camelizeTypeName #>Mapper.Map(form);
+
+            ModelState.AddModelErrors(<#= camelizeTypeName #>.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            <#= camelizeTypeName #>.CreadorPor = CurrentUser();
+            <#= camelizeTypeName #>.ModificadoPor = CurrentUser();
+
+            if (<#= EntityScaffoldingDetails.EntityNameCamelCase #>Id != 0)
+            {
+                var <#= EntityScaffoldingDetails.EntityNameCamelCase #> = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Get<#= EntityScaffoldingDetails.EntityName #>ById(<#= EntityScaffoldingDetails.EntityNameCamelCase #>Id);
+                <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Add<#= property.CatalogName #>(<#= camelizeTypeName #>);
+                <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
+            }
+
+            var <#= camelizeTypeName #>Form = <#= camelizeTypeName #>Mapper.Map(<#= camelizeTypeName #>);
+
+            return Rjs("Add<#= property.CatalogName #>", <#= camelizeTypeName #>Form);
+        }
+		<#+	}
+		}
+		#>
+        
+        
+        <#+ if(!EntityScaffoldingDetails.HasAnyCatalogNames){ #>
         <#= EntityScaffoldingDetails.EntityName #>Form SetupNewForm()
         {
             return new <#= EntityScaffoldingDetails.EntityName #>Form
@@ -218,6 +326,61 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 				#>
             };
         }
+        <#+ } else { #>
+        
+        <#= EntityScaffoldingDetails.EntityName #>Form SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+        
+        <#= EntityScaffoldingDetails.EntityName #>Form SetupNewForm(<#= EntityScaffoldingDetails.EntityName #>Form form)
+        {
+			form = form ?? new <#= EntityScaffoldingDetails.EntityName #>Form();
+            
+				<#+ 
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.TypeName.Contains("IList")){
+						SpanishInflector spanishInflector = new SpanishInflector();
+						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+						WriteLine("form." + typeName + " = new " + typeName + "Form();");
+					}
+				}
+				#>
+                
+                //Lista de Catalogos Pendientes
+                <#+ 
+          		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.CatalogName != null){
+						SpanishInflector spanishInflector = new SpanishInflector();
+						string camelize = spanishInflector.Camelize(property.CatalogName);
+						
+						string catalogName = property.CatalogName;
+						string titleize = spanishInflector.Titleize(catalogName);				
+						string[] addName = titleize.Split(' ');
+				
+						catalogName = "";
+						foreach(string name in addName){
+							catalogName += spanishInflector.Pluralize(name);
+						}
+						
+						WriteLine("form." + catalogName + " = " + camelize + "Mapper.Map(catalogoService.GetActive" + catalogName + "());");
+					}
+				}
+				#>
+			return form;
+        }
+        
+        private void FormSetCombos(<#= EntityScaffoldingDetails.EntityName #>Form form)
+        {
+				<#+ 
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.CatalogName != null && !property.TypeName.Contains("IList")){ #>
+					ViewData["<#= property.TypeName #>"] = form.<#= property.TypeName#>Id;
+				<#+	}
+				}
+				#>
+        }
+        <#+ } #>
     }
 }
 <#+

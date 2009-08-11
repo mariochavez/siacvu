@@ -16,6 +16,10 @@
 <#@ include file="./CustomTemplates/Web/Views/IndexTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ActivateTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ShowTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/AddTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/NewjsTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/EditPartialView.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/NewPartialView.tt" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="EnvDTE" #>
 
@@ -345,6 +349,14 @@ public class ScaffoldingGenerator : Generator
 				GenerateIndexView(targetPath);
 				GenerateJsViewActivate(targetPath);
 				GenerateNewNewView(targetPath);
+				foreach(EntityProperty property in entityScaffoldingDetails.EntityProperties){
+					if(property.TypeName.Contains("IList")){
+						GenerateAddjsView(targetPath, property.CatalogName);
+						GenerateNewjsView(targetPath, property.CatalogName);
+						GenerateEditPartialView(targetPath, property.CatalogName);
+						GenerateNewPartialView(targetPath, property.CatalogName);
+					}
+				}			
 			}
 		}
 		else {
@@ -433,6 +445,58 @@ public class ScaffoldingGenerator : Generator
 		if (! File.Exists(targetPath + fileName)) {
 			ShowTemplate showTemplate = new ShowTemplate(solutionName, entityScaffoldingDetails);
 			RenderViewFile(showTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+	
+	private void GenerateAddjsView(string targetPath, string catalogName) {
+		string fileName = "Add" + catalogName + ".js.ascx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			AddTemplate addTemplate = 
+				new AddTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(addTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+
+	private void GenerateNewjsView(string targetPath, string catalogName) {
+		string fileName = "New" + catalogName + ".js.ascx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			NewjsTemplate newjsTemplate = 
+				new NewjsTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(newjsTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+
+	private void GenerateEditPartialView(string targetPath, string catalogName) {
+		string fileName = "_Edit" + catalogName + ".ascx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			EditPartialView editPartialView = 
+				new EditPartialView(solutionName, entityScaffoldingDetails);
+			RenderViewFile(editPartialView, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+
+	private void GenerateNewPartialView(string targetPath, string catalogName) {
+		string fileName = "_New" + catalogName + ".ascx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			NewPartialView newPartialView = 
+				new NewPartialView(solutionName, entityScaffoldingDetails);
+			RenderViewFile(newPartialView, targetPath + fileName);
 		}
 		else {
 			Log("File already exists " + targetPath + fileName);
