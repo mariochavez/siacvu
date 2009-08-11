@@ -14,15 +14,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
 
-        public GradoAcademicoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IGradoAcademicoMapper gradoAcademicoMapper)
-            : base(usuarioService)
+        public GradoAcademicoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                        IGradoAcademicoMapper gradoAcademicoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
             var gradoAcademicos = catalogoService.GetAllGradoAcademicos();
@@ -30,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -39,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -51,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -97,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
             var form = gradoAcademicoMapper.Map(gradoAcademico);
-            
+
             return Rjs(form);
         }
 
@@ -111,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
             var form = gradoAcademicoMapper.Map(gradoAcademico);
-            
+
             return Rjs("Activate", form);
         }
     }

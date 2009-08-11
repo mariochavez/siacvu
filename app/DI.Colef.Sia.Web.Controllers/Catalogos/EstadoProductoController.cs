@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class EstadoProductoController : BaseController<EstadoProducto, EstadoProductoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IEstadoProductoMapper estadoProductoMapper;
 
-        public EstadoProductoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IEstadoProductoMapper estadoProductoMapper) 
-			: base (usuarioService)
+        public EstadoProductoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                        IEstadoProductoMapper estadoProductoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.estadoProductoMapper = estadoProductoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var estadoProductos = catalogoService.GetAllEstadoProductos();
             data.List = estadoProductoMapper.Map(estadoProductos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new EstadoProductoForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var estadoProducto = catalogoService.GetEstadoProductoById(id);
             data.Form = estadoProductoMapper.Map(estadoProducto);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var estadoProducto = catalogoService.GetEstadoProductoById(id);
             data.Form = estadoProductoMapper.Map(estadoProducto);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EstadoProductoForm form)
         {
-        
             var estadoProducto = estadoProductoMapper.Map(form);
-            
+
             estadoProducto.CreadorPor = CurrentUser();
             estadoProducto.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(estadoProducto, form, Title.New))
+            if (!IsValidateModel(estadoProducto, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveEstadoProducto(estadoProducto);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", estadoProducto.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EstadoProductoForm form)
         {
-        
             var estadoProducto = estadoProductoMapper.Map(form);
-            
+
             estadoProducto.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(estadoProducto, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", estadoProducto.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveEstadoProducto(estadoProducto);
 
             var form = estadoProductoMapper.Map(estadoProducto);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveEstadoProducto(estadoProducto);
 
             var form = estadoProductoMapper.Map(estadoProducto);
-            
+
             return Rjs("Activate", form);
         }
     }

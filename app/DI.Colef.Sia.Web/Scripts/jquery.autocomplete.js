@@ -179,7 +179,7 @@
         $results.html("");
         $input.val(v);
         hideResultsNow();
-        if (options.onItemSelect) setTimeout(function() { options.onItemSelect(li) }, 1);
+        if (options.onItemSelect) setTimeout(function() { options.onItemSelect(li, $input) }, 1);
     };
 
     // selects a portion of the input string
@@ -428,7 +428,7 @@
             }
         }
 
-        if (options.onFindValue) setTimeout(function() { options.onFindValue(li) }, 1);
+        if (options.onFindValue) setTimeout(function() { options.onFindValue(li, $input) }, 1);
     }
 
     function addToCache(q, data) {

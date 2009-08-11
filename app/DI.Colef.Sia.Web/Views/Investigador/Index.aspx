@@ -13,16 +13,7 @@
     <div id="datalist">
         <div> 
             <div class="floatr btn_container">
-                <span class="inputSearchField">
-                    <% using (Html.BeginForm("Search", null, FormMethod.Post, new { Id = "SearchForm"} )) { %>
-                        <%=Html.Hidden("SearchId") %>
-                    <% } %>
-                    <%=Html.TextBox("SearchValue", "Buscar ...",
-                        new { @class = "clearField inputSearch" })%>
-                </span>
-		        <span class="btn btn_small_white">
-			        <%=Html.ActionLink("Editar", "Search", null, new { @class = "autoComplete", rel = "#SearchValue" })%>
-		        </span>
+                <% Html.RenderPartial("_Search"); %>
 	        </div>
             <div class="floatl btn_container">
 		        <span class="btn btn_medium_brown">

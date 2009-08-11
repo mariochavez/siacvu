@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class TipoReporteController : BaseController<TipoReporte, TipoReporteForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ITipoReporteMapper tipoReporteMapper;
 
-        public TipoReporteController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoReporteMapper tipoReporteMapper) 
-			: base (usuarioService)
+        public TipoReporteController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                     ITipoReporteMapper tipoReporteMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoReporteMapper = tipoReporteMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoReportes = catalogoService.GetAllTipoReportes();
             data.List = tipoReporteMapper.Map(tipoReportes);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoReporteForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoReporte = catalogoService.GetTipoReporteById(id);
             data.Form = tipoReporteMapper.Map(tipoReporte);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoReporte = catalogoService.GetTipoReporteById(id);
             data.Form = tipoReporteMapper.Map(tipoReporte);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoReporteForm form)
         {
-        
             var tipoReporte = tipoReporteMapper.Map(form);
-            
+
             tipoReporte.CreadorPor = CurrentUser();
             tipoReporte.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoReporte, form, Title.New))
+            if (!IsValidateModel(tipoReporte, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoReporte(tipoReporte);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoReporte.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoReporteForm form)
         {
-        
             var tipoReporte = tipoReporteMapper.Map(form);
-            
+
             tipoReporte.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoReporte, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoReporte.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoReporte(tipoReporte);
 
             var form = tipoReporteMapper.Map(tipoReporte);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoReporte(tipoReporte);
 
             var form = tipoReporteMapper.Map(tipoReporte);
-            
+
             return Rjs("Activate", form);
         }
     }

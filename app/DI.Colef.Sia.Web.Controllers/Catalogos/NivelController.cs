@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly INivelMapper nivelMapper;
 
-        public NivelController(IUsuarioService usuarioService, ICatalogoService catalogoService, INivelMapper nivelMapper) 
-			: base (usuarioService)
+        public NivelController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                               INivelMapper nivelMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.nivelMapper = nivelMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var nivels = catalogoService.GetAllNiveles();
             data.List = nivelMapper.Map(nivels);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new NivelForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var nivel = catalogoService.GetNivelById(id);
             data.Form = nivelMapper.Map(nivel);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var nivel = catalogoService.GetNivelById(id);
             data.Form = nivelMapper.Map(nivel);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(NivelForm form)
         {
-        
             var nivel = nivelMapper.Map(form);
-            
+
             nivel.CreadorPor = CurrentUser();
             nivel.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(nivel, form, Title.New))
+            if (!IsValidateModel(nivel, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveNivel(nivel);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", nivel.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(NivelForm form)
         {
-        
             var nivel = nivelMapper.Map(form);
-            
+
             nivel.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(nivel, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", nivel.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveNivel(nivel);
 
             var form = nivelMapper.Map(nivel);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveNivel(nivel);
 
             var form = nivelMapper.Map(nivel);
-            
+
             return Rjs("Activate", form);
         }
     }

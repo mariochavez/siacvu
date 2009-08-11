@@ -14,8 +14,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly INivelEstudioMapper nivelEstudioMapper;
 
-        public NivelEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService, INivelEstudioMapper nivelEstudioMapper) 
-			: base (usuarioService)
+        public NivelEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService, INivelEstudioMapper nivelEstudioMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.nivelEstudioMapper = nivelEstudioMapper;

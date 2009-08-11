@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoCapituloMapper tipoCapituloMapper;
 
-        public TipoCapituloController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoCapituloMapper tipoCapituloMapper)
-            : base(usuarioService)
+        public TipoCapituloController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                      ITipoCapituloMapper tipoCapituloMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoCapituloMapper = tipoCapituloMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoCapitulos = catalogoService.GetAllTipoCapitulos();
             data.List = tipoCapituloMapper.Map(tipoCapitulos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoCapituloForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoCapitulo = catalogoService.GetTipoCapituloById(id);
             data.Form = tipoCapituloMapper.Map(tipoCapitulo);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoCapitulo = catalogoService.GetTipoCapituloById(id);
             data.Form = tipoCapituloMapper.Map(tipoCapitulo);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             tipoCapitulo.CreadorPor = CurrentUser();
             tipoCapitulo.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoCapitulo, form, Title.New))
+            if (!IsValidateModel(tipoCapitulo, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoCapitulo.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoCapitulo.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
             var form = tipoCapituloMapper.Map(tipoCapitulo);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
             var form = tipoCapituloMapper.Map(tipoCapitulo);
-            
+
             return Rjs("Activate", form);
         }
     }

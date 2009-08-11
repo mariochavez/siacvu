@@ -13,30 +13,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class EventoController : BaseController<Evento, EventoForm>
     {
-        readonly IEventoService eventoService;
-        readonly IInvestigadorService investigadorService;
-        readonly IEventoMapper eventoMapper;
-        readonly ICatalogoService catalogoService;
         readonly IAmbitoMapper ambitoMapper;
-        readonly ITipoEventoMapper tipoEventoMapper;
-        readonly ITipoParticipacionMapper tipoParticipacionMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
+        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
+        readonly IEventoMapper eventoMapper;
+        readonly IEventoService eventoService;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly ITipoEventoMapper tipoEventoMapper;
+        readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
         readonly ITipoParticipacionEventoMapper tipoParticipacionEventoMapper;
+        readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
-        public EventoController(IEventoService eventoService, IEventoMapper eventoMapper, ICatalogoService catalogoService, 
-            IUsuarioService usuarioService, IAmbitoMapper ambitoMapper, ITipoEventoMapper tipoEventoMapper, 
-            ITipoParticipacionMapper tipoParticipacionMapper, IInvestigadorExternoMapper investigadorExternoMapper, 
-            IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper, ILineaTematicaMapper lineaTematicaMapper, 
-            ITipoFinanciamientoMapper tipoFinanciamientoMapper, IInvestigadorService investigadorService,
-            ICoautorExternoEventoMapper coautorExternoEventoMapper, ICoautorInternoEventoMapper coautorInternoEventoMapper,
-            ITipoParticipacionEventoMapper tipoParticipacionEventoMapper)
-            : base(usuarioService)
+        public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
+                                ICatalogoService catalogoService,
+                                IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
+                                ITipoEventoMapper tipoEventoMapper,
+                                ITipoParticipacionMapper tipoParticipacionMapper,
+                                IInvestigadorExternoMapper investigadorExternoMapper,
+                                IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper,
+                                ILineaTematicaMapper lineaTematicaMapper,
+                                ITipoFinanciamientoMapper tipoFinanciamientoMapper,
+                                IInvestigadorService investigadorService,
+                                ICoautorExternoEventoMapper coautorExternoEventoMapper,
+                                ICoautorInternoEventoMapper coautorInternoEventoMapper,
+                                ITipoParticipacionEventoMapper tipoParticipacionEventoMapper,
+                                ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.investigadorService = investigadorService;
@@ -118,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
-                ((GenericViewData<EventoForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<EventoForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -138,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var eventoForm = eventoMapper.Map(evento);
 
-                ((GenericViewData<EventoForm>)ViewData.Model).Form = SetupNewForm(eventoForm);
+                ((GenericViewData<EventoForm>) ViewData.Model).Form = SetupNewForm(eventoForm);
                 FormSetCombos(eventoForm);
                 return ViewEdit();
             }
@@ -201,7 +207,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")]CoautorInternoEventoForm form, int eventoId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
+                                              int eventoId)
         {
             var coautorInternoEvento = coautorInternoEventoMapper.Map(form);
 
@@ -243,7 +250,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")]CoautorExternoEventoForm form, int eventoId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
+                                              int eventoId)
         {
             var coautorExternoEvento = coautorExternoEventoMapper.Map(form);
 
@@ -285,7 +293,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddTipoParticipacion([Bind(Prefix = "TipoParticipacionEvento")]TipoParticipacionEventoForm form, int eventoId)
+        public ActionResult AddTipoParticipacion(
+            [Bind(Prefix = "TipoParticipacionEvento")] TipoParticipacionEventoForm form, int eventoId)
         {
             var tipoParticipacionEvento = tipoParticipacionEventoMapper.Map(form);
 
@@ -336,7 +345,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(EventoForm form)
+        void FormSetCombos(EventoForm form)
         {
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["TipoEvento"] = form.TipoEventoId;

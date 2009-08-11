@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
-        public TipoParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoParticipacionMapper tipoParticipacionMapper)
-            : base(usuarioService)
+        public TipoParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                           ITipoParticipacionMapper tipoParticipacionMapper,
+                                           ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoParticipacions = catalogoService.GetAllTipoParticipaciones();
             data.List = tipoParticipacionMapper.Map(tipoParticipacions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoParticipacionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
             data.Form = tipoParticipacionMapper.Map(tipoParticipacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
             data.Form = tipoParticipacionMapper.Map(tipoParticipacion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             tipoParticipacion.CreadorPor = CurrentUser();
             tipoParticipacion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoParticipacion, form, Title.New))
+            if (!IsValidateModel(tipoParticipacion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoParticipacion.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoParticipacion.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
             var form = tipoParticipacionMapper.Map(tipoParticipacion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
             var form = tipoParticipacionMapper.Map(tipoParticipacion);
-            
+
             return Rjs("Activate", form);
         }
     }

@@ -12,21 +12,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class DistincionController : BaseController<Distincion, DistincionForm>
     {
-        readonly IDistincionService distincionService;
-        readonly IDistincionMapper distincionMapper;
-        readonly ICatalogoService catalogoService;
-        readonly ITipoDistincionMapper tipoDistincionMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IAmbitoMapper ambitoMapper;
-        readonly IPaisMapper paisMapper;
+        readonly ICatalogoService catalogoService;
+        readonly IDistincionMapper distincionMapper;
+        readonly IDistincionService distincionService;
         readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IPaisMapper paisMapper;
+        readonly ITipoDistincionMapper tipoDistincionMapper;
 
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService, 
-            ITipoDistincionMapper tipoDistincionMapper, IInstitucionMapper institucionMapper, 
-            IAmbitoMapper ambitoMapper, IPaisMapper paisMapper, IEstadoPaisMapper estadoPaisMapper)
-            : base(usuarioService)
+                                    ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                    ITipoDistincionMapper tipoDistincionMapper, IInstitucionMapper institucionMapper,
+                                    IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
+                                    IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.distincionService = distincionService;
@@ -100,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
-                ((GenericViewData<DistincionForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -121,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (!IsValidateModel(distincion, form, Title.Edit))
             {
                 var distincionForm = distincionMapper.Map(distincion);
-                ((GenericViewData<DistincionForm>)ViewData.Model).Form = SetupNewForm(distincionForm);
+                ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm(distincionForm);
                 FormSetCombos(distincionForm);
                 return ViewEdit();
             }
@@ -185,7 +186,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(DistincionForm form)
+        void FormSetCombos(DistincionForm form)
         {
             ViewData["TipoDistincion"] = form.TipoDistincionId;
             ViewData["Institucion"] = form.InstitucionId;

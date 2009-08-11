@@ -11,36 +11,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class AreaController : BaseController<Area, AreaForm>
     {
-		readonly ICatalogoService catalogoService;
         readonly IAreaMapper areaMapper;
+        readonly ICatalogoService catalogoService;
 
-        public AreaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IAreaMapper areaMapper)
-            : base(usuarioService)
+        public AreaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IAreaMapper areaMapper,
+                              ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.areaMapper = areaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var areas = catalogoService.GetAllAreas();
             data.List = areaMapper.Map(areas);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new AreaForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var area = catalogoService.GetAreaById(id);
             data.Form = areaMapper.Map(area);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +60,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var area = catalogoService.GetAreaById(id);
             data.Form = areaMapper.Map(area);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +75,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             area.CreadorPor = CurrentUser();
             area.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(area, form, Title.New))
+            if (!IsValidateModel(area, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveArea(area);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", area.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", area.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +110,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveArea(area);
 
             var form = areaMapper.Map(area);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveArea(area);
 
             var form = areaMapper.Map(area);
-            
+
             return Rjs("Activate", form);
         }
     }

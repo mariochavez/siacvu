@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
-        public RevistaPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, IRevistaPublicacionMapper revistaPublicacionMapper)
-            : base(usuarioService)
+        public RevistaPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                            IRevistaPublicacionMapper revistaPublicacionMapper,
+                                            ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var revistaPublicacions = catalogoService.GetAllRevistaPublicaciones();
             data.List = revistaPublicacionMapper.Map(revistaPublicacions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new RevistaPublicacionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             data.Form = revistaPublicacionMapper.Map(revistaPublicacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             data.Form = revistaPublicacionMapper.Map(revistaPublicacion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             revistaPublicacion.CreadorPor = CurrentUser();
             revistaPublicacion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(revistaPublicacion, form, Title.New))
+            if (!IsValidateModel(revistaPublicacion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", revistaPublicacion.Titulo));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", revistaPublicacion.Titulo));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
             var form = revistaPublicacionMapper.Map(revistaPublicacion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
             var form = revistaPublicacionMapper.Map(revistaPublicacion);
-            
+
             return Rjs("Activate", form);
         }
     }

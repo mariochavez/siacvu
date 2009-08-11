@@ -11,18 +11,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class SedeController : BaseController<Sede, SedeForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ISedeMapper sedeMapper;
 
-        public SedeController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISedeMapper sedeMapper)
-            : base(usuarioService)
+        public SedeController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISedeMapper sedeMapper,
+                              ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.sedeMapper = sedeMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
             var sedes = catalogoService.GetAllSedes();
@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -97,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSede(sede);
 
             var form = sedeMapper.Map(sede);
-            
+
             return Rjs(form);
         }
 
@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSede(sede);
 
             var form = sedeMapper.Map(sede);
-            
+
             return Rjs("Activate", form);
         }
     }

@@ -12,8 +12,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly ICatalogoService catalogoService;
         readonly ICargoMapper cargoMapper;
-    
-        public CargoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICargoMapper cargoMapper) : base(usuarioService)
+
+        public CargoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICargoMapper cargoMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.cargoMapper = cargoMapper;

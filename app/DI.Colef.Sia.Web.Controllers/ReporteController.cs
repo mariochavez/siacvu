@@ -13,30 +13,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class ReporteController : BaseController<Reporte, ReporteForm>
     {
-        readonly IReporteService reporteService;
-        readonly IInvestigadorService investigadorService;
-        readonly IReporteMapper reporteMapper;
         readonly ICatalogoService catalogoService;
-        readonly ITipoReporteMapper tipoReporteMapper;
-        readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IPaisMapper paisMapper;
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IReporteMapper reporteMapper;
+        readonly IReporteService reporteService;
+        readonly ITipoReporteMapper tipoReporteMapper;
 
 
-        public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper, ICatalogoService catalogoService,
-            IUsuarioService usuarioService, ITipoReporteMapper tipoReporteMapper, IEstadoProductoMapper estadoProductoMapper,
-            IPeriodoReferenciaMapper periodoReferenciaMapper, IProyectoMapper proyectoMapper, ILineaTematicaMapper lineaTematicaMapper,
-            IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper,
-            IPaisMapper paisMapper, IInvestigadorService investigadorService, ICoautorExternoReporteMapper coautorExternoReporteMapper,
-            ICoautorInternoReporteMapper coautorInternoReporteMapper)
-            : base(usuarioService)
+        public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
+                                 ICatalogoService catalogoService,
+                                 IUsuarioService usuarioService, ITipoReporteMapper tipoReporteMapper,
+                                 IEstadoProductoMapper estadoProductoMapper,
+                                 IPeriodoReferenciaMapper periodoReferenciaMapper, IProyectoMapper proyectoMapper,
+                                 ILineaTematicaMapper lineaTematicaMapper,
+                                 IInvestigadorExternoMapper investigadorExternoMapper,
+                                 IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper,
+                                 IPaisMapper paisMapper, IInvestigadorService investigadorService,
+                                 ICoautorExternoReporteMapper coautorExternoReporteMapper,
+                                 ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.reporteService = reporteService;
@@ -118,7 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
             {
-                ((GenericViewData<ReporteForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<ReporteForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -138,7 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var reporteForm = reporteMapper.Map(reporte);
 
-                ((GenericViewData<ReporteForm>)ViewData.Model).Form = SetupNewForm(reporteForm);
+                ((GenericViewData<ReporteForm>) ViewData.Model).Form = SetupNewForm(reporteForm);
                 FormSetCombos(reporteForm);
                 return ViewEdit();
             }
@@ -201,7 +206,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReporte")]CoautorInternoReporteForm form, int reporteId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReporte")] CoautorInternoReporteForm form,
+                                              int reporteId)
         {
             var coautorInternoReporte = coautorInternoReporteMapper.Map(form);
 
@@ -243,7 +249,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReporte")]CoautorExternoReporteForm form, int reporteId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReporte")] CoautorExternoReporteForm form,
+                                              int reporteId)
         {
             var coautorExternoReporte = coautorExternoReporteMapper.Map(form);
 
@@ -280,7 +287,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.CoautorExternoReporte = new CoautorExternoReporteForm();
             form.CoautorInternoReporte = new CoautorInternoReporteForm();
 
-                //Lista de Catalogos Pendientes
+            //Lista de Catalogos Pendientes
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
@@ -294,7 +301,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(ReporteForm form)
+        void FormSetCombos(ReporteForm form)
         {
             ViewData["TipoReporte"] = form.TipoReporteId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;

@@ -14,15 +14,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ISNIMapper sniMapper;
 
-        public SNIController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISNIMapper sniMapper)
-            : base(usuarioService)
+        public SNIController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISNIMapper sniMapper,
+                             ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.sniMapper = sniMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
             var snis = catalogoService.GetAllSNIs();
@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -39,11 +39,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var sni = catalogoService.GetSNIById(id);
@@ -98,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSNI(sni);
 
             var form = sniMapper.Map(sni);
-            
+
             return Rjs(form);
         }
 
@@ -112,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSNI(sni);
 
             var form = sniMapper.Map(sni);
-            
+
             return Rjs("Activate", form);
         }
     }

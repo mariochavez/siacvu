@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
 
-        public PeriodoReferenciaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPeriodoReferenciaMapper periodoReferenciaMapper)
-            : base(usuarioService)
+        public PeriodoReferenciaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                           IPeriodoReferenciaMapper periodoReferenciaMapper,
+                                           ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var periodoReferencias = catalogoService.GetAllPeriodoReferencias();
             data.List = periodoReferenciaMapper.Map(periodoReferencias);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new PeriodoReferenciaForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var periodoReferencia = catalogoService.GetPeriodoReferenciaById(id);
             data.Form = periodoReferenciaMapper.Map(periodoReferencia);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var periodoReferencia = catalogoService.GetPeriodoReferenciaById(id);
             data.Form = periodoReferenciaMapper.Map(periodoReferencia);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             periodoReferencia.CreadorPor = CurrentUser();
             periodoReferencia.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(periodoReferencia, form, Title.New))
+            if (!IsValidateModel(periodoReferencia, form, Title.New))
                 return ViewNew();
 
             catalogoService.SavePeriodoReferencia(periodoReferencia);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", periodoReferencia.Periodo));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", periodoReferencia.Periodo));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SavePeriodoReferencia(periodoReferencia);
 
             var form = periodoReferenciaMapper.Map(periodoReferencia);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SavePeriodoReferencia(periodoReferencia);
 
             var form = periodoReferenciaMapper.Map(periodoReferencia);
-            
+
             return Rjs("Activate", form);
         }
     }

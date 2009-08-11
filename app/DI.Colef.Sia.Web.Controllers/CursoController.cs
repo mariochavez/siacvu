@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Core.CommonValidator;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -13,36 +12,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class CursoController : BaseController<Curso, CursoForm>
     {
-        readonly ICursoService cursoService;
-        readonly ICursoMapper cursoMapper;
+        readonly IAreaMapper areaMapper;
         readonly ICatalogoService catalogoService;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly IProgramaEstudioMapper programaEstudioMapper;
+        readonly ICursoMapper cursoMapper;
+        readonly ICursoService cursoService;
+        readonly IDisciplinaMapper disciplinaMapper;
         readonly IInstitucionMapper institucionMapper;
         readonly INivelMapper nivelMapper;
-        readonly ISectorMapper sectorMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly IPaisMapper paisMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProgramaEstudioMapper programaEstudioMapper;
+        readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
 
         public CursoController(ICursoService cursoService,
-            ICursoMapper cursoMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService,
-            IPeriodoReferenciaMapper periodoReferenciaMapper,
-            IProgramaEstudioMapper programaEstudioMapper,
-            IInstitucionMapper institucionMapper,
-            INivelMapper nivelMapper,
-            ISectorMapper sectorMapper,
-            IOrganizacionMapper organizacionMapper,
-            IPaisMapper paisMapper,
-            IAreaMapper areaMapper,
-            IDisciplinaMapper disciplinaMapper,
-            ISubdisciplinaMapper subdisciplinaMapper
-            )
-            : base(usuarioService)
+                               ICursoMapper cursoMapper,
+                               ICatalogoService catalogoService, IUsuarioService usuarioService,
+                               IPeriodoReferenciaMapper periodoReferenciaMapper,
+                               IProgramaEstudioMapper programaEstudioMapper,
+                               IInstitucionMapper institucionMapper,
+                               INivelMapper nivelMapper,
+                               ISectorMapper sectorMapper,
+                               IOrganizacionMapper organizacionMapper,
+                               IPaisMapper paisMapper,
+                               IAreaMapper areaMapper,
+                               IDisciplinaMapper disciplinaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper
+                               , ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.cursoService = cursoService;
@@ -119,10 +117,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(CursoForm form)
         {
             var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
+
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
-                ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -142,7 +140,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var cursoForm = cursoMapper.Map(curso);
 
-                ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
+                ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm(cursoForm);
                 FormSetCombos(cursoForm);
                 return ViewEdit();
             }
@@ -211,11 +209,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
-            
+
             return form;
         }
 
-        private void FormSetCombos(CursoForm form)
+        void FormSetCombos(CursoForm form)
         {
             ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
             ViewData["Sector"] = form.SectorId;

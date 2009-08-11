@@ -7,10 +7,9 @@
     $('tr.highlight').live("mouseover", setHighlight);
     $('tr.highlight').live("mouseout", clearHighlight);
 
-    $('#tabs').tabs();
     $('.clearField').clearField();
 
-    AutoComplete.setup();
+    SearchAutoComplete.setup();
 }
 
 function showMessage(message) {
@@ -54,9 +53,10 @@ var DateTimePicker = {
     }
 };
 
-var AutoComplete = {
+var SearchAutoComplete = {
+    field: null,
     setup: function() {
-        $('a.autoComplete').each(function() {
+        $('a.searchAutoComplete').each(function() {
             var url = $(this).attr('href');
             var textbox = $(this).attr('rel');
 
@@ -67,42 +67,52 @@ var AutoComplete = {
                     matchSubset: 1,
                     matchContains: 1,
                     cacheLength: 10,
-                    onItemSelect: AutoComplete.selectItem,
-                    onFindValue: AutoComplete.findValue,
-                    //formatItem: AutoComplete.formatItem,
+                    onItemSelect: SearchAutoComplete.selectItem,
+                    onFindValue: SearchAutoComplete.findValue,
                     autoFill: true
                 });
-            $(textbox).blur(AutoComplete.setId);
+            $(textbox).blur(SearchAutoComplete.setId);
+
+            var baseId = $(this).attr('id');
+            field = $('#' + baseId + 'Id');
+            $(field).val('');
         });
 
-        $('a.autoComplete').live("click", AutoComplete.click);
+        $('a.searchAutoComplete').live("click", SearchAutoComplete.click);
     },
     setId: function() {
         var autocomplete = $(this)[0].autocompleter;
         autocomplete.findValue();
     },
     click: function() {
-        if ($('#SearchId').val() == '')
+        var baseId = $(this).attr('id');
+        field = $('#' + baseId + 'Id');
+        form = $('#' + baseId + 'Form');
+
+        if ($(field).val() == '')
             return false;
 
-        $('#SearchForm').submit();
-        $('#SearchId').val('');
+        $(form).submit();
+        $(field).val('');
 
         return false;
     },
-    selectItem: function(li) {
-        AutoComplete.findValue(li);
+    selectItem: function(li, input) {
+        SearchAutoComplete.findValue(li, input);
     },
-    findValue: function(li) {
+    findValue: function(li, input) {
+        var baseId = $('a.searchAutoComplete[rel=#' + input.attr('id') + ']').attr('id');
+        field = $('#' + baseId + 'Id');
+
         if (li == null) {
-            $('#SearchId').val();
+            $(field).val('');
             return;
         }
 
         if (!!li.extra) var sValue = li.extra[0];
         else var sValue = li.selectValue;
 
-        $('#SearchId').val(sValue);
+        $(field).val(sValue);
     },
     formatItem: function(row) {
         return row[0] + " (id: " + row[1] + ")";

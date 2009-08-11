@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class LineaInvestigacionController : BaseController<LineaInvestigacion, LineaInvestigacionForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
 
-        public LineaInvestigacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, ILineaInvestigacionMapper lineaInvestigacionMapper)
-            : base(usuarioService)
+        public LineaInvestigacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                            ILineaInvestigacionMapper lineaInvestigacionMapper,
+                                            ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var lineaInvestigacions = catalogoService.GetAllLineaInvestigaciones();
             data.List = lineaInvestigacionMapper.Map(lineaInvestigacions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new LineaInvestigacionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var lineaInvestigacion = catalogoService.GetLineaInvestigacionById(id);
             data.Form = lineaInvestigacionMapper.Map(lineaInvestigacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var lineaInvestigacion = catalogoService.GetLineaInvestigacionById(id);
             data.Form = lineaInvestigacionMapper.Map(lineaInvestigacion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             lineaInvestigacion.CreadorPor = CurrentUser();
             lineaInvestigacion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(lineaInvestigacion, form, Title.New))
+            if (!IsValidateModel(lineaInvestigacion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", lineaInvestigacion.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", lineaInvestigacion.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
             var form = lineaInvestigacionMapper.Map(lineaInvestigacion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveLineaInvestigacion(lineaInvestigacion);
 
             var form = lineaInvestigacionMapper.Map(lineaInvestigacion);
-            
+
             return Rjs("Activate", form);
         }
     }

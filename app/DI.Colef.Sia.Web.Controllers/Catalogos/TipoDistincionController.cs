@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoDistincionMapper tipoDistincionMapper;
 
-        public TipoDistincionController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoDistincionMapper tipoDistincionMapper) 
-			: base (usuarioService)
+        public TipoDistincionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                        ITipoDistincionMapper tipoDistincionMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoDistincionMapper = tipoDistincionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoDistincions = catalogoService.GetAllTipoDistinciones();
             data.List = tipoDistincionMapper.Map(tipoDistincions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoDistincionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoDistincion = catalogoService.GetTipoDistincionById(id);
             data.Form = tipoDistincionMapper.Map(tipoDistincion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoDistincion = catalogoService.GetTipoDistincionById(id);
             data.Form = tipoDistincionMapper.Map(tipoDistincion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoDistincionForm form)
         {
-        
             var tipoDistincion = tipoDistincionMapper.Map(form);
-            
+
             tipoDistincion.CreadorPor = CurrentUser();
             tipoDistincion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoDistincion, form, Title.New))
+            if (!IsValidateModel(tipoDistincion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoDistincion(tipoDistincion);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoDistincion.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoDistincionForm form)
         {
-        
             var tipoDistincion = tipoDistincionMapper.Map(form);
-            
+
             tipoDistincion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoDistincion, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoDistincion.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoDistincion(tipoDistincion);
 
             var form = tipoDistincionMapper.Map(tipoDistincion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoDistincion(tipoDistincion);
 
             var form = tipoDistincionMapper.Map(tipoDistincion);
-            
+
             return Rjs("Activate", form);
         }
     }

@@ -47,8 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
             IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
             ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper
-            )
-            : base(usuarioService)
+            , ISearchService searchService) : base(usuarioService, searchService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;

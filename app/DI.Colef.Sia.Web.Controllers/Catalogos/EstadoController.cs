@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class EstadoController : BaseController<Estado, EstadoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IEstadoMapper estadoMapper;
 
-        public EstadoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IEstadoMapper estadoMapper)
-            : base(usuarioService)
+        public EstadoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                IEstadoMapper estadoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.estadoMapper = estadoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var estados = catalogoService.GetAllEstados();
             data.List = estadoMapper.Map(estados);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new EstadoForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,10 +50,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var estado = catalogoService.GetEstadoById(id);
             data.Form = estadoMapper.Map(estado);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -63,14 +64,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             estado.CreadorPor = CurrentUser();
             estado.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(estado, form, Title.New))
+            if (!IsValidateModel(estado, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveEstado(estado);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", estado.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -87,7 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", estado.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -98,10 +99,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveEstado(estado);
 
             var form = estadoMapper.Map(estado);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -112,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveEstado(estado);
 
             var form = estadoMapper.Map(estado);
-            
+
             return Rjs("Activate", form);
         }
     }

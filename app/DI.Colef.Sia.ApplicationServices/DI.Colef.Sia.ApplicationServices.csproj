@@ -47,12 +47,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="uNhAddIns, Version=2.0.0.24301, Culture=neutral, processorArchitecture=MSIL">
@@ -93,6 +87,7 @@
     <Compile Include="IParticipacionService.cs" />
     <Compile Include="IReporteService.cs" />
     <Compile Include="IReseñaService.cs" />
+    <Compile Include="ISearchService.cs" />
     <Compile Include="ITesisService.cs" />
     <Compile Include="IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,8 +14,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IMedioImpresoMapper medioImpresoMapper;
 
-        public MedioImpresoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IMedioImpresoMapper medioImpresoMapper) 
-			: base (usuarioService)
+        public MedioImpresoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IMedioImpresoMapper medioImpresoMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.medioImpresoMapper = medioImpresoMapper;

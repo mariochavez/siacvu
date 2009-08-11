@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class TipoArticuloController : BaseController<TipoArticulo, TipoArticuloForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ITipoArticuloMapper tipoArticuloMapper;
 
-        public TipoArticuloController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoArticuloMapper tipoArticuloMapper)
-            : base(usuarioService)
+        public TipoArticuloController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                      ITipoArticuloMapper tipoArticuloMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoArticuloMapper = tipoArticuloMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoArticulos = catalogoService.GetAllTipoArticulos();
             data.List = tipoArticuloMapper.Map(tipoArticulos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoArticuloForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoArticulo = catalogoService.GetTipoArticuloById(id);
             data.Form = tipoArticuloMapper.Map(tipoArticulo);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoArticulo = catalogoService.GetTipoArticuloById(id);
             data.Form = tipoArticuloMapper.Map(tipoArticulo);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             tipoArticulo.CreadorPor = CurrentUser();
             tipoArticulo.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoArticulo, form, Title.New))
+            if (!IsValidateModel(tipoArticulo, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoArticulo(tipoArticulo);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoArticulo.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoArticulo.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoArticulo(tipoArticulo);
 
             var form = tipoArticuloMapper.Map(tipoArticulo);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoArticulo(tipoArticulo);
 
             var form = tipoArticuloMapper.Map(tipoArticulo);
-            
+
             return Rjs("Activate", form);
         }
     }

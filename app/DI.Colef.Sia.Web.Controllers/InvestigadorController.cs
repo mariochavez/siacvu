@@ -46,8 +46,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper,
             ICategoriaInvestigadorMapper categoriaInvestigadorMapper,
             ICargoInvestigadorMapper cargoInvestigadorMapper,
-            ISNIInvestigadorMapper sniInvestigadorMapper)
-            : base(usuarioService)
+            ISNIInvestigadorMapper sniInvestigadorMapper,
+                                      ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.investigadorService = investigadorService;
             this.catalogoService = catalogoService;
@@ -367,9 +368,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddSni", sniInvestigadorForm);
         }
 
-        public ActionResult Search(string q)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
         {
-            return Content("Hello|1\nHoy|2");
+            var data = searchService.SearchInvestigador(q);
+            return Content(data);
         }
 
         InvestigadorForm SetupNewForm()

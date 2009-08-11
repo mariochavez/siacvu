@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class TipoActividadController : BaseController<TipoActividad, TipoActividadForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ITipoActividadMapper tipoActividadMapper;
 
-        public TipoActividadController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoActividadMapper tipoActividadMapper)
-            : base(usuarioService)
+        public TipoActividadController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                       ITipoActividadMapper tipoActividadMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoActividadMapper = tipoActividadMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoActividads = catalogoService.GetAllTipoActividades();
             data.List = tipoActividadMapper.Map(tipoActividads);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoActividadForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoActividad = catalogoService.GetTipoActividadById(id);
             data.Form = tipoActividadMapper.Map(tipoActividad);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoActividad = catalogoService.GetTipoActividadById(id);
             data.Form = tipoActividadMapper.Map(tipoActividad);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             tipoActividad.CreadorPor = CurrentUser();
             tipoActividad.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoActividad, form, Title.New))
+            if (!IsValidateModel(tipoActividad, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoActividad(tipoActividad);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", tipoActividad.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", tipoActividad.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoActividad(tipoActividad);
 
             var form = tipoActividadMapper.Map(tipoActividad);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoActividad(tipoActividad);
 
             var form = tipoActividadMapper.Map(tipoActividad);
-            
+
             return Rjs("Activate", form);
         }
     }

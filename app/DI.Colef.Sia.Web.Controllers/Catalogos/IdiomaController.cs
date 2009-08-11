@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class IdiomaController : BaseController<Idioma, IdiomaForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
 
-        public IdiomaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IIdiomaMapper idiomaMapper)
-            : base(usuarioService)
+        public IdiomaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                IIdiomaMapper idiomaMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.idiomaMapper = idiomaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var idiomas = catalogoService.GetAllIdiomas();
             data.List = idiomaMapper.Map(idiomas);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new IdiomaForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,10 +50,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var idioma = catalogoService.GetIdiomaById(id);
             data.Form = idiomaMapper.Map(idioma);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -63,14 +64,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             idioma.CreadorPor = CurrentUser();
             idioma.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(idioma, form, Title.New))
+            if (!IsValidateModel(idioma, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveIdioma(idioma);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", idioma.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -87,7 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", idioma.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -98,10 +99,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveIdioma(idioma);
 
             var form = idiomaMapper.Map(idioma);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -112,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveIdioma(idioma);
 
             var form = idiomaMapper.Map(idioma);
-            
+
             return Rjs("Activate", form);
         }
     }

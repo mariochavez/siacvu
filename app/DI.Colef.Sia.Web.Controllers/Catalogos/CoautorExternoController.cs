@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoMapper coautorExternoMapper;
 
-        public CoautorExternoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICoautorExternoMapper coautorExternoMapper)
-            : base(usuarioService)
+        public CoautorExternoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                        ICoautorExternoMapper coautorExternoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoMapper = coautorExternoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var coautorExternos = catalogoService.GetAllCoautorExternos();
             data.List = coautorExternoMapper.Map(coautorExternos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new CoautorExternoForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var coautorExterno = catalogoService.GetCoautorExternoById(id);
             data.Form = coautorExternoMapper.Map(coautorExterno);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var coautorExterno = catalogoService.GetCoautorExternoById(id);
             data.Form = coautorExternoMapper.Map(coautorExterno);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             coautorExterno.CreadorPor = CurrentUser();
             coautorExterno.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(coautorExterno, form, Title.New))
+            if (!IsValidateModel(coautorExterno, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveCoautorExterno(coautorExterno);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", coautorExterno.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", coautorExterno.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveCoautorExterno(coautorExterno);
 
             var form = coautorExternoMapper.Map(coautorExterno);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveCoautorExterno(coautorExterno);
 
             var form = coautorExternoMapper.Map(coautorExterno);
-            
+
             return Rjs("Activate", form);
         }
     }

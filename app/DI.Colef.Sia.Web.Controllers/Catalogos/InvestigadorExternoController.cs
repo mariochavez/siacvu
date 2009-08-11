@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class InvestigadorExternoController : BaseController<InvestigadorExterno, InvestigadorExternoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
-        public InvestigadorExternoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IInvestigadorExternoMapper investigadorExternoMapper)
-            : base(usuarioService)
+        public InvestigadorExternoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                             IInvestigadorExternoMapper investigadorExternoMapper,
+                                             ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.investigadorExternoMapper = investigadorExternoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var investigadorExternos = catalogoService.GetAllInvestigadorExternos();
             data.List = investigadorExternoMapper.Map(investigadorExternos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new InvestigadorExternoForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var investigadorExterno = catalogoService.GetInvestigadorExternoById(id);
             data.Form = investigadorExternoMapper.Map(investigadorExterno);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigadorExterno = catalogoService.GetInvestigadorExternoById(id);
             data.Form = investigadorExternoMapper.Map(investigadorExterno);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             investigadorExterno.CreadorPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(investigadorExterno, form, Title.New))
+            if (!IsValidateModel(investigadorExterno, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", investigadorExterno.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", investigadorExterno.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
             var form = investigadorExternoMapper.Map(investigadorExterno);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
             var form = investigadorExternoMapper.Map(investigadorExterno);
-            
+
             return Rjs("Activate", form);
         }
     }

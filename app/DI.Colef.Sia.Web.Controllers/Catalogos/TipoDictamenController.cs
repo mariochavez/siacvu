@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
 
-        public TipoDictamenController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoDictamenMapper tipoDictamenMapper) 
-			: base (usuarioService)
+        public TipoDictamenController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                      ITipoDictamenMapper tipoDictamenMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoDictamenMapper = tipoDictamenMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoDictamens = catalogoService.GetAllTipoDictamenes();
             data.List = tipoDictamenMapper.Map(tipoDictamens);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoDictamenForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoDictamen = catalogoService.GetTipoDictamenById(id);
             data.Form = tipoDictamenMapper.Map(tipoDictamen);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoDictamen = catalogoService.GetTipoDictamenById(id);
             data.Form = tipoDictamenMapper.Map(tipoDictamen);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoDictamenForm form)
         {
-        
             var tipoDictamen = tipoDictamenMapper.Map(form);
-            
+
             tipoDictamen.CreadorPor = CurrentUser();
             tipoDictamen.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoDictamen, form, Title.New))
+            if (!IsValidateModel(tipoDictamen, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoDictamen.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoDictamenForm form)
         {
-        
             var tipoDictamen = tipoDictamenMapper.Map(form);
-            
+
             tipoDictamen.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoDictamen, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoDictamen.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
             var form = tipoDictamenMapper.Map(tipoDictamen);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
             var form = tipoDictamenMapper.Map(tipoDictamen);
-            
+
             return Rjs("Activate", form);
         }
     }

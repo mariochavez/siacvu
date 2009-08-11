@@ -14,8 +14,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IOtraParticipacionMapper otraParticipacionMapper;
 
-        public OtraParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, IOtraParticipacionMapper otraParticipacionMapper) 
-			: base (usuarioService)
+        public OtraParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+            IOtraParticipacionMapper otraParticipacionMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.otraParticipacionMapper = otraParticipacionMapper;

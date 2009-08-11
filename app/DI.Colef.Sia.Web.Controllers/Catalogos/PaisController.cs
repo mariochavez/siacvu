@@ -11,36 +11,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class PaisController : BaseController<Pais, PaisForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IPaisMapper paisMapper;
 
-        public PaisController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPaisMapper paisMapper)
-            : base(usuarioService)
+        public PaisController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPaisMapper paisMapper,
+                              ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.paisMapper = paisMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var pais = catalogoService.GetAllPaises();
             data.List = paisMapper.Map(pais);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new PaisForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var pais = catalogoService.GetPaisById(id);
             data.Form = paisMapper.Map(pais);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +60,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var pais = catalogoService.GetPaisById(id);
             data.Form = paisMapper.Map(pais);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +75,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             pais.CreadorPor = CurrentUser();
             pais.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(pais, form, Title.New))
+            if (!IsValidateModel(pais, form, Title.New))
                 return ViewNew();
 
             catalogoService.SavePais(pais);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", pais.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", pais.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +110,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SavePais(pais);
 
             var form = paisMapper.Map(pais);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SavePais(pais);
 
             var form = paisMapper.Map(pais);
-            
+
             return Rjs("Activate", form);
         }
     }

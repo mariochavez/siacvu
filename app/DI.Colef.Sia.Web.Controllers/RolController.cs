@@ -13,7 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IUsuarioService usuarioService;
         readonly IRolMapper rolMapper;
 
-        public RolController(IUsuarioService usuarioService, IRolMapper rolMapper) : base(usuarioService)
+        public RolController(IUsuarioService usuarioService, IRolMapper rolMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.usuarioService = usuarioService;
             this.rolMapper = rolMapper;

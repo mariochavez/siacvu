@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class CapituloController : BaseController<Capitulo, CapituloForm>
     {
-		readonly ICapituloService capituloService;
+        readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
         readonly IInvestigadorService investigadorService;
         readonly ICapituloMapper capituloMapper;
@@ -35,38 +35,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-        
-        public CapituloController(ICapituloService capituloService, 
-			ICapituloMapper capituloMapper, 
-			ICatalogoService catalogoService, 
-            IUsuarioService usuarioService,
-			ITipoCapituloMapper tipoCapituloMapper,
-            IEstadoMapper estadoMapper,
-            IPeriodoReferenciaMapper periodoReferenciaMapper,
-            ILineaTematicaMapper lineaTematicaMapper,
-            IIdiomaMapper idiomaMapper,
-            IPaisMapper paisMapper,
-            IInvestigadorMapper investigadorMapper,
-            IInvestigadorExternoMapper investigadorExternoMapper,
-            IFormaParticipacionMapper formaParticipacionMapper,
-            ITipoParticipacionMapper tipoParticipacionMapper,
-            ITipoParticipanteMapper tipoParticipanteMapper,
-            IAreaMapper areaMapper,
-            IDisciplinaMapper disciplinaMapper,
-            ISubdisciplinaMapper subdisciplinaMapper,
-            ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
-            ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
-            IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
-            IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-            IInvestigadorService investigadorService
-			) : base(usuarioService)
+
+        public CapituloController(ICapituloService capituloService,
+                                  ICapituloMapper capituloMapper,
+                                  ICatalogoService catalogoService,
+                                  IUsuarioService usuarioService,
+                                  ITipoCapituloMapper tipoCapituloMapper,
+                                  IEstadoMapper estadoMapper,
+                                  IPeriodoReferenciaMapper periodoReferenciaMapper,
+                                  ILineaTematicaMapper lineaTematicaMapper,
+                                  IIdiomaMapper idiomaMapper,
+                                  IPaisMapper paisMapper,
+                                  IInvestigadorMapper investigadorMapper,
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IFormaParticipacionMapper formaParticipacionMapper,
+                                  ITipoParticipacionMapper tipoParticipacionMapper,
+                                  ITipoParticipanteMapper tipoParticipanteMapper,
+                                  IAreaMapper areaMapper,
+                                  IDisciplinaMapper disciplinaMapper,
+                                  ISubdisciplinaMapper subdisciplinaMapper,
+                                  ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
+                                  ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
+                                  IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
+                                  IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
+                                  IInvestigadorService investigadorService, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
-			this.catalogoService = catalogoService;
+            this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
 
             this.capituloMapper = capituloMapper;
-			this.tipoCapituloMapper = tipoCapituloMapper;
+            this.tipoCapituloMapper = tipoCapituloMapper;
             this.estadoMapper = estadoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
@@ -87,25 +87,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
-			
-			var capitulos = capituloService.GetAllCapitulos();
+            var data = CreateViewDataWithTitle(Title.Index);
+
+            var capitulos = capituloService.GetAllCapitulos();
             data.List = capituloMapper.Map(capitulos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -124,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             FormSetCombos(data.Form);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -135,11 +135,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var capitulo = capituloService.GetCapituloById(id);
             data.Form = capituloMapper.Map(capitulo);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -149,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {
-                ((GenericViewData<CapituloForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -157,7 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido creado", capitulo.NombreCapitulo));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -169,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var capituloForm = capituloMapper.Map(capitulo);
 
-                ((GenericViewData<CapituloForm>)ViewData.Model).Form = SetupNewForm(capituloForm);
+                ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
                 FormSetCombos(capituloForm);
                 return ViewEdit();
             }
@@ -178,25 +178,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", capitulo.NombreCapitulo));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
-        {            
+        {
             var capitulo = capituloService.GetCapituloById(id);
 
             if (capitulo.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
-            
+
             capitulo.Activo = true;
             capitulo.ModificadoPor = CurrentUser();
             capituloService.SaveCapitulo(capitulo);
 
             var form = capituloMapper.Map(capitulo);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -205,13 +205,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (capitulo.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
-            
+
             capitulo.Activo = false;
             capitulo.ModificadoPor = CurrentUser();
             capituloService.SaveCapitulo(capitulo);
 
             var form = capituloMapper.Map(capitulo);
-            
+
             return Rjs("Activate", form);
         }
 
@@ -226,13 +226,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.CoautorInternoCapitulo = new CoautorInternoCapituloForm();
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            
+
             return Rjs("NewCoautorInterno", form);
         }
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")]CoautorInternoCapituloForm form, int capituloId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")] CoautorInternoCapituloForm form,
+                                              int capituloId)
         {
             var coautorInternoCapitulo = coautorInternoCapituloMapper.Map(form);
 
@@ -264,10 +265,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var capitulo = capituloService.GetCapituloById(id);
 
             var form = new CapituloForm();
-            
+
             if (capitulo != null)
                 form.Id = capitulo.Id;
-                
+
             form.CoautorExternoCapitulo = new CoautorExternoCapituloForm();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
@@ -276,7 +277,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")]CoautorExternoCapituloForm form, int capituloId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")] CoautorExternoCapituloForm form,
+                                              int capituloId)
         {
             var coautorExternoCapitulo = coautorExternoCapituloMapper.Map(form);
 
@@ -307,7 +309,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var capitulo = capituloService.GetCapituloById(id);
 
             var form = new CapituloForm();
-            
+
             if (capitulo != null)
                 form.Id = capitulo.Id;
 
@@ -319,7 +321,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddResponsableInterno([Bind(Prefix = "ResponsableInternoCapitulo")]ResponsableInternoCapituloForm form, int capituloId)
+        public ActionResult AddResponsableInterno(
+            [Bind(Prefix = "ResponsableInternoCapitulo")] ResponsableInternoCapituloForm form, int capituloId)
         {
             var responsableInternoCapitulo = responsableInternoCapituloMapper.Map(form);
 
@@ -350,7 +353,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var capitulo = capituloService.GetCapituloById(id);
 
             var form = new CapituloForm();
-            
+
             if (capitulo != null)
                 form.Id = capitulo.Id;
 
@@ -362,7 +365,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddResponsableExterno([Bind(Prefix = "ResponsableExternoCapitulo")]ResponsableExternoCapituloForm form, int capituloId)
+        public ActionResult AddResponsableExterno(
+            [Bind(Prefix = "ResponsableExternoCapitulo")] ResponsableExternoCapituloForm form, int capituloId)
         {
             var responsableExternoCapitulo = responsableExternoCapituloMapper.Map(form);
 
@@ -400,7 +404,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.CoautorInternoCapitulo = new CoautorInternoCapituloForm();
             form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
             form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
-            
+
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.Estados = estadoMapper.Map(catalogoService.GetActiveEstados());
@@ -422,7 +426,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(CapituloForm form)
+        void FormSetCombos(CapituloForm form)
         {
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
             ViewData["Idioma"] = form.IdiomaId;

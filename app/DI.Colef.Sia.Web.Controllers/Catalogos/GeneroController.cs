@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IGeneroMapper generoMapper;
 
-        public GeneroController(IUsuarioService usuarioService, ICatalogoService catalogoService, IGeneroMapper generoMapper) 
-			: base (usuarioService)
+        public GeneroController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                IGeneroMapper generoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.generoMapper = generoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var generos = catalogoService.GetAllGeneros();
             data.List = generoMapper.Map(generos);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new GeneroForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var genero = catalogoService.GetGeneroById(id);
             data.Form = generoMapper.Map(genero);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var genero = catalogoService.GetGeneroById(id);
             data.Form = generoMapper.Map(genero);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(GeneroForm form)
         {
-        
             var genero = generoMapper.Map(form);
-            
+
             genero.CreadorPor = CurrentUser();
             genero.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(genero, form, Title.New))
+            if (!IsValidateModel(genero, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveGenero(genero);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", genero.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(GeneroForm form)
         {
-        
             var genero = generoMapper.Map(form);
-            
+
             genero.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(genero, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", genero.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveGenero(genero);
 
             var form = generoMapper.Map(genero);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveGenero(genero);
 
             var form = generoMapper.Map(genero);
-            
+
             return Rjs("Activate", form);
         }
     }

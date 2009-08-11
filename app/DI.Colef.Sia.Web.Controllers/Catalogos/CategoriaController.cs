@@ -13,8 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ICategoriaMapper categoriaMapper;
 
-        public CategoriaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICategoriaMapper categoriaMapper)
-            : base(usuarioService)
+        public CategoriaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICategoriaMapper categoriaMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.categoriaMapper = categoriaMapper;

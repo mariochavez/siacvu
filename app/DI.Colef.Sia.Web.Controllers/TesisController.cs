@@ -12,34 +12,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class TesisController : BaseController<Tesis, TesisForm>
     {
-        readonly ITesisService tesisService;
-        readonly ITesisMapper tesisMapper;
-        readonly ICatalogoService catalogoService;
-        readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IPaisMapper paisMapper;
-        readonly IFormaParticipacionMapper formaParticipacionMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IProgramaEstudioMapper programaEstudioMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly ISectorMapper sectorMapper;
-        readonly IDependenciaMapper dependenciaMapper;
-        readonly IDepartamentoMapper departamentoMapper;
         readonly IAreaMapper areaMapper;
+        readonly ICatalogoService catalogoService;
+        readonly IDepartamentoMapper departamentoMapper;
+        readonly IDependenciaMapper dependenciaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
+        readonly IFormaParticipacionMapper formaParticipacionMapper;
+        readonly IGradoAcademicoMapper gradoAcademicoMapper;
+        readonly IInstitucionMapper institucionMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProgramaEstudioMapper programaEstudioMapper;
+        readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ITesisMapper tesisMapper;
+        readonly ITesisService tesisService;
 
 
-        public TesisController(ITesisService tesisService, ITesisMapper tesisMapper, ICatalogoService catalogoService, 
-            IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper, IPaisMapper paisMapper, 
-            IFormaParticipacionMapper formaParticipacionMapper, IInstitucionMapper institucionMapper, 
-            IProgramaEstudioMapper programaEstudioMapper, ILineaTematicaMapper lineaTematicaMapper, 
-            IPeriodoReferenciaMapper periodoReferenciaMapper, ISectorMapper sectorMapper, 
-            IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper, 
-            IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
-            ISubdisciplinaMapper subdisciplinaMapper
-            )
-            : base(usuarioService)
+        public TesisController(ITesisService tesisService, ITesisMapper tesisMapper, ICatalogoService catalogoService,
+                               IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
+                               IPaisMapper paisMapper,
+                               IFormaParticipacionMapper formaParticipacionMapper, IInstitucionMapper institucionMapper,
+                               IProgramaEstudioMapper programaEstudioMapper, ILineaTematicaMapper lineaTematicaMapper,
+                               IPeriodoReferenciaMapper periodoReferenciaMapper, ISectorMapper sectorMapper,
+                               IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper,
+                               IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper
+                               , ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tesisService = tesisService;
@@ -121,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(tesis, form, Title.New, "Tesis"))
             {
-                ((GenericViewData<TesisForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<TesisForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -140,9 +140,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (!IsValidateModel(tesis, form, Title.Edit))
             {
                 var tesisForm = tesisMapper.Map(tesis);
-                ((GenericViewData<TesisForm>)ViewData.Model).Form = SetupNewForm(tesisForm);
+                ((GenericViewData<TesisForm>) ViewData.Model).Form = SetupNewForm(tesisForm);
                 FormSetCombos(tesisForm);
-                return ViewEdit();   
+                return ViewEdit();
             }
 
             tesisService.SaveTesis(tesis);
@@ -195,7 +195,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new TesisForm();
 
-                //Lista de Catalogos Pendientes
+            //Lista de Catalogos Pendientes
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
@@ -211,10 +211,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
-
         }
 
-        private void FormSetCombos(TesisForm form)
+        void FormSetCombos(TesisForm form)
         {
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["Pais"] = form.PaisId;

@@ -21,10 +21,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     public class BaseController<TModel, TForm> : Controller where TModel : Entity
     {
         readonly IUsuarioService usuarioService;
+        protected readonly ISearchService searchService;
 
-        public BaseController(IUsuarioService usuarioService)
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService)
         {
             this.usuarioService = usuarioService;
+            this.searchService = searchService;
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult Search(string q)
+        {
+            return Content("");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult Search(int searchId)
+        {
+            return RedirectToEdit(searchId);
         }
 
         protected Usuario CurrentUser()
@@ -54,6 +68,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             else
                 SetMessage(String.Format("El {0} {1}", GetObjectName(false), message));
             return RedirectToAction("Index");
+        }
+
+        protected RedirectToRouteResult RedirectToEdit(int id)
+        {
+            return RedirectToAction("Edit", new { id = id });
         }
 
         protected ViewResult ViewEdit()

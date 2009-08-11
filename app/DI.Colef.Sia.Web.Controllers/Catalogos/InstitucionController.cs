@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class InstitucionController : BaseController<Institucion, InstitucionForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IInstitucionMapper institucionMapper;
 
-        public InstitucionController(IUsuarioService usuarioService, ICatalogoService catalogoService, IInstitucionMapper institucionMapper)
-            : base(usuarioService)
+        public InstitucionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                     IInstitucionMapper institucionMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var institucions = catalogoService.GetAllInstituciones();
             data.List = institucionMapper.Map(institucions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new InstitucionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var institucion = catalogoService.GetInstitucionById(id);
             data.Form = institucionMapper.Map(institucion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var institucion = catalogoService.GetInstitucionById(id);
             data.Form = institucionMapper.Map(institucion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             institucion.CreadorPor = CurrentUser();
             institucion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(institucion, form, Title.New))
+            if (!IsValidateModel(institucion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveInstitucion(institucion);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", institucion.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", institucion.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveInstitucion(institucion);
 
             var form = institucionMapper.Map(institucion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveInstitucion(institucion);
 
             var form = institucionMapper.Map(institucion);
-            
+
             return Rjs("Activate", form);
         }
     }

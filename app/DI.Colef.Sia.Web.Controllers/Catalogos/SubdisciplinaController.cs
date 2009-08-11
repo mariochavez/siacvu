@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class SubdisciplinaController : BaseController<Subdisciplina, SubdisciplinaForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
-        public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISubdisciplinaMapper subdisciplinaMapper)
-            : base(usuarioService)
+        public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                       ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var subdisciplinas = catalogoService.GetAllSubdisciplinas();
             data.List = subdisciplinaMapper.Map(subdisciplinas);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new SubdisciplinaForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var subdisciplina = catalogoService.GetSubdisciplinaById(id);
             data.Form = subdisciplinaMapper.Map(subdisciplina);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var subdisciplina = catalogoService.GetSubdisciplinaById(id);
             data.Form = subdisciplinaMapper.Map(subdisciplina);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             subdisciplina.CreadorPor = CurrentUser();
             subdisciplina.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(subdisciplina, form, Title.New))
+            if (!IsValidateModel(subdisciplina, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveSubdisciplina(subdisciplina);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", subdisciplina.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", subdisciplina.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSubdisciplina(subdisciplina);
 
             var form = subdisciplinaMapper.Map(subdisciplina);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSubdisciplina(subdisciplina);
 
             var form = subdisciplinaMapper.Map(subdisciplina);
-            
+
             return Rjs("Activate", form);
         }
     }

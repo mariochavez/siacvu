@@ -12,21 +12,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class OrganoExternoController : BaseController<OrganoExterno, OrganoExternoForm>
     {
-        readonly IOrganoExternoService organoExternoService;
-        readonly IOrganoExternoMapper organoExternoMapper;
+        readonly IAmbitoMapper ambitoMapper;
         readonly ICatalogoService catalogoService;
+        readonly INivelMapper nivelMapper;
+        readonly IOrganoExternoMapper organoExternoMapper;
+        readonly IOrganoExternoService organoExternoService;
+        readonly ISectorMapper sectorMapper;
         readonly ITipoOrganoMapper tipoOrganoMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
-        readonly ISectorMapper sectorMapper;
-        readonly INivelMapper nivelMapper;
-        readonly IAmbitoMapper ambitoMapper;
 
 
-        public OrganoExternoController(IOrganoExternoService organoExternoService, IOrganoExternoMapper organoExternoMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService, ITipoOrganoMapper tipoOrganoMapper,
-            ITipoParticipacionMapper tipoParticipacionMapper, ISectorMapper sectorMapper, INivelMapper nivelMapper,
-            IAmbitoMapper ambitoMapper)
-            : base(usuarioService)
+        public OrganoExternoController(IOrganoExternoService organoExternoService,
+                                       IOrganoExternoMapper organoExternoMapper,
+                                       ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                       ITipoOrganoMapper tipoOrganoMapper,
+                                       ITipoParticipacionMapper tipoParticipacionMapper, ISectorMapper sectorMapper,
+                                       INivelMapper nivelMapper,
+                                       IAmbitoMapper ambitoMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.organoExternoService = organoExternoService;
@@ -100,7 +103,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(organoExterno, form, Title.New, "OrganoExterno"))
             {
-                ((GenericViewData<OrganoExternoForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<OrganoExternoForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -119,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (!IsValidateModel(organoExterno, form, Title.Edit))
             {
                 var organoExternoForm = organoExternoMapper.Map(organoExterno);
-                ((GenericViewData<OrganoExternoForm>)ViewData.Model).Form = SetupNewForm(organoExternoForm);
+                ((GenericViewData<OrganoExternoForm>) ViewData.Model).Form = SetupNewForm(organoExternoForm);
                 FormSetCombos(organoExternoForm);
                 return ViewEdit();
             }
@@ -183,7 +186,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(OrganoExternoForm form)
+        void FormSetCombos(OrganoExternoForm form)
         {
             ViewData["TipoOrgano"] = form.TipoOrganoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;

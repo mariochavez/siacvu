@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoPresentacionMapper tipoPresentacionMapper;
 
-        public TipoPresentacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoPresentacionMapper tipoPresentacionMapper) 
-			: base (usuarioService)
+        public TipoPresentacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                          ITipoPresentacionMapper tipoPresentacionMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.tipoPresentacionMapper = tipoPresentacionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoPresentacions = catalogoService.GetAllTipoPresentaciones();
             data.List = tipoPresentacionMapper.Map(tipoPresentacions);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoPresentacionForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoPresentacion = catalogoService.GetTipoPresentacionById(id);
             data.Form = tipoPresentacionMapper.Map(tipoPresentacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var tipoPresentacion = catalogoService.GetTipoPresentacionById(id);
             data.Form = tipoPresentacionMapper.Map(tipoPresentacion);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoPresentacionForm form)
         {
-        
             var tipoPresentacion = tipoPresentacionMapper.Map(form);
-            
+
             tipoPresentacion.CreadorPor = CurrentUser();
             tipoPresentacion.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(tipoPresentacion, form, Title.New))
+            if (!IsValidateModel(tipoPresentacion, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveTipoPresentacion(tipoPresentacion);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", tipoPresentacion.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoPresentacionForm form)
         {
-        
             var tipoPresentacion = tipoPresentacionMapper.Map(form);
-            
+
             tipoPresentacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoPresentacion, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", tipoPresentacion.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoPresentacion(tipoPresentacion);
 
             var form = tipoPresentacionMapper.Map(tipoPresentacion);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveTipoPresentacion(tipoPresentacion);
 
             var form = tipoPresentacionMapper.Map(tipoPresentacion);
-            
+
             return Rjs("Activate", form);
         }
     }

@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class DisciplinaController : BaseController<Disciplina, DisciplinaForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IDisciplinaMapper disciplinaMapper;
 
-        public DisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper)
-            : base(usuarioService)
+        public DisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                    IDisciplinaMapper disciplinaMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.disciplinaMapper = disciplinaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var disciplinas = catalogoService.GetAllDisciplinas();
             data.List = disciplinaMapper.Map(disciplinas);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new DisciplinaForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var disciplina = catalogoService.GetDisciplinaById(id);
             data.Form = disciplinaMapper.Map(disciplina);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var disciplina = catalogoService.GetDisciplinaById(id);
             data.Form = disciplinaMapper.Map(disciplina);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             disciplina.CreadorPor = CurrentUser();
             disciplina.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(disciplina, form, Title.New))
+            if (!IsValidateModel(disciplina, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveDisciplina(disciplina);
 
             return RedirectToIndex(String.Format("{0} ha sido creada", disciplina.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificada", disciplina.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveDisciplina(disciplina);
 
             var form = disciplinaMapper.Map(disciplina);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveDisciplina(disciplina);
 
             var form = disciplinaMapper.Map(disciplina);
-            
+
             return Rjs("Activate", form);
         }
     }

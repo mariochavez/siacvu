@@ -13,31 +13,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class ReseñaController : BaseController<Reseña, ReseñaForm>
     {
-        readonly IReseñaService reseñaService;
-        readonly IReseñaMapper reseñaMapper;
-        readonly IInvestigadorService investigadorService;
-        readonly ICatalogoService catalogoService;
-        readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IPaisMapper paisMapper;
         readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoReseñaMapper coautorExternoReseñaMapper;
         readonly ICoautorInternoReseñaMapper coautorInternoReseñaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IReseñaMapper reseñaMapper;
+        readonly IReseñaService reseñaService;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
 
-        public ReseñaController(IReseñaService reseñaService, IReseñaMapper reseñaMapper, ICatalogoService catalogoService, 
-            IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper, IPeriodoReferenciaMapper periodoReferenciaMapper,
-            IProyectoMapper proyectoMapper, ILineaTematicaMapper lineaTematicaMapper, IInvestigadorExternoMapper investigadorExternoMapper,
-            IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-            ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService, ICoautorExternoReseñaMapper coautorExternoReseñaMapper,
-            ICoautorInternoReseñaMapper coautorInternoReseñaMapper)
-            : base(usuarioService)
+        public ReseñaController(IReseñaService reseñaService, IReseñaMapper reseñaMapper,
+                                ICatalogoService catalogoService,
+                                IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper,
+                                IPeriodoReferenciaMapper periodoReferenciaMapper,
+                                IProyectoMapper proyectoMapper, ILineaTematicaMapper lineaTematicaMapper,
+                                IInvestigadorExternoMapper investigadorExternoMapper,
+                                IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper,
+                                IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
+                                ICoautorExternoReseñaMapper coautorExternoReseñaMapper,
+                                ICoautorInternoReseñaMapper coautorInternoReseñaMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.reseñaService = reseñaService;
@@ -120,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(reseña, form, Title.New, "Reseña"))
             {
-                ((GenericViewData<ReseñaForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<ReseñaForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
@@ -140,7 +145,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var reseñaForm = reseñaMapper.Map(reseña);
 
-                ((GenericViewData<ReseñaForm>)ViewData.Model).Form = SetupNewForm(reseñaForm);
+                ((GenericViewData<ReseñaForm>) ViewData.Model).Form = SetupNewForm(reseñaForm);
                 FormSetCombos(reseñaForm);
                 return ViewEdit();
             }
@@ -203,7 +208,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReseña")]CoautorInternoReseñaForm form, int reseñaId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReseña")] CoautorInternoReseñaForm form,
+                                              int reseñaId)
         {
             var coautorInternoReseña = coautorInternoReseñaMapper.Map(form);
 
@@ -245,7 +251,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReseña")]CoautorExternoReseñaForm form, int reseñaId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReseña")] CoautorExternoReseñaForm form,
+                                              int reseñaId)
         {
             var coautorExternoReseña = coautorExternoReseñaMapper.Map(form);
 
@@ -283,7 +290,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.CoautorExternoReseña = new CoautorExternoReseñaForm();
             form.CoautorInternoReseña = new CoautorInternoReseñaForm();
 
-                //Lista de Catalogos Pendientes
+            //Lista de Catalogos Pendientes
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
@@ -298,7 +305,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(ReseñaForm form)
+        void FormSetCombos(ReseñaForm form)
         {
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;

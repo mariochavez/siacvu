@@ -146,6 +146,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI.Colef.Sia.Data\SearchTests.cs" />
     <Compile Include="DI.Colef.Sia.Data\UsuarioQueryingTests.cs" />
     <Compile Include="DI.Colef.Sia.Web\Controllers\RouteRegistrarTests.cs" />
     <Compile Include="DI.Colef.Sia.Data\NHibernateMaps\MappingIntegrationTests.cs" />
@@ -161,6 +162,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj">
+      <Project>{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}</Project>
+      <Name>DI.Colef.Sia.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
       <Project>{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}</Project>
       <Name>DI.Colef.Sia.Web.Controllers</Name>

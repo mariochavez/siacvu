@@ -11,36 +11,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class IndiceController : BaseController<Indice, IndiceForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IIndiceMapper indiceMapper;
 
-        public IndiceController(IUsuarioService usuarioService, ICatalogoService catalogoService, IIndiceMapper indiceMapper)
-            : base(usuarioService)
+        public IndiceController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                IIndiceMapper indiceMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.indiceMapper = indiceMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var indices = catalogoService.GetAllIndices();
             data.List = indiceMapper.Map(indices);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new IndiceForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var indice = catalogoService.GetIndiceById(id);
             data.Form = indiceMapper.Map(indice);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,11 +61,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var indice = catalogoService.GetIndiceById(id);
             data.Form = indiceMapper.Map(indice);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -75,14 +76,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             indice.CreadorPor = CurrentUser();
             indice.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(indice, form, Title.New))
+            if (!IsValidateModel(indice, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveIndice(indice);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", indice.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -99,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", indice.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -110,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveIndice(indice);
 
             var form = indiceMapper.Map(indice);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -124,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveIndice(indice);
 
             var form = indiceMapper.Map(indice);
-            
+
             return Rjs("Activate", form);
         }
     }

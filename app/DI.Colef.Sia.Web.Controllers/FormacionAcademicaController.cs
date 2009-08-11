@@ -12,26 +12,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class FormacionAcademicaController : BaseController<FormacionAcademica, FormacionAcademicaForm>
     {
-        readonly IFormacionAcademicaService formacionAcademicaService;
-        readonly IFormacionAcademicaMapper formacionAcademicaMapper;
+        readonly IAreaMapper areaMapper;
         readonly ICatalogoService catalogoService;
-        readonly INivelEstudioMapper nivelEstudioMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IFormacionAcademicaMapper formacionAcademicaMapper;
+        readonly IFormacionAcademicaService formacionAcademicaService;
         readonly IInstitucionMapper institucionMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IPaisMapper paisMapper;
-        readonly IEstadoPaisMapper estadoPaisMapper;
-        readonly ISectorMapper sectorMapper;
+        readonly INivelEstudioMapper nivelEstudioMapper;
         readonly IOrganizacionMapper organizacionMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
 
-        public FormacionAcademicaController(IFormacionAcademicaService formacionAcademicaService, IFormacionAcademicaMapper formacionAcademicaMapper,
-            ICatalogoService catalogoService, IUsuarioService usuarioService, INivelEstudioMapper nivelEstudioMapper, IInstitucionMapper institucionMapper, 
-            ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper, IEstadoPaisMapper estadoPaisMapper, ISectorMapper sectorMapper, 
-            IOrganizacionMapper organizacionMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper)
-            : base(usuarioService)
+        public FormacionAcademicaController(IFormacionAcademicaService formacionAcademicaService,
+                                            IFormacionAcademicaMapper formacionAcademicaMapper,
+                                            ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                            INivelEstudioMapper nivelEstudioMapper, IInstitucionMapper institucionMapper,
+                                            ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper,
+                                            IEstadoPaisMapper estadoPaisMapper, ISectorMapper sectorMapper,
+                                            IOrganizacionMapper organizacionMapper, IAreaMapper areaMapper,
+                                            IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                            ISearchService searchService) : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.formacionAcademicaService = formacionAcademicaService;
@@ -111,13 +115,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(formacionAcademica, form, Title.New, "FormacionAcademica"))
             {
-                ((GenericViewData<FormacionAcademicaForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<FormacionAcademicaForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
             formacionAcademicaService.SaveFormacionAcademica(formacionAcademica);
 
-            return RedirectToIndex(String.Format("Formacion Academica {0} ha sido creada", formacionAcademica.TituloGrado));
+            return
+                RedirectToIndex(String.Format("Formacion Academica {0} ha sido creada", formacionAcademica.TituloGrado));
         }
 
         [Transaction]
@@ -133,7 +138,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             {
                 var formacionAcademicaForm = formacionAcademicaMapper.Map(formacionAcademica);
 
-                ((GenericViewData<FormacionAcademicaForm>)ViewData.Model).Form = SetupNewForm(formacionAcademicaForm);
+                ((GenericViewData<FormacionAcademicaForm>) ViewData.Model).Form = SetupNewForm(formacionAcademicaForm);
                 FormSetCombos(formacionAcademicaForm);
 
                 return ViewEdit();
@@ -141,7 +146,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             formacionAcademicaService.SaveFormacionAcademica(formacionAcademica);
 
-            return RedirectToIndex(String.Format("Formacion Academica {0} ha sido modificada", formacionAcademica.TituloGrado));
+            return
+                RedirectToIndex(String.Format("Formacion Academica {0} ha sido modificada",
+                                              formacionAcademica.TituloGrado));
         }
 
         [Transaction]
@@ -203,7 +210,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return form;
         }
 
-        private void FormSetCombos(FormacionAcademicaForm form)
+        void FormSetCombos(FormacionAcademicaForm form)
         {
             ViewData["NivelEstudio"] = form.NivelEstudioId;
             ViewData["Institucion"] = form.InstitucionId;

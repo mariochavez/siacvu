@@ -14,33 +14,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ISectorMapper sectorMapper;
 
-        public SectorController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISectorMapper sectorMapper) 
-			: base (usuarioService)
+        public SectorController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+                                ISectorMapper sectorMapper, ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.sectorMapper = sectorMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var sectors = catalogoService.GetAllSectores();
             data.List = sectorMapper.Map(sectors);
 
             return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
-        {			
-			var data = CreateViewDataWithTitle(Title.New);
+        {
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new SectorForm();
-			
-			return View(data);
+
+            return View(data);
         }
-        
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var sector = catalogoService.GetSectorById(id);
             data.Form = sectorMapper.Map(sector);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -60,38 +61,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var sector = catalogoService.GetSectorById(id);
             data.Form = sectorMapper.Map(sector);
-            
+
             ViewData.Model = data;
             return View();
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(SectorForm form)
         {
-        
             var sector = sectorMapper.Map(form);
-            
+
             sector.CreadorPor = CurrentUser();
             sector.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(sector, form, Title.New))
+            if (!IsValidateModel(sector, form, Title.New))
                 return ViewNew();
 
             catalogoService.SaveSector(sector);
 
             return RedirectToIndex(String.Format("{0} ha sido creado", sector.Nombre));
         }
-        
+
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(SectorForm form)
         {
-        
             var sector = sectorMapper.Map(form);
-            
+
             sector.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sector, form, Title.Edit))
@@ -101,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return RedirectToIndex(String.Format("{0} ha sido modificado", sector.Nombre));
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -112,10 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSector(sector);
 
             var form = sectorMapper.Map(sector);
-            
+
             return Rjs(form);
         }
-        
+
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -126,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             catalogoService.SaveSector(sector);
 
             var form = sectorMapper.Map(sector);
-            
+
             return Rjs("Activate", form);
         }
     }

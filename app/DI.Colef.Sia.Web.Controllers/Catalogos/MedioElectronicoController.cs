@@ -14,8 +14,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IMedioElectronicoMapper medioElectronicoMapper;
 
-        public MedioElectronicoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IMedioElectronicoMapper medioElectronicoMapper) 
-			: base (usuarioService)
+        public MedioElectronicoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+            IMedioElectronicoMapper medioElectronicoMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.medioElectronicoMapper = medioElectronicoMapper;

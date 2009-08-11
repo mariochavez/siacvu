@@ -14,8 +14,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly IProgramaEstudioMapper programaEstudioMapper;
 
-        public ProgramaEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService, IProgramaEstudioMapper programaEstudioMapper) 
-			: base (usuarioService)
+        public ProgramaEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService,
+            IProgramaEstudioMapper programaEstudioMapper,
+            ISearchService searchService)
+            : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
             this.programaEstudioMapper = programaEstudioMapper;
