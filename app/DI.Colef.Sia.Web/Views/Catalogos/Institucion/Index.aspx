@@ -9,11 +9,16 @@
     <h2><%=Html.Encode(Model.Title) %></h2>
     <div id="message" class="<% if(TempData["message"] != null) { %>message<% } else if(TempData["error"] != null) { %>errormessage<% } %>"><%=Html.Encode(TempData["message"])%></div>
     <br />
-    <div id="datalist">   
-        <div class="btn_container">
-		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Crear Institucion") %>
-		    </span>
+    <div id="datalist"> 
+       <div> 
+            <div class="floatr btn_container">
+                <% Html.RenderPartial("_Search"); %>
+	        </div>
+            <div class="floatl btn_container">
+		        <span class="btn btn_medium_brown">
+			        <%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Crear Institucion")%>
+		        </span>
+	        </div>
 	    </div>
         <br />
         <div class="table_title">Instituciones</div>
