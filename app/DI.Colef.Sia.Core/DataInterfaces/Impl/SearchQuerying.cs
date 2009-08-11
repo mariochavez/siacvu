@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .SetMaxResults(20)
                 .SetProjection(Projections.ProjectionList()
                                    .Add(Projections.Property("Id"), "Id")
-                                   .Add(Projections.Property("Nombre"), "Nombre"))
+                                   .Add(Projections.Property(fieldName), "Nombre"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (Search)))
                 .Add(Expression.Like(fieldName, "%" + value + "%"))
                 .List<Search>();
