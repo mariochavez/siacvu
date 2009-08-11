@@ -168,6 +168,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<OrganoExterno>(x => x.Nombre, q);
+            return Content(data);
+        }
+
         OrganoExternoForm SetupNewForm()
         {
             return SetupNewForm(null);

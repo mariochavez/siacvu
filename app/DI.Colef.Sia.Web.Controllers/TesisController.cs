@@ -186,6 +186,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Tesis>(x => x.Titulo, q);
+            return Content(data);
+        }
+
         TesisForm SetupNewForm()
         {
             return SetupNewForm(null);

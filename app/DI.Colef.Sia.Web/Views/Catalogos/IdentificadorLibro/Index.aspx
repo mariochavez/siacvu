@@ -10,10 +10,15 @@
     <div id="message" class="<% if(TempData["message"] != null) { %>message<% } else if(TempData["error"] != null) { %>errormessage<% } %>"><%=Html.Encode(TempData["message"])%></div>
     <br />
     <div id="datalist">   
-        <div class="btn_container">
-		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<IdentificadorLibroController>(x => x.New(), "+ Crear Identificador de Libro") %>
-		    </span>
+        <div>
+            <div class="floatr btn_container">
+                <% Html.RenderPartial("_Search"); %>
+	        </div>
+            <div class="btn_container">
+		        <span class="btn btn_medium_brown">
+			        <%=Html.ActionLink<IdentificadorLibroController>(x => x.New(), "+ Crear Identificador Libro") %>
+		        </span>
+	        </div>
 	    </div>
         <br />
         <div class="table_title">Identificadores de Libros</div>

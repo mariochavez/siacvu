@@ -205,6 +205,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Articulo>(x => x.Titulo, q);
+            return Content(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);

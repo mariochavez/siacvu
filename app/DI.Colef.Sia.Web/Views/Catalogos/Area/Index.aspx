@@ -10,10 +10,15 @@
     <div id="message" class="<% if(TempData["message"] != null) { %>message<% } else if(TempData["error"] != null) { %>errormessage<% } %>"><%=Html.Encode(TempData["message"])%></div>
     <br />
     <div id="datalist">   
-        <div class="btn_container">
-		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<AreaController>(x => x.New(), "+ Crear Area") %>
-		    </span>
+        <div>
+            <div class="floatr btn_container">
+                <% Html.RenderPartial("_Search"); %>
+	        </div>
+            <div class="btn_container">
+		        <span class="btn btn_medium_brown">
+			        <%=Html.ActionLink<AreaController>(x => x.New(), "+ Crear Area") %>
+		        </span>
+	        </div>
 	    </div>
         <br />
         <div class="table_title">Areas</div>

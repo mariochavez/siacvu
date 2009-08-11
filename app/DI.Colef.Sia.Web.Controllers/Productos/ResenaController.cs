@@ -191,6 +191,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Resena>(x => x.NombreRevista, q);
+            return Content(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var resena = resenaService.GetResenaById(id);

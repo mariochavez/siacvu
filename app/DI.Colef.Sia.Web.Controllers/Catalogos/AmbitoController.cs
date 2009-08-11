@@ -128,5 +128,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("Activate", form);
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Ambito>(x => x.Nombre, q);
+            return Content(data);
+        }
     }
 }

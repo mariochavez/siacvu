@@ -10,10 +10,15 @@
     <% Html.RenderPartial("_Message"); %>
     <br />
     <div id="datalist">   
-        <div class="btn_container">
-		    <span class="btn btn_medium_brown">
-			    <%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Crear Articulo") %>
-		    </span>
+        <div>
+            <div class="floatr btn_container">
+                <% Html.RenderPartial("_Search"); %>
+	        </div>
+            <div class="btn_container">
+		        <span class="btn btn_medium_brown">
+			        <%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Crear Articulo") %>
+		        </span>
+	        </div>
 	    </div>
         <br />
         <div class="table_title">Articulos</div>
