@@ -5,7 +5,7 @@
     <tr>
         <td>
             <label>
-                Forma Participacion:<em>*</em></label>
+                Forma Participacion:</label>
         </td>
         <td>
             <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),

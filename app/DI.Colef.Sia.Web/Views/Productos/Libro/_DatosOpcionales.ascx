@@ -5,7 +5,7 @@
     <tr>
         <td>
             <label>
-                Identificador Libro:<em>*</em></label>
+                Identificador Libro:</label>
         </td>
         <td>
             <%=Html.DropDownList("IdentificadorLibro", Model.IdentificadoresLibros.CreateSelectList<IdentificadorLibroForm>("Id", "Nombre"),
@@ -16,7 +16,7 @@
     <tr>
         <td>
             <label>
-                Palabras Clave:<em>*</em></label>
+                Palabras Clave:</label>
         </td>
         <td>
             <%=Html.TextBox("PalabrasClave", Model.PalabrasClave, new { maxlength = 100 })%>
@@ -26,7 +26,7 @@
     <tr>
         <td>
             <label>
-                Co Traductor:<em>*</em></label>
+                Co Traductor:</label>
         </td>
         <td>
             <%=Html.TextBox("CoTraductor", Model.CoTraductor, new { maxlength = 100 })%>
@@ -36,7 +36,7 @@
     <tr>
         <td>
             <label>
-                Traductor:<em>*</em></label>
+                Traductor:</label>
         </td>
         <td>
             <%=Html.TextBox("Traductor", Model.Traductor, new { maxlength = 100 })%>
@@ -46,7 +46,7 @@
     <tr>
         <td>
             <label>
-                Area:<em>*</em></label>
+                Area:</label>
         </td>
         <td>
             <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
@@ -57,7 +57,7 @@
     <tr>
         <td>
             <label>
-                Disciplina:<em>*</em></label>
+                Disciplina:</label>
         </td>
         <td>
             <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
@@ -68,7 +68,7 @@
     <tr>
         <td>
             <label>
-                Subdisciplina:<em>*</em></label>
+                Subdisciplina:</label>
         </td>
         <td>
             <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),

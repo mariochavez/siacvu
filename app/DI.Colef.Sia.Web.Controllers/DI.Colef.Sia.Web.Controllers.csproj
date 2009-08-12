@@ -91,7 +91,7 @@
     <Compile Include="Catalogos\TipoInstitucionController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
-    <Compile Include="LibroController.cs" />
+    <Compile Include="Productos\LibroController.cs" />
     <Compile Include="Mappers\ICoautorExternoLibroMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoLibroMapper.cs" />
     <Compile Include="Mappers\IConvenioMapper.cs" />

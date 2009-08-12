@@ -5,7 +5,7 @@
     <tr>
         <td>
             <label>
-                Nombre:<em>*</em></label>
+                Nombre:</label>
         </td>
         <td>
             <%=Html.TextBox("Nombre", Model.Nombre, new { maxlength = 100 })%>
@@ -15,7 +15,7 @@
     <tr>
         <td>
             <label>
-                Isbn:<em>*</em></label>
+                Isbn:</label>
         </td>
         <td>
             <%=Html.TextBox("ISBN", Model.ISBN, new { maxlength = 100 })%>
@@ -25,7 +25,7 @@
     <tr>
         <td>
             <label>
-                Editorial:<em>*</em></label>
+                Editorial:</label>
         </td>
         <td>
             <%=Html.TextBox("Editorial", Model.Editorial, new { maxlength = 100 })%>
@@ -35,7 +35,7 @@
     <tr>
         <td>
             <label>
-                Fecha Edicion:<em>*</em></label>
+                Fecha Edicion:</label>
         </td>
         <td>
             <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class="datetime", maxlength = 10 })%>
@@ -46,7 +46,7 @@
     <tr>
         <td>
             <label>
-                Pais:<em>*</em></label>
+                Pais:</label>
         </td>
         <td>
             <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
@@ -57,7 +57,7 @@
     <tr>
         <td>
             <label>
-                No Paginas:<em>*</em></label>
+                No Paginas:</label>
         </td>
         <td>
             <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { maxlength = 100, size = 14 })%>
@@ -67,7 +67,7 @@
     <tr>
         <td>
             <label>
-                Tiraje:<em>*</em></label>
+                Tiraje:</label>
         </td>
         <td>
             <%=Html.TextBox("Tiraje", Model.Tiraje, new { maxlength = 100 })%>
@@ -77,7 +77,7 @@
     <tr>
         <td>
             <label>
-                Idioma:<em>*</em></label>
+                Idioma:</label>
         </td>
         <td>
             <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
