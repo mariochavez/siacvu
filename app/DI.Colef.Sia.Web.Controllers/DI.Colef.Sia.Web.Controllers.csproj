@@ -103,8 +103,6 @@
     <Compile Include="Mappers\Impl\IdentificadorLibroMapper.cs" />
     <Compile Include="Mappers\Impl\LibroMapper.cs" />
     <Compile Include="Mappers\IMovilidadAcademicaMapper.cs" />
-    <Compile Include="Mappers\Impl\ConvenioMapper.cs" />
-    <Compile Include="Mappers\Impl\IdentificadorLibroMapper.cs" />
     <Compile Include="Mappers\Impl\MovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoDerivadoMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoDerivadoMovilidadAcademicaMapper.cs" />

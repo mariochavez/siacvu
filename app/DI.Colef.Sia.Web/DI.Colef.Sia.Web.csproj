@@ -185,10 +185,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
-      <Project>{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}</Project>
-      <Name>DI.Colef.Sia.Web.Controllers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj">
       <Project>{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}</Project>
       <Name>DI.Colef.Sia.Core</Name>
@@ -196,6 +192,10 @@
     <ProjectReference Include="..\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj">
       <Project>{214434BA-B62E-4E97-A500-9175A5FB176E}</Project>
       <Name>DI.Colef.Sia.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
+      <Project>{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}</Project>
+      <Name>DI.Colef.Sia.Web.Controllers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
