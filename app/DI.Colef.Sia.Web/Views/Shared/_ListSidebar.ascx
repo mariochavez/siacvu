@@ -1,0 +1,3 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+	<p>Para buscar un elemento en particular de este listado, introduzca el nombre en la caja de texto con el mensaje <strong>Buscar...</strong> y conforme vaya introduciendo el nombre, un listado de sugerencias aparecer&aacute;, seleccione uno y presione el bot&oacute;n <strong>Buscar</strong> para ir a editar el elemento seleccionado.</p>
+	<p>Si desea modificar un elemento del listado, presione el bot&oacute;n <strong>Editar</strong> en el mismo rengl&oacute;n del elemento, &eacute;sto lo llevara a la forma para ingresar la informaci&oacute;n correspondiente.</p>

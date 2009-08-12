@@ -163,8 +163,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\sharp_arch.jpg" />
-    <Content Include="Content\Images\sharp_arch_small.gif" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
@@ -200,11 +198,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\ajax-loader.gif" />
-    <Content Include="Content\Images\create.png" />
+    <Content Include="Content\Images\boton-bg.gif" />
+    <Content Include="Content\Images\colef-logo.gif" />
+    <Content Include="Content\Images\contenido-bg.gif" />
     <Content Include="Content\Images\medium-brown-button.png" />
     <Content Include="Content\Images\normal-brown-button.png" />
     <Content Include="Content\Images\normal-white-button.png" />
+    <Content Include="Content\Images\pagina-bg.gif" />
+    <Content Include="Content\Images\requerido-icon.gif" />
     <Content Include="Content\Images\small-white-button.png" />
+    <Content Include="Content\Images\usuario-icon.gif" />
     <Content Include="Content\jquery.autocomplete.css" />
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
