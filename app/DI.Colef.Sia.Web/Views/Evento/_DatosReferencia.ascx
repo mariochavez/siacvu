@@ -1,52 +1,44 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EventoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<table class="subform">
-    <tr>
-        <td class="label">
-		    <label>Institucion:<em>*</em></label>
-		    <br />
-			<%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-				    "Seleccione ...")%>
-			<%=Html.ValidationMessage("Institucion") %>
-        </td>
-        <td class="label">
-		    <label>Lugar:<em>*</em></label>
-		    <br />
-			<%=Html.TextBox("Lugar", Model.Lugar, new { maxlength = 100 })%>
-			<%=Html.ValidationMessage("Lugar")%>
-        </td>
-    </tr>
-    <tr>
-        <td class="label">
-		    <label>Linea Tematica:<em>*</em></label>
-		    <br />
-			<%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-				    "Seleccione ...")%>
-			<%=Html.ValidationMessage("LineaTematica") %>
-        </td>
-        <td class="label">
-		    <label>Tipo Financiamiento:<em>*</em></label>
-		    <br />
-			<%=Html.DropDownList("TipoFinanciamiento", Model.TiposFinanciamientos.CreateSelectList<TipoFinanciamientoForm>("Id", "Nombre"),
-				    "Seleccione ...")%>
-			<%=Html.ValidationMessage("TipoFinanciamiento") %>
-        </td>
-    </tr>
-    <tr>
-        <td class="label">
-		    <label>Fecha Inicial:<em>*</em></label>
-		    <br />
-			<%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class="datetime", maxlength = 10 })%>
-            <span class="helper_message">(Formato dd/mm/yyyy)</span>
-            <%=Html.ValidationMessage("FechaInicial")%>
-        </td>
-        <td class="label">
-		    <label>Fecha Final:<em>*</em></label>
-		    <br />
-			<%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class="datetime", maxlength = 10 })%>
-            <span class="helper_message">(Formato dd/mm/yyyy)</span>
-            <%=Html.ValidationMessage("FechaFinal")%>
-        </td>
-    </tr>
-</table>
+<p>
+    <label>Institucion:</label>
+ 
+	<%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
+		    "Seleccione ...")%>
+	<%=Html.ValidationMessage("Institucion") %>
+</p>
+<p>
+    <label>Lugar:</label>
+  
+	<%=Html.TextBox("Lugar", Model.Lugar, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("Lugar")%>
+</p>
+<p>
+    <label>Linea Tematica:</label>
+
+	<%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
+		    "Seleccione ...")%>
+	<%=Html.ValidationMessage("LineaTematica") %>
+</p>
+<p>
+    <label>Tipo Financiamiento:</label>
+  
+	<%=Html.DropDownList("TipoFinanciamiento", Model.TiposFinanciamientos.CreateSelectList<TipoFinanciamientoForm>("Id", "Nombre"),
+		    "Seleccione ...")%>
+	<%=Html.ValidationMessage("TipoFinanciamiento") %>
+</p>
+<p>
+    <label>Fecha Inicial:</label>
+  
+	<%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100", maxlength = 10 })%>
+    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaInicial")%>
+</p>
+<p>
+    <label>Fecha Final:</label>
+  
+	<%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100", maxlength = 10 })%>
+    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaFinal")%>
+ </p>

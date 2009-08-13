@@ -6,60 +6,57 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    <% Html.RenderPartial("_Message"); %>
-    <br />
-    <% using (Html.BeginForm("Update", "MovilidadAcademica")){ %>
-        <div id="form">
-        <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
+</asp:Content>
 
-        <table class="form">
-            <tr>
-                <td class="label">
-                   <label>Tipos Actividades:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Tipos Actividades:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Productos Derivados:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Proyectos:</label>
-                </td>
-                <td class="field">
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
+	<div id="introduccion">
+		<p>Favor de llenar los siguientes campos para dar de alta una nueva movilidad academica dentro del sistema.</p>
+	</div><!--end introduccion-->	
+</asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>Asistente de secci&oacute;n</h3>
+            <% Html.RenderPartial("_NewSidebar"); %>
+        </div><!--end asistente-->
+    </div><!--end barra-->
+</asp:Content>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <div id="textos">
+    
+	    <div id="forma">
+            <% Html.RenderPartial("_Message"); %>
+            <br />
+            <% using (Html.BeginForm("Update", "MovilidadAcademica")){ %>
+                <%=Html.AntiForgeryToken() %>
+                <%=Html.Hidden("Id", Model.Form.Id) %>
+                
+                <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
+                
+                <h4>Tipos Actividades:</h4>
+                <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
+            
+                <p>
+                    <h4>Productos Derivados:</h4>
+                </p>         
+                <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
+                
+                <p>
+                    <h4>Proyectos:</h4>
                     <% Html.RenderPartial("_EditProyecto", Model.Form); %>
-                </td>
-            </tr>                                  
-        </table>
-        
-	    <div class="btn_container_footer">
-		    <span class="btn btn_normal_brown">
-			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		    </span>
-		    <span class="btn btn_normal_white">
-			    <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar") %>
-		    </span>
-	    </div>    
-    </div>
-    <% } %>
+                </p>
+                
+                <p class="submit">
+                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar")%>
+                </p>
+            <% } %>
+	    </div><!--end forma-->	
+    		
+    </div><!--end textos-->
     
 <script type="text/javascript">
     $(document).ready(function() {
