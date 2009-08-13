@@ -1,84 +1,79 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<LibroForm>>" %>
+
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
         <%=Html.Encode(Model.Title) %></h2>
-    <% Html.RenderPartial("_Message"); %>
-    <br />
-    <% using (Html.BeginForm("Create", "Libro"))
-       { %>
-    <div id="form">
+</asp:Content>
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
+    runat="server">
+    <div id="introduccion">
+        <p>
+            Favor de llenar los siguientes campos para dar de alta un nuevo libro dentro del
+            sistema.
+        </p>
+    </div>
+    <!--end introduccion-->
+</asp:Content>
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder"
+    runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>
+                Asistente de secci&oacute;n</h3>
+            <% Html.RenderPartial("_NewSidebar"); %>
+        </div>
+        <!--end asistente-->
+    </div>
+    <!--end barra-->
+</asp:Content>
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<div id="textos">
+    <div id="forma">
+        <% Html.RenderPartial("_Message"); %>
+        <br />
+        <% using (Html.BeginForm("Create", "Libro"))
+           { %>
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>
-        <table class="form">
-            <tr>
-                <td class="label required">
-                    <label>Libro:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_DatosLibro", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                    <label>Referencia bibliografica:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                    <label>Coautores Internos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                    <label>Coautores Externos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                    <label>Referencia Bibliografica:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_Coautoria", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                    <label>Opcionales:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-                </td>
-            </tr>
-        </table>
-        <div class="btn_container_footer">
-            <span class="btn btn_normal_brown">
-                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-            </span><span class="btn btn_normal_white">
-                <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
-            </span>
-        </div>
+        <h4>
+            Libro</h4>
+        <% Html.RenderPartial("_DatosLibro", Model.Form); %>
+        <h4>
+            Referencia Bibliografica</h4>
+        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+        <h4>
+            Coautores Internos</h4>
+        <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+        <h4>
+            Coautores Externos</h4>
+        <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+        <h4>
+            Coautoria</h4>
+        <% Html.RenderPartial("_Coautoria", Model.Form); %>
+        <h4>
+            Opcionales</h4>
+        <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+        <p class="submit">
+            <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
+            &oacute;
+            <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
+        </p>
+        <% } %>
     </div>
-    <% } %>
+    <!--end forma-->
+</div>
+<!--end textos-->
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setupDocument();
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setupDocument();
+    });
+</script>
 
 </asp:Content>

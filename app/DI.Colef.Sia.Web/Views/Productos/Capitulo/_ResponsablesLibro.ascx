@@ -1,15 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<table class="subform">	
-	<tr>
-		<td>
-			<label>Forma de Participacion:</label>
-		</td>
-		<td>
-			<%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
+<p>
+    <label>
+        Forma de Participacion:</label>
+    <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
 			    "Seleccione ...")%>
-			<%=Html.ValidationMessage("FormaParticipacion") %>
-		</td>
-	</tr>
-</table>
+    <%=Html.ValidationMessage("FormaParticipacion") %>
+</p>
