@@ -6,37 +6,45 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    <% Html.RenderPartial("_Message"); %>
-    <br />
-    <% using (Html.BeginForm("Update", "ParticipacionMedio"))
-       { %>
-        <div id="form">
-        <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
+</asp:Content>
 
-        <table class="form">
-            <tr>
-                    <td class="label required">
-                       <label>Participacion del Medio:</label>
-                    </td>
-                    <td class="field">
-                        <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
-                    </td>
-                </tr>                
-        </table>
-        
-	    <div class="btn_container_footer">
-		    <span class="btn btn_normal_brown">
-			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		    </span>
-		    <span class="btn btn_normal_white">
-			    <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar")%>
-		    </span>
-	    </div>    
-    </div>
-    <% } %>
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
+	<div id="introduccion">
+		<p>Favor de llenar los siguientes campos para dar de alta alguna participacion en medios dentro del sistema.</p>
+	</div><!--end introduccion-->	
+</asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>Asistente de secci&oacute;n</h3>
+            <% Html.RenderPartial("_NewSidebar"); %>
+        </div><!--end asistente-->
+    </div><!--end barra-->
+</asp:Content>
+
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <div id="textos">
+    
+	    <div id="forma">
+            <% Html.RenderPartial("_Message"); %>
+            <br />
+            <% using (Html.BeginForm("Update", "ParticipacionMedio")){ %>
+		        <%=Html.AntiForgeryToken() %>
+                <%=Html.Hidden("Id", Model.Form.Id) %>
+
+                <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
+        				
+                <p class="submit">
+                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar")%>
+                </p>
+            <% } %>
+	    </div><!--end forma-->	
+    		
+    </div><!--end textos-->
     
 <script type="text/javascript">
     $(document).ready(function() {
