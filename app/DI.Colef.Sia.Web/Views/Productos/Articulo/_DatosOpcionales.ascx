@@ -23,13 +23,13 @@
 <p>
     <label>
         Participantes:</label>
-    <%=Html.TextBox("Participantes", Model.Participantes, new { maxlength = 5, size = 5 })%>
+    <%=Html.TextBox("Participantes", Model.Participantes, new { @class = "input250", maxlength = 5, size = 5 })%>
     <%=Html.ValidationMessage("Participantes")%>
 </p>
 <p>
     <label>
         Palabras Claves:</label>
-    <%=Html.TextBox("PalabrasClaves", Model.PalabrasClaves, new { maxlength = 100 })%>
+    <%=Html.TextBox("PalabrasClaves", Model.PalabrasClaves, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("PalabrasClaves")%>
 </p>
 <p>
@@ -56,7 +56,7 @@
 <p>
     <label>
         Fecha Publicacion:</label>    
-    <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class="datetime", maxlength = 10 })%>
+    <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class="datetime input100", maxlength = 10 })%>
     <span class="helper_message">(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>

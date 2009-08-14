@@ -1179,6 +1179,10 @@ alter table Capitulos  drop constraint FK3165FEADBC063744
 alter table Capitulos  drop constraint FK3165FEADF4FE4035
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD85102A57]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD85102A57
 
@@ -1393,6 +1397,10 @@ alter table Articulos  drop constraint FK3EB394D7BC063744
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7F4FE4035]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D7F4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D770EA6C9E]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D770EA6C9E
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D785102A57]') AND parent_object_id = OBJECT_ID('Articulos'))
@@ -2802,6 +2810,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       ProyectoFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2962,6 +2971,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       ProyectoFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4630,6 +4640,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Subdisciplinas
 
     alter table Capitulos 
+        add constraint FK3165FEAD70EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Capitulos 
         add constraint FK3165FEAD85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -4898,6 +4913,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK3EB394D7F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table Articulos 
+        add constraint FK3EB394D770EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
 
     alter table Articulos 
         add constraint FK3EB394D785102A57 

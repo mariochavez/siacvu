@@ -11,20 +11,20 @@
 <p>
     <label>
         Nombre del Capitulo:</label>
-    <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { maxlength = 100 })%>
+    <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreCapitulo")%>
 </p>
 <p>
     <label>
         Fecha de Aceptacion:</label>
-    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100", maxlength = 10 })%>
     <span class="helper_message">(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p>
     <label>
         Fecha de Edicion:</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100", maxlength = 10 })%>
     <span class="helper_message">(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
@@ -59,4 +59,7 @@
 <p>
     <label>
         Proyecto de Referencia:</label>
+    <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
+                "Seleccione ...")%>
+    <%=Html.ValidationMessage("Proyecto") %>
 </p>

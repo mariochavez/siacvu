@@ -11,19 +11,19 @@
 <p>
     <label>
         Palabras Clave:</label>
-    <%=Html.TextBox("PalabrasClave", Model.PalabrasClave, new { maxlength = 100 })%>
+    <%=Html.TextBox("PalabrasClave", Model.PalabrasClave, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("PalabrasClave")%>
 </p>
 <p>
     <label>
         Co Traductor:</label>
-    <%=Html.TextBox("CoTraductor", Model.CoTraductor, new { maxlength = 100 })%>
+    <%=Html.TextBox("CoTraductor", Model.CoTraductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("CoTraductor")%>
 </p>
 <p>
     <label>
         Traductor:</label>
-    <%=Html.TextBox("Traductor", Model.Traductor, new { maxlength = 100 })%>
+    <%=Html.TextBox("Traductor", Model.Traductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Traductor")%>
 </p>
 <p>

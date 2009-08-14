@@ -11,23 +11,23 @@
 <p>
     <label>
         Volumen:</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>
         Numero:</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { maxlength = 100 })%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
     <label>Pagina Inicial:</label> 
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { maxlength = 10, size = 14 })%>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("PaginaInicial")%>
 </p>
 <p>    
     <label>Pagina Final:</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { maxlength = 10, size = 14 })%>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
 <p>
@@ -68,7 +68,7 @@
 <p>
     <label>
         Fecha Edicion:</label>    
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100", maxlength = 10 })%>
     <span class="helper_message">(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>

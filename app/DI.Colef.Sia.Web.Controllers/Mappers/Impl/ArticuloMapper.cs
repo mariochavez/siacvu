@@ -60,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 
             if (message.CoautorExternoArticulo != null)
                 model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
