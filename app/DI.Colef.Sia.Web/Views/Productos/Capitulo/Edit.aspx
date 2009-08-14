@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+﻿    <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CapituloForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
@@ -6,93 +6,76 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
+    <h2>
+        <%=Html.Encode(Model.Title) %></h2>
+</asp:Content>
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
+    runat="server">
+    <div id="introduccion">
+        <p>
+            Favor de llenar los siguientes campos para editar un capitulo dentro
+            del sistema.
+        </p>
+    </div>
+    <!--end introduccion-->
+</asp:Content>
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder"
+    runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>
+                Asistente de secci&oacute;n</h3>
+            <% Html.RenderPartial("_NewSidebar"); %>
+        </div>
+        <!--end asistente-->
+    </div>
+    <!--end barra-->
+</asp:Content>
+
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+<div id="textos">
+    <div id="forma">
     <% Html.RenderPartial("_Message"); %>
     <br />
     <% using (Html.BeginForm("Update", "Capitulo"))
        { %>
-        <div id="form">
         <%=Html.AntiForgeryToken() %>
         <%=Html.Hidden("Id", Model.Form.Id) %>        
 
-        <table class="form">
-            <tr>
-                <td class="label required">
-                   <label>Capitulo:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Coautores Externos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-                </td>
-            </tr> 
-            <tr>
-                <td class="label">
-                   <label>Coautores Internos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Referencia Bibliografica:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Responsables Externos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
-                </td>
-            </tr> 
-            <tr>
-                <td class="label">
-                   <label>Responsables Internos:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Responsables del libro:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Datos Opcionales:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-                </td>
-            </tr>
-        </table>
+        <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
+        <p>
+        <h4>Coautores Internos</h4>
+        <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+        </p>
+        <p>
+        <h4>Coautores Externos</h4>
+        <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+        </p>
+        <h4>Referencia Bibliografica</h4>
+        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+        <p>
+        <h4>Responsables Internos del libro</h4>
+        <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
+        </p>
+        <p>
+        <h4>Responsables Externos del libro</h4>
+        <% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
+        </p>        
         
-	    <div class="btn_container_footer">
-		    <span class="btn btn_normal_brown">
-			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		    </span>
-		    <span class="btn btn_normal_white">
-			    <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar")%>
-		    </span>
-	    </div>    
+        <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>        
+        
+        <h4>Opcionales</h4>
+        <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+        
+        <p class="submit">
+            <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
+        </p>
+        <% } %>
     </div>
-    <% } %>
+    <!--end forma-->
+</div>
+<!--end textos-->
     
 <script type="text/javascript">
     $(document).ready(function() {

@@ -34,19 +34,21 @@
         <br />
         <% using (Html.BeginForm("Create", "Articulo")){ %>
         <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
+        <%=Html.Hidden("Id", Model.Form.Id) %>        
         
-        <h4>Articulo</h4>
         <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
         
         <h4>Referencia Bibliografica</h4>
         <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
         
+        <p>
         <h4>Coautores Externos</h4>
         <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-        
+        </p>
+        <p>
         <h4>Coautores Internos</h4>
         <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+        </p>
         
         <h4>Opcionales</h4>
         <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
