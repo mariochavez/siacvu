@@ -34,6 +34,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
 
+        public int Proyecto { get; set; }
+        public int ProyectoId { get; set; }
+
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
@@ -101,5 +104,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public ProyectoForm[] Proyectos { get; set; }
     }
 }

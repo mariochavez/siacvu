@@ -36,36 +36,35 @@
     <div id="forma">
         <% Html.RenderPartial("_Message"); %>
         <br />
-        <% using (Html.BeginForm("Update", "Libro"))
-           { %>
-        <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
-        <% Html.RenderPartial("_DatosLibro", Model.Form); %>
-        <h4>Referencia Bibliografica</h4>
-        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-        <p>
+        <% using (Html.BeginForm("Update", "Libro")){ %>
+            <%=Html.AntiForgeryToken() %>
+            <%=Html.Hidden("Id", Model.Form.Id) %>
+            
+            <% Html.RenderPartial("_DatosLibro", Model.Form); %>
+            
+            <h4>Referencia Bibliografica</h4>
+            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            
             <h4>Coautores Internos</h4>
+            <% Html.RenderPartial("_Coautoria", Model.Form); %>
             <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-        </p>
-        <p>
-            <h4>Coautores Externos</h4>
-            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-        <p>
-        <% Html.RenderPartial("_Coautoria", Model.Form); %>
-        
-        <h4> Opcionales</h4>
-        <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-        
-        <p class="submit">
-            <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-            &oacute;
-            <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
-        </p>
+            
+            <p>
+                <h4>Coautores Externos</h4>
+                <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>        
+            </p>
+            
+            <p>
+                <h4>Opcionales</h4>
+                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+            </p>
+            <p class="submit">
+                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
+            </p>
         <% } %>
-    </div>
-    <!--end forma-->
-</div>
-<!--end textos-->
+    </div><!--end forma-->
+    
+</div><!--end textos-->
 
 <script type="text/javascript">
     $(document).ready(function() {

@@ -37,44 +37,47 @@
     <div id="forma">
         <% Html.RenderPartial("_Message"); %>
         <br />
-        <% using (Html.BeginForm("Create", "Capitulo"))
-           { %>
-        <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>        
-        
-        <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
-        <p>
-        <h4>Coautores Internos</h4>
-        <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-        </p>
-        <p>
-        <h4>Coautores Externos</h4>
-        <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-        </p>
-        <h4>Referencia Bibliografica</h4>
-        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-        <p>
-        <h4>Responsables Internos del libro</h4>
-        <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-        </p>
-        <p>
-        <h4>Responsables Externos del libro</h4>
-        <% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
-        </p>        
-        
-        <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>        
-        
-        <h4>Opcionales</h4>
-        <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-        
-        <p class="submit">
-            <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
-        </p>
+        <% using (Html.BeginForm("Create", "Capitulo")){ %>
+            <%=Html.AntiForgeryToken() %>
+            <%=Html.Hidden("Id", Model.Form.Id) %>        
+            
+            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
+            
+            <h4>Coautores Internos</h4>
+            <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+            
+            <p>
+                <h4>Coautores Externos</h4>
+                <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+            </p>
+            
+            <p>
+                <h4>Referencia Bibliografica</h4>
+                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            </p>
+            
+            <h4>Responsables Internos del libro</h4>
+            <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
+            
+            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
+            
+            <p>
+                <h4>Responsables Externos del libro</h4>
+                <% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
+            </p>        
+            
+            <p>
+                <h4>Opcionales</h4>
+                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+            </p>
+            
+            <p class="submit">
+                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
+            </p>
         <% } %>
-    </div>
-    <!--end forma-->
-</div>
-<!--end textos-->
+    </div>    <!--end forma-->
+    
+</div><!--end textos-->
 
 <script type="text/javascript">
     $(document).ready(function() {

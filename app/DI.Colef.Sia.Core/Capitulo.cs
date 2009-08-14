@@ -39,29 +39,22 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Investigador Investigador { get; set; }
 
-        [NotNull]
 		public virtual TipoCapitulo TipoCapitulo { get; set; }
 
         [DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string NombreCapitulo { get; set; }
 
-		[NotEmptyDate]
 		public virtual DateTime FechaAceptacion { get; set; }
 
-		[NotEmptyDate]
 		public virtual DateTime FechaEdicion { get; set; }
 
-        [NotNull]
         public virtual EstadoProducto EstadoProducto { get; set; }
 
-        [NotNull]
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
-        [NotNull]
 		public virtual LineaTematica LineaTematica { get; set; }
 
-        [NotNull]
 		public virtual Idioma Idioma { get; set; }
 
         [Valid]
@@ -70,16 +63,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
 		public virtual IList<CoautorInternoCapitulo> CoautorInternoCapitulos { get; private set; }
 
-		[NotNullNotEmpty]
 		public virtual string NombreLibro { get; set; }
 
-		[NotNullNotEmpty]
 		public virtual string Editorial { get; set; }
 
-        [NotNull]
 		public virtual Pais Pais { get; set; }
 
-        [NotNull]
 		public virtual int NoPaginas { get; set; }
 
         [Valid]
@@ -88,7 +77,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
 		public virtual IList<ResponsableExternoCapitulo> ResponsableExternoCapitulos { get; private set; }
 
-        [NotNull]
 		public virtual FormaParticipacion FormaParticipacion { get; set; }
 
         public virtual int Puntuacion { get; set; }
@@ -106,6 +94,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual Disciplina Disciplina { get; set; }
         
 		public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual Proyecto Proyecto { get; set; }
         
 		public virtual string Traductor { get; set; }
         

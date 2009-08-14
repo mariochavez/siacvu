@@ -37,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IProyectoMapper proyectoMapper;
 
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
@@ -47,7 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
             ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
             IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
-            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 		IEstadoProductoMapper estadoProductoMapper, ISearchService searchService) : base(usuarioService, searchService)
+            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+            IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
+            : base(usuarioService, searchService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
@@ -73,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
+            this.proyectoMapper = proyectoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -327,6 +331,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
 
             return form;
         }
@@ -338,6 +343,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["Proyecto"] = form.ProyectoId;
 
             ViewData["Pais"] = form.PaisId;
             ViewData["RevistaPublicacion"] = form.RevistaPublicacionId;

@@ -30,59 +30,42 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Investigador Investigador { get; set; }
 
-        [NotNull]
         public virtual TipoArticulo TipoArticulo { get; set; }
 
-        [NotNull]
         public virtual Idioma Idioma { get; set; }
 
-        [NotNull]
         public virtual EstadoProducto EstadoProducto { get; set; }
 
-        [NotNull]
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
-        [NotEmptyDate]
         public virtual DateTime FechaAceptacion { get; set; }
 
-        [NotNull]
         public virtual LineaTematica LineaTematica { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        [NotNull]
         public virtual Pais Pais { get; set; }
 
-        [NotNullNotEmpty]
         public virtual string Volumen { get; set; }
 
-        [NotNull]
         public virtual int Numero { get; set; }
 
-        [NotNull]
         public virtual int PaginaInicial { get; set; }
 
-        [NotNull]
         public virtual int PaginaFinal { get; set; }
 
-        [NotNull]
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        [NotNull]
         public virtual Indice Indice1 { get; set; }
 
-        [NotNull]
         public virtual Indice Indice2 { get; set; }
 
-        [NotNull]
         public virtual Indice Indice3 { get; set; }
 
-        [NotEmptyDate]
         public virtual DateTime FechaEdicion { get; set; }
 
         [Valid]
@@ -108,6 +91,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Disciplina Disciplina { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual Proyecto Proyecto { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
 

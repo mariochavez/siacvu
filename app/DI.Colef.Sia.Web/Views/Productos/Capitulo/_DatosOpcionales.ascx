@@ -4,13 +4,13 @@
 <p>
     <label>
         Volumen:</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>
         Editores:</label>
-    <%=Html.TextBox("Editores", Model.Editores, new { maxlength = 100 })%>
+    <%=Html.TextBox("Editores", Model.Editores, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Editores")%>
 </p>
 <p>
@@ -51,18 +51,18 @@
 <p>
     <label>
         Traductor/Co-Traductor:</label>
-    <%=Html.TextBox("Traductor", Model.Traductor, new { maxlength = 100 })%>
+    <%=Html.TextBox("Traductor", Model.Traductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Traductor")%>
 </p>
 <p>
     <label>
         Nombre del Traductor:</label>
-    <%=Html.TextBox("NombreTraductor", Model.NombreTraductor, new { maxlength = 100 })%>
+    <%=Html.TextBox("NombreTraductor", Model.NombreTraductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreTraductor")%>
 </p>
 <p>
     <label>
         Resumen:</label>
-    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { maxlength = 100 })%>
+    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Resumen")%>
 </p>

@@ -53,6 +53,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
 
+        public int Proyecto { get; set; }
+        public int ProyectoId { get; set; }
+
         public int Investigador { get; set; }
 
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
@@ -83,5 +86,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public AreaForm[] Areas { get; set; }
 		public DisciplinaForm[] Disciplinas { get; set; }
 		public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public ProyectoForm[] Proyectos { get; set; }
     }
 }

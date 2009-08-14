@@ -39,6 +39,9 @@
 <p>
     <label>
         Proyecto Referencia:</label>
+    <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
+                "Seleccione ...")%>
+    <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
     <label>
@@ -50,6 +53,6 @@
 <p>
     <label>
         Titulo Articulo:</label>
-    <%=Html.TextBox("Titulo", Model.Titulo, new { maxlength = 100 })%>
+    <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Titulo")%>
 </p>

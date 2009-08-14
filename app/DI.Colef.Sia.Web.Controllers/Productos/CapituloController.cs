@@ -35,6 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
+        readonly IProyectoMapper proyectoMapper;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -52,7 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
-                                  ISearchService searchService)
+                                  ISearchService searchService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService)
         {
             this.catalogoService = catalogoService;
@@ -77,6 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
+            this.proyectoMapper = proyectoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -422,6 +424,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
 
             return form;
         }
@@ -440,6 +443,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["Proyecto"] = form.ProyectoId;
         }
     }
 }
