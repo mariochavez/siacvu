@@ -11,7 +11,7 @@
     <label>Fecha Conclusion:</label>
    
     <%=Html.TextBox("FechaConclusion", Model.FechaConclusion, new { @class = "datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaConclusion")%>
 </p>
 <p>
@@ -38,7 +38,7 @@
     <label>Fecha de obtencion del Grado:</label>
   
     <%=Html.TextBox("FechaGrado", Model.FechaGrado, new { @class = "datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaGrado")%>
 </p>
 <p>

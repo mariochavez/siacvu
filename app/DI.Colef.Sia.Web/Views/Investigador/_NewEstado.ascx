@@ -10,6 +10,6 @@
 <p>                        
     <label>Fecha</label>
     <%=Html.TextBox("EstadoInvestigador.Fecha", Model.EstadoInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("EstadoInvestigador.Fecha")%>
 </p>

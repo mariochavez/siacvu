@@ -57,6 +57,6 @@
     <label>
         Fecha Publicacion:</label>    
     <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class="datetime", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>

@@ -14,7 +14,7 @@
             </td>
             <td class="field">
                 <%=Html.TextBox("Periodo", Model.Form.Periodo, new { @class = "big", size = 10, maxlength = 40 })%>
-                <span class="helper_message">(Debe de ser un periodo unico)</span>
+                <span>(Debe de ser un periodo unico)</span>
                 <%=Html.ValidationMessage("Periodo")%>
             </td>
         </tr>
@@ -33,7 +33,7 @@
             </td>
             <td class="field">
                 <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class="datetime", maxlength = 10 })%>
-                <span class="helper_message">(Formato dd/mm/yyyy)</span>
+                <span>(Formato dd/mm/yyyy)</span>
                 <%=Html.ValidationMessage("FechaInicial")%>
             </td>
         </tr>
@@ -43,7 +43,7 @@
             </td>
             <td class="field">
             <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class="datetime", maxlength = 10 })%>
-            <span class="helper_message">(Formato dd/mm/yyyy)</span>
+            <span>(Formato dd/mm/yyyy)</span>
             <%=Html.ValidationMessage("FechaFinal")%>
                 
             </td>

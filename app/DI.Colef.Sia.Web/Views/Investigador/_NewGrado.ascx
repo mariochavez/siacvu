@@ -10,7 +10,7 @@
 <p>
     <label>Fecha</label>
     <%=Html.TextBox("GradoAcademicoInvestigador.Fecha", Model.GradoAcademicoInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.Fecha")%>
 </p>
 <p>
@@ -26,5 +26,5 @@
 <p>
     <label>Detalle</label>
     <%=Html.TextArea("GradoAcademicoInvestigador.Detalle", Model.GradoAcademicoInvestigador.Detalle, 3, 35, new { @class = "input250", maxlength = 100 })%>
-    <span class="helper_message">(Descripcion narrativa)</span>
+    <span>(Descripcion narrativa)</span>
 </p>

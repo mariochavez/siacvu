@@ -14,7 +14,7 @@
             </td>
             <td class="field">
                 <%=Html.TextBox("Titulo", Model.Form.Titulo, new { @class = "big", size = 10, maxlength = 40 })%>
-                <span class="helper_message">(Debe de ser un titulo unico)</span>
+                <span>(Debe de ser un titulo unico)</span>
                 <%=Html.ValidationMessage("Titulo")%>
             </td>
         </tr>

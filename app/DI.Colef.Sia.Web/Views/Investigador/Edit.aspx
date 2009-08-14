@@ -6,87 +6,75 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    <% Html.RenderPartial("_Message"); %>
-    <br />
-    <% using (Html.BeginForm("Update", "Investigador")) { %>
-        <div id="form">
-        <%=Html.AntiForgeryToken() %>
-        <%=Html.Hidden("Id", Model.Form.Id) %>
+</asp:Content>
 
-        <table class="form">
-            <tr>
-                <td class="label">
-                    <label>Usuario:</label>
-                </td>
-                <td class="field">
-                    <%=Html.Encode(Model.Form.Nombre) %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Fecha de Ingreso:<em>*</em></label>
-                </td>                
-                <td class="field">
-                    <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class="datetime", maxlength = 10 })%>
-                    <span class="helper_message">(Formato dd/mm/yyyy)</span>
-                    <%=Html.ValidationMessage("FechaIngreso")%>
-                </td>
-            </tr>
-            <tr>
-                <td class="label">
-                   <label>Estados:</label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditEstado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Grado:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditGrado", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Categoria:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>Cargo:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditCargo", Model.Form); %>
-                </td>
-            </tr>
-            <tr>
-                <td class="label required">
-                   <label>SNI:<em>*</em></label>
-                </td>
-                <td class="field">
-                    <% Html.RenderPartial("_EditSni", Model.Form); %>
-                </td>
-            </tr>                                          
-        </table>
-        
-	    <div class="btn_container_footer">
-		    <span class="btn btn_normal_brown">
-			    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		    </span>
-		    <span class="btn btn_normal_white">
-			    <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar") %>
-		    </span>
-	    </div>    
-    </div>
-    <% } %>
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
+	<div id="introduccion">
+		<p>Favor de llenar los siguientes campos para dar de alta un nuevo investigador dentro del sistema.</p>
+	</div><!--end introduccion-->	
+</asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>Asistente de secci&oacute;n</h3>
+            <% Html.RenderPartial("_NewSidebar"); %>
+        </div><!--end asistente-->
+    </div><!--end barra-->
+</asp:Content>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    <div id="textos">
     
+	    <div id="forma">
+	    
+            <% Html.RenderPartial("_Message"); %>
+            <br />
+            <% using (Html.BeginForm("Update", "Investigador")) { %>
+                <%=Html.AntiForgeryToken() %>
+                <%=Html.Hidden("Id", Model.Form.Id) %>
+
+		        <p>
+			        <label>Usuario</label>
+			        <%=Html.Encode(Model.Form.Nombre) %>
+		        </p>
+		        <p>
+			        <label>Fecha de Ingreso</label>
+			        <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class="datetime input100-requerido", maxlength = 10 })%>
+			        <span>(Formato dd/mm/yyyy)</span>
+			        <%=Html.ValidationMessage("FechaIngreso")%>
+		        </p>
+		        <h4>Estados</h4>
+			        <% Html.RenderPartial("_EditEstado", Model.Form); %>
+		        <h4>Grado</h4>
+		        <p>
+			        <% Html.RenderPartial("_EditGrado", Model.Form); %>
+		        </p>
+		        <h4>Categoria</h4>
+		        <p>
+			        <% Html.RenderPartial("_EditCategoria", Model.Form); %>
+		        </p>
+		        <h4>Cargo</h4>
+		        <p>
+			        <% Html.RenderPartial("_EditCargo", Model.Form); %>
+		        </p>
+		        <h4>SNI</h4>
+		        <p>
+			        <% Html.RenderPartial("_EditSni", Model.Form); %>
+		        </p>                                          
+
+                <p class="submit">
+                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
+                </p>
+                            
+            <% } %>
+            
+	    </div><!--end forma-->	
+    		
+    </div><!--end textos-->
+        
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();

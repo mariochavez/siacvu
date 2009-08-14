@@ -45,7 +45,7 @@
 		
 		<div id="menu">
 			<ul>
-				<li><%=Html.ActionLink("Portada", "Index", null, new{ title = "Portada" }) %></li>
+				<li><%=Html.ActionLink("Portada", "Index", "Home", null, new{ title = "Portada" }) %></li>
 				<li><%=Html.ActionLink("Sedes", "Index", "Catalogos/Sede", null, new { title = "Sedes" })%></li>
 				<li><%=Html.ActionLink("Investigadores", "Index", "Investigador", null, new { title = "Investigadores" })%></li>
 			</ul>

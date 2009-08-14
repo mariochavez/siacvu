@@ -55,6 +55,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.NHibernate.Profiler.Appender, Version=0.9.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\HibernatingRhinos.NHibernate.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Iesi.Collections.dll</HintPath>
@@ -199,6 +203,7 @@
   <ItemGroup>
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\boton-bg.gif" />
+    <Content Include="Content\Images\botonzon-bg.gif" />
     <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Content\Images\contenido-bg.gif" />
     <Content Include="Content\Images\medium-brown-button.png" />
@@ -207,6 +212,7 @@
     <Content Include="Content\Images\pagina-bg.gif" />
     <Content Include="Content\Images\requerido-icon.gif" />
     <Content Include="Content\Images\small-white-button.png" />
+    <Content Include="Content\Images\subcontenido-bg.gif" />
     <Content Include="Content\Images\usuario-icon.gif" />
     <Content Include="Content\jquery.autocomplete.css" />
     <Content Include="NHvalidator.config" />
@@ -645,8 +651,11 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_NewSidebar.ascx" />
+    <Content Include="Views\Shared\_ListSidebar.ascx" />
     <Content Include="Views\Shared\ModelError.js.ascx" />
     <Content Include="Views\Shared\_Message.ascx" />
+    <Content Include="Views\Shared\_Search.ascx" />
     <Content Include="Views\Tesis\Activate.js.ascx" />
     <Content Include="Views\Tesis\Edit.aspx" />
     <Content Include="Views\Tesis\Index.aspx" />

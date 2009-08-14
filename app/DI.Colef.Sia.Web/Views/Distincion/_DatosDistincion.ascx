@@ -18,7 +18,7 @@
     <label>Fecha Otorgamiento:</label>
 
     <%=Html.TextBox("FechaOtorgamiento", Model.FechaOtorgamiento, new { @class = "datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaOtorgamiento")%>
 </p>
 <p>

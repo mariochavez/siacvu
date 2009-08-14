@@ -45,7 +45,7 @@
                         <label>Fecha de Ingreso</label>
 
                         <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-                        <span class="helper_message">(Formato dd/mm/yyyy)</span>
+                        <span>(Formato dd/mm/yyyy)</span>
                         <%=Html.ValidationMessage("FechaIngreso")%>
                     </p>
 
