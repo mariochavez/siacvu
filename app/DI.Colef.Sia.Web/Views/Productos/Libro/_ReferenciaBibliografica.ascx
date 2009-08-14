@@ -22,13 +22,8 @@
 <p>
     <label>
         Fecha Edicion:</label>
-<<<<<<< HEAD:app/DI.Colef.Sia.Web/Views/Productos/Libro/_ReferenciaBibliografica.ascx
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class="datetime", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
-=======
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class="datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
->>>>>>> 45466c8c7657207d4f25add6278388a85b7ed26a:app/DI.Colef.Sia.Web/Views/Productos/Libro/_ReferenciaBibliografica.ascx
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>

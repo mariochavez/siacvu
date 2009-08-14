@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta una nueva reseña dentro del sistema.</p>
+		<p>Para modificar la reseña utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -20,7 +20,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_NewSidebar"); %>
+            <% Html.RenderPartial("_EditSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
 </asp:Content>
