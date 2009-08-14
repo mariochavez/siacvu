@@ -11,7 +11,7 @@
     <label>Periodo</label>
     <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.SNIInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
     <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.SNIInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
 </p>

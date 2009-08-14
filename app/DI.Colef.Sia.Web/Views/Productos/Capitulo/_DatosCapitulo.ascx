@@ -17,25 +17,15 @@
 <p>
     <label>
         Fecha de Aceptacion:</label>
-<<<<<<< HEAD:app/DI.Colef.Sia.Web/Views/Productos/Capitulo/_DatosCapitulo.ascx
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
-=======
-    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
->>>>>>> 45466c8c7657207d4f25add6278388a85b7ed26a:app/DI.Colef.Sia.Web/Views/Productos/Capitulo/_DatosCapitulo.ascx
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p>
     <label>
         Fecha de Edicion:</label>
-<<<<<<< HEAD:app/DI.Colef.Sia.Web/Views/Productos/Capitulo/_DatosCapitulo.ascx
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
-=======
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
->>>>>>> 45466c8c7657207d4f25add6278388a85b7ed26a:app/DI.Colef.Sia.Web/Views/Productos/Capitulo/_DatosCapitulo.ascx
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>

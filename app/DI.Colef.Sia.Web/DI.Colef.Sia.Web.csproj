@@ -651,6 +651,7 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_EditSidebar.ascx" />
     <Content Include="Views\Shared\_NewSidebar.ascx" />
     <Content Include="Views\Shared\_ListSidebar.ascx" />
     <Content Include="Views\Shared\ModelError.js.ascx" />
