@@ -14,7 +14,7 @@
     runat="server">
     <div id="introduccion">
         <p>
-            Favor de llenar los siguientes campos para editar un capitulo dentro del sistema.
+            Para modificar el capitulo utilice los siguientes campos para realizar cambios dentro del sistema.
         </p>
     </div>
     <!--end introduccion-->
@@ -25,7 +25,7 @@
         <div id="asistente">
             <h3>
                 Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_NewSidebar"); %>
+            <% Html.RenderPartial("_EditSidebar"); %>
         </div>
         <!--end asistente-->
     </div>
@@ -67,7 +67,7 @@
             </p>        
             
             <p>
-                <h4>Opcionales</h4>
+                <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             </p>
             

@@ -58,7 +58,7 @@
             </p>
             
             <p>
-                <h4>Opcionales</h4>
+                <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             </p>
             <p class="submit">

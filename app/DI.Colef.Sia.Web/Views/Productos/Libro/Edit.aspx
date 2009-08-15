@@ -14,7 +14,7 @@
     runat="server">
     <div id="introduccion">
         <p>
-            Favor de llenar los siguientes campos para editar un libro dentro del sistema.
+            Para modificar el libro utilice los siguientes campos para realizar cambios dentro del sistema.
         </p>
     </div>
     <!--end introduccion-->
@@ -55,7 +55,7 @@
             </p>
             
             <p>
-                <h4>Opcionales</h4>
+                <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             </p>
             <p class="submit">

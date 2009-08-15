@@ -201,21 +201,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression, bool active)
         {
             var propertyInfo = ReflectionHelper.GetProperty(expression);
-            IList<T> list;
+
+            var criteria = DetachedCriteria.For(typeof (T))
+                .AddOrder(Order.Asc(propertyInfo.Name));
 
             if (active)
-            {
-                list = Session.CreateCriteria(typeof(T))
-                    .AddOrder(Order.Asc(propertyInfo.Name))
-                    .List<T>();
-            }
-            else
-            {
-                list = Session.CreateCriteria(typeof(T))
-                    .Add(Restrictions.Eq("Activo", true))
-                    .AddOrder(Order.Asc(propertyInfo.Name))
-                    .List<T>();
-            }
+                criteria.Add(Restrictions.Eq("Activo", true));
+
+            var list = criteria.GetExecutableCriteria(Session).List<T>();
 
             return list;
         }
