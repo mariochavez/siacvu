@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -9,7 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     [HandleError]
     public class CapituloController : BaseController<Capitulo, CapituloForm>
@@ -32,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-	    readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IEstadoProductoMapper estadoProductoMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
@@ -140,7 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CapituloForm form, 
-            FormCollection formCollection)
+                                   FormCollection formCollection)
         {
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
