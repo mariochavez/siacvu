@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -138,7 +139,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(CapituloForm form)
+        public ActionResult Create(CapituloForm form, 
+            FormCollection formCollection)
         {
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 

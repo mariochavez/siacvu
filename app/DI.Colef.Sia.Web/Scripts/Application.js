@@ -1,6 +1,7 @@
 ﻿function setupDocument() {
     RemoteLink.setup();
     RemoteForm.setup();
+    LocalForm.setup();
     DateTimePicker.setup();
     SubForm.setup();
     
@@ -116,6 +117,45 @@ var SearchAutoComplete = {
     },
     formatItem: function(row) {
         return row[0] + " (id: " + row[1] + ")";
+    }
+}
+
+var LocalForm = {
+    setup: function() {
+        $('input.local').live("click", LocalForm.formLocal);
+    },
+    formLocal: function() {
+        var combo = $(this).attr('rel');
+        combo = combo.replace('.', '_');
+
+        var handle = $(combo).attr('rel');
+        var value = $(combo).val();
+
+        if (value == null)
+            return false;
+
+        if ($(handle + 'List #' + value).length > 0) {
+            $(handle + '_form').hide();
+            $(handle + '_new').show();
+            return false;
+        }
+
+        var text = $(combo + ' :selected').text();
+
+        var newRow = '<tr id="' + value + '"><td>' + text + '<input type="hidden" value="' + value + '" name="' + combo.replace('#', '').replace('_', '.') + '_New" id="' + combo.replace('#', '') + '_New"/></td></tr>';
+        var row = $(handle + 'EmptyList_form');
+        if (row.length == 0) {
+            row = $(handle + 'List tr:nth-child(2)');
+            row.before(newRow);
+        } else {
+            row.before(newRow);
+            row.remove();
+        }
+
+        $(handle + '_form').hide();
+        $(handle + '_new').show();
+
+        return false;
     }
 }
 
