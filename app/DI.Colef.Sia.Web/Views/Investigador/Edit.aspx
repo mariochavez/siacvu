@@ -46,23 +46,15 @@
 			        <%=Html.ValidationMessage("FechaIngreso")%>
 		        </p>
 		        <h4>Estados</h4>
-			        <% Html.RenderPartial("_EditEstado", Model.Form); %>
+			    <% Html.RenderPartial("_EditEstado", Model.Form); %>
 		        <h4>Grado</h4>
-		        <p>
-			        <% Html.RenderPartial("_EditGrado", Model.Form); %>
-		        </p>
+			    <% Html.RenderPartial("_EditGrado", Model.Form); %>
 		        <h4>Categoria</h4>
-		        <p>
-			        <% Html.RenderPartial("_EditCategoria", Model.Form); %>
-		        </p>
+			    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
 		        <h4>Cargo</h4>
-		        <p>
-			        <% Html.RenderPartial("_EditCargo", Model.Form); %>
-		        </p>
+			    <% Html.RenderPartial("_EditCargo", Model.Form); %>
 		        <h4>SNI</h4>
-		        <p>
-			        <% Html.RenderPartial("_EditSni", Model.Form); %>
-		        </p>                                          
+			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
 
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>

@@ -4,12 +4,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <tr id="cargo_<%=Html.Encode(Model.Id) %>">
-        <td class="subform">
-            <%=Html.Encode(Model.CargoNombre) %> <span class="more_info"><%=Html.Encode(Model.Fecha)%>, <%=Html.Encode(Model.SedeNombre)%></span>
-            <div class="meta_info"><%=Html.Encode(Model.DepartamentoNombre)%></div>
-        </td>
-    </tr>
+    <div id="cargo_<%=Html.Encode(Model.Id) %>" class="sublista">
+        <h6><%=Html.Encode(Model.CargoNombre)%> <span><%=Html.Encode(Model.Fecha)%>, <%=Html.Encode(Model.SedeNombre)%></span></h6>
+        <span><%=Html.Encode(Model.DepartamentoNombre)%></span>
+    </div><!--end estadolista-->
 ';
 
 $('#message').html('');
@@ -18,7 +16,9 @@ $('#message').removeClass('errormessage');
 $('#cargo_form').hide();
 $('#cargo_new').show();
 $('#cargo_form').html('');
-$('#cargoList tr:first').after(html);
+$('#cargoList div:first').before(html);
 
 $('#cargo_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
 $('#cargo_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+
+setupSublistRows();
