@@ -6,15 +6,14 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Core.CommonValidator;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     [HandleError]
     public class LibroController : BaseController<Libro, LibroForm>
     {
-		readonly ILibroService libroService;
+        readonly ILibroService libroService;
         readonly IInvestigadorService investigadorService;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
@@ -36,33 +35,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public LibroController(ILibroService libroService, 
-			ILibroMapper libroMapper, 
-			ICatalogoService catalogoService,
-            IUsuarioService usuarioService,
-			ITipoPublicacionMapper tipoPublicacionMapper,
-            IEstadoProductoMapper estadoProductoMapper,
-            IPeriodoReferenciaMapper periodoReferenciaMapper,
-            IProyectoMapper proyectoMapper,
-            ILineaTematicaMapper lineaTematicaMapper,
-            IPaisMapper paisMapper,
-            IIdiomaMapper idiomaMapper,
-            IFormaParticipacionMapper formaParticipacionMapper,
-            ICoautorExternoLibroMapper coautorExternoLibroMapper,
-            ICoautorInternoLibroMapper coautorInternoLibroMapper,
-            IIdentificadorLibroMapper identificadorLibroMapper,
-            IAreaMapper areaMapper,
-            IInvestigadorMapper investigadorMapper,
-            IInvestigadorExternoMapper investigadorExternoMapper,
-            IDisciplinaMapper disciplinaMapper,
-            IInvestigadorService investigadorService,
-            ISubdisciplinaMapper subdisciplinaMapper,
-            ISearchService searchService
+                               ILibroMapper libroMapper, 
+                               ICatalogoService catalogoService,
+                               IUsuarioService usuarioService,
+                               ITipoPublicacionMapper tipoPublicacionMapper,
+                               IEstadoProductoMapper estadoProductoMapper,
+                               IPeriodoReferenciaMapper periodoReferenciaMapper,
+                               IProyectoMapper proyectoMapper,
+                               ILineaTematicaMapper lineaTematicaMapper,
+                               IPaisMapper paisMapper,
+                               IIdiomaMapper idiomaMapper,
+                               IFormaParticipacionMapper formaParticipacionMapper,
+                               ICoautorExternoLibroMapper coautorExternoLibroMapper,
+                               ICoautorInternoLibroMapper coautorInternoLibroMapper,
+                               IIdentificadorLibroMapper identificadorLibroMapper,
+                               IAreaMapper areaMapper,
+                               IInvestigadorMapper investigadorMapper,
+                               IInvestigadorExternoMapper investigadorExternoMapper,
+                               IDisciplinaMapper disciplinaMapper,
+                               IInvestigadorService investigadorService,
+                               ISubdisciplinaMapper subdisciplinaMapper,
+                               ISearchService searchService
             ) : base(usuarioService, searchService)
         {
-			this.catalogoService = catalogoService;
+            this.catalogoService = catalogoService;
             this.libroService = libroService;
             this.libroMapper = libroMapper;
-			this.tipoPublicacionMapper = tipoPublicacionMapper;
+            this.tipoPublicacionMapper = tipoPublicacionMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
@@ -84,9 +83,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 			
-			var libros = libroService.GetAllLibros();
+            var libros = libroService.GetAllLibros();
             data.List = libroMapper.Map(libros);
 
             return View(data);
@@ -95,7 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
 
             return View(data);
@@ -121,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             FormSetCombos(data.Form);
             
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
@@ -162,7 +161,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
-			if (!IsValidateModel(libro, form, Title.Edit))
+            if (!IsValidateModel(libro, form, Title.Edit))
             {
                 var libroForm = libroMapper.Map(libro);
 
@@ -219,7 +218,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
         
-		[AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
             var libro = libroService.GetLibroById(id);
@@ -260,7 +259,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
-		        [AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var libro = libroService.GetLibroById(id);
@@ -309,9 +308,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
         LibroForm SetupNewForm(LibroForm form)
         {
-			form = form ?? new LibroForm();
+            form = form ?? new LibroForm();
             
-			form.CoautorExternoLibro = new CoautorExternoLibroForm();
+            form.CoautorExternoLibro = new CoautorExternoLibroForm();
             form.CoautorInternoLibro = new CoautorInternoLibroForm();
 
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
@@ -334,18 +333,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
         private void FormSetCombos(LibroForm form)
         {
-			ViewData["TipoPublicacion"] = form.TipoPublicacionId;
-			ViewData["EstadoProducto"] = form.EstadoProductoId;
-			ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
-			ViewData["Proyecto"] = form.ProyectoId;
-			ViewData["LineaTematica"] = form.LineaTematicaId;
-			ViewData["Pais"] = form.PaisId;
-			ViewData["Idioma"] = form.IdiomaId;
-			ViewData["FormaParticipacion"] = form.FormaParticipacionId;
-			ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;
-			ViewData["Area"] = form.AreaId;
-			ViewData["Disciplina"] = form.DisciplinaId;
-			ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["TipoPublicacion"] = form.TipoPublicacionId;
+            ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
+            ViewData["Proyecto"] = form.ProyectoId;
+            ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+            ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

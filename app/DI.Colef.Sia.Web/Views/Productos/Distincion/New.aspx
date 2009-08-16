@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ResenaForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<DistincionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta una nueva reseña dentro del sistema.</p>
+		<p>Favor de llenar los siguientes campos para dar de alta su distincion dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -30,33 +30,15 @@
     
 	    <div id="forma">
             <% Html.RenderPartial("_Message"); %>
-            <br />
-            <% using (Html.BeginForm("Create", "Resena")) { %>
-		        <%=Html.AntiForgeryToken() %>
+            <br />    
+            <% using (Html.BeginForm("Create", "Distincion")) { %>
+                <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <% Html.RenderPartial("_DatosResena", Model.Form); %>
-                
-                <p>
-                    <h4>Coautores Externos</h4>
-                    <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-                </p>
-                
-                <p>
-                    <h4>Coautores Internos</h4>
-                    <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-                </p>
-                
-                <p>
-                    <h4>Referencia Bibliografica</h4>
-                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                </p>
-                
-                <h4>Datos Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-        		
+                <% Html.RenderPartial("_DatosDistincion", Model.Form); %>
+        				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<DistincionController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

@@ -24,14 +24,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                               routes.MapRoute(null, "Productos/{controller}/{action}", new {action = "Index"})
                 );
 
-            routes.CreateArea("Catalogos", "DI.Colef.Sia.Web.Controllers.Catalogos",
+            routes.CreateArea("Catalogos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos",
                               routes.MapRoute(null, "Catalogos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
                               routes.MapRoute(null, "Catalogos/{controller}/{action}", new {action = "Index"})
 
                 );
 
             // Routing config for the root area
-            routes.CreateArea("Root", "DI.Colef.Sia.Web.Controllers",
+            routes.CreateArea("Root", "DecisionesInteligentes.Colef.Sia.Web.Controllers",
                               routes.MapRoute(null, "{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
                               routes.MapRoute(null, "{controller}/{action}", new {controller = "Home", action = "Index"})
 

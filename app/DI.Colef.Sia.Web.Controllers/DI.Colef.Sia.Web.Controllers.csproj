@@ -170,11 +170,11 @@
     <Compile Include="Catalogos\TipoParticipanteController.cs" />
     <Compile Include="ControllerEnums.cs" />
     <Compile Include="Catalogos\DepartamentoController.cs" />
-    <Compile Include="CursoController.cs" />
+    <Compile Include="Productos\CursoController.cs" />
     <Compile Include="Catalogos\EstadoPaisController.cs" />
-    <Compile Include="DictamenController.cs" />
-    <Compile Include="DistincionController.cs" />
-    <Compile Include="EventoController.cs" />
+    <Compile Include="Productos\DictamenController.cs" />
+    <Compile Include="Productos\DistincionController.cs" />
+    <Compile Include="Productos\EventoController.cs" />
     <Compile Include="Extensions\DropDownListExtensions.cs" />
     <Compile Include="Extensions\PrimitiveHelperExtensions.cs" />
     <Compile Include="Catalogos\GeneroController.cs" />
@@ -446,9 +446,9 @@
     <Compile Include="Models\TipoParticipacionForm.cs" />
     <Compile Include="Models\TipoParticipanteForm.cs" />
     <Compile Include="Catalogos\OtraParticipacionController.cs" />
-    <Compile Include="OrganoExternoController.cs" />
-    <Compile Include="ParticipacionController.cs" />
-    <Compile Include="ParticipacionMedioController.cs" />
+    <Compile Include="Productos\OrganoExternoController.cs" />
+    <Compile Include="Productos\ParticipacionController.cs" />
+    <Compile Include="Productos\ParticipacionMedioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Catalogos\PuestoController.cs" />
     <Compile Include="Catalogos\ProyectoController.cs" />
@@ -459,7 +459,7 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="Catalogos\SNIController.cs" />
     <Compile Include="Catalogos\SedeController.cs" />
-    <Compile Include="TesisController.cs" />
+    <Compile Include="Productos\TesisController.cs" />
     <Compile Include="Catalogos\TipoDictamenController.cs" />
     <Compile Include="Catalogos\TipoDistincionController.cs" />
     <Compile Include="Catalogos\TipoEventoController.cs" />
