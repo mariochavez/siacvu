@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Responsables Externos:</label>
+    <label>Responsable Externo</label>
     
     <%=Html.DropDownList("ResponsableExternoCapitulo.InvestigadorExternoId", Model.ResponsablesExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
         "Seleccione ...")%>

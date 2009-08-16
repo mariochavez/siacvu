@@ -37,21 +37,21 @@
                 
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>
 
-                <h4>Participaciones:</h4>        
+                <h4>Participaciones</h4>        
                 <% Html.RenderPartial("_EditTipoParticipacion", Model.Form); %>
                 
                 <p>
-                    <h4>Coautores Externos:</h4>       
+                    <h4>Coautores Externos</h4>       
                     <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Coautores Internos:</h4>      
+                    <h4>Coautores Internos</h4>      
                     <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Datos Referencia:</h4>
+                    <h4>Datos Referencia</h4>
                     <% Html.RenderPartial("_DatosReferencia", Model.Form); %>
                 </p>
         		

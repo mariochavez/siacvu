@@ -2,34 +2,34 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Numero Horas:</label>
+	<label>Numero Horas</label>
 
-    <%=Html.TextBox("NumeroHoras", Model.NumeroHoras, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("NumeroHoras", Model.NumeroHoras, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NumeroHoras")%>
 </p>
 <p>
-	<label>Periodo Referencia:</label>
+	<label>Periodo Referencia</label>
 
 	<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
-	<label>Programa Estudio:</label>
+	<label>Programa Estudio</label>
 
 	<%=Html.DropDownList("ProgramaEstudio", Model.ProgramasEstudios.CreateSelectList<ProgramaEstudioForm>("Id", "Nombre"),
 		"Seleccione ...")%>
     <%=Html.ValidationMessage("ProgramaEstudio") %>
 </p>
 <p>
-	<label>Institucion:</label>
+	<label>Institucion</label>
 
 	<%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
-	<label>Nivel:</label>
+	<label>Nivel</label>
 
 	<%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
 		"Seleccione ...")%>

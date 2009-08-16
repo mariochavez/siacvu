@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Coautor Interno:</label>
+	<label>Coautor Interno</label>
 	
 	<%=Html.DropDownList("CoautorInternoResena.InvestigadorId", Model.CoautoresInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
 		"Seleccione ...")%>

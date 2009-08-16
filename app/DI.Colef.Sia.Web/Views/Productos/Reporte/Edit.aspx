@@ -38,21 +38,21 @@
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
 
                 <p>
-                    <h4>Coautores Externos:</h4>
+                    <h4>Coautores Externos</h4>
                     <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Coautores Internos:</h4>
+                    <h4>Coautores Internos</h4>
                     <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Referencia Bibliografica:</h4>
+                    <h4>Referencia Bibliografica</h4>
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </p>
                 
-                <h4>Datos Opcionales:</h4>
+                <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         		
                 <p class="submit">

@@ -37,16 +37,16 @@
                 
                 <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
                 
-                <h4>Tipos Actividades:</h4>
+                <h4>Tipos Actividades</h4>
                 <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
             
                 <p>
-                    <h4>Productos Derivados:</h4>
+                    <h4>Productos Derivados</h4>
                 </p>         
                 <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
                 
                 <p>
-                    <h4>Proyectos:</h4>
+                    <h4>Proyectos</h4>
                     <% Html.RenderPartial("_EditProyecto", Model.Form); %>
                 </p>
                 
