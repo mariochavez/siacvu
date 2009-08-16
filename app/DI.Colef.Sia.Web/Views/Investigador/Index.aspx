@@ -36,55 +36,51 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
-	<div id="forma">
 				
-        <% Html.RenderPartial("_Message"); %>
-        <br />
-        <div id="datalist">
-            <div class="btn_container">
-                <% Html.RenderPartial("_Search"); %>
-            </div> 
-            <br />
-            <div class="table_title">Investigadores</div>
-            <table>
-                 <% if(Model.List == null || Model.List.Length == 0) { %>
-                    <tr>
-                        <td>No hay investigadores definidos</td>
-                    </tr>
-                <% } else { %>
-                    <% foreach (var investigador in Model.List) { %>
-                        <tr class="highlight">
-	                        <td class="button" width="46">
-		                        <div class="floatr btn_container">
-			                        <span class="btn btn_small_white">
-				                        <%=Html.ActionLink<InvestigadorController>(x => x.Edit(investigador.Id), "Editar")%>
-			                        </span>
-		                        </div>
-	                        </td>                
-                            <td class="single" width="75%">
-                                <%=Html.Encode(investigador.Nombre)%>
-                                <div class="meta_info">Modificado el <%=Html.Encode(investigador.Modificacion)%></div>
-                            </td>
-                            <td id="accion_<%=Html.Encode(investigador.Id) %>" class="button" width="140">
-                                <div class="floatr btn_container">
-                                <% if (investigador.Activo) { %>
-                                    <span class="btn btn_small_white">
-                                        <%=Html.ActionLink("Desactivar", "Deactivate", new { id = investigador.Id }, new { @class = "remote put" })%>
-                                    </span>
-                                <% } else { %>
-                                    <span class="btn btn_small_white">
-                                        <%=Html.ActionLink("Activar", "Activate", new { id = investigador.Id }, new { @class = "remote put" })%>
-                                    </span>
-                                <% } %>
-                                </div>
-                            </td>
-                        </tr>
-                    <% } %>
-                <% } %>
-            </table>
-        </div>
+    <% Html.RenderPartial("_Message"); %>
+    <% Html.RenderPartial("_Search"); %>
 
-	</div><!--end forma-->	
+	<div id="lista">
+		<h4>Lista de Investigadores</h4>
+
+         <% if(Model.List == null || Model.List.Length == 0) { %>
+            <div class="elementolista">
+			    <div class="elementodescripcion">
+				    <h5><span>No hay investigadores en el sistema</span></h5>
+			    </div><!--end elementodescripcion-->
+				
+			    <div class="elementobotones">
+				    <p><span></span></p>
+			    </div><!--end elementobotones-->	
+				
+		    </div><!--end elementolista--> 
+			
+        <% } else { %>
+            <% foreach (var investigador in Model.List) { %>
+                <div class="elementolista" id="accion_<%=Html.Encode(investigador.Id) %>">
+			        <div class="elementodescripcion">
+				        <h5><span><%=Html.Encode(investigador.Nombre)%></span></h5>
+				        <h6>Modificado el <%=Html.Encode(investigador.Modificacion)%></h6>
+			        </div><!--end elementodescripcion-->
+    				
+			        <div class="elementobotones">
+				        <p>
+				            <span><%=Html.ActionLink<InvestigadorController>(x => x.Edit(investigador.Id), "Editar")%></span> 
+				            <span>
+				                <% if (investigador.Activo) { %>
+                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = investigador.Id }, new { @class = "remote put" })%>
+                                <% } else { %>
+                                    <%=Html.ActionLink("Activar", "Activate", new { id = investigador.Id }, new { @class = "remote put" })%>
+                                <% } %>
+				            </span>
+				        </p>
+			        </div><!--end elementobotones-->	
+    				
+		        </div><!--end elementolista--> 
+            <% } %>
+        <% } %>
+
+    </div><!--end lista-->
 	    
 </div><!--end textos-->
 					    

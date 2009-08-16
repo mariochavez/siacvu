@@ -202,8 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\asistente-requerido-icon.gif" />
     <Content Include="Content\Images\boton-bg.gif" />
     <Content Include="Content\Images\botonzon-bg.gif" />
+    <Content Include="Content\Images\caja-busqueda-bg.gif" />
     <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Content\Images\contenido-bg.gif" />
     <Content Include="Content\Images\medium-brown-button.png" />
@@ -211,6 +213,7 @@
     <Content Include="Content\Images\normal-white-button.png" />
     <Content Include="Content\Images\pagina-bg.gif" />
     <Content Include="Content\Images\requerido-icon.gif" />
+    <Content Include="Content\Images\select-requerido-icon.gif" />
     <Content Include="Content\Images\small-white-button.png" />
     <Content Include="Content\Images\subcontenido-bg.gif" />
     <Content Include="Content\Images\usuario-icon.gif" />

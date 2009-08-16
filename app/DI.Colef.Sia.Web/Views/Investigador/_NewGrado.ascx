@@ -4,7 +4,7 @@
 <p>
     <label>Grado</label>
     <%=Html.DropDownList("GradoAcademicoInvestigador.GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
-"Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.GradoAcademico")%>
 </p>
 <p>

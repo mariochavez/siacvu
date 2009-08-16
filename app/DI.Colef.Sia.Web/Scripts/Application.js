@@ -4,26 +4,23 @@
     LocalForm.setup();
     DateTimePicker.setup();
     SubForm.setup();
-    
-    $('tr.highlight').live("mouseover", setHighlight);
-    $('tr.highlight').live("mouseout", clearHighlight);
+
+    $('div.elementodescripcion:odd').addClass('elementolista-dos');
+    setupSublistRows();
 
     $('.clearField').clearField();
 
     SearchAutoComplete.setup();
 }
 
+function setupSublistRows() {
+    $('div.sublista:odd').addClass('sublista-dos');
+    $('div.sublista:even').addClass('sublista');
+}
+
 function showMessage(message) {
-    $('#message').addClass('message');
-    $('#message').html(message);
-}
-
-function setHighlight() {
-    $(this).addClass('rowHighlight');
-}
-
-function clearHighlight() {
-    $(this).removeClass('rowHighlight');
+    $('#mensaje-error').addClass('mensaje-acierto');
+    $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
 var SubForm = {
@@ -153,7 +150,7 @@ var LocalForm = {
         }
 
         $(handle + '_form').hide();
-        $(handle + '_new').show();
+        $(handle + '_new').fadeIn('slow');
 
         return false;
     }
@@ -168,24 +165,21 @@ var RemoteForm = {
         var method = $(formname).attr('method');
         var url = $(formname).attr('action');
         var data = $(formname).serialize();
-        
+
         var currentLink = $(this);
 
         currentLink.showLoading();
+
         $.ajax({
             url: url,
             type: method,
             data: data,
             dataType: 'script',
-            success: function(msg) {
+            complete: function(request, settings) {
                 currentLink.removeLoading();
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                currentLink.removeLoading();
-                alert(textStatus);
             }
         });
-        
+
         return false;
     }
 };
