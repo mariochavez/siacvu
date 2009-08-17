@@ -27,18 +27,17 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
-    
+
+        <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 	    
-            <% Html.RenderPartial("_Message"); %>
-            <br />
             <% using (Html.BeginForm("Create", "Investigador")) { %>
                     <%=Html.AntiForgeryToken() %>
                     <%=Html.Hidden("Id", Model.Form.Id) %>
                     <p>
                         <label>Usuario</label>
                         <%=Html.DropDownList("Usuario", Model.Form.Usuarios.CreateSelectList<UsuarioForm>("Id", "Nombre"),
-                            "Seleccione ...")%>
+                                                        "Seleccione ...", new { @class = "requerido" })%>
                         <%=Html.ValidationMessage("Usuario") %>
                     </p>
                     <p>

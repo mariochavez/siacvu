@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReporteForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
@@ -28,9 +28,10 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-	    <div id="forma">
-            <% Html.RenderPartial("_Message"); %>
-            <br />
+		<% Html.RenderPartial("_Message"); %>
+		<% Html.RenderPartial("_Search"); %>
+		
+
             <% using (Html.BeginForm("Create", "Reporte")) { %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
@@ -38,21 +39,21 @@
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
 
                 <p>
-                    <h4>Coautores Externos:</h4>
+                    <h4>Coautores Externos</h4>
                     <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Coautores Internos:</h4>
+                    <h4>Coautores Internos</h4>
                     <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
                 </p>
                 
                 <p>
-                    <h4>Referencia Bibliografica:</h4>
+                    <h4>Referencia Bibliografica</h4>
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </p>
                 
-                <h4>Datos Opcionales:</h4>
+                <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         		
                 <p class="submit">

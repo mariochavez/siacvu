@@ -1,3 +1,5 @@
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Master Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewMasterPage" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -46,7 +48,9 @@
 		<div id="menu">
 			<ul>
 				<li><%=Html.ActionLink("Portada", "Index", "Home", null, new{ title = "Portada" }) %></li>
-				<li><%=Html.ActionLink("Sedes", "Index", "Catalogos/Sede", null, new { title = "Sedes" })%></li>
+				<li><%=Html.ActionLink("Capitulos", "Index", "Capitulo", null, new{ title = "Portada" }) %></li>
+				<li><%=Html.ActionLinkForAreas<SedeController>(x => x.Index(), "Sedes")%></li>
+				<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Capitulos") %></li>
 				<li><%=Html.ActionLink("Investigadores", "Index", "Investigador", null, new { title = "Investigadores" })%></li>
 			</ul>
 		</div><!--end menu-->	

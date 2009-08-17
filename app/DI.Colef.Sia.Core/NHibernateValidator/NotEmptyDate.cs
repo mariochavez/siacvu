@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (minDate == null)
                 minDate = DateTime.Parse("1980-01-01");
 
-            return (DateTime)value >= minDate.Value;
+            return (DateTime)value > minDate.Value;
         }
     }
 }

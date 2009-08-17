@@ -4,7 +4,7 @@
 <p>
     <label>SNI</label>
     <%=Html.DropDownList("SNIInvestigador.SNI", Model.SNIs.CreateSelectList<SNIForm>("Id", "Nombre"),
-"Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("SNIInvestigador.SNI")%>
 </p>
 <p>

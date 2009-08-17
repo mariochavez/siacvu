@@ -16,13 +16,11 @@
     <% } else { %>
         <tr id="responsableinternoEmptyList_form">
             <td class="subform">
-                No hay responsables internos definidos
-            </td>
-        </tr>
+                No hay responsables internos definido</span></h5></div><!--end elementodescripcion-->
     <% } %>
-</table>
+
 <div id="responsableinterno_new" class="floatl btn_container">
-    <span class="btn btn_small_white">
+    
 	    <%=Html.ActionLink("+ Nuevo Responsable Interno", "NewResponsableInterno", new { Id = Model.Id }, new { @class = "remote get" })%>
 	</span>
 </div>

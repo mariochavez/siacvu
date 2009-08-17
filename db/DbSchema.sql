@@ -3644,6 +3644,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table CargoInvestigadores 
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
@@ -3658,6 +3659,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKFF6108EE74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+=======
+>>>>>>> f9e3ff392467448f1db2d49126b6c68fb5c51c9e:db/DbSchema.sql
 
     alter table Organizaciones 
         add constraint FK66FEAE5985102A57 
@@ -4329,6 +4332,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (PersonaFk) 
         references Personas
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table Usuarios 
         add constraint FKB984B9FD85102A57 
         foreign key (CreadorPorFk) 
@@ -4351,6 +4355,10 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     alter table TipoEstancias 
         add constraint FK53E7616285102A57 
+=======
+    alter table Indices 
+        add constraint FKC50D919985102A57 
+>>>>>>> f9e3ff392467448f1db2d49126b6c68fb5c51c9e:db/DbSchema.sql
         foreign key (CreadorPorFk) 
         references Usuarios
 

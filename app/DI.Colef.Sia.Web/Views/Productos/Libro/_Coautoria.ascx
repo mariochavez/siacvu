@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
     <label>
-        Forma Participacion:</label>
+        Forma Participacion</label>
     <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("FormaParticipacion") %>

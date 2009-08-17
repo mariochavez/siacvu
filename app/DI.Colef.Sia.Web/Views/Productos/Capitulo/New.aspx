@@ -1,7 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CapituloForm>>" %>
-
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
@@ -34,9 +33,11 @@
 </asp:Content>
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
-    <div id="forma">
-        <% Html.RenderPartial("_Message"); %>
-        <br />
+	
+	<% Html.RenderPartial("_Message"); %>
+	<% Html.RenderPartial("_Search"); %>
+	
+
         <% using (Html.BeginForm("Create", "Capitulo")){ %>
             <%=Html.AntiForgeryToken() %>
             <%=Html.Hidden("Id", Model.Form.Id) %>        

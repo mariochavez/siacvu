@@ -8,7 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     [HandleError]
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
@@ -41,15 +41,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
-            IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService,
-            ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IEstadoMapper estadoMapper,
-            IPeriodoReferenciaMapper periodoReferenciaMapper, ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper,
-            IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, 
-            ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
-            ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
-            IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
-            ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-            IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
+                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                  ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IEstadoMapper estadoMapper,
+                                  IPeriodoReferenciaMapper periodoReferenciaMapper, ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper,
+                                  IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, 
+                                  ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
+                                  ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
+                                  IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
+                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+                                  IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;

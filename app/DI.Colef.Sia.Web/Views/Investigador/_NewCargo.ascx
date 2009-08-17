@@ -4,7 +4,7 @@
 <p>
     <label>Cargo</label>
     <%=Html.DropDownList("CargoInvestigador.Cargo", Model.Cargos.CreateSelectList<CargoForm>("Id", "Nombre"),
-"Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("CargoInvestigador.Cargo")%>
 </p>
 <p>
@@ -16,12 +16,12 @@
 <p>
     <label>Departamento</label>
     <%=Html.DropDownList("CargoInvestigador.Departamento", Model.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
-"Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("CargoInvestigador.Departamento")%>
 </p>
 <p>
     <label>Sede:</label>
     <%=Html.DropDownList("CargoInvestigador.Sede", Model.Sedes.CreateSelectList<SedeForm>("Id", "Nombre"),
-"Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("CargoInvestigador.Sede")%>
 </p>

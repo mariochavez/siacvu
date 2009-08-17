@@ -2,55 +2,55 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Referencia Bibliografica Libro:</label>
+	<label>Referencia Bibliografica Libro</label>
 
-    <%=Html.TextBox("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, new { @class = "input250", maxlength = 100, size = 40})%>
+    <%=Html.TextBox("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
 	<%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
 </p>
 <p>
-    <label>Referencia Bibliografica Revista:</label>
+    <label>Referencia Bibliografica Revista</label>
 
-    <%=Html.TextBox("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, new { @class = "input250", maxlength = 100, size = 40 })%>
+    <%=Html.TextBox("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
 	<%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
 </p>
 <p>
-	<label>Nombre Producto:</label>
+	<label>Nombre Producto</label>
 	
-	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NombreProducto")%>									
 </p>
 <p>
-	<label>Pais:</label>
+	<label>Pais</label>
 
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
 			"Seleccione ...")%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>Pagina Inicial:</label>
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250", maxlength = 10, size = 5 })%>
+    <label>Pagina Inicial</label>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
     <%=Html.ValidationMessage("PaginaInicial")%>										
 </p>
 <p>
-    <label>Pagina Final:</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250", maxlength = 10, size = 5 })%>
+    <label>Pagina Final</label>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
 <p>
-	<label>Titulo Libro:</label>
+	<label>Titulo Libro</label>
 
-    <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("TituloLibro")%>
 </p>
 <p>
-	<label>Nombre Revista:</label>
+	<label>Nombre Revista</label>
 
 	<%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NombreRevista")%>
 </p>
 <p>
-	<label>Editorial:</label>
+	<label>Editorial</label>
 	
-	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Editorial")%>
 </p>

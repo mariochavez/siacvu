@@ -131,7 +131,7 @@
 
 #subcontenido p {
 	float: left;
-	width: 660px;
+	width: 650px;
 	margin: 0;
 	padding: 10px 20px;
 	font-size: 11pt;
@@ -143,8 +143,10 @@
 
 .botonzon {
 	float: left;
-	margin: 6px 0 0 82px;
+	margin: 6px 0 0 0;
+	width: 290px;
 	height: 28px;
+	text-align: center;
 }
 
 .botonzon span {
@@ -181,6 +183,163 @@
 	float: left;
 	width: 680px;
 }
+
+/*---<mensaje-error>---*/
+
+.mensaje-error {
+	margin: 20px 20px 0 20px;
+	padding: 10px 20px;
+	border: 1px solid #FF0000;
+}
+
+.mensaje-error p {
+	margin: 0;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #FF0000;
+
+}
+
+/*---<mensaje-acierto>---*/
+
+.mensaje-acierto {
+	margin: 20px 20px 0 20px;
+	padding: 10px 20px;
+	border: 1px solid #00CC00;
+}
+
+.mensaje-acierto  p {
+	margin: 0;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #00CC00;
+
+}
+
+/*---<caja-busqueda>---*/
+
+#caja-busqueda {
+	margin: 20px 20px 0 20px;
+	padding: 10px 20px;
+	background: transparent url(/Content/Images/caja-busqueda-bg.gif) 0 0 repeat-x;
+	border: 1px solid #EFF1E7;
+	text-align: center;
+}
+
+#caja-busqueda form {
+	margin: 0;
+}
+
+.inputbusqueda {
+	width: 250px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+}
+
+input.editabusqueda {
+	margin: 0 0 0 10px;
+	padding: 5px 4px 5px 6px;
+	font-weight: bold;
+	letter-spacing: 1pt;
+	border: 1px solid #A34318;
+	background: #BA5C2B url(/Content/Images/boton-bg.gif) 0 bottom repeat-x;
+	color: #fff;
+	cursor: pointer;
+	font-size: 8pt;
+}
+
+.editabusqueda {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;	
+}
+
+/*---<lista>---*/
+
+#lista {
+	margin: 0 0 20px 0;
+}
+
+#lista h4 {
+	margin: 0 20px;
+	padding: 15px 0;
+	font-size: 12pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1pt;
+	color: #555;
+	border-bottom: 1px solid #EFF1E7;
+}
+
+
+.elementolista {
+	height: 67px;
+	overflow: hidden;
+	margin: 0 20px;
+	border-bottom: 1px solid #EFF1E7;
+}
+
+.elementolista-dos {
+	height: 67px;
+	overflow: hidden;
+	margin: 0 20px;
+	background: transparent url(/Content/Images/caja-busqueda-bg.gif) 0 0 repeat-x;
+	border-bottom: 1px solid #EFF1E7;
+}
+
+.elementodescripcion {
+	float: left;
+	width: 450px;
+	margin: 0 20px 0 0;
+}
+
+.elementodescripcion h5 {
+	margin: 0;
+	padding: 15px 0 5px 10px;
+	font-size: 11pt;
+	font-weight: normal;
+	color: #555;
+}
+
+.elementodescripcion h5 span {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.elementodescripcion h6 {
+	margin: 0;
+	padding: 0 0 15px 10px;
+	font-size: 8pt;
+	color: #999;
+}
+
+.elementobotones {
+	/*float: left;*/
+	margin: 6px 0 0 0;
+}
+
+.elementobotones span {
+	margin: 0 0 0 5px;
+	padding: 5px 9px 5px 10px;
+	font-size: 10pt;
+	font-weight: bold;
+	letter-spacing: 1pt;
+	border: 1px solid #252525;
+	background: #363636 url(/Content/Images/botonzon-bg.gif) 0 bottom repeat-x;	
+}
+
+.elementobotones span a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.elementobotones span {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;	
+}
+
+/*---<forma>---*/
 
 #forma form {
 	margin: 20px;
@@ -256,10 +415,33 @@
 	font-size: 11pt;
 	font-weight: bold;
 	background: transparent url(/Content/Images/requerido-icon.gif) right 50% no-repeat;
+	color: #A34318;
 }
 
 #forma select {
 	width: 258px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+}
+
+#forma select.requerido {
+	width: 258px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+	background: transparent url(/Content/Images/select-requerido-icon.gif) right 50% no-repeat;
+}
+
+#forma select.requerido option {
+	background-color: #fff;
+}
+
+.textarea250 {
+	width: 250px;
+	height: 80px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -273,6 +455,68 @@
 	color: #CDCCB2;
 }
 
+#forma span.field-validation-error {
+	margin: 0 0 0 160px;
+	color: #FF0000;
+	display: block;
+}
+
+#forma select.input-validation-error {
+	border: 1px solid #FF0000;
+}
+
+#forma .input-validation-error {
+	border: 1px solid #FF0000;
+}
+
+/*---<minilista>---*/
+
+.minilista h5 {
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 11pt;
+	font-weight: bold;
+	line-height:15pt;
+	letter-spacing: 1pt;
+	background-color: #EFF1E7;
+	color: #555;
+}
+
+.sublista h6, .sublista-dos h6 {
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 11pt;
+	font-weight: normal;
+	line-height:15pt;
+	border-top: 1px solid #EFF1E7;
+	color: #555;
+} 
+
+.sublista-dos {
+	background: transparent url(/Content/Images/caja-busqueda-bg.gif) 0 0 repeat-x;
+}
+
+.minilistaboton span {
+	margin: 0 0 0 10px;
+	padding: 5px 9px 5px 10px;
+	border: 1px solid #252525;
+	background: #363636 url(/Content/Images/botonzon-bg.gif) 0 bottom repeat-x;	
+}
+
+.minilistaboton span a {
+	text-decoration: none;
+	font-size: 10pt;
+	font-weight: bold;
+	letter-spacing: 1pt;
+	color: #fff;
+}
+
+.minilistaboton span {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;	
+}
+
+
 .submit input {
 	margin: 0 0 0 160px;
 	padding: 5px 4px 5px 6px;
@@ -281,6 +525,7 @@
 	border: 1px solid #A34318;
 	background: #BA5C2B url(/Content/Images/boton-bg.gif) 0 bottom repeat-x;
 	color: #fff;
+	cursor: pointer;
 }
 
 /*---<border-radius>---*/
@@ -395,6 +640,7 @@
 
 .clearFieldActive { color: #000000; }
 
+/*
 .message {
 	border: 1px solid rgb(162, 212, 153);
 	background-color: rgb(188, 223, 179);
@@ -414,9 +660,11 @@
 	font-weight: bold;
 	margin: 2px
 }
+*/
 
 /* BUTTONS  
 ----------------------------------------------------------*/
+/*
 .btn_container {
 	overflow: hidden;
 }
@@ -552,9 +800,11 @@
 	line-height: 29px;
 	padding: 0px 15px 2px 5px;
 }
+*/
 
 /* TABLES 
 ----------------------------------------------------------*/
+/*
 .table_title 
 {
     border: 1px solid rgb(185, 185, 185);
@@ -716,7 +966,7 @@ table.form td.field textarea
 {
     border: 1px solid rgb(201, 201, 201);
 }
-
+*/
 /* AJAX  
 ----------------------------------------------------------*/
 .ajax-loading
