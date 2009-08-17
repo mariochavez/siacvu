@@ -5,7 +5,7 @@
     <label>Nivel Estudio</label>
 
     <%=Html.DropDownList("NivelEstudio", Model.NivelesEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("NivelEstudio") %>
 </p>
 <p>
@@ -31,7 +31,7 @@
     <label>Institucion</label>
   
     <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
@@ -44,21 +44,21 @@
     <label>Linea Tematica</label>
 
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
     <label>Pais</label>
 
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
     <label>Estado Pais</label>
 
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoPais") %>
 </p>
 <p>
