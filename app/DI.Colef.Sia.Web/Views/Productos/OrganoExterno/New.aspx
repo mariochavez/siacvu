@@ -28,10 +28,9 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
 	
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-    
-
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
+		
             <% using (Html.BeginForm("Create", "OrganoExterno")) { %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>

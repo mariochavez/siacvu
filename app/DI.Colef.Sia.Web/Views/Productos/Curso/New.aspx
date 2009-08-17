@@ -22,15 +22,15 @@
             <h3>Asistente de secci&oacute;n</h3>
             <% Html.RenderPartial("_NewSidebar"); %>
         </div><!--end asistente-->
+
     </div><!--end barra-->
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     	
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-		
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
             <% using (Html.BeginForm("Create", "Curso")) { %>			
 		        <%=Html.AntiForgeryToken() %>

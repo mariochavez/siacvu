@@ -28,9 +28,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-		
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
             <% using (Html.BeginForm("Create", "Dictamen")) { %>
 		        <%=Html.AntiForgeryToken() %>
@@ -38,7 +37,6 @@
                 
                 <% Html.RenderPartial("_DatosDictamen", Model.Form); %>
 
-        				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<DictamenController>(x => x.Index(), "Regresar")%>
                 </p>

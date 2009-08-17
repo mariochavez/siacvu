@@ -12,64 +12,55 @@
     </h2>
 </asp:Content>
 
-<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
-    runat="server">
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el articulo utilice los siguientes campos para realizar cambios dentro del sistema.</p>
-    </div>
-    <!--end introduccion-->
+            Para modificar el articulo utilice los siguientes campos para realizar cambios dentro del sistema.
+		</p>
+    </div><!--end introduccion-->
 </asp:Content>
 
-<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder"
-    runat="server">
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
     <div id="barra">
         <div id="asistente">
-            <h3>
-                Asistente de secci&oacute;n</h3>
+            <h3>Asistente de secci&oacute;n</h3>
             <% Html.RenderPartial("_EditSidebar"); %>
-        </div>
-        <!--end asistente-->
-    </div>
-    <!--end barra-->
+        </div><!--end asistente-->
+
+    </div><!--end barra-->
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-<div id="textos">
+	<div id="textos">
 	
-	<% Html.RenderPartial("_Message"); %>
-	<% Html.RenderPartial("_Search"); %>
-	
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
-        <% using (Html.BeginForm("Update", "Articulo")){ %>
-            <%=Html.AntiForgeryToken() %>
-            <%=Html.Hidden("Id", Model.Form.Id) %>        
+	        <% using (Html.BeginForm("Update", "Articulo")){ %>
+	            <%=Html.AntiForgeryToken() %>
+	            <%=Html.Hidden("Id", Model.Form.Id) %>        
             
-            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
+	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
             
-            <h4>Referencia Bibliografica</h4>
-            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+	            <h4>Referencia Bibliografica</h4>
+	            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
-            <h4>Coautores Externos</h4>
-            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+	            <h4>Coautores Externos</h4>
+	            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
-            <p>
-                <h4>Coautores Internos</h4>
-                <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-            </p>
+	            <h4>Coautores Internos</h4>
+				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
             
-            <p>
-                <h4>Datos Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-            </p>
+	            <h4>Datos Opcionales</h4>
+				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             
-            <p class="submit">
-                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
-            </p>
-        <% } %>
-    </div><!--end forma-->
+	            <p class="submit">
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
+	            </p>
+	        <% } %>
+	    </div><!--end forma-->
     
-</div><!--end textos-->
+	</div><!--end textos-->
 
 <script type="text/javascript">
     $(document).ready(function() {
