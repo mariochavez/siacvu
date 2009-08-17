@@ -44,7 +44,7 @@
             
             <% Html.RenderPartial("_DatosLibro", Model.Form); %>
             
-            <h4>Referencia Bibliografica</h4>
+            <h4>Referencia Bibliogr&aacute;fica</h4>
             <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
             <h4>Coautores Internos</h4>

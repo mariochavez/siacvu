@@ -139,7 +139,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(LibroForm form)
+        public ActionResult Create(LibroForm form, 
+                                   FormCollection formCollection)
         {
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
             

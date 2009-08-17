@@ -118,7 +118,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ResenaForm form)
+        public ActionResult Create(ResenaForm form,
+                                   FormCollection formCollection)
         {
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
