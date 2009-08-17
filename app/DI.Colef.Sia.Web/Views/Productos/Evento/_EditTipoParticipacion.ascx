@@ -16,13 +16,11 @@
     <% } else { %>
         <tr id="tipoparticipacionEmptyList_form">
             <td class="subform">
-                No hay participaciones definidas
-            </td>
-        </tr>
+                No hay participaciones definida</span></h5></div><!--end elementodescripcion-->
     <% } %>
-</table>
+
 <div id="tipoparticipacion_new" class="floatl btn_container">
-    <span class="btn btn_small_white">
+    
 	    <%=Html.ActionLink("+ Nuevo Tipo Participacion", "NewTipoParticipacion", new { Id = Model.Id }, new { @class = "remote get" })%>
 	</span>
 </div>

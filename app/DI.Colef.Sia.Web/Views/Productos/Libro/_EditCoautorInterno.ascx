@@ -16,13 +16,11 @@
     <% } else { %>
         <tr id="coautorinternoEmptyList_form">
             <td class="subform">
-                No hay Coautores Internos definidos
-            </td>
-        </tr>
+                No hay Coautores Internos definido</span></h5></div><!--end elementodescripcion-->
     <% } %>
-</table>
+
 <div id="coautorinterno_new" class="floatl btn_container">
-    <span class="btn btn_small_white">
+    
 	    <%=Html.ActionLink("+ Nuevo Coautor Interno", "NewCoautorInterno", new { Id = Model.Id }, new { @class = "remote get" })%>
 	</span>
 </div>

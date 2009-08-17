@@ -12,7 +12,7 @@ var html = '
         <span class="btn btn_small_brown">
             <%=Html.SubmitButton("Guardar", "Agregar Coautor Interno", new { rel = "#coautorinternoform", @class = "remote", @style = "border: 0px none;" })%>
         </span>
-        <span class="btn btn_small_white">
+        
 	        <a href="#" class="cancel" rel="coautorinterno">Cancelar</a>
         </span>
     </div>

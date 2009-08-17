@@ -2,13 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-<div class="floatr btn_container">
+<span>
 <% if (Model.Activo) { %>
-    <span class="btn btn_small_white">
+    
         <%=Html.ActionLink("Desactivar", "Deactivate", new { id = Model.Id }, new { @class = "remote put" })%>
     </span>
 <% } else { %>
-    <span class="btn btn_small_white">
+    
         <%=Html.ActionLink("Activar", "Activate", new { id = Model.Id }, new { @class = "remote put" })%>
     </span>
 <% } %>

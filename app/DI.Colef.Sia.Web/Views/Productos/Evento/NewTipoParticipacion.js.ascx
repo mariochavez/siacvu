@@ -11,7 +11,7 @@ var html = '
         <span class="btn btn_small_brown">
             <%=Html.SubmitButton("Guardar", "Agregar Participacion", new { rel = "#tipoparticipacionform", @class = "remote", @style = "border: 0px none;" })%>
         </span>
-        <span class="btn btn_small_white">
+        
 	        <a href="#" class="cancel" rel="tipoparticipacion">Cancelar</a>
         </span>
     </div>

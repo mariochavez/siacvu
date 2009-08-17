@@ -32,9 +32,11 @@
 </asp:Content>
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
-    <div id="forma">
-        <% Html.RenderPartial("_Message"); %>
-        <br />
+	
+	<% Html.RenderPartial("_Message"); %>
+	<% Html.RenderPartial("_Search"); %>
+	
+
         <% using (Html.BeginForm("Update", "Libro")){ %>
             <%=Html.AntiForgeryToken() %>
             <%=Html.Hidden("Id", Model.Form.Id) %>

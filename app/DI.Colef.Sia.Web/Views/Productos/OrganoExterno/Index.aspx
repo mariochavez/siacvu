@@ -1,8 +1,8 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<OrganoExternoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
@@ -11,16 +11,15 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar Nuevo Organo Externo</h3>
-		<p>Puedes agregar un nuevo Organo Externo dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de titulo <strong>+ Crear Organo Externo</strong>.</p>
-			
-		<div class="botonzon">
-		    <span>
-		        <%=Html.ActionLink<OrganoExternoController>(x => x.New(), "+ Crear Organo Externo", new { title = "Crear Organo Externo" })%>
-		    </span>
-		</div>
-	
-	</div><!--end subcontenido-->
+        <h3>Agregar Nuevo Organo Externo</h3>
+        <p>
+            Puede agregar un nuevo Organo Externo dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de titulo <strong>+ Crear Organo Externo</strong>.
+		</p>
+        <div class="botonzon">
+            <span><%=Html.ActionLink<Organo ExternoController>(x => x.New(), "+ Crear Organo Externo") %></span>
+        </div>
+    </div><!--end subcontenido-->
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
@@ -35,55 +34,51 @@
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
-	<div id="forma">
 	
-        <% Html.RenderPartial("_Message"); %>
-        <br />
-        <div id="datalist">   
-            <div class="btn_container">
-                <% Html.RenderPartial("_Search"); %>
-            </div> 
-            <br />
-            <div class="table_title">Organos Externos</div>
-            <table>
-                 <% if(Model.List == null || Model.List.Length == 0) { %>
-                    <tr>
-                        <td>No hay organos externos definidos</td>
-                    </tr>
-                <% } else { %>
-                    <% foreach (var organoExterno in Model.List) { %>
-                        <tr class="highlight">
-			                <td class="button" width="46">
-				                <div class="floatr btn_container">
-					                <span class="btn btn_small_white">
-						                <%=Html.ActionLink<OrganoExternoController>(x => x.Edit(organoExterno.Id), "Editar") %>
-					                </span>
-				                </div>
-			                </td>                
-                            <td class="single" width="70%">
-                                <%=Html.Encode(organoExterno.Nombre) %>
-                                <div class="meta_info">Modificado el <%=Html.Encode(organoExterno.Modificacion) %></div>
-                            </td>
-                            <td id="accion_<%=Html.Encode(organoExterno.Id) %>" class="button" width="140">
-                                <div class="floatr btn_container">
-                                <% if (organoExterno.Activo) { %>
-                                    <span class="btn btn_small_white">
-                                        <%=Html.ActionLink("Desactivar", "Deactivate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
-                                    </span>
-                                <% } else { %>
-                                    <span class="btn btn_small_white">
-                                        <%=Html.ActionLink("Activar", "Activate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
-                                    </span>
-                                <% } %>
-                                </div>
-                            </td>
-                        </tr>
-                    <% } %>
-                <% } %>
-            </table>
-        </div>    
-	</div><!--end forma-->	
-	    
+	<% Html.RenderPartial("_Message"); %>
+	<% Html.RenderPartial("_Search"); %>
+	
+	<div id="lista">
+	<h4>Organos Externos</h4>
+            
+		<% if (Model.List == null || Model.List.Length == 0) { %>
+			<div class="elementolista">
+				<div class="elementodescripcion">
+					<h5><span>No hay organos externos definidos</span></h5>
+				</div><!--end elementodescripcion-->
+
+				<div class="elementobotones">
+					<p><span></span></p>
+				</div><!--end elementobotones-->	
+
+			</div><!--end elementolista-->
+		<% } else { %>
+			<% foreach (var organoExterno in Model.List) { %>
+				<div class="elementolista" id="accion_<%=Html.Encode(organoExterno.Id) %>">
+					<div class="elementodescripcion">
+						<h5><span><%=Html.Encode(organoExterno.NombreOrgano Externo) %></h5></span>
+						<h6>Modificado el <%=Html.Encode(organoExterno.Modificacion) %></h6>
+					</div><!--end elementodescripcion-->
+
+					<div class="elementobotones">
+						<p>
+							<span><%=Html.ActionLink<Organo ExternoController>(x => x.Edit(organoExterno.Id), "Editar") %></span>
+			            	<span>
+			                	<% if (organoExterno.Activo) { %>
+			                    	<%=Html.ActionLink("Desactivar", "Deactivate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
+								<% } else { %>
+									<%=Html.ActionLink("Activar", "Activate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
+								<% } %>
+							</span>
+						</p>
+					</div><!--end elementobotones-->
+
+				</div><!--end elementolista-->
+			<% } %>
+		<% } %>
+		
+    </div><!--end lista-->
+
 </div><!--end textos-->
 
 <script type="text/javascript">
@@ -91,4 +86,5 @@
         setupDocument();
     });
 </script>
+
 </asp:Content>
