@@ -11,4 +11,4 @@ var html = '
 
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Distincion <%=Html.Encode(Model.Descripcion) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');
+showMessage('Distinci&oacute;n <%=Html.Encode(Model.Descripcion) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');

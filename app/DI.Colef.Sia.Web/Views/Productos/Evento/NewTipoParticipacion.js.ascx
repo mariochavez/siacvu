@@ -9,7 +9,7 @@ var html = '
     <% Html.RenderPartial("_NewTipoParticipacion"); %>
     <div class="btn_container_footer">
         <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Participacion", new { rel = "#tipoparticipacionform", @class = "remote", @style = "border: 0px none;" })%>
+            <%=Html.SubmitButton("Guardar", "Agregar Participación", new { rel = "#tipoparticipacionform", @class = "remote", @style = "border: 0px none;" })%>
         </span>
         
 	        <a href="#" class="cancel" rel="tipoparticipacion">Cancelar</a>

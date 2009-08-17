@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Dictamen</h3>
         <p>
             Puede agregar un nuevo Dictamen dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Dictamen</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Dictamen</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<DictamenController>(x => x.New(), "+ Crear Dictamen") %></span>
@@ -47,16 +47,12 @@
 					<h6><span>No hay dict&aacute;menes definidos</span></h6>
 				</div><!--end elementodescripcion-->
 
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
-
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var dictamen in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(dictamen.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(dictamen.NombreDictamen) %></h5></span>
+						<h5><span><%=Html.Encode(dictamen.Nombre) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(dictamen.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

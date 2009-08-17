@@ -10,8 +10,8 @@
             </div><!--end proyectoLista-->
         <% } %>
     <% } else { %>
-        <div id="proyectoEmptyList_form">
-                No hay proyectos definidos
+        <div class="sublista" id="proyectoEmptyList_form">
+            <h6><span>No hay proyectos definidos</span></h6>
         </div>
     <% } %>
     

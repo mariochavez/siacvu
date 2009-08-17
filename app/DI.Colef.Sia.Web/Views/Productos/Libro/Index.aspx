@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Libro</h3>
         <p>
             Puede agregar un nuevo Libro dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Libro</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Libro</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<LibroController>(x => x.New(), "+ Crear Libro") %></span>
@@ -45,18 +45,14 @@
 			<div class="elementolista">
 				<div class="elementodescripcion">
 					<h6><span>No hay libros definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var libro in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(libro.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(libro.NombreLibro) %></h5></span>
+						<h5><span><%=Html.Encode(libro.Nombre) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(libro.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

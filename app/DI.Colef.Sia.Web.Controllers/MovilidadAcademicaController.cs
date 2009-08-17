@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", movilidadAcademica.LineaTematica.Nombre));
+            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido creada", movilidadAcademica.LineaTematica.Nombre));
         }
 
         [Transaction]
@@ -152,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", movilidadAcademica.LineaTematica.Nombre));
+            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido modificada", movilidadAcademica.LineaTematica.Nombre));
         }
 
         [Transaction]

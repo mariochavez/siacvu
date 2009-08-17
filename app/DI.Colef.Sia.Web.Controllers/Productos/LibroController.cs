@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", libro.Nombre));
+            return RedirectToIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
         }
         
         [Transaction]
@@ -172,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", libro.Nombre));
+            return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
         }
         
         [Transaction]

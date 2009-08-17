@@ -2,13 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Tipo de Capitulo</label>
+    <label>Tipo de Cap&iacute;tulo</label>
     <%=Html.DropDownList("TipoCapitulo", Model.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
 				"Seleccione ...")%>
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
 <p>
-    <label>Nombre del Capitulo</label>
+    <label>Nombre del Cap&iacute;tulo</label>
     <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreCapitulo")%>
 </p>
@@ -37,7 +37,7 @@
     <%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
-    <label>Linea Tem&aacute;tica</label>
+    <label>L&iacute;nea Tem&aacute;tica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
 			    "Seleccione ...")%>
     <%=Html.ValidationMessage("LineaTematica") %>

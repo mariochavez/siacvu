@@ -10,8 +10,8 @@
             </div><!--end tipoActividadLista-->
         <% } %>
     <% } else { %>
-        <div id="tipoactividadEmptyList_form">
-                No hay actividades definidas
+        <div class="sublista" id="tipoactividadEmptyList_form">
+            <h6><span>No hay actividades definidas</span></h6>
         </div>
     <% } %>
     

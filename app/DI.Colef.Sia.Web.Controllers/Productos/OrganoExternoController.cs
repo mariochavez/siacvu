@@ -109,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", organoExterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano Externo {0} ha sido creado", organoExterno.Nombre));
         }
 
         [Transaction]
@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", organoExterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano Externo {0} ha sido modificado", organoExterno.Nombre));
         }
 
         [Transaction]

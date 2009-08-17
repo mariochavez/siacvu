@@ -120,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionService.SaveParticipacion(participacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", participacion.Titulo));
+            return RedirectToIndex(String.Format("Participación {0} ha sido creada", participacion.Titulo));
         }
 
         [Transaction]
@@ -141,7 +141,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionService.SaveParticipacion(participacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", participacion.Titulo));
+            return RedirectToIndex(String.Format("Participación {0} ha sido modificada", participacion.Titulo));
         }
 
         [Transaction]

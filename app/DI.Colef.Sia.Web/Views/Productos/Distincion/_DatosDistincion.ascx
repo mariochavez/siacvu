@@ -25,7 +25,7 @@
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
-    <label>Ambito</label>
+    <label>&Aacute;mbito</label>
     <%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
     <%=Html.ValidationMessage("Ambito") %>

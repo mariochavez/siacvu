@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Curso</h3>
         <p>
             Puede agregar un nuevo Curso dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Curso</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Curso</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<CursoController>(x => x.New(), "+ Crear Curso") %></span>
@@ -46,10 +46,6 @@
 				<div class="elementodescripcion">
 					<h6><span>No hay cursos definidos</span></h6>
 				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>

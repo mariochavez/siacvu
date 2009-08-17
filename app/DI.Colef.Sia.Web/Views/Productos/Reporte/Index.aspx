@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Reporte</h3>
         <p>
             Puede agregar un nuevo Reporte dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Reporte</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Reporte</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Crear Reporte") %></span>
@@ -45,18 +45,14 @@
 			<div class="elementolista">
 				<div class="elementodescripcion">
 					<h6><span>No hay reportes definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var reporte in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(reporte.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(reporte.NombreReporte) %></h5></span>
+						<h5><span><%=Html.Encode(reporte.Titulo) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(reporte.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

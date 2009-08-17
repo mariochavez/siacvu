@@ -8,7 +8,7 @@
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
 <p>
-    <label>Tipo Institucion</label>
+    <label>Tipo Instituci&oacute;n</label>
     <%=Html.DropDownList("TipoInstitucion", Model.TiposInstituciones.CreateSelectList<TipoInstitucionForm>("Id", "Nombre"),
 				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoInstitucion") %>
@@ -26,13 +26,13 @@
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>
-    <label>Institucion</label>
+    <label>Instituci&oacute;n</label>
     <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
 				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
-    <label>Linea Tematica</label>
+    <label>L&iacute;nea Tem&aacute;tica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
 				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>

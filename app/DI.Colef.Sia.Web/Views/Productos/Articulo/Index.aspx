@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Articulo</h3>
+        <h3>Agregar Nuevo Art&iacute;culo</h3>
         <p>
-            Puede agregar un nuevo Articulo dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de titulo <strong>+ Crear Articulo</strong>.
+            Puede agregar un nuevo Art&iacute;culo dentro de la lista de administraci&oacute;n de
+            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Art&iacute;culo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Crear Articulo") %></span>
+            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Crear Artículo") %></span>
         </div>
     </div>
 </asp:Content>
@@ -46,10 +46,6 @@
 				<div class="elementodescripcion">
 					<h6><span>No hay art&iacute;culos definidos</span></h6>
 				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>

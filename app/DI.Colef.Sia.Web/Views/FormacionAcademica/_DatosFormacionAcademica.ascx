@@ -9,53 +9,53 @@
     <%=Html.ValidationMessage("NivelEstudio") %>
 </p>
 <p>
-    <label>Numero Cedula</label>
+    <label>N&uacute;mero C&eacute;dula</label>
 
     <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
 <p>
-    <label>Titulo Grado</label>
+    <label>T&iacute;tulo Grado</label>
 
     <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloGrado")%>
 </p>
 <p>
-    <label>Fecha Obtencion</label>
+    <label>Fecha Obtenci&oacute;n</label>
  
     <%=Html.TextBox("FechaObtencion", Model.FechaObtencion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaObtencion")%>
 </p>
 <p>
-    <label>Institucion</label>
+    <label>Instituci&oacute;n</label>
   
     <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
-    <label>Titulo Tesis</label>
+    <label>T&iacute;tulo Tesis</label>
 
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>
 <p>
-    <label>Linea Tematica</label>
+    <label>L&iacute;nea Tem&aacute;tica</label>
 
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
-    <label>Pais</label>
+    <label>Pa&iacute;s</label>
 
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>Estado Pais</label>
+    <label>Estado</label>
 
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>

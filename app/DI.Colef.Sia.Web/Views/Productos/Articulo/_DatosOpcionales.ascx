@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Linea de Investigaci&oacute;n personal</label>
+    <label>L&iacute;nea de Investigaci&oacute;n personal</label>
     <%=Html.DropDownList("LineaInvestigacion", Model.LineasInvestigaciones.CreateSelectList<LineaInvestigacionForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("LineaInvestigacion") %>
@@ -30,7 +30,7 @@
     <%=Html.ValidationMessage("PalabrasClaves")%>
 </p>
 <p>
-    <label>Area</label>
+    <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("Area") %>

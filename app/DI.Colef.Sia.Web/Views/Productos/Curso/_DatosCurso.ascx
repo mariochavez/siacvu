@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Numero Horas</label>
+	<label>N&uacute;mero Horas</label>
     <%=Html.TextBox("NumeroHoras", Model.NumeroHoras, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NumeroHoras")%>
 </p>

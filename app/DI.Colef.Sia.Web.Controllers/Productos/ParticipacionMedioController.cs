@@ -122,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", participacionMedio.Nombre));
+            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Nombre));
         }
 
         [Transaction]
@@ -143,7 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", participacionMedio.Nombre));
+            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Nombre));
         }
 
         [Transaction]

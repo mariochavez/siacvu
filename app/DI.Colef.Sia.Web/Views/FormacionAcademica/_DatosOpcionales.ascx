@@ -15,14 +15,14 @@
     <%=Html.ValidationMessage("Sector") %>
 </p>
 <p>
-    <label>Organizacion</label>
+    <label>Organizaci&oacute;n</label>
     
     <%=Html.DropDownList("Organizacion", Model.Organizaciones.CreateSelectList<OrganizacionForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("Organizacion") %>
 </p>
 <p>
-    <label>Area</label>
+    <label>&Aacute;rea</label>
   
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
         "Seleccione ...")%>

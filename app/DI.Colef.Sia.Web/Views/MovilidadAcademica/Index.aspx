@@ -11,12 +11,15 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar Nueva Movilidad Academica</h3>
-		<p>Puedes agregar una nueva Movilidad Academica dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de titulo <strong>+ Crear Movilidad Academica</strong>.</p>
+	    <h3>Agregar Movilidad Acad&eacute;mica</h3>
+		<p>
+		    Puedes agregar una nueva Movilidad Acad&eacute;mica dentro de la lista de administraci&oacute;n 
+		    presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Movilidad Acad&eacute;mica</strong>.
+		</p>
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<MovilidadAcademicaController>(x => x.New(), "+ Crear Movilidad Academica", new { title = "Crear Movilidad Academica" })%>
+		        <%=Html.ActionLink<MovilidadAcademicaController>(x => x.New(), "+ Crear Movilidad Académica", new { title = "Crear Movilidad Academica" })%>
 		    </span>
 		</div>
 	
@@ -27,7 +30,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Movilidades Academicas registradas en el sistema.</p>
+            <p>Lista de Movilidades Acad&eacute;micas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -40,19 +43,15 @@
     <% Html.RenderPartial("_Search"); %>
     
 	<div id="lista">
-	    <h4>Lista de Movilidades Academicas</h4>
+	    <h4>Movilidad Acad&eacute;mica</h4>
 	    
 	    <% if(Model.List == null || Model.List.Length == 0) { %>	        
-            <div class="elementolista">
-			    <div class="elementodescripcion">
-				    <h5><span>No hay movilidades academicas en el sistema</span></h5>
-			    </div><!--end elementodescripcion-->
-				
-			    <div class="elementobotones">
-				    <p><span></span></p>
-			    </div><!--end elementobotones-->	
-				
-		    </div><!--end elementolista--> 
+			<div class="elementolista">
+				<div class="elementodescripcion">
+					<h6><span>No hay movilidad acad&eacute;mica definida</span></h6>
+				</div><!--end elementodescripcion-->	
+
+			</div><!--end elementolista-->
 		    
         <% } else { %>
             <% foreach (var movilidadAcademica in Model.List){ %>

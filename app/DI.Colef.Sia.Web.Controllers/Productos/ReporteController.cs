@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             reporteService.SaveReporte(reporte);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", reporte.Titulo));
+            return RedirectToIndex(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
         }
 
         [Transaction]
@@ -150,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             reporteService.SaveReporte(reporte);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", reporte.Titulo));
+            return RedirectToIndex(String.Format("Reporte {0} ha sido modificado", reporte.Titulo));
         }
 
         [Transaction]

@@ -7,7 +7,7 @@
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-    <label>Ambito</label>
+    <label>&Aacute;mbito</label>
 	<%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
 	<%=Html.ValidationMessage("Ambito") %>
@@ -19,7 +19,7 @@
 	<%=Html.ValidationMessage("TipoEvento") %>
 </p>
 <p>
-    <label>Titulo</label>
+    <label>T&iacute;tulo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>

@@ -127,7 +127,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisService.SaveTesis(tesis);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", tesis.Titulo));
+            return RedirectToIndex(String.Format("Tesis {0} ha sido creada", tesis.Titulo));
         }
 
         [Transaction]
@@ -147,7 +147,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisService.SaveTesis(tesis);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", tesis.Titulo));
+            return RedirectToIndex(String.Format("Tesis {0} ha sido modificada", tesis.Titulo));
         }
 
         [Transaction]

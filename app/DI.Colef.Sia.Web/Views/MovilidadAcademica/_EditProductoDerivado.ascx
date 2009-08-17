@@ -10,8 +10,8 @@
             </div><!--end productoDerivadoLista-->
         <% } %>
     <% } else { %>
-        <div id="productoderivadoEmptyList_form">
-                No hay productos derivados definidos
+        <div class="sublista" id="productoderivadoEmptyList_form">
+            <h6><span>No hay productos derivados definidos</span></h6>
         </div>
     <% } %>
     
