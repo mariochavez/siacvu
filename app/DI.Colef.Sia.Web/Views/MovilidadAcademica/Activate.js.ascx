@@ -2,18 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-<div class="floatr btn_container">
 <% if (Model.Activo) { %>
-    <span class="btn btn_small_white">
-        <%=Html.ActionLink("Desactivar", "Deactivate", new { id = Model.Id }, new { @class = "remote put" })%>
-    </span>
+    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = Model.Id }, new { @class = "remote put" })%>
 <% } else { %>
-    <span class="btn btn_small_white">
-        <%=Html.ActionLink("Activar", "Activate", new { id = Model.Id }, new { @class = "remote put" })%>
-    </span>
+    <%=Html.ActionLink("Activar", "Activate", new { id = Model.Id }, new { @class = "remote put" })%>
 <% } %>
-</div>
 ';
 
-$('#accion_<%=Html.Encode(Model.Id) %>').html(html);
+$('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
+$('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
 showMessage('Movilidad Academica <%=Html.Encode(Model.LineaTematicaNombre) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');
