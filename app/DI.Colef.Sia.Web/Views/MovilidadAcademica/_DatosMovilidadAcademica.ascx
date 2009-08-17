@@ -4,13 +4,13 @@
 <p>
     <label>Tipo Estancia</label>
     <%=Html.DropDownList("TipoEstancia", Model.TiposEstancias.CreateSelectList<TipoEstanciaForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
 <p>
     <label>Tipo Institucion</label>
     <%=Html.DropDownList("TipoInstitucion", Model.TiposInstituciones.CreateSelectList<TipoInstitucionForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoInstitucion") %>
 </p>
 <p>
@@ -28,18 +28,18 @@
 <p>
     <label>Institucion</label>
     <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
     <label>Linea Tematica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
     <label>Convenio</label>
     <%=Html.DropDownList("Convenio", Model.Convenios.CreateSelectList<ConvenioForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Convenio") %>
 </p>
