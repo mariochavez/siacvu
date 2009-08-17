@@ -5,37 +5,33 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2>
-        <%=Html.Encode(Model.Title) %></h2>
+    <h2><%=Html.Encode(Model.Title) %></h2>
 </asp:Content>
-<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
-    runat="server">
+
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
             Para modificar el libro utilice los siguientes campos para realizar cambios dentro del sistema.
         </p>
-    </div>
-    <!--end introduccion-->
+    </div><!--end introduccion-->
 </asp:Content>
-<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder"
-    runat="server">
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
     <div id="barra">
         <div id="asistente">
-            <h3>
-                Asistente de secci&oacute;n</h3>
+            <h3>Asistente de secci&oacute;n</h3>
             <% Html.RenderPartial("_NewSidebar"); %>
-        </div>
-        <!--end asistente-->
-    </div>
-    <!--end barra-->
+        </div><!--end asistente-->
+    </div><!--end barra-->
 </asp:Content>
+
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
 	
-	<% Html.RenderPartial("_Message"); %>
-	<% Html.RenderPartial("_Search"); %>
-	
+    <% Html.RenderPartial("_Message"); %>    
+    <div id="forma">
 
         <% using (Html.BeginForm("Update", "Libro")){ %>
             <%=Html.AntiForgeryToken() %>
@@ -50,15 +46,12 @@
             <% Html.RenderPartial("_Coautoria", Model.Form); %>
             <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
             
-            <p>
-                <h4>Coautores Externos</h4>
-                <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>        
-            </p>
+            <h4>Coautores Externos</h4>
+			<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
-            <p>
-                <h4>Datos Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-            </p>
+            <h4>Datos Opcionales</h4>
+			<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
             </p>

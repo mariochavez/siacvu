@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la distincion utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p>Para modificar la distinci&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -28,9 +28,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-		
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
             <% using (Html.BeginForm("Update", "Distincion")) { %>
                 <%=Html.AntiForgeryToken() %>

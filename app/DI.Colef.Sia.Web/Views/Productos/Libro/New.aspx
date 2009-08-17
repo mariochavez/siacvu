@@ -7,8 +7,7 @@
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2>
-        <%=Html.Encode(Model.Title) %></h2>
+    <h2><%=Html.Encode(Model.Title) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
@@ -25,8 +24,7 @@
     runat="server">
     <div id="barra">
         <div id="asistente">
-            <h3>
-                Asistente de secci&oacute;n</h3>
+            <h3>Asistente de secci&oacute;n</h3>
             <% Html.RenderPartial("_NewSidebar"); %>
         </div>
         <!--end asistente-->
@@ -37,9 +35,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
 	
-	<% Html.RenderPartial("_Message"); %>
-	<% Html.RenderPartial("_Search"); %>
-	
+    <% Html.RenderPartial("_Message"); %>    
+    <div id="forma">
 
         <% using (Html.BeginForm("Create", "Libro")){ %>
             <%=Html.AntiForgeryToken() %>
@@ -54,15 +51,12 @@
             <% Html.RenderPartial("_Coautoria", Model.Form); %>
             <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
             
-            <p>
-                <h4>Coautores Externos</h4>
-                <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>        
-            </p>
+            <h4>Coautores Externos</h4>
+			<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
-            <p>
-                <h4>Datos Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-            </p>
+            <h4>Datos Opcionales</h4>
+			<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>
             </p>

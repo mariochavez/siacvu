@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta su distincion dentro del sistema.</p>
+		<p>Favor de llenar los siguientes campos para dar de alta su distinci&oacute;n dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -28,9 +28,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-		
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
             <% using (Html.BeginForm("Create", "Distincion")) { %>
                 <%=Html.AntiForgeryToken() %>

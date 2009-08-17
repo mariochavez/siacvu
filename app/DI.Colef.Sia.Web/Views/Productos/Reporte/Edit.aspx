@@ -28,9 +28,8 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-		<% Html.RenderPartial("_Message"); %>
-		<% Html.RenderPartial("_Search"); %>
-		
+	    <% Html.RenderPartial("_Message"); %>    
+	    <div id="forma">
 
             <% using (Html.BeginForm("Update", "Reporte")) { %>
 		        <%=Html.AntiForgeryToken() %>
@@ -38,20 +37,14 @@
                 
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
 
-                <p>
-                    <h4>Coautores Externos</h4>
-                    <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-                </p>
+                <h4>Coautores Externos</h4>
+				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 
-                <p>
-                    <h4>Coautores Internos</h4>
-                    <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-                </p>
+                <h4>Coautores Internos</h4>
+				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
                 
-                <p>
-                    <h4>Referencia Bibliografica</h4>
-                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                </p>
+                <h4>Referencia Bibliografica</h4>
+				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 
                 <h4>Datos Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
