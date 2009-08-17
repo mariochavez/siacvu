@@ -15,27 +15,27 @@
 	<%=Html.ValidationMessage("Autor")%>
 </p>
 <p>
-	<label>Otra Participacion</label>
+	<label>Otra Participaci&oacute;n</label>
 
 	<%=Html.DropDownList("OtraParticipacion", Model.OtrasParticipaciones.CreateSelectList<OtraParticipacionForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("OtraParticipacion") %>
 </p>
 <p>
-	<label>Tipo Presentacion</label>
+	<label>Tipo Presentaci&oacute;n</label>
 
 	<%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("TipoPresentacion") %>
 </p>
 <p>
-	<label>Institucion</label>
+	<label>Instituci&oacute;n</label>
 
 	<%=Html.TextBox("Institucion", Model.Institucion, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Institucion")%>
 </p>
 <p>
-	<label>Fecha Presentacion</label>
+	<label>Fecha Presentaci&oacute;n</label>
 
 	<%=Html.TextBox("FechaPresentacion", Model.FechaPresentacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
@@ -62,14 +62,14 @@
 	<%=Html.ValidationMessage("Lugar")%>
 </p>
 <p>
-	<label>Pais</label>
+	<label>Pa&iacute;s</label>
 
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-	<label>Estado Pais</label>
+	<label>Estado Pa&iacute;s</label>
 
 	<%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
 		"Seleccione ...")%>

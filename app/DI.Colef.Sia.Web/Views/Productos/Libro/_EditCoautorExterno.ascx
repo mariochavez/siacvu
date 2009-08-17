@@ -1,27 +1,29 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<LibroForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-	<table class="form" id="coautorexternoList">
-    <tr>
-        <th class="subform">Coautores Externos</th>
-    </tr>
-    <% if (Model.CoautorExternoLibros != null){%>
+<div class="minilista" id="coautorexternoList">
+    <h5>Coautores Externos</h5>
+
+    <% if (Model.CoautorExternoLibros != null) { %>
         <% foreach(var coautorExterno in Model.CoautorExternoLibros) { %>
-        <tr id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
-            <td class="subform">
-                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
-            </td>
-        </tr>
+	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
+	            <h6><%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%></h6>
+			</div><!--end sublista-->
         <% } %>
     <% } else { %>
-        <tr id="coautorexternoEmptyList_form">
-            <td class="subform">
-                No hay Coautores Externos definido</span></h5></div><!--end elementodescripcion-->
+        <div class="sublista" id="coautorexternoEmptyList_form">
+            <h6><span>No hay Coautores Externos definidos</span></h6>
+		</div><!--end elementodescripcion-->
     <% } %>
 
-<div id="coautorexterno_new" class="floatl btn_container">
-    
-	    <%=Html.ActionLink("+ Nuevo Coautor Externo", "NewCoautorExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
-	</span>
-</div>
+		<div id="coautorexterno_new" class="minilistaboton">
+			<p>
+				<span>
+		    		<%=Html.ActionLink("+ Nuevo Coautor Externo", "NewCoautorExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
+				</span>
+			</p>
+		</div><!--end minilistaboton-->
+
+	</div><!--end minilista-->
+	
 <div id="coautorexterno_form" class="display:hidden;"></div>
