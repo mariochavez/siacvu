@@ -2,49 +2,42 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>
-        Tipo Publicacion</label>
+    <label>Tipo Publicaci&oacuten</label>
     <%=Html.DropDownList("TipoPublicacion", Model.TiposPublicaciones.CreateSelectList<TipoPublicacionForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("TipoPublicacion") %>
 </p>
 <p>
-    <label>
-        Estado Producto</label>
+    <label>Estado Producto</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("EstadoProducto") %>
 </p>
 <p>
-    <label>
-        Periodo Referencia</label>
+    <label>Periodo Referencia</label>
     <%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
-    <label>
-        Tiene Proyecto</label>
+    <label>Tiene Proyecto</label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
 <p>
-    <label>
-        Proyecto</label>
+    <label>Proyecto</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
-    <label>
-        Linea Tematica</label>
+    <label>Linea Tem&aacute;tica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
-    <label>
-        Fecha Aceptacion</label>
+    <label>Fecha Aceptaci&oacute;n</label>
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>

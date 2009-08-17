@@ -1,27 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<table class="form" id="responsableexternoList">
-    <tr>
-        <th class="subform">Responsable Externo</th>
-    </tr>
-    <% if (Model.ResponsableExternoCapitulos != null){%>
+<div class="minilista" id="responsableexternoList">
+    <h5>Responsable Externo</h5>
+
+    <% if (Model.ResponsableExternoCapitulos != null) { %>
         <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
-        <tr id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
-            <td class="subform">
-                <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
-            </td>
-        </tr>
+	        <div class="sublista" id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
+	            <h6><%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%></h6>
+			</div><!--end sublista-->
         <% } %>
     <% } else { %>
-        <tr id="responsableexternoEmptyList_form">
-            <td class="subform">
-                No hay responsables externos definido</span></h5></div><!--end elementodescripcion-->
+        <div class="sublista" id="responsableexternoEmptyList_form">
+            <h6><span>No hay responsables externos definidos</span></h6>
+		</div><!--end elementodescripcion-->
     <% } %>
 
-<div id="responsableexterno_new" class="floatl btn_container">
-    
-	    <%=Html.ActionLink("+ Nuevo Responsable Externo", "NewResponsableExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
-	</span>
-</div>
+	<div id="responsableexterno_new" class="minilistaboton">
+		<p>
+			<span>
+	    		<%=Html.ActionLink("+ Nuevo Responsable Externo", "NewResponsableExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
+			</span>
+		</p>
+	</div><!--end minilistaboton-->
+
+</div><!--end minilista-->
+
 <div id="responsableexterno_form" class="display:hidden;"></div>

@@ -1,27 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ReporteForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<table class="form" id="coautorexternoList">
-    <tr>
-        <th class="subform">Coautor Externo</th>
-    </tr>
-    <% if (Model.CoautorExternoReportes != null){%>
+<div class="minilista" id="coautorexternoList">
+    <h5>Coautor Externo</h5>
+
+    <% if (Model.CoautorExternoReportes != null) { %>
         <% foreach (var coautorExterno in Model.CoautorExternoReportes){ %>
-        <tr id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
-            <td class="subform">
-                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
-            </td>
-        </tr>
+	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
+	            <h6><%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%></h6>
+			</div><!--end sublista-->
         <% } %>
     <% } else { %>
-        <tr id="coautorexternoEmptyList_form">
-            <td class="subform">
-                No hay coautores externos definido</span></h5></div><!--end elementodescripcion-->
+        <div class="sublista" id="coautorexternoEmptyList_form">
+            <h6><span>No hay coautores externos definidos</span></h6>
+		</div><!--end elementodescripcion-->
     <% } %>
 
-<div id="coautorexterno_new" class="floatl btn_container">
-    
-	    <%=Html.ActionLink("+ Nuevo Coautor Externo", "NewCoautorExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
-	</span>
-</div>
+	<div id="coautorexterno_new" class="minilistaboton">
+		<p>
+			<span>
+	    		<%=Html.ActionLink("+ Nuevo Coautor Externo", "NewCoautorExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
+			</span>
+		</p>
+	</div><!--end minilistaboton-->
+
+</div><!--end minilista-->
+
 <div id="coautorexterno_form" class="display:hidden;"></div>

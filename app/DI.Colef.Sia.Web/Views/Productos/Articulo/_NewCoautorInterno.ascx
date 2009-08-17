@@ -3,7 +3,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Coautor Interno</label>
- 
     <%=Html.DropDownList("CoautorInternoArticulo.InvestigadorId", Model.CoautoresInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("CoautorInternoArticulo.InvestigadorId")%>
