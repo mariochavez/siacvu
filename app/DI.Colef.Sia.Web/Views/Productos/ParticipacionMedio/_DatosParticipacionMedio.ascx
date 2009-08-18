@@ -14,13 +14,13 @@
 <p>
 	<label>Medio Impreso</label>
 	<%=Html.DropDownList("MedioImpreso", Model.MediosImpresos.CreateSelectList<MedioImpresoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioImpreso") %>
 </p>
 <p>
 	<label>Medio Electr&oacute;nico</label>
 	<%=Html.DropDownList("MedioElectronico", Model.MediosElectronicos.CreateSelectList<MedioElectronicoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioElectronico") %>
 </p>
 <p>
@@ -31,7 +31,7 @@
 <p>
 	<label>G&eacute;nero</label>
 	<%=Html.DropDownList("Genero", Model.Generos.CreateSelectList<GeneroForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Genero") %>
 </p>
 <p>
@@ -42,25 +42,25 @@
 <p>
 	<label>Periodo Referencia</label>
 	<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
 	<label>L&iacute;nea Tem&aacute;tica</label>
 	<%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
 	<label>&Aacute;mbito</label>
 	<%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
@@ -72,13 +72,13 @@
 <p>
 	<label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
 	<label>Estado</label>
 	<%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("EstadoPais") %>
 </p>
 <p>

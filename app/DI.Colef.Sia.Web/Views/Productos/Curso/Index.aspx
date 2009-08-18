@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h6><span>No hay cursos definidos</span></h6>
+					<h5><span>No hay cursos definidos</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->
@@ -52,7 +52,7 @@
 			<% foreach (var curso in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(curso.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(curso.NombreCurso) %></h5></span>
+						<h5><span><%=Html.Encode(curso.Area) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(curso.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

@@ -19,7 +19,7 @@
 <p>
 	<label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-			"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>

@@ -208,6 +208,9 @@
     <Content Include="Content\Images\caja-busqueda-bg.gif" />
     <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Content\Images\contenido-bg.gif" />
+    <Content Include="Content\Images\corner_left.png" />
+    <Content Include="Content\Images\corner_right.png" />
+    <Content Include="Content\Images\dot.gif" />
     <Content Include="Content\Images\medium-brown-button.png" />
     <Content Include="Content\Images\normal-brown-button.png" />
     <Content Include="Content\Images\normal-white-button.png" />

@@ -4,19 +4,19 @@
 <p>
     <label>Tipo Reporte</label>
     <%=Html.DropDownList("TipoReporte", Model.TiposReportes.CreateSelectList<TipoReporteForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoReporte") %>
 </p>
 <p>
 	<label>Estado Producto</label>
 	<%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-			"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("EstadoProducto") %>
 </p>
 <p>
 	<label>Periodo Referencia</label>
 	<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-			"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
@@ -28,13 +28,13 @@
 <p>
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-			"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
 	<label>L&iacute;nea Tem&aacute;tica</label>
 	<%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-			"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>

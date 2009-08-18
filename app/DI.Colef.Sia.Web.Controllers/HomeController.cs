@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace DI.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
     public class HomeController : Controller

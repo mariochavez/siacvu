@@ -4,7 +4,7 @@
 <div class="minilista" id="tipoparticipacionList">
     <h5>Tipo Participaci&oacute;n</h5>
 
-    <% if (Model.TipoParticipacionEventos != null) { %>
+    <% if (Model.TipoParticipacionEventos != null && Model.TipoParticipacionEventos.Length > 0) { %>
         <% foreach (var tipoParticipacion in Model.TipoParticipacionEventos){ %>
 	        <div class="sublista" id="tipoparticipacion_<%=Html.Encode(tipoParticipacion.Id) %>">
 	            <h6><%=Html.Encode(tipoParticipacion.TipoParticipacionNombre)%></h6>
@@ -12,7 +12,7 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="tipoparticipacionEmptyList_form">
-            <h6><span>No hay participaciones definida</span></h5>
+            <h6><span>No hay participaciones definida</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 
