@@ -13,7 +13,7 @@
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
-    <label>Numero</label>
+    <label>N&uacute;mero</label>
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
@@ -40,19 +40,19 @@
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
-    <label>Indice 1</label>
+    <label>&Iacute;ndice 1</label>
     <%=Html.DropDownList("Indice1", Model.Indices1.CreateSelectList<IndiceForm>("Id", "Nombre"),
 	                "Seleccione ...")%>
     <%=Html.ValidationMessage("Indice1")%>
 </p>
 <p>
-    <label>Indice 2</label>
+    <label>&Iacute;ndice 2</label>
     <%=Html.DropDownList("Indice2", Model.Indices2.CreateSelectList<IndiceForm>("Id", "Nombre"),
 	                "Seleccione ...")%>
     <%=Html.ValidationMessage("Indice2")%>
 </p>
 <p>
-    <label>Indice 3</label>
+    <label>&Iacute;ndice 3</label>
     <%=Html.DropDownList("Indice3", Model.Indices3.CreateSelectList<IndiceForm>("Id", "Nombre"),
 	                "Seleccione ...")%>
     <%=Html.ValidationMessage("Indice3")%>

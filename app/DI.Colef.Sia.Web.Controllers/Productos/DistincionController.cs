@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             distincionService.SaveDistincion(distincion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", distincion.Descripcion));
+            return RedirectToIndex(String.Format("Distinción {0} ha sido creada", distincion.Descripcion));
         }
 
         [Transaction]
@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             distincionService.SaveDistincion(distincion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", distincion.Descripcion));
+            return RedirectToIndex(String.Format("Distinción {0} ha sido modificada", distincion.Descripcion));
         }
 
         [Transaction]

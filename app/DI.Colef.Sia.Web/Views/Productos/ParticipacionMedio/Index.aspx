@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Participaci&oacute;n en Medios</h3>
         <p>
             Puede agregar una nueva Participaci&oacute;n en Medios dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Participaci&oacute;n en Medio</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Participaci&oacute;n en Medio</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Crear ParticipacionMedio") %></span>
+            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Crear Participación Medio") %></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -45,18 +45,14 @@
 			<div class="elementolista">
 				<div class="elementodescripcion">
 					<h6><span>No hay participaciones en medios definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var participacionMedio in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(participacionMedio.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(participacionMedio.NombreParticipacionMedio) %></h5></span>
+						<h5><span><%=Html.Encode(participacionMedio.Titulo) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(participacionMedio.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

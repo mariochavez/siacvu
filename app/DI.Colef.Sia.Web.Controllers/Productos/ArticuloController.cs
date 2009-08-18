@@ -136,7 +136,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ArticuloForm form)
+        public ActionResult Create(ArticuloForm form,
+                                   FormCollection formCollection)
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
@@ -148,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             articuloService.SaveArticulo(articulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", articulo.Titulo));
+            return RedirectToIndex(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
         }
 
         [Transaction]
@@ -169,7 +170,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             articuloService.SaveArticulo(articulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", articulo.Titulo));
+            return RedirectToIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
         }
 
         [Transaction]

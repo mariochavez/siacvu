@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Organo Externo</h3>
+        <h3>Agregar Nuevo &Oacute;rgano Externo</h3>
         <p>
-            Puede agregar un nuevo Organo Externo dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Organo Externo</strong>.
+            Puede agregar un nuevo &Oacute;rgano Externo dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Oacute;rgano Externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<Organo ExternoController>(x => x.New(), "+ Crear Organo Externo") %></span>
+            <span><%=Html.ActionLink<OrganoExternoController>(x => x.New(), "+ Crear Órgano Externo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Organos Externos registrados en el sistema.</p>
+            <p>Lista de &Oacute;rganos Externos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,30 +39,26 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-	<h4>Organos Externos</h4>
+	<h4>&Oacute;rganos Externos</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h6><span>No hay organos externos definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+					<h6><span>No hay &oacute;rganos externos definidos</span></h6>
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var organoExterno in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(organoExterno.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(organoExterno.NombreOrgano Externo) %></h5></span>
+						<h5><span><%=Html.Encode(organoExterno.Nombre) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(organoExterno.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
-							<span><%=Html.ActionLink<Organo ExternoController>(x => x.Edit(organoExterno.Id), "Editar") %></span>
+							<span><%=Html.ActionLink<OrganoExternoController>(x => x.Edit(organoExterno.Id), "Editar") %></span>
 			            	<span>
 			                	<% if (organoExterno.Activo) { %>
 			                    	<%=Html.ActionLink("Desactivar", "Deactivate", new { id = organoExterno.Id }, new { @class = "remote put" })%>

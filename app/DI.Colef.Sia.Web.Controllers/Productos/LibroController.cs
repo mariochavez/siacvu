@@ -139,7 +139,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(LibroForm form)
+        public ActionResult Create(LibroForm form, 
+                                   FormCollection formCollection)
         {
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
             
@@ -151,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", libro.Nombre));
+            return RedirectToIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
         }
         
         [Transaction]
@@ -172,7 +173,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", libro.Nombre));
+            return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
         }
         
         [Transaction]

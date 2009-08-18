@@ -4,6 +4,6 @@
 <p>
 	<label>Coautor Externo</label>
 	<%=Html.DropDownList("CoautorExternoReporte.InvestigadorExternoId", Model.CoautoresExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { rel = "#coautorexterno" })%>
 	<%=Html.ValidationMessage("CoautorExternoReporte.InvestigadorExternoId")%>
 </p>

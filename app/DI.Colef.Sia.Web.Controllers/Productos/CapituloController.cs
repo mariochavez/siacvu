@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             capituloService.SaveCapitulo(capitulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", capitulo.NombreCapitulo));
+            return RedirectToIndex(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
         }
 
         [Transaction]
@@ -172,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             capituloService.SaveCapitulo(capitulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", capitulo.NombreCapitulo));
+            return RedirectToIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
         }
 
         [Transaction]

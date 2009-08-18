@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la formacion academica utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p>Para modificar la formaci&oacute;n acad&eacute;mica utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -28,9 +28,9 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
+        <% Html.RenderPartial("_Message"); %>
 	    <div id="forma">
-            <% Html.RenderPartial("_Message"); %>
-            <br />
+
             <% using (Html.BeginForm("Update", "FormacionAcademica")){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>

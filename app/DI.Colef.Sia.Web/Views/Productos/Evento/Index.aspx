@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Evento</h3>
         <p>
             Puede agregar un nuevo Evento dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Evento</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Evento</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<EventoController>(x => x.New(), "+ Crear Evento") %></span>
@@ -45,18 +45,14 @@
 			<div class="elementolista">
 				<div class="elementodescripcion">
 					<h6><span>No hay eventos definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var evento in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(evento.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(evento.NombreEvento) %></h5></span>
+						<h5><span><%=Html.Encode(evento.Nombre) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(evento.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

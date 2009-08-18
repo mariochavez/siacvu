@@ -4,11 +4,9 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <tr id="tipoactividad_<%=Html.Encode(Model.Id) %>">
-        <td class="subform">
-            <%=Html.Encode(Model.TipoActividadNombre) %>
-        </td>
-    </tr>
+    <div id="tipoactividad_<%=Html.Encode(Model.Id) %>" class="sublista">
+        <h6><%=Html.Encode(Model.TipoActividadNombre) %></h6>
+    </div>
 ';
 
 $('#message').html('');
@@ -18,7 +16,9 @@ $('#tipoactividad_form').hide();
 $('#tipoactividad_new').show();
 $('#tipoactividad_form').html('');
 $('#tipoactividadEmptyList_form').html('');
-$('#tipoactividadList tr:first').after(html);
+$('#tipoactividadList div:first').before(html);
 
 $('#tipoactividad_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
 $('#tipoactividad_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+
+setupSublistRows();

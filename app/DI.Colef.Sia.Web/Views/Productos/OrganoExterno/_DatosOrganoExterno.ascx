@@ -12,7 +12,7 @@
     <%=Html.ValidationMessage("Siglas")%>
 </p>
 <p>
-    <label>Tipo Organo</label>
+    <label>Tipo &Oacute;rgano</label>
     <%=Html.DropDownList("TipoOrgano", Model.TiposOrganos.CreateSelectList<TipoOrganoForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoOrgano") %>
@@ -48,7 +48,7 @@
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>
-    <label>Ambito</label>
+    <label>&Aacute;mbito</label>
     <%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
     <%=Html.ValidationMessage("Ambito") %>

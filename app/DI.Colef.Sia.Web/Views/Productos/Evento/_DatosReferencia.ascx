@@ -13,7 +13,7 @@
 	<%=Html.ValidationMessage("Lugar")%>
 </p>
 <p>
-    <label>Linea Tem&aacute;tica</label>
+    <label>L&iacute;nea Tem&aacute;tica</label>
 	<%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
 	<%=Html.ValidationMessage("LineaTematica") %>

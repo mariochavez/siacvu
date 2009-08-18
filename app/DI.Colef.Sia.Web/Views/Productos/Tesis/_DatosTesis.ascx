@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Titulo</label>
+    <label>T&iacute;tulo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
@@ -54,7 +54,7 @@
     <%=Html.ValidationMessage("ProgramaEstudio") %>
 </p>
 <p>
-    <label>Linea Tem&aacute;tica</label>
+    <label>L&iacute;nea Tem&aacute;tica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
     <%=Html.ValidationMessage("LineaTematica") %>

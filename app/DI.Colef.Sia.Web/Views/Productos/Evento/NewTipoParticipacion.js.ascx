@@ -3,15 +3,23 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+var class = 'remote';
+var rel = '#coautorexternoform';
+
+<% if(Model.Id == 0) { %>
+    class = 'local';
+    rel = '#TipoParticipacionEvento.TipoParticipacion';
+<% } %>
+
 var html = '
     <% using (Html.BeginForm("AddTipoParticipacion", "Evento", FormMethod.Post, new { id = "tipoparticipacionform" })){ %>
     <%=Html.Hidden("EventoId", Model.Id) %>
     <% Html.RenderPartial("_NewTipoParticipacion"); %>
     <div class="btn_container_footer">
         <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Participacion", new { rel = "#tipoparticipacionform", @class = "remote", @style = "border: 0px none;" })%>
+            <%=Html.SubmitButton("Guardar", "Agregar Participación", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
         </span>
-        
+        <span>
 	        <a href="#" class="cancel" rel="tipoparticipacion">Cancelar</a>
         </span>
     </div>

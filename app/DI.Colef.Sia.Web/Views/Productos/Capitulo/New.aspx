@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Favor de llenar los siguientes campos para dar de alta un nuevo capitulo dentro
+            Favor de llenar los siguientes campos para dar de alta un nuevo cap&iacute;tulo dentro
             del sistema.
         </p>
     </div><!--end introduccion-->

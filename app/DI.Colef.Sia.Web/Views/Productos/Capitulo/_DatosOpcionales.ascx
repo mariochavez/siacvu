@@ -24,7 +24,7 @@
     <%=Html.ValidationMessage("TipoParticipante") %>
 </p>
 <p>
-    <label>Area</label>
+    <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
 				"Seleccione ...")%>
     <%=Html.ValidationMessage("Area") %>

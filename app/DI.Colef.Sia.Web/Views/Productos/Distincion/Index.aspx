@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Distincion</h3>
+        <h3>Agregar Nueva Distinci&oacute;n</h3>
         <p>
-            Puede agregar un nuevo Distinci&oacute;n dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de titulo <strong>+ Crear Distincion</strong>.
+            Puede agregar una nueva Distinci&oacute;n dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Distinci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DistincionController>(x => x.New(), "+ Crear Distincion") %></span>
+            <span><%=Html.ActionLink<DistincionController>(x => x.New(), "+ Crear Distinción") %></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -44,19 +44,15 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h6><span>No hay distinciones definidos</span></h6>
-				</div><!--end elementodescripcion-->
-
-				<div class="elementobotones">
-					<p><span></span></p>
-				</div><!--end elementobotones-->	
+					<h6><span>No hay distinciones definidas</span></h6>
+				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		<% } else { %>
 			<% foreach (var distincion in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(distincion.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(distincion.NombreDistincion) %></h5></span>
+						<h5><span><%=Html.Encode(distincion.Descripcion) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(distincion.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

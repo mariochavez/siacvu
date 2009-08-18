@@ -126,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", curso.NumeroHoras));
+            return RedirectToIndex(String.Format("Curso {0} ha sido creado", curso.NumeroHoras));
         }
 
         [Transaction]
@@ -147,7 +147,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", curso.NumeroHoras));
+            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", curso.NumeroHoras));
         }
 
         [Transaction]

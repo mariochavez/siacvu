@@ -13,35 +13,28 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
     runat="server">
     <div id="subcontenido">
-        <h3>
-            Agregar Nueva Formacion Academica
-        </h3>
+        <h3>Agregar Formaci&oacute;n Acad&eacute;mica</h3>
         <p>
-            Puedes agregar una nueva Formacion Academica dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de titulo <strong>+ Crear Formacion Academica</strong>.</p>
+            Puedes agregar una nueva Formaci&oacute;n Acad&eacute;mica dentro de la lista de administraci&oacute;n
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Formaci&oacute;n Acad&eacute;mica</strong>.
+        </p>
         <div class="botonzon">
-            <span>
-                <%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Crear Formacion Academica") %>
-            </span>
+            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Crear Formación Académica") %></span>
         </div>
-    </div>
-    <!--end subcontenido-->
+    </div><!--end subcontenido-->
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder"
     runat="server">
     <div id="barra">
         <div id="asistente">
-            <h3>
-                Asistente de secci&oacute;n</h3>
-            <p>
-                Lista de Formaciones Academicas registrados en el sistema.</p>
+            <h3Asistente de secci&oacute;n</h3>
+            <p>Lista de Formaciones Acad&eacute;micas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
-        </div>
-        <!--end asistente-->
-    </div>
-    <!--end barra-->
+        </div><!--end asistente-->
+    </div><!--end barra-->
 </asp:Content>
+
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 <div id="textos">
 
@@ -49,19 +42,15 @@
     <% Html.RenderPartial("_Search"); %>
     
     <div id="lista">
-        <h4>Lista de Formaciones Academicas</h4>
+        <h4>Formaci&oacute;n Acad&eacute;mica</h4>
         
          <% if(Model.List == null || Model.List.Length == 0) { %>
-            <div class="elementolista">
-			    <div class="elementodescripcion">
-				    <h5><span>No hay formacion academica definida en el sistema</span></h5>
-			    </div><!--end elementodescripcion-->
-				
-			    <div class="elementobotones">
-				    <p><span></span></p>
-			    </div><!--end elementobotones-->	
-				
-		    </div><!--end elementolista--> 
+			<div class="elementolista">
+				<div class="elementodescripcion">
+					<h6><span>No hay formaci&oacute;n acad&eacute;mica definida</span></h6>
+				</div><!--end elementodescripcion-->	
+
+			</div><!--end elementolista-->
 		    
         <% } else { %>
             <% foreach (var formacionAcademica in Model.List) { %>

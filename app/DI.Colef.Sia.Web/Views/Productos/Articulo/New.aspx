@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo articulo dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta un nuevo art&iacute;culo dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>
@@ -40,7 +40,7 @@
             
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
             
-	            <h4>Referencia Bibliografica</h4>
+	            <h4>Referencia Bibliogr&aacute;fica</h4>
 	            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
 	            <h4>Coautores Externos</h4>

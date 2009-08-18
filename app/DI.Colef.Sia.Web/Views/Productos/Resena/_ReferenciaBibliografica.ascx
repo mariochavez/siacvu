@@ -23,17 +23,17 @@
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>Pagina Inicial</label>
+    <label>P&aacute;gina Inicial</label>
     <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
     <%=Html.ValidationMessage("PaginaInicial")%>										
 </p>
 <p>
-    <label>Pagina Final</label>
+    <label>P&aacute;gina Final</label>
     <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
 <p>
-	<label>Titulo Libro</label>
+	<label>T&iacute;tulo Libro</label>
     <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("TituloLibro")%>
 </p>

@@ -118,7 +118,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(EventoForm form)
+        public ActionResult Create(EventoForm form,
+                                   FormCollection formCollection)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
@@ -130,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             eventoService.SaveEvento(evento);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", evento.Nombre));
+            return RedirectToIndex(String.Format("Evento {0} ha sido creado", evento.Nombre));
         }
 
         [Transaction]
@@ -151,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             eventoService.SaveEvento(evento);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", evento.Nombre));
+            return RedirectToIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
         }
 
         [Transaction]

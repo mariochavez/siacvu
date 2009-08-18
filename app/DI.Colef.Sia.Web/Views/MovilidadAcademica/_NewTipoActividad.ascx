@@ -4,6 +4,6 @@
 <p>
     <label>Tipo Actividad</label>
 	<%=Html.DropDownList("TipoActividadMovilidadAcademica.TipoActividad", Model.TiposActividades.CreateSelectList<TipoActividadForm>("Id", "Nombre"),
-	"Seleccione ...")%>
+                "Seleccione ...", new { rel = "#tipoactividad" })%>
 	<%=Html.ValidationMessage("TipoActividadMovilidadAcademica.TipoActividad") %>
 </p>

@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el capitulo utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar el cap&iacute;tulo utilice los siguientes campos para realizar cambios dentro del sistema.
         </p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -46,7 +46,7 @@
 	            <h4>Coautores Externos</h4>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
-	            <h4>Referencia Bibliografica</h4>
+	            <h4>Referencia Bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
 	            <h4>Responsables Internos del libro</h4>

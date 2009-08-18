@@ -118,7 +118,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ResenaForm form)
+        public ActionResult Create(ResenaForm form,
+                                   FormCollection formCollection)
         {
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
@@ -130,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", resena.NombreRevista));
+            return RedirectToIndex(String.Format("Reseña {0} ha sido creada", resena.NombreRevista));
         }
 
         [Transaction]
@@ -151,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", resena.NombreRevista));
+            return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreRevista));
         }
 
         [Transaction]
