@@ -119,7 +119,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(MovilidadAcademicaForm form)
+        public ActionResult Create(MovilidadAcademicaForm form,
+                                   FormCollection formCollection)
         {
             var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 

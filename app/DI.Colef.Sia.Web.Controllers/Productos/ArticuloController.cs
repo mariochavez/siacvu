@@ -136,7 +136,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ArticuloForm form)
+        public ActionResult Create(ArticuloForm form,
+                                   FormCollection formCollection)
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 

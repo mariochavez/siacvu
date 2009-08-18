@@ -13,6 +13,12 @@ INSERT UsuarioRol VALUES(1, 1)
 INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 
+insert into ProductoDerivados values('Producto Derivado 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Producto Derivado 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Producto Derivado 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Producto Derivado 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Producto Derivado 5',GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into TipoEstancias values('Academica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Sabatica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Postdoctoral',GETDATE(), GETDATE(), 1, 1, 1);

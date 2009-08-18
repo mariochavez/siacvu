@@ -118,7 +118,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(EventoForm form)
+        public ActionResult Create(EventoForm form,
+                                   FormCollection formCollection)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
