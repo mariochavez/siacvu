@@ -1,6 +1,5 @@
 ﻿using DecisionesInteligentes.Colef.Sia.Web.Controllers;
 using NUnit.Framework;
-using DI.Colef.Sia.Web.Controllers;
 using MvcContrib.TestHelper;
 using System.Web.Routing;
 

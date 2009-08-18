@@ -2,7 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Master Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewMasterPage" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
@@ -47,11 +46,31 @@
 		
 		<div id="menu">
 			<ul>
-				<li><%=Html.ActionLink("Portada", "Index", "Home", null, new{ title = "Portada" }) %></li>
-				<li><%=Html.ActionLink("Capitulos", "Index", "Capitulo", null, new{ title = "Portada" }) %></li>
-				<li><%=Html.ActionLinkForAreas<SedeController>(x => x.Index(), "Sedes")%></li>
-				<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Capitulos") %></li>
+				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Portada") %></li>
 				<li><%=Html.ActionLink("Investigadores", "Index", "Investigador", null, new { title = "Investigadores" })%></li>
+				<li>
+				    <a href="#">Productos</a>
+				    <ul>
+				        <li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos") %></li>
+				        <li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos") %></li>
+				        <li><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos") %></li>
+				        <li><%=Html.ActionLinkForAreas<DictamenController>(x => x.Index(), "Dict&aacute;menes") %></li>
+				        <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones") %></li>
+				        <li><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Eventos") %></li>
+				        <li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></li>
+				        <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Organos externos") %></li>
+				        <li><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Participaciones") %></li>
+				        <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en Medios") %></li>
+				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Resportes") %></li>
+				        <li><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></li>
+				        <li><%=Html.ActionLinkForAreas<TesisController>(x => x.Index(), "Tesis") %></li>
+				        <li class="last">
+	                        <img class="corner_left" alt="" src='<%=ResolveUrl("/Content/Images/corner_left.png")%>'/>
+	                        <img class="middle" alt="" src='<%=ResolveUrl("/Content/Images/dot.gif")%>'/>
+	                        <img class="corner_right" alt="" src='<%=ResolveUrl("/Content/Images/corner_right.png")%>'/>
+	                    </li>
+				    </ul>
+				</li>				
 			</ul>
 		</div><!--end menu-->	
 			
