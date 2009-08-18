@@ -4,14 +4,16 @@
 <div class="minilista" id="coautorinternoList">
     <h5>Coautor Interno</h5>
 
-    <% if (Model.CoautorInternoEventos != null) { %>
+    <% if (Model.CoautorInternoEventos != null && Model.CoautorInternoEventos.Length > 0) { %>
         <% foreach (var coautorInterno in Model.CoautorInternoEventos){ %>
         <div class="sublista" id="coautorinterno_<%=Html.Encode(coautorInterno.Id) %>">
-            <h6><%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%></h6></div><!--end sublista-->
+            <h6><%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%></h6>
+        </div><!--end sublista-->
         <% } %>
     <% } else { %>
         <div class="sublista" id="coautorinternoEmptyList_form">
-            <h6><span>No hay coautores internos definidos</span></h6></div><!--end elementodescripcion-->
+            <h6><span>No hay coautores internos definidos</span></h6>
+        </div><!--end elementodescripcion-->
     <% } %>
 
 	<div id="coautorinterno_new" class="minilistaboton">

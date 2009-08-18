@@ -4,7 +4,7 @@
 <div class="minilista" id="responsableexternoList">
     <h5>Responsable Externo</h5>
 
-    <% if (Model.ResponsableExternoCapitulos != null) { %>
+    <% if (Model.ResponsableExternoCapitulos != null && Model.ResponsableExternoCapitulos.Length > 0) { %>
         <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
 	        <div class="sublista" id="responsableexterno_<%=Html.Encode(responsableExterno.Id) %>">
 	            <h6><%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%></h6>

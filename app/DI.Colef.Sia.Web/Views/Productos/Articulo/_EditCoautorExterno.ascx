@@ -4,7 +4,7 @@
 <div class="minilista" id="coautorexternoList">
     <h5>Coautor Externo</h5>
 
-    <% if (Model.CoautorExternoArticulos != null) { %>
+    <% if (Model.CoautorExternoArticulos != null && Model.CoautorExternoArticulos.Length > 0) { %>
         <% foreach(var coautorExterno in Model.CoautorExternoArticulos) { %>
 	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
 	            <h6><%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%></h6>

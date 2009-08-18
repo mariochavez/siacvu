@@ -47,7 +47,7 @@
          <% if(Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h6><span>No hay formaci&oacute;n acad&eacute;mica definida</span></h6>
+					<h5><span>No hay formaci&oacute;n acad&eacute;mica definida</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->

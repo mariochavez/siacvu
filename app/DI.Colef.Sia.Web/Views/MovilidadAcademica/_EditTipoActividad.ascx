@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="tipoactividadList" class="minilista">
 	<h5>Tipo Actividad</h5>
-	<% if (Model.TipoActividadMovilidadAcademicas != null){%>
+	<% if (Model.TipoActividadMovilidadAcademicas != null && Model.TipoActividadMovilidadAcademicas.Length > 0){%>
 	    <% foreach (var tipoActividad in Model.TipoActividadMovilidadAcademicas){ %>
             <div id="tipoactividad_<%=Html.Encode(tipoActividad.Id) %>" class="sublista">
     	        <h6><%=Html.Encode(tipoActividad.TipoActividadNombre)%></h6>
