@@ -9,24 +9,24 @@
 <p>
 	<label>Tipo Dictamen</label>
 	<%=Html.DropDownList("TipoDictamen", Model.TiposDictamenes.CreateSelectList<TipoDictamenForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoDictamen") %>
 </p>
 <p>
 	<label>Tipo Participaci&oacute;n</label>
 	<%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoParticipacion") %>
 </p>
 <p>
 	<label>Instituci&oacute;n</label>
 	<%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
 	<label>Periodo Referencia</label>
 	<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>

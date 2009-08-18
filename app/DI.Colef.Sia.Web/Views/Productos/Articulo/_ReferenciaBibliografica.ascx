@@ -4,7 +4,7 @@
 <p>
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
@@ -30,31 +30,31 @@
 <p>
     <label>Revista Publicaci&oacute;n</label>
     <%=Html.DropDownList("RevistaPublicacion", Model.RevistasPublicaciones.CreateSelectList<RevistaPublicacionForm>("Id", "Titulo"),
-                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("RevistaPublicacion") %>
 </p>
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Institucion") %>
 </p>
 <p>
     <label>&Iacute;ndice 1</label>
     <%=Html.DropDownList("Indice1", Model.Indices1.CreateSelectList<IndiceForm>("Id", "Nombre"),
-	                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Indice1")%>
 </p>
 <p>
     <label>&Iacute;ndice 2</label>
     <%=Html.DropDownList("Indice2", Model.Indices2.CreateSelectList<IndiceForm>("Id", "Nombre"),
-	                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Indice2")%>
 </p>
 <p>
     <label>&Iacute;ndice 3</label>
     <%=Html.DropDownList("Indice3", Model.Indices3.CreateSelectList<IndiceForm>("Id", "Nombre"),
-	                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Indice3")%>
 </p>
 <p>

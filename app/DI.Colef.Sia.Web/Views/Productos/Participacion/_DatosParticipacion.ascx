@@ -11,21 +11,21 @@
 	<label>Autor</label>
 
     <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Autor")%>
 </p>
 <p>
 	<label>Otra Participaci&oacute;n</label>
 
 	<%=Html.DropDownList("OtraParticipacion", Model.OtrasParticipaciones.CreateSelectList<OtraParticipacionForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("OtraParticipacion") %>
 </p>
 <p>
 	<label>Tipo Presentaci&oacute;n</label>
 
 	<%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoPresentacion") %>
 </p>
 <p>
@@ -45,14 +45,14 @@
 	<label>Periodo Referencia</label>
 
 	<%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
 	<label>Proyecto</label>
 
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
@@ -65,14 +65,14 @@
 	<label>Pa&iacute;s</label>
 
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
 	<label>Estado</label>
 
 	<%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("EstadoPais") %>
 </p>
 <p>
