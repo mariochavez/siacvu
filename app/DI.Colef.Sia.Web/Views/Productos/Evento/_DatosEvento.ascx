@@ -9,13 +9,13 @@
 <p>
     <label>&Aacute;mbito</label>
 	<%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
     <label>Tipo Evento</label>
 	<%=Html.DropDownList("TipoEvento", Model.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoEvento") %>
 </p>
 <p>

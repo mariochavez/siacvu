@@ -14,25 +14,25 @@
 <p>
     <label>Tipo &Oacute;rgano</label>
     <%=Html.DropDownList("TipoOrgano", Model.TiposOrganos.CreateSelectList<TipoOrganoForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoOrgano") %>
 </p>
 <p>
     <label>Tipo Participaci&oacute;n</label>
     <%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoParticipacion") %>
 </p>
 <p>
     <label>Sector</label>
     <%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Sector") %>
 </p>
 <p>
     <label>Nivel</label>
     <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Nivel") %>
 </p>
 <p>
@@ -50,6 +50,6 @@
 <p>
     <label>&Aacute;mbito</label>
     <%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Ambito") %>
 </p>

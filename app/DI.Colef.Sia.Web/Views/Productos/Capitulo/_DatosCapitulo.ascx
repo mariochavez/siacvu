@@ -4,7 +4,7 @@
 <p>
     <label>Tipo de Cap&iacute;tulo</label>
     <%=Html.DropDownList("TipoCapitulo", Model.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
 <p>
@@ -27,30 +27,30 @@
 <p>
     <label>Estado actual</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
 <p>
     <label>Periodo de Referencia</label>
     <%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-			    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
     <label>L&iacute;nea Tem&aacute;tica</label>
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-			    "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
 <p>
     <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-				"Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Idioma") %>
 </p>
 <p>
     <label>Proyecto de Referencia</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>

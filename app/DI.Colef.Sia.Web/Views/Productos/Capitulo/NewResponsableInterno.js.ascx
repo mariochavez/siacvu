@@ -3,6 +3,14 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+var class = 'remote';
+var rel = '#responsableinternoform';
+
+<% if(Model.Id == 0) { %>
+    class = 'local';
+    rel = '#ResponsableInternoCapitulo.InvestigadorId';
+<% } %>
+
 var html = '
     <% using (Html.BeginForm("AddResponsableInterno", "Capitulo", FormMethod.Post, new { id = "responsableinternoform" }))
        { %>
@@ -10,7 +18,7 @@ var html = '
     <% Html.RenderPartial("_NewResponsableInterno"); %>
     <div class="btn_container_footer">
         <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Responsable Interno", new { rel = "#responsableinternoform", @class = "remote", @style = "border: 0px none;" })%>
+            <%=Html.SubmitButton("Guardar", "Agregar Responsable Interno", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
         </span>
         
 	        <a href="#" class="cancel" rel="responsableinterno">Cancelar</a>
