@@ -117,7 +117,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ReporteForm form)
+        public ActionResult Create(ReporteForm form,
+                                   FormCollection formCollection)
         {
             var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
