@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -63,19 +62,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 
-            foreach (var s in message.InvestigadoresExternosIds)
-            {
-                message.CoautorExternoArticulo.InvestigadorExternoId = Convert.ToInt32(s);
+            //if (message.CoautorExternoArticulo != null && message.CoautorExternoArticulo.Id > 0)
+            //     model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
 
-                model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
-            }
-
-            foreach (var s in message.InvestigadoresInternosIds)
-            {
-                message.CoautorInternoArticulo.InvestigadorId = Convert.ToInt32(s);
-
-                model.AddCoautorInterno(coautorInternoArticuloMapper.Map(message.CoautorInternoArticulo));
-            }
+            //if (message.CoautorInternoArticulo != null && message.CoautorInternoArticulo.Id > 0)
+            //     model.AddCoautorInterno(coautorInternoArticuloMapper.Map(message.CoautorInternoArticulo));
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
@@ -86,11 +77,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
-                //model.CoautorExternoArticulos[0].CreadorPor = usuario;
-                //model.CoautorInternoArticulos[0].CreadorPor = usuario;
             }
 
             model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador, 
+            string[] coautoresExternos, string[] coautoresInternos)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoArticuloMapper.Map(new CoautorExternoArticuloForm { InvestigadorExternoId = int.Parse(coautorId) });
+                
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoArticuloMapper.Map(new CoautorInternoArticuloForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
 
             return model;
         }

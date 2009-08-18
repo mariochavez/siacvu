@@ -12,7 +12,7 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="coautorinternoEmptyList_form">
-            <h5><span>No hay coautores internos definidos</span></h5>
+            <h6><span>No hay coautores internos definidos</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 

@@ -1,9 +1,9 @@
 INSERT Personas VALUES('Administrador', null, null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
-INSERT Personas VALUES('Peter', 'Parker', null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Personas VALUES('Jorge', 'Carrillo', 'Viveros', 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Personas VALUES('Investigador', 'Primero', null, 'admin@mail.com', GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT Usuarios VALUES('administrador', 'admin', GETDATE(), GETDATE(), 1, 1, 1, 1)
-INSERT Usuarios VALUES('pparker', 'parker', GETDATE(), GETDATE(), 1, 2, 1, 1)
+INSERT Usuarios VALUES('jcarrillo', 'carrillo', GETDATE(), GETDATE(), 1, 2, 1, 1)
 INSERT Usuarios VALUES('inv1', 'inv1', GETDATE(), GETDATE(), 1, 3, 1, 1)
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)

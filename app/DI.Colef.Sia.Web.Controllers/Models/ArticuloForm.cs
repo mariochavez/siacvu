@@ -76,12 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
-        public string[] InvestigadoresExternosIds { get; set; }
-        public string[] InvestigadoresInternosIds { get; set; }
-
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }
         public CoautorInternoArticuloForm[] CoautorInternoArticulos { get; set; }
-
 
         /* New */
         public CoautorExternoArticuloForm CoautorExternoArticulo { get; set; }

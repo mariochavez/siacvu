@@ -61,7 +61,7 @@
 				        <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Organos externos") %></li>
 				        <li><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Participaciones") %></li>
 				        <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en Medios") %></li>
-				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Resportes") %></li>
+				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Rerportes") %></li>
 				        <li><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></li>
 				        <li><%=Html.ActionLinkForAreas<TesisController>(x => x.Index(), "Tesis") %></li>
 				        <li class="last">
