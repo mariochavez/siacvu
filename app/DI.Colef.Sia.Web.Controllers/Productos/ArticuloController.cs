@@ -139,6 +139,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(ArticuloForm form,
                                    FormCollection formCollection)
         {
+            form.InvestigadoresExternosIds = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
+            form.InvestigadoresInternosIds = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
+
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
