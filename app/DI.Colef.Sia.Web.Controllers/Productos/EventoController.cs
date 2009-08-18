@@ -121,7 +121,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(EventoForm form,
                                    FormCollection formCollection)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = formCollection["CoautorExternoEvento.InvestigadorExternoId_New"].Split(',');
+            var coautoresInternos = formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',');
+            var tiposParticipacion = formCollection["TipoParticipacionEvento.TipoParticipacion_New"].Split(',');
+
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                coautoresExternos, coautoresInternos, tiposParticipacion);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {

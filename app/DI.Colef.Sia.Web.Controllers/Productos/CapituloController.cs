@@ -141,7 +141,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(CapituloForm form, 
                                    FormCollection formCollection)
         {
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',');
+            var coautoresInternos = formCollection["CoautorInternoCapitulo.InvestigadorId_New"].Split(',');
+            var responsablesExternos = formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',');
+            var responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
+
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                coautoresExternos, coautoresInternos, responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {

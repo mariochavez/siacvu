@@ -68,5 +68,46 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             return model;
         }
+
+        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
+            string[] coautoresExternos, string[] coautoresInternos, string[] tiposParticipacion)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoEventoMapper.Map(new CoautorExternoEventoForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoEventoMapper.Map(new CoautorInternoEventoForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var tipoParticipacionId in tiposParticipacion)
+            {
+                var tipo =
+                    tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm { TipoParticipacion = int.Parse(tipoParticipacionId) });
+
+                tipo.CreadorPor = usuario;
+                tipo.ModificadoPor = usuario;
+
+                model.AddTipo(tipo);
+            }
+
+            return model;
+        }
     }
 }
