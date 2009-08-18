@@ -120,11 +120,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(ReporteForm form,
                                    FormCollection formCollection)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = new string[] { };
+            var coautoresInternos = new string[] { };
+
+            if (formCollection["CoautorExternoReporte.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoReporte.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoReporte.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoReporte.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',');
+
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                                            coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
             {
-                ((GenericViewData<ReporteForm>) ViewData.Model).Form = SetupNewForm();
+                var reporteForm = reporteMapper.Map(reporte);
+
+                ((GenericViewData<ReporteForm>)ViewData.Model).Form = SetupNewForm(reporteForm);
                 return ViewNew();
             }
 

@@ -121,11 +121,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(EventoForm form,
                                    FormCollection formCollection)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = new string[] {};
+            var coautoresInternos = new string[] {};
+            var tipoParticiones = new string[] {};
+
+            if (formCollection["CoautorExternoEvento.InvestigadorExternoId_New"] != null &&
+                formCollection["CoautorExternoEvento.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoEvento.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoEvento.InvestigadorId_New"] != null &&
+                formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',');
+
+            if (formCollection["TipoParticipacionEvento.TipoParticipacion_New"] != null &&
+                formCollection["TipoParticipacionEvento.TipoParticipacion_New"].Split(',').Length > 0)
+                tipoParticiones = formCollection["TipoParticipacionEvento.TipoParticipacion_New"].Split(',');
+
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                                          coautoresExternos, coautoresInternos, tipoParticiones);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
-                ((GenericViewData<EventoForm>) ViewData.Model).Form = SetupNewForm();
+                var eventoForm = eventoMapper.Map(evento);
+
+                ((GenericViewData<EventoForm>)ViewData.Model).Form = SetupNewForm(eventoForm);
                 return ViewNew();
             }
 

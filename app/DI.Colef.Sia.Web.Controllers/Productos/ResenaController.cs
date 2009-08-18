@@ -121,11 +121,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(ResenaForm form,
                                    FormCollection formCollection)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = new string[] { };
+            var coautoresInternos = new string[] { };
+
+            if (formCollection["CoautorExternoResena.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoResena.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoResena.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoResena.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',');
+
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                                          coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
             {
-                ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm();
+                var resenaForm = resenaMapper.Map(resena);
+
+                ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
                 return ViewNew();
             }
 

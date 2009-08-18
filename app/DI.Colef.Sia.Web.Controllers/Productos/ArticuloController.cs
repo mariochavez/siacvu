@@ -139,15 +139,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(ArticuloForm form,
                                    FormCollection formCollection)
         {
-            var coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
-            var coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
+            var coautoresExternos = new string[] {};
+            var coautoresInternos = new string[] {};
+
+            if(formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoArticulo.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
 
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                coautoresExternos, coautoresInternos);
+                              coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
             {
-                ((GenericViewData<ArticuloForm>)ViewData.Model).Form = SetupNewForm();
+                var articuloForm = articuloMapper.Map(articulo);
+
+                ((GenericViewData<ArticuloForm>)ViewData.Model).Form = SetupNewForm(articuloForm);
                 return ViewNew();
             }
 

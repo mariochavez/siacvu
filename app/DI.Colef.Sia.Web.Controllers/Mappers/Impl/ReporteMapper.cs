@@ -67,5 +67,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             return model;
         }
+
+        public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador, string[] coautoresExternos, string[] coautoresInternos)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoReporteMapper.Map(new CoautorExternoReporteForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoReporteMapper.Map(new CoautorInternoReporteForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
+
+            return model;
+        }
     }
 }

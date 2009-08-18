@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected Investigador CurrentInvestigador()
         {
-            var usuario = usuarioService.GetUsuarioByUserName("pparker");
+            var usuario = usuarioService.GetUsuarioByUserName("jcarrillo");
             return usuarioService.GetInvestigadorByUsuario(usuario);
         }
 

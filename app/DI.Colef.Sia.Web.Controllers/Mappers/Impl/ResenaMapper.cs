@@ -10,17 +10,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class ResenaMapper : AutoFormMapper<Resena, ResenaForm>, IResenaMapper
     {
         readonly ICatalogoService catalogoService;
-        readonly ICoautorExternoResenaMapper _coautorExternoResenaMapper;
-        readonly ICoautorInternoResenaMapper _coautorInternoResenaMapper;
+        readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
+        readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
 
 
         public ResenaMapper(IRepository<Resena> repository, ICatalogoService catalogoService, 
-            ICoautorExternoResenaMapper _coautorExternoResenaMapper, ICoautorInternoResenaMapper _coautorInternoResenaMapper)
+            ICoautorExternoResenaMapper coautorExternoResenaMapper, ICoautorInternoResenaMapper coautorInternoResenaMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
-            this._coautorExternoResenaMapper = _coautorExternoResenaMapper;
-            this._coautorInternoResenaMapper = _coautorInternoResenaMapper;
+            this.coautorExternoResenaMapper = coautorExternoResenaMapper;
+            this.coautorInternoResenaMapper = coautorInternoResenaMapper;
         }
 
         protected override int GetIdFromMessage(ResenaForm message)
@@ -52,9 +52,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
 
             if (message.CoautorExternoResena != null)
-                model.AddCoautorExterno(_coautorExternoResenaMapper.Map(message.CoautorExternoResena));
+                model.AddCoautorExterno(coautorExternoResenaMapper.Map(message.CoautorExternoResena));
             if (message.CoautorInternoResena != null)
-                model.AddCoautorInterno(_coautorInternoResenaMapper.Map(message.CoautorInternoResena));
+                model.AddCoautorInterno(coautorInternoResenaMapper.Map(message.CoautorInternoResena));
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
@@ -68,6 +68,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador, string[] coautoresExternos, string[] coautoresInternos)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoResenaMapper.Map(new CoautorExternoResenaForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoResenaMapper.Map(new CoautorInternoResenaForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
 
             return model;
         }

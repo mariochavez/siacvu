@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -65,6 +66,46 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador, string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoEventoMapper.Map(new CoautorExternoEventoForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoEventoMapper.Map(new CoautorInternoEventoForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var psrticipacionId in tipoParticipaciones)
+            {
+                var participacion =
+                    tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm { TipoParticipacion = int.Parse(psrticipacionId) });
+
+                participacion.CreadorPor = usuario;
+                participacion.ModificadoPor = usuario;
+
+                model.AddTipo(participacion);
+            }
 
             return model;
         }

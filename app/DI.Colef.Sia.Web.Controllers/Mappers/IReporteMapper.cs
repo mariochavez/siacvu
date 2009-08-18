@@ -7,5 +7,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public interface IReporteMapper : IMapper<Reporte, ReporteForm>
     {
         Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador);
+
+        Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador,
+                    string[] coautoresExternos, string[] coautoresInternos);
     }
 }
