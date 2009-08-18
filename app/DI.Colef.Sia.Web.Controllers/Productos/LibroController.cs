@@ -142,11 +142,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(LibroForm form, 
                                    FormCollection formCollection)
         {
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var coautoresExternos = new string[] { };
+            var coautoresInternos = new string[] { };
+
+            if (formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoArticulo.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
+
+            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                                        coautoresExternos, coautoresInternos);
             
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
             {
-                ((GenericViewData<LibroForm>)ViewData.Model).Form = SetupNewForm();
+                var libroForm = libroMapper.Map(libro);
+
+                ((GenericViewData<LibroForm>)ViewData.Model).Form = SetupNewForm(libroForm);
                 return ViewNew();
             }
 

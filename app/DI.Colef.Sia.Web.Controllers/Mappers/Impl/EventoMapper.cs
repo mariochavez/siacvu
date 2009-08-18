@@ -70,14 +70,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador, string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones)
+        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
+            string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones)
         {
             var model = Map(message, usuario, investigador);
 
             foreach (var coautorId in coautoresExternos)
             {
                 var coautor =
-                    coautorExternoEventoMapper.Map(new CoautorExternoEventoForm { InvestigadorExternoId = int.Parse(coautorId) });
+                    coautorExternoEventoMapper.Map(new CoautorExternoEventoForm
+                                                       {InvestigadorExternoId = int.Parse(coautorId)});
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -88,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var coautorId in coautoresInternos)
             {
                 var coautor =
-                    coautorInternoEventoMapper.Map(new CoautorInternoEventoForm { InvestigadorId = int.Parse(coautorId) });
+                    coautorInternoEventoMapper.Map(new CoautorInternoEventoForm {InvestigadorId = int.Parse(coautorId)});
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -99,7 +101,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var psrticipacionId in tipoParticipaciones)
             {
                 var participacion =
-                    tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm { TipoParticipacion = int.Parse(psrticipacionId) });
+                    tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm
+                                                          {TipoParticipacion = int.Parse(psrticipacionId)});
 
                 participacion.CreadorPor = usuario;
                 participacion.ModificadoPor = usuario;

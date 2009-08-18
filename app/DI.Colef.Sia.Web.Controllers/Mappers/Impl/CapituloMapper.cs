@@ -95,5 +95,58 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             return model;
         }
+
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
+            string[] coautoresExternos, string[] coautoresInternos, 
+            string[] responsablesExternos, string[] responsablesInternos)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var coautorId in coautoresExternos)
+            {
+                var coautor =
+                    coautorExternoCapituloMapper.Map(new CoautorExternoCapituloForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorExterno(coautor);
+            }
+
+            foreach (var coautorId in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoCapituloMapper.Map(new CoautorInternoCapituloForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var responsableId in responsablesExternos)
+            {
+                var responsable =
+                    responsableExternoCapituloMapper.Map(new ResponsableExternoCapituloForm { InvestigadorExternoId = int.Parse(responsableId) });
+
+                responsable.CreadorPor = usuario;
+                responsable.ModificadoPor = usuario;
+
+                model.AddResponsableExterno(responsable);
+            }
+
+            foreach (var responsableId in responsablesInternos)
+            {
+                var responsable =
+                    responsableInternoCapituloMapper.Map(new ResponsableInternoCapituloForm { InvestigadorId = int.Parse(responsableId) });
+
+                responsable.CreadorPor = usuario;
+                responsable.ModificadoPor = usuario;
+
+                model.AddResponsableInterno(responsable);
+            }
+
+            return model;
+        }
     }
 }

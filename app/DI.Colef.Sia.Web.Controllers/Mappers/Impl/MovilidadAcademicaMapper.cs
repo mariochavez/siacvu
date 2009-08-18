@@ -64,5 +64,46 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             return model;
         }
+
+        public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario, Investigador investigador,
+            string[] tiposActividad, string[] proyectos, string[] productoDerivados)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var tipoId in tiposActividad)
+            {
+                var tipo =
+                    tipoActividadMovilidadAcademicaMapper.Map(new TipoActividadMovilidadAcademicaForm { TipoActividad = int.Parse(tipoId) });
+
+                tipo.CreadorPor = usuario;
+                tipo.ModificadoPor = usuario;
+
+                model.AddTipoActividad(tipo);
+            }
+
+            foreach (var proyectoId in proyectos)
+            {
+                var proyecto =
+                    proyectoMovilidadAcademicaMapper.Map(new ProyectoMovilidadAcademicaForm { Proyecto = int.Parse(proyectoId) });
+
+                proyecto.CreadorPor = usuario;
+                proyecto.ModificadoPor = usuario;
+
+                model.AddProyecto(proyecto);
+            }
+
+            foreach (var productoId in productoDerivados)
+            {
+                var producto =
+                    productoDerivadoMovilidadAcademicaMapper.Map(new ProductoDerivadoMovilidadAcademicaForm { ProductoDerivado = int.Parse(productoId) });
+
+                producto.CreadorPor = usuario;
+                producto.ModificadoPor = usuario;
+
+                model.AddProductoDerivado(producto);
+            }
+
+            return model;
+        }
     }
 }

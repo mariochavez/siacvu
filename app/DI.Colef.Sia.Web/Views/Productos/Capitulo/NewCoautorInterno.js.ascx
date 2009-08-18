@@ -12,8 +12,7 @@ var rel = '#coautorinternoform';
 <% } %>
 
 var html = '
-    <% using (Html.BeginForm("AddCoautorInterno", "Capitulo", FormMethod.Post, new { id = "coautorinternoform" }))
-       { %>
+    <% using (Html.BeginForm("AddCoautorInterno", "Capitulo", FormMethod.Post, new { id = "coautorinternoform" })){ %>
     <%=Html.Hidden("CapituloId", Model.Id)%>
     <% Html.RenderPartial("_NewCoautorInterno"); %>
     <div class="btn_container_footer">

@@ -122,7 +122,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(MovilidadAcademicaForm form,
                                    FormCollection formCollection)
         {
-            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var tiposActividad = formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',');
+            var proyectos = formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',');
+            var productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',');
+
+            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+                tiposActividad, proyectos, productoDerivados);
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "MovilidadAcademica"))
             {

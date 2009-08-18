@@ -6,5 +6,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public interface ILibroMapper : IMapper<Libro, LibroForm>
     {
         Libro Map(LibroForm message, Usuario usuario, Investigador investigador);
+
+        Libro Map(LibroForm message, Usuario usuario, Investigador investigador,
+                  string[] coautoresExternos, string[] coautoresInternos);
     }
 }

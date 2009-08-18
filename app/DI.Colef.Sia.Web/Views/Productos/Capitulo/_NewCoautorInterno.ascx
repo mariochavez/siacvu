@@ -5,6 +5,6 @@
     <label>Coautor Interno</label>
     
     <%=Html.DropDownList("CoautorInternoCapitulo.InvestigadorId", Model.CoautoresInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
-        "Seleccione ..."), new { rel = "#coautorinterno" })%>
+            "Seleccione ...", new { rel = "#coautorinterno" })%>
     <%=Html.ValidationMessage("CoautorInternoCapitulo.InvestigadorId")%>
 </p>

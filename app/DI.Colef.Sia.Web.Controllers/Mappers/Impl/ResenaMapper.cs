@@ -72,14 +72,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador, string[] coautoresExternos, string[] coautoresInternos)
+        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador,
+            string[] coautoresExternos, string[] coautoresInternos)
         {
             var model = Map(message, usuario, investigador);
 
             foreach (var coautorId in coautoresExternos)
             {
                 var coautor =
-                    coautorExternoResenaMapper.Map(new CoautorExternoResenaForm { InvestigadorExternoId = int.Parse(coautorId) });
+                    coautorExternoResenaMapper.Map(new CoautorExternoResenaForm
+                                                       {InvestigadorExternoId = int.Parse(coautorId)});
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -90,7 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var coautorId in coautoresInternos)
             {
                 var coautor =
-                    coautorInternoResenaMapper.Map(new CoautorInternoResenaForm { InvestigadorId = int.Parse(coautorId) });
+                    coautorInternoResenaMapper.Map(new CoautorInternoResenaForm {InvestigadorId = int.Parse(coautorId)});
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
