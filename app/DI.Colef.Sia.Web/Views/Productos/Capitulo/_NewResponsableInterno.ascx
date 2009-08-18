@@ -5,6 +5,6 @@
     <label>Responsable Interno</label>
    
     <%=Html.DropDownList("ResponsableInternoCapitulo.InvestigadorId", Model.ResponsablesInternos.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { rel = "#responsableinterno" })%>
 	<%=Html.ValidationMessage("ResponsableInternoCapitulo.InvestigadorId") %>
 </p>
