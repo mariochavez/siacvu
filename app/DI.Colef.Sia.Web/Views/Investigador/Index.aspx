@@ -47,11 +47,7 @@
             <div class="elementolista">
 			    <div class="elementodescripcion">
 				    <h5><span>No hay investigadores en el sistema</span></h5>
-			    </div><!--end elementodescripcion-->
-				
-			    <div class="elementobotones">
-				    <p><span></span></p>
-			    </div><!--end elementobotones-->	
+			    </div><!--end elementodescripcion-->	
 				
 		    </div><!--end elementolista--> 
 			

@@ -3573,7 +3573,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK86CBBCE0586827F8 
         foreign key (LibroFk) 
         references Libros
-
+/*
     alter table Usuarios 
         add constraint FKB984B9FD1687D84E 
         foreign key (PersonaFk) 
@@ -3588,7 +3588,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKB984B9FD74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+*/
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
         foreign key (RolFk) 
@@ -4513,7 +4513,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK2D5E463774E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+/*
     alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
@@ -4523,7 +4523,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+*/
     alter table CoautorInternoReportes 
         add constraint FK276A11CD8336201B 
         foreign key (InvestigadorFk) 

@@ -47,7 +47,7 @@
 		<div id="menu">
 			<ul>
 				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Portada") %></li>
-				<li><%=Html.ActionLink("Investigadores", "Index", "Investigador", null, new { title = "Investigadores" })%></li>
+				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
 				<li>
 				    <a href="#">Productos</a>
 				    <ul>
