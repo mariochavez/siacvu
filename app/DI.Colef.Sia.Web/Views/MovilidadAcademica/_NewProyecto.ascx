@@ -4,7 +4,7 @@
 <p>
     <label>Proyecto</label>
     
-    <%=Html.DropDownList("ProyectoMovilidadAcademica.Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("ProyectoMovilidadAcademica.ProyectoId", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
                 "Seleccione ...", new { rel = "#proyecto" })%>
-	<%=Html.ValidationMessage("ProyectoMovilidadAcademica.Proyecto") %>
+	<%=Html.ValidationMessage("ProyectoMovilidadAcademica.ProyectoId") %>
 </p>

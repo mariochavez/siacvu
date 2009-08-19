@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var tipoId in tiposActividad)
             {
                 var tipo =
-                    tipoActividadMovilidadAcademicaMapper.Map(new TipoActividadMovilidadAcademicaForm { TipoActividad = int.Parse(tipoId) });
+                    tipoActividadMovilidadAcademicaMapper.Map(new TipoActividadMovilidadAcademicaForm { TipoActividadId = int.Parse(tipoId) });
 
                 tipo.CreadorPor = usuario;
                 tipo.ModificadoPor = usuario;
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var proyectoId in proyectos)
             {
                 var proyecto =
-                    proyectoMovilidadAcademicaMapper.Map(new ProyectoMovilidadAcademicaForm { Proyecto = int.Parse(proyectoId) });
+                    proyectoMovilidadAcademicaMapper.Map(new ProyectoMovilidadAcademicaForm { ProyectoId = int.Parse(proyectoId) });
 
                 proyecto.CreadorPor = usuario;
                 proyecto.ModificadoPor = usuario;
@@ -95,7 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var productoId in productoDerivados)
             {
                 var producto =
-                    productoDerivadoMovilidadAcademicaMapper.Map(new ProductoDerivadoMovilidadAcademicaForm { ProductoDerivado = int.Parse(productoId) });
+                    productoDerivadoMovilidadAcademicaMapper.Map(new ProductoDerivadoMovilidadAcademicaForm { ProductoDerivadoId = int.Parse(productoId) });
 
                 producto.CreadorPor = usuario;
                 producto.ModificadoPor = usuario;

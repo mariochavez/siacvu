@@ -1,13 +1,18 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<MovilidadAcademicaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<div id="productoderivadoList" class="minilista">
+<div class="minilista" id="productoderivadoList">
 	<h5>Producto Derivado</h5>
 	
 	<% if (Model.ProductoDerivadoMovilidadAcademicas != null && Model.ProductoDerivadoMovilidadAcademicas.Length > 0){%>
-	    <% foreach (var productoDerivado in Model.ProductoDerivadoMovilidadAcademicas){ %>
-            <div id="productoderivado_<%=Html.Encode(productoDerivado.Id) %>" class="sublista">
-    	        <h6><%=Html.Encode(productoDerivado.ProductoDerivadoNombre)%></h6>
+	    <% foreach(var productoDerivado in Model.ProductoDerivadoMovilidadAcademicas){ %>
+            <div class="sublista" id="productoderivado_<%=Html.Encode(productoDerivado.Id != 0 ? productoDerivado.Id : productoDerivado.ProductoDerivadoId)%>">
+    	        <h6>
+    	            <%=Html.Encode(productoDerivado.ProductoDerivadoNombre)%>
+    	            <% if(Model.Id == 0) { %>
+	                    <%=Html.Hidden("ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New", productoDerivado.ProductoDerivadoId)%>
+	                <% } %>
+	            </h6>
             </div><!--end productoDerivadoLista-->
         <% } %>
     <% } else { %>
@@ -17,7 +22,11 @@
     <% } %>
     
     <div id="productoderivado_new" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nuevo Producto Derivado", "NewProductoDerivado", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p>
+		    <span>
+		        <%=Html.ActionLink("+ Nuevo Producto Derivado", "NewProductoDerivado", new { Id = Model.Id }, new { @class = "remote get" })%>
+		    </span>
+		</p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->

@@ -126,17 +126,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var proyectos = new string[] { };
             var productoDerivados = new string[] { };
 
-            if (formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"] != null &&
-                    formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',').Length > 0)
-                tiposActividad = formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',');
+            if (formCollection["TipoActividadMovilidadAcademica.TipoActividadId_New"] != null &&
+                    formCollection["TipoActividadMovilidadAcademica.TipoActividadId_New"].Split(',').Length > 0)
+                tiposActividad = formCollection["TipoActividadMovilidadAcademica.TipoActividadId_New"].Split(',');
 
-            if (formCollection["ProyectoMovilidadAcademica.Proyecto_New"] != null &&
-                    formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',').Length > 0)
-                proyectos = formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',');
+            if (formCollection["ProyectoMovilidadAcademica.ProyectoId_New"] != null &&
+                    formCollection["ProyectoMovilidadAcademica.ProyectoId_New"].Split(',').Length > 0)
+                proyectos = formCollection["ProyectoMovilidadAcademica.ProyectoId_New"].Split(',');
 
-            if (formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"] != null &&
-                    formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',').Length > 0)
-                productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',');
+            if (formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"] != null &&
+                    formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',').Length > 0)
+                productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',');
             
             var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                 tiposActividad, proyectos, productoDerivados);

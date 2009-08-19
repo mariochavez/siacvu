@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(ProyectoMovilidadAcademicaForm message, ProyectoMovilidadAcademica model)
         {
-            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = catalogoService.GetProyectoById(message.ProyectoId);
 
             if (model.IsTransient())
             {

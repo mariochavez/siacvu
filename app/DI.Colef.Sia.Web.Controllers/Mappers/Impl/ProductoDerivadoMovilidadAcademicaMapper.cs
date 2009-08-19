@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(ProductoDerivadoMovilidadAcademicaForm message, ProductoDerivadoMovilidadAcademica model)
         {
-            model.ProductoDerivado = catalogoService.GetProductoDerivadoById(message.ProductoDerivado);
+            model.ProductoDerivado = catalogoService.GetProductoDerivadoById(message.ProductoDerivadoId);
 
             if (model.IsTransient())
             {

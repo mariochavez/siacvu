@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
 
         //Espacio para Agregar Mapeos
-        public int ProductoDerivado { get; set; }
+        public int ProductoDerivadoId { get; set; }
         public string ProductoDerivadoNombre { get; set; }
     }
 }

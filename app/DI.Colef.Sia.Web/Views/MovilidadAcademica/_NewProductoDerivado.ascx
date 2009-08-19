@@ -4,7 +4,7 @@
 <p>
     <label>Producto Derivado</label>
     
-	<%=Html.DropDownList("ProductoDerivadoMovilidadAcademica.ProductoDerivado", Model.ProductosDerivados.CreateSelectList<ProductoDerivadoForm>("Id", "Nombre"),
+	<%=Html.DropDownList("ProductoDerivadoMovilidadAcademica.ProductoDerivadoId", Model.ProductosDerivados.CreateSelectList<ProductoDerivadoForm>("Id", "Nombre"),
                 "Seleccione ...", new { rel = "#productoderivado" })%>
-	<%=Html.ValidationMessage("ProductoDerivadoMovilidadAcademica.ProductoDerivado") %>
+	<%=Html.ValidationMessage("ProductoDerivadoMovilidadAcademica.ProductoDerivadoId") %>
 </p>

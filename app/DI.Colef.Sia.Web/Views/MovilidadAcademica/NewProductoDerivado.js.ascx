@@ -8,7 +8,7 @@ var rel = '#productoderivadoform';
 
 <% if(Model.Id == 0) { %>
     class = 'local';
-    rel = '#ProductoDerivadoMovilidadAcademica.ProductoDerivado';
+    rel = '#ProductoDerivadoMovilidadAcademica.ProductoDerivadoId';
 <% } %>
 
 var html = '

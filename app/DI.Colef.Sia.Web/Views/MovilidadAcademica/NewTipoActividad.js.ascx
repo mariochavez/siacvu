@@ -8,7 +8,7 @@ var rel = '#tipoactividadform';
 
 <% if(Model.Id == 0) { %>
     class = 'local';
-    rel = '#TipoActividadMovilidadAcademica.TipoActividad';
+    rel = '#TipoActividadMovilidadAcademica.TipoActividadId';
 <% } %>
 
 var html = '
