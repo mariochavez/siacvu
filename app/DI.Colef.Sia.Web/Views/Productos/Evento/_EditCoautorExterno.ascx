@@ -6,8 +6,13 @@
 
     <% if (Model.CoautorExternoEventos != null && Model.CoautorExternoEventos.Length > 0) { %>
         <% foreach (var coautorExterno in Model.CoautorExternoEventos){ %>
-	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id) %>">
-	            <h6><%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%></h6>
+	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id != 0 ? coautorExterno.Id : coautorExterno.InvestigadorExternoId) %>">
+	            <h6>
+	                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
+	                <% if(Model.Id == 0) { %>
+	                    <%=Html.Hidden("CoautorExternoEvento.InvestigadorExternoId_New", coautorExterno.InvestigadorExternoId)%>
+	                <% } %>
+                </h6>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>

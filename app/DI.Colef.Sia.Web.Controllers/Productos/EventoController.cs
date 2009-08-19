@@ -133,9 +133,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',');
 
-            if (formCollection["TipoParticipacionEvento.TipoParticipacion_New"] != null &&
-                formCollection["TipoParticipacionEvento.TipoParticipacion_New"].Split(',').Length > 0)
-                tipoParticiones = formCollection["TipoParticipacionEvento.TipoParticipacion_New"].Split(',');
+            if (formCollection["TipoParticipacionEvento.TipoParticipacionId_New"] != null &&
+                formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',').Length > 0)
+                tipoParticiones = formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',');
 
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautoresExternos, coautoresInternos, tipoParticiones);

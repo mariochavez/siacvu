@@ -145,13 +145,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var coautoresExternos = new string[] { };
             var coautoresInternos = new string[] { };
 
-            if (formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
-                    formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
-                coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
+            if (formCollection["CoautorExternoLibro.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoLibro.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoLibro.InvestigadorExternoId_New"].Split(',');
 
-            if (formCollection["CoautorInternoArticulo.InvestigadorId_New"] != null &&
-                    formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
-                coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
+            if (formCollection["CoautorInternoLibro.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',');
 
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                         coautoresExternos, coautoresInternos);

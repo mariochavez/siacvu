@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(TipoParticipacionEventoForm message, TipoParticipacionEvento model)
         {
-            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
+            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacionId);
 
             if (model.IsTransient())
             {

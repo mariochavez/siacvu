@@ -102,7 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 var participacion =
                     tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm
-                                                          {TipoParticipacion = int.Parse(psrticipacionId)});
+                                                          {TipoParticipacionId = int.Parse(psrticipacionId)});
 
                 participacion.CreadorPor = usuario;
                 participacion.ModificadoPor = usuario;
