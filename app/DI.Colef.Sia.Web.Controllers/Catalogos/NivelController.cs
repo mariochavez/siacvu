@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveNivel(nivel);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", nivel.Nombre));
+            return RedirectToIndex(String.Format("Nivel {0} ha sido creado", nivel.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveNivel(nivel);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", nivel.Nombre));
+            return RedirectToIndex(String.Format("Nivel {0} ha sido modificado", nivel.Nombre));
         }
 
         [Transaction]

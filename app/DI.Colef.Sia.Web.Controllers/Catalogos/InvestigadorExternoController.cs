@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", investigadorExterno.Nombre));
+            return RedirectToIndex(String.Format("Investigador Externo {0} ha sido creado", investigadorExterno.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", investigadorExterno.Nombre));
+            return RedirectToIndex(String.Format("Investigador Externo {0} ha sido modificado", investigadorExterno.Nombre));
         }
 
         [Transaction]

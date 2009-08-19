@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIdentificadorLibro(identificadorLibro);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", identificadorLibro.Nombre));
+            return RedirectToIndex(String.Format("Identificador del Libro {0} ha sido creado", identificadorLibro.Nombre));
         }
 
         [Transaction]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIdentificadorLibro(identificadorLibro);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", identificadorLibro.Nombre));
+            return RedirectToIndex(String.Format("Identificador del Libro {0} ha sido modificado", identificadorLibro.Nombre));
         }
 
         [Transaction]

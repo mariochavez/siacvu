@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIndice(indice);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", indice.Nombre));
+            return RedirectToIndex(String.Format("Indice {0} ha sido creado", indice.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIndice(indice);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", indice.Nombre));
+            return RedirectToIndex(String.Format("Indice {0} ha sido modificado", indice.Nombre));
         }
 
         [Transaction]

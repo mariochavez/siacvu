@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDepartamento(departamento);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", departamento.Nombre));
+            return RedirectToIndex(String.Format("Departamento {0} ha sido creado", departamento.Nombre));
         }
 
         [Transaction]
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDepartamento(departamento);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", departamento.Nombre));
+            return RedirectToIndex(String.Format("Departamento {0} ha sido modificado", departamento.Nombre));
         }
 
         [Transaction]

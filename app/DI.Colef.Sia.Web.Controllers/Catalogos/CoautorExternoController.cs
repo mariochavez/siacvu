@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCoautorExterno(coautorExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", coautorExterno.Nombre));
+            return RedirectToIndex(String.Format("Coautor Externo {0} ha sido creado", coautorExterno.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCoautorExterno(coautorExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", coautorExterno.Nombre));
+            return RedirectToIndex(String.Format("Coautor Externo {0} ha sido modificado", coautorExterno.Nombre));
         }
 
         [Transaction]

@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveConvenio(convenio);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", convenio.Nombre));
+            return RedirectToIndex(String.Format("Convenio {0} ha sido creado", convenio.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveConvenio(convenio);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", convenio.Nombre));
+            return RedirectToIndex(String.Format("Convenio {0} ha sido modificado", convenio.Nombre));
         }
 
         [Transaction]

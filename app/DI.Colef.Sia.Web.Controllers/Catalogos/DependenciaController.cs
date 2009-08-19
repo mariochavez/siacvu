@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDependencia(dependencia);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", dependencia.Nombre));
+            return RedirectToIndex(String.Format("Dependencia {0} ha sido creada", dependencia.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDependencia(dependencia);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", dependencia.Nombre));
+            return RedirectToIndex(String.Format("Dependencia {0} ha sido modificada", dependencia.Nombre));
         }
 
         [Transaction]

@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveMedioElectronico(medioElectronico);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", medioElectronico.Nombre));
+            return RedirectToIndex(String.Format("Medio Electronico {0} ha sido creado", medioElectronico.Nombre));
         }
         
         [Transaction]
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveMedioElectronico(medioElectronico);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", medioElectronico.Nombre));
+            return RedirectToIndex(String.Format("Medio Electronico {0} ha sido modificado", medioElectronico.Nombre));
         }
         
         [Transaction]
