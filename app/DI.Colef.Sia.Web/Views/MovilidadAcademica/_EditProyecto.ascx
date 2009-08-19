@@ -3,10 +3,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="proyectoList" class="minilista">
 	<h5>Proyecto</h5>
+	
 	<% if (Model.ProyectoMovilidadAcademicas != null && Model.ProyectoMovilidadAcademicas.Length > 0){%>
 	    <% foreach (var proyecto in Model.ProyectoMovilidadAcademicas){ %>
-            <div id="proyecto_<%=Html.Encode(proyecto.Id) %>" class="sublista">
-    	        <h6><%=Html.Encode(proyecto.ProyectoNombre)%></h6>
+            <div class="sublista" id="proyecto_<%=Html.Encode(proyecto.Id != 0 ? proyecto.Id : proyecto.ProyectoId) %>">
+    	        <h6>
+    	            <%=Html.Encode(proyecto.ProyectoNombre)%>
+    	            <% if(Model.Id == 0) { %>
+	                    <%=Html.Hidden("ProyectoMovilidadAcademica.ProyectoId_New", proyecto.ProyectoId)%>
+	                <% } %>
+                </h6>
             </div><!--end proyectoLista-->
         <% } %>
     <% } else { %>

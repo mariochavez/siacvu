@@ -6,8 +6,13 @@
 
     <% if (Model.ResponsableInternoCapitulos != null && Model.ResponsableInternoCapitulos.Length > 0) { %>
         <% foreach (var responsableInterno in Model.ResponsableInternoCapitulos){ %>
-	        <div class="sublista" id="responsableinterno_<%=Html.Encode(responsableInterno.Id) %>">
-	            <h6><%=Html.Encode(responsableInterno.InvestigadorUsuarioPersonaNombre)%></h6>
+	        <div class="sublista" id="responsableinterno_<%=Html.Encode(responsableInterno.Id != 0 ? responsableInterno.Id : responsableInterno.InvestigadorId) %>">
+	            <h6>
+	                <%=Html.Encode(responsableInterno.InvestigadorUsuarioPersonaNombre)%>
+	                <% if(Model.Id == 0) { %>
+	                    <%=Html.Hidden("ResponsableInternoCapitulo.InvestigadorId_New", responsableInterno.InvestigadorId)%>
+	                <% } %>
+	            </h6>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>

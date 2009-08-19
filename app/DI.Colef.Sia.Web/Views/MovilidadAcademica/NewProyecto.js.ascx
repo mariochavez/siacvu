@@ -8,7 +8,7 @@ var rel = '#proyectoform';
 
 <% if(Model.Id == 0) { %>
     class = 'local';
-    rel = '#ProyectoMovilidadAcademica.Proyecto';
+    rel = '#ProyectoMovilidadAcademica.ProyectoId';
 <% } %>
 
 var html = '
