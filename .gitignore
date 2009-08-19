@@ -9,3 +9,5 @@ obj/
 .svn
 _ReSharper*/
 Logs/
+*.log
+build/
