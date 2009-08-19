@@ -208,15 +208,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<CoautorInternoResena, CoautorInternoResenaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoResena, CoautorExternoResenaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorExternoId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateReportesMaps()
@@ -249,15 +245,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<CoautorInternoReporte, CoautorInternoReporteForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoReporte, CoautorExternoReporteForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorExternoId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateEventosMaps()
@@ -284,21 +276,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<CoautorInternoEvento, CoautorInternoEventoForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoEvento, CoautorExternoEventoForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorExternoId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<TipoParticipacionEvento, TipoParticipacionEventoForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.TipoParticipacion,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateOrganosExternosMaps()
@@ -480,8 +466,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-                //.ForMember(d => d.InvestigadorExternoId,
-                //           o => o.Ignore());
         }
 
         void CreateCapitulosMaps()
@@ -627,15 +611,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<CoautorInternoLibro, CoautorInternoLibroForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoLibro, CoautorExternoLibroForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorExternoId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateParticipacionMedioMaps()

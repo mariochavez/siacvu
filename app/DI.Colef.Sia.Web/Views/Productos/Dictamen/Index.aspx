@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Dictamen</h3>
+        <h3>Agregar Nuevo Dict&aacute;men</h3>
         <p>
-            Puede agregar un nuevo Dictamen dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Dictamen</strong>.
+            Puede agregar un nuevo Dict&aacute;men dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Dict&aacute;men</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DictamenController>(x => x.New(), "+ Crear Dictamen") %></span>
+            <span><%=Html.ActionLink<DictamenController>(x => x.New(), "+ Crear Dictámen") %></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

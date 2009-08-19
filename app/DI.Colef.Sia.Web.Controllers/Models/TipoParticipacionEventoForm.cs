@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
 
         //Espacio para Agregar Mapeos
-        public int TipoParticipacion { get; set; }
+        public int TipoParticipacionId { get; set; }
         public string TipoParticipacionNombre { get; set; }
     }
 }

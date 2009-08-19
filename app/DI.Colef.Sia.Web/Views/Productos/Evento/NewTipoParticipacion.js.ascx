@@ -8,7 +8,7 @@ var rel = '#coautorexternoform';
 
 <% if(Model.Id == 0) { %>
     class = 'local';
-    rel = '#TipoParticipacionEvento.TipoParticipacion';
+    rel = '#TipoParticipacionEvento.TipoParticipacionId';
 <% } %>
 
 var html = '

@@ -6,8 +6,13 @@
 
     <% if (Model.TipoParticipacionEventos != null && Model.TipoParticipacionEventos.Length > 0) { %>
         <% foreach (var tipoParticipacion in Model.TipoParticipacionEventos){ %>
-	        <div class="sublista" id="tipoparticipacion_<%=Html.Encode(tipoParticipacion.Id) %>">
-	            <h6><%=Html.Encode(tipoParticipacion.TipoParticipacionNombre)%></h6>
+	        <div class="sublista" id="tipoparticipacion_<%=Html.Encode(tipoParticipacion.Id != 0 ? tipoParticipacion.Id : tipoParticipacion.TipoParticipacionId) %>">
+	            <h6>
+	                <%=Html.Encode(tipoParticipacion.TipoParticipacionNombre)%>
+                    <% if(Model.Id == 0) { %>
+                        <%=Html.Hidden("TipoParticipacionEvento.TipoParticipacionId_New", tipoParticipacion.TipoParticipacionId)%>
+                    <% } %>
+	            </h6>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>
