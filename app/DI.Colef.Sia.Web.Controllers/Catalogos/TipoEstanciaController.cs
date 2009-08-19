@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoEstancia(tipoEstancia);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", tipoEstancia.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Estancia {0} ha sido creada", tipoEstancia.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoEstancia(tipoEstancia);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", tipoEstancia.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Estancia {0} ha sido modificada", tipoEstancia.Nombre));
         }
 
         [Transaction]

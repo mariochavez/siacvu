@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProgramaEstudio(programaEstudio);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", programaEstudio.Nombre));
+            return RedirectToIndex(String.Format("Programa de Estudio {0} ha sido creado", programaEstudio.Nombre));
         }
         
         [Transaction]
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProgramaEstudio(programaEstudio);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", programaEstudio.Nombre));
+            return RedirectToIndex(String.Format("Programa de Estudio {0} ha sido modificado", programaEstudio.Nombre));
         }
         
         [Transaction]

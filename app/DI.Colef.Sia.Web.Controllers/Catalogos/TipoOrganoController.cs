@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoOrgano(tipoOrgano);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoOrgano.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Órgano {0} ha sido creado", tipoOrgano.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoOrgano(tipoOrgano);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoOrgano.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Órgano {0} ha sido modificado", tipoOrgano.Nombre));
         }
 
         [Transaction]

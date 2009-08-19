@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoEvento(tipoEvento);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoEvento.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Evento {0} ha sido creado", tipoEvento.Nombre));
         }
         
         [Transaction]
@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoEvento(tipoEvento);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoEvento.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Evento {0} ha sido modificado", tipoEvento.Nombre));
         }
         
         [Transaction]

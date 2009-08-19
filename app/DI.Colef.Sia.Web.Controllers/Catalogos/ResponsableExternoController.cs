@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveResponsableExterno(responsableExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", responsableExterno.Nombre));
+            return RedirectToIndex(String.Format("Responsable Externo {0} ha sido creado", responsableExterno.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveResponsableExterno(responsableExterno);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", responsableExterno.Nombre));
+            return RedirectToIndex(String.Format("Responsable Externo {0} ha sido modificado", responsableExterno.Nombre));
         }
 
         [Transaction]

@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoCapitulo.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Capítulo {0} ha sido creado", tipoCapitulo.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoCapitulo(tipoCapitulo);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoCapitulo.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Capítulo {0} ha sido modificado", tipoCapitulo.Nombre));
         }
 
         [Transaction]

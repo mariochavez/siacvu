@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProyecto(proyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", proyecto.Nombre));
+            return RedirectToIndex(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProyecto(proyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", proyecto.Nombre));
+            return RedirectToIndex(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
         }
 
         [Transaction]

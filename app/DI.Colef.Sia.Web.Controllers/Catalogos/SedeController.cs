@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSede(sede);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", sede.Nombre));
+            return RedirectToIndex(String.Format("Sede {0} ha sido creada", sede.Nombre));
         }
 
         [Transaction]
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSede(sede);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", sede.Nombre));
+            return RedirectToIndex(String.Format("Sede {0} ha sido modificada", sede.Nombre));
         }
 
         [Transaction]

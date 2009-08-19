@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSubdisciplina(subdisciplina);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", subdisciplina.Nombre));
+            return RedirectToIndex(String.Format("Subdisciplina {0} ha sido creada", subdisciplina.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSubdisciplina(subdisciplina);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", subdisciplina.Nombre));
+            return RedirectToIndex(String.Format("Subdisciplina {0} ha sido modificada", subdisciplina.Nombre));
         }
 
         [Transaction]

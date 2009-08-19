@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", revistaPublicacion.Titulo));
+            return RedirectToIndex(String.Format("Revista de Publicación {0} ha sido creada", revistaPublicacion.Titulo));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", revistaPublicacion.Titulo));
+            return RedirectToIndex(String.Format("Revista de Publicación {0} ha sido modificada", revistaPublicacion.Titulo));
         }
 
         [Transaction]
