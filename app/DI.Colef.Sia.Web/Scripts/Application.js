@@ -139,10 +139,10 @@ var LocalForm = {
 
         var text = $(combo + ' :selected').text();
 
-        var newRow = '<tr id="' + value + '"><td>' + text + '<input type="hidden" value="' + value + '" name="' + combo.replace('#', '').replace('_', '.') + '_New" id="' + combo.replace('#', '') + '_New"/></td></tr>';
+        var newRow = '<div id="' + handle + '_' + value + '" class="sublista"><h6>' + text + '<input type="hidden" value="' + value + '" name="' + combo.replace('#', '').replace('_', '.') + '_New" id="' + combo.replace('#', '') + '_New"/></h6></div>';
         var row = $(handle + 'EmptyList_form');
         if (row.length == 0) {
-            row = $(handle + 'List tr:nth-child(2)');
+            row = $(handle + 'List div:first');
             row.before(newRow);
         } else {
             row.before(newRow);
