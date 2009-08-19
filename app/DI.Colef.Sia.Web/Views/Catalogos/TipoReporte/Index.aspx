@@ -5,63 +5,82 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
-<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
-    <div id="message" class="<% if(TempData["message"] != null) { %>message<% } else if(TempData["error"] != null) { %>errormessage<% } %>"><%=Html.Encode(TempData["message"])%></div>
-    <br />
-    <div id="datalist">   
-        <div>
-            <div class="floatr btn_container">
-                <% Html.RenderPartial("_Search"); %>
-	        </div>
-            <div class="btn_container">
-		        <span class="btn btn_medium_brown">
-			        <%=Html.ActionLink<TipoReporteController>(x => x.New(), "+ Crear Tipo Reporte") %>
-		        </span>
-	        </div>
-	    </div>
-        <br />
-        <div class="table_title">Reportes</div>
-        <table>
-             <% if(Model.List == null || Model.List.Length == 0) { %>
-                <tr>
-                    <td>No hay tipos de reportes definidos</td>
-                </tr>
-            <% } else { %>
-                <% foreach (var tipoReporte in Model.List) { %>
-                    <tr class="highlight">
-				        <td class="button" width="46">
-					        <div class="floatr btn_container">
-						        <span class="btn btn_small_white">
-							        <%=Html.ActionLink<TipoReporteController>(x => x.Edit(tipoReporte.Id), "Editar") %>
-						        </span>
-					        </div>
-				        </td>                
-                        <td class="single" width="70%">
-                            <%=Html.Encode(tipoReporte.Nombre) %>
-                            <div class="meta_info">Modificado el <%=Html.Encode(tipoReporte.Modificacion) %></div>
-                        </td>
-                        <td id="accion_<%=Html.Encode(tipoReporte.Id) %>" class="button" width="140">
-                            <div class="floatr btn_container">
-                            <% if (tipoReporte.Activo) { %>
-                                <span class="btn btn_small_white">
-                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
-                                </span>
-                            <% } else { %>
-                                <span class="btn btn_small_white">
-                                    <%=Html.ActionLink("Activar", "Activate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
-                                </span>
-                            <% } %>
-                            </div>
-                        </td>
-                    </tr>
-                <% } %>
-            <% } %>
-        </table>
-    </div>    
+</asp:Content>
+
+<asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
+    <div id="subcontenido">
+        <h3>Agregar Nuevo Tipo Reporte</h3>
+        <p>
+            Puede agregar un nuevo Tipo Reporte dentro de la lista de administraci&oacute;n de
+            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo Reporte</strong>.
+		</p>
+        <div class="botonzon">
+            <span><%=Html.ActionLink<TipoReporteController>(x => x.New(), "+ Crear Tipo Reporte") %></span>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
+    <div id="barra">
+        <div id="asistente">
+            <h3>Asistente de secci&oacute;n</h3>
+            <p>Lista de Tipos Reportes registrados en el sistema.</p>
+            <% Html.RenderPartial("_ListSidebar"); %>
+        </div><!--end asistente-->
+    </div><!--end barra-->
+</asp:Content>
+
+<asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+<div id="textos">
+	
+	<% Html.RenderPartial("_Message"); %>
+	<% Html.RenderPartial("_Search"); %>
+	
+	<div id="lista">
+		<h4>Tipos Reportes</h4>
+            
+		<% if (Model.List == null || Model.List.Length == 0) { %>
+			<div class="elementolista">
+				<div class="elementodescripcion">
+					<h5><span>No hay tipos reportes definidos</span></h5>
+				</div><!--end elementodescripcion-->
+
+			</div><!--end elementolista-->
+		<% } else { %>
+			<% foreach (var tipoReporte in Model.List) { %>
+				<div class="elementolista" id="accion_<%=Html.Encode(tipoReporte.Id) %>">
+					<div class="elementodescripcion">
+						<h5><span><%=Html.Encode(tipoReporte.Nombre) %></span></h5>
+						<h6>Modificado el <%=Html.Encode(tipoReporte.Modificacion) %></h6>
+					</div><!--end elementodescripcion-->
+
+					<div class="elementobotones">
+						<p>
+							<span><%=Html.ActionLink<TipoReporteController>(x => x.Edit(tipoReporte.Id), "Editar") %></span>
+	                        <span>
+	                            <% if (tipoReporte.Activo) { %>
+	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
+	                            <% } else { %>
+	                                <%=Html.ActionLink("Activar", "Activate", new { id = tipoReporte.Id }, new { @class = "remote put" })%>
+	                            <% } %>
+	                        </span>
+	                   	</p>
+					</div><!--end elementobotones-->
+		
+               </div><!--end elementolista-->
+			<% } %>
+		<% } %>
+            
+	</div><!--end lista-->
+
+</div><!--end textos-->
+
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
     });
 </script>
+
 </asp:Content>

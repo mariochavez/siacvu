@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Libro", 3);
+	new EntityScaffoldingDetails("Catalogos.TipoReporte", 1);
 
 /*
  * Property names should be PascalCase.
@@ -32,64 +32,64 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NumeroCedula","int", null)
+	new EntityProperty("Nombre","string", null)
 );
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TituloGrado","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("TituloGrado","string", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaObtencion","DateTime", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("FechaObtencion","DateTime", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Institucion", "Institucion", "Institucion")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Institucion", "Institucion", "Institucion")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TituloTesis","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("TituloTesis","string", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Pais","Pais", "Pais")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Pais","Pais", "Pais")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Ciudad","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Ciudad","string", null)
+///);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Estatus","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Estatus","string", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Sector","Sector", "Sector")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Sector","Sector", "Sector")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Organizacion","Organizacion", "Organizacion")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Organizacion","Organizacion", "Organizacion")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Area","Area", "Area")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Area","Area", "Area")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Disciplina","Disciplina", "Disciplina")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Disciplina","Disciplina", "Disciplina")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
+//);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
@@ -103,7 +103,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();
