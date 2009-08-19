@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoDictamen.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Dictámen {0} ha sido creado", tipoDictamen.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoDictamen(tipoDictamen);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoDictamen.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Dictámen {0} ha sido modificado", tipoDictamen.Nombre));
         }
 
         [Transaction]

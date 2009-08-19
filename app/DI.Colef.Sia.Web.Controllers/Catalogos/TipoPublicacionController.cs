@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoPublicacion(tipoPublicacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", tipoPublicacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Publicación {0} ha sido creada", tipoPublicacion.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoPublicacion(tipoPublicacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", tipoPublicacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Publicación {0} ha sido modificada", tipoPublicacion.Nombre));
         }
 
         [Transaction]

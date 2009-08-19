@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoPresentacion(tipoPresentacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoPresentacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Presentacion {0} ha sido creada", tipoPresentacion.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoPresentacion(tipoPresentacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoPresentacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Presentacion {0} ha sido modificada", tipoPresentacion.Nombre));
         }
 
         [Transaction]

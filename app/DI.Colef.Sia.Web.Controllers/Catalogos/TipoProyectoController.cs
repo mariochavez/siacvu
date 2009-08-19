@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoProyecto(tipoProyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoProyecto.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Proyecto {0} ha sido creado", tipoProyecto.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoProyecto(tipoProyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoProyecto.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Proyecto {0} ha sido modificado", tipoProyecto.Nombre));
         }
 
         [Transaction]

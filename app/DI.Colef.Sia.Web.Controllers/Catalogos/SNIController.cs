@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSNI(sni);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", sni.Nombre));
+            return RedirectToIndex(String.Format("SNI {0} ha sido creado", sni.Nombre));
         }
 
         [Transaction]
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSNI(sni);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", sni.Nombre));
+            return RedirectToIndex(String.Format("SNI {0} ha sido modificado", sni.Nombre));
         }
 
         [Transaction]

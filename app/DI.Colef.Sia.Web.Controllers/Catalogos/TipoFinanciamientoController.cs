@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoFinanciamiento(tipoFinanciamiento);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoFinanciamiento.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Financiamiento {0} ha sido creado", tipoFinanciamiento.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoFinanciamiento(tipoFinanciamiento);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoFinanciamiento.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Financiamiento {0} ha sido modificado", tipoFinanciamiento.Nombre));
         }
 
         [Transaction]

@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSector(sector);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", sector.Nombre));
+            return RedirectToIndex(String.Format("Sector {0} ha sido creado", sector.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSector(sector);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", sector.Nombre));
+            return RedirectToIndex(String.Format("Sector {0} ha sido modificado", sector.Nombre));
         }
 
         [Transaction]

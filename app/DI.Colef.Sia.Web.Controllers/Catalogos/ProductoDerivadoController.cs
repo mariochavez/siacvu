@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProductoDerivado(productoDerivado);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", productoDerivado.Nombre));
+            return RedirectToIndex(String.Format("Producto Derivado {0} ha sido creado", productoDerivado.Nombre));
         }
         
         [Transaction]
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveProductoDerivado(productoDerivado);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", productoDerivado.Nombre));
+            return RedirectToIndex(String.Format("Producto Derivado {0} ha sido modificado", productoDerivado.Nombre));
         }
         
         [Transaction]

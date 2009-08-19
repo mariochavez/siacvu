@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoDistincion(tipoDistincion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoDistincion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Distinción {0} ha sido creada", tipoDistincion.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoDistincion(tipoDistincion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoDistincion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Distinción {0} ha sido modificada", tipoDistincion.Nombre));
         }
 
         [Transaction]

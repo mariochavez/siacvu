@@ -1,76 +1,35 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<RevistaPublicacionForm>>" %>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<RevistaPublicacionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-
-<div id="form">
-    <%=Html.AntiForgeryToken() %>
-    <%=Html.Hidden("Id", Model.Form.Id) %>
-
-    <table class="form">
-        <tr>
-            <td class="label required">
-                <label for="Titulo">Titulo:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Titulo", Model.Form.Titulo, new { @class = "big", size = 10, maxlength = 40 })%>
-                <span>(Debe de ser un titulo unico)</span>
-                <%=Html.ValidationMessage("Titulo")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Periodicidad">Periodicidad:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Periodicidad", Model.Form.Periodicidad, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Periodicidad")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Issn">Issn:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Issn", Model.Form.Issn, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Issn")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Detalle">Detalle:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Detalle", Model.Form.Detalle, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Detalle")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Tipo">Tipo:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Tipo", Model.Form.Tipo, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Tipo")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Estado">Estado:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Estado", Model.Form.Estado, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Estado")%>
-            </td>
-        </tr>
-    </table>
-    
-	<div class="btn_container_footer">
-		<span class="btn btn_normal_brown">
-			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		</span>
-		<span class="btn btn_normal_white">
-			<%=Html.ActionLink<RevistaPublicacionController>(x => x.Index(), "Regresar") %>
-		</span>
-	</div>    
-</div>
+<p>
+    <label>Titulo</label>
+    <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 40 })%>
+    <span>(Debe de ser un nombre unico)</span>
+    <%=Html.ValidationMessage("Titulo")%>
+</p>
+<p>
+    <label>Periodicidad</label>
+    <%=Html.TextBox("Periodicidad", Model.Periodicidad, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Periodicidad")%>
+</p>
+<p>
+    <label>Issn</label>
+    <%=Html.TextBox("Issn", Model.Issn, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Issn")%>
+</p>
+<p>
+    <label>Detalle</label>
+    <%=Html.TextBox("Detalle", Model.Detalle, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Detalle")%>
+</p>
+<p>
+    <label>Tipo</label>
+    <%=Html.TextBox("Tipo", Model.Tipo, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Tipo")%>
+</p>
+<p>
+    <label>Estado</label>
+    <%=Html.TextBox("Estado", Model.Estado, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Estado")%>
+</p>

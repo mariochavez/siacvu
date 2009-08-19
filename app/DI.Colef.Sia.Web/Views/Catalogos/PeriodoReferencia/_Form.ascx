@@ -1,61 +1,27 @@
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GenericViewData<PeriodoReferenciaForm>>" %>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<PeriodoReferenciaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-
-<div id="form">
-    <%=Html.AntiForgeryToken() %>
-    <%=Html.Hidden("Id", Model.Form.Id) %>
-
-    <table class="form">
-        <tr>
-            <td class="label required">
-                <label for="Periodo">Periodo:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Periodo", Model.Form.Periodo, new { @class = "big", size = 10, maxlength = 40 })%>
-                <span>(Debe de ser un periodo unico)</span>
-                <%=Html.ValidationMessage("Periodo")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="Orden">Orden:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("Orden", Model.Form.Orden, new { @class = "big", size = 10, maxlength = 40 })%>                
-                <%=Html.ValidationMessage("Orden")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="FechaInicial">FechaInicial:<em>*</em></label>
-            </td>
-            <td class="field">
-                <%=Html.TextBox("FechaInicial", Model.Form.FechaInicial, new { @class="datetime", maxlength = 10 })%>
-                <span>(Formato dd/mm/yyyy)</span>
-                <%=Html.ValidationMessage("FechaInicial")%>
-            </td>
-        </tr>
-        <tr>
-            <td class="label required">
-                <label for="FechaFinal">FechaFinal:<em>*</em></label>
-            </td>
-            <td class="field">
-            <%=Html.TextBox("FechaFinal", Model.Form.FechaFinal, new { @class="datetime", maxlength = 10 })%>
-            <span>(Formato dd/mm/yyyy)</span>
-            <%=Html.ValidationMessage("FechaFinal")%>
-                
-            </td>
-        </tr>
-    </table>
-    
-	<div class="btn_container_footer">
-		<span class="btn btn_normal_brown">
-			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
-		</span>
-		<span class="btn btn_normal_white">
-			<%=Html.ActionLink<PeriodoReferenciaController>(x => x.Index(), "Regresar") %>
-		</span>
-	</div>    
-</div>
+<p>
+    <label>Periodo</label>
+    <%=Html.TextBox("Periodo", Model.Periodo, new { @class = "input250-requerido", maxlength = 40 })%>
+    <span>(Debe de ser un nombre unico)</span>
+    <%=Html.ValidationMessage("Periodo")%>
+</p>
+<p>
+    <label>Orden</label>
+    <%=Html.TextBox("Orden", Model.Orden, new { @class = "input250-requerido", maxlength = 10 })%>
+    <%=Html.ValidationMessage("Orden")%>
+</p>
+<p>
+    <label>Fecha Inicial</label>
+    <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = " datetime input100-requerido", maxlength = 10 })%>
+    <span>(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaInicial")%>
+</p>
+<p>
+    <label>Fecha Final</label>
+    <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = " datetime input100-requerido", maxlength = 10 })%>
+    <span>(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaFinal")%>
+</p>

@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoParticipante(tipoParticipante);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", tipoParticipante.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Participante {0} ha sido creado", tipoParticipante.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoParticipante(tipoParticipante);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", tipoParticipante.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Participante {0} ha sido modificado", tipoParticipante.Nombre));
         }
 
         [Transaction]

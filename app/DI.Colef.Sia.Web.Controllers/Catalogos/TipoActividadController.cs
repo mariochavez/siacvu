@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoActividad(tipoActividad);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", tipoActividad.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Actividad {0} ha sido creada", tipoActividad.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveTipoActividad(tipoActividad);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", tipoActividad.Nombre));
+            return RedirectToIndex(String.Format("Tipo de Actividad {0} ha sido modificada", tipoActividad.Nombre));
         }
 
         [Transaction]
