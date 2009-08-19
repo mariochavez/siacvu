@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
-            return RedirectToIndex(String.Format("Grado Academico {0} ha sido creado", gradoAcademico.Nombre));
+            return RedirectToIndex(String.Format("Grado Académico {0} ha sido creado", gradoAcademico.Nombre));
         }
 
         [Transaction]
@@ -85,7 +85,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveGradoAcademico(gradoAcademico);
 
-            return RedirectToIndex(String.Format("Grado Academico {0} ha sido modificado", gradoAcademico.Nombre));
+            return RedirectToIndex(String.Format("Grado Académico {0} ha sido modificado", gradoAcademico.Nombre));
         }
 
         [Transaction]

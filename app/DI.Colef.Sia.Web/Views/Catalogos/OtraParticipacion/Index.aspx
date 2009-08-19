@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Otra Participacion</h3>
+        <h3>Agregar Nueva Otra Participaci&oacute;n</h3>
         <p>
-            Puede agregar una nueva Otra Participacion dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Otra Participacion</strong>.
+            Puede agregar una nueva Otra Participaci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Otra Participaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<OtraParticipacionController>(x => x.New(), "+ Crear Otra Participacion") %></span>
+            <span><%=Html.ActionLink<OtraParticipacionController>(x => x.New(), "+ Crear Otra Participación") %></span>
         </div>
     </div>
 </asp:Content>

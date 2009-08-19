@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el ambito utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar el &aacute;mbito utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

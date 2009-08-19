@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar la categoria utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar la categor&iacute;a utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

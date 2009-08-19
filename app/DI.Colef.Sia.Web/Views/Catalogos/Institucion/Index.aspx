@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Institucion</h3>
+        <h3>Agregar Nueva Instituci&oacute;n</h3>
         <p>
-            Puede agregar una nueva Institucion dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Institucion</strong>.
+            Puede agregar una nueva Instituci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Instituci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Crear Institucion") %></span>
+            <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Crear Institución") %></span>
         </div>
     </div>
 </asp:Content>

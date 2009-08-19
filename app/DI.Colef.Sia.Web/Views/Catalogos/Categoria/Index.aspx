@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Categoria</h3>
+        <h3>Agregar Nueva Categor&iacute;a</h3>
         <p>
-            Puede agregar una nueva Categoria dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Categoria</strong>.
+            Puede agregar una nueva Categor&iacute;a dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Categor&iacute;a</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CategoriaController>(x => x.New(), "+ Crear Categoria") %></span>
+            <span><%=Html.ActionLink<CategoriaController>(x => x.New(), "+ Crear Categoría") %></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Categorias registradas en el sistema.</p>
+            <p>Lista de Categor&iacute;as registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Categorias</h4>
+		<h4>Categor&iacute;as</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay categorias definidas</span></h5>
+					<h5><span>No hay categor&iacute;as definidas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

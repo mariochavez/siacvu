@@ -14,7 +14,7 @@
         <h3>Agregar Nueva Subdisciplina</h3>
         <p>
             Puede agregar una nueva Subdisciplina dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Subdisciplina</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Subdisciplina</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<SubdisciplinaController>(x => x.New(), "+ Crear Subdisciplina") %></span>

@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Tipo de Publicaci&oacute;n</h3>
         <p>
             Puede agregar un nuevo Tipo de Publicaci&oacute;n dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Publicaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Publicaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<TipoPublicacionController>(x => x.New(), "+ Crear Tipo de Publicación") %></span>

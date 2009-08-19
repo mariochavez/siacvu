@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Tipo de Cap&iacute;tulo</h3>
         <p>
             Puede agregar un nuevo Tipo de Cap&iacute;tulo dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Cap&iacute;tulo</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Cap&iacute;tulo</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<TipoCapituloController>(x => x.New(), "+ Crear Tipo de Capítulo") %></span>

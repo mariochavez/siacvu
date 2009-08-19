@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveGenero(genero);
 
-            return RedirectToIndex(String.Format("Genero {0} ha sido creado", genero.Nombre));
+            return RedirectToIndex(String.Format("Género {0} ha sido creado", genero.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveGenero(genero);
 
-            return RedirectToIndex(String.Format("Genero {0} ha sido modificado", genero.Nombre));
+            return RedirectToIndex(String.Format("Género {0} ha sido modificado", genero.Nombre));
         }
 
         [Transaction]

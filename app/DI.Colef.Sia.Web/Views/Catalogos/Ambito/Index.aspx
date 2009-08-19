@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Ambito</h3>
+        <h3>Agregar Nuevo &Aacute;mbito</h3>
         <p>
-            Puede agregar un nuevo Ambito dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Ambito</strong>.
+            Puede agregar un nuevo &Aacute;mbito dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Aacute;mbito</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<AmbitoController>(x => x.New(), "+ Crear Ambito") %></span>
+            <span><%=Html.ActionLink<AmbitoController>(x => x.New(), "+ Crear Ámbito")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Ambitos registrados en el sistema.</p>
+            <p>Lista de &Aacute;mbitos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Ambitos</h4>
+		<h4>&Aacute;mbitos</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay ambitos definidos</span></h5>
+					<h5><span>No hay &aacute;mbitos definidos</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

@@ -14,7 +14,7 @@
         <h3>Agregar Nueva Sede</h3>
         <p>
             Puede agregar una nueva Sede dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Sede</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Sede</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<SedeController>(x => x.New(), "+ Crear Sede") %></span>
