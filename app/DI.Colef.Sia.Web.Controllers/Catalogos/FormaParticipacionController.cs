@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveFormaParticipacion(formaParticipacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", formaParticipacion.Nombre));
+            return RedirectToIndex(String.Format("Forma de Participacion {0} ha sido creada", formaParticipacion.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveFormaParticipacion(formaParticipacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", formaParticipacion.Nombre));
+            return RedirectToIndex(String.Format("Forma de Participacion {0} ha sido modificada", formaParticipacion.Nombre));
         }
 
         [Transaction]

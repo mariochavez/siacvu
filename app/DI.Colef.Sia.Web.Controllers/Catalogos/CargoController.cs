@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCargo(cargo);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", cargo.Nombre));
+            return RedirectToIndex(String.Format("Cargo {0} ha sido creado", cargo.Nombre));
         }
 
         [Transaction]
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCargo(cargo);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", cargo.Nombre));
+            return RedirectToIndex(String.Format("Cargo {0} ha sido modificado", cargo.Nombre));
         }
 
         [Transaction]

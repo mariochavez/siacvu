@@ -69,7 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIdioma(idioma);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", idioma.Nombre));
+            return RedirectToIndex(String.Format("Idioma {0} ha sido creado", idioma.Nombre));
         }
 
         [Transaction]
@@ -86,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveIdioma(idioma);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", idioma.Nombre));
+            return RedirectToIndex(String.Format("Idioma {0} ha sido modificado", idioma.Nombre));
         }
 
         [Transaction]

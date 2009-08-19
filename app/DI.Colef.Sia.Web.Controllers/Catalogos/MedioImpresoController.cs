@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveMedioImpreso(medioImpreso);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", medioImpreso.Nombre));
+            return RedirectToIndex(String.Format("Medio Impreso {0} ha sido creado", medioImpreso.Nombre));
         }
         
         [Transaction]
@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveMedioImpreso(medioImpreso);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", medioImpreso.Nombre));
+            return RedirectToIndex(String.Format("Medio Impreso {0} ha sido modificado", medioImpreso.Nombre));
         }
         
         [Transaction]

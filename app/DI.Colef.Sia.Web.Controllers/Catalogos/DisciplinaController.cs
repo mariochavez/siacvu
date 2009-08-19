@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDisciplina(disciplina);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", disciplina.Nombre));
+            return RedirectToIndex(String.Format("Disciplina {0} ha sido creada", disciplina.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveDisciplina(disciplina);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", disciplina.Nombre));
+            return RedirectToIndex(String.Format("Disciplina {0} ha sido modificada", disciplina.Nombre));
         }
 
         [Transaction]

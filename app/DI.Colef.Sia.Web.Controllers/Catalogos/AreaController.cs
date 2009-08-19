@@ -80,7 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveArea(area);
 
-            return RedirectToIndex(String.Format("{0} ha sido creada", area.Nombre));
+            return RedirectToIndex(String.Format("Area {0} ha sido creada", area.Nombre));
         }
 
         [Transaction]
@@ -97,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveArea(area);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificada", area.Nombre));
+            return RedirectToIndex(String.Format("Area {0} ha sido modificada", area.Nombre));
         }
 
         [Transaction]
