@@ -50,11 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            if (message.CoautorExternoResena != null)
-                model.AddCoautorExterno(coautorExternoResenaMapper.Map(message.CoautorExternoResena));
-            if (message.CoautorInternoResena != null)
-                model.AddCoautorInterno(coautorInternoResenaMapper.Map(message.CoautorInternoResena));
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)

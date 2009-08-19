@@ -46,13 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.TipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(message.TipoFinanciamiento);
-
-            if (message.TipoParticipacionEvento != null)
-                model.AddTipo(tipoParticipacionEventoMapper.Map(message.TipoParticipacionEvento));
-            if (message.CoautorExternoEvento != null)
-                model.AddCoautorExterno(coautorExternoEventoMapper.Map(message.CoautorExternoEvento));
-            if (message.CoautorInternoEvento != null)
-                model.AddCoautorInterno(coautorInternoEventoMapper.Map(message.CoautorInternoEvento));
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)

@@ -6,7 +6,7 @@
 var html = '
     <div class="sublista" id="coautorexterno_<%=Html.Encode(Model.Id) %>">
         <h6><%=Html.Encode(Model.InvestigadorExternoNombre) %></h6>
-	</div><!--end sublista-->
+    </div><!--end sublista-->
 ';
 
 $('#message').html('');

@@ -57,12 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            if(message.CoautorExternoLibro != null)
-		        model.AddCoautorExterno(coautorExternoLibroMapper.Map(message.CoautorExternoLibro));
-
-		    if(message.CoautorInternoLibro != null)
-		        model.AddCoautorInterno(coautorInternoLibroMapper.Map(message.CoautorInternoLibro));
         }
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)

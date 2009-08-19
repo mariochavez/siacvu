@@ -46,11 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-
-            if (message.CoautorExternoReporte != null)
-                model.AddCoautorExterno(coautorExternoReporteMapper.Map(message.CoautorExternoReporte));
-            if (message.CoautorInternoReporte != null)
-                model.AddCoautorInterno(coautorInternoReporteMapper.Map(message.CoautorInternoReporte));
         }
 
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)

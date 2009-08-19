@@ -237,6 +237,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
         {
+            CoautorInternoEventoForm coautorInternoEventoForm;
             var coautorInternoEvento = coautorInternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoEvento.ValidationResults(), true, String.Empty);
@@ -251,11 +252,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (eventoId != 0)
             {
                 var evento = eventoService.GetEventoById(eventoId);
-                evento.AddCoautorInterno(coautorInternoEvento);
-                eventoService.SaveEvento(evento);
+
+                foreach (var coautorInterno in evento.CoautorInternoEventos)
+                {
+                    if (coautorInterno.Investigador.Id == coautorInternoEvento.Investigador.Id)
+                    {
+                        coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
+                        return Rjs("AddCoautorInterno", coautorInternoEventoForm);
+                    }
+                    
+                    evento.AddCoautorInterno(coautorInternoEvento);
+                    eventoService.SaveEvento(evento);
+                }
             }
 
-            var coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
+            coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
 
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
         }
@@ -280,6 +291,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
                                               int eventoId)
         {
+            CoautorExternoEventoForm coautorExternoEventoForm;
             var coautorExternoEvento = coautorExternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoEvento.ValidationResults(), true, String.Empty);
@@ -294,11 +306,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (eventoId != 0)
             {
                 var evento = eventoService.GetEventoById(eventoId);
+                foreach (var coautorExterno in evento.CoautorExternoEventos)
+                {
+                    if (coautorExterno.InvestigadorExterno.Id == coautorExternoEvento.InvestigadorExterno.Id)
+                    {
+                        coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
+                        return Rjs("AddCoautorExterno", coautorExternoEventoForm);
+                    }
+                }
+
                 evento.AddCoautorExterno(coautorExternoEvento);
                 eventoService.SaveEvento(evento);
             }
 
-            var coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
+            coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
 
             return Rjs("AddCoautorExterno", coautorExternoEventoForm);
         }
@@ -323,6 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddTipoParticipacion(
             [Bind(Prefix = "TipoParticipacionEvento")] TipoParticipacionEventoForm form, int eventoId)
         {
+            TipoParticipacionEventoForm tipoParticipacionEventoForm;
             var tipoParticipacionEvento = tipoParticipacionEventoMapper.Map(form);
 
             ModelState.AddModelErrors(tipoParticipacionEvento.ValidationResults(), true, String.Empty);
@@ -337,11 +359,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (eventoId != 0)
             {
                 var evento = eventoService.GetEventoById(eventoId);
+                foreach (var tipoParticipacion in evento.TipoParticipacionEventos)
+                {
+                    if (tipoParticipacion.TipoParticipacion.Id == tipoParticipacionEvento.TipoParticipacion.Id)
+                    {
+                        tipoParticipacionEventoForm = tipoParticipacionEventoMapper.Map(tipoParticipacionEvento);
+
+                        return Rjs("AddTipoParticipacion", tipoParticipacionEventoForm);
+                    }
+                }
+
                 evento.AddTipo(tipoParticipacionEvento);
                 eventoService.SaveEvento(evento);
             }
 
-            var tipoParticipacionEventoForm = tipoParticipacionEventoMapper.Map(tipoParticipacionEvento);
+            tipoParticipacionEventoForm = tipoParticipacionEventoMapper.Map(tipoParticipacionEvento);
 
             return Rjs("AddTipoParticipacion", tipoParticipacionEventoForm);
         }

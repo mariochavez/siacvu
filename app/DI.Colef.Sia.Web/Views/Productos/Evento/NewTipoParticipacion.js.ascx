@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var class = 'remote';
-var rel = '#coautorexternoform';
+var rel = '#tipoparticipacionform';
 
 <% if(Model.Id == 0) { %>
     class = 'local';
