@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Programa de Estudio</h3>
         <p>
             Puede agregar un nuevo Programa de Estudio dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Programa de Estudio</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Programa de Estudio</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<ProgramaEstudioController>(x => x.New(), "+ Crear Programa de Estudio") %></span>

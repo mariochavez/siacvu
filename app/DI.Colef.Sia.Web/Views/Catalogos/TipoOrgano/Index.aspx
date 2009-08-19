@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Tipo de &Oacute;rgano</h3>
         <p>
             Puede agregar un nuevo Tipo de &Oacute;rgano dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de &Oacute;rgano</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de &Oacute;rgano</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<TipoOrganoController>(x => x.New(), "+ Crear Tipo de Órgano") %></span>

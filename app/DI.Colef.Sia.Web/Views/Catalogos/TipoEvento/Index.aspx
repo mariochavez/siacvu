@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo de Tipo Evento</h3>
         <p>
             Puede agregar un nuevo Tipo de Evento dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Evento</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Evento</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<TipoEventoController>(x => x.New(), "+ Crear Tipo de Evento") %></span>

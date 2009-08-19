@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Area</h3>
+        <h3>Agregar Nueva &Aacute;rea</h3>
         <p>
-            Puede agregar una nueva Area dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Area</strong>.
+            Puede agregar una nueva &Aacute;rea dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Aacute;rea</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<AreaController>(x => x.New(), "+ Crear Area") %></span>
+            <span><%=Html.ActionLink<AreaController>(x => x.New(), "+ Crear Área")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Areas registradas en el sistema.</p>
+            <p>Lista de &Aacute;reas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Areas</h4>
+		<h4>&Aacute;reas</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay areas definidas</span></h5>
+					<h5><span>No hay &aacute;reas definidas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

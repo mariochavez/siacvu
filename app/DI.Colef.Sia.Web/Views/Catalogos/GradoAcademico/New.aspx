@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo grado academico dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta un nuevo grado acad&eacute;mico dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

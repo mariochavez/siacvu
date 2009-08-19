@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveEstadoPais(estadoPais);
 
-            return RedirectToIndex(String.Format("Estado del Pais {0} ha sido creado", estadoPais.Nombre));
+            return RedirectToIndex(String.Format("Estado del País {0} ha sido creado", estadoPais.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveEstadoPais(estadoPais);
 
-            return RedirectToIndex(String.Format("Estado del Pais {0} ha sido modificado", estadoPais.Nombre));
+            return RedirectToIndex(String.Format("Estado del País {0} ha sido modificado", estadoPais.Nombre));
         }
 
         [Transaction]

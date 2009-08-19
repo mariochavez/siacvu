@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveAmbito(ambito);
 
-            return RedirectToIndex(String.Format("Ambito {0} ha sido creado", ambito.Nombre));
+            return RedirectToIndex(String.Format("Ámbito {0} ha sido creado", ambito.Nombre));
         }
 
         [Transaction]
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveAmbito(ambito);
 
-            return RedirectToIndex(String.Format("Ambito {0} ha sido modificado", ambito.Nombre));
+            return RedirectToIndex(String.Format("Ámbito {0} ha sido modificado", ambito.Nombre));
         }
 
         [Transaction]

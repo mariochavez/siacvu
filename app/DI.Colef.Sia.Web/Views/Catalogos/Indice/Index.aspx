@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Indice</h3>
+        <h3>Agregar Nuevo &Iacute;ndice</h3>
         <p>
-            Puede agregar un nuevo Indice dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Indice</strong>.
+            Puede agregar un nuevo &Iacute;ndice dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Iacute;ndice</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IndiceController>(x => x.New(), "+ Crear Indice") %></span>
+            <span><%=Html.ActionLink<IndiceController>(x => x.New(), "+ Crear Índice")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Indices registrados en el sistema.</p>
+            <p>Lista de &Iacute;ndices registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Indices</h4>
+		<h4>&Iacute;ndices</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay indices definidos</span></h5>
+					<h5><span>No hay &iacute;ndices definidos</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

@@ -14,7 +14,7 @@
         <h3>Agregar Nuevo Tipo de Dict&aacute;men</h3>
         <p>
             Puede agregar un nuevo Tipo de Dict&aacute;men dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Dict&aacute;men</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Dict&aacute;men</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<TipoDictamenController>(x => x.New(), "+ Crear Tipo de Dictámen") %></span>

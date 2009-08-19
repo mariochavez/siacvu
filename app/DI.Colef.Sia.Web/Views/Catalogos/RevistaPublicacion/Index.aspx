@@ -14,7 +14,7 @@
         <h3>Agregar Nueva Revista de Publicaci&oacute;n</h3>
         <p>
             Puede agregar una nueva Revista de Publicaci&oacute;n dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Revista Publicaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Revista Publicaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<RevistaPublicacionController>(x => x.New(), "+ Crear Revista Publicación") %></span>
