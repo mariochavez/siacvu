@@ -479,9 +479,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoArticuloForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.InvestigadorExternoId,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
+                //.ForMember(d => d.InvestigadorExternoId,
+                //           o => o.Ignore());
         }
 
         void CreateCapitulosMaps()
