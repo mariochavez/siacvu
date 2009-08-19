@@ -141,17 +141,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(CapituloForm form, 
                                    FormCollection formCollection)
         {
-            var coautoresExternos = formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',');
-            var coautoresInternos = formCollection["CoautorInternoCapitulo.InvestigadorId_New"].Split(',');
-            var responsablesExternos = formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',');
-            var responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
+            var coautoresExternos = new string[] { };
+            var coautoresInternos = new string[] { };
+            var responsablesExternos = new string[] { };
+            var responsablesInternos = new string[] { };
+
+            if (formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"] != null &&
+                    formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',').Length > 0)
+                coautoresExternos = formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["CoautorInternoCapitulo.InvestigadorId_New"] != null &&
+                    formCollection["CoautorInternoCapitulo.InvestigadorId_New"].Split(',').Length > 0)
+                coautoresInternos = formCollection["CoautorInternoCapitulo.InvestigadorId_New"].Split(',');
+
+            if (formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"] != null &&
+                    formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',').Length > 0)
+                responsablesExternos = formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["ResponsableInternoCapitulo.InvestigadorId_New"] != null &&
+                    formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',').Length > 0)
+                responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
 
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                 coautoresExternos, coautoresInternos, responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {
-                ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm();
+                var capituloForm = capituloMapper.Map(capitulo);
+
+                ((GenericViewData<CapituloForm>)ViewData.Model).Form = SetupNewForm(capituloForm);
                 return ViewNew();
             }
 

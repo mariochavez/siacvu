@@ -122,16 +122,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(MovilidadAcademicaForm form,
                                    FormCollection formCollection)
         {
-            var tiposActividad = formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',');
-            var proyectos = formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',');
-            var productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',');
+            var tiposActividad = new string[] { };
+            var proyectos = new string[] { };
+            var productoDerivados = new string[] { };
 
+            if (formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"] != null &&
+                    formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',').Length > 0)
+                tiposActividad = formCollection["TipoActividadMovilidadAcademica.TipoActividad_New"].Split(',');
+
+            if (formCollection["ProyectoMovilidadAcademica.Proyecto_New"] != null &&
+                    formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',').Length > 0)
+                proyectos = formCollection["ProyectoMovilidadAcademica.Proyecto_New"].Split(',');
+
+            if (formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"] != null &&
+                    formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',').Length > 0)
+                productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivado_New"].Split(',');
+            
             var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                 tiposActividad, proyectos, productoDerivados);
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "MovilidadAcademica"))
             {
-                ((GenericViewData<MovilidadAcademicaForm>)ViewData.Model).Form = SetupNewForm();
+                var movilidadAcademicaForm = movilidadAcademicaMapper.Map(movilidadAcademica);
+
+                ((GenericViewData<MovilidadAcademicaForm>)ViewData.Model).Form = SetupNewForm(movilidadAcademicaForm);
                 return ViewNew();
             }
 
