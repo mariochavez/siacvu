@@ -15,7 +15,7 @@
     <div id="subcontenido">
         <h3>Agregar Nueva Formaci&oacute;n Acad&eacute;mica</h3>
         <p>
-            Puedes agregar una nueva Formaci&oacute;n Acad&eacute;mica dentro de la lista de administraci&oacute;n
+            Puede agregar una nueva Formaci&oacute;n Acad&eacute;mica dentro de la lista de administraci&oacute;n
             presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Formaci&oacute;n Acad&eacute;mica</strong>.
         </p>
         <div class="botonzon">

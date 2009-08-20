@@ -13,7 +13,7 @@
     <div id="subcontenido">
 	    <h3>Agregar Nueva Movilidad Acad&eacute;mica</h3>
 		<p>
-		    Puedes agregar una nueva Movilidad Acad&eacute;mica dentro de la lista de administraci&oacute;n 
+		    Puede agregar una nueva Movilidad Acad&eacute;mica dentro de la lista de administraci&oacute;n 
 		    presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Movilidad Acad&eacute;mica</strong>.
 		</p>
 			

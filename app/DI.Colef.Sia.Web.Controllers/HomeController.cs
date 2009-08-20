@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -7,7 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var data = new GenericViewData<HomeForm>
+                           {
+                               Title = "Sistema de administración académica"
+                           };
+
+            return View(data);
         }
     }
 }
