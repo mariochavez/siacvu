@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo de Tipo Evento</h3>
         <p>
             Puede agregar un nuevo Tipo de Evento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Evento</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Evento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoEventoController>(x => x.New(), "+ Crear Tipo de Evento") %></span>
+            <span><%=Html.ActionLink<TipoEventoController>(x => x.New(), "+ Nuevo Tipo de Evento")%></span>
         </div>
     </div>
 </asp:Content>

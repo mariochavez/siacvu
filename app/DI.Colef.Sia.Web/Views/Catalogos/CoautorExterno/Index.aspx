@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Coautor Externo</h3>
         <p>
             Puede agregar un nuevo Coautor Externo dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Coautor Externo</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Coautor Externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CoautorExternoController>(x => x.New(), "+ Crear Coautor Externo") %></span>
+            <span><%=Html.ActionLink<CoautorExternoController>(x => x.New(), "+ Nuevo Coautor Externo")%></span>
         </div>
     </div>
 </asp:Content>

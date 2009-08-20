@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo G&eacute;nero</h3>
         <p>
             Puede agregar un nuevo G&eacute;nero dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear G&eacute;nero</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo G&eacute;nero</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<GeneroController>(x => x.New(), "+ Crear Género") %></span>
+            <span><%=Html.ActionLink<GeneroController>(x => x.New(), "+ Nuevo Género")%></span>
         </div>
     </div>
 </asp:Content>

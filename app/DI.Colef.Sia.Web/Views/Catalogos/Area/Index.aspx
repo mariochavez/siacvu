@@ -14,10 +14,10 @@
         <h3>Agregar Nueva &Aacute;rea</h3>
         <p>
             Puede agregar una nueva &Aacute;rea dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Aacute;rea</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva &Aacute;rea</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<AreaController>(x => x.New(), "+ Crear Área")%></span>
+            <span><%=Html.ActionLink<AreaController>(x => x.New(), "+ Nueva Área")%></span>
         </div>
     </div>
 </asp:Content>

@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo de Actividad</h3>
         <p>
             Puede agregar un nuevo Tipo de Actividad dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Actividad</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Actividad</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoActividadController>(x => x.New(), "+ Crear Tipo de Actividad") %></span>
+            <span><%=Html.ActionLink<TipoActividadController>(x => x.New(), "+ Nuevo Tipo de Actividad")%></span>
         </div>
     </div>
 </asp:Content>

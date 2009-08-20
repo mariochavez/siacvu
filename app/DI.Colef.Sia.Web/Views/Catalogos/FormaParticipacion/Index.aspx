@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Forma de Participaci&oacute;n</h3>
         <p>
             Puede agregar una nueva Forma de Participaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Forma de Participaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Forma de Participaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<FormaParticipacionController>(x => x.New(), "+ Crear Forma Participación") %></span>
+            <span><%=Html.ActionLink<FormaParticipacionController>(x => x.New(), "+ Nueva Forma Participación")%></span>
         </div>
     </div>
 </asp:Content>

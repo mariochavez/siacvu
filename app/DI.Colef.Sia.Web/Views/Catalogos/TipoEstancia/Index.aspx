@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo de Estancia</h3>
         <p>
             Puede agregar un nuevo Tipo de Estancia dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Estancia</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Estancia</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoEstanciaController>(x => x.New(), "+ Crear Tipo de Estancia") %></span>
+            <span><%=Html.ActionLink<TipoEstanciaController>(x => x.New(), "+ Nuevo Tipo de Estancia")%></span>
         </div>
     </div>
 </asp:Content>

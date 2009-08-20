@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Sector</h3>
         <p>
             Puede agregar un nuevo Sector dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Sector</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Sector</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<SectorController>(x => x.New(), "+ Crear Sector") %></span>
+            <span><%=Html.ActionLink<SectorController>(x => x.New(), "+ Nuevo Sector")%></span>
         </div>
     </div>
 </asp:Content>

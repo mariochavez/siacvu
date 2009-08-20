@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Pa&iacute;s</h3>
         <p>
             Puede agregar un nuevo Pa&iacute;s dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Pa&iacute;s</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Pa&iacute;s</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<PaisController>(x => x.New(), "+ Crear País") %></span>
+            <span><%=Html.ActionLink<PaisController>(x => x.New(), "+ Nuevo País")%></span>
         </div>
     </div>
 </asp:Content>

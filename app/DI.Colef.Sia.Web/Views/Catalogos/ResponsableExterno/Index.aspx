@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Responsable Externo</h3>
         <p>
             Puede agregar un nuevo Responsable Externo dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Responsable Externo</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Responsable Externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ResponsableExternoController>(x => x.New(), "+ Crear Responsable Externo") %></span>
+            <span><%=Html.ActionLink<ResponsableExternoController>(x => x.New(), "+ Nuevo Responsable Externo")%></span>
         </div>
     </div>
 </asp:Content>

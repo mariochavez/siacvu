@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Nivel</h3>
         <p>
             Puede agregar un nuevo Nivel dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Nivel</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Nivel</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<NivelController>(x => x.New(), "+ Crear Nivel") %></span>
+            <span><%=Html.ActionLink<NivelController>(x => x.New(), "+ Nuevo Nivel")%></span>
         </div>
     </div>
 </asp:Content>

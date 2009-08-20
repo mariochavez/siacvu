@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Departamento</h3>
         <p>
             Puede agregar un nuevo Departamento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Departamento</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Departamento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DepartamentoController>(x => x.New(), "+ Crear Departamento") %></span>
+            <span><%=Html.ActionLink<DepartamentoController>(x => x.New(), "+ Nuevo Departamento")%></span>
         </div>
     </div>
 </asp:Content>

@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Categor&iacute;a</h3>
         <p>
             Puede agregar una nueva Categor&iacute;a dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Categor&iacute;a</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Categor&iacute;a</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CategoriaController>(x => x.New(), "+ Crear Categoría") %></span>
+            <span><%=Html.ActionLink<CategoriaController>(x => x.New(), "+ Nueva Categoría")%></span>
         </div>
     </div>
 </asp:Content>

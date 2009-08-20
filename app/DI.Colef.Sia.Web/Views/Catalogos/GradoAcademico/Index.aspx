@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Grado Acad&eacute;mico</h3>
         <p>
             Puede agregar un nuevo Grado Acad&eacute;mico dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Grado Acad&eacute;mico</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Grado Acad&eacute;mico</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<GradoAcademicoController>(x => x.New(), "+ Crear Grado Académico") %></span>
+            <span><%=Html.ActionLink<GradoAcademicoController>(x => x.New(), "+ Nuevo Grado Académico")%></span>
         </div>
     </div>
 </asp:Content>

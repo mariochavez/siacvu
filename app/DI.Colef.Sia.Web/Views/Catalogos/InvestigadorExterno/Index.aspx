@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Investigador Externo</h3>
         <p>
             Puede agregar un nuevo Investigador Externo dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Investigador Externo</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Investigador Externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<InvestigadorExternoController>(x => x.New(), "+ Crear Investigador Externo") %></span>
+            <span><%=Html.ActionLink<InvestigadorExternoController>(x => x.New(), "+ Nuevo Investigador Externo")%></span>
         </div>
     </div>
 </asp:Content>

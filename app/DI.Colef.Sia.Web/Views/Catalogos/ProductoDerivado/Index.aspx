@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Producto Derivado</h3>
         <p>
             Puede agregar un nuevo Producto Derivado dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Producto Derivado</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Producto Derivado</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ProductoDerivadoController>(x => x.New(), "+ Crear Producto Derivado") %></span>
+            <span><%=Html.ActionLink<ProductoDerivadoController>(x => x.New(), "+ Nuevo Producto Derivado")%></span>
         </div>
     </div>
 </asp:Content>

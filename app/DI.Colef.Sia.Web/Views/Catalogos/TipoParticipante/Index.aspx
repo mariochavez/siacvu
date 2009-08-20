@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo de Participante</h3>
         <p>
             Puede agregar un nuevo Tipo de Participante dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Participante</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Participante</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoParticipanteController>(x => x.New(), "+ Crear Tipo de Participante") %></span>
+            <span><%=Html.ActionLink<TipoParticipanteController>(x => x.New(), "+ Nuevo Tipo de Participante")%></span>
         </div>
     </div>
 </asp:Content>
