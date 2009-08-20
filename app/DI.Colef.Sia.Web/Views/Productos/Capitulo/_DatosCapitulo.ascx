@@ -8,9 +8,10 @@
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
 <p>
-    <label>Nombre del Cap&iacute;tulo</label>
-    <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("NombreCapitulo")%>
+    <label>Idioma al que se tradujo</label>
+    <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Idioma") %>
 </p>
 <p>
     <label>Fecha de Aceptaci&oacute;n</label>
@@ -41,12 +42,6 @@
     <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
-</p>
-<p>
-    <label>Idioma al que se tradujo</label>
-    <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Idioma") %>
 </p>
 <p>
     <label>Proyecto de Referencia</label>
