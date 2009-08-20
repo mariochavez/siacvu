@@ -88,14 +88,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public Search[] SearchMovilidadAcademica(string value)
         {
             var criteria = DetachedCriteria.For(typeof(MovilidadAcademica))
-                .CreateAlias("LineaTematica", "lt", JoinType.InnerJoin)
-                .SetFetchMode("LineaTematica", FetchMode.Eager)
+                .CreateAlias("Institucion", "i", JoinType.InnerJoin)
+                .SetFetchMode("Institucion", FetchMode.Eager)
                 .SetMaxResults(20)
                 .SetProjection(Projections.ProjectionList()
-                                   .Add(Projections.Property("lt.Nombre"), "Nombre")
+                                   .Add(Projections.Property("i.Nombre"), "Nombre")
                                    .Add(Projections.Property("Id"), "Id")
                 )
-                .AddOrder(Order.Asc("lt.Nombre"))
+                .AddOrder(Order.Asc("i.Nombre"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(MovilidadAcademicaDTO)));
 
             var list = criteria.GetExecutableCriteria(Session).List<MovilidadAcademicaDTO>();

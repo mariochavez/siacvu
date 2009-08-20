@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido creada", movilidadAcademica.LineaTematica.Nombre));
+            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
         }
 
         [Transaction]
