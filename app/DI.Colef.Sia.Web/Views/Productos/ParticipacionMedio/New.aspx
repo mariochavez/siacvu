@@ -36,6 +36,9 @@
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
                 <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
+                
+                <h4>Opcionales</h4>
+			    <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar")%>
