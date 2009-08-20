@@ -37,11 +37,11 @@
                 
                 <% Html.RenderPartial("_DatosResena", Model.Form); %>
                 
-                <h4>Coautores Externos</h4>
-				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-                
                 <h4>Coautores Internos</h4>
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+                
+                <h4>Coautores Externos</h4>
+				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 
                 <h4>Referencia Bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
