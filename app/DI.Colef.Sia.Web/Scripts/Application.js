@@ -12,10 +12,29 @@
 
     SearchAutoComplete.setup();
     paisSetDefaultValue();
+    ArticuloEnableSelect.setup();
+}
+
+var ArticuloEnableSelect = {
+    setup: function() {
+        $('#TipoArticulo').live("change", ArticuloEnableSelect.enableLanguage);
+        $('#forma').unload(ArticuloEnableSelect.enableLanguage());
+    },
+    enableLanguage: function() {
+
+        var text = $('#TipoArticulo :selected').text();
+
+        if (text != 'Artículo traducido a otro idioma')
+            $('#Idioma').attr('disabled', true);
+        else
+            $('#Idioma').attr('disabled', false);
+
+        return false;
+    }
 }
 
 function paisSetDefaultValue() {
-    $("#Pais option[value='1']").attr('selected', true);
+    $("#Pais option[text='México']").attr('selected', true);
 }
 
 function setupSublistRows() {
