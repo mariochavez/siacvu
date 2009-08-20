@@ -27,11 +27,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ProyectoMovilidadAcademicas.Add(proyectoMovilidadAcademica);
         }
 
-
         public virtual TipoEstancia TipoEstancia { get; set; }
 
         public virtual TipoInstitucion TipoInstitucion { get; set; }
 
+        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
         public virtual DateTime FechaInicial { get; set; }

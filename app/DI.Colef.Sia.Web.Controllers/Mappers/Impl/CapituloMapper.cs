@@ -63,18 +63,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
-
-            if(message.CoautorExternoCapitulo != null)
-                model.AddCoautorExterno(coautorExternoCapituloMapper.Map(message.CoautorExternoCapitulo));
-
-		    if(message.CoautorInternoCapitulo != null)
-                model.AddCoautorInterno(coautorInternoCapituloMapper.Map(message.CoautorInternoCapitulo));
-
-		    if(message.ResponsableInternoCapitulo != null)
-                model.AddResponsableInterno(responsableInternoCapituloMapper.Map(message.ResponsableInternoCapitulo));
-
-		    if(message.ResponsableExternoCapitulo != null)
-                model.AddResponsableExterno(responsableExternoCapituloMapper.Map(message.ResponsableExternoCapitulo));
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)
@@ -85,10 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
-                //model.CoautorExternoCapitulos[0].CreadorPor = usuario;
-                //model.CoautorInternoCapitulos[0].CreadorPor = usuario;
-                //model.ResponsableExternoCapitulos[0].CreadorPor = usuario;
-                //model.ResponsableInternoCapitulos[0].CreadorPor = usuario;
             }
 
             model.ModificadoPor = usuario;

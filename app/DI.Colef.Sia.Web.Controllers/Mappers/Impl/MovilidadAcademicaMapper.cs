@@ -41,13 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);
-
-            if (message.TipoActividadMovilidadAcademica != null)
-                model.AddTipoActividad(tipoActividadMovilidadAcademicaMapper.Map(message.TipoActividadMovilidadAcademica));
-            if (message.ProductoDerivadoMovilidadAcademica != null)
-                model.AddProductoDerivado(productoDerivadoMovilidadAcademicaMapper.Map(message.ProductoDerivadoMovilidadAcademica));
-            if (message.ProyectoMovilidadAcademica != null)
-                model.AddProyecto(proyectoMovilidadAcademicaMapper.Map(message.ProyectoMovilidadAcademica));
         }
 
         public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario, Investigador investigador)

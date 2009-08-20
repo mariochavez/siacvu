@@ -61,12 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
-
-            //if (message.CoautorExternoArticulo != null && message.CoautorExternoArticulo.Id > 0)
-            //     model.AddCoautorExterno(coautorExternoArticuloMapper.Map(message.CoautorExternoArticulo));
-
-            //if (message.CoautorInternoArticulo != null && message.CoautorInternoArticulo.Id > 0)
-            //     model.AddCoautorInterno(coautorInternoArticuloMapper.Map(message.CoautorInternoArticulo));
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
