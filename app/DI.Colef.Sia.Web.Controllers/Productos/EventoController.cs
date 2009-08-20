@@ -237,7 +237,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
         {
-            CoautorInternoEventoForm coautorInternoEventoForm;
             var coautorInternoEvento = coautorInternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoEvento.ValidationResults(), true, String.Empty);
@@ -252,21 +251,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (eventoId != 0)
             {
                 var evento = eventoService.GetEventoById(eventoId);
-
-                foreach (var coautorInterno in evento.CoautorInternoEventos)
-                {
-                    if (coautorInterno.Investigador.Id == coautorInternoEvento.Investigador.Id)
-                    {
-                        coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
-                        return Rjs("AddCoautorInterno", coautorInternoEventoForm);
-                    }
-                    
-                    evento.AddCoautorInterno(coautorInternoEvento);
-                    eventoService.SaveEvento(evento);
-                }
+                evento.AddCoautorInterno(coautorInternoEvento);
+                eventoService.SaveEvento(evento);
             }
 
-            coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
+            var coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
 
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
         }

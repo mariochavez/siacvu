@@ -6,7 +6,7 @@
 	
 	<% if (Model.ProductoDerivadoMovilidadAcademicas != null && Model.ProductoDerivadoMovilidadAcademicas.Length > 0){%>
 	    <% foreach(var productoDerivado in Model.ProductoDerivadoMovilidadAcademicas){ %>
-            <div class="sublista" id="productoderivado_<%=Html.Encode(productoDerivado.Id != 0 ? productoDerivado.Id : productoDerivado.ProductoDerivadoId)%>">
+            <div class="sublista" id="productoderivado_<%=Html.Encode(productoDerivado.ProductoDerivadoId)%>">
     	        <h6>
     	            <%=Html.Encode(productoDerivado.ProductoDerivadoNombre)%>
     	            <% if(Model.Id == 0) { %>

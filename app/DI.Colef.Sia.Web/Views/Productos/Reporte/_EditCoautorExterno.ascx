@@ -6,7 +6,7 @@
 
     <% if (Model.CoautorExternoReportes != null && Model.CoautorExternoReportes.Length > 0) { %>
         <% foreach (var coautorExterno in Model.CoautorExternoReportes){ %>
-	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.Id != 0 ? coautorExterno.Id : coautorExterno.InvestigadorExternoId) %>">
+	        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.InvestigadorExternoId) %>">
 	            <h6>
 	                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
 	                <% if(Model.Id == 0) { %>

@@ -5,7 +5,7 @@
 	<h5>Tipo Actividad</h5>
 	<% if (Model.TipoActividadMovilidadAcademicas != null && Model.TipoActividadMovilidadAcademicas.Length > 0){%>
 	    <% foreach (var tipoActividad in Model.TipoActividadMovilidadAcademicas){ %>
-            <div class="sublista" id="tipoactividad_<%=Html.Encode(tipoActividad.Id != 0 ? tipoActividad.Id : tipoActividad.TipoActividadId) %>">            
+            <div class="sublista" id="tipoactividad_<%=Html.Encode(tipoActividad.TipoActividadId) %>">            
     	        <h6>
     	            <%=Html.Encode(tipoActividad.TipoActividadNombre)%>
     	            <% if(Model.Id == 0) { %>

@@ -237,7 +237,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddTipoActividad([Bind(Prefix = "TipoActividadMovilidadAcademica")]TipoActividadMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
-            TipoActividadMovilidadAcademicaForm tipoActividadMovilidadAcademicaForm;
             var tipoActividadMovilidadAcademica = tipoActividadMovilidadAcademicaMapper.Map(form);
 
             ModelState.AddModelErrors(tipoActividadMovilidadAcademica.ValidationResults(), true, String.Empty);
@@ -252,21 +251,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (movilidadAcademicaId != 0)
             {
                 var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(movilidadAcademicaId);
-                foreach (var tipoActividad in movilidadAcademica.TipoActividadMovilidadAcademicas)
-                {
-                    if (tipoActividad.TipoActividad.Id == tipoActividadMovilidadAcademica.TipoActividad.Id)
-                    {
-                        tipoActividadMovilidadAcademicaForm = tipoActividadMovilidadAcademicaMapper.Map(tipoActividadMovilidadAcademica);
-
-                        return Rjs("AddTipoActividad", tipoActividadMovilidadAcademicaForm);
-                    }
-                }
-
                 movilidadAcademica.AddTipoActividad(tipoActividadMovilidadAcademica);
                 movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
             }
 
-            tipoActividadMovilidadAcademicaForm = tipoActividadMovilidadAcademicaMapper.Map(tipoActividadMovilidadAcademica);
+            var tipoActividadMovilidadAcademicaForm = tipoActividadMovilidadAcademicaMapper.Map(tipoActividadMovilidadAcademica);
 
             return Rjs("AddTipoActividad", tipoActividadMovilidadAcademicaForm);
         }
@@ -290,7 +279,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProductoDerivado([Bind(Prefix = "ProductoDerivadoMovilidadAcademica")]ProductoDerivadoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
-            ProductoDerivadoMovilidadAcademicaForm productoDerivadoMovilidadAcademicaForm;
             var productoDerivadoMovilidadAcademica = productoDerivadoMovilidadAcademicaMapper.Map(form);
 
             ModelState.AddModelErrors(productoDerivadoMovilidadAcademica.ValidationResults(), true, String.Empty);
@@ -305,21 +293,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (movilidadAcademicaId != 0)
             {
                 var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(movilidadAcademicaId);
-                foreach (var productoDerivado in movilidadAcademica.ProductoDerivadoMovilidadAcademicas)
-                {
-                    if (productoDerivado.ProductoDerivado.Id == productoDerivadoMovilidadAcademica.ProductoDerivado.Id)
-                    {
-                        productoDerivadoMovilidadAcademicaForm = productoDerivadoMovilidadAcademicaMapper.Map(productoDerivadoMovilidadAcademica);
-
-                        return Rjs("AddProductoDerivado", productoDerivadoMovilidadAcademicaForm);
-                    }
-                }
-
                 movilidadAcademica.AddProductoDerivado(productoDerivadoMovilidadAcademica);
                 movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
             }
 
-            productoDerivadoMovilidadAcademicaForm = productoDerivadoMovilidadAcademicaMapper.Map(productoDerivadoMovilidadAcademica);
+            var productoDerivadoMovilidadAcademicaForm = productoDerivadoMovilidadAcademicaMapper.Map(productoDerivadoMovilidadAcademica);
 
             return Rjs("AddProductoDerivado", productoDerivadoMovilidadAcademicaForm);
         }
@@ -343,7 +321,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProyecto([Bind(Prefix = "ProyectoMovilidadAcademica")]ProyectoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
-            ProyectoMovilidadAcademicaForm proyectoMovilidadAcademicaForm;
             var proyectoMovilidadAcademica = proyectoMovilidadAcademicaMapper.Map(form);
 
             ModelState.AddModelErrors(proyectoMovilidadAcademica.ValidationResults(), true, String.Empty);
@@ -358,21 +335,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (movilidadAcademicaId != 0)
             {
                 var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(movilidadAcademicaId);
-                foreach (var proyecto in movilidadAcademica.ProyectoMovilidadAcademicas)
-                {
-                    if (proyecto.Proyecto.Id == proyectoMovilidadAcademica.Proyecto.Id)
-                    {
-                        proyectoMovilidadAcademicaForm = proyectoMovilidadAcademicaMapper.Map(proyectoMovilidadAcademica);
-
-                        return Rjs("AddProyecto", proyectoMovilidadAcademicaForm);
-                    }
-                }
-
                 movilidadAcademica.AddProyecto(proyectoMovilidadAcademica);
                 movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
             }
 
-            proyectoMovilidadAcademicaForm = proyectoMovilidadAcademicaMapper.Map(proyectoMovilidadAcademica);
+            var proyectoMovilidadAcademicaForm = proyectoMovilidadAcademicaMapper.Map(proyectoMovilidadAcademica);
 
             return Rjs("AddProyecto", proyectoMovilidadAcademicaForm);
         }

@@ -252,7 +252,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoLibro")]CoautorExternoLibroForm form, int libroId)
         {
-            CoautorExternoLibroForm coautorExternoLibroForm;
             var coautorExternoLibro = coautorExternoLibroMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoLibro.ValidationResults(), true, String.Empty);
@@ -267,21 +266,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libroId != 0)
             {
                 var libro = libroService.GetLibroById(libroId);
-                foreach (var coautorExterno in libro.CoautorExternoLibros)
-                {
-                    if (coautorExterno.InvestigadorExterno.Id == coautorExternoLibro.InvestigadorExterno.Id)
-                    {
-                        coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
-
-                        return Rjs("AddCoautorExterno", coautorExternoLibroForm);
-                    }
-                }
-
                 libro.AddCoautorExterno(coautorExternoLibro);
                 libroService.SaveLibro(libro);
             }
 
-            coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
+            var coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
@@ -304,7 +293,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoLibro")]CoautorInternoLibroForm form, int libroId)
         {
-            CoautorInternoLibroForm coautorInternoLibroForm;
             var coautorInternoLibro = coautorInternoLibroMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoLibro.ValidationResults(), true, String.Empty);
@@ -319,21 +307,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libroId != 0)
             {
                 var libro = libroService.GetLibroById(libroId);
-                foreach (var coautorInterno in libro.CoautorInternoLibros)
-                {
-                    if (coautorInterno.Investigador.Id == coautorInternoLibro.Investigador.Id)
-                    {
-                        coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
-
-                        return Rjs("AddCoautorInterno", coautorInternoLibroForm);
-                    }
-                }
-
                 libro.AddCoautorInterno(coautorInternoLibro);
                 libroService.SaveLibro(libro);
             }
 
-            coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
+            var coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
         }

@@ -231,7 +231,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReporte")] CoautorInternoReporteForm form,
                                               int reporteId)
         {
-            CoautorInternoReporteForm coautorInternoReporteForm;
             var coautorInternoReporte = coautorInternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoReporte.ValidationResults(), true, String.Empty);
@@ -246,21 +245,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (reporteId != 0)
             {
                 var reporte = reporteService.GetReporteById(reporteId);
-                foreach (var coautorInterno in reporte.CoautorInternoReportes)
-                {
-                    if (coautorInterno.Investigador.Id == coautorInternoReporte.Investigador.Id)
-                    {
-                        coautorInternoReporteForm = coautorInternoReporteMapper.Map(coautorInternoReporte);
-
-                        return Rjs("AddCoautorInterno", coautorInternoReporteForm);   
-                    }
-                }
-
                 reporte.AddCoautorInterno(coautorInternoReporte);
                 reporteService.SaveReporte(reporte);
             }
 
-            coautorInternoReporteForm = coautorInternoReporteMapper.Map(coautorInternoReporte);
+            var coautorInternoReporteForm = coautorInternoReporteMapper.Map(coautorInternoReporte);
 
             return Rjs("AddCoautorInterno", coautorInternoReporteForm);
         }
@@ -285,7 +274,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReporte")] CoautorExternoReporteForm form,
                                               int reporteId)
         {
-            CoautorExternoReporteForm coautorExternoReporteForm;
             var coautorExternoReporte = coautorExternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoReporte.ValidationResults(), true, String.Empty);
@@ -300,21 +288,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (reporteId != 0)
             {
                 var reporte = reporteService.GetReporteById(reporteId);
-                foreach (var coautorExterno in reporte.CoautorExternoReportes)
-                {
-                    if (coautorExterno.InvestigadorExterno.Id == coautorExternoReporte.InvestigadorExterno.Id)
-                    {
-                        coautorExternoReporteForm = coautorExternoReporteMapper.Map(coautorExternoReporte);
-
-                        return Rjs("AddCoautorExterno", coautorExternoReporteForm);
-                    }
-                }
-
                 reporte.AddCoautorExterno(coautorExternoReporte);
                 reporteService.SaveReporte(reporte);
             }
 
-            coautorExternoReporteForm = coautorExternoReporteMapper.Map(coautorExternoReporte);
+            var coautorExternoReporteForm = coautorExternoReporteMapper.Map(coautorExternoReporte);
 
             return Rjs("AddCoautorExterno", coautorExternoReporteForm);
         }
