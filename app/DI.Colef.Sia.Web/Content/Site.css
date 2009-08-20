@@ -86,67 +86,82 @@
 	color: #fff;
 }
 
+/*---<menu mario>---*/
+
 #menu li ul {
-  position: absolute;
-  top: 1;
-  padding-top: 20px;
-  padding-left: 0;
-  margin-left: 180px;
-  width: 150px;
-  line-height: 16px;
-  background-color: #252525;
-  color: #0395cc;
-  display: none;
+	position: absolute;
+	width: 150px;
+	margin: 0;
+	padding: 15px 0 0 0;
+  	background: #252525 url(./Images/menu-triangulo.gif) 50% 1% no-repeat;
+  	display: none;
 }
 
-#menu li:hover ul { display: block; }
+#menu li ul#uno {
+	margin: 0;
+}
+
+#menu li ul#tres {
+	margin: 0 0 0 183px;
+}
+
+#menu li:hover ul {
+	display: block;
+}
 
 #menu li ul li {
-  display: block;
-  margin: 5px 20px;
-  padding: 5px 0px;
-  border-top: dotted 1px #606060;
-  list-style-type: none;
+  	display: block;
+  	margin: 0 10px;
+  	padding: 5px 0px;
+  	border-top: 1px dotted #353535;
+  	list-style-type: none;
+	font-size: 11pt;
 }
 
-#menu li ul li:first-child { border-top: none; }
+#menu li ul li:first-child {
+	border-top: none;
+}
 
 #menu li ul li a {
-  display: block;
-  color: #ba5c2b;
+  	display: block;
+  	color: #ba5c2b;
 }
 
-#menu li ul li a:hover { color: #ffffff; }
+#menu li ul li a:hover {
+ 	color: #fff;
+}
 
 #menu .last {
-  background: transparent none repeat scroll 0% 0%;
-  margin: 0px;
-  padding: 0px;
-  border: none;
-  position: relative;
-  border: none;
-  height: 0px;
+  	background: transparent none repeat scroll 0% 0%;
+  	margin: 0px;
+  	padding: 0px;
+  	border: none;
+  	position: relative;
+  	border: none;
+  	height: 0px;
 }
 
 #menu .corner_left {
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  	position: absolute;
+  	left: 0px;
+  	top: 0px;
 }
 
 #menu .corner_right {
-  position: absolute;
-  left: 132px;
-  top: 0px;
+  	position: absolute;
+  	left: 132px;
+  	top: 0px;
 }
 
 #menu .middle {
-  position: absolute;
-  left: 18px;
-  height: 20px;
-  width: 115px;
-  top: 0px;
+  	position: absolute;
+  	left: 18px;
+  	height: 20px;
+  	width: 115px;
+  	top: 0px;
 }
+
+/*---<end menu mario>---*/
 
 #cuerpo {
 	width: 980px;	
@@ -300,7 +315,7 @@
 	font-size: 11pt;
 }
 
-input.editabusqueda {
+a.editabusqueda {
 	margin: 0 0 0 10px;
 	padding: 5px 4px 5px 6px;
 	font-weight: bold;
@@ -309,7 +324,8 @@ input.editabusqueda {
 	background: #BA5C2B url(./Images/boton-bg.gif) 0 bottom repeat-x;
 	color: #fff;
 	cursor: pointer;
-	font-size: 8pt;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 .editabusqueda {
@@ -352,7 +368,7 @@ input.editabusqueda {
 
 .elementodescripcion {
 	float: left;
-	width: 450px;
+	width: 425px;
 	margin: 0 20px 0 0;
 }
 
@@ -376,8 +392,19 @@ input.editabusqueda {
 	color: #999;
 }
 
+.ajax-loading, .no-ajax-loading {
+	float: left;
+	margin: 26px 5px 0 0;
+    width: 16px;
+    height: 16px;	
+}
+
+.ajax-loading {
+	background: transparent url(./Images/ajax-loader.gif) 0 0 no-repeat;
+}
+
 .elementobotones {
-	/*float: left;*/
+	float: left;
 	margin: 6px 0 0 0;
 }
 
@@ -523,11 +550,7 @@ input.editabusqueda {
 	display: block;
 }
 
-#forma select.input-validation-error {
-	border: 1px solid #FF0000;
-}
-
-#forma .input-validation-error {
+#forma .input-validation-error, #forma .select.input-validation-error {
 	border: 1px solid #FF0000;
 }
 
@@ -558,6 +581,10 @@ input.editabusqueda {
 	background: transparent url(./Images/caja-busqueda-bg.gif) 0 0 repeat-x;
 }
 
+.minilistaboton p {
+	color: #555;
+}
+
 .minilistaboton span {
 	margin: 0 0 0 10px;
 	padding: 5px 9px 5px 10px;
@@ -578,6 +605,12 @@ input.editabusqueda {
 	-moz-border-radius: 10px;	
 }
 
+a.minilistacancelar {
+	margin: 0 0 0 9px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #BA5C2B;
+}
 
 .submit input {
 	margin: 0 0 0 160px;
@@ -687,7 +720,7 @@ input.editabusqueda {
 }
 
 /* ***************************************************************************
-    OLD STYLES
+    Clear Field
 *************************************************************************** */
 .inputSearchField {
   float: left;
@@ -702,333 +735,6 @@ input.editabusqueda {
 
 .clearFieldActive { color: #000000; }
 
-/*
-.message {
-	border: 1px solid rgb(162, 212, 153);
-	background-color: rgb(188, 223, 179);
-	color: rgb(54, 109, 22);
-	padding: 5px 0px 5px 20px;
-	font-size: 12px;
-	font-weight: bold;
-	margin: 2px;
-}
-
-.errormessage {
-	border: 1px solid rgb(208, 158, 158);
-	background-color: rgb(219, 183, 183);
-	color: rgb(172, 40, 36);
-	padding: 5px 0px 5px 20px;
-	font-size: 12px;
-	font-weight: bold;
-	margin: 2px
-}
-*/
-
-/* BUTTONS  
-----------------------------------------------------------*/
-/*
-.btn_container {
-	overflow: hidden;
-}
-
-.btn_container a {
-	text-decoration: none;
-	color: rgb(102, 102, 102);
-}
-
-.floatr {
-	float: right;
-}
-
-.floatl {
-	float: left;
-}
-
-.btn {
-	float: left;
-	margin-right: 5px;
-	padding-left: 3px;
-}
-
-.btn a {
-	border: 0px none;
-	color: rgb(17, 17, 17);
-	font-family: 'Nimbus Sans L', Helvetica, Arial, Verdana, sans-serif;
-	text-decoration: none;
-	width: auto;
-}
-
-.btn input {
-	border: 0px none;
-	margin: 0px;
-	overflow: visible;
-	border-color: transparent;
-	cursor: pointer;	
-}
-
-.btn_small_white {
-	background: transparent url(./Images/small-white-button.png) no-repeat scroll left top;
-	height: 20px;
-	font-family: Helvetica, Arial, 'Lucida Grande', Verdana, sans-serif;
-	font-size: 10px;
-}
-
-.btn_small_white a {
-	background: transparent url(./Images/small-white-button.png) no-repeat scroll right top;
-	line-height: 20px;
-	padding: 0px 10px 2px 7px;
-	display: block;
-	width: auto;
-	border: 0px none;
-}
-
-.btn_small_brown {
-	background: transparent url(./Images/small-brown-button.png) no-repeat scroll left top;
-	height: 20px;
-	font-family: Helvetica, Arial, 'Lucida Grande', Verdana, sans-serif;
-	font-size: 10px;
-}
-
-.btn_small_brown a {
-	background: transparent url(./Images/small-brown-button.png) no-repeat scroll right top;
-	line-height: 20px;
-	padding: 0px 10px 2px 7px;
-	display: block;
-	width: auto;
-	border: 0px none;
-	color: rgb(255, 255, 255);
-}
-
-.btn_small_brown input {
-	background: transparent url(./Images/small-brown-button.png) no-repeat scroll right top;
-	line-height: 0em;
-	padding: 0px 10px 5px 7px;
-    border: 0px none;
-	color: rgb(255, 255, 255);
-}
-
-.btn_medium_brown {
-	background: transparent url(./Images/medium-brown-button.png) no-repeat scroll left top;
-	height: 24px;
-	font-size: 12px;
-	font-weight: bold;
-}
-
-.btn_medium_brown a {
-	background: transparent url(./Images/medium-brown-button.png) no-repeat scroll right top;
-	line-height: 24px;
-	padding: 0px 10px 2px 7px;
-	display: block;
-	width: auto;
-	border: 0px none;
-	text-decoration: none;
-	color: rgb(255, 255, 255);
-}
-
-.btn_container_footer {
-	padding-left: 125px;
-	margin-top: 15px;
-	overflow: hidden;
-}
-
-.btn_normal_brown {
-	background: url(./Images/normal-brown-button.png) no-repeat scroll transparent;
-	height: 30px;
-	margin-right: 10px;
-	padding-left: 10px;
-}
-
-.btn_normal_brown input {
-	background: url(./Images/normal-brown-button.png) no-repeat scroll right top;
-	color: #fff;
-	padding: 5px 15px 5px 5px;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 29px;
-}
-
-.btn_normal_white {
-	background: url(./Images/normal-white-button.png) no-repeat scroll transparent;
-	height: 30px;
-	margin-right: 10px;
-	padding-left: 10px;
-}
-
-.btn_normal_white a {
-	background: url(./Images/normal-white-button.png) no-repeat scroll right top;
-	color: rgb(102, 102, 102);
-	display: block;
-	font-size: 14px;
-	line-height: 29px;
-	padding: 0px 15px 2px 5px;
-}
-*/
-
-/* TABLES 
-----------------------------------------------------------*/
-/*
-.table_title 
-{
-    border: 1px solid rgb(185, 185, 185);
-	background-color: #dddddd;
-	font-size: 14px;
-	font-weight: bold;
-	height: 25px;
-	padding: 10px 0px 0px 25px;
-}
-
-table {
-	border-collapse: collapse;
-} 
-
-table td {
-	vertical-align: top;
-	display: table-cell;
-	font-size: 14px;
-}
-
-table td.button {
-	padding: 10px 3px 0px 3px;
-	border-bottom: 1px solid rgb(213, 213, 213);
-}
-
-table td.single {
-	padding: 10px 10px 8px 10px;
-	font-weight: bold;
-	border-bottom: 1px solid rgb(213, 213, 213);
-}
-
-.meta_info {
-	color: rgb(136, 136, 136);
-	font-size: 11px;
-	font-weight: normal;
-	line-height: 1.4em;
-	margin-bottom: 1px;
-}
-
-.meta_more {
-	color: rgb(136, 136, 136);
-	font-size: 12px;
-	font-weight: normal;
-	line-height: 1.4em;
-	margin-bottom: 1px;
-}
-
-.rowHighlight {
-    background-color: #eeeeee;
-}
-
-.helper_message {
-	color: rgb(102, 102, 102);
-	font-size: 11px;
-	line-height: 15px;
-}
-
-.field-validation-error 
-{
-    display: block;
-    color: rgb(172, 40, 36);
-}   
-
-table.form {
-	border-collapse: collapse;
-	margin: 0px 0px 5px 0px;
-	padding: 0px;
-	width: 100%;
-	border-color: gray;
-	display: table;
-}
-
-table.form th 
-{
-    border-bottom: 1px solid rgb(221, 221, 221);
-    background-color: #dddddd;
-	font-size: 14px;
-	font-weight: bold;
-	height: 25px;
-	padding: 10px 0px 0px 25px;
-}
-
-table.form th.subform 
-{
-    border-bottom: 1px solid rgb(221, 221, 221);
-    background-color: #eeeeee;
-	font-size: 10px;
-	font-weight: bold;
-	height: 10px;
-	padding: 0px 0px 0px 10px;
-}
-
-table.form td.subform {
-	border-bottom: 1px solid rgb(221, 221, 221);
-	font-size: 12px;
-	padding: 5px 5px 5px 5px;
-	line-height: 2em;
-	text-align: left;
-	margin: 0px;
-}
-
-table.form td {
-	border-bottom: 1px solid rgb(221, 221, 221);
-	font-size: 12px;
-	padding: 10px 5px 10px 0px;
-	line-height: 2em;
-	text-align: left;
-	margin: 0px;
-}
-
-table.form td.label {
-	color: rgb(102, 102, 102);
-	vertical-align: top;
-	width: 120px;
-}
-
-table.form td.required {
-	font-weight: bold;
-}
-
-table.form td.field input {
-	font-size: 12px;
-	width: auto;
-	border: 1px solid rgb(201, 201, 201);
-}
-
-table.form td.field input.big {
-	font-size: 14px;
-	font-weight: bold;
-	padding: 3px;
-	width: 80%;
-}
-
-table.form td.field input.input-validation-error
-{
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
-}
-
-table.form td.field select.input-validation-error
-{
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
-}
-
-table.form td.field textarea.input-validation-error
-{
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
-}
-
-table.form td.field select  
-{
-    width: 300px;
-    border: 1px solid rgb(201, 201, 201);
-}
-
-table.form td.field textarea  
-{
-    border: 1px solid rgb(201, 201, 201);
-}
-*/
 /* AJAX  
 ----------------------------------------------------------*/
 .ajax-loading

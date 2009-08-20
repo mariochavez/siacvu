@@ -16,13 +16,12 @@ var html = '
        { %>
     <%=Html.Hidden("CapituloId", Model.Id)%>
     <% Html.RenderPartial("_NewResponsableExterno"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Responsable Externo", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
-        </span>
-        
-	        <a href="#" class="cancel" rel="responsableexterno">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Responsable Externo", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="responsableexterno">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

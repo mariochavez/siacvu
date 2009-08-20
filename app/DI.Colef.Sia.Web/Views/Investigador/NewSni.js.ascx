@@ -7,13 +7,12 @@ var html = '
     <% using (Html.BeginForm("AddSni", "Investigador", FormMethod.Post, new { id = "sniform" })) { %>
     <%=Html.Hidden("InvestigadorId", Model.Id) %>
     <% Html.RenderPartial("_NewSni"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar sni", new { rel = "#sniform", @class = "remote", @style = "border: 0px none;" })%>
-        </span>
-        <span class="btn btn_small_white">
-	        <a href="#" class="cancel" rel="sni">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar sni", new { rel = "#sniform", @class = "remote", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="sni">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

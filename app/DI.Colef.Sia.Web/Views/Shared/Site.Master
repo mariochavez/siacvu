@@ -50,7 +50,7 @@
 				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
 				<li>
 				    <a href="#">Productos</a>
-				    <ul>
+				    <ul id="tres">
 				        <li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos") %></li>
 				        <li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos") %></li>
 				        <li><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos") %></li>

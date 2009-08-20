@@ -7,13 +7,12 @@ var html = '
     <% using (Html.BeginForm("AddCategoria", "Investigador", FormMethod.Post, new { id = "categoriaform" })) { %>
     <%=Html.Hidden("InvestigadorId", Model.Id) %>
     <% Html.RenderPartial("_NewCategoria"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Categoria", new { rel = "#categoriaform", @class = "remote", @style = "border: 0px none;" })%>
-        </span>
-        <span class="btn btn_small_white">
-	        <a href="#" class="cancel" rel="categoria">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Categoria", new { rel = "#categoriaform", @class = "remote", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="categoria">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

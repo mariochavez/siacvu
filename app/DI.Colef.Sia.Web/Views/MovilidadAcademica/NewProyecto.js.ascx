@@ -15,13 +15,12 @@ var html = '
     <% using (Html.BeginForm("AddProyecto", "MovilidadAcademica", FormMethod.Post, new { id = "proyectoform" })){ %>
     <%=Html.Hidden("MovilidadAcademicaId", Model.Id) %>
     <% Html.RenderPartial("_NewProyecto"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Proyecto", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
-        </span>
-        <span class="btn btn_small_white">
-	        <a href="#" class="cancel" rel="proyecto">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Proyecto", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="proyecto">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

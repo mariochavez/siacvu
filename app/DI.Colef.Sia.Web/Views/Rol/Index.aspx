@@ -32,7 +32,7 @@
                     <tr class="highlight">
 				        <td class="button" width="46">
 					        <div class="floatr btn_container">
-						        <span class="btn btn_small_white">
+						        <span>
 							        <%=Html.ActionLink<RolController>(x => x.Edit(rol.Id), "Editar") %>
 						        </span>
 					        </div>
@@ -44,11 +44,11 @@
                         <td id="accion_<%=Html.Encode(rol.Id) %>" class="button" width="140">
                             <div class="floatr btn_container">
                             <% if (rol.Activo) { %>
-                                <span class="btn btn_small_white">
+                                <span>
                                     <%=Html.ActionLink("Desactivar", "Deactivate", new { id = rol.Id }, new { @class = "remote put" })%>
                                 </span>
                             <% } else { %>
-                                <span class="btn btn_small_white">
+                                <span>
                                     <%=Html.ActionLink("Activar", "Activate", new { id = rol.Id }, new { @class = "remote put" })%>
                                 </span>
                             <% } %>

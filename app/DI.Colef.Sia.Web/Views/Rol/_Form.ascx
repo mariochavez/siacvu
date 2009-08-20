@@ -20,7 +20,7 @@
         </tr>
     </table>
     
-	<div class="btn_container_footer">
+	<div class="minilistaboton">
 		<span class="btn btn_normal_brown">
 			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
 		</span>

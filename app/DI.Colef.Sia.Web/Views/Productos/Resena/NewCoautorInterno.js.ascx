@@ -15,13 +15,12 @@ var html = '
     <% using (Html.BeginForm("AddCoautorInterno", "Resena", FormMethod.Post, new { id = "coautorinternoform" })){ %>
     <%=Html.Hidden("ResenaId", Model.Id)%>
     <% Html.RenderPartial("_NewCoautorInterno"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Coautor Interno", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
-        </span>
-        
-	        <a href="#" class="cancel" rel="coautorinterno">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Coautor Interno", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorinterno">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

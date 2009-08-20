@@ -162,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected void SetError(string message)
         {
-            TempData["error"] = message;
+            ViewData["error"] = message;
         }
 
         protected ContentResult Rjs(string viewName, ViewDataDictionary viewdata)

@@ -15,13 +15,12 @@ var html = '
     <% using (Html.BeginForm("AddProductoDerivado", "MovilidadAcademica", FormMethod.Post, new { id = "productoderivadoform" })){ %>
     <%=Html.Hidden("MovilidadAcademicaId", Model.Id) %>
     <% Html.RenderPartial("_NewProductoDerivado"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Producto Derivado", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
-        </span>
-        <span class="btn btn_small_white">
-	        <a href="#" class="cancel" rel="productoderivado">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Producto Derivado", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="productoderivado">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';

@@ -15,13 +15,12 @@ var html = '
     <% using (Html.BeginForm("AddCoautorExterno", "Articulo", FormMethod.Post, new { id = "coautorexternoform" })){ %>
     <%=Html.Hidden("ArticuloId", Model.Id) %>
     <% Html.RenderPartial("_NewCoautorExterno"); %>
-    <div class="btn_container_footer">
-        <span class="btn btn_small_brown">
-            <%=Html.SubmitButton("Guardar", "Agregar Coautor Externo", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
-        </span>
-        
-	        <a href="#" class="cancel" rel="coautorexterno">Cancelar</a>
-        </span>
+    <div class="minilistaboton">
+        <p>
+            <span>
+                <%=Html.SubmitButton("Guardar", "Agregar Coautor Externo", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorexterno">Cancelar</a>
+        </p>
     </div>
     <% } %>
 ';
