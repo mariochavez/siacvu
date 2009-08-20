@@ -410,8 +410,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoArticulo,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
