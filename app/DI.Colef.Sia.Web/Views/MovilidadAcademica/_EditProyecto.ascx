@@ -6,7 +6,7 @@
 	
 	<% if (Model.ProyectoMovilidadAcademicas != null && Model.ProyectoMovilidadAcademicas.Length > 0){%>
 	    <% foreach (var proyecto in Model.ProyectoMovilidadAcademicas){ %>
-            <div class="sublista" id="proyecto_<%=Html.Encode(proyecto.Id != 0 ? proyecto.Id : proyecto.ProyectoId) %>">
+            <div class="sublista" id="proyecto_<%=Html.Encode(proyecto.ProyectoId) %>">
     	        <h6>
     	            <%=Html.Encode(proyecto.ProyectoNombre)%>
     	            <% if(Model.Id == 0) { %>

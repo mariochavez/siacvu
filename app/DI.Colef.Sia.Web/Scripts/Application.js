@@ -168,6 +168,19 @@ var RemoteForm = {
 
         var currentLink = $(this);
 
+        var currentCombo = $(formname + ' p select');
+        var handle = $(currentCombo).attr('rel');
+        var value = $(currentCombo).val();
+
+        if (value == null)
+            return false;
+
+        if ($(handle + 'List ' + handle + '_' + value).length > 0) {
+            $(handle + '_form').hide();
+            $(handle + '_new').show();
+            return false;
+        }
+
         currentLink.showLoading();
 
         $.ajax({

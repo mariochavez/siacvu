@@ -6,7 +6,7 @@
 
     <% if (Model.TipoParticipacionEventos != null && Model.TipoParticipacionEventos.Length > 0) { %>
         <% foreach (var tipoParticipacion in Model.TipoParticipacionEventos){ %>
-	        <div class="sublista" id="tipoparticipacion_<%=Html.Encode(tipoParticipacion.Id != 0 ? tipoParticipacion.Id : tipoParticipacion.TipoParticipacionId) %>">
+	        <div class="sublista" id="tipoparticipacion_<%=Html.Encode(tipoParticipacion.TipoParticipacionId) %>">
 	            <h6>
 	                <%=Html.Encode(tipoParticipacion.TipoParticipacionNombre)%>
                     <% if(Model.Id == 0) { %>

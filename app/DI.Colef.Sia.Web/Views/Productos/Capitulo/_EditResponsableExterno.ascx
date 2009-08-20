@@ -6,7 +6,7 @@
 
     <% if (Model.ResponsableExternoCapitulos != null && Model.ResponsableExternoCapitulos.Length > 0) { %>
         <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
-	        <div class="sublista" id="responsableexterno_<%=Html.Encode(responsableExterno.Id != 0 ? responsableExterno.Id : responsableExterno.InvestigadorExternoId) %>">
+	        <div class="sublista" id="responsableexterno_<%=Html.Encode(responsableExterno.InvestigadorExternoId) %>">
 	            <h6>
 	                <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
 	                <% if(Model.Id == 0) { %>

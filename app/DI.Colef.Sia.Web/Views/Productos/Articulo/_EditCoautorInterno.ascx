@@ -6,7 +6,7 @@
 
     <% if (Model.CoautorInternoArticulos != null && Model.CoautorInternoArticulos.Length > 0) { %>
         <% foreach(var coautorInterno in Model.CoautorInternoArticulos) { %>
-	        <div class="sublista" id="coautorinterno_<%=Html.Encode(coautorInterno.Id != 0 ? coautorInterno.Id : coautorInterno.InvestigadorId) %>">
+	        <div class="sublista" id="coautorinterno_<%=Html.Encode(coautorInterno.InvestigadorId) %>">
 	            <h6>
 	                <%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%>
 	                <% if(Model.Id == 0) { %>
