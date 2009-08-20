@@ -30,7 +30,7 @@
     <%=Html.ValidationMessage("Sector") %>
 </p>
 <p>
-    <label>Nivel</label>
+    <label>Nivel Gubernamental</label>
     <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Nivel") %>

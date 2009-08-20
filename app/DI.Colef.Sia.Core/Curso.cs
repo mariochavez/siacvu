@@ -6,8 +6,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class Curso : Entity, IBaseEntity
     {
-        [NotNull]
-        public virtual Investigador Investigador { get; set; }
+        [NotNullNotEmpty]
+        public virtual string Nombre { get; set; }
+
+        public virtual DateTime FechaInicial { get; set; }
+
+        public virtual DateTime FechaFinal { get; set; }
 
         [NotNull]
         public virtual int NumeroHoras { get; set; }
@@ -34,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Nivel Nivel5 { get; set; }
 
+        [NotNull]
         public virtual Pais Pais { get; set; }
 
         public virtual Area Area { get; set; }
@@ -41,6 +46,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Disciplina Disciplina { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
+
+        [NotNull]
+        public virtual Investigador Investigador { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 
