@@ -38,12 +38,6 @@
 	<%=Html.ValidationMessage("Nivel5") %>
 </p>
 <p>
-	<label>Pa&iacute;s</label>
-	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-		"Seleccione ...")%>
-	<%=Html.ValidationMessage("Pais") %>
-</p>
-<p>
 	<label>&Aacute;rea</label>
 	<%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
 		"Seleccione ...")%>

@@ -18,45 +18,40 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		[NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
-
-        [NotNull]
+        
 		public virtual MedioImpreso MedioImpreso { get; set; }
 
-        [NotNull]
 		public virtual MedioElectronico MedioElectronico { get; set; }
 
-        [NotNullNotEmpty]
 		public virtual string Especificacion { get; set; }
         
-        [NotNull]
 		public virtual Genero Genero { get; set; }
 
-        [NotNullNotEmpty]
 		public virtual string Tema { get; set; }
 
-        [NotNull]
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
-        [NotNull]
 		public virtual Proyecto Proyecto { get; set; }
 
-        [NotNull]
 		public virtual LineaTematica LineaTematica { get; set; }
 
-        [NotNull]
 		public virtual Ambito Ambito { get; set; }
 
-        [NotEmptyDate]
         public virtual DateTime FechaDifusion { get; set; }
 
-        [NotNull]
 		public virtual Pais Pais { get; set; }
 
-        [NotNull]
 		public virtual EstadoPais EstadoPais { get; set; }
 
-        [NotNullNotEmpty]
 		public virtual string Ciudad { get; set; }
+
+        public virtual string NotaPeriodistica { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

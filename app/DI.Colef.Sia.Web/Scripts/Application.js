@@ -11,6 +11,11 @@
     $('.clearField').clearField();
 
     SearchAutoComplete.setup();
+    paisSetDefaultValue();
+}
+
+function paisSetDefaultValue() {
+    $("#Pais option[value='1']").attr('selected', true);
 }
 
 function setupSublistRows() {

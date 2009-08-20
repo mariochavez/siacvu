@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
         public string FechaEdicion { get; set; }
-        public string FechaPublicacion { get; set; }
         public int Participantes { get; set; }
         public string PalabrasClaves { get; set; }
         public int Puntuacion { get; set; }

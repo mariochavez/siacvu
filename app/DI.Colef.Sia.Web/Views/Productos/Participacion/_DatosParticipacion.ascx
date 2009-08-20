@@ -2,24 +2,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>T&iacute;tulo</label>
-
-	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido",  maxlength = 100 })%>
-	<%=Html.ValidationMessage("Titulo")%>
-</p>
-<p>
-	<label>Autor</label>
-
-    <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Autor")%>
-</p>
-<p>
-	<label>Otra Participaci&oacute;n</label>
+	<label>Tipo Participaci&oacute;n</label>
 
 	<%=Html.DropDownList("OtraParticipacion", Model.OtrasParticipaciones.CreateSelectList<OtraParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("OtraParticipacion") %>
+</p>
+<p>
+	<label>T&iacute;tulo</label>
+
+	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido",  maxlength = 100 })%>
+	<%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
 	<label>Tipo Presentaci&oacute;n</label>
@@ -29,7 +22,14 @@
 	<%=Html.ValidationMessage("TipoPresentacion") %>
 </p>
 <p>
-	<label>Instituci&oacute;n</label>
+	<label>Autor</label>
+
+    <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+	<%=Html.ValidationMessage("Autor")%>
+</p>
+<p>
+	<label>Instituci&oacute;n Organizadora</label>
 
 	<%=Html.TextBox("Institucion", Model.Institucion, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Institucion")%>

@@ -8,7 +8,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Especificacion { get; set; }
 		public string Tema { get; set; }
 		public string FechaDifusion { get; set; }
-		public string Ciudad { get; set; }
+        public string Ciudad { get; set; }
+        public string NotaPeriodistica { get; set; }
+        public string PalabraClave1 { get; set; }
+        public string PalabraClave2 { get; set; }
+        public string PalabraClave3 { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 

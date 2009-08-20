@@ -403,10 +403,6 @@ alter table Organizaciones  drop constraint FK66FEAE5985102A57
 alter table Organizaciones  drop constraint FK66FEAE5974E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E8336201B]') AND parent_object_id = OBJECT_ID('Cursos'))
-alter table Cursos  drop constraint FK8E38D63E8336201B
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E11666E2A]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63E11666E2A
 
@@ -461,6 +457,10 @@ alter table Cursos  drop constraint FK8E38D63EBC063744
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EF4FE4035]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63EF4FE4035
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E8336201B]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E8336201B
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E85102A57]') AND parent_object_id = OBJECT_ID('Cursos'))
@@ -2203,12 +2203,14 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table Cursos (
         Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
        NumeroHoras INT null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       InvestigadorFk INT null,
        PeriodoReferenciaFk INT null,
        ProgramaEstudioFk INT null,
        InstitucionFk INT null,
@@ -2223,6 +2225,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       InvestigadorFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2386,7 +2389,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Puntuacion INT null,
        Participantes INT null,
        PalabrasClaves NVARCHAR(255) null,
-       FechaPublicacion DATETIME null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -2423,6 +2425,10 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Tema NVARCHAR(255) null,
        FechaDifusion DATETIME null,
        Ciudad NVARCHAR(255) null,
+       NotaPeriodistica NVARCHAR(255) null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3139,6 +3145,9 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Lugar NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3163,7 +3172,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        ModificadoPorFk INT null,
        primary key (Id)
     )
-/*
+
     alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
@@ -3173,7 +3182,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-*/
+
     alter table OrganoExternos 
         add constraint FK55BF0AAE803FA562 
         foreign key (TipoOrganoFk) 
@@ -3670,11 +3679,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references Usuarios
 
     alter table Cursos 
-        add constraint FK8E38D63E8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table Cursos 
         add constraint FK8E38D63E11666E2A 
         foreign key (PeriodoReferenciaFk) 
         references PeriodoReferencias
@@ -3743,6 +3747,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK8E38D63EF4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table Cursos 
+        add constraint FK8E38D63E8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table Cursos 
         add constraint FK8E38D63E85102A57 
@@ -4323,7 +4332,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKDA296810FF48CC4D 
         foreign key (ResenaFk) 
         references Resenas
-/*
+
     alter table Usuarios 
         add constraint FKB984B9FD1687D84E 
         foreign key (PersonaFk) 
@@ -4338,7 +4347,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKB984B9FD74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-*/
+
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
         foreign key (RolFk) 

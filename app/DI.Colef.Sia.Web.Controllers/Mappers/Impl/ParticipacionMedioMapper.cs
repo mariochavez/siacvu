@@ -31,6 +31,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Especificacion = message.Especificacion;
             model.Ciudad = message.Ciudad;
             model.Tema = message.Tema;
+            model.NotaPeriodistica = message.NotaPeriodistica;
+            model.PalabraClave1 = message.PalabraClave1;
+            model.PalabraClave2 = message.PalabraClave2;
+            model.PalabraClave3 = message.PalabraClave3;
 
             model.FechaDifusion = message.FechaDifusion.FromShortDateToDateTime();
 

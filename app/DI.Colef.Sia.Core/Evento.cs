@@ -62,6 +62,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoFinanciamiento TipoFinanciamiento { get; set; }
 
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
+
         [NotNull]
         public virtual Investigador Investigador { get; set; }
 

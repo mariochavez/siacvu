@@ -3,6 +3,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class CursoForm
     {
         public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string FechaInicial { get; set; }
+        public string FechaFinal { get; set; }
         public int NumeroHoras { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

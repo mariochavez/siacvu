@@ -48,6 +48,9 @@
                 
                 <h4>Datos Referencia</h4>
 				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>
+				
+                <h4>Datos Opcionales</h4>
+				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar")%>
