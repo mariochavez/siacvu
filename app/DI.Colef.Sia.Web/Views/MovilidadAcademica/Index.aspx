@@ -11,15 +11,15 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar Movilidad Acad&eacute;mica</h3>
+	    <h3>Agregar Nueva Movilidad Acad&eacute;mica</h3>
 		<p>
 		    Puedes agregar una nueva Movilidad Acad&eacute;mica dentro de la lista de administraci&oacute;n 
-		    presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Movilidad Acad&eacute;mica</strong>.
+		    presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Movilidad Acad&eacute;mica</strong>.
 		</p>
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<MovilidadAcademicaController>(x => x.New(), "+ Crear Movilidad Académica", new { title = "Crear Movilidad Academica" })%>
+		        <%=Html.ActionLink<MovilidadAcademicaController>(x => x.New(), "+ Nueva Movilidad Académica", new { title = "Nueva Movilidad Academica" })%>
 		    </span>
 		</div>
 	

@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Tesis</h3>
         <p>
             Puede agregar una nueva Tesis dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tesis</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Tesis</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TesisController>(x => x.New(), "+ Crear Tesis") %></span>
+            <span><%=Html.ActionLink<TesisController>(x => x.New(), "+ Nueva Tesis")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

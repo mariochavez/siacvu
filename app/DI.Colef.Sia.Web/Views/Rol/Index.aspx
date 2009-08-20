@@ -16,7 +16,7 @@
 	        </div>
             <div class="btn_container">
 		        <span class="btn btn_medium_brown">
-			        <%=Html.ActionLink<RolController>(x => x.New(), "+ Crear Rol") %>
+			        <%=Html.ActionLink<RolController>(x => x.New(), "+ Nuevo Rol")%>
 		        </span>
 	        </div>
 	    </div>

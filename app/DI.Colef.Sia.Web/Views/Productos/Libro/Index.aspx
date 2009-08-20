@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Libro</h3>
         <p>
             Puede agregar un nuevo Libro dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Libro</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Libro</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<LibroController>(x => x.New(), "+ Crear Libro") %></span>
+            <span><%=Html.ActionLink<LibroController>(x => x.New(), "+ Nuevo Libro")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

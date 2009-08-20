@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Reporte</h3>
         <p>
             Puede agregar un nuevo Reporte dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Reporte</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Reporte</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Crear Reporte") %></span>
+            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo Reporte")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

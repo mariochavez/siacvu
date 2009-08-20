@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Participaci&oacute;n</h3>
         <p>
             Puede agregar una nueva Participaci&oacute;n dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Participaci&oacute;n</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Participaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ParticipacionController>(x => x.New(), "+ Crear Participación") %></span>
+            <span><%=Html.ActionLink<ParticipacionController>(x => x.New(), "+ Nueva Participación")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

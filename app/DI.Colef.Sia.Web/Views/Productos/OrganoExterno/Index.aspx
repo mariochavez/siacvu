@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo &Oacute;rgano Externo</h3>
         <p>
             Puede agregar un nuevo &Oacute;rgano Externo dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Oacute;rgano Externo</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo &Oacute;rgano Externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<OrganoExternoController>(x => x.New(), "+ Crear Órgano Externo")%></span>
+            <span><%=Html.ActionLink<OrganoExternoController>(x => x.New(), "+ Nuevo Órgano Externo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

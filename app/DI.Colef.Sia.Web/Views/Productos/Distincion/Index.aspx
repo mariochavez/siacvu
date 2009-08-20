@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Distinci&oacute;n</h3>
         <p>
             Puede agregar una nueva Distinci&oacute;n dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Distinci&oacute;n</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Distinci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DistincionController>(x => x.New(), "+ Crear Distinción") %></span>
+            <span><%=Html.ActionLink<DistincionController>(x => x.New(), "+ Nueva Distinción")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

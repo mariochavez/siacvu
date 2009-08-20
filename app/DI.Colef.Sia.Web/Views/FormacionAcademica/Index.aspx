@@ -13,13 +13,13 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder"
     runat="server">
     <div id="subcontenido">
-        <h3>Agregar Formaci&oacute;n Acad&eacute;mica</h3>
+        <h3>Agregar Nueva Formaci&oacute;n Acad&eacute;mica</h3>
         <p>
             Puedes agregar una nueva Formaci&oacute;n Acad&eacute;mica dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Formaci&oacute;n Acad&eacute;mica</strong>.
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Formaci&oacute;n Acad&eacute;mica</strong>.
         </p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Crear Formación Académica") %></span>
+            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Nueva Formación Académica")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

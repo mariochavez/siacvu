@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Curso</h3>
         <p>
             Puede agregar un nuevo Curso dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Curso</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Curso</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CursoController>(x => x.New(), "+ Crear Curso") %></span>
+            <span><%=Html.ActionLink<CursoController>(x => x.New(), "+ Nuevo Curso")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

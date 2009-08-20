@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo &Aacute;mbito</h3>
         <p>
             Puede agregar un nuevo &Aacute;mbito dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear &Aacute;mbito</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo &Aacute;mbito</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<AmbitoController>(x => x.New(), "+ Crear Ámbito")%></span>
+            <span><%=Html.ActionLink<AmbitoController>(x => x.New(), "+ Nuevo Ámbito")%></span>
         </div>
     </div>
 </asp:Content>

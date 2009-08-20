@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Cap&iacute;tulo</h3>
         <p>
             Puede agregar un nuevo Cap&iacute;tulo dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Cap&iacute;tulo</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Cap&iacute;tulo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CapituloController>(x => x.New(), "+ Crear Capítulo") %></span>
+            <span><%=Html.ActionLink<CapituloController>(x => x.New(), "+ Nuevo Capítulo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

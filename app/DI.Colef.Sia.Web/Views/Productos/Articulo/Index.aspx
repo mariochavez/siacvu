@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Art&iacute;culo</h3>
         <p>
             Puede agregar un nuevo Art&iacute;culo dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Art&iacute;culo</strong>.
+            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Art&iacute;culo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Crear Artículo") %></span>
+            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Nuevo Artículo")%></span>
         </div>
     </div>
 </asp:Content>

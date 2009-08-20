@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Rese&ntilde;a</h3>
         <p>
             Puede agregar una nueva Rese&ntilde;a dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Rese&ntilde;a</strong>.
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Rese&ntilde;a</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ResenaController>(x => x.New(), "+ Crear Reseña") %></span>
+            <span><%=Html.ActionLink<ResenaController>(x => x.New(), "+ Nueva Reseña") %></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
