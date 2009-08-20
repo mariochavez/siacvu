@@ -577,7 +577,7 @@
     <Content Include="Views\Productos\Capitulo\New.aspx" />
     <Content Include="Views\Productos\Capitulo\_DatosCapitulo.ascx" />
     <Content Include="Views\Productos\Capitulo\_DatosOpcionales.ascx" />
-    <Content Include="Views\Productos\Capitulo\_ReferenciaBibliografica.ascx" />    
+    <Content Include="Views\Productos\Capitulo\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Curso\Activate.js.ascx" />
     <Content Include="Views\Productos\Curso\Edit.aspx" />
     <Content Include="Views\Productos\Curso\_DatosOpcionales.ascx" />
@@ -719,7 +719,7 @@
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7047</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
