@@ -47,9 +47,3 @@
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("Subdisciplina") %>
 </p>
-<p>
-    <label>Fecha Publicaci&oacute;n</label>    
-    <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
-    <%=Html.ValidationMessage("FechaPublicacion")%>
-</p>

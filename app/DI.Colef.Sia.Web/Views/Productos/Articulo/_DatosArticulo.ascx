@@ -43,8 +43,3 @@
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("LineaTematica") %>
 </p>
-<p>
-    <label>T&iacute;tulo Art&iacute;culo</label>
-    <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Titulo")%>
-</p>

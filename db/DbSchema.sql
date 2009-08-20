@@ -2955,7 +2955,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        Puntuacion INT null,
        Participantes INT null,
        PalabrasClaves NVARCHAR(255) null,
-       FechaPublicacion DATETIME null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,

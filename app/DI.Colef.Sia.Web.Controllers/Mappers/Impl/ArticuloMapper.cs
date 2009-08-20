@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
 
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
             model.Indice2 = catalogoService.GetIndiceById(message.Indice2);

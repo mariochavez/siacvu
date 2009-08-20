@@ -2,6 +2,11 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
+    <label>Nombre del Cap&iacute;tulo</label>
+    <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("NombreCapitulo")%>
+</p>
+<p>
     <label>Nombre del Libro</label>
     <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreLibro")%>
