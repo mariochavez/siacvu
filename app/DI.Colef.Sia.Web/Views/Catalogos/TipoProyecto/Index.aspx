@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo Proyecto</h3>
         <p>
             Puede agregar un nuevo Tipo de Proyecto dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Proyecto</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Proyecto</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoProyectoController>(x => x.New(), "+ Crear Tipo de Proyecto") %></span>
+            <span><%=Html.ActionLink<TipoProyectoController>(x => x.New(), "+ Nuevo Tipo de Proyecto")%></span>
         </div>
     </div>
 </asp:Content>

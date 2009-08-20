@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Estado del Producto</h3>
         <p>
             Puede agregar un nuevo Estado del Producto dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Estado del Producto</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Estado del Producto</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstadoProductoController>(x => x.New(), "+ Crear Estado Producto") %></span>
+            <span><%=Html.ActionLink<EstadoProductoController>(x => x.New(), "+ Nuevo Estado Producto")%></span>
         </div>
     </div>
 </asp:Content>

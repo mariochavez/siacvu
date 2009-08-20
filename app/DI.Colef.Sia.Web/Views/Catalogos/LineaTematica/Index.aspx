@@ -14,10 +14,10 @@
         <h3>Agregar Nueva L&iacute;nea Tem&aacute;tica</h3>
         <p>
             Puede agregar una nueva L&iacute;nea Tem&aacute;tica dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear L&iacute;nea Tem&aacute;tica</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva L&iacute;nea Tem&aacute;tica</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<LineaTematicaController>(x => x.New(), "+ Crear Línea Temática") %></span>
+            <span><%=Html.ActionLink<LineaTematicaController>(x => x.New(), "+ Nueva Línea Temática")%></span>
         </div>
     </div>
 </asp:Content>

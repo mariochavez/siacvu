@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Medio Impreso</h3>
         <p>
             Puede agregar un nuevo Medio Impreso dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Medio Impreso</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Medio Impreso</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<MedioImpresoController>(x => x.New(), "+ Crear Medio Impreso") %></span>
+            <span><%=Html.ActionLink<MedioImpresoController>(x => x.New(), "+ Nuevo Medio Impreso")%></span>
         </div>
     </div>
 </asp:Content>

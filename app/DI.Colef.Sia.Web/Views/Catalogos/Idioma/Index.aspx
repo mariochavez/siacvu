@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Idioma</h3>
         <p>
             Puede agregar un nuevo Idioma dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Idioma</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Idioma</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IdiomaController>(x => x.New(), "+ Crear Idioma") %></span>
+            <span><%=Html.ActionLink<IdiomaController>(x => x.New(), "+ Nuevo Idioma")%></span>
         </div>
     </div>
 </asp:Content>

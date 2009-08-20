@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Instituci&oacute;n</h3>
         <p>
             Puede agregar una nueva Instituci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Instituci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Instituci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Crear Institución") %></span>
+            <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Nueva Institución")%></span>
         </div>
     </div>
 </asp:Content>

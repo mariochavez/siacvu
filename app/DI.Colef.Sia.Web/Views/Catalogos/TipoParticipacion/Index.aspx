@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo de Participaci&oacute;n</h3>
         <p>
             Puede agregar un nuevo Tipo de Participaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Participaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Participaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoParticipacionController>(x => x.New(), "+ Crear Tipo de Participación") %></span>
+            <span><%=Html.ActionLink<TipoParticipacionController>(x => x.New(), "+ Nuevo Tipo de Participación")%></span>
         </div>
     </div>
 </asp:Content>

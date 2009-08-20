@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Periodo Referencia</h3>
         <p>
             Puede agregar un nuevo Periodo Referencia dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Periodo Referencia</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Periodo Referencia</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<PeriodoReferenciaController>(x => x.New(), "+ Crear Periodo Referencia") %></span>
+            <span><%=Html.ActionLink<PeriodoReferenciaController>(x => x.New(), "+ Nuevo Periodo Referencia")%></span>
         </div>
     </div>
 </asp:Content>

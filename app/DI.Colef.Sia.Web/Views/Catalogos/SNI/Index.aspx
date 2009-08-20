@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Sni</h3>
         <p>
             Puede agregar un nuevo Sni dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Sni</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Sni</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<SNIController>(x => x.New(), "+ Crear Sni") %></span>
+            <span><%=Html.ActionLink<SNIController>(x => x.New(), "+ Nuevo Sni")%></span>
         </div>
     </div>
 </asp:Content>

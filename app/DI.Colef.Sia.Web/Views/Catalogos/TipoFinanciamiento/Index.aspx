@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Tipo de Financiamiento</h3>
         <p>
             Puede agregar un nuevo Tipo de Financiamiento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Tipo de Financiamiento</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Financiamiento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoFinanciamientoController>(x => x.New(), "+ Crear Tipo Financiamiento") %></span>
+            <span><%=Html.ActionLink<TipoFinanciamientoController>(x => x.New(), "+ Nuevo Tipo Financiamiento")%></span>
         </div>
     </div>
 </asp:Content>

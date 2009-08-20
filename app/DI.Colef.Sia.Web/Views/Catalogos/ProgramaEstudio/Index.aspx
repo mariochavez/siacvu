@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Programa de Estudio</h3>
         <p>
             Puede agregar un nuevo Programa de Estudio dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Programa de Estudio</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Programa de Estudio</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ProgramaEstudioController>(x => x.New(), "+ Crear Programa de Estudio") %></span>
+            <span><%=Html.ActionLink<ProgramaEstudioController>(x => x.New(), "+ Nuevo Programa de Estudio")%></span>
         </div>
     </div>
 </asp:Content>

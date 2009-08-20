@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Organizaci&oacute;n</h3>
         <p>
             Puede agregar una nueva Organizaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Organizaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Organizaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<OrganizacionController>(x => x.New(), "+ Crear Organización") %></span>
+            <span><%=Html.ActionLink<OrganizacionController>(x => x.New(), "+ Nuevo Organización")%></span>
         </div>
     </div>
 </asp:Content>

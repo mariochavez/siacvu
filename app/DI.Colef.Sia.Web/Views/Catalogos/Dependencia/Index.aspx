@@ -14,10 +14,10 @@
         <h3>Agregar Nueva Dependencia</h3>
         <p>
             Puede agregar una nueva Dependencia dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Dependencia</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Dependencia</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DependenciaController>(x => x.New(), "+ Crear Dependencia") %></span>
+            <span><%=Html.ActionLink<DependenciaController>(x => x.New(), "+ Nueva Dependencia")%></span>
         </div>
     </div>
 </asp:Content>

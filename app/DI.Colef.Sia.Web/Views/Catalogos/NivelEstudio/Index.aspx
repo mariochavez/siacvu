@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Nivel de Estudio</h3>
         <p>
             Puede agregar un nuevo Nivel de Estudio dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Nivel de Estudio</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Nivel de Estudio</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<NivelEstudioController>(x => x.New(), "+ Crear Nivel Estudio") %></span>
+            <span><%=Html.ActionLink<NivelEstudioController>(x => x.New(), "+ Nuevo Nivel Estudio")%></span>
         </div>
     </div>
 </asp:Content>

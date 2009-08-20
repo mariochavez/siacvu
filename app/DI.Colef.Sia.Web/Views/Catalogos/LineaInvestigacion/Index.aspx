@@ -14,10 +14,10 @@
         <h3>Agregar Nueva L&iacute;nea de Investigaci&oacute;n</h3>
         <p>
             Puede agregar una nueva L&iacute;nea de Investigaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear L&iacute;nea de Investigaci&oacute;n</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva L&iacute;nea de Investigaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<LineaInvestigacionController>(x => x.New(), "+ Crear Línea Investigación") %></span>
+            <span><%=Html.ActionLink<LineaInvestigacionController>(x => x.New(), "+ Nueva Línea Investigación") %></span>
         </div>
     </div>
 </asp:Content>

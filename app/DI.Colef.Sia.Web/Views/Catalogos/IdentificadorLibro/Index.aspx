@@ -14,10 +14,10 @@
         <h3>Agregar Nuevo Identificador de Libro</h3>
         <p>
             Puede agregar un nuevo Identificador de Libro dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Identificador de Libro</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Identificador de Libro</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IdentificadorLibroController>(x => x.New(), "+ Crear Identificador Libro") %></span>
+            <span><%=Html.ActionLink<IdentificadorLibroController>(x => x.New(), "+ Nuevo Identificador Libro")%></span>
         </div>
     </div>
 </asp:Content>
