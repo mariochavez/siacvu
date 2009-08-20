@@ -3163,7 +3163,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        ModificadoPorFk INT null,
        primary key (Id)
     )
-
+/*
     alter table Personas 
         add constraint FK1261169485102A57 
         foreign key (CreadorPorFk) 
@@ -3173,7 +3173,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK1261169474E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+*/
     alter table OrganoExternos 
         add constraint FK55BF0AAE803FA562 
         foreign key (TipoOrganoFk) 
@@ -4323,7 +4323,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKDA296810FF48CC4D 
         foreign key (ResenaFk) 
         references Resenas
-
+/*
     alter table Usuarios 
         add constraint FKB984B9FD1687D84E 
         foreign key (PersonaFk) 
@@ -4338,7 +4338,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKB984B9FD74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
+*/
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
         foreign key (RolFk) 
