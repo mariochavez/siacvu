@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Participantes = message.Participantes;
             model.PalabrasClaves = message.PalabrasClaves;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);

@@ -8,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class LibroService : ILibroService
     {
         readonly IRepository<Libro> libroRepository;
+        readonly IRepository<Idioma> idiomaRepository;
 
-        public LibroService(IRepository<Libro> libroRepository)
+        public LibroService(IRepository<Libro> libroRepository, IRepository<Idioma> idiomaRepository)
         {
             this.libroRepository = libroRepository;
+            this.idiomaRepository = idiomaRepository;
         }
 
         public Libro GetLibroById(int id)
@@ -37,6 +39,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.Activo = true;
                 libro.CreadorEl = DateTime.Now;
             }
+
+            if (libro.Idioma == null && libro.TipoPublicacion != null)
+            {
+                var idioma = new Dictionary<string, object> {{"Nombre", "Español"}};
+
+                libro.Idioma = idiomaRepository.FindOne(idioma);
+            }
+
             libro.ModificadoEl = DateTime.Now;
             
             libroRepository.SaveOrUpdate(libro);

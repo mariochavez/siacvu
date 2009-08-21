@@ -8,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class ArticuloService : IArticuloService
     {
         readonly IRepository<Articulo> articuloRepository;
+        readonly IRepository<Idioma> idiomaRepository;
 
-        public ArticuloService(IRepository<Articulo> articuloRepository)
+        public ArticuloService(IRepository<Articulo> articuloRepository, IRepository<Idioma> idiomaRepository)
         {
             this.articuloRepository = articuloRepository;
+            this.idiomaRepository = idiomaRepository;
         }
 
         public Articulo GetArticuloById(int id)
@@ -37,6 +39,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Activo = true;
                 articulo.CreadorEl = DateTime.Now;
             }
+
+            if(articulo.Idioma == null && articulo.TipoArticulo != null)
+            {
+                var idioma = new Dictionary<string, object> { { "Nombre", "Español" } };
+
+                articulo.Idioma = idiomaRepository.FindOne(idioma);
+            }
+
             articulo.ModificadoEl = DateTime.Now;
 
             articuloRepository.SaveOrUpdate(articulo);

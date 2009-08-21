@@ -8,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class CapituloService : ICapituloService
     {
         readonly IRepository<Capitulo> capituloRepository;
+        readonly IRepository<Idioma> idiomaRepository;
 
-        public CapituloService(IRepository<Capitulo> capituloRepository)
+        public CapituloService(IRepository<Capitulo> capituloRepository, IRepository<Idioma> idiomaRepository)
         {
             this.capituloRepository = capituloRepository;
+            this.idiomaRepository = idiomaRepository;
         }
 
         public Capitulo GetCapituloById(int id)
@@ -37,6 +39,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 capitulo.Activo = true;
                 capitulo.CreadorEl = DateTime.Now;
             }
+
+            if (capitulo.Idioma == null && capitulo.TipoCapitulo != null)
+            {
+                var idioma = new Dictionary<string, object> { { "Nombre", "Español" } };
+
+                capitulo.Idioma = idiomaRepository.FindOne(idioma);
+            }
+
             capitulo.ModificadoEl = DateTime.Now;
             
             capituloRepository.SaveOrUpdate(capitulo);

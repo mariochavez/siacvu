@@ -12,25 +12,26 @@
 
     SearchAutoComplete.setup();
     paisSetDefaultValue();
-    ArticuloEnableSelect.setup();
 }
 
-var ArticuloEnableSelect = {
-    setup: function() {
-        $('#TipoArticulo').live("change", ArticuloEnableSelect.enableLanguage);
-        $('#forma').unload(ArticuloEnableSelect.enableLanguage());
-    },
-    enableLanguage: function() {
+function setupArticulos() {
+    ArticuloEnableOptions.setup();
+}
 
-        var text = $('#TipoArticulo :selected').text();
+function setupCapitulos() {
+    CapituloEnableOptions.setup();
+}
 
-        if (text != 'Artículo traducido a otro idioma')
-            $('#Idioma').attr('disabled', true);
-        else
-            $('#Idioma').attr('disabled', false);
+function setupLibros() {
+    LibroEnableOptions.setup();
+}
 
-        return false;
-    }
+function setupParticipaciones() {
+    ParticipacionEnableOptions.setup();
+}
+
+function setupTesis() {
+    TesisEnableOptions.setup();
 }
 
 function paisSetDefaultValue() {
@@ -45,6 +46,109 @@ function setupSublistRows() {
 function showMessage(message) {
     $('#mensaje-error').addClass('mensaje-acierto');
     $('#mensaje-error').html('<p>' + message + '</p>');
+}
+
+var ArticuloEnableOptions = {
+    setup: function() {
+        $('#TipoArticulo').live("change", ArticuloEnableOptions.enableOptions);
+        $('#forma').unload(ArticuloEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#TipoArticulo :selected').text();
+
+        if (text != 'Artículo traducido a otro idioma')
+            $('#Idioma').attr('disabled', true);
+        else
+            $('#Idioma').attr('disabled', false);
+
+        return false;
+    }
+}
+
+var CapituloEnableOptions = {
+    setup: function() {
+        $('#TipoCapitulo').live("change", CapituloEnableOptions.enableOptions);
+        $('#forma').unload(CapituloEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#TipoCapitulo :selected').text();
+
+        if (text != 'Capitulo traducido a otro idioma')
+            $('#Idioma').attr('disabled', true);
+        else
+            $('#Idioma').attr('disabled', false);
+
+        return false;
+    }
+}
+
+var LibroEnableOptions = {
+    setup: function() {
+        $('#TieneProyecto').live("change", LibroEnableOptions.enableProyectos);
+        $('#TipoPublicacion').live("change", LibroEnableOptions.enableIdiomas);
+        $('#forma').unload(LibroEnableOptions.enableProyectos(), LibroEnableOptions.enableIdiomas());
+    },
+    enableProyectos: function() {
+
+        if ($('#TieneProyecto').attr('checked'))
+            $('#Proyecto').attr('disabled', false);
+        else
+            $('#Proyecto').attr('disabled', true);
+
+        return false;
+    },
+    enableIdiomas: function() {
+        var text = $('#TipoPublicacion :selected').text();
+
+        if (text != 'Libro traducido a otro idioma')
+            $('#Idioma').attr('disabled', true);
+        else
+            $('#Idioma').attr('disabled', false);
+
+        return false;
+    }
+}
+
+var ParticipacionEnableOptions = {
+    setup: function() {
+        $('#OtraParticipacion').live("change", ParticipacionEnableOptions.enableOptions);
+        $('#forma').unload(ParticipacionEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#OtraParticipacion :selected').text();
+
+        if (text != 'Presentacion de libro') {
+            $('#TipoPresentacion').attr('disabled', true);
+            $('#Autor').attr('disabled', true);
+        }
+        else {
+            $('#TipoPresentacion').attr('disabled', false);
+            $('#Autor').attr('disabled', false);
+        }
+
+        return false;
+    }
+}
+
+var TesisEnableOptions = {
+    setup: function() {
+        $('#GradoAcademico').live("change", TesisEnableOptions.enableOptions);
+        $('#forma').unload(TesisEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#GradoAcademico :selected').text();
+
+        if (text != "Seleccione ...")
+            $('#FechaGrado').attr('disabled', false);
+        else
+            $('#FechaGrado').attr('disabled', true);
+
+        return false;
+    }
 }
 
 var SubForm = {

@@ -10,13 +10,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }
 
-		[NotEmptyDate]
 		public virtual DateTime FechaConclusion { get; set; }
 
-		[NotNullNotEmpty]
 		public virtual string Autor { get; set; }
 
-		[NotEmptyDate]
 		public virtual DateTime FechaGrado { get; set; }
 
         public virtual int Puntuacion { get; set; }

@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreTraductor = message.NombreTraductor;
             model.Resumen = message.Resumen;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
             
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);

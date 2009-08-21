@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             AllowNullDestinationValues = false;
             ForSourceType<DateTime>().AddFormatter<StandardDateTimeFormatter>();
             ForSourceType<DateTime>().AddFormatter<StandardDateFormatter>();
+            ForSourceType<DateTime>().AddFormatter<YearDateFormatter>();
             ForSourceType<bool>().AddFormatter<YesNoBooleanFormatter>();
 
             CreateMaps();
@@ -178,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.EstadoProducto,
@@ -215,7 +216,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Fecha,
@@ -407,7 +408,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoArticulo,
@@ -464,7 +465,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoCapitulo,
@@ -561,7 +562,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,
