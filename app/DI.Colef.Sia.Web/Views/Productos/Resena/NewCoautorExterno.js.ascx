@@ -3,11 +3,11 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var class = 'remote';
+var cssclass = 'remote';
 var rel = '#coautorexternoform';
 
 <% if(Model.Id == 0) { %>
-    class = 'local';
+    cssclass = 'local';
     rel = '#CoautorExternoResena.InvestigadorExternoId';
 <% } %>
 
@@ -18,7 +18,7 @@ var html = '
     <div class="minilistaboton">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar Coautor Externo", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar Coautor Externo", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorexterno">Cancelar</a>
         </p>
     </div>

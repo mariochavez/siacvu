@@ -152,7 +152,7 @@ var LocalForm = {
         var handle = $(combo).attr('rel');
         var value = $(combo).val();
 
-        if (value == null)
+        if (value == null | value == "")
             return false;
 
         if ($(handle + 'List ' + handle + '_' + value).length > 0) {
@@ -196,7 +196,7 @@ var RemoteForm = {
         var handle = $(currentCombo).attr('rel');
         var value = $(currentCombo).val();
 
-        if (value == null)
+        if (value == null | value == "")
             return false;
 
         if ($(handle + 'List ' + handle + '_' + value).length > 0) {

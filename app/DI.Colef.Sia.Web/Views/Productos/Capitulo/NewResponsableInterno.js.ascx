@@ -3,11 +3,11 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var class = 'remote';
+var cssclass = 'remote';
 var rel = '#responsableinternoform';
 
 <% if(Model.Id == 0) { %>
-    class = 'local';
+    cssclass = 'local';
     rel = '#ResponsableInternoCapitulo.InvestigadorId';
 <% } %>
 
@@ -19,7 +19,7 @@ var html = '
     <div class="minilistaboton">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar Responsable Interno", new { rel = "' + rel + '", @class = "' + class + '", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar Responsable Interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="responsableinterno">Cancelar</a>
         </p>
     </div>

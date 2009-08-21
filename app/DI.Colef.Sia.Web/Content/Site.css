@@ -585,6 +585,23 @@ a.editabusqueda {
 	color: #555;
 }
 
+.minilistaboton input {
+	margin: 0 0 0 10px;
+	padding: 5px 9px 5px 10px;
+	font-size: 8pt;
+	font-weight: bold;
+	letter-spacing: 1pt;
+	border: 1px solid #252525;
+	background: #363636 url(./Images/botonzon-bg.gif) 0 bottom repeat-x;
+	color: #fff;
+	cursor: pointer;
+}
+
+.minilistaboton input {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
 .minilistaboton span {
 	margin: 0 0 0 10px;
 	padding: 5px 9px 5px 10px;
