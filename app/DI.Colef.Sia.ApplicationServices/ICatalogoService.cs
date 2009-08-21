@@ -340,5 +340,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProductoDerivado[] GetAllProductoDerivados();
         ProductoDerivado[] GetActiveProductoDerivados();
         void SaveProductoDerivado(ProductoDerivado productoDerivado);
+        PeriodoReferencia GetCurrentPeriodoReferencia();
     }
 }

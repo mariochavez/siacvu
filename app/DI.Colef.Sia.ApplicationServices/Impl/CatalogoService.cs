@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Data.NHibernate;
+using Expression=NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -928,6 +929,18 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public PeriodoReferencia[] GetActivePeriodoReferencias()
         {
             return ((List<PeriodoReferencia>) OrderCatalog<PeriodoReferencia>(x => x.Orden, true)).ToArray();
+        }
+
+        public PeriodoReferencia GetCurrentPeriodoReferencia()
+        {
+            var criteria = Session.CreateCriteria(typeof (PeriodoReferencia))
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Max("Orden")))
+                .List();
+
+            var periodo = new Dictionary<string, object> { { "Orden", criteria[0] } };
+
+            return periodoReferenciaRepository.FindOne(periodo); 
         }
 
         public void SavePeriodoReferencia(PeriodoReferencia periodoReferencia)
