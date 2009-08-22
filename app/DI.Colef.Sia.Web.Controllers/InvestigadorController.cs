@@ -48,7 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ICargoInvestigadorMapper cargoInvestigadorMapper,
             ISNIInvestigadorMapper sniInvestigadorMapper,
                                       ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.investigadorService = investigadorService;
             this.catalogoService = catalogoService;

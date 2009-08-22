@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public GeneroController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 IGeneroMapper generoMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.generoMapper = generoMapper;

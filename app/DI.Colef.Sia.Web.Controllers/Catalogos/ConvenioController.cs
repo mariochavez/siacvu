@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public ConvenioController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                   IConvenioMapper convenioMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.convenioMapper = convenioMapper;

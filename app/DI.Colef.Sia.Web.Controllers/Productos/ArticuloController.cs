@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
 
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                               coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
@@ -172,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ArticuloForm form)
         {
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(articulo, form, Title.Edit))
             {
@@ -331,7 +331,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
@@ -356,7 +356,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoArticulo"] = form.TipoArticuloId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Proyecto"] = form.ProyectoId;
 

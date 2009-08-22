@@ -35,8 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Descripcion = message.Descripcion;
             model.Objetivo = message.Objetivo;
             model.PalabarasClave = message.PalabarasClave;
+
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.Fecha = message.Fecha.FromShortDateToDateTime();
 
             model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);

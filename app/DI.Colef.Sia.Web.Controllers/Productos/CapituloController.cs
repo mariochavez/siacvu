@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
                                   ISearchService searchService, IProyectoMapper proyectoMapper)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.capituloService = capituloService;

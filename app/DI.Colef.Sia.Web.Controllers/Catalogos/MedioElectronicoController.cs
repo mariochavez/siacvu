@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public MedioElectronicoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
             IMedioElectronicoMapper medioElectronicoMapper,
             ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.medioElectronicoMapper = medioElectronicoMapper;

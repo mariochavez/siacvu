@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public SectorController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 ISectorMapper sectorMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.sectorMapper = sectorMapper;

@@ -38,9 +38,3 @@
     <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Tiraje")%>
 </p>
-<p>
-    <label>Idioma</label>
-    <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Idioma") %>
-</p>

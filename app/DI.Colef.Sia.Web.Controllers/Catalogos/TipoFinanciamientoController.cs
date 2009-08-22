@@ -16,7 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public TipoFinanciamientoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                             ITipoFinanciamientoMapper tipoFinanciamientoMapper,
-                                            ISearchService searchService) : base(usuarioService, searchService)
+                                            ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;

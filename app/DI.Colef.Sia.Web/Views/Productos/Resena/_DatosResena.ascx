@@ -14,9 +14,9 @@
 	<%=Html.ValidationMessage("PeriodoReferencia") %>
 </p>
 <p>
-	<label>Fecha Aceptaci&oacute;n</label>
-	<%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-	<span>(Formato dd/mm/yyyy)</span>
+	<label>A&ntilde;o Aceptaci&oacute;n</label>
+	<%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "input100-requerido", maxlength = 4 })%>
+	<span>(Formato yyyy)</span>
 	<%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p>

@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public EstadoProductoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                         IEstadoProductoMapper estadoProductoMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.estadoProductoMapper = estadoProductoMapper;

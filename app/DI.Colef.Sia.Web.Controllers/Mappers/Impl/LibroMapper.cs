@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.CoTraductor = message.CoTraductor;
             model.Traductor = message.Traductor;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);

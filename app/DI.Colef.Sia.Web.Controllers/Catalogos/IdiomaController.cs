@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public IdiomaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 IIdiomaMapper idiomaMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.idiomaMapper = idiomaMapper;

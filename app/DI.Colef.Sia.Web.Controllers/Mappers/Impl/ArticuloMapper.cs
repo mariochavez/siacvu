@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Participantes = message.Participantes;
             model.PalabrasClaves = message.PalabrasClaves;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
@@ -48,7 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
@@ -62,7 +61,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador, 
+            PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -70,6 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;
@@ -78,9 +79,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador, 
-            string[] coautoresExternos, string[] coautoresInternos)
+            PeriodoReferencia periodo, string[] coautoresExternos, string[] coautoresInternos)
         {
-            var model = Map(message, usuario, investigador);
+            var model = Map(message, usuario, investigador, periodo);
 
             foreach (var coautorId in coautoresExternos)
             {

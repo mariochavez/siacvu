@@ -39,8 +39,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreRevista = message.NombreRevista;
             model.Editorial = message.Editorial;
             model.PalabrasClave = message.PalabrasClave;
+
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);

@@ -16,7 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public PeriodoReferenciaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                            IPeriodoReferenciaMapper periodoReferenciaMapper,
-                                           ISearchService searchService) : base(usuarioService, searchService)
+                                           ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.periodoReferenciaMapper = periodoReferenciaMapper;

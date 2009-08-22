@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public AmbitoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 IAmbitoMapper ambitoMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.ambitoMapper = ambitoMapper;

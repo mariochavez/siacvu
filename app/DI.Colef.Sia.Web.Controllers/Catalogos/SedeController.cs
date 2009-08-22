@@ -15,7 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISedeMapper sedeMapper;
 
         public SedeController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISedeMapper sedeMapper,
-                              ISearchService searchService) : base(usuarioService, searchService)
+                              ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.sedeMapper = sedeMapper;

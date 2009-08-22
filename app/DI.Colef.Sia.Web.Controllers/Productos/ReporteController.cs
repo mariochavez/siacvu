@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IPaisMapper paisMapper, IInvestigadorService investigadorService,
                                  ICoautorExternoReporteMapper coautorExternoReporteMapper,
                                  ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.reporteService = reporteService;

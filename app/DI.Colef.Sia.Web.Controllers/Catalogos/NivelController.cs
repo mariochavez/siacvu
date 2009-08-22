@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public NivelController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                INivelMapper nivelMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.nivelMapper = nivelMapper;
