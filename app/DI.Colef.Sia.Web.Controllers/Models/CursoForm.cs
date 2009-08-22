@@ -50,10 +50,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int SubdisciplinaId { get; set; }
 
         public int Investigador { get; set; }
+
+        public string PeriodoReferenciaPeriodo { get; set; }
         
         /* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
         public ProgramaEstudioForm[] ProgramasEstudios { get; set; }
         public InstitucionForm[] Instituciones { get; set; }
         public SectorForm[] Sectores { get; set; }

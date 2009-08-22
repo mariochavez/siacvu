@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Periodo Referencia</label>
-    <%=Html.Encode(Model.PeriodoReferencia.Periodo)%>
+    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>
     <label>Tiene Proyecto</label>

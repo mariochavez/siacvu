@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //Espacio para Agregar Mapeos
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
 
@@ -45,6 +44,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
+        public string PeriodoReferenciaPeriodo { get; set; }
+
         /* New */
         public CoautorExternoResenaForm[] CoautorExternoResenas { get; set; }
         public CoautorInternoResenaForm[] CoautorInternoResenas { get; set; }
@@ -53,8 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoResenaForm CoautorInternoResena { get; set; }
 
         /* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }

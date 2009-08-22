@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //Espacio para Agregar Mapeos
         public int GradoAcademico { get; set; }
         public int GradoAcademicoId { get; set; }
 
@@ -51,9 +50,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
-        /* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
+        public string PeriodoReferenciaPeriodo { get; set; }
 
+        /* Catalogos */
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public PaisForm[] Paises { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }

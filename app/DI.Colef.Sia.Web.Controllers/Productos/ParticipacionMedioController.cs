@@ -70,6 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
         }
@@ -201,7 +202,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos());
             form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
             form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
-            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());

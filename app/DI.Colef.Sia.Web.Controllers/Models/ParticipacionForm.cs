@@ -30,11 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPaisId { get; set; }
 
         public int Investigador { get; set; }
+
+        public string PeriodoReferenciaPeriodo { get; set; }
 				
 		/* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
-		public OtraParticipacionForm[] OtrasParticipaciones { get; set; }
+        public OtraParticipacionForm[] OtrasParticipaciones { get; set; }
 		public TipoPresentacionForm[] TiposPresentaciones { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
 		public PaisForm[] Paises { get; set; }

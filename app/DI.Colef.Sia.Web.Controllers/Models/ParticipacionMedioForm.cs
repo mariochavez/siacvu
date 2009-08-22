@@ -42,10 +42,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
-		/* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
+        public string PeriodoReferenciaPeriodo { get; set; }
 
-		public MedioImpresoForm[] MediosImpresos { get; set; }
+		/* Catalogos */
+        public MedioImpresoForm[] MediosImpresos { get; set; }
 		public MedioElectronicoForm[] MediosElectronicos { get; set; }
 		public GeneroForm[] Generos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

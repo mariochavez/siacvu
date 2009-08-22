@@ -17,11 +17,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
 
         public int Investigador { get; set; }
+
+        public string PeriodoReferenciaPeriodo { get; set; }
 				
 		/* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
-		public TipoDictamenForm[] TiposDictamenes { get; set; }
+        public TipoDictamenForm[] TiposDictamenes { get; set; }
 		public TipoParticipacionForm[] TiposParticipaciones { get; set; }
 		public InstitucionForm[] Instituciones { get; set; }
     }

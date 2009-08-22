@@ -76,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
         }
@@ -210,7 +211,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias());
             form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());

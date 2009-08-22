@@ -54,6 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int SubdisciplinaId { get; set; }
 
         public int Investigador { get; set; }
+
+        public string PeriodoReferenciaPeriodo { get; set; }
 		
 		public CoautorExternoLibroForm[] CoautorExternoLibros { get; set; }
 		public CoautorInternoLibroForm[] CoautorInternoLibros { get; set; }
@@ -63,9 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoLibroForm CoautorInternoLibro { get; set; }
 		
 		/* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
-		public TipoPublicacionForm[] TiposPublicaciones { get; set; }
+        public TipoPublicacionForm[] TiposPublicaciones { get; set; }
 		public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
 		public LineaTematicaForm[] LineasTematicas { get; set; }

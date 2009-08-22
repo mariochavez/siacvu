@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //Espacio para Agregar Mapeos
         public int TipoReporte { get; set; }
         public int TipoReporteId { get; set; }
 
@@ -40,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
+        public string PeriodoReferenciaPeriodo { get; set; }
 
         /* New */
         public CoautorExternoReporteForm[] CoautorExternoReportes { get; set; }
@@ -49,8 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoReporteForm CoautorInternoReporte { get; set; }
 
         /* Catalogos */
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-
         public TipoReporteForm[] TiposReportes { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

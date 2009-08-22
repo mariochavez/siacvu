@@ -33,7 +33,7 @@
 </p>
 <p>
     <label>Periodo de Referencia</label>
-    <%=Html.Encode(Model.PeriodoReferencia.Periodo)%>
+    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>
     <label>L&iacute;nea Tem&aacute;tica</label>
