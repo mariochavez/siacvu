@@ -35,7 +35,10 @@ function setupTesis() {
 }
 
 function paisSetDefaultValue() {
-    $("#Pais option[text='México']").attr('selected', true);
+    $('#Pais option').each(function() {
+        if ($(this).text() == 'México')
+            $(this).attr('selected', true);
+    })
 }
 
 function setupSublistRows() {
@@ -50,12 +53,11 @@ function showMessage(message) {
 
 var ArticuloEnableOptions = {
     setup: function() {
-        $('#TipoArticulo').live("change", ArticuloEnableOptions.enableOptions);
+        $('#TipoArticulo').change(ArticuloEnableOptions.enableOptions);
         $('#forma').unload(ArticuloEnableOptions.enableOptions());
     },
     enableOptions: function() {
-
-        var text = $('#TipoArticulo :selected').text();
+        var text = $('#TipoArticulo option:selected').text();
 
         if (text != 'Artículo traducido a otro idioma')
             $('#Idioma').attr('disabled', true);
@@ -68,12 +70,12 @@ var ArticuloEnableOptions = {
 
 var CapituloEnableOptions = {
     setup: function() {
-        $('#TipoCapitulo').live("change", CapituloEnableOptions.enableOptions);
+        $('#TipoCapitulo').change(CapituloEnableOptions.enableOptions);
         $('#forma').unload(CapituloEnableOptions.enableOptions());
     },
     enableOptions: function() {
 
-        var text = $('#TipoCapitulo :selected').text();
+        var text = $('#TipoCapitulo option:selected').text();
 
         if (text != 'Capitulo traducido a otro idioma')
             $('#Idioma').attr('disabled', true);
@@ -86,13 +88,15 @@ var CapituloEnableOptions = {
 
 var LibroEnableOptions = {
     setup: function() {
-        $('#TieneProyecto').live("change", LibroEnableOptions.enableProyectos);
-        $('#TipoPublicacion').live("change", LibroEnableOptions.enableIdiomas);
+        $(':checkbox').change(LibroEnableOptions.enableProyectos);
+        $('#TipoPublicacion').change(LibroEnableOptions.enableIdiomas);
         $('#forma').unload(LibroEnableOptions.enableProyectos(), LibroEnableOptions.enableIdiomas());
     },
     enableProyectos: function() {
 
-        if ($('#TieneProyecto').attr('checked'))
+        var active = $('input:checked').length;
+
+        if (active == 1)
             $('#Proyecto').attr('disabled', false);
         else
             $('#Proyecto').attr('disabled', true);
@@ -100,7 +104,7 @@ var LibroEnableOptions = {
         return false;
     },
     enableIdiomas: function() {
-        var text = $('#TipoPublicacion :selected').text();
+        var text = $('#TipoPublicacion option:selected').text();
 
         if (text != 'Libro traducido a otro idioma')
             $('#Idioma').attr('disabled', true);
@@ -113,12 +117,12 @@ var LibroEnableOptions = {
 
 var ParticipacionEnableOptions = {
     setup: function() {
-        $('#OtraParticipacion').live("change", ParticipacionEnableOptions.enableOptions);
+        $('#OtraParticipacion').change(ParticipacionEnableOptions.enableOptions);
         $('#forma').unload(ParticipacionEnableOptions.enableOptions());
     },
     enableOptions: function() {
 
-        var text = $('#OtraParticipacion :selected').text();
+        var text = $('#OtraParticipacion option:selected').text();
 
         if (text != 'Presentacion de libro') {
             $('#TipoPresentacion').attr('disabled', true);
@@ -135,12 +139,12 @@ var ParticipacionEnableOptions = {
 
 var TesisEnableOptions = {
     setup: function() {
-        $('#GradoAcademico').live("change", TesisEnableOptions.enableOptions);
+        $('#GradoAcademico').change(TesisEnableOptions.enableOptions);
         $('#forma').unload(TesisEnableOptions.enableOptions());
     },
     enableOptions: function() {
 
-        var text = $('#GradoAcademico :selected').text();
+        var text = $('#GradoAcademico option:selected').text();
 
         if (text != "Seleccione ...")
             $('#FechaGrado').attr('disabled', false);
