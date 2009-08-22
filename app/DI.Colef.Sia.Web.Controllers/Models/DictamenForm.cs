@@ -16,8 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int Institucion { get; set; }
         public int InstitucionId { get; set; }
 
-		public int PeriodoReferencia { get; set; }
-        public int PeriodoReferenciaId { get; set; }
+		public int PeriodoReferenciaId { get; set; }
 
         public int Investigador { get; set; }
 				
@@ -25,6 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public TipoDictamenForm[] TiposDictamenes { get; set; }
 		public TipoParticipacionForm[] TiposParticipaciones { get; set; }
 		public InstitucionForm[] Instituciones { get; set; }
-		public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
+        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
     }
 }

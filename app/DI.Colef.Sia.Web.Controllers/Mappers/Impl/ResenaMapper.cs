@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
+            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Pais = catalogoService.GetPaisById(message.Pais);

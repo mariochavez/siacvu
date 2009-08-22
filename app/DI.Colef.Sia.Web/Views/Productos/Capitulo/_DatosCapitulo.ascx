@@ -33,9 +33,8 @@
 </p>
 <p>
     <label>Periodo de Referencia</label>
-    <%=Html.DropDownList("PeriodoReferencia", Model.PeriodosReferencias.CreateSelectList<PeriodoReferenciaForm>("Id", "Periodo"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("PeriodoReferencia") %>
+    <%=Html.Encode(Model.PeriodoReferencia.Periodo)%>
+    <%=Html.Hidden("PeriodoReferenciaId", Model.PeriodoReferencia.Id) %>
 </p>
 <p>
     <label>L&iacute;nea Tem&aacute;tica</label>

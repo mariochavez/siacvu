@@ -434,7 +434,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(catalogoService.GetCurrentPeriodoReferencia());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -458,7 +458,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;

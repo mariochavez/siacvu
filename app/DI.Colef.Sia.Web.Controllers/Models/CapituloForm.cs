@@ -23,9 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
 
-        public int PeriodoReferencia { get; set; }
-        public int PeriodoReferenciaId { get; set; }
-
         public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
 
@@ -58,6 +55,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
+        public int PeriodoReferenciaId { get; set; }
+
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoCapituloForm[] CoautorInternoCapitulos { get; set; }
         public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
@@ -70,9 +69,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public ResponsableExternoCapituloForm ResponsableExternoCapitulo { get; set; }
 		
 		/* Catalogos */
+
+        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
+
 		public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-		public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
+		
 		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
 		public InvestigadorExternoForm[] CoautoresExternos { get; set; }

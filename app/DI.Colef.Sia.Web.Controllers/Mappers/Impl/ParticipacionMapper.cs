@@ -37,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 			model.OtraParticipacion = catalogoService.GetOtraParticipacionById(message.OtraParticipacion);
 		    model.TipoPresentacion = catalogoService.GetTipoPresentacionById(message.TipoPresentacion);
-		    model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
+            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
 		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);

@@ -10,7 +10,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        public int PeriodoReferencia { get; set; }
         public int PeriodoReferenciaId { get; set; }
 
         public int ProgramaEstudio { get; set; }
@@ -55,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Investigador { get; set; }
         
         /* Catalogos */
-        public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
+        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
         public ProgramaEstudioForm[] ProgramasEstudios { get; set; }
         public InstitucionForm[] Instituciones { get; set; }
         public SectorForm[] Sectores { get; set; }

@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferencia);
+            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
 

@@ -31,7 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
 
-        public int PeriodoReferencia { get; set; }
         public int PeriodoReferenciaId { get; set; }
 
         public int Sector { get; set; }
@@ -61,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InstitucionForm[] Instituciones { get; set; }
         public ProgramaEstudioForm[] ProgramasEstudios { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }
-        public PeriodoReferenciaForm[] PeriodosReferencias { get; set; }
+        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
         public SectorForm[] Sectores { get; set; }
         public DependenciaForm[] Dependencias { get; set; }
         public DepartamentoForm[] Departamentos { get; set; }
