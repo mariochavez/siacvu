@@ -52,7 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
@@ -65,7 +64,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
+            PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -73,6 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;
@@ -80,11 +81,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
             string[] coautoresExternos, string[] coautoresInternos, 
             string[] responsablesExternos, string[] responsablesInternos)
         {
-            var model = Map(message, usuario, investigador);
+            var model = Map(message, usuario, investigador, periodo);
 
             foreach (var coautorId in coautoresExternos)
             {

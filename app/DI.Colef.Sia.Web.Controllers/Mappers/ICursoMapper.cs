@@ -5,6 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface ICursoMapper : IMapper<Curso, CursoForm>
     {
-        Curso Map(CursoForm message, Usuario usuario, Investigador investigador);
+        Curso Map(CursoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo);
     }
 }

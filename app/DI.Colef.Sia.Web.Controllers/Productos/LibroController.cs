@@ -154,7 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',');
 
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                                         coautoresExternos, coautoresInternos);
             
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
@@ -175,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LibroForm form)
         {
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
             
             if (!IsValidateModel(libro, form, Title.Edit))
             {
@@ -331,7 +331,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
@@ -351,7 +351,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoPublicacion"] = form.TipoPublicacionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;

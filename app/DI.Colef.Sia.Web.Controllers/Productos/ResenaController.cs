@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',');
 
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                                           coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(resena, form, Title.Edit))
             {
@@ -313,7 +313,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -329,7 +329,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(ResenaForm form)
         {
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;

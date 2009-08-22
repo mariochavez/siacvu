@@ -13,7 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaFinal { get; set; }
 
-        [NotNull]
         public virtual int NumeroHoras { get; set; }
 
         public virtual int Puntuacion { get; set; }

@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -116,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(dictamen, form, Title.Edit))
             {
@@ -187,7 +187,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
 
             return form;
         }
@@ -196,7 +196,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoDictamen"] = form.TipoDictamenId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Institucion"] = form.InstitucionId;
         }
     }

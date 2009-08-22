@@ -15,17 +15,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Puntuacion { get; set; }
 
-        [NotNull]
-		public virtual TipoDictamen TipoDictamen { get; set; }
+        public virtual TipoDictamen TipoDictamen { get; set; }
 
-        [NotNull]
-		public virtual TipoParticipacion TipoParticipacion { get; set; }
+        public virtual TipoParticipacion TipoParticipacion { get; set; }
 
-        [NotNull]
-		public virtual Institucion Institucion { get; set; }
+        public virtual Institucion Institucion { get; set; }
 
-        [NotNull]
-		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
+        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

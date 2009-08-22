@@ -52,7 +52,7 @@
 			<% foreach (var curso in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(curso.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(curso.Area) %></h5></span>
+						<h5><span><%=Html.Encode(curso.Nombre) %></h5></span>
 						<h6>Modificado el <%=Html.Encode(curso.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

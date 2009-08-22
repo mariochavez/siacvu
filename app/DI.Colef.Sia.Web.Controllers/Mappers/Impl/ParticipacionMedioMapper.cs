@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.MedioImpreso = catalogoService.GetMedioImpresoById(message.MedioImpreso);
 		    model.MedioElectronico = catalogoService.GetMedioElectronicoById(message.MedioElectronico);
 		    model.Genero = catalogoService.GetGeneroById(message.Genero);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
 		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
 		    model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
@@ -49,7 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
-        public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador)
+        public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador,
+            PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -57,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

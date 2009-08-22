@@ -55,8 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
-        public int PeriodoReferenciaId { get; set; }
-
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoCapituloForm[] CoautorInternoCapitulos { get; set; }
         public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
@@ -74,7 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-		
 		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
 		public InvestigadorExternoForm[] CoautoresExternos { get; set; }

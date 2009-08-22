@@ -25,8 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Genero { get; set; }
         public int GeneroId { get; set; }
 
-        public int PeriodoReferenciaId { get; set; }
-
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
 
@@ -45,11 +43,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Investigador { get; set; }
 
 		/* Catalogos */
+        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
+
 		public MedioImpresoForm[] MediosImpresos { get; set; }
 		public MedioElectronicoForm[] MediosElectronicos { get; set; }
 		public GeneroForm[] Generos { get; set; }
-        public PeriodoReferenciaForm PeriodoReferencia { get; set; }
-		public ProyectoForm[] Proyectos { get; set; }
+        public ProyectoForm[] Proyectos { get; set; }
 		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public AmbitoForm[] Ambitos { get; set; }
 		public PaisForm[] Paises { get; set; }

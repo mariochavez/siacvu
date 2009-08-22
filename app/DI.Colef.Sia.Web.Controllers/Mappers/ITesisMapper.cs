@@ -6,6 +6,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
     public interface ITesisMapper : IMapper<Tesis, TesisForm>
     {
-        Tesis Map(TesisForm message, Usuario usuario, Investigador investigador);
+        Tesis Map(TesisForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo);
     }
 }

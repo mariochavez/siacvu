@@ -37,14 +37,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 			model.OtraParticipacion = catalogoService.GetOtraParticipacionById(message.OtraParticipacion);
 		    model.TipoPresentacion = catalogoService.GetTipoPresentacionById(message.TipoPresentacion);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
 		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
             model.Autor = investigadorService.GetInvestigadorById(message.Autor);
         }
 
-        public Participacion Map(ParticipacionForm message, Usuario usuario, Investigador investigador)
+        public Participacion Map(ParticipacionForm message, Usuario usuario, Investigador investigador,
+            PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -52,6 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',');
 
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                                             coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
@@ -152,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(reporte, form, Title.Edit))
             {
@@ -312,7 +312,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -327,7 +327,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoReporte"] = form.TipoReporteId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Institucion"] = form.InstitucionId;

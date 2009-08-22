@@ -25,8 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
 
-        public int PeriodoReferenciaId { get; set; }
-
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
 
@@ -55,8 +53,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoResenaForm CoautorInternoResena { get; set; }
 
         /* Catalogos */
-        public EstadoProductoForm[] EstadosProductos { get; set; }
         public PeriodoReferenciaForm PeriodoReferencia { get; set; }
+
+        public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }

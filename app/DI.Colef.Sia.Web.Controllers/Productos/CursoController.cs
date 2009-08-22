@@ -117,7 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
@@ -127,7 +127,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido creado", curso.NumeroHoras));
+            return RedirectToIndex(String.Format("Curso {0} ha sido creado", curso.Nombre));
         }
 
         [Transaction]
@@ -135,7 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(curso, form, Title.Edit))
             {
@@ -148,7 +148,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", curso.NumeroHoras));
+            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", curso.Nombre));
         }
 
         [Transaction]
@@ -190,7 +190,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Curso>(x => x.NumeroHoras, q);
+            var data = searchService.Search<Curso>(x => x.Nombre, q);
             return Content(data);
         }
 
@@ -203,7 +203,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CursoForm();
 
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
@@ -226,7 +226,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
             ViewData["Sector"] = form.SectorId;
             ViewData["Organizacion"] = form.OrganizacionId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Nivel"] = form.NivelId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Institucion"] = form.InstitucionId;

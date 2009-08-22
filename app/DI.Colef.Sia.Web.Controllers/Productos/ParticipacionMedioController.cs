@@ -112,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(participacionMedio, form, Title.New, "ParticipacionMedio"))
             {
@@ -130,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(participacionMedio, form, Title.Edit))
             {
@@ -201,7 +201,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos());
             form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
             form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
@@ -216,7 +216,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["MedioImpreso"] = form.MedioImpresoId;
             ViewData["MedioElectronico"] = form.MedioElectronicoId;
             ViewData["Genero"] = form.GeneroId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Ambito"] = form.AmbitoId;

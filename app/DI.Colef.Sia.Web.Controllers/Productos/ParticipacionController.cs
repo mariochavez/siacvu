@@ -110,7 +110,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(participacion, form, Title.New, "Participacion"))
             {
@@ -128,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(participacion, form, Title.Edit))
             {
@@ -199,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Autores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
@@ -212,7 +212,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Autor"] = form.AutorId;
             ViewData["OtraParticipacion"] = form.OtraParticipacionId;
             ViewData["TipoPresentacion"] = form.TipoPresentacionId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;

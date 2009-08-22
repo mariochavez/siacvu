@@ -118,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisForm form)
         {
-            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(tesis, form, Title.New, "Tesis"))
             {
@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisForm form)
         {
-            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(tesis, form, Title.Edit))
             {
@@ -210,7 +210,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias());
             form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
@@ -229,9 +229,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Institucion"] = form.InstitucionId;
             ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
-            ViewData["PeriodoReferencia"] = form.PeriodoReferenciaId;
-
-
             ViewData["Sector"] = form.SectorId;
             ViewData["Dependencia"] = form.DependenciaId;
             ViewData["Departamento"] = form.DepartamentoId;

@@ -27,8 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
-
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
+            
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
 
@@ -46,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Curso Map(CursoForm message, Usuario usuario, Investigador investigador)
+        public Curso Map(CursoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -54,6 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

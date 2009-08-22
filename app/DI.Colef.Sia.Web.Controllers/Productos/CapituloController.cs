@@ -162,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',').Length > 0)
                 responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
 
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                 coautoresExternos, coautoresInternos, responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
@@ -183,7 +183,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(capitulo, form, Title.Edit))
             {
@@ -434,7 +434,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.PeriodoReferencia = periodoReferenciaMapper.Map(catalogoService.GetCurrentPeriodoReferencia());
+            form.PeriodoReferencia = periodoReferenciaMapper.Map(CurrentPeriodo());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());

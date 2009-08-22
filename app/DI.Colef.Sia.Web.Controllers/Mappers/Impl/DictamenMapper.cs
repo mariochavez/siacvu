@@ -31,10 +31,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
 		    model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
 		    model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
         }
 
-        public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador)
+        public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -42,6 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

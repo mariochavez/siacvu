@@ -42,7 +42,6 @@
 <p>
 	<label>Periodo Referencia</label>
 	<%=Html.Encode(Model.PeriodoReferencia.Periodo)%>
-    <%=Html.Hidden("PeriodoReferenciaId", Model.PeriodoReferencia.Id) %>
 </p>
 <p>
 	<label>Proyecto</label>

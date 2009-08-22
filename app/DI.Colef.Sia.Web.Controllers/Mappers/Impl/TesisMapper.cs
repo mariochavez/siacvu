@@ -35,7 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
-            model.PeriodoReferencia = catalogoService.GetPeriodoReferenciaById(message.PeriodoReferenciaId);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Dependencia = catalogoService.GetDependenciaById(message.Dependencia);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
@@ -44,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Tesis Map(TesisForm message, Usuario usuario, Investigador investigador)
+        public Tesis Map(TesisForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -52,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

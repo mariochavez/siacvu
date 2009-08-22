@@ -30,7 +30,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
         private void CreateMaps()
         {
-
             CreateCatalogosMaps();
             CreateArticulosMaps();
             CreateCapitulosMaps();
@@ -184,8 +183,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
-                           o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
@@ -224,8 +221,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoReporte,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
@@ -347,8 +342,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
-                           o => o.Ignore())
                 .ForMember(d => d.Sector,
                            o => o.Ignore())
                 .ForMember(d => d.Dependencia,
@@ -381,8 +374,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.ProgramaEstudio,
                            o => o.Ignore())
                 .ForMember(d => d.Nivel3,
-                           o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
                 .ForMember(d => d.Sector,
                            o => o.Ignore())
@@ -472,8 +463,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
-                           o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
@@ -523,8 +512,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Institucion,
                            o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
-                           o => o.Ignore())
                 .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
@@ -541,8 +528,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.OtraParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoPresentacion,
-                           o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
@@ -568,8 +553,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
@@ -611,8 +594,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.MedioElectronico,
                            o => o.Ignore())
                 .ForMember(d => d.Genero,
-                           o => o.Ignore())
-                .ForMember(d => d.PeriodoReferencia,
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
