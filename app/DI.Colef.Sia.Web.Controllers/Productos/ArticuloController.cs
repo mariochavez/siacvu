@@ -334,7 +334,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.PeriodosReferencias = periodoReferenciaMapper.Map(catalogoService.GetActivePeriodoReferencias());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.RevistasPublicaciones = revistaPublicacionMapper.Map(catalogoService.GetActiveRevistaPublicaciones());
             form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
@@ -362,7 +361,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Proyecto"] = form.ProyectoId;
 
             ViewData["Pais"] = form.PaisId;
-            ViewData["RevistaPublicacion"] = form.RevistaPublicacionId;
             ViewData["Institucion"] = form.InstitucionId;
             ViewData["Indice1"] = form.Indice1Id;
             ViewData["Indice2"] = form.Indice2Id;

@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Pais { get; set; }
         public int PaisId { get; set; }
 
-        public int RevistaPublicacion { get; set; }
+        public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
 
         public int Institucion { get; set; }

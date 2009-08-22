@@ -10,6 +10,7 @@
 
     $('.clearField').clearField();
 
+    AutoComplete.setup();
     SearchAutoComplete.setup();
     paisSetDefaultValue();
     ArticuloEnableSelect.setup();
@@ -75,6 +76,52 @@ var DateTimePicker = {
     }
 };
 
+var AutoComplete = {
+    setup: function() {
+        $('input.autocomplete').each(function() {
+            var url = $(this).attr('rel');
+
+            var value = $(this).val();
+            $(this).autocomplete(url,
+            {
+                minChars: 5,
+                delay: 400,
+                matchSubset: 1,
+                matchContains: 1,
+                cacheLength: 10,
+                autoFill: true,
+                selectFirst: true,
+                mustMatch: 1,
+                onItemSelect: AutoComplete.selectItem,
+                onFindValue: AutoComplete.findValue
+            });
+
+            $(this).val(value);
+        });
+    },
+    selectItem: function(li, input) {
+        AutoComplete.findValue(li, input);
+    },
+    findValue: function(li, input) {
+        var hidden = $('input[rel=#' + input.attr('id') + ']').attr('id');
+        field = $('#' + hidden);
+
+        if (li == null) {
+            $(field).val('');
+            return;
+        }
+
+        if (!!li.extra & li.extra.length > 0)
+            var sValue = li.extra[0];
+        else if (input.val() != '')
+            var sValue = $(field).val();
+        else
+            var sValue = li.selectValue;
+
+        $(field).val(sValue);
+    }
+};
+
 var SearchAutoComplete = {
     field: null,
     setup: function() {
@@ -135,9 +182,6 @@ var SearchAutoComplete = {
         else var sValue = li.selectValue;
 
         $(field).val(sValue);
-    },
-    formatItem: function(row) {
-        return row[0] + " (id: " + row[1] + ")";
     }
 }
 
