@@ -7,10 +7,10 @@
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-    <label>Revista Publicaci&oacute;n</label>
-    <%=Html.DropDownList("RevistaPublicacion", Model.RevistasPublicaciones.CreateSelectList<RevistaPublicacionForm>("Id", "Titulo"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("RevistaPublicacion") %>
+    <label>Revista Publicacion</label>
+    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo, 
+        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
+    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
 </p>
 <p>
     <label>Instituci&oacute;n</label>

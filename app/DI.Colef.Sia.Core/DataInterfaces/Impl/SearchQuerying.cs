@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                                    .Add(Projections.Property(fieldName), "Nombre"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (Search)))
                 .Add(Expression.Like(fieldName, "%" + value + "%"))
+                .Add(Expression.Eq("Activo", true))
                 .List<Search>();
 
             return ((List<Search>) list).ToArray();
