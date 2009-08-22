@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public TipoProyectoController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                       ITipoProyectoMapper tipoProyectoMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoProyectoMapper = tipoProyectoMapper;

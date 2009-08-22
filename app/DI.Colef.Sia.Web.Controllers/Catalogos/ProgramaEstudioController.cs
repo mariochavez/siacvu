@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ProgramaEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService,
             IProgramaEstudioMapper programaEstudioMapper,
             ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.programaEstudioMapper = programaEstudioMapper;

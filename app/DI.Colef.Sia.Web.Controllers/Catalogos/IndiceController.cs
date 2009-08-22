@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public IndiceController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                 IIndiceMapper indiceMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.indiceMapper = indiceMapper;

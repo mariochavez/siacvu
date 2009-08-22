@@ -16,7 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public LineaInvestigacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                             ILineaInvestigacionMapper lineaInvestigacionMapper,
-                                            ISearchService searchService) : base(usuarioService, searchService)
+                                            ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;

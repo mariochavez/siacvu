@@ -15,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public DepartamentoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IDepartamentoMapper departamentoMapper,
             ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.departamentoMapper = departamentoMapper;

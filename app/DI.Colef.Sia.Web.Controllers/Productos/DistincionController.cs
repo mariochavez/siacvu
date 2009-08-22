@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     ITipoDistincionMapper tipoDistincionMapper, IInstitucionMapper institucionMapper,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.distincionService = distincionService;

@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IProyectoMapper proyectoMapper, 
                                             IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper,
                                             ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.movilidadAcademicaService = movilidadAcademicaService;

@@ -15,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISNIMapper sniMapper;
 
         public SNIController(IUsuarioService usuarioService, ICatalogoService catalogoService, ISNIMapper sniMapper,
-                             ISearchService searchService) : base(usuarioService, searchService)
+                             ISearchService searchService) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.sniMapper = sniMapper;

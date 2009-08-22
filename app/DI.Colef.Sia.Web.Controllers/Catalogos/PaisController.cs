@@ -15,7 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
 
         public PaisController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPaisMapper paisMapper,
-                              ISearchService searchService) : base(usuarioService, searchService)
+                              ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.paisMapper = paisMapper;

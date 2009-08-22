@@ -42,7 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
                                 ITipoParticipacionEventoMapper tipoParticipacionEventoMapper,
-                                ISearchService searchService) : base(usuarioService, searchService)
+                                ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.investigadorService = investigadorService;
