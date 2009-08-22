@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public TipoEventoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoEventoMapper tipoEventoMapper,
             ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoEventoMapper = tipoEventoMapper;

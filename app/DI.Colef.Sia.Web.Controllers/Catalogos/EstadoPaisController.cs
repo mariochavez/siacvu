@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public EstadoPaisController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.estadoPaisMapper = estadoPaisMapper;

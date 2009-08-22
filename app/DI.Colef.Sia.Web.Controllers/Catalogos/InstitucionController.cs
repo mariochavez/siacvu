@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public InstitucionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                      IInstitucionMapper institucionMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;

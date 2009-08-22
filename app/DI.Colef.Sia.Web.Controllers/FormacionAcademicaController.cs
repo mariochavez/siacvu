@@ -35,7 +35,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IEstadoPaisMapper estadoPaisMapper, ISectorMapper sectorMapper,
                                             IOrganizacionMapper organizacionMapper, IAreaMapper areaMapper,
                                             IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                            ISearchService searchService) : base(usuarioService, searchService)
+                                            ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.formacionAcademicaService = formacionAcademicaService;

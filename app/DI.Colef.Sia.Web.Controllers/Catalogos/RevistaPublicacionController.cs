@@ -16,7 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public RevistaPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                             IRevistaPublicacionMapper revistaPublicacionMapper,
-                                            ISearchService searchService) : base(usuarioService, searchService)
+                                            ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;

@@ -72,8 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Investigador { get; set; }
 
-        public int PeriodoReferenciaId { get; set; }
-
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }
         public CoautorInternoArticuloForm[] CoautorInternoArticulos { get; set; }
 

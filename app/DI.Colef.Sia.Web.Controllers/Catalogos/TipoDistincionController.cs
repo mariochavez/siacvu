@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         public TipoDistincionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                         ITipoDistincionMapper tipoDistincionMapper, ISearchService searchService)
-            : base(usuarioService, searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoDistincionMapper = tipoDistincionMapper;

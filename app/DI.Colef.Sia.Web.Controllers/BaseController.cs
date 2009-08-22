@@ -22,11 +22,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
+        readonly ICatalogoService catalogoService;
 
-        public BaseController(IUsuarioService usuarioService, ISearchService searchService)
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService, 
+                              ICatalogoService catalogoService)
         {
             this.usuarioService = usuarioService;
             this.searchService = searchService;
+            this.catalogoService = catalogoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -53,6 +56,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var usuario = usuarioService.GetUsuarioByUserName("jcarrillo");
             return usuarioService.GetInvestigadorByUsuario(usuario);
+        }
+
+        protected PeriodoReferencia CurrentPeriodo()
+        {
+            var id = 17;
+            return catalogoService.GetPeriodoReferenciaById(id);
         }
 
         protected RedirectToRouteResult RedirectToIndex(string message)

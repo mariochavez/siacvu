@@ -39,7 +39,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper,
                                IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper
-                               , ISearchService searchService) : base(usuarioService, searchService)
+                               , ISearchService searchService)
+            : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tesisService = tesisService;
