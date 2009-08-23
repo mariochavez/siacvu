@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class MedioImpresoController : BaseController<MedioImpreso, MedioImpresoForm>
@@ -15,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IMedioImpresoMapper medioImpresoMapper;
 
         public MedioImpresoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IMedioImpresoMapper medioImpresoMapper,
-            ISearchService searchService)
+                                      ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var medioImpresos = catalogoService.GetAllMedioImpresos();
             data.List = medioImpresoMapper.Map(medioImpresos);
@@ -36,10 +36,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new MedioImpresoForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -50,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var medioImpreso = catalogoService.GetMedioImpresoById(id);
             data.Form = medioImpresoMapper.Map(medioImpreso);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 

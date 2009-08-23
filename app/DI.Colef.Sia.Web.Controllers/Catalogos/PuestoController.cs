@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     public class PuestoController : BaseController<Puesto, PuestoForm>
     {
@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPuestoMapper puestoMapper;
 
         public PuestoController(IUsuarioService usuarioService, ICatalogoService catalogoService, IPuestoMapper puestoMapper,
-            ISearchService searchService)
+                                ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;

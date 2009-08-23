@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class ProgramaEstudioController : BaseController<ProgramaEstudio, ProgramaEstudioForm>
@@ -15,8 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IProgramaEstudioMapper programaEstudioMapper;
 
         public ProgramaEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-            IProgramaEstudioMapper programaEstudioMapper,
-            ISearchService searchService)
+                                         IProgramaEstudioMapper programaEstudioMapper,
+                                         ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var programaEstudios = catalogoService.GetAllProgramaEstudios();
             data.List = programaEstudioMapper.Map(programaEstudios);
@@ -37,10 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new ProgramaEstudioForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var programaEstudio = catalogoService.GetProgramaEstudioById(id);
             data.Form = programaEstudioMapper.Map(programaEstudio);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 

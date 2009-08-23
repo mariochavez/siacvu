@@ -6,12 +6,12 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class ProductoDerivadoController : BaseController<ProductoDerivado, ProductoDerivadoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IProductoDerivadoMapper productoDerivadoMapper;
 
         public ProductoDerivadoController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var productoDerivados = catalogoService.GetAllProductoDerivados();
             data.List = productoDerivadoMapper.Map(productoDerivados);
@@ -37,10 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new ProductoDerivadoForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var productoDerivado = catalogoService.GetProductoDerivadoById(id);
             data.Form = productoDerivadoMapper.Map(productoDerivado);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 

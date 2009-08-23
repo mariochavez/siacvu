@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<SNIForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>

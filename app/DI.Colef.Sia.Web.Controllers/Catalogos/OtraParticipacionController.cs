@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class OtraParticipacionController : BaseController<OtraParticipacion, OtraParticipacionForm>
@@ -15,8 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IOtraParticipacionMapper otraParticipacionMapper;
 
         public OtraParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-            IOtraParticipacionMapper otraParticipacionMapper,
-            ISearchService searchService)
+                                           IOtraParticipacionMapper otraParticipacionMapper,
+                                           ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var otraParticipacions = catalogoService.GetAllOtraParticipaciones();
             data.List = otraParticipacionMapper.Map(otraParticipacions);
@@ -37,10 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new OtraParticipacionForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var otraParticipacion = catalogoService.GetOtraParticipacionById(id);
             data.Form = otraParticipacionMapper.Map(otraParticipacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 

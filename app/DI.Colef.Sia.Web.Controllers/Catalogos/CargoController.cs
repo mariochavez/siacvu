@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     public class CargoController : BaseController<Cargo, CargoForm>
     {
@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICargoMapper cargoMapper;
 
         public CargoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICargoMapper cargoMapper,
-            ISearchService searchService)
+                               ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index() 
         {
             var data = CreateViewDataWithTitle(Title.Index);
-			var cargos = catalogoService.GetAllCargos();
+            var cargos = catalogoService.GetAllCargos();
             data.List = cargoMapper.Map(cargos);
 
             return View(data);

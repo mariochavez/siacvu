@@ -6,16 +6,16 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class NivelEstudioController : BaseController<NivelEstudio, NivelEstudioForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly INivelEstudioMapper nivelEstudioMapper;
 
         public NivelEstudioController(IUsuarioService usuarioService, ICatalogoService catalogoService, INivelEstudioMapper nivelEstudioMapper,
-            ISearchService searchService)
+                                      ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var nivelEstudios = catalogoService.GetAllNivelEstudios();
             data.List = nivelEstudioMapper.Map(nivelEstudios);
@@ -36,10 +36,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new NivelEstudioForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -50,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var nivelEstudio = catalogoService.GetNivelEstudioById(id);
             data.Form = nivelEstudioMapper.Map(nivelEstudio);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 

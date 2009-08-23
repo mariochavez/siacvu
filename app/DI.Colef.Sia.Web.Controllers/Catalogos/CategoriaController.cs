@@ -6,7 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     public class CategoriaController : BaseController<Categoria, CategoriaForm>
     {
@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICategoriaMapper categoriaMapper;
 
         public CategoriaController(IUsuarioService usuarioService, ICatalogoService catalogoService, ICategoriaMapper categoriaMapper,
-            ISearchService searchService)
+                                   ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;

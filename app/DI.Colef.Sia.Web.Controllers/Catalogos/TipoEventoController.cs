@@ -6,16 +6,16 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Web.NHibernate;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoEventoController : BaseController<TipoEvento, TipoEventoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ITipoEventoMapper tipoEventoMapper;
 
         public TipoEventoController(IUsuarioService usuarioService, ICatalogoService catalogoService, ITipoEventoMapper tipoEventoMapper,
-            ISearchService searchService)
+                                    ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 
             var tipoEventos = catalogoService.GetAllTipoEventos();
             data.List = tipoEventoMapper.Map(tipoEventos);
@@ -36,10 +36,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoEventoForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -50,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoEvento = catalogoService.GetTipoEventoById(id);
             data.Form = tipoEventoMapper.Map(tipoEvento);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
 
