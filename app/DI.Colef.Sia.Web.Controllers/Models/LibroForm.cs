@@ -68,7 +68,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }
 		public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
-		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
 		public FormaParticipacionForm[] FormasParticipaciones { get; set; }
