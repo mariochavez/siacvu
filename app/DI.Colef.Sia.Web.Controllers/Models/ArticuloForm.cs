@@ -84,10 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoArticuloForm[] TiposArticulos { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public PaisForm[] Paises { get; set; }
-        public RevistaPublicacionForm[] RevistasPublicaciones { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
         public IndiceForm[] Indices1 { get; set; }
         public IndiceForm[] Indices2 { get; set; }
         public IndiceForm[] Indices3 { get; set; }

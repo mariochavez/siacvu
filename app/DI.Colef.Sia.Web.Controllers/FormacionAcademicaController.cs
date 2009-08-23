@@ -205,8 +205,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = form ?? new FormacionAcademicaForm();
 
             form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
@@ -221,8 +219,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         void FormSetCombos(FormacionAcademicaForm form)
         {
             ViewData["NivelEstudio"] = form.NivelEstudioId;
-            ViewData["Institucion"] = form.InstitucionId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
 

@@ -16,10 +16,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NivelEstudio { get; set; }
         public int NivelEstudioId { get; set; }
 
-        public int Institucion { get; set; }
+        public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
-        public int LineaTematica { get; set; }
+        public string LineaTematicaNombre { get; set; }
         public int LineaTematicaId { get; set; }
 
         public int Pais { get; set; }
@@ -47,8 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public NivelEstudioForm[] NivelesEstudios { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }
         public SectorForm[] Sectores { get; set; }

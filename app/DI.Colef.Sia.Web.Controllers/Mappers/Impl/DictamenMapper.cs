@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
 		    model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
-		    model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+		    model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
         }
 
         public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)

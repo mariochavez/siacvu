@@ -53,11 +53,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
 
-            var revistaForm = revistaPublicacionMapper.Map(revistaPublicacion);
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
+            
+            data.Form = SetupNewForm(revistaPublicacionForm);
 
-            data.Form = SetupNewForm(revistaForm);
-
-            ViewData["Institucion"] = data.Form.InstitucionId;
             ViewData.Model = data;
             return View();
         }
@@ -152,8 +151,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         RevistaPublicacionForm SetupNewForm(RevistaPublicacionForm form)
         {
             form = form ?? new RevistaPublicacionForm();
-
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
 
             return form;
         }

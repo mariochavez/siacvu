@@ -38,8 +38,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
             model.TipoInstitucion = catalogoService.GetTipoInstitucionById(message.TipoInstitucion);
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);
         }
 

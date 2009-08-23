@@ -15,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoDistincion { get; set; }
         public int TipoDistincionId { get; set; }
 
-        public int Institucion { get; set; }
+        public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
         public int Ambito { get; set; }
@@ -31,7 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoDistincionForm[] TiposDistinciones { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
         public AmbitoForm[] Ambitos { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }

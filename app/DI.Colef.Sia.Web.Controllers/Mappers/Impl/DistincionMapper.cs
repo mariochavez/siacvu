@@ -29,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Ciudad = message.Ciudad;
 
             model.TipoDistincion = catalogoService.GetTipoDistincionById(message.TipoDistincion);
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);

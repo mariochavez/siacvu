@@ -187,7 +187,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             
             return form;
         }
@@ -196,7 +195,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoDictamen"] = form.TipoDictamenId;
-            ViewData["Institucion"] = form.InstitucionId;
         }
     }
 }

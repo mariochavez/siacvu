@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }
 
-		public int Institucion { get; set; }
+        public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
         public int Investigador { get; set; }
@@ -23,6 +23,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		/* Catalogos */
         public TipoDictamenForm[] TiposDictamenes { get; set; }
 		public TipoParticipacionForm[] TiposParticipaciones { get; set; }
-		public InstitucionForm[] Instituciones { get; set; }
     }
 }

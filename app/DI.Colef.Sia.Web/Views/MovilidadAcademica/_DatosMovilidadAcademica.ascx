@@ -27,15 +27,15 @@
 </p>
 <p>
     <label>Instituci&oacute;n</label>
-    <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Institucion") %>
+    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
+        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
     <label>L&iacute;nea Tem&aacute;tica</label>
-    <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("LineaTematica") %>
+    <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
+        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+    <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>
     <label>Convenio</label>

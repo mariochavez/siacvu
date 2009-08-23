@@ -14,12 +14,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoInstitucion { get; set; }
         public int TipoInstitucionId { get; set; }
-
-        public int Institucion { get; set; }
+        
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
-        public int LineaTematica { get; set; }
+        public string LineaTematicaNombre { get; set; }
         public int LineaTematicaId { get; set; }
 
         public int Convenio { get; set; }
@@ -40,8 +39,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
         public TipoInstitucionForm[] TiposInstituciones { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public ConvenioForm[] Convenios { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
         public ProductoDerivadoForm[] ProductosDerivados { get; set; }

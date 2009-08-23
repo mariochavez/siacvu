@@ -10,10 +10,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        public int ProgramaEstudio { get; set; }
+        public string ProgramaEstudioNombre { get; set; }
         public int ProgramaEstudioId { get; set; }
 
-        public int Institucion { get; set; }
+        public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
         public int Sector { get; set; }
@@ -54,8 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PeriodoReferenciaPeriodo { get; set; }
         
         /* Catalogos */
-        public ProgramaEstudioForm[] ProgramasEstudios { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
         public SectorForm[] Sectores { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }
         public NivelForm[] Niveles { get; set; }

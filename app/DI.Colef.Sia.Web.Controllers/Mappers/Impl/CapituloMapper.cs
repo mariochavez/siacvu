@@ -52,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);

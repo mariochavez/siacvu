@@ -28,8 +28,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             
-            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
             model.Nivel = catalogoService.GetNivelById(message.Nivel);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);

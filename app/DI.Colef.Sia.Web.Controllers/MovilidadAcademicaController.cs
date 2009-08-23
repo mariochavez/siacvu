@@ -360,8 +360,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
             form.TiposInstituciones = tipoInstitucionMapper.Map(catalogoService.GetActiveTipoInstituciones());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.ProductosDerivados = productoDerivadoMapper.Map(catalogoService.GetActiveProductoDerivados());
@@ -373,8 +371,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
             ViewData["TipoInstitucion"] = form.TipoInstitucionId;
-            ViewData["Institucion"] = form.InstitucionId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Convenio"] = form.ConvenioId;
         }
     }

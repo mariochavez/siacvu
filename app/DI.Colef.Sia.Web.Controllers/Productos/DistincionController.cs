@@ -185,7 +185,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new DistincionForm();
 
             form.TiposDistinciones = tipoDistincionMapper.Map(catalogoService.GetActiveTipoDistinciones());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
@@ -196,7 +195,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(DistincionForm form)
         {
             ViewData["TipoDistincion"] = form.TipoDistincionId;
-            ViewData["Institucion"] = form.InstitucionId;
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;

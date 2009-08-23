@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
 
-        public int LineaTematica { get; set; }
+        public string LineaTematicaNombre { get; set; }
         public int LineaTematicaId { get; set; }
 
         public int Idioma { get; set; }
@@ -72,7 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
 		public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
