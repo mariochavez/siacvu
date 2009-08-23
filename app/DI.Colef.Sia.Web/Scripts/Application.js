@@ -31,6 +31,10 @@ function setupParticipaciones() {
     ParticipacionEnableOptions.setup();
 }
 
+function setupParticipacionMedios() {
+    ParticipacionMedioEnableOptions.setup();
+}
+
 function setupTesis() {
     TesisEnableOptions.setup();
 }
@@ -133,6 +137,24 @@ var ParticipacionEnableOptions = {
             $('#TipoPresentacion').attr('disabled', false);
             $('#Autor').attr('disabled', false);
         }
+
+        return false;
+    }
+}
+
+var ParticipacionMedioEnableOptions = {
+    setup: function() {
+        $('#MedioImpreso').change(ParticipacionMedioEnableOptions.enableOptions);
+        $('#forma').unload(ParticipacionMedioEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#MedioImpreso option:selected').text();
+
+        if (text != 'Seleccione ...')
+            $('#NotaPeriodistica').attr('disabled', false);
+        else
+            $('#NotaPeriodistica').attr('disabled', true);
 
         return false;
     }
