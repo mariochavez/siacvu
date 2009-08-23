@@ -185,8 +185,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.Area,
@@ -224,10 +222,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
-                .ForMember(d => d.Institucion,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.Investigador,
@@ -254,10 +248,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Ambito,
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
-                           o => o.Ignore())
-                .ForMember(d => d.Institucion,
-                           o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
                 .ForMember(d => d.TipoFinanciamiento,
                            o => o.Ignore())
@@ -336,12 +326,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.FormaParticipacion,
                            o => o.Ignore())
-                .ForMember(d => d.Institucion,
-                           o => o.Ignore())
-                .ForMember(d => d.ProgramaEstudio,
-                           o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.Sector,
                            o => o.Ignore())
                 .ForMember(d => d.Dependencia,
@@ -408,8 +392,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.LineaInvestigacion,
@@ -423,8 +405,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Institucion,
                            o => o.Ignore())
                 .ForMember(d => d.Indice1,
                            o => o.Ignore())
@@ -552,8 +532,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
@@ -592,8 +570,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.MedioElectronico,
                            o => o.Ignore())
                 .ForMember(d => d.Genero,
-                           o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())

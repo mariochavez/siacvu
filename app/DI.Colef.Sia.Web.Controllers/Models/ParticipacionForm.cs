@@ -4,7 +4,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
 		public int Id { get; set; }
 		public string Titulo { get; set; }
-        public string Institucion { get; set; }
         public string FechaPresentacion { get; set; }
         public string Lugar { get; set; }
         public string Ciudad { get; set; }
@@ -28,6 +27,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+
+        public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
 
         public int Investigador { get; set; }
 

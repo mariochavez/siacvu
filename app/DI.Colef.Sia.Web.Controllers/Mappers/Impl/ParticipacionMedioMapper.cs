@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.MedioElectronico = catalogoService.GetMedioElectronicoById(message.MedioElectronico);
 		    model.Genero = catalogoService.GetGeneroById(message.Genero);
 		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
-		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
 		    model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);

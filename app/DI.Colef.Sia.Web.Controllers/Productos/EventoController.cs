@@ -387,8 +387,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
 
             return form;
@@ -398,8 +396,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["TipoEvento"] = form.TipoEventoId;
-            ViewData["Institucion"] = form.InstitucionId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
         }
     }

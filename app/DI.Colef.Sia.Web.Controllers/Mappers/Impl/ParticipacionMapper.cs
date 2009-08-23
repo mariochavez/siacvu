@@ -29,7 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ParticipacionForm message, Participacion model)
         {
             model.Titulo = message.Titulo;
-            model.Institucion = message.Institucion;
             model.Lugar = message.Lugar;
             model.Ciudad = message.Ciudad;
 
@@ -37,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 			model.OtraParticipacion = catalogoService.GetOtraParticipacionById(message.OtraParticipacion);
 		    model.TipoPresentacion = catalogoService.GetTipoPresentacionById(message.TipoPresentacion);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);

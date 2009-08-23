@@ -247,6 +247,10 @@ alter table Participaciones  drop constraint FK56CA0A1B7CEC3F4
 alter table Participaciones  drop constraint FK56CA0A1B90FFB19B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B64F7D1CD]') AND parent_object_id = OBJECT_ID('Participaciones'))
+alter table Participaciones  drop constraint FK56CA0A1B64F7D1CD
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B11666E2A]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B11666E2A
 
@@ -1985,7 +1989,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(255) null,
        Puntuacion INT null,
-       Institucion NVARCHAR(255) null,
        FechaPresentacion DATETIME null,
        Lugar NVARCHAR(255) null,
        Ciudad NVARCHAR(255) null,
@@ -1996,6 +1999,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        AutorFk INT null,
        OtraParticipacionFk INT null,
        TipoPresentacionFk INT null,
+       InstitucionFk INT null,
        PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        PaisFk INT null,
@@ -3488,6 +3492,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK56CA0A1B90FFB19B 
         foreign key (TipoPresentacionFk) 
         references TipoPresentaciones
+
+    alter table Participaciones 
+        add constraint FK56CA0A1B64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
 
     alter table Participaciones 
         add constraint FK56CA0A1B11666E2A 

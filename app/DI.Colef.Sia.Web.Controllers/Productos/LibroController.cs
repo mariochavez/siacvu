@@ -333,7 +333,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
@@ -352,7 +351,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoPublicacion"] = form.TipoPublicacionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;

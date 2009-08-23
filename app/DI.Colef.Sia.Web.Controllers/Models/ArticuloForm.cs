@@ -27,8 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
 
-        public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
+        public string LineaTematicaNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
@@ -40,8 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
 
-        public int Institucion { get; set; }
         public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
 
         public int Indice1 { get; set; }
         public int Indice1Id { get; set; }

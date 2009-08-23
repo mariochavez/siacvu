@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ResenaForm
@@ -27,8 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
 
-        public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
+        public string LineaTematicaNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }

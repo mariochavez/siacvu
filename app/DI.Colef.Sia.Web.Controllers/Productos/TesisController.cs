@@ -208,9 +208,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.ProgramasEstudios = programaEstudioMapper.Map(catalogoService.GetActiveProgramaEstudios());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias());
             form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
@@ -226,9 +223,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
-            ViewData["Institucion"] = form.InstitucionId;
-            ViewData["ProgramaEstudio"] = form.ProgramaEstudioId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Sector"] = form.SectorId;
             ViewData["Dependencia"] = form.DependenciaId;
             ViewData["Departamento"] = form.DepartamentoId;

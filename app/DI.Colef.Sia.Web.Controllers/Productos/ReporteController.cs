@@ -314,10 +314,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
             return form;
@@ -328,8 +326,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoReporte"] = form.TipoReporteId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
-            ViewData["Institucion"] = form.InstitucionId;
             ViewData["Pais"] = form.PaisId;
         }
     }

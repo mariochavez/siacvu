@@ -22,11 +22,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
 
-        public int Institucion { get; set; }
         public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
 
-        public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
+        public string LineaTematicaNombre { get; set; }
 
         public int TipoFinanciamiento { get; set; }
         public int TipoFinanciamientoId { get; set; }

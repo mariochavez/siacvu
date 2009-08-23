@@ -21,14 +21,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FormaParticipacion { get; set; }
         public int FormaParticipacionId { get; set; }
 
-        public int Institucion { get; set; }
         public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
 
-        public int ProgramaEstudio { get; set; }
         public int ProgramaEstudioId { get; set; }
+        public string ProgramaEstudioNombre { get; set; }
 
-        public int LineaTematica { get; set; }
         public int LineaTematicaId { get; set; }
+        public string LineaTematicaNombre { get; set; }
 
         public int Sector { get; set; }
         public int SectorId { get; set; }

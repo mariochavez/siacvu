@@ -203,7 +203,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
             form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
@@ -217,7 +216,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["MedioElectronico"] = form.MedioElectronicoId;
             ViewData["Genero"] = form.GeneroId;
             ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;

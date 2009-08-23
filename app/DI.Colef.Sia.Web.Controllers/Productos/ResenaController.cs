@@ -315,7 +315,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
@@ -330,7 +329,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["LineaTematica"] = form.LineaTematicaId;
             ViewData["Pais"] = form.PaisId;
 
             ViewData["Area"] = form.AreaId;

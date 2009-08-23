@@ -1,5 +1,4 @@
 using System;
-using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
@@ -21,7 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual TipoPresentacion TipoPresentacion { get; set; }
 
-		public virtual string Institucion { get; set; }
+		public virtual Institucion Institucion { get; set; }
 
 		public virtual DateTime FechaPresentacion { get; set; }
         

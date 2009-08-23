@@ -32,9 +32,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
-            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Dependencia = catalogoService.GetDependenciaById(message.Dependencia);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);

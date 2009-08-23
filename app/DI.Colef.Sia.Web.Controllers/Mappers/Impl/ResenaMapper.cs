@@ -45,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
