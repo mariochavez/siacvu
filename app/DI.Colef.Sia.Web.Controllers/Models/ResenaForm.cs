@@ -54,7 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public PaisForm[] Paises { get; set; }

@@ -48,8 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoParticipacionForm[] TiposParticipaciones { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public TipoFinanciamientoForm[] TiposFinanciamientos { get; set; }
     }
 }

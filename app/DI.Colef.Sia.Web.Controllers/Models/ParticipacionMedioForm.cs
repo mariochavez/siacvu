@@ -49,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public MedioElectronicoForm[] MediosElectronicos { get; set; }
 		public GeneroForm[] Generos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
-		public LineaTematicaForm[] LineasTematicas { get; set; }
 		public AmbitoForm[] Ambitos { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }

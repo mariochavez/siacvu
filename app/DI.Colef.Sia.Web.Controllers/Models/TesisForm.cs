@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class TesisForm
@@ -56,9 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public PaisForm[] Paises { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }
-        public InstitucionForm[] Instituciones { get; set; }
-        public ProgramaEstudioForm[] ProgramasEstudios { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         public SectorForm[] Sectores { get; set; }
         public DependenciaForm[] Dependencias { get; set; }
         public DepartamentoForm[] Departamentos { get; set; }

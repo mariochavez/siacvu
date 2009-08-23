@@ -29,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Tipo = message.Tipo;
             model.Estado = message.Estado;
 
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
         }
     }
 }
