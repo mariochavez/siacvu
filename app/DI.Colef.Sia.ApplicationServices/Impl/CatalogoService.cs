@@ -976,7 +976,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 revistaPublicacion.Activo = true;
                 revistaPublicacion.CreadorEl = DateTime.Now;
+                revistaPublicacion.Puntuacion = 0;
             }
+
             revistaPublicacion.ModificadoEl = DateTime.Now;
 
             revistaPublicacionRepository.SaveOrUpdate(revistaPublicacion);

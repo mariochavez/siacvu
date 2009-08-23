@@ -22,10 +22,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(255)]
         public virtual string Detalle { get; set; }
 
-        [Length(50)]
         public virtual string Tipo { get; set; }
 
         public virtual string Estado { get; set; }
+
+        public virtual Institucion Institucion { get; set; }
+
+        public virtual int  Puntuacion { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

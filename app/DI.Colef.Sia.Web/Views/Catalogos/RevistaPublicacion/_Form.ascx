@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<RevistaPublicacionForm>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -32,4 +33,10 @@
     <label>Estado</label>
     <%=Html.TextBox("Estado", Model.Estado, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("Estado")%>
+</p>
+<p>
+    <label>Instituci&oacute;n</label>
+    <%=Html.DropDownList("Institucion", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Institucion") %>
 </p>
