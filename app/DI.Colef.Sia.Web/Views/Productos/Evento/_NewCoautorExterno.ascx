@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Coautor Externo</label>
+    <label>Coautor externo</label>
     <%=Html.DropDownList("CoautorExternoEvento.InvestigadorExternoId", Model.CoautoresExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
                 "Seleccione ...", new { rel = "#coautorexterno" })%>
     <%=Html.ValidationMessage("CoautorExternoEvento.InvestigadorExternoId")%>

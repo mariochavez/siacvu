@@ -2,12 +2,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>T&iacute;tulo Art&iacute;culo</label>
+    <label>T&iacute;tulo del art&iacute;culo</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-    <label>Revista Publicaci&oacute;n</label>
+    <label>Revista de publicaci&oacute;n</label>
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo, 
         new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
@@ -56,18 +56,18 @@
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
-    <label>Fecha Edici&oacute;n</label>    
+    <label>Fecha de Edici&oacute;n</label>    
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>
-    <label>Pagina Inicial</label> 
+    <label>Pagina inicial</label> 
     <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("PaginaInicial")%>
 </p>
 <p>    
-    <label>Pagina Final</label>
+    <label>Pagina final</label>
     <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>

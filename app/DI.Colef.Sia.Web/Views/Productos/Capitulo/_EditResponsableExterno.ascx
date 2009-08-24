@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="responsableexternoList">
-    <h5>Responsable Externo</h5>
+    <h5>Responsable externo</h5>
 
     <% if (Model.ResponsableExternoCapitulos != null && Model.ResponsableExternoCapitulos.Length > 0) { %>
         <% foreach(var responsableExterno in Model.ResponsableExternoCapitulos) { %>
@@ -17,14 +17,14 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="responsableexternoEmptyList_form">
-            <h6><span>No hay responsables externos definidos</span></h6>
+            <h6><span>No hay responsables externos registrados</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 
 	<div id="responsableexterno_new" class="minilistaboton">
 		<p>
 			<span>
-	    		<%=Html.ActionLink("+ Nuevo Responsable Externo", "NewResponsableExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
+	    		<%=Html.ActionLink("+ Nuevo responsable externo", "NewResponsableExterno", new { Id = Model.Id }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

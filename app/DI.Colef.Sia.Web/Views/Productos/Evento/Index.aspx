@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Evento</h3>
+        <h3>Agregar nuevo evento</h3>
         <p>
-            Puede agregar un nuevo Evento dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Evento</strong>.
+            Puede agregar un nuevo evento dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo evento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EventoController>(x => x.New(), "+ Nuevo Evento")%></span>
+            <span><%=Html.ActionLink<EventoController>(x => x.New(), "+ Nuevo evento")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Eventos registrados en el sistema.</p>
+            <p>Lista de eventos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay eventos definidos</span></h5>
+					<h5><span>No hay eventos registrados</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->

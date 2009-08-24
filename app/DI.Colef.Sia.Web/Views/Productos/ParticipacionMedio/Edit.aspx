@@ -25,11 +25,10 @@
     </div><!--end barra-->
 </asp:Content>
 
-
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-	    <% Html.RenderPartial("_Message"); %>    
+	    <% Html.RenderPartial("_Message"); %>
 	    <div id="forma">
 
             <% using (Html.BeginForm("Update", "ParticipacionMedio")){ %>

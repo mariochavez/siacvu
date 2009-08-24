@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Tipo Publicaci&oacute;n</label>
+    <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("TipoPublicacion", Model.TiposPublicaciones.CreateSelectList<TipoPublicacionForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoPublicacion") %>
@@ -14,17 +14,17 @@
     <%=Html.ValidationMessage("Idioma") %>
 </p>
 <p>
-    <label>Estado Producto</label>
+    <label>Estado del producto</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto") %>
 </p>
 <p>
-    <label>Periodo Referencia</label>
+    <label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>
-    <label>Tiene Proyecto</label>
+    <label>Tiene proyecto</label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
@@ -35,13 +35,13 @@
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
-    <label>L&iacute;nea Tem&aacute;tica</label>
+    <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>
-    <label>A&ntilde;o Aceptaci&oacute;n</label>
+    <label>A&ntilde;o de aceptaci&oacute;n</label>
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "input100-requerido", maxlength = 4 })%>
     <span>(Formato yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>

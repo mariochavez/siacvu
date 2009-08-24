@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Tipo Distinci&oacute;n</label>
+    <label>Tipo de distinci&oacute;n</label>
     <%=Html.DropDownList("TipoDistincion", Model.TiposDistinciones.CreateSelectList<TipoDistincionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoDistincion") %>
@@ -13,7 +13,7 @@
     <%=Html.ValidationMessage("Descripcion")%>
 </p>
 <p>
-    <label>Fecha Otorgamiento</label>
+    <label>Fecha de otorgamiento</label>
     <%=Html.TextBox("FechaOtorgamiento", Model.FechaOtorgamiento, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaOtorgamiento")%>

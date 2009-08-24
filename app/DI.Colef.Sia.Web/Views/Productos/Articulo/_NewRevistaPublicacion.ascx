@@ -5,6 +5,6 @@
     <label>T&iacute;tulo</label>
     <%=Html.TextBox("RevistaPublicacion.Titulo", Model.RevistaPublicacion.Titulo, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.Hidden("RevistaPublicacion.Id", Model.RevistaPublicacion.Id)%>
-    <span>(Debe de ser un nombre unico)</span>
+    <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("RevistaPublicacion.Titulo")%>
 </p>

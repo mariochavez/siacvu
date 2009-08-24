@@ -2,18 +2,18 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Nombre</label>
+	<label>Nombre del dictamen</label>
 	<%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-	<label>Tipo Dictamen</label>
+	<label>Tipo de dictamen</label>
 	<%=Html.DropDownList("TipoDictamen", Model.TiposDictamenes.CreateSelectList<TipoDictamenForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoDictamen") %>
 </p>
 <p>
-	<label>Tipo Participaci&oacute;n</label>
+	<label>Tipo de participaci&oacute;n</label>
 	<%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoParticipacion") %>
@@ -25,6 +25,6 @@
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-	<label>Periodo Referencia</label>
+	<label>Periodo de referencia</label>
 	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>

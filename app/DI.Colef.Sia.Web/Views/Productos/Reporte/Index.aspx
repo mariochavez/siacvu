@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Reporte</h3>
+        <h3>Agregar nuevo reporte</h3>
         <p>
-            Puede agregar un nuevo Reporte dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Reporte</strong>.
+            Puede agregar un nuevo reporte dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo reporte</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo Reporte")%></span>
+            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo reporte")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Reportes registrados en el sistema.</p>
+            <p>Lista de reportes registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay reportes definidos</span></h5>
+					<h5><span>No hay reportes registrados</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->

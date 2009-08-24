@@ -2,18 +2,18 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Tipo de Evento</label>
+    <label>Tipo de evento</label>
 	<%=Html.DropDownList("TipoEvento", Model.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoEvento") %>
 </p>
 <p>
-    <label>Nombre del Evento</label>
+    <label>Nombre del evento</label>
 	<%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-    <label>Con Invitaci&oacute;n</label>
+    <label>Con invitaci&oacute;n</label>
     <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
     <%=Html.ValidationMessage("Invitacion")%>
 </p>
@@ -24,7 +24,7 @@
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
-    <label>T&iacute;tulo del Trabajo</label>
+    <label>T&iacute;tulo del trabajo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>

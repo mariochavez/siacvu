@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Curso</h3>
+        <h3>Agregar nuevo curso</h3>
         <p>
-            Puede agregar un nuevo Curso dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Curso</strong>.
+            Puede agregar un nuevo curso dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo curso</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CursoController>(x => x.New(), "+ Nuevo Curso")%></span>
+            <span><%=Html.ActionLink<CursoController>(x => x.New(), "+ Nuevo curso")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Cursos registrados en el sistema.</p>
+            <p>Lista de cursos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay cursos definidos</span></h5>
+					<h5><span>No hay cursos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

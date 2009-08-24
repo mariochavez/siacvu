@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Tipo Participaci&oacute;n</label>
+	<label>Tipo de participaci&oacute;n</label>
 	<%=Html.DropDownList("OtraParticipacion", Model.OtrasParticipaciones.CreateSelectList<OtraParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("OtraParticipacion") %>
@@ -13,7 +13,7 @@
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-	<label>Tipo Presentaci&oacute;n</label>
+	<label>Tipo de presentaci&oacute;n</label>
 	<%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("TipoPresentacion") %>
@@ -25,19 +25,19 @@
 	<%=Html.ValidationMessage("Autor")%>
 </p>
 <p>
-	<label>Instituci&oacute;n Organizadora</label>
+	<label>Instituci&oacute;n organizadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
     new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-	<label>Fecha Presentaci&oacute;n</label>
+	<label>Fecha de presentaci&oacute;n</label>
 	<%=Html.TextBox("FechaPresentacion", Model.FechaPresentacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
 <p>
-	<label>Periodo Referencia</label>
+	<label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>

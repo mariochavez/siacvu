@@ -7,7 +7,7 @@
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-    <label>Fecha de Conclusi&oacute;n</label>
+    <label>Fecha de conclusi&oacute;n</label>
     <%=Html.TextBox("FechaConclusion", Model.FechaConclusion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaConclusion")%>
@@ -24,19 +24,19 @@
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>Grado Acad&eacute;mico</label>
+    <label>Grado acad&eacute;mico</label>
     <%=Html.DropDownList("GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("GradoAcademico") %>
 </p>
 <p>
-    <label>Fecha de obtenci&oacute;n del Grado</label>
+    <label>Fecha de obtenci&oacute;n del grado</label>
     <%=Html.TextBox("FechaGrado", Model.FechaGrado, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaGrado")%>
 </p>
 <p>
-    <label>Forma Participaci&oacute;n</label>
+    <label>Forma de participaci&oacute;n</label>
     <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("FormaParticipacion") %>
@@ -48,18 +48,18 @@
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-    <label>Programa Estudio</label>
+    <label>Programa de estudio</label>
     <%=Html.TextBox("ProgramaEstudioNombre", Model.ProgramaEstudioNombre,
                     new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100 })%>
     <%=Html.Hidden("ProgramaEstudioId", Model.ProgramaEstudioId, new { rel = "#ProgramaEstudioNombre" })%>
 </p>
 <p>
-    <label>L&iacute;nea Tem&aacute;tica</label>
+    <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>
-    <label>Periodo Referencia</label>
+    <label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>

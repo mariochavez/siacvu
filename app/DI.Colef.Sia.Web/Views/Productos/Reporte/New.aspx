@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta una nuevo reporte dentro del sistema.</p>
+		<p>Favor de llenar los siguientes campos para dar de alta un nuevo reporte dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -37,16 +37,16 @@
                 
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
                 
-                <h4>Coautores Internos</h4>
+                <h4>Coautores internos</h4>
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
 
-                <h4>Coautores Externos</h4>
+                <h4>Coautores externos</h4>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 
-                <h4>Referencia Bibliogr&aacute;fica</h4>
+                <h4>Referencia bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 
-                <h4>Datos Opcionales</h4>
+                <h4>Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         		
                 <p class="submit">

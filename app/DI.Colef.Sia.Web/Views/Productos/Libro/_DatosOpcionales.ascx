@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Identificador Libro</label>
+    <label>Identificador del libro</label>
     <%=Html.DropDownList("IdentificadorLibro", Model.IdentificadoresLibros.CreateSelectList<IdentificadorLibroForm>("Id", "Nombre"),
 								"Seleccione ...")%>
     <%=Html.ValidationMessage("IdentificadorLibro") %>
@@ -13,7 +13,7 @@
     <%=Html.ValidationMessage("PalabrasClave")%>
 </p>
 <p>
-    <label>Cotraductor</label>
+    <label>Co-Traductor</label>
     <%=Html.TextBox("CoTraductor", Model.CoTraductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("CoTraductor")%>
 </p>

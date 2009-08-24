@@ -12,13 +12,13 @@
     <%=Html.ValidationMessage("Siglas")%>
 </p>
 <p>
-    <label>Tipo &Oacute;rgano</label>
+    <label>Tipo de &oacute;rgano</label>
     <%=Html.DropDownList("TipoOrgano", Model.TiposOrganos.CreateSelectList<TipoOrganoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoOrgano") %>
 </p>
 <p>
-    <label>Tipo Participaci&oacute;n</label>
+    <label>Tipo de participaci&oacute;n</label>
     <%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoParticipacion") %>
@@ -30,19 +30,19 @@
     <%=Html.ValidationMessage("Sector") %>
 </p>
 <p>
-    <label>Nivel Gubernamental</label>
+    <label>Nivel gubernamental</label>
     <%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Nivel") %>
 </p>
 <p>
-    <label>Fecha Inicial</label>
+    <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
-    <label>Fecha Final</label>
+    <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaFinal")%>

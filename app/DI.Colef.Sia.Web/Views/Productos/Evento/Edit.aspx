@@ -40,16 +40,16 @@
                 <h4>Participaciones</h4>        
                 <% Html.RenderPartial("_EditTipoParticipacion", Model.Form); %>
                 
-                <h4>Coautores Internos</h4>      
+                <h4>Coautores internos</h4>      
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
                 
-                <h4>Coautores Externos</h4>       
+                <h4>Coautores externos</h4>       
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
                 
-                <h4>Datos Referencia</h4>
+                <h4>Referencia</h4>
 				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>
 				
-				<h4>Datos Opcionales</h4>
+				<h4>Opcionales</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">

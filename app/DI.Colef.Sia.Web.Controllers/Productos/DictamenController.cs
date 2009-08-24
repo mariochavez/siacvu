@@ -109,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictámen {0} ha sido creado", dictamen.Nombre));
+            return RedirectToIndex(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
         }
 
         [Transaction]
@@ -130,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictámen {0} ha sido modificado", dictamen.Nombre));
+            return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
         }
 
         [Transaction]

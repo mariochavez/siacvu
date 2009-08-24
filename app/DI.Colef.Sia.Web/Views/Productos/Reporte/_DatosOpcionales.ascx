@@ -7,7 +7,7 @@
 	<%=Html.ValidationMessage("Objetivo")%>
 </p>
 <p>
-	<label>Palabras Clave</label>
+	<label>Palabras clave</label>
 	<%=Html.TextBox("PalabrasClave", Model.PalabarasClave, new { @class = "input250", maxlength = 100 })%>
 	<%=Html.ValidationMessage("PalabrasClave")%>
 </p>

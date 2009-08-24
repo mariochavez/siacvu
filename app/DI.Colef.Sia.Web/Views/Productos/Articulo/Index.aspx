@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Art&iacute;culo</h3>
+        <h3>Agregar nuevo art&iacute;culo</h3>
         <p>
-            Puede agregar un nuevo Art&iacute;culo dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Art&iacute;culo</strong>.
+            Puede agregar un nuevo art&iacute;culo dentro de la lista de administraci&oacute;n de
+            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo art&iacute;culo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Nuevo Artículo")%></span>
+            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Nuevo artículo")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Art&iacute;culos registrados en el sistema.</p>
+            <p>Lista de art&iacute;culos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay art&iacute;culos definidos</span></h5>
+					<h5><span>No hay art&iacute;culos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

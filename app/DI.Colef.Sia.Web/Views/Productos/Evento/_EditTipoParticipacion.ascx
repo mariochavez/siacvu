@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="tipoparticipacionList">
-    <h5>Tipo Participaci&oacute;n</h5>
+    <h5>Tipo de participaci&oacute;n</h5>
 
     <% if (Model.TipoParticipacionEventos != null && Model.TipoParticipacionEventos.Length > 0) { %>
         <% foreach (var tipoParticipacion in Model.TipoParticipacionEventos){ %>
@@ -17,14 +17,14 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="tipoparticipacionEmptyList_form">
-            <h6><span>No hay participaciones definida</span></h6>
+            <h6><span>No hay tipos de participaciones registradas</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 
 	<div id="tipoparticipacion_new" class="minilistaboton">
 		<p>
 			<span>
-	    		<%=Html.ActionLink("+ Nuevo Tipo Participación", "NewTipoParticipacion", new { Id = Model.Id }, new { @class = "remote get" })%>
+	    		<%=Html.ActionLink("+ Nuevo tipo de participación", "NewTipoParticipacion", new { Id = Model.Id }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

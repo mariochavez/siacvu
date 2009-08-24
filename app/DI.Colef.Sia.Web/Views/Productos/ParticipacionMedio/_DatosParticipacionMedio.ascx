@@ -12,13 +12,13 @@
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-	<label>Medio Impreso</label>
+	<label>Medio impreso</label>
 	<%=Html.DropDownList("MedioImpreso", Model.MediosImpresos.CreateSelectList<MedioImpresoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioImpreso") %>
 </p>
 <p>
-	<label>Medio Electr&oacute;nico</label>
+	<label>Medio electr&oacute;nico</label>
 	<%=Html.DropDownList("MedioElectronico", Model.MediosElectronicos.CreateSelectList<MedioElectronicoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioElectronico") %>
@@ -40,7 +40,7 @@
 	<%=Html.ValidationMessage("Tema")%>
 </p>
 <p>
-	<label>Periodo Referencia</label>
+	<label>Periodo de referencia</label>
 	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>
@@ -50,7 +50,7 @@
 	<%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
-	<label>L&iacute;nea Tem&aacute;tica</label>
+	<label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
@@ -62,7 +62,7 @@
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
-	<label>Fecha Difusi&oacute;n</label>
+	<label>Fecha de difusi&oacute;n</label>
 	<%=Html.TextBox("FechaDifusion", Model.FechaDifusion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaDifusion")%>

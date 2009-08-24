@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Participaci&oacute;n en Medios</h3>
+        <h3>Agregar nueva participaci&oacute;n en medios</h3>
         <p>
-            Puede agregar una nueva Participaci&oacute;n en Medios dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Participaci&oacute;n en Medio</strong>.
+            Puede agregar una nueva participaci&oacute;n en medios dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva participaci&oacute;n en medio</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nueva Participación en Medio")%></span>
+            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nueva participación en medio")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Participaciones en Medios registradas en el sistema.</p>
+            <p>Lista de participaciones en medios registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Participaciones en Medios</h4>
+		<h4>Participaciones en medios</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay participaciones en medios definidos</span></h5>
+					<h5><span>No hay participaciones en medios registradas</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->

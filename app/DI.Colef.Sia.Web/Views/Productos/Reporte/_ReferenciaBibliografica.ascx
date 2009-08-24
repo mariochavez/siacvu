@@ -24,7 +24,7 @@
 	<%=Html.ValidationMessage("Pais") %>									
 </p>
 <p>
-	<label>No P&aacute;ginas</label>
+	<label>No. de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

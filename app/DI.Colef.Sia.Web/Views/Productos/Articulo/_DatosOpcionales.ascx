@@ -2,19 +2,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>L&iacute;nea de Investigaci&oacute;n personal</label>
+    <label>L&iacute;nea de investigaci&oacute;n personal</label>
     <%=Html.DropDownList("LineaInvestigacion", Model.LineasInvestigaciones.CreateSelectList<LineaInvestigacionForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("LineaInvestigacion") %>
 </p>
 <p>
-    <label>Tipo de Actividad</label>
+    <label>Tipo de actividad</label>
     <%=Html.DropDownList("TipoActividad", Model.TiposActividades.CreateSelectList<TipoActividadForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoActividad") %>
 </p>
 <p>
-    <label>Tipo de Participante</label>
+    <label>Tipo de participante</label>
     <%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoParticipante") %>
@@ -25,7 +25,7 @@
     <%=Html.ValidationMessage("Participantes")%>
 </p>
 <p>
-    <label>Palabras Claves</label>
+    <label>Palabras claves</label>
     <%=Html.TextBox("PalabrasClaves", Model.PalabrasClaves, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("PalabrasClaves")%>
 </p>

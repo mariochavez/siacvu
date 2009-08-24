@@ -12,13 +12,13 @@
     <%=Html.ValidationMessage("Editores")%>
 </p>
 <p>
-    <label>Tipo de Participaci&oacute;n</label>
+    <label>Tipo de participaci&oacute;n</label>
     <%=Html.DropDownList("TipoParticipacion", Model.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
 				"Seleccione ...")%>
     <%=Html.ValidationMessage("TipoParticipacion") %>
 </p>
 <p>
-    <label>Tipo de Participante</label>
+    <label>Tipo de participante</label>
     <%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
 				"Seleccione ...")%>
     <%=Html.ValidationMessage("TipoParticipante") %>
@@ -47,7 +47,7 @@
     <%=Html.ValidationMessage("Traductor")%>
 </p>
 <p>
-    <label>Nombre del Traductor</label>
+    <label>Nombre del traductor</label>
     <%=Html.TextBox("NombreTraductor", Model.NombreTraductor, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreTraductor")%>
 </p>

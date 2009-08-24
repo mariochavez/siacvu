@@ -7,7 +7,7 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-    <label>Isbn</label>
+    <label>ISBN</label>
     <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("ISBN")%>
 </p>
@@ -17,7 +17,7 @@
     <%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>
-    <label>Fecha Edici&oacute;n</label>
+    <label>Fecha de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
@@ -29,7 +29,7 @@
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>No P&aacute;ginas</label>
+    <label>No. de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input250-requerido", maxlength = 100, size = 14 })%>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

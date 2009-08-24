@@ -2,12 +2,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Nombre del Cap&iacute;tulo</label>
+    <label>Nombre del cap&iacute;tulo</label>
     <%=Html.TextBox("NombreCapitulo", Model.NombreCapitulo, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreCapitulo")%>
 </p>
 <p>
-    <label>Nombre del Libro</label>
+    <label>Nombre del libro</label>
     <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
@@ -23,7 +23,7 @@
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
-    <label>No. de P&aacute;ginas</label>
+    <label>No. de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

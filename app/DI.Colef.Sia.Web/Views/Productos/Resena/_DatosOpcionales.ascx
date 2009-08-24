@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Palabras Claves</label>
+    <label>Palabras claves</label>
     <%=Html.TextBox("PalabrasClave", Model.PalabrasClave, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("PalabrasClave")%>
 </p>

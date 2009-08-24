@@ -40,24 +40,24 @@
             
 	            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
             
-	            <h4>Coautores Internos</h4>
+	            <h4>Coautores internos</h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
             
-	            <h4>Coautores Externos</h4>
+	            <h4>Coautores externos</h4>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
-	            <h4>Referencia Bibliogr&aacute;fica</h4>
+	            <h4>Referencia bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
-	            <h4>Responsables Internos del libro</h4>
+	            <h4>Responsables internos del libro</h4>
 	            <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
             
 	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
             
-	            <h4>Responsables Externos del libro</h4>
+	            <h4>Responsables externos del libro</h4>
 				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>        
             
-	            <h4>Datos Opcionales</h4>
+	            <h4>Opcionales</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             
 	            <p class="submit">
