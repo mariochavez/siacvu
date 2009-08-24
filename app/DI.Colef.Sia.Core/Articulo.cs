@@ -58,8 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
-
         public virtual Indice Indice1 { get; set; }
 
         public virtual Indice Indice2 { get; set; }
@@ -73,8 +71,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
-
-        public virtual int Puntuacion { get; set; }
 
         public virtual LineaInvestigacion LineaInvestigacion { get; set; }
 

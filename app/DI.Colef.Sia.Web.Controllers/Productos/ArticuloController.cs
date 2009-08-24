@@ -233,6 +233,44 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewRevistaPublicacion(int id)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            var form = new ArticuloForm
+                           {
+                               RevistaPublicacion = new RevistaPublicacionForm()
+                           };
+
+            if (articulo != null)
+                form.Id = articulo.Id;
+
+            return Rjs("NewRevistaPublicacion", form);
+        }
+
+        [Transaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddRevistaPublicacion([Bind(Prefix = "RevistaPublicacion")]RevistaPublicacionForm form, int articuloId)
+        {
+            var revistaPublicacion = revistaPublicacionMapper.Map(form);
+
+            ModelState.AddModelErrors(revistaPublicacion.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            revistaPublicacion.CreadorPor = CurrentUser();
+            revistaPublicacion.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
+
+            return Rjs("AddRevistaPublicacion", revistaPublicacionForm);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);

@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Titulo</label>
+    <label>T&iacute;tulo</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 40 })%>
     <span>(Debe de ser un nombre unico)</span>
     <%=Html.ValidationMessage("Titulo")%>

@@ -1367,10 +1367,6 @@ alter table Articulos  drop constraint FK3EB394D77A8488F7
 alter table Articulos  drop constraint FK3EB394D72AF31B56
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D764F7D1CD]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D764F7D1CD
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D741CFD2F4]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D741CFD2F4
 
@@ -2966,7 +2962,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        PaginaInicial INT null,
        PaginaFinal INT null,
        FechaEdicion DATETIME null,
-       Puntuacion INT null,
        Participantes INT null,
        PalabrasClaves NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -2980,7 +2975,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        LineaTematicaFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
-       InstitucionFk INT null,
        Indice1Fk INT null,
        Indice2Fk INT null,
        Indice3Fk INT null,
@@ -4892,11 +4886,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK3EB394D72AF31B56 
         foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
-
-    alter table Articulos 
-        add constraint FK3EB394D764F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
 
     alter table Articulos 
         add constraint FK3EB394D741CFD2F4 

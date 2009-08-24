@@ -7,17 +7,20 @@
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-    <label>Revista Publicacion</label>
+    <label>Revista Publicaci&oacute;n</label>
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo, 
         new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
 </p>
-<p>
-    <label>Instituci&oacute;n</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-</p>
+<div id="revistapublicacion_new" class="minilistaboton">
+    <p>
+		<span>
+    		<%=Html.ActionLink("+ Nueva Revista", "NewRevistaPublicacion", new { Id = Model.Id }, new { @class = "remote get" })%>
+		</span>
+	</p>
+</div><!--end minilistaboton-->
+
+<div id="revistapublicacion_form" class="display:hidden;"></div>
 <p>
     <label>&Iacute;ndice 1</label>
     <%=Html.DropDownList("Indice1", Model.Indices1.CreateSelectList<IndiceForm>("Id", "Nombre"),

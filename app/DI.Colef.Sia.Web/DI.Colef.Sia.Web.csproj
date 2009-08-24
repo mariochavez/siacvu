@@ -506,6 +506,9 @@
     <Content Include="Views\Catalogos\TipoReporte\Index.aspx" />
     <Content Include="Views\Catalogos\TipoReporte\New.aspx" />
     <Content Include="Views\Catalogos\TipoReporte\_Form.ascx" />
+    <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
+    <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\Activate.js.ascx" />
     <Content Include="Views\Productos\Libro\AddCoautorExterno.js.ascx" />

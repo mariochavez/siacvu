@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -40,9 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
 
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
-
         public int Indice1 { get; set; }
         public int Indice1Id { get; set; }
 
@@ -79,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public CoautorExternoArticuloForm CoautorExternoArticulo { get; set; }
         public CoautorInternoArticuloForm CoautorInternoArticulo { get; set; }
+        public RevistaPublicacionForm RevistaPublicacion { get; set; }
 
         /* Catalogos */
         public TipoArticuloForm[] TiposArticulos { get; set; }
