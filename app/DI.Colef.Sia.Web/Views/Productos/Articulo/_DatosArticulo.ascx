@@ -4,11 +4,11 @@
 <p>
     <label>Tipo Art&iacute;culo</label>
     <%=Html.DropDownList("TipoArticulo", Model.TiposArticulos.CreateSelectList<TipoArticuloForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                        "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoArticulo") %>
 </p>
 <p>
-    <label>Idioma</label>
+    <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Idioma") %>

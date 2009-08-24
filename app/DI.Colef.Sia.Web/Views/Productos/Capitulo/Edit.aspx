@@ -71,7 +71,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupCapitulos();
     });
 </script>
 </asp:Content>

@@ -13,14 +13,7 @@
     AutoComplete.setup();
     SearchAutoComplete.setup();
     paisSetDefaultValue();
-}
-
-function setupArticulos() {
-    ArticuloEnableOptions.setup();
-}
-
-function setupCapitulos() {
-    CapituloEnableOptions.setup();
+    EnableLanguageOptions.setup();
 }
 
 function setupLibros() {
@@ -43,7 +36,7 @@ function paisSetDefaultValue() {
     $('#Pais option').each(function() {
         if ($(this).text() == 'México')
             $(this).attr('selected', true);
-    })
+    });
 }
 
 function setupSublistRows() {
@@ -56,36 +49,20 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
-var ArticuloEnableOptions = {
+var EnableLanguageOptions = {
     setup: function() {
-        $('#TipoArticulo').change(ArticuloEnableOptions.enableOptions);
-        $('#forma').unload(ArticuloEnableOptions.enableOptions());
-    },
-    enableOptions: function() {
-        var text = $('#TipoArticulo option:selected').text();
-
-        if (text != 'Artículo traducido a otro idioma')
-            $('#Idioma').attr('disabled', true);
-        else
-            $('#Idioma').attr('disabled', false);
-
-        return false;
-    }
-}
-
-var CapituloEnableOptions = {
-    setup: function() {
-        $('#TipoCapitulo').change(CapituloEnableOptions.enableOptions);
-        $('#forma').unload(CapituloEnableOptions.enableOptions());
+        $(':input.tipo').change(EnableLanguageOptions.enableOptions);
+        $('#forma').unload(EnableLanguageOptions.enableOptions());
     },
     enableOptions: function() {
 
-        var text = $('#TipoCapitulo option:selected').text();
+        var id = $(this).attr('id');
 
-        if (text != 'Capitulo traducido a otro idioma')
-            $('#Idioma').attr('disabled', true);
-        else
+        $('#Idioma').attr('disabled', true);
+
+        $("#" + id + " option:selected:contains('otro idioma')").each(function() {
             $('#Idioma').attr('disabled', false);
+        });
 
         return false;
     }
@@ -94,8 +71,7 @@ var CapituloEnableOptions = {
 var LibroEnableOptions = {
     setup: function() {
         $(':checkbox').change(LibroEnableOptions.enableProyectos);
-        $('#TipoPublicacion').change(LibroEnableOptions.enableIdiomas);
-        $('#forma').unload(LibroEnableOptions.enableProyectos(), LibroEnableOptions.enableIdiomas());
+        $('#forma').unload(LibroEnableOptions.enableProyectos());
     },
     enableProyectos: function() {
 
@@ -105,16 +81,6 @@ var LibroEnableOptions = {
             $('#Proyecto').attr('disabled', false);
         else
             $('#Proyecto').attr('disabled', true);
-
-        return false;
-    },
-    enableIdiomas: function() {
-        var text = $('#TipoPublicacion option:selected').text();
-
-        if (text != 'Libro traducido a otro idioma')
-            $('#Idioma').attr('disabled', true);
-        else
-            $('#Idioma').attr('disabled', false);
 
         return false;
     }

@@ -4,7 +4,7 @@
 <p>
     <label>Tipo de Cap&iacute;tulo</label>
     <%=Html.DropDownList("TipoCapitulo", Model.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                        "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
 <p>
