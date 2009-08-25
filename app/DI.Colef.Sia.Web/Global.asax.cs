@@ -80,7 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 webSessionStorage,
                 new string[] { Server.MapPath("~/bin/DecisionesInteligentes.Colef.Sia.Data.dll") },
                 new AutoPersistenceModelGenerator().Generate(),
-                Server.MapPath("~/NHibernate.config"));
+                Server.MapPath("~/NHibernate.config"), Server.MapPath("~/NHvalidator.config"));
         }
 
         protected void Application_Error(object sender, EventArgs e)

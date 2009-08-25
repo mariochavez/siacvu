@@ -260,6 +260,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
+            revistaPublicacion.Activo = true;
             revistaPublicacion.CreadorPor = CurrentUser();
             revistaPublicacion.ModificadoPor = CurrentUser();
 

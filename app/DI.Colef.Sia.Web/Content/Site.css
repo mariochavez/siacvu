@@ -507,6 +507,26 @@ a.editabusqueda {
 	color: #A34318;
 }
 
+.input350-requerido {
+	width: 350px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+	background: transparent url(./Images/requerido-icon.gif) right 50% no-repeat;
+}
+
+.input350-bold-requerido {
+	width: 350px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+	font-weight: bold;
+	background: transparent url(./Images/requerido-icon.gif) right 50% no-repeat;
+	color: #A34318;
+}
+
 #forma select {
 	width: 258px;
 	padding: 3px;

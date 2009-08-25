@@ -170,7 +170,6 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
