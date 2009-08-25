@@ -7,6 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         Evento Map(EventoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo);
         Evento Map(EventoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
-                   string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones);
+                   string[] coautoresExternos, string[] coautoresInternos);
     }
 }

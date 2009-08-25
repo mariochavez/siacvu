@@ -10,18 +10,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class EventoMapper : AutoFormMapper<Evento, EventoForm>, IEventoMapper
     {
         readonly ICatalogoService catalogoService;
-        readonly ITipoParticipacionEventoMapper tipoParticipacionEventoMapper;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
 
         public EventoMapper(IRepository<Evento> repository, ICatalogoService catalogoService,
-            ITipoParticipacionEventoMapper tipoParticipacionEventoMapper, ICoautorExternoEventoMapper coautorExternoEventoMapper,
+            ICoautorExternoEventoMapper coautorExternoEventoMapper,
             ICoautorInternoEventoMapper coautorInternoEventoMapper
         )
             : base(repository)
         {
             this.catalogoService = catalogoService;
-            this.tipoParticipacionEventoMapper = tipoParticipacionEventoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
         }
@@ -45,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
+            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
@@ -68,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
-            string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones)
+            string[] coautoresExternos, string[] coautoresInternos)
         {
             var model = Map(message, usuario, investigador, periodo);
 
@@ -93,18 +92,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorInterno(coautor);
-            }
-
-            foreach (var psrticipacionId in tipoParticipaciones)
-            {
-                var participacion =
-                    tipoParticipacionEventoMapper.Map(new TipoParticipacionEventoForm
-                                                          {TipoParticipacionId = int.Parse(psrticipacionId)});
-
-                participacion.CreadorPor = usuario;
-                participacion.ModificadoPor = usuario;
-
-                model.AddTipo(participacion);
             }
 
             return model;

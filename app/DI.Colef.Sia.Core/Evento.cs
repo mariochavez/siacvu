@@ -9,14 +9,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public Evento()
         {
-            TipoParticipacionEventos = new List<TipoParticipacionEvento>();
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
-        }
-
-        public virtual void AddTipo(TipoParticipacionEvento tipoParticipacionEvento)
-        {
-            TipoParticipacionEventos.Add(tipoParticipacionEvento);
         }
 
         public virtual void AddCoautorExterno(CoautorExternoEvento coautorExternoEvento)
@@ -29,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoEventos.Add(coautorInternoEvento);
         }
 
-
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
@@ -37,8 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoEvento TipoEvento { get; set; }
 
-        [Valid]
-        public virtual IList<TipoParticipacionEvento> TipoParticipacionEventos { get; private set; }
+        public virtual TipoParticipacion TipoParticipacion { get; set; }
 
         public virtual string Titulo { get; set; }
 
