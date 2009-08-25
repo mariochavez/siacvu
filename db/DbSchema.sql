@@ -475,6 +475,10 @@ alter table TipoParticipaciones  drop constraint FK20CDD2C585102A57
 alter table TipoParticipaciones  drop constraint FK20CDD2C574E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623CD531E8]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623CD531E8
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE624B54D394]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE624B54D394
 
@@ -1595,6 +1599,14 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8FC8D11E85102A57]') AND parent_object_id = OBJECT_ID('TipoResenas'))
+alter table TipoResenas  drop constraint FK8FC8D11E85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8FC8D11E74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoResenas'))
+alter table TipoResenas  drop constraint FK8FC8D11E74E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -1792,6 +1804,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoResenas
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -2197,11 +2211,14 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TituloLibro NVARCHAR(255) null,
        NombreRevista NVARCHAR(255) null,
        Editorial NVARCHAR(255) null,
-       PalabrasClave NVARCHAR(255) null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       TipoResenaFk INT null,
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
@@ -3177,6 +3194,17 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table TipoResenas (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     alter table SNIs 
         add constraint FKF16DB6DA85102A57 
         foreign key (CreadorPorFk) 
@@ -3771,6 +3799,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK20CDD2C574E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Resenas 
+        add constraint FKF708AE623CD531E8 
+        foreign key (TipoResenaFk) 
+        references TipoResenas
 
     alter table Resenas 
         add constraint FKF708AE624B54D394 
@@ -5171,3 +5204,13 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table TipoResenas 
+        add constraint FK8FC8D11E85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoResenas 
+        add constraint FK8FC8D11E74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios

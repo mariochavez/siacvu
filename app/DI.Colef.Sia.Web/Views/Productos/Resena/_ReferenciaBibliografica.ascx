@@ -2,6 +2,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+	<label>Nombre del producto</label>
+	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("NombreProducto")%>									
+</p>
+<p>
+	<label>Nombre de la revista</label>
+	<%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("NombreRevista")%>
+</p>
+<p>
 	<label>Referencia bibliogr&aacute;fica del libro</label>
     <%=Html.TextBox("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
 	<%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
@@ -10,11 +20,6 @@
     <label>Referencia bibliogr&aacute;fica de la revista</label>
     <%=Html.TextBox("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
 	<%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
-</p>
-<p>
-	<label>Nombre del producto</label>
-	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input250-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreProducto")%>									
 </p>
 <p>
 	<label>Pa&iacute;s</label>
@@ -36,11 +41,6 @@
 	<label>T&iacute;tulo del libro</label>
     <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("TituloLibro")%>
-</p>
-<p>
-	<label>Nombre de la revista</label>
-	<%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreRevista")%>
 </p>
 <p>
 	<label>Editorial</label>

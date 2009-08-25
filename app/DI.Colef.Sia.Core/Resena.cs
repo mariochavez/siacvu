@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoResenas.Add(coautorInternoResena);
         }
 
+        public virtual TipoResena TipoResena { get; set; }
 
         public virtual EstadoProducto EstadoProducto { get; set; }
 
@@ -58,7 +59,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Editorial { get; set; }
 
-        public virtual string PalabrasClave { get; set; }
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
         public virtual Area Area { get; set; }
 
