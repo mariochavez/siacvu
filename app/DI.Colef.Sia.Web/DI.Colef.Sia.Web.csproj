@@ -513,6 +513,7 @@
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\Activate.js.ascx" />
     <Content Include="Views\Productos\Libro\AddCoautorExterno.js.ascx" />
@@ -605,11 +606,7 @@
     <Content Include="Views\Productos\Evento\Activate.js.ascx" />
     <Content Include="Views\Productos\Evento\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Evento\AddCoautorInterno.js.ascx" />
-    <Content Include="Views\Productos\Evento\AddTipoParticipacion.js.ascx" />
     <Content Include="Views\Productos\Evento\Edit.aspx" />
-    <Content Include="Views\Productos\Evento\NewTipoParticipacion.js.ascx" />
-    <Content Include="Views\Productos\Evento\_NewTipoParticipacion.ascx" />
-    <Content Include="Views\Productos\Evento\_EditTipoParticipacion.ascx" />
     <Content Include="Views\Productos\Evento\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Evento\NewCoautorInterno.js.ascx" />
     <Content Include="Views\Productos\Evento\_DatosReferencia.ascx" />

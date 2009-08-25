@@ -69,11 +69,15 @@ var EnableIdiomaOptions = {
         var id = $(this).attr('id');
 
         $('#Idioma').attr('disabled', true);
-        $('#SelectIdioma_p').fadeOut('slow');
+        $('#SelectIdioma_p').slideUp('slow', function() {
+            $('#SelectIdioma_p').fadeOut('fast');
+        });
 
         $("#" + id + " option:selected:contains('otro idioma')").each(function() {
             $('#Idioma').attr('disabled', false);
-            $('#SelectIdioma_p').fadeIn('slow');
+            $('#SelectIdioma_p').slideDown('slow', function() {
+                $('#SelectIdioma_p').fadeIn('fast');
+            });
         });
 
         return false;

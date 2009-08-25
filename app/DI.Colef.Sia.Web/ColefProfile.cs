@@ -241,6 +241,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Ambito,
                            o => o.Ignore())
+                .ForMember(d => d.TipoParticipacion,
+                           o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
                            o => o.Ignore())
                 .ForMember(d => d.TipoFinanciamiento,
@@ -253,10 +255,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoEvento, CoautorExternoEventoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<TipoParticipacionEvento, TipoParticipacionEventoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
