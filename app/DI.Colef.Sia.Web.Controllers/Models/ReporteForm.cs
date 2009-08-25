@@ -9,7 +9,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NoPaginas { get; set; }
         public string Descripcion { get; set; }
         public string Objetivo { get; set; }
-        public string PalabarasClave { get; set; }
+        public string PalabraClave1 { get; set; }
+        public string PalabraClave2 { get; set; }
+        public string PalabraClave3 { get; set; }
 
         public string Fecha { get; set; }
         public string FechaEdicion { get; set; }
