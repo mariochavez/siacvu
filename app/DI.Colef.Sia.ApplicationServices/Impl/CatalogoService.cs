@@ -69,6 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<EstadoProducto> estadoProductoRepository;
         readonly IRepository<NivelEstudio> nivelEstudioRepository;
         readonly IRepository<ProductoDerivado> productoDerivadoRepository;
+        readonly IRepository<TipoResena> tipoResenaRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -125,7 +126,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<EstadoProducto> estadoProductoRepository,
             IRepository<TipoPublicacion> tipoPublicacionRepository,
             IRepository<NivelEstudio> nivelEstudioRepository,
-            IRepository<ProductoDerivado> productoDerivadoRepository)
+            IRepository<ProductoDerivado> productoDerivadoRepository,
+            IRepository<TipoResena> tipoResenaRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.cargoRepository = cargoRepository;
@@ -183,6 +185,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
+            this.tipoResenaRepository = tipoResenaRepository;
         }
 
         protected virtual ISession Session
@@ -1738,6 +1741,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             productoDerivado.ModificadoEl = DateTime.Now;
 
             productoDerivadoRepository.SaveOrUpdate(productoDerivado);
+        }
+
+        public TipoResena GetTipoResenaById(int id)
+        {
+            return tipoResenaRepository.Get(id);
+        }
+
+        public TipoResena[] GetAllTipoResenas()
+        {
+            return ((List<TipoResena>)OrderCatalog<TipoResena>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoResena[] GetActiveTipoResenas()
+        {
+            return ((List<TipoResena>)OrderCatalog<TipoResena>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoResena(TipoResena tipoResena)
+        {
+            if (tipoResena.Id == 0)
+            {
+                tipoResena.Activo = true;
+                tipoResena.CreadorEl = DateTime.Now;
+            }
+            tipoResena.ModificadoEl = DateTime.Now;
+
+            tipoResenaRepository.SaveOrUpdate(tipoResena);
         }
     }
 }

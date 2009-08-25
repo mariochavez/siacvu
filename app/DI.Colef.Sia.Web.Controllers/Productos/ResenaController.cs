@@ -22,34 +22,32 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ITipoResenaMapper tipoResenaMapper;
+
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
                                 IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper,
-                                IPeriodoReferenciaMapper periodoReferenciaMapper,
-                                IProyectoMapper proyectoMapper, ILineaTematicaMapper lineaTematicaMapper,
+                                IProyectoMapper proyectoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
                                 IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper,
                                 IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
-                                ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService)
+                                ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
+                                ITipoResenaMapper tipoResenaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.estadoProductoMapper = estadoProductoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
@@ -59,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorService = investigadorService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
+            this.tipoResenaMapper = tipoResenaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -313,6 +312,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorInternoResena = new CoautorInternoResenaForm();
 
             //Lista de Catalogos Pendientes
+            form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -327,6 +327,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(ResenaForm form)
         {
+            ViewData["TipoResena"] = form.TipoResenaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;

@@ -28,6 +28,14 @@ function setupParticipacionMedios() {
     ParticipacionMedioEnableOptions.setup();
 }
 
+function setupReportes() {
+    ReporteEnableOptions.setup();
+}
+
+function setupResenas() {
+    ResenaEnableOptions.setup();
+}
+
 function setupTesis() {
     TesisEnableOptions.setup();
 }
@@ -121,6 +129,53 @@ var ParticipacionMedioEnableOptions = {
             $('#NotaPeriodistica').attr('disabled', false);
         else
             $('#NotaPeriodistica').attr('disabled', true);
+
+        return false;
+    }
+}
+
+var ReporteEnableOptions = {
+    setup: function() {
+        $('#TipoReporte').change(ReporteEnableOptions.enableOptions);
+        $('#forma').unload(ReporteEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        var text = $('#TipoReporte option:selected').text();
+
+        if (text != "Cuaderno de trabajo")
+            $('#Editorial').attr('disabled', true);
+        else
+            $('#Editorial').attr('disabled', false);
+
+        return false;
+    }
+}
+
+var ResenaEnableOptions = {
+    setup: function() {
+        $('#TipoResena').change(ResenaEnableOptions.enableOptions);
+        $('#forma').unload(ResenaEnableOptions.enableOptions());
+    },
+    enableOptions: function() {
+
+        $('#NombreProducto').attr('disabled', true);
+        $('#NombreRevista').attr('disabled', true);
+        $('#Editorial').attr('disabled', true);
+        $('#ReferenciaBibliograficaLibro').attr('disabled', true);
+        $('#ReferenciaBibliograficaRevista').attr('disabled', true);
+
+
+        $("#TipoResena option:selected:contains('Nota')").each(function() {
+            $('#NombreProducto').attr('disabled', false);
+            $('#NombreRevista').attr('disabled', false);
+            $('#Editorial').attr('disabled', false);
+        });
+
+        $("#TipoResena option:selected:contains('Reseña')").each(function() {
+            $('#ReferenciaBibliograficaLibro').attr('disabled', false);
+            $('#ReferenciaBibliograficaRevista').attr('disabled', false);
+        });
 
         return false;
     }
@@ -332,18 +387,18 @@ var RemoteForm = {
 
         var currentLink = $(this);
 
-        var currentCombo = $(formname + ' p select');
+        var currentCombo = $(formname + ' p :input');
         var handle = $(currentCombo).attr('rel');
         var value = $(currentCombo).val();
 
-//        if (value == null | value == "")
-//            return false;
+        if (value == null | value == "")
+            return false;
 
-//        if ($(handle + 'List ' + handle + '_' + value).length > 0) {
-//            $(handle + '_form').hide();
-//            $(handle + '_new').show();
-//            return false;
-//        }
+        if ($(handle + 'List ' + handle + '_' + value).length > 0) {
+            $(handle + '_form').hide();
+            $(handle + '_new').show();
+            return false;
+        }
 
         currentLink.showLoading();
 

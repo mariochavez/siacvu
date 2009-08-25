@@ -2,6 +2,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+    <label>Tipo de Publicaci&oacute;n</label>
+    <%=Html.DropDownList("TipoResena", Model.TiposResenas.CreateSelectList<TipoResenaForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("TipoResena")%>
+</p>
+<p>
     <label>Estado del producto</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>

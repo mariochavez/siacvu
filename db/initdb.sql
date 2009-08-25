@@ -2141,6 +2141,9 @@ insert into NivelEstudios values('Posdoctorado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Especialidad', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
 
+insert into TipoResenas values('Nota critica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoResenas values('Reseña bibliografica', GETDATE(), GETDATE(), 1, 1, 1)
+
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, null)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,null,1)
 INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,null,1)

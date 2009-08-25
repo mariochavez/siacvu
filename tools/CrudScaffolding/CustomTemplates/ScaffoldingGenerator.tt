@@ -69,14 +69,14 @@ public class ScaffoldingGenerator : Generator
 		
 		Log("Started adding generated files");
 		
-		//GenerateDomainObject();
+		GenerateDomainObject();
 		
 		if(entityScaffoldingDetails.ScaffoldType == 1){
 			GenerateViews();
-			//GenerateWebModel();
-			//GenerateController();
-			//GenerateRepositoryInterfaceAndImplementation();
-			//GenerateMapperInterfaceAndImplementation();
+			GenerateWebModel();
+			GenerateController();
+			GenerateRepositoryInterfaceAndImplementation();
+			GenerateMapperInterfaceAndImplementation();
 		}
 		if(entityScaffoldingDetails.ScaffoldType == 2){			
 			GenerateNewWebModel();

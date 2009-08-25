@@ -173,6 +173,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoResena,
+                           o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
@@ -748,6 +750,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<ProductoDerivado, ProductoDerivadoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoResena, TipoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
