@@ -13,7 +13,8 @@
     AutoComplete.setup();
     SearchAutoComplete.setup();
     paisSetDefaultValue();
-    EnableLanguageOptions.setup();
+    EnableIdiomaOptions.setup();
+    EnablePaginaInicialFinalOptions.setup();
 }
 
 function setupLibros() {
@@ -57,10 +58,11 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
-var EnableLanguageOptions = {
+var EnableIdiomaOptions = {
     setup: function() {
-        $(':input.tipo').change(EnableLanguageOptions.enableOptions);
-        $('#forma').unload(EnableLanguageOptions.enableOptions());
+        $(':input.tipo').change(EnableIdiomaOptions.enableOptions);
+        $('#forma').unload(this.enableOptions);
+        $('#forma').unload(this.enableOptions());
     },
     enableOptions: function() {
 
@@ -70,6 +72,28 @@ var EnableLanguageOptions = {
 
         $("#" + id + " option:selected:contains('otro idioma')").each(function() {
             $('#Idioma').attr('disabled', false);
+        });
+
+        return false;
+    }
+}
+
+var EnablePaginaInicialFinalOptions = {
+    setup: function() {
+        $(':input.estado').change(EnablePaginaInicialFinalOptions.enableOptions);
+        $('#forma').unload(this.enableOptions);
+        $('#forma').unload(this.enableOptions());
+    },
+    enableOptions: function() {
+
+        var id = $(this).attr('id');
+
+        $('#PaginaInicial').attr('readonly', true);
+        $('#PaginaFinal').attr('readonly', true);
+
+        $("#" + id + " option:selected:contains('Publicado')").each(function() {
+            $('#PaginaInicial').attr('readonly', false);
+            $('#PaginaFinal').attr('readonly', false);
         });
 
         return false;
@@ -101,16 +125,13 @@ var ParticipacionEnableOptions = {
     },
     enableOptions: function() {
 
-        var text = $('#OtraParticipacion option:selected').text();
+        $('#TipoPresentacion').attr('disabled', true);
+        $('#Autor').attr('disabled', true);
 
-        if (text != 'Presentacion de libro') {
-            $('#TipoPresentacion').attr('disabled', true);
-            $('#Autor').attr('disabled', true);
-        }
-        else {
+        $("#OtraParticipacion option:selected:contains('de libro')").each(function() {
             $('#TipoPresentacion').attr('disabled', false);
             $('#Autor').attr('disabled', false);
-        }
+        });
 
         return false;
     }
@@ -123,12 +144,11 @@ var ParticipacionMedioEnableOptions = {
     },
     enableOptions: function() {
 
-        var text = $('#MedioImpreso option:selected').text();
+        $('#NotaPeriodistica').attr('disabled', false);
 
-        if (text != 'Seleccione ...')
-            $('#NotaPeriodistica').attr('disabled', false);
-        else
+        $("#MedioImpreso option:selected:contains('Seleccione')").each(function() {
             $('#NotaPeriodistica').attr('disabled', true);
+        });
 
         return false;
     }
@@ -141,12 +161,18 @@ var ReporteEnableOptions = {
     },
     enableOptions: function() {
 
-        var text = $('#TipoReporte option:selected').text();
+        $('#Editorial').attr('disabled', true);
+        $('#InstitucionNombre').attr('disabled', true);
+        $('#Descripcion').attr('disabled', true);
 
-        if (text != "Cuaderno de trabajo")
-            $('#Editorial').attr('disabled', true);
-        else
+        $("#TipoReporte option:selected:contains('Reporte')").each(function() {
+            $('#InstitucionNombre').attr('disabled', false);
+            $('#Descripcion').attr('disabled', false);
+        });
+
+        $("#TipoReporte option:selected:contains('Cuaderno')").each(function() {
             $('#Editorial').attr('disabled', false);
+        });
 
         return false;
     }
@@ -188,12 +214,11 @@ var TesisEnableOptions = {
     },
     enableOptions: function() {
 
-        var text = $('#GradoAcademico option:selected').text();
+        $('#FechaGrado').attr('disabled', false);
 
-        if (text != "Seleccione ...")
-            $('#FechaGrado').attr('disabled', false);
-        else
+        $("#GradoAcademico option:selected:contains('Seleccione')").each(function() {
             $('#FechaGrado').attr('disabled', true);
+        });
 
         return false;
     }
