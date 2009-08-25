@@ -1,9 +1,8 @@
-﻿
-<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="coautorexternoList">
-    <h5>Investigador</h5>
+    <h5>Investigador Externo</h5>
 
     <% if (Model.CoautorExternoCapitulos != null && Model.CoautorExternoCapitulos.Length > 0) { %>
         <% foreach(var coautorExterno in Model.CoautorExternoCapitulos) { %>

@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="coautorexternoList">
-    <h5>Investigador</h5>
+    <h5>Investigador Externo</h5>
 
     <% if (Model.CoautorExternoEventos != null && Model.CoautorExternoEventos.Length > 0) { %>
         <% foreach (var coautorExterno in Model.CoautorExternoEventos){ %>

@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorInternoCapituloForm
@@ -10,5 +8,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InvestigadorId { get; set; }
         public string InvestigadorUsuarioPersonaNombre { get; set; }
+        public string InvestigadorUsuarioPersonaApellidoPaterno { get; set; }
+        public string InvestigadorUsuarioPersonaApellidoMaterno { get; set; }
+
+        public string NombreCoautor
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", InvestigadorUsuarioPersonaApellidoPaterno,
+                                     InvestigadorUsuarioPersonaApellidoMaterno, InvestigadorUsuarioPersonaNombre);
+            }
+        }
     }
 }

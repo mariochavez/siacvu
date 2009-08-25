@@ -5,7 +5,7 @@
 
 var html = '
     <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.Id) %>">
-        <h6><%=Html.Encode(Model.InvestigadorUsuarioPersonaNombre) %></h6>
+        <h6><%=Html.Encode(Model.NombreCoautor) %></h6>
 	</div><!--end sublista-->
 ';
 

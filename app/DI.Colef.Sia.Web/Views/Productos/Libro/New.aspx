@@ -47,11 +47,9 @@
             <h4>Referencia bibliogr&aacute;fica</h4>
             <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
-            <h4>Coautores internos</h4>
+            <h4>Coautores</h4>
             <% Html.RenderPartial("_Coautoria", Model.Form); %>
             <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-            
-            <h4>Coautores externos</h4>
 			<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             
             <h4>Opcionales</h4>

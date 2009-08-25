@@ -69,9 +69,11 @@ var EnableIdiomaOptions = {
         var id = $(this).attr('id');
 
         $('#Idioma').attr('disabled', true);
+        $('#SelectIdioma_p').fadeOut('slow');
 
         $("#" + id + " option:selected:contains('otro idioma')").each(function() {
             $('#Idioma').attr('disabled', false);
+            $('#SelectIdioma_p').fadeIn('slow');
         });
 
         return false;
@@ -90,10 +92,14 @@ var EnablePaginaInicialFinalOptions = {
 
         $('#PaginaInicial').attr('readonly', true);
         $('#PaginaFinal').attr('readonly', true);
+        $('#PaginaInicial_p').fadeOut('slow');
+        $('#PaginaFinal_p').fadeOut('slow');
 
         $("#" + id + " option:selected:contains('Publicado')").each(function() {
             $('#PaginaInicial').attr('readonly', false);
             $('#PaginaFinal').attr('readonly', false);
+            $('#PaginaInicial_p').fadeIn('slow');
+            $('#PaginaFinal_p').fadeIn('slow');
         });
 
         return false;

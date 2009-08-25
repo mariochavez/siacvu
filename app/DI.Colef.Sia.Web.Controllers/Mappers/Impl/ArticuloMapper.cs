@@ -34,8 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Titulo = message.Titulo;
             model.Volumen = message.Volumen;
             model.Numero = message.Numero;
-            model.PaginaInicial = message.PaginaInicial;
-            model.PaginaFinal = message.PaginaFinal;
             model.Participantes = message.Participantes;
             model.PalabrasClaves = message.PalabrasClaves;
 
@@ -58,6 +56,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+
+            if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")
+            {
+                model.PaginaInicial = 0;
+                model.PaginaFinal = 0;
+            }
+            else
+            {
+                model.PaginaInicial = message.PaginaInicial;
+                model.PaginaFinal = message.PaginaFinal;
+            }
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador, 

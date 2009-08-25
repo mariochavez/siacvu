@@ -2,13 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="coautorinternoList">
-    <h5>Investigador</h5>
+    <h5>Investigador Interno</h5>
 
     <% if (Model.CoautorInternoCapitulos != null && Model.CoautorInternoCapitulos.Length > 0) { %>
         <% foreach(var coautorInterno in Model.CoautorInternoCapitulos) { %>
 	        <div class="sublista" id="coautorinterno_<%=Html.Encode(coautorInterno.InvestigadorId) %>">
 	            <h6>
-	                <%=Html.Encode(coautorInterno.InvestigadorUsuarioPersonaNombre)%>
+	                <%=Html.Encode(coautorInterno.NombreCoautor)%>
 	                <% if(Model.Id == 0) { %>
 	                    <%=Html.Hidden("CoautorInternoCapitulo.InvestigadorId_New", coautorInterno.InvestigadorId)%>
 	                <% } %>
