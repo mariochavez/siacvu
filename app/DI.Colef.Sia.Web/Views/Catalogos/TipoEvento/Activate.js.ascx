@@ -11,4 +11,4 @@ var html = '
 
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Tipo de Evento <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Tipo de evento <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

@@ -11,10 +11,10 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Pa&iacute;s</h3>
+        <h3>Agregar nuevo pa&iacute;s</h3>
         <p>
-            Puede agregar un nuevo Pa&iacute;s dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Pa&iacute;s</strong>.
+            Puede agregar un nuevo pa&iacute;s dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo pa&iacute;s</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<PaisController>(x => x.New(), "+ Nuevo País")%></span>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Pa&iacute;ses registrados en el sistema.</p>
+            <p>Lista de pa&iacute;ses registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay pa&iacute;ses definidos</span></h5>
+					<h5><span>No hay pa&iacute;ses registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

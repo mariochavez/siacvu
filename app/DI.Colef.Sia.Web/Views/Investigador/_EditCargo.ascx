@@ -11,7 +11,7 @@
     <% } %>
     
     <div id="cargo_new" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nuevo Cargo", "NewCargo", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p><span><%=Html.ActionLink("+ Nuevo cargo", "NewCargo", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->

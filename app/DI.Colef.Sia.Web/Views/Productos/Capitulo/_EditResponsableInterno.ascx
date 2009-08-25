@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="responsableinternoList">
-    <h5>Responsable interno</h5>
+    <h5>Nombre</h5>
 
     <% if (Model.ResponsableInternoCapitulos != null && Model.ResponsableInternoCapitulos.Length > 0) { %>
         <% foreach (var responsableInterno in Model.ResponsableInternoCapitulos){ %>

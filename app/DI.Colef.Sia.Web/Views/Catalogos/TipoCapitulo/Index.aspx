@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Tipo de Cap&iacute;tulo</h3>
+        <h3>Agregar nuevo tipo de cap&iacute;tulo</h3>
         <p>
-            Puede agregar un nuevo Tipo de Cap&iacute;tulo dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Cap&iacute;tulo</strong>.
+            Puede agregar un nuevo tipo de cap&iacute;tulo dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de cap&iacute;tulo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoCapituloController>(x => x.New(), "+ Nuevo Tipo de Capítulo")%></span>
+            <span><%=Html.ActionLink<TipoCapituloController>(x => x.New(), "+ Nuevo tipo de Capítulo")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Cap&iacute;tulo registrados en el sistema.</p>
+            <p>Lista de tipos de cap&iacute;tulo registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Tipos de Cap&iacute;tulo</h4>
+		<h4>Tipos de cap&iacute;tulo</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay tipos de cap&iacute;tulo definidos</span></h5>
+					<h5><span>No hay tipos de cap&iacute;tulo registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

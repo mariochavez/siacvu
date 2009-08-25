@@ -11,10 +11,10 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva Instituci&oacute;n</h3>
+        <h3>Agregar nueva instituci&oacute;n</h3>
         <p>
-            Puede agregar una nueva Instituci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Instituci&oacute;n</strong>.
+            Puede agregar una nueva instituci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva instituci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Nueva Institución")%></span>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Instituciones registradas en el sistema.</p>
+            <p>Lista de instituciones registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->

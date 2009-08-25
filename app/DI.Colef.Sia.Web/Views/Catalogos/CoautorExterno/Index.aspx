@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Coautor Externo</h3>
+        <h3>Agregar nuevo coautor externo</h3>
         <p>
-            Puede agregar un nuevo Coautor Externo dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Coautor Externo</strong>.
+            Puede agregar un nuevo coautor externo dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo coautor externo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CoautorExternoController>(x => x.New(), "+ Nuevo Coautor Externo")%></span>
+            <span><%=Html.ActionLink<CoautorExternoController>(x => x.New(), "+ Nuevo coautor externo")%></span>
         </div>
     </div>
 </asp:Content>
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay coautores externos definidos</span></h5>
+					<h5><span>No hay coautores externos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

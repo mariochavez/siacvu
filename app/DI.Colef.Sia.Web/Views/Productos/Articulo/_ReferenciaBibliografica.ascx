@@ -15,7 +15,7 @@
 <div id="revistapublicacion_new" class="minilistaboton">
     <p>
 		<span>
-    		<%=Html.ActionLink("+ Nueva Revista", "NewRevistaPublicacion", new { Id = Model.Id }, new { @class = "remote get" })%>
+    		<%=Html.ActionLink("+ Nueva revista", "NewRevistaPublicacion", new { Id = Model.Id }, new { @class = "remote get" })%>
 		</span>
 	</p>
 </div><!--end minilistaboton-->
@@ -56,7 +56,7 @@
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
-    <label>Fecha de Edici&oacute;n</label>    
+    <label>Fecha de edici&oacute;n</label>    
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>

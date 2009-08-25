@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Tipo de Financiamiento</h3>
+        <h3>Agregar nuevo tipo de financiamiento</h3>
         <p>
-            Puede agregar un nuevo Tipo de Financiamiento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Financiamiento</strong>.
+            Puede agregar un nuevo tipo de financiamiento dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de financiamiento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoFinanciamientoController>(x => x.New(), "+ Nuevo Tipo Financiamiento")%></span>
+            <span><%=Html.ActionLink<TipoFinanciamientoController>(x => x.New(), "+ Nuevo tipo Financiamiento")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Financiamiento registrados en el sistema.</p>
+            <p>Lista de tipos de financiamiento registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay tipos de financiamiento definidos</span></h5>
+					<h5><span>No hay tipos de financiamiento registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

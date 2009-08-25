@@ -17,12 +17,12 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="proyectoEmptyList_form">
-            <h6><span>No hay proyectos definidos</span></h6>
+            <h6><span>No hay proyectos registrados</span></h6>
         </div>
     <% } %>
     
     <div id="proyecto_new" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nuevo Proyecto", "NewProyecto", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p><span><%=Html.ActionLink("+ Nuevo proyecto", "NewProyecto", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->

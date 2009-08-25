@@ -11,4 +11,4 @@ var html = '
 
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Tipo de Proyecto <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Tipo de proyecto <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

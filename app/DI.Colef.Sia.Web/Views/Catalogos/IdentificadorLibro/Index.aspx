@@ -11,10 +11,10 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Identificador de Libro</h3>
+        <h3>Agregar nuevo identificador de libro</h3>
         <p>
-            Puede agregar un nuevo Identificador de Libro dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Identificador de Libro</strong>.
+            Puede agregar un nuevo identificador de libro dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo identificador de libro</strong>.
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<IdentificadorLibroController>(x => x.New(), "+ Nuevo Identificador Libro")%></span>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Identificadores de Libros registrados en el sistema.</p>
+            <p>Lista de identificadores de Libros registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay identificadores de libros definidos</span></h5>
+					<h5><span>No hay identificadores de libros registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

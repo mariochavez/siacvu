@@ -22,7 +22,7 @@
     
 	<div class="minilistaboton">
 		<span class="btn btn_normal_brown">
-			<%=Html.SubmitButton("Guardar", "Guardar Cambios") %>
+			<%=Html.SubmitButton("Guardar", "Guardar cambios") %>
 		</span>
 		<span class="btn btn_normal_white">
 			<%=Html.ActionLink<RolController>(x => x.Index(), "Regresar") %>

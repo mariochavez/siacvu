@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="tipoactividadList" class="minilista">
-	<h5>Tipo Actividad</h5>
+	<h5>Tipo actividad</h5>
 	<% if (Model.TipoActividadMovilidadAcademicas != null && Model.TipoActividadMovilidadAcademicas.Length > 0){%>
 	    <% foreach (var tipoActividad in Model.TipoActividadMovilidadAcademicas){ %>
             <div class="sublista" id="tipoactividad_<%=Html.Encode(tipoActividad.TipoActividadId) %>">            
@@ -21,7 +21,7 @@
     <% } %>
     
     <div id="tipoactividad_new" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nuevo Tipo Actividad", "NewTipoActividad", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p><span><%=Html.ActionLink("+ Nuevo tipo actividad", "NewTipoActividad", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->

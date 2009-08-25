@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Nivel</h3>
+        <h3>Agregar nuevo nivel</h3>
         <p>
-            Puede agregar un nuevo Nivel dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Nivel</strong>.
+            Puede agregar un nuevo nivel dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo nivel</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<NivelController>(x => x.New(), "+ Nuevo Nivel")%></span>
+            <span><%=Html.ActionLink<NivelController>(x => x.New(), "+ Nuevo nivel")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Niveles registrados en el sistema.</p>
+            <p>Lista de niveles registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay niveles definidos</span></h5>
+					<h5><span>No hay niveles registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

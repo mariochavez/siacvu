@@ -11,4 +11,4 @@ var html = '
 
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Nivel de Estudio <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');
+showMessage('Nivel de estudio <%=Html.Encode(Model.Nombre) %> ha sido <%if(Model.Activo) { %> activado. <% } else { %> desactivado. <% } %>');

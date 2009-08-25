@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Tipo de Actividad</h3>
+        <h3>Agregar nuevo tipo de actividad</h3>
         <p>
-            Puede agregar un nuevo Tipo de Actividad dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Actividad</strong>.
+            Puede agregar un nuevo tipo de actividad dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de actividad</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoActividadController>(x => x.New(), "+ Nuevo Tipo de Actividad")%></span>
+            <span><%=Html.ActionLink<TipoActividadController>(x => x.New(), "+ Nuevo tipo de actividad")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Actividades registradas en el sistema.</p>
+            <p>Lista de tipos de actividades registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,7 +39,7 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Tipos de Actividades</h4>
+		<h4>Tipos de actividades</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">

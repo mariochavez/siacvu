@@ -43,7 +43,7 @@
     <% Html.RenderPartial("_Search"); %>
     
 	<div id="lista">
-	    <h4>Movilidad Acad&eacute;mica</h4>
+	    <h4>Movilidad acad&eacute;mica</h4>
 	    
 	    <% if(Model.List == null || Model.List.Length == 0) { %>	        
 			<div class="elementolista">

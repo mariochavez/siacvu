@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Periodo Referencia</h3>
+        <h3>Agregar nuevo periodo referencia</h3>
         <p>
-            Puede agregar un nuevo Periodo Referencia dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Periodo Referencia</strong>.
+            Puede agregar un nuevo periodo referencia dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo periodo referencia</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<PeriodoReferenciaController>(x => x.New(), "+ Nuevo Periodo Referencia")%></span>
+            <span><%=Html.ActionLink<PeriodoReferenciaController>(x => x.New(), "+ Nuevo periodo referencia")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Periodos Referencias registrados en el sistema.</p>
+            <p>Lista de periodos Referencias registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay periodos referencias definidos</span></h5>
+					<h5><span>No hay periodos referencias registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Estado del Producto</h3>
+        <h3>Agregar nuevo estado del producto</h3>
         <p>
-            Puede agregar un nuevo Estado del Producto dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Estado del Producto</strong>.
+            Puede agregar un nuevo estado del producto dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo estado del producto</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstadoProductoController>(x => x.New(), "+ Nuevo Estado Producto")%></span>
+            <span><%=Html.ActionLink<EstadoProductoController>(x => x.New(), "+ Nuevo estado del producto")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Estados del Producto registrados en el sistema.</p>
+            <p>Lista de estados del Producto registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay estados del producto definidos</span></h5>
+					<h5><span>No hay estados del producto registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

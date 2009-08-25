@@ -73,7 +73,7 @@
 			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
                 </p>
                             
             <% } %>

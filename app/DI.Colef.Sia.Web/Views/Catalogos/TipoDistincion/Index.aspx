@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Tipo de distinci&oacute;n</h3>
+        <h3>Agregar nuevo tipo de distinci&oacute;n</h3>
         <p>
-            Puede agregar un nuevo Tipo de distinci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de distinci&oacute;n</strong>.
+            Puede agregar un nuevo tipo de distinci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de distinci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoDistincionController>(x => x.New(), "+ Nuevo Tipo Distinción")%></span>
+            <span><%=Html.ActionLink<TipoDistincionController>(x => x.New(), "+ Nuevo tipo Distinción")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de distinci&oacute;n registradas en el sistema.</p>
+            <p>Lista de tipos de distinci&oacute;n registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->

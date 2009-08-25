@@ -17,14 +17,14 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="productoderivadoEmptyList_form">
-            <h6><span>No hay productos derivados definidos</span></h6>
+            <h6><span>No hay productos derivados registrados</span></h6>
         </div>
     <% } %>
     
     <div id="productoderivado_new" class="minilistaboton">
 		<p>
 		    <span>
-		        <%=Html.ActionLink("+ Nuevo Producto Derivado", "NewProductoDerivado", new { Id = Model.Id }, new { @class = "remote get" })%>
+		        <%=Html.ActionLink("+ Nuevo producto derivado", "NewProductoDerivado", new { Id = Model.Id }, new { @class = "remote get" })%>
 		    </span>
 		</p>
 	</div><!--end minilistaboton-->	

@@ -25,7 +25,7 @@
         <table>
              <% if(Model.List == null || Model.List.Length == 0) { %>
                 <tr>
-                    <td>No hay roles definidos</td>
+                    <td>No hay roles registrados</td>
                 </tr>
             <% } else { %>
                 <% foreach (var rol in Model.List) { %>

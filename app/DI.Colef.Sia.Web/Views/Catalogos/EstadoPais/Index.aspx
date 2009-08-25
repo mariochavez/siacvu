@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Estado del Pa&iacute;s</h3>
+        <h3>Agregar nuevo estado del pa&iacute;s</h3>
         <p>
-            Puede agregar un nuevo Estado del Pa&iacute;s dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Estado del Pa&iacute;s</strong>.
+            Puede agregar un nuevo estado del pa&iacute;s dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo estado del pa&iacute;s</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstadoPaisController>(x => x.New(), "+ Nuevo Estado País")%></span>
+            <span><%=Html.ActionLink<EstadoPaisController>(x => x.New(), "+ Nuevo estado del pa&iacute;s")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Estados del Pa&iacute;s registrados en el sistema.</p>
+            <p>Lista de estados del pa&iacute;s registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Estados del Pa&iacute;s</h4>
+		<h4>Estados del pa&iacute;s</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay estados del pa&iacute;s definidos</span></h5>
+					<h5><span>No hay estados del pa&iacute;s registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

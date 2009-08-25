@@ -13,11 +13,11 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
 	    <h3>Agregar nuevo investigador</h3>
-		<p>Puede agregar un nuevo Investigador dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Investigador</strong>.</p>
+		<p>Puede agregar un nuevo investigador dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo investigador</strong>.</p>
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Nuevo Investigador", new { title = "Nuevo Investigador" })%>
+		        <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Nuevo investigador", new { title = "Nuevo investigador" })%>
 		    </span>
 		</div>
 	
@@ -41,12 +41,12 @@
     <% Html.RenderPartial("_Search"); %>
 
 	<div id="lista">
-		<h4>Lista de Investigadores</h4>
+		<h4>Lista de investigadores</h4>
 
          <% if(Model.List == null || Model.List.Length == 0) { %>
             <div class="elementolista">
 			    <div class="elementodescripcion">
-				    <h5><span>No hay investigadores en el sistema</span></h5>
+				    <h5><span>No hay investigadores registrados</span></h5>
 			    </div><!--end elementodescripcion-->	
 				
 		    </div><!--end elementolista--> 

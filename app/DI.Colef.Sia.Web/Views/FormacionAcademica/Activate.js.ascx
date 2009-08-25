@@ -11,4 +11,4 @@ var html = '
 
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last').html(html);
 $('#accion_<%=Html.Encode(Model.Id)%> .elementobotones span:last a').removeLoading();
-showMessage('Formaci&oacute;n Acad&eacute;mica <%=Html.Encode(Model.TituloGrado) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');
+showMessage('Formaci&oacute;n acad&eacute;mica <%=Html.Encode(Model.TituloGrado) %> ha sido <%if(Model.Activo) { %> activada. <% } else { %> desactivada. <% } %>');

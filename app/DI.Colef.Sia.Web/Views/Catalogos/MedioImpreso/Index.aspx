@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Medio Impreso</h3>
+        <h3>Agregar nuevo medio impreso</h3>
         <p>
-            Puede agregar un nuevo Medio Impreso dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Medio Impreso</strong>.
+            Puede agregar un nuevo medio impreso dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo medio impreso</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<MedioImpresoController>(x => x.New(), "+ Nuevo Medio Impreso")%></span>
+            <span><%=Html.ActionLink<MedioImpresoController>(x => x.New(), "+ Nuevo medio impreso")%></span>
         </div>
     </div>
 </asp:Content>
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay medios impresos definidos</span></h5>
+					<h5><span>No hay medios impresos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

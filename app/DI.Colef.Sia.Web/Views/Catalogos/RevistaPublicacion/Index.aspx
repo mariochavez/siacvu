@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva Revista de Publicaci&oacute;n</h3>
+        <h3>Agregar nueva revista de publicaci&oacute;n</h3>
         <p>
-            Puede agregar una nueva Revista de Publicaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Revista Publicaci&oacute;n</strong>.
+            Puede agregar una nueva revista de publicaci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva revista Publicaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<RevistaPublicacionController>(x => x.New(), "+ Nueva Revista Publicación")%></span>
+            <span><%=Html.ActionLink<RevistaPublicacionController>(x => x.New(), "+ Nueva revista Publicación")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Revistas de Publicaci&oacute;n registradas en el sistema.</p>
+            <p>Lista de revistas de publicaci&oacute;n registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Revistas de Publicaci&oacute;n</h4>
+		<h4>Revistas de publicaci&oacute;n</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay revistas de publicaci&oacute;n definidas</span></h5>
+					<h5><span>No hay revistas de publicaci&oacute;nes definidas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

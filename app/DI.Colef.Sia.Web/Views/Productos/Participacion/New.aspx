@@ -38,7 +38,7 @@
                 <% Html.RenderPartial("_DatosParticipacion", Model.Form); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ParticipacionController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ParticipacionController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

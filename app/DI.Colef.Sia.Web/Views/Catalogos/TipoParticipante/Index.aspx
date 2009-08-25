@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Tipo de Participante</h3>
+        <h3>Agregar nuevo tipo de participante</h3>
         <p>
-            Puede agregar un nuevo Tipo de Participante dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Participante</strong>.
+            Puede agregar un nuevo tipo de participante dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de participante</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoParticipanteController>(x => x.New(), "+ Nuevo Tipo de Participante")%></span>
+            <span><%=Html.ActionLink<TipoParticipanteController>(x => x.New(), "+ Nuevo tipo de participante")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Participante registrados en el sistema.</p>
+            <p>Lista de tipos de participante registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Tipos de Participante</h4>
+		<h4>Tipos de participante</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay tipos de participante definidos</span></h5>
+					<h5><span>No hay tipos de participante registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

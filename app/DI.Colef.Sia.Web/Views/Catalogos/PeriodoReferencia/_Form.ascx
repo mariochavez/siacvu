@@ -14,13 +14,13 @@
     <%=Html.ValidationMessage("Orden")%>
 </p>
 <p>
-    <label>Fecha Inicial</label>
+    <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = " datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
-    <label>Fecha Final</label>
+    <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = " datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaFinal")%>

@@ -18,7 +18,7 @@ var html = '
     <div class="minilistaboton">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar Producto Derivado", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar producto derivado", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="productoderivado">Cancelar</a>
         </p>
     </div>

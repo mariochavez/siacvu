@@ -37,17 +37,17 @@
                 
                 <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
                 
-                <h4>Tipos Actividades</h4>
+                <h4>Tipos actividades</h4>
                 <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
             
-                <h4>Productos Derivados</h4>
+                <h4>Productos derivados</h4>
                 <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
                 
                 <h4>Proyectos</h4>
                 <% Html.RenderPartial("_EditProyecto", Model.Form); %>
                 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

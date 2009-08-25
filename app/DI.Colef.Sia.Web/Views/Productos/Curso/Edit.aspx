@@ -41,7 +41,7 @@
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

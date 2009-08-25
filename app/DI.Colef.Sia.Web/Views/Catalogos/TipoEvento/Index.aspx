@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo de Tipo Evento</h3>
+        <h3>Agregar nuevo de tipo evento</h3>
         <p>
-            Puede agregar un nuevo Tipo de Evento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Evento</strong>.
+            Puede agregar un nuevo tipo de evento dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de evento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoEventoController>(x => x.New(), "+ Nuevo Tipo de Evento")%></span>
+            <span><%=Html.ActionLink<TipoEventoController>(x => x.New(), "+ Nuevo tipo de evento")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Evento registrados en el sistema.</p>
+            <p>Lista de tipos de evento registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Tipos de Evento</h4>
+		<h4>Tipos de evento</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay tipos de evento definidos</span></h5>
+					<h5><span>No hay tipos de evento registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

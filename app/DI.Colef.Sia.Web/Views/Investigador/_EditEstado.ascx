@@ -10,7 +10,7 @@
     <% } %>
     
     <div id="estado_new" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nuevo Estado", "NewEstado", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p><span><%=Html.ActionLink("+ Nuevo estado", "NewEstado", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->

@@ -29,7 +29,7 @@
     <div id="barra">
         <div id="asistente">
             <h3Asistente de secci&oacute;n</h3>
-            <p>Lista de Formaciones Acad&eacute;micas registradas en el sistema.</p>
+            <p>Lista de formaciones acad&eacute;micas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -42,7 +42,7 @@
     <% Html.RenderPartial("_Search"); %>
     
     <div id="lista">
-        <h4>Formaci&oacute;nes Acad&eacute;micas</h4>
+        <h4>Formaci&oacute;nes acad&eacute;micas</h4>
         
          <% if(Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">

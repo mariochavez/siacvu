@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo Medio Electr&oacute;nico</h3>
+        <h3>Agregar nuevo medio electr&oacute;nico</h3>
         <p>
-            Puede agregar un nuevo Medio Electr&oacute;nico dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Medio Electr&oacute;nico</strong>.
+            Puede agregar un nuevo medio electr&oacute;nico dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo medio electr&oacute;nico</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<MedioElectronicoController>(x => x.New(), "+ Nuevo Medio Electrónico")%></span>
+            <span><%=Html.ActionLink<MedioElectronicoController>(x => x.New(), "+ Nuevo medio electr&oacute;nico")%></span>
         </div>
     </div>
 </asp:Content>
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay medios electr&oacute;nicos definidos</span></h5>
+					<h5><span>No hay medios electr&oacute;nicos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->
