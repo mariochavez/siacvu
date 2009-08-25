@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
-        public Distincion Map(DistincionForm message, Usuario usuario, Investigador investigador)
+        public Distincion Map(DistincionForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;

@@ -36,3 +36,7 @@
             new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
+<p>
+    <label>Periodo de referencia</label>
+    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
+</p>

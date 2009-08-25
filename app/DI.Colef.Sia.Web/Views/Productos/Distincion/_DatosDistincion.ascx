@@ -47,3 +47,7 @@
     <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Ciudad")%>
 </p>
+<p>
+    <label>Periodo de referencia</label>
+    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
+</p>

@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPaisId { get; set; }
 
         public int Investigador { get; set; }
+        public string PeriodoReferenciaPeriodo { get; set; }
 
         /* Catalogos */
         public TipoDistincionForm[] TiposDistinciones { get; set; }

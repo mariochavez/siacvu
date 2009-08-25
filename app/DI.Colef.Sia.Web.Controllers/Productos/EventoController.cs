@@ -78,6 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
         }
@@ -138,7 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',').Length > 0)
                 tipoParticiones = formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',');
 
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
                                           coautoresExternos, coautoresInternos, tipoParticiones);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
@@ -159,7 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {

@@ -21,6 +21,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual EstadoPais EstadoPais { get; set; }
 
+        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
+
         public virtual string Ciudad { get; set; }
 
         [NotNull]
