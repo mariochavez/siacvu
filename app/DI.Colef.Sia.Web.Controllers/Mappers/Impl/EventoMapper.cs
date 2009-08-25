@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(message.TipoFinanciamiento);
         }
 
-        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
+        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -59,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Investigador = investigador;
                 model.CreadorPor = usuario;
+                model.PeriodoReferencia = periodo;
             }
 
             model.ModificadoPor = usuario;
@@ -66,10 +67,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
+        public Evento Map(EventoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
             string[] coautoresExternos, string[] coautoresInternos, string[] tipoParticipaciones)
         {
-            var model = Map(message, usuario, investigador);
+            var model = Map(message, usuario, investigador, periodo);
 
             foreach (var coautorId in coautoresExternos)
             {

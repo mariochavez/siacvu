@@ -56,6 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual LineaTematica LineaTematica { get; set; }
 
+        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
+
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }

@@ -55,6 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
         }
@@ -97,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
@@ -115,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
             distincion.ModificadoPor = CurrentUser();
 
