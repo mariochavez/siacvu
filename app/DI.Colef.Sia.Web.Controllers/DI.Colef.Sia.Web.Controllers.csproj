@@ -314,7 +314,6 @@
     <Compile Include="Mappers\Impl\TipoEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoOrganoMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoParticipacionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoPresentacionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoReporteMapper.cs" />
     <Compile Include="Mappers\Impl\UsuarioMapper.cs" />
@@ -355,7 +354,6 @@
     <Compile Include="Mappers\ITipoEventoMapper.cs" />
     <Compile Include="Mappers\ITipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\ITipoOrganoMapper.cs" />
-    <Compile Include="Mappers\ITipoParticipacionEventoMapper.cs" />
     <Compile Include="Mappers\ITipoPresentacionMapper.cs" />
     <Compile Include="Mappers\ITipoReporteMapper.cs" />
     <Compile Include="Mappers\IUsuarioMapper.cs" />
@@ -441,7 +439,6 @@
     <Compile Include="Models\TipoEventoForm.cs" />
     <Compile Include="Models\TipoFinanciamientoForm.cs" />
     <Compile Include="Models\TipoOrganoForm.cs" />
-    <Compile Include="Models\TipoParticipacionEventoForm.cs" />
     <Compile Include="Models\TipoPresentacionForm.cs" />
     <Compile Include="Models\TipoReporteForm.cs" />
     <Compile Include="Models\UsuarioForm.cs" />

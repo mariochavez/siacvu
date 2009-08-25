@@ -1183,22 +1183,6 @@ alter table TipoProyectos  drop constraint FK1E50E26A85102A57
 alter table TipoProyectos  drop constraint FK1E50E26A74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D2261429F]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
-alter table TipoParticipacionEventos  drop constraint FK87E86B1D2261429F
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D85102A57]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
-alter table TipoParticipacionEventos  drop constraint FK87E86B1D85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
-alter table TipoParticipacionEventos  drop constraint FK87E86B1D74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK87E86B1D3BA127C1]') AND parent_object_id = OBJECT_ID('TipoParticipacionEventos'))
-alter table TipoParticipacionEventos  drop constraint FK87E86B1D3BA127C1
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E185102A57]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
 alter table TipoInstituciones  drop constraint FK77542E185102A57
 
@@ -1579,6 +1563,10 @@ alter table Eventos  drop constraint FK9DD52343C93A1EF1
 alter table Eventos  drop constraint FK9DD5234342002BEE
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523432261429F]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD523432261429F
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234364F7D1CD]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD5234364F7D1CD
 
@@ -1770,8 +1758,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Cargos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cargos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionEventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
 
@@ -2860,18 +2846,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table TipoParticipacionEventos (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       TipoParticipacionFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       EventoFk INT null,
-       primary key (Id)
-    )
-
     create table TipoInstituciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3196,6 +3170,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Activo BIT null,
        AmbitoFk INT null,
        TipoEventoFk INT null,
+       TipoParticipacionFk INT null,
        InstitucionFk INT null,
        LineaTematicaFk INT null,
        PeriodoReferenciaFk INT null,
@@ -4697,26 +4672,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table TipoParticipacionEventos 
-        add constraint FK87E86B1D2261429F 
-        foreign key (TipoParticipacionFk) 
-        references TipoParticipaciones
-
-    alter table TipoParticipacionEventos 
-        add constraint FK87E86B1D85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoParticipacionEventos 
-        add constraint FK87E86B1D74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table TipoParticipacionEventos 
-        add constraint FK87E86B1D3BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
-
     alter table TipoInstituciones 
         add constraint FK77542E185102A57 
         foreign key (CreadorPorFk) 
@@ -5191,6 +5146,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK9DD5234342002BEE 
         foreign key (TipoEventoFk) 
         references TipoEventos
+
+    alter table Eventos 
+        add constraint FK9DD523432261429F 
+        foreign key (TipoParticipacionFk) 
+        references TipoParticipaciones
 
     alter table Eventos 
         add constraint FK9DD5234364F7D1CD 

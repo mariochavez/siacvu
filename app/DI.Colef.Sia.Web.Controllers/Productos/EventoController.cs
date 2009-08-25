@@ -26,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
         readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
-        readonly ITipoParticipacionEventoMapper tipoParticipacionEventoMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
@@ -41,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
-                                ITipoParticipacionEventoMapper tipoParticipacionEventoMapper,
                                 ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -59,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
-            this.tipoParticipacionEventoMapper = tipoParticipacionEventoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -135,12 +132,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',');
 
-            if (formCollection["TipoParticipacionEvento.TipoParticipacionId_New"] != null &&
-                formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',').Length > 0)
-                tipoParticiones = formCollection["TipoParticipacionEvento.TipoParticipacionId_New"].Split(',');
-
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
-                                          coautoresExternos, coautoresInternos, tipoParticiones);
+                                          coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
@@ -315,60 +308,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddCoautorExterno", coautorExternoEventoForm);
         }
 
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewTipoParticipacion(int id)
-        {
-            var evento = eventoService.GetEventoById(id);
-            var form = new EventoForm();
-
-            if (evento != null)
-                form.Id = evento.Id;
-
-            form.TipoParticipacionEvento = new TipoParticipacionEventoForm();
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
-
-            return Rjs("NewTipoParticipacion", form);
-        }
-
-        [Transaction]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddTipoParticipacion(
-            [Bind(Prefix = "TipoParticipacionEvento")] TipoParticipacionEventoForm form, int eventoId)
-        {
-            TipoParticipacionEventoForm tipoParticipacionEventoForm;
-            var tipoParticipacionEvento = tipoParticipacionEventoMapper.Map(form);
-
-            ModelState.AddModelErrors(tipoParticipacionEvento.ValidationResults(), true, String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            tipoParticipacionEvento.CreadorPor = CurrentUser();
-            tipoParticipacionEvento.ModificadoPor = CurrentUser();
-
-            if (eventoId != 0)
-            {
-                var evento = eventoService.GetEventoById(eventoId);
-                foreach (var tipoParticipacion in evento.TipoParticipacionEventos)
-                {
-                    if (tipoParticipacion.TipoParticipacion.Id == tipoParticipacionEvento.TipoParticipacion.Id)
-                    {
-                        tipoParticipacionEventoForm = tipoParticipacionEventoMapper.Map(tipoParticipacionEvento);
-
-                        return Rjs("AddTipoParticipacion", tipoParticipacionEventoForm);
-                    }
-                }
-
-                evento.AddTipo(tipoParticipacionEvento);
-                eventoService.SaveEvento(evento);
-            }
-
-            tipoParticipacionEventoForm = tipoParticipacionEventoMapper.Map(tipoParticipacionEvento);
-
-            return Rjs("AddTipoParticipacion", tipoParticipacionEventoForm);
-        }
-
         EventoForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -377,13 +316,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         EventoForm SetupNewForm(EventoForm form)
         {
             form = form ?? new EventoForm();
-
-            form.TipoParticipacionEvento = new TipoParticipacionEventoForm();
+            
             form.CoautorExternoEvento = new CoautorExternoEventoForm();
             form.CoautorInternoEvento = new CoautorInternoEventoForm();
 
             //Lista de Catalogos Pendientes
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -398,6 +337,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
+            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
         }
     }
 }
