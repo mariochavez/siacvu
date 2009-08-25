@@ -16,7 +16,7 @@
 <p>
     <label>Estado actual</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...", new { @class = "estado requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
 <p>

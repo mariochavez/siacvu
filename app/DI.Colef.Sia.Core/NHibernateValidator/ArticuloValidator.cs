@@ -22,6 +22,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var articulo = value as Articulo;
             if (articulo != null)
             {
+                if (articulo.PaginaInicial == 0 && articulo.PaginaFinal == 0)
+                    return true;
+
                 if (articulo.PaginaInicial >= articulo.PaginaFinal)
                 {
                     constraintValidatorContext.DisableDefaultError();

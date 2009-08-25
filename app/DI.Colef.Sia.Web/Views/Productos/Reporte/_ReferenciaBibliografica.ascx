@@ -7,7 +7,7 @@
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
-	<label>Instituci&oacute;n</label>
+	<label>Instituci&oacute;n Financiadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
     new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
