@@ -4,10 +4,6 @@
     {
         public int Id { get; set; }
 
-        public string ExpedienteSNI { get; set; }
-        public string ExpedienteProduccion { get; set; }
-        public string ExpedienteAcademico { get; set; }
-        public string ClaveCVU { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
 

@@ -14,18 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotEmptyDate]
         public virtual DateTime FechaFinal { get; set; }
 
-        [Length(40)]
-        public virtual string ExpedienteSNI { get; set; }
-
-        [Length(40)]
-        public virtual string ExpedienteProduccion { get; set; }
-
-        [Length(40)]
-        public virtual string ExpedienteAcademico { get; set; }
-
-        [Length(20)]
-        public virtual string ClaveCVU { get; set; }
-
         [NotNull]
         public virtual SNI SNI { get; set; }
 

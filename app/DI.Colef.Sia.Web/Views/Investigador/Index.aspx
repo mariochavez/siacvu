@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar Nuevo Investigador</h3>
+	    <h3>Agregar nuevo investigador</h3>
 		<p>Puede agregar un nuevo Investigador dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Investigador</strong>.</p>
 			
 		<div class="botonzon">
@@ -28,7 +28,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Investigadores registrados en el sistema.</p>
+            <p>Lista de investigadores registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->

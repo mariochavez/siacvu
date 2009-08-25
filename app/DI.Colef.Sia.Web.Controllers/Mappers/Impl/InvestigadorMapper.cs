@@ -77,6 +77,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.ModificadoPor = usuario;
 
+            model.ExpedienteAcademico = message.ExpedienteAcademico;
+            model.ExpedienteProduccion = message.ExpedienteProduccion;
+            model.ExpedienteSNI = message.ExpedienteSNI;
+            model.ClaveCVU = message.ClaveCVU;
+
             return model;
         }
     }
