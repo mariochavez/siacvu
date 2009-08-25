@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    //[HasUniqueDomainSignature]
     public class Investigador : Entity, IBaseEntity
     {
         public Investigador()
@@ -49,6 +47,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotEmptyDate]
         public virtual DateTime FechaIngreso { get; set; }
+
+        [Length(40)]
+        public virtual string ExpedienteSNI { get; set; }
+
+        [Length(40)]
+        public virtual string ExpedienteProduccion { get; set; }
+
+        [Length(40)]
+        public virtual string ExpedienteAcademico { get; set; }
+
+        [Length(20)]
+        public virtual string ClaveCVU { get; set; }
 
         [NotEmpty]
         [Valid]

@@ -5,6 +5,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int Id { get; set; }
         public string FechaIngreso { get; set; }
 
+        public string ExpedienteSNI { get; set; }
+        public string ExpedienteProduccion { get; set; }
+        public string ExpedienteAcademico { get; set; }
+        public string ClaveCVU { get; set; }
+
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
@@ -19,6 +24,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             {
                 return string.Format("{0} {1} {2}", UsuarioPersonaNombre, UsuarioPersonaApellidoPaterno,
                                      UsuarioPersonaApellidoMaterno);
+            }
+        }
+
+        public string NombreCoautor
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", UsuarioPersonaApellidoPaterno,
+                                     UsuarioPersonaApellidoMaterno, UsuarioPersonaNombre);
             }
         }
 

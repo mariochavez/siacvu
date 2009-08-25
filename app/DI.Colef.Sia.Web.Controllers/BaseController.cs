@@ -145,19 +145,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             switch (title)
             {
                 case Title.Index:
-                    message = String.Format("Administracion de {0}", GetObjectName(true));
+                    message = String.Format("Administración de {0}", GetObjectName(true).ToLower());
                     break;
 
                 case Title.New:
-                    message = String.Format("Crear nuevo {0}", GetObjectName(false));
+                    message = String.Format("Crear nuevo {0}", GetObjectName(false).ToLower());
                     break;
 
                 case Title.Edit:
-                    message = String.Format("Modificacion de {0}", GetObjectName(false));
+                    message = String.Format("Modificación de {0}", GetObjectName(false).ToLower());
                     break;
 
                 case Title.Show:
-                    message = String.Format("Informacion de {0}", GetObjectName(false));
+                    message = String.Format("Información de {0}", GetObjectName(false).ToLower());
                     break;
             }
 

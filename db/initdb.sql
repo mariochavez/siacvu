@@ -208,6 +208,7 @@ insert into SNIs values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Emerito',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SNIs values('No pertenece',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Sedes values('Matamoros','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sedes values('Nuevo Laredo','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2144,9 +2145,9 @@ insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoResenas values('Nota critica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoResenas values('Reseña bibliografica', GETDATE(), GETDATE(), 1, 1, 1)
 
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, null)
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, null)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,null,1)
 INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,null,1)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,null,1)
 INSERT GradoAcademicoInvestigadores VALUES('Jan  5 2009 12:00AM','Migracion eb la frontera norte de Mexico','Ciencias Sociales',null,'Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,null,1)
-INSERT SNIInvestigadores VALUES('Feb  2 2009 12:00AM','Feb  2 2010 12:00AM',null,null,null,null,'Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,2,1,null,1)
+INSERT SNIInvestigadores VALUES('Feb  2 2009 12:00AM','Feb  2 2010 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,2,1,null,1)

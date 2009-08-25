@@ -27,9 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
-            model.ExpedienteAcademico = message.ExpedienteAcademico;
-            model.ExpedienteProduccion = message.ExpedienteProduccion;
-            model.ExpedienteSNI = message.ExpedienteSNI;
             model.SNI = catalogoService.GetSNIById(message.SNI);
 
             if (model.IsTransient())

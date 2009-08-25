@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Tipo de Dict&aacute;men</h3>
+        <h3>Agregar nuevo Tipo de dict&aacute;men</h3>
         <p>
-            Puede agregar un nuevo Tipo de Dict&aacute;men dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de Dict&aacute;men</strong>.
+            Puede agregar un nuevo Tipo de dict&aacute;men dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Tipo de dict&aacute;men</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<TipoDictamenController>(x => x.New(), "+ Nuevo Tipo de Dictámen")%></span>
+            <span><%=Html.ActionLink<TipoDictamenController>(x => x.New(), "+ Nuevo Tipo de dictámen")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Tipos de Dict&aacute;men registrados en el sistema.</p>
+            <p>Lista de Tipos de dict&aacute;men registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,7 +39,7 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Tipos de Dict&aacute;men</h4>
+		<h4>Tipos de dict&aacute;men</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">

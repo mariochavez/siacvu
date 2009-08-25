@@ -41,26 +41,42 @@
                         <%=Html.ValidationMessage("Usuario") %>
                     </p>
                     <p>
-                        <label>Fecha de Ingreso</label>
+                        <label>Ingreso como investigador</label>
 
                         <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class = "datetime input100-requerido", maxlength = 10 })%>
                         <span>(Formato dd/mm/yyyy)</span>
                         <%=Html.ValidationMessage("FechaIngreso")%>
                     </p>
-
-                    <h4>Estado</h4>
+		            <p>
+                        <label>Expediente SNI</label>
+                        <%=Html.TextBox("ExpedienteSNI", Model.Form.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
+                    </p>
+                    <p>
+                        <label>Expediente producci&oacute;n</label>
+                        <%=Html.TextBox("ExpedienteProduccion", Model.Form.ExpedienteProduccion, new { @class = "input250", maxlength = 40 })%>
+                    </p> 
+                    <p>
+                        <label>Expediente acad&eacute;mico</label>
+                        <%=Html.TextBox("ExpedienteAcademico", Model.Form.ExpedienteAcademico, new { @class = "input250", maxlength = 40 })%>
+                    </p>                         
+                    <p>
+                        <label>Clave CVU</label>
+                        <%=Html.TextBox("ClaveCVU", Model.Form.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
+                    </p>
+                
+                    <h4>Estados</h4>
                     <% Html.RenderPartial("_NewEstado", Model.Form); %>
 
-                    <h4>Grado</h4>
+                    <h4>Grados</h4>
                     <% Html.RenderPartial("_NewGrado", Model.Form); %>
 
-                    <h4>Categoria</h4>
+                    <h4>Categorias</h4>
                     <% Html.RenderPartial("_NewCategoria", Model.Form); %>
                     
-                    <h4>Cargo</h4>
+                    <h4>Cargos</h4>
                     <% Html.RenderPartial("_NewCargo", Model.Form); %>
                     
-                    <h4>SNI</h4>
+                    <h4>SNIs</h4>
                     <% Html.RenderPartial("_NewSni", Model.Form); %>
                     
                     <p class="submit">

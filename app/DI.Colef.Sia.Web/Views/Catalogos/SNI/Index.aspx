@@ -11,7 +11,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Sni</h3>
+        <h3>Agregar nuevo Sni</h3>
         <p>
             Puede agregar un nuevo Sni dentro de la lista de administraci&oacute;n de
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Sni</strong>.

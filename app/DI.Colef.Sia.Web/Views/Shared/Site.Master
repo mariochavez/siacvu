@@ -58,10 +58,10 @@
 				        <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones") %></li>
 				        <li><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Eventos") %></li>
 				        <li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></li>
-				        <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Organos externos") %></li>
+				        <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "&Oacute;rganos externos")%></li>
 				        <li><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Participaciones") %></li>
-				        <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en Medios") %></li>
-				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Rerportes") %></li>
+				        <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></li>
+				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Reportes t&eacute;cnicos")%></li>
 				        <li><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></li>
 				        <li><%=Html.ActionLinkForAreas<TesisController>(x => x.Index(), "Tesis") %></li>
 				        <li class="last">

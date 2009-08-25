@@ -15,19 +15,3 @@
     <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
 </p>
-<p>
-    <label>Expediente SNI</label>
-    <%=Html.TextBox("SNIInvestigador.ExpedienteSNI", Model.SNIInvestigador.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
-</p>
-<p>
-    <label>Expediente Produccion</label>
-    <%=Html.TextBox("SNIInvestigador.ExpedienteProduccion", Model.SNIInvestigador.ExpedienteProduccion, new { @class = "input250", maxlength = 40 })%>
-</p> 
-<p>
-    <label>Expediente Academico</label>
-    <%=Html.TextBox("SNIInvestigador.ExpedienteAcademico", Model.SNIInvestigador.ExpedienteAcademico, new { @class = "input250", maxlength = 40 })%>
-</p>                         
-<p>
-    <label>Clave CVU</label>
-    <%=Html.TextBox("SNIInvestigador.ClaveCVU", Model.SNIInvestigador.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
-</p>

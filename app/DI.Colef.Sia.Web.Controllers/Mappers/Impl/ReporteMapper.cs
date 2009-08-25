@@ -34,7 +34,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NoPaginas = message.NoPaginas;
             model.Descripcion = message.Descripcion;
             model.Objetivo = message.Objetivo;
-            model.PalabarasClave = message.PalabarasClave;
+            model.PalabraClave1 = message.PalabraClave1;
+            model.PalabraClave2 = message.PalabraClave2;
+            model.PalabraClave3 = message.PalabraClave3;
 
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
