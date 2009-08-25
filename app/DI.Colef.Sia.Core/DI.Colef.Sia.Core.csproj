@@ -184,6 +184,7 @@
     <Compile Include="TipoProyecto.cs" />
     <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />
+    <Compile Include="TipoResena.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -91,8 +91,12 @@
     <Compile Include="Catalogos\TipoInstitucionController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
+    <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Mappers\Formatters\YearDateFormatter.cs" />
+    <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
+    <Compile Include="Mappers\ITipoResenaMapper.cs" />
     <Compile Include="Models\HomeForm.cs" />
+    <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Productos\LibroController.cs" />
     <Compile Include="Mappers\ICoautorExternoLibroMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoLibroMapper.cs" />

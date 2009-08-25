@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -341,5 +340,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProductoDerivado[] GetActiveProductoDerivados();
         void SaveProductoDerivado(ProductoDerivado productoDerivado);
         PeriodoReferencia GetCurrentPeriodoReferencia();
+
+        //Tipo Resena
+        TipoResena GetTipoResenaById(int id);
+        TipoResena[] GetAllTipoResenas();
+        TipoResena[] GetActiveTipoResenas();
+        void SaveTipoResena(TipoResena tipoResena);
     }
 }

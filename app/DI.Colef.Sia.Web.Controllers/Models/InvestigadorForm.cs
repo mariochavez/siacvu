@@ -27,6 +27,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public string NombreCoautor
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", UsuarioPersonaApellidoPaterno,
+                                     UsuarioPersonaApellidoMaterno, UsuarioPersonaNombre);
+            }
+        }
+
         public EstadoInvestigadorForm[] EstadosInvestigador { get; set; }
         public GradoAcademicoInvestigadorForm[] GradosAcademicosInvestigador { get; set; }
         public CategoriaInvestigadorForm[] CategoriasInvestigador { get; set; }

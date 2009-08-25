@@ -58,7 +58,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Objetivo { get; set; }
 
-        public virtual string PalabarasClave { get; set; }
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

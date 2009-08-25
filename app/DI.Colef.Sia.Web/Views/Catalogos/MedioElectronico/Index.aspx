@@ -11,7 +11,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Medio Electr&oacute;nico</h3>
+        <h3>Agregar nuevo Medio Electr&oacute;nico</h3>
         <p>
             Puede agregar un nuevo Medio Electr&oacute;nico dentro de la lista de administraci&oacute;n de
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Medio Electr&oacute;nico</strong>.

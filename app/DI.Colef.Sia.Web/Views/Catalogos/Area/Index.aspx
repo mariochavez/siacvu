@@ -11,7 +11,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva &Aacute;rea</h3>
+        <h3>Agregar nueva &Aacute;rea</h3>
         <p>
             Puede agregar una nueva &Aacute;rea dentro de la lista de administraci&oacute;n de
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva &Aacute;rea</strong>.

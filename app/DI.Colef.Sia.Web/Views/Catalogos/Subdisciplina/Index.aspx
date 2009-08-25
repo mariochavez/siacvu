@@ -11,7 +11,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nueva Subdisciplina</h3>
+        <h3>Agregar nueva Subdisciplina</h3>
         <p>
             Puede agregar una nueva Subdisciplina dentro de la lista de administraci&oacute;n de
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Subdisciplina</strong>.
