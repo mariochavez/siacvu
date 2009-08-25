@@ -707,12 +707,12 @@
     <Content Include="Views\Shared\ModelError.js.ascx" />
     <Content Include="Views\Shared\_Message.ascx" />
     <Content Include="Views\Shared\_Search.ascx" />
-    <Content Include="Views\Productos\Tesis\Activate.js.ascx" />
-    <Content Include="Views\Productos\Tesis\Edit.aspx" />
-    <Content Include="Views\Productos\Tesis\Index.aspx" />
-    <Content Include="Views\Productos\Tesis\New.aspx" />
-    <Content Include="Views\Productos\Tesis\_DatosOpcionales.ascx" />
-    <Content Include="Views\Productos\Tesis\_DatosTesis.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\Activate.js.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\Edit.aspx" />
+    <Content Include="Views\Productos\TesisDirigida\Index.aspx" />
+    <Content Include="Views\Productos\TesisDirigida\New.aspx" />
+    <Content Include="Views\Productos\TesisDirigida\_DatosOpcionales.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\_DatosTesis.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

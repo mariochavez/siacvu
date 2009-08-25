@@ -171,7 +171,7 @@
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Subdisciplina.cs" />
-    <Compile Include="Tesis.cs" />
+    <Compile Include="TesisDirigida.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoArticulo.cs" />

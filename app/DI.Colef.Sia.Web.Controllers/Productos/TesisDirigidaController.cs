@@ -10,7 +10,7 @@ using SharpArch.Web.NHibernate;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     [HandleError]
-    public class TesisController : BaseController<Tesis, TesisForm>
+    public class TesisDirigidaController : BaseController<TesisDirigida, TesisDirigidaForm>
     {
         readonly IAreaMapper areaMapper;
         readonly ICatalogoService catalogoService;
@@ -19,23 +19,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly IProgramaEstudioMapper programaEstudioMapper;
         readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly ITesisMapper tesisMapper;
-        readonly ITesisService tesisService;
+        readonly ITesisDirigidaMapper tesisDirigidaMapper;
+        readonly ITesisDirigidaService tesisDirigidaService;
 
 
-        public TesisController(ITesisService tesisService, ITesisMapper tesisMapper, ICatalogoService catalogoService,
+        public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService, ITesisDirigidaMapper tesisDirigidaMapper, ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
                                IPaisMapper paisMapper,
-                               IFormaParticipacionMapper formaParticipacionMapper, IInstitucionMapper institucionMapper,
-                               IProgramaEstudioMapper programaEstudioMapper, ILineaTematicaMapper lineaTematicaMapper,
-                               IPeriodoReferenciaMapper periodoReferenciaMapper, ISectorMapper sectorMapper,
+                               IFormaParticipacionMapper formaParticipacionMapper,
+                               ISectorMapper sectorMapper,
                                IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper,
                                IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper
@@ -43,15 +38,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.tesisService = tesisService;
-            this.tesisMapper = tesisMapper;
+            this.tesisDirigidaService = tesisDirigidaService;
+            this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.paisMapper = paisMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
-            this.institucionMapper = institucionMapper;
-            this.programaEstudioMapper = programaEstudioMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.sectorMapper = sectorMapper;
             this.dependenciaMapper = dependenciaMapper;
             this.departamentoMapper = departamentoMapper;
@@ -65,8 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.Index);
 
-            var teses = tesisService.GetAllTesis();
-            data.List = tesisMapper.Map(teses);
+            var tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
+            data.List = tesisDirigidaMapper.Map(tesisDirigidas);
 
             return View(data);
         }
@@ -86,16 +77,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.Edit);
 
-            var tesis = tesisService.GetTesisById(id);
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesis == null)
+            if (tesisDirigida == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            var tesisForm = tesisMapper.Map(tesis);
+            var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
 
-            data.Form = SetupNewForm(tesisForm);
+            data.Form = SetupNewForm(tesisDirigidaForm);
             FormSetCombos(data.Form);
 
             ViewData.Model = data;
@@ -107,8 +98,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.Show);
 
-            var tesis = tesisService.GetTesisById(id);
-            data.Form = tesisMapper.Map(tesis);
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
+            data.Form = tesisDirigidaMapper.Map(tesisDirigida);
 
             ViewData.Model = data;
             return View();
@@ -117,55 +108,55 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(TesisForm form)
+        public ActionResult Create(TesisDirigidaForm form)
         {
-            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
-            if (!IsValidateModel(tesis, form, Title.New, "Tesis"))
+            if (!IsValidateModel(tesisDirigida, form, Title.New, "TesisDirigida"))
             {
-                ((GenericViewData<TesisForm>) ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<TesisDirigidaForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
-            tesisService.SaveTesis(tesis);
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis {0} ha sido creada", tesis.Titulo));
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", tesisDirigida.Titulo));
         }
 
         [Transaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Update(TesisForm form)
+        public ActionResult Update(TesisDirigidaForm form)
         {
-            var tesis = tesisMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
 
-            if (!IsValidateModel(tesis, form, Title.Edit))
+            if (!IsValidateModel(tesisDirigida, form, Title.Edit))
             {
-                var tesisForm = tesisMapper.Map(tesis);
-                ((GenericViewData<TesisForm>) ViewData.Model).Form = SetupNewForm(tesisForm);
-                FormSetCombos(tesisForm);
+                var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
+                ((GenericViewData<TesisDirigidaForm>) ViewData.Model).Form = SetupNewForm(tesisDirigidaForm);
+                FormSetCombos(tesisDirigidaForm);
                 return ViewEdit();
             }
 
-            tesisService.SaveTesis(tesis);
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis {0} ha sido modificada", tesis.Titulo));
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", tesisDirigida.Titulo));
         }
 
         [Transaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
-            var tesis = tesisService.GetTesisById(id);
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            tesis.Activo = true;
-            tesis.ModificadoPor = CurrentUser();
-            tesisService.SaveTesis(tesis);
+            tesisDirigida.Activo = true;
+            tesisDirigida.ModificadoPor = CurrentUser();
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            var form = tesisMapper.Map(tesis);
+            var form = tesisDirigidaMapper.Map(tesisDirigida);
 
             return Rjs(form);
         }
@@ -174,16 +165,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
-            var tesis = tesisService.GetTesisById(id);
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesis.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            tesis.Activo = false;
-            tesis.ModificadoPor = CurrentUser();
-            tesisService.SaveTesis(tesis);
+            tesisDirigida.Activo = false;
+            tesisDirigida.ModificadoPor = CurrentUser();
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            var form = tesisMapper.Map(tesis);
+            var form = tesisDirigidaMapper.Map(tesisDirigida);
 
             return Rjs("Activate", form);
         }
@@ -191,18 +182,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Tesis>(x => x.Titulo, q);
+            var data = searchService.Search<TesisDirigida>(x => x.Titulo, q);
             return Content(data);
         }
 
-        TesisForm SetupNewForm()
+        TesisDirigidaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        TesisForm SetupNewForm(TesisForm form)
+        TesisDirigidaForm SetupNewForm(TesisDirigidaForm form)
         {
-            form = form ?? new TesisForm();
+            form = form ?? new TesisDirigidaForm();
 
             //Lista de Catalogos Pendientes
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
@@ -218,7 +209,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return form;
         }
 
-        void FormSetCombos(TesisForm form)
+        void FormSetCombos(TesisDirigidaForm form)
         {
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["Pais"] = form.PaisId;

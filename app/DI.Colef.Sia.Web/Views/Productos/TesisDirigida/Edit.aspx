@@ -1,5 +1,5 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<TesisForm>>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<TesisDirigidaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta una tesis dentro del sistema.</p>
+		<p>Para modificar la tesis dirigida utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -20,7 +20,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_NewSidebar"); %>
+            <% Html.RenderPartial("_EditSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
 </asp:Content>
@@ -31,7 +31,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Create", "Tesis")) { %>
+            <% using (Html.BeginForm("Update", "TesisDirigida")) { %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -41,7 +41,7 @@
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<TesisController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

@@ -308,7 +308,7 @@
     <Compile Include="Mappers\Impl\SedeMapper.cs" />
     <Compile Include="Mappers\Impl\SNIInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\SNIMapper.cs" />
-    <Compile Include="Mappers\Impl\TesisMapper.cs" />
+    <Compile Include="Mappers\Impl\TesisDirigidaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoDictamenMapper.cs" />
     <Compile Include="Mappers\Impl\TipoDistincionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoEventoMapper.cs" />
@@ -349,7 +349,7 @@
     <Compile Include="Mappers\ISNIInvestigadorMapper.cs" />
     <Compile Include="Mappers\ISNIMapper.cs" />
     <Compile Include="Mappers\Impl\Mapper.cs" />
-    <Compile Include="Mappers\ITesisMapper.cs" />
+    <Compile Include="Mappers\ITesisDirigidaMapper.cs" />
     <Compile Include="Mappers\ITipoDictamenMapper.cs" />
     <Compile Include="Mappers\ITipoDistincionMapper.cs" />
     <Compile Include="Mappers\ITipoEventoMapper.cs" />
@@ -435,7 +435,7 @@
     <Compile Include="Models\SedeForm.cs" />
     <Compile Include="Models\SNIForm.cs" />
     <Compile Include="Models\SNIInvestigadorForm.cs" />
-    <Compile Include="Models\TesisForm.cs" />
+    <Compile Include="Models\TesisDirigidaForm.cs" />
     <Compile Include="Models\TipoDictamenForm.cs" />
     <Compile Include="Models\TipoDistincionForm.cs" />
     <Compile Include="Models\TipoEventoForm.cs" />
@@ -465,7 +465,7 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="Catalogos\SNIController.cs" />
     <Compile Include="Catalogos\SedeController.cs" />
-    <Compile Include="Productos\TesisController.cs" />
+    <Compile Include="Productos\TesisDirigidaController.cs" />
     <Compile Include="Catalogos\TipoDictamenController.cs" />
     <Compile Include="Catalogos\TipoDistincionController.cs" />
     <Compile Include="Catalogos\TipoEventoController.cs" />

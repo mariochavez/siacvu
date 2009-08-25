@@ -305,7 +305,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
         private void CreateTesisMaps()
         {
-            Mapper.CreateMap<Tesis, TesisForm>()
+            Mapper.CreateMap<TesisDirigida, TesisDirigidaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaConclusion,

@@ -5,7 +5,7 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class Tesis : Entity, IBaseEntity
+    public class TesisDirigida : Entity, IBaseEntity
     {
 		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }

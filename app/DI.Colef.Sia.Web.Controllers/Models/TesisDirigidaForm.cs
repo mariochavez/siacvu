@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class TesisForm
+    public class TesisDirigidaForm
     {
         public int Id { get; set; }
         public string Titulo { get; set; }

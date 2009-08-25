@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -7,22 +6,22 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class TesisMapper : AutoFormMapper<Tesis, TesisForm>, ITesisMapper
+    public class TesisDirigidaMapper : AutoFormMapper<TesisDirigida, TesisDirigidaForm>, ITesisDirigidaMapper
     {
 		readonly ICatalogoService catalogoService;
 
-		public TesisMapper(IRepository<Tesis> repository, ICatalogoService catalogoService) 
+		public TesisDirigidaMapper(IRepository<TesisDirigida> repository, ICatalogoService catalogoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
         }		
 		
-        protected override int GetIdFromMessage(TesisForm message)
+        protected override int GetIdFromMessage(TesisDirigidaForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(TesisForm message, Tesis model)
+        protected override void MapToModel(TesisDirigidaForm message, TesisDirigida model)
         {
             model.Titulo = message.Titulo;
             model.Autor = message.Autor;
@@ -43,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Tesis Map(TesisForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
+        public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
