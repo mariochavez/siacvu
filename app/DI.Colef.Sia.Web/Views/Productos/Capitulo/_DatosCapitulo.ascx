@@ -7,7 +7,7 @@
                         "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
-<p>
+<p id="SelectIdioma_p">
     <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>

@@ -1,28 +1,32 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ResenaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<p>
-	<label>Nombre del producto</label>
-	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input350-bold-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreProducto")%>									
-</p>
-<p>
-	<label>Nombre de la revista</label>
-	<%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreRevista")%>
-</p>
-<p>
-    <label>Referencia bibliogr&aacute;fica del libro</label>
-    <%=Html.TextArea("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
-    <span>(Referencia bibliogr&aacute;fica)</span>
-</p>
-<p>
-    <label>Referencia bibliogr&aacute;fica de la revista</label>
-    <%=Html.TextArea("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
-    <span>(Referencia bibliogr&aacute;fica)</span>
-</p>
+<div id="NotaCritica_div">
+    <p>
+	    <label>Nombre del producto</label>
+	    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input350-bold-requerido", maxlength = 100 })%>
+	    <%=Html.ValidationMessage("NombreProducto")%>									
+    </p>
+    <p>
+	    <label>Nombre de la revista</label>
+	    <%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
+	    <%=Html.ValidationMessage("NombreRevista")%>
+    </p>
+</div>
+<div id="ResenaBibliografica_div">
+    <p>
+        <label>Referencia bibliogr&aacute;fica del libro</label>
+        <%=Html.TextArea("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
+        <%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
+        <span>(Referencia bibliogr&aacute;fica)</span>
+    </p>
+    <p>
+        <label>Referencia bibliogr&aacute;fica de la revista</label>
+        <%=Html.TextArea("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
+        <%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
+        <span>(Referencia bibliogr&aacute;fica)</span>
+    </p>
+</div>
 <p>
 	<label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
@@ -44,7 +48,7 @@
     <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("TituloLibro")%>
 </p>
-<p>
+<p id="Editorial_p">
 	<label>Editorial</label>
 	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Editorial")%>

@@ -61,13 +61,15 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
-<p id="PaginaInicial_p">
-    <label>Pagina inicial</label> 
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
-    <%=Html.ValidationMessage("PaginaInicial")%>
-</p>
-<p id="PaginaFinal_p">    
-    <label>Pagina final</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
-    <%=Html.ValidationMessage("PaginaFinal")%>
-</p>
+<div id="PaginaInicialFinal_div">
+    <p>
+        <label>Pagina inicial</label> 
+        <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
+        <%=Html.ValidationMessage("PaginaInicial")%>
+    </p>
+    <p>    
+        <label>Pagina final</label>
+        <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
+        <%=Html.ValidationMessage("PaginaFinal")%>
+    </p>
+</div>

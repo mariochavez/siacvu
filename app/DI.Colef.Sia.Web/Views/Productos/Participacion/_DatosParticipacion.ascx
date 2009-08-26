@@ -12,18 +12,20 @@
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input350-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
-<p>
-	<label>Tipo de presentaci&oacute;n</label>
-	<%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("TipoPresentacion") %>
-</p>
-<p>
-	<label>Autor</label>
-    <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Autor")%>
-</p>
+<div id="PresentacionLibro_div">
+    <p>
+	    <label>Tipo de presentaci&oacute;n</label>
+	    <%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
+                    "Seleccione ...", new { @class = "requerido" })%>
+	    <%=Html.ValidationMessage("TipoPresentacion") %>
+    </p>
+    <p>
+	    <label>Autor</label>
+        <%=Html.DropDownList("Autor", Model.Autores.CreateSelectList<InvestigadorForm>("Id", "Nombre"),
+                    "Seleccione ...", new { @class = "requerido" })%>
+	    <%=Html.ValidationMessage("Autor")%>
+    </p>
+</div>
 <p>
 	<label>Instituci&oacute;n organizadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,

@@ -96,14 +96,18 @@ var EnablePaginaInicialFinalOptions = {
 
         $('#PaginaInicial').attr('readonly', true);
         $('#PaginaFinal').attr('readonly', true);
-        $('#PaginaInicial_p').fadeOut('slow');
-        $('#PaginaFinal_p').fadeOut('slow');
+
+        $('#PaginaInicialFinal_div').slideUp('slow', function() {
+            $('#PaginaInicialFinal_div').fadeOut('fast');
+        });
 
         $("#" + id + " option:selected:contains('Publicado')").each(function() {
             $('#PaginaInicial').attr('readonly', false);
             $('#PaginaFinal').attr('readonly', false);
-            $('#PaginaInicial_p').fadeIn('slow');
-            $('#PaginaFinal_p').fadeIn('slow');
+
+            $('#PaginaInicialFinal_div').slideDown('slow', function() {
+                $('#PaginaInicialFinal_div').fadeIn('fast');
+            });
         });
 
         return false;
@@ -119,10 +123,18 @@ var LibroEnableOptions = {
 
         var active = $('input:checked').length;
 
-        if (active == 1)
-            $('#Proyecto').attr('disabled', false);
-        else
-            $('#Proyecto').attr('disabled', true);
+        if (active == 1) {
+            $('#SelectProyecto_p').slideDown('slow', function() {
+                $('#SelectProyecto_p').fadeIn('fast');
+                $('#Proyecto').attr('disabled', false);
+            });
+        }
+        else {
+            $('#SelectProyecto_p').slideUp('slow', function() {
+                $('#Proyecto').attr('disabled', true);
+                $('#SelectProyecto_p').fadeOut('fast');
+            });
+        }
 
         return false;
     }
@@ -138,9 +150,17 @@ var ParticipacionEnableOptions = {
         $('#TipoPresentacion').attr('disabled', true);
         $('#Autor').attr('disabled', true);
 
-        $("#OtraParticipacion option:selected:contains('de libro')").each(function() {
+        $('#PresentacionLibro_div').slideUp('slow', function() {
+            $('#PresentacionLibro_div').fadeOut('fast');
+        });
+
+        $("#OtraParticipacion option:selected:contains('n de libro')").each(function() {
             $('#TipoPresentacion').attr('disabled', false);
             $('#Autor').attr('disabled', false);
+
+            $('#PresentacionLibro_div').slideDown('slow', function() {
+                $('#PresentacionLibro_div').fadeIn('fast');
+            });
         });
 
         return false;
@@ -156,8 +176,16 @@ var ParticipacionMedioEnableOptions = {
 
         $('#NotaPeriodistica').attr('disabled', false);
 
+        $('#NotaPeriodistica_p').slideDown('slow', function() {
+            $('#NotaPeriodistica_p').fadeIn('fast');
+        });
+
         $("#MedioImpreso option:selected:contains('Seleccione')").each(function() {
             $('#NotaPeriodistica').attr('disabled', true);
+
+            $('#NotaPeriodistica_p').slideUp('slow', function() {
+                $('#NotaPeriodistica_p').fadeOut('fast');
+            });
         });
 
         return false;
@@ -175,13 +203,37 @@ var ReporteEnableOptions = {
         $('#InstitucionNombre').attr('disabled', true);
         $('#Descripcion').attr('disabled', true);
 
+        $('#Institucion_p').slideUp('slow', function() {
+            $('#Institucion_p').fadeOut('fast');
+        });
+
+        $('#Descripcion_p').slideUp('slow', function() {
+            $('#Descripcion_p').fadeOut('fast');
+        });
+
+        $('#Editorial_p').slideUp('slow', function() {
+            $('#Editorial_p').fadeOut('fast');
+        });
+
         $("#TipoReporte option:selected:contains('Reporte')").each(function() {
             $('#InstitucionNombre').attr('disabled', false);
             $('#Descripcion').attr('disabled', false);
+
+            $('#Institucion_p').slideDown('slow', function() {
+                $('#Institucion_p').fadeIn('fast');
+            });
+
+            $('#Descripcion_p').slideDown('slow', function() {
+                $('#Descripcion_p').fadeIn('fast');
+            });
         });
 
         $("#TipoReporte option:selected:contains('Cuaderno')").each(function() {
             $('#Editorial').attr('disabled', false);
+
+            $('#Editorial_p').slideDown('slow', function() {
+                $('#Editorial_p').fadeIn('fast');
+            });
         });
 
         return false;
@@ -201,16 +253,39 @@ var ResenaEnableOptions = {
         $('#ReferenciaBibliograficaLibro').attr('disabled', true);
         $('#ReferenciaBibliograficaRevista').attr('disabled', true);
 
+        $('#NotaCritica_div').slideUp('slow', function() {
+            $('#NotaCritica_div').fadeOut('fast');
+        });
+
+        $('#Editorial_p').slideUp('slow', function() {
+            $('#Editorial_p').fadeOut('fast');
+        });
+
+        $('#ResenaBibliografica_div').slideUp('slow', function() {
+            $('#ResenaBibliografica_div').fadeOut('fast');
+        });
 
         $("#TipoResena option:selected:contains('Nota')").each(function() {
             $('#NombreProducto').attr('disabled', false);
             $('#NombreRevista').attr('disabled', false);
             $('#Editorial').attr('disabled', false);
+
+            $('#NotaCritica_div').slideDown('slow', function() {
+                $('#NotaCritica_div').fadeIn('fast');
+            });
+
+            $('#Editorial_p').slideDown('slow', function() {
+                $('#Editorial_p').fadeIn('fast');
+            });
         });
 
         $("#TipoResena option:selected:contains('Reseña')").each(function() {
             $('#ReferenciaBibliograficaLibro').attr('disabled', false);
             $('#ReferenciaBibliograficaRevista').attr('disabled', false);
+
+            $('#ResenaBibliografica_div').slideDown('slow', function() {
+                $('#ResenaBibliografica_div').fadeIn('fast');
+            });
         });
 
         return false;
@@ -226,8 +301,16 @@ var TesisEnableOptions = {
 
         $('#FechaGrado').attr('disabled', false);
 
+        $('#FechaGrado_p').slideDown('slow', function() {
+            $('#FechaGrado_p').fadeIn('fast');
+        });
+
         $("#GradoAcademico option:selected:contains('Seleccione')").each(function() {
             $('#FechaGrado').attr('disabled', true);
+
+            $('#FechaGrado_p').slideUp('slow', function() {
+                $('#FechaGrado_p').fadeOut('fast');
+            });
         });
 
         return false;

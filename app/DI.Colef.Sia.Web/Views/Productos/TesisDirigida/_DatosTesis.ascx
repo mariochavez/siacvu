@@ -29,7 +29,7 @@
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("GradoAcademico") %>
 </p>
-<p>
+<p id="FechaGrado_p">
     <label>Fecha de obtenci&oacute;n del grado</label>
     <%=Html.TextBox("FechaGrado", Model.FechaGrado, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>

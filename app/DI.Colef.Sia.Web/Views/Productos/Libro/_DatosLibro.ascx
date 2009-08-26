@@ -7,7 +7,7 @@
                         "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoPublicacion") %>
 </p>
-<p>
+<p id="SelectIdioma_p">
     <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
@@ -28,7 +28,7 @@
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
-<p>
+<p id="SelectProyecto_p">
     <label>Proyecto</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
