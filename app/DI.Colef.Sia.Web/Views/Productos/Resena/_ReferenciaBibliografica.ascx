@@ -12,14 +12,16 @@
 	<%=Html.ValidationMessage("NombreRevista")%>
 </p>
 <p>
-	<label>Referencia bibliogr&aacute;fica del libro</label>
-    <%=Html.TextBox("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
-	<%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
+    <label>Referencia bibliogr&aacute;fica del libro</label>
+    <%=Html.TextArea("ReferenciaBibliograficaLibro", Model.ReferenciaBibliograficaLibro, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("ReferenciaBibliograficaLibro")%>
+    <span>(Referencia bibliogr&aacute;fica)</span>
 </p>
 <p>
     <label>Referencia bibliogr&aacute;fica de la revista</label>
-    <%=Html.TextBox("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, new { @class = "input250-requerido", maxlength = 100, size = 40 })%>
-	<%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
+    <%=Html.TextArea("ReferenciaBibliograficaRevista", Model.ReferenciaBibliograficaRevista, 3, 35, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("ReferenciaBibliograficaRevista")%>
+    <span>(Referencia bibliogr&aacute;fica)</span>
 </p>
 <p>
 	<label>Pa&iacute;s</label>
