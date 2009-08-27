@@ -130,8 +130,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Persona.Nombre,
-                investigador.Usuario.Persona.ApellidoPaterno, investigador.Usuario.Persona.ApellidoMaterno));
+            return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+                investigador.Usuario.ApellidoPaterno, investigador.Usuario.ApellidoMaterno));
         }
         
         [Transaction]
@@ -146,8 +146,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             investigadorService.SaveInvestigador(investigador);
 
-            return RedirectToIndex(String.Format("{0} {1} {2} ha sido actualizado", investigador.Usuario.Persona.Nombre,
-                investigador.Usuario.Persona.ApellidoPaterno, investigador.Usuario.Persona.ApellidoMaterno));
+            return RedirectToIndex(String.Format("{0} {1} {2} ha sido actualizado", investigador.Usuario.Nombre,
+                investigador.Usuario.ApellidoPaterno, investigador.Usuario.ApellidoMaterno));
         }
         
         [Transaction]

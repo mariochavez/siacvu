@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -20,12 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly ITipoArticuloMapper tipoArticuloMapper;
         readonly IIdiomaMapper idiomaMapper;
-        readonly IEstadoMapper estadoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IIndiceMapper indiceMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
@@ -41,16 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoMapper proyectoMapper;
 
 
-        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
-                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService,
-                                  ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IEstadoMapper estadoMapper,
-                                  IPeriodoReferenciaMapper periodoReferenciaMapper, ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper,
-                                  IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, 
-                                  ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, 
-                                  ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
-                                  IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper,
-                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-                                  IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
+        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IEstadoMapper estadoMapper, ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper, IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -62,12 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.articuloMapper = articuloMapper;
             this.tipoArticuloMapper = tipoArticuloMapper;
             this.idiomaMapper = idiomaMapper;
-            this.estadoMapper = estadoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.paisMapper = paisMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.institucionMapper = institucionMapper;
             this.indiceMapper = indiceMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
@@ -110,7 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+            if (articulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var articuloForm = articuloMapper.Map(articulo);
@@ -152,7 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
 
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                               coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
@@ -173,7 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ArticuloForm form)
         {
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(articulo, form, Title.Edit))
             {
@@ -195,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+            if (articulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             articulo.Activo = true;
@@ -213,7 +195,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo.Investigador.Id != CurrentInvestigador().Id)
+            if (articulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             articulo.Activo = false;

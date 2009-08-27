@@ -18,6 +18,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
         }
 
+        #region ISearchQuerying Members
+
         public Search[] Search<TEntity>(string fieldName, string value)
         {
             var list = Session.CreateCriteria(typeof (TEntity))
@@ -40,39 +42,40 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             var criteria = DetachedCriteria.For(typeof (Investigador))
                 .CreateAlias("Usuario", "u", JoinType.InnerJoin)
-                .CreateAlias("u.Persona", "p", JoinType.InnerJoin)
                 .SetFetchMode("Usuario", FetchMode.Eager)
-                .SetFetchMode("u.Persona", FetchMode.Eager)
                 .SetMaxResults(20)
                 .SetProjection(Projections.ProjectionList()
-                                   .Add(Projections.Property("p.ApellidoPaterno"), "ApellidoPaterno")
-                                   .Add(Projections.Property("p.ApellidoMaterno"), "ApellidoMaterno")
-                                   .Add(Projections.Property("p.Nombre"), "Nombre")
+                                   .Add(Projections.Property("u.ApellidoPaterno"), "ApellidoPaterno")
+                                   .Add(Projections.Property("u.ApellidoMaterno"), "ApellidoMaterno")
+                                   .Add(Projections.Property("u.Nombre"), "Nombre")
                                    .Add(Projections.Property("Id"), "Id")
                 )
-                .AddOrder(Order.Asc("p.ApellidoPaterno"))
-                .AddOrder(Order.Asc("p.ApellidoMaterno"))
-                .AddOrder(Order.Asc("p.Nombre"))
+                .AddOrder(Order.Asc("u.ApellidoPaterno"))
+                .AddOrder(Order.Asc("u.ApellidoMaterno"))
+                .AddOrder(Order.Asc("u.Nombre"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (InvestigadorDTO)));
 
             if (values.Length == 1)
-                criteria.Add(Expression.Or(Expression.Or(Expression.Like("p.ApellidoPaterno", values[0] + "%"),
-                                                         Expression.Like("p.ApellidoMaterno", values[0] + "%")), Expression.Like("p.Nombre", values[0] + "%")));
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("u.ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("u.ApellidoMaterno", values[0] + "%")),
+                                           Expression.Like("u.Nombre", values[0] + "%")));
             else if (values.Length == 2)
-                criteria.Add(Expression.Or(Expression.Or(Expression.Like("p.ApellidoPaterno", values[0] + "%"),
-                                                         Expression.Like("p.ApellidoMaterno", values[0] + "%")), Expression.Like("p.Nombre", values[1] + "%")));
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("u.ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("u.ApellidoMaterno", values[0] + "%")),
+                                           Expression.Like("u.Nombre", values[1] + "%")));
             else if (values.Length == 3)
-                criteria.Add(Expression.Or(Expression.Or(Expression.Like("p.ApellidoPaterno", values[0] + "%"),
-                                                         Expression.Like("p.ApellidoMaterno", values[1] + "%")), Expression.Like("p.Nombre", values[2] + "%")));
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("u.ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("u.ApellidoMaterno", values[1] + "%")),
+                                           Expression.Like("u.Nombre", values[2] + "%")));
             else if (values.Length > 3)
             {
                 var nombre = String.Empty;
                 for (var i = 2; i < values.Length; i++)
                     nombre += value[i] + " ";
-                
-                criteria.Add(Expression.Or(Expression.Or(Expression.Like("p.ApellidoPaterno", values[0] + "%"),
-                                                         Expression.Like("p.ApellidoMaterno", values[1] + "%")),
-                                           Expression.Like("p.Nombre", nombre.Trim() + "%")));
+
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("u.ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("u.ApellidoMaterno", values[1] + "%")),
+                                           Expression.Like("u.Nombre", nombre.Trim() + "%")));
             }
 
             var list = criteria.GetExecutableCriteria(Session).List<InvestigadorDTO>();
@@ -80,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var result = new List<Search>();
             foreach (var item in list)
             {
-                result.Add(new Search { Id = item.Id, Nombre = item.NombreCompleto() });
+                result.Add(new Search {Id = item.Id, Nombre = item.NombreCompleto()});
             }
 
             return result.ToArray();
@@ -88,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public Search[] SearchMovilidadAcademica(string value)
         {
-            var criteria = DetachedCriteria.For(typeof(MovilidadAcademica))
+            var criteria = DetachedCriteria.For(typeof (MovilidadAcademica))
                 .CreateAlias("Institucion", "i", JoinType.InnerJoin)
                 .SetFetchMode("Institucion", FetchMode.Eager)
                 .SetMaxResults(20)
@@ -97,18 +100,22 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                                    .Add(Projections.Property("Id"), "Id")
                 )
                 .AddOrder(Order.Asc("i.Nombre"))
-                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(MovilidadAcademicaDTO)));
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (MovilidadAcademicaDTO)));
 
             var list = criteria.GetExecutableCriteria(Session).List<MovilidadAcademicaDTO>();
 
             var result = new List<Search>();
             foreach (var item in list)
             {
-                result.Add(new Search { Id = item.Id, Nombre = item.Nombre });
+                result.Add(new Search {Id = item.Id, Nombre = item.Nombre});
             }
 
             return result.ToArray();
         }
+
+        #endregion
+
+        #region Nested type: InvestigadorDTO
 
         class InvestigadorDTO
         {
@@ -123,10 +130,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
         }
 
+        #endregion
+
+        #region Nested type: MovilidadAcademicaDTO
+
         class MovilidadAcademicaDTO
         {
             public int Id { get; set; }
             public string Nombre { get; set; }
         }
+
+        #endregion
     }
 }

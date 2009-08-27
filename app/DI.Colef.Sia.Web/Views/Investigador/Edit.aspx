@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<InvestigadorForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -38,6 +39,20 @@
 		        <p>
 			        <label>Usuario</label>
 			        <%=Html.Encode(Model.Form.Nombre) %>
+		        </p>
+		        <p>
+			        <label>Sexo</label>
+			        <%=Html.Encode(HumanizeHelper.Sexo(Model.Form.UsuarioSexo)) %>
+		        </p>
+		        <p>
+			        <label>Fecha de nacimiento</label>
+			        <%=Html.Encode(Model.Form.UsuarioFechaNacimiento) %>
+			        <span>(Formato dd/mm/yyyy)</span>
+		        </p>
+		        <p>
+			        <label>Fecha de ingreso</label>
+			        <%=Html.Encode(Model.Form.UsuarioFechaIngreso) %>
+			        <span>(Formato dd/mm/yyyy)</span>
 		        </p>
 		        <p>
 			        <label>Ingreso  como investigador</label>

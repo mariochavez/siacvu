@@ -54,6 +54,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaIngreso,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.UsuarioFechaNacimiento,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.UsuarioFechaIngreso,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Usuario,
                            o => o.Ignore())
                 .ForMember(d => d.Nombre,

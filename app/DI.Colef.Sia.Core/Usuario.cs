@@ -1,34 +1,41 @@
 using System;
 using System.Collections.Generic;
-using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-
-    [HasUniqueDomainSignature]
-    public class Usuario : Entity, IBaseEntity
+    public class Usuario : Entity
     {
-        [NotNullNotEmpty]
-        [Length(20)]
+        public Usuario()
+        {
+            Roles = new List<Rol>();    
+        }
+
+        public virtual string Nombre { get; set; }
+
+        public virtual string ApellidoPaterno { get; set; }
+
+        public virtual string ApellidoMaterno { get; set; }
+
         public virtual string UsuarioNombre { get; set; }
 
-        [Length(50)]
         public virtual string Clave { get; set; }
 
-        public virtual Persona Persona { get; set; }
+        public virtual string CorreoElectronico { get; set; }
+
+        public virtual string Sexo { get; set; }
+
+        public virtual DateTime FechaNacimiento { get; set; }
+
+        public virtual DateTime FechaIngreso { get; set; }
 
         public virtual IList<Rol> Roles { get; private set; }
 
-        public virtual Usuario CreadorPor { get; set; }
-
-        public virtual DateTime CreadorEl { get; set; }
-
-        public virtual Usuario ModificadoPor { get; set; }
-
-        public virtual DateTime ModificadoEl { get; set; }
-
         public virtual bool Activo { get; set; }
+
+        public virtual void AddRole(Rol rol)
+        {
+            Roles.Add(rol);
+        }
     }
 }

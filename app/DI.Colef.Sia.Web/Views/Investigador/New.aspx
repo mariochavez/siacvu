@@ -36,7 +36,7 @@
                     <%=Html.Hidden("Id", Model.Form.Id) %>
                     <p>
                         <label>Usuario</label>
-                        <%=Html.DropDownList("Usuario", Model.Form.Usuarios.CreateSelectList<UsuarioForm>("Id", "Nombre"),
+                        <%=Html.DropDownList("Usuario", Model.Form.Usuarios.CreateSelectList<UsuarioForm>("Id", "NombreCompleto"),
                                                         "Seleccione ...", new { @class = "requerido" })%>
                         <%=Html.ValidationMessage("Usuario") %>
                     </p>

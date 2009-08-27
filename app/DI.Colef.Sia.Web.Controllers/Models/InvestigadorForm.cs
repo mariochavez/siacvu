@@ -15,15 +15,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Usuario { get; set; }
 
-        public string UsuarioPersonaNombre { get; set; }
-        public string UsuarioPersonaApellidoPaterno { get; set; }
-        public string UsuarioPersonaApellidoMaterno { get; set; }
+        public string UsuarioNombre { get; set; }
+        public string UsuarioApellidoPaterno { get; set; }
+        public string UsuarioApellidoMaterno { get; set; }
+        public string UsuarioSexo { get; set; }
+        public string UsuarioFechaNacimiento { get; set; }
+        public string UsuarioFechaIngreso { get; set; }
 
         public string Nombre { 
             get
             {
-                return string.Format("{0} {1} {2}", UsuarioPersonaNombre, UsuarioPersonaApellidoPaterno,
-                                     UsuarioPersonaApellidoMaterno);
+                return string.Format("{0} {1} {2}", UsuarioNombre, UsuarioApellidoPaterno,
+                                     UsuarioApellidoMaterno);
             }
         }
 
@@ -31,8 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         {
             get
             {
-                return string.Format("{0} {1} {2}", UsuarioPersonaApellidoPaterno,
-                                     UsuarioPersonaApellidoMaterno, UsuarioPersonaNombre);
+                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno,
+                                     UsuarioApellidoMaterno, UsuarioNombre);
             }
         }
 

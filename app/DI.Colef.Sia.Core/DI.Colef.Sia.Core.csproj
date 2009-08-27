@@ -147,7 +147,6 @@
     <Compile Include="Participacion.cs" />
     <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="PeriodoReferencia.cs" />
-    <Compile Include="Persona.cs" />
     <Compile Include="ProductoDerivado.cs" />
     <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />

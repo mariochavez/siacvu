@@ -9,9 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Rol[] GetAllRoles();
         void SaveRol(Rol rol);
 
-        //Persona
-        Persona GetPersonaById(int id);
-
         //Usuario
         Usuario GetUsuarioById(int id);
         Usuario GetUsuarioByUserName(string username);

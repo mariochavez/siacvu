@@ -25,13 +25,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             var usuarios = Session.CreateCriteria(typeof (Usuario))
                 .CreateAlias("Roles", "r")
-                .CreateAlias("Persona", "p")
                 .Add(Expression.Eq("r.Nombre", "Investigadores"))
                 .Add(Expression.Eq("r.Activo", true))
                 .Add(Subqueries.PropertyNotIn("Id", investigadores))
-                .AddOrder(Order.Asc("p.ApellidoPaterno"))
-                .AddOrder(Order.Asc("p.ApellidoMaterno"))
-                .AddOrder(Order.Asc("p.Nombre"))
+                .AddOrder(Order.Asc("ApellidoPaterno"))
+                .AddOrder(Order.Asc("ApellidoMaterno"))
+                .AddOrder(Order.Asc("Nombre"))
                 .List<Usuario>();
 
             return ((List<Usuario>) usuarios).ToArray();
