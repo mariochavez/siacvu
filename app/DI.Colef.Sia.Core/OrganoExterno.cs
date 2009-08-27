@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaFinal { get; set; }
 
         [NotNull]
-        public virtual Investigador Investigador { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

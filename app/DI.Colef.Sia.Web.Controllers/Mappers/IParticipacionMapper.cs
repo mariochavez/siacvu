@@ -5,7 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IParticipacionMapper : IMapper<Participacion, ParticipacionForm>
     {
-        Participacion Map(ParticipacionForm message, Usuario usuario, Investigador investigador,
-            PeriodoReferencia periodo);
+        Participacion Map(ParticipacionForm message, Usuario usuario, PeriodoReferencia periodo);
     }
 }

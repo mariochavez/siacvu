@@ -37,8 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Pais { get; set; }
         public int PaisId { get; set; }
 
-        public int Investigador { get; set; }
-
         public string PeriodoReferenciaPeriodo { get; set; }
 
         /* New */

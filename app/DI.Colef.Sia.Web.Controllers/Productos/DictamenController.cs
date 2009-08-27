@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (dictamen == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+            if (dictamen.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var dictamenForm = dictamenMapper.Map(dictamen);
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -117,7 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(dictamen, form, Title.Edit))
             {
@@ -139,7 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var dictamen = dictamenService.GetDictamenById(id);
 
-            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+            if (dictamen.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             dictamen.Activo = true;
@@ -157,7 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var dictamen = dictamenService.GetDictamenById(id);
 
-            if (dictamen.Investigador.Id != CurrentInvestigador().Id)
+            if (dictamen.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             dictamen.Activo = false;

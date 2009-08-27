@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capitulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+            if (capitulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var capituloForm = capituloMapper.Map(capitulo);
@@ -163,7 +163,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',').Length > 0)
                 responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
 
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                 coautoresExternos, coautoresInternos, responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
@@ -184,7 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(capitulo, form, Title.Edit))
             {
@@ -206,7 +206,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+            if (capitulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             capitulo.Activo = true;
@@ -224,7 +224,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            if (capitulo.Investigador.Id != CurrentInvestigador().Id)
+            if (capitulo.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             capitulo.Activo = false;

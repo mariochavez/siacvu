@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (participacion == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+            if (participacion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var participacionForm = participacionMapper.Map(participacion);
@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(participacion, form, Title.New, "Participacion"))
             {
@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(participacion, form, Title.Edit))
             {
@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var participacion = participacionService.GetParticipacionById(id);
 
-            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+            if (participacion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             participacion.Activo = true;
@@ -169,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var participacion = participacionService.GetParticipacionById(id);
 
-            if (participacion.Investigador.Id != CurrentInvestigador().Id)
+            if (participacion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             participacion.Activo = false;

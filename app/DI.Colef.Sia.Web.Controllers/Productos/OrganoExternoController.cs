@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (organoExterno == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (organoExterno.Investigador.Id != CurrentInvestigador().Id)
+            if (organoExterno.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var organoExternoForm = organoExternoMapper.Map(organoExterno);
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(OrganoExternoForm form)
         {
-            var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var organoExterno = organoExternoMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(organoExterno, form, Title.New, "OrganoExterno"))
             {
@@ -117,7 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoExternoForm form)
         {
-            var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var organoExterno = organoExternoMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(organoExterno, form, Title.Edit))
             {
@@ -138,7 +138,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var organoExterno = organoExternoService.GetOrganoExternoById(id);
 
-            if (organoExterno.Investigador.Id != CurrentInvestigador().Id)
+            if (organoExterno.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             organoExterno.Activo = true;
@@ -156,7 +156,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var organoExterno = organoExternoService.GetOrganoExternoById(id);
 
-            if (organoExterno.Investigador.Id != CurrentInvestigador().Id)
+            if (organoExterno.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             organoExterno.Activo = false;

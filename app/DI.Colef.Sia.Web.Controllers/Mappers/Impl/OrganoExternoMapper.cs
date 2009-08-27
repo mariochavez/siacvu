@@ -36,13 +36,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
         }
 
-        public OrganoExterno Map(OrganoExternoForm message, Usuario usuario, Investigador investigador)
+        public OrganoExterno Map(OrganoExternoForm message, Usuario usuario)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
             }
 

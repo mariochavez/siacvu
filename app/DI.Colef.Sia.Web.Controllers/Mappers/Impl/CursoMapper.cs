@@ -45,13 +45,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Curso Map(CursoForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
+        public Curso Map(CursoForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }

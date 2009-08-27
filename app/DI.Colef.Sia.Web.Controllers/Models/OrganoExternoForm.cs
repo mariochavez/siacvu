@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //Espacio para Agregar Mapeos
         public int TipoOrgano { get; set; }
         public int TipoOrganoId { get; set; }
 
@@ -27,8 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
-
-        public int Investigador { get; set; }
 
         /* Catalogos */
         public TipoOrganoForm[] TiposOrganos { get; set; }

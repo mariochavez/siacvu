@@ -45,8 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
 
-        public int Investigador { get; set; }
-
         public string PeriodoReferenciaPeriodo { get; set; }
 
         /* New */

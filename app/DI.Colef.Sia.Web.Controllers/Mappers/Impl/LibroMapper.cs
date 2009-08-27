@@ -58,13 +58,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
+        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }
@@ -74,10 +74,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
+        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo,
             string[] coautoresExternos, string[] coautoresInternos)
         {
-            var model = Map(message, usuario, investigador, periodo);
+            var model = Map(message, usuario, periodo);
 
             foreach (var coautorId in coautoresExternos)
             {

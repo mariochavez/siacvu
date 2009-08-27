@@ -3,9 +3,8 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-
     public interface ITesisDirigidaMapper : IMapper<TesisDirigida, TesisDirigidaForm>
     {
-        TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo);
+        TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, PeriodoReferencia periodo);
     }
 }

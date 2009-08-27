@@ -64,14 +64,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
-            PeriodoReferencia periodo)
+        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }
@@ -81,11 +80,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo,
+        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo,
             string[] coautoresExternos, string[] coautoresInternos, 
             string[] responsablesExternos, string[] responsablesInternos)
         {
-            var model = Map(message, usuario, investigador, periodo);
+            var model = Map(message, usuario, periodo);
 
             foreach (var coautorId in coautoresExternos)
             {

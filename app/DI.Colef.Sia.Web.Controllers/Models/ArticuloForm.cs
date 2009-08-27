@@ -31,7 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
 
-
         public int Pais { get; set; }
         public int PaisId { get; set; }
 
@@ -64,8 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
-
-        public int Investigador { get; set; }
+        
         public string PeriodoReferenciaPeriodo { get; set; }
 
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }

@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int Puntuacion { get; set; }
 
         [NotNull]
-        public virtual Investigador Investigador { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual DateTime Fecha { get; set; }
 

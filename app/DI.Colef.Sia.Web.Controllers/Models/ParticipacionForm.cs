@@ -31,8 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
-        public int Investigador { get; set; }
-
         public string PeriodoReferenciaPeriodo { get; set; }
 				
 		/* Catalogos */

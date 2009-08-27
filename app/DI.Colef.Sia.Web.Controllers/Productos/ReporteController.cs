@@ -90,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (reporte == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (reporte.Investigador.Id != CurrentInvestigador().Id)
+            if (reporte.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var reporteForm = reporteMapper.Map(reporte);
@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoReporte.InvestigadorId_New"].Split(',');
 
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                             coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(reporte, form, Title.Edit))
             {
@@ -175,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var reporte = reporteService.GetReporteById(id);
 
-            if (reporte.Investigador.Id != CurrentInvestigador().Id)
+            if (reporte.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             reporte.Activo = true;
@@ -193,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var reporte = reporteService.GetReporteById(id);
 
-            if (reporte.Investigador.Id != CurrentInvestigador().Id)
+            if (reporte.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             reporte.Activo = false;

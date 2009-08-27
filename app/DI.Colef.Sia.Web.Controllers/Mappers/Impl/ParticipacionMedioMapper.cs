@@ -48,14 +48,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
-        public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador,
-            PeriodoReferencia periodo)
+        public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }
