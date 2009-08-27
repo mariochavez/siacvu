@@ -22,7 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (message.EndsWith("}"))
                 message = message.Substring(0, message.Length - 1);
 
-            var validatorMessage = resourceManager.GetString(message);
+            var validatorMessage = resourceManager.GetString(message) ?? message;
+
             return defaultInterpolator.Interpolate(validatorMessage, entity, validator, defaultInterpolator);
         }
     }
