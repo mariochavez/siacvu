@@ -39,7 +39,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Subdisciplina Subdisciplina { get; set; }
 
-        public virtual Investigador Investigador { get; set; }
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (formacionAcademica == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (formacionAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (formacionAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var formacionAcademicaForm = formacionAcademicaMapper.Map(formacionAcademica);
@@ -112,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(FormacionAcademicaForm form)
         {
-            var formacionAcademica = formacionAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var formacionAcademica = formacionAcademicaMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(formacionAcademica, form, Title.New, "FormacionAcademica"))
             {
@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(FormacionAcademicaForm form)
         {
-            var formacionAcademica = formacionAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var formacionAcademica = formacionAcademicaMapper.Map(form, CurrentUser());
 
             formacionAcademica.ModificadoPor = CurrentUser();
 
@@ -158,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var formacionAcademica = formacionAcademicaService.GetFormacionAcademicaById(id);
 
-            if (formacionAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (formacionAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             formacionAcademica.Activo = true;
@@ -176,7 +176,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var formacionAcademica = formacionAcademicaService.GetFormacionAcademicaById(id);
 
-            if (formacionAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (formacionAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             formacionAcademica.Activo = false;
