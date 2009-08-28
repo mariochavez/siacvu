@@ -7,7 +7,6 @@ using NHibernate;
 using NHibernate.Criterion;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Data.NHibernate;
-using Expression=NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -70,6 +69,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<NivelEstudio> nivelEstudioRepository;
         readonly IRepository<ProductoDerivado> productoDerivadoRepository;
         readonly IRepository<TipoResena> tipoResenaRepository;
+        readonly IRepository<TipoApoyo> tipoApoyoRepository;
+        readonly IRepository<SubprogramaConacyt> subprogramaConacytRepository;
+        readonly IRepository<Rama> ramaRepository;
+        readonly IRepository<Clase> claseRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -127,7 +130,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoPublicacion> tipoPublicacionRepository,
             IRepository<NivelEstudio> nivelEstudioRepository,
             IRepository<ProductoDerivado> productoDerivadoRepository,
-            IRepository<TipoResena> tipoResenaRepository)
+            IRepository<TipoResena> tipoResenaRepository,
+            IRepository<TipoApoyo> tipoApoyoRepository,
+            IRepository<SubprogramaConacyt> subprogramaConacytRepository,
+            IRepository<Rama> ramaRepository,
+            IRepository<Clase> claseRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.cargoRepository = cargoRepository;
@@ -186,6 +193,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoProyectoRepository = tipoProyectoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
             this.tipoResenaRepository = tipoResenaRepository;
+            this.tipoApoyoRepository = tipoApoyoRepository;
+            this.subprogramaConacytRepository = subprogramaConacytRepository;
+            this.ramaRepository = ramaRepository;
+            this.claseRepository = claseRepository;
         }
 
         protected virtual ISession Session
@@ -1768,6 +1779,114 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoResena.ModificadoEl = DateTime.Now;
 
             tipoResenaRepository.SaveOrUpdate(tipoResena);
+        }
+
+        public TipoApoyo GetTipoApoyoById(int id)
+        {
+            return tipoApoyoRepository.Get(id);
+        }
+
+        public TipoApoyo[] GetAllTipoApoyos()
+        {
+            return ((List<TipoApoyo>) OrderCatalog<TipoApoyo>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoApoyo[] GetActiveTipoApoyos()
+        {
+            return ((List<TipoApoyo>)OrderCatalog<TipoApoyo>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoApoyo(TipoApoyo tipoApoyo)
+        {
+            if (tipoApoyo.Id == 0)
+            {
+                tipoApoyo.Activo = true;
+                tipoApoyo.CreadorEl = DateTime.Now;
+            }
+            tipoApoyo.ModificadoEl = DateTime.Now;
+
+            tipoApoyoRepository.SaveOrUpdate(tipoApoyo);
+        }
+
+        public SubprogramaConacyt GetSubprogramaConacytById(int id)
+        {
+            return subprogramaConacytRepository.Get(id);
+        }
+
+        public SubprogramaConacyt[] GetAllSubprogramasConacyt()
+        {
+            return ((List<SubprogramaConacyt>) OrderCatalog<SubprogramaConacyt>(x => x.Nombre)).ToArray();
+        }
+
+        public SubprogramaConacyt[] GetActiveSubprogramasConacyt()
+        {
+            return ((List<SubprogramaConacyt>) OrderCatalog<SubprogramaConacyt>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveSubprogramaConacyt(SubprogramaConacyt subprogramaConacyt)
+        {
+            if (subprogramaConacyt.Id == 0)
+            {
+                subprogramaConacyt.Activo = true;
+                subprogramaConacyt.CreadorEl = DateTime.Now;
+            }
+            subprogramaConacyt.ModificadoEl = DateTime.Now;
+
+            subprogramaConacytRepository.SaveOrUpdate(subprogramaConacyt);
+        }
+
+        public Rama GetRamaById(int id)
+        {
+            return ramaRepository.Get(id);
+        }
+
+        public Rama[] GetAllRamas()
+        {
+            return ((List<Rama>) OrderCatalog<Rama>(x => x.Nombre)).ToArray();
+        }
+
+        public Rama[] GetActiveRamas()
+        {
+            return ((List<Rama>)OrderCatalog<Rama>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveRama(Rama rama)
+        {
+            if (rama.Id == 0)
+            {
+                rama.Activo = true;
+                rama.CreadorEl = DateTime.Now;
+            }
+            rama.ModificadoEl = DateTime.Now;
+
+            ramaRepository.SaveOrUpdate(rama);
+        }
+
+        public Clase GetClaseById(int id)
+        {
+            return claseRepository.Get(id);
+        }
+
+        public Clase[] GetAllClases()
+        {
+            return ((List<Clase>) OrderCatalog<Clase>(x => x.Nombre)).ToArray();
+        }
+
+        public Clase[] GetActiveClases()
+        {
+            return ((List<Clase>) OrderCatalog<Clase>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveClase(Clase clase)
+        {
+            if (clase.Id == 0)
+            {
+                clase.Activo = true;
+                clase.CreadorEl = DateTime.Now;
+            }
+            clase.ModificadoEl = DateTime.Now;
+
+            claseRepository.SaveOrUpdate(clase);
         }
     }
 }

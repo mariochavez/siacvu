@@ -346,5 +346,29 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoResena[] GetAllTipoResenas();
         TipoResena[] GetActiveTipoResenas();
         void SaveTipoResena(TipoResena tipoResena);
+
+        //Clase
+        Clase GetClaseById(int id);
+        Clase[] GetAllClases();
+        Clase[] GetActiveClases();
+        void SaveClase(Clase clase);
+
+        //Rama
+        Rama GetRamaById(int id);
+        Rama[] GetAllRamas();
+        Rama[] GetActiveRamas();
+        void SaveRama(Rama rama);
+
+        //Tipo Apoyo
+        TipoApoyo GetTipoApoyoById(int id);
+        TipoApoyo[] GetAllTipoApoyos();
+        TipoApoyo[] GetActiveTipoApoyos();
+        void SaveTipoApoyo(TipoApoyo tipoApoyo);
+
+        //Subprograma Conacyt
+        SubprogramaConacyt GetSubprogramaConacytById(int id);
+        SubprogramaConacyt[] GetAllSubprogramasConacyt();
+        SubprogramaConacyt[] GetActiveSubprogramasConacyt();
+        void SaveSubprogramaConacyt(SubprogramaConacyt subprogramaConacyt);
     }
 }

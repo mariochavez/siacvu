@@ -84,9 +84,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Catalogos\AmbitoController.cs" />
+    <Compile Include="Catalogos\ClaseController.cs" />
     <Compile Include="Catalogos\ConvenioController.cs" />
     <Compile Include="Catalogos\IdentificadorLibroController.cs" />
     <Compile Include="Catalogos\ProductoDerivadoController.cs" />
+    <Compile Include="Catalogos\RamaController.cs" />
+    <Compile Include="Catalogos\SubprogramaConacytController.cs" />
+    <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
     <Compile Include="Catalogos\TipoInstitucionController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
@@ -94,9 +98,21 @@
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Helpers\HumanizeHelper.cs" />
     <Compile Include="Mappers\Formatters\YearDateFormatter.cs" />
+    <Compile Include="Mappers\IClaseMapper.cs" />
+    <Compile Include="Mappers\Impl\ClaseMapper.cs" />
+    <Compile Include="Mappers\Impl\RamaMapper.cs" />
+    <Compile Include="Mappers\Impl\SubprogramaConacytMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoApoyoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
+    <Compile Include="Mappers\IRamaMapper.cs" />
+    <Compile Include="Mappers\ISubprogramaConacytMapper.cs" />
+    <Compile Include="Mappers\ITipoApoyoMapper.cs" />
     <Compile Include="Mappers\ITipoResenaMapper.cs" />
+    <Compile Include="Models\ClaseForm.cs" />
     <Compile Include="Models\HomeForm.cs" />
+    <Compile Include="Models\RamaForm.cs" />
+    <Compile Include="Models\SubprogramaConacytForm.cs" />
+    <Compile Include="Models\TipoApoyoForm.cs" />
     <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Productos\LibroController.cs" />
     <Compile Include="Mappers\ICoautorExternoLibroMapper.cs" />

@@ -78,6 +78,7 @@
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
+    <Compile Include="Clase.cs" />
     <Compile Include="CoautorExternoArticulo.cs" />
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Proyecto.cs" />
     <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="Rama.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
@@ -170,9 +172,11 @@
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Subdisciplina.cs" />
+    <Compile Include="SubprogramaConacyt.cs" />
     <Compile Include="TesisDirigida.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoActividadMovilidadAcademica.cs" />
+    <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />
