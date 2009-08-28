@@ -225,6 +225,11 @@
     <Content Include="Scripts\jquery-ajaxloading.js" />
     <Content Include="Scripts\jquery.autocomplete.js" />
     <Content Include="Scripts\jquery.clearfield.min.js" />
+    <Content Include="Views\ApoyoConacyt\Activate.js.ascx" />
+    <Content Include="Views\ApoyoConacyt\Edit.aspx" />
+    <Content Include="Views\ApoyoConacyt\Index.aspx" />
+    <Content Include="Views\ApoyoConacyt\New.aspx" />
+    <Content Include="Views\ApoyoConacyt\_DatosApoyoConacyt.ascx" />
     <Content Include="Views\Catalogos\Ambito\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Ambito\Edit.aspx" />
     <Content Include="Views\Catalogos\Ambito\Index.aspx" />
@@ -530,6 +535,14 @@
     <Content Include="Views\Catalogos\TipoResena\Index.aspx" />
     <Content Include="Views\Catalogos\TipoResena\New.aspx" />
     <Content Include="Views\Catalogos\TipoResena\_Form.ascx" />
+    <Content Include="Views\ExperienciaProfesional\Activate.js.ascx" />
+    <Content Include="Views\ExperienciaProfesional\_ActividadEconomica.ascx" />
+    <Content Include="Views\ExperienciaProfesional\_AreaConocimiento.ascx" />
+    <Content Include="Views\ExperienciaProfesional\_EstructuraFuncional.ascx" />
+    <Content Include="Views\ExperienciaProfesional\Edit.aspx" />
+    <Content Include="Views\ExperienciaProfesional\Index.aspx" />
+    <Content Include="Views\ExperienciaProfesional\New.aspx" />
+    <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />

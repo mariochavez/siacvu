@@ -36,7 +36,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-	        <% using (Html.BeginForm("Update", "Articulo")){ %>
+	        <% using (Html.BeginForm("Update", "Articulo")) { %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
             

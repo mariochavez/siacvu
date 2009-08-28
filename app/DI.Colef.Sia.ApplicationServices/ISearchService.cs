@@ -11,6 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         string Search<TEntity>(Expression<Func<TEntity, object>> expression, string value);
         string SearchInvestigador(string value);
         string SearchMovilidadAcademica(string value);
+        string SearchApoyoConacyt(string value);
     }
 
     public class SearchService : ISearchService
@@ -39,6 +40,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public string SearchMovilidadAcademica(string value)
         {
             var results = searchQuerying.SearchMovilidadAcademica(value);
+            return ParseResult(results);
+        }
+
+        public string SearchApoyoConacyt(string value)
+        {
+            var results = searchQuerying.SearchApoyoConacyt(value);
             return ParseResult(results);
         }
 

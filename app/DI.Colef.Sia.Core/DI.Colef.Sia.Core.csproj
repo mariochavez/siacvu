@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ambito.cs" />
+    <Compile Include="ApoyoConacyt.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="Articulo.cs" />
     <Compile Include="Capitulo.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="EstadoPais.cs" />
     <Compile Include="EstadoProducto.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="ExperienciaProfesional.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
     <Compile Include="Genero.cs" />
