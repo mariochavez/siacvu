@@ -51,7 +51,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ProyectoMovilidadAcademica> ProyectoMovilidadAcademicas { get; private set; }
 
-        public virtual Investigador Investigador { get; set; }
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

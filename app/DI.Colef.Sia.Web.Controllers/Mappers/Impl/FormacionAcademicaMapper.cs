@@ -42,13 +42,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public FormacionAcademica Map(FormacionAcademicaForm message, Usuario usuario, Investigador investigador)
+        public FormacionAcademica Map(FormacionAcademicaForm message, Usuario usuario)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
             }
 
