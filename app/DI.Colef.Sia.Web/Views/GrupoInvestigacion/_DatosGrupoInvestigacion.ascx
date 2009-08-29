@@ -2,13 +2,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Nombre Grupo Investigacion</label>
+    <label>Nombre del grupo de investigaci&oacute;n</label>
     <%=Html.TextBox("NombreGrupoInvestigacion", Model.NombreGrupoInvestigacion, new { @class = "input350-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreGrupoInvestigacion")%>
 </p>
 <p>
-    <label>Fecha Creacion</label>
+    <label>Fecha de creaci&oacute;n</label>
     <%=Html.TextBox("FechaCreacion", Model.FechaCreacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="helper_message">(Formato dd/mm/yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaCreacion")%>
 </p>

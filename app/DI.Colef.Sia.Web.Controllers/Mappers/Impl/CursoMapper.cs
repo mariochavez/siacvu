@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.NumeroHoras = message.NumeroHoras;
             model.Nombre = message.Nombre;
+
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             
