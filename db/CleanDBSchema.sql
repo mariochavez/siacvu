@@ -2010,8 +2010,117 @@ alter table Eventos  drop constraint FK9DD5234374E8BAB7
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B85102A57]') AND parent_object_id = OBJECT_ID('Dependencias'))
 alter table Dependencias  drop constraint FK4ECBCD2B85102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCEC222BA6]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCEC222BA6
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC8628149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC8628149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC85D8149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC85D8149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC8588149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC8588149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC85B8149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC85B8149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC85E8149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC85E8149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC7A8488F7]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC7A8488F7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC295BC133]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCBC063744]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCBC063744
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCF4FE4035]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCF4FE4035
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC3E082BED]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC3E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCAA0C7213]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCAA0C7213
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC44A2723A]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC44A2723A
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC6A829E09]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC6A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC85102A57]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC74E8BAB7]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F61C8828823]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F61C8828823
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F61469EFF44]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F61469EFF44
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F616A829E09]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F616A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F6185102A57]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F6185102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F6174E8BAB7]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F6174E8BAB7
+
+
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
+>>>>>>> 541a10f1647ff071b620ca47411ca2d83830a194:db/CleanDBSchema.sql
 
 
 
@@ -2210,7 +2319,24 @@ alter table GrupoInvestigaciones  drop constraint FK742C6D0974E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select * from dbo.sysobjects where id = object_id(N'OtraParticipaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OtraParticipaciones
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'ExperienciaProfesionales') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ExperienciaProfesionales
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ApoyoConacyts') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ApoyoConacyts
+
+    create table SNIs (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+>>>>>>> 541a10f1647ff071b620ca47411ca2d83830a194:db/CleanDBSchema.sql
 
     if exists (select * from dbo.sysobjects where id = object_id(N'MedioImpresos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioImpresos
 
@@ -3611,16 +3737,81 @@ alter table GrupoInvestigaciones  drop constraint FK742C6D0974E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     create table TipoOrganos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+=======
+    create table ExperienciaProfesionales (
+        Id INT IDENTITY NOT NULL,
+       Entidad NVARCHAR(255) null,
+       Nombramiento NVARCHAR(255) null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       LineasInvestigacion NVARCHAR(255) null,
+       PrincipalesLogros BIGINT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       OrganizacionFk INT null,
+       Nivel2Fk INT null,
+       Nivel3Fk INT null,
+       Nivel4Fk INT null,
+       Nivel5Fk INT null,
+       Nivel6Fk INT null,
+       PaisFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
+       SubdisciplinaFk INT null,
+       SectorFk INT null,
+       RamaFk INT null,
+       ClaseFk INT null,
+       UsuarioFk INT null,
+>>>>>>> 541a10f1647ff071b620ca47411ca2d83830a194:db/CleanDBSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
+<<<<<<< HEAD:db/CleanDBSchema.sql
+=======
+
+    create table ApoyoConacyts (
+        Id INT IDENTITY NOT NULL,
+       NoApoyo INT null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoApoyoFk INT null,
+       SubprogramaConacytFk INT null,
+       UsuarioFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B4829364F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA2BAFDC96 
+        foreign key (NivelEstudioFk) 
+        references NivelEstudios
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+>>>>>>> 541a10f1647ff071b620ca47411ca2d83830a194:db/CleanDBSchema.sql
 
     create table ProductoDerivados (
         Id INT IDENTITY NOT NULL,
@@ -4682,4 +4873,79 @@ alter table GrupoInvestigaciones  drop constraint FK742C6D0974E8BAB7
         add constraint FK742C6D09C85E8149 
         foreign key (Nivel6Fk) 
         references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCC8628149 
+        foreign key (Nivel2Fk) 
+        references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCC85D8149 
+        foreign key (Nivel3Fk) 
+        references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCC8588149 
+        foreign key (Nivel4Fk) 
+        references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCC85B8149 
+        foreign key (Nivel5Fk) 
+        references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCC85E8149 
+        foreign key (Nivel6Fk) 
+        references Niveles
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCBC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCF4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCAA0C7213 
+        foreign key (RamaFk) 
+        references Ramas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC44A2723A 
+        foreign key (ClaseFk) 
+        references Clases
+
+    alter table ApoyoConacyts 
+        add constraint FK9114F61C8828823 
+        foreign key (TipoApoyoFk) 
+        references TipoApoyos
+
+    alter table ApoyoConacyts 
+        add constraint FK9114F61469EFF44 
+        foreign key (SubprogramaConacytFk) 
+        references SubprogramaConacyts
 

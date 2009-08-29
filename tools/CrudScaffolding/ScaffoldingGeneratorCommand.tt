@@ -107,9 +107,29 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("ProgramaRegistrado","string", null)
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Institucion", "Institucion", "Institucion")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoApoyo","TipoApoyo", "TipoApoyo")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaInicial","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaFinal","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave1", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave2", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave3", "string", null)
+);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("TituloTesis","string", null)
@@ -141,18 +161,6 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Organizacion","Organizacion", "Organizacion")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Area","Area", "Area")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Disciplina","Disciplina", "Disciplina")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
