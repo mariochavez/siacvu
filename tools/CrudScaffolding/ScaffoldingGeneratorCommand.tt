@@ -23,25 +23,89 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.SubprogramaConacyt", 1);
+	new EntityScaffoldingDetails("GrupoInvestigacion", 3);
 
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
  */
  
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Usuario", "Usuario", "Usuario")
+);
+ 
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+	new EntityProperty("NombreGrupoInvestigacion","string", null, "[NotNullNotEmpty]", true)
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("TituloGrado","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaCreacion","DateTime", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaObtencion","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Sector", "Sector", "Sector")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel2", "Nivel2", "Nivel2")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel3", "Nivel3", "Nivel3")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel4", "Nivel4", "Nivel4")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel5", "Nivel5", "Nivel5")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel6", "Nivel6", "Nivel6")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Lider","bool", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nombre","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Miembros","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Impacto","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("VinculacionSectorProductivo","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("VinculacionSectorSocial","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Colaboracion","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Administracion","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ProgramaRegistrado","string", null)
+);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Institucion", "Institucion", "Institucion")
@@ -103,7 +167,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

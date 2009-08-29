@@ -46,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateFormacionAcademicaMaps();
             CreateLibrosMaps();
             CreateMovilidadAcademicaMaps();
+            CreateGrupoInvestigacionMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -536,6 +537,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Ambito,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoPais,
+                           o => o.Ignore());
+        }
+
+        void CreateGrupoInvestigacionMaps()
+        {
+            Mapper.CreateMap<GrupoInvestigacion, GrupoInvestigacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaCreacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
+                .ForMember(d => d.Organizacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel2,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel3,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel4,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel5,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel6,
                            o => o.Ignore());
         }
 

@@ -116,6 +116,7 @@
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
+    <Compile Include="GrupoInvestigacion.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
