@@ -111,6 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     ModelState.ContainsKey("Entity") ? ModelState["Entity"].Errors[0].ErrorMessage : String.Empty));
 
                 ViewData.Model = data;
+                ViewData["Rollback"] = true;
                 return false;
             }
 

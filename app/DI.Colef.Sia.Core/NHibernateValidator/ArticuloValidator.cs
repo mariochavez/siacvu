@@ -3,7 +3,7 @@ using NHibernate.Validator.Engine;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Class)]
     [ValidatorClass(typeof(ArticuloValidator))]
     public class ArticuloValidatorAttribute : Attribute, IRuleArgs
     {
@@ -13,56 +13,51 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         }
 
         public string Message { get; set; }
-        public Articulo Articulo { get; set; }
     }
 
     public class ArticuloValidator : IInitializableValidator<ArticuloValidatorAttribute>
     {
-        static Articulo articulo;
-
         public void Initialize(ArticuloValidatorAttribute parameters)
         {
-            articulo = parameters.Articulo;
         }
 
         public bool IsValid(object value, IConstraintValidatorContext constraintValidatorContext)
         {
-            var articuloVal = value as Articulo;
+            var articulo = value as Articulo;
 
-            if (articuloVal != null)
-            {
-                articulo = articuloVal;
-            }
+            if (articulo.EstadoProducto != null)
+                return ValidateProductoEstado(articulo, constraintValidatorContext);
 
-            if (articulo != null)
+            return true;
+        }
+
+        bool ValidateProductoEstado(Articulo articulo, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (articulo.EstadoProducto.Nombre.Contains("Publicado"))
             {
-                if (articulo.EstadoProducto != null)
+                if (articulo.PaginaInicial > articulo.PaginaFinal)
                 {
-                    if (articulo.EstadoProducto.Nombre.Contains("Publicado"))
-                    {
-                        if (articulo.PaginaInicial > articulo.PaginaFinal)
-                        {
-                            constraintValidatorContext.DisableDefaultError();
-                            constraintValidatorContext.AddInvalid(
-                                "Pagina inicial debe ser mayor a la final|PaginaInicial", "PaginaInicial");
-                            constraintValidatorContext.AddInvalid(
-                                "Pagina final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
-                            return false;
-                        }
-                        if (articulo.PaginaInicial == 0 && articulo.PaginaFinal == 0)
-                        {
-                            constraintValidatorContext.DisableDefaultError();
-                            constraintValidatorContext.AddInvalid("Pagina inicial y final no puede ser cero");
-                            return false;
-                        }
-                    }
-                    return true;
+                    constraintValidatorContext.AddInvalid(
+                        "página inicial debe ser menor a la final|PaginaInicial", "PaginaInicial");
+                    constraintValidatorContext.AddInvalid(
+                        "página final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
+                    isValid = false;
                 }
 
-                return true;
+                if (articulo.PaginaInicial == 0 && articulo.PaginaFinal == 0)
+                {
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
+                    isValid =  false;
+                }
             }
 
-            return false;
+            if(!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
         }
     }
 }

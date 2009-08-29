@@ -52,10 +52,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Numero { get; set; }
 
-        [ArticuloValidator]
         public virtual int PaginaInicial { get; set; }
 
-        [ArticuloValidator]
         public virtual int PaginaFinal { get; set; }
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }

@@ -150,14 +150,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ArticuloForm form)
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
-            if (!IsValidateModel(articulo, form, Title.Edit))
+            if(!IsValidateModel(articulo, form, Title.Edit))
             {
                 var articuloForm = articuloMapper.Map(articulo);
 
