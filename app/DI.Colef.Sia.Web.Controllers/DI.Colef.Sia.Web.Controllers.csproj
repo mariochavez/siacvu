@@ -108,7 +108,6 @@
     <Compile Include="Mappers\Impl\GrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\IExperienciaProfesionalMapper.cs" />
     <Compile Include="Mappers\Impl\ApoyoConacytMapper.cs" />
-    <Compile Include="Mappers\Impl\ClaseMapper.cs" />
     <Compile Include="Mappers\Impl\ExperienciaProfesionalMapper.cs" />
     <Compile Include="Mappers\Impl\RamaMapper.cs" />
     <Compile Include="Mappers\Impl\SubprogramaConacytMapper.cs" />
