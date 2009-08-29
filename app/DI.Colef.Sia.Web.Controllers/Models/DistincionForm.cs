@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        //Espacio para Agregar Mapeos
         public int TipoDistincion { get; set; }
         public int TipoDistincionId { get; set; }
 
@@ -27,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
 
-        public int Investigador { get; set; }
         public string PeriodoReferenciaPeriodo { get; set; }
 
         /* Catalogos */

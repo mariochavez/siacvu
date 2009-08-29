@@ -33,13 +33,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
         }
 
-        public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador, PeriodoReferencia periodo)
+        public Dictamen Map(DictamenForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }

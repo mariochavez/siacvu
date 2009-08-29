@@ -37,7 +37,7 @@
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
                 <% Html.RenderPartial("_DatosCurso", Model.Form); %>
-
+            
                 <h4>Opcionales</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				

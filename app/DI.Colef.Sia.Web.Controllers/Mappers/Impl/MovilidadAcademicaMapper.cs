@@ -43,13 +43,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);
         }
 
-        public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario, Investigador investigador)
+        public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
             }
 
@@ -58,10 +58,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario, Investigador investigador,
+        public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario,
             string[] tiposActividad, string[] proyectos, string[] productoDerivados)
         {
-            var model = Map(message, usuario, investigador);
+            var model = Map(message, usuario);
 
             foreach (var tipoId in tiposActividad)
             {

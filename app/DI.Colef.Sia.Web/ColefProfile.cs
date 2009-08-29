@@ -46,6 +46,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateFormacionAcademicaMaps();
             CreateLibrosMaps();
             CreateMovilidadAcademicaMaps();
+            CreateGrupoInvestigacionMaps();
+            CreateExperienciaProfesionalMaps();
+            CreateApoyoConacytMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -110,6 +113,58 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
         }
 
+        private void CreateApoyoConacytMaps()
+        {
+            Mapper.CreateMap<ApoyoConacyt, ApoyoConacytForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoApoyo,
+                           o => o.Ignore())
+                .ForMember(d => d.SubprogramaConacyt,
+                           o => o.Ignore());
+        }
+
+        private void CreateExperienciaProfesionalMaps()
+        {
+            Mapper.CreateMap<ExperienciaProfesional, ExperienciaProfesionalForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Organizacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel2,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel3,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel4,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel5,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel6,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
+                .ForMember(d => d.Rama,
+                           o => o.Ignore())
+                .ForMember(d => d.Clase,
+                           o => o.Ignore());
+        }
+
         private void CreateMovilidadAcademicaMaps()
         {
             Mapper.CreateMap<MovilidadAcademica, MovilidadAcademicaForm>()
@@ -124,8 +179,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoInstitucion,
                            o => o.Ignore())
                 .ForMember(d => d.Convenio,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<TipoActividadMovilidadAcademica, TipoActividadMovilidadAcademicaForm>()
@@ -163,8 +216,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -190,8 +241,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoResena, CoautorInternoResenaForm>()
@@ -221,8 +270,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoReporte, CoautorInternoReporteForm>()
@@ -250,8 +297,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoEvento,
                            o => o.Ignore())
                 .ForMember(d => d.TipoFinanciamiento,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoEvento, CoautorInternoEventoForm>()
@@ -281,8 +326,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Nivel,
                            o => o.Ignore())
                 .ForMember(d => d.Ambito,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -300,8 +343,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoPais,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -331,8 +372,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -341,6 +380,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Curso, CursoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Nivel,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
@@ -362,8 +405,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -401,8 +442,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Indice2,
                            o => o.Ignore())
                 .ForMember(d => d.Indice3,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore());
@@ -445,8 +484,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
-                .ForMember(d => d.Investigador,
-                           o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore());
 
@@ -475,8 +512,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoDictamen,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -498,8 +533,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoPais,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
         }
 
@@ -531,8 +564,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Investigador,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoLibro, CoautorInternoLibroForm>()
@@ -564,8 +595,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Ambito,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoPais,
+                           o => o.Ignore());
+        }
+
+        void CreateGrupoInvestigacionMaps()
+        {
+            Mapper.CreateMap<GrupoInvestigacion, GrupoInvestigacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaCreacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Sector,
                            o => o.Ignore())
-                .ForMember(d => d.Investigador,
+                .ForMember(d => d.Organizacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel2,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel3,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel4,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel5,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel6,
                            o => o.Ignore());
         }
 
@@ -755,6 +807,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoResena, TipoResenaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Clase, ClaseForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Rama, RamaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<SubprogramaConacyt, SubprogramaConacytForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoApoyo, TipoApoyoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ambito.cs" />
+    <Compile Include="ApoyoConacyt.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="Articulo.cs" />
     <Compile Include="Capitulo.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
+    <Compile Include="Clase.cs" />
     <Compile Include="CoautorExternoArticulo.cs" />
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
@@ -110,11 +112,13 @@
     <Compile Include="EstadoPais.cs" />
     <Compile Include="EstadoProducto.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="ExperienciaProfesional.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
+    <Compile Include="GrupoInvestigacion.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
@@ -153,6 +157,7 @@
     <Compile Include="Proyecto.cs" />
     <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
+    <Compile Include="Rama.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
@@ -170,9 +175,11 @@
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
     <Compile Include="Subdisciplina.cs" />
+    <Compile Include="SubprogramaConacyt.cs" />
     <Compile Include="TesisDirigida.cs" />
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoActividadMovilidadAcademica.cs" />
+    <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />

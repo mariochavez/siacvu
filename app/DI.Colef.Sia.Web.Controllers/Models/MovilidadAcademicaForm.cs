@@ -24,9 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Convenio { get; set; }
         public int ConvenioId { get; set; }
 
-        public int Investigador { get; set; }
-
-
         /* New */
         public TipoActividadMovilidadAcademicaForm[] TipoActividadMovilidadAcademicas { get; set; }
         public ProductoDerivadoMovilidadAcademicaForm[] ProductoDerivadoMovilidadAcademicas { get; set; }

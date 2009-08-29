@@ -69,8 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, 
-            PeriodoReferencia periodo)
+        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
@@ -86,8 +85,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, 
-            PeriodoReferencia periodo, string[] coautoresExternos, string[] coautoresInternos)
+        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, 
+            string[] coautoresExternos, string[] coautoresInternos)
         {
             var model = Map(message, usuario, periodo);
 

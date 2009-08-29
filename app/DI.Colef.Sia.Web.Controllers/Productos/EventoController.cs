@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (evento == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (evento.Investigador.Id != CurrentInvestigador().Id)
+            if (evento.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var eventoForm = eventoMapper.Map(evento);
@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoEvento.InvestigadorId_New"].Split(',');
 
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                           coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {
@@ -175,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var evento = eventoService.GetEventoById(id);
 
-            if (evento.Investigador.Id != CurrentInvestigador().Id)
+            if (evento.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             evento.Activo = true;
@@ -193,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var evento = eventoService.GetEventoById(id);
 
-            if (evento.Investigador.Id != CurrentInvestigador().Id)
+            if (evento.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             evento.Activo = false;

@@ -91,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (movilidadAcademica == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (movilidadAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var movilidadAcademicaForm = movilidadAcademicaMapper.Map(movilidadAcademica);
@@ -138,7 +138,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',').Length > 0)
                 productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',');
             
-            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
+            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(),
                 tiposActividad, proyectos, productoDerivados);
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "MovilidadAcademica"))
@@ -159,7 +159,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(MovilidadAcademicaForm form)
         {
-            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(movilidadAcademica, form, Title.Edit))
             {
@@ -181,7 +181,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(id);
 
-            if (movilidadAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             movilidadAcademica.Activo = true;
@@ -199,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(id);
 
-            if (movilidadAcademica.Investigador.Id != CurrentInvestigador().Id)
+            if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             movilidadAcademica.Activo = false;

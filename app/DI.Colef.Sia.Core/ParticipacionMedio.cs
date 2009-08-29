@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string Titulo { get; set; }
 
         [NotNull]
-        public virtual Investigador Investigador { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

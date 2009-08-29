@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (curso == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (curso.Investigador.Id != CurrentInvestigador().Id)
+            if (curso.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var cursoForm = cursoMapper.Map(curso);
@@ -118,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(curso, form, Title.Edit))
             {
@@ -158,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var curso = cursoService.GetCursoById(id);
 
-            if (curso.Investigador.Id != CurrentInvestigador().Id)
+            if (curso.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             curso.Activo = true;
@@ -176,7 +176,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var curso = cursoService.GetCursoById(id);
 
-            if (curso.Investigador.Id != CurrentInvestigador().Id)
+            if (curso.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             curso.Activo = false;

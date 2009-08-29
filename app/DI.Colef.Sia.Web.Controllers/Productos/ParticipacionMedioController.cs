@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (participacionMedio == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+            if (participacionMedio.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(participacionMedio, form, Title.New, "ParticipacionMedio"))
             {
@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(participacionMedio, form, Title.Edit))
             {
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
 
-            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+            if (participacionMedio.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             participacionMedio.Activo = true;
@@ -171,7 +171,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
 
-            if (participacionMedio.Investigador.Id != CurrentInvestigador().Id)
+            if (participacionMedio.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             participacionMedio.Activo = false;

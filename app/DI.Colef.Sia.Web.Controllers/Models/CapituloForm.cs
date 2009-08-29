@@ -53,8 +53,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
 
-        public int Investigador { get; set; }
-
         public string PeriodoReferenciaPeriodo { get; set; }
 
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }

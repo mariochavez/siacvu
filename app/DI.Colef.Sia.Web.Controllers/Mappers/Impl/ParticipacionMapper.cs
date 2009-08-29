@@ -43,14 +43,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Autor = investigadorService.GetInvestigadorById(message.Autor);
         }
 
-        public Participacion Map(ParticipacionForm message, Usuario usuario, Investigador investigador,
-            PeriodoReferencia periodo)
+        public Participacion Map(ParticipacionForm message, Usuario usuario, PeriodoReferencia periodo)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
-                model.Investigador = investigador;
+                model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
             }

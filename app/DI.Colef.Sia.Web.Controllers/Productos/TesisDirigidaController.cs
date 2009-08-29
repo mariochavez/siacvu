@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (tesisDirigida == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
@@ -110,7 +110,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(tesisDirigida, form, Title.New, "TesisDirigida"))
             {
@@ -128,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(tesisDirigida, form, Title.Edit))
             {
@@ -149,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             tesisDirigida.Activo = true;
@@ -167,7 +167,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesisDirigida.Investigador.Id != CurrentInvestigador().Id)
+            if (tesisDirigida.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             tesisDirigida.Activo = false;

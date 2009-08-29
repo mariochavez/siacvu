@@ -58,6 +58,7 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="IApoyoConacytService.cs" />
     <Compile Include="IArticuloService.cs" />
     <Compile Include="ICapituloService.cs" />
     <Compile Include="ICatalogoService.cs" />
@@ -65,10 +66,13 @@
     <Compile Include="IDictamenService.cs" />
     <Compile Include="IDistincionService.cs" />
     <Compile Include="IEventoService.cs" />
+    <Compile Include="IExperienciaProfesionalService.cs" />
     <Compile Include="IFormacionAcademicaService.cs" />
+    <Compile Include="IGrupoInvestigacionService.cs" />
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="ILibroService.cs" />
     <Compile Include="IMovilidadAcademicaService.cs" />
+    <Compile Include="Impl\ApoyoConacytService.cs" />
     <Compile Include="Impl\ArticuloService.cs" />
     <Compile Include="Impl\CapituloService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
@@ -76,7 +80,9 @@
     <Compile Include="Impl\DictamenService.cs" />
     <Compile Include="Impl\DistincionService.cs" />
     <Compile Include="Impl\EventoService.cs" />
+    <Compile Include="Impl\ExperienciaProfesionalService.cs" />
     <Compile Include="Impl\FormacionAcademicaService.cs" />
+    <Compile Include="Impl\GrupoInvestigacionService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
     <Compile Include="Impl\LibroService.cs" />
     <Compile Include="Impl\MovilidadAcademicaService.cs" />

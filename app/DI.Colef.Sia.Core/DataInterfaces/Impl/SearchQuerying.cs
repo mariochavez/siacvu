@@ -113,6 +113,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchApoyoConacyt(string value)
+        {
+            var criteria = DetachedCriteria.For(typeof(ApoyoConacyt))
+                .CreateAlias("TipoApoyo", "ta", JoinType.InnerJoin)
+                .SetFetchMode("TipoApoyo", FetchMode.Eager)
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("ta.Nombre"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("ta.Nombre"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(ApoyoConacytDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<ApoyoConacytDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search { Id = item.Id, Nombre = item.Nombre });
+            }
+
+            return result.ToArray();
+        }
+
         #endregion
 
         #region Nested type: InvestigadorDTO
@@ -135,6 +159,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         #region Nested type: MovilidadAcademicaDTO
 
         class MovilidadAcademicaDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        #endregion
+
+        #region Nested type: ApoyoConacytDTO
+
+        class ApoyoConacytDTO
         {
             public int Id { get; set; }
             public string Nombre { get; set; }

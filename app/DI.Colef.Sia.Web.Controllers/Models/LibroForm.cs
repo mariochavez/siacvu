@@ -33,7 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int Pais { get; set; }
 		public int PaisId { get; set; }
-
 		
 		public int Idioma { get; set; }
 		public int IdiomaId { get; set; }
@@ -52,8 +51,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int Subdisciplina { get; set; }
 		public int SubdisciplinaId { get; set; }
-
-        public int Investigador { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 		

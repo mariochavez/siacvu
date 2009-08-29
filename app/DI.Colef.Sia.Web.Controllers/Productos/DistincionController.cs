@@ -69,7 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (distincion == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (distincion.Investigador.Id != CurrentInvestigador().Id)
+            if (distincion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var distincionForm = distincionMapper.Map(distincion);
@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
@@ -116,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             distincion.ModificadoPor = CurrentUser();
 
@@ -139,7 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionService.GetDistincionById(id);
 
-            if (distincion.Investigador.Id != CurrentInvestigador().Id)
+            if (distincion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             distincion.Activo = true;
@@ -157,7 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionService.GetDistincionById(id);
 
-            if (distincion.Investigador.Id != CurrentInvestigador().Id)
+            if (distincion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             distincion.Activo = false;

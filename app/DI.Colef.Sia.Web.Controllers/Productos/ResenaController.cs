@@ -90,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resena == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (resena.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var resenaForm = resenaMapper.Map(resena);
@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',');
 
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                           coautoresExternos, coautoresInternos);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
@@ -153,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
             if (!IsValidateModel(resena, form, Title.Edit))
             {
@@ -175,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var resena = resenaService.GetResenaById(id);
 
-            if (resena.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             resena.Activo = true;
@@ -193,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var resena = resenaService.GetResenaById(id);
 
-            if (resena.Investigador.Id != CurrentInvestigador().Id)
+            if (resena.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             resena.Activo = false;

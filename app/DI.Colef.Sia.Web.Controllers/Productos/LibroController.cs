@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libro == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (libro.Investigador.Id != CurrentInvestigador().Id)
+            if (libro.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
                         
             var libroForm = libroMapper.Map(libro);
@@ -155,7 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',').Length > 0)
                 coautoresInternos = formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',');
 
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo(),
+            var libro = libroMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                         coautoresExternos, coautoresInternos);
             
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
@@ -176,7 +176,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LibroForm form)
         {
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(), CurrentPeriodo());
+            var libro = libroMapper.Map(form, CurrentUser(), CurrentPeriodo());
             
             if (!IsValidateModel(libro, form, Title.Edit))
             {
@@ -198,7 +198,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {            
             var libro = libroService.GetLibroById(id);
 
-            if (libro.Investigador.Id != CurrentInvestigador().Id)
+            if (libro.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             libro.Activo = true;
@@ -216,7 +216,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var libro = libroService.GetLibroById(id);
 
-            if (libro.Investigador.Id != CurrentInvestigador().Id)
+            if (libro.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
             libro.Activo = false;
