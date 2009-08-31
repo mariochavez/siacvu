@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Extensions
 {

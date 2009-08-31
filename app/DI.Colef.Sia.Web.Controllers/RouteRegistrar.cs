@@ -19,6 +19,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}", new { action = "Index" }),
             //    routes.MapRoute(null, "Organization/Department/{controller}/{action}/{id}")
             //);
+
+            routes.MapRoute(null, "Login", new { controller = "Session", action = "Index" });
+            routes.MapRoute(null, "Logout", new { controller = "Session", action = "Destroy" });
+            routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
+            routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
+            routes.MapRoute(null, "Home", new { controller = "Home", action = "Index" });
+
             routes.CreateArea("Productos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos",
                               routes.MapRoute(null, "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
                               routes.MapRoute(null, "Productos/{controller}/{action}", new {action = "Index"})

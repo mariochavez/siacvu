@@ -4,6 +4,12 @@
 	background: #CDCCB2 url(./Images/pagina-bg.gif) 0 0 repeat-x;
 }
 
+.body-sesion {
+	margin: 0;
+	font-family: Calibri, Helvetica, sans-serif;
+	background: #CDCCB2;
+}
+
 /*---<cabecera>---*/
 
 #cabecera {	
@@ -53,6 +59,12 @@
 	height: 60px;
 	margin: 0 auto;
 	background-color: #252525;
+}
+
+#seccion-sesion {
+    width: 980px;	
+	height: 10px;
+	margin: 0 auto;
 }
 
 #tituloseccion h2 {
@@ -241,6 +253,14 @@
 	color: #fff;
 }
 
+/*---<asistente-logo>---*/
+.asistentelogo {
+    float:left;
+    height:20px;
+    margin:-29px 0 0;
+    text-align:center;
+    width:290px;
+}
 /*---<border-radius>---*/
 .botonzon span {
 	-webkit-border-radius: 10px;

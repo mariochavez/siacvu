@@ -7,6 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     [HandleError]
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             var data = new GenericViewData<HomeForm>

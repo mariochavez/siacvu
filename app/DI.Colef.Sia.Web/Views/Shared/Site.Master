@@ -33,9 +33,7 @@
 			<h1><img alt="Colegio de la Frontera Norte" src="<%=ResolveUrl("~/Content/Images/colef-logo.gif") %>" /></h1>
 		</div><!--end titulo-->
 		
-		<div id="usuario">
-			<p><span class="usuario">Investigador 1</span> / <a title="Perfil" href="#">Perfil</a> / <a title="Cerrar Sesi&oacute;n" href="#">Cerrar Sesi&oacute;n</a></p>
-		</div><!--end usuario-->		
+		<%Html.RenderPartial("_UserInfo"); %>		
 			
 	</div><!--end cabecera-->	
 	

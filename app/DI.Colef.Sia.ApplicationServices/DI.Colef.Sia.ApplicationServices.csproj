@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="IApoyoConacytService.cs" />
     <Compile Include="IArticuloService.cs" />
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="ICapituloService.cs" />
     <Compile Include="ICatalogoService.cs" />
     <Compile Include="ICursoService.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="IMovilidadAcademicaService.cs" />
     <Compile Include="Impl\ApoyoConacytService.cs" />
     <Compile Include="Impl\ArticuloService.cs" />
+    <Compile Include="Impl\AuthenticationService.cs" />
     <Compile Include="Impl\CapituloService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
     <Compile Include="Impl\CursoService.cs" />

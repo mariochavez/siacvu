@@ -508,6 +508,10 @@
     <Compile Include="Catalogos\TipoOrganoController.cs" />
     <Compile Include="Catalogos\TipoPresentacionController.cs" />
     <Compile Include="Catalogos\TipoReporteController.cs" />
+    <Compile Include="Security\AuthenticationModule.cs" />
+    <Compile Include="Security\IFormsAuthentication.cs" />
+    <Compile Include="Security\Impl\FormsAuthentication.cs" />
+    <Compile Include="SessionController.cs" />
     <Compile Include="ViewData\BaseViewData.cs" />
     <Compile Include="ViewData\GenericViewData.cs" />
   </ItemGroup>

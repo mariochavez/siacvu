@@ -19,9 +19,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.CastleWindsor
             AddApplicationServicesTo(container);
             AddMappersTo(container);
             AddQueryingTo(container);
+            AddCommonTo(container);
 
             container.AddComponent("validator",
                                    typeof(IValidator), typeof(Validator));
+        }
+
+        static void AddCommonTo(IWindsorContainer container)
+        {
+            container.Register(
+                AllTypes.Pick()
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
+                    .If(x => x.Namespace.EndsWith("Security"))
+                    .WithService.FirstInterface());
         }
 
         static void AddQueryingTo(IWindsorContainer container)
