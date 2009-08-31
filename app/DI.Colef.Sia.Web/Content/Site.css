@@ -110,11 +110,11 @@
 }
 
 #menu li ul#uno {
-	margin: 0;
+	margin: 0 0 0 20px;
 }
 
 #menu li ul#tres {
-	margin: 0 0 0 183px;
+	margin: 0 0 0 200px;
 }
 
 #menu li:hover ul {
@@ -590,7 +590,7 @@ a.editabusqueda {
 	display: block;
 }
 
-#forma .input-validation-error, #forma .select.input-validation-error {
+#forma .input-validation-error, #forma select.input-validation-error {
 	border: 1px solid #FF0000;
 }
 

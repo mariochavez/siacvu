@@ -45,6 +45,21 @@
 		<div id="menu">
 			<ul>
 				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Inicio") %></li>
+				<li>
+				    <a href="#">Otros</a>
+				     <ul id="uno">
+				        <li><%=Html.ActionLinkForAreas<ApoyoConacytController>(x => x.Index(), "Apoyo CONACYT") %></li>
+				        <li><%=Html.ActionLinkForAreas<ExperienciaProfesionalController>(x => x.Index(), "Experiencia profesional") %></li>
+				        <li><%=Html.ActionLinkForAreas<FormacionAcademicaController>(x => x.Index(), "Formación académica")%></li>
+				        <li><%=Html.ActionLinkForAreas<GrupoInvestigacionController>(x => x.Index(), "Grupo de investigación") %></li>
+				        <li><%=Html.ActionLinkForAreas<MovilidadAcademicaController>(x => x.Index(), "Movilidad académica") %></li>
+				        <li class="last">
+	                        <img class="corner_left" alt="" src='<%=ResolveUrl("~/Content/Images/corner_left.png")%>'/>
+	                        <img class="middle" alt="" src='<%=ResolveUrl("~/Content/Images/dot.gif")%>'/>
+	                        <img class="corner_right" alt="" src='<%=ResolveUrl("~/Content/Images/corner_right.png")%>'/>
+	                    </li>
+				     </ul>
+				</li>
 				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
 				<li>
 				    <a href="#">Productos</a>
