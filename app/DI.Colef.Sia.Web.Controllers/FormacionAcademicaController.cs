@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(FormacionAcademicaForm form)
@@ -126,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 RedirectToIndex(String.Format("Formación Académica {0} ha sido creada", formacionAcademica.TituloGrado));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(FormacionAcademicaForm form)
@@ -152,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                               formacionAcademica.TituloGrado));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -170,7 +170,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
