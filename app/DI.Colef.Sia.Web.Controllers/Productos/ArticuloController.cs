@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -34,9 +33,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
         readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
-
-        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IEstadoMapper estadoMapper, ILineaTematicaMapper lineaTematicaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, IInstitucionMapper institucionMapper, IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper, IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IProyectoMapper proyectoMapper)
+        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, 
+                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
+                                  IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, 
+                                  IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, 
+                                  IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, 
+                                  ITipoActividadMapper tipoActividadMapper, ITipoParticipanteMapper tipoParticipanteMapper, 
+                                  IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
+                                  IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, 
+                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper, 
+                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 
+                                  IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
+                                  IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -60,6 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.proyectoMapper = proyectoMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -365,7 +376,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return form;
         }

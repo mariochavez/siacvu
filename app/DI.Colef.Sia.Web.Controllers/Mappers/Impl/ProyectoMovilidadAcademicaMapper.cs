@@ -8,12 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class ProyectoMovilidadAcademicaMapper : AutoFormMapper<ProyectoMovilidadAcademica, ProyectoMovilidadAcademicaForm>, IProyectoMovilidadAcademicaMapper
     {
-        readonly ICatalogoService catalogoService;
+        readonly IProyectoService proyectoService;
 
-        public ProyectoMovilidadAcademicaMapper(IRepository<ProyectoMovilidadAcademica> repository, ICatalogoService catalogoService)
+        public ProyectoMovilidadAcademicaMapper(IRepository<ProyectoMovilidadAcademica> repository, IProyectoService proyectoService)
             : base(repository)
         {
-            this.catalogoService = catalogoService;
+            this.proyectoService = proyectoService;
         }
 
         protected override int GetIdFromMessage(ProyectoMovilidadAcademicaForm message)
@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(ProyectoMovilidadAcademicaForm message, ProyectoMovilidadAcademica model)
         {
-            model.Proyecto = catalogoService.GetProyectoById(message.ProyectoId);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
             if (model.IsTransient())
             {

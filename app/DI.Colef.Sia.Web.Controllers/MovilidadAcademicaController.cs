@@ -18,8 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly ITipoInstitucionMapper tipoInstitucionMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IConvenioMapper convenioMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
         readonly ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper;
@@ -27,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper;
+        readonly IProyectoService proyectoService;
 
 
         public MovilidadAcademicaController(IMovilidadAcademicaService movilidadAcademicaService,
@@ -34,8 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             ICatalogoService catalogoService, IUsuarioService usuarioService, 
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
                                             ITipoInstitucionMapper tipoInstitucionMapper, 
-                                            IInstitucionMapper institucionMapper, 
-                                            ILineaTematicaMapper lineaTematicaMapper, 
                                             IConvenioMapper convenioMapper, 
                                             ITipoActividadMapper tipoActividadMapper, 
                                             ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper, 
@@ -43,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper, 
                                             IProyectoMapper proyectoMapper, 
                                             IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper,
-                                            ISearchService searchService)
+                                            ISearchService searchService, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -51,8 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.movilidadAcademicaMapper = movilidadAcademicaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
             this.tipoInstitucionMapper = tipoInstitucionMapper;
-            this.institucionMapper = institucionMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.convenioMapper = convenioMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoActividadMovilidadAcademicaMapper = tipoActividadMovilidadAcademicaMapper;
@@ -60,6 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.productoDerivadoMovilidadAcademicaMapper = productoDerivadoMovilidadAcademicaMapper;
             this.proyectoMapper = proyectoMapper;
             this.proyectoMovilidadAcademicaMapper = proyectoMovilidadAcademicaMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -312,7 +308,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.Id = movilidadAcademica.Id;
 
             form.ProyectoMovilidadAcademica = new ProyectoMovilidadAcademicaForm();
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return Rjs("NewProyecto", form);
         }
@@ -363,7 +359,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.ProductosDerivados = productoDerivadoMapper.Map(catalogoService.GetActiveProductoDerivados());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             return form;
         }
 

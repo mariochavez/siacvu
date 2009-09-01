@@ -364,5 +364,47 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         SubprogramaConacyt[] GetAllSubprogramasConacyt();
         SubprogramaConacyt[] GetActiveSubprogramasConacyt();
         void SaveSubprogramaConacyt(SubprogramaConacyt subprogramaConacyt);
+
+        //Impacto Politica Publica
+        ImpactoPoliticaPublica GetImpactoPoliticaPublicaById(int id);
+        ImpactoPoliticaPublica[] GetAllImpactoPoliticaPublicas();
+        ImpactoPoliticaPublica[] GetActiveImpactoPoliticaPublicas();
+        void SaveImpactoPoliticaPublica(ImpactoPoliticaPublica impactoPoliticaPublica);
+
+        //Moneda
+        Moneda GetMonedaById(int id);
+        Moneda[] GetAllMonedas();
+        Moneda[] GetActiveMonedas();
+        void SaveMoneda(Moneda moneda);
+
+        //Sector de financiamiento
+        SectorFinanciamiento GetSectorFinanciamientoById(int id);
+        SectorFinanciamiento[] GetAllSectorFinanciamientos();
+        SectorFinanciamiento[] GetActiveSectorFinanciamientos();
+        void SaveSectorFinanciamiento(SectorFinanciamiento sectorFinanciamiento);
+
+        //Producto academico
+        ProductoAcademico GetProductoAcademicoById(int id);
+        ProductoAcademico[] GetAllProductoAcademicos();
+        ProductoAcademico[] GetActiveProductoAcademicos();
+        void SaveProductoAcademico(ProductoAcademico productoAcademico);
+
+        //USEG
+        USEG GetUSEGById(int id);
+        USEG[] GetAllUSEGs();
+        USEG[] GetActiveUSEGs();
+        void SaveUSEG(USEG uSEG);
+
+        //Actividad Prevista
+        ActividadPrevista GetActividadPrevistaById(int id);
+        ActividadPrevista[] GetAllActividadPrevistas();
+        ActividadPrevista[] GetActiveActividadPrevistas();
+        void SaveActividadPrevista(ActividadPrevista actividadPrevista);
+
+        //Coordinacion
+        Coordinacion GetCoordinacionById(int id);
+        Coordinacion[] GetAllCoordinacions();
+        Coordinacion[] GetActiveCoordinacions();
+        void SaveCoordinacion(Coordinacion coordinacion);
     }
 }

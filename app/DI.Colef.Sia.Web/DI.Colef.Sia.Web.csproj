@@ -265,6 +265,11 @@
     <Content Include="Views\Catalogos\Convenio\Index.aspx" />
     <Content Include="Views\Catalogos\Convenio\New.aspx" />
     <Content Include="Views\Catalogos\Convenio\_Form.ascx" />
+    <Content Include="Views\Catalogos\Coordinacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Coordinacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\Coordinacion\Index.aspx" />
+    <Content Include="Views\Catalogos\Coordinacion\New.aspx" />
+    <Content Include="Views\Catalogos\Coordinacion\_Form.ascx" />
     <Content Include="Views\Catalogos\Departamento\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Departamento\Edit.aspx" />
     <Content Include="Views\Catalogos\Departamento\Index.aspx" />
@@ -750,8 +755,6 @@
     <Content Include="Views\Productos\TesisDirigida\New.aspx" />
     <Content Include="Views\Productos\TesisDirigida\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_DatosTesis.ascx" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Proyecto\Activate.js.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteExterno.js.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteInterno.js.ascx" />
@@ -771,6 +774,31 @@
     <Content Include="Views\Proyecto\_NewParticipanteInterno.ascx" />
     <Content Include="Views\Proyecto\_NewResponsableExterno.ascx" />
     <Content Include="Views\Proyecto\_NewResponsableInterno.ascx" />
+    <Content Include="Views\Catalogos\ActividadPrevista\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ActividadPrevista\Edit.aspx" />
+    <Content Include="Views\Catalogos\ActividadPrevista\Index.aspx" />
+    <Content Include="Views\Catalogos\ActividadPrevista\New.aspx" />
+    <Content Include="Views\Catalogos\ActividadPrevista\_Form.ascx" />
+    <Content Include="Views\Catalogos\ImpactoPoliticaPublica\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ImpactoPoliticaPublica\Edit.aspx" />
+    <Content Include="Views\Catalogos\ImpactoPoliticaPublica\Index.aspx" />
+    <Content Include="Views\Catalogos\ImpactoPoliticaPublica\New.aspx" />
+    <Content Include="Views\Catalogos\ImpactoPoliticaPublica\_Form.ascx" />
+    <Content Include="Views\Catalogos\Moneda\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Moneda\Edit.aspx" />
+    <Content Include="Views\Catalogos\Moneda\Index.aspx" />
+    <Content Include="Views\Catalogos\Moneda\New.aspx" />
+    <Content Include="Views\Catalogos\Moneda\_Form.ascx" />
+    <Content Include="Views\Catalogos\ProductoAcademico\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ProductoAcademico\Edit.aspx" />
+    <Content Include="Views\Catalogos\ProductoAcademico\Index.aspx" />
+    <Content Include="Views\Catalogos\ProductoAcademico\New.aspx" />
+    <Content Include="Views\Catalogos\ProductoAcademico\_Form.ascx" />
+    <Content Include="Views\Catalogos\USEG\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\USEG\Edit.aspx" />
+    <Content Include="Views\Catalogos\USEG\Index.aspx" />
+    <Content Include="Views\Catalogos\USEG\New.aspx" />
+    <Content Include="Views\Catalogos\USEG\_Form.ascx" />
     <Content Include="Views\Session\Index.aspx" />
     <Content Include="Views\Shared\Login.Master" />
   </ItemGroup>

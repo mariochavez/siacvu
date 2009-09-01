@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ResponsableExternoProyectoForm message, ResponsableExternoProyecto model)
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            //model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
             if (model.IsTransient())
             {

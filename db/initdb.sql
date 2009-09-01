@@ -29,11 +29,47 @@ INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 INSERT UsuarioRol VALUES(4, 3)
 
+insert into ActividadPrevistas values('ActividadPrevista 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Monedas values('Moneda 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ProductoAcademicos values('ProductoAcademico 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('ProductoAcademico 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('ProductoAcademico 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('ProductoAcademico 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('ProductoAcademico 5',GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into ProductoDerivados values('Producto Derivado 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Producto Derivado 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Producto Derivado 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Producto Derivado 4',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Producto Derivado 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into SectorFinanciamientos values('SectorFinanciamiento 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into USEGs values('USEG 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 5',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoEstancias values('Academica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Sabatica',GETDATE(), GETDATE(), 1, 1, 1);

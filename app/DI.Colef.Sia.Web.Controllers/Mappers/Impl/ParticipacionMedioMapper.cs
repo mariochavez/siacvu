@@ -10,13 +10,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class ParticipacionMedioMapper : AutoFormMapper<ParticipacionMedio, ParticipacionMedioForm>, IParticipacionMedioMapper
     {
 		readonly ICatalogoService catalogoService;
+        readonly IProyectoService proyectoService;
 
 		public ParticipacionMedioMapper(IRepository<ParticipacionMedio> repository
-		, ICatalogoService catalogoService
+		, ICatalogoService catalogoService, IProyectoService proyectoService
 		) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
+		    this.proyectoService = proyectoService;
         }		
 		
         protected override int GetIdFromMessage(ParticipacionMedioForm message)
@@ -41,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.MedioImpreso = catalogoService.GetMedioImpresoById(message.MedioImpreso);
 		    model.MedioElectronico = catalogoService.GetMedioElectronicoById(message.MedioElectronico);
 		    model.Genero = catalogoService.GetGeneroById(message.Genero);
-		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+		    model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
 		    model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);

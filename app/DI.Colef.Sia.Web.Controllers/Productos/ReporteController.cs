@@ -17,30 +17,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IReporteMapper reporteMapper;
         readonly IReporteService reporteService;
         readonly ITipoReporteMapper tipoReporteMapper;
+        readonly IProyectoService proyectoService;
 
 
         public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
                                  IUsuarioService usuarioService, ITipoReporteMapper tipoReporteMapper,
                                  IEstadoProductoMapper estadoProductoMapper,
-                                 IPeriodoReferenciaMapper periodoReferenciaMapper, IProyectoMapper proyectoMapper,
-                                 ILineaTematicaMapper lineaTematicaMapper,
+                                 IProyectoMapper proyectoMapper,
                                  IInvestigadorExternoMapper investigadorExternoMapper,
-                                 IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper,
+                                 IInvestigadorMapper investigadorMapper,
                                  IPaisMapper paisMapper, IInvestigadorService investigadorService,
                                  ICoautorExternoReporteMapper coautorExternoReporteMapper,
-                                 ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService)
+                                 ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService,
+                                 IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -48,16 +46,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.reporteMapper = reporteMapper;
             this.tipoReporteMapper = tipoReporteMapper;
             this.estadoProductoMapper = estadoProductoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
-            this.institucionMapper = institucionMapper;
             this.paisMapper = paisMapper;
             this.investigadorService = investigadorService;
             this.coautorExternoReporteMapper = coautorExternoReporteMapper;
             this.coautorInternoReporteMapper = coautorInternoReporteMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -313,7 +309,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());

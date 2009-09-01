@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -16,14 +15,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IGeneroMapper generoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IMedioElectronicoMapper medioElectronicoMapper;
         readonly IMedioImpresoMapper medioImpresoMapper;
         readonly IPaisMapper paisMapper;
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly IParticipacionMedioService participacionMedioService;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService,
                                             IParticipacionMedioMapper participacionMedioMapper,
@@ -32,12 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                             IMedioImpresoMapper medioImpresoMapper,
                                             IMedioElectronicoMapper medioElectronicoMapper,
                                             IGeneroMapper generoMapper,
-                                            IPeriodoReferenciaMapper periodoReferenciaMapper,
                                             IProyectoMapper proyectoMapper,
-                                            ILineaTematicaMapper lineaTematicaMapper,
                                             IAmbitoMapper ambitoMapper,
                                             IPaisMapper paisMapper,
-                                            IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
+                                            IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
+                                            IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -46,12 +43,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.medioImpresoMapper = medioImpresoMapper;
             this.medioElectronicoMapper = medioElectronicoMapper;
             this.generoMapper = generoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -202,7 +198,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos());
             form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
             form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());

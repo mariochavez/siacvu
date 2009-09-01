@@ -12,15 +12,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
+        readonly IProyectoService proyectoService;
 
 
         public ResenaMapper(IRepository<Resena> repository, ICatalogoService catalogoService, 
-            ICoautorExternoResenaMapper coautorExternoResenaMapper, ICoautorInternoResenaMapper coautorInternoResenaMapper)
+                            ICoautorExternoResenaMapper coautorExternoResenaMapper, 
+                            ICoautorInternoResenaMapper coautorInternoResenaMapper,
+                            IProyectoService proyectoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
+            this.proyectoService = proyectoService;
         }
 
         protected override int GetIdFromMessage(ResenaForm message)
@@ -47,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Area = catalogoService.GetAreaById(message.Area);

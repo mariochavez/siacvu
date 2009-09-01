@@ -12,17 +12,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		readonly ICatalogoService catalogoService;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
+        readonly IProyectoService proyectoService;
 		
         public LibroMapper(IRepository<Libro> repository,
 		    ICatalogoService catalogoService,
             ICoautorExternoLibroMapper coautorExternoLibroMapper,
-            ICoautorInternoLibroMapper coautorInternoLibroMapper
+            ICoautorInternoLibroMapper coautorInternoLibroMapper,
+            IProyectoService proyectoService
 		) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
+            this.proyectoService = proyectoService;
         }		
 		
         protected override int GetIdFromMessage(LibroForm message)
@@ -47,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
 		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);

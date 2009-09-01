@@ -11,14 +11,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
 		readonly ICatalogoService catalogoService;
         readonly IInvestigadorService investigadorService;
+        readonly IProyectoService proyectoService;
 
 		public ParticipacionMapper(IRepository<Participacion> repository,
 		    ICatalogoService catalogoService,
-            IInvestigadorService investigadorService
+            IInvestigadorService investigadorService,
+            IProyectoService proyectoService
 		) : base(repository)
         {
 			this.catalogoService = catalogoService;
             this.investigadorService = investigadorService;
+		    this.proyectoService = proyectoService;
         }
 		
         protected override int GetIdFromMessage(ParticipacionForm message)
@@ -37,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.OtraParticipacion = catalogoService.GetOtraParticipacionById(message.OtraParticipacion);
 		    model.TipoPresentacion = catalogoService.GetTipoPresentacionById(message.TipoPresentacion);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+		    model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
             model.Autor = investigadorService.GetInvestigadorById(message.Autor);

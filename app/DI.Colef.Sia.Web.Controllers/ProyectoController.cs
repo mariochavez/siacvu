@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInvestigadorService investigadorService;
-
+        readonly ICoordinacionMapper coordinacionMapper;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
@@ -56,7 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IActividadPrevistaMapper actividadPrevistaMapper, IUSEGMapper uSEGMapper, IInstitucionMapper institucionMapper, 
                                   INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
-                                  ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService)
+                                  ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
+                                  ICoordinacionMapper coordinacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -90,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
+            this.coordinacionMapper = coordinacionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -215,6 +217,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<Proyecto>(x => x.Nombre, q);
+            return Content(data);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewResponsableInterno(int id)
         {
             var proyecto = proyectoService.GetProyectoById(id);
@@ -255,6 +264,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("AddResponsableInterno", responsableInternoProyectoForm);
         }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewResponsableExterno(int id)
         {
@@ -296,6 +306,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("AddResponsableExterno", responsableExternoProyectoForm);
         }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewParticipanteInterno(int id)
         {
@@ -337,6 +348,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("AddParticipanteInterno", participanteInternoProyectoForm);
         }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewParticipanteExterno(int id)
         {
@@ -394,65 +406,67 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.ParticipanteExternoProyecto = new ParticipanteExternoProyectoForm();
 
             //Lista de Catalogos Pendientes
+            form.Coordinaciones = coordinacionMapper.Map(catalogoService.GetActiveCoordinacions());
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
-            form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
+            //form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
             form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.ParticipantesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.ParticipantesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
+            //form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
-            form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
-            form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
-            form.Monedas = monedaMapper.Map(catalogoService.GetActiveMonedas());
-            form.SectoresFinanciamientos = sectorFinanciamientoMapper.Map(catalogoService.GetActiveSectorFinanciamientos());
-            form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
-            form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
-            form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUseg());
-            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles6 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            //form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
+            //form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            //form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
+            //form.Monedas = monedaMapper.Map(catalogoService.GetActiveMonedas());
+            //form.SectoresFinanciamientos = sectorFinanciamientoMapper.Map(catalogoService.GetActiveSectorFinanciamientos());
+            //form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
+            //form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
+            //form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());
+            //form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            //form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
+            //form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            //form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
+            //form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            //form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            //form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            //form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            //form.Niveles6 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            //form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+            //form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            //form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+            //form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
             return form;
         }
 
         private void FormSetCombos(ProyectoForm form)
         {
+            ViewData["Coordinacion"] = form.CoordinacionId;
             ViewData["TipoProyecto"] = form.TipoProyectoId;
-            ViewData["Convenio"] = form.ConvenioId;
-            ViewData["Sede"] = form.SedeId;
+            //ViewData["Convenio"] = form.ConvenioId;
+            //ViewData["Sede"] = form.SedeId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
-            ViewData["ImpactoPoliticaPublica"] = form.ImpactoPoliticaPublicaId;
-            ViewData["Ambito"] = form.AmbitoId;
-            ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
-            ViewData["Moneda"] = form.MonedaId;
-            ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
-            ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
-            ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
-            ViewData["USEG"] = form.USEGId;
-            ViewData["Institucion"] = form.InstitucionId;
-            ViewData["NivelEstudio"] = form.NivelEstudioId;
-            ViewData["Sector"] = form.SectorId;
-            ViewData["Organizacion"] = form.OrganizacionId;
-            ViewData["Nivel2"] = form.Nivel2Id;
-            ViewData["Nivel3"] = form.Nivel3Id;
-            ViewData["Nivel4"] = form.Nivel4Id;
-            ViewData["Nivel5"] = form.Nivel5Id;
-            ViewData["Nivel6"] = form.Nivel6Id;
-            ViewData["Departamento"] = form.DepartamentoId;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            //ViewData["ImpactoPoliticaPublica"] = form.ImpactoPoliticaPublicaId;
+            //ViewData["Ambito"] = form.AmbitoId;
+            //ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
+            //ViewData["Moneda"] = form.MonedaId;
+            //ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
+            //ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
+            //ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
+            //ViewData["USEG"] = form.USEGId;
+            //ViewData["Institucion"] = form.InstitucionId;
+            //ViewData["NivelEstudio"] = form.NivelEstudioId;
+            //ViewData["Sector"] = form.SectorId;
+            //ViewData["Organizacion"] = form.OrganizacionId;
+            //ViewData["Nivel2"] = form.Nivel2Id;
+            //ViewData["Nivel3"] = form.Nivel3Id;
+            //ViewData["Nivel4"] = form.Nivel4Id;
+            //ViewData["Nivel5"] = form.Nivel5Id;
+            //ViewData["Nivel6"] = form.Nivel6Id;
+            //ViewData["Departamento"] = form.DepartamentoId;
+            //ViewData["Area"] = form.AreaId;
+            //ViewData["Disciplina"] = form.DisciplinaId;
+            //ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

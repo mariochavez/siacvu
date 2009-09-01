@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual InvestigadorExterno InvestigadorExterno { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
+        //public virtual Institucion Institucion { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

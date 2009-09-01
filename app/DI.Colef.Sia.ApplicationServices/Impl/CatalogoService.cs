@@ -13,6 +13,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
+        readonly IRepository<SectorFinanciamiento> sectorFinanciamientoRepository;
+        readonly IRepository<ProductoAcademico> productoAcademicoRepository;
+        readonly IRepository<USEG> uSEGRepository;
+        readonly IRepository<Moneda> monedaRepository;
+        readonly IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository;
         readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
         readonly IRepository<Convenio> convenioRepository;
         readonly IRepository<TipoEstancia> tipoEstanciaRepository;
@@ -72,6 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<SubprogramaConacyt> subprogramaConacytRepository;
         readonly IRepository<Rama> ramaRepository;
         readonly IRepository<Clase> claseRepository;
+        readonly IRepository<Coordinacion> coordinacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -132,10 +139,23 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoApoyo> tipoApoyoRepository,
             IRepository<SubprogramaConacyt> subprogramaConacytRepository,
             IRepository<Rama> ramaRepository,
-            IRepository<Clase> claseRepository)
+            IRepository<SectorFinanciamiento> sectorFinanciamientoRepository,
+            IRepository<ProductoAcademico> productoAcademicoRepository,
+            IRepository<USEG> uSEGRepository,
+            IRepository<Moneda> monedaRepository,
+            IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository,
+            IRepository<ActividadPrevista> actividadPrevistaRepository,
+            IRepository<Clase> claseRepository,
+            IRepository<Coordinacion> coordinacionRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
+            this.actividadPrevistaRepository = actividadPrevistaRepository;
             this.cargoRepository = cargoRepository;
+            this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
+            this.monedaRepository = monedaRepository;
+            this.sectorFinanciamientoRepository = sectorFinanciamientoRepository;
+            this.productoAcademicoRepository = productoAcademicoRepository;
+            this.uSEGRepository = uSEGRepository;
             this.departamentoRepository = departamentoRepository;
             this.puestoRepository = puestoRepository;
             this.sedeRepository = sedeRepository;
@@ -194,6 +214,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.subprogramaConacytRepository = subprogramaConacytRepository;
             this.ramaRepository = ramaRepository;
             this.claseRepository = claseRepository;
+            this.coordinacionRepository = coordinacionRepository;
         }
 
         protected virtual ISession Session
@@ -1857,6 +1878,195 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             clase.ModificadoEl = DateTime.Now;
 
             claseRepository.SaveOrUpdate(clase);
+        }
+
+        public ImpactoPoliticaPublica GetImpactoPoliticaPublicaById(int id)
+        {
+            return impactoPoliticaPublicaRepository.Get(id);
+        }
+
+        public ImpactoPoliticaPublica[] GetAllImpactoPoliticaPublicas()
+        {
+            return ((List<ImpactoPoliticaPublica>)OrderCatalog<ImpactoPoliticaPublica>(x => x.Nombre)).ToArray();
+        }
+
+        public ImpactoPoliticaPublica[] GetActiveImpactoPoliticaPublicas()
+        {
+            return ((List<ImpactoPoliticaPublica>) OrderCatalog<ImpactoPoliticaPublica>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveImpactoPoliticaPublica(ImpactoPoliticaPublica impactoPoliticaPublica)
+        {
+            if (impactoPoliticaPublica.Id == 0)
+            {
+                impactoPoliticaPublica.Activo = true;
+                impactoPoliticaPublica.CreadorEl = DateTime.Now;
+            }
+            impactoPoliticaPublica.ModificadoEl = DateTime.Now;
+
+            impactoPoliticaPublicaRepository.SaveOrUpdate(impactoPoliticaPublica);
+        }
+
+        public Moneda GetMonedaById(int id)
+        {
+            return monedaRepository.Get(id);
+        }
+
+        public Moneda[] GetAllMonedas()
+        {
+            return ((List<Moneda>)OrderCatalog<Moneda>(x => x.Nombre)).ToArray();
+        }
+
+        public Moneda[] GetActiveMonedas()
+        {
+            return ((List<Moneda>) OrderCatalog<Moneda>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveMoneda(Moneda moneda)
+        {
+            if (moneda.Id == 0)
+            {
+                moneda.Activo = true;
+                moneda.CreadorEl = DateTime.Now;
+            }
+            moneda.ModificadoEl = DateTime.Now;
+
+            monedaRepository.SaveOrUpdate(moneda);
+        }
+
+        public SectorFinanciamiento GetSectorFinanciamientoById(int id)
+        {
+            return sectorFinanciamientoRepository.Get(id);
+        }
+
+        public SectorFinanciamiento[] GetAllSectorFinanciamientos()
+        {
+            return ((List<SectorFinanciamiento>)OrderCatalog<SectorFinanciamiento>(x => x.Nombre)).ToArray();
+        }
+
+        public SectorFinanciamiento[] GetActiveSectorFinanciamientos()
+        {
+            return ((List<SectorFinanciamiento>) OrderCatalog<SectorFinanciamiento>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveSectorFinanciamiento(SectorFinanciamiento sectorFinanciamiento)
+        {
+            if (sectorFinanciamiento.Id == 0)
+            {
+                sectorFinanciamiento.Activo = true;
+                sectorFinanciamiento.CreadorEl = DateTime.Now;
+            }
+            sectorFinanciamiento.ModificadoEl = DateTime.Now;
+
+            sectorFinanciamientoRepository.SaveOrUpdate(sectorFinanciamiento);
+        }
+
+        public ProductoAcademico GetProductoAcademicoById(int id)
+        {
+            return productoAcademicoRepository.Get(id);
+        }
+
+        public ProductoAcademico[] GetAllProductoAcademicos()
+        {
+            return ((List<ProductoAcademico>)OrderCatalog<ProductoAcademico>(x => x.Nombre)).ToArray();
+        }
+
+        public ProductoAcademico[] GetActiveProductoAcademicos()
+        {
+            return ((List<ProductoAcademico>) OrderCatalog<ProductoAcademico>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveProductoAcademico(ProductoAcademico productoAcademico)
+        {
+            if (productoAcademico.Id == 0)
+            {
+                productoAcademico.Activo = true;
+                productoAcademico.CreadorEl = DateTime.Now;
+            }
+            productoAcademico.ModificadoEl = DateTime.Now;
+
+            productoAcademicoRepository.SaveOrUpdate(productoAcademico);
+        }
+
+        public USEG GetUSEGById(int id)
+        {
+            return uSEGRepository.Get(id);
+        }
+
+        public USEG[] GetAllUSEGs()
+        {
+            return ((List<USEG>)OrderCatalog<USEG>(x => x.Nombre)).ToArray();
+        }
+
+        public USEG[] GetActiveUSEGs()
+        {
+            return ((List<USEG>) OrderCatalog<USEG>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveUSEG(USEG uSEG)
+        {
+            if (uSEG.Id == 0)
+            {
+                uSEG.Activo = true;
+                uSEG.CreadorEl = DateTime.Now;
+            }
+            uSEG.ModificadoEl = DateTime.Now;
+
+            uSEGRepository.SaveOrUpdate(uSEG);
+        }
+
+        public ActividadPrevista GetActividadPrevistaById(int id)
+        {
+            return actividadPrevistaRepository.Get(id);
+        }
+
+        public ActividadPrevista[] GetAllActividadPrevistas()
+        {
+            return ((List<ActividadPrevista>)OrderCatalog<ActividadPrevista>(x => x.Nombre)).ToArray();
+        }
+
+        public ActividadPrevista[] GetActiveActividadPrevistas()
+        {
+            return ((List<ActividadPrevista>) OrderCatalog<ActividadPrevista>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveActividadPrevista(ActividadPrevista actividadPrevista)
+        {
+            if (actividadPrevista.Id == 0)
+            {
+                actividadPrevista.Activo = true;
+                actividadPrevista.CreadorEl = DateTime.Now;
+            }
+            actividadPrevista.ModificadoEl = DateTime.Now;
+
+            actividadPrevistaRepository.SaveOrUpdate(actividadPrevista);
+        }
+
+        public Coordinacion GetCoordinacionById(int id)
+        {
+            return coordinacionRepository.Get(id);
+        }
+
+        public Coordinacion[] GetAllCoordinacions()
+        {
+            return ((List<Coordinacion>)OrderCatalog<Coordinacion>(x => x.Nombre)).ToArray();
+        }
+
+        public Coordinacion[] GetActiveCoordinacions()
+        {
+            return ((List<Coordinacion>) OrderCatalog<Coordinacion>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveCoordinacion(Coordinacion coordinacion)
+        {
+            if (coordinacion.Id == 0)
+            {
+                coordinacion.Activo = true;
+                coordinacion.CreadorEl = DateTime.Now;
+            }
+            coordinacion.ModificadoEl = DateTime.Now;
+
+            coordinacionRepository.SaveOrUpdate(coordinacion);
         }
     }
 }

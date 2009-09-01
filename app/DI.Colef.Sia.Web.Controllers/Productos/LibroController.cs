@@ -19,9 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILibroMapper libroMapper;
         readonly ITipoPublicacionMapper tipoPublicacionMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
@@ -33,6 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IProyectoService proyectoService;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper, 
@@ -55,8 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IDisciplinaMapper disciplinaMapper,
                                IInvestigadorService investigadorService,
                                ISubdisciplinaMapper subdisciplinaMapper,
-                               ISearchService searchService
-            )
+                               ISearchService searchService,
+                               IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -64,9 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.libroMapper = libroMapper;
             this.tipoPublicacionMapper = tipoPublicacionMapper;
             this.estadoProductoMapper = estadoProductoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.paisMapper = paisMapper;
             this.idiomaMapper = idiomaMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
@@ -79,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -332,7 +330,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());

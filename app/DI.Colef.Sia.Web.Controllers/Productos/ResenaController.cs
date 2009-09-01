@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IResenaService resenaService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoResenaMapper tipoResenaMapper;
-
+        readonly IProyectoService proyectoService;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
-                                ITipoResenaMapper tipoResenaMapper)
+                                ITipoResenaMapper tipoResenaMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -58,6 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.tipoResenaMapper = tipoResenaMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -314,7 +315,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
