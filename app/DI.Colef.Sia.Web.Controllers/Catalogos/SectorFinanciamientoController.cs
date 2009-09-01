@@ -13,8 +13,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly ICatalogoService catalogoService;
         readonly ISectorFinanciamientoMapper sectorFinanciamientoMapper;
 
-        public SectorFinanciamientoController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
-                                              ISectorFinanciamientoMapper sectorFinanciamientoMapper, ISearchService searchService) 
+        public SectorFinanciamientoController(IUsuarioService usuarioService,
+            ICatalogoService catalogoService, 
+            ISectorFinanciamientoMapper sectorFinanciamientoMapper,
+            ISearchService searchService) 
 			: base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -81,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSectorFinanciamiento(sectorFinanciamiento);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", sectorFinanciamiento.Nombre));
+            return RedirectToIndex(String.Format("Sector de financiamiento {0} ha sido creado", sectorFinanciamiento.Nombre));
         }
 
         [CustomTransaction]
@@ -99,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveSectorFinanciamiento(sectorFinanciamiento);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", sectorFinanciamiento.Nombre));
+            return RedirectToIndex(String.Format("Sector de financiamiento {0} ha sido modificado", sectorFinanciamiento.Nombre));
         }
 
         [CustomTransaction]

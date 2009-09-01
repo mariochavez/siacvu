@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<div id="pagina">
+<div id="Pagina">
 	<div id="cabecera">
 		<div id="titulo">
 			<h1><img alt="Colegio de la Frontera Norte" src="<%=ResolveUrl("~/Content/Images/colef-logo.gif") %>" /></h1>
@@ -114,7 +114,7 @@
 	
 	
 
-</div><!--end pagina-->
+</div><!--end Pagina-->
 
 </body>
 </html>

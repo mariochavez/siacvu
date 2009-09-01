@@ -19,7 +19,7 @@
             presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva formaci&oacute;n acad&eacute;mica</strong>.
         </p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ NuevaFormaci&oacute;n acad&eacute;mica")%></span>
+            <span><%=Html.ActionLink<FormacionAcademicaController>(x => x.New(), "+ Nueva formación académica")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>
@@ -42,12 +42,12 @@
     <% Html.RenderPartial("_Search"); %>
     
     <div id="lista">
-        <h4>Formaci&oacute;nes acad&eacute;micas</h4>
+        <h4>Formaciones acad&eacute;micas</h4>
         
          <% if(Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay formaci&oacute;nes acad&eacute;micas definidas</span></h5>
+					<h5><span>No hay formaciones acad&eacute;micas registradas</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->

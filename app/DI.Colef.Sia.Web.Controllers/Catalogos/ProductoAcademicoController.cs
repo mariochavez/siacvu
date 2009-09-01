@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveProductoAcademico(productoAcademico);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", productoAcademico.Nombre));
+            return RedirectToIndex(String.Format("Producto académico {0} ha sido creado", productoAcademico.Nombre));
         }
         
         [CustomTransaction]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveProductoAcademico(productoAcademico);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", productoAcademico.Nombre));
+            return RedirectToIndex(String.Format("Producto académico {0} ha sido modificado", productoAcademico.Nombre));
         }
         
         [CustomTransaction]

@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo impacto politica publica dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta un nuevo impacto de pol&iacute;tica p&uacute;blica dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

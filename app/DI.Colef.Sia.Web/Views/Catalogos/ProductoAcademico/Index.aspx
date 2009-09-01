@@ -12,13 +12,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Producto Academico</h3>
+        <h3>Agregar nuevo producto acad&eacute;mico</h3>
         <p>
-            Puede agregar un nuevo Producto Academico dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Producto Academico</strong>.
+            Puede agregar un nuevo producto acad&eacute;mico dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear producto acad&eacute;mico</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ProductoAcademicoController>(x => x.New(), "+ Crear Producto Academico") %></span>
+            <span><%=Html.ActionLink<ProductoAcademicoController>(x => x.New(), "+ Crear producto académico") %></span>
         </div>
     </div>
 </asp:Content>
@@ -27,7 +27,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Productos Academicos registrados en el sistema.</p>
+            <p>Lista de productos acad&eacute;micos registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -40,12 +40,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Productos Academicos</h4>
+		<h4>Productos acad&eacute;micos</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay productos academicos definidos</span></h5>
+					<h5><span>No hay productos acad&eacute;micos registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

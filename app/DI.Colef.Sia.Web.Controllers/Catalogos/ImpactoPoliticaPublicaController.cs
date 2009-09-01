@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveImpactoPoliticaPublica(impactoPoliticaPublica);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", impactoPoliticaPublica.Nombre));
+            return RedirectToIndex(String.Format("Impacto de política pública {0} ha sido creado", impactoPoliticaPublica.Nombre));
         }
         
         [CustomTransaction]
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveImpactoPoliticaPublica(impactoPoliticaPublica);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", impactoPoliticaPublica.Nombre));
+            return RedirectToIndex(String.Format("Impacto de política pública {0} ha sido modificado", impactoPoliticaPublica.Nombre));
         }
         
         [CustomTransaction]

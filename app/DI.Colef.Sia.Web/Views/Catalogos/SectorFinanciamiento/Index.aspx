@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Sector Financiamiento</h3>
+        <h3>Agregar nuevo sector de financiamiento</h3>
         <p>
-            Puede agregar un nuevo Sector Financiamiento dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Sector Financiamiento</strong>.
+            Puede agregar un nuevo sector de financiamiento dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear sector de financiamiento</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<SectorFinanciamientoController>(x => x.New(), "+ Crear Sector Financiamiento") %></span>
+            <span><%=Html.ActionLink<SectorFinanciamientoController>(x => x.New(), "+ Crear sector de financiamiento") %></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Sectores Financiamientos registrados en el sistema.</p>
+            <p>Lista de sectores de financiamiento registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,12 +39,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Sectores Financiamientos</h4>
+		<h4>Sectores de financiamiento</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay sectores financiamientos definidos</span></h5>
+					<h5><span>No hay sectores de financiamiento registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

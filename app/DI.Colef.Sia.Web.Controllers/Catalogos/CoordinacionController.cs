@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCoordinacion(coordinacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", coordinacion.Nombre));
+            return RedirectToIndex(String.Format("Coordinación {0} ha sido creada", coordinacion.Nombre));
         }
         
         [CustomTransaction]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             catalogoService.SaveCoordinacion(coordinacion);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", coordinacion.Nombre));
+            return RedirectToIndex(String.Format("Coordinación {0} ha sido modificada", coordinacion.Nombre));
         }
         
         [CustomTransaction]

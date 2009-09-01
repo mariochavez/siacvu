@@ -213,7 +213,7 @@
     <Content Include="Content\Images\medium-brown-button.png" />
     <Content Include="Content\Images\normal-brown-button.png" />
     <Content Include="Content\Images\normal-white-button.png" />
-    <Content Include="Content\Images\pagina-bg.gif" />
+    <Content Include="Content\Images\Pagina-bg.gif" />
     <Content Include="Content\Images\requerido-icon.gif" />
     <Content Include="Content\Images\select-requerido-icon.gif" />
     <Content Include="Content\Images\small-white-button.png" />
@@ -425,6 +425,11 @@
     <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\SectorFinanciamiento\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\SectorFinanciamiento\Edit.aspx" />
+    <Content Include="Views\Catalogos\SectorFinanciamiento\Index.aspx" />
+    <Content Include="Views\Catalogos\SectorFinanciamiento\New.aspx" />
+    <Content Include="Views\Catalogos\SectorFinanciamiento\_Form.ascx" />
     <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sector\Edit.aspx" />
     <Content Include="Views\Catalogos\Sector\Index.aspx" />

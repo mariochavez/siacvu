@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo useg dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta un nuevo USEG dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveUSEG(uSEG);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", uSEG.Nombre));
+            return RedirectToIndex(String.Format("USEG {0} ha sido creado", uSEG.Nombre));
         }
         
         [CustomTransaction]
@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveUSEG(uSEG);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", uSEG.Nombre));
+            return RedirectToIndex(String.Format("USEG {0} ha sido modificado", uSEG.Nombre));
         }
         
         [CustomTransaction]

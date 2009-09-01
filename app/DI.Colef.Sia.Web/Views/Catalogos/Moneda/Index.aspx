@@ -12,13 +12,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Moneda</h3>
+        <h3>Agregar nueva moneda</h3>
         <p>
-            Puede agregar un nuevo Moneda dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Moneda</strong>.
+            Puede agregar una nueva moneda dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear moneda</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<MonedaController>(x => x.New(), "+ Crear Moneda") %></span>
+            <span><%=Html.ActionLink<MonedaController>(x => x.New(), "+ Crear moneda") %></span>
         </div>
     </div>
 </asp:Content>
@@ -27,7 +27,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Monedas registrados en el sistema.</p>
+            <p>Lista de monedas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -45,7 +45,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay monedas definidos</span></h5>
+					<h5><span>No hay monedas registradas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

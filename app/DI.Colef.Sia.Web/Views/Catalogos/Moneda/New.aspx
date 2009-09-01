@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo moneda dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta una nueva moneda dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>
