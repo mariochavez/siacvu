@@ -902,7 +902,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoApoyo, TipoApoyoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-
             Mapper.CreateMap<ActividadPrevista, ActividadPrevistaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -921,7 +920,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<USEG, USEGForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-
             Mapper.CreateMap<Coordinacion, CoordinacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());

@@ -12,13 +12,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo Useg</h3>
+        <h3>Agregar nuevo USEG</h3>
         <p>
-            Puede agregar un nuevo Useg dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear Useg</strong>.
+            Puede agregar un nuevo USEG dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear USEG</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<USEGController>(x => x.New(), "+ Crear Useg") %></span>
+            <span><%=Html.ActionLink<USEGController>(x => x.New(), "+ Crear USEG")%></span>
         </div>
     </div>
 </asp:Content>
@@ -27,7 +27,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Usegs registrados en el sistema.</p>
+            <p>Lista de USEG registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -40,12 +40,12 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Usegs</h4>
+		<h4>USEG</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay usegs definidos</span></h5>
+					<h5><span>No hay USEG registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

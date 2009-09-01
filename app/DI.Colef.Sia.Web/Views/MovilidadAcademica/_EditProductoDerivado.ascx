@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="productoderivadoList">
-	<h5>Producto Derivado</h5>
+	<h5>Producto derivado</h5>
 	
 	<% if (Model.ProductoDerivadoMovilidadAcademicas != null && Model.ProductoDerivadoMovilidadAcademicas.Length > 0){%>
 	    <% foreach(var productoDerivado in Model.ProductoDerivadoMovilidadAcademicas){ %>

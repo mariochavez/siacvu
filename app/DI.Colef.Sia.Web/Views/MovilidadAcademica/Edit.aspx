@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la movilidad academica utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p>Para modificar la movilidad acad&eacute;mica utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -37,7 +37,7 @@
                 
                 <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
                 
-                <h4>Tipos actividades</h4>
+                <h4>Tipos de actividades</h4>
                 <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
             
                 <h4>Productos derivados</h4>

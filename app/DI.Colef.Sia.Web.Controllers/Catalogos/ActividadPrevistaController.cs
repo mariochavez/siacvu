@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveActividadPrevista(actividadPrevista);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", actividadPrevista.Nombre));
+            return RedirectToIndex(String.Format("Actividad prevista {0} ha sido creada", actividadPrevista.Nombre));
         }
         
         [CustomTransaction]
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveActividadPrevista(actividadPrevista);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", actividadPrevista.Nombre));
+            return RedirectToIndex(String.Format("Actividad prevista {0} ha sido modificada", actividadPrevista.Nombre));
         }
         
         [CustomTransaction]

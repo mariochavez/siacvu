@@ -6,7 +6,7 @@
 <p>
     <label>T&iacute;tulo</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 40 })%>
-    <span>(Debe de ser un nombre unico)</span>
+    <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>

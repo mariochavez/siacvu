@@ -27,7 +27,7 @@
 </head>
 
 <body class="body-sesion">
-<div id="pagina">
+<div id="Pagina">
 	<div id="seccion-sesion">
 
 	</div><!--end seccion-->
@@ -56,7 +56,7 @@
 	
 	
 
-</div><!--end pagina-->
+</div><!--end Pagina-->
 
 </body>
 </html>

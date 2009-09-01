@@ -2,26 +2,26 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Nivel Estudio</label>
+    <label>Nivel de estudio</label>
 
     <%=Html.DropDownList("NivelEstudio", Model.NivelesEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("NivelEstudio") %>
 </p>
 <p>
-    <label>N&uacute;mero C&eacute;dula</label>
+    <label>N&uacute;mero de c&eacute;dula</label>
 
     <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
 <p>
-    <label>T&iacute;tulo Grado</label>
+    <label>T&iacute;tulo de grado</label>
 
     <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloGrado")%>
 </p>
 <p>
-    <label>Fecha Obtenci&oacute;n</label>
+    <label>Fecha de obtenci&oacute;n</label>
  
     <%=Html.TextBox("FechaObtencion", Model.FechaObtencion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
@@ -35,13 +35,13 @@
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-    <label>T&iacute;tulo Tesis</label>
+    <label>T&iacute;tulo de tesis</label>
 
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>
 <p>
-    <label>L&iacute;nea Tem&aacute;tica</label>
+    <label>L&iacute;nea tem&aacute;tica</label>
     
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
         new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>

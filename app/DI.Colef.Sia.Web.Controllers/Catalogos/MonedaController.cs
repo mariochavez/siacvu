@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveMoneda(moneda);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", moneda.Nombre));
+            return RedirectToIndex(String.Format("Moneda {0} ha sido creada", moneda.Nombre));
         }
         
         [CustomTransaction]
@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             catalogoService.SaveMoneda(moneda);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", moneda.Nombre));
+            return RedirectToIndex(String.Format("Moneda {0} ha sido modificada", moneda.Nombre));
         }
         
         [CustomTransaction]

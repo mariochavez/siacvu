@@ -13,8 +13,8 @@
     <div id="subcontenido">
 	    <h3>Agregar nueva movilidad acad&eacute;mica</h3>
 		<p>
-		    Puede agregar una nueva movilidad acad&eacute;mica dentro de la lista de administraci&oacute;n 
-		    presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva movilidad acad&eacute;mica</strong>.
+		    Puede agregar una nueva movilidad acad&eacute;mica dentro de la lista de administraci&oacute;n de
+		    otros presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva movilidad acad&eacute;mica</strong>.
 		</p>
 			
 		<div class="botonzon">
@@ -43,12 +43,12 @@
     <% Html.RenderPartial("_Search"); %>
     
 	<div id="lista">
-	    <h4>Movilidad acad&eacute;mica</h4>
+	    <h4>Movilidades acad&eacute;micas</h4>
 	    
 	    <% if(Model.List == null || Model.List.Length == 0) { %>	        
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay movilidades acad&eacute;micas definidas</span></h5>
+					<h5><span>No hay movilidades acad&eacute;micas registradas</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
