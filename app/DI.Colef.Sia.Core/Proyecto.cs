@@ -35,6 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ParticipanteExternoProyectos.Add(participanteExternoProyecto);
         }
 
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
+
         public virtual TipoProyecto TipoProyecto { get; set; }
 
         public virtual string Nombre { get; set; }

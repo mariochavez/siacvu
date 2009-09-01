@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -98,6 +99,72 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             //    model.AddParticipante(participanteInternoProyectoMapper.Map(message.ParticipanteInternoProyecto));
             //if (message.ParticipanteExternoProyecto != null)model.AddParticipante(partic
             //ipanteExternoProyectoMapper.Map(message.ParticipanteExternoProyecto));
+        }
+
+        public Proyecto Map(ProyectoForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            if (model.IsTransient())
+            {
+                model.Usuario = usuario;
+                model.CreadorPor = usuario;
+            }
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public Proyecto Map(ProyectoForm message, Usuario usuario, string[] participantesExternos, string[] participantesInternos, string[] responsablesExternos, string[] responsablesInternos)
+        {
+            var model = Map(message, usuario);
+
+            foreach (var coautorId in participantesExternos)
+            {
+                var coautor =
+                    participanteExternoProyectoMapper.Map(new ParticipanteExternoProyectoForm { InvestigadorExternoId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddParticipanteExterno(coautor);
+            }
+
+            foreach (var coautorId in participantesInternos)
+            {
+                var coautor =
+                    participanteInternoProyectoMapper.Map(new ParticipanteInternoProyectoForm { InvestigadorId = int.Parse(coautorId) });
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddParticipanteInterno(coautor);
+            }
+
+            foreach (var responsableId in responsablesExternos)
+            {
+                var responsable =
+                    responsableExternoProyectoMapper.Map(new ResponsableExternoProyectoForm { InvestigadorExternoId = int.Parse(responsableId) });
+
+                responsable.CreadorPor = usuario;
+                responsable.ModificadoPor = usuario;
+
+                model.AddResponsableExterno(responsable);
+            }
+
+            foreach (var responsableId in responsablesInternos)
+            {
+                var responsable =
+                    responsableInternoProyectoMapper.Map(new ResponsableInternoProyectoForm { InvestigadorId = int.Parse(responsableId) });
+
+                responsable.CreadorPor = usuario;
+                responsable.ModificadoPor = usuario;
+
+                model.AddResponsableInterno(responsable);
+            }
+
+            return model;
         }
     }
 }

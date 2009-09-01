@@ -670,6 +670,11 @@ alter table Reportes  drop constraint FK26728BE174E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D776A829E09]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D776A829E09
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77B2AE3011]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D77B2AE3011
 
@@ -1965,6 +1970,16 @@ alter table Estados  drop constraint FKE112A3FE74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA85102A57]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
+alter table Coordinaciones  drop constraint FKE2EBCFEA85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA74E8BAB7]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
+alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C18FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
 alter table CoautorExternoReportes  drop constraint FK797B39C18FDBB774
 
@@ -2330,16 +2345,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA85102A57]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
-alter table Coordinaciones  drop constraint FKE2EBCFEA85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA74E8BAB7]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
-alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
-
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2530,6 +2535,8 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Estados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Estados
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Coordinaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Coordinaciones
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReportes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Articulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Articulos
@@ -2569,8 +2576,6 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Coordinaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Coordinaciones
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3051,6 +3056,7 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       UsuarioFk INT null,
        TipoProyectoFk INT null,
        LineaTematicaFk INT null,
        CoordinacionFk INT null,
@@ -3922,6 +3928,17 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
        primary key (Id)
     )
 
+    create table Coordinaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table CoautorExternoReportes (
         Id INT IDENTITY NOT NULL,
        CreadorEl DATETIME null,
@@ -4181,17 +4198,6 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
-       primary key (Id)
-    )
-
-    create table Coordinaciones (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
        primary key (Id)
     )
 

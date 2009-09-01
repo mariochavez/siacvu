@@ -105,12 +105,6 @@ insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Proyectos values('Proyecto 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 5',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into EstadoPaises values('EstadoPaises 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('EstadoPaises 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('EstadoPaises 3',GETDATE(), GETDATE(), 1, 1, 1);

@@ -1,27 +1,32 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>
+        <%=Html.Encode(Model.Title) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
-	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta un nuevo proyecto dentro del sistema.</p>
-	</div><!--end introduccion-->	
+    <div id="introduccion">
+        <p>
+            Para modificar el proyecto utilice los siguientes campos para realizar cambios dentro del sistema.
+		</p>
+    </div><!--end introduccion-->
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_NewSidebar"); %>
+            <% Html.RenderPartial("_EditSidebar"); %>
         </div><!--end asistente-->
+
     </div><!--end barra-->
 </asp:Content>
 
@@ -30,7 +35,7 @@
 
         <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
-            <% using (Html.BeginForm("Create", "Proyecto")){ %>
+            <% using (Html.BeginForm("Update", "Proyecto")){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -57,5 +62,4 @@
             setupDocument();
         });
     </script>
-
 </asp:Content>

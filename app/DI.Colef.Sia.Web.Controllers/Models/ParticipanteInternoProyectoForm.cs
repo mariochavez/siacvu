@@ -8,16 +8,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         //Espacio para Agregar Mapeos
         public int InvestigadorId { get; set; }
-        public string InvestigadorUsuarioPersonaNombre { get; set; }
-        public string InvestigadorUsuarioPersonaApellidoPaterno { get; set; }
-        public string InvestigadorUsuarioPersonaApellidoMaterno { get; set; }
+        public string InvestigadorUsuarioNombre { get; set; }
+        public string InvestigadorUsuarioApellidoPaterno { get; set; }
+        public string InvestigadorUsuarioApellidoMaterno { get; set; }
 
         public string NombreParticipante
         {
             get
             {
-                return string.Format("{0} {1} {2}", InvestigadorUsuarioPersonaApellidoPaterno,
-                                     InvestigadorUsuarioPersonaApellidoMaterno, InvestigadorUsuarioPersonaNombre);
+                return string.Format("{0} {1} {2}", InvestigadorUsuarioApellidoPaterno,
+                                     InvestigadorUsuarioApellidoMaterno, InvestigadorUsuarioNombre);
             }
         }
 

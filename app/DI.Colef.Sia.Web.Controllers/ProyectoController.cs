@@ -121,6 +121,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var proyecto = proyectoService.GetProyectoById(id);
 
+            if (proyecto == null)
+                return RedirectToIndex("no ha sido encontrado", true);
+            if (proyecto.Usuario.Id != CurrentUser().Id)
+                return RedirectToIndex("no lo puede modificar", true);
 
             var proyectoForm = proyectoMapper.Map(proyecto);
 
@@ -147,22 +151,41 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ProyectoForm form)
+        public ActionResult Create(ProyectoForm form, FormCollection formCollection)
         {
-            var proyecto = proyectoMapper.Map(form);
+            var participantesExternos = new string[] {};
+            var participantesInternos = new string[] {};
+            var responsablesExternos = new string[] {};
+            var responsablesInternos = new string[] {};
 
-            proyecto.CreadorPor = CurrentUser();
-            proyecto.ModificadoPor = CurrentUser();
+            if (formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"] != null &&
+                formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"].Split(',').Length > 0)
+                participantesExternos = formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["ParticipanteInternoProyecto.InvestigadorId_New"] != null &&
+                formCollection["ParticipanteInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
+                participantesInternos = formCollection["ParticipanteInternoProyecto.InvestigadorId_New"].Split(',');
+
+            if (formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"] != null &&
+                formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"].Split(',').Length > 0)
+                responsablesExternos = formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"].Split(',');
+
+            if (formCollection["ResponsableInternoProyecto.InvestigadorId_New"] != null &&
+                formCollection["ResponsableInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
+                responsablesInternos = formCollection["ResponsableInternoProyecto.InvestigadorId_New"].Split(',');
+
+            var proyecto = proyectoMapper.Map(form, CurrentUser(), participantesExternos, participantesInternos,
+                                              responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(proyecto, form, Title.New, "Proyecto"))
             {
-                ((GenericViewData<ProyectoForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<ProyectoForm>) ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
             }
 
             proyectoService.SaveProyecto(proyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "proyecto.Nombre"));
+            return RedirectToIndex(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
         }
 
         [CustomTransaction]
@@ -170,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ProyectoForm form)
         {
-            var proyecto = proyectoMapper.Map(form);
+            var proyecto = proyectoMapper.Map(form, CurrentUser());
 
             proyecto.ModificadoPor = CurrentUser();
 
@@ -185,7 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             proyectoService.SaveProyecto(proyecto);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "proyecto.Nombre"));
+            return RedirectToIndex(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
         }
 
         [CustomTransaction]
@@ -193,6 +216,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Activate(int id)
         {
             var proyecto = proyectoService.GetProyectoById(id);
+
+            if (proyecto.Usuario.Id != CurrentUser().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             proyecto.Activo = true;
             proyecto.ModificadoPor = CurrentUser();
             proyectoService.SaveProyecto(proyecto);
@@ -207,6 +234,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Deactivate(int id)
         {
             var proyecto = proyectoService.GetProyectoById(id);
+
+            if (proyecto.Usuario.Id != CurrentUser().Id)
+                return RedirectToIndex("no lo puede modificar", true);
+
             proyecto.Activo = false;
             proyecto.ModificadoPor = CurrentUser();
             proyectoService.SaveProyecto(proyecto);
