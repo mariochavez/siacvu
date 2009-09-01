@@ -737,9 +737,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Dependencia, DependenciaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<Proyecto, ProyectoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<EstadoPais, EstadoPaisForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());

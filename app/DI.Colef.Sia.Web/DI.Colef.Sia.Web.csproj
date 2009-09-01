@@ -752,6 +752,25 @@
     <Content Include="Views\Productos\TesisDirigida\_DatosTesis.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Proyecto\Activate.js.ascx" />
+    <Content Include="Views\Proyecto\AddParticipanteExterno.js.ascx" />
+    <Content Include="Views\Proyecto\AddParticipanteInterno.js.ascx" />
+    <Content Include="Views\Proyecto\AddResponsableExterno.js.ascx" />
+    <Content Include="Views\Proyecto\AddResponsableInterno.js.ascx" />
+    <Content Include="Views\Proyecto\Index.aspx" />
+    <Content Include="Views\Proyecto\New.aspx" />
+    <Content Include="Views\Proyecto\NewParticipanteExterno.js.ascx" />
+    <Content Include="Views\Proyecto\NewParticipanteInterno.js.ascx" />
+    <Content Include="Views\Proyecto\NewResponsableExterno.js.ascx" />
+    <Content Include="Views\Proyecto\NewResponsableInterno.js.ascx" />
+    <Content Include="Views\Proyecto\_EditParticipanteExterno.ascx" />
+    <Content Include="Views\Proyecto\_EditParticipanteInterno.ascx" />
+    <Content Include="Views\Proyecto\_EditResponsableExterno.ascx" />
+    <Content Include="Views\Proyecto\_EditResponsableInterno.ascx" />
+    <Content Include="Views\Proyecto\_NewParticipanteExterno.ascx" />
+    <Content Include="Views\Proyecto\_NewParticipanteInterno.ascx" />
+    <Content Include="Views\Proyecto\_NewResponsableExterno.ascx" />
+    <Content Include="Views\Proyecto\_NewResponsableInterno.ascx" />
     <Content Include="Views\Session\Index.aspx" />
     <Content Include="Views\Shared\Login.Master" />
   </ItemGroup>

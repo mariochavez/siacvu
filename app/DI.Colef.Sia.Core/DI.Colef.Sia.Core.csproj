@@ -150,6 +150,8 @@
     <Compile Include="Pais.cs" />
     <Compile Include="Participacion.cs" />
     <Compile Include="ParticipacionMedio.cs" />
+    <Compile Include="ParticipanteExternoProyecto.cs" />
+    <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="ProductoDerivado.cs" />
     <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
@@ -162,7 +164,9 @@
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
     <Compile Include="ResponsableExternoCapitulo.cs" />
+    <Compile Include="ResponsableExternoProyecto.cs" />
     <Compile Include="ResponsableInternoCapitulo.cs" />
+    <Compile Include="ResponsableInternoProyecto.cs" />
     <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">

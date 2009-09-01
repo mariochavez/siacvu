@@ -238,12 +238,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         OtraParticipacion[] GetActiveOtraParticipaciones();
         void SaveOtraParticipacion(OtraParticipacion otraParticipacion);
 
-        //Proyectos
-        Proyecto GetProyectoById(int id);
-        Proyecto[] GetAllProyectos();
-        Proyecto[] GetActiveProyectos();
-        void SaveProyecto(Proyecto proyecto);
-
         //Tipo Dictamen
         TipoDictamen GetTipoDictamenById(int id);
         TipoDictamen[] GetAllTipoDictamenes();

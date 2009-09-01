@@ -23,92 +23,20 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("GrupoInvestigacion", 3);
+	new EntityScaffoldingDetails("Proyecto", 3);
 
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
  */
  
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Usuario", "Usuario", "Usuario")
-);
- 
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreGrupoInvestigacion","string", null, "[NotNullNotEmpty]", true)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaCreacion","DateTime", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Sector", "Sector", "Sector")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel2", "Nivel2", "Nivel2")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel3", "Nivel3", "Nivel3")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel4", "Nivel4", "Nivel4")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel5", "Nivel5", "Nivel5")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel6", "Nivel6", "Nivel6")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Lider","bool", null)
+	new EntityProperty("TipoProyecto","TipoProyecto", "TipoProyecto")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Miembros","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Impacto","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("VinculacionSectorProductivo","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("VinculacionSectorSocial","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Colaboracion","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Administracion","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ProgramaRegistrado","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoApoyo","TipoApoyo", "TipoApoyo")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
@@ -120,62 +48,194 @@ entityScaffoldingDetails.EntityProperties.Add(
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave1", "string", null)
+	new EntityProperty("EstadoProyecto","int", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave2", "string", null)
+	new EntityProperty("ProyectoConvenio", "bool", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave3", "string", null)
+	new EntityProperty("Convenio","Convenio", "Convenio")
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("TituloTesis","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ResponsableInternoProyectos", "IList<ResponsableInternoProyecto>", "ResponsableInterno")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ResponsableExternoProyectos", "IList<ResponsableExternoProyecto>", "ResponsableExterno")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Pais","Pais", "Pais")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ParticipanteInternoProyectos", "IList<ParticipanteInternoProyecto>", "ParticipanteInterno")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ParticipanteExternoProyectos", "IList<ParticipanteExternoProyecto>", "ParticipanteExterno")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Ciudad","string", null)
-///);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Sede","Sede", "Sede")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Estatus","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Sector","Sector", "Sector")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ObjetivoGeneral", "string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Organizacion","Organizacion", "Organizacion")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ImpactoAcademico", "string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ImpactoPoliticaPublica", "ImpactoPoliticaPublica", "ImpactoPoliticaPublica")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("OtroImpacto", "string", null)
+);
 
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Ambito", "Ambito", "Ambito")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("UsuariosPotenciales", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("BeneficiariosProyecto", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoFinanciamiento", "TipoFinanciamiento", "TipoFinanciamiento")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Monto", "int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Moneda", "Moneda", "Moneda")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("SectorFinanciamiento", "SectorFinanciamiento", "SectorFinanciamiento")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ProductoEsperado", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEntregaCompromiso","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ActividadPrevista","ActividadPrevista", "ActividadPrevista")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEntregaProducto","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ServicioUSEG", "bool", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("USEG", "USEG", "USEG")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreEstudiante", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoEstudiante", "int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Institucion", "Institucion", "Institucion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NivelEstudio", "NivelEstudio", "NivelEstudio")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("IncluirWeb", "bool", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Entidad", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Sector", "Sector", "Sector")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nivel", "Nivel", "Nivel")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Departamento", "Departamento", "Departamento")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("OtraEmpresaInstitucionParticipante", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("BecarioParticipante", "string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Area","Area", "Area")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Disciplina","Disciplina", "Disciplina")
+);
+
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Subdisciplina","Subdisciplina", "Subdisciplina")
+);
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

@@ -57,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<MedioElectronico> medioElectronicoRepository;
         readonly IRepository<MedioImpreso> medioImpresoRepository;
         readonly IRepository<OtraParticipacion> otraParticipacionRepository;
-        readonly IRepository<Proyecto> proyectoRepository;
         readonly IRepository<TipoDictamen> tipoDictamenRepository;
         readonly IRepository<TipoDistincion> tipoDistincionRepository;
         readonly IRepository<TipoEvento> tipoEventoRepository;
@@ -118,7 +117,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<MedioElectronico> medioElectronicoRepository,
             IRepository<MedioImpreso> medioImpresoRepository,
             IRepository<OtraParticipacion> otraParticipacionRepository,
-            IRepository<Proyecto> proyectoRepository,
             IRepository<TipoDictamen> tipoDictamenRepository,
             IRepository<TipoDistincion> tipoDistincionRepository,
             IRepository<TipoEvento> tipoEventoRepository,
@@ -180,7 +178,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.medioElectronicoRepository = medioElectronicoRepository;
             this.medioImpresoRepository = medioImpresoRepository;
             this.otraParticipacionRepository = otraParticipacionRepository;
-            this.proyectoRepository = proyectoRepository;
             this.tipoDictamenRepository = tipoDictamenRepository;
             this.tipoDistincionRepository = tipoDistincionRepository;
             this.tipoEventoRepository = tipoEventoRepository;
@@ -1293,33 +1290,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             otraParticipacion.ModificadoEl = DateTime.Now;
 
             otraParticipacionRepository.SaveOrUpdate(otraParticipacion);
-        }
-
-        public Proyecto GetProyectoById(int id)
-        {
-            return proyectoRepository.Get(id);
-        }
-
-        public Proyecto[] GetAllProyectos()
-        {
-            return ((List<Proyecto>) OrderCatalog<Proyecto>(x => x.Nombre)).ToArray();
-        }
-
-        public Proyecto[] GetActiveProyectos()
-        {
-            return ((List<Proyecto>) OrderCatalog<Proyecto>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveProyecto(Proyecto proyecto)
-        {
-            if (proyecto.Id == 0)
-            {
-                proyecto.Activo = true;
-                proyecto.CreadorEl = DateTime.Now;
-            }
-            proyecto.ModificadoEl = DateTime.Now;
-
-            proyectoRepository.SaveOrUpdate(proyecto);
         }
 
         public TipoDictamen GetTipoDictamenById(int id)
