@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("ProductoAcademicoMovilidadAcademica", 2);
+	new EntityScaffoldingDetails("Catalogos.TipoParticipacionOrgano", 1);
 
 /*
  * Property names should be PascalCase.
@@ -31,13 +31,13 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  */ 
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
-//);
-
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
+	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
 );
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
+//);
 
 ///////////////////////////////////////////////////
 

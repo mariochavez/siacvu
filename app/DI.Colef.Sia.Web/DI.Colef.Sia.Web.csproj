@@ -510,6 +510,11 @@
     <Content Include="Views\Catalogos\TipoOrgano\Index.aspx" />
     <Content Include="Views\Catalogos\TipoOrgano\New.aspx" />
     <Content Include="Views\Catalogos\TipoOrgano\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\New.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Index.aspx" />

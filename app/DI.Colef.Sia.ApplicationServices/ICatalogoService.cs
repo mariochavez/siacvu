@@ -406,5 +406,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Coordinacion[] GetAllCoordinacions();
         Coordinacion[] GetActiveCoordinacions();
         void SaveCoordinacion(Coordinacion coordinacion);
+
+        //Tipo de Participacion en Organos
+        TipoParticipacionOrgano GetTipoParticipacionOrganoById(int id);
+        TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos();
+        TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos();
+        void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano);
     }
 }
