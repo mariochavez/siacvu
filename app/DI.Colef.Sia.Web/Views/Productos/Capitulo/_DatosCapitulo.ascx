@@ -47,3 +47,8 @@
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
+<p>
+    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
+    <%= Html.CheckBox("TieneProyectoInvestigacionReferencia", Model.TieneProyectoInvestigacionReferencia)%>
+    <%=Html.ValidationMessage("TieneProyectoInvestigacionReferencia")%>
+</p>

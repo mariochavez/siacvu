@@ -25,6 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Titulo = message.Titulo;
             model.Autor = message.Autor;
+            model.NombreAlumno = message.NombreAlumno;
+
             model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
 

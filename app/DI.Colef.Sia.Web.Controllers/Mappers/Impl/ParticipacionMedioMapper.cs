@@ -32,6 +32,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.Especificacion = message.Especificacion;
             model.Ciudad = message.Ciudad;
+            model.EspecificacionMedioElectronico = message.EspecificacionMedioElectronico;
+            model.EspecificacionMedioImpreso = message.EspecificacionMedioImpreso;
             model.Tema = message.Tema;
             model.NotaPeriodistica = message.NotaPeriodistica;
             model.PalabraClave1 = message.PalabraClave1;

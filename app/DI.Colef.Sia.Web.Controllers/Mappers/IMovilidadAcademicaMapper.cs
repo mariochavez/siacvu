@@ -7,6 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario);
         MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario,
-            string[] tiposActividad, string[] proyectos, string[] productoDerivados);
+            string[] tiposActividad, string[] proyectos, string[] productoDerivados,
+            string[] productoAcademicos);
     }
 }

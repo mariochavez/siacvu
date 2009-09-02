@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.Titulo = message.Titulo;
             model.Invitacion = message.Invitacion;
-            model.Lugar = message.Lugar;
+            model.Ciudad = message.Ciudad;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
@@ -48,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.TipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(message.TipoFinanciamiento);
+            model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
         public Evento Map(EventoForm message, Usuario usuario, PeriodoReferencia periodo)

@@ -6,7 +6,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nombre { get; set; }
         public string Titulo { get; set; }
         public bool Invitacion { get; set; }
-        public string Lugar { get; set; }
+        public string Ciudad { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
         public string PalabraClave1 { get; set; }
@@ -17,6 +17,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
+
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+
+        public int EstadoPais { get; set; }
+        public int EstadoPaisId { get; set; }
 
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
@@ -44,6 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public AmbitoForm[] Ambitos { get; set; }
+        public EstadoPaisForm[] EstadoPaises { get; set; }
+        public PaisForm[] Paises { get; set; }
         public TipoEventoForm[] TiposEventos { get; set; }
         public TipoParticipacionForm[] TiposParticipaciones { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }

@@ -158,6 +158,7 @@
     <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="ProductoAcademico.cs" />
+    <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
     <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />

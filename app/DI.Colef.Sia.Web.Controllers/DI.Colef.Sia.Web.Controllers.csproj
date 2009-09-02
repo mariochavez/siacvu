@@ -133,6 +133,7 @@
     <Compile Include="Mappers\Impl\ExperienciaProfesionalMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteInternoProyectoMapper.cs" />
+    <Compile Include="Mappers\Impl\ProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\ProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\RamaMapper.cs" />
     <Compile Include="Mappers\Impl\ResponsableExternoProyectoMapper.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\IParticipanteInternoProyectoMapper.cs" />
+    <Compile Include="Mappers\IProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\IProyectoMapper.cs" />
     <Compile Include="Mappers\IRamaMapper.cs" />
     <Compile Include="Mappers\IResponsableExternoProyectoMapper.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="Models\HomeForm.cs" />
     <Compile Include="Models\ParticipanteExternoProyectoForm.cs" />
     <Compile Include="Models\ParticipanteInternoProyectoForm.cs" />
+    <Compile Include="Models\ProductoAcademicoMovilidadAcademicaForm.cs" />
     <Compile Include="Models\ProyectoForm.cs" />
     <Compile Include="Models\RamaForm.cs" />
     <Compile Include="Models\ResponsableExternoProyectoForm.cs" />

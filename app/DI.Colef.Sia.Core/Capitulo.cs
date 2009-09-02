@@ -49,6 +49,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual DateTime FechaEdicion { get; set; }
 
+        public virtual bool TieneProyectoInvestigacionReferencia { get; set; }
+
         public virtual EstadoProducto EstadoProducto { get; set; }
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }

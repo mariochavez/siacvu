@@ -43,6 +43,9 @@
                 <h4>Productos derivados</h4>
                 <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
                 
+                <h4>Productos acad&eacute;micos</h4>
+                <% Html.RenderPartial("_EditProductoAcademico", Model.Form); %>
+                
                 <h4>Proyectos</h4>
                 <% Html.RenderPartial("_EditProyecto", Model.Form); %>
                 

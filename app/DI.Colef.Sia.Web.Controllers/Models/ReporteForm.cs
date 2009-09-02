@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-
+        public bool TieneProyecto { get; set; }
         public string Fecha { get; set; }
         public string FechaEdicion { get; set; }
         public string FechaAceptacion { get; set; }

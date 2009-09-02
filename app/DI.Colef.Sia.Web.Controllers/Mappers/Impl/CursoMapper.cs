@@ -32,7 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
-            model.Nivel = catalogoService.GetNivelById(message.Nivel);
+            model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
             model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
             model.Nivel4 = catalogoService.GetNivelById(message.Nivel4);

@@ -273,6 +273,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
+            Mapper.CreateMap<ProductoAcademicoMovilidadAcademica, ProductoAcademicoMovilidadAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<ProyectoMovilidadAcademica, ProyectoMovilidadAcademicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -380,6 +384,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
                            o => o.Ignore())
+                .ForMember(d => d.EstadoPais,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
                 .ForMember(d => d.TipoFinanciamiento,
                            o => o.Ignore());
 
@@ -468,7 +476,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.Nivel,
+                .ForMember(d => d.NivelEstudio,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
@@ -627,6 +635,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.FechaEvento,
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,
@@ -646,6 +656,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Area,
                            o => o.Ignore())
                 .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.NombreEvento,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());

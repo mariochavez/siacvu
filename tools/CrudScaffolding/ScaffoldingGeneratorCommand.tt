@@ -23,22 +23,27 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.Coordinacion", 1);
+	new EntityScaffoldingDetails("ProductoAcademicoMovilidadAcademica", 2);
 
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
- */
+ */ 
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+//);
+
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
 );
+
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

@@ -14,6 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Autor { get; set; }
 
+        public virtual string NombreAlumno { get; set; }
+
 		public virtual DateTime FechaGrado { get; set; }
 
         public virtual int Puntuacion { get; set; }

@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
+        public string EspecificacionMedioImpreso { get; set; }
+        public string EspecificacionMedioElectronico { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 

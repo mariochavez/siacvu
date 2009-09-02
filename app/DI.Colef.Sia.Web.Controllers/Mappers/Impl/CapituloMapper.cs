@@ -48,6 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Traductor = message.Traductor;
             model.NombreTraductor = message.NombreTraductor;
             model.Resumen = message.Resumen;
+            model.TieneProyectoInvestigacionReferencia = message.TieneProyectoInvestigacionReferencia;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();

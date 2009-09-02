@@ -31,6 +31,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
+        public virtual RevistaPublicacion NombreRevista { get; set; }
+
+        public virtual Institucion Institucion { get; set; }
+
+        public virtual Evento NombreEvento { get; set; }
+
 		public virtual EstadoProducto EstadoProducto { get; set; }
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
@@ -50,6 +56,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string ISBN { get; set; }
 
 		public virtual string Editorial { get; set; }
+
+        public virtual string Volumen { get; set; }
+
+        public virtual int Numero { get; set; }
+
+        public virtual DateTime FechaEvento { get; set; }
 
 		public virtual DateTime FechaEdicion { get; set; }
 
@@ -71,11 +83,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual IdentificadorLibro IdentificadorLibro { get; set; }
 
-		public virtual string PalabrasClave { get; set; }
+        public virtual string PalabraClave1 { get; set; }
 
-		public virtual string CoTraductor { get; set; }
+        public virtual string PalabraClave2 { get; set; }
 
-		public virtual string Traductor { get; set; }
+        public virtual string PalabraClave3 { get; set; }
+
+		public virtual bool Traductor { get; set; }
 
 		public virtual Area Area { get; set; }
 
