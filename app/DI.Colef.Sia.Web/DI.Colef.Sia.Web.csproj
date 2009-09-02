@@ -742,6 +742,10 @@
     <Content Include="Views\Productos\Resena\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Resena\_NewCoautorInterno.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
+    <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />
+    <Content Include="Views\Proyecto\NewRecursoFinanciero.js.ascx" />
+    <Content Include="Views\Proyecto\_EditRecursoFinanciero.ascx" />
     <Content Include="Views\Proyecto\Edit.aspx" />
     <Content Include="Views\Proyecto\_DatosProyecto.ascx" />
     <Content Include="Views\Rol\New.aspx" />

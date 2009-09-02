@@ -2345,6 +2345,31 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1964F7D1CD]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1964F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC196D764BC1]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC196D764BC1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1985102A57]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1985102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1974E8BAB7]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1974E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1970EA6C9E]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
+
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2576,6 +2601,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4201,6 +4228,21 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table RecursoFinancieroProyectos (
+        Id INT IDENTITY NOT NULL,
+       Recurso NVARCHAR(255) null,
+       Monto BIGINT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InstitucionFk INT null,
+       MonedaFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ProyectoFk INT null,
+       primary key (Id)
+    )
+
     alter table RevistaPublicaciones 
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
@@ -5300,4 +5342,19 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC1964F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC196D764BC1 
+        foreign key (MonedaFk) 
+        references Monedas
+
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC1970EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
 

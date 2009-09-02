@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInvestigadorService investigadorService;
         readonly ICoordinacionMapper coordinacionMapper;
+        readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
@@ -57,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
                                   ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
-                                  ICoordinacionMapper coordinacionMapper)
+                                  ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -92,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
             this.coordinacionMapper = coordinacionMapper;
+            this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -157,10 +159,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var participantesInternos = new string[] {};
             var responsablesExternos = new string[] {};
             var responsablesInternos = new string[] {};
+            var institucionRecursoFinanciero = new string[] {};
+            var monedaRecursoFinanciero = new string[] { };
+            var montoRecursoFinanciero = new string[] { };
+            var recursoRecursoFinanciero = new string[] { };
 
             if (formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"] != null &&
                 formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"].Split(',').Length > 0)
-                participantesExternos = formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"].Split(',');
+                participantesExternos =
+                    formCollection["ParticipanteExternoProyecto.InvestigadorExternoId_New"].Split(',');
 
             if (formCollection["ParticipanteInternoProyecto.InvestigadorId_New"] != null &&
                 formCollection["ParticipanteInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
@@ -174,8 +181,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 formCollection["ResponsableInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
                 responsablesInternos = formCollection["ResponsableInternoProyecto.InvestigadorId_New"].Split(',');
 
+            if (formCollection["RecursoFiancieroProyecto.InstitucionId_New"] != null &&
+                formCollection["RecursoFiancieroProyecto.InstitucionId_New"].Split(',').Length > 0)
+                institucionRecursoFinanciero = formCollection["RecursoFiancieroProyecto.InstitucionId_New"].Split(',');
+
+            if (formCollection["RecursoFiancieroProyecto.MonedaId_New"] != null &&
+                formCollection["RecursoFiancieroProyecto.MonedaId_New"].Split(',').Length > 0)
+                monedaRecursoFinanciero = formCollection["RecursoFiancieroProyecto.MonedaId_New"].Split(',');
+
+            if (formCollection["RecursoFiancieroProyecto.Monto_New"] != null &&
+                formCollection["RecursoFiancieroProyecto.Monto_New"].Split(',').Length > 0)
+                montoRecursoFinanciero = formCollection["Monto_New"].Split(',');
+
+            if (formCollection["RecursoFiancieroProyecto.Recurso_New"] != null &&
+                formCollection["RecursoFiancieroProyecto.Recurso_New"].Split(',').Length > 0)
+                recursoRecursoFinanciero = formCollection["RecursoFiancieroProyecto.Recurso_New"].Split(',');
+
             var proyecto = proyectoMapper.Map(form, CurrentUser(), participantesExternos, participantesInternos,
-                                              responsablesExternos, responsablesInternos);
+                                              responsablesExternos, responsablesInternos, institucionRecursoFinanciero,
+                                              monedaRecursoFinanciero, montoRecursoFinanciero, recursoRecursoFinanciero);
 
             if (!IsValidateModel(proyecto, form, Title.New, "Proyecto"))
             {
@@ -422,6 +446,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddParticipanteExterno", participanteExternoProyectoForm);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewRecursoFinanciero(int id)
+        {
+            var proyecto = proyectoService.GetProyectoById(id);
+            var form = new ProyectoForm();
+
+            if (proyecto != null)
+                form.Id = proyecto.Id;
+
+            form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
+            form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
+            form.Monedas = monedaMapper.Map(catalogoService.GetActiveMonedas());
+
+            return Rjs("NewRecursoFinanciero", form);
+        }
+
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddRecursoFinanciero([Bind(Prefix = "RecursoFinancieroProyecto")]RecursoFinancieroProyectoForm form, int proyectoId)
+        {
+            var recursoFinancieroProyecto = recursoFinancieroProyectoMapper.Map(form);
+
+            ModelState.AddModelErrors(recursoFinancieroProyecto.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            recursoFinancieroProyecto.CreadorPor = CurrentUser();
+            recursoFinancieroProyecto.ModificadoPor = CurrentUser();
+
+            if (proyectoId != 0)
+            {
+                var proyecto = proyectoService.GetProyectoById(proyectoId);
+                proyecto.AddRecursoFinanciero(recursoFinancieroProyecto);
+                proyectoService.SaveProyecto(proyecto);
+            }
+
+            var recursoFinancieroProyectoForm = recursoFinancieroProyectoMapper.Map(recursoFinancieroProyecto);
+
+            return Rjs("AddRecursoFinanciero", recursoFinancieroProyectoForm);
+        }
+
         ProyectoForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -435,17 +502,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.ResponsableExternoProyecto = new ResponsableExternoProyectoForm();
             form.ParticipanteInternoProyecto = new ParticipanteInternoProyectoForm();
             form.ParticipanteExternoProyecto = new ParticipanteExternoProyectoForm();
+            form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
 
             //Lista de Catalogos Pendientes
             form.Coordinaciones = coordinacionMapper.Map(catalogoService.GetActiveCoordinacions());
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
-            //form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
-            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.ParticipantesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.ParticipantesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            //form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            //form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
+            //form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            //form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            //form.ParticipantesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            //form.ParticipantesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            //form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
             //form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
             //form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             //form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());

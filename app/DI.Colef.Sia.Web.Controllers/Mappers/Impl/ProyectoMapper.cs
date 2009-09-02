@@ -14,12 +14,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IResponsableExternoProyectoMapper responsableExternoProyectoMapper;
         readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
         readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
+        readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
 
-        public ProyectoMapper(IRepository<Proyecto> repository, ICatalogoService catalogoService, 
-                              IResponsableInternoProyectoMapper responsableInternoProyectoMapper, 
-                              IResponsableExternoProyectoMapper responsableExternoProyectoMapper, 
-                              IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, 
-                              IParticipanteExternoProyectoMapper participanteExternoProyectoMapper)
+        public ProyectoMapper(IRepository<Proyecto> repository, ICatalogoService catalogoService,
+                              IResponsableInternoProyectoMapper responsableInternoProyectoMapper,
+                              IResponsableExternoProyectoMapper responsableExternoProyectoMapper,
+                              IParticipanteInternoProyectoMapper participanteInternoProyectoMapper,
+                              IParticipanteExternoProyectoMapper participanteExternoProyectoMapper,
+                              IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
@@ -27,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.responsableExternoProyectoMapper = responsableExternoProyectoMapper;
             this.participanteInternoProyectoMapper = participanteInternoProyectoMapper;
             this.participanteExternoProyectoMapper = participanteExternoProyectoMapper;
+            this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
         }
 
         protected override int GetIdFromMessage(ProyectoForm message)
@@ -90,15 +93,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             //model.Area = catalogoService.GetAreaById(message.Area);
             //model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             //model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            //if (message.ResponsableInternoProyecto != null)
-            //    model.AddResponsableInterno(responsableInternoProyectoMapper.Map(message.ResponsableInternoProyecto));
-            //if (message.ResponsableExternoProyecto != null)
-            //    model.AddResponsable(responsableExternoProyectoMapper.Map(message.ResponsableExternoProyecto));
-            //if (message.ParticipanteInternoProyecto != null)
-            //    model.AddParticipante(participanteInternoProyectoMapper.Map(message.ParticipanteInternoProyecto));
-            //if (message.ParticipanteExternoProyecto != null)model.AddParticipante(partic
-            //ipanteExternoProyectoMapper.Map(message.ParticipanteExternoProyecto));
         }
 
         public Proyecto Map(ProyectoForm message, Usuario usuario)
@@ -116,36 +110,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Proyecto Map(ProyectoForm message, Usuario usuario, string[] participantesExternos, string[] participantesInternos, string[] responsablesExternos, string[] responsablesInternos)
+        public Proyecto Map(ProyectoForm message, Usuario usuario, string[] participantesExternos, 
+            string[] participantesInternos, string[] responsablesExternos, string[] responsablesInternos, 
+            string[] institucionRecursoFinanciero, string[] monedaRecursoFinanciero, string[] montoRecursoFinanciero, 
+            string[] recursoRecursoFinanciero)
         {
             var model = Map(message, usuario);
 
-            foreach (var coautorId in participantesExternos)
+            foreach (var participanteId in participantesExternos)
             {
-                var coautor =
-                    participanteExternoProyectoMapper.Map(new ParticipanteExternoProyectoForm { InvestigadorExternoId = int.Parse(coautorId) });
+                var participante =
+                    participanteExternoProyectoMapper.Map(new ParticipanteExternoProyectoForm
+                                                              {InvestigadorExternoId = int.Parse(participanteId)});
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                participante.CreadorPor = usuario;
+                participante.ModificadoPor = usuario;
 
-                model.AddParticipanteExterno(coautor);
+                model.AddParticipanteExterno(participante);
             }
 
-            foreach (var coautorId in participantesInternos)
+            foreach (var participanteId in participantesInternos)
             {
-                var coautor =
-                    participanteInternoProyectoMapper.Map(new ParticipanteInternoProyectoForm { InvestigadorId = int.Parse(coautorId) });
+                var participante =
+                    participanteInternoProyectoMapper.Map(new ParticipanteInternoProyectoForm
+                                                              {InvestigadorId = int.Parse(participanteId)});
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                participante.CreadorPor = usuario;
+                participante.ModificadoPor = usuario;
 
-                model.AddParticipanteInterno(coautor);
+                model.AddParticipanteInterno(participante);
             }
 
             foreach (var responsableId in responsablesExternos)
             {
                 var responsable =
-                    responsableExternoProyectoMapper.Map(new ResponsableExternoProyectoForm { InvestigadorExternoId = int.Parse(responsableId) });
+                    responsableExternoProyectoMapper.Map(new ResponsableExternoProyectoForm
+                                                             {InvestigadorExternoId = int.Parse(responsableId)});
 
                 responsable.CreadorPor = usuario;
                 responsable.ModificadoPor = usuario;
@@ -156,12 +156,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var responsableId in responsablesInternos)
             {
                 var responsable =
-                    responsableInternoProyectoMapper.Map(new ResponsableInternoProyectoForm { InvestigadorId = int.Parse(responsableId) });
+                    responsableInternoProyectoMapper.Map(new ResponsableInternoProyectoForm
+                                                             {InvestigadorId = int.Parse(responsableId)});
 
                 responsable.CreadorPor = usuario;
                 responsable.ModificadoPor = usuario;
 
                 model.AddResponsableInterno(responsable);
+            }
+
+            for (var i = 0; i < institucionRecursoFinanciero.Length; i++)
+            {
+                var recurso = recursoFinancieroProyectoMapper.Map(new RecursoFinancieroProyectoForm
+                                                                      {
+                                                                          InstitucionId = int.Parse(institucionRecursoFinanciero[i]),
+                                                                          MonedaId = int.Parse(monedaRecursoFinanciero[i]),
+                                                                          Monto = long.Parse(montoRecursoFinanciero[i]),
+                                                                          Recurso = recursoRecursoFinanciero[i]
+                                                                      });
+                recurso.CreadorPor = usuario;
+                recurso.ModificadoPor = usuario;
+
+                model.AddRecursoFinanciero(recurso);
             }
 
             return model;

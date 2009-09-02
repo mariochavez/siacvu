@@ -47,7 +47,10 @@
                 
                 <h4>Responsables</h4>
 	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>        
+				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>  
+				
+				<h4>Recursos Financieros</h4>
+	            <% Html.RenderPartial("_EditRecursoFinanciero", Model.Form); %>     
                 
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar")%>

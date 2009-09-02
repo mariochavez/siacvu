@@ -125,16 +125,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ParticipanteExternoProyectoForm[] ParticipanteExternoProyectos { get; set; }
         public ParticipanteExternoProyectoForm ParticipanteExternoProyecto { get; set; }
 
+        public RecursoFinancieroProyectoForm[] RecursoFinancieroProyectos { get; set; }
+        public RecursoFinancieroProyectoForm RecursoFinancieroProyecto { get; set; }
+
         /* Catalogos */
         public CoordinacionForm[] Coordinaciones { get; set; }
         public TipoProyectoForm[] TiposProyectos { get; set; }
-        //public ConvenioForm[] Convenios { get; set; }
+        public LineaTematicaForm[] LineasTematicas { get; set; }
         public InvestigadorForm[] ResponsablesInternos { get; set; }
         public InvestigadorExternoForm[] ResponsablesExternos { get; set; }
         public InvestigadorForm[] ParticipantesInternos { get; set; }
         public InvestigadorExternoForm[] ParticipantesExternos { get; set; }
+        public MonedaForm[] Monedas { get; set; }
+        public InstitucionForm[] Instituciones { get; set; }
+        //public ConvenioForm[] Convenios { get; set; }
         //public SedeForm[] Sedes { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
         //public ImpactoPoliticaPublicaForm[] ImpactosPoliticasPublicas { get; set; }
         //public AmbitoForm[] Ambitos { get; set; }
         //public TipoFinanciamientoForm[] TiposFinanciamientos { get; set; }

@@ -195,6 +195,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<ParticipanteExternoProyecto, ParticipanteExternoProyectoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<RecursoFinancieroProyecto, RecursoFinancieroProyectoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Institucion,
+                           o => o.Ignore())
+                .ForMember(d => d.Moneda,
+                           o => o.Ignore());
         }
 
         private void CreateApoyoConacytMaps()

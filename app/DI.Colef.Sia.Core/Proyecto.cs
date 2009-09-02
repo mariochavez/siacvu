@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ResponsableExternoProyectos = new List<ResponsableExternoProyecto>();
             ParticipanteInternoProyectos = new List<ParticipanteInternoProyecto>();
             ParticipanteExternoProyectos = new List<ParticipanteExternoProyecto>();
+            RecursoFinancieroProyectos = new List<RecursoFinancieroProyecto>();
         }
 
         public virtual void AddResponsableInterno(ResponsableInternoProyecto responsableInternoProyecto)
@@ -33,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void AddParticipanteExterno(ParticipanteExternoProyecto participanteExternoProyecto)
         {
             ParticipanteExternoProyectos.Add(participanteExternoProyecto);
+        }
+
+        public virtual void AddRecursoFinanciero(RecursoFinancieroProyecto recursoFinancieroProyecto)
+        {
+            RecursoFinancieroProyectos.Add(recursoFinancieroProyecto);
         }
 
         [NotNull]
@@ -71,6 +77,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<ParticipanteInternoProyecto> ParticipanteInternoProyectos { get; private set; }
 
         public virtual IList<ParticipanteExternoProyecto> ParticipanteExternoProyectos { get; private set; }
+
+        public virtual IList<RecursoFinancieroProyecto> RecursoFinancieroProyectos { get; private set; }
 
         //public virtual Convenio Convenio { get; set; }
 
