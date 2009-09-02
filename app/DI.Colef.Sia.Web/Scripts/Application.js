@@ -116,12 +116,12 @@ var EnablePaginaInicialFinalOptions = {
 
 var LibroEnableOptions = {
     setup: function() {
-        $(':checkbox').change(LibroEnableOptions.enableProyectos);
+        $('#TieneProyecto').change(LibroEnableOptions.enableProyectos);
         $('#forma').unload(LibroEnableOptions.enableProyectos());
     },
     enableProyectos: function() {
 
-        var active = $('input:checked').length;
+        var active = $('#TieneProyecto:checked').length;
 
         if (active == 1) {
             $('#SelectProyecto_p').slideDown('slow', function() {

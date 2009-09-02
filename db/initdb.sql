@@ -2214,6 +2214,12 @@ insert into SubprogramaConacyts values('Repatriación / Consolidación', GETDATE()
 insert into SubprogramaConacyts values('Fondo Ciencia Basica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo Mixto', GETDATE(), GETDATE(), 1, 1, 1)
 
+insert into TipoParticipacionOrganos values('Miembro',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Asesor',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Evaluador',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1)
+
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
 INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,1,1)
