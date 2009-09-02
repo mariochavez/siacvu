@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoOrgano = catalogoService.GetTipoOrganoById(message.TipoOrgano);
-            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
+            model.TipoParticipacion = catalogoService.GetTipoParticipacionOrganoById(message.TipoParticipacion);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Nivel = catalogoService.GetNivelById(message.Nivel);
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);

@@ -47,17 +47,13 @@ insert into Monedas values('Moneda 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Monedas values('Moneda 4',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Monedas values('Moneda 5',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into ProductoAcademicos values('ProductoAcademico 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('ProductoAcademico 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('ProductoAcademico 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('ProductoAcademico 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('ProductoAcademico 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Coordinación de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Capitulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into ProductoDerivados values('Producto Derivado 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into SectorFinanciamientos values('SectorFinanciamiento 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SectorFinanciamientos values('SectorFinanciamiento 2',GETDATE(), GETDATE(), 1, 1, 1);

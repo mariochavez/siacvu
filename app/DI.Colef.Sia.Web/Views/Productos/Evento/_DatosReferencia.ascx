@@ -8,9 +8,21 @@
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-    <label>Lugar</label>
-	<%=Html.TextBox("Lugar", Model.Lugar, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("Lugar")%>
+    <label>Ciudad</label>
+	<%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("Ciudad")%>
+</p>
+<p>
+    <label>Estado del pa&iacute;s</label>
+	<%=Html.DropDownList("EstadoPais", Model.EstadoPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+	<%=Html.ValidationMessage("EstadoPais")%>
+</p>
+<p>
+    <label>Pa&iacute;s</label>
+	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+	<%=Html.ValidationMessage("Pais")%>
 </p>
 <p>
     <label>Fecha inicial</label>

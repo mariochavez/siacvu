@@ -510,6 +510,11 @@
     <Content Include="Views\Catalogos\TipoOrgano\Index.aspx" />
     <Content Include="Views\Catalogos\TipoOrgano\New.aspx" />
     <Content Include="Views\Catalogos\TipoOrgano\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\New.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacionOrgano\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoParticipacion\Index.aspx" />
@@ -559,6 +564,10 @@
     <Content Include="Views\ExperienciaProfesional\Index.aspx" />
     <Content Include="Views\ExperienciaProfesional\New.aspx" />
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
+    <Content Include="Views\MovilidadAcademica\AddProductoAcademico.js.ascx" />
+    <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />
+    <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />
+    <Content Include="Views\MovilidadAcademica\_NewProductoAcademico.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />

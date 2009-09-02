@@ -43,3 +43,13 @@
 				"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Convenio") %>
 </p>
+<p>
+    <label>Adscripci&oacute;n</label>
+    <%=Html.TextBox("Adscripcion", Model.Adscripcion, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Adscripcion")%>
+</p>
+<p>
+    <label>Adscripci&oacute;n f&iacute;sica</label>
+    <%=Html.TextBox("AdscripcionFisica", Model.AdscripcionFisica, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("AdscripcionFisica")%>
+</p>

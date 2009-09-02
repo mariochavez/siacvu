@@ -11,7 +11,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaginaFinal { get; set; }
         public string FechaEdicion { get; set; }
         public int Participantes { get; set; }
-        public string PalabrasClaves { get; set; }
+        public string PalabraClave1 { get; set; }
+        public string PalabraClave2 { get; set; }
+        public string PalabraClave3 { get; set; }
+        public bool TieneProyectoInvestigacionReferencia { get; set; }
         public int Puntuacion { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

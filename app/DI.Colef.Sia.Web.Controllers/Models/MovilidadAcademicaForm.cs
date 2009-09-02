@@ -7,6 +7,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaFinal { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+        public string AdscripcionFisica { get; set; }
+        public string Adscripcion { get; set; }
 
         //Espacio para Agregar Mapeos
         public int TipoEstancia { get; set; }
@@ -27,10 +29,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public TipoActividadMovilidadAcademicaForm[] TipoActividadMovilidadAcademicas { get; set; }
         public ProductoDerivadoMovilidadAcademicaForm[] ProductoDerivadoMovilidadAcademicas { get; set; }
+        public ProductoAcademicoMovilidadAcademicaForm[] ProductoAcademicoMovilidadAcademicas { get; set; }
         public ProyectoMovilidadAcademicaForm[] ProyectoMovilidadAcademicas { get; set; }
 
         public TipoActividadMovilidadAcademicaForm TipoActividadMovilidadAcademica { get; set; }
         public ProductoDerivadoMovilidadAcademicaForm ProductoDerivadoMovilidadAcademica { get; set; }
+        public ProductoAcademicoMovilidadAcademicaForm ProductoAcademicoMovilidadAcademica { get; set; }
         public ProyectoMovilidadAcademicaForm ProyectoMovilidadAcademica { get; set; }
 
         /* Catalogos */
@@ -39,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ConvenioForm[] Convenios { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
         public ProductoDerivadoForm[] ProductosDerivados { get; set; }
+        public ProductoAcademicoForm[] ProductosAcademicos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
     }
 }

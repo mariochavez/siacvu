@@ -29,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoOrganoForm[] TiposOrganos { get; set; }
-        public TipoParticipacionForm[] TiposParticipaciones { get; set; }
+        public TipoParticipacionOrganoForm[] TiposParticipaciones { get; set; }
         public SectorForm[] Sectores { get; set; }
         public NivelForm[] Niveles { get; set; }
         public AmbitoForm[] Ambitos { get; set; }

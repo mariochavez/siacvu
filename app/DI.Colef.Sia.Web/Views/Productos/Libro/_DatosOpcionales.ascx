@@ -8,18 +8,23 @@
     <%=Html.ValidationMessage("IdentificadorLibro") %>
 </p>
 <p>
-    <label>Palabras Clave</label>
-    <%=Html.TextBox("PalabrasClave", Model.PalabrasClave, new { @class = "input250", maxlength = 100 })%>
-    <%=Html.ValidationMessage("PalabrasClave")%>
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave1")%>
 </p>
 <p>
-    <label>Co-Traductor</label>
-    <%=Html.TextBox("CoTraductor", Model.CoTraductor, new { @class = "input250", maxlength = 100 })%>
-    <%=Html.ValidationMessage("CoTraductor")%>
+	<label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave2")%>
 </p>
 <p>
-    <label>Traductor</label>
-    <%=Html.TextBox("Traductor", Model.Traductor, new { @class = "input250", maxlength = 100 })%>
+	<label>Palabra clave 3</label>
+    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave3")%>
+</p>
+<p>
+    <label>Traductor/Co-Traductor</label>
+    <%= Html.CheckBox("Traductor", Model.Traductor)%>
     <%=Html.ValidationMessage("Traductor")%>
 </p>
 <p>

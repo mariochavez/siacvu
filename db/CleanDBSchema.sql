@@ -190,6 +190,31 @@ alter table TipoInstituciones  drop constraint FK77542E174E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1964F7D1CD]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1964F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC196D764BC1]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC196D764BC1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1985102A57]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1985102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1974E8BAB7]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1974E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1970EA6C9E]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869085102A57]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
 alter table ProgramaEstudios  drop constraint FK51F4869085102A57
 
@@ -315,6 +340,16 @@ alter table TipoProyectos  drop constraint FK1E50E26A74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8D3DF01085102A57]') AND parent_object_id = OBJECT_ID('TipoParticipacionOrganos'))
+alter table TipoParticipacionOrganos  drop constraint FK8D3DF01085102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8D3DF01074E8BAB7]') AND parent_object_id = OBJECT_ID('TipoParticipacionOrganos'))
+alter table TipoParticipacionOrganos  drop constraint FK8D3DF01074E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
 alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
 
@@ -332,6 +367,21 @@ alter table Libros  drop constraint FK439120E76A829E09
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7D6323CFC]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E7D6323CFC
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E798280B8C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E798280B8C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E764F7D1CD]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E764F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76167F35C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E76167F35C
 
 
 
@@ -815,8 +865,8 @@ alter table OrganoExternos  drop constraint FK55BF0AAE803FA562
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE2261429F]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE2261429F
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAEA7267F9B]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAEA7267F9B
 
 
 
@@ -1132,6 +1182,16 @@ alter table Eventos  drop constraint FK9DD523432261429F
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234364F7D1CD]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD5234364F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343C0410E89]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD52343C0410E89
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523437A8488F7]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD523437A8488F7
 
 
 
@@ -1510,8 +1570,8 @@ alter table Cursos  drop constraint FK8E38D63E64F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E7DBF823E]') AND parent_object_id = OBJECT_ID('Cursos'))
-alter table Cursos  drop constraint FK8E38D63E7DBF823E
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E2BAFDC96]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E2BAFDC96
 
 
 
@@ -2120,6 +2180,26 @@ alter table ProductoDerivadoMovilidadAcademicas  drop constraint FK56549E482C7CB
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK760FDB42A88B331A]') AND parent_object_id = OBJECT_ID('ProductoAcademicoMovilidadAcademicas'))
+alter table ProductoAcademicoMovilidadAcademicas  drop constraint FK760FDB42A88B331A
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK760FDB4285102A57]') AND parent_object_id = OBJECT_ID('ProductoAcademicoMovilidadAcademicas'))
+alter table ProductoAcademicoMovilidadAcademicas  drop constraint FK760FDB4285102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK760FDB4274E8BAB7]') AND parent_object_id = OBJECT_ID('ProductoAcademicoMovilidadAcademicas'))
+alter table ProductoAcademicoMovilidadAcademicas  drop constraint FK760FDB4274E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK760FDB422C7CB987]') AND parent_object_id = OBJECT_ID('ProductoAcademicoMovilidadAcademicas'))
+alter table ProductoAcademicoMovilidadAcademicas  drop constraint FK760FDB422C7CB987
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF062672785102A57]') AND parent_object_id = OBJECT_ID('LineaInvestigaciones'))
 alter table LineaInvestigaciones  drop constraint FKF062672785102A57
 
@@ -2345,31 +2425,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1964F7D1CD]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1964F7D1CD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC196D764BC1]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC196D764BC1
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1985102A57]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1985102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1974E8BAB7]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1974E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1970EA6C9E]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
-
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2392,6 +2447,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
+
     if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProductoAcademicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProductoAcademicos
@@ -2405,6 +2462,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReportes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionOrganos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
 
@@ -2568,6 +2627,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProductoDerivadoMovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProductoDerivadoMovilidadAcademicas
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'ProductoAcademicoMovilidadAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProductoAcademicoMovilidadAcademicas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'LineaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table LineaInvestigaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Investigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Investigadores
@@ -2601,8 +2662,6 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -2751,6 +2810,21 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        primary key (Id)
     )
 
+    create table RecursoFinancieroProyectos (
+        Id INT IDENTITY NOT NULL,
+       Recurso NVARCHAR(255) null,
+       Monto BIGINT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InstitucionFk INT null,
+       MonedaFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       ProyectoFk INT null,
+       primary key (Id)
+    )
+
     create table ProgramaEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2842,6 +2916,17 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        primary key (Id)
     )
 
+    create table TipoParticipacionOrganos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table InvestigadorExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2862,18 +2947,25 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        Nombre NVARCHAR(255) null,
        ISBN NVARCHAR(255) null,
        Editorial NVARCHAR(255) null,
+       Volumen NVARCHAR(255) null,
+       Numero INT null,
+       FechaEvento DATETIME null,
        FechaEdicion DATETIME null,
        NoPaginas INT null,
        Tiraje NVARCHAR(255) null,
-       PalabrasClave NVARCHAR(255) null,
-       CoTraductor NVARCHAR(255) null,
-       Traductor NVARCHAR(255) null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
+       Traductor BIT null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
        TipoPublicacionFk INT null,
+       NombreRevistaFk INT null,
+       InstitucionFk INT null,
+       NombreEventoFk INT null,
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
@@ -3006,6 +3098,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
 
     create table Resenas (
         Id INT IDENTITY NOT NULL,
+       TieneProyecto BIT null,
        FechaAceptacion DATETIME null,
        FechaEdicion DATETIME null,
        ReferenciaBibliograficaLibro NVARCHAR(255) null,
@@ -3042,6 +3135,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         Id INT IDENTITY NOT NULL,
        FechaAceptacion DATETIME null,
        Titulo NVARCHAR(255) null,
+       TieneProyecto BIT null,
        FechaEdicion DATETIME null,
        Editorial NVARCHAR(255) null,
        NoPaginas INT null,
@@ -3370,7 +3464,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        Nombre NVARCHAR(255) null,
        Titulo NVARCHAR(255) null,
        Invitacion BIT null,
-       Lugar NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        PalabraClave1 NVARCHAR(255) null,
@@ -3383,6 +3477,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        TipoEventoFk INT null,
        TipoParticipacionFk INT null,
        InstitucionFk INT null,
+       EstadoPaisFk INT null,
+       PaisFk INT null,
        LineaTematicaFk INT null,
        PeriodoReferenciaFk INT null,
        TipoFinanciamientoFk INT null,
@@ -3592,6 +3688,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        Titulo NVARCHAR(255) null,
        FechaConclusion DATETIME null,
        Autor NVARCHAR(255) null,
+       NombreAlumno NVARCHAR(255) null,
        FechaGrado DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
@@ -3662,7 +3759,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        PeriodoReferenciaFk INT null,
        ProgramaEstudioFk INT null,
        InstitucionFk INT null,
-       NivelFk INT null,
+       NivelEstudioFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
        Nivel2Fk INT null,
@@ -3718,6 +3815,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        Titulo NVARCHAR(255) null,
        Puntuacion INT null,
        Nombre NVARCHAR(255) null,
+       EspecificacionMedioImpreso NVARCHAR(255) null,
+       EspecificacionMedioElectronico NVARCHAR(255) null,
        Especificacion NVARCHAR(255) null,
        Tema NVARCHAR(255) null,
        FechaDifusion DATETIME null,
@@ -3782,6 +3881,7 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        NombreCapitulo NVARCHAR(255) null,
        FechaAceptacion DATETIME null,
        FechaEdicion DATETIME null,
+       TieneProyectoInvestigacionReferencia BIT null,
        NombreLibro NVARCHAR(255) null,
        Editorial NVARCHAR(255) null,
        NoPaginas INT null,
@@ -3863,6 +3963,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         Id INT IDENTITY NOT NULL,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
+       Adscripcion NVARCHAR(255) null,
+       AdscripcionFisica NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3984,11 +4086,14 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        Titulo NVARCHAR(255) null,
        Volumen NVARCHAR(255) null,
        Numero INT null,
+       TieneProyectoInvestigacionReferencia BIT null,
        PaginaInicial INT null,
        PaginaFinal INT null,
        FechaEdicion DATETIME null,
        Participantes INT null,
-       PalabrasClaves NVARCHAR(255) null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4021,6 +4126,18 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        ModificadoEl DATETIME null,
        Activo BIT null,
        ProductoDerivadoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       MovilidadAcademicaFk INT null,
+       primary key (Id)
+    )
+
+    create table ProductoAcademicoMovilidadAcademicas (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       ProductoAcademicoFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        MovilidadAcademicaFk INT null,
@@ -4228,21 +4345,6 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
        primary key (Id)
     )
 
-    create table RecursoFinancieroProyectos (
-        Id INT IDENTITY NOT NULL,
-       Recurso NVARCHAR(255) null,
-       Monto BIGINT null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InstitucionFk INT null,
-       MonedaFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ProyectoFk INT null,
-       primary key (Id)
-    )
-
     alter table RevistaPublicaciones 
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
@@ -4318,6 +4420,21 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         foreign key (CapituloFk) 
         references Capitulos
 
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC1964F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC196D764BC1 
+        foreign key (MonedaFk) 
+        references Monedas
+
+    alter table RecursoFinancieroProyectos 
+        add constraint FKC15ABC1970EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
     alter table Participaciones 
         add constraint FK56CA0A1B748E7AD9 
         foreign key (AutorFk) 
@@ -4372,6 +4489,21 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         add constraint FK439120E7D6323CFC 
         foreign key (TipoPublicacionFk) 
         references TipoPublicaciones
+
+    alter table Libros 
+        add constraint FK439120E798280B8C 
+        foreign key (NombreRevistaFk) 
+        references RevistaPublicaciones
+
+    alter table Libros 
+        add constraint FK439120E764F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Libros 
+        add constraint FK439120E76167F35C 
+        foreign key (NombreEventoFk) 
+        references Eventos
 
     alter table Libros 
         add constraint FK439120E74B54D394 
@@ -4639,9 +4771,9 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         references TipoOrganos
 
     alter table OrganoExternos 
-        add constraint FK55BF0AAE2261429F 
+        add constraint FK55BF0AAEA7267F9B 
         foreign key (TipoParticipacionFk) 
-        references TipoParticipaciones
+        references TipoParticipacionOrganos
 
     alter table OrganoExternos 
         add constraint FK55BF0AAE3E082BED 
@@ -4814,6 +4946,16 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         references Instituciones
 
     alter table Eventos 
+        add constraint FK9DD52343C0410E89 
+        foreign key (EstadoPaisFk) 
+        references EstadoPaises
+
+    alter table Eventos 
+        add constraint FK9DD523437A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Eventos 
         add constraint FK9DD523431EDC2D3B 
         foreign key (LineaTematicaFk) 
         references LineaTematicas
@@ -4959,9 +5101,9 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         references Instituciones
 
     alter table Cursos 
-        add constraint FK8E38D63E7DBF823E 
-        foreign key (NivelFk) 
-        references Niveles
+        add constraint FK8E38D63E2BAFDC96 
+        foreign key (NivelEstudioFk) 
+        references NivelEstudios
 
     alter table Cursos 
         add constraint FK8E38D63E3E082BED 
@@ -5293,6 +5435,16 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         foreign key (MovilidadAcademicaFk) 
         references MovilidadAcademicas
 
+    alter table ProductoAcademicoMovilidadAcademicas 
+        add constraint FK760FDB42A88B331A 
+        foreign key (ProductoAcademicoFk) 
+        references ProductoAcademicos
+
+    alter table ProductoAcademicoMovilidadAcademicas 
+        add constraint FK760FDB422C7CB987 
+        foreign key (MovilidadAcademicaFk) 
+        references MovilidadAcademicas
+
     alter table EstadoInvestigadores 
         add constraint FK667DBFD9C6BB3B45 
         foreign key (EstadoFk) 
@@ -5342,19 +5494,4 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table RecursoFinancieroProyectos 
-        add constraint FKC15ABC1964F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table RecursoFinancieroProyectos 
-        add constraint FKC15ABC196D764BC1 
-        foreign key (MonedaFk) 
-        references Monedas
-
-    alter table RecursoFinancieroProyectos 
-        add constraint FKC15ABC1970EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
 

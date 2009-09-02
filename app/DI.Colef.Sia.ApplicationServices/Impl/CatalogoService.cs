@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
         readonly IRepository<SectorFinanciamiento> sectorFinanciamientoRepository;
         readonly IRepository<ProductoAcademico> productoAcademicoRepository;
@@ -146,11 +147,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository,
             IRepository<ActividadPrevista> actividadPrevistaRepository,
             IRepository<Clase> claseRepository,
+            IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
             IRepository<Coordinacion> coordinacionRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
             this.cargoRepository = cargoRepository;
+            this.tipoParticipacionOrganoRepository = tipoParticipacionOrganoRepository;
             this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
             this.monedaRepository = monedaRepository;
             this.sectorFinanciamientoRepository = sectorFinanciamientoRepository;
@@ -2067,6 +2070,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             coordinacion.ModificadoEl = DateTime.Now;
 
             coordinacionRepository.SaveOrUpdate(coordinacion);
+        }
+
+        public TipoParticipacionOrgano GetTipoParticipacionOrganoById(int id)
+        {
+            return tipoParticipacionOrganoRepository.Get(id);
+        }
+
+        public TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos()
+        {
+            return ((List<TipoParticipacionOrgano>)OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
+        }
+
+        public TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos()
+        {
+            return ((List<TipoParticipacionOrgano>)tipoParticipacionOrganoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano)
+        {
+            if (tipoParticipacionOrgano.Id == 0)
+            {
+                tipoParticipacionOrgano.Activo = true;
+                tipoParticipacionOrgano.CreadorEl = DateTime.Now;
+            }
+            tipoParticipacionOrgano.ModificadoEl = DateTime.Now;
+
+            tipoParticipacionOrganoRepository.SaveOrUpdate(tipoParticipacionOrgano);
         }
     }
 }

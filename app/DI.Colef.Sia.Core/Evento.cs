@@ -44,7 +44,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Institucion Institucion { get; set; }
 
-        public virtual string Lugar { get; set; }
+        public virtual string Ciudad { get; set; }
+
+        public virtual EstadoPais EstadoPais { get; set; }
+
+        public virtual Pais Pais { get; set; }
 
         public virtual LineaTematica LineaTematica { get; set; }
 

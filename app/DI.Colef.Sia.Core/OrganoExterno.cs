@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoOrgano TipoOrgano { get; set; }
 
-        public virtual TipoParticipacion TipoParticipacion { get; set; }
+        public virtual TipoParticipacionOrgano TipoParticipacion { get; set; }
 
         public virtual Sector Sector { get; set; }
 

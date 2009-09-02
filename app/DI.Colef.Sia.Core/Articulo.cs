@@ -52,6 +52,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Numero { get; set; }
 
+        public virtual bool TieneProyectoInvestigacionReferencia { get; set; }
+
         public virtual int PaginaInicial { get; set; }
 
         public virtual int PaginaFinal { get; set; }
@@ -80,7 +82,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Participantes { get; set; }
 
-        public virtual string PalabrasClaves { get; set; }
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
         public virtual Area Area { get; set; }
 

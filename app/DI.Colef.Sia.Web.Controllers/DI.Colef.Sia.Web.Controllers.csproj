@@ -109,6 +109,7 @@
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
     <Compile Include="Catalogos\TipoInstitucionController.cs" />
+    <Compile Include="Catalogos\TipoParticipacionOrganoController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Mappers\Impl\ExperienciaProfesionalMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteInternoProyectoMapper.cs" />
+    <Compile Include="Mappers\Impl\ProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\ProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\RamaMapper.cs" />
     <Compile Include="Mappers\Impl\RecursoFinancieroProyectoMapper.cs" />
@@ -140,9 +142,11 @@
     <Compile Include="Mappers\Impl\ResponsableInternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\SubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\Impl\TipoApoyoMapper.cs" />
+    <Compile Include="Mappers\Impl\TipoParticipacionOrganoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\IParticipanteInternoProyectoMapper.cs" />
+    <Compile Include="Mappers\IProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\IProyectoMapper.cs" />
     <Compile Include="Mappers\IRamaMapper.cs" />
     <Compile Include="Mappers\IRecursoFinancieroProyectoMapper.cs" />
@@ -157,6 +161,7 @@
     <Compile Include="Mappers\ISectorFinanciamientoMapper.cs" />
     <Compile Include="Mappers\ISubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\ITipoApoyoMapper.cs" />
+    <Compile Include="Mappers\ITipoParticipacionOrganoMapper.cs" />
     <Compile Include="Mappers\ITipoResenaMapper.cs" />
     <Compile Include="Mappers\IUSEGMapper.cs" />
     <Compile Include="Models\ActividadPrevistaForm.cs" />
@@ -168,6 +173,7 @@
     <Compile Include="Models\HomeForm.cs" />
     <Compile Include="Models\ParticipanteExternoProyectoForm.cs" />
     <Compile Include="Models\ParticipanteInternoProyectoForm.cs" />
+    <Compile Include="Models\ProductoAcademicoMovilidadAcademicaForm.cs" />
     <Compile Include="Models\ProyectoForm.cs" />
     <Compile Include="Models\RamaForm.cs" />
     <Compile Include="Models\RecursoFinancieroProyectoForm.cs" />
@@ -179,6 +185,7 @@
     <Compile Include="Models\SectorFinanciamientoForm.cs" />
     <Compile Include="Models\SubprogramaConacytForm.cs" />
     <Compile Include="Models\TipoApoyoForm.cs" />
+    <Compile Include="Models\TipoParticipacionOrganoForm.cs" />
     <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Models\USEGForm.cs" />
     <Compile Include="Productos\LibroController.cs" />

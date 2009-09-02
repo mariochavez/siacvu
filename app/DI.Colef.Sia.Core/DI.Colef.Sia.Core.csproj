@@ -158,6 +158,7 @@
     <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="ProductoAcademico.cs" />
+    <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
     <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
+    <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />

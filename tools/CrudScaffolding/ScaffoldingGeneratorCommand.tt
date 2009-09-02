@@ -23,12 +23,16 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
+<<<<<<< HEAD:tools/CrudScaffolding/ScaffoldingGeneratorCommand.tt
 	new EntityScaffoldingDetails("RecursoFinancieroProyecto", 2);
+=======
+	new EntityScaffoldingDetails("Catalogos.TipoParticipacionOrgano", 1);
+>>>>>>> 3a218bbe3ba4e901550bffedcb26c2dde58151fb:tools/CrudScaffolding/ScaffoldingGeneratorCommand.tt
 
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
- */
+ */ 
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
@@ -46,11 +50,16 @@ entityScaffoldingDetails.EntityProperties.Add(
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Moneda","Moneda", "Moneda")
 );
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
+//);
+
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

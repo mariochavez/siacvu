@@ -22,8 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Organizacion { get; set; }
         public int OrganizacionId { get; set; }
 
-        public int Nivel { get; set; }
-        public int NivelId { get; set; }
+        public int NivelEstudio { get; set; }
+        public int NivelEstudioId { get; set; }
 
         public int Nivel2 { get; set; }
         public int Nivel2Id { get; set; }
@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public SectorForm[] Sectores { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }
-        public NivelForm[] Niveles { get; set; }
+        public NivelEstudioForm[] NivelEstudios { get; set; }
         public NivelForm[] Niveles2 { get; set; }
         public NivelForm[] Niveles3 { get; set; }
         public NivelForm[] Niveles4 { get; set; }

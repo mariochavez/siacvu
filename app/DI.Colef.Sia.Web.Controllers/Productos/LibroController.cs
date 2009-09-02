@@ -32,9 +32,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IProyectoService proyectoService;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IEventoMapper eventoMapper;
+        readonly IEventoService eventoService;
 
         public LibroController(ILibroService libroService, 
-                               ILibroMapper libroMapper, 
+                               ILibroMapper libroMapper,
+                               IInstitucionMapper institucionMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
                                ITipoPublicacionMapper tipoPublicacionMapper,
@@ -55,6 +60,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IInvestigadorService investigadorService,
                                ISubdisciplinaMapper subdisciplinaMapper,
                                ISearchService searchService,
+                               IRevistaPublicacionMapper revistaPublicacionMapper,
+                               IEventoMapper eventoMapper,
+                               IEventoService eventoService,
                                IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -77,6 +85,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.proyectoService = proyectoService;
+
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.eventoMapper = eventoMapper;
+            this.eventoService = eventoService;
+            this.institucionMapper = institucionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -328,6 +341,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorExternoLibro = new CoautorExternoLibroForm();
             form.CoautorInternoLibro = new CoautorInternoLibroForm();
 
+            form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
@@ -356,6 +370,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["NombreEvento"] = form.NombreEventoId;
         }
     }
 }

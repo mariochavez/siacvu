@@ -63,3 +63,8 @@
     <label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
+<p>
+    <label>Nombre del alumno</label>
+    <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("NombreAlumno")%>
+</p>
