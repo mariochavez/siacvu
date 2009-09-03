@@ -1,31 +1,56 @@
-DOT_NET_PATH = "C:/Windows/Microsoft.NET/Framework/v3.5/"
-NUNIT_PATH = "tools//nunit-2.4.6//nunit-console.exe"
-PACKAGE_PATH = "build"
+COMPILE_TARGET = "debug"
+CLR_VERSION = "v3.5"
 SOLUTION = "DI.Colef.Sia.sln"
-CONFIG = "Debug"
+OUTPUT = "app/DI.Colef.Sia.Web"
 
+require "BuildLibs/BuildUtils.rb"
+require 'rubygems'
+require 'fileutils'
+
+include FileUtils
+
+props = { :archive => "build" }
 task :default => ["build:all"]
  
 namespace :build do
   
-  task :all => [:compile, :harvest, :test]
+  task :all => [:clean, :compile, :harvest]
   
-  desc "Use MSBuild to build the solution: '#{SOLUTION}'"
-  task :compile do
-    sh "#{DOT_NET_PATH}msbuild.exe /p:Configuration=#{CONFIG} #{SOLUTION}"
+  desc "Prepares the working directory for a new build"
+  task :clean do
+    #TODO: do any other tasks required to clean/prepare the working directory
+    Dir.mkdir props[:archive] unless Dir.exists?(props[:archive])
   end
   
-  desc "Harvest build outputs to: '#{pwd}\\#{PACKAGE_PATH}'"
-  task :harvest => [:compile] do
-    require 'build/scripts/file_handling.rb'
-    package_files
+  desc "Use MSBuild to build the solution"
+  task :compile => [:clean] do
+    MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => SOLUTION, :clrversion => CLR_VERSION
+    
+    
+  end
+  
+  desc "Harvest build outputs to: '#{pwd}\\#{OUTPUT}'"
+  task :harvest do
+    cp_r "#{OUTPUT}/bin", props[:archive]
+    cp_r "#{OUTPUT}/Content", props[:archive]
+    cp_r "#{OUTPUT}/Views", props[:archive]
+    cp_r "#{OUTPUT}/Scripts", props[:archive]
+    
+    copy("#{OUTPUT}/Default.aspx", props[:archive])
+    copy("#{OUTPUT}/Global.asax", props[:archive])
+    copy("#{OUTPUT}/NHvalidator.config", props[:archive])
+    copy("#{OUTPUT}/Web.config", props[:archive])
+    
+    copy("db/CleanDBSchema.sql", props[:archive])
+    copy("db/initdb.sql", props[:archive])
+    
   end
  
-  desc "Executes class specifications (BDD)"
-  task :test => [:harvest] do
-    specs = Dir.glob(File.join("#{PACKAGE_PATH}", "*.Specs.dll")).join " "
-    xml_file = File.join(PACKAGE_PATH, "nunit-test-report.xml")
-    sh "#{NUNIT_PATH} #{specs} /nologo /xml=#{xml_file}"
-  end
+  #desc "Executes class specifications (BDD)"
+  #task :test => [:harvest] do
+  #  specs = Dir.glob(File.join("#{PACKAGE_PATH}", "*.Specs.dll")).join " "
+  #  xml_file = File.join(PACKAGE_PATH, "nunit-test-report.xml")
+  #  sh "#{NUNIT_PATH} #{specs} /nologo /xml=#{xml_file}"
+  #end
   
 end
