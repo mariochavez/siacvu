@@ -30,14 +30,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
+        [NotNull]
         public virtual TipoArticulo TipoArticulo { get; set; }
 
         public virtual Idioma Idioma { get; set; }
 
+        [NotNull]
         public virtual EstadoProducto EstadoProducto { get; set; }
 
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
+        [NotEmptyDate]
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual LineaTematica LineaTematica { get; set; }
@@ -46,6 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
+        [NotNull]
         public virtual Pais Pais { get; set; }
 
         public virtual string Volumen { get; set; }

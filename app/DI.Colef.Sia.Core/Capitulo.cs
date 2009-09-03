@@ -39,18 +39,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
+        [NotNull]
 		public virtual TipoCapitulo TipoCapitulo { get; set; }
 
         [DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string NombreCapitulo { get; set; }
 
+        [NotEmptyDate]
 		public virtual DateTime FechaAceptacion { get; set; }
 
 		public virtual DateTime FechaEdicion { get; set; }
 
         public virtual bool TieneProyectoInvestigacionReferencia { get; set; }
 
+        [NotNull]
         public virtual EstadoProducto EstadoProducto { get; set; }
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }

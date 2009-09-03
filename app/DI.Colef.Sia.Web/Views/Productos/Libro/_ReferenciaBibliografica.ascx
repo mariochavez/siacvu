@@ -8,7 +8,7 @@
 </p>
 <p>
     <label>ISBN</label>
-    <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("ISBN")%>
 </p>
 <p>
@@ -18,7 +18,7 @@
 </p>
 <p>
     <label>Fecha de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
@@ -35,22 +35,22 @@
 </p>
 <p>
     <label>Tiraje</label>
-    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Tiraje")%>
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Tiraje, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Tiraje")%>
 </p>
 <p>
     <label>Fecha del evento</label>
-    <%=Html.TextBox("FechaEvento", Model.Tiraje, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("FechaEvento", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("FechaEvento")%>
 </p>
 <p>

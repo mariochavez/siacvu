@@ -47,12 +47,12 @@
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>

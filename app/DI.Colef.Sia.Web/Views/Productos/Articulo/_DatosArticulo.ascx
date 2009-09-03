@@ -32,7 +32,7 @@
 <p>
     <label>Proyecto de referencia</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...")%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>

@@ -96,10 +96,11 @@ insert into TipoPublicaciones values('Coordinación de memoria',GETDATE(), GETDAT
 insert into TipoPublicaciones values('Reedición de libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Autorización',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
-insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into EstadoPaises values('EstadoPaises 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('EstadoPaises 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -684,7 +685,6 @@ insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoCapitulos values('Capitulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoCapitulos values('Capitulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoCapitulos values('Capitulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
@@ -692,7 +692,6 @@ insert into FormaParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1
 
 insert into TipoParticipantes values('Persona Fisica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipantes values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
-
 
 insert into InvestigadorExternos values('Acevedo Gladys', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Aceves Calderón Patricia', null, null, GETDATE(), GETDATE(), 1, 1, 1)

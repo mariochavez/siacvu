@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Fecha de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
@@ -44,7 +44,7 @@
 <p>
     <label>Proyecto de referencia</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...")%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
