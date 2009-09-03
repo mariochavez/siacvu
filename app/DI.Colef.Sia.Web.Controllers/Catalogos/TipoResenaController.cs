@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoResenaForm form)
@@ -87,7 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Tipo de Reseña {0} ha sido creada", tipoResena.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoResenaForm form)
@@ -105,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Tipo de Reseña {0} ha sido modificada", tipoResena.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -119,7 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

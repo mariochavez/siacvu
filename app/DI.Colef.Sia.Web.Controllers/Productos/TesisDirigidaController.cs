@@ -105,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisDirigidaForm form)
@@ -123,7 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", tesisDirigida.Titulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
@@ -143,7 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", tesisDirigida.Titulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -161,7 +161,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

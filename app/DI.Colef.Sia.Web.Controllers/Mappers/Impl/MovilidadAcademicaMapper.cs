@@ -13,17 +13,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper;
         readonly IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper;
         readonly IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper;
+        readonly IProductoAcademicoMovilidadAcademicaMapper productoAcademicoMovilidadAcademicaMapper;
 
         public MovilidadAcademicaMapper(IRepository<MovilidadAcademica> repository, ICatalogoService catalogoService, 
             ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper, 
             IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper, 
-            IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper)
+            IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper,
+            IProductoAcademicoMovilidadAcademicaMapper productoAcademicoMovilidadAcademicaMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.tipoActividadMovilidadAcademicaMapper = tipoActividadMovilidadAcademicaMapper;
             this.productoDerivadoMovilidadAcademicaMapper = productoDerivadoMovilidadAcademicaMapper;
             this.proyectoMovilidadAcademicaMapper = proyectoMovilidadAcademicaMapper;
+            this.productoAcademicoMovilidadAcademicaMapper = productoAcademicoMovilidadAcademicaMapper;
         }
 
         protected override int GetIdFromMessage(MovilidadAcademicaForm message)
@@ -33,6 +36,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(MovilidadAcademicaForm message, MovilidadAcademica model)
         {
+            model.Adscripcion = message.Adscripcion;
+            model.AdscripcionFisica = message.AdscripcionFisica;
+
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
@@ -59,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public MovilidadAcademica Map(MovilidadAcademicaForm message, Usuario usuario,
-            string[] tiposActividad, string[] proyectos, string[] productoDerivados)
+            string[] tiposActividad, string[] proyectos, string[] productoDerivados, string[] productoAcademicos)
         {
             var model = Map(message, usuario);
 
@@ -94,6 +100,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 producto.ModificadoPor = usuario;
 
                 model.AddProductoDerivado(producto);
+            }
+
+            foreach (var productoAcaId in productoAcademicos)
+            {
+                var productoAca =
+                    productoAcademicoMovilidadAcademicaMapper.Map(new ProductoAcademicoMovilidadAcademicaForm { ProductoAcademicoId = int.Parse(productoAcaId) });
+
+                productoAca.CreadorPor = usuario;
+                productoAca.ModificadoPor = usuario;
+
+                model.AddProductoAcademico(productoAca);
             }
 
             return model;

@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DistincionForm form)
@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Distinción {0} ha sido creada", distincion.Descripcion));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DistincionForm form)
@@ -133,7 +133,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Distinción {0} ha sido modificada", distincion.Descripcion));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

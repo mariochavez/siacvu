@@ -19,10 +19,10 @@
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>
-	<label>Nivel</label>
-	<%=Html.DropDownList("Nivel", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
+	<label>Nivel de Estudio</label>
+	<%=Html.DropDownList("NivelEstudio", Model.NivelEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Nivel") %>
+	<%=Html.ValidationMessage("NivelEstudio")%>
 </p>
 <p>
 	<label>N&uacute;mero de horas</label>

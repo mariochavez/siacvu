@@ -53,7 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
 	    [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(RolForm form)
@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("{0} ha sido creado", rol.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(RolForm form)
@@ -88,7 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("{0} ha sido modificado", rol.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -102,7 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

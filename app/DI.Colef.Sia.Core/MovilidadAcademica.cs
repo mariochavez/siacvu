@@ -12,19 +12,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             TipoActividadMovilidadAcademicas = new List<TipoActividadMovilidadAcademica>();
             ProductoDerivadoMovilidadAcademicas = new List<ProductoDerivadoMovilidadAcademica>();
             ProyectoMovilidadAcademicas = new List<ProyectoMovilidadAcademica>();
+            ProductoAcademicoMovilidadAcademicas = new List<ProductoAcademicoMovilidadAcademica>();
         }
 
         public virtual void AddTipoActividad(TipoActividadMovilidadAcademica tipoActividadMovilidadAcademica)
         {
             TipoActividadMovilidadAcademicas.Add(tipoActividadMovilidadAcademica);
         }
+
         public virtual void AddProductoDerivado(ProductoDerivadoMovilidadAcademica productoDerivadoMovilidadAcademica)
         {
             ProductoDerivadoMovilidadAcademicas.Add(productoDerivadoMovilidadAcademica);
         }
+
         public virtual void AddProyecto(ProyectoMovilidadAcademica proyectoMovilidadAcademica)
         {
             ProyectoMovilidadAcademicas.Add(proyectoMovilidadAcademica);
+        }
+
+        public virtual void AddProductoAcademico(ProductoAcademicoMovilidadAcademica productoAcademicoMovilidadAcademica)
+        {
+            ProductoAcademicoMovilidadAcademicas.Add(productoAcademicoMovilidadAcademica);
         }
 
         public virtual TipoEstancia TipoEstancia { get; set; }
@@ -42,6 +50,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Convenio Convenio { get; set; }
 
+        public virtual string Adscripcion { get; set; }
+
+        public virtual string AdscripcionFisica { get; set; }
+
         [Valid]
         public virtual IList<TipoActividadMovilidadAcademica> TipoActividadMovilidadAcademicas { get; private set; }
 
@@ -50,6 +62,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ProyectoMovilidadAcademica> ProyectoMovilidadAcademicas { get; private set; }
+
+        [Valid]
+        public virtual IList<ProductoAcademicoMovilidadAcademica> ProductoAcademicoMovilidadAcademicas { get; private set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

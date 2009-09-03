@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ResponsableExternoForm form)
@@ -85,7 +85,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Responsable Externo {0} ha sido creado", responsableExterno.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResponsableExternoForm form)
@@ -102,7 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Responsable Externo {0} ha sido modificado", responsableExterno.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -116,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

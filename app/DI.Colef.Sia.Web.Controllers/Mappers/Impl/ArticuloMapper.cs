@@ -11,17 +11,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
+        readonly IProyectoService proyectoService;
 
         public ArticuloMapper(IRepository<Articulo> repository,
-            ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
-            ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-            ICatalogoService catalogoService
+                              ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
+                              ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+                              ICatalogoService catalogoService, IProyectoService proyectoService
         )
             : base(repository)
         {
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.catalogoService = catalogoService;
+            this.proyectoService = proyectoService;
         }
 
         protected override int GetIdFromMessage(ArticuloForm message)
@@ -35,7 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Volumen = message.Volumen;
             model.Numero = message.Numero;
             model.Participantes = message.Participantes;
-            model.PalabrasClaves = message.PalabrasClaves;
+            model.PalabraClave1 = message.PalabraClave1;
+            model.PalabraClave2 = message.PalabraClave2;
+            model.PalabraClave3 = message.PalabraClave3;
+            model.TieneProyectoInvestigacionReferencia = message.TieneProyectoInvestigacionReferencia;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
@@ -55,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 
             if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")
             {

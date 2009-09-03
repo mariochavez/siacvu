@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoPublicacionForm form)
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Tipo de Publicación {0} ha sido creada", tipoPublicacion.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoPublicacionForm form)
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Tipo de Publicación {0} ha sido modificada", tipoPublicacion.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

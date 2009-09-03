@@ -32,7 +32,7 @@
 <p>
     <label>Proyecto de referencia</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...")%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
@@ -40,4 +40,9 @@
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
+</p>
+<p>
+    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
+    <%= Html.CheckBox("TieneProyectoInvestigacionReferencia", Model.TieneProyectoInvestigacionReferencia)%>
+    <%=Html.ValidationMessage("TieneProyectoInvestigacionReferencia")%>
 </p>

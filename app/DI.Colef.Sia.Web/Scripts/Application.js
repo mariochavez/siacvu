@@ -116,12 +116,12 @@ var EnablePaginaInicialFinalOptions = {
 
 var LibroEnableOptions = {
     setup: function() {
-        $(':checkbox').change(LibroEnableOptions.enableProyectos);
+        $('#TieneProyecto').change(LibroEnableOptions.enableProyectos);
         $('#forma').unload(LibroEnableOptions.enableProyectos());
     },
     enableProyectos: function() {
 
-        var active = $('input:checked').length;
+        var active = $('#TieneProyecto:checked').length;
 
         if (active == 1) {
             $('#SelectProyecto_p').slideDown('slow', function() {
@@ -460,34 +460,43 @@ var LocalForm = {
     },
     formLocal: function() {
         var combo = $(this).attr('rel');
-        combo = combo.replace('.', '_');
+        var test = combo.split(',');
 
-        var handle = $(combo).attr('rel');
-        var value = $(combo).val();
+        for (var i = 0; i < test.length; i++) {
+            combo = test[i].replace('.', '_');
 
-        if (value == null | value == "")
-            return false;
 
-        if ($(handle + 'List ' + handle + '_' + value).length > 0) {
+            var handle = $(combo).attr('rel');
+            var value = $(combo).val();
+
+            if (value == null | value == "")
+                return false;
+
+            if ($(handle + 'List ' + handle + '_' + value).length > 0) {
+                $(handle + '_form').hide();
+                $(handle + '_new').show();
+                return false;
+            }
+
+            var text = $(combo + ' :selected').text();
+
+            if (text == null | text == "") {
+                text = $(combo).val();
+            }
+
+            var newRow = '<div id="' + handle.replace('#', '') + '_' + value + '" class="sublista"><h6>' + text + '<input type="hidden" value="' + value + '" name="' + combo.replace('#', '').replace('_', '.') + '_New" id="' + combo.replace('#', '') + '_New"/></h6></div>';
+            var row = $(handle + 'EmptyList_form');
+            if (row.length == 0) {
+                row = $(handle + 'List div:first');
+                row.before(newRow);
+            } else {
+                row.before(newRow);
+                row.remove();
+            }
+
             $(handle + '_form').hide();
-            $(handle + '_new').show();
-            return false;
+            $(handle + '_new').fadeIn('slow');
         }
-
-        var text = $(combo + ' :selected').text();
-
-        var newRow = '<div id="' + handle.replace('#', '') + '_' + value + '" class="sublista"><h6>' + text + '<input type="hidden" value="' + value + '" name="' + combo.replace('#', '').replace('_', '.') + '_New" id="' + combo.replace('#', '') + '_New"/></h6></div>';
-        var row = $(handle + 'EmptyList_form');
-        if (row.length == 0) {
-            row = $(handle + 'List div:first');
-            row.before(newRow);
-        } else {
-            row.before(newRow);
-            row.remove();
-        }
-
-        $(handle + '_form').hide();
-        $(handle + '_new').fadeIn('slow');
 
         return false;
     }

@@ -19,9 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILibroMapper libroMapper;
         readonly ITipoPublicacionMapper tipoPublicacionMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
@@ -33,9 +31,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IProyectoService proyectoService;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IEventoMapper eventoMapper;
+        readonly IEventoService eventoService;
 
         public LibroController(ILibroService libroService, 
-                               ILibroMapper libroMapper, 
+                               ILibroMapper libroMapper,
+                               IInstitucionMapper institucionMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
                                ITipoPublicacionMapper tipoPublicacionMapper,
@@ -55,8 +59,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IDisciplinaMapper disciplinaMapper,
                                IInvestigadorService investigadorService,
                                ISubdisciplinaMapper subdisciplinaMapper,
-                               ISearchService searchService
-            )
+                               ISearchService searchService,
+                               IRevistaPublicacionMapper revistaPublicacionMapper,
+                               IEventoMapper eventoMapper,
+                               IEventoService eventoService,
+                               IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -64,9 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.libroMapper = libroMapper;
             this.tipoPublicacionMapper = tipoPublicacionMapper;
             this.estadoProductoMapper = estadoProductoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.paisMapper = paisMapper;
             this.idiomaMapper = idiomaMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
@@ -79,6 +84,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.proyectoService = proyectoService;
+
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.eventoMapper = eventoMapper;
+            this.eventoService = eventoService;
+            this.institucionMapper = institucionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -138,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(LibroForm form, 
@@ -171,7 +182,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LibroForm form)
@@ -192,7 +203,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {            
@@ -210,7 +221,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -250,7 +261,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorExterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoLibro")]CoautorExternoLibroForm form, int libroId)
         {
@@ -291,7 +302,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorInterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoLibro")]CoautorInternoLibroForm form, int libroId)
         {
@@ -330,9 +341,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorExternoLibro = new CoautorExternoLibroForm();
             form.CoautorInternoLibro = new CoautorInternoLibroForm();
 
+            form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
@@ -358,6 +370,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["NombreEvento"] = form.NombreEventoId;
         }
     }
 }

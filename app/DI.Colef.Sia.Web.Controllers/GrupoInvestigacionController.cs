@@ -93,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(GrupoInvestigacionForm form)
@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido creado", grupoInvestigacion.NombreGrupoInvestigacion));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(GrupoInvestigacionForm form)
@@ -131,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido modificado", grupoInvestigacion.NombreGrupoInvestigacion));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {            
@@ -149,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

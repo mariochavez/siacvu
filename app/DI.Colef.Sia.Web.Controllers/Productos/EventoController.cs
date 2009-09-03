@@ -27,9 +27,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoEventoMapper tipoEventoMapper;
         readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IPaisMapper paisMapper;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
+                                IEstadoPaisMapper estadoPaisMapper,
+                                IPaisMapper paisMapper,
                                 IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
@@ -44,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.estadoPaisMapper = estadoPaisMapper;
+            this.paisMapper = paisMapper;
             this.investigadorService = investigadorService;
             this.eventoService = eventoService;
             this.eventoMapper = eventoMapper;
@@ -114,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EventoForm form,
@@ -148,7 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Evento {0} ha sido creado", evento.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
@@ -169,7 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -187,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -227,7 +233,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorInterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
@@ -270,7 +276,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorExterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
                                               int eventoId)
@@ -328,6 +334,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
 
             return form;
         }
@@ -338,6 +346,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+            ViewData["Pais"] = form.PaisId;
+            ViewData["EstadoPais"] = form.EstadoPaisId;
         }
     }
 }

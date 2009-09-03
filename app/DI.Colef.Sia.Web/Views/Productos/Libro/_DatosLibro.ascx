@@ -4,7 +4,7 @@
 <p>
     <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("TipoPublicacion", Model.TiposPublicaciones.CreateSelectList<TipoPublicacionForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "tipo requerido" })%>
+        "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoPublicacion") %>
 </p>
 <p id="SelectIdioma_p">
@@ -16,7 +16,7 @@
 <p>
     <label>Estado del producto</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto") %>
 </p>
 <p>
@@ -31,7 +31,7 @@
 <p id="SelectProyecto_p">
     <label>Proyecto</label>
     <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...")%>
     <%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>

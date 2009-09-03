@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActividadPrevista.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
     <Compile Include="Area.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="CoautorInternoReporte.cs" />
     <Compile Include="Convenio.cs" />
     <Compile Include="CoautorInternoResena.cs" />
+    <Compile Include="Coordinacion.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
@@ -122,12 +124,14 @@
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
+    <Compile Include="ImpactoPoliticaPublica.cs" />
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
     <Compile Include="Investigador.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
+    <Compile Include="Moneda.cs" />
     <Compile Include="MovilidadAcademica.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
@@ -150,7 +154,11 @@
     <Compile Include="Pais.cs" />
     <Compile Include="Participacion.cs" />
     <Compile Include="ParticipacionMedio.cs" />
+    <Compile Include="ParticipanteExternoProyecto.cs" />
+    <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="PeriodoReferencia.cs" />
+    <Compile Include="ProductoAcademico.cs" />
+    <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
     <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />
@@ -158,11 +166,14 @@
     <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Rama.cs" />
+    <Compile Include="RecursoFinancieroProyecto.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
     <Compile Include="ResponsableExternoCapitulo.cs" />
+    <Compile Include="ResponsableExternoProyecto.cs" />
     <Compile Include="ResponsableInternoCapitulo.cs" />
+    <Compile Include="ResponsableInternoProyecto.cs" />
     <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="..\..\CommonAssemblyInfo.cs">
@@ -171,6 +182,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="Sector.cs" />
+    <Compile Include="SectorFinanciamiento.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="SNI.cs" />
     <Compile Include="SNIInvestigador.cs" />
@@ -190,12 +202,14 @@
     <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
+    <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
     <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />
     <Compile Include="TipoResena.cs" />
+    <Compile Include="USEG.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(InvestigadorForm form)
@@ -134,7 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 investigador.Usuario.ApellidoPaterno, investigador.Usuario.ApellidoMaterno));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(InvestigadorForm form)
@@ -150,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 investigador.Usuario.ApellidoPaterno, investigador.Usuario.ApellidoMaterno));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -163,7 +163,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -190,7 +190,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewEstado", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEstado([Bind(Prefix = "EstadoInvestigador")]EstadoInvestigadorForm form, int investigadorId)
         {
@@ -228,7 +228,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewGrado", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddGrado([Bind(Prefix = "GradoAcademicoInvestigador")]GradoAcademicoInvestigadorForm form, int investigadorId)
         {
@@ -266,7 +266,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewCategoria", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCategoria([Bind(Prefix = "CategoriaInvestigador")]CategoriaInvestigadorForm form, int investigadorId)
         {
@@ -306,7 +306,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewCargo", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCargo([Bind(Prefix = "CargoInvestigador")]CargoInvestigadorForm form, int investigadorId)
         {
@@ -344,7 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewSni", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddSni([Bind(Prefix = "SNIInvestigador")]SNIInvestigadorForm form, int investigadorId)
         {

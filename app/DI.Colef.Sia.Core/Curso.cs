@@ -22,8 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }
         
         public virtual Institucion Institucion { get; set; }
-        
-        public virtual Nivel Nivel { get; set; }
+
+        public virtual NivelEstudio NivelEstudio { get; set; }
 
         public virtual Sector Sector { get; set; }
 

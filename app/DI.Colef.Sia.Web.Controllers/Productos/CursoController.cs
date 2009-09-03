@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoService cursoService;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly INivelEstudioMapper nivelEstudioMapper;
         readonly INivelMapper nivelMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly IPaisMapper paisMapper;
@@ -34,6 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IProgramaEstudioMapper programaEstudioMapper,
                                IInstitucionMapper institucionMapper,
                                INivelMapper nivelMapper,
+                               INivelEstudioMapper nivelEstudioMapper,
                                ISectorMapper sectorMapper,
                                IOrganizacionMapper organizacionMapper,
                                IPaisMapper paisMapper,
@@ -44,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.nivelEstudioMapper = nivelEstudioMapper;
             this.cursoService = cursoService;
             this.cursoMapper = cursoMapper;
             this.periodoReferenciaMapper = periodoReferenciaMapper;
@@ -113,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
@@ -131,7 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Curso {0} ha sido creado", curso.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
@@ -152,7 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Curso {0} ha sido modificado", curso.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -170,7 +173,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -204,7 +207,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CursoForm();
 
-            form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.NivelEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
             form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
@@ -223,7 +226,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["Sector"] = form.SectorId;
             ViewData["Organizacion"] = form.OrganizacionId;
-            ViewData["Nivel"] = form.NivelId;
+            ViewData["NivelEstudio"] = form.NivelEstudioId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Nivel2"] = form.Nivel2Id;
             ViewData["Nivel3"] = form.Nivel3Id;

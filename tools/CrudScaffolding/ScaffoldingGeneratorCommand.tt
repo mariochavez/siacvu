@@ -23,152 +23,36 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("GrupoInvestigacion", 3);
+<<<<<<< HEAD:tools/CrudScaffolding/ScaffoldingGeneratorCommand.tt
+	new EntityScaffoldingDetails("RecursoFinancieroProyecto", 2);
+=======
+	new EntityScaffoldingDetails("Catalogos.TipoParticipacionOrgano", 1);
+>>>>>>> 3a218bbe3ba4e901550bffedcb26c2dde58151fb:tools/CrudScaffolding/ScaffoldingGeneratorCommand.tt
 
 /*
  * Property names should be PascalCase.
  * Do not include a property for Id as it will be included automatically.
- */
- 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Usuario", "Usuario", "Usuario")
-);
+ */ 
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreGrupoInvestigacion","string", null, "[NotNullNotEmpty]", true)
+	new EntityProperty("Institucion","Institucion", "Institucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaCreacion","DateTime", null)
+	new EntityProperty("Recurso","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Sector", "Sector", "Sector")
+	new EntityProperty("Monto","long", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Organizacion", "Organizacion", "Organizacion")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel2", "Nivel2", "Nivel2")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel3", "Nivel3", "Nivel3")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel4", "Nivel4", "Nivel4")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel5", "Nivel5", "Nivel5")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nivel6", "Nivel6", "Nivel6")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Lider","bool", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Miembros","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Impacto","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("VinculacionSectorProductivo","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("VinculacionSectorSocial","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Colaboracion","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Administracion","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("ProgramaRegistrado","string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("TipoApoyo","TipoApoyo", "TipoApoyo")
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaInicial","DateTime", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaFinal","DateTime", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave1", "string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave2", "string", null)
-);
-
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("PalabraClave3", "string", null)
+	new EntityProperty("Moneda","Moneda", "Moneda")
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("TituloTesis","string", null)
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("LineaTematica", "LineaTematica", "LineaTematica")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Pais","Pais", "Pais")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("EstadoPais","EstadoPais", "EstadoPais")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Ciudad","string", null)
-///);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Estatus","string", null)
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Sector","Sector", "Sector")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Organizacion","Organizacion", "Organizacion")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorExternoReseñas", "IList<CoautorExternoReseña>", "CoautorExterno")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("CoautorInternoReseñas", "IList<CoautorInternoReseña>", "CoautorInterno")
+//	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
 //);
 
 ///////////////////////////////////////////////////

@@ -18,24 +18,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly ITipoInstitucionMapper tipoInstitucionMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IConvenioMapper convenioMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
         readonly ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper;
         readonly IProductoDerivadoMapper productoDerivadoMapper;
         readonly IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper;
+        readonly IProductoAcademicoMapper productoAcademicoMapper;
+        readonly IProductoAcademicoMovilidadAcademicaMapper productoAcademicoMovilidadAcademicaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper;
-
+        readonly IProyectoService proyectoService;
 
         public MovilidadAcademicaController(IMovilidadAcademicaService movilidadAcademicaService,
                                             IMovilidadAcademicaMapper movilidadAcademicaMapper,
+                                            IProductoAcademicoMovilidadAcademicaMapper productoAcademicoMovilidadAcademicaMapper,
+                                            IProductoAcademicoMapper productoAcademicoMapper,
                                             ICatalogoService catalogoService, IUsuarioService usuarioService, 
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
                                             ITipoInstitucionMapper tipoInstitucionMapper, 
-                                            IInstitucionMapper institucionMapper, 
-                                            ILineaTematicaMapper lineaTematicaMapper, 
                                             IConvenioMapper convenioMapper, 
                                             ITipoActividadMapper tipoActividadMapper, 
                                             ITipoActividadMovilidadAcademicaMapper tipoActividadMovilidadAcademicaMapper, 
@@ -43,16 +43,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IProductoDerivadoMovilidadAcademicaMapper productoDerivadoMovilidadAcademicaMapper, 
                                             IProyectoMapper proyectoMapper, 
                                             IProyectoMovilidadAcademicaMapper proyectoMovilidadAcademicaMapper,
-                                            ISearchService searchService)
+                                            ISearchService searchService, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.productoAcademicoMovilidadAcademicaMapper = productoAcademicoMovilidadAcademicaMapper;
+            this.productoAcademicoMapper = productoAcademicoMapper;
             this.movilidadAcademicaService = movilidadAcademicaService;
             this.movilidadAcademicaMapper = movilidadAcademicaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
             this.tipoInstitucionMapper = tipoInstitucionMapper;
-            this.institucionMapper = institucionMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.convenioMapper = convenioMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoActividadMovilidadAcademicaMapper = tipoActividadMovilidadAcademicaMapper;
@@ -60,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.productoDerivadoMovilidadAcademicaMapper = productoDerivadoMovilidadAcademicaMapper;
             this.proyectoMapper = proyectoMapper;
             this.proyectoMovilidadAcademicaMapper = proyectoMovilidadAcademicaMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -116,7 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(MovilidadAcademicaForm form,
@@ -125,6 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tiposActividad = new string[] { };
             var proyectos = new string[] { };
             var productoDerivados = new string[] { };
+            var productoAcademicos = new string[] { };
 
             if (formCollection["TipoActividadMovilidadAcademica.TipoActividadId_New"] != null &&
                     formCollection["TipoActividadMovilidadAcademica.TipoActividadId_New"].Split(',').Length > 0)
@@ -137,9 +139,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"] != null &&
                     formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',').Length > 0)
                 productoDerivados = formCollection["ProductoDerivadoMovilidadAcademica.ProductoDerivadoId_New"].Split(',');
-            
+
+            if (formCollection["ProductoAcademicoMovilidadAcademica.ProductoAcademicoId_New"] != null &&
+                    formCollection["ProductoAcademicoMovilidadAcademica.ProductoAcademicoId_New"].Split(',').Length > 0)
+                productoAcademicos = formCollection["ProductoAcademicoMovilidadAcademica.ProductoAcademicoId_New"].Split(',');
+
             var movilidadAcademica = movilidadAcademicaMapper.Map(form, CurrentUser(),
-                tiposActividad, proyectos, productoDerivados);
+                tiposActividad, proyectos, productoDerivados, productoAcademicos);
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "MovilidadAcademica"))
             {
@@ -154,7 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(MovilidadAcademicaForm form)
@@ -175,7 +181,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido modificada", movilidadAcademica.LineaTematica.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -193,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -233,7 +239,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewTipoActividad", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddTipoActividad([Bind(Prefix = "TipoActividadMovilidadAcademica")]TipoActividadMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -275,7 +281,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewProductoDerivado", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProductoDerivado([Bind(Prefix = "ProductoDerivadoMovilidadAcademica")]ProductoDerivadoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -312,12 +318,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.Id = movilidadAcademica.Id;
 
             form.ProyectoMovilidadAcademica = new ProyectoMovilidadAcademicaForm();
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return Rjs("NewProyecto", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProyecto([Bind(Prefix = "ProyectoMovilidadAcademica")]ProyectoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -344,6 +350,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddProyecto", proyectoMovilidadAcademicaForm);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewProductoAcademico(int id)
+        {
+            var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(id);
+            var form = new MovilidadAcademicaForm();
+
+            if (movilidadAcademica != null)
+                form.Id = movilidadAcademica.Id;
+
+            form.ProductoAcademicoMovilidadAcademica = new ProductoAcademicoMovilidadAcademicaForm();
+            form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
+
+            return Rjs("NewProductoAcademico", form);
+        }
+
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddProductoAcademico([Bind(Prefix = "ProductoAcademicoMovilidadAcademica")]ProductoAcademicoMovilidadAcademicaForm form, int movilidadAcademicaId)
+        {
+            var productoAcademicoMovilidadAcademica = productoAcademicoMovilidadAcademicaMapper.Map(form);
+
+            ModelState.AddModelErrors(productoAcademicoMovilidadAcademica.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            productoAcademicoMovilidadAcademica.CreadorPor = CurrentUser();
+            productoAcademicoMovilidadAcademica.ModificadoPor = CurrentUser();
+
+            if (movilidadAcademicaId != 0)
+            {
+                var movilidadAcademica = movilidadAcademicaService.GetMovilidadAcademicaById(movilidadAcademicaId);
+                movilidadAcademica.AddProductoAcademico(productoAcademicoMovilidadAcademica);
+                movilidadAcademicaService.SaveMovilidadAcademica(movilidadAcademica);
+            }
+
+            var productoAcademicoMovilidadAcademicaForm = productoAcademicoMovilidadAcademicaMapper.Map(productoAcademicoMovilidadAcademica);
+
+            return Rjs("AddProductoAcademico", productoAcademicoMovilidadAcademicaForm);
+        }
+
         MovilidadAcademicaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -355,6 +403,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.TipoActividadMovilidadAcademica = new TipoActividadMovilidadAcademicaForm();
             form.ProductoDerivadoMovilidadAcademica = new ProductoDerivadoMovilidadAcademicaForm();
+            form.ProductoAcademicoMovilidadAcademica = new ProductoAcademicoMovilidadAcademicaForm();
             form.ProyectoMovilidadAcademica = new ProyectoMovilidadAcademicaForm();
 
             //Lista de Catalogos Pendientes
@@ -363,7 +412,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.ProductosDerivados = productoDerivadoMapper.Map(catalogoService.GetActiveProductoDerivados());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             return form;
         }
 

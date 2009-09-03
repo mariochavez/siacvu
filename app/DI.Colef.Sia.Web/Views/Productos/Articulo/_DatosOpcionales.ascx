@@ -25,9 +25,19 @@
     <%=Html.ValidationMessage("Participantes")%>
 </p>
 <p>
-    <label>Palabras claves</label>
-    <%=Html.TextBox("PalabrasClaves", Model.PalabrasClaves, new { @class = "input250", maxlength = 100 })%>
-    <%=Html.ValidationMessage("PalabrasClaves")%>
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave1")%>
+</p>
+<p>
+	<label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave2")%>
+</p>
+<p>
+	<label>Palabra clave 3</label>
+    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.ValidationMessage("PalabraClave3")%>
 </p>
 <p>
     <label>&Aacute;rea</label>

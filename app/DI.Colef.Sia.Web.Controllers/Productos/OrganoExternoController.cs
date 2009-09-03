@@ -19,14 +19,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IOrganoExternoService organoExternoService;
         readonly ISectorMapper sectorMapper;
         readonly ITipoOrganoMapper tipoOrganoMapper;
-        readonly ITipoParticipacionMapper tipoParticipacionMapper;
-
+        readonly ITipoParticipacionOrganoMapper tipoParticipacionOrganoMapper;
 
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
                                        ICatalogoService catalogoService, IUsuarioService usuarioService,
                                        ITipoOrganoMapper tipoOrganoMapper,
-                                       ITipoParticipacionMapper tipoParticipacionMapper, ISectorMapper sectorMapper,
+                                       ITipoParticipacionOrganoMapper tipoParticipacionOrganoMapper, ISectorMapper sectorMapper,
                                        INivelMapper nivelMapper,
                                        IAmbitoMapper ambitoMapper, ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
@@ -35,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.organoExternoService = organoExternoService;
             this.organoExternoMapper = organoExternoMapper;
             this.tipoOrganoMapper = tipoOrganoMapper;
-            this.tipoParticipacionMapper = tipoParticipacionMapper;
+            this.tipoParticipacionOrganoMapper = tipoParticipacionOrganoMapper;
             this.sectorMapper = sectorMapper;
             this.nivelMapper = nivelMapper;
             this.ambitoMapper = ambitoMapper;
@@ -94,7 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(OrganoExternoForm form)
@@ -112,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Órgano Externo {0} ha sido creado", organoExterno.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoExternoForm form)
@@ -132,7 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Órgano Externo {0} ha sido modificado", organoExterno.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -150,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -185,7 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new OrganoExternoForm();
 
             form.TiposOrganos = tipoOrganoMapper.Map(catalogoService.GetActiveTipoOrganos());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.TiposParticipaciones = tipoParticipacionOrganoMapper.Map(catalogoService.GetActiveTipoParticipacionOrganos());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());

@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IResenaService resenaService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoResenaMapper tipoResenaMapper;
-
+        readonly IProyectoService proyectoService;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
-                                ITipoResenaMapper tipoResenaMapper)
+                                ITipoResenaMapper tipoResenaMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -58,6 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.tipoResenaMapper = tipoResenaMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -115,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ResenaForm form,
@@ -148,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Reseña {0} ha sido creada", resena.NombreRevista));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
@@ -169,7 +170,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreRevista));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -187,7 +188,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -227,7 +228,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorInterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoResena")] CoautorInternoResenaForm form,
                                               int resenaId)
@@ -270,7 +271,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorExterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoResena")] CoautorExternoResenaForm form,
                                               int resenaId)
@@ -314,7 +315,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());

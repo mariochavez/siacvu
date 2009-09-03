@@ -10,19 +10,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class LibroMapper : AutoFormMapper<Libro, LibroForm>, ILibroMapper
     {
 		readonly ICatalogoService catalogoService;
+        readonly IEventoService eventoService;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
+        readonly IProyectoService proyectoService;
 		
         public LibroMapper(IRepository<Libro> repository,
 		    ICatalogoService catalogoService,
             ICoautorExternoLibroMapper coautorExternoLibroMapper,
-            ICoautorInternoLibroMapper coautorInternoLibroMapper
+            ICoautorInternoLibroMapper coautorInternoLibroMapper,
+            IEventoService eventoService,
+            IProyectoService proyectoService
 		) 
 			: base(repository)
         {
-			this.catalogoService = catalogoService;
+            this.eventoService = eventoService;
+            this.catalogoService = catalogoService;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
+            this.proyectoService = proyectoService;
         }		
 		
         protected override int GetIdFromMessage(LibroForm message)
@@ -38,16 +44,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Editorial = message.Editorial;
             model.NoPaginas = message.NoPaginas;
             model.Tiraje = message.Tiraje;
-            model.PalabrasClave = message.PalabrasClave;
-            model.CoTraductor = message.CoTraductor;
+            model.Numero = message.Numero;
+            model.Volumen = message.Volumen;
+            model.PalabraClave1 = message.PalabraClave1;
+            model.PalabraClave2 = message.PalabraClave2;
+            model.PalabraClave3 = message.PalabraClave3;
             model.Traductor = message.Traductor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
+            model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
 		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-		    model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
 		    model.Pais = catalogoService.GetPaisById(message.Pais);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
@@ -56,6 +66,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+            model.NombreEvento = eventoService.GetEventoById(message.NombreEvento);
+
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo)

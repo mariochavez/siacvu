@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -20,9 +19,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IPaisMapper paisMapper;
         readonly IParticipacionMapper participacionMapper;
         readonly IParticipacionService participacionService;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly ITipoPresentacionMapper tipoPresentacionMapper;
+        readonly IProyectoService proyectoService;
 
         public ParticipacionController(IParticipacionService participacionService,
                                        IParticipacionMapper participacionMapper,
@@ -31,11 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        IInvestigadorMapper investigadorMapper,
                                        IOtraParticipacionMapper otraParticipacionMapper,
                                        ITipoPresentacionMapper tipoPresentacionMapper,
-                                       IPeriodoReferenciaMapper periodoReferenciaMapper,
                                        IProyectoMapper proyectoMapper,
                                        IPaisMapper paisMapper,
                                        IInvestigadorService investigadorService,
-                                       IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
+                                       IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
+                                       IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -44,11 +43,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorMapper = investigadorMapper;
             this.otraParticipacionMapper = otraParticipacionMapper;
             this.tipoPresentacionMapper = tipoPresentacionMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
             this.proyectoMapper = proyectoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
             this.investigadorService = investigadorService;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -106,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionForm form)
@@ -124,7 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Participación {0} ha sido creada", participacion.Titulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionForm form)
@@ -145,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Participación {0} ha sido modificada", participacion.Titulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -163,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -200,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Autores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
 

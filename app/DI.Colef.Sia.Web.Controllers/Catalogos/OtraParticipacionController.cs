@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(OtraParticipacionForm form)
@@ -86,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Otra Participación {0} ha sido creada", otraParticipacion.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OtraParticipacionForm form)
@@ -104,7 +104,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Otra Participación {0} ha sido modificada", otraParticipacion.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -118,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

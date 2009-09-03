@@ -13,14 +13,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
+        readonly IProyectoService proyectoService;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
-		    ICatalogoService catalogoService,
-            ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
-            ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
-            IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-            IResponsableExternoCapituloMapper responsableExternoCapituloMapper
-		) 
+		                      ICatalogoService catalogoService,
+                              ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
+                              ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
+                              IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
+                              IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
+                              IProyectoService proyectoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
@@ -28,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
+		    this.proyectoService = proyectoService;
         }		
 		
         protected override int GetIdFromMessage(CapituloForm message)
@@ -46,6 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Traductor = message.Traductor;
             model.NombreTraductor = message.NombreTraductor;
             model.Resumen = message.Resumen;
+            model.TieneProyectoInvestigacionReferencia = message.TieneProyectoInvestigacionReferencia;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
@@ -61,7 +64,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo)

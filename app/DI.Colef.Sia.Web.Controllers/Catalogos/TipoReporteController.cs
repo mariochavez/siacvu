@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TipoReporteForm form)
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Tipo de Reporte {0} ha sido creado", tipoReporte.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TipoReporteForm form)
@@ -101,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Tipo de Reporte {0} ha sido modificado", tipoReporte.Nombre));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

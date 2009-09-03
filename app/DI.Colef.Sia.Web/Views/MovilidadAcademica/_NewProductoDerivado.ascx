@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Producto Derivado</label>
+    <label>Producto derivado</label>
     
 	<%=Html.DropDownList("ProductoDerivadoMovilidadAcademica.ProductoDerivadoId", Model.ProductosDerivados.CreateSelectList<ProductoDerivadoForm>("Id", "Nombre"),
                 "Seleccione ...", new { rel = "#productoderivado" })%>

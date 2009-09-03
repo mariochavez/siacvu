@@ -26,8 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorService investigadorService;
         readonly ICapituloMapper capituloMapper;
         readonly ITipoCapituloMapper tipoCapituloMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
@@ -36,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
         readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -53,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
-                                  ISearchService searchService, IProyectoMapper proyectoMapper)
+                                  ISearchService searchService, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -62,8 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.estadoProductoMapper = estadoProductoMapper;
             this.capituloMapper = capituloMapper;
             this.tipoCapituloMapper = tipoCapituloMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
             this.investigadorMapper = investigadorMapper;
@@ -79,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
             this.proyectoMapper = proyectoMapper;
+            this.proyectoService = proyectoService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -136,7 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CapituloForm form, 
@@ -179,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CapituloForm form)
@@ -200,7 +198,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -218,7 +216,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs(form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -258,7 +256,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorInterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")] CoautorInternoCapituloForm form,
                                               int capituloId)
@@ -302,7 +300,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewCoautorExterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")] CoautorExternoCapituloForm form,
                                               int capituloId)
@@ -346,7 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewResponsableInterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddResponsableInterno(
             [Bind(Prefix = "ResponsableInternoCapitulo")] ResponsableInternoCapituloForm form, int capituloId)
@@ -390,7 +388,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("NewResponsableExterno", form);
         }
 
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddResponsableExterno(
             [Bind(Prefix = "ResponsableExternoCapitulo")] ResponsableExternoCapituloForm form, int capituloId)
@@ -447,7 +445,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
-            form.Proyectos = proyectoMapper.Map(catalogoService.GetActiveProyectos());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return form;
         }

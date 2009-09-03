@@ -41,3 +41,8 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
+<p>
+    <label>Tiene proyecto</label>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
+    <%=Html.ValidationMessage("TieneProyecto")%>
+</p>

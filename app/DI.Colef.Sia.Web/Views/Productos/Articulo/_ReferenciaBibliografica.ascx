@@ -47,12 +47,12 @@
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
@@ -63,12 +63,12 @@
 </p>
 <div id="PaginaInicialFinal_div">
     <p>
-        <label>Pagina inicial</label> 
+        <label>P&aacute;gina inicial</label> 
         <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
         <%=Html.ValidationMessage("PaginaInicial")%>
     </p>
     <p>    
-        <label>Pagina final</label>
+        <label>P&aacute;gina final</label>
         <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
         <%=Html.ValidationMessage("PaginaFinal")%>
     </p>

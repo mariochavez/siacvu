@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta una nueva movilidad academica dentro del sistema.</p>
+		<p>Favor de llenar los siguientes campos para dar de alta una nueva movilidad acad&eacute;mica dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -37,11 +37,14 @@
                 
                 <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
                 
-                <h4>Tipos actividades</h4>
+                <h4>Tipos de actividades</h4>
                 <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
             
                 <h4>Productos derivados</h4>
                 <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
+                
+                <h4>Productos acad&eacute;micos</h4>
+                <% Html.RenderPartial("_EditProductoAcademico", Model.Form); %>
                 
                 <h4>Proyectos</h4>
                 <% Html.RenderPartial("_EditProyecto", Model.Form); %>

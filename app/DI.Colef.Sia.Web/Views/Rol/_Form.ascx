@@ -14,7 +14,7 @@
             </td>
             <td class="field">
                 <%=Html.TextBox("Nombre", Model.Form.Nombre, new { @class = "big", size = 10, maxlength = 40 })%>
-                <span>(Debe de ser un nombre unico)</span>
+                <span>(Debe de ser un nombre &uacute;nico)</span>
                 <%=Html.ValidationMessage("Nombre") %>
             </td>
         </tr>

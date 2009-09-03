@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -12,14 +11,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
+        readonly IProyectoService proyectoService;
 
         public ReporteMapper(IRepository<Reporte> repository, ICatalogoService catalogoService,
-            ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper)
+                             ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper,
+                             IProyectoService proyectoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoReporteMapper = coautorExternoReporteMapper;
             this.coautorInternoReporteMapper = coautorInternoReporteMapper;
+            this.proyectoService = proyectoService;
         }
 
         protected override int GetIdFromMessage(ReporteForm message)
@@ -37,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
+            model.TieneProyecto = message.TieneProyecto;
 
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -44,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.Proyecto = catalogoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Pais = catalogoService.GetPaisById(message.Pais);

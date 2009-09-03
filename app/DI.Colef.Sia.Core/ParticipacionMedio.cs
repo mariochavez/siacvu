@@ -18,6 +18,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		[NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
+
+        public virtual string EspecificacionMedioImpreso { get; set; }
+
+        public virtual string EspecificacionMedioElectronico { get; set; }
         
 		public virtual MedioImpreso MedioImpreso { get; set; }
 

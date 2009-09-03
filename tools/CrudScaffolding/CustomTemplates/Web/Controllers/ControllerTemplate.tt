@@ -76,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(<#= EntityScaffoldingDetails.EntityName #>Form form)
@@ -95,7 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("{0} ha sido creado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(<#= EntityScaffoldingDetails.EntityName #>Form form)
@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("{0} ha sido modificado", <#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre));
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -127,7 +127,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
         
-        [Transaction]
+        [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {

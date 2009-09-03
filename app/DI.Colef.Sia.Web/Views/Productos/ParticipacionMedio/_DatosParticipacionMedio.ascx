@@ -18,10 +18,20 @@
 	<%=Html.ValidationMessage("MedioImpreso") %>
 </p>
 <p>
+	<label>Especificaci&oacute;n de medio impreso</label>
+	<%=Html.TextBox("EspecificacionMedioImpreso", Model.EspecificacionMedioImpreso, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("EspecificacionMedioImpreso")%>
+</p>
+<p>
 	<label>Medio electr&oacute;nico</label>
 	<%=Html.DropDownList("MedioElectronico", Model.MediosElectronicos.CreateSelectList<MedioElectronicoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioElectronico") %>
+</p>
+<p>
+	<label>Especificaci&oacute;n de medio electr&oacute;nico</label>
+	<%=Html.TextBox("EspecificacionMedioElectronico", Model.EspecificacionMedioElectronico, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("EspecificacionMedioElectronico")%>
 </p>
 <p>
 	<label>Especificaci&oacute;n</label>

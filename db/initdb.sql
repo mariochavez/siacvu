@@ -29,11 +29,43 @@ INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 INSERT UsuarioRol VALUES(4, 3)
 
-insert into ProductoDerivados values('Producto Derivado 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoDerivados values('Producto Derivado 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('ActividadPrevista 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into Monedas values('Moneda 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Moneda 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ProductoAcademicos values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Coordinación de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Capitulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into ProductoDerivados values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoDerivados values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into SectorFinanciamientos values('SectorFinanciamiento 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('SectorFinanciamiento 5',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into USEGs values('USEG 1',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 2',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 3',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 4',GETDATE(), GETDATE(), 1, 1, 1);
+insert into USEGs values('USEG 5',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoEstancias values('Academica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Sabatica',GETDATE(), GETDATE(), 1, 1, 1);
@@ -64,16 +96,11 @@ insert into TipoPublicaciones values('Coordinación de memoria',GETDATE(), GETDAT
 insert into TipoPublicaciones values('Reedición de libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Autorización',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
-insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into Proyectos values('Proyecto 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Proyecto 5',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into EstadoPaises values('EstadoPaises 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('EstadoPaises 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -655,10 +682,9 @@ insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoCapitulos values('Capitulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capitulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capitulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
@@ -666,7 +692,6 @@ insert into FormaParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1
 
 insert into TipoParticipantes values('Persona Fisica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipantes values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
-
 
 insert into InvestigadorExternos values('Acevedo Gladys', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Aceves Calderón Patricia', null, null, GETDATE(), GETDATE(), 1, 1, 1)
@@ -2187,6 +2212,12 @@ insert into SubprogramaConacyts values('Catedras Patrimoniales', GETDATE(), GETD
 insert into SubprogramaConacyts values('Repatriación / Consolidación', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo Ciencia Basica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo Mixto', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into TipoParticipacionOrganos values('Miembro',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Asesor',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Evaluador',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoParticipacionOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
