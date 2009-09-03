@@ -22,7 +22,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoReportes.Add(coautorInternoReporte);
         }
 
-
         public virtual TipoReporte TipoReporte { get; set; }
 
         public virtual EstadoProducto EstadoProducto { get; set; }

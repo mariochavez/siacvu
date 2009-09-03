@@ -682,9 +682,9 @@ insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoCapitulos values('Capitulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capitulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capitulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capítulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
