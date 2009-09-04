@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        public bool TieneProyectoInvestigacionReferencia { get; set; }
+        public bool TieneProyecto { get; set; }
         public int Puntuacion { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
-        public TipoParticipanteForm[] TiposParticipantes { get; set; }
+        public TipoParticipacionForm[] TiposParticipantes { get; set; }
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }

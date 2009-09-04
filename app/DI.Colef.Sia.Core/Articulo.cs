@@ -56,7 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Numero { get; set; }
 
-        public virtual bool TieneProyectoInvestigacionReferencia { get; set; }
+        public virtual bool TieneProyecto { get; set; }
 
         public virtual int PaginaInicial { get; set; }
 
@@ -82,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoActividad TipoActividad { get; set; }
 
-        public virtual TipoParticipante TipoParticipante { get; set; }
+        public virtual TipoParticipacion TipoParticipante { get; set; }
 
         public virtual int Participantes { get; set; }
 

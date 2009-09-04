@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Fecha de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>

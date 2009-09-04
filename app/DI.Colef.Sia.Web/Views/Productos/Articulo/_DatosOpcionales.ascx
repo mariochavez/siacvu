@@ -15,7 +15,7 @@
 </p>
 <p>
     <label>Tipo de participante</label>
-    <%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipanteForm>("Id", "Nombre"),
+    <%=Html.DropDownList("TipoParticipante", Model.TiposParticipantes.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoParticipante") %>
 </p>

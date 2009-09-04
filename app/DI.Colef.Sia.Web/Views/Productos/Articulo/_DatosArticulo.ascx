@@ -43,6 +43,6 @@
 </p>
 <p>
     <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
-    <%= Html.CheckBox("TieneProyectoInvestigacionReferencia", Model.TieneProyectoInvestigacionReferencia)%>
-    <%=Html.ValidationMessage("TieneProyectoInvestigacionReferencia")%>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto)%>
+    <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
