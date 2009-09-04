@@ -13,6 +13,7 @@
 <#@ include file="./CustomTemplates/Web/Views/NewTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/NewNewTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/EditTemplate.tt" #>
+<#@ include file="./CustomTemplates/Web/Views/NewEditTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/IndexTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ActivateTemplate.tt" #>
 <#@ include file="./CustomTemplates/Web/Views/ShowTemplate.tt" #>
@@ -349,6 +350,7 @@ public class ScaffoldingGenerator : Generator
 				GenerateIndexView(targetPath);
 				GenerateJsViewActivate(targetPath);
 				GenerateNewNewView(targetPath);
+				GenerateNewEditView(targetPath);
 				foreach(EntityProperty property in entityScaffoldingDetails.EntityProperties){
 					if(property.TypeName.Contains("IList")){
 						GenerateAddjsView(targetPath, property.CatalogName);
@@ -420,6 +422,18 @@ public class ScaffoldingGenerator : Generator
 		if (! File.Exists(targetPath + fileName)) {
 			EditTemplate editTemplate = new EditTemplate(solutionName, entityScaffoldingDetails);
 			RenderViewFile(editTemplate, targetPath + fileName);
+		}
+		else {
+			Log("File already exists " + targetPath + fileName);
+		}
+	}
+	
+	private void GenerateNewEditView(string targetPath) {
+		string fileName = "Edit.aspx";
+
+		if (! File.Exists(targetPath + fileName)) {
+			NewEditTemplate newEditTemplate = new NewEditTemplate(solutionName, entityScaffoldingDetails);
+			RenderViewFile(newEditTemplate, targetPath + fileName);
 		}
 		else {
 			Log("File already exists " + targetPath + fileName);

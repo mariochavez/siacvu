@@ -52,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     
         public <#= EntityScaffoldingDetails.EntityName #>Controller(I<#= EntityScaffoldingDetails.EntityName #>Service <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service, 
 			I<#= EntityScaffoldingDetails.EntityName #>Mapper <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper, 
-			ICatalogoService catalogoService, IUsuarioService usuarioService
+			ICatalogoService catalogoService, IUsuarioService usuarioService, ISearchService searchService
 			<#+ 
 			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
 				if(property.CatalogName != null){
@@ -71,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 				}
 			}
 			#>
-			) : base(usuarioService)
+			) : base(usuarioService, searchService, catalogoService)
         {
 			this.catalogoService = catalogoService;
             this.<#= EntityScaffoldingDetails.EntityNameCamelCase #>Service = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service;
@@ -168,7 +168,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return RedirectToIndex(String.Format("{0} ha sido creado", "<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre"));
+            return RedirectToIndex(String.Format("<#= EntityScaffoldingDetails.EntityName #> {0} ha sido creado", "<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre"));
         }
         
         [CustomTransaction]
@@ -196,7 +196,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             <#= EntityScaffoldingDetails.EntityNameCamelCase #>Service.Save<#= EntityScaffoldingDetails.EntityName #>(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
 
-            return RedirectToIndex(String.Format("{0} ha sido modificado", "<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre"));
+            return RedirectToIndex(String.Format("<#= EntityScaffoldingDetails.EntityName #> {0} ha sido modificado", "<#= EntityScaffoldingDetails.EntityNameCamelCase #>.Nombre"));
         }
         
         [CustomTransaction]
@@ -225,6 +225,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = <#= EntityScaffoldingDetails.EntityNameCamelCase #>Mapper.Map(<#= EntityScaffoldingDetails.EntityNameCamelCase #>);
             
             return Rjs("Activate", form);
+        }
+        
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult Search(string q)
+        {
+            var data = searchService.Search<<#= EntityScaffoldingDetails.EntityName #>>(x => x.Nombre, q);
+            return Content(data);
         }
         
 		<#+ 

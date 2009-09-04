@@ -1,6 +1,26 @@
+﻿<#+
+public class NewEditTemplate : BaseTemplate
+{
+	public NewEditTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+<#+ 
+	SpanishInflector spanishInflector = new SpanishInflector();
+	string entityName = EntityScaffoldingDetails.EntityName;
+	string titleize = spanishInflector.Titleize(entityName);
+	string[] addName = titleize.Split(' ');
+	
+	string pluralizeEntityNameCamelCase = "";
+		foreach(string name in addName){
+		pluralizeEntityNameCamelCase += spanishInflector.Camelize(name) + " ";
+	}
+#>
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<<#= entityName #>Form>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -12,7 +32,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el proyecto utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar el <#= pluralizeEntityNameCamelCase #>utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -32,14 +52,14 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    
 	    <div id="forma">
-	        <% using (Html.BeginForm("Update", "Proyecto", new { Id = Model.Form.Id })) { %>
+	        <% using (Html.BeginForm("Update", "<#= entityName #>", new { Id = Model.Form.Id })) { %>
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
-	            <% Html.RenderPartial("_Form", Model.Form); %>
+
 	            
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<<#= entityName #>Controller>(x => x.Index(), "Regresar") %>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->
@@ -52,3 +72,7 @@
     });
 </script>
 </asp:Content>
+<#+
+	}
+}
+#>
