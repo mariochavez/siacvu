@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoActividad TipoActividad { get; set; }
 
-        public virtual TipoParticipante TipoParticipante { get; set; }
+        public virtual TipoParticipacion TipoParticipante { get; set; }
 
         public virtual int Participantes { get; set; }
 

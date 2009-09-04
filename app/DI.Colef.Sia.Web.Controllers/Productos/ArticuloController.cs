@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
-        readonly ITipoParticipanteMapper tipoParticipanteMapper;
+        readonly ITipoParticipacionMapper tipoParticipacionMapper; 
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, 
                                   IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, 
                                   IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, 
-                                  ITipoActividadMapper tipoActividadMapper, ITipoParticipanteMapper tipoParticipanteMapper, 
+                                  ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, 
                                   IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
                                   IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, 
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper, 
@@ -64,7 +64,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.indiceMapper = indiceMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
-            this.tipoParticipanteMapper = tipoParticipanteMapper;
+            this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
@@ -374,7 +374,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
-            form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
+            form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());

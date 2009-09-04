@@ -646,7 +646,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEvento,
-                           o => o.AddFormatter<YearDateFormatter>())
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,

@@ -1780,8 +1780,8 @@ alter table Articulos  drop constraint FK3EB394D71BCB3374
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7437DED87]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D7437DED87
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7E87ACBB]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7E87ACBB
 
 
 
@@ -5151,9 +5151,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references TipoActividades
 
     alter table Articulos 
-        add constraint FK3EB394D7437DED87 
+        add constraint FK3EB394D7E87ACBB 
         foreign key (TipoParticipanteFk) 
-        references TipoParticipantes
+        references TipoParticipaciones
 
     alter table Articulos 
         add constraint FK3EB394D7295BC133 

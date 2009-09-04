@@ -40,5 +40,13 @@
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
+<<<<<<< HEAD:app/DI.Colef.Sia.Web/Views/Productos/Articulo/_DatosArticulo.ascx
     <%=Html.ValidationMessage("LineaTematicaNombre")%>
+=======
+</p>
+<p>
+    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto)%>
+    <%=Html.ValidationMessage("TieneProyecto")%>
+>>>>>>> d6dd101e140cff5d058d13bf119e1b62a8a3a453:app/DI.Colef.Sia.Web/Views/Productos/Articulo/_DatosArticulo.ascx
 </p>

@@ -40,17 +40,17 @@
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 100 })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Tiraje")%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
     <label>Fecha del evento</label>
-    <%=Html.TextBox("FechaEvento", Model.Tiraje, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("FechaEvento", Model.FechaEvento, new { @class = "datetime input100", maxlength = 100 })%>
     <%=Html.ValidationMessage("FechaEvento")%>
 </p>
 <p>

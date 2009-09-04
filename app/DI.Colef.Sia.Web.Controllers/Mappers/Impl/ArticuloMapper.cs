@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
-
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
@@ -56,7 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
             model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
-            model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
+            model.TipoParticipante = catalogoService.GetTipoParticipacionById(message.TipoParticipante);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);

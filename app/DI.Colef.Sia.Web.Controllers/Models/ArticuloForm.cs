@@ -91,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
-        public TipoParticipanteForm[] TiposParticipantes { get; set; }
+        public TipoParticipacionForm[] TiposParticipantes { get; set; }
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
