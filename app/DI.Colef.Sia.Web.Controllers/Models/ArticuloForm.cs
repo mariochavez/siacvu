@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -14,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        public bool TieneProyectoInvestigacionReferencia { get; set; }
+
         public int Puntuacion { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
@@ -94,5 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
+
+        public string FechaPublicacion { get; set; }
     }
 }

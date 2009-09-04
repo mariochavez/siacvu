@@ -9,7 +9,7 @@
 </p>
 <p>
     <label>Nombre</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class="input350-bold-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Nombre", Model.Nombre, new { @class="input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>

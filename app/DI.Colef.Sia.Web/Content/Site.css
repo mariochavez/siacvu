@@ -527,8 +527,34 @@ a.editabusqueda {
 	color: #A34318;
 }
 
-.input350-requerido {
-	width: 350px;
+.buscar {
+    width: 420px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+	background: transparent url(./Images/buscar-icon.gif) right 50% no-repeat;
+}
+
+.buscar-requerido {
+    width: 420px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+	background: transparent url(./Images/buscar-requerido-icon.gif) right 50% no-repeat;
+}
+
+.input420 {
+	width: 420px;
+	padding: 3px;
+	border: 1px solid #555555;
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 11pt;
+}
+
+.input420-requerido {
+	width: 420px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -536,8 +562,8 @@ a.editabusqueda {
 	background: transparent url(./Images/requerido-icon.gif) right 50% no-repeat;
 }
 
-.input350-bold-requerido {
-	width: 350px;
+.input420-bold-requerido {
+	width: 420px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -548,7 +574,7 @@ a.editabusqueda {
 }
 
 #forma select {
-	width: 258px;
+	width: 420px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -556,7 +582,7 @@ a.editabusqueda {
 }
 
 #forma select.requerido {
-	width: 258px;
+	width: 420px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -568,13 +594,20 @@ a.editabusqueda {
 	background-color: #fff;
 }
 
-.textarea250 {
-	width: 250px;
+.textarea420 {
+	width: 420px;
 	height: 80px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
 	font-size: 11pt;
+}
+
+.cvu {
+    background: transparent url(./Images/cvu.gif) no-repeat;
+    height:12px;
+    padding:0 12px;
+    width:25px;
 }
 
 #forma span {

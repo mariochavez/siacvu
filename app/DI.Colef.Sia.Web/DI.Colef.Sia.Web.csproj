@@ -225,6 +225,7 @@
     <Content Include="Scripts\jquery-ajaxloading.js" />
     <Content Include="Scripts\jquery.autocomplete.js" />
     <Content Include="Scripts\jquery.clearfield.min.js" />
+    <Content Include="Scripts\jquery.dynamicui.js" />
     <Content Include="Views\ApoyoConacyt\Activate.js.ascx" />
     <Content Include="Views\ApoyoConacyt\Edit.aspx" />
     <Content Include="Views\ApoyoConacyt\Index.aspx" />

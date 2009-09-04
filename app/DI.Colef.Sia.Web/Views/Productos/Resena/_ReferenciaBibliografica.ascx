@@ -4,7 +4,7 @@
 <div id="NotaCritica_div">
     <p>
 	    <label>Nombre del producto</label>
-	    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input350-bold-requerido", maxlength = 100 })%>
+	    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	    <%=Html.ValidationMessage("NombreProducto")%>									
     </p>
     <p>

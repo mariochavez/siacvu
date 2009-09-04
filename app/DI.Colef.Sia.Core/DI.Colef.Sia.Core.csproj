@@ -134,6 +134,7 @@
     <Compile Include="Moneda.cs" />
     <Compile Include="MovilidadAcademica.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
+    <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />

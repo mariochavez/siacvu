@@ -7,7 +7,7 @@
                         "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoArticulo") %>
 </p>
-<p id="SelectIdioma_p">
+<p id="idioma_field">
     <label>Idioma al que se tradujo</label>
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
@@ -38,11 +38,7 @@
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-            new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
-</p>
-<p>
-    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
-    <%= Html.CheckBox("TieneProyectoInvestigacionReferencia", Model.TieneProyectoInvestigacionReferencia)%>
-    <%=Html.ValidationMessage("TieneProyectoInvestigacionReferencia")%>
+    <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>

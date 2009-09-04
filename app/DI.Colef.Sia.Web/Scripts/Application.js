@@ -12,9 +12,10 @@
 
     AutoComplete.setup();
     SearchAutoComplete.setup();
-    paisSetDefaultValue();
-    EnableIdiomaOptions.setup();
-    EnablePaginaInicialFinalOptions.setup();
+    
+    //paisSetDefaultValue();
+    //EnableIdiomaOptions.setup();
+    //EnablePaginaInicialFinalOptions.setup();
 }
 
 function setupLibros() {
