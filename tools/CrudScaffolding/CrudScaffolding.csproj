@@ -93,6 +93,8 @@
     </None>
     <None Include="CustomTemplates\Web\Views\AddTemplate.tt">
     </None>
+    <None Include="CustomTemplates\Web\Views\NewEditTemplate.tt">
+    </None>
     <None Include="CustomTemplates\Web\Views\NewjsTemplate.tt">
     </None>
     <None Include="CustomTemplates\Web\Views\NewPartialView.tt">

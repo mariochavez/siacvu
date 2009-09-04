@@ -19,17 +19,19 @@ public class IndexTemplate : BaseTemplate
 	string[] addName = titleize.Split(' ');
 	
 	string pluralizeEntityName = "";
+	string singularizeEntityCamelCase = "";
 	foreach(string name in addName){
 		pluralizeEntityName += spanishInflector.Pluralize(name);
+		singularizeEntityCamelCase += " " + spanishInflector.Camelize(name);
 	}
+	
 	string titleizePluralEntityName = spanishInflector.Titleize(pluralizeEntityName);
-	
 	string[] camelAddName = titleizePluralEntityName.Split(' ');
-	string pluralizeEntityNameCamelCase = "";
 	
-		foreach(string name in camelAddName){
+	string pluralizeEntityNameCamelCase = "";
+	foreach(string name in camelAddName){
 		pluralizeEntityNameCamelCase += spanishInflector.Camelize(name) + " ";
-	}
+	}	
 #>
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<<#= entityName #>Form>>" %>
@@ -44,13 +46,13 @@ public class IndexTemplate : BaseTemplate
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar Nuevo <#= titleize #></h3>
+        <h3>Agregar nuevo<#= singularizeEntityCamelCase #></h3>
         <p>
-            Puede agregar un nuevo <#= titleize #> dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear <#= titleize #></strong>.
+            Puede agregar un nuevo<#= singularizeEntityCamelCase #> dentro de la lista de administraci&oacute;n
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo<#= singularizeEntityCamelCase #></strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<<#= entityName #>Controller>(x => x.New(), "+ Crear <#= titleize #>") %></span>
+            <span><%=Html.ActionLink<<#= entityName #>Controller>(x => x.New(), "+ Nuevo<#= singularizeEntityCamelCase #>") %></span>
         </div>
     </div>
 </asp:Content>
@@ -59,7 +61,7 @@ public class IndexTemplate : BaseTemplate
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de <#= titleizePluralEntityName #> registrados en el sistema.</p>
+            <p>Lista de<#= singularizeEntityCamelCase #> registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -77,7 +79,7 @@ public class IndexTemplate : BaseTemplate
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay <#= pluralizeEntityNameCamelCase #>definidos</span></h5>
+					<h5><span>No hay<#= singularizeEntityCamelCase #> registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

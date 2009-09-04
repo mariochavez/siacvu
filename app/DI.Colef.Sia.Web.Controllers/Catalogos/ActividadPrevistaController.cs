@@ -131,6 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             
             return Rjs("Activate", form);
         }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

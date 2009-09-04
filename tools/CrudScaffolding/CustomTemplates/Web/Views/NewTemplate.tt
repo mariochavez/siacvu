@@ -49,8 +49,8 @@ public class NewTemplate : BaseTemplate
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div id="textos">
 	
-	    <% Html.RenderPartial("_Message"); %>    
-	    
+	    <% Html.RenderPartial("_Message"); %>
+	    	
 	    <div id="forma">
 	        <% using (Html.BeginForm("Create", "<#= entityName #>")){ %>
 	        	<%=Html.AntiForgeryToken() %>
