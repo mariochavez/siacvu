@@ -70,10 +70,10 @@
         $('#TipoPublicacion').dynamicui(
             [
                 ['Libro traducido a otro idioma', ['#idioma_field', '.traductor_field']],
-                ['Coordinacion de un numero especial de revista', ['.coordinacionrevista_field']],
-                ['Coordinacion de memoria', ['.coordinacionmemoria_field']],
-                ['Coordinacion de libro sin arbitraje', ['.coordinacionlibro_field']],
-            	['Coordinacion de libro con arbitraje', ['.coordinacionlibro_field']]
+                ['Coordinación de un número especial de revista', ['.coordinacionrevista_field']],
+                ['Coordinación de memoria', ['.coordinacionmemoria_field']],
+                ['Coordinación de libro sin arbitraje', ['.coordinacionlibro_field']],
+            	['Coordinación de libro con arbitraje', ['.coordinacionlibro_field']]
             ]
         );
 
