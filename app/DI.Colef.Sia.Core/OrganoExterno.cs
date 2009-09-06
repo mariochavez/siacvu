@@ -1,12 +1,16 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [OrganoExternoValidator]
     public class OrganoExterno : Entity, IBaseEntity
     {
-
+        [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 

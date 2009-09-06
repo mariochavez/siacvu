@@ -4,20 +4,20 @@
 <p id="NotaPeriodistica_p">
 	<label>Nota period&iacute;stica</label>
 	<%=Html.TextArea("NotaPeriodistica", Model.NotaPeriodistica, 3, 35, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NotaPeriodistica")%>
+	<span class="cvu"></span>
 </p>
 <p>
 	<label>Palabra clave 1</label>
 	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("PalabraClave1")%>
+	<span class="cvu"></span>
 </p>
 <p>
 	<label>Palabra clave 2</label>
 	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("PalabraClave2")%>
+	<span class="cvu"></span>
 </p>
 <p>
 	<label>Palabra clave 3</label>
     <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
-	<%=Html.ValidationMessage("PalabraClave3")%>
+	<span class="cvu"></span>
 </p>

@@ -5,7 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string FechaConclusion { get; set; }
-        public string Autor { get; set; }
+        //public string Autor { get; set; }
         public string FechaGrado { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

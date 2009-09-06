@@ -34,11 +34,6 @@
 	<%=Html.ValidationMessage("EspecificacionMedioElectronico")%>
 </p>
 <p>
-	<label>Especificaci&oacute;n</label>
-	<%=Html.TextBox("Especificacion", Model.Especificacion, new { @class = "input250-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("Especificacion")%>
-</p>
-<p>
 	<label>G&eacute;nero</label>
 	<%=Html.DropDownList("Genero", Model.Generos.CreateSelectList<GeneroForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
@@ -56,13 +51,13 @@
 <p>
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                "Seleccione ...")%>
 	<%=Html.ValidationMessage("Proyecto") %>
 </p>
 <p>
 	<label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-            new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>

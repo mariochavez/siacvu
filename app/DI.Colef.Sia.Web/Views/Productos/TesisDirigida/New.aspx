@@ -51,7 +51,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupTesis();
+        $('#GradoAcademico').dynamicui(
+            [
+            	//falta funcionalidad para multiples
+            	//Valores que activen el mismo objeto
+            	//Ej.
+            	//[['Doctor','Licenciatura', 'etc...'],['#FechaGrado_p']]
+            	['Doctor', ['#FechaGrado_p']]
+            ]
+        );
+
+        $('#GradoAcademico')[0].dynamic.setup();
     });
 </script>
 </asp:Content>

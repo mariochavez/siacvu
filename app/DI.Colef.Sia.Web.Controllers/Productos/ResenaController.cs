@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -77,6 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
@@ -307,7 +309,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         ResenaForm SetupNewForm(ResenaForm form)
         {
             form = form ?? new ResenaForm();
-
 
             form.CoautorExternoResena = new CoautorExternoResenaForm();
             form.CoautorInternoResena = new CoautorInternoResenaForm();

@@ -1,11 +1,16 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [ParticipacionValidator]
     public class Participacion : Entity, IBaseEntity
     {
+        [DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }
 
