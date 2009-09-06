@@ -61,7 +61,26 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupLibros();
+        
+        $('#TipoPublicacion').dynamicui(
+            [
+                ['Libro traducido a otro idioma', ['#idioma_field', '.traductor_field']],
+                ['Coordinacion de un numero especial de revista', ['.coordinacionrevista_field']],
+                ['Coordinacion de memoria', ['.coordinacionmemoria_field']],
+                ['Coordinacion de libro sin arbitraje', ['.coordinacionlibro_field']],
+            	['Coordinacion de libro con arbitraje', ['.coordinacionlibro_field']]
+            ]
+        );
+
+        $('#TipoPublicacion')[0].dynamic.setup();
+        
+        $('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['.publicado_field']]
+            ]
+        );
+
+        $('#EstadoProducto')[0].dynamic.setup();
     });
 </script>
 

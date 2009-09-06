@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Nombre del dictamen</label>
+	<label>Nombre del producto dictaminado</label>
 	<%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
@@ -19,10 +19,11 @@
 	<%=Html.ValidationMessage("TipoParticipacion") %>
 </p>
 <p>
-	<label>Instituci&oacute;n</label>
+	<label>Instituci&oacute;n solicitante</label>
 	<%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
 	<label>Periodo de referencia</label>

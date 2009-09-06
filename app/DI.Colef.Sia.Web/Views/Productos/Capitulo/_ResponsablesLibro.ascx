@@ -4,6 +4,6 @@
 <p>
     <label>Forma de participaci&oacute;n</label>
     <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<FormaParticipacionForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("FormaParticipacion") %>
 </p>

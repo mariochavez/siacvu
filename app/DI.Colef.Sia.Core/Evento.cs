@@ -1,10 +1,14 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [EventoValidator]
     public class Evento : Entity, IBaseEntity
     {
         public Evento()
@@ -24,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         }
 
         [NotNullNotEmpty]
+        [DomainSignature]
         public virtual string Nombre { get; set; }
 
         public virtual Ambito Ambito { get; set; }

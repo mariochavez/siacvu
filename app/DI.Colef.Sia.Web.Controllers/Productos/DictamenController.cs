@@ -103,7 +103,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
-                ((GenericViewData<DictamenForm>) ViewData.Model).Form = SetupNewForm();
+                var dictamenForm = dictamenMapper.Map(dictamen);
+
+                ((GenericViewData<DictamenForm>)ViewData.Model).Form = SetupNewForm(dictamenForm);
                 return ViewNew();
             }
 

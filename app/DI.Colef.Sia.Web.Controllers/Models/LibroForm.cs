@@ -14,7 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        public bool Traductor { get; set; }
+        public string CoTraductor { get; set; }
+        public string NombreTraductor { get; set; }
         public string Modificacion { get; set; }
 
         public int NoPaginas { get; set; }

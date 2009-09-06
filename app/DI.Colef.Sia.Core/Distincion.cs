@@ -1,14 +1,19 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [DistincionValidator]
+    [HasUniqueDomainSignature]
     public class Distincion : Entity, IBaseEntity
     {
         public virtual TipoDistincion TipoDistincion { get; set; }
 
         [NotNullNotEmpty]
+        [DomainSignature]
         public virtual string Descripcion { get; set; }
 
         public virtual DateTime FechaOtorgamiento { get; set; }

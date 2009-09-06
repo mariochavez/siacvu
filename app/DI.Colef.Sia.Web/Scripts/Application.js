@@ -18,9 +18,9 @@
     //EnablePaginaInicialFinalOptions.setup();
 }
 
-function setupLibros() {
-    LibroEnableOptions.setup();
-}
+//function setupLibros() {
+//    LibroEnableOptions.setup();
+//}
 
 function setupParticipaciones() {
     ParticipacionEnableOptions.setup();
@@ -45,7 +45,7 @@ function setupTesis() {
 function paisSetDefaultValue() {
     $('#Pais option').each(function() {
         if ($(this).text() == 'México')
-            $(this).attr('selected', true);
+           $(this).attr('selected', true);
     });
 }
 
@@ -60,7 +60,7 @@ function showMessage(message) {
 }
 
 var EnableIdiomaOptions = {
-    setup: function() {
+   setup: function() {
         $(':input.tipo').change(EnableIdiomaOptions.enableOptions);
         $('#forma').unload(this.enableOptions);
         $('#forma').unload(this.enableOptions());
@@ -85,61 +85,61 @@ var EnableIdiomaOptions = {
     }
 }
 
-var EnablePaginaInicialFinalOptions = {
-    setup: function() {
-        $(':input.estado').change(EnablePaginaInicialFinalOptions.enableOptions);
-        $('#forma').unload(this.enableOptions);
-        $('#forma').unload(this.enableOptions());
-    },
-    enableOptions: function() {
+ var EnablePaginaInicialFinalOptions = {
+     setup: function() {
+         $(':input.estado').change(EnablePaginaInicialFinalOptions.enableOptions);
+         $('#forma').unload(this.enableOptions);
+         $('#forma').unload(this.enableOptions());
+     },
+     enableOptions: function() {
+ 
+         var id = $(this).attr('id');
+ 
+         $('#PaginaInicial').attr('readonly', true);
+         $('#PaginaFinal').attr('readonly', true);
+ 
+         $('#PaginaInicialFinal_div').slideUp('slow', function() {
+             $('#PaginaInicialFinal_div').fadeOut('fast');
+         });
+ 
+         $("#" + id + " option:selected:contains('Publicado')").each(function() {
+             $('#PaginaInicial').attr('readonly', false);
+             $('#PaginaFinal').attr('readonly', false);
+ 
+             $('#PaginaInicialFinal_div').slideDown('slow', function() {
+                 $('#PaginaInicialFinal_div').fadeIn('fast');
+             });
+         });
+ 
+         return false;
+     }
+ }
 
-        var id = $(this).attr('id');
-
-        $('#PaginaInicial').attr('readonly', true);
-        $('#PaginaFinal').attr('readonly', true);
-
-        $('#PaginaInicialFinal_div').slideUp('slow', function() {
-            $('#PaginaInicialFinal_div').fadeOut('fast');
-        });
-
-        $("#" + id + " option:selected:contains('Publicado')").each(function() {
-            $('#PaginaInicial').attr('readonly', false);
-            $('#PaginaFinal').attr('readonly', false);
-
-            $('#PaginaInicialFinal_div').slideDown('slow', function() {
-                $('#PaginaInicialFinal_div').fadeIn('fast');
-            });
-        });
-
-        return false;
-    }
-}
-
-var LibroEnableOptions = {
-    setup: function() {
-        $('#TieneProyecto').change(LibroEnableOptions.enableProyectos);
-        $('#forma').unload(LibroEnableOptions.enableProyectos());
-    },
-    enableProyectos: function() {
-
-        var active = $('#TieneProyecto:checked').length;
-
-        if (active == 1) {
-            $('#SelectProyecto_p').slideDown('slow', function() {
-                $('#SelectProyecto_p').fadeIn('fast');
-                $('#Proyecto').attr('disabled', false);
-            });
-        }
-        else {
-            $('#SelectProyecto_p').slideUp('slow', function() {
-                $('#Proyecto').attr('disabled', true);
-                $('#SelectProyecto_p').fadeOut('fast');
-            });
-        }
-
-        return false;
-    }
-}
+ var LibroEnableOptions = {
+     setup: function() {
+         $('#TieneProyecto').change(LibroEnableOptions.enableProyectos);
+         $('#forma').unload(LibroEnableOptions.enableProyectos());
+     },
+     enableProyectos: function() {
+ 
+         var active = $('#TieneProyecto:checked').length;
+ 
+         if (active == 1) {
+             $('#SelectProyecto_p').slideDown('slow', function() {
+                 $('#SelectProyecto_p').fadeIn('fast');
+                 $('#Proyecto').attr('disabled', false);
+             });
+         }
+         else {
+             $('#SelectProyecto_p').slideUp('slow', function() {
+                 $('#Proyecto').attr('disabled', true);
+                 $('#SelectProyecto_p').fadeOut('fast');
+             });
+         }
+ 
+         return false;
+     }
+ }
 
 var ParticipacionEnableOptions = {
     setup: function() {

@@ -10,11 +10,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Editorial { get; set; }
 		public int NoPaginas { get; set; }
 		public string Volumen { get; set; }
-		public string Editores { get; set; }
+		//public string Editores { get; set; }
 		public string Traductor { get; set; }
-		public string NombreTraductor { get; set; }
+		//public string NombreTraductor { get; set; }
 		public string Resumen { get; set; }
-        public bool TieneProyectoInvestigacionReferencia { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 

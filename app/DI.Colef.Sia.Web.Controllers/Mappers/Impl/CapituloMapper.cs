@@ -44,14 +44,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Editorial = message.Editorial;
             model.NoPaginas = message.NoPaginas;
             model.Volumen = message.Volumen;
-            model.Editores = message.Editores;
+            //model.Editores = message.Editores;
             model.Traductor = message.Traductor;
-            model.NombreTraductor = message.NombreTraductor;
+            //model.NombreTraductor = message.NombreTraductor;
             model.Resumen = message.Resumen;
-            model.TieneProyectoInvestigacionReferencia = message.TieneProyectoInvestigacionReferencia;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
+            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
             
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);

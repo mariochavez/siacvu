@@ -136,6 +136,11 @@
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
+    <Compile Include="NHibernateValidator\CursoValidator.cs" />
+    <Compile Include="NHibernateValidator\DictamenValidator.cs" />
+    <Compile Include="NHibernateValidator\DistincionValidator.cs" />
+    <Compile Include="NHibernateValidator\EventoValidator.cs" />
+    <Compile Include="NHibernateValidator\LibroValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
     <Compile Include="InvestigadorExterno.cs" />

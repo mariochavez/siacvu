@@ -26,5 +26,6 @@
 <p>
     <label>T&iacute;tulo del trabajo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>

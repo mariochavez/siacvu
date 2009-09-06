@@ -8,7 +8,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
-    //[CapituloValidator]
+    [CapituloValidator]
 	public class Capitulo : Entity, IBaseEntity
     {
 		public Capitulo()
@@ -39,21 +39,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
-        [NotNull]
 		public virtual TipoCapitulo TipoCapitulo { get; set; }
 
         [DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string NombreCapitulo { get; set; }
 
-        [NotEmptyDate]
 		public virtual DateTime FechaAceptacion { get; set; }
 
 		public virtual DateTime FechaEdicion { get; set; }
 
-        public virtual bool TieneProyectoInvestigacionReferencia { get; set; }
-
-        [NotNull]
         public virtual EstadoProducto EstadoProducto { get; set; }
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
@@ -88,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Volumen { get; set; }
 		
-		public virtual string Editores { get; set; }
+		//public virtual string Editores { get; set; }
         
 		public virtual TipoParticipacion TipoParticipacion { get; set; }
         
@@ -104,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         
 		public virtual string Traductor { get; set; }
         
-		public virtual string NombreTraductor { get; set; }
+		//public virtual string NombreTraductor { get; set; }
 		
 		public virtual string Resumen { get; set; }
 

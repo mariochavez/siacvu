@@ -5,46 +5,55 @@
     <label>Tipo de distinci&oacute;n</label>
     <%=Html.DropDownList("TipoDistincion", Model.TiposDistinciones.CreateSelectList<TipoDistincionForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("TipoDistincion") %>
 </p>
 <p>
     <label>Descripci&oacute;n</label>
     <%=Html.TextBox("Descripcion", Model.Descripcion, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Descripcion")%>
 </p>
 <p>
     <label>Fecha de otorgamiento</label>
     <%=Html.TextBox("FechaOtorgamiento", Model.FechaOtorgamiento, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaOtorgamiento")%>
 </p>
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
     <label>&Aacute;mbito</label>
     <%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
     <label>Estado</label>
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("EstadoPais") %>
 </p>
 <p>
     <label>Ciudad</label>
     <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input250-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Ciudad")%>
 </p>
 <p>

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -78,6 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -125,7 +127,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
-                ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm();
+                var cursoForm = cursoMapper.Map(curso);
+
+                ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
                 return ViewNew();
             }
 
