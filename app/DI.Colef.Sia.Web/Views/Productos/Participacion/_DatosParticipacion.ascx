@@ -29,7 +29,7 @@
 <p>
 	<label>Instituci&oacute;n organizadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
 </p>
 <p>

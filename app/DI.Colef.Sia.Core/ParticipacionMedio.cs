@@ -2,9 +2,12 @@ using System;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [ParticipacionMedioValidator]
     public class ParticipacionMedio : Entity, IBaseEntity
     {
 		[DomainSignature]
@@ -15,8 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Usuario Usuario { get; set; }
 
         public virtual int Puntuacion { get; set; }
-
-		[NotNullNotEmpty]
+		
 		public virtual string Nombre { get; set; }
 
         public virtual string EspecificacionMedioImpreso { get; set; }
@@ -26,8 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual MedioImpreso MedioImpreso { get; set; }
 
 		public virtual MedioElectronico MedioElectronico { get; set; }
-
-		public virtual string Especificacion { get; set; }
         
 		public virtual Genero Genero { get; set; }
 

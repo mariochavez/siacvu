@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -67,6 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
@@ -133,6 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (!IsValidateModel(tesisDirigida, form, Title.Edit))
             {
                 var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
+
                 ((GenericViewData<TesisDirigidaForm>) ViewData.Model).Form = SetupNewForm(tesisDirigidaForm);
                 FormSetCombos(tesisDirigidaForm);
                 return ViewEdit();

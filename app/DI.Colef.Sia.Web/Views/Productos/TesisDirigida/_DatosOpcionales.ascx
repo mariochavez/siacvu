@@ -5,35 +5,35 @@
     <label>Sector</label>
     <%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
-    <%=Html.ValidationMessage("Sector") %>
+    <span class="cvu"></span>
 </p>
 <p>
     <label>Dependencia</label>
     <%=Html.DropDownList("Dependencia", Model.Dependencias.CreateSelectList<DependenciaForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
-    <%=Html.ValidationMessage("Dependencia") %>
+    <span class="cvu"></span>
 </p>
 <p>
     <label>Departamento</label>
     <%=Html.DropDownList("Departamento", Model.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
 	        "Seleccione ...")%>
-    <%=Html.ValidationMessage("Departamento") %>
+    <span class="cvu"></span>
 </p>
 <p>
     <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
-    <%=Html.ValidationMessage("Area") %>
+    <span class="cvu"></span>
 </p>
 <p>
     <label>Disciplina</label>
     <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
 		    "Seleccione ...")%>
-    <%=Html.ValidationMessage("Disciplina") %>
+    <span class="cvu"></span>
 </p>
 <p>
     <label>Subdisciplina</label>
     <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
-    <%=Html.ValidationMessage("Subdisciplina") %>
+		    "Seleccione ...")%>    
+    <span class="cvu"></span>
 </p>

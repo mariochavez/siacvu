@@ -51,7 +51,13 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupTesis();
+        $('#GradoAcademico').dynamicui(
+            [
+                ['Doctor', ['.fechaGrado_field']]                
+            ]
+        );
+
+        $('#GradoAcademico')[0].dynamic.setup();
     });
 </script>
 </asp:Content>

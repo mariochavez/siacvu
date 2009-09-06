@@ -5,7 +5,7 @@
     <p>
 	    <label>Nombre del producto</label>
 	    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-	    <%=Html.ValidationMessage("NombreProducto")%>									
+	    <%=Html.ValidationMessage("NombreProducto")%>
     </p>
     <p>
 	    <label>Nombre de la revista</label>
@@ -35,12 +35,14 @@
 </p>
 <p>
     <label>P&aacute;gina inicial</label>
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 10, size = 14 })%>    
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaInicial")%>										
 </p>
 <p>
     <label>P&aacute;gina final</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250-requerido", maxlength = 10, size = 5 })%>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 10, size = 14 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
 <p>

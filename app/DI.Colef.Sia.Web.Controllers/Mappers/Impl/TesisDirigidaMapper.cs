@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(TesisDirigidaForm message, TesisDirigida model)
         {
             model.Titulo = message.Titulo;
-            model.Autor = message.Autor;
+            //model.Autor = message.Autor;
             model.NombreAlumno = message.NombreAlumno;
 
             model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();

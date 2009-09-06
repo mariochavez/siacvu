@@ -1,10 +1,14 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [ResenaValidator]
     public class Resena : Entity, IBaseEntity
     {
         public Resena()
@@ -17,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoResenas.Add(coautorExternoResena);
         }
+
         public virtual void AddCoautorInterno(CoautorInternoResena coautorInternoResena)
         {
             CoautorInternoResenas.Add(coautorInternoResena);
@@ -56,6 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string TituloLibro { get; set; }
 
+        [DomainSignature]
         [NotNullNotEmpty]
         public virtual string NombreRevista { get; set; }
 

@@ -2,17 +2,21 @@ using System;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [TesisDirigidaValidator]
     public class TesisDirigida : Entity, IBaseEntity
     {
+        [DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }
 
 		public virtual DateTime FechaConclusion { get; set; }
 
-		public virtual string Autor { get; set; }
+		//public virtual string Autor { get; set; }
 
         public virtual string NombreAlumno { get; set; }
 

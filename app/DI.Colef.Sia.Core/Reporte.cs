@@ -1,10 +1,14 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [ReporteValidator]
     public class Reporte : Entity, IBaseEntity
     {
         public Reporte()
@@ -17,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoReportes.Add(coautorExternoReporte);
         }
+
         public virtual void AddCoautorInterno(CoautorInternoReporte coautorInternoReporte)
         {
             CoautorInternoReportes.Add(coautorInternoReporte);
@@ -34,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual LineaTematica LineaTematica { get; set; }
 
+        [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
