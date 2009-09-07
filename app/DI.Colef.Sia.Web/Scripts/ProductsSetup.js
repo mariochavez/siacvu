@@ -48,3 +48,55 @@ function articuloSetup() {
 
     $('#EstadoProducto')[0].dynamic.setup();
 }
+
+function participacionSetup() {
+    $('#OtraParticipacion').dynamicui(
+            [
+                ['Platicas', ['#Platicas']],
+                ['Presentacion de resultados de investigacion', ['#PresentacionInvestigacion']],
+                ['Presentacion de libro', ['#PresentacionLibro_div']]
+            ]
+        );
+
+    $('#OtraParticipacion')[0].dynamic.setup();
+}
+
+function participacionMedioSetup() {
+    $('#MedioElectronico').dynamicui(
+            [
+                ['Otro', ['#OtroMedioElectronico']]
+            ]
+        );
+
+    $('#MedioElectronico')[0].dynamic.setup();
+
+    $('#MedioImpreso').dynamicui(
+            [
+                ['Otro', ['#OtroMedioImpreso']]
+            ]
+        );
+
+    $('#MedioImpreso')[0].dynamic.setup();
+}
+
+function reporteSetup() {
+    $('#TipoReporte').dynamicui(
+            [
+                ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
+                ['Reporte técnico', ['.ReporteTecnico']]
+            ]
+        );
+
+    $('#TipoReporte')[0].dynamic.setup();
+}
+
+function resenaSetup() {
+    $('#TipoResena').dynamicui(
+            [
+                ['Nota critica', ['.NotaCritica']],
+                ['Reseña bibliografica', ['#ResenaBibliografica_div']]
+            ]
+        );
+
+    $('#TipoResena')[0].dynamic.setup();
+}

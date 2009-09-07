@@ -48,15 +48,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        $('#OtraParticipacion').dynamicui(
-            [
-                ['Platicas', ['#Platicas']],
-                ['Presentacion de resultados de investigacion', ['#PresentacionInvestigacion']],
-                ['Presentacion de libro', ['#PresentacionLibro_div']]
-            ]
-        );
-
-        $('#OtraParticipacion')[0].dynamic.setup();
+        participacionSetup();
     });
 </script>
 </asp:Content>
