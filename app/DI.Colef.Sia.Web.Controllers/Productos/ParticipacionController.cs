@@ -116,7 +116,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (!IsValidateModel(participacion, form, Title.New, "Participacion"))
             {
-                ((GenericViewData<ParticipacionForm>) ViewData.Model).Form = SetupNewForm();
+                var participacionForm = participacionMapper.Map(participacion);
+
+                ((GenericViewData<ParticipacionForm>)ViewData.Model).Form = SetupNewForm(participacionForm);
                 return ViewNew();
             }
 

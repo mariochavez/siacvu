@@ -52,4 +52,5 @@
 	<%=Html.TextBox("Fecha", Model.Fecha, new { @class = "datetime input100", maxlength = 10 })%>
 	<span>(Formato dd/mm/yyyy)</span>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("Fecha")%>	
 </p>

@@ -30,36 +30,63 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Siglas, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.TipoOrgano, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.TipoParticipacion, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.TipoParticipacion,
+                                                         constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Sector, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Nivel, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Ambito, constraintValidatorContext);
-                if (organoExterno.FechaInicial <= DateTime.Parse("1980-01-01") ||
-                    organoExterno.FechaFinal <= DateTime.Parse("1980-01-01"))
-                {
-                    isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaInicial, constraintValidatorContext);
-                    isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaFinal, constraintValidatorContext);
-                }
+                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaInicial, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaFinal, constraintValidatorContext);
             }
 
-            if (organoExterno.FechaInicial > DateTime.Parse("1980-01-01") ||
-                organoExterno.FechaFinal > DateTime.Parse("1980-01-01"))
-                isValid &= ValidateFechaInicialFinal(organoExterno, constraintValidatorContext);
-            
+            isValid &= ValidateFechaInicialFinal(organoExterno, constraintValidatorContext);
+
             return isValid;
         }
 
-    bool ValidateFechaInicialFinal(OrganoExterno organoExterno, IConstraintValidatorContext constraintValidatorContext)
-    {
+        bool ValidateFechaInicialFinal(OrganoExterno organoExterno, IConstraintValidatorContext constraintValidatorContext)
+        {
             var isValid = true;
 
-            if (organoExterno.FechaInicial >= organoExterno.FechaFinal)
+            if (organoExterno.FechaInicial == DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
-                    "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
-                constraintValidatorContext.AddInvalid(
-                    "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
+                    "formato de fecha no válido|FechaInicial", "FechaInicial");
                 isValid = false;
+            }
+
+            if (organoExterno.FechaFinal == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaFinal", "FechaFinal");
+                isValid = false;
+            }
+
+            if (organoExterno.FechaInicial > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaInicial", "FechaInicial");
+                isValid = false;
+            }
+
+            if (organoExterno.FechaFinal > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaFinal", "FechaFinal");
+                isValid = false;
+            }
+
+            if (organoExterno.FechaInicial > DateTime.Parse("1980-01-01") || organoExterno.FechaFinal > DateTime.Parse("1980-01-01"))
+            {
+
+                if (organoExterno.FechaInicial >= organoExterno.FechaFinal)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
+                    constraintValidatorContext.AddInvalid(
+                        "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
+                    isValid = false;
+                }
             }
 
             if (!isValid)

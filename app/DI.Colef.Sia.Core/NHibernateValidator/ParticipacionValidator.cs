@@ -36,8 +36,34 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.Pais, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(participacion, constraintValidatorContext);
+
             if (participacion.OtraParticipacion != null)
                 isValid &= ValidateTipoParticipacion(participacion, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateFechas(Participacion participacion, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (participacion.FechaPresentacion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaPresentacion", "FechaPresentacion");
+                isValid = false;
+            }
+
+            if (participacion.FechaPresentacion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaPresentacion", "FechaPresentacion");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }

@@ -28,20 +28,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!experienciaProfesional.IsTransient())
             {
-                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.Entidad, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.Pais, constraintValidatorContext);
-                if (experienciaProfesional.FechaInicial <= DateTime.Parse("1980-01-01") || experienciaProfesional.FechaFinal <= DateTime.Parse("1980-01-01"))
-                {
-                    isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.FechaInicial, constraintValidatorContext);
-                    isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.FechaFinal, constraintValidatorContext);
-                }
+                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.Entidad,
+                                                                   constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.Pais,
+                                                                   constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.FechaInicial,
+                                                                   constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<ExperienciaProfesional>(experienciaProfesional, x => x.FechaFinal,
+                                                                          constraintValidatorContext);
             }
 
-            if (experienciaProfesional.FechaInicial == DateTime.Parse("1900-01-01") || experienciaProfesional.FechaFinal == DateTime.Parse("1900-01-01"))
-                isValid &= ValidateFechaInicialFinal(experienciaProfesional, constraintValidatorContext);
-
-            if (experienciaProfesional.FechaInicial > DateTime.Parse("1980-01-01") || experienciaProfesional.FechaFinal > DateTime.Parse("1980-01-01"))
-                isValid &= ValidateFechaInicialFinal(experienciaProfesional, constraintValidatorContext);
+            isValid &= ValidateFechaInicialFinal(experienciaProfesional, constraintValidatorContext);
 
             return isValid;
         }
@@ -64,13 +61,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (experienciaProfesional.FechaInicial >= experienciaProfesional.FechaFinal)
+            if (experienciaProfesional.FechaInicial > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
-                    "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
-                constraintValidatorContext.AddInvalid(
-                    "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
+                    "la fecha no puede estar en el futuro|FechaInicial", "FechaInicial");
                 isValid = false;
+            }
+
+            if (experienciaProfesional.FechaFinal > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "la fecha no puede estar en el futuro|FechaFinal", "FechaFinal");
+                isValid = false;
+            }
+
+            if (experienciaProfesional.FechaInicial > DateTime.Parse("1980-01-01") || experienciaProfesional.FechaFinal > DateTime.Parse("1980-01-01"))
+            {
+                if (experienciaProfesional.FechaInicial >= experienciaProfesional.FechaFinal)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
+                    constraintValidatorContext.AddInvalid(
+                        "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
+                    isValid = false;
+                }
             }
 
             if (!isValid)

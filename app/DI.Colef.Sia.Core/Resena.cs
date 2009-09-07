@@ -51,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string ReferenciaBibliograficaRevista { get; set; }
 
+        [DomainSignature]
         public virtual string NombreProducto { get; set; }
 
         public virtual Pais Pais { get; set; }
@@ -61,8 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string TituloLibro { get; set; }
 
-        [DomainSignature]
-        [NotNullNotEmpty]
         public virtual string NombreRevista { get; set; }
 
         public virtual string Editorial { get; set; }

@@ -42,11 +42,37 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Ambito, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(participacionMedio, constraintValidatorContext);
+
             if (participacionMedio.MedioElectronico != null)
                 isValid &= ValidateMedioElectronico(participacionMedio, constraintValidatorContext);
 
             if (participacionMedio.MedioImpreso != null)
                 isValid &= ValidateMedioImpreso(participacionMedio, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateFechas(ParticipacionMedio participacionMedio, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (participacionMedio.FechaDifusion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaDifusion", "FechaDifusion");
+                isValid = false;
+            }
+
+            if (participacionMedio.FechaDifusion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaDifusion", "FechaDifusion");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }

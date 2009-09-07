@@ -41,17 +41,57 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.FechaConclusion, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(tesisDirigida, constraintValidatorContext);
+
             if (tesisDirigida.GradoAcademico != null)
                 isValid &= ValidateGradoAcademico(tesisDirigida, constraintValidatorContext);
             
             return isValid;
         }
 
+        bool ValidateFechas(TesisDirigida tesisDirigida, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (tesisDirigida.FechaConclusion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaConclusion", "FechaConclusion");
+                isValid = false;
+            }
+
+            if (tesisDirigida.FechaGrado == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaGrado", "FechaGrado");
+                isValid = false;
+            }
+
+            if (tesisDirigida.FechaConclusion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaConclusion", "FechaConclusion");
+                isValid = false;
+            }
+
+            if (tesisDirigida.FechaGrado > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaGrado", "FechaGrado");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
+        }
+
         bool ValidateGradoAcademico(TesisDirigida tesisDirigida, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
-            
-            if (tesisDirigida.FechaGrado == null)
+
+            if (tesisDirigida.FechaGrado <= DateTime.Parse("1980-01-01"))
             {
                 constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|FechaGrado", "FechaGrado");
                 isValid = false;
