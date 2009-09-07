@@ -58,7 +58,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupResenas();
+        $('#TipoResena').dynamicui(
+            [
+                ['Nota critica', ['.NotaCritica']],
+                ['Reseña bibliografica', ['#ResenaBibliografica_div']]
+            ]
+        );
+
+        $('#TipoResena')[0].dynamic.setup();
     });
 </script>
 </asp:Content>

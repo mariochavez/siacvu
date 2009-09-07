@@ -6,13 +6,14 @@
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Titulo")%>
 </p>
-<p id="Institucion_p">
+<p class="ReporteTecnico">
 	<label>Instituci&oacute;n financiadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
             new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
-<p id="Editorial_p">
+<p class="CuadernoTrabajo">
 	<label>Editorial</label>
 	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Editorial")%>
@@ -28,7 +29,7 @@
 	<%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 10, size = 14 })%>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>
-<p id="Descripcion_p">
+<p>
 	<label>Descripci&oacute;n del reporte</label>
 	<%=Html.TextBox("Descripcion", Model.Descripcion, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>

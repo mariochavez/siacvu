@@ -17,7 +17,7 @@
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioImpreso") %>
 </p>
-<p>
+<p id="OtroMedioImpreso">
 	<label>Especificaci&oacute;n de medio impreso</label>
 	<%=Html.TextBox("EspecificacionMedioImpreso", Model.EspecificacionMedioImpreso, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("EspecificacionMedioImpreso")%>
@@ -28,7 +28,7 @@
                 "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("MedioElectronico") %>
 </p>
-<p>
+<p id="OtroMedioElectronico">
 	<label>Especificaci&oacute;n de medio electr&oacute;nico</label>
 	<%=Html.TextBox("EspecificacionMedioElectronico", Model.EspecificacionMedioElectronico, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("EspecificacionMedioElectronico")%>

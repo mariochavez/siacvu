@@ -26,11 +26,12 @@
 	    <%=Html.ValidationMessage("Autor")%>
     </p>
 </div>
-<p>
+<p id="Platicas">
 	<label>Instituci&oacute;n organizadora</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
     new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
 	<label>Fecha de presentaci&oacute;n</label>
@@ -42,7 +43,7 @@
 	<label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
-<p>
+<p id="PresentacionInvestigacion">
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
