@@ -34,9 +34,36 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Sector, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Nivel, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Ambito, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaInicial, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaFinal, constraintValidatorContext);
+                if (organoExterno.FechaInicial <= DateTime.Parse("1980-01-01") ||
+                    organoExterno.FechaFinal <= DateTime.Parse("1980-01-01"))
+                {
+                    isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaInicial, constraintValidatorContext);
+                    isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaFinal, constraintValidatorContext);
+                }
             }
+
+            if (organoExterno.FechaInicial > DateTime.Parse("1980-01-01") ||
+                organoExterno.FechaFinal > DateTime.Parse("1980-01-01"))
+                isValid &= ValidateFechaInicialFinal(organoExterno, constraintValidatorContext);
+            
+            return isValid;
+        }
+
+    bool ValidateFechaInicialFinal(OrganoExterno organoExterno, IConstraintValidatorContext constraintValidatorContext)
+    {
+            var isValid = true;
+
+            if (organoExterno.FechaInicial >= organoExterno.FechaFinal)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
+                constraintValidatorContext.AddInvalid(
+                    "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }

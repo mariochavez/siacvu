@@ -42,6 +42,48 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Ambito, constraintValidatorContext);
             }
 
+            if (participacionMedio.MedioElectronico != null)
+                isValid &= ValidateMedioElectronico(participacionMedio, constraintValidatorContext);
+
+            if (participacionMedio.MedioImpreso != null)
+                isValid &= ValidateMedioImpreso(participacionMedio, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateMedioElectronico(ParticipacionMedio participacionMedio, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (participacionMedio.MedioElectronico.Nombre.Contains("Otro"))
+            {
+                if (participacionMedio.EspecificacionMedioElectronico == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío o cero|EspecificacionMedioElectronico", "EspecificacionMedioElectronico");
+
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        bool ValidateMedioImpreso(ParticipacionMedio participacionMedio, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (participacionMedio.MedioImpreso.Nombre.Contains("Otro"))
+            {
+                if (participacionMedio.EspecificacionMedioImpreso == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío o cero|EspecificacionMedioImpreso", "EspecificacionMedioImpreso");
+
+                    isValid = false;
+                }
+            }
+
             return isValid;
         }
     }

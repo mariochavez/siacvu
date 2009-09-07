@@ -35,7 +35,8 @@
             new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
-<p>
+
+<p class="CuadernoTrabajo">
 	<label>Fecha de edici&oacute;n</label>
 	<%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
 	<span>(Formato dd/mm/yyyy)</span>
@@ -46,7 +47,7 @@
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
-<p>
+<p class="ReporteTecnico">
 	<label>Fecha de termino</label>
 	<%=Html.TextBox("Fecha", Model.Fecha, new { @class = "datetime input100", maxlength = 10 })%>
 	<span>(Formato dd/mm/yyyy)</span>

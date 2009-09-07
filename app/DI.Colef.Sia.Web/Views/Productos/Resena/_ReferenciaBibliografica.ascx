@@ -1,18 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ResenaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<div id="NotaCritica_div">
-    <p>
-	    <label>Nombre del producto</label>
-	    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-	    <%=Html.ValidationMessage("NombreProducto")%>
-    </p>
-    <p>
-	    <label>Nombre de la revista</label>
-	    <%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
-	    <%=Html.ValidationMessage("NombreRevista")%>
-    </p>
-</div>
+<p class="NotaCritica">
+    <label>Nombre del producto</label>
+    <%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("NombreProducto")%>
+</p>
+<p class="NotaCritica">
+    <label>Nombre de la revista</label>
+    <%=Html.TextBox("NombreRevista", Model.NombreRevista, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("NombreRevista")%>
+</p>
 <div id="ResenaBibliografica_div">
     <p>
         <label>Referencia bibliogr&aacute;fica del libro</label>
@@ -50,7 +48,7 @@
     <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("TituloLibro")%>
 </p>
-<p id="Editorial_p">
+<p class="NotaCritica">
 	<label>Editorial</label>
 	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Editorial")%>

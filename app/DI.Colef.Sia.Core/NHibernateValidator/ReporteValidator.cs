@@ -35,6 +35,54 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.Pais, constraintValidatorContext);
             }
 
+            if (reporte.TipoReporte != null)
+                isValid &= ValidateTipoReporte(reporte, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateTipoReporte(Reporte reporte, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (reporte.TipoReporte.Nombre.Contains("Cuaderno de trabajo"))
+            {
+                if (reporte.Editorial == "")
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío o cero|Editorial", "Editorial");
+
+                    isValid = false;
+                }
+
+                if (reporte.FechaEdicion == DateTime.Parse(""))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío|FechaEdicion", "FechaEdicion");
+
+                    isValid = false;
+                }
+            }
+
+            if (reporte.TipoReporte.Nombre.Contains("Reporte técnico"))
+            {
+                if (reporte.Institucion == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío o cero|InstitucionNombre", "InstitucionNombre");
+
+                    isValid = false;
+                }
+
+                if (reporte.Fecha == DateTime.Parse(""))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío|Fecha", "Fecha");
+
+                    isValid = false;
+                }
+            }
+
             return isValid;
         }
     }

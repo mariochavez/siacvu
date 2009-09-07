@@ -51,7 +51,21 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        setupParticipacionMedios();
+        $('#MedioElectronico').dynamicui(
+            [
+                ['Otro', ['#OtroMedioElectronico']]
+            ]
+        );
+
+        $('#MedioElectronico')[0].dynamic.setup();
+
+        $('#MedioImpreso').dynamicui(
+            [
+                ['Otro', ['#OtroMedioImpreso']]
+            ]
+        );
+
+        $('#MedioImpreso')[0].dynamic.setup();
     });
 </script>
 </asp:Content>
