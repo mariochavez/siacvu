@@ -38,11 +38,65 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.NoPaginas, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(libro, constraintValidatorContext);
+
             if (libro.TipoPublicacion != null)
                 isValid &= ValidateTipoPublicacion(libro, constraintValidatorContext);
 
             if(libro.EstadoProducto != null)
                 isValid &= ValidateEstadoProducto(libro, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateFechas(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (libro.FechaAceptacion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
+                isValid = false;
+            }
+
+            if (libro.FechaEdicion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
+                isValid = false;
+            }
+
+            if (libro.FechaEvento == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaEvento", "FechaEvento");
+                isValid = false;
+            }
+
+            if (libro.FechaAceptacion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
+                isValid = false;
+            }
+
+            if (libro.FechaEdicion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
+                isValid = false;
+            }
+
+            if (libro.FechaEvento > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaEvento", "FechaEvento");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
@@ -82,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Tipo Publicacion - Coordinacion de libro sin/con arbitraje
-            if (libro.TipoPublicacion.Nombre.Contains("Coordinacion de libro"))
+            if (libro.TipoPublicacion.Nombre.Contains("Coordinación de libro"))
             {
                 if (libro.FormaParticipacion == null)
                 {
@@ -106,7 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Tipo Publicacion - Coordinacion de un numero especial de revista
-            if (libro.TipoPublicacion.Nombre.Contains("numero especial de revista"))
+            if (libro.TipoPublicacion.Nombre.Contains("número especial de revista"))
             {
                 if (libro.NombreRevista == null)
                 {

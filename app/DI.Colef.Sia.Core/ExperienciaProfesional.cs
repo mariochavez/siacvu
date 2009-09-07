@@ -1,9 +1,13 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [HasUniqueDomainSignature]
+    [ExperienciaProfesionalValidator]
     public class ExperienciaProfesional : Entity, IBaseEntity
     {
         public virtual string Entidad { get; set; }
@@ -21,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Nivel Nivel6 { get; set; }
 
         [NotNullNotEmpty]
+        [DomainSignature]
         public virtual string Nombramiento { get; set; }
 
         public virtual DateTime FechaInicial { get; set; }

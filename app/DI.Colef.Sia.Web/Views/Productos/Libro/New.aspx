@@ -78,7 +78,7 @@
         );
 
         $('#TipoPublicacion')[0].dynamic.setup();
-        
+
         $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.publicado_field']]

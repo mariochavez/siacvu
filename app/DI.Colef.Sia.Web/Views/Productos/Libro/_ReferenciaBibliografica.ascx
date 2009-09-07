@@ -52,7 +52,7 @@
 </p>
 <p class="coordinacionmemoria_field">
     <label>Fecha del evento</label>
-    <%=Html.TextBox("FechaEvento", Model.FechaEvento, new { @class = "datetime input100", maxlength = 100 })%>
+    <%=Html.TextBox("FechaEvento", Model.FechaEvento, new { @class = "datetime input100", maxlength = 10 })%>
     <%=Html.ValidationMessage("FechaEvento")%>
 </p>
 <p class="coordinacionrevista_field">

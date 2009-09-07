@@ -133,6 +133,7 @@
     <Compile Include="MedioImpreso.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="MovilidadAcademica.cs" />
+    <Compile Include="NHibernateValidator\ApoyoConacytValidator.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
@@ -140,6 +141,8 @@
     <Compile Include="NHibernateValidator\DictamenValidator.cs" />
     <Compile Include="NHibernateValidator\DistincionValidator.cs" />
     <Compile Include="NHibernateValidator\EventoValidator.cs" />
+    <Compile Include="NHibernateValidator\ExperienciaProfesionalValidator.cs" />
+    <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />

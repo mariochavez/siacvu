@@ -42,9 +42,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 var dateValue = (DateTime)value;
                 isInvalid = dateValue <= DateTime.Parse("1980-01-01");
 
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|" + (fieldName ?? propertyInfo.Name), fieldName ?? propertyInfo.Name);
-                constraintValidatorContext.DisableDefaultError();
+                if (isInvalid)
+                {
+
+                    constraintValidatorContext.AddInvalid(
+                        "formato de fecha no válido|" + (fieldName ?? propertyInfo.Name), fieldName ?? propertyInfo.Name);
+                    constraintValidatorContext.DisableDefaultError();
+                }
 
                 return isInvalid;
             }

@@ -38,6 +38,32 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Ciudad, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(distincion, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateFechas(Distincion distincion, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (distincion.FechaOtorgamiento == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaOtorgamiento", "FechaOtorgamiento");
+                isValid = false;
+            }
+
+            if (distincion.FechaOtorgamiento > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaOtorgamiento", "FechaOtorgamiento");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
             return isValid;
         }
     }
