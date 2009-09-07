@@ -2,7 +2,7 @@
     var me = this;
 
     // Create jQuery object for input element
-    var $select = $(select).attr("dynamicui", "off");
+    var $select = $(select);
 
     select.dynamic = me;
 
@@ -27,10 +27,12 @@
     function showFields(fields) {
         if (fields == null)
             return;
-            
+
         for (var i = 0; i < fields.length; i++) {
-            $(fields[i]).slideDown('fast', function() {
-                $(fields[i]).fadeIn('fast');
+            var field = fields[i];
+
+            $(field).slideDown('fast', function() {
+                $(field).fadeIn('fast');
             });
         }
     }
@@ -38,10 +40,12 @@
     function hideFields(fields) {
         if (fields == null)
             return;
-                
+
         for (var i = 0; i < fields.length; i++) {
-            $(fields[i]).slideUp('fast', function() {
-                $(fields[i]).fadeOut('fast');
+            var field = fields[i];
+            
+            $(field).slideUp('fast', function() {
+                $(field).fadeOut('fast');
             });
         }
     }
@@ -91,31 +95,30 @@ jQuery.fn.isDropDownList = function()
    Example: $("#element").isSelected("1","2");
    @param arguments A list of values to see if they are selected.
 */
-jQuery.fn.isSelected = function()
-{
-///     <summary>
-///     Determines if the list of provided values are selected. The pre-condition for this is the element is a select box. 
-/// This performs an 'AND' search - all the values must be selected for the function to return true.
-///     </summary>
-///     <param name="args" type="Array">A list of values to see if they are selected.</param>
-///     <returns type="Boolean" />
+jQuery.fn.isSelected = function() {
+    ///     <summary>
+    ///     Determines if the list of provided values are selected. The pre-condition for this is the element is a select box. 
+    /// This performs an 'AND' search - all the values must be selected for the function to return true.
+    ///     </summary>
+    ///     <param name="args" type="Array">A list of values to see if they are selected.</param>
+    ///     <returns type="Boolean" />
     var current = jQuery(this);
-    
-    if (arguments.length === 0)
-    {
+
+    if (arguments.length === 0) {
         return false; // throw?
     }
-            
+
     var result = false;
     var compareTo = arguments[0];
     var argumentsIn = arguments; // copy for scope inside the jQuery.each
 
 
-    if (current.isDropDownList())
-    {
+    if (current.isDropDownList()) {
         var selected = jQuery("#" + current.attr("id") + " option:selected");
-        if (selected.length === 1)
-            return (compareTo === selected.text());
+        if (selected.length === 1) {
+            var selected = selected.text();
+            return (compareTo === selected);
+        }
     }
 
     return result;

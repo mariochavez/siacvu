@@ -62,22 +62,7 @@
     $(document).ready(function() {
         setupDocument();
 
-        $('#TipoArticulo').dynamicui(
-            [
-                ['Artículo traducido a otro idioma', ['#idioma_field']],
-                ['Artículo con arbitraje', ['.indice_field']]
-            ]
-        );
-
-        $('#TipoArticulo')[0].dynamic.setup();
-
-        $('#EstadoProducto').dynamicui(
-            [
-                ['Publicado', ['.pagina_field']]
-            ]
-        );
-
-        $('#EstadoProducto')[0].dynamic.setup();
+        articuloSetup();
     });
 </script>
 
