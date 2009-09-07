@@ -43,8 +43,48 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FormaParticipacion, constraintValidatorContext);
             }
 
+            isValid &= ValidateFechas(capitulo, constraintValidatorContext);
+
             if (capitulo.TipoCapitulo != null)
                 isValid &= ValidateTipoCapitulo(capitulo, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateFechas(Capitulo capitulo, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (capitulo.FechaAceptacion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
+                isValid = false;
+            }
+
+            if (capitulo.FechaEdicion == DateTime.Parse("1900-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
+                isValid = false;
+            }
+
+            if (capitulo.FechaAceptacion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
+                isValid = false;
+            }
+
+            if (capitulo.FechaEdicion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }

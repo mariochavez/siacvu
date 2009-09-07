@@ -32,7 +32,7 @@
 </p>
 <p>
     <label>A&ntilde;o de publicaci&oacute;n/edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
     <span>(Formato yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
