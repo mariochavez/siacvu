@@ -55,20 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 			ViewData.Model = data;
             return View();
         }
-
-        [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var coordinacion = catalogoService.GetCoordinacionById(id);
-            data.Form = coordinacionMapper.Map(coordinacion);
-            
-            ViewData.Model = data;
-            return View();
-        }
-
+        
         [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]

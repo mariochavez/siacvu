@@ -57,20 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             ViewData.Model = data;
             return View();
         }
-
-        [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var impactoPoliticaPublica = catalogoService.GetImpactoPoliticaPublicaById(id);
-            data.Form = impactoPoliticaPublicaMapper.Map(impactoPoliticaPublica);
-            
-            ViewData.Model = data;
-            return View();
-        }
-
+        
         [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]

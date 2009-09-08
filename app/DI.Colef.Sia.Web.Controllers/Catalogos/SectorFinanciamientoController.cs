@@ -59,19 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var sectorFinanciamiento = catalogoService.GetSectorFinanciamientoById(id);
-            data.Form = sectorFinanciamientoMapper.Map(sectorFinanciamiento);
-            
-            ViewData.Model = data;
-            return View();
-        }
-
-        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
