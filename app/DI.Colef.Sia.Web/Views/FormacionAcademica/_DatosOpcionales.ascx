@@ -2,13 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Estatus</label>
-
-    <%=Html.TextBox("Estatus", Model.Estatus, new { @class = "input250-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Estatus")%>    
-</p>
-<p>
     <label>Sector</label>
 
     <%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),

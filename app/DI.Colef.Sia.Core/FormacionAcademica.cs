@@ -32,7 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Ciudad { get; set; }
 
-        public virtual string Estatus { get; set; }
+        public virtual EstatusFormacionAcademica Estatus { get; set; }
 
         public virtual Sector Sector { get; set; }
 

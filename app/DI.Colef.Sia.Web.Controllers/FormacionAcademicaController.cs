@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
-
+        readonly IEstatusFormacionAcademicaMapper estatusFormacionAcademicaMapper;
 
         public FormacionAcademicaController(IFormacionAcademicaService formacionAcademicaService,
                                             IFormacionAcademicaMapper formacionAcademicaMapper,
@@ -36,10 +36,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IEstadoPaisMapper estadoPaisMapper, ISectorMapper sectorMapper,
                                             IOrganizacionMapper organizacionMapper, IAreaMapper areaMapper,
                                             IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                            IEstatusFormacionAcademicaMapper estatusFormacionAcademicaMapper,
                                             ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.estatusFormacionAcademicaMapper = estatusFormacionAcademicaMapper;
             this.formacionAcademicaService = formacionAcademicaService;
             this.formacionAcademicaMapper = formacionAcademicaMapper;
             this.nivelEstudioMapper = nivelEstudioMapper;
@@ -206,6 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = form ?? new FormacionAcademicaForm();
 
             form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
+            form.EstatusFormacionAcademicas = estatusFormacionAcademicaMapper.Map(catalogoService.GetActiveEstatusFormacionAcademicas());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
@@ -220,6 +223,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         void FormSetCombos(FormacionAcademicaForm form)
         {
             ViewData["NivelEstudio"] = form.NivelEstudioId;
+            ViewData["Estatus"] = form.EstatusId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
 
@@ -231,3 +235,4 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
     }
 }
+

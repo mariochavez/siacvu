@@ -28,8 +28,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaObtencion = message.FechaObtencion.FromShortDateToDateTime();
             model.TituloTesis = message.TituloTesis;
             model.Ciudad = message.Ciudad;
-            model.Estatus = message.Estatus;
 
+            model.Estatus = catalogoService.GetEstatusFormacionAcademicaById(message.Estatus);
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);

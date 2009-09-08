@@ -299,6 +299,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.NivelEstudio,
                            o => o.Ignore())
+                .ForMember(d => d.Estatus,
+                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoPais,

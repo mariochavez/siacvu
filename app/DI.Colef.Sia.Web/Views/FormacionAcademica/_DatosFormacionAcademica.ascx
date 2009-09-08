@@ -19,7 +19,7 @@
 <p>
     <label>T&iacute;tulo de grado</label>
 
-    <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloGrado")%>
 </p>
 <p>
@@ -73,4 +73,12 @@
 
     <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input250-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Ciudad")%>
+</p>
+<p>
+    <label>Estatus</label>
+
+    <%=Html.DropDownList("Estatus", Model.EstatusFormacionAcademicas.CreateSelectList<EstatusFormacionAcademicaForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Estatus")%>
 </p>

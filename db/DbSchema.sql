@@ -263,6 +263,14 @@ alter table GradoAcademicos  drop constraint FK4C871ABE85102A57
 alter table GradoAcademicos  drop constraint FK4C871ABE74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549585102A57]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
+alter table EstatusFormacionAcademicas  drop constraint FK8773549585102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549574E8BAB7]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
+alter table EstatusFormacionAcademicas  drop constraint FK8773549574E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2AED08208336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulos'))
 alter table CoautorInternoArticulos  drop constraint FK2AED08208336201B
 
@@ -1611,6 +1619,10 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA7A8488F7
 alter table FormacionAcademicas  drop constraint FK824D8BEAC0410E89
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAC541BC16]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEAC541BC16
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA3E082BED]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
 alter table FormacionAcademicas  drop constraint FK824D8BEA3E082BED
 
@@ -1984,6 +1996,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'GradoAcademicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GradoAcademicos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstatusFormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusFormacionAcademicas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoArticulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoArticulos
 
@@ -2448,6 +2462,17 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     )
 
     create table GradoAcademicos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table EstatusFormacionAcademicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -3585,7 +3610,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        FechaObtencion DATETIME null,
        TituloTesis NVARCHAR(255) null,
        Ciudad NVARCHAR(255) null,
-       Estatus NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3594,6 +3618,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        LineaTematicaFk INT null,
        PaisFk INT null,
        EstadoPaisFk INT null,
+       EstatusFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
        AreaFk INT null,
@@ -4195,6 +4220,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     alter table GradoAcademicos 
         add constraint FK4C871ABE74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table EstatusFormacionAcademicas 
+        add constraint FK8773549585102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EstatusFormacionAcademicas 
+        add constraint FK8773549574E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -5882,6 +5917,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK824D8BEAC0410E89 
         foreign key (EstadoPaisFk) 
         references EstadoPaises
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAC541BC16 
+        foreign key (EstatusFk) 
+        references EstatusFormacionAcademicas
 
     alter table FormacionAcademicas 
         add constraint FK824D8BEA3E082BED 
