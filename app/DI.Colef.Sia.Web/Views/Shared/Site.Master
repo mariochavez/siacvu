@@ -47,7 +47,7 @@
 		<div id="menu">
 			<ul>
 				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Inicio") %></li>
-				<li><a title="Investigaci&oacite;n" href="#" class="menu-pop" id="menu-investigacion" rel="#investigacion">Investigaci&oacute;n</a></li>
+				<li><a title="Investigacion" href="#" class="menu-pop" id="menu-investigacion" rel="#investigacion">Investigaci&oacute;n</a></li>
 				<div id="investigacion" class="investigacion">
 					<table border="0" cellpadding="0" cellspacing="0">
 						<thead>

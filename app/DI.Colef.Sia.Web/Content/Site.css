@@ -111,10 +111,10 @@
   color: #ffffff;
   -moz-border-radius: 5px; /* Firefox */
   -webkit-border-radius: 5px; /* Safari */
-  filter:alpha(opacity=95);
   -moz-opacity:0.95;
   -khtml-opacity: 0.95;
   opacity: 0.95;
+  filter:alpha(opacity=95);
 }
 .investigacion table {
   margin: 0;

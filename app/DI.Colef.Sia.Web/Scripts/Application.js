@@ -52,14 +52,23 @@ var PopMenu = {
 
         var menu = PopMenu.currentPop.attr('rel');
         $(menu).addClass('pop');
-        $(menu).slideDown('medium');
+        
+        if ($.support.opacity)
+            $(menu).slideDown('medium');
+        else
+            $(menu).show();
 
         PopMenu.cancelCloseTimer();
     },
     closeInactiveMenu: function() {
         if (PopMenu.currentPop == null) {
             var menu = $('.pop');
-            $(menu).slideUp('medium');
+            
+            if ($.support.opacity)
+                $(menu).slideUp('medium');
+            else
+                $(menu).hide();
+                
             $(menu).removeClass('.pop');
         }
     },
