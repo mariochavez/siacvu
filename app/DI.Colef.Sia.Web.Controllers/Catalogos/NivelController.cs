@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             this.nivelMapper = nivelMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
