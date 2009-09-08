@@ -52,7 +52,7 @@
 			<% foreach (var articulo in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(articulo.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(articulo.Titulo) %></span></h5>
+						<h5><span><%=Html.ActionLink<ArticuloController>(x => x.Show(articulo.Id), articulo.Titulo) %></span></h5>
 						<h6>Modificado el <%=Html.Encode(articulo.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

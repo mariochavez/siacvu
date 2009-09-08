@@ -52,7 +52,7 @@ var PopMenu = {
 
         var menu = PopMenu.currentPop.attr('rel');
         $(menu).addClass('pop');
-        
+
         if ($.support.opacity)
             $(menu).slideDown('medium');
         else
@@ -63,12 +63,12 @@ var PopMenu = {
     closeInactiveMenu: function() {
         if (PopMenu.currentPop == null) {
             var menu = $('.pop');
-            
+
             if ($.support.opacity)
                 $(menu).slideUp('medium');
             else
                 $(menu).hide();
-                
+
             $(menu).removeClass('.pop');
         }
     },
@@ -89,7 +89,7 @@ var PopMenu = {
     closeTimer: function() {
         PopMenu.closetimer = window.setTimeout(PopMenu.closeInactiveMenu, PopMenu.timeout);
     }
-}
+};
 
 var SubForm = {
     setup: function() {
@@ -226,7 +226,7 @@ var SearchAutoComplete = {
 
         $(field).val(sValue);
     }
-}
+};
 
 var LocalForm = {
     setup: function() {
@@ -274,7 +274,7 @@ var LocalForm = {
 
         return false;
     }
-}
+};
 
 var RemoteForm = {
     setup: function() {

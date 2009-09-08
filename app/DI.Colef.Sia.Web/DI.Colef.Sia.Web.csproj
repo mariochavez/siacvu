@@ -571,6 +571,7 @@
     <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProductoAcademico.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
@@ -764,6 +765,7 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_ShowSidebar.ascx" />
     <Content Include="Views\Shared\_UserInfo.ascx" />
     <Content Include="Views\Shared\_EditSidebar.ascx" />
     <Content Include="Views\Shared\_NewSidebar.ascx" />
