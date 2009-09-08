@@ -42,11 +42,6 @@
 	<span>(Formato dd/mm/yyyy)</span>
 	<%=Html.ValidationMessage("FechaEdicion")%>	
 </p>
-<p>
-    <label>Tiene proyecto</label>
-    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
-    <%=Html.ValidationMessage("TieneProyecto")%>
-</p>
 <p class="ReporteTecnico">
 	<label>Fecha de termino</label>
 	<%=Html.TextBox("Fecha", Model.Fecha, new { @class = "datetime input100", maxlength = 10 })%>

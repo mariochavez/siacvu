@@ -43,8 +43,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        public virtual bool TieneProyecto { get; set; }
-
         public virtual DateTime FechaEdicion { get; set; }
 
         [Valid]

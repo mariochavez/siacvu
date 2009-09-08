@@ -67,14 +67,7 @@
     $(document).ready(function() {
         setupDocument();
 
-        $('#TipoCapitulo').dynamicui(
-            [
-                ['Capítulo traducido a otro idioma', ['#idioma_field', '#traductor_field']]
-            ]
-        );
-
-        $('#TipoCapitulo')[0].dynamic.setup();
-        
+        capituloSetup();
     });
 </script>
 </asp:Content>

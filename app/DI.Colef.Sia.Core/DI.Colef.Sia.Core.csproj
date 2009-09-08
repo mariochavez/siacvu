@@ -113,6 +113,7 @@
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />
     <Compile Include="EstadoProducto.cs" />
+    <Compile Include="EstatusFormacionAcademica.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="ExperienciaProfesional.cs" />
     <Compile Include="FormacionAcademica.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
+    <Compile Include="NHibernateValidator\FormacionAcademicaValidator.cs" />
     <Compile Include="NHibernateValidator\CursoValidator.cs" />
     <Compile Include="NHibernateValidator\DictamenValidator.cs" />
     <Compile Include="NHibernateValidator\DistincionValidator.cs" />

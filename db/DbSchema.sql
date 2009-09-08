@@ -239,6 +239,14 @@ alter table Niveles  drop constraint FKCE3ED3F785102A57
 alter table Niveles  drop constraint FKCE3ED3F774E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549585102A57]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
+alter table EstatusFormacionAcademicas  drop constraint FK8773549585102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549574E8BAB7]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
+alter table EstatusFormacionAcademicas  drop constraint FK8773549574E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFFA20BAC85102A57]') AND parent_object_id = OBJECT_ID('CoautorExternos'))
 alter table CoautorExternos  drop constraint FKFFA20BAC85102A57
 
@@ -1971,6 +1979,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Niveles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Niveles
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstatusFormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusFormacionAcademicas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReportes
@@ -2396,6 +2406,17 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table EstatusFormacionAcademicas (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table CoautorExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -2628,7 +2649,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table Resenas (
         Id INT IDENTITY NOT NULL,
-       TieneProyecto BIT null,
        FechaAceptacion DATETIME null,
        FechaEdicion DATETIME null,
        ReferenciaBibliograficaLibro NVARCHAR(255) null,
@@ -2665,7 +2685,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         Id INT IDENTITY NOT NULL,
        FechaAceptacion DATETIME null,
        Titulo NVARCHAR(255) null,
-       TieneProyecto BIT null,
        FechaEdicion DATETIME null,
        Editorial NVARCHAR(255) null,
        NoPaginas INT null,
@@ -4165,6 +4184,16 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     alter table Niveles 
         add constraint FKCE3ED3F774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table EstatusFormacionAcademicas 
+        add constraint FK8773549585102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EstatusFormacionAcademicas 
+        add constraint FK8773549574E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 

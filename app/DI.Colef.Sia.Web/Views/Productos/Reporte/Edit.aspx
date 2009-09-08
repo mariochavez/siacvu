@@ -58,14 +58,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        $('#TipoReporte').dynamicui(
-            [
-                ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico']]
-            ]
-        );
-
-        $('#TipoReporte')[0].dynamic.setup();
+        reporteSetup();
     });
 </script>
 </asp:Content>

@@ -6,12 +6,14 @@
 
     <%=Html.DropDownList("NivelEstudio", Model.NivelesEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("NivelEstudio") %>
 </p>
 <p>
     <label>N&uacute;mero de c&eacute;dula</label>
 
     <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
 <p>
@@ -25,6 +27,7 @@
  
     <%=Html.TextBox("FechaObtencion", Model.FechaObtencion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaObtencion")%>
 </p>
 <p>
@@ -33,11 +36,13 @@
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
     new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
     <label>T&iacute;tulo de tesis</label>
 
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input250-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>
 <p>
@@ -52,6 +57,7 @@
 
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
@@ -59,6 +65,7 @@
 
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("EstadoPais") %>
 </p>
 <p>

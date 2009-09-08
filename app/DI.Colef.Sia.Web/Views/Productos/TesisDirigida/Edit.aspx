@@ -50,14 +50,7 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
-        setupDocument();
-        $('#GradoAcademico').dynamicui(
-            [
-                ['Doctor', ['#FechaGrado_p']]                
-            ]
-        );
-
-        $('#GradoAcademico')[0].dynamic.setup();
+        setupDocument();        
     });
 </script>
 </asp:Content>
