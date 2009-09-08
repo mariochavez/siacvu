@@ -18,13 +18,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoMapper cursoMapper;
         readonly ICursoService cursoService;
         readonly IDisciplinaMapper disciplinaMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly INivelEstudioMapper nivelEstudioMapper;
         readonly INivelMapper nivelMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly IPaisMapper paisMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
-        readonly IProgramaEstudioMapper programaEstudioMapper;
         readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
 
@@ -32,9 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
                                ICatalogoService catalogoService, IUsuarioService usuarioService,
-                               IPeriodoReferenciaMapper periodoReferenciaMapper,
-                               IProgramaEstudioMapper programaEstudioMapper,
-                               IInstitucionMapper institucionMapper,
                                INivelMapper nivelMapper,
                                INivelEstudioMapper nivelEstudioMapper,
                                ISectorMapper sectorMapper,
@@ -50,9 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.cursoService = cursoService;
             this.cursoMapper = cursoMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
-            this.programaEstudioMapper = programaEstudioMapper;
-            this.institucionMapper = institucionMapper;
             this.nivelMapper = nivelMapper;
             this.sectorMapper = sectorMapper;
             this.organizacionMapper = organizacionMapper;
@@ -62,6 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -73,6 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -84,6 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -106,6 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -119,6 +114,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
@@ -139,6 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
@@ -160,6 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -178,6 +176,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -195,6 +194,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

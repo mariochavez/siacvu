@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -18,14 +17,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDistincionMapper distincionMapper;
         readonly IDistincionService distincionService;
         readonly IEstadoPaisMapper estadoPaisMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IPaisMapper paisMapper;
         readonly ITipoDistincionMapper tipoDistincionMapper;
 
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
                                     ICatalogoService catalogoService, IUsuarioService usuarioService,
-                                    ITipoDistincionMapper tipoDistincionMapper, IInstitucionMapper institucionMapper,
+                                    ITipoDistincionMapper tipoDistincionMapper,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
@@ -34,12 +32,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.distincionService = distincionService;
             this.distincionMapper = distincionMapper;
             this.tipoDistincionMapper = tipoDistincionMapper;
-            this.institucionMapper = institucionMapper;
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -51,6 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -62,6 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -83,6 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -96,6 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DistincionForm form)
@@ -116,6 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DistincionForm form)
@@ -138,6 +141,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -156,6 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -173,6 +178,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

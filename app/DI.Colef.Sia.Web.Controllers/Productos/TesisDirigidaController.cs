@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -25,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
-
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService, ITesisDirigidaMapper tesisDirigidaMapper, ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
@@ -52,6 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -63,6 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -74,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -95,6 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -108,6 +110,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisDirigidaForm form)
@@ -128,6 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
@@ -149,6 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -167,6 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -184,6 +190,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

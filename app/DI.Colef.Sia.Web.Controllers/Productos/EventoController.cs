@@ -7,7 +7,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -20,11 +19,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IInstitucionMapper institucionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
         readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
@@ -39,8 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
-                                IInvestigadorMapper investigadorMapper, IInstitucionMapper institucionMapper,
-                                ILineaTematicaMapper lineaTematicaMapper,
+                                IInvestigadorMapper investigadorMapper,
                                 ITipoFinanciamientoMapper tipoFinanciamientoMapper,
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
@@ -59,13 +55,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
-            this.institucionMapper = institucionMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -77,6 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -88,6 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -110,6 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -123,6 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EventoForm form,
@@ -130,7 +129,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var coautoresExternos = new string[] {};
             var coautoresInternos = new string[] {};
-            var tipoParticiones = new string[] {};
 
             if (formCollection["CoautorExternoEvento.InvestigadorExternoId_New"] != null &&
                 formCollection["CoautorExternoEvento.InvestigadorExternoId_New"].Split(',').Length > 0)
@@ -157,6 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
@@ -178,6 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -196,6 +196,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -213,6 +214,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
@@ -220,6 +222,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
@@ -236,6 +239,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
@@ -263,6 +267,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
@@ -279,6 +284,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
                                               int eventoId)

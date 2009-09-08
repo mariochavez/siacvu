@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -15,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly IGrupoInvestigacionService grupoInvestigacionService;
         readonly IGrupoInvestigacionMapper grupoInvestigacionMapper;
         readonly ICatalogoService catalogoService;
-        readonly IUsuarioMapper usuarioMapper;
         readonly ISectorMapper sectorMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly INivelMapper nivelMapper;
@@ -23,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public GrupoInvestigacionController(IGrupoInvestigacionService grupoInvestigacionService, 
 			IGrupoInvestigacionMapper grupoInvestigacionMapper, 
 			ICatalogoService catalogoService, IUsuarioService usuarioService,
-			IUsuarioMapper usuarioMapper,
             ISectorMapper sectorMapper,
             IOrganizacionMapper organizacionMapper,
             ISearchService searchService,
@@ -33,12 +30,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 			this.catalogoService = catalogoService;
             this.grupoInvestigacionService = grupoInvestigacionService;
             this.grupoInvestigacionMapper = grupoInvestigacionMapper;
-			this.usuarioMapper = usuarioMapper;
             this.sectorMapper = sectorMapper;
             this.organizacionMapper = organizacionMapper;
             this.nivelMapper = nivelMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
@@ -49,7 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
@@ -58,7 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return View(data);
         }
-        
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -81,6 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -94,6 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(GrupoInvestigacionForm form)
@@ -112,6 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(GrupoInvestigacionForm form)
@@ -132,6 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {            
@@ -150,6 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -167,6 +171,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

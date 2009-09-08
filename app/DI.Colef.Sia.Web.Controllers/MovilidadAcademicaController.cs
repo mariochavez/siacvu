@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -63,6 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.proyectoService = proyectoService;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -74,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -85,6 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -107,6 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -120,6 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(MovilidadAcademicaForm form,
@@ -163,6 +167,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(MovilidadAcademicaForm form)
@@ -184,6 +189,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -202,6 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -219,6 +226,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
@@ -226,6 +234,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewTipoActividad(int id)
         {
@@ -242,6 +251,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddTipoActividad([Bind(Prefix = "TipoActividadMovilidadAcademica")]TipoActividadMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -268,6 +278,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddTipoActividad", tipoActividadMovilidadAcademicaForm);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewProductoDerivado(int id)
         {
@@ -284,6 +295,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProductoDerivado([Bind(Prefix = "ProductoDerivadoMovilidadAcademica")]ProductoDerivadoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -310,6 +322,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddProductoDerivado", productoDerivadoMovilidadAcademicaForm);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewProyecto(int id)
         {
@@ -326,6 +339,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProyecto([Bind(Prefix = "ProyectoMovilidadAcademica")]ProyectoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {
@@ -352,6 +366,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddProyecto", proyectoMovilidadAcademicaForm);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewProductoAcademico(int id)
         {
@@ -368,6 +383,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProductoAcademico([Bind(Prefix = "ProductoAcademicoMovilidadAcademica")]ProductoAcademicoMovilidadAcademicaForm form, int movilidadAcademicaId)
         {

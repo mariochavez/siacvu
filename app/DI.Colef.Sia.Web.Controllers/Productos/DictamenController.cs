@@ -15,8 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IDictamenMapper dictamenMapper;
         readonly IDictamenService dictamenService;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IPeriodoReferenciaMapper periodoReferenciaMapper;
         readonly ITipoDictamenMapper tipoDictamenMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
@@ -26,8 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IUsuarioService usuarioService,
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   ITipoParticipacionMapper tipoParticipacionMapper,
-                                  IInstitucionMapper institucionMapper,
-                                  IPeriodoReferenciaMapper periodoReferenciaMapper, ISearchService searchService)
+                                  ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -35,10 +32,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.dictamenMapper = dictamenMapper;
             this.tipoDictamenMapper = tipoDictamenMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
-            this.institucionMapper = institucionMapper;
-            this.periodoReferenciaMapper = periodoReferenciaMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -50,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -60,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -82,6 +80,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -95,6 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
@@ -115,6 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
@@ -136,6 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -154,6 +156,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -171,6 +174,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

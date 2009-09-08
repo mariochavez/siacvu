@@ -5,7 +5,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -31,6 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.subprogramaConacytMapper = subprogramaConacytMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -42,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -51,6 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -73,6 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -86,6 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ApoyoConacytForm form)
@@ -104,11 +108,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ApoyoConacytForm form)
         {
-            var apoyoConacyt = apoyoConacytMapper.Map(form);
+            var apoyoConacyt = apoyoConacytMapper.Map(form, CurrentUser());
 
             apoyoConacyt.ModificadoPor = CurrentUser();
 
@@ -127,6 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -145,6 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -162,6 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

@@ -7,7 +7,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -33,21 +32,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IProyectoService proyectoService;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
-                               IInstitucionMapper institucionMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
                                ITipoPublicacionMapper tipoPublicacionMapper,
                                IEstadoProductoMapper estadoProductoMapper,
-                               IPeriodoReferenciaMapper periodoReferenciaMapper,
                                IProyectoMapper proyectoMapper,
-                               ILineaTematicaMapper lineaTematicaMapper,
                                IPaisMapper paisMapper,
                                IIdiomaMapper idiomaMapper,
                                IFormaParticipacionMapper formaParticipacionMapper,
@@ -61,7 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IInvestigadorService investigadorService,
                                ISubdisciplinaMapper subdisciplinaMapper,
                                ISearchService searchService,
-                               IRevistaPublicacionMapper revistaPublicacionMapper,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
                                IProyectoService proyectoService)
@@ -86,13 +79,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.proyectoService = proyectoService;
-
-            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
-            this.institucionMapper = institucionMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
@@ -103,7 +94,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return View(data);
         }
-        
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
@@ -114,7 +106,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return View(data);
         }
-        
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -139,6 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -152,6 +146,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(LibroForm form, 
@@ -185,6 +180,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LibroForm form)
@@ -206,6 +202,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {            
@@ -224,6 +221,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -241,13 +239,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Libro>(x => x.Nombre, q);
             return Content(data);
         }
-        
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
@@ -264,6 +264,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoLibro")]CoautorExternoLibroForm form, int libroId)
         {
@@ -289,6 +290,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
+
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
@@ -305,6 +308,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoLibro")]CoautorInternoLibroForm form, int libroId)
         {

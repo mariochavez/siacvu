@@ -123,6 +123,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaRegistro,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaTramite,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoProyecto,
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
