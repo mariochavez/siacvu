@@ -7,8 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaFinal { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
-        public string AdscripcionFisica { get; set; }
-        public string Adscripcion { get; set; }
 
         //Espacio para Agregar Mapeos
         public int TipoEstancia { get; set; }

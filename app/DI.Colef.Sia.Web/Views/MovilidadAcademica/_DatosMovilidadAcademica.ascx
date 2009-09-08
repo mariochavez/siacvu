@@ -28,28 +28,20 @@
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+                new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
+    <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>
 <p>
     <label>Convenio</label>
     <%=Html.DropDownList("Convenio", Model.Convenios.CreateSelectList<ConvenioForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class = "requerido" })%>
+				"Seleccione ...")%>
     <%=Html.ValidationMessage("Convenio") %>
-</p>
-<p>
-    <label>Adscripci&oacute;n</label>
-    <%=Html.TextBox("Adscripcion", Model.Adscripcion, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Adscripcion")%>
-</p>
-<p>
-    <label>Adscripci&oacute;n f&iacute;sica</label>
-    <%=Html.TextBox("AdscripcionFisica", Model.AdscripcionFisica, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("AdscripcionFisica")%>
 </p>

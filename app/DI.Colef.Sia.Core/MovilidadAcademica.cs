@@ -1,10 +1,12 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [MovilidadAcademicaValidator]
     public class MovilidadAcademica : Entity, IBaseEntity
     {
         public MovilidadAcademica()
@@ -39,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoInstitucion TipoInstitucion { get; set; }
 
-        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
         public virtual DateTime FechaInicial { get; set; }
@@ -49,10 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual LineaTematica LineaTematica { get; set; }
 
         public virtual Convenio Convenio { get; set; }
-
-        public virtual string Adscripcion { get; set; }
-
-        public virtual string AdscripcionFisica { get; set; }
 
         [Valid]
         public virtual IList<TipoActividadMovilidadAcademica> TipoActividadMovilidadAcademicas { get; private set; }
