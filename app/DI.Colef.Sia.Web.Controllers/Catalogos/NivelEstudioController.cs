@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             this.nivelEstudioMapper = nivelEstudioMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
@@ -33,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View(data);
         }
         
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
@@ -42,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View(data);
         }
         
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -54,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -66,12 +70,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
         
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(NivelEstudioForm form)
         {
-        
             var nivelEstudio = nivelEstudioMapper.Map(form);
             
             nivelEstudio.CreadorPor = CurrentUser();
@@ -85,12 +89,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Nivel de Estudio {0} ha sido creado", nivelEstudio.Nombre));
         }
         
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(NivelEstudioForm form)
         {
-        
             var nivelEstudio = nivelEstudioMapper.Map(form);
             
             nivelEstudio.ModificadoPor = CurrentUser();
@@ -103,6 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Nivel de Estudio {0} ha sido modificado", nivelEstudio.Nombre));
         }
         
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -117,6 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
         
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -131,6 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

@@ -26,6 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             this.institucionMapper = institucionMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -37,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View(data);
         }
 
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -46,6 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View(data);
         }
 
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -58,6 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -70,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -88,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Revista de Publicación {0} ha sido creada", revistaPublicacion.Titulo));
         }
 
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -105,6 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Revista de Publicación {0} ha sido modificada", revistaPublicacion.Titulo));
         }
 
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -119,6 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
 
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -133,6 +141,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "DGAA")] 
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
