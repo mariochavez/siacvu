@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
         readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
         readonly IRepository<SectorFinanciamiento> sectorFinanciamientoRepository;
@@ -85,6 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoProyecto> tipoProyectoRepository,
             IRepository<IdentificadorLibro> identificadorLibroRepository,
             IRepository<Convenio> convenioRepository,
+            IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository,
             IRepository<TipoInstitucion> tipoInstitucionRepository,
             IRepository<Departamento> departamentoRepository,
             IRepository<Puesto> puestoRepository,
@@ -168,6 +170,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.estadoRepository = estadoRepository;
             this.idiomaRepository = idiomaRepository;
             this.paisRepository = paisRepository;
+            this.estatusFormacionAcademicaRepository = estatusFormacionAcademicaRepository;
             this.identificadorLibroRepository = identificadorLibroRepository;
             this.tipoInstitucionRepository = tipoInstitucionRepository;
             this.tipoArticuloRepository = tipoArticuloRepository;
@@ -2097,6 +2100,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoParticipacionOrgano.ModificadoEl = DateTime.Now;
 
             tipoParticipacionOrganoRepository.SaveOrUpdate(tipoParticipacionOrgano);
+        }
+
+        public EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id)
+        {
+            return estatusFormacionAcademicaRepository.Get(id);
+        }
+
+        public EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas()
+        {
+            return ((List<EstatusFormacionAcademica>)OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray();
+        }
+
+        public EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas()
+        {
+            return ((List<EstatusFormacionAcademica>)estatusFormacionAcademicaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica)
+        {
+            if (estatusFormacionAcademica.Id == 0)
+            {
+                estatusFormacionAcademica.Activo = true;
+                estatusFormacionAcademica.CreadorEl = DateTime.Now;
+            }
+            estatusFormacionAcademica.ModificadoEl = DateTime.Now;
+
+            estatusFormacionAcademicaRepository.SaveOrUpdate(estatusFormacionAcademica);
         }
     }
 }

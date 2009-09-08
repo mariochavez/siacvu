@@ -412,5 +412,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos();
         TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos();
         void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano);
+
+        //Estatus de Formacion Academica
+        EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id);
+        EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas();
+        EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas();
+        void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica);
     }
 }

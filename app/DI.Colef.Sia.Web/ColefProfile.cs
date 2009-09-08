@@ -948,6 +948,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoParticipacionOrgano, TipoParticipacionOrganoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<EstatusFormacionAcademica, EstatusFormacionAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

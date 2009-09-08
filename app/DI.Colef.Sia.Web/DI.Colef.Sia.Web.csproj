@@ -302,6 +302,11 @@
     <Content Include="Views\Catalogos\Estado\Index.aspx" />
     <Content Include="Views\Catalogos\Estado\New.aspx" />
     <Content Include="Views\Catalogos\Estado\_Form.ascx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Edit.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Index.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\New.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\_Form.ascx" />
     <Content Include="Views\Catalogos\FormaParticipacion\Activate.js.ascx" />
     <Content Include="Views\Catalogos\FormaParticipacion\Edit.aspx" />
     <Content Include="Views\Catalogos\FormaParticipacion\Index.aspx" />
