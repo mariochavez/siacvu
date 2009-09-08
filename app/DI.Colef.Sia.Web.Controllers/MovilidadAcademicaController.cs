@@ -79,6 +79,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            ViewData["FechaInicial"] = DateTime.Now.ToString("dd/MM/yyyy");
+            ViewData["FechaFinal"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return View(data);
         }

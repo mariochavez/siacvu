@@ -146,6 +146,7 @@
     <Compile Include="NHibernateValidator\ExperienciaProfesionalValidator.cs" />
     <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
+    <Compile Include="NHibernateValidator\MovilidadAcademicaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionMedioValidator.cs" />

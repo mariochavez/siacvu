@@ -36,9 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(MovilidadAcademicaForm message, MovilidadAcademica model)
         {
-            model.Adscripcion = message.Adscripcion;
-            model.AdscripcionFisica = message.AdscripcionFisica;
-
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 

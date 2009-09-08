@@ -3,36 +3,97 @@ DROP VIEW [dbo].[Usuarios]
 GO
 
 CREATE VIEW Usuarios AS
-SELECT 3 AS Id, 'Investigador 1' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
-   'investigador1' AS UsuarioNombre, 'password' AS Clave, 'investigador1@colef.mx' AS CorreoElectronico,
-   'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 1 AS Activo
+SELECT     17 AS Id, 'Maria Elena' AS Nombre, 'Melendez' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'elena' AS UsuarioNombre, 'elena' AS Clave, 
+                      'administrador@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-07-29' AS FechaNacimiento, '2005-11-21' AS FechaIngreso, 0 AS Investigador, 
+                      1 AS Activo
 UNION
-SELECT 2 AS Id, 'Investigador 2' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
-   'investigador2' AS UsuarioNombre, 'password' AS Clave, 'investigador2@colef.mx' AS CorreoElectronico,
-   'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 1 AS Activo
+SELECT     16 AS Id, 'Elvira Gloria' AS Nombre, 'Canales' AS ApellidoPaterno, 'Mapula' AS ApellidoMaterno, 'cintia' AS UsuarioNombre, 'cintia' AS Clave, 
+                      'dgaa@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1987-01-14' AS FechaNacimiento, '1999-03-07' AS FechaIngreso, 0 AS Investigador, 
+                      1 AS Activo
 UNION
-SELECT 1 AS Id, 'Administrador' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
-   'administrador' AS UsuarioNombre, 'password' AS Clave, 'administrador@colef.mx' AS CorreoElectronico,
-   'M' AS Sexo, '1975-07-29' AS FechaNacimiento, '2005-11-21' AS FechaIngreso, 0 AS Investigador, 1 AS Activo
+SELECT     15 AS Id, 'Alfredo' AS Nombre, 'Hualde' AS ApellidoPaterno, 'Alfaro' AS ApellidoMaterno, 'invhualde' AS UsuarioNombre, 'hualde' AS Clave, 
+                      'investigador15@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
 UNION
-SELECT 4 AS Id, 'DGAA' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
-   'dgaa' AS UsuarioNombre, 'password' AS Clave, 'dgaa@colef.mx' AS CorreoElectronico,
-   'H' AS Sexo, '1987-01-14' AS FechaNacimiento, '1999-03-07' AS FechaIngreso, 0 AS Investigador, 1 AS Activo
+SELECT     14 AS Id, 'Maria del Rocio' AS Nombre, 'Barajas' AS ApellidoPaterno, 'Escamilla' AS ApellidoMaterno, 'invbarajas' AS UsuarioNombre, 
+                      'barajas' AS Clave, 'investigador14@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 
+                      1 AS Investigador, 1 AS Activo
+UNION
+SELECT     13 AS Id, 'Jorge Agustin' AS Nombre, 'Bustamante' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'invbustamante' AS UsuarioNombre, 
+                      'bustamante' AS Clave, 'investigador13@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso,
+                       1 AS Investigador, 1 AS Activo
+UNION
+SELECT     12 AS Id, 'Rodolfo' AS Nombre, 'Cruz' AS ApellidoPaterno, 'Piñeiro' AS ApellidoMaterno, 'invcruz' AS UsuarioNombre, 'cruz' AS Clave, 
+                      'investigador12@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     11 AS Id, 'Teresa Elizabeth' AS Nombre, 'Cueva' AS ApellidoPaterno, 'Luna' AS ApellidoMaterno, 'invCueva' AS UsuarioNombre, 'cueva' AS Clave, 
+                      'investigador11@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     10 AS Id, 'Carlos Alfonso' AS Nombre, 'De la Parra' AS ApellidoPaterno, 'Renteria' AS ApellidoMaterno, 'invrenteria' AS UsuarioNombre, 
+                      'renteria' AS Clave, 'investigador10@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 
+                      1 AS Investigador, 1 AS Activo
+UNION
+SELECT     9 AS Id, 'Laura' AS Nombre, 'Flamand' AS ApellidoPaterno, 'Gomez' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
+                      'investigador9@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     8 AS Id, 'Tonatiuh' AS Nombre, 'Guillén' AS ApellidoPaterno, 'López' AS ApellidoMaterno, 'invguillen' AS UsuarioNombre, 'guillen' AS Clave, 
+                      'investigador8@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     7 AS Id, 'Redi' AS Nombre, 'Gomis' AS ApellidoPaterno, 'Hernández' AS ApellidoMaterno, 'invgomis' AS UsuarioNombre, 'gomis' AS Clave, 
+                      'investigador7@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     6 AS Id, 'Silvia' AS Nombre, 'López' AS ApellidoPaterno, 'Estrada' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
+                      'investigador6@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     5 AS Id, 'Sárah Eva' AS Nombre, 'Martinez' AS ApellidoPaterno, 'Pellégrini' AS ApellidoMaterno, 'invmartinez' AS UsuarioNombre, 'martinez' AS Clave, 
+                      'investigador5@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     4 AS Id, 'Jorge Héctor' AS Nombre, 'Carrillo' AS ApellidoPaterno, 'Viveros' AS ApellidoMaterno, 'invcarrillo' AS UsuarioNombre, 'carrillo' AS Clave, 
+                      'investigador4@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     3 AS Id, 'Sergio' AS Nombre, 'Peña' AS ApellidoPaterno, 'Medina' AS ApellidoMaterno, 'invmedina' AS UsuarioNombre, 'medina' AS Clave, 
+                      'investigador3@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     2 AS Id, 'José María' AS Nombre, 'Ramos' AS ApellidoPaterno, 'Garcia' AS ApellidoMaterno, 'invramos' AS UsuarioNombre, 'ramos' AS Clave, 
+                      'investigador2@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+UNION
+SELECT     1 AS Id, 'Gudelia' AS Nombre, 'Rangel' AS ApellidoPaterno, 'Gómez' AS ApellidoMaterno, 'invrangel' AS UsuarioNombre, 'rangel' AS Clave, 
+                      'investigador1@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
+
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Roles VALUES('Dgaa', GETDATE(), GETDATE(), 1, 1, 1)
 
-INSERT UsuarioRol VALUES(1, 1)
+INSERT UsuarioRol VALUES(1, 2)
 INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
-INSERT UsuarioRol VALUES(4, 3)
-
-insert into EstatusFormacionAcademicas values('Crédito terminado',GETDATE(), GETDATE(), 1, 1, 1);
-insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDATE(), 1, 1, 1);
-insert into EstatusFormacionAcademicas values('Truncado',GETDATE(), GETDATE(), 1, 1, 1);
-insert into EstatusFormacionAcademicas values('En proceso',GETDATE(), GETDATE(), 1, 1, 1);
+INSERT UsuarioRol VALUES(4, 2)
+INSERT UsuarioRol VALUES(5, 2)
+INSERT UsuarioRol VALUES(6, 2)
+INSERT UsuarioRol VALUES(7, 2)
+INSERT UsuarioRol VALUES(8, 2)
+INSERT UsuarioRol VALUES(9, 2)
+INSERT UsuarioRol VALUES(10, 2)
+INSERT UsuarioRol VALUES(11, 2)
+INSERT UsuarioRol VALUES(12, 2)
+INSERT UsuarioRol VALUES(13, 2)
+INSERT UsuarioRol VALUES(14, 2)
+INSERT UsuarioRol VALUES(15, 2)
+INSERT UsuarioRol VALUES(16, 3)
+INSERT UsuarioRol VALUES(17, 1)
 
 insert into ActividadPrevistas values('ActividadPrevista 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ActividadPrevistas values('ActividadPrevista 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -109,6 +170,8 @@ insert into Convenios values('Centro de Investigación y Docencia Económicas A. C
 insert into Convenios values('Centro de Investigación en Geografía y Geomática Ing. Jorge L. Tamayo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Convenios values('El Colegio de San Luis',GETDATE(), GETDATE(), 1, 1, 1);
 
+
+
 insert into TipoProyectos values('Consultoria',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
@@ -119,7 +182,6 @@ insert into TipoPublicaciones values('Libro traducido a otro idioma',GETDATE(), 
 insert into TipoPublicaciones values('Coordinación de libro con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Coordinación de libro sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Coordinación de un número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación de memoria',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Reedición de libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE(), 1, 1, 1);
 
@@ -128,7 +190,6 @@ insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
 
-/*
 insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa',GETDATE(), GETDATE(), 1, 1, 1);
@@ -170,7 +231,6 @@ insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos me
 insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua',GETDATE(), GETDATE(), 1, 1, 1);
-*/
 
 insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, 1, 1);
@@ -212,6 +272,7 @@ insert into EstadoPaises values('Georgia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Hawaii',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Kansas',GETDATE(), GETDATE(), 1, 1, 1);
 
+
 insert into MedioImpresos values('Periodico',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Tabloide',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Revista',GETDATE(), GETDATE(), 1, 1, 1);
@@ -220,6 +281,7 @@ insert into MedioImpresos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Radio',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Television',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Internet',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Videos',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Generos values('Entrevista',GETDATE(), GETDATE(), 1, 1, 1);
@@ -267,10 +329,10 @@ insert into TipoDistinciones values('Becas para estancias',GETDATE(), GETDATE(),
 insert into TipoDistinciones values('Cátedras académicas / Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoEventos values('Congreso',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Conferencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Foro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Seminario',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Taller',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEventos values('Presentación de Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoFinanciamientos values('Fiscal',GETDATE(), GETDATE(), 1, 1, 1);
@@ -304,6 +366,7 @@ insert into Organizaciones values('SECRETARIA DE SALUD',GETDATE(), GETDATE(), 1,
 insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Organizaciones values('SECRETARIA DE ENERGIA',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA',GETDATE(), GETDATE(), 1, 1, 1);
+
 
 insert into Departamentos values('Departamento de Estudios Culturales',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Departamento de Estudios de Administración Pública',GETDATE(), GETDATE(), 1, 1, 1);
@@ -342,6 +405,8 @@ insert into Cargos values('Direccion General Regional Noreste',GETDATE(), GETDAT
 insert into Cargos values('Director de Departamento',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Cargos values('Coordinador de Posgrado',GETDATE(), GETDATE(), 1, 1, 1);
 
+
+
 insert into SNIs values('Candidato',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -360,7 +425,6 @@ insert into Sedes values('Nogales','Dirección General Regional Noroeste',GETDATE
 
 insert into TipoArticulos values('Artículo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoArticulos values('Artículo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoArticulos values('Artículo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Indices values('CLASE',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('CONACYT',GETDATE(), GETDATE(), 1, 1, 1);
@@ -778,9 +842,8 @@ insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoCapitulos values('Capítulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capitulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoCapitulos values('Capitulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
@@ -788,6 +851,7 @@ insert into FormaParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1
 
 insert into TipoParticipantes values('Persona Fisica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipantes values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
+
 
 insert into InvestigadorExternos values('Acevedo Gladys', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Aceves Calderón Patricia', null, null, GETDATE(), GETDATE(), 1, 1, 1)
@@ -1761,6 +1825,7 @@ insert into Areas values('Etica', GETDATE(), GETDATE(), 1 , 1, 1)
 insert into Areas values('Filosofia', GETDATE(), GETDATE(), 1 , 1, 1)
 insert into Areas values('Prospectiva', GETDATE(), GETDATE(), 1 , 1, 1)
 
+
 insert into Disciplinas values('Aplicacion de la logica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Disciplinas values('Logica deductiva', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Disciplinas values('Logica general', GETDATE(), GETDATE(), 1, 1, 1)
@@ -1788,6 +1853,7 @@ insert into Disciplinas values('Mortalidad', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Disciplinas values('Caracteristicas de las poblaciones', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Disciplinas values('Evolucion demografica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Disciplinas values('Otras especialidades en materia de demografia', GETDATE(), GETDATE(), 1, 1, 1)
+
 
 insert into Subdisciplinas values('Tasa de natalidad', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Subdisciplinas values('Fecunidad general', GETDATE(), GETDATE(), 1, 1, 1)
