@@ -59,6 +59,7 @@
 	height: 60px;
 	margin: 0 auto;
 	background-color: #252525;
+	position: relative;
 }
 
 #seccion-sesion {
@@ -96,6 +97,45 @@
 
 #menu ul li a:hover, #menu ul li a.selected {
 	color: #fff;
+}
+
+.investigacion, .catalogos {
+  float: right;
+  display: none;
+  width: 900px;
+  height: 330px;
+  right: 10px;
+  margin: 20px 0 0 0;
+  background-color: #252525;
+  position: absolute;
+  color: #ffffff;
+}
+.investigacion table {
+  margin: 0;
+  padding: 0;
+}
+.investigacion thead th {
+  width: 100px;
+  padding: 10px;
+  margin: 0;
+  font-size: 11pt;
+  text-align: left;
+  border-bottom: 1px solid #363636;
+  background: transparent url(./Images/menu-bg.gif) 0 50% repeat-x;
+}
+.investigacion tbody td {
+  margin: 0;
+  width: 100px;
+  padding: 10px;
+  font-size: 11pt;
+  border-bottom: 1px solid #363636;
+}
+.investigacion a {
+    text-decoration: none;
+    color: #CDCCB2;
+}
+.investigacion a:hover {
+    color: #BA5C2B;
 }
 
 /*---<menu mario>---*/
@@ -604,7 +644,7 @@ a.editabusqueda {
 }
 
 .cvu {
-    background: transparent url(./Images/cvu.gif) no-repeat;
+    background: transparent url(./Images/cvu.gif) 50% no-repeat;
     height:12px;
     padding:0 12px;
     width:25px;

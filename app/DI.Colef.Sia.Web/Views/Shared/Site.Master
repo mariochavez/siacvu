@@ -47,14 +47,83 @@
 		<div id="menu">
 			<ul>
 				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Inicio") %></li>
+				<li><a title="Investigaci&oacite;n" href="#" class="menu-pop" id="menu-investigacion" rel="#investigacion">Investigaci&oacute;n</a></li>
+				<div id="investigacion" class="investigacion">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>&nbsp;</th>
+								<th>Producci&oacute;n Academica</th>
+								<th>Docencia</th>
+								<th>Movilidad Academica</th>
+								<th>Eventos Academicos</th>
+								<th>Vinculaci&oacute;n y Difusi&oacute;n</th>
+								<th>Participaci&oacute;n en Organos</th>
+								<th>Otras Actividades</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<DictamenController>(x => x.Index(), "Dict&aacute;menes") %></td>
+								<td><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos") %></td>
+								<td><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos") %></td>
+								<td><%=Html.ActionLinkForAreas<MovilidadAcademicaController>(x => x.Index(), "Estancias acad&eacute;mica")%></td>
+								<td><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Participacion y organizaci&oacute;n de eventos")%></td>
+								<td><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></td>
+								<td>Internos</td>
+								<td>Consultorias</td>
+							</tr>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones acad&eacute;micas") %></td>
+								<td><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos") %></td>
+								<td><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas") %></td>
+								<td>Estancias Academicas Externas</td>
+								<td><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Otras participaciones") %></td>
+								<td><%=Html.ActionLinkForAreas<GrupoInvestigacionController>(x => x.Index(), "Grupos de investigaci&oacute;n") %></td>
+								<td><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Externos")%></td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<ProyectoController>(x => x.Index(), "Proyectos") %></td>
+								<td><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan="2"><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Reportes t&eacute;cnicos")%></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>								
+							</tr>											
+						</tbody>
+					</table>	
+				</div>
+				
 				<li>
 				    <a href="#">Otros</a>
 				     <ul id="uno">
 				        <li><%=Html.ActionLinkForAreas<ApoyoConacytController>(x => x.Index(), "Apoyo CONACYT") %></li>
 				        <li><%=Html.ActionLinkForAreas<ExperienciaProfesionalController>(x => x.Index(), "Experiencia profesional") %></li>
 				        <li><%=Html.ActionLinkForAreas<FormacionAcademicaController>(x => x.Index(), "Formación académica")%></li>
-				        <li><%=Html.ActionLinkForAreas<GrupoInvestigacionController>(x => x.Index(), "Grupo de investigación") %></li>
-				        <li><%=Html.ActionLinkForAreas<MovilidadAcademicaController>(x => x.Index(), "Movilidad académica") %></li>
+				        <li></li>
+				        <li></li>
 				        <li class="last">
 	                        <img class="corner_left" alt="" src='<%=ResolveUrl("~/Content/Images/corner_left.png")%>'/>
 	                        <img class="middle" alt="" src='<%=ResolveUrl("~/Content/Images/dot.gif")%>'/>
@@ -62,30 +131,7 @@
 	                    </li>
 				     </ul>
 				</li>
-				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
-				<li>
-				    <a href="#">Productos</a>
-				    <ul id="tres">
-				        <li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos") %></li>
-				        <li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos") %></li>
-				        <li><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos") %></li>
-				        <li><%=Html.ActionLinkForAreas<DictamenController>(x => x.Index(), "Dict&aacute;menes") %></li>
-				        <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones") %></li>
-				        <li><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Eventos") %></li>
-				        <li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></li>
-				        <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "&Oacute;rganos externos")%></li>
-				        <li><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Participaciones") %></li>
-				        <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></li>
-				        <li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Reportes t&eacute;cnicos")%></li>
-				        <li><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></li>
-				        <li><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas") %></li>
-				        <li class="last">
-	                        <img class="corner_left" alt="" src='<%=ResolveUrl("~/Content/Images/corner_left.png")%>'/>
-	                        <img class="middle" alt="" src='<%=ResolveUrl("~/Content/Images/dot.gif")%>'/>
-	                        <img class="corner_right" alt="" src='<%=ResolveUrl("~/Content/Images/corner_right.png")%>'/>
-	                    </li>
-				    </ul>
-				</li>				
+				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>			
 			</ul>
 		</div><!--end menu-->	
 			

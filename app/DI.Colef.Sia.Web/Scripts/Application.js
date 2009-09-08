@@ -1,4 +1,8 @@
-﻿function setupDocument() {
+﻿$(document.body).click(function() {
+    PopMenu.closeInactiveMenu();
+});
+
+function setupDocument() {
     RemoteLink.setup();
     RemoteForm.setup();
     LocalForm.setup();
@@ -12,7 +16,8 @@
 
     AutoComplete.setup();
     SearchAutoComplete.setup();
-}
+	PopMenu.setup();
+};
 
 function setupSublistRows() {
     $('div.sublista:odd').addClass('sublista-dos');
@@ -22,6 +27,59 @@ function setupSublistRows() {
 function showMessage(message) {
     $('#mensaje-error').addClass('mensaje-acierto');
     $('#mensaje-error').html('<p>' + message + '</p>');
+}
+
+var PopMenu = {
+    currentPop: null,
+    timeout: 500,
+    closetimer: 0,
+    setup: function() {
+        $('.menu-pop').each(function() {
+            var menu = $(this).attr('rel');
+            $(menu).mouseover(PopMenu.over);
+            $(menu).mouseout(PopMenu.out);
+
+            $(this).mouseover(PopMenu.over);
+            $(this).mouseout(PopMenu.out);
+            $(this).hover(PopMenu.showMenu);
+        });
+    },
+    showMenu: function() {
+        if (PopMenu.currentPop == $(this))
+            return;
+
+        PopMenu.currentPop = $(this);
+
+        var menu = PopMenu.currentPop.attr('rel');
+        $(menu).addClass('pop');
+        $(menu).slideDown('medium');
+
+        PopMenu.cancelCloseTimer();
+    },
+    closeInactiveMenu: function() {
+        if (PopMenu.currentPop == null) {
+            var menu = $('.pop');
+            $(menu).slideUp('medium');
+            $(menu).removeClass('.pop');
+        }
+    },
+    over: function() {
+        PopMenu.currentPop = $(this);
+        PopMenu.cancelCloseTimer();
+    },
+    out: function() {
+        PopMenu.currentPop = null;
+        PopMenu.closeTimer();
+    },
+    cancelCloseTimer: function() {
+        if (PopMenu.closetimer) {
+            window.clearTimeout(PopMenu.closetimer);
+            PopMenu.closetimer = null;
+        }
+    },
+    closeTimer: function() {
+        PopMenu.closetimer = window.setTimeout(PopMenu.closeInactiveMenu, PopMenu.timeout);
+    }
 }
 
 var SubForm = {
