@@ -58,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {

@@ -56,19 +56,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             ViewData.Model = data;
             return View();
         }
-
-        [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var nivelEstudio = catalogoService.GetNivelEstudioById(id);
-            data.Form = nivelEstudioMapper.Map(nivelEstudio);
-            
-            ViewData.Model = data;
-            return View();
-        }
         
         [Authorize(Roles = "DGAA")]
         [CustomTransaction]

@@ -59,19 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         }
 
         [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var tipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(id);
-            data.Form = tipoFinanciamientoMapper.Map(tipoFinanciamiento);
-
-            ViewData.Model = data;
-            return View();
-        }
-
-        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]

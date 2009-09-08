@@ -9,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     public class Convenio : Entity, IBaseEntity
     {
 		[DomainSignature]
+        [Length(40)]
 		[NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
 

@@ -58,19 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         }
 
         [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var dependencia = catalogoService.GetDependenciaById(id);
-            data.Form = dependenciaMapper.Map(dependencia);
-
-            ViewData.Model = data;
-            return View();
-        }
-
-        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]

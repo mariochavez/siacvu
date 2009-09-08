@@ -56,20 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             ViewData.Model = data;
             return View();
         }
-
-        [Authorize(Roles = "DGAA")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var subdisciplina = catalogoService.GetSubdisciplinaById(id);
-            data.Form = subdisciplinaMapper.Map(subdisciplina);
-
-            ViewData.Model = data;
-            return View();
-        }
-
+        
         [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]

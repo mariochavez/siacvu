@@ -57,19 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var ambito = catalogoService.GetAmbitoById(id);
-            data.Form = ambitoMapper.Map(ambito);
-
-            ViewData.Model = data;
-            return View();
-        }
-
         [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
