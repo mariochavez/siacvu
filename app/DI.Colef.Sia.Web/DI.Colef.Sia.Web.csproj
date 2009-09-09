@@ -574,6 +574,11 @@
     <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Capitulo\Show.aspx" />
+    <Content Include="Views\Productos\Curso\Show.aspx" />
+    <Content Include="Views\Productos\Dictamen\Show.aspx" />
+    <Content Include="Views\Productos\Distincion\Show.aspx" />
+    <Content Include="Views\Productos\Evento\Show.aspx" />
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\Activate.js.ascx" />
@@ -584,6 +589,7 @@
     <Content Include="Views\Productos\Libro\New.aspx" />
     <Content Include="Views\Productos\Libro\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Libro\NewCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Libro\Show.aspx" />
     <Content Include="Views\Productos\Libro\_DatosLibro.ascx" />
     <Content Include="Views\Productos\Libro\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\_EditCoautorExterno.ascx" />

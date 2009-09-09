@@ -18,36 +18,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Sector { get; set; }
         public int SectorId { get; set; }
+        public string SectorNombre { get; set; }
 
         public int Organizacion { get; set; }
         public int OrganizacionId { get; set; }
+        public string OrganizacionNombre { get; set; }
 
         public int NivelEstudio { get; set; }
         public int NivelEstudioId { get; set; }
+        public string NivelEstudioNombre { get; set; }
 
         public int Nivel2 { get; set; }
         public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
 
         public int Nivel3 { get; set; }
         public int Nivel3Id { get; set; }
+        public string Nivel3Nombre { get; set; }
 
         public int Nivel4 { get; set; }
         public int Nivel4Id { get; set; }
+        public string Nivel4Nombre { get; set; }
 
         public int Nivel5 { get; set; }
         public int Nivel5Id { get; set; }
+        public string Nivel5Nombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int Area { get; set; }
         public int AreaId { get; set; }
+        public string AreaNombre { get; set; }
 
         public int Disciplina { get; set; }
         public int DisciplinaId { get; set; }
+        public string DisciplinaNombre { get; set; }
 
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
         

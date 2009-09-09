@@ -19,39 +19,50 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoCapitulo { get; set; }
         public int TipoCapituloId { get; set; }
+        public string TipoCapituloNombre { get; set; }
 
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
+        public string EstadoProductoNombre { get; set; }
 
         public string LineaTematicaNombre { get; set; }
         public int LineaTematicaId { get; set; }
 
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
+        public string IdiomaNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int FormaParticipacion { get; set; }
         public int FormaParticipacionId { get; set; }
+        public string FormaParticipacionNombre { get; set; }
 
         public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }
+        public string TipoParticipacionNombre { get; set; }
 
         public int TipoParticipante { get; set; }
         public int TipoParticipanteId { get; set; }
+        public string TipoParticipanteNombre { get; set; }
 
         public int Area { get; set; }
         public int AreaId { get; set; }
+        public string AreaNombre { get; set; }
 
         public int Disciplina { get; set; }
         public int DisciplinaId { get; set; }
+        public string DisciplinaNombre { get; set; }
 
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
+        public string ProyectoNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 

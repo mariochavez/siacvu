@@ -26,8 +26,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int TipoPublicacion { get; set; }
 		public int TipoPublicacionId { get; set; }
+        public string TipoPublicacionNombre { get; set; }
 
-        public int NombreEvento { get; set; }
+        public string NombreEvento { get; set; }
         public int NombreEventoId { get; set; }
 
         public string NombreRevistaTitulo { get; set; }
@@ -38,33 +39,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int EstadoProducto { get; set; }
 		public int EstadoProductoId { get; set; }
+        public string EstadoProductoNombre { get; set; }
 
 		public int Proyecto { get; set; }
 		public int ProyectoId { get; set; }
+        public string ProyectoNombre { get; set; }
 
 		public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
 
 		public int Pais { get; set; }
 		public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 		
 		public int Idioma { get; set; }
 		public int IdiomaId { get; set; }
+        public string IdiomaNombre { get; set; }
 
 		public int FormaParticipacion { get; set; }
 		public int FormaParticipacionId { get; set; }
+        public string FormaParticipacionNombre { get; set; }
 
 		public int IdentificadorLibro { get; set; }
 		public int IdentificadorLibroId { get; set; }
+        public string IdentificadorLibroNombre { get; set; }
 
 		public int Area { get; set; }
 		public int AreaId { get; set; }
+        public string AreaNombre { get; set; }
 
 		public int Disciplina { get; set; }
 		public int DisciplinaId { get; set; }
+        public string DisciplinaNombre { get; set; }
 
 		public int Subdisciplina { get; set; }
 		public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 		

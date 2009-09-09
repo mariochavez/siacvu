@@ -17,15 +17,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
+        public string AmbitoNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+        public string EstadoPaisNombre { get; set; }
 
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
+        public string TipoEventoNombre { get; set; }
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
@@ -35,9 +39,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoFinanciamiento { get; set; }
         public int TipoFinanciamientoId { get; set; }
+        public string TipoFinanciamientoNombre { get; set; }
 
         public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }
+        public string TipoParticipacionNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
         

@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
         }
 
-        [Authorize]
+        //[Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -121,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EventoForm form,
@@ -155,7 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
@@ -177,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -196,7 +196,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -214,7 +214,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
@@ -222,7 +222,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
@@ -239,7 +239,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
@@ -267,7 +267,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
@@ -284,7 +284,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        //[Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
                                               int eventoId)
