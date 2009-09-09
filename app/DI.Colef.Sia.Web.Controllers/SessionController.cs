@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             string roles = String.Empty;
             foreach (var rol in usuario.Roles)
             {
-                roles += String.Format("{0},", usuario.Nombre);
+                roles += String.Format("{0},", rol.Nombre);
             }
 
             if (roles.EndsWith(","))

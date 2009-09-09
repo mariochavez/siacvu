@@ -125,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs("Activate", form);
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

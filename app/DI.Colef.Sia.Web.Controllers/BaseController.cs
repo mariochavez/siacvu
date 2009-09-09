@@ -46,15 +46,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected Usuario CurrentUser()
         {
-            // TODO: Get username from authentication cookie
-            var username = "administrador";
-
+            var username = User.Identity.Name;
             return usuarioService.GetUsuarioByUserName(username);
         }
 
         protected Investigador CurrentInvestigador()
         {
-            var usuario = usuarioService.GetUsuarioByUserName("investigador1");
+            var usuario = CurrentUser();
             return usuarioService.GetInvestigadorByUsuario(usuario);
         }
 
