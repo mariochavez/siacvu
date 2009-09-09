@@ -20,12 +20,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoReporte { get; set; }
         public int TipoReporteId { get; set; }
+        public string TipoReporteNombre { get; set; }
 
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
+        public string EstadoProductoNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
+        public string ProyectoNombre { get; set; }
 
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
@@ -35,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 

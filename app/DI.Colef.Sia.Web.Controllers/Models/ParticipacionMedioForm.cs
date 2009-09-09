@@ -19,27 +19,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int MedioImpreso { get; set; }
         public int MedioImpresoId { get; set; }
+        public string MedioImpresoNombre { get; set; }
 
         public int MedioElectronico { get; set; }
         public int MedioElectronicoId { get; set; }
+        public string MedioElectronicoNombre { get; set; }
 
         public int Genero { get; set; }
         public int GeneroId { get; set; }
+        public string GeneroNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
+        public string ProyectoNombre { get; set; }
 
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
+        public string AmbitoNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+        public string EstadoPaisNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 

@@ -712,8 +712,10 @@
     <Content Include="Views\Productos\OrganoExterno\Edit.aspx" />
     <Content Include="Views\Productos\OrganoExterno\Index.aspx" />
     <Content Include="Views\Productos\OrganoExterno\New.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\Show.aspx" />
     <Content Include="Views\Productos\OrganoExterno\_DatosOrganoExterno.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Activate.js.ascx" />
+    <Content Include="Views\Productos\ParticipacionMedio\Show.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Edit.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\Index.aspx" />
@@ -723,6 +725,7 @@
     <Content Include="Views\Productos\Participacion\Edit.aspx" />
     <Content Include="Views\Productos\Participacion\Index.aspx" />
     <Content Include="Views\Productos\Participacion\New.aspx" />
+    <Content Include="Views\Productos\Participacion\Show.aspx" />
     <Content Include="Views\Productos\Participacion\_DatosParticipacion.ascx" />
     <Content Include="Views\Productos\Reporte\Activate.js.ascx" />
     <Content Include="Views\Productos\Reporte\AddCoautorExterno.js.ascx" />
@@ -732,6 +735,7 @@
     <Content Include="Views\Productos\Reporte\New.aspx" />
     <Content Include="Views\Productos\Reporte\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Reporte\NewCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Reporte\Show.aspx" />
     <Content Include="Views\Productos\Reporte\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Reporte\_DatosReporte.ascx" />
     <Content Include="Views\Productos\Reporte\_EditCoautorExterno.ascx" />
@@ -747,6 +751,7 @@
     <Content Include="Views\Productos\Resena\New.aspx" />
     <Content Include="Views\Productos\Resena\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Resena\NewCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Resena\Show.aspx" />
     <Content Include="Views\Productos\Resena\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Resena\_DatosResena.ascx" />
     <Content Include="Views\Productos\Resena\_EditCoautorExterno.ascx" />
@@ -754,6 +759,7 @@
     <Content Include="Views\Productos\Resena\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Resena\_NewCoautorInterno.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />
     <Content Include="Views\Proyecto\NewRecursoFinanciero.js.ascx" />

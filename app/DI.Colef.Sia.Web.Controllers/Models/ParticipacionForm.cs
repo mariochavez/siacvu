@@ -12,21 +12,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int Autor { get; set; }
         public int AutorId { get; set; }
+        public string AutorNombre { get; set; }
 
         public int OtraParticipacion { get; set; }
         public int OtraParticipacionId { get; set; }
+        public string OtraParticipacionNombre { get; set; }
 
 		public int TipoPresentacion { get; set; }
         public int TipoPresentacionId { get; set; }
+        public string TipoPresentacionNombre { get; set; }
 
 		public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
+        public string ProyectoNombre { get; set; }
 
 		public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
 		public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+        public string EstadoPaisNombre { get; set; }
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }

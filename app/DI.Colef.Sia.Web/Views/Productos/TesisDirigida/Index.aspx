@@ -52,7 +52,7 @@
 			<% foreach (var tesis in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(tesis.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(tesis.Titulo) %></h5></span>
+					    <h5><span><%=Html.ActionLink<TesisDirigidaController>(x => x.Show(tesis.Id), tesis.Titulo)%></span></h5>
 						<h6>Modificado el <%=Html.Encode(tesis.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

@@ -52,7 +52,7 @@
 			<% foreach (var organoExterno in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(organoExterno.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(organoExterno.Nombre) %></h5></span>
+					    <h5><span><%=Html.ActionLink<OrganoExternoController>(x => x.Show(organoExterno.Id), organoExterno.Nombre)%></span></h5>
 						<h6>Modificado el <%=Html.Encode(organoExterno.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

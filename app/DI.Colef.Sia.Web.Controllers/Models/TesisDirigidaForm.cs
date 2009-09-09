@@ -13,12 +13,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int GradoAcademico { get; set; }
         public int GradoAcademicoId { get; set; }
+        public string GradoAcademicoNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int FormaParticipacion { get; set; }
         public int FormaParticipacionId { get; set; }
+        public string FormaParticipacionNombre { get; set; }
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
@@ -31,21 +34,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Sector { get; set; }
         public int SectorId { get; set; }
+        public string SectorNombre { get; set; }
 
         public int Dependencia { get; set; }
         public int DependenciaId { get; set; }
+        public string DependenciaNombre { get; set; }
 
         public int Departamento { get; set; }
         public int DepartamentoId { get; set; }
+        public string DepartamentoNombre { get; set; }
 
         public int Area { get; set; }
         public int AreaId { get; set; }
+        public string AreaNombre { get; set; }
 
         public int Disciplina { get; set; }
         public int DisciplinaId { get; set; }
+        public string DisciplinaNombre { get; set; }
 
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 
