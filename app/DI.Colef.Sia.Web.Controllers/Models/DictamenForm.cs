@@ -9,9 +9,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int TipoDictamen { get; set; }
         public int TipoDictamenId { get; set; }
+        public string TipoDictamenNombre { get; set; }
 
 		public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }
+        public string TipoParticipacionNombre { get; set; }
 
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }

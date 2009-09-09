@@ -42,7 +42,7 @@ namespace :build do
     copy("#{OUTPUT}/Web.config", props[:archive])
     
     copy("db/CleanDBSchema.sql", props[:archive])
-    copy("db/initdb.sql", props[:archive])
+    copy("db/inicializacion.sql", props[:archive])
     
   end
  

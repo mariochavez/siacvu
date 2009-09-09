@@ -70,7 +70,10 @@ UNION
 SELECT     1 AS Id, 'Gudelia' AS Nombre, 'Rangel' AS ApellidoPaterno, 'Gómez' AS ApellidoMaterno, 'invrangel' AS UsuarioNombre, 'rangel' AS Clave, 
                       'investigador1@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo
-
+UNION
+SELECT     1 AS Id, 'Mario' AS Nombre, 'Chavez' AS ApellidoPaterno, 'Cardenas' AS ApellidoMaterno, 'mario.chavez' AS UsuarioNombre, 'password' AS Clave, 
+                      'investigador1@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      1 AS Activo
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
@@ -94,6 +97,7 @@ INSERT UsuarioRol VALUES(14, 2)
 INSERT UsuarioRol VALUES(15, 2)
 INSERT UsuarioRol VALUES(16, 3)
 INSERT UsuarioRol VALUES(17, 1)
+INSERT UsuarioRol VALUES(18, 2)
 
 insert into ActividadPrevistas values('ActividadPrevista 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ActividadPrevistas values('ActividadPrevista 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -190,47 +194,47 @@ insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Prevención y oportuna detección de cáncer cervicouterino para las mixtecas migrantes de Oaxaca a Baja California',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Antropología del arte indígena transfronterizo. La identidad estético religiosa en la ritualidad contemporánea',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Un análisis comparativo de la interacción en los corredores fronterizos Vancouver-Seatle y San Diego-Tijuana',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Los que no se rindieron: las actividades revolucionarias magonistas en la region fronteriza México-Estados Unidos, 1910-1913',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Identidad, racismos y estereotipos en la frontera México-Estados Unidos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('United State-Mexico border communities in the Nafta Era',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('El papel de las normas ambientales  y las estretegias competitivas en el cuidado ambiental  de la industria en México.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Hacia una política de articulación entre los perfiles educativos  y las necesidades del desarrollo regional. (Etapa III)',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Las remesas de migrantes mexicanos en Estados Unidos y su impacto en la economía mexicana',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Estudio demográfico retrospectivo: movilidad, empleo y familia en México.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('El envejecimiento en México: la siguiente crisis de la transición demográfica',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Condiciones de salud y bienestar de la población envejecida en la Ciudad de México.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Uso y significado de la casa como lugar de trabajo y relaciones de género en trabajadores por cuenta propia en el hogar de Tijuana',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Migración, empleo y vivienda en los municipios y condados de la frontera internacional Estados Unidos-México',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Programa de salud reproductiva',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Construyendo através de las fronteras:  consolidación del consorcio transfronterizo para la acción y la investigación sobre género y salud reproductiva en la frontera México-Estados Unidos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Grupo de intercambio académico sobre salud reproductiva',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Migración internacional, riesgos asociados al cruce de la frontera y programas locales de ayuda al migrante.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Encuesta sobre Migración en la Frontera Norte de México (Fase V)',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Estudio para impulsar el mejoramiento de la calidad del empleo en la industria maquiladora de exportación.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Inmigración laboral de latinoamérica en España: sectores de ocupación, perfiles  y redes sociales.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('La transformación de la industria automotriz y del vestido: comparación entre México, Estados Unidos y Canadá.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Integración norteamericana y desarrollo: impactos del tratado de libre comercio en la reestructuración industrial y el empleo.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Producción de computadoras personales en México y su articulación con la producción global: una valoración de su estado actual y su futuro potencial.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Desarrollo del internet y el ecomercio en México',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Migración y religión: análisis de la relación entre las afiliaciones religiosas y la redefinición identitaria de los migrantes mexicanos en el Sur de California',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Actualización del módulo urbano del programa regional de desarrollo del corredor costero Tijuana-Ensenada',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Uso y manejo sustentable del agua en el medio urbano de la frontera norte de México',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Turismo, migración y empleo en el municipio de playas de Rosarito, B.C.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Planeación de una estrategia de desarrollo sustentable para las comunidades locales en la reserva de la biósfera el Pinacate y el gran Desierto del Altar.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Elaboración-reformulación del Plan de Desarrollo Urbano en  Nuevo Laredo',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('La movilidad laboral geográfica como recurso social en la cuenca carbonífera de Coahuila.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Un grito silenciado: mujer madre en la frontera Este Méxicoamericana',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Apostando a un sueño: la experiencia de las mujeres que van a parir a Estados Unidos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos metrópolis del Noreste. Hacia un modelo alternativo  para Monterrey y Saltillo.',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Prevención y oportuna detección de cáncer cervicouterino para las mixtecas migrantes de Oaxaca a Baja California', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Antropología del arte indígena transfronterizo. La identidad estético religiosa en la ritualidad contemporánea', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Un análisis comparativo de la interacción en los corredores fronterizos Vancouver-Seatle y San Diego-Tijuana', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Los que no se rindieron: las actividades revolucionarias magonistas en la region fronteriza México-Estados Unidos, 1910-1913', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Identidad, racismos y estereotipos en la frontera México-Estados Unidos', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('United State-Mexico border communities in the Nafta Era', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('El papel de las normas ambientales  y las estretegias competitivas en el cuidado ambiental  de la industria en México.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Hacia una política de articulación entre los perfiles educativos  y las necesidades del desarrollo regional. (Etapa III)', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Las remesas de migrantes mexicanos en Estados Unidos y su impacto en la economía mexicana', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Estudio demográfico retrospectivo: movilidad, empleo y familia en México.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('El envejecimiento en México: la siguiente crisis de la transición demográfica', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Condiciones de salud y bienestar de la población envejecida en la Ciudad de México.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Uso y significado de la casa como lugar de trabajo y relaciones de género en trabajadores por cuenta propia en el hogar de Tijuana', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Migración, empleo y vivienda en los municipios y condados de la frontera internacional Estados Unidos-México', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Programa de salud reproductiva', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Construyendo através de las fronteras:  consolidación del consorcio transfronterizo para la acción y la investigación sobre género y salud reproductiva en la frontera México-Estados Unidos', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Grupo de intercambio académico sobre salud reproductiva', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Migración internacional, riesgos asociados al cruce de la frontera y programas locales de ayuda al migrante.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Encuesta sobre Migración en la Frontera Norte de México (Fase V)', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Estudio para impulsar el mejoramiento de la calidad del empleo en la industria maquiladora de exportación.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Inmigración laboral de latinoamérica en España: sectores de ocupación, perfiles  y redes sociales.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('La transformación de la industria automotriz y del vestido: comparación entre México, Estados Unidos y Canadá.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Integración norteamericana y desarrollo: impactos del tratado de libre comercio en la reestructuración industrial y el empleo.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Producción de computadoras personales en México y su articulación con la producción global: una valoración de su estado actual y su futuro potencial.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Desarrollo del internet y el ecomercio en México', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Migración y religión: análisis de la relación entre las afiliaciones religiosas y la redefinición identitaria de los migrantes mexicanos en el Sur de California', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Actualización del módulo urbano del programa regional de desarrollo del corredor costero Tijuana-Ensenada', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Uso y manejo sustentable del agua en el medio urbano de la frontera norte de México', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Turismo, migración y empleo en el municipio de playas de Rosarito, B.C.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Planeación de una estrategia de desarrollo sustentable para las comunidades locales en la reserva de la biósfera el Pinacate y el gran Desierto del Altar.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Elaboración-reformulación del Plan de Desarrollo Urbano en  Nuevo Laredo', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('La movilidad laboral geográfica como recurso social en la cuenca carbonífera de Coahuila.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Un grito silenciado: mujer madre en la frontera Este Méxicoamericana', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Apostando a un sueño: la experiencia de las mujeres que van a parir a Estados Unidos', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos metrópolis del Noreste. Hacia un modelo alternativo  para Monterrey y Saltillo.', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
+insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 
 insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, 1, 1);

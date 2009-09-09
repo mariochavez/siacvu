@@ -67,10 +67,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.NombreEvento = eventoService.GetEventoById(message.NombreEvento);
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
+            model.NombreEvento = eventoService.GetEventoById(message.NombreEventoId);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo)

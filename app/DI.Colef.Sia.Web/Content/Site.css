@@ -79,15 +79,22 @@
 }
 
 #menu {
-	float: right;
-	margin: 2px 10px 0 0;
+    float: right;
+    margin: 0 10px 0 0;
+    height: 60px;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 20px 0;
 }
 
 #menu ul li {
-	display: inline;
-	margin: 0 10px;
-	font-size: 13pt;
-	font-weight: bold;
+    display: inline;
+    margin: 0 20px 0 0;
+    padding: 0;
+    font-size: 13pt;
+    font-weight: bold;
 }
 
 #menu ul li a {
@@ -100,15 +107,14 @@
 }
 
 .investigacion, .catalogos {
-  float: right;
-  display: none;
-  width: 900px;
-  height: 330px;
+  display:none;
+  width:900px;
+  height: 340px;
+  top: 60px;
   right: 10px;
-  margin: 20px 0 0 0;
   background-color: #252525;
   position: absolute;
-  color: #ffffff;
+  color: #fff;
   -moz-border-radius: 5px; /* Firefox */
   -webkit-border-radius: 5px; /* Safari */
   -moz-opacity:0.95;

@@ -13,18 +13,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoDistincion { get; set; }
         public int TipoDistincionId { get; set; }
+        public string TipoDistincionNombre { get; set; }
 
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
+        public string AmbitoNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+        public string EstadoPaisNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
 
