@@ -2,27 +2,27 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>No Apoyo</label>
+    <label>No. de apoyo</label>
     <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoApoyo")%>
 </p>
 <p>
-    <label>Tipo Apoyo</label>
+    <label>Tipo de apoyo</label>
     <%=Html.DropDownList("TipoApoyo", Model.TiposApoyos.CreateSelectList<TipoApoyoForm>("Id", "Nombre"),
 				"Seleccione ...", new { @class ="requerido" })%>
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("TipoApoyo") %>
 </p>
 <p>
-    <label>Subprograma Conacyt</label>
+    <label>Subprograma de CONACYT</label>
     <%=Html.DropDownList("SubprogramaConacyt", Model.SubprogramasConacyts.CreateSelectList<SubprogramaConacytForm>("Id", "Nombre"),
 				"Seleccione ...", new { @class ="requerido" })%>
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("SubprogramaConacyt") %>
 </p>
 <p>
-    <label>Fecha Inicial</label>
+    <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>

@@ -14,9 +14,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         //Espacio para Agregar Mapeos
         public int NivelEstudio { get; set; }
         public int NivelEstudioId { get; set; }
+        public string NivelEstudioNombre { get; set; }
 
         public int Estatus { get; set; }
         public int EstatusId { get; set; }
+        public string EstatusNombre { get; set; }
         
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
@@ -26,24 +28,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int EstadoPais { get; set; }
         public int EstadoPaisId { get; set; }
+        public string EstadoPaisNombre { get; set; }
 
         public int Sector { get; set; }
         public int SectorId { get; set; }
+        public string SectorNombre { get; set; }
 
         public int Organizacion { get; set; }
         public int OrganizacionId { get; set; }
+        public string OrganizacionNombre { get; set; }
 
         public int Area { get; set; }
         public int AreaId { get; set; }
+        public string AreaNombre { get; set; }
 
         public int Disciplina { get; set; }
         public int DisciplinaId { get; set; }
+        public string DisciplinaNombre { get; set; }
 
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         /* Catalogos */
         public NivelEstudioForm[] NivelesEstudios { get; set; }

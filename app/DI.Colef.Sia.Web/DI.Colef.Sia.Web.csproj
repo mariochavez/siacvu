@@ -231,6 +231,7 @@
     <Content Include="Views\ApoyoConacyt\Edit.aspx" />
     <Content Include="Views\ApoyoConacyt\Index.aspx" />
     <Content Include="Views\ApoyoConacyt\New.aspx" />
+    <Content Include="Views\ApoyoConacyt\Show.aspx" />
     <Content Include="Views\ApoyoConacyt\_DatosApoyoConacyt.ascx" />
     <Content Include="Views\Catalogos\Ambito\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Ambito\Edit.aspx" />
@@ -552,7 +553,10 @@
     <Content Include="Views\Catalogos\TipoResena\Index.aspx" />
     <Content Include="Views\Catalogos\TipoResena\New.aspx" />
     <Content Include="Views\Catalogos\TipoResena\_Form.ascx" />
+    <Content Include="Views\ExperienciaProfesional\Show.aspx" />
+    <Content Include="Views\FormacionAcademica\Show.aspx" />
     <Content Include="Views\GrupoInvestigacion\Activate.js.ascx" />
+    <Content Include="Views\GrupoInvestigacion\Show.aspx" />
     <Content Include="Views\GrupoInvestigacion\_EstructuraFuncional.ascx" />
     <Content Include="Views\GrupoInvestigacion\Edit.aspx" />
     <Content Include="Views\GrupoInvestigacion\Index.aspx" />
@@ -568,6 +572,7 @@
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\MovilidadAcademica\AddProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />
+    <Content Include="Views\MovilidadAcademica\Show.aspx" />
     <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProductoAcademico.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />

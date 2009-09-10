@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int SubprogramaConacyt { get; set; }
         public int SubprogramaConacytId { get; set; }
+        public string SubprogramaConacytNombre { get; set; }
 
         /* Catalogos */
         public TipoApoyoForm[] TiposApoyos { get; set; }

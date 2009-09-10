@@ -11,9 +11,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         //Espacio para Agregar Mapeos
         public int TipoEstancia { get; set; }
         public int TipoEstanciaId { get; set; }
+        public string TipoEstanciaNombre { get; set; }
 
         public int TipoInstitucion { get; set; }
         public int TipoInstitucionId { get; set; }
+        public string TipoInstitucionNombre { get; set; }
         
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
@@ -23,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Convenio { get; set; }
         public int ConvenioId { get; set; }
+        public string ConvenioNombre { get; set; }
 
         /* New */
         public TipoActividadMovilidadAcademicaForm[] TipoActividadMovilidadAcademicas { get; set; }
