@@ -140,6 +140,7 @@
     <Compile Include="Mappers\Impl\ExperienciaProfesionalMapper.cs" />
     <Compile Include="Mappers\Impl\IdiomasInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\NivelIdiomaMapper.cs" />
+    <Compile Include="Mappers\Impl\ParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteInternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoAcademicoMovilidadAcademicaMapper.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Mappers\Impl\TipoParticipacionOrganoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
     <Compile Include="Mappers\INivelIdiomaMapper.cs" />
+    <Compile Include="Mappers\IParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\IParticipanteInternoProyectoMapper.cs" />
     <Compile Include="Mappers\IProductoAcademicoMovilidadAcademicaMapper.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="Models\HomeForm.cs" />
     <Compile Include="Models\IdiomasInvestigadorForm.cs" />
     <Compile Include="Models\NivelIdiomaForm.cs" />
+    <Compile Include="Models\ParticipacionAcademiaForm.cs" />
     <Compile Include="Models\ParticipanteExternoProyectoForm.cs" />
     <Compile Include="Models\ParticipanteInternoProyectoForm.cs" />
     <Compile Include="Models\ProductoAcademicoMovilidadAcademicaForm.cs" />
@@ -200,6 +203,7 @@
     <Compile Include="Models\TipoParticipacionOrganoForm.cs" />
     <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Models\USEGForm.cs" />
+    <Compile Include="ParticipacionAcademiaController.cs" />
     <Compile Include="Productos\LibroController.cs" />
     <Compile Include="Mappers\ICoautorExternoLibroMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoLibroMapper.cs" />

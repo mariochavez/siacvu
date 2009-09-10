@@ -581,6 +581,12 @@
     <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProductoAcademico.ascx" />
+    <Content Include="Views\ParticipacionAcademia\Activate.js.ascx" />
+    <Content Include="Views\ParticipacionAcademia\Edit.aspx" />
+    <Content Include="Views\ParticipacionAcademia\Index.aspx" />
+    <Content Include="Views\ParticipacionAcademia\New.aspx" />
+    <Content Include="Views\ParticipacionAcademia\Show.aspx" />
+    <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />

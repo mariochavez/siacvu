@@ -91,6 +91,7 @@
     <Compile Include="Impl\LibroService.cs" />
     <Compile Include="Impl\MovilidadAcademicaService.cs" />
     <Compile Include="Impl\OrganoExternoService.cs" />
+    <Compile Include="Impl\ParticipacionAcademiaService.cs" />
     <Compile Include="Impl\ParticipacionMedioService.cs" />
     <Compile Include="Impl\ParticipacionService.cs" />
     <Compile Include="Impl\ProyectoService.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Impl\ResenaService.cs" />
     <Compile Include="Impl\TesisDirigidaService.cs" />
     <Compile Include="IOrganoExternoService.cs" />
+    <Compile Include="IParticipacionAcademiaService.cs" />
     <Compile Include="IParticipacionMedioService.cs" />
     <Compile Include="IParticipacionService.cs" />
     <Compile Include="IProyectoService.cs" />

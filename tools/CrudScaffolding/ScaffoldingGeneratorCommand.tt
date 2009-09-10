@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("IdiomasInvestigador", 3);
+	new EntityScaffoldingDetails("ParticipacionAcademia", 3);
 
 /*
  * Property names should be PascalCase.
@@ -32,43 +32,55 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Idioma","Idioma", "Idioma")
+	new EntityProperty("NombreProducto","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LenguaMaterna","string", null)
+	new EntityProperty("Revista","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Traductor","bool", null)
+	new EntityProperty("Volumen","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Profesor","bool", null)
+	new EntityProperty("NoVolumen","int", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+	new EntityProperty("Institucion","Institucion", "Institucion")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+	new EntityProperty("Editorial","string", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+	new EntityProperty("Pais","Pais", "Pais")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaEvaluacion","DateTime", null)
+	new EntityProperty("EstadoProducto","EstadoProducto", "EstadoProducto")
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("NombreDocumentoProbatorio","string", null)
+	new EntityProperty("FechaAceptacion","DateTime", null)
 );
 
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Puntuacion","int", null)
+	new EntityProperty("PeriodoReferencia","PeriodoReferencia", "PeriodoReferencia")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Proyecto","Proyecto", "Proyecto")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEdicion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LineaTematica","LineaTematica", "LineaTematica")
 );
 ///////////////////////////////////////////////////
 

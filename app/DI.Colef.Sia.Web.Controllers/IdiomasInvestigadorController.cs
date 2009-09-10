@@ -102,9 +102,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var idiomasInvestigador = idiomasInvestigadorMapper.Map(form, CurrentUser());
 
-            idiomasInvestigador.CreadorPor = CurrentUser();
-            idiomasInvestigador.ModificadoPor = CurrentUser();
-
             if (!IsValidateModel(idiomasInvestigador, form, Title.New, "IdiomasInvestigador"))
             {
                 ((GenericViewData<IdiomasInvestigadorForm>)ViewData.Model).Form = SetupNewForm();
@@ -123,8 +120,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Update(IdiomasInvestigadorForm form)
         {
             var idiomasInvestigador = idiomasInvestigadorMapper.Map(form, CurrentUser());
-
-            idiomasInvestigador.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(idiomasInvestigador, form, Title.Edit))
             {

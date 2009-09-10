@@ -51,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateApoyoConacytMaps();
             CreateProyectoMaps();
             CreateIdiomasInvestigadorMaps();
+            CreateParticipacionAcademiaMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -112,6 +113,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
+                           o => o.Ignore());
+        }
+
+        private void CreateParticipacionAcademiaMaps()
+        {
+            Mapper.CreateMap<ParticipacionAcademia, ParticipacionAcademiaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.FechaEdicion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.EstadoProducto,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.Proyecto,
                            o => o.Ignore());
         }
 
