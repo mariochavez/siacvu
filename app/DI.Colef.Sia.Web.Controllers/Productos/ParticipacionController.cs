@@ -56,8 +56,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var participacions = new Participacion[] { };
 
-            var participacions = participacionService.GetAllParticipacions();
+            if (User.IsInRole("Investigadores"))
+                participacions = participacionService.GetAllParticipaciones(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                participacions = participacionService.GetAllParticipaciones();
+
             data.List = participacionMapper.Map(participacions);
 
             return View(data);

@@ -70,6 +70,7 @@
     <Compile Include="IExperienciaProfesionalService.cs" />
     <Compile Include="IFormacionAcademicaService.cs" />
     <Compile Include="IGrupoInvestigacionService.cs" />
+    <Compile Include="IIdiomasInvestigadorService.cs" />
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="ILibroService.cs" />
     <Compile Include="IMovilidadAcademicaService.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Impl\ExperienciaProfesionalService.cs" />
     <Compile Include="Impl\FormacionAcademicaService.cs" />
     <Compile Include="Impl\GrupoInvestigacionService.cs" />
+    <Compile Include="Impl\IdiomasInvestigadorService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
     <Compile Include="Impl\LibroService.cs" />
     <Compile Include="Impl\MovilidadAcademicaService.cs" />

@@ -372,6 +372,11 @@
     <Content Include="Views\Catalogos\NivelEstudio\Index.aspx" />
     <Content Include="Views\Catalogos\NivelEstudio\New.aspx" />
     <Content Include="Views\Catalogos\NivelEstudio\_Form.ascx" />
+    <Content Include="Views\Catalogos\NivelIdioma\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\NivelIdioma\Edit.aspx" />
+    <Content Include="Views\Catalogos\NivelIdioma\Index.aspx" />
+    <Content Include="Views\Catalogos\NivelIdioma\New.aspx" />
+    <Content Include="Views\Catalogos\NivelIdioma\_Form.ascx" />
     <Content Include="Views\Catalogos\Nivel\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Nivel\Edit.aspx" />
     <Content Include="Views\Catalogos\Nivel\Index.aspx" />
@@ -566,6 +571,12 @@
     <Content Include="Views\ExperienciaProfesional\Index.aspx" />
     <Content Include="Views\ExperienciaProfesional\New.aspx" />
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
+    <Content Include="Views\IdiomasInvestigador\Activate.js.ascx" />
+    <Content Include="Views\IdiomasInvestigador\Edit.aspx" />
+    <Content Include="Views\IdiomasInvestigador\Index.aspx" />
+    <Content Include="Views\IdiomasInvestigador\New.aspx" />
+    <Content Include="Views\IdiomasInvestigador\Show.aspx" />
+    <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\MovilidadAcademica\AddProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />

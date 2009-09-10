@@ -44,8 +44,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var organoExternos = new OrganoExterno[] { };
 
-            var organoExternos = organoExternoService.GetAllOrganoExternos();
+            if (User.IsInRole("Investigadores"))
+                organoExternos = organoExternoService.GetAllOrganoExternos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                organoExternos = organoExternoService.GetAllOrganoExternos();
+
             data.List = organoExternoMapper.Map(organoExternos);
 
             return View(data);

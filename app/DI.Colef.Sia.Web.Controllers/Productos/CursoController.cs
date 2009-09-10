@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -58,8 +57,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var cursos = new Curso[] { };
 
-            var cursos = cursoService.GetAllCursos();
+            if (User.IsInRole("Investigadores"))
+                cursos = cursoService.GetAllCursos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                cursos = cursoService.GetAllCursos();
+
             data.List = cursoMapper.Map(cursos);
 
             return View(data);

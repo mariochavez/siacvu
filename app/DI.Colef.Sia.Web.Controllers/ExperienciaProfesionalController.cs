@@ -56,8 +56,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var experienciaProfesionals = new ExperienciaProfesional[] { };
 
-            var experienciaProfesionals = experienciaProfesionalService.GetAllExperienciasProfesionales();
+            if (User.IsInRole("Investigadores"))
+                experienciaProfesionals = experienciaProfesionalService.GetAllExperienciasProfesionales(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                experienciaProfesionals = experienciaProfesionalService.GetAllExperienciasProfesionales();
+
             data.List = experienciaProfesionalMapper.Map(experienciaProfesionals);
 
             return View(data);

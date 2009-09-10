@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             movilidadAcademicaRepository.SaveOrUpdate(movilidadAcademica);
         }
+
+	    public MovilidadAcademica[] GetAllMovilidadAcademicas(Usuario usuario)
+	    {
+            return ((List<MovilidadAcademica>)movilidadAcademicaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

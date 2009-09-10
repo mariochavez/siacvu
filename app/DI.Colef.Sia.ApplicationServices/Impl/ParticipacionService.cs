@@ -19,12 +19,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return participacionRepository.Get(id);
         }
 
-        public Participacion[] GetAllParticipacions()
+        public Participacion[] GetAllParticipaciones()
         {
             return ((List<Participacion>)participacionRepository.GetAll()).ToArray();
         }
         
-        public Participacion[] GetActiveParticipacions()
+        public Participacion[] GetActiveParticipaciones()
         {
             return ((List<Participacion>)participacionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             participacionRepository.SaveOrUpdate(participacion);
         }
+
+	    public Participacion[] GetAllParticipaciones(Usuario usuario)
+	    {
+            return ((List<Participacion>)participacionRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

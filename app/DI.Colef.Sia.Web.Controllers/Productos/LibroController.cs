@@ -88,8 +88,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index() 
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var libros = new Libro[] { };
+
+            if (User.IsInRole("Investigadores"))
+                libros = libroService.GetAllLibros(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                libros = libroService.GetAllLibros();
 			
-            var libros = libroService.GetAllLibros();
             data.List = libroMapper.Map(libros);
 
             return View(data);

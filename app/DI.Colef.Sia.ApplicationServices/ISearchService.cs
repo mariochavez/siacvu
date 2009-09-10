@@ -9,5 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         string SearchInvestigador(string value);
         string SearchMovilidadAcademica(string value);
         string SearchApoyoConacyt(string value);
+        string SearchIdiomaInvestigador(string value);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Resena[] GetAllResenas();
         Resena[] GetActiveResenas();
         void SaveResena(Resena resena);
+	    Resena[] GetAllResenas(Usuario usuario);
     }
 }

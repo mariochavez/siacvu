@@ -50,6 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateExperienciaProfesionalMaps();
             CreateApoyoConacytMaps();
             CreateProyectoMaps();
+            CreateIdiomasInvestigadorMaps();
 
             Mapper.CreateMap<Usuario, UsuarioForm>();
 
@@ -111,6 +112,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
+                           o => o.Ignore());
+        }
+
+        private void CreateIdiomasInvestigadorMaps()
+        {
+            Mapper.CreateMap<IdiomasInvestigador, IdiomasInvestigadorForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaEvaluacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore())
+                .ForMember(d => d.NivelConversacion,
+                           o => o.Ignore())
+                .ForMember(d => d.NivelEscritura,
+                           o => o.Ignore())
+                .ForMember(d => d.NivelLectura,
                            o => o.Ignore());
         }
 
@@ -955,6 +973,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<EstatusFormacionAcademica, EstatusFormacionAcademicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<NivelIdioma, NivelIdiomaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

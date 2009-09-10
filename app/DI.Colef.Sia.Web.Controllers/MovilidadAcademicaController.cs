@@ -67,8 +67,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var movilidadAcademicas = new MovilidadAcademica[] { };
 
-            var movilidadAcademicas = movilidadAcademicaService.GetAllMovilidadAcademicas();
+            if (User.IsInRole("Investigadores"))
+                movilidadAcademicas = movilidadAcademicaService.GetAllMovilidadAcademicas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                movilidadAcademicas = movilidadAcademicaService.GetAllMovilidadAcademicas();
+
             data.List = movilidadAcademicaMapper.Map(movilidadAcademicas);
 
             return View(data);

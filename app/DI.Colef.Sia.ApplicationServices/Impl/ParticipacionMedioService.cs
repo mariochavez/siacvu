@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             participacionMedioRepository.SaveOrUpdate(participacionMedio);
         }
+
+	    public ParticipacionMedio[] GetAllParticipacionMedios(Usuario usuario)
+	    {
+            return ((List<ParticipacionMedio>)participacionMedioRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

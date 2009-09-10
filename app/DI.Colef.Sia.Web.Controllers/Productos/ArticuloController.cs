@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -79,8 +80,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var articulos = new Articulo[] {};
 
-            var articulos = articuloService.GetAllArticulos();
+            if(User.IsInRole("Investigadores"))
+                articulos = articuloService.GetAllArticulos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                articulos = articuloService.GetAllArticulos();
+
             data.List = articuloMapper.Map(articulos);
 
             return View(data);

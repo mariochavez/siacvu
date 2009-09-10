@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             tesisDirigidaRepository.SaveOrUpdate(tesisDirigida);
         }
+
+	    public TesisDirigida[] GetAllTesisDirigidas(Usuario usuario)
+	    {
+            return ((List<TesisDirigida>)tesisDirigidaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

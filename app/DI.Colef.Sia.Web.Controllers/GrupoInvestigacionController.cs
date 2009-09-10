@@ -40,8 +40,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index() 
         {
 			var data = CreateViewDataWithTitle(Title.Index);
+            var grupoInvestigacions = new GrupoInvestigacion[] { };
+
+            if (User.IsInRole("Investigadores"))
+                grupoInvestigacions = grupoInvestigacionService.GetAllGrupoInvestigacions(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                grupoInvestigacions = grupoInvestigacionService.GetAllGrupoInvestigacions();
 			
-			var grupoInvestigacions = grupoInvestigacionService.GetAllGrupoInvestigacions();
             data.List = grupoInvestigacionMapper.Map(grupoInvestigacions);
 
             return View(data);

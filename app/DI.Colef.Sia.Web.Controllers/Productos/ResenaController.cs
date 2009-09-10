@@ -66,8 +66,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var resenas = new Resena[] { };
 
-            var resenas = resenaService.GetAllResenas();
+            if (User.IsInRole("Investigadores"))
+                resenas = resenaService.GetAllResenas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                resenas = resenaService.GetAllResenas();
+
             data.List = resenaMapper.Map(resenas);
 
             return View(data);

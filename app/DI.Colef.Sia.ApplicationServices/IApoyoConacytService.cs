@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ApoyoConacyt[] GetAllApoyosConacyt();
         ApoyoConacyt[] GetActiveApoyosConacyt();
         void SaveApoyoConacyt(ApoyoConacyt apoyoConacyt);
+	    ApoyoConacyt[] GetAllApoyosConacyt(Usuario usuario);
     }
 }

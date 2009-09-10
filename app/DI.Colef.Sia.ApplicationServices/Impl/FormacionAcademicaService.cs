@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             formacionAcademicaRepository.SaveOrUpdate(formacionAcademica);
         }
+
+	    public FormacionAcademica[] GetAllFormacionAcademicas(Usuario usuario)
+	    {
+            return ((List<FormacionAcademica>)formacionAcademicaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

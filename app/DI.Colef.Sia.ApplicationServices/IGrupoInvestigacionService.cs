@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         GrupoInvestigacion[] GetAllGrupoInvestigacions();
         GrupoInvestigacion[] GetActiveGrupoInvestigacions();
         void SaveGrupoInvestigacion(GrupoInvestigacion grupoInvestigacion);
+	    GrupoInvestigacion[] GetAllGrupoInvestigacions(Usuario usuario);
     }
 }

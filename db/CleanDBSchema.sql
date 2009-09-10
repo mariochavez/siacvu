@@ -2440,6 +2440,51 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE81A34A485102A57]') AND parent_object_id = OBJECT_ID('NivelIdiomas'))
+alter table NivelIdiomas  drop constraint FKE81A34A485102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE81A34A474E8BAB7]') AND parent_object_id = OBJECT_ID('NivelIdiomas'))
+alter table NivelIdiomas  drop constraint FKE81A34A474E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F0296425E2FD]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F0296425E2FD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F0293F77AAC9]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F0293F77AAC9
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F0299BF6FD8]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F0299BF6FD8
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F0299D739D6E]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F0299D739D6E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F0296A829E09]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F0296A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F02985102A57]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F02985102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F02974E8BAB7]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F02974E8BAB7
+
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2679,6 +2724,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'NivelIdiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table NivelIdiomas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'IdiomasInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table IdiomasInvestigadores
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4365,6 +4414,38 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table NivelIdiomas (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table IdiomasInvestigadores (
+        Id INT IDENTITY NOT NULL,
+       LenguaMaterna NVARCHAR(255) null,
+       Traductor BIT null,
+       Profesor BIT null,
+       FechaEvaluacion DATETIME null,
+       NombreDocumentoProbatorio NVARCHAR(255) null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       IdiomaFk INT null,
+       NivelConversacionFk INT null,
+       NivelLecturaFk INT null,
+       NivelEscrituraFk INT null,
+       UsuarioFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     alter table RevistaPublicaciones 
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
@@ -5519,4 +5600,24 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table IdiomasInvestigadores 
+        add constraint FK5BD7F0296425E2FD 
+        foreign key (IdiomaFk) 
+        references Idiomas
+
+    alter table IdiomasInvestigadores 
+        add constraint FK5BD7F0293F77AAC9 
+        foreign key (NivelConversacionFk) 
+        references NivelIdiomas
+
+    alter table IdiomasInvestigadores 
+        add constraint FK5BD7F0299BF6FD8 
+        foreign key (NivelLecturaFk) 
+        references NivelIdiomas
+
+    alter table IdiomasInvestigadores 
+        add constraint FK5BD7F0299D739D6E 
+        foreign key (NivelEscrituraFk) 
+        references NivelIdiomas
 

@@ -125,6 +125,7 @@
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
+    <Compile Include="IdiomasInvestigador.cs" />
     <Compile Include="ImpactoPoliticaPublica.cs" />
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="NHibernateValidator\EventoValidator.cs" />
     <Compile Include="NHibernateValidator\ExperienciaProfesionalValidator.cs" />
     <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
+    <Compile Include="NHibernateValidator\IdiomasInvestigadorValidator.cs" />
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
     <Compile Include="NHibernateValidator\MovilidadAcademicaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
@@ -166,6 +168,7 @@
     </Compile>
     <Compile Include="Nivel.cs" />
     <Compile Include="NivelEstudio.cs" />
+    <Compile Include="NivelIdioma.cs" />
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
     <Compile Include="OtraParticipacion.cs" />

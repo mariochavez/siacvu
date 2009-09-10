@@ -38,8 +38,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var dictamens = new Dictamen[] { };
 
-            var dictamens = dictamenService.GetAllDictamens();
+            if (User.IsInRole("Investigadores"))
+                dictamens = dictamenService.GetAllDictamenes(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                dictamens = dictamenService.GetAllDictamenes();
+
             data.List = dictamenMapper.Map(dictamens);
 
             return View(data);

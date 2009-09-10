@@ -55,8 +55,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var tesisDirigidas = new TesisDirigida[] { };
 
-            var tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
+            if (User.IsInRole("Investigadores"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
+
             data.List = tesisDirigidaMapper.Map(tesisDirigidas);
 
             return View(data);

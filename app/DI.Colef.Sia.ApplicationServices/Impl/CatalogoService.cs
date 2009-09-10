@@ -81,6 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Rama> ramaRepository;
         readonly IRepository<Clase> claseRepository;
         readonly IRepository<Coordinacion> coordinacionRepository;
+        readonly IRepository<NivelIdioma> nivelIdiomaRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -150,7 +151,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<ActividadPrevista> actividadPrevistaRepository,
             IRepository<Clase> claseRepository,
             IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
-            IRepository<Coordinacion> coordinacionRepository)
+            IRepository<Coordinacion> coordinacionRepository,
+            IRepository<NivelIdioma> nivelIdiomaRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -221,6 +223,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.ramaRepository = ramaRepository;
             this.claseRepository = claseRepository;
             this.coordinacionRepository = coordinacionRepository;
+            this.nivelIdiomaRepository = nivelIdiomaRepository;
         }
 
         protected virtual ISession Session
@@ -2082,12 +2085,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos()
         {
-            return ((List<TipoParticipacionOrgano>)OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
+            return ((List<TipoParticipacionOrgano>)OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre)).ToArray();
         }
 
         public TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos()
         {
-            return ((List<TipoParticipacionOrgano>)tipoParticipacionOrganoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano)
@@ -2109,12 +2112,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas()
         {
-            return ((List<EstatusFormacionAcademica>)OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray();
+            return ((List<EstatusFormacionAcademica>)OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre)).ToArray();
         }
 
         public EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas()
         {
-            return ((List<EstatusFormacionAcademica>)estatusFormacionAcademicaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica)
@@ -2127,6 +2130,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             estatusFormacionAcademica.ModificadoEl = DateTime.Now;
 
             estatusFormacionAcademicaRepository.SaveOrUpdate(estatusFormacionAcademica);
+        }
+
+        public NivelIdioma GetNivelIdiomaById(int id)
+        {
+            return nivelIdiomaRepository.Get(id);
+        }
+
+        public NivelIdioma[] GetAllNivelIdiomas()
+        {
+            return ((List<NivelIdioma>)OrderCatalog<NivelIdioma>(x => x.Nombre)).ToArray();
+        }
+
+        public NivelIdioma[] GetActiveNivelIdiomas()
+        {
+            return ((List<NivelIdioma>)OrderCatalog<NivelIdioma>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveNivelIdioma(NivelIdioma nivelIdioma)
+        {
+            if (nivelIdioma.Id == 0)
+            {
+                nivelIdioma.Activo = true;
+                nivelIdioma.CreadorEl = DateTime.Now;
+            }
+            nivelIdioma.ModificadoEl = DateTime.Now;
+
+            nivelIdiomaRepository.SaveOrUpdate(nivelIdioma);
         }
     }
 }

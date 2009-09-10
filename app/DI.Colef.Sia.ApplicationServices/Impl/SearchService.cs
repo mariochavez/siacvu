@@ -41,6 +41,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ParseResult(results);
         }
 
+        public string SearchIdiomaInvestigador(string value)
+        {
+            var results = searchQuerying.SearchIdiomaInvestigador(value);
+            return ParseResult(results);
+        }
+
         string ParseResult(Search[] results)
         {
             if (results == null)

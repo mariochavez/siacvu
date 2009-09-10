@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("Catalogos.EstatusFormacionAcademica", 1);
+	new EntityScaffoldingDetails("IdiomasInvestigador", 3);
 
 /*
  * Property names should be PascalCase.
@@ -32,38 +32,49 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Nombre","string", null)
+	new EntityProperty("Idioma","Idioma", "Idioma")
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Institucion","Institucion", "Institucion")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("LenguaMaterna","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Recurso","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Traductor","bool", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Monto","int", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Profesor","bool", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Fecha","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Checalo","bool", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("ProductoAcademico","ProductoAcademico", "ProductoAcademico")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NivelIdioma","NivelIdioma", "NivelIdioma")
+);
 
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaEvaluacion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreDocumentoProbatorio","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Puntuacion","int", null)
+);
 ///////////////////////////////////////////////////
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

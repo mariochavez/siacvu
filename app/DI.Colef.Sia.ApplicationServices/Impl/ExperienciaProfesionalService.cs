@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             experienciaProfesionalRepository.SaveOrUpdate(experienciaProfesional);
         }
+
+	    public ExperienciaProfesional[] GetAllExperienciasProfesionales(Usuario usuario)
+	    {
+            return ((List<ExperienciaProfesional>)experienciaProfesionalRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

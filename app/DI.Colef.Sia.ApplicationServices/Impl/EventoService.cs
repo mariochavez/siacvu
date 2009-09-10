@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             eventoRepository.SaveOrUpdate(evento);
         }
+
+	    public Evento[] GetAllEventos(Usuario usuario)
+	    {
+            return ((List<Evento>)eventoRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

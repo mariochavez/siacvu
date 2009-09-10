@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Libro[] GetAllLibros();
         Libro[] GetActiveLibros();
         void SaveLibro(Libro libro);
+	    Libro[] GetAllLibros(Usuario usuario);
     }
 }
