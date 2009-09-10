@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Evento[] GetAllEventos();
         Evento[] GetActiveEventos();
         void SaveEvento(Evento evento);
+	    Evento[] GetAllEventos(Usuario usuario);
     }
 }

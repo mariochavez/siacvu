@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Reporte[] GetAllReportes();
         Reporte[] GetActiveReportes();
         void SaveReporte(Reporte reporte);
+	    Reporte[] GetAllReportes(Usuario usuario);
     }
 }

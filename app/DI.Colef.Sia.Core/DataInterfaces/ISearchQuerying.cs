@@ -6,5 +6,6 @@
         Search[] SearchInvestigador(string value);
         Search[] SearchMovilidadAcademica(string value);
         Search[] SearchApoyoConacyt(string value);
+        Search[] SearchIdiomaInvestigador(string value);
     }
 }

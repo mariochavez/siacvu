@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             resenaRepository.SaveOrUpdate(resena);
         }
+
+	    public Resena[] GetAllResenas(Usuario usuario)
+	    {
+            return ((List<Resena>)resenaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

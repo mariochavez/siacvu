@@ -51,5 +51,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             libroRepository.SaveOrUpdate(libro);
         }
+
+	    public Libro[] GetAllLibros(Usuario usuario)
+	    {
+            return ((List<Libro>)libroRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

@@ -61,8 +61,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var reportes = new Reporte[] { };
 
-            var reportes = reporteService.GetAllReportes();
+            if (User.IsInRole("Investigadores"))
+                reportes = reporteService.GetAllReportes(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                reportes = reporteService.GetAllReportes();
+
             data.List = reporteMapper.Map(reportes);
 
             return View(data);

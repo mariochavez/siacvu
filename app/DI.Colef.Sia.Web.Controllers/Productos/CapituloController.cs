@@ -83,8 +83,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var capitulos = new Capitulo[] { };
 
-            var capitulos = capituloService.GetAllCapitulos();
+            if (User.IsInRole("Investigadores"))
+                capitulos = capituloService.GetAllCapitulos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                capitulos = capituloService.GetAllCapitulos();
+
             data.List = capituloMapper.Map(capitulos);
 
             return View(data);

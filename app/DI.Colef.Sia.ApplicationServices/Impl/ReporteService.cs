@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             reporteRepository.SaveOrUpdate(reporte);
         }
+
+	    public Reporte[] GetAllReportes(Usuario usuario)
+	    {
+            return ((List<Reporte>)reporteRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

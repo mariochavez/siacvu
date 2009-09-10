@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TesisDirigida[] GetAllTesisDirigidas();
         TesisDirigida[] GetActiveTesisDirigidas();
         void SaveTesisDirigida(TesisDirigida tesisDirigida);
+	    TesisDirigida[] GetAllTesisDirigidas(Usuario usuario);
     }
 }

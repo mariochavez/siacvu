@@ -35,8 +35,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var apoyoConacyts = new ApoyoConacyt[] { };
 
-            var apoyoConacyts = apoyoConacytService.GetAllApoyosConacyt();
+            if (User.IsInRole("Investigadores"))
+                apoyoConacyts = apoyoConacytService.GetAllApoyosConacyt(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                apoyoConacyts = apoyoConacytService.GetAllApoyosConacyt();
+
             data.List = apoyoConacytMapper.Map(apoyoConacyts);
 
             return View(data);

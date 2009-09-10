@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             organoExternoRepository.SaveOrUpdate(organoExterno);
         }
+
+	    public OrganoExterno[] GetAllOrganoExternos(Usuario usuario)
+	    {
+            return ((List<OrganoExterno>)organoExternoRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

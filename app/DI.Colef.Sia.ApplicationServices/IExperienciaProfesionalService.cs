@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ExperienciaProfesional[] GetAllExperienciasProfesionales();
         ExperienciaProfesional[] GetActiveExperienciasProfesionales();
         void SaveExperienciaProfesional(ExperienciaProfesional experienciaProfesional);
+	    ExperienciaProfesional[] GetAllExperienciasProfesionales(Usuario usuario);
     }
 }

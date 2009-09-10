@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             distincionRepository.SaveOrUpdate(distincion);
         }
+
+	    public Distincion[] GetAllDistinciones(Usuario usuario)
+	    {
+            return ((List<Distincion>)distincionRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

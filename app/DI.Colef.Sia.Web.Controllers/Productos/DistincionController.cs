@@ -42,8 +42,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var distincions = new Distincion[] { };
 
-            var distincions = distincionService.GetAllDistinciones();
+            if (User.IsInRole("Investigadores"))
+                distincions = distincionService.GetAllDistinciones(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                distincions = distincionService.GetAllDistinciones();
+
             data.List = distincionMapper.Map(distincions);
 
             return View(data);

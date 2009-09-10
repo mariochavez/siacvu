@@ -65,8 +65,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var eventos = new Evento[] { };
 
-            var eventos = eventoService.GetAllEventos();
+            if (User.IsInRole("Investigadores"))
+                eventos = eventoService.GetAllEventos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                eventos = eventoService.GetAllEventos();
+
             data.List = eventoMapper.Map(eventos);
 
             return View(data);

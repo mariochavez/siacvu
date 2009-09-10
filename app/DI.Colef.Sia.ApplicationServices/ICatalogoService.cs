@@ -418,5 +418,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas();
         EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas();
         void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica);
+
+        //Nivel de Idioma
+        NivelIdioma GetNivelIdiomaById(int id);
+        NivelIdioma[] GetAllNivelIdiomas();
+        NivelIdioma[] GetActiveNivelIdiomas();
+        void SaveNivelIdioma(NivelIdioma nivelIdioma);
     }
 }

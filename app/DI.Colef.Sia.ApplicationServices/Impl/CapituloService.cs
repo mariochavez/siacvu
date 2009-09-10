@@ -51,5 +51,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             capituloRepository.SaveOrUpdate(capitulo);
         }
+
+	    public Capitulo[] GetAllCapitulos(Usuario usuario)
+	    {
+            return ((List<Capitulo>)capituloRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             grupoInvestigacionRepository.SaveOrUpdate(grupoInvestigacion);
         }
+
+	    public GrupoInvestigacion[] GetAllGrupoInvestigacions(Usuario usuario)
+	    {
+            return ((List<GrupoInvestigacion>)grupoInvestigacionRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

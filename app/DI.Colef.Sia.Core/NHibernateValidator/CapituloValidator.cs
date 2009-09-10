@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
         }
 
-
         public override bool IsValid(object value, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;

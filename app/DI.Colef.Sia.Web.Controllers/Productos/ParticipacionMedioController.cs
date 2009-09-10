@@ -56,8 +56,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var participacionMedios = new ParticipacionMedio[] { };
 
-            var participacionMedios = participacionMedioService.GetAllParticipacionMedios();
+            if (User.IsInRole("Investigadores"))
+                participacionMedios = participacionMedioService.GetAllParticipacionMedios(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                participacionMedios = participacionMedioService.GetAllParticipacionMedios();
+
             data.List = participacionMedioMapper.Map(participacionMedios);
 
             return View(data);

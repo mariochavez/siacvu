@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -56,8 +55,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
+            var formacionAcademicas = new FormacionAcademica[] { };
 
-            var formacionAcademicas = formacionAcademicaService.GetAllFormacionAcademicas();
+            if (User.IsInRole("Investigadores"))
+                formacionAcademicas = formacionAcademicaService.GetAllFormacionAcademicas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                formacionAcademicas = formacionAcademicaService.GetAllFormacionAcademicas();
+
             data.List = formacionAcademicaMapper.Map(formacionAcademicas);
 
             return View(data);

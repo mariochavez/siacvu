@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Capitulo[] GetAllCapitulos();
         Capitulo[] GetActiveCapitulos();
         void SaveCapitulo(Capitulo capitulo);
+	    Capitulo[] GetAllCapitulos(Usuario usuario);
     }
 }

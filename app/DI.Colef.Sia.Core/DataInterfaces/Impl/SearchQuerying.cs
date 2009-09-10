@@ -137,6 +137,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchIdiomaInvestigador(string value)
+        {
+            var criteria = DetachedCriteria.For(typeof (IdiomasInvestigador))
+                .CreateAlias("Idioma", "i", JoinType.InnerJoin)
+                .SetFetchMode("Idioma", FetchMode.Eager)
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("i.Nombre"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("i.Nombre"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (IdiomaInvestigadorDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<IdiomaInvestigadorDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search {Id = item.Id, Nombre = item.Nombre});
+            }
+
+            return result.ToArray();
+        }
+
         #endregion
 
         #region Nested type: InvestigadorDTO
@@ -169,6 +193,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         #region Nested type: ApoyoConacytDTO
 
         class ApoyoConacytDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        #endregion
+
+        #region Nested type: IdiomaInvestigadorDTO
+
+        class IdiomaInvestigadorDTO
         {
             public int Id { get; set; }
             public string Nombre { get; set; }

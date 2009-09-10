@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -6,8 +5,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public interface IDictamenService
     {
         Dictamen GetDictamenById(int id);
-        Dictamen[] GetAllDictamens();
-        Dictamen[] GetActiveDictamens();
+        Dictamen[] GetAllDictamenes();
+        Dictamen[] GetActiveDictamenes();
         void SaveDictamen(Dictamen dictamen);
+	    Dictamen[] GetAllDictamenes(Usuario usuario);
     }
 }

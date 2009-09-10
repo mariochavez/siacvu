@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         OrganoExterno[] GetAllOrganoExternos();
         OrganoExterno[] GetActiveOrganoExternos();
         void SaveOrganoExterno(OrganoExterno organoExterno);
+	    OrganoExterno[] GetAllOrganoExternos(Usuario usuario);
     }
 }

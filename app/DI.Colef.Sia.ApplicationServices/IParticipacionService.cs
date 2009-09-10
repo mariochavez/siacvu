@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -6,8 +5,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public interface IParticipacionService
     {
         Participacion GetParticipacionById(int id);
-        Participacion[] GetAllParticipacions();
-        Participacion[] GetActiveParticipacions();
+        Participacion[] GetAllParticipaciones();
+        Participacion[] GetActiveParticipaciones();
         void SaveParticipacion(Participacion participacion);
+	    Participacion[] GetAllParticipaciones(Usuario usuario);
     }
 }

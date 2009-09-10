@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             cursoRepository.SaveOrUpdate(curso);
         }
+
+	    public Curso[] GetAllCursos(Usuario usuario)
+	    {
+            return ((List<Curso>)cursoRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

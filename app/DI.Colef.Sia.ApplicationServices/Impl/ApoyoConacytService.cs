@@ -40,5 +40,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             apoyoConacytRepository.SaveOrUpdate(apoyoConacyt);
         }
+
+	    public ApoyoConacyt[] GetAllApoyosConacyt(Usuario usuario)
+	    {
+            return ((List<ApoyoConacyt>)apoyoConacytRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }

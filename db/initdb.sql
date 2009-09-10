@@ -29,6 +29,10 @@ INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 INSERT UsuarioRol VALUES(4, 3)
 
+insert into NivelIdiomas values('Bajo', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelIdiomas values('Medio', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelIdiomas values('Alto', GETDATE(), GETDATE(), 1, 1, 1)
+
 insert into EstatusFormacionAcademicas values('Crédito terminado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Truncado',GETDATE(), GETDATE(), 1, 1, 1);

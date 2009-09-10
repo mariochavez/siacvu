@@ -19,12 +19,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return dictamenRepository.Get(id);
         }
 
-        public Dictamen[] GetAllDictamens()
+        public Dictamen[] GetAllDictamenes()
         {
             return ((List<Dictamen>)dictamenRepository.GetAll()).ToArray();
         }
         
-        public Dictamen[] GetActiveDictamens()
+        public Dictamen[] GetActiveDictamenes()
         {
             return ((List<Dictamen>)dictamenRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             dictamenRepository.SaveOrUpdate(dictamen);
         }
+
+	    public Dictamen[] GetAllDictamenes(Usuario usuario)
+	    {
+            return ((List<Dictamen>)dictamenRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
     }
 }
