@@ -34,14 +34,14 @@
     <label>Instituci&oacute;n</label>
     
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    new { @class = "autocomplete input420-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
     <label>T&iacute;tulo de tesis</label>
 
-    <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>

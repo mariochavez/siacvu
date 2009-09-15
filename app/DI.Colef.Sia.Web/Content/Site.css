@@ -187,7 +187,7 @@
 }
 
 #menu li ul li a {
-  	display: block;
+ 	display: block;
   	color: #ba5c2b;
 }
 
@@ -502,7 +502,7 @@ a.editabusqueda {
 
 /*---<forma>---*/
 
-#forma form {
+#forma form, #campos {
 	margin: 20px;
 }
 
@@ -626,7 +626,7 @@ a.editabusqueda {
 }
 
 #forma select {
-	width: 420px;
+	width: 428px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
@@ -634,7 +634,7 @@ a.editabusqueda {
 }
 
 #forma select.requerido {
-	width: 420px;
+	width: 428px;
 	padding: 3px;
 	border: 1px solid #555555;
 	font-family: Calibri, Helvetica, sans-serif;
