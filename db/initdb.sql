@@ -38,37 +38,38 @@ insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDAT
 insert into EstatusFormacionAcademicas values('Truncado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('En proceso',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into ActividadPrevistas values('ActividadPrevista 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ActividadPrevistas values('ActividadPrevista 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ActividadPrevistas values('ActividadPrevista 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ActividadPrevistas values('ActividadPrevista 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ActividadPrevistas values('ActividadPrevista 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('Taller',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('Seminario',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ActividadPrevistas values('Diplomado',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ImpactoPoliticaPublicas values('ImpactoPoliticaPublica 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Elaboración de diagnóstico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Elaboración de plan estratégico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Diseño de programa',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Diseño de estrategias',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Evaluación de políticas públicas',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Evaluación de impacto',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ImpactoPoliticaPublicas values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Monedas values('Moneda 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Monedas values('Moneda 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Monedas values('Moneda 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Monedas values('Moneda 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Monedas values('Moneda 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Pesos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Monedas values('Dólares',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into ProductoAcademicos values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('Coordinación de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ProductoAcademicos values('Capitulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Capítulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoAcademicos values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Ponencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Tesis de maestría',GETDATE(), GETDATE(), 1, 1, 1);
+insert into ProductoAcademicos values('Tesis de doctorado',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into ProductoDerivados values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into SectorFinanciamientos values('SectorFinanciamiento 1',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('SectorFinanciamiento 2',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('SectorFinanciamiento 3',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('SectorFinanciamiento 4',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('SectorFinanciamiento 5',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Gobierno federal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Gobierno estatal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Gobierno municipal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Académico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Fundaciones',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Privado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into SectorFinanciamientos values('Sociedad civil organizada',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into USEGs values('USEG 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('USEG 2',GETDATE(), GETDATE(), 1, 1, 1);
@@ -76,8 +77,8 @@ insert into USEGs values('USEG 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('USEG 4',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('USEG 5',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoEstancias values('Academica',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEstancias values('Sabatica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEstancias values('Académica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEstancias values('Sabática',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Postdoctoral',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoInstituciones values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
@@ -113,7 +114,7 @@ insert into Convenios values('Centro de Investigación y Docencia Económicas A. C
 insert into Convenios values('Centro de Investigación en Geografía y Geomática Ing. Jorge L. Tamayo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Convenios values('El Colegio de San Luis',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoProyectos values('Consultoria',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProyectos values('Consultoría',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
@@ -130,8 +131,7 @@ insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE()
 insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
-insert into IdentificadorLibros values('Compilacion',GETDATE(), GETDATE(), 1, 1, 1);
-
+insert into IdentificadorLibros values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
@@ -175,7 +175,6 @@ insert into Proyectos values('Estudio comparativo de la urbanización popular en 
 insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 
-
 insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Baja California Sur',GETDATE(), GETDATE(), 1, 1, 1);
@@ -216,21 +215,23 @@ insert into EstadoPaises values('Georgia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Hawaii',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstadoPaises values('Kansas',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into MedioImpresos values('Periodico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioImpresos values('Periódico',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Tabloide',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Revista',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into MedioElectronicos values('Radio',GETDATE(), GETDATE(), 1, 1, 1);
-insert into MedioElectronicos values('Television',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Televisión',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Internet',GETDATE(), GETDATE(), 1, 1, 1);
+insert into MedioElectronicos values('Video',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioElectronicos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Generos values('Entrevista',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Generos values('Columna',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Generos values('Articulo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Generos values('Comentario',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Generos values('Mesa de Analisis',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Mesa de análisis',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Generos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Ambitos values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Internacional',GETDATE(), GETDATE(), 1, 1, 1);
@@ -239,42 +240,45 @@ insert into Ambitos values('Local',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Regional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Estatal',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoOrganos values('Comision',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Comite',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comisión',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comité',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Consejo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Junta',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Subcomite',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Subcomité',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Consorsio',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Red',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Grupo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into OtraParticipaciones values('Presentacion de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Presentacion de resultados de investigacion',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Platicas',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Presentación de resultados de investigación',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Pláticas',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPresentaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPresentaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into OtraParticipaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoDictamenes values('Libros',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Articulos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Artículos',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Proyectos de investigación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Capitulos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Reportes técnicos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Capítulos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Reportes técnicos/Informe técnico',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoDistinciones values('Reconocimientos',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Premios',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Becas para estancias',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDistinciones values('Cátedras académicas / Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDistinciones values('Cátedras académicas/Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoEventos values('Congreso',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Conferencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Foro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Seminario',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Taller',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEventos values('Presentación de Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Simposium',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoFinanciamientos values('Fiscal',GETDATE(), GETDATE(), 1, 1, 1);
@@ -309,23 +313,23 @@ insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA',GETDATE(),
 insert into Organizaciones values('SECRETARIA DE ENERGIA',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Departamentos values('Departamento de Estudios Culturales',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Departamentos values('Departamento de Estudios de Administración Pública',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Departamentos values('Departamento de Estudios de Población',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Departamentos values('Departamento de Estudios Económicos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Departamentos values('Departamento de Estudios Sociales',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Departamentos values('Departamento de Estudios Urbanos y del Medio Ambiente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios culturales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios de administración pública',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios de población',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios económicos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios sociales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Departamentos values('Departamento de estudios urbanos y del medio ambiente',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Estados values('Activo',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Estados values('Baja',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Estados values('Sabático',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Estados values('Licencia c/ sueldo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Estados values('Licencia s/ sueldo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Estados values('Superación académica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Estados values('Baja',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into GradoAcademicos values('Licenciatura',GETDATE(), GETDATE(), 1, 1, 1);
 insert into GradoAcademicos values('Maestría',GETDATE(), GETDATE(), 1, 1, 1);
-insert into GradoAcademicos values('Doctor',GETDATE(), GETDATE(), 1, 1, 1);
+insert into GradoAcademicos values('Doctorado',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Categorias values('Titular A',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Categorias values('Titular B',GETDATE(), GETDATE(), 1, 1, 1);
@@ -336,35 +340,36 @@ insert into Categorias values('Asociado C',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Cargos values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Cargos values('Presidente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Secretario General Académico',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Secretario General de Planeación y Desarrollo Institucional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Vinculación Institucional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Asuntos Académicos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Direccion General Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Docencia',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Direccion General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director de Departamento',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de Posgrado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Secretario general académico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Secretario general de planeación y desarrollo institucional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Director general de vinculación institucional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Director general de asuntos académicos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Direccion general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Director general de docencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Direccion regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Director de departamento',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Cargos values('Coordinador de posgrado',GETDATE(), GETDATE(), 1, 1, 1);
 
+insert into SNIs values('No pertenece',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Candidato',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Emerito',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SNIs values('No pertenece',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Sedes values('Matamoros','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Nuevo Laredo','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Piedras Negras','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Monterrey','Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Ciudad Juarez','Dirección General Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Matamoros','Dirección general regional noreste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Nuevo Laredo','Dirección general regional noreste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Piedras Negras','Dirección general regional noreste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Monterrey','Dirección general regional noreste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Ciudad Juárez','Dirección general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sedes values('Tijuana','Tijuana',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Mexicali','Dirección General Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sedes values('Nogales','Dirección General Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Mexicali','Dirección general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sedes values('Nogales','Dirección general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoArticulos values('Artículo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoArticulos values('Artículo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoArticulos values('Artículo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoArticulos values('Memoria de Congreso/Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Indices values('CLASE',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('CONACYT',GETDATE(), GETDATE(), 1, 1, 1);
@@ -377,8 +382,7 @@ insert into Indices values('ISI',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('JSTOR',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('LATINDEX',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('RedAlyc',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('Padrón anterior',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('Indice no aprobado',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('Sin índice',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Instituciones values('Universidad Externado de Colombia',null,null,GETDATE(), GETDATE(), 1, 1, 1);
@@ -772,11 +776,15 @@ insert into Instituciones values('Instituto de la Mujer para el Estado de Baja C
 insert into Instituciones values('Arizona State University',null,null,GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoParticipaciones values('Ponente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Conferencia magistral',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Poster',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Coordinador de Mesa',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Coordinador de mesa',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Organizador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Coorganizador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Co-organizador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
@@ -790,7 +798,7 @@ insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoParticipantes values('Persona Fisica',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipantes values('Persona física',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipantes values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into InvestigadorExternos values('Acevedo Gladys', null, null, GETDATE(), GETDATE(), 1, 1, 1)
@@ -2327,20 +2335,20 @@ insert into ProgramaEstudios values('Women''s Rights and Citizenship in Latin Am
 insert into ProgramaEstudios values('zonas +AOE-ridaS', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into TipoReportes values('Cuaderno de trabajo', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoReportes values('Reporte técnico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoReportes values('Informe técnico', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstadoProductos values('Aceptado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into EstadoProductos values('Publicado', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into NivelEstudios values('Licenciatura', GETDATE(), GETDATE(), 1, 1, 1)
-insert into NivelEstudios values('Maestria', GETDATE(), GETDATE(), 1, 1, 1)
+insert into NivelEstudios values('Maestría', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Doctorado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Posdoctorado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Especialidad', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into TipoResenas values('Nota critica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoResenas values('Reseña bibliografica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoResenas values('Nota crítica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoResenas values('Reseña bibliográfica', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into Clases values('Escuelas de educación superior perteneciente al sector privado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Clases values('Escuelas de educación superior perteneciente al sector publico', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2359,20 +2367,20 @@ insert into Ramas values('Servicios de contabilidad auditoria y servicios relaci
 insert into Ramas values('Servicios de arquitectura ingieneria y actividades relacionadas', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Ramas values('Otros servicos profesionales y tecnicos', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into TipoApoyos values('Formacion Académica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoApoyos values('Proyecto Cientifico', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoApoyos values('Desarrollo Tecnológico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoApoyos values('Formacion académica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoApoyos values('Proyecto científico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoApoyos values('Desarrollo tecnológico', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into SubprogramaConacyts values('Fondo Sectorial', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Fondo sectorial', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Beca', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Estimulo Fiscal', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Catedras Posdoctorales', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Estimulo SIN', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Estímulo fiscal', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Cátedras posdoctorales', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Estímulo SNI', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Avance', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Catedras Patrimoniales', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Repatriación / Consolidación', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Fondo Ciencia Basica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into SubprogramaConacyts values('Fondo Mixto', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Cátedras patrimoniales', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Repatriación/Consolidación', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Fondo ciencia básica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Fondo mixto', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into TipoParticipacionOrganos values('Miembro',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoParticipacionOrganos values('Asesor',GETDATE(), GETDATE(), 1, 1, 1)
