@@ -10,12 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Investigador> investigadorRepository;
         readonly IUsuarioQuerying usuarioQuerying;
+        readonly IInvestigadorQuerying investigadorQuerying;
 
         public InvestigadorService(IRepository<Investigador> investigadorRepository,
-            IUsuarioQuerying usuarioQuerying)
+            IUsuarioQuerying usuarioQuerying, IInvestigadorQuerying investigadorQuerying)
         {
             this.investigadorRepository = investigadorRepository;
             this.usuarioQuerying = usuarioQuerying;
+            this.investigadorQuerying = investigadorQuerying;
         }
 
         public Investigador GetInvestigadorById(int id)
@@ -48,6 +50,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public Usuario[] FindUsuariosToBeInvestigador()
         {
             return usuarioQuerying.FindUsuariosToBeInvestigador();
+        }
+
+        public Investigador[] GetActiveInvestigadores(Usuario usuario)
+        {
+            return investigadorQuerying.GetActiveInvestigadores(usuario);
         }
     }
 }
