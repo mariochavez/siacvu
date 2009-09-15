@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.CoTraductor = message.CoTraductor;
+            model.Traductor = message.Traductor;
             model.NombreTraductor = message.NombreTraductor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -57,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
+            model.Edicion = catalogoService.GetEdicionById(message.Edicion);
 		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
 		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);

@@ -8,18 +8,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Editorial { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaEdicion { get; set; }
-        public string Tiraje { get; set; }
         public string Volumen { get; set; }
         public string FechaEvento { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        public string CoTraductor { get; set; }
+        public bool Traductor { get; set; }
         public string NombreTraductor { get; set; }
         public string Modificacion { get; set; }
 
         public int NoPaginas { get; set; }
         public int Numero { get; set; }
+        public int Tiraje { get; set; }
 
         public bool Activo { get; set; }
         public bool TieneProyecto { get; set; }
@@ -27,6 +27,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int TipoPublicacion { get; set; }
 		public int TipoPublicacionId { get; set; }
         public string TipoPublicacionNombre { get; set; }
+
+        public int Edicion { get; set; }
+        public int EdicionId { get; set; }
+        public string EdicionNombre { get; set; }
 
         public string NombreEvento { get; set; }
         public int NombreEventoId { get; set; }
@@ -87,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		/* Catalogos */
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }
+        public EdicionForm[] Ediciones { get; set; }
 		public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public EventoForm[] Eventos { get; set; }

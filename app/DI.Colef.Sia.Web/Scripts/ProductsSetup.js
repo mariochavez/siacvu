@@ -83,7 +83,7 @@ function reporteSetup() {
     $('#TipoReporte').dynamicui(
             [
                 ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico']]
+                ['Informe técnico', ['.ReporteTecnico']]
             ]
         );
 
@@ -93,8 +93,8 @@ function reporteSetup() {
 function resenaSetup() {
     $('#TipoResena').dynamicui(
             [
-                ['Nota critica', ['.NotaCritica']],
-                ['Reseña bibliografica', ['#ResenaBibliografica_div']]
+                ['Nota crítica', ['.NotaCritica']],
+                ['Reseña bibliográfica', ['#ResenaBibliografica_div']]
             ]
         );
 

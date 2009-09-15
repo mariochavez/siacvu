@@ -42,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaDifusion = message.FechaDifusion.FromShortDateToDateTime();
 
 			model.MedioImpreso = catalogoService.GetMedioImpresoById(message.MedioImpreso);
+            model.DirigidoA = catalogoService.GetDirigidoAById(message.DirigidoA);
 		    model.MedioElectronico = catalogoService.GetMedioElectronicoById(message.MedioElectronico);
 		    model.Genero = catalogoService.GetGeneroById(message.Genero);
 		    model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);

@@ -4,6 +4,7 @@
 <p>
 	<label>T&iacute;tulo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
@@ -15,17 +16,21 @@
 	<label>Medio impreso</label>
 	<%=Html.DropDownList("MedioImpreso", Model.MediosImpresos.CreateSelectList<MedioImpresoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("MedioImpreso") %>
 </p>
 <p id="OtroMedioImpreso">
 	<label>Especificaci&oacute;n de medio impreso</label>
 	<%=Html.TextBox("EspecificacionMedioImpreso", Model.EspecificacionMedioImpreso, new { @class = "input250-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("EspecificacionMedioImpreso")%>
 </p>
 <p>
 	<label>Medio electr&oacute;nico</label>
 	<%=Html.DropDownList("MedioElectronico", Model.MediosElectronicos.CreateSelectList<MedioElectronicoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("MedioElectronico") %>
 </p>
 <p id="OtroMedioElectronico">
@@ -37,12 +42,19 @@
 	<label>G&eacute;nero</label>
 	<%=Html.DropDownList("Genero", Model.Generos.CreateSelectList<GeneroForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Genero") %>
 </p>
 <p>
 	<label>Tema</label>
 	<%=Html.TextBox("Tema", Model.Tema, new { @class = "input250-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Tema")%>
+</p>
+<p>
+    <label>Dirigido a</label>
+	<%=Html.DropDownList("DirigidoA", Model.DirigidosA.CreateSelectList<DirigidoAForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>    
+	<%=Html.ValidationMessage("DirigidoA")%>
 </p>
 <p>
 	<label>Periodo de referencia</label>
@@ -64,6 +76,7 @@
 	<label>&Aacute;mbito</label>
 	<%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
@@ -76,6 +89,7 @@
 	<label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>

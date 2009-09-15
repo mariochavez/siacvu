@@ -19,6 +19,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AmbitoId { get; set; }
         public string AmbitoNombre { get; set; }
 
+        public int DirigidoA { get; set; }
+        public int DirigidoAId { get; set; }
+        public string DirigidoANombre { get; set; }
+
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
@@ -56,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public AmbitoForm[] Ambitos { get; set; }
+        public DirigidoAForm[] DirigidosA { get; set; }
         public EstadoPaisForm[] EstadoPaises { get; set; }
         public PaisForm[] Paises { get; set; }
         public TipoEventoForm[] TiposEventos { get; set; }

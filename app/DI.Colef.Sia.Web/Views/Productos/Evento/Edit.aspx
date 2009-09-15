@@ -37,7 +37,7 @@
                 
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>
                              
-                <h4>Coautores</h4>
+                <h4>Coautores<span class="cvu"></span></h4>
                 <% Html.RenderPartial("_Coautoria", Model.Form); %>
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>

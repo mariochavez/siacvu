@@ -37,6 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoParticipacion TipoParticipacion { get; set; }
 
+        public virtual DirigidoA DirigidoA { get; set; }
+
         public virtual string Titulo { get; set; }
 
         public virtual bool Invitacion { get; set; }

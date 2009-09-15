@@ -37,6 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Proyecto Proyecto { get; set; }
 
+        public virtual DirigidoA DirigidoA { get; set; }
+
 		public virtual LineaTematica LineaTematica { get; set; }
 
 		public virtual Ambito Ambito { get; set; }

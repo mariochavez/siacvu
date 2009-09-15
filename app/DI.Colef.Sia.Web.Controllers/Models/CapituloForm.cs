@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int NoPaginas { get; set; }
 		public string Volumen { get; set; }
 		//public string Editores { get; set; }
-		public string Traductor { get; set; }
+        public bool Traductor { get; set; }
 		//public string NombreTraductor { get; set; }
 		public string Resumen { get; set; }
 		public bool Activo { get; set; }

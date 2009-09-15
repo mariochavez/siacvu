@@ -32,6 +32,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
+        public virtual Edicion Edicion { get; set; }
+
         public virtual RevistaPublicacion NombreRevista { get; set; }
 
         public virtual Institucion Institucion { get; set; }
@@ -70,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual int NoPaginas { get; set; }
 
-		public virtual string Tiraje { get; set; }
+        public virtual int Tiraje { get; set; }
 
         public virtual Idioma Idioma { get; set; }
 
@@ -90,7 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-		public virtual string CoTraductor { get; set; }
+		public virtual bool Traductor { get; set; }
 		
 		public virtual string NombreTraductor { get; set; }
 

@@ -34,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoService proyectoService;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
+        readonly IEdicionMapper edicionMapper;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
@@ -43,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEstadoProductoMapper estadoProductoMapper,
                                IProyectoMapper proyectoMapper,
                                IPaisMapper paisMapper,
+                               IEdicionMapper edicionMapper,
                                IIdiomaMapper idiomaMapper,
                                IFormaParticipacionMapper formaParticipacionMapper,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
@@ -61,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.edicionMapper = edicionMapper;
             this.libroService = libroService;
             this.libroMapper = libroMapper;
             this.tipoPublicacionMapper = tipoPublicacionMapper;
@@ -353,6 +356,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorInternoLibro = new CoautorInternoLibroForm();
 
             form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
+            form.Ediciones = edicionMapper.Map(catalogoService.GetActiveEdicions());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
@@ -372,6 +376,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private void FormSetCombos(LibroForm form)
         {
             ViewData["TipoPublicacion"] = form.TipoPublicacionId;
+            ViewData["Edicion"] = form.EdicionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;

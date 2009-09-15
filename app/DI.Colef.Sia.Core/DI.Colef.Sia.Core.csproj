@@ -107,8 +107,10 @@
     <Compile Include="Departamento.cs" />
     <Compile Include="Dependencia.cs" />
     <Compile Include="Dictamen.cs" />
+    <Compile Include="DirigidoA.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Distincion.cs" />
+    <Compile Include="Edicion.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />

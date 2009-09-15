@@ -4,6 +4,7 @@
 <p>
     <label>T&iacute;tulo del art&iacute;culo</label>
     <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
@@ -50,11 +51,13 @@
 <p>
     <label>Volumen</label>
     <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 10 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p>
@@ -71,13 +74,13 @@
 </p>
 <p class="pagina_field">
     <label>P&aacute;gina inicial</label> 
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 10, size = 14 })%>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaInicial")%>
 </p>
 <p class="pagina_field">    
     <label>P&aacute;gina final</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 10, size = 14 })%>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>

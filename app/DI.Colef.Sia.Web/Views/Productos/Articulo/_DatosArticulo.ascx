@@ -5,6 +5,7 @@
     <label>Tipo de art&iacute;culo</label>
     <%=Html.DropDownList("TipoArticulo", Model.TiposArticulos.CreateSelectList<TipoArticuloForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "tipo requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("TipoArticulo") %>
 </p>
 <p id="idioma_field">

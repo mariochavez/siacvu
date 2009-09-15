@@ -430,6 +430,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Ambito,
                            o => o.Ignore())
+                .ForMember(d => d.DirigidoA,
+                           o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
@@ -693,6 +695,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,
                            o => o.Ignore())
+                .ForMember(d => d.Edicion,
+                           o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
@@ -731,6 +735,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaDifusion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.MedioImpreso,
+                           o => o.Ignore())
+                .ForMember(d => d.DirigidoA,
                            o => o.Ignore())
                 .ForMember(d => d.MedioElectronico,
                            o => o.Ignore())
@@ -994,6 +1000,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<NivelIdioma, NivelIdiomaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<DirigidoA, DirigidoAForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Edicion, EdicionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

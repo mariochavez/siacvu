@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
+            model.DirigidoA = catalogoService.GetDirigidoAById(message.DirigidoA);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

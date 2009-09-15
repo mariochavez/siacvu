@@ -424,5 +424,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         NivelIdioma[] GetAllNivelIdiomas();
         NivelIdioma[] GetActiveNivelIdiomas();
         void SaveNivelIdioma(NivelIdioma nivelIdioma);
+
+        //Dirigido a
+        DirigidoA GetDirigidoAById(int id);
+        DirigidoA[] GetAllDirigidoAs();
+        DirigidoA[] GetActiveDirigidoAs();
+        void SaveDirigidoA(DirigidoA dirigidoA);
+
+        //Edicion
+        Edicion GetEdicionById(int id);
+        Edicion[] GetAllEdicions();
+        Edicion[] GetActiveEdicions();
+        void SaveEdicion(Edicion edicion);
     }
 }

@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IParticipacionMedioService participacionMedioService;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoService proyectoService;
+        readonly IDirigidoAMapper dirigidoAMapper;
 
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService,
                                             IParticipacionMedioMapper participacionMedioMapper,
@@ -34,6 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                             IProyectoMapper proyectoMapper,
                                             IAmbitoMapper ambitoMapper,
                                             IPaisMapper paisMapper,
+                                            IDirigidoAMapper dirigidoAMapper,
                                             IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
                                             IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
@@ -49,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
             this.proyectoService = proyectoService;
+            this.dirigidoAMapper = dirigidoAMapper;
         }
 
         [Authorize]
@@ -220,6 +223,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
 
             return form;
         }
@@ -233,6 +237,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
+            ViewData["DirigidoA"] = form.DirigidoAId;
         }
     }
 }

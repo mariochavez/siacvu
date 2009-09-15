@@ -4,6 +4,7 @@
 <p>
     <label>Nombre del libro</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p class="publicado_field">
@@ -15,12 +16,21 @@
 <p>
     <label>Editorial</label>
     <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Editorial")%>
+</p>
+<p>
+    <label>Edici&oacute;n</label>
+    <%=Html.DropDownList("Edicion", Model.Ediciones.CreateSelectList<EdicionForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>                
+    <%=Html.ValidationMessage("Edicion")%>
 </p>
 <p class="publicado_field">
     <label>Fecha de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>
@@ -31,18 +41,20 @@
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>
-    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 100})%>
+    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4})%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>
 <p>
     <label>Tiraje</label>
-    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input100", maxlength = 100 })%>
+    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input100", maxlength = 5 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Tiraje")%>
 </p>
 <p class="coordinacionrevista_field">
     <label>Volumen</label>
     <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p class="coordinacionrevista_field">

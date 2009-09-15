@@ -212,10 +212,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (libro.CoTraductor == "")
+                if (libro.Traductor == false)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|CoTraductor", "CoTraductor");
+                        "seleccione el traductor|Traductor", "Traductor");
 
                     isValid = false;
                 }

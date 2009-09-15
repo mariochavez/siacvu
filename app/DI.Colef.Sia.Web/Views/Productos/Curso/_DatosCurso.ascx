@@ -4,6 +4,7 @@
 <p>
 	<label>Nombre del curso</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
@@ -11,6 +12,7 @@
 	<%=Html.TextBox("ProgramaEstudioNombre", Model.ProgramaEstudioNombre,
             new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100 })%>
     <%=Html.Hidden("ProgramaEstudioId", Model.ProgramaEstudioId, new { rel = "#ProgramaEstudioNombre" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("ProgramaEstudioNombre")%>
 </p>
 <p>
@@ -18,6 +20,7 @@
 	<%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
@@ -29,7 +32,7 @@
 </p>
 <p>
 	<label>N&uacute;mero de horas</label>
-    <%=Html.TextBox("NumeroHoras", Model.NumeroHoras, new { @class = "input100-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("NumeroHoras", Model.NumeroHoras, new { @class = "input100-requerido", maxlength = 3 })%>
     <span class="cvu"></span>
 	<%=Html.ValidationMessage("NumeroHoras")%>
 </p>
@@ -47,14 +50,14 @@
 <p>
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
     <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>

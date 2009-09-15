@@ -27,9 +27,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
+        readonly IDirigidoAMapper dirigidoAMapper;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
+                                IDirigidoAMapper dirigidoAMapper,
                                 IEstadoPaisMapper estadoPaisMapper,
                                 IPaisMapper paisMapper,
                                 IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
@@ -51,6 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.eventoService = eventoService;
             this.eventoMapper = eventoMapper;
             this.ambitoMapper = ambitoMapper;
+            this.dirigidoAMapper = dirigidoAMapper;
             this.tipoEventoMapper = tipoEventoMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
@@ -349,6 +352,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
 
             return form;
         }
@@ -356,6 +360,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(EventoForm form)
         {
             ViewData["Ambito"] = form.AmbitoId;
+            ViewData["DirigidoA"] = form.DirigidoAId;
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;

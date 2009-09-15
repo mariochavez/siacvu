@@ -9,13 +9,14 @@
 </p>
 <p>
     <label>Nombre del libro</label>
-    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
 <p>
     <label>Editorial</label>
-    <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input420-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>
@@ -26,7 +27,7 @@
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>
-    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

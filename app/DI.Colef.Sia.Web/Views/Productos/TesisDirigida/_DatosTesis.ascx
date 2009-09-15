@@ -4,6 +4,7 @@
 <p>
     <label>T&iacute;tulo</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
 <p>
@@ -17,6 +18,7 @@
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>

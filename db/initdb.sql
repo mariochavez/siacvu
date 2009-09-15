@@ -33,6 +33,15 @@ insert into NivelIdiomas values('Bajo', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelIdiomas values('Medio', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelIdiomas values('Alto', GETDATE(), GETDATE(), 1, 1, 1)
 
+insert into DirigidoAs values('Sector privado', GETDATE(), GETDATE(), 1, 1, 1)
+insert into DirigidoAs values('Sector académico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into DirigidoAs values('Sector público', GETDATE(), GETDATE(), 1, 1, 1)
+insert into DirigidoAs values('Sector social', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into Ediciones values('1ra. Edición', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Ediciones values('2da. Edición', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Ediciones values('3ra. Edición', GETDATE(), GETDATE(), 1, 1, 1)
+
 insert into EstatusFormacionAcademicas values('Crédito terminado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Truncado',GETDATE(), GETDATE(), 1, 1, 1);

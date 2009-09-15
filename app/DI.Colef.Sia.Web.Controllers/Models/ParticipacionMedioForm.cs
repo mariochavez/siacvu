@@ -21,6 +21,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int MedioImpresoId { get; set; }
         public string MedioImpresoNombre { get; set; }
 
+        public int DirigidoA { get; set; }
+        public int DirigidoAId { get; set; }
+        public string DirigidoANombre { get; set; }
+
         public int MedioElectronico { get; set; }
         public int MedioElectronicoId { get; set; }
         public string MedioElectronicoNombre { get; set; }
@@ -58,5 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public AmbitoForm[] Ambitos { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }
+        public DirigidoAForm[] DirigidosA { get; set; }
     }
 }

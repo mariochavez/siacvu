@@ -1,4 +1,4 @@
-﻿    <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CapituloForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
@@ -40,7 +40,7 @@
             
 	            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
             
-	            <h4>Coautores</h4>
+	            <h4>Coautores<span class="cvu"></span></h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
             

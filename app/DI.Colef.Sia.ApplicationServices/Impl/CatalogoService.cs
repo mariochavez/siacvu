@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<Edicion> edicionRepository;
+        readonly IRepository<DirigidoA> dirigidoARepository;
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
         readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
@@ -98,6 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Estado> estadoRepository,
             IRepository<Idioma> idiomaRepository,
             IRepository<Pais> paisRepository,
+            IRepository<DirigidoA> dirigidoARepository,
             IRepository<TipoArticulo> tipoArticuloRepository,
             IRepository<Institucion> institucionRepository,
             IRepository<Indice> indiceRepository,
@@ -127,6 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoEstancia> tipoEstanciaRepository,
             IRepository<MedioElectronico> medioElectronicoRepository,
             IRepository<MedioImpreso> medioImpresoRepository,
+            IRepository<Edicion> edicionRepository,
             IRepository<OtraParticipacion> otraParticipacionRepository,
             IRepository<TipoDictamen> tipoDictamenRepository,
             IRepository<TipoDistincion> tipoDistincionRepository,
@@ -183,6 +187,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.lineaInvestigacionRepository = lineaInvestigacionRepository;
             this.tipoActividadRepository = tipoActividadRepository;
             this.areaRepository = areaRepository;
+            this.edicionRepository = edicionRepository;
+            this.dirigidoARepository = dirigidoARepository;
             this.disciplinaRepository = disciplinaRepository;
             this.subdisciplinaRepository = subdisciplinaRepository;
             this.lineaTematicaRepository = lineaTematicaRepository;
@@ -2157,6 +2163,60 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelIdioma.ModificadoEl = DateTime.Now;
 
             nivelIdiomaRepository.SaveOrUpdate(nivelIdioma);
+        }
+
+        public DirigidoA GetDirigidoAById(int id)
+        {
+            return dirigidoARepository.Get(id);
+        }
+
+        public DirigidoA[] GetAllDirigidoAs()
+        {
+            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
+        }
+
+        public DirigidoA[] GetActiveDirigidoAs()
+        {
+            return ((List<DirigidoA>)dirigidoARepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveDirigidoA(DirigidoA dirigidoA)
+        {
+            if (dirigidoA.Id == 0)
+            {
+                dirigidoA.Activo = true;
+                dirigidoA.CreadorEl = DateTime.Now;
+            }
+            dirigidoA.ModificadoEl = DateTime.Now;
+
+            dirigidoARepository.SaveOrUpdate(dirigidoA);
+        }
+
+        public Edicion GetEdicionById(int id)
+        {
+            return edicionRepository.Get(id);
+        }
+
+        public Edicion[] GetAllEdicions()
+        {
+            return ((List<Edicion>)OrderCatalog<Edicion>(x => x.Nombre, true)).ToArray();
+        }
+
+        public Edicion[] GetActiveEdicions()
+        {
+            return ((List<Edicion>)edicionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveEdicion(Edicion edicion)
+        {
+            if (edicion.Id == 0)
+            {
+                edicion.Activo = true;
+                edicion.CreadorEl = DateTime.Now;
+            }
+            edicion.ModificadoEl = DateTime.Now;
+
+            edicionRepository.SaveOrUpdate(edicion);
         }
     }
 }

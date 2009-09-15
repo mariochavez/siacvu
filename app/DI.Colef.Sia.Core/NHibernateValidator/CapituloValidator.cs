@@ -101,10 +101,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
                     isValid = false;
                 }
-                if(capitulo.Traductor == "")
+                if(capitulo.Traductor == false)
                 {
                     constraintValidatorContext.AddInvalid(
-                       "no puede ser nulo, vacío o cero|Traductor", "Traductor");
+                       "seleccione si tiene traductor|Traductor", "Traductor");
 
                     isValid = false;
                 }

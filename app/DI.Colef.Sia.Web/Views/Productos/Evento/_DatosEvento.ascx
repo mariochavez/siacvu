@@ -10,6 +10,7 @@
 <p>
     <label>Nombre del evento</label>
 	<%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
@@ -25,7 +26,7 @@
 </p>
 <p>
     <label>T&iacute;tulo del trabajo</label>
-	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input250-requerido", maxlength = 100 })%>
+	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-requerido", maxlength = 100 })%>
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>

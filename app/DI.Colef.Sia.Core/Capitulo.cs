@@ -97,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Proyecto Proyecto { get; set; }
         
-		public virtual string Traductor { get; set; }
+		public virtual bool Traductor { get; set; }
         
 		//public virtual string NombreTraductor { get; set; }
 		
