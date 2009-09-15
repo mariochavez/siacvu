@@ -34,32 +34,32 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
 	                <label>Nombre del producto dictaminado</label>
-	                <%= Html.Encode(Model.Form.Nombre) %>
+	                <strong><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Tipo de dictamen</label>
-	                <%= Html.Encode(Model.Form.TipoDictamenNombre) == "" ? "<span>No hay tipo de dictamen registrado</span>" : Html.Encode(Model.Form.TipoDictamenNombre)%>
+	                <strong><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Tipo de participaci&oacute;n</label>
-	                <%= Html.Encode(Model.Form.TipoParticipacionNombre) == "" ? "<span>No hay tipo de participación registrada</span>" : Html.Encode(Model.Form.TipoParticipacionNombre)%>
+	                <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Instituci&oacute;n solicitante</label>
-	                <%= Html.Encode(Model.Form.InstitucionNombre) == "" ? "<span>No hay institución registrada</span>" : Html.Encode(Model.Form.InstitucionNombre)%>
+	                <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Periodo de referencia</label>
-	                <%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>
+	                <strong><%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>&nbsp;</strong>
                 </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DictamenController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->

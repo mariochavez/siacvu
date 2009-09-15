@@ -12,7 +12,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int Autor { get; set; }
         public int AutorId { get; set; }
-        public string AutorNombre { get; set; }
+        public string AutorUsuarioNombre { get; set; }
+        public string AutorUsuarioApellidoPaterno { get; set; }
+        public string AutorUsuarioApellidoMaterno { get; set; }
+
+        public string NombreAutor
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", AutorUsuarioApellidoPaterno,
+                                     AutorUsuarioApellidoMaterno, AutorUsuarioNombre);
+            }
+        }
 
         public int OtraParticipacion { get; set; }
         public int OtraParticipacionId { get; set; }

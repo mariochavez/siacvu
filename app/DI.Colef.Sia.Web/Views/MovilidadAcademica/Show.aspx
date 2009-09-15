@@ -35,34 +35,34 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
                     <label>Tipo de estancia</label>
-                    <%= Html.Encode(Model.Form.TipoEstanciaNombre) == "" ? "<span>No hay tipo de estancia registrada</span>" : Html.Encode(Model.Form.TipoEstanciaNombre)%>
+                    <strong><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Tipo de instituci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.TipoInstitucionNombre) == "" ? "<span>No hay tipo de institución registrada</span>" : Html.Encode(Model.Form.TipoInstitucionNombre)%>
+                    <strong><%= Html.Encode(Model.Form.TipoInstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <%= Html.Encode(Model.Form.FechaInicial) == "" ? "<span>No hay fecha inicial registrada</span>" : Html.Encode(Model.Form.FechaInicial)%>
+                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <%= Html.Encode(Model.Form.FechaFinal) == "" ? "<span>No hay fecha final registrada</span>" : Html.Encode(Model.Form.FechaFinal)%>
+                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.InstitucionNombre) == "" ? "<span>No hay institución registrada</span>" : Html.Encode(Model.Form.InstitucionNombre)%>
+                    <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica</label>
-                    <%= Html.Encode(Model.Form.LineaTematicaNombre) == "" ? "<span>No hay línea temática registrada</span>" : Html.Encode(Model.Form.LineaTematicaNombre) %>
+                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Convenio</label>
-                    <%= Html.Encode(Model.Form.ConvenioNombre) == "" ? "<span>No hay convenio registrado</span>" : Html.Encode(Model.Form.ConvenioNombre)%>
+                    <strong><%= Html.Encode(Model.Form.ConvenioNombre)%>&nbsp;</strong>
                 </p>
                 
                 <div class="minilista" id="productoderivadoList">
@@ -148,7 +148,7 @@
                 <p class="submit">
                     <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->

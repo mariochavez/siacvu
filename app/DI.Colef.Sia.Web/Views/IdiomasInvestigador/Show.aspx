@@ -34,52 +34,52 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
 	                <label>Idioma</label>
-	                <%= Html.Encode(Model.Form.IdiomaNombre) == "" ? "<span>No hay idioma registrado</span>" : Html.Encode(Model.Form.IdiomaNombre) %>
+	                <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Lengua materna</label>
-	                <%= Html.Encode(Model.Form.LenguaMaterna) == "" ? "<span>No hay lengua materna registrada</span>" : Html.Encode(Model.Form.LenguaMaterna) %>
+	                <strong><%= Html.Encode(Model.Form.LenguaMaterna)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Traductor</label>
-	                <%= Html.Encode(Model.Form.Traductor) == "" ? "<span>No hay traductor registrado</span>" : Html.Encode(Model.Form.Traductor) %>
+	                <strong><%= Html.Encode(Model.Form.Traductor)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Profesor</label>
-	                <%= Html.Encode(Model.Form.Profesor) == "" ? "<span>No hay profesor registrado</span>" : Html.Encode(Model.Form.Profesor) %>
+	                <strong><%= Html.Encode(Model.Form.Profesor)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel de conversaci&oacute;n</label>
-	                <%= Html.Encode(Model.Form.NivelConversacionNombre) == "" ? "<span>No hay nivel de conversación registrado</span>" : Html.Encode(Model.Form.NivelConversacionNombre) %>
+	                <strong><%= Html.Encode(Model.Form.NivelConversacionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel de lectura</label>
-	                <%= Html.Encode(Model.Form.NivelLecturaNombre) == "" ? "<span>No hay nivel de lectura registrado</span>" : Html.Encode(Model.Form.NivelLecturaNombre) %>
+	                <strong><%= Html.Encode(Model.Form.NivelLecturaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel de escritura</label>
-	                <%= Html.Encode(Model.Form.NivelEscrituraNombre) == "" ? "<span>No hay nivel de escritura registrado</span>" : Html.Encode(Model.Form.NivelEscrituraNombre) %>
+	                <strong><%= Html.Encode(Model.Form.NivelEscrituraNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Fecha de evaluaci&oacute;n</label>
-	                <%= Html.Encode(Model.Form.FechaEvaluacion) == "" ? "<span>No hay fecha de evaluación registrada</span>" : Html.Encode(Model.Form.FechaEvaluacion) %>
+	                <strong><%= Html.Encode(Model.Form.FechaEvaluacion)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nombre del documento probatorio</label>
-	                <%= Html.Encode(Model.Form.NombreDocumentoProbatorio) == "" ? "<span>No hay documento probatorio registrado</span>" : Html.Encode(Model.Form.NombreDocumentoProbatorio) %>
+	                <strong><%= Html.Encode(Model.Form.NombreDocumentoProbatorio)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Puntuaci&oacute;n/porcentaje</label>
-	                <%= Html.Encode(Model.Form.Puntuacion) == "" ? "<span>No hay puntuación/porcentaje registrado</span>" : Html.Encode(Model.Form.Puntuacion) %>
+	                <strong><%= Html.Encode(Model.Form.Puntuacion)%>&nbsp;</strong>
                 </p>                
                 
                 <p class="submit">
                     <%=Html.ActionLink<IdiomasInvestigadorController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->
