@@ -34,92 +34,92 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
                     <label>T&iacute;tulo</label>
-                    <%= Html.Encode(Model.Form.Titulo) %>
+                    <strong><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Nombre</label>
-                    <%= Html.Encode(Model.Form.Nombre) == "" ? "<span>No hay nombre registrado</span>" : Html.Encode(Model.Form.Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Medio impreso</label>
-                    <%= Html.Encode(Model.Form.MedioImpresoNombre) == "" ? "<span>No hay medio impreso registrado</span>" : Html.Encode(Model.Form.MedioImpresoNombre)%>
+                    <strong><%= Html.Encode(Model.Form.MedioImpresoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Especificaci&oacute;n de medio impreso</label>
-                    <%= Html.Encode(Model.Form.EspecificacionMedioImpreso) == "" ? "<span>No hay especificación de medio impreso registrado</span>" : Html.Encode(Model.Form.EspecificacionMedioImpreso)%>
+                    <strong><%= Html.Encode(Model.Form.EspecificacionMedioImpreso)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Medio electr&oacute;nico</label>
-                    <%= Html.Encode(Model.Form.MedioElectronicoNombre) == "" ? "<span>No hay medio electrónico registrado</span>" : Html.Encode(Model.Form.MedioElectronicoNombre)%>
+                    <strong><%= Html.Encode(Model.Form.MedioElectronicoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Especificaci&oacute;n de medio electr&oacute;nico</label>
-                    <%= Html.Encode(Model.Form.EspecificacionMedioElectronico) == "" ? "<span>No hay especificación de medio electrónico registrado</span>" : Html.Encode(Model.Form.EspecificacionMedioElectronico)%>
+                    <strong><%= Html.Encode(Model.Form.EspecificacionMedioElectronico)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>G&eacute;nero</label>
-                    <%= Html.Encode(Model.Form.GeneroNombre) == "" ? "<span>No hay género registrado</span>" : Html.Encode(Model.Form.GeneroNombre)%>
+                    <strong><%= Html.Encode(Model.Form.GeneroNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Tema</label>
-                    <%= Html.Encode(Model.Form.Tema) == "" ? "<span>No hay tema registrado</span>" : Html.Encode(Model.Form.Tema)%>
+                    <strong><%= Html.Encode(Model.Form.Tema)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Periodo de referencia</label>
-                    <%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>
+                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Proyecto</label>
-                    <%= Html.Encode(Model.Form.ProyectoNombre) == "" ? "<span>No hay proyecto registrado</span>" : Html.Encode(Model.Form.ProyectoNombre) %>
+                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica</label>
-                    <%= Html.Encode(Model.Form.LineaTematicaNombre) == "" ? "<span>No hay línea temática registrada</span>" : Html.Encode(Model.Form.LineaTematicaNombre) %>
+                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>&Aacute;mbito</label>
-                    <%= Html.Encode(Model.Form.Ambito) == "" ? "<span>No hay ámbito registrado</span>" : Html.Encode(Model.Form.Ambito)%>
+                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Fecha de difusi&oacute;n</label>
-                    <%= Html.Encode(Model.Form.FechaDifusion) == "" ? "<span>No hay fecha de difusión registrada</span>" : Html.Encode(Model.Form.FechaDifusion)%>
+                    <strong><%= Html.Encode(Model.Form.FechaDifusion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>                
                 <p>
                     <label>Pa&iacute;s</label>
-                    <%= Html.Encode(Model.Form.PaisNombre) == "" ? "<span>No hay país registrado</span>" : Html.Encode(Model.Form.PaisNombre)%>
+                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Estado</label>
-                    <%= Html.Encode(Model.Form.EstadoPaisNombre) == "" ? "<span>No hay estado registrado</span>" : Html.Encode(Model.Form.EstadoPaisNombre)%>
+                    <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Ciudad</label>
-                    <%= Html.Encode(Model.Form.Ciudad) == "" ? "<span>No hay ciudad registrada</span>" : Html.Encode(Model.Form.Ciudad)%>
+                    <strong><%= Html.Encode(Model.Form.Ciudad)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Nota period&iacute;stica</label>
-                    <%= Html.Encode(Model.Form.NotaPeriodistica) == "" ? "<span>No hay nota periodística registrada</span>" : Html.Encode(Model.Form.NotaPeriodistica)%>
+                    <strong><%= Html.Encode(Model.Form.NotaPeriodistica)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 1</label>
-	                <%= Html.Encode(Model.Form.PalabraClave1) == "" ? "<span>No hay palabra clave 1 registrada</span>" : Html.Encode(Model.Form.PalabraClave1)%>    
+	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 2</label>
-	                <%= Html.Encode(Model.Form.PalabraClave2) == "" ? "<span>No hay palabra clave 2 registrada</span>" : Html.Encode(Model.Form.PalabraClave2)%>    
+	                <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 3</label>
-                    <%= Html.Encode(Model.Form.PalabraClave3) == "" ? "<span>No hay palabra clave 3 registrada</span>" : Html.Encode(Model.Form.PalabraClave3)%>    
+                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
                 </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->

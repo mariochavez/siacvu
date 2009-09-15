@@ -35,44 +35,44 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
                     <label>No. de apoyo</label>
-                    <%= Html.Encode(Model.Form.NoApoyo) == "" ? "<span>No hay número de apoyo registrado</span>" : Html.Encode(Model.Form.NoApoyo)%>
+                    <strong><%= Html.Encode(Model.Form.NoApoyo)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Tipo de apoyo</label>
-                    <%= Html.Encode(Model.Form.TipoApoyoNombre) == "" ? "<span>No hay tipo de apoyo registrado</span>" : Html.Encode(Model.Form.TipoApoyoNombre)%>
+                    <strong><%= Html.Encode(Model.Form.TipoApoyoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Subprograma de CONACYT</label>
-                    <%= Html.Encode(Model.Form.SubprogramaConacytNombre) == "" ? "<span>No hay subprograma de CONACYT registrado</span>" : Html.Encode(Model.Form.SubprogramaConacytNombre)%>
+                    <label>Subprograma del CONACYT</label>
+                    <strong><%= Html.Encode(Model.Form.SubprogramaConacytNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <%= Html.Encode(Model.Form.FechaInicial) == "" ? "<span>No hay fecha inicial registrada</span>" : Html.Encode(Model.Form.FechaInicial)%>
+                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <%= Html.Encode(Model.Form.FechaFinal) == "" ? "<span>No hay fecha final registrada</span>" : Html.Encode(Model.Form.FechaFinal)%>
+                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>                
                 <p>
 	                <label>Palabra clave 1</label>
-	                <%= Html.Encode(Model.Form.PalabraClave1) == "" ? "<span>No hay palabra clave 1 registrada</span>" : Html.Encode(Model.Form.PalabraClave1)%>    
+	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 2</label>
-	                <%= Html.Encode(Model.Form.PalabraClave2) == "" ? "<span>No hay palabra clave 2 registrada</span>" : Html.Encode(Model.Form.PalabraClave2)%>    
+	                <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 3</label>
-                    <%= Html.Encode(Model.Form.PalabraClave3) == "" ? "<span>No hay palabra clave 3 registrada</span>" : Html.Encode(Model.Form.PalabraClave3)%>    
+                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
                 </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ApoyoConacytController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->

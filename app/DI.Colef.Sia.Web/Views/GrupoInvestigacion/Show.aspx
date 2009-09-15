@@ -35,85 +35,85 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
                     <label>Nombre del grupo de investigaci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.NombreGrupoInvestigacion)%>
+                    <strong><%= Html.Encode(Model.Form.NombreGrupoInvestigacion)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Fecha de creaci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.FechaCreacion) == "" ? "<span>No hay fecha de creación registrada</span>" : Html.Encode(Model.Form.FechaCreacion)%>
+                    <strong><%= Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <h4>Estructura funcional</h4>
                 <p>
 	                <label>Sector</label>
-	                <%= Html.Encode(Model.Form.SectorNombre) == "" ? "<span>No hay sector registrado</span>" : Html.Encode(Model.Form.SectorNombre)%>    
+	                <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Organizaci&oacute;n</label>
-	                <%= Html.Encode(Model.Form.OrganizacionNombre) == "" ? "<span>No hay organización registrada</span>" : Html.Encode(Model.Form.OrganizacionNombre)%>    
+	                <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel 2</label>
-                    <%= Html.Encode(Model.Form.Nivel2Nombre) == "" ? "<span>No hay nivel 2 registrado</span>" : Html.Encode(Model.Form.Nivel2Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel 3</label>
-                    <%= Html.Encode(Model.Form.Nivel3Nombre) == "" ? "<span>No hay nivel 3 registrado</span>" : Html.Encode(Model.Form.Nivel3Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nivel3Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel 4</label>
-                    <%= Html.Encode(Model.Form.Nivel4Nombre) == "" ? "<span>No hay nivel 4 registrado</span>" : Html.Encode(Model.Form.Nivel4Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nivel4Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel 5</label>
-                    <%= Html.Encode(Model.Form.Nivel5Nombre) == "" ? "<span>No hay nivel 5 registrado</span>" : Html.Encode(Model.Form.Nivel5Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nivel5Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Nivel 6</label>
-                    <%= Html.Encode(Model.Form.Nivel6Nombre) == "" ? "<span>No hay nivel 6 registrado</span>" : Html.Encode(Model.Form.Nivel6Nombre)%>
+                    <strong><%= Html.Encode(Model.Form.Nivel6Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>L&iacute;der</label>
-                    <%= Html.Encode(Model.Form.Lider) == "" ? "<span>No hay líder registrado</span>" : Html.Encode(Model.Form.Lider)%>    
+                    <strong><%= Html.Encode(Model.Form.Lider)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Nombre</label>
-                    <%= Html.Encode(Model.Form.Nombre) == "" ? "<span>No hay nombre registrado</span>" : Html.Encode(Model.Form.Nombre)%>    
+                    <strong><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Miembros</label>
-                    <%= Html.Encode(Model.Form.Miembros) == "" ? "<span>No hay miembros registrados</span>" : Html.Encode(Model.Form.Miembros)%>    
+                    <strong><%= Html.Encode(Model.Form.Miembros)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Impacto</label>
-                    <%= Html.Encode(Model.Form.Impacto) == "" ? "<span>No hay impacto registrado</span>" : Html.Encode(Model.Form.Impacto)%>    
+                    <strong><%= Html.Encode(Model.Form.Impacto)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Vinculaci&oacute;n del sector productivo</label>
-	                <%= Html.Encode(Model.Form.VinculacionSectorProductivo) == "" ? "<span>No hay vinculación del sector productivo registrado</span>" : Html.Encode(Model.Form.VinculacionSectorProductivo)%>    
+	                <strong><%= Html.Encode(Model.Form.VinculacionSectorProductivo)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Vinculaci&oacute;n del sector social</label>
-	                <%= Html.Encode(Model.Form.VinculacionSectorSocial) == "" ? "<span>No hay vinculación del sector social registrado</span>" : Html.Encode(Model.Form.VinculacionSectorSocial)%>    
+	                <strong><%= Html.Encode(Model.Form.VinculacionSectorSocial)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Colaboraci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.Colaboracion) == "" ? "<span>No hay colaboración registrada</span>" : Html.Encode(Model.Form.Colaboracion)%>    
+                    <strong><%= Html.Encode(Model.Form.Colaboracion)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Administraci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.Administracion) == "" ? "<span>No hay administración registrada</span>" : Html.Encode(Model.Form.Administracion)%>    
+                    <strong><%= Html.Encode(Model.Form.Administracion)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Programa registrado</label>
-                    <%= Html.Encode(Model.Form.ProgramaRegistrado) == "" ? "<span>No hay programa registrado</span>" : Html.Encode(Model.Form.ProgramaRegistrado)%>
+                    <strong><%= Html.Encode(Model.Form.ProgramaRegistrado)%>&nbsp;</strong>
                 </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<GrupoInvestigacionController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->

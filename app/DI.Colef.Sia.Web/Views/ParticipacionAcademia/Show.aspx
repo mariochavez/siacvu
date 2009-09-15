@@ -34,64 +34,64 @@
     <div id="textos">
 
         <div id="forma">
-            <div class="elementodescripcion">
+            <div id="campos">
                 <p>
                     <label>Nombre del producto</label>
-                    <%= Html.Encode(Model.Form.NombreProducto) %>
+                    <strong><%= Html.Encode(Model.Form.NombreProducto) %>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Estado actual</label>
-                    <%= Html.Encode(Model.Form.EstadoProductoNombre) == "" ? "<span>No hay estatus registrado</span>" : Html.Encode(Model.Form.EstadoProductoNombre) %>
+                    <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>A&ntilde;o de aceptaci&oacute;n</label>
-                    <%= Html.Encode(Model.Form.FechaAceptacion) == "" ? "<span>No tiene año de aceptación registrado</span>" : Html.Encode(Model.Form.FechaAceptacion) %>
+                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
                 </p>
                 <p>
                     <label>Periodo de referencia</label>
-                    <%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>
+                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Proyecto de referencia</label>
-                    <%= Html.Encode(Model.Form.ProyectoNombre) == "" ? "<span>No hay proyecto registrado</span>" : Html.Encode(Model.Form.ProyectoNombre) %>
+                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Fecha de edici&oacute;n</label>    
-                    <%= Html.Encode(Model.Form.FechaEdicion) == "" ? "<span>No hay fecha de edición registrada</span>" : Html.Encode(Model.Form.FechaEdicion)%>
+                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica</label>
-                    <%= Html.Encode(Model.Form.LineaTematicaNombre) == "" ? "<span>No hay línea temática registrada</span>" : Html.Encode(Model.Form.LineaTematicaNombre) %>
+                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
-                    <%= Html.Encode(Model.Form.PaisNombre) == "" ? "<span>No hay país registrado</span>" : Html.Encode(Model.Form.PaisNombre)%>
+                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Revista</label>
-                    <%= Html.Encode(Model.Form.Revista) == "" ? "<span>No hay revista registrada</span>" : Html.Encode(Model.Form.Revista) %>
+                    <strong><%= Html.Encode(Model.Form.Revista)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Instituci&oacute;n</label>
-	                <%= Html.Encode(Model.Form.InstitucionNombre) == "" ? "<span>No hay institución registrada</span>" : Html.Encode(Model.Form.InstitucionNombre)%>
+	                <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Volumen</label>
-                    <%= Html.Encode(Model.Form.Volumen) == "" ? "<span>No hay volumen registrado</span>" : Html.Encode(Model.Form.Volumen)%>
+                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>N&uacute;mero del volumen</label>
-                    <%= Html.Encode(Model.Form.NoVolumen) == "" ? "<span>No hay número del volumen registrado</span>" : Html.Encode(Model.Form.NoVolumen)%>
+                    <strong><%= Html.Encode(Model.Form.NoVolumen)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Editorial</label>
-                    <%= Html.Encode(Model.Form.Editorial) == "" ? "<span>No hay editorial registrada</span>" : Html.Encode(Model.Form.Editorial)%>
+                    <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
                 </p>                
                 
                 <p class="submit">
                     <%=Html.ActionLink<ParticipacionAcademiaController>(x => x.Index(), "Regresar") %>
                 </p>
-            </div><!--end elementodescripcion-->
+            </div><!--end campos-->
         </div><!--end lista-->
 
     </div><!--end textos-->
