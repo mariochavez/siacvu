@@ -35,7 +35,7 @@
 <p>
     <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
-								"Seleccione ...")%>
+								"Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeArea")} )%>
 	<span class="cvu"></span>
 </p>
 <p>
