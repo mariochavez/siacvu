@@ -30,7 +30,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombramiento = message.Nombramiento;
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
-            model.LineasInvestigacion = message.LineasInvestigacion;
+            model.LineaInvestigacion1 = message.LineaInvestigacion1;
+            model.LineaInvestigacion2 = message.LineaInvestigacion2;
+            model.LineaInvestigacion3 = message.LineaInvestigacion3;
             model.PrincipalesLogros = message.PrincipalesLogros;
 
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);

@@ -52,7 +52,7 @@
 <p>
     <label>Programa de estudio</label>
     <%=Html.TextBox("ProgramaEstudioNombre", Model.ProgramaEstudioNombre,
-                            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100 })%>
     <%=Html.Hidden("ProgramaEstudioId", Model.ProgramaEstudioId, new { rel = "#ProgramaEstudioNombre" })%>
     <%=Html.ValidationMessage("ProgramaEstudioNombre")%>
 </p>

@@ -23,15 +23,26 @@
     <%=Html.ValidationMessage("Clase") %>
 </p>
 <p>
-    <label>L&iacute;neas de investigaci&oacute;n</label>
-    <%=Html.TextArea("LineasInvestigacion", Model.LineasInvestigacion, 3, 35, new { @class = "input250", maxlength = 100 })%>
+    <label>L&iacute;nea de investigaci&oacute;n 1</label>
+    <%=Html.TextArea("LineaInvestigacion1", Model.LineaInvestigacion1, 3, 35, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
-    <%=Html.ValidationMessage("LineasInvestigacion")%>
-    <span>(L&iacute;neas de Investigaci&oacute;n)</span>
+    <%=Html.ValidationMessage("LineaInvestigacion1")%>
+</p>
+<p>
+    <label>L&iacute;nea de investigaci&oacute;n 2</label>
+    <%=Html.TextArea("LineaInvestigacion2", Model.LineaInvestigacion2, 3, 35, new { @class = "input420", maxlength = 100 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("LineaInvestigacion2")%>
+</p>
+<p>
+    <label>L&iacute;nea de investigaci&oacute;n 3</label>
+    <%=Html.TextArea("LineaInvestigacion3", Model.LineaInvestigacion3, 3, 35, new { @class = "input420", maxlength = 100 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("LineaInvestigacion3")%>
 </p>
 <p>
     <label>Principales logros</label>
-    <%=Html.TextBox("PrincipalesLogros", Model.PrincipalesLogros, new { @class = "input100", maxlength = 100, size = 14 })%>
+    <%=Html.TextArea("PrincipalesLogros", Model.PrincipalesLogros, 3, 35, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PrincipalesLogros")%>
 </p>

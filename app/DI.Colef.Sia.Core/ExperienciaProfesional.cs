@@ -46,9 +46,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Clase Clase { get; set; }
 
-        public virtual string LineasInvestigacion { get; set; }
+        public virtual string LineaInvestigacion1 { get; set; }
 
-        public virtual long PrincipalesLogros { get; set; }
+        public virtual string LineaInvestigacion2 { get; set; }
+
+        public virtual string LineaInvestigacion3 { get; set; }
+
+        public virtual string PrincipalesLogros { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

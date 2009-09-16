@@ -34,6 +34,6 @@
 </p>
 <p>
 	<label>Descripci&oacute;n del reporte</label>
-	<%=Html.TextArea("Descripcion", Model.Descripcion, 3, 35, new { @class = "input250", maxlength = 200 })%>
+	<%=Html.TextArea("Descripcion", Model.Descripcion, 3, 35, new { @class = "input420", maxlength = 200 })%>
 	<span class="cvu"></span>
 </p>

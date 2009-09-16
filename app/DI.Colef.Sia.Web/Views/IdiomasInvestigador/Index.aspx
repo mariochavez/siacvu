@@ -59,9 +59,7 @@
 					<div class="elementobotones">
 						<p>
 							<span><%=Html.ActionLink<IdiomasInvestigadorController>(x => x.Edit(idiomasInvestigador.Id), "Editar") %></span>
-	                        <span>	                            
-                                <%=Html.ActionLink("Ver", "Show", new { id = idiomasInvestigador.Id })%>
-	                        </span>
+	                        <span><%=Html.ActionLink("Ver", "Show", new { id = idiomasInvestigador.Id })%></span>
 	                   	</p>
 					</div><!--end elementobotones-->
 		

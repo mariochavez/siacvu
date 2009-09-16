@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p id="NotaPeriodistica_p">
 	<label>Nota period&iacute;stica</label>
-	<%=Html.TextArea("NotaPeriodistica", Model.NotaPeriodistica, 3, 35, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextArea("NotaPeriodistica", Model.NotaPeriodistica, 3, 35, new { @class = "input420", maxlength = 100 })%>
 	<span class="cvu"></span>
 </p>
 <p>

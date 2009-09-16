@@ -9,7 +9,7 @@
 </p>
 <p>
     <label>Entidad</label>
-    <%=Html.TextBox("Entidad", Model.Entidad, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Entidad", Model.Entidad, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Entidad")%>
 </p>

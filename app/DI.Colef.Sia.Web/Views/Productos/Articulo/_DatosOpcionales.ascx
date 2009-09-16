@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Participantes</label>
-    <%=Html.TextBox("Participantes", Model.Participantes, new { @class = "input100", maxlength = 5, size = 5 })%>
+    <%=Html.TextBox("Participantes", Model.Participantes, new { @class = "input100", maxlength = 4, size = 5 })%>
     <span class="cvu"></span>
 </p>
 <p>

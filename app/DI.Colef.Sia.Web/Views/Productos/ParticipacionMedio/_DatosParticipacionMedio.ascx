@@ -30,7 +30,6 @@
 	<%=Html.DropDownList("MedioElectronico", Model.MediosElectronicos.CreateSelectList<MedioElectronicoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
 	<span class="cvu"></span>
-	<span class="cvu"></span>
 	<%=Html.ValidationMessage("MedioElectronico") %>
 </p>
 <p id="OtroMedioElectronico">
@@ -71,6 +70,7 @@
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
             new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
+    <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>
 <p>
 	<label>&Aacute;mbito</label>
