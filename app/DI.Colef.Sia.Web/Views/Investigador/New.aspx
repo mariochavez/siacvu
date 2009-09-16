@@ -37,7 +37,7 @@
                     <p>
                         <label>Usuario</label>
                         <%=Html.DropDownList("Usuario", Model.Form.Usuarios.CreateSelectList<UsuarioForm>("Id", "NombreCompleto"),
-                                                        "Seleccione ...", new { @class = "requerido" })%>
+                                                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changeuser") })%>
                         <%=Html.ValidationMessage("Usuario") %>
                     </p>
                     <p>

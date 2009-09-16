@@ -6,7 +6,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -174,6 +173,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = investigadorMapper.Map(investigador);
             
             return Rjs("Activate", form);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeUser(int id)
+        {
+            var investigador = investigadorService.GetInvestigadorById(id);
+            var form = new InvestigadorForm
+            {
+                UsuarioNombre = investigador.Usuario.Nombre
+            };
+
+            return Rjs("ChangeUser", form);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]

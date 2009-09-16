@@ -247,6 +247,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
+        [Authorize()]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int id)
+        {
+            // 1.- Cargar disiplinas con algun metodo que acepte el area (param id)
+            // 2.- Con el mapper convertir a DisciplinaForm
+
+            var disciplinas = new DisciplinaForm[]
+                                           {
+                                               new DisciplinaForm { Id = 0, Nombre = "Seleccione ..."},
+                                               new DisciplinaForm { Id = 1, Nombre = "XXX"},
+                                               new DisciplinaForm { Id = 2, Nombre = "YYY"}
+                                           };
+
+            var form = new LibroForm
+            {
+                Disciplinas = disciplinas
+            };
+
+            return Rjs("ChangeArea", form);
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)

@@ -591,6 +591,7 @@
     <Content Include="Views\IdiomasInvestigador\New.aspx" />
     <Content Include="Views\IdiomasInvestigador\Show.aspx" />
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
+    <Content Include="Views\Investigador\ChangeUser.js.ascx" />
     <Content Include="Views\MovilidadAcademica\AddProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\Show.aspx" />
@@ -616,6 +617,7 @@
     <Content Include="Views\Productos\Libro\Activate.js.ascx" />
     <Content Include="Views\Productos\Libro\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Libro\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Libro\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Libro\Edit.aspx" />
     <Content Include="Views\Productos\Libro\Index.aspx" />
     <Content Include="Views\Productos\Libro\New.aspx" />

@@ -16,7 +16,8 @@ function setupDocument() {
 
     AutoComplete.setup();
     SearchAutoComplete.setup();
-	PopMenu.setup();
+    PopMenu.setup();
+    Cascade.setup();
 };
 
 function setupSublistRows() {
@@ -88,6 +89,35 @@ var PopMenu = {
     },
     closeTimer: function() {
         PopMenu.closetimer = window.setTimeout(PopMenu.closeInactiveMenu, PopMenu.timeout);
+    }
+};
+
+var Cascade = {
+    setup: function() {
+        $('.cascade').change(Cascade.change);
+    },
+    change: function() {
+        var url = $(this).attr('rel');
+        var value = $(this).val();
+        if (value == 0)
+            return;
+
+        var currentLink = $(this);
+
+        currentLink.showLoading();
+        $.ajax({
+            url: url,
+            data: { id: value },
+            type: 'get',
+            dataType: 'script',
+            success: function(msg) {
+                currentLink.removeLoading();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                currentLink.removeLoading();
+                alert(textStatus);
+            }
+        });
     }
 };
 
