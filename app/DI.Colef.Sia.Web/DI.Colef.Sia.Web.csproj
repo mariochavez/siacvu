@@ -604,6 +604,7 @@
     <Content Include="Views\ParticipacionAcademia\Show.aspx" />
     <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Articulo\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />

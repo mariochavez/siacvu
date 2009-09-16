@@ -13,11 +13,11 @@
     <div id="subcontenido">
         <h3>Agregar nueva Organizaci&oacute;n</h3>
         <p>
-            Puede agregar una nueva Organizaci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo Organizaci&oacute;n</strong>.
+            Puede agregar una nueva organizaci&oacute;n dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva organizaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<OrganizacionController>(x => x.New(), "+ Nuevo Organización")%></span>
+            <span><%=Html.ActionLink<OrganizacionController>(x => x.New(), "+ Nueva organización")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Organizaciones registradas en el sistema.</p>
+            <p>Lista de organizaciones registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay organizaciones definidas</span></h5>
+					<h5><span>No hay organizaciones registradas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

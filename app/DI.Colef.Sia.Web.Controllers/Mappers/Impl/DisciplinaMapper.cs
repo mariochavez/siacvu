@@ -1,3 +1,4 @@
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Core.PersistenceSupport;
@@ -6,8 +7,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class DisciplinaMapper : AutoFormMapper<Disciplina, DisciplinaForm>, IDisciplinaMapper
     {
-        public DisciplinaMapper(IRepository<Disciplina> repository) : base(repository)
+        readonly ICatalogoService catalogoService;
+
+        public DisciplinaMapper(IRepository<Disciplina> repository, ICatalogoService catalogoService) : base(repository)
         {
+            this.catalogoService = catalogoService;
         }
 
         protected override int GetIdFromMessage(DisciplinaForm message)
@@ -18,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(DisciplinaForm message, Disciplina model)
         {
 			model.Nombre = message.Nombre;
+            model.Area = catalogoService.GetAreaById(message.Area);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(40)]
 		public virtual string Nombre { get; set; }
 
+	    public virtual Rama Rama { get; set; }
+
 		public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }

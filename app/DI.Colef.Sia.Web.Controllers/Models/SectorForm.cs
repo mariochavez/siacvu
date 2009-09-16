@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class SectorForm
@@ -8,5 +6,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Nombre { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+
+        public bool SectorEconomico { get; set; }
     }
 }

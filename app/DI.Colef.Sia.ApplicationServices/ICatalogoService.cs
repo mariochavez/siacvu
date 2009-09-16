@@ -117,6 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Disciplina[] GetAllDisciplinas();
         Disciplina[] GetActiveDisciplinas();
         void SaveDisciplina(Disciplina disciplina);
+        Disciplina[] GetDisciplinasByAreaId(int id);
 
         //Subdisciplina
         Subdisciplina GetSubdisciplinaById(int id);

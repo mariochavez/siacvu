@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly IOrganizacionMapper organizacionMapper;
+        readonly ISectorMapper sectorMapper;
 
         public OrganizacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                      IOrganizacionMapper organizacionMapper, ISearchService searchService)
+                                      IOrganizacionMapper organizacionMapper, ISearchService searchService,
+                                      ISectorMapper sectorMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.organizacionMapper = organizacionMapper;
+            this.sectorMapper = sectorMapper;
         }
 
         [Authorize]
@@ -39,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new OrganizacionForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var organizacion = catalogoService.GetOrganizacionById(id);
-            data.Form = organizacionMapper.Map(organizacion);
+
+            var organizacionForm = organizacionMapper.Map(organizacion);
+
+            data.Form = SetupNewForm(organizacionForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -68,8 +76,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             organizacion.CreadorPor = CurrentUser();
             organizacion.ModificadoPor = CurrentUser();
 
-            if (!IsValidateModel(organizacion, form, Title.New))
-                return ViewNew();
+            if (!IsValidateModel(organizacion, form, Title.New, "Organizacion"))
+            {
+                var organizacionForm = organizacionMapper.Map(organizacion);
+
+                ((GenericViewData<OrganizacionForm>)ViewData.Model).Form = SetupNewForm(organizacionForm);
+                return ViewNew();   
+            }
 
             catalogoService.SaveOrganizacion(organizacion);
 
@@ -87,7 +100,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             organizacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(organizacion, form, Title.Edit))
+            {
+                var organizacionForm = organizacionMapper.Map(organizacion);
+
+                ((GenericViewData<OrganizacionForm>)ViewData.Model).Form = SetupNewForm(organizacionForm);
+                FormSetCombos(organizacionForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveOrganizacion(organizacion);
 
@@ -130,6 +149,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Organizacion>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        OrganizacionForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        OrganizacionForm SetupNewForm(OrganizacionForm form)
+        {
+            form = form ?? new OrganizacionForm();
+
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+
+            return form;
+        }
+
+        private void FormSetCombos(OrganizacionForm form)
+        {
+            ViewData["Sector"] = form.SectorId;
         }
     }
 }

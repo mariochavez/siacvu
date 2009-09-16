@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Data.NHibernate;
+using Expression=NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -255,6 +256,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
             if (active)
                 criteria.Add(Restrictions.Eq("Activo", true));
+
+            var list = criteria.GetExecutableCriteria(Session).List<T>();
+
+            return list;
+        }
+
+        protected IList<T> FilterCatalogOptions<T>(Expression<Func<T, object>> expression, int id, string parentCombo)
+        {
+            var propertyInfo = ReflectionHelper.GetProperty(expression);
+
+            var criteria = DetachedCriteria.For(typeof(T))
+                .CreateAlias(parentCombo, "pc")
+                .Add(Expression.Eq("pc.Id", id))
+                .Add(Restrictions.Eq("Activo", true))
+                .AddOrder(Order.Asc(propertyInfo.Name));
+
 
             var list = criteria.GetExecutableCriteria(Session).List<T>();
 
@@ -772,6 +789,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             disciplina.ModificadoEl = DateTime.Now;
 
             disciplinaRepository.SaveOrUpdate(disciplina);
+        }
+
+        public Disciplina[] GetDisciplinasByAreaId(int id)
+        {
+            return ((List<Disciplina>)FilterCatalogOptions<Disciplina>(x => x.Nombre, id, "Area")).ToArray();
         }
 
         public Subdisciplina GetSubdisciplinaById(int id)

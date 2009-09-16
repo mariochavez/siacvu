@@ -842,12 +842,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Area, AreaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Disciplina, DisciplinaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Area,
+                           o => o.Ignore());
+
             Mapper.CreateMap<Subdisciplina, SubdisciplinaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore());
+
             Mapper.CreateMap<LineaTematica, LineaTematicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -876,24 +883,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Nivel, NivelForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.NivelReferencia
+                           , o => o.Ignore())
+                .ForMember(d => d.Organizacion
+                           , o => o.Ignore());
+
             Mapper.CreateMap<Sector, SectorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<ProgramaEstudio, ProgramaEstudioForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Organizacion, OrganizacionForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore());
+
             Mapper.CreateMap<Dependencia, DependenciaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<EstadoPais, EstadoPaisForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore());
+
             Mapper.CreateMap<MedioImpreso, MedioImpresoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -960,12 +981,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoResena, TipoResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Clase, ClaseForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Rama,
+                           o => o.Ignore());
+
             Mapper.CreateMap<Rama, RamaForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore());
+
             Mapper.CreateMap<SubprogramaConacyt, SubprogramaConacytForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());

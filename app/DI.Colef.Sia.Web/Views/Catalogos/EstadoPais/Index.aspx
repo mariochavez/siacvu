@@ -17,7 +17,7 @@
             catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo estado del pa&iacute;s</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstadoPaisController>(x => x.New(), "+ Nuevo estado del pa&iacute;s")%></span>
+            <span><%=Html.ActionLink<EstadoPaisController>(x => x.New(), "+ Nuevo estado del país")%></span>
         </div>
     </div>
 </asp:Content>

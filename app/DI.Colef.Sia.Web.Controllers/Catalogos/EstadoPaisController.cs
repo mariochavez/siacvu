@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IPaisMapper paisMapper;
 
         public EstadoPaisController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                    IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
+                                    IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
+                                    IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.estadoPaisMapper = estadoPaisMapper;
+            this.paisMapper = paisMapper;
         }
 
         [Authorize]
@@ -39,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new EstadoPaisForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +54,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var estadoPais = catalogoService.GetEstadoPaisById(id);
-            data.Form = estadoPaisMapper.Map(estadoPais);
+            var estadoPaisForm = estadoPaisMapper.Map(estadoPais);
+
+            data.Form = SetupNewForm(estadoPaisForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -68,8 +75,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             estadoPais.CreadorPor = CurrentUser();
             estadoPais.ModificadoPor = CurrentUser();
 
-            if (!IsValidateModel(estadoPais, form, Title.New))
-                return ViewNew();
+            if (!IsValidateModel(estadoPais, form, Title.New, "EstadoPais"))
+            {
+                var estadoPaisForm = estadoPaisMapper.Map(estadoPais);
+
+                ((GenericViewData<EstadoPaisForm>)ViewData.Model).Form = SetupNewForm(estadoPaisForm);
+                return ViewNew();   
+            }
 
             catalogoService.SaveEstadoPais(estadoPais);
 
@@ -87,7 +99,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             estadoPais.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(estadoPais, form, Title.Edit))
-                return ViewEdit();
+            {
+                var estadoPaisForm = estadoPaisMapper.Map(estadoPais);
+
+                ((GenericViewData<EstadoPaisForm>)ViewData.Model).Form = SetupNewForm(estadoPaisForm);
+                FormSetCombos(estadoPaisForm);
+                return ViewEdit();   
+            }
 
             catalogoService.SaveEstadoPais(estadoPais);
 
@@ -130,6 +148,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<EstadoPais>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        EstadoPaisForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        EstadoPaisForm SetupNewForm(EstadoPaisForm form)
+        {
+            form = form ?? new EstadoPaisForm();
+
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
+            return form;
+        }
+
+        private void FormSetCombos(EstadoPaisForm form)
+        {
+            ViewData["Pais"] = form.PaisId;
         }
     }
 }

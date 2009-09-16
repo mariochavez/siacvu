@@ -8,3 +8,8 @@
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
+<p>
+    <label>Sector econ&oacute;mico</label>
+    <%= Html.CheckBox("SectorEconomico", Model.SectorEconomico)%>
+    <%=Html.ValidationMessage("SectorEconomico")%>
+</p>

@@ -1,3 +1,4 @@
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using SharpArch.Core.PersistenceSupport;
@@ -6,8 +7,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public class NivelMapper : AutoFormMapper<Nivel, NivelForm>, INivelMapper
     {
-        public NivelMapper(IRepository<Nivel> repository) : base(repository)
+        readonly ICatalogoService catalogoService;
+
+        public NivelMapper(IRepository<Nivel> repository, ICatalogoService catalogoService)
+            : base(repository)
         {
+            this.catalogoService = catalogoService;
         }
 
         protected override int GetIdFromMessage(NivelForm message)
@@ -18,6 +23,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(NivelForm message, Nivel model)
         {
 			model.Nombre = message.Nombre;
+            model.NivelReferencia = catalogoService.GetNivelById(message.NivelReferencia);
+            model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
         }
     }
 }
