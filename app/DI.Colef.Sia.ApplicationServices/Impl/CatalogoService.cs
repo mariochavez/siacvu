@@ -823,6 +823,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subdisciplinaRepository.SaveOrUpdate(subdisciplina);
         }
 
+        public Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id)
+        {
+            return ((List<Subdisciplina>)FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
+        }
+
         public LineaTematica GetLineaTematicaById(int id)
         {
             return lineaTematicaRepository.Get(id);
@@ -1134,6 +1139,16 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelRepository.SaveOrUpdate(nivel);
         }
 
+        public Nivel[] GetNivelesByNivelId(int id)
+        {
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Nivel")).ToArray();
+        }
+
+        public Nivel[] GetNivelesByOrganizacionId(int id)
+        {
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
+        }
+
         public Organizacion GetOrganizacionById(int id)
         {
             return organizacionRepository.Get(id);
@@ -1159,6 +1174,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             organizacion.ModificadoEl = DateTime.Now;
 
             organizacionRepository.SaveOrUpdate(organizacion);
+        }
+
+        public Organizacion[] GetOrganizacionesbySectorId(int id)
+        {
+            return ((List<Organizacion>)FilterCatalogOptions<Organizacion>(x => x.Nombre, id, "Sector")).ToArray();
         }
 
         public Dependencia GetDependenciaById(int id)
@@ -1240,6 +1260,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             estadoPais.ModificadoEl = DateTime.Now;
 
             estadoPaisRepository.SaveOrUpdate(estadoPais);
+        }
+
+        public EstadoPais[] GetEstadoPaisesByPaisId(int id)
+        {
+            return ((List<EstadoPais>)FilterCatalogOptions<EstadoPais>(x => x.Nombre, id, "Pais")).ToArray();
         }
 
         public Genero GetGeneroById(int id)
@@ -1809,6 +1834,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoResenaRepository.SaveOrUpdate(tipoResena);
         }
 
+        public Rama[] GetRamasBySectorId(int id)
+        {
+            return ((List<Rama>)FilterCatalogOptions<Rama>(x => x.Nombre, id, "Sector")).ToArray();
+        }
+
         public TipoApoyo GetTipoApoyoById(int id)
         {
             return tipoApoyoRepository.Get(id);
@@ -1861,6 +1891,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subprogramaConacyt.ModificadoEl = DateTime.Now;
 
             subprogramaConacytRepository.SaveOrUpdate(subprogramaConacyt);
+        }
+
+        public Clase[] GetClasesByRamaId(int id)
+        {
+            return ((List<Clase>)FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
         }
 
         public Rama GetRamaById(int id)
