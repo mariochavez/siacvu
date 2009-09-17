@@ -206,7 +206,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new TesisDirigidaForm
             {
-                Disciplinas = list.ToArray()
+                Disciplinas = list.ToArray(),
+                Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
             };
 
             return Rjs("ChangeArea", form);
