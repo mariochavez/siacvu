@@ -199,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Organizacion[] GetAllOrganizaciones();
         Organizacion[] GetActiveOrganizaciones();
         void SaveOrganizacion(Organizacion organizacion);
-        Organizacion[] GetOrganizacionesbySectorId(int id);
+        Organizacion[] GetOrganizacionesBySectorId(int id);
 
         //Dependencia
         Dependencia GetDependenciaById(int id);

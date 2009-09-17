@@ -1141,7 +1141,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Nivel[] GetNivelesByNivelId(int id)
         {
-            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Nivel")).ToArray();
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "NivelReferencia")).ToArray();
         }
 
         public Nivel[] GetNivelesByOrganizacionId(int id)
@@ -1176,7 +1176,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             organizacionRepository.SaveOrUpdate(organizacion);
         }
 
-        public Organizacion[] GetOrganizacionesbySectorId(int id)
+        public Organizacion[] GetOrganizacionesBySectorId(int id)
         {
             return ((List<Organizacion>)FilterCatalogOptions<Organizacion>(x => x.Nombre, id, "Sector")).ToArray();
         }

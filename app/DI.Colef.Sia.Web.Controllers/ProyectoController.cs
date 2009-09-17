@@ -123,10 +123,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var proyecto = proyectoService.GetProyectoById(id);
 
-            if (proyecto == null)
-                return RedirectToIndex("no ha sido encontrado", true);
-            if (proyecto.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            //if (proyecto == null)
+            //    return RedirectToIndex("no ha sido encontrado", true);
+            //if (proyecto.Usuario.Id != CurrentUser().Id)
+            //    return RedirectToIndex("no lo puede modificar", true);
 
             var proyectoForm = proyectoMapper.Map(proyecto);
 

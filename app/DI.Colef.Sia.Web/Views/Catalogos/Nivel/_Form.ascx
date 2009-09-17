@@ -17,7 +17,7 @@
 	<%=Html.ValidationMessage("Organizacion") %>
 </p>
 <p>
-	<label>Nivel 2</label>
+	<label>Nivel de referencia</label>
     <%=Html.DropDownList("NivelReferencia", Model.Niveles.CreateSelectList<NivelForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<span class="cvu"></span>

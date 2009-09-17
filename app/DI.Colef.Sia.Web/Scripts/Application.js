@@ -107,7 +107,7 @@ var Cascade = {
         currentLink.showLoading();
         $.ajax({
             url: url,
-            data: { id: value },
+            data: value,
             type: 'get',
             dataType: 'script',
             success: function(msg) {
