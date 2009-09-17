@@ -236,8 +236,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            if (form.Id == 0)
+            {
+                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            }
+
+            else
+            {
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
+            }
 
             return form;
         }
