@@ -52,20 +52,14 @@
 			<% foreach (var organoExterno in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(organoExterno.Id) %>">
 					<div class="elementodescripcion">
-					    <h5><span><%=Html.ActionLink<OrganoExternoController>(x => x.Show(organoExterno.Id), organoExterno.Nombre)%></span></h5>
+					    <h5><span><%=Html.Encode(organoExterno.Nombre)%></span></h5>
 						<h6>Modificado el <%=Html.Encode(organoExterno.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
 							<span><%=Html.ActionLink<OrganoExternoController>(x => x.Edit(organoExterno.Id), "Editar") %></span>
-			            	<span>
-			                	<% if (organoExterno.Activo) { %>
-			                    	<%=Html.ActionLink("Desactivar", "Deactivate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
-								<% } else { %>
-									<%=Html.ActionLink("Activar", "Activate", new { id = organoExterno.Id }, new { @class = "remote put" })%>
-								<% } %>
-							</span>
+			            	<span><%=Html.ActionLink("Ver", "Show", new { id = organoExterno.Id })%></span>
 						</p>
 					</div><!--end elementobotones-->
 

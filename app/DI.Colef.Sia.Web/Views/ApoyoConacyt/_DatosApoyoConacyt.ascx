@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>No. de apoyo</label>
-    <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido" })%>
+    <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido", maxlength = 2 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoApoyo")%>
 </p>

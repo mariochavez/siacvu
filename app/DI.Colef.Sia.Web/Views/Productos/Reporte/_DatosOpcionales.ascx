@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
 	<label>Objetivo</label>
-	<%=Html.TextArea("Objetivo", Model.Objetivo, 3, 35, new { @class = "input250", maxlength = 200 })%>
+	<%=Html.TextArea("Objetivo", Model.Objetivo, 3, 35, new { @class = "input420", maxlength = 200 })%>
 	<span class="cvu"></span>
 </p>
 <p>

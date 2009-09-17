@@ -100,7 +100,7 @@ var Cascade = {
         var url = $(this).attr('rel');
         var value = $(this).val();
         if (value == 0)
-            return;
+            value = 0;
 
         var currentLink = $(this);
 

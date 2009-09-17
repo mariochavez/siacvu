@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -60,8 +61,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
 
             return View(data);
         }
@@ -185,6 +186,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int id)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(id)));
+
+            var form = new DistincionForm
+                           {
+                               EstadosPaises = list.ToArray()
+                           };
+
+            return Rjs("ChangePais", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Distincion>(x => x.Descripcion, q);
@@ -203,7 +220,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposDistinciones = tipoDistincionMapper.Map(catalogoService.GetActiveTipoDistinciones());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
 
             return form;
         }

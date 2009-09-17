@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,15 +13,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly IClaseMapper claseMapper;
+        readonly IRamaMapper ramaMapper;
     
         public ClaseController(IUsuarioService usuarioService, 
                                ICatalogoService catalogoService, 
                                IClaseMapper claseMapper,
-                               ISearchService searchService) 
+                               ISearchService searchService, IRamaMapper ramaMapper) 
             : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.claseMapper = claseMapper;
+            this.ramaMapper = ramaMapper;
         }
 
         [Authorize]
@@ -41,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {			
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new ClaseForm();
+            data.Form = SetupNewForm();
 			
             return View(data);
         }
@@ -53,7 +55,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var clase = catalogoService.GetClaseById(id);
-            data.Form = claseMapper.Map(clase);
+
+            var claseForm = claseMapper.Map(clase);
+
+            data.Form = SetupNewForm(claseForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -71,8 +78,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             clase.CreadorPor = CurrentUser();
             clase.ModificadoPor = CurrentUser();
 
-            if(!IsValidateModel(clase, form, Title.New))
+            if (!IsValidateModel(clase, form, Title.New, "Clase"))
+            {
+                var claseForm = claseMapper.Map(clase);
+
+                ((GenericViewData<ClaseForm>)ViewData.Model).Form = SetupNewForm(claseForm);
                 return ViewNew();
+            }
 
             catalogoService.SaveClase(clase);
 
@@ -85,13 +97,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ClaseForm form)
         {
-        
+
             var clase = claseMapper.Map(form);
-            
+
             clase.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(clase, form, Title.Edit))
+            {
+                var claseForm = claseMapper.Map(clase);
+
+                ((GenericViewData<ClaseForm>) ViewData.Model).Form = SetupNewForm(claseForm);
+                FormSetCombos(claseForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveClase(clase);
 
@@ -134,6 +152,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Clase>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        ClaseForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        ClaseForm SetupNewForm(ClaseForm form)
+        {
+            form = form ?? new ClaseForm();
+
+            form.Ramas = ramaMapper.Map(catalogoService.GetActiveRamas());
+
+            return form;
+        }
+
+        private void FormSetCombos(ClaseForm form)
+        {
+            ViewData["Rama"] = form.RamaId;
         }
     }
 }

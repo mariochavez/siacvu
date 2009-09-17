@@ -7,8 +7,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nombramiento { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
-        public string LineasInvestigacion { get; set; }
-        public long PrincipalesLogros { get; set; }
+        public string LineaInvestigacion1 { get; set; }
+        public string LineaInvestigacion2 { get; set; }
+        public string LineaInvestigacion3 { get; set; }
+        public string PrincipalesLogros { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 

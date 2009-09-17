@@ -59,7 +59,7 @@
 </p>
 <p class="coordinacionrevista_field">
     <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100", maxlength = 100 })%>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100", maxlength = 4 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p class="coordinacionmemoria_field">

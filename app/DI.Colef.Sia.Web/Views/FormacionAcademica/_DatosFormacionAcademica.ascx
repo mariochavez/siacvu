@@ -12,7 +12,7 @@
 <p>
     <label>N&uacute;mero de c&eacute;dula</label>
 
-    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 10, size = 14 })%>
+    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
@@ -34,7 +34,7 @@
     <label>Instituci&oacute;n</label>
     
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete input420-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
@@ -49,7 +49,7 @@
     <label>L&iacute;nea tem&aacute;tica</label>
     
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-        new { @class = "autocomplete input250-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>
@@ -71,7 +71,7 @@
 <p>
     <label>Ciudad</label>
 
-    <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Ciudad")%>
 </p>
 <p>

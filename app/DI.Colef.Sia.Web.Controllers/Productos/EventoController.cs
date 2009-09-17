@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -224,6 +225,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int id)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(id)));
+
+            var form = new EventoForm
+                           {
+                               EstadoPaises = list.ToArray()
+                           };
+
+            return Rjs("ChangePais", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Evento>(x => x.Nombre, q);
@@ -241,7 +258,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.Id = evento.Id;
 
             form.CoautorInternoEvento = new CoautorInternoEventoForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -351,7 +368,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
 
             return form;

@@ -604,13 +604,24 @@
     <Content Include="Views\ParticipacionAcademia\Show.aspx" />
     <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
     <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Articulo\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Articulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
     <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
+    <Content Include="Views\Productos\Capitulo\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Capitulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
+    <Content Include="Views\Productos\Curso\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeDisciplina.js.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeSector.js.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeOrganizacion.js.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeNivel.js.ascx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
     <Content Include="Views\Productos\Dictamen\Show.aspx" />
+    <Content Include="Views\Productos\Distincion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Distincion\Show.aspx" />
+    <Content Include="Views\Productos\Evento\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Evento\Show.aspx" />
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
@@ -618,6 +629,7 @@
     <Content Include="Views\Productos\Libro\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Libro\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Libro\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Libro\Edit.aspx" />
     <Content Include="Views\Productos\Libro\Index.aspx" />
     <Content Include="Views\Productos\Libro\New.aspx" />
@@ -755,6 +767,7 @@
     <Content Include="Views\Productos\OrganoExterno\Show.aspx" />
     <Content Include="Views\Productos\OrganoExterno\_DatosOrganoExterno.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Activate.js.ascx" />
+    <Content Include="Views\Productos\ParticipacionMedio\ChangePais.js.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Show.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Edit.aspx" />
@@ -762,6 +775,7 @@
     <Content Include="Views\Productos\ParticipacionMedio\New.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\_DatosParticipacionMedio.ascx" />
     <Content Include="Views\Productos\Participacion\Activate.js.ascx" />
+    <Content Include="Views\Productos\Participacion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Participacion\Edit.aspx" />
     <Content Include="Views\Productos\Participacion\Index.aspx" />
     <Content Include="Views\Productos\Participacion\New.aspx" />
@@ -786,6 +800,8 @@
     <Content Include="Views\Productos\Resena\Activate.js.ascx" />
     <Content Include="Views\Productos\Resena\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Resena\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Resena\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Resena\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Resena\Edit.aspx" />
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
@@ -799,6 +815,8 @@
     <Content Include="Views\Productos\Resena\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Resena\_NewCoautorInterno.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />

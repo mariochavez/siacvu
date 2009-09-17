@@ -34,6 +34,7 @@
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
                     new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
+    <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>
 <p>
     <label>Fecha de edici&oacute;n</label>

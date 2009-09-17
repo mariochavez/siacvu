@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly IDisciplinaMapper disciplinaMapper;
+        readonly IAreaMapper areaMapper;
 
         public DisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                    IDisciplinaMapper disciplinaMapper, ISearchService searchService)
+                                    IDisciplinaMapper disciplinaMapper, ISearchService searchService,
+                                    IAreaMapper areaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.disciplinaMapper = disciplinaMapper;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
@@ -39,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new DisciplinaForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var disciplina = catalogoService.GetDisciplinaById(id);
-            data.Form = disciplinaMapper.Map(disciplina);
+
+            var disciplinaForm = disciplinaMapper.Map(disciplina);
+
+            data.Form = SetupNewForm(disciplinaForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -68,8 +76,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             disciplina.CreadorPor = CurrentUser();
             disciplina.ModificadoPor = CurrentUser();
 
-            if (!IsValidateModel(disciplina, form, Title.New))
-                return ViewNew();
+            if (!IsValidateModel(disciplina, form, Title.New, "Disciplina"))
+            {
+                var disciplinaForm = disciplinaMapper.Map(disciplina);
+
+                ((GenericViewData<DisciplinaForm>)ViewData.Model).Form = SetupNewForm(disciplinaForm);
+                return ViewNew();   
+            }
 
             catalogoService.SaveDisciplina(disciplina);
 
@@ -87,7 +100,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             disciplina.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(disciplina, form, Title.Edit))
+            {
+                var disciplinaForm = disciplinaMapper.Map(disciplina);
+
+                ((GenericViewData<DisciplinaForm>)ViewData.Model).Form = SetupNewForm(disciplinaForm);
+                FormSetCombos(disciplinaForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveDisciplina(disciplina);
 
@@ -130,6 +149,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Disciplina>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        DisciplinaForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        DisciplinaForm SetupNewForm(DisciplinaForm form)
+        {
+            form = form ?? new DisciplinaForm();
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+
+            return form;
+        }
+
+        private void FormSetCombos(DisciplinaForm form)
+        {
+            ViewData["Area"] = form.AreaId;
         }
     }
 }

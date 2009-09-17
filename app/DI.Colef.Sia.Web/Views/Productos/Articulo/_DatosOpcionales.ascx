@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Participantes</label>
-    <%=Html.TextBox("Participantes", Model.Participantes, new { @class = "input100", maxlength = 5, size = 5 })%>
+    <%=Html.TextBox("Participantes", Model.Participantes, new { @class = "input100", maxlength = 4, size = 5 })%>
     <span class="cvu"></span>
 </p>
 <p>
@@ -42,13 +42,13 @@
 <p>
     <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeArea") })%>
     <span class="cvu"></span>
 </p>
 <p>
     <label>Disciplina</label>
     <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeDisciplina") })%>
     <span class="cvu"></span>
 </p>
 <p>

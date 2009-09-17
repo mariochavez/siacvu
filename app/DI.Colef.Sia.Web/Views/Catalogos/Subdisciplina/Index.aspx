@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva Subdisciplina</h3>
+        <h3>Agregar nueva subdisciplina</h3>
         <p>
-            Puede agregar una nueva Subdisciplina dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Subdisciplina</strong>.
+            Puede agregar una nueva subdisciplina dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva subdisciplina</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<SubdisciplinaController>(x => x.New(), "+ Nueva Subdisciplina")%></span>
+            <span><%=Html.ActionLink<SubdisciplinaController>(x => x.New(), "+ Nueva subdisciplina")%></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de Subdisciplinas registradas en el sistema.</p>
+            <p>Lista de subdisciplinas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -44,7 +44,7 @@
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay subdisciplinas definidas</span></h5>
+					<h5><span>No hay subdisciplinas registradas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->

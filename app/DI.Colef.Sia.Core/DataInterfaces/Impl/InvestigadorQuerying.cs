@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             var investigadorList = Session.CreateCriteria(typeof(Investigador))
                 .CreateAlias("Usuario", "u")
+                .Add(Expression.Eq("u.Activo", true))
                 .Add(Subqueries.Ne(usuario.Id, investigadores))
                 .List<Investigador>();
 

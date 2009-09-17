@@ -25,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IRamaMapper ramaMapper;
         readonly IClaseMapper claseMapper;
 
-
         public ExperienciaProfesionalController(IExperienciaProfesionalService experienciaProfesionalService,
                                                 IExperienciaProfesionalMapper experienciaProfesionalMapper,
                                                 ICatalogoService catalogoService, IUsuarioService usuarioService, 

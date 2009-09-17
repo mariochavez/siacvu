@@ -71,7 +71,7 @@
 <p>
 	<label>N&uacute;mero del volumen</label>
 
-	<%=Html.TextBox("NoVolumen", Model.NoVolumen, new { @class = "input100", maxlength = 10 })%>
+	<%=Html.TextBox("NoVolumen", Model.NoVolumen, new { @class = "input100", maxlength = 4 })%>
 	<%=Html.ValidationMessage("NoVolumen")%>						
 </p>
 <p>

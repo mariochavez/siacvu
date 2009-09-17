@@ -10,8 +10,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 		[DomainSignature]
 		[NotNullNotEmpty]
-        [Length(40)]
+        [Length(70)]
 		public virtual string Nombre { get; set; }
+
+	    public virtual Sector Sector{ get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

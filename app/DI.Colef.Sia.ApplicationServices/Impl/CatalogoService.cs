@@ -7,6 +7,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using SharpArch.Core.PersistenceSupport;
 using SharpArch.Data.NHibernate;
+using Expression=NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -255,6 +256,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
             if (active)
                 criteria.Add(Restrictions.Eq("Activo", true));
+
+            var list = criteria.GetExecutableCriteria(Session).List<T>();
+
+            return list;
+        }
+
+        protected IList<T> FilterCatalogOptions<T>(Expression<Func<T, object>> expression, int id, string parentCombo)
+        {
+            var propertyInfo = ReflectionHelper.GetProperty(expression);
+
+            var criteria = DetachedCriteria.For(typeof(T))
+                .CreateAlias(parentCombo, "pc")
+                .Add(Expression.Eq("pc.Id", id))
+                .Add(Restrictions.Eq("Activo", true))
+                .AddOrder(Order.Asc(propertyInfo.Name));
+
 
             var list = criteria.GetExecutableCriteria(Session).List<T>();
 
@@ -774,6 +791,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             disciplinaRepository.SaveOrUpdate(disciplina);
         }
 
+        public Disciplina[] GetDisciplinasByAreaId(int id)
+        {
+            return ((List<Disciplina>)FilterCatalogOptions<Disciplina>(x => x.Nombre, id, "Area")).ToArray();
+        }
+
         public Subdisciplina GetSubdisciplinaById(int id)
         {
             return subdisciplinaRepository.Get(id);
@@ -799,6 +821,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subdisciplina.ModificadoEl = DateTime.Now;
 
             subdisciplinaRepository.SaveOrUpdate(subdisciplina);
+        }
+
+        public Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id)
+        {
+            return ((List<Subdisciplina>)FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
         }
 
         public LineaTematica GetLineaTematicaById(int id)
@@ -1112,6 +1139,16 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelRepository.SaveOrUpdate(nivel);
         }
 
+        public Nivel[] GetNivelesByNivelId(int id)
+        {
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "NivelReferencia")).ToArray();
+        }
+
+        public Nivel[] GetNivelesByOrganizacionId(int id)
+        {
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
+        }
+
         public Organizacion GetOrganizacionById(int id)
         {
             return organizacionRepository.Get(id);
@@ -1137,6 +1174,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             organizacion.ModificadoEl = DateTime.Now;
 
             organizacionRepository.SaveOrUpdate(organizacion);
+        }
+
+        public Organizacion[] GetOrganizacionesBySectorId(int id)
+        {
+            return ((List<Organizacion>)FilterCatalogOptions<Organizacion>(x => x.Nombre, id, "Sector")).ToArray();
         }
 
         public Dependencia GetDependenciaById(int id)
@@ -1218,6 +1260,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             estadoPais.ModificadoEl = DateTime.Now;
 
             estadoPaisRepository.SaveOrUpdate(estadoPais);
+        }
+
+        public EstadoPais[] GetEstadoPaisesByPaisId(int id)
+        {
+            return ((List<EstadoPais>)FilterCatalogOptions<EstadoPais>(x => x.Nombre, id, "Pais")).ToArray();
         }
 
         public Genero GetGeneroById(int id)
@@ -1787,6 +1834,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoResenaRepository.SaveOrUpdate(tipoResena);
         }
 
+        public Rama[] GetRamasBySectorId(int id)
+        {
+            return ((List<Rama>)FilterCatalogOptions<Rama>(x => x.Nombre, id, "Sector")).ToArray();
+        }
+
         public TipoApoyo GetTipoApoyoById(int id)
         {
             return tipoApoyoRepository.Get(id);
@@ -1839,6 +1891,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subprogramaConacyt.ModificadoEl = DateTime.Now;
 
             subprogramaConacytRepository.SaveOrUpdate(subprogramaConacyt);
+        }
+
+        public Clase[] GetClasesByRamaId(int id)
+        {
+            return ((List<Clase>)FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
         }
 
         public Rama GetRamaById(int id)

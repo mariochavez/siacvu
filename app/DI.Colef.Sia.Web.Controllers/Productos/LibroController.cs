@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -7,6 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -247,26 +249,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Activate", form);
         }
 
-        [Authorize()]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeArea(int id)
         {
-            // 1.- Cargar disiplinas con algun metodo que acepte el area (param id)
-            // 2.- Con el mapper convertir a DisciplinaForm
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            var disciplinas = new DisciplinaForm[]
-                                           {
-                                               new DisciplinaForm { Id = 0, Nombre = "Seleccione ..."},
-                                               new DisciplinaForm { Id = 1, Nombre = "XXX"},
-                                               new DisciplinaForm { Id = 2, Nombre = "YYY"}
-                                           };
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id)));
 
             var form = new LibroForm
-            {
-                Disciplinas = disciplinas
-            };
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
+                           };
 
             return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int id)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id)));
+
+            var form = new LibroForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
@@ -332,7 +345,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.Id = libro.Id;
 
             form.CoautorInternoLibro = new CoautorInternoLibroForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -389,8 +402,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.IdentificadoresLibros = identificadorLibroMapper.Map(catalogoService.GetActiveIdentificadorLibros());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 			
             return form;
         }

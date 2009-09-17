@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
 
         public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                       ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService)
+                                       ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService,
+                                       IDisciplinaMapper disciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.disciplinaMapper = disciplinaMapper;
         }
 
         [Authorize]
@@ -39,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new SubdisciplinaForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var subdisciplina = catalogoService.GetSubdisciplinaById(id);
-            data.Form = subdisciplinaMapper.Map(subdisciplina);
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(subdisciplina);
+
+            data.Form = SetupNewForm(subdisciplinaForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -68,8 +76,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             subdisciplina.CreadorPor = CurrentUser();
             subdisciplina.ModificadoPor = CurrentUser();
 
-            if (!IsValidateModel(subdisciplina, form, Title.New))
-                return ViewNew();
+            if (!IsValidateModel(subdisciplina, form, Title.New, "Subdisciplina"))
+            {
+                var subdisciplinaForm = subdisciplinaMapper.Map(subdisciplina);
+
+                ((GenericViewData<SubdisciplinaForm>)ViewData.Model).Form = SetupNewForm(subdisciplinaForm);
+                return ViewNew();   
+            }
 
             catalogoService.SaveSubdisciplina(subdisciplina);
 
@@ -87,7 +100,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             subdisciplina.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(subdisciplina, form, Title.Edit))
+            {
+                var subdisciplinaForm = subdisciplinaMapper.Map(subdisciplina);
+
+                ((GenericViewData<SubdisciplinaForm>)ViewData.Model).Form = SetupNewForm(subdisciplinaForm);
+                FormSetCombos(subdisciplinaForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveSubdisciplina(subdisciplina);
 
@@ -130,6 +149,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Subdisciplina>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        SubdisciplinaForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        SubdisciplinaForm SetupNewForm(SubdisciplinaForm form)
+        {
+            form = form ?? new SubdisciplinaForm();
+
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
+
+            return form;
+        }
+
+        private void FormSetCombos(SubdisciplinaForm form)
+        {
+            ViewData["Disciplina"] = form.DisciplinaId;
         }
     }
 }

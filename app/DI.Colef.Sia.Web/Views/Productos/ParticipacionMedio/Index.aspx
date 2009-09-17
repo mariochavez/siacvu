@@ -52,20 +52,14 @@
 			<% foreach (var participacionMedio in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(participacionMedio.Id) %>">
 					<div class="elementodescripcion">
-					    <h5><span><%=Html.ActionLink<ParticipacionMedioController>(x => x.Show(participacionMedio.Id), participacionMedio.Titulo)%></span></h5>
+					    <h5><span><%=Html.Encode(participacionMedio.Titulo)%></span></h5>
 						<h6>Modificado el <%=Html.Encode(participacionMedio.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
 							<span><%=Html.ActionLink<ParticipacionMedioController>(x => x.Edit(participacionMedio.Id), "Editar") %></span>
-			            	<span>
-			                	<% if (participacionMedio.Activo) { %>
-			                    	<%=Html.ActionLink("Desactivar", "Deactivate", new { id = participacionMedio.Id }, new { @class = "remote put" })%>
-								<% } else { %>
-									<%=Html.ActionLink("Activar", "Activate", new { id = participacionMedio.Id }, new { @class = "remote put" })%>
-								<% } %>
-							</span>
+			            	<span><%=Html.ActionLink("Ver", "Show", new { id = participacionMedio.Id })%></span>
 						</p>
 					</div><!--end elementobotones-->
 

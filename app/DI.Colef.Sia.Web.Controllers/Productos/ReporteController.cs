@@ -234,7 +234,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.Id = reporte.Id;
 
             form.CoautorInternoReporte = new CoautorInternoReporteForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }

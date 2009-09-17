@@ -117,12 +117,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Disciplina[] GetAllDisciplinas();
         Disciplina[] GetActiveDisciplinas();
         void SaveDisciplina(Disciplina disciplina);
+        Disciplina[] GetDisciplinasByAreaId(int id);
 
         //Subdisciplina
         Subdisciplina GetSubdisciplinaById(int id);
         Subdisciplina[] GetAllSubdisciplinas();
         Subdisciplina[] GetActiveSubdisciplinas();
         void SaveSubdisciplina(Subdisciplina subdisciplina);
+        Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id);
 
         //Linea Tematica
         LineaTematica GetLineaTematicaById(int id);
@@ -183,6 +185,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Nivel[] GetAllNiveles();
         Nivel[] GetActiveNiveles();
         void SaveNivel(Nivel nivel);
+        Nivel[] GetNivelesByOrganizacionId(int id);
+        Nivel[] GetNivelesByNivelId(int id);
 
         //Programa de estudio
         ProgramaEstudio GetProgramaEstudioById(int id);
@@ -195,6 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Organizacion[] GetAllOrganizaciones();
         Organizacion[] GetActiveOrganizaciones();
         void SaveOrganizacion(Organizacion organizacion);
+        Organizacion[] GetOrganizacionesBySectorId(int id);
 
         //Dependencia
         Dependencia GetDependenciaById(int id);
@@ -213,6 +218,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         EstadoPais[] GetAllEstadoPaises();
         EstadoPais[] GetActiveEstadoPaises();
         void SaveEstadoPais(EstadoPais estadoPais);
+        EstadoPais[] GetEstadoPaisesByPaisId(int id);
 
         //Genero
         Genero GetGeneroById(int id);
@@ -346,12 +352,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Clase[] GetAllClases();
         Clase[] GetActiveClases();
         void SaveClase(Clase clase);
+        Clase[] GetClasesByRamaId(int id);
 
         //Rama
         Rama GetRamaById(int id);
         Rama[] GetAllRamas();
         Rama[] GetActiveRamas();
         void SaveRama(Rama rama);
+        Rama[] GetRamasBySectorId(int id);
 
         //Tipo Apoyo
         TipoApoyo GetTipoApoyoById(int id);

@@ -57,7 +57,7 @@
 <p>
 	<label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangePais") })%>
 	<%=Html.ValidationMessage("Pais") %>
 </p>
 <p>

@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly INivelMapper nivelMapper;
+        readonly IOrganizacionMapper organizacionMapper;
 
         public NivelController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                               INivelMapper nivelMapper, ISearchService searchService)
+                               INivelMapper nivelMapper, ISearchService searchService,
+                               IOrganizacionMapper organizacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.nivelMapper = nivelMapper;
+            this.organizacionMapper = organizacionMapper;
         }
 
         [Authorize]
@@ -39,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new NivelForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +54,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var nivel = catalogoService.GetNivelById(id);
-            data.Form = nivelMapper.Map(nivel);
+            var nivelForm = nivelMapper.Map(nivel);
+
+            data.Form = SetupNewForm(nivelForm);
+
+            FormSetCombos(data.Form);
 
             ViewData.Model = data;
             return View();
@@ -68,8 +75,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             nivel.CreadorPor = CurrentUser();
             nivel.ModificadoPor = CurrentUser();
 
-            if (!IsValidateModel(nivel, form, Title.New))
+            if (!IsValidateModel(nivel, form, Title.New, "Nivel"))
+            {
+                var nivelForm = nivelMapper.Map(nivel);
+
+                ((GenericViewData<NivelForm>)ViewData.Model).Form = SetupNewForm(nivelForm);
                 return ViewNew();
+            }
 
             catalogoService.SaveNivel(nivel);
 
@@ -87,7 +99,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             nivel.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(nivel, form, Title.Edit))
+            {
+                var nivelForm = nivelMapper.Map(nivel);
+
+                ((GenericViewData<NivelForm>)ViewData.Model).Form = SetupNewForm(nivelForm);
+                FormSetCombos(nivelForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveNivel(nivel);
 
@@ -130,6 +148,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Nivel>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        NivelForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        NivelForm SetupNewForm(NivelForm form)
+        {
+            form = form ?? new NivelForm();
+
+            form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
+
+            return form;
+        }
+
+        private void FormSetCombos(NivelForm form)
+        {
+            ViewData["NivelReferencia"] = form.NivelReferenciaId;
+            ViewData["Organizacion"] = form.OrganizacionId;
         }
     }
 }

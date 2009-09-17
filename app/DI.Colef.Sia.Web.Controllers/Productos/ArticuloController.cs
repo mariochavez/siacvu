@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -7,11 +8,9 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
-    [HandleError]
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
     {
         readonly IArticuloService articuloService;
@@ -236,6 +235,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int id)
+        {
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id)));
+
+            var form = new ArticuloForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int id)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id)));
+
+            var form = new ArticuloForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Articulo>(x => x.Titulo, q);
@@ -397,8 +429,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return form;

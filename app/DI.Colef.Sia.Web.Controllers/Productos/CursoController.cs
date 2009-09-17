@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -9,7 +10,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
-    [HandleError]
     public class CursoController : BaseController<Curso, CursoForm>
     {
         readonly IAreaMapper areaMapper;
@@ -196,6 +196,96 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = cursoMapper.Map(curso);
 
             return Rjs("Activate", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector(int id)
+        {
+            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(id)));
+
+            var form = new CursoForm
+                           {
+                               Organizaciones = list.ToArray(),
+                               Niveles2 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles3 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+                           };
+
+            return Rjs("ChangeSector", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeOrganizacion(int id)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(id)));
+
+            var form = new CursoForm
+                           {
+                               Niveles2 = list.ToArray(),
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeOrganizacion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel(int id)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(id)));
+
+            var form = new CursoForm
+                           {
+                               Niveles3 = list.ToArray(),
+                               Niveles4 = list.ToArray(),
+                               Niveles5 = list.ToArray()
+                           };
+
+            return Rjs("ChangeNivel", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int id)
+        {
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id)));
+
+            var form = new CursoForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int id)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id)));
+
+            var form = new CursoForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
