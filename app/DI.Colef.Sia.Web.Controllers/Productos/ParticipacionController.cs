@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -199,6 +200,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int id)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(id)));
+
+            var form = new ParticipacionForm
+            {
+                EstadosPaises = list.ToArray()
+            };
+
+            return Rjs("ChangePais", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Participacion>(x => x.Titulo, q);
@@ -219,7 +236,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
 
             return form;
         }
