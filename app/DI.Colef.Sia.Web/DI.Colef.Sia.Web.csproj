@@ -756,6 +756,7 @@
     <Content Include="Views\Productos\OrganoExterno\Show.aspx" />
     <Content Include="Views\Productos\OrganoExterno\_DatosOrganoExterno.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Activate.js.ascx" />
+    <Content Include="Views\Productos\ParticipacionMedio\ChangePais.js.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Show.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Edit.aspx" />
@@ -763,6 +764,7 @@
     <Content Include="Views\Productos\ParticipacionMedio\New.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\_DatosParticipacionMedio.ascx" />
     <Content Include="Views\Productos\Participacion\Activate.js.ascx" />
+    <Content Include="Views\Productos\Participacion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Participacion\Edit.aspx" />
     <Content Include="Views\Productos\Participacion\Index.aspx" />
     <Content Include="Views\Productos\Participacion\New.aspx" />
@@ -787,6 +789,8 @@
     <Content Include="Views\Productos\Resena\Activate.js.ascx" />
     <Content Include="Views\Productos\Resena\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Resena\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Productos\Resena\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\Resena\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Resena\Edit.aspx" />
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
@@ -800,6 +804,8 @@
     <Content Include="Views\Productos\Resena\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Resena\_NewCoautorInterno.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeArea.js.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />
