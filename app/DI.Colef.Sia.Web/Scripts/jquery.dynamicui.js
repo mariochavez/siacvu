@@ -143,5 +143,3 @@ jQuery.fn.formElementType = function() {
     else
         return "";
 };
-
-
