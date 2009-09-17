@@ -48,7 +48,7 @@
 <p>
     <label>Disciplina</label>
     <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
-                "Seleccione ...")%>
+                        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeDisciplina") })%>
     <span class="cvu"></span>
 </p>
 <p>

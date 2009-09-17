@@ -39,14 +39,14 @@
 <p>
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangePais") })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
 <p>
     <label>Estado</label>
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+                                "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("EstadoPais") %>
 </p>
