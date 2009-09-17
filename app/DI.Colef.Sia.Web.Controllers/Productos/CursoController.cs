@@ -200,11 +200,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSector(int id)
+        public ActionResult ChangeSector(int select)
         {
             var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(id)));
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
 
             var form = new CursoForm
                            {
@@ -220,11 +220,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeOrganizacion(int id)
+        public ActionResult ChangeOrganizacion(int select)
         {
             var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(id)));
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
 
             var form = new CursoForm
                            {
@@ -239,11 +239,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int id)
+        public ActionResult ChangeNivel(int select)
         {
             var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(id)));
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new CursoForm
                            {
@@ -257,11 +257,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int id)
+        public ActionResult ChangeArea(int select)
         {
             var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id)));
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
 
             var form = new CursoForm
                            {
@@ -274,11 +274,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int id)
+        public ActionResult ChangeDisciplina(int select)
         {
             var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id)));
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
 
             var form = new CursoForm
                            {

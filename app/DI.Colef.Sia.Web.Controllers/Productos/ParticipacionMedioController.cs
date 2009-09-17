@@ -202,11 +202,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangePais(int id)
+        public ActionResult ChangePais(int select)
         {
             var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(id)));
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
 
             var form = new ParticipacionMedioForm
             {

@@ -223,11 +223,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int id)
+        public ActionResult ChangeArea(int select)
         {
             var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
 
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id)));
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
 
             var form = new ResenaForm
             {
