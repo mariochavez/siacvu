@@ -100,14 +100,14 @@ var Cascade = {
         var url = $(this).attr('rel');
         var value = $(this).val();
         if (value == 0)
-            return;
+            value = 0;
 
         var currentLink = $(this);
 
         currentLink.showLoading();
         $.ajax({
             url: url,
-            data: value,
+            data: { id: value },
             type: 'get',
             dataType: 'script',
             success: function(msg) {

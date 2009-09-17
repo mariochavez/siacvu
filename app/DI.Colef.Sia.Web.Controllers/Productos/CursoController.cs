@@ -208,7 +208,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new CursoForm
                            {
-                               Organizaciones = list.ToArray()
+                               Organizaciones = list.ToArray(),
+                               Niveles2 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles3 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                               Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
                            };
 
             return Rjs("ChangeSector", form);
@@ -224,7 +228,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new CursoForm
                            {
-                               Niveles2 = list.ToArray()
+                               Niveles2 = list.ToArray(),
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
                            };
 
             return Rjs("ChangeOrganizacion", form);
@@ -258,7 +265,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var form = new CursoForm
                            {
-                               Disciplinas = list.ToArray()
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
                            };
 
             return Rjs("ChangeArea", form);
