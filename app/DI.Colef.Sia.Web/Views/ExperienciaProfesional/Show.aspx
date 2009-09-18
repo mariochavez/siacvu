@@ -58,6 +58,10 @@
                 </p>
                 <h4>Estructura funcional</h4>
                 <p>
+                    <label>Sector</label>
+                    <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Organizaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
                 </p>
@@ -97,8 +101,8 @@
                 </p>                
                 <h4>Actividad econ&oacute;mica</h4>
                 <p>
-                    <label>Sector</label>
-                    <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
+                    <label>Sector econ&oacute;mico</label>
+                    <strong><%= Html.Encode(Model.Form.SectorEconomicoNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Rama</label>
@@ -109,8 +113,16 @@
                     <strong><%= Html.Encode(Model.Form.ClaseNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>L&iacute;neas de investigaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.LineasInvestigacion)%>&nbsp;</strong>
+                    <label>L&iacute;nea de investigaci&oacute;n 1</label>
+                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion1)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>L&iacute;nea de investigaci&oacute;n 2</label>
+                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion2)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>L&iacute;nea de investigaci&oacute;n 3</label>
+                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion3)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Principales logros</label>
