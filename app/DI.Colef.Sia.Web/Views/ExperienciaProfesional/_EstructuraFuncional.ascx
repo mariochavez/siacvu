@@ -4,14 +4,14 @@
 <p>
 	<label>Organizaci&oacute;n</label>
 	<%=Html.DropDownList("Organizacion", Model.Organizaciones.CreateSelectList<OrganizacionForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+		"Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeOrganizacion") })%>
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Organizacion") %>
 </p>
 <p>
 	<label>Nivel 2</label>
     <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+		"Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel") })%>
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Nivel2") %>
 </p>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -191,6 +192,126 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = experienciaProfesionalMapper.Map(experienciaProfesional);
 
             return Rjs("Activate", form);
+        }
+        
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector(int select)
+        {
+            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Organizaciones = list.ToArray()
+            };
+
+            return Rjs("ChangeSector", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeOrganizacion(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Niveles2 = list.ToArray(),
+                Niveles3 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
+
+            return Rjs("ChangeOrganizacion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector1(int select)
+        {
+            var list = new List<RamaForm> { new RamaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(ramaMapper.Map(catalogoService.GetRamasBySectorId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Ramas = list.ToArray()
+            };
+
+            return Rjs("ChangeSector1", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRama(int select)
+        {
+            var list = new List<ClaseForm> { new ClaseForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(claseMapper.Map(catalogoService.GetClasesByRamaId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {    
+                Clases = list.ToArray()
+            };
+
+            return Rjs("ChangeRama", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Niveles3 = list.ToArray(),
+                Niveles4 = list.ToArray(),
+                Niveles5 = list.ToArray(),
+                Niveles6 = list.ToArray()
+            };
+
+            return Rjs("ChangeNivel", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int select)
+        {
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Disciplinas = list.ToArray(),
+                Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int select)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
+
+            var form = new ExperienciaProfesionalForm
+            {
+                Subdisciplinas = list.ToArray()
+            };
+
+            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]

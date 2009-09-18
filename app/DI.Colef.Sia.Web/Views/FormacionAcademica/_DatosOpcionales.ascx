@@ -5,7 +5,7 @@
     <label>Sector</label>
 
     <%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeSector") })%>
     <span class="cvu"></span>
 </p>
 <p>
@@ -19,14 +19,14 @@
     <label>&Aacute;rea</label>
   
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeArea") })%>
     <span class="cvu"></span>
 </p>
 <p>
     <label>Disciplina</label>
  
     <%=Html.DropDownList("Disciplina", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeDisciplina") })%>
     <span class="cvu"></span>
 </p>
 <p>
