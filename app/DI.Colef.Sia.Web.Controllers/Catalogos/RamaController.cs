@@ -160,7 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             form = form ?? new RamaForm();
 
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
 
             return form;
         }

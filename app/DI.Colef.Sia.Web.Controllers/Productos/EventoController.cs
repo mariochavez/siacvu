@@ -368,18 +368,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
             form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
+
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            
             if (form.Id == 0)
             {
                 var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
                 form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
             }
-
             else
-            {
                 form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
-            }
 
             return form;
         }

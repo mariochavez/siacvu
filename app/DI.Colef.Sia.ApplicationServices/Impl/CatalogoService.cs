@@ -1112,6 +1112,21 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             sectorRepository.SaveOrUpdate(sector);
         }
 
+        public Sector GetSectorEconomicoById(int id)
+        {
+            return sectorRepository.FindOne(new Dictionary<string, object> { { "Id", id } });
+        }
+
+        public Sector[] GetActiveSectoresEconomicos()
+        {
+            var sectorList = Session.CreateCriteria(typeof (Sector))
+                .Add(Expression.Eq("SectorEconomico", true))
+                .Add(Expression.Eq("Activo", true))
+                .List<Sector>();
+
+            return ((List<Sector>)sectorList).ToArray();
+        }
+
         public Nivel GetNivelById(int id)
         {
             return nivelRepository.Get(id);

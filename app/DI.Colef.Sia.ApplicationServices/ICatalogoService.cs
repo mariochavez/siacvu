@@ -179,6 +179,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Sector[] GetAllSectores();
         Sector[] GetActiveSectores();
         void SaveSector(Sector sector);
+        Sector GetSectorEconomicoById(int id);
+        Sector[] GetActiveSectoresEconomicos();
 
         //Nivel
         Nivel GetNivelById(int id);

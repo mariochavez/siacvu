@@ -428,10 +428,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
+
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             return form;
         }

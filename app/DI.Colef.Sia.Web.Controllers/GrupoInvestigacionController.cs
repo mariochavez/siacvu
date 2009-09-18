@@ -186,14 +186,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
 
             var form = new GrupoInvestigacionForm
-            {
-                Organizaciones = list.ToArray(),
-                Niveles2 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles3 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Organizaciones = list.ToArray(),
+                               Niveles2 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeSector", form);
         }
@@ -207,13 +207,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
 
             var form = new GrupoInvestigacionForm
-            {
-                Niveles2 = list.ToArray(),
-                Niveles3 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Niveles2 = list.ToArray(),
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeOrganizacion", form);
         }
@@ -227,12 +227,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new GrupoInvestigacionForm
-            {
-                Niveles3 = list.ToArray(),
-                Niveles4 = list.ToArray(),
-                Niveles5 = list.ToArray(),
-                Niveles6 = list.ToArray()
-            };
+                           {
+                               Niveles3 = list.ToArray(),
+                               Niveles4 = list.ToArray(),
+                               Niveles5 = list.ToArray(),
+                               Niveles6 = list.ToArray()
+                           };
 
             return Rjs("ChangeNivel", form);
         }
@@ -255,12 +255,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 			form = form ?? new GrupoInvestigacionForm();
 
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles6 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
+            form.Niveles3 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles4 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles5 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles6 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
 
 			return form;
         }

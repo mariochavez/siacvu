@@ -269,6 +269,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
                 .ForMember(d => d.Organizacion,
                            o => o.Ignore())
                 .ForMember(d => d.Nivel2,
@@ -289,7 +291,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
-                .ForMember(d => d.Sector,
+                .ForMember(d => d.SectorEconomico,
                            o => o.Ignore())
                 .ForMember(d => d.Rama,
                            o => o.Ignore())

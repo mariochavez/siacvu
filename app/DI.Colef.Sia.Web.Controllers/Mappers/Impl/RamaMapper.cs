@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(RamaForm message, Rama model)
         {
 			model.Nombre = message.Nombre;
-            model.Sector = catalogoService.GetSectorById(message.Sector);
+            model.Sector = catalogoService.GetSectorEconomicoById(message.Sector);
         }
     }
 }

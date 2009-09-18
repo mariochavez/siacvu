@@ -573,7 +573,7 @@
     <Content Include="Views\ExperienciaProfesional\ChangeNivel.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\ChangeOrganizacion.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\ChangeSector.js.ascx" />
-    <Content Include="Views\ExperienciaProfesional\ChangeSector1.js.ascx" />
+    <Content Include="Views\ExperienciaProfesional\ChangeSectorEconomico.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\ChangeRama.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\Show.aspx" />
     <Content Include="Views\FormacionAcademica\ChangeArea.js.ascx" />
