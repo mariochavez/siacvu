@@ -2,11 +2,11 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Sector</label>
-	<%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeSector1") })%>
+	<label>Sector econ&oacute;mico</label>
+	<%=Html.DropDownList("SectorEconomico", Model.SectoresEconomicos.CreateSelectList<SectorForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeSectorEconomico") })%>
 	<span class="cvu"></span>
-	<%=Html.ValidationMessage("Sector") %>
+	<%=Html.ValidationMessage("SectorEconomico")%>
 </p>
 <p>
     <label>Rama</label>

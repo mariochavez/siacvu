@@ -35,6 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaInvestigacion3 = message.LineaInvestigacion3;
             model.PrincipalesLogros = message.PrincipalesLogros;
 
+            model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
             model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
@@ -45,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Sector = catalogoService.GetSectorById(message.Sector);
+            model.SectorEconomico = catalogoService.GetSectorEconomicoById(message.SectorEconomico);
             model.Rama = catalogoService.GetRamaById(message.Rama);
             model.Clase = catalogoService.GetClaseById(message.Clase);
         }

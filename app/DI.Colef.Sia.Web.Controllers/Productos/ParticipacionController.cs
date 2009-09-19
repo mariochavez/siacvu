@@ -207,9 +207,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
 
             var form = new ParticipacionForm
-            {
-                EstadosPaises = list.ToArray()
-            };
+                           {
+                               EstadosPaises = list.ToArray()
+                           };
 
             return Rjs("ChangePais", form);
         }
@@ -235,17 +235,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
+
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             if (form.Id == 0)
             {
                 var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
             }
-
             else
-            {
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
-            }
 
             return form;
         }

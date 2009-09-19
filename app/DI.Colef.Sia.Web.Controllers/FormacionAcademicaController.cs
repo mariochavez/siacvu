@@ -208,9 +208,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
 
             var form = new FormacionAcademicaForm
-            {
-                EstadosPaises = list.ToArray()
-            };
+                           {
+                               EstadosPaises = list.ToArray()
+                           };
 
             return Rjs("ChangePais", form);
         }
@@ -224,9 +224,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
 
             var form = new FormacionAcademicaForm
-            {
-                Organizaciones = list.ToArray()
-            };
+                           {
+                               Organizaciones = list.ToArray()
+                           };
 
             return Rjs("ChangeSector", form);
         }
@@ -240,10 +240,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
 
             var form = new FormacionAcademicaForm
-            {
-                Disciplinas = list.ToArray(),
-                Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeArea", form);
         }
@@ -257,9 +257,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
 
             var form = new FormacionAcademicaForm
-            {
-                Subdisciplinas = list.ToArray()
-            };
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
 
             return Rjs("ChangeDisciplina", form);
         }
@@ -283,13 +283,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
             form.EstatusFormacionAcademicas = estatusFormacionAcademicaMapper.Map(catalogoService.GetActiveEstatusFormacionAcademicas());
+
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            if (form.Id == 0)
+            {
+                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            }
+            else
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
+
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 
             return form;
         }
