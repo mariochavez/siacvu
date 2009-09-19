@@ -8,7 +8,7 @@
     <div id="subcontenido">
 	    <h3>Inicio de sesi&oacute;n</h3>
 		<p>Para iniciar una sesi&oacute;n en el <strong>sistema de administraci&oacute;n acad&eacute;mica</strong>, utilice la forma
-		    de abajo e introduzca la informaci&oacute; que se le solicita.</p>
+		    de abajo e introduzca la informaci&oacute;n que se le solicita.</p>
 		
 		
 		<div class="asistentelogo">

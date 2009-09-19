@@ -85,6 +85,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Clase> claseRepository;
         readonly IRepository<Coordinacion> coordinacionRepository;
         readonly IRepository<NivelIdioma> nivelIdiomaRepository;
+        readonly IRepository<EstatusProyecto> estatusProyectoRepository;
+        readonly IRepository<FondoConacyt> fondoConacytRepository;
+        readonly IRepository<TipoEstudiante> tipoEstudianteRepository;
+        readonly IRepository<AreaTematica> areaTematicaRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -157,7 +161,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Clase> claseRepository,
             IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
             IRepository<Coordinacion> coordinacionRepository,
-            IRepository<NivelIdioma> nivelIdiomaRepository)
+            IRepository<NivelIdioma> nivelIdiomaRepository,
+            IRepository<EstatusProyecto> estatusProyectoRepository,
+            IRepository<FondoConacyt> fondoConacytRepository,
+            IRepository<TipoEstudiante> tipoEstudianteRepository,
+            IRepository<AreaTematica> areaTematicaRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -231,6 +239,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.claseRepository = claseRepository;
             this.coordinacionRepository = coordinacionRepository;
             this.nivelIdiomaRepository = nivelIdiomaRepository;
+            this.estatusProyectoRepository = estatusProyectoRepository;
+            this.fondoConacytRepository = fondoConacytRepository;
+            this.tipoEstudianteRepository = tipoEstudianteRepository;
+            this.areaTematicaRepository = areaTematicaRepository;
         }
 
         protected virtual ISession Session
@@ -855,6 +867,21 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             lineaTematicaRepository.SaveOrUpdate(lineaTematica);
         }
 
+        public LineaTematica GetLineaTematicaInstitucionalById(int id)
+        {
+            return lineaTematicaRepository.FindOne(new Dictionary<string, object> { { "Id", id } });
+        }
+
+        public LineaTematica[] GetActiveLineaTematicasInstitucionales()
+        {
+            var lineaTematicaList = Session.CreateCriteria(typeof(LineaTematica))
+                .Add(Expression.Eq("LineaTematicaInstitucional", true))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<LineaTematica>();
+
+            return ((List<LineaTematica>) lineaTematicaList).ToArray();
+        }
+
         public CoautorExterno GetCoautorExternoById(int id)
         {
             return coautorExternoRepository.Get(id);
@@ -1121,7 +1148,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             var sectorList = Session.CreateCriteria(typeof (Sector))
                 .Add(Expression.Eq("SectorEconomico", true))
-                .Add(Expression.Eq("Activo", true))
+                .Add(Restrictions.Eq("Activo", true))
                 .List<Sector>();
 
             return ((List<Sector>)sectorList).ToArray();
@@ -2244,12 +2271,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public DirigidoA[] GetAllDirigidoAs()
         {
-            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
+            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre)).ToArray();
         }
 
         public DirigidoA[] GetActiveDirigidoAs()
         {
-            return ((List<DirigidoA>)dirigidoARepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDirigidoA(DirigidoA dirigidoA)
@@ -2276,7 +2303,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Edicion[] GetActiveEdicions()
         {
-            return ((List<Edicion>)edicionRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<Edicion>)OrderCatalog<Edicion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEdicion(Edicion edicion)
@@ -2289,6 +2316,119 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             edicion.ModificadoEl = DateTime.Now;
 
             edicionRepository.SaveOrUpdate(edicion);
+        }
+
+        public EstatusProyecto GetEstatusProyectoById(int id)
+        {
+            return estatusProyectoRepository.Get(id);
+        }
+
+        public EstatusProyecto[] GetAllEstatusProyectos()
+        {
+            return ((List<EstatusProyecto>)OrderCatalog<EstatusProyecto>(x => x.Nombre)).ToArray();
+        }
+
+        public EstatusProyecto[] GetActiveEstatusProyectos()
+        {
+            return ((List<EstatusProyecto>)OrderCatalog<EstatusProyecto>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveEstatusProyecto(EstatusProyecto estatusProyecto)
+        {
+            if (estatusProyecto.Id == 0)
+            {
+                estatusProyecto.Activo = true;
+                estatusProyecto.CreadorEl = DateTime.Now;
+            }
+            estatusProyecto.ModificadoEl = DateTime.Now;
+
+            estatusProyectoRepository.SaveOrUpdate(estatusProyecto);
+        }
+
+        public FondoConacyt GetFondoConacytById(int id)
+        {
+            return fondoConacytRepository.Get(id);
+        }
+
+        public FondoConacyt[] GetAllFondoConacyts()
+        {
+            return ((List<FondoConacyt>)OrderCatalog<FondoConacyt>(x => x.Nombre)).ToArray();
+        }
+
+        public FondoConacyt[] GetActiveFondoConacyts()
+        {
+            return ((List<FondoConacyt>)OrderCatalog<FondoConacyt>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveFondoConacyt(FondoConacyt fondoConacyt)
+        {
+            if (fondoConacyt.Id == 0)
+            {
+                fondoConacyt.Activo = true;
+                fondoConacyt.CreadorEl = DateTime.Now;
+            }
+            fondoConacyt.ModificadoEl = DateTime.Now;
+
+            fondoConacytRepository.SaveOrUpdate(fondoConacyt);
+        }
+
+        public TipoEstudiante GetTipoEstudianteById(int id)
+        {
+            return tipoEstudianteRepository.Get(id);
+        }
+
+        public TipoEstudiante[] GetAllTipoEstudiantes()
+        {
+            return ((List<TipoEstudiante>)OrderCatalog<TipoEstudiante>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoEstudiante[] GetActiveTipoEstudiantes()
+        {
+            return ((List<TipoEstudiante>)OrderCatalog<TipoEstudiante>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoEstudiante(TipoEstudiante tipoEstudiante)
+        {
+            if (tipoEstudiante.Id == 0)
+            {
+                tipoEstudiante.Activo = true;
+                tipoEstudiante.CreadorEl = DateTime.Now;
+            }
+            tipoEstudiante.ModificadoEl = DateTime.Now;
+
+            tipoEstudianteRepository.SaveOrUpdate(tipoEstudiante);
+        }
+
+        public AreaTematica GetAreaTematicaById(int id)
+        {
+            return areaTematicaRepository.Get(id);
+        }
+
+        public AreaTematica[] GetAllAreaTematicas()
+        {
+            return ((List<AreaTematica>)OrderCatalog<AreaTematica>(x => x.Nombre)).ToArray();
+        }
+
+        public AreaTematica[] GetActiveAreaTematicas()
+        {
+            return ((List<AreaTematica>)OrderCatalog<AreaTematica>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveAreaTematica(AreaTematica areaTematica)
+        {
+            if (areaTematica.Id == 0)
+            {
+                areaTematica.Activo = true;
+                areaTematica.CreadorEl = DateTime.Now;
+            }
+            areaTematica.ModificadoEl = DateTime.Now;
+
+            areaTematicaRepository.SaveOrUpdate(areaTematica);
+        }
+
+        public AreaTematica[] GetAreaTematicasByLineaTematicaId(int id)
+        {
+            return ((List<AreaTematica>)FilterCatalogOptions<AreaTematica>(x => x.Nombre, id, "LineaTematica")).ToArray();
         }
     }
 }

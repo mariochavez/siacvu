@@ -131,6 +131,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         LineaTematica[] GetAllLineaTematicas();
         LineaTematica[] GetActiveLineaTematicas();
         void SaveLineaTematica(LineaTematica lineaTematica);
+        LineaTematica GetLineaTematicaInstitucionalById(int id);
+        LineaTematica[] GetActiveLineaTematicasInstitucionales();
 
         //Coautor Externo
         CoautorExterno GetCoautorExternoById(int id);
@@ -446,5 +448,30 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Edicion[] GetAllEdicions();
         Edicion[] GetActiveEdicions();
         void SaveEdicion(Edicion edicion);
+
+        //Estatus Proyecto
+        EstatusProyecto GetEstatusProyectoById(int id);
+        EstatusProyecto[] GetAllEstatusProyectos();
+        EstatusProyecto[] GetActiveEstatusProyectos();
+        void SaveEstatusProyecto(EstatusProyecto estatusProyecto);
+
+        //Fondo CONACyT
+        FondoConacyt GetFondoConacytById(int id);
+        FondoConacyt[] GetAllFondoConacyts();
+        FondoConacyt[] GetActiveFondoConacyts();
+        void SaveFondoConacyt(FondoConacyt fondoConacyt);
+
+        //Tipo Estudiante
+        TipoEstudiante GetTipoEstudianteById(int id);
+        TipoEstudiante[] GetAllTipoEstudiantes();
+        TipoEstudiante[] GetActiveTipoEstudiantes();
+        void SaveTipoEstudiante(TipoEstudiante tipoEstudiante);
+
+        //Area Tematica
+        AreaTematica GetAreaTematicaById(int id);
+        AreaTematica[] GetAllAreaTematicas();
+        AreaTematica[] GetActiveAreaTematicas();
+        void SaveAreaTematica(AreaTematica areaTematica);
+        AreaTematica[] GetAreaTematicasByLineaTematicaId(int id);
     }
 }

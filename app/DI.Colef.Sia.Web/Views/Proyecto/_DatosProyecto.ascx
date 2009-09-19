@@ -2,74 +2,50 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Tipo de proyecto</label>
-    <%=Html.DropDownList("TipoProyecto", Model.TiposProyectos.CreateSelectList<TipoProyectoForm>("Id", "Nombre"),
-		        "Seleccione ...", new {@class="requerido"})%>
-    <%=Html.ValidationMessage("TipoProyecto") %>
+    <label>Cuenta con convenio</label>
+    <%=Html.CheckBox("ConConvenio", Model.ConConvenio)%>
+    <%=Html.ValidationMessage("ConConvenio")%>
 </p>
 <p>
-    <label>Nombre</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class="input420-bold-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Nombre")%>
-</p>
-<p>
-    <label>Responsable</label>
-    <%=Html.TextBox("Responsable", Model.Responsable, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Responsable")%>
-</p>
-<p>
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
+    <label>Nombre del convenio</label>
+    <%=Html.DropDownList("Convenio", Model.Convenios.CreateSelectList<ConvenioForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("LineaTematica") %>
+    <%=Html.ValidationMessage("Convenio")%>
 </p>
 <p>
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaInicial")%>
 </p>
 <p>
     <label>Fecha final</label>
     <%=Html.TextBox("FechaFinal", Model.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>
-    <label>Fecha de registro</label>
-    <%=Html.TextBox("FechaRegistro", Model.FechaRegistro, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <label>Fecha de pr&oacute;rroga</label>
+    <%=Html.TextBox("FechaProrroga", Model.FechaProrroga, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
-    <%=Html.ValidationMessage("FechaRegistro")%>
+    <%=Html.ValidationMessage("FechaProrroga")%>
 </p>
 <p>
-    <label>Producto esperado</label>
-    <%=Html.TextBox("ProductoEsperado", Model.ProductoEsperado, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("ProductoEsperado")%>
-</p>
-<p>
-    <label>Coordinaci&oacute;n</label>
-    <%=Html.DropDownList("Coordinacion", Model.Coordinaciones.CreateSelectList<CoordinacionForm>("Id", "Nombre"),
+    <label>Estatus del proyecto</label>
+    <%=Html.DropDownList("EstatusProyecto", Model.EstatusProyectos.CreateSelectList<EstatusProyectoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Coordinacion")%>
+    <%=Html.ValidationMessage("EstatusProyecto")%>
 </p>
 <p>
-    <label>Con financiamiento</label>
-    <%= Html.CheckBox("ConFinanciamiento", Model.ConFinanciamiento)%>
-    <%=Html.ValidationMessage("ConFinanciamiento")%>
-</p>
-<p>
-    <label>Estado del proyecto</label>
-    <%=Html.TextBox("EstadoProyecto", Model.EstadoProyecto, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("EstadoProyecto")%>
-</p>
-<p>
-    <label>Fecha de tr&aacute;mite</label>
-    <%=Html.TextBox("FechaTramite", Model.FechaTramite, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <label>Fecha de conclusi&oacute;n</label>
+    <%=Html.TextBox("FechaConclusion", Model.FechaConclusion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
-    <%=Html.ValidationMessage("FechaTramite")%>
+    <%=Html.ValidationMessage("FechaConclusion")%>
 </p>
 <p>
-    <label>Objetivos</label>
-    <%=Html.TextBox("Objetivos", Model.Objetivos, new { @class = "input250-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Objetivos")%>
+    <label>Proyecto con recursos complementarios</label>
+    <%=Html.CheckBox("ConRecursos", Model.ConRecursos)%>
+    <%=Html.ValidationMessage("ConRecursos")%>
 </p>

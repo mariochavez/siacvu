@@ -8,3 +8,8 @@
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
+<p>
+    <label>L&iacute;nea tem&aacute;tica institucional</label>
+    <%= Html.CheckBox("LineaTematicaInstitucional", Model.LineaTematicaInstitucional)%>
+    <%=Html.ValidationMessage("LineaTematicaInstitucional")%>
+</p>
