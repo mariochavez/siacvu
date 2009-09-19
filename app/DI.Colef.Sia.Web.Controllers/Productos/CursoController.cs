@@ -239,20 +239,53 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
+        public ActionResult ChangeNivel2(int select)
         {
             var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
 
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new CursoForm
-                           {
-                               Niveles3 = list.ToArray(),
-                               Niveles4 = list.ToArray(),
-                               Niveles5 = list.ToArray()
-                           };
+            {
+                Niveles3 = list.ToArray(),
+                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
 
-            return Rjs("ChangeNivel", form);
+            return Rjs("ChangeNivel2", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel3(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new CursoForm
+            {
+                Niveles4 = list.ToArray(),
+                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
+
+            return Rjs("ChangeNivel3", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel4(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new CursoForm
+            {
+                Niveles5 = list.ToArray()
+            };
+
+            return Rjs("ChangeNivel4", form);
         }
 
         [Authorize]
