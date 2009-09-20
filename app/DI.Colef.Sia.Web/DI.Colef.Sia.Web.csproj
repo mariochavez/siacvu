@@ -869,6 +869,7 @@
     <Content Include="Views\Proyecto\ChangeSector.js.ascx" />
     <Content Include="Views\Proyecto\ChangeSectorEconomico.js.ascx" />
     <Content Include="Views\Proyecto\ChangeLineaTematica.js.ascx" />
+    <Content Include="Views\Proyecto\Show.aspx" />
     <Content Include="Views\Proyecto\_ActividadEconomica.ascx" />
     <Content Include="Views\Proyecto\_AreaConocimiento.ascx" />
     <Content Include="Views\Proyecto\_EstructuraFuncional.ascx" />
