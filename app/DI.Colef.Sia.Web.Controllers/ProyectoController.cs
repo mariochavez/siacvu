@@ -350,7 +350,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
+        public ActionResult ChangeNivel2(int select)
         {
             var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
 
@@ -359,12 +359,63 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = new ProyectoForm
                            {
                                Niveles3 = list.ToArray(),
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel2", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel3(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
                                Niveles4 = list.ToArray(),
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel3", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel4(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
                                Niveles5 = list.ToArray(),
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel4", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel5(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
                                Niveles6 = list.ToArray()
                            };
 
-            return Rjs("ChangeNivel", form);
+            return Rjs("ChangeNivel5", form);
         }
 
         [Authorize]

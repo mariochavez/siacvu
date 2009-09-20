@@ -244,12 +244,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new ExperienciaProfesionalForm
-            {
-                Niveles3 = list.ToArray(),
-                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Niveles3 = list.ToArray(),
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeNivel2", form);
         }
@@ -263,11 +263,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new ExperienciaProfesionalForm
-            {
-                Niveles4 = list.ToArray(),
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Niveles4 = list.ToArray(),
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeNivel3", form);
         }
@@ -281,10 +281,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new ExperienciaProfesionalForm
-            {
-                Niveles5 = list.ToArray(),
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Niveles5 = list.ToArray(),
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeNivel4", form);
         }
@@ -298,9 +298,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new ExperienciaProfesionalForm
-            {
-                Niveles6 = list.ToArray()
-            };
+                           {
+                               Niveles6 = list.ToArray()
+                           };
 
             return Rjs("ChangeNivel5", form);
         }

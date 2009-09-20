@@ -158,6 +158,7 @@
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionMedioValidator.cs" />
+    <Compile Include="NHibernateValidator\ProyectoValidator.cs" />
     <Compile Include="NHibernateValidator\ReporteValidator.cs" />
     <Compile Include="NHibernateValidator\ResenaValidator.cs" />
     <Compile Include="NHibernateValidator\TesisDirigidaValidator.cs" />

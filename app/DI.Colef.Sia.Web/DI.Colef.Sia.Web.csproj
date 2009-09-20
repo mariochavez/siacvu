@@ -863,7 +863,10 @@
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\ChangeArea.js.ascx" />
     <Content Include="Views\Proyecto\ChangeDisciplina.js.ascx" />
-    <Content Include="Views\Proyecto\ChangeNivel.js.ascx" />
+    <Content Include="Views\Proyecto\ChangeNivel2.js.ascx" />
+    <Content Include="Views\Proyecto\ChangeNivel3.js.ascx" />
+    <Content Include="Views\Proyecto\ChangeNivel4.js.ascx" />
+    <Content Include="Views\Proyecto\ChangeNivel5.js.ascx" />
     <Content Include="Views\Proyecto\ChangeOrganizacion.js.ascx" />
     <Content Include="Views\Proyecto\ChangeRama.js.ascx" />
     <Content Include="Views\Proyecto\ChangeSector.js.ascx" />

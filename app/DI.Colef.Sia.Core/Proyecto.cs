@@ -1,4 +1,5 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
+    [ProyectoValidator]
     public class Proyecto : Entity, IBaseEntity
     {
         public Proyecto()
