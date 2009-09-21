@@ -6,8 +6,11 @@
 
     select.dynamic = me;
 
-    $select
-    .change(setupFields);
+    if ($select.isDropDownList()) {
+        $select.change(setupFields);
+    } else if ($select.isCheckBox()) {
+        $select.click(setupFields);
+    }
 
     this.setup = setupFields;
 
@@ -15,11 +18,23 @@
         if (options.data == null)
             return;
 
-        for (var i = 0; i < options.data.length; i++) {
-            if ($select.isSelected(options.data[i][0])) {
-                showFields(options.data[i][1]);
-            } else {
-                hideFields(options.data[i][1]);
+        if ($select.isDropDownList()) {
+            for (var i = 0; i < options.data.length; i++) {
+                if ($select.isSelected(options.data[i][0])) {
+                    showFields(options.data[i][1]);
+                } else if (options.data[i][0] == '*') {
+                    showFields(options.data[i][1]);
+                } else {
+                    hideFields(options.data[i][1]);
+                }
+            }
+        } else if ($select.isCheckBox()) {
+            for (var i = 0; i < options.data.length; i++) {
+                if ($select.isChecked() && options.data[i][0] == '1') {
+                    showFields(options.data[i][1]);
+                } else {
+                    hideFields(options.data[i][1]);
+                }
             }
         }
     }
@@ -43,7 +58,7 @@
 
         for (var i = 0; i < fields.length; i++) {
             var field = fields[i];
-            
+
             $(field).slideUp('fast', function() {
                 $(field).fadeOut('fast');
             });
@@ -64,6 +79,25 @@ jQuery.fn.dynamicui = function(data) {
 
     // Don't break the chain
     return this;
+}
+
+/* Determines if the element is a checkbox. */
+jQuery.fn.isCheckBox = function() {
+    ///     <summary>
+    ///     Determines if the element is a checkbox.
+    ///     </summary>
+    ///     <returns type="Boolean" />
+    return (jQuery(this).formElementType() === "checkbox");
+}
+
+/* Determines if the element is checked. The pre-condition for this is the element is a checkbox. */
+jQuery.fn.isChecked = function() {
+    ///     <summary>
+    ///     Determines if the element is checked. The pre-condition for this is the element is a checkbox.
+    ///     </summary>
+    ///     <returns type="Boolean" />
+    var current = jQuery(this);
+    return current.is(":checked");
 }
 
 /* Determines if the element is a drop down list, that is a select box with 1 row and items appear when clicked, rather

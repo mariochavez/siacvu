@@ -18,6 +18,14 @@
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#TieneProyecto').dynamicui(
+        [
+            ['1', ['#SelectProyecto_p']]
+        ]
+    );
+
+    $('#TieneProyecto')[0].dynamic.setup();
 }
 
 function capituloSetup() {

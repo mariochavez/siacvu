@@ -69,7 +69,7 @@
 </p>
 <p>
     <label>Nombre del alumno</label>
-    <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreAlumno")%>
 </p>
