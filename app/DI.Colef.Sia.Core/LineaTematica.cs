@@ -9,9 +9,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     public class LineaTematica : Entity, IBaseEntity
     {
         [NotNullNotEmpty]
-        [Length(40)]
+        [Length(70)]
         [DomainSignature]
         public virtual string Nombre { get; set; }
+
+        public virtual bool LineaTematicaInstitucional { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

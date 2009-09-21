@@ -239,20 +239,53 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
+        public ActionResult ChangeNivel2(int select)
         {
             var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
 
             list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
 
             var form = new CursoForm
-                           {
-                               Niveles3 = list.ToArray(),
-                               Niveles4 = list.ToArray(),
-                               Niveles5 = list.ToArray()
-                           };
+            {
+                Niveles3 = list.ToArray(),
+                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
+                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
 
-            return Rjs("ChangeNivel", form);
+            return Rjs("ChangeNivel2", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel3(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new CursoForm
+            {
+                Niveles4 = list.ToArray(),
+                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
+            };
+
+            return Rjs("ChangeNivel3", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel4(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new CursoForm
+            {
+                Niveles5 = list.ToArray()
+            };
+
+            return Rjs("ChangeNivel4", form);
         }
 
         [Authorize]
@@ -306,16 +339,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new CursoForm();
 
             form.NivelEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
+            form.Niveles3 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles4 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles5 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 
             return form;
         }

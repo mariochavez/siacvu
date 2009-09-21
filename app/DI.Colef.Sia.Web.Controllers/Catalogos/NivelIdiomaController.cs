@@ -21,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             this.nivelIdiomaMapper = nivelIdiomaMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
@@ -31,7 +32,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             return View(data);
         }
-        
+
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
@@ -40,7 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 			
             return View(data);
         }
-        
+
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -52,20 +55,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             ViewData.Model = data;
             return View();
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Show(int id)
-        {
-            var data = CreateViewDataWithTitle(Title.Show);
-
-            var nivelIdioma = catalogoService.GetNivelIdiomaById(id);
-            data.Form = nivelIdiomaMapper.Map(nivelIdioma);
-            
-            ViewData.Model = data;
-            return View();
-        }
         
         [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(NivelIdiomaForm form)
@@ -85,6 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(NivelIdiomaForm form)
@@ -103,6 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -117,6 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         }
         
         [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -129,7 +124,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             
             return Rjs("Activate", form);
         }
-        
+
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

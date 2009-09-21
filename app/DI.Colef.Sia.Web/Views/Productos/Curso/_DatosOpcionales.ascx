@@ -16,19 +16,19 @@
 <p>
 	<label>Nivel 2</label>
     <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel") })%>
+        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel2") })%>
     <span class="cvu"></span>
 </p>
 <p>
 	<label>Nivel 3</label>
     <%=Html.DropDownList("Nivel3", Model.Niveles3.CreateSelectList<NivelForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+		"Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel3") })%>
 	<span class="cvu"></span>
 </p>
 <p>
 	<label>Nivel 4</label>
     <%=Html.DropDownList("Nivel4", Model.Niveles4.CreateSelectList<NivelForm>("Id", "Nombre"),
-		"Seleccione ...")%>
+		"Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel4") })%>
 	<span class="cvu"></span>
 </p>
 <p>

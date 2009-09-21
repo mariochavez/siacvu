@@ -15,6 +15,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
 
         //Espacio para Agregar Mapeos
+        public int Sector { get; set; }
+        public int SectorId { get; set; }
+        public string SectorNombre { get; set; }
+
         public int Organizacion { get; set; }
         public int OrganizacionId { get; set; }
         public string OrganizacionNombre { get; set; }
@@ -55,9 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
 
-        public int Sector { get; set; }
-        public int SectorId { get; set; }
-        public string SectorNombre { get; set; }
+        public int SectorEconomico { get; set; }
+        public int SectorEconomicoId { get; set; }
+        public string SectorEconomicoNombre { get; set; }
 
         public int Rama { get; set; }
         public int RamaId { get; set; }
@@ -68,6 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ClaseNombre { get; set; }
 
         /* Catalogos */
+        public SectorForm[] Sectores { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }
         public NivelForm[] Niveles2 { get; set; }
         public NivelForm[] Niveles3 { get; set; }
@@ -78,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
-        public SectorForm[] Sectores { get; set; }
+        public SectorForm[] SectoresEconomicos { get; set; }
         public RamaForm[] Ramas { get; set; }
         public ClaseForm[] Clases { get; set; }
     }

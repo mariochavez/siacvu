@@ -141,7 +141,7 @@ insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
-
+/*
 insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
@@ -183,7 +183,7 @@ insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos me
 insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
-
+*/
 insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, null, 1, 1);
 insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, null, 1, 1);
 insert into EstadoPaises values('Baja California Sur',GETDATE(), GETDATE(), 1, null, 1, 1);
@@ -1660,43 +1660,43 @@ insert into PeriodoReferencias values('Enero - Junio 2008',	85,	'2008-01-01 00:0
 insert into PeriodoReferencias values('Julio - Diciembre 2008',	90,	'2008-07-01 00:00:00.000', '2008-12-31 00:00:00.000', GETDATE(), GETDATE(), 1, 1, 1)
 insert into PeriodoReferencias values('Enero - Junio 2009',	95,	'2009-01-01 00:00:00.000', '2009-06-30 00:00:00.000', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into LineaTematicas values('ESTUDIOS CULTURALES',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('MIGRACIÓN',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('ENVEJECIMIENTO',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('AMBIENTE Y DESARROLLO',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('POBLACION',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('DESARROLLO ECONOMICO',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('DESARROLLO REGIONAL',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('ESTUDIO DE LA INDUSTRIA Y EL TRABAJO',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('SOLO ADMINISTRATIVO',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('DESARROLLO REGIONAL Y ESTUDIOS DEL TRABAJO',GETDATE(), GETDATE(), 1, 1, 1)                             
-insert into LineaTematicas values('"No especifica la linea tematica"',GETDATE(), GETDATE(), 1, 1, 1)                                               
-insert into LineaTematicas values('MIGRACION INTERNACIONAL',GETDATE(), GETDATE(), 1, 1, 1)                                                         
-insert into LineaTematicas values('ECONOMIA Y SOCIEDAD',GETDATE(), GETDATE(), 1, 1, 1)                                                             
-insert into LineaTematicas values('ESTUDIOS DE TRABAJO',GETDATE(), GETDATE(), 1, 1, 1)                                                             
-insert into LineaTematicas values('DESARROLLO REGIONAL Y MEDIO AMBIENTE',GETDATE(), GETDATE(), 1, 1, 1)                                            
-insert into LineaTematicas values('HISTORIA Y CULTURA',GETDATE(), GETDATE(), 1, 1, 1)                                                              
-insert into LineaTematicas values('ADMINISTRACION PUBLICA Y FINANZAS',GETDATE(), GETDATE(), 1, 1, 1)                                               
-insert into LineaTematicas values('DESARROLLO REGIONAL Y REESTRUCTURACION PRODUCTIVA',GETDATE(), GETDATE(), 1, 1, 1)                                
-insert into LineaTematicas values('ESTUDIOS CULTURALES',GETDATE(), GETDATE(), 1, 1, 1)                                                             
-insert into LineaTematicas values('AMBIENTE Y RECURSOS NATURALES',GETDATE(), GETDATE(), 1, 1, 1)
-insert into LineaTematicas values('ESTUDIO DE LOS PROCESOS HISTORICOS',GETDATE(), GETDATE(), 1, 1, 1)                                              
-insert into LineaTematicas values('ESTUDIOS DE LAS IDENTIDADES',GETDATE(), GETDATE(), 1, 1, 1)                                                     
-insert into LineaTematicas values('CAMBIO TECNICO Y ORGANIZACION INDUSTRIAL',GETDATE(), GETDATE(), 1, 1, 1)                                      
-insert into LineaTematicas values('INTEGRACION ECONOMICA FRONTERIZA MEXICO-E.U.A.',GETDATE(), GETDATE(), 1, 1, 1)                                  
-insert into LineaTematicas values('EVALUACION DE POLITICAS ECONOMICAS',GETDATE(), GETDATE(), 1, 1, 1)                                              
-insert into LineaTematicas values('MERCADOS DE TRABAJO Y FUERZA LABORAL',GETDATE(), GETDATE(), 1, 1, 1)                                            
-insert into LineaTematicas values('FAMILIA Y SALUD',GETDATE(), GETDATE(), 1, 1, 1)                                                                 
-insert into LineaTematicas values('MIGRACION  INTERNACIONAL E INTERNA',GETDATE(), GETDATE(), 1, 1, 1)                                        
-insert into LineaTematicas values('PROCESOS DE GLOBALIZACION EN EL CAMPO FRONTERIZO (NO VALIDA)',GETDATE(), GETDATE(), 1, 1, 1)                    
-insert into LineaTematicas values('ESTUDIOS DEL TRABAJO E INDUSTRIALES',GETDATE(), GETDATE(), 1, 1, 1)                                             
-insert into LineaTematicas values('ESTUDIOS SOCIALES DE MIGRACION',GETDATE(), GETDATE(), 1, 1, 1)                                                  
-insert into LineaTematicas values('GESTION AMBIENTAL',GETDATE(), GETDATE(), 1, 1, 1)                                                               
-insert into LineaTematicas values('RECURSOS NATURALES',GETDATE(), GETDATE(), 1, 1, 1)                                                              
-insert into LineaTematicas values('ESTUDIOS URBANOS',GETDATE(), GETDATE(), 1, 1, 1)                                                                
-insert into LineaTematicas values('INSTITUCIONES POLITICAS Y PROCESOS SOCIALES',GETDATE(), GETDATE(), 1, 1, 1)                                     
-insert into LineaTematicas values('GOBIERNOS LOCALES Y GESTION BINACIONAL',GETDATE(), GETDATE(), 1, 1, 1)                                          
-insert into LineaTematicas values('POLITICAS PUBLICAS Y DESARROLLO REGIONAL',GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('ESTUDIOS CULTURALES', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('MIGRACIÓN', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('ENVEJECIMIENTO', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('AMBIENTE Y DESARROLLO', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('POBLACION', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('DESARROLLO ECONOMICO', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('DESARROLLO REGIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('ESTUDIO DE LA INDUSTRIA Y EL TRABAJO', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('SOLO ADMINISTRATIVO', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('DESARROLLO REGIONAL Y ESTUDIOS DEL TRABAJO', 0,GETDATE(), GETDATE(), 1, 1, 1)                             
+insert into LineaTematicas values('"No especifica la linea tematica"', 0,GETDATE(), GETDATE(), 1, 1, 1)                                               
+insert into LineaTematicas values('MIGRACION INTERNACIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                         
+insert into LineaTematicas values('ECONOMIA Y SOCIEDAD', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                             
+insert into LineaTematicas values('ESTUDIOS DE TRABAJO', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                             
+insert into LineaTematicas values('DESARROLLO REGIONAL Y MEDIO AMBIENTE', 0,GETDATE(), GETDATE(), 1, 1, 1)                                            
+insert into LineaTematicas values('HISTORIA Y CULTURA', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                              
+insert into LineaTematicas values('ADMINISTRACION PUBLICA Y FINANZAS', 0,GETDATE(), GETDATE(), 1, 1, 1)                                               
+insert into LineaTematicas values('DESARROLLO REGIONAL Y REESTRUCTURACION PRODUCTIVA', 0,GETDATE(), GETDATE(), 1, 1, 1)                                
+insert into LineaTematicas values('ESTUDIOS CULTURALES', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                             
+insert into LineaTematicas values('AMBIENTE Y RECURSOS NATURALES', 0,GETDATE(), GETDATE(), 1, 1, 1)
+insert into LineaTematicas values('ESTUDIO DE LOS PROCESOS HISTORICOS', 0,GETDATE(), GETDATE(), 1, 1, 1)                                              
+insert into LineaTematicas values('ESTUDIOS DE LAS IDENTIDADES', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                     
+insert into LineaTematicas values('CAMBIO TECNICO Y ORGANIZACION INDUSTRIAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                      
+insert into LineaTematicas values('INTEGRACION ECONOMICA FRONTERIZA MEXICO-E.U.A.', 0,GETDATE(), GETDATE(), 1, 1, 1)                                  
+insert into LineaTematicas values('EVALUACION DE POLITICAS ECONOMICAS', 0,GETDATE(), GETDATE(), 1, 1, 1)                                              
+insert into LineaTematicas values('MERCADOS DE TRABAJO Y FUERZA LABORAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                            
+insert into LineaTematicas values('FAMILIA Y SALUD', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                                 
+insert into LineaTematicas values('MIGRACION  INTERNACIONAL E INTERNA', 0,GETDATE(), GETDATE(), 1, 1, 1)                                        
+insert into LineaTematicas values('PROCESOS DE GLOBALIZACION EN EL CAMPO FRONTERIZO (NO VALIDA)', 0,GETDATE(), GETDATE(), 1, 1, 1)                    
+insert into LineaTematicas values('ESTUDIOS DEL TRABAJO E INDUSTRIALES', 0,GETDATE(), GETDATE(), 1, 1, 1)                                             
+insert into LineaTematicas values('ESTUDIOS SOCIALES DE MIGRACION', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                  
+insert into LineaTematicas values('GESTION AMBIENTAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                               
+insert into LineaTematicas values('RECURSOS NATURALES', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                              
+insert into LineaTematicas values('ESTUDIOS URBANOS', 0,GETDATE(), GETDATE(), 1, 1, 1)                                                                
+insert into LineaTematicas values('INSTITUCIONES POLITICAS Y PROCESOS SOCIALES', 0,GETDATE(), GETDATE(), 1, 1, 1)                                     
+insert into LineaTematicas values('GOBIERNOS LOCALES Y GESTION BINACIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                          
+insert into LineaTematicas values('POLITICAS PUBLICAS Y DESARROLLO REGIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into Paises values('México', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Paises values('España', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2397,6 +2397,23 @@ insert into TipoParticipacionOrganos values('Asesor',GETDATE(), GETDATE(), 1, 1,
 insert into TipoParticipacionOrganos values('Evaluador',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoParticipacionOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoParticipacionOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into EstatusProyectos values('Vigente', GETDATE(), GETDATE(), 1, 1, 1)
+insert into EstatusProyectos values('Terminado', GETDATE(), GETDATE(), 1, 1, 1)
+insert into EstatusProyectos values('Cancelado', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into FondoConacyts values('CONACyT Ciencia Básica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into FondoConacyts values('CONACyT Fondo Mixto', GETDATE(), GETDATE(), 1, 1, 1)
+insert into FondoConacyts values('CONACyT Fondo Sectorial', GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into AreaTematicas values('Area tematica 1', GETDATE(), GETDATE(), 1, null, 1, 1)
+insert into AreaTematicas values('Area tematica 2', GETDATE(), GETDATE(), 1, null, 1, 1)
+insert into AreaTematicas values('Area tematica 3', GETDATE(), GETDATE(), 1, null, 1, 1)
+insert into AreaTematicas values('Area tematica 4', GETDATE(), GETDATE(), 1, null, 1, 1)
+insert into AreaTematicas values('Area tematica 5', GETDATE(), GETDATE(), 1, null, 1, 1)
+
+insert into TipoEstudiantes values('Interno', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoEstudiantes values('Externo', GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)

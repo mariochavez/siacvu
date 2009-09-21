@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface IResponsableExternoProyectoMapper : IMapper<ResponsableExternoProyecto, ResponsableExternoProyectoForm>
+    public interface ITipoEstudianteMapper : IMapper<TipoEstudiante, TipoEstudianteForm>
     {
     }
 }

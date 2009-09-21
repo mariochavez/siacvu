@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -200,6 +201,71 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int select)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
+
+            var form = new FormacionAcademicaForm
+                           {
+                               EstadosPaises = list.ToArray()
+                           };
+
+            return Rjs("ChangePais", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector(int select)
+        {
+            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
+
+            var form = new FormacionAcademicaForm
+                           {
+                               Organizaciones = list.ToArray()
+                           };
+
+            return Rjs("ChangeSector", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int select)
+        {
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
+
+            var form = new FormacionAcademicaForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int select)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
+
+            var form = new FormacionAcademicaForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<FormacionAcademica>(x => x.TituloGrado, q);
@@ -217,13 +283,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
             form.EstatusFormacionAcademicas = estatusFormacionAcademicaMapper.Map(catalogoService.GetActiveEstatusFormacionAcademicas());
+
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetActiveEstadoPaises());
+            if (form.Id == 0)
+            {
+                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            }
+            else
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
+
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 
             return form;
         }

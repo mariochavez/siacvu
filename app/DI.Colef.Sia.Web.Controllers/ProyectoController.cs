@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -19,7 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IConvenioMapper convenioMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IResponsableInternoProyectoMapper responsableInternoProyectoMapper;
-        readonly IResponsableExternoProyectoMapper responsableExternoProyectoMapper;
         readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
@@ -45,11 +45,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInvestigadorService investigadorService;
         readonly ICoordinacionMapper coordinacionMapper;
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
+        readonly IEstatusProyectoMapper estatusProyectoMapper;
+        readonly IFondoConacytMapper fondoConacytMapper;
+        readonly ITipoEstudianteMapper tipoEstudianteMapper;
+        readonly IGradoAcademicoMapper gradoAcademicoMapper;
+        readonly IRamaMapper ramaMapper;
+        readonly IClaseMapper claseMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
                                   IInvestigadorMapper investigadorMapper, IResponsableInternoProyectoMapper responsableInternoProyectoMapper, 
-                                  IResponsableExternoProyectoMapper responsableExternoProyectoMapper, IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, 
+                                  IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, 
                                   IInvestigadorExternoMapper investigadorExternoMapper, IParticipanteExternoProyectoMapper participanteExternoProyectoMapper, 
                                   ISedeMapper sedeMapper, ILineaTematicaMapper lineaTematicaMapper, IImpactoPoliticaPublicaMapper impactoPoliticaPublicaMapper, 
                                   IAmbitoMapper ambitoMapper, ITipoFinanciamientoMapper tipoFinanciamientoMapper, IMonedaMapper monedaMapper, 
@@ -58,7 +65,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
                                   ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
-                                  ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper)
+                                  ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper,
+                                  IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper, ITipoEstudianteMapper tipoEstudianteMapper,
+                                  IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
+                                  IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -68,7 +78,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.convenioMapper = convenioMapper;
             this.investigadorMapper = investigadorMapper;
             this.responsableInternoProyectoMapper = responsableInternoProyectoMapper;
-            this.responsableExternoProyectoMapper = responsableExternoProyectoMapper;
             this.participanteInternoProyectoMapper = participanteInternoProyectoMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.participanteExternoProyectoMapper = participanteExternoProyectoMapper;
@@ -94,8 +103,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.investigadorService = investigadorService;
             this.coordinacionMapper = coordinacionMapper;
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
+            this.estatusProyectoMapper = estatusProyectoMapper;
+            this.fondoConacytMapper = fondoConacytMapper;
+            this.tipoEstudianteMapper = tipoEstudianteMapper;
+            this.gradoAcademicoMapper = gradoAcademicoMapper;
+            this.ramaMapper = ramaMapper;
+            this.claseMapper = claseMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -107,6 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -116,6 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -138,6 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
@@ -151,13 +171,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ProyectoForm form, FormCollection formCollection)
         {
             var participantesExternos = new string[] {};
             var participantesInternos = new string[] {};
-            var responsablesExternos = new string[] {};
             var responsablesInternos = new string[] {};
             var institucionRecursoFinanciero = new string[] {};
             var monedaRecursoFinanciero = new string[] { };
@@ -172,10 +192,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (formCollection["ParticipanteInternoProyecto.InvestigadorId_New"] != null &&
                 formCollection["ParticipanteInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
                 participantesInternos = formCollection["ParticipanteInternoProyecto.InvestigadorId_New"].Split(',');
-
-            if (formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"] != null &&
-                formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"].Split(',').Length > 0)
-                responsablesExternos = formCollection["ResponsableExternoProyecto.InvestigadorExternoId_New"].Split(',');
 
             if (formCollection["ResponsableInternoProyecto.InvestigadorId_New"] != null &&
                 formCollection["ResponsableInternoProyecto.InvestigadorId_New"].Split(',').Length > 0)
@@ -198,7 +214,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 recursoRecursoFinanciero = formCollection["RecursoFiancieroProyecto.Recurso_New"].Split(',');
 
             var proyecto = proyectoMapper.Map(form, CurrentUser(), participantesExternos, participantesInternos,
-                                              responsablesExternos, responsablesInternos, institucionRecursoFinanciero,
+                                              responsablesInternos, institucionRecursoFinanciero,
                                               monedaRecursoFinanciero, montoRecursoFinanciero, recursoRecursoFinanciero);
 
             if (!IsValidateModel(proyecto, form, Title.New, "Proyecto"))
@@ -213,6 +229,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ProyectoForm form)
@@ -236,6 +253,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
         {
@@ -254,6 +272,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
         {
@@ -271,6 +290,201 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeLineaTematica(int select)
+        {
+            var list = new List<AreaTematicaForm> { new AreaTematicaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               AreasTematicas = list.ToArray()
+                           };
+
+            return Rjs("ChangeLineaTematica", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector(int select)
+        {
+            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Organizaciones = list.ToArray(),
+                               Niveles2 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeSector", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeOrganizacion(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Niveles2 = list.ToArray(),
+                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeOrganizacion", form);
+        }
+
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel2(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Niveles3 = list.ToArray(),
+                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel2", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel3(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Niveles4 = list.ToArray(),
+                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel3", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel4(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Niveles5 = list.ToArray(),
+                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeNivel4", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel5(int select)
+        {
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Niveles6 = list.ToArray()
+                           };
+
+            return Rjs("ChangeNivel5", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int select)
+        {
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int select)
+        {
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSectorEconomico(int select)
+        {
+            var list = new List<RamaForm> { new RamaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(ramaMapper.Map(catalogoService.GetRamasBySectorId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Ramas = list.ToArray(),
+                               Clases = new[] {new ClaseForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
+
+            return Rjs("ChangeSectorEconomico", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRama(int select)
+        {
+            var list = new List<ClaseForm> { new ClaseForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(claseMapper.Map(catalogoService.GetClasesByRamaId(select)));
+
+            var form = new ProyectoForm
+                           {
+                               Clases = list.ToArray()
+                           };
+
+            return Rjs("ChangeRama", form);
+        }
+
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
@@ -278,6 +492,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewResponsableInterno(int id)
         {
@@ -293,6 +508,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewResponsableInterno", form);
         }
 
+
+        [Authorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddResponsableInterno([Bind(Prefix = "ResponsableInternoProyecto")]ResponsableInternoProyectoForm form, int proyectoId)
@@ -320,48 +537,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddResponsableInterno", responsableInternoProyectoForm);
         }
 
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewResponsableExterno(int id)
-        {
-            var proyecto = proyectoService.GetProyectoById(id);
-            var form = new ProyectoForm();
-
-            if (proyecto != null)
-                form.Id = proyecto.Id;
-
-            form.ResponsableExternoProyecto = new ResponsableExternoProyectoForm();
-            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-
-            return Rjs("NewResponsableExterno", form);
-        }
-
-        [CustomTransaction]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddResponsableExterno([Bind(Prefix = "ResponsableExternoProyecto")]ResponsableExternoProyectoForm form, int proyectoId)
-        {
-            var responsableExternoProyecto = responsableExternoProyectoMapper.Map(form);
-
-            ModelState.AddModelErrors(responsableExternoProyecto.ValidationResults(), true, String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            responsableExternoProyecto.CreadorPor = CurrentUser();
-            responsableExternoProyecto.ModificadoPor = CurrentUser();
-
-            if (proyectoId != 0)
-            {
-                var proyecto = proyectoService.GetProyectoById(proyectoId);
-                proyecto.AddResponsableExterno(responsableExternoProyecto);
-                proyectoService.SaveProyecto(proyecto);
-            }
-
-            var responsableExternoProyectoForm = responsableExternoProyectoMapper.Map(responsableExternoProyecto);
-
-            return Rjs("AddResponsableExterno", responsableExternoProyectoForm);
-        }
-
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewParticipanteInterno(int id)
         {
@@ -378,6 +554,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddParticipanteInterno([Bind(Prefix = "ParticipanteInternoProyecto")]ParticipanteInternoProyectoForm form, int proyectoId)
         {
@@ -404,6 +581,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddParticipanteInterno", participanteInternoProyectoForm);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewParticipanteExterno(int id)
         {
@@ -420,6 +598,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddParticipanteExterno([Bind(Prefix = "ParticipanteExternoProyecto")]ParticipanteExternoProyectoForm form, int proyectoId)
         {
@@ -446,6 +625,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddParticipanteExterno", participanteExternoProyectoForm);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewRecursoFinanciero(int id)
         {
@@ -463,6 +643,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddRecursoFinanciero([Bind(Prefix = "RecursoFinancieroProyecto")]RecursoFinancieroProyectoForm form, int proyectoId)
         {
@@ -499,73 +680,101 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = form ?? new ProyectoForm();
 
             form.ResponsableInternoProyecto = new ResponsableInternoProyectoForm();
-            form.ResponsableExternoProyecto = new ResponsableExternoProyectoForm();
             form.ParticipanteInternoProyecto = new ParticipanteInternoProyectoForm();
             form.ParticipanteExternoProyecto = new ParticipanteExternoProyectoForm();
             form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
 
             //Lista de Catalogos Pendientes
-            form.Coordinaciones = coordinacionMapper.Map(catalogoService.GetActiveCoordinacions());
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            //form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
+            form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
+            form.EstatusProyectos = estatusProyectoMapper.Map(catalogoService.GetActiveEstatusProyectos());
+            form.SectoresFinanciamientos = sectorFinanciamientoMapper.Map(catalogoService.GetActiveSectorFinanciamientos());
+            form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
+            form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
+            form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());
+            form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
+            form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
+            form.TiposEstudiantes = tipoEstudianteMapper.Map(catalogoService.GetActiveTipoEstudiantes());
+            form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
+
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicasInstitucionales());
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
+            form.Niveles3 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles4 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles5 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles6 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+
+            form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
+            form.Ramas = ramaMapper.Map(catalogoService.GetRamasBySectorId(form.SectorEconomicoId));
+            form.Clases = claseMapper.Map(catalogoService.GetClasesByRamaId(form.RamaId));
+
+            ///Catalogos Prototipo
+            //form.Coordinaciones = coordinacionMapper.Map(catalogoService.GetActiveCoordinacions());
+
+            ///Catalogos Nunca Usados
             //form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             //form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             //form.ParticipantesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             //form.ParticipantesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             //form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
-            //form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
             //form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             //form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
             //form.Monedas = monedaMapper.Map(catalogoService.GetActiveMonedas());
-            //form.SectoresFinanciamientos = sectorFinanciamientoMapper.Map(catalogoService.GetActiveSectorFinanciamientos());
-            //form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
-            //form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
-            //form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());
             //form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
             //form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            //form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            //form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
-            //form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            //form.Niveles3 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            //form.Niveles4 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            //form.Niveles5 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            //form.Niveles6 = nivelMapper.Map(catalogoService.GetActiveNiveles());
             //form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
-            //form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            //form.Disciplinas = disciplinaMapper.Map(catalogoService.GetActiveDisciplinas());
-            //form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+
             return form;
         }
 
         private void FormSetCombos(ProyectoForm form)
         {
-            ViewData["Coordinacion"] = form.CoordinacionId;
             ViewData["TipoProyecto"] = form.TipoProyectoId;
-            //ViewData["Convenio"] = form.ConvenioId;
-            //ViewData["Sede"] = form.SedeId;
+            ViewData["Convenio"] = form.ConvenioId;
+            ViewData["EstatusProyecto"] = form.EstatusProyectoId;
+            ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
+            ViewData["FondoConacyt"] = form.FondoConacytId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
-            //ViewData["ImpactoPoliticaPublica"] = form.ImpactoPoliticaPublicaId;
+            ViewData["AreaTematica"] = form.AreaTematicaId;
+            ViewData["ImpactoPoliticaPublica"] = form.ImpactoPoliticaPublicaId;
+            ViewData["USEG"] = form.USEGId;
+            ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
+            ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
+            ViewData["TipoEstudiante"] = form.TipoEstudianteId;
+            ViewData["GradoAcademico"] = form.GradoAcademicoId;
+            ViewData["Sector"] = form.SectorId;
+            ViewData["Organizacion"] = form.OrganizacionId;
+            ViewData["Nivel2"] = form.Nivel2Id;
+            ViewData["Nivel3"] = form.Nivel3Id;
+            ViewData["Nivel4"] = form.Nivel4Id;
+            ViewData["Nivel5"] = form.Nivel5Id;
+            ViewData["Nivel6"] = form.Nivel6Id;
+            ViewData["Area"] = form.AreaId;
+            ViewData["Disciplina"] = form.DisciplinaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["SectorEconomico"] = form.SectorEconomicoId;
+            ViewData["Rama"] = form.RamaId;
+            ViewData["Clase"] = form.ClaseId;
+
+            ///Catalogos Prototipo
+            //ViewData["Coordinacion"] = form.CoordinacionId;
+
+            ///Catalogos Nunca Usados
+            //ViewData["Sede"] = form.SedeId;
             //ViewData["Ambito"] = form.AmbitoId;
             //ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
             //ViewData["Moneda"] = form.MonedaId;
-            //ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
-            //ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
-            //ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
-            //ViewData["USEG"] = form.USEGId;
             //ViewData["Institucion"] = form.InstitucionId;
             //ViewData["NivelEstudio"] = form.NivelEstudioId;
-            //ViewData["Sector"] = form.SectorId;
-            //ViewData["Organizacion"] = form.OrganizacionId;
-            //ViewData["Nivel2"] = form.Nivel2Id;
-            //ViewData["Nivel3"] = form.Nivel3Id;
-            //ViewData["Nivel4"] = form.Nivel4Id;
-            //ViewData["Nivel5"] = form.Nivel5Id;
-            //ViewData["Nivel6"] = form.Nivel6Id;
             //ViewData["Departamento"] = form.DepartamentoId;
-            //ViewData["Area"] = form.AreaId;
-            //ViewData["Disciplina"] = form.DisciplinaId;
-            //ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

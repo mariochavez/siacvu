@@ -205,10 +205,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
 
             var form = new TesisDirigidaForm
-            {
-                Disciplinas = list.ToArray(),
-                Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
+                           };
 
             return Rjs("ChangeArea", form);
         }
@@ -222,9 +222,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
 
             var form = new TesisDirigidaForm
-            {
-                Subdisciplinas = list.ToArray()
-            };
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
 
             return Rjs("ChangeDisciplina", form);
         }
@@ -253,6 +253,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Dependencias = dependenciaMapper.Map(catalogoService.GetActiveDependencias());
             form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));

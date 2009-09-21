@@ -159,72 +159,66 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaRegistro,
+                .ForMember(d => d.FechaProrroga,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaTramite,
+                .ForMember(d => d.FechaConclusion,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaEntregaProducto,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoProyecto,
                            o => o.Ignore())
+                .ForMember(d => d.Convenio,
+                           o => o.Ignore())
+                .ForMember(d => d.EstatusProyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.FondoConacyt,
+                           o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
-                .ForMember(d => d.Coordinacion,
+                .ForMember(d => d.AreaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.ImpactoPoliticaPublica,
+                           o => o.Ignore())
+                .ForMember(d => d.SectorFinanciamiento,
+                           o => o.Ignore())
+                .ForMember(d => d.ProductoAcademico,
+                           o => o.Ignore())
+                .ForMember(d => d.ActividadPrevista,
+                           o => o.Ignore())
+                .ForMember(d => d.USEG,
+                           o => o.Ignore())
+                .ForMember(d => d.TipoEstudiante,
+                           o => o.Ignore())
+                .ForMember(d => d.GradoAcademico,
+                           o => o.Ignore())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
+                .ForMember(d => d.Organizacion,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel2,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel3,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel4,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel5,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel6,
+                           o => o.Ignore())
+                .ForMember(d => d.Area,
+                           o => o.Ignore())
+                .ForMember(d => d.Disciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.SectorEconomico,
+                           o => o.Ignore())
+                .ForMember(d => d.Rama,
+                           o => o.Ignore())
+                .ForMember(d => d.Clase,
                            o => o.Ignore());
-                //.ForMember(d => d.FechaEntregaCompromiso,
-                //           o => o.AddFormatter<StandardDateFormatter>())
-                //.ForMember(d => d.FechaEntregaProducto,
-                //           o => o.AddFormatter<StandardDateFormatter>())
-                //.ForMember(d => d.Convenio,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Sede,
-                //o => o.Ignore())
-                //.ForMember(d => d.ImpactoPoliticaPublica,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Ambito,
-                //           o => o.Ignore())
-                //.ForMember(d => d.TipoFinanciamiento,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Moneda,
-                //           o => o.Ignore())
-                //.ForMember(d => d.SectorFinanciamiento,
-                //           o => o.Ignore())
-                //.ForMember(d => d.ProductoAcademico,
-                //           o => o.Ignore())
-                //.ForMember(d => d.ActividadPrevista,
-                //           o => o.Ignore())
-                //.ForMember(d => d.USEG,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Institucion,
-                //           o => o.Ignore())
-                //.ForMember(d => d.NivelEstudio,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Sector,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Organizacion,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Nivel2,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Nivel3,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Nivel4,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Nivel5,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Nivel6,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Departamento,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Area,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Disciplina,
-                //           o => o.Ignore())
-                //.ForMember(d => d.Subdisciplina,
-                //           o => o.Ignore());
 
             Mapper.CreateMap<ResponsableInternoProyecto, ResponsableInternoProyectoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ResponsableExternoProyecto, ResponsableExternoProyectoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
@@ -269,6 +263,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Sector,
+                           o => o.Ignore())
                 .ForMember(d => d.Organizacion,
                            o => o.Ignore())
                 .ForMember(d => d.Nivel2,
@@ -289,7 +285,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
-                .ForMember(d => d.Sector,
+                .ForMember(d => d.SectorEconomico,
                            o => o.Ignore())
                 .ForMember(d => d.Rama,
                            o => o.Ignore())
@@ -1036,6 +1032,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Edicion, EdicionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<EstatusProyecto, EstatusProyectoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<FondoConacyt, FondoConacytForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoEstudiante, TipoEstudianteForm>()
+              .ForMember(d => d.Modificacion,
+                         o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AreaTematica, AreaTematicaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.LineaTematica,
+                           o => o.Ignore());
         }
     }
 }
