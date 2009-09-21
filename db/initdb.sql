@@ -184,45 +184,92 @@ insert into Proyectos values('Estudio comparativo de la urbanización popular en 
 insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', null, GETDATE(), GETDATE(), GETDATE(), null, null, null, GETDATE(), null, GETDATE(), GETDATE(), 1, 1, null, null, null, 1, 1);
 */
-insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Baja California Sur',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Campeche',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Chihuahua',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Chiapas',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Coahuila',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Colima',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Distrito Federal',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Durango',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Estado de México',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Guerrero',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Guanajuato',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Hidalgo',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Jalisco',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Michoacán',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Morelos',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Nayarit',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Nuevo León',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Oaxaca',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Puebla',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Querétaro',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Quintana Roo',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Sinaloa',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('San Luis Potos',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Sonora',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Tabasco',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Tamaulipas',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Tlaxcala',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Veracruz',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Yucatán',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Zacatecas',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Samoa Americana',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('California',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Colorado',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Florida',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Georgia',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Hawaii',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into EstadoPaises values('Kansas',GETDATE(), GETDATE(), 1, null, 1, 1);
+insert into Paises values('México', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('España', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Estados Unidos', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Canada', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Venezuela', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Japón', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Francia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Colombia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Costa Rica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Cuba', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Italia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Argentina', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Brasil', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Uruguay', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Panama', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Guatemala', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Honduras', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Alemania', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Turquía', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('El Salvador', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Gran Bretaña', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('China', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Inglaterra', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Tunicia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Egipto', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Bulgaria', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Puerto Rico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Holanda', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Ecuador', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Suiza', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('India', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Suecia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('República Dominicana', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Hawaii', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Irlanda', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Chile', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Bélgica', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Reino Unido', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Bolivia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Eslovaquia', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('República Checa', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Portugal', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Filipinas', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Marruecos', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Paises values('Nigeria', GETDATE(), GETDATE(), 1, 1, 1)
+
+-- 1=Mexico 3=Estados Unidos
+insert into EstadoPaises values('Aguascalientes',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Baja California Norte',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Baja California Sur',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Campeche',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Chihuahua',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Chiapas',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Coahuila',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Colima',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Distrito Federal',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Durango',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Estado de México',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Guerrero',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Guanajuato',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Hidalgo',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Jalisco',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Michoacán',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Morelos',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Nayarit',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Nuevo León',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Oaxaca',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Puebla',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Querétaro',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Quintana Roo',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Sinaloa',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('San Luis Potos',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Sonora',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Tabasco',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Tamaulipas',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Tlaxcala',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Veracruz',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Yucatán',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Zacatecas',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into EstadoPaises values('Samoa Americana',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('California',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('Colorado',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('Florida',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('Georgia',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('Hawaii',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into EstadoPaises values('Kansas',GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 insert into MedioImpresos values('Periódico',GETDATE(), GETDATE(), 1, 1, 1);
 insert into MedioImpresos values('Tabloide',GETDATE(), GETDATE(), 1, 1, 1);
@@ -301,6 +348,7 @@ insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 
+--Sector economico=False
 insert into Sectores values('NO ESPECIFICADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO FEDERAL CENTRALIZADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES', 0,GETDATE(), GETDATE(), 1, 1, 1);
@@ -311,16 +359,29 @@ insert into Sectores values('INSTITUCIONES DEL SECTOR PRIVADO DE EMPRESAS PRODUC
 insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES NO LUCRATIVAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES EXTERNAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('CONSULTORAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
+--Sector economico=True
+insert into Sectores values('Mineria', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Construccion', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios educativos', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de Salud y asistencia social', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios financieros y de Seguros', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de esparcimiento culturales y deportivos y otros servicios recreativos', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de alojamiento temporal y reparacion de alimentos y bebidas', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Otros servicios excepto actividades de gobierno', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Actividades de gobierno y organismos internacionales y extraterritoriales', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Informacion en medios masivos', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicos Profesiones cientificos y tecnologicos', 1,GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('EL COLEGIO DE LA FRONTERA NORTE, A. C.',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('EL COLEGIO DE LA FRONTERA SUR',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('CORPORACION MEXICANA DE INVESTIGACION EN MATERIALES, S. A. DE C. V.',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('ESCUELA NACIONAL DE ANTROPOLOGIA E HISTORIA',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('SECRETARIA DE SALUD',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('SECRETARIA DE ENERGIA',GETDATE(), GETDATE(), 1, null, 1, 1);
-insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA',GETDATE(), GETDATE(), 1, null, 1, 1);
+--Sector 3=Insituciones del Sector entidades paraestatales
+insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('EL COLEGIO DE LA FRONTERA NORTE, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('EL COLEGIO DE LA FRONTERA SUR',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('CORPORACION MEXICANA DE INVESTIGACION EN MATERIALES, S. A. DE C. V.',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('ESCUELA NACIONAL DE ANTROPOLOGIA E HISTORIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE SALUD',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE ENERGIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 insert into Departamentos values('Departamento de estudios culturales',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Departamento de estudios de administración pública',GETDATE(), GETDATE(), 1, 1, 1);
@@ -1698,52 +1759,6 @@ insert into LineaTematicas values('INSTITUCIONES POLITICAS Y PROCESOS SOCIALES',
 insert into LineaTematicas values('GOBIERNOS LOCALES Y GESTION BINACIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)                                          
 insert into LineaTematicas values('POLITICAS PUBLICAS Y DESARROLLO REGIONAL', 0,GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into Paises values('México', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('España', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Estados Unidos', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Canada', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Venezuela', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Japón', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Francia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Colombia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Costa Rica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Cuba', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Italia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Argentina', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Brasil', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Uruguay', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Panama', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Guatemala', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Honduras', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Alemania', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Turquía', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('El Salvador', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Gran Bretaña', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('China', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Inglaterra', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Tunicia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Egipto', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Bulgaria', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Puerto Rico', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Holanda', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Ecuador', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Suiza', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('India', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Suecia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('República Dominicana', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Hawaii', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Irlanda', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Chile', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Bélgica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Reino Unido', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Bolivia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Eslovaquia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('República Checa', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Portugal', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Filipinas', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Marruecos', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Paises values('Nigeria', GETDATE(), GETDATE(), 1, 1, 1)
-
 insert into LineaInvestigaciones values('Actividad económica fronteriza', GETDATE(), GETDATE(), 1, 1, 1)
 insert into LineaInvestigaciones values('Ambiente  y  recursos naturales', GETDATE(), GETDATE(), 1, 1, 1)
 insert into LineaInvestigaciones values('Dinámica poblacional de la frontera', GETDATE(), GETDATE(), 1, 1, 1)
@@ -1782,6 +1797,7 @@ insert into Areas values('Etica', GETDATE(), GETDATE(), 1 , 1, 1)
 insert into Areas values('Filosofia', GETDATE(), GETDATE(), 1 , 1, 1)
 insert into Areas values('Prospectiva', GETDATE(), GETDATE(), 1 , 1, 1)
 
+--Areas 1=Logica 2=Matematicas
 insert into Disciplinas values('Aplicacion de la logica', GETDATE(), GETDATE(), 1, 1, 1, 1)
 insert into Disciplinas values('Logica deductiva', GETDATE(), GETDATE(), 1, 1, 1, 1)
 insert into Disciplinas values('Logica general', GETDATE(), GETDATE(), 1, 1, 1, 1)
@@ -1795,7 +1811,6 @@ insert into Disciplinas values('Geometria', GETDATE(), GETDATE(), 1, 1, 1, 1)
 insert into Disciplinas values('Teoria de los numeros', GETDATE(), GETDATE(), 1, 1, 1, 1)
 insert into Disciplinas values('Analisis numerico', GETDATE(), GETDATE(), 1, 1, 1, 1)
 insert into Disciplinas values('Investigacion operativa', GETDATE(), GETDATE(), 1, 1, 1, 1)
-
 insert into Disciplinas values('Calculo de probabilidades', GETDATE(), GETDATE(), 1, 2, 1, 1)
 insert into Disciplinas values('Estadistica', GETDATE(), GETDATE(), 1, 2, 1, 1)
 insert into Disciplinas values('Topologia', GETDATE(), GETDATE(), 1, 2, 1, 1)
@@ -1811,21 +1826,22 @@ insert into Disciplinas values('Caracteristicas de las poblaciones', GETDATE(), 
 insert into Disciplinas values('Evolucion demografica', GETDATE(), GETDATE(), 1, 2, 1, 1)
 insert into Disciplinas values('Otras especialidades en materia de demografia', GETDATE(), GETDATE(), 1, 2, 1, 1)
 
-insert into Subdisciplinas values('Tasa de natalidad', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Fecunidad general', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Ilegitimidad', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Nupcialidad', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Esterilidad y fecundidad', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Otros', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Metodologia de la investigacion', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Metodologia de analisis', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Teoria', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Movilidad y migraciones internas', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Movilidad y migraciones internacionales', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Demografica local', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Demografia regional', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Demografia rural', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Subdisciplinas values('Demografia urbana', GETDATE(), GETDATE(), 1, null, 1, 1)
+--Disciplinas 1=Aplicacion de la logica 2=Logica deductiva
+insert into Subdisciplinas values('Tasa de natalidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Fecunidad general', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Ilegitimidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Nupcialidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Esterilidad y fecundidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Otros', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Metodologia de la investigacion', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Metodologia de analisis', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Teoria', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Movilidad y migraciones internas', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Movilidad y migraciones internacionales', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografica local', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografia regional', GETDATE(), GETDATE(), 1,2, 1, 1)
+insert into Subdisciplinas values('Demografia rural', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografia urbana', GETDATE(), GETDATE(), 1, 2, 1, 1)
 
 insert into RevistaPublicaciones values('AMERICAN NATURALIST', 'Monthly', '0003-0147', 'UNIV CHICAGO PRESS, 5720 SOUTH WOODLAWN AVE, CHICAGO, IL, 60637-1603', 'ISI', 'A', 0, GETDATE(), GETDATE(), 1, null, 1, 1)
 insert into RevistaPublicaciones values('AMERICAN NEPTUNE', 'Quarterly', '0003-0155', 'PEABODY MUSEUM, E INDIA MARINE HALL, SALEM, MA, 01970', 'ISI', 'A', 0, GETDATE(), GETDATE(), 1, null, 1, 1)
@@ -2360,22 +2376,31 @@ insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoResenas values('Nota crítica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoResenas values('Reseña bibliográfica', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into Ramas values('Escuelas de educación basica media y especial', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Escuelas de educación postbachillerato no universitaria', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Escuelas de educación superior', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Escuelas comerciales de computación y capacitación para ejecutivos', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Escuelas de oficios', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Servicios de apoyo a la educación', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Servicios legales', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Servicios de contabilidad auditoria y servicios relacionados', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Servicios de arquitectura ingieneria y actividades relacionadas', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Ramas values('Otros servicos profesionales y tecnicos', GETDATE(), GETDATE(), 1, null, 1, 1)
+--Las Ramas son del sector economico
+--Sector 21=Servicos Profesiones cientificos y tecnologicos
+insert into Ramas values('Escuelas de educación basica media y especial', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Escuelas de educación postbachillerato no universitaria', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Escuelas de educación superior', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Escuelas comerciales de computación y capacitación para ejecutivos', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Escuelas de oficios', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Servicios de apoyo a la educación', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Servicios legales', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Servicios de contabilidad auditoria y servicios relacionados', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Servicios de arquitectura ingieneria y actividades relacionadas', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Otros servicos profesionales y tecnicos', GETDATE(), GETDATE(), 1, 21, 1, 1)
+insert into Ramas values('Servicios de consultoria administrativa cientifica y tecnica', GETDATE(), GETDATE(), 1, 21, 1, 1)
 
-insert into Clases values('Escuelas de educación superior perteneciente al sector privado', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Clases values('Escuelas de educación superior perteneciente al sector publico', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Clases values('Escuelas del sector privado dedicadas a la enseñaza de oficios', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Clases values('Escuelas del publico privado dedicadas a la enseñaza de oficios', GETDATE(), GETDATE(), 1, null, 1, 1)
-insert into Clases values('Servicios de apoyo a la educacion', GETDATE(), GETDATE(), 1, null, 1, 1)
+--Son las Clases de las Ramas
+-- Rama=11=Servicios de consultoria administrativa cientifica y tecnica
+-- Rama=7 servicios legales
+insert into Clases values('Servicios de Consultoria en Administracion', GETDATE(), GETDATE(), 1, 11, 1, 1)
+insert into Clases values('Servicios de consultoria en medio ambiente', GETDATE(), GETDATE(), 1, 11, 1, 1)
+insert into Clases values('Otros serivicios de consultoria en el ambiente', GETDATE(), GETDATE(), 1, 11, 1, 1)
+insert into Clases values('Escuelas del publico privado dedicadas a la enseñaza de oficios', GETDATE(), GETDATE(), 1, 11, 1, 1)
+insert into Clases values('Servicios de apoyo a la educacion', GETDATE(), GETDATE(), 1, 11, 1, 1)
+insert into Clases values('Bufetes juridicos', GETDATE(), GETDATE(), 1, 7, 1, 1)
+insert into Clases values('Notarias publicas', GETDATE(), GETDATE(), 1, 7, 1, 1)
+insert into Clases values('Servicios de apoyo para efectuar tramites leglaes', GETDATE(), GETDATE(), 1, 7, 1, 1)
 
 insert into TipoApoyos values('Formacion académica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoApoyos values('Proyecto científico', GETDATE(), GETDATE(), 1, 1, 1)
