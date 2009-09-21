@@ -35,6 +35,7 @@
 <p id="OtroMedioElectronico">
 	<label>Especificaci&oacute;n de medio electr&oacute;nico</label>
 	<%=Html.TextBox("EspecificacionMedioElectronico", Model.EspecificacionMedioElectronico, new { @class = "input250-requerido", maxlength = 100 })%>
+	<span class="cvu"></span>
 	<%=Html.ValidationMessage("EspecificacionMedioElectronico")%>
 </p>
 <p>
@@ -83,6 +84,7 @@
 	<label>Fecha de difusi&oacute;n</label>
 	<%=Html.TextBox("FechaDifusion", Model.FechaDifusion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaDifusion")%>
 </p>
 <p>
