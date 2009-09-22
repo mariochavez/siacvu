@@ -6,7 +6,7 @@
     <%=Html.CheckBox("ConConvenio", Model.ConConvenio)%>
     <%=Html.ValidationMessage("ConConvenio")%>
 </p>
-<p>
+<p class="NombreConvenio">
     <label>Nombre del convenio</label>
     <%=Html.DropDownList("Convenio", Model.Convenios.CreateSelectList<ConvenioForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>

@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (participacionMedio.MedioElectronico.Nombre.Contains("Otro"))
             {
-                if (participacionMedio.EspecificacionMedioElectronico == null)
+                if (participacionMedio.EspecificacionMedioElectronico == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío o cero|EspecificacionMedioElectronico", "EspecificacionMedioElectronico");
@@ -99,12 +99,23 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (participacionMedio.MedioImpreso.Nombre.Contains("Otro"))
+            if (participacionMedio.MedioImpreso != null)
             {
-                if (participacionMedio.EspecificacionMedioImpreso == null)
+                if (participacionMedio.MedioImpreso.Nombre.Contains("Otro"))
+                {
+                    if (participacionMedio.EspecificacionMedioImpreso == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no debe ser nulo o vacío o cero|EspecificacionMedioImpreso", "EspecificacionMedioImpreso");
+
+                        isValid = false;
+                    }
+                }
+
+                if (participacionMedio.NotaPeriodistica == "")
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|EspecificacionMedioImpreso", "EspecificacionMedioImpreso");
+                            "no debe ser nulo o vacío o cero|NotaPeriodistica", "NotaPeriodistica");
 
                     isValid = false;
                 }

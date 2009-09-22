@@ -5,6 +5,7 @@
 	<label>Nota period&iacute;stica</label>
 	<%=Html.TextArea("NotaPeriodistica", Model.NotaPeriodistica, 3, 35, new { @class = "input420", maxlength = 100 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("NotaPeriodistica")%>
 </p>
 <p>
 	<label>Palabra clave 1</label>
