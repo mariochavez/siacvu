@@ -26,6 +26,14 @@
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#Traductor').dynamicui(
+        [
+            ['1', ['.NombreTraductor']]
+        ]
+    );
+
+    $('#Traductor')[0].dynamic.setup();
 }
 
 function capituloSetup() {
@@ -80,6 +88,7 @@ function participacionMedioSetup() {
 
     $('#MedioImpreso').dynamicui(
             [
+                ['*', ['.NotaPeriodistica_p']],
                 ['Otro', ['#OtroMedioImpreso']]
             ]
         );
@@ -107,4 +116,14 @@ function resenaSetup() {
         );
 
     $('#TipoResena')[0].dynamic.setup();
+}
+
+function tesisDirigidaSetup() {
+    $('#GradoAcademico').dynamicui(
+            [
+                ['*', ['#FechaGrado_p']]
+            ]
+        );
+
+    $('#GradoAcademico')[0].dynamic.setup();
 }

@@ -27,7 +27,7 @@
     <%= Html.CheckBox("Traductor", Model.Traductor)%>
     <span class="cvu"></span>
 </p>
-<p class="traductor_field">
+<p class="NombreTraductor">
     <label>Nombre del traductor</label>
     <%= Html.TextBox("NombreTraductor", Model.NombreTraductor, new { @class = "input250", maxlength = 100 })%>
     <span class="cvu"></span>

@@ -50,7 +50,8 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
-        setupDocument();        
+        setupDocument();
+        tesisDirigidaSetup();
     });
 </script>
 </asp:Content>
