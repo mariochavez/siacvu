@@ -22,7 +22,7 @@
             for (var i = 0; i < options.data.length; i++) {
                 if ($select.isSelected(options.data[i][0])) {
                     showFields(options.data[i][1]);
-                } else if (options.data[i][0] == '*') {
+                } else if (options.data[i][0] == '*' && !$select.isSelected('Seleccione ...')) {
                     showFields(options.data[i][1]);
                 } else {
                     hideFields(options.data[i][1]);
