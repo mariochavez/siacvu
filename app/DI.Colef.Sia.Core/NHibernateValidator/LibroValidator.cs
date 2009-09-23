@@ -39,12 +39,33 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             isValid &= ValidateFechas(libro, constraintValidatorContext);
+            isValid &= TieneProyecto(libro, constraintValidatorContext);
 
             if (libro.TipoPublicacion != null)
                 isValid &= ValidateTipoPublicacion(libro, constraintValidatorContext);
 
             if(libro.EstadoProducto != null)
                 isValid &= ValidateEstadoProducto(libro, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool TieneProyecto(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (libro.TieneProyecto)
+            {
+                if (libro.Proyecto == null)
+                {
+                    constraintValidatorContext.AddInvalid("seleccione el proyecto|Proyecto", "Proyecto");
+
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
@@ -220,12 +241,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (libro.NombreTraductor == "")
+                else
                 {
-                    constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|NombreTraductor", "NombreTraductor");
+                    if (libro.NombreTraductor == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no puede ser nulo, vacío o cero|NombreTraductor", "NombreTraductor");
 
-                    isValid = false;
+                        isValid = false;
+                    }
                 }
             }
 

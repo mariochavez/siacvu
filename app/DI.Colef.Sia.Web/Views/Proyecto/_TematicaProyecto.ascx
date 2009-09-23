@@ -60,7 +60,7 @@
     <%=Html.CheckBox("RequiereServicioUSEG", Model.RequiereServicioUSEG)%>
     <%=Html.ValidationMessage("RequiereServicioUSEG")%>
 </p>
-<p>
+<p class="RequiereUSEG">
     <label>Servicio USEG</label>
     <%=Html.DropDownList("USEG", Model.Usegs.CreateSelectList<USEGForm>("Id", "Nombre"),
                 "Seleccione ...")%>

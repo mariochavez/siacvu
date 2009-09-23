@@ -82,6 +82,10 @@
                     <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
                 </p>
                 <p>
+                    <label>Edici&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.EdicionNombre)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Fecha de edici&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>

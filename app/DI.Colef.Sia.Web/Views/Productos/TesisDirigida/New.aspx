@@ -51,12 +51,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        
-    	//falta funcionalidad para multiples
-    	//Valores que activen el mismo objeto
-    	//Ej.
-    	//[['Doctor','Licenciatura', 'etc...'],['#FechaGrado_p']]
-        
+        tesisDirigidaSetup();
     });
 </script>
 </asp:Content>

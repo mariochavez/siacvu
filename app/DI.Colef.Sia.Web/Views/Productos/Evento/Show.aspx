@@ -103,6 +103,10 @@
                     <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
+                    <label>Dirigido a</label>
+                    <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Pa&iacute;s</label>
                     <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
                 </p>

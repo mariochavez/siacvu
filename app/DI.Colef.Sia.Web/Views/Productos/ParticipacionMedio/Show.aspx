@@ -68,6 +68,10 @@
                     <strong><%= Html.Encode(Model.Form.Tema)%>&nbsp;</strong>
                 </p>
                 <p>
+                    <label>Dirigido a</label>
+                    <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Periodo de referencia</label>
                     <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
                 </p>

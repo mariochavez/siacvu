@@ -39,6 +39,61 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= ValidateFechaInicialFinal(proyecto, constraintValidatorContext);
             isValid &= ValidateFechas(proyecto, constraintValidatorContext);
+            isValid &= ValidateChecks(proyecto, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool ValidateChecks(Proyecto proyecto, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+            
+            if (proyecto.ConConvenio)
+            {
+                if (proyecto.Convenio == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el nombre del convenio|Convenio", "Convenio");
+                    isValid = false;
+                }
+            }
+
+            if (proyecto.RequiereServicioUSEG)
+            {
+                if (proyecto.USEG == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el servicio USEG|USEG", "USEG");
+                    isValid = false;
+                }
+            }
+
+            if (proyecto.ParticipaEstudiante)
+            {
+                if (proyecto.NombreEstudiante == "")
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo o vacío o cero|NombreEstudiante", "NombreEstudiante");
+                    isValid = false;
+                }
+
+                if (proyecto.TipoEstudiante == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el tipo de estudiante|TipoEstudiante", "TipoEstudiante");
+                    isValid = false;
+                }
+
+                if (proyecto.GradoAcademico == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el grado académico|GradoAcademico", "GradoAcademico");
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
