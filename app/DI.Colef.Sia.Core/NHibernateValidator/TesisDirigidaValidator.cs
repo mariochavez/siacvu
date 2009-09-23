@@ -91,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (tesisDirigida.FechaGrado <= DateTime.Parse("1980-01-01"))
+            if (tesisDirigida.FechaGrado <= DateTime.Parse("1910-01-01"))
             {
                 constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|FechaGrado", "FechaGrado");
                 isValid = false;

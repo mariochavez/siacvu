@@ -20,7 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
     public class BaseController<TModel, TForm> : Controller where TModel : Entity
     {
-        readonly IUsuarioService usuarioService;
+        protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
         readonly ICatalogoService catalogoService;
 

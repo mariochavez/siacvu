@@ -116,7 +116,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (libro.FechaEdicion <= DateTime.Parse("1980-01-01"))
+                if (libro.FechaEdicion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
                         "formato de fecha no Válido|FechaEdicion", "FechaEdicion");

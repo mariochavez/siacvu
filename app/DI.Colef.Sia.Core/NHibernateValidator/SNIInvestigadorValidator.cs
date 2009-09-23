@@ -22,12 +22,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var sniInvestigador = value as SNIInvestigador;
             if (sniInvestigador != null)
             {
-                if(sniInvestigador.FechaInicial <= DateTime.Parse("1980-01-01"))
+                if(sniInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.DisableDefaultError();
                     constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial invalida o nula|FechaInicial", x => x.FechaInicial);
                 }
-                else if (sniInvestigador.FechaFinal <= DateTime.Parse("1980-01-01"))
+                else if (sniInvestigador.FechaFinal <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.DisableDefaultError();
                     constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha final invalida o nula|FechaFinal", x => x.FechaFinal);

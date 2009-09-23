@@ -29,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (!apoyoConacyt.IsTransient())
             {
                 isValid &= !ValidateIsNullOrEmpty<ApoyoConacyt>(apoyoConacyt, x => x.SubprogramaConacyt, constraintValidatorContext);
-                if (apoyoConacyt.FechaInicial <= DateTime.Parse("1980-01-01") || apoyoConacyt.FechaFinal <= DateTime.Parse("1980-01-01"))
+                if (apoyoConacyt.FechaInicial <= DateTime.Parse("1910-01-01") || apoyoConacyt.FechaFinal <= DateTime.Parse("1910-01-01"))
                 {
                     isValid &= !ValidateIsNullOrEmpty<ApoyoConacyt>(apoyoConacyt, x => x.FechaInicial, constraintValidatorContext);
                     isValid &= !ValidateIsNullOrEmpty<ApoyoConacyt>(apoyoConacyt, x => x.FechaFinal, constraintValidatorContext);
@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (apoyoConacyt.FechaInicial == DateTime.Parse("1900-01-01") || apoyoConacyt.FechaFinal == DateTime.Parse("1900-01-01"))
                 isValid &= ValidateFechaInicialFinal(apoyoConacyt, constraintValidatorContext);
 
-            if (apoyoConacyt.FechaInicial > DateTime.Parse("1980-01-01") || apoyoConacyt.FechaFinal > DateTime.Parse("1980-01-01"))
+            if (apoyoConacyt.FechaInicial > DateTime.Parse("1910-01-01") || apoyoConacyt.FechaFinal > DateTime.Parse("1910-01-01"))
                 isValid &= ValidateFechaInicialFinal(apoyoConacyt, constraintValidatorContext);
 
             return isValid;

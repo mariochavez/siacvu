@@ -36,9 +36,14 @@
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
+                <h4>Informaci&oacute;n personal</h4>
 		        <p>
 			        <label>Usuario</label>
 			        <%=Html.Encode(Model.Form.Nombre) %>
+		        </p>
+		        <p>
+			        <label>Direcci&oacute;n</label>
+			        <%=Html.Encode(Model.Form.UsuarioDireccion) %>&nbsp;
 		        </p>
 		        <p>
 			        <label>Sexo</label>

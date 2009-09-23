@@ -176,13 +176,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeUser(int id)
+        public ActionResult ChangeUser(int select)
         {
-            var investigador = investigadorService.GetInvestigadorById(id);
-            var form = new InvestigadorForm
-            {
-                UsuarioNombre = investigador.Usuario.Nombre
-            };
+            var usuario = usuarioService.GetUsuarioById(select);
+            var form = usuarioMapper.Map(usuario);
 
             return Rjs("ChangeUser", form);
         }

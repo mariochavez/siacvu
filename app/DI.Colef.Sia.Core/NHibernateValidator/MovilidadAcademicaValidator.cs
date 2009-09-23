@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (movilidadAcademica.FechaInicial > DateTime.Parse("1980-01-01") || movilidadAcademica.FechaFinal > DateTime.Parse("1980-01-01"))
+            if (movilidadAcademica.FechaInicial > DateTime.Parse("1910-01-01") || movilidadAcademica.FechaFinal > DateTime.Parse("1910-01-01"))
             {
                 if (movilidadAcademica.FechaInicial > movilidadAcademica.FechaFinal)
                 {

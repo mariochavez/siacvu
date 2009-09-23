@@ -75,7 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (experienciaProfesional.FechaInicial > DateTime.Parse("1980-01-01") || experienciaProfesional.FechaFinal > DateTime.Parse("1980-01-01"))
+            if (experienciaProfesional.FechaInicial > DateTime.Parse("1910-01-01") || experienciaProfesional.FechaFinal > DateTime.Parse("1910-01-01"))
             {
                 if (experienciaProfesional.FechaInicial >= experienciaProfesional.FechaFinal)
                 {

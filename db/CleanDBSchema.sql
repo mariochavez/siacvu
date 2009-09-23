@@ -3394,6 +3394,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Investigadores (
         Id INT IDENTITY NOT NULL,
        FechaIngreso DATETIME null,
+       FechaContrato DATETIME null,
        ExpedienteSNI NVARCHAR(255) null,
        ExpedienteProduccion NVARCHAR(255) null,
        ExpedienteAcademico NVARCHAR(255) null,

@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         public bool IsValid(object value, IConstraintValidatorContext constraintValidatorContext)
         {
             if (minDate == null)
-                minDate = DateTime.Parse("1980-01-01");
+                minDate = DateTime.Parse("1910-01-01");
 
             return (DateTime)value > minDate.Value;
         }

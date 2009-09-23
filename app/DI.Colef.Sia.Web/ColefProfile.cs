@@ -53,12 +53,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateIdiomasInvestigadorMaps();
             CreateParticipacionAcademiaMaps();
 
-            Mapper.CreateMap<Usuario, UsuarioForm>();
+            Mapper.CreateMap<Usuario, UsuarioForm>()
+                .ForMember(d => d.FechaIngreso,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaNacimiento,
+                           o => o.AddFormatter<StandardDateFormatter>());
 
             Mapper.CreateMap<Investigador, InvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaIngreso,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaContrato,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.UsuarioFechaNacimiento,
                            o => o.AddFormatter<StandardDateFormatter>())

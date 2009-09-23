@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             else if (value.GetType() == typeof(DateTime))
             {
                 var dateValue = (DateTime)value;
-                isInvalid = dateValue <= DateTime.Parse("1980-01-01");
+                isInvalid = dateValue <= DateTime.Parse("1910-01-01");
 
                 if (isInvalid)
                 {

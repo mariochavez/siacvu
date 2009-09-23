@@ -21,15 +21,35 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Clave { get; set; }
 
+        public virtual string Direccion { get; set; }
+
+        public virtual string Telefono { get; set; }
+
         public virtual string CorreoElectronico { get; set; }
 
+        public virtual string EstadoCivil { get; set; }
+
         public virtual string Sexo { get; set; }
+
+        public virtual string DocumentosIdentidad { get; set; }
+
+        public virtual string CURP { get; set; }
+
+        public virtual string RFC { get; set; }
+
+        public virtual string CedulaProfesional { get; set; }
+
+        public virtual string Nacionalidad { get; set; }
+
+        public virtual string CodigoRH { get; set; }
 
         public virtual DateTime FechaNacimiento { get; set; }
 
         public virtual DateTime FechaIngreso { get; set; }
 
         public virtual IList<Rol> Roles { get; private set; }
+
+        public virtual bool Investigador { get; set; }
 
         public virtual bool Activo { get; set; }
 

@@ -109,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (reporte.FechaEdicion <= DateTime.Parse("1980-01-01"))
+                if (reporte.FechaEdicion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|FechaEdicion", "FechaEdicion");
@@ -128,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (reporte.Fecha <= DateTime.Parse("1980-01-01"))
+                if (reporte.Fecha <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Fecha", "Fecha");

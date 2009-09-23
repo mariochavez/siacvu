@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuarioService.GetUsuarioById(message.Usuario);
             }
             model.FechaIngreso = message.FechaIngreso.FromShortDateToDateTime();
+            model.FechaContrato = message.FechaContrato.FromShortDateToDateTime();
 
             if(message.CargoInvestigador != null)
                 model.AddCargo(cargoInvestigadorMapper.Map(message.CargoInvestigador));

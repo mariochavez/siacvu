@@ -48,6 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotEmptyDate]
         public virtual DateTime FechaIngreso { get; set; }
 
+        [NotEmptyDate]
+        public virtual DateTime FechaContrato { get; set; }
+
         [Length(40)]
         public virtual string ExpedienteSNI { get; set; }
 

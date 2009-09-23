@@ -76,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (organoExterno.FechaInicial > DateTime.Parse("1980-01-01") || organoExterno.FechaFinal > DateTime.Parse("1980-01-01"))
+            if (organoExterno.FechaInicial > DateTime.Parse("1910-01-01") || organoExterno.FechaFinal > DateTime.Parse("1910-01-01"))
             {
 
                 if (organoExterno.FechaInicial >= organoExterno.FechaFinal)

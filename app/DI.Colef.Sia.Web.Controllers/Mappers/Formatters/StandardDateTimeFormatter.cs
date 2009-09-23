@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers.Formatters
 
             var value = (DateTime)context.SourceValue;
 
-            return value <= DateTime.Parse("1980-01-01") ? String.Empty : (value).ToString("dd/MMM/yyyy HH:mm");
+            return value <= DateTime.Parse("1910-01-01") ? String.Empty : (value).ToString("dd/MMM/yyyy HH:mm");
         }
     }
 }

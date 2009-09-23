@@ -4,6 +4,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
 		public int Id { get; set; }
         public string FechaIngreso { get; set; }
+        public string FechaContrato { get; set; }
 
         public string ExpedienteSNI { get; set; }
         public string ExpedienteProduccion { get; set; }
@@ -18,15 +19,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string UsuarioNombre { get; set; }
         public string UsuarioApellidoPaterno { get; set; }
         public string UsuarioApellidoMaterno { get; set; }
-        public string UsuarioSexo { get; set; }
+        public string UsuarioDireccion { get; set; }
+        public string UsuarioTelefono { get; set; }
+        public string UsuarioCorreoElectronico { get; set; }
+        public string UsuarioEstadoCivil { get; set; }
         public string UsuarioFechaNacimiento { get; set; }
+        public string UsuarioDocumentosIdentidad { get; set; }
+        public string UsuarioCURP { get; set; }
+        public string UsuarioRFC { get; set; }
+        public string UsuarioSexo { get; set; }
+        public string UsuarioNacionalidad { get; set; }
         public string UsuarioFechaIngreso { get; set; }
+        public string UsuarioCedulaProfesional { get; set; }
+        public string UsuarioCodigoRH { get; set; }
 
         public string Nombre { 
             get
             {
-                return string.Format("{0} {1} {2}", UsuarioNombre, UsuarioApellidoPaterno,
-                                     UsuarioApellidoMaterno);
+                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno,
+                                     UsuarioApellidoMaterno, UsuarioNombre);
             }
         }
 
