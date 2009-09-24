@@ -122,6 +122,7 @@
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
+    <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />
     <Compile Include="Helpers\HumanizeHelper.cs" />

@@ -946,6 +946,14 @@
     <Content Include="Views\Catalogos\USEG\_Form.ascx" />
     <Content Include="Views\Session\Index.aspx" />
     <Content Include="Views\Shared\Login.Master" />
+    <Content Include="Views\Usuario\AddRol.js.ascx" />
+    <Content Include="Views\Usuario\Edit.aspx" />
+    <Content Include="Views\Usuario\Index.aspx" />
+    <Content Include="Views\Usuario\NewRol.js.ascx" />
+    <Content Include="Views\Usuario\Show.aspx" />
+    <Content Include="Views\Usuario\_DatosUsuario.ascx" />
+    <Content Include="Views\Usuario\_EditRol.ascx" />
+    <Content Include="Views\Usuario\_NewRol.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

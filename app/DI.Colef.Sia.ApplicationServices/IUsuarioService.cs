@@ -8,10 +8,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Rol GetRolById(int id);
         Rol[] GetAllRoles();
         void SaveRol(Rol rol);
+        Rol[] GetActiveRoles();
 
         //Usuario
+        Usuario[] GetAllUsuarios();
         Usuario GetUsuarioById(int id);
         Usuario GetUsuarioByUserName(string username);
+        void SaveUsuario(Usuario usuario);
 
         Investigador GetInvestigadorByUsuario(Usuario usuario);
     }

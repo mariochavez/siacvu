@@ -110,6 +110,13 @@ SELECT     50 AS Id, 'Mario' AS Nombre, 'Chavez' AS ApellidoPaterno, 'Cardenas' 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'CACM456123789TJ' AS CURP, 'CACM784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
+UNION
+SELECT	   51 AS Id, 'DGAA' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
+					  'dgaa' AS UsuarioNombre, 'password' AS Clave, 'dgaa@colef.mx' AS CorreoElectronico,
+					  'H' AS Sexo, '1987-01-14' AS FechaNacimiento, '1999-03-07' AS FechaIngreso, 0 AS Investigador, 1 AS Activo, 
+					  'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
+					  'CACM456123789TJ' AS CURP, 'CACM784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
+					  'PRT456' AS CodigoRH
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
@@ -134,6 +141,7 @@ INSERT UsuarioRol VALUES(15, 2)
 INSERT UsuarioRol VALUES(16, 3)
 INSERT UsuarioRol VALUES(17, 1)
 INSERT UsuarioRol VALUES(18, 2)
+INSERT UsuarioRol VALUES(51, 3)
 
 insert into NivelIdiomas values('Bajo', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelIdiomas values('Medio', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2525,7 +2533,7 @@ insert into TipoParticipacionOrganos values('Evaluador',GETDATE(), GETDATE(), 1,
 insert into TipoParticipacionOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoParticipacionOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1)
 
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
 INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,1,1)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
