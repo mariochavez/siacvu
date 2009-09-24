@@ -890,6 +890,7 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_Files.ascx" />
     <Content Include="Views\Shared\_ShowSidebar.ascx" />
     <Content Include="Views\Shared\_UserInfo.ascx" />
     <Content Include="Views\Shared\_EditSidebar.ascx" />
@@ -946,6 +947,11 @@
     <Content Include="Views\Catalogos\USEG\_Form.ascx" />
     <Content Include="Views\Session\Index.aspx" />
     <Content Include="Views\Shared\Login.Master" />
+    <Content Include="Views\Catalogos\TipoArchivo\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoArchivo\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\New.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\_Form.ascx" />
     <Content Include="Views\Usuario\AddRol.js.ascx" />
     <Content Include="Views\Usuario\Edit.aspx" />
     <Content Include="Views\Usuario\Index.aspx" />

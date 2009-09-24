@@ -120,6 +120,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
                            o => o.Ignore());
+
+            Mapper.CreateMap<Archivo, ArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateParticipacionAcademiaMaps()
@@ -1053,6 +1057,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore());
+
+            Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

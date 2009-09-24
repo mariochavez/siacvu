@@ -89,6 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<FondoConacyt> fondoConacytRepository;
         readonly IRepository<TipoEstudiante> tipoEstudianteRepository;
         readonly IRepository<AreaTematica> areaTematicaRepository;
+        readonly IRepository<TipoArchivo> tipoArchivoRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -165,7 +166,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<EstatusProyecto> estatusProyectoRepository,
             IRepository<FondoConacyt> fondoConacytRepository,
             IRepository<TipoEstudiante> tipoEstudianteRepository,
-            IRepository<AreaTematica> areaTematicaRepository)
+            IRepository<AreaTematica> areaTematicaRepository,
+            IRepository<TipoArchivo> tipoArchivoRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -243,6 +245,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.fondoConacytRepository = fondoConacytRepository;
             this.tipoEstudianteRepository = tipoEstudianteRepository;
             this.areaTematicaRepository = areaTematicaRepository;
+            this.tipoArchivoRepository = tipoArchivoRepository;
         }
 
         protected virtual ISession Session
@@ -2429,6 +2432,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public AreaTematica[] GetAreaTematicasByLineaTematicaId(int id)
         {
             return ((List<AreaTematica>)FilterCatalogOptions<AreaTematica>(x => x.Nombre, id, "LineaTematica")).ToArray();
+        }
+
+        public TipoArchivo GetTipoArchivoById(int id)
+        {
+            return tipoArchivoRepository.Get(id);
+        }
+
+        public TipoArchivo[] GetAllTipoArchivos()
+        {
+            return ((List<TipoArchivo>)OrderCatalog<TipoArchivo>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoArchivo[] GetActiveTipoArchivos()
+        {
+            return ((List<TipoArchivo>)OrderCatalog<TipoArchivo>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoArchivo(TipoArchivo tipoArchivo)
+        {
+            if (tipoArchivo.Id == 0)
+            {
+                tipoArchivo.Activo = true;
+                tipoArchivo.CreadorEl = DateTime.Now;
+            }
+            tipoArchivo.ModificadoEl = DateTime.Now;
+
+            tipoArchivoRepository.SaveOrUpdate(tipoArchivo);
         }
     }
 }

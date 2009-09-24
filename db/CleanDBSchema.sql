@@ -2750,6 +2750,31 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E59EC5B70]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E59EC5B70
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E85102A57]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E74E8BAB7]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E74E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C085102A57]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
+alter table TipoArchivos  drop constraint FKDDAB43C085102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C074E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
+alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
+
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -3005,6 +3030,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoArchivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArchivos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4850,6 +4879,32 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
+    create table Archivos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       TipoProducto INT null,
+       Producto INT null,
+       Datos VARBINARY(8000) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoArchivoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoArchivos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     alter table RevistaPublicaciones 
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
@@ -6224,4 +6279,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table Archivos 
+        add constraint FKD4AF217E59EC5B70 
+        foreign key (TipoArchivoFk) 
+        references TipoArchivos
 

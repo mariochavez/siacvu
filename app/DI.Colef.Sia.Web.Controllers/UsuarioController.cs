@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddRol([Bind(Prefix = "Rol")]RolForm form, int usuarioId)
+        public ActionResult AddRol(RolForm form, int usuarioId)
         {
             var rolUsuario = rolMapper.Map(form);
 

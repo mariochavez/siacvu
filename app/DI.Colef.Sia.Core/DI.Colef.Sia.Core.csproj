@@ -73,6 +73,7 @@
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
+    <Compile Include="Archivo.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AreaTematica.cs" />
     <Compile Include="Articulo.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoApoyo.cs" />
+    <Compile Include="TipoArchivo.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />

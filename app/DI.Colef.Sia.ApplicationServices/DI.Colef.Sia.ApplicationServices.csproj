@@ -58,6 +58,7 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="IArchivoService.cs" />
     <Compile Include="IApoyoConacytService.cs" />
     <Compile Include="IArticuloService.cs" />
     <Compile Include="IAuthenticationService.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Impl\AuthenticationService.cs" />
     <Compile Include="Impl\CapituloService.cs" />
     <Compile Include="Impl\CatalogoService.cs" />
+    <Compile Include="Impl\ArchivoService.cs" />
     <Compile Include="Impl\CursoService.cs" />
     <Compile Include="Impl\DictamenService.cs" />
     <Compile Include="Impl\DistincionService.cs" />
