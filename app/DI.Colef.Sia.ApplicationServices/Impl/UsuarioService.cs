@@ -67,9 +67,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveUsuario(Usuario usuario)
         {
-            if (usuario.IsTransient())
-                usuario.Activo = true;
-
             usuarioRepository.SaveOrUpdate(usuario);
         }
 

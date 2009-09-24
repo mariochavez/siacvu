@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Rol</label>
-    <%=Html.DropDownList("Rol", Model.RolesUsuario.CreateSelectList<RolForm>("Id", "Nombre"),
+    <%=Html.DropDownList("Rol.Id", Model.RolesUsuario.CreateSelectList<RolForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Rol")%>
+    <%=Html.ValidationMessage("Rol.Id")%>
 </p>
