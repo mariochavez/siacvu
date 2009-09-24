@@ -385,6 +385,16 @@ alter table TipoParticipacionOrganos  drop constraint FK8D3DF01074E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C085102A57]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
+alter table TipoArchivos  drop constraint FKDDAB43C085102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C074E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
+alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
 alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
 
@@ -1995,6 +2005,31 @@ alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F6EC29E1E]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59F6EC29E1E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59FCC939E1E]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59FCC939E1E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F470C9E1E]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59F470C9E1E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F85102A57]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59F85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F74E8BAB7]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59F74E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD6A829E09]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD6A829E09
 
@@ -2212,6 +2247,21 @@ alter table CoautorInternoLibros  drop constraint FK84935DC874E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK84935DC8586827F8]') AND parent_object_id = OBJECT_ID('CoautorInternoLibros'))
 alter table CoautorInternoLibros  drop constraint FK84935DC8586827F8
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E59EC5B70]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E59EC5B70
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E85102A57]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E74E8BAB7]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E74E8BAB7
 
 
 
@@ -2750,31 +2800,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E59EC5B70]') AND parent_object_id = OBJECT_ID('Archivos'))
-alter table Archivos  drop constraint FKD4AF217E59EC5B70
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E85102A57]') AND parent_object_id = OBJECT_ID('Archivos'))
-alter table Archivos  drop constraint FKD4AF217E85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E74E8BAB7]') AND parent_object_id = OBJECT_ID('Archivos'))
-alter table Archivos  drop constraint FKD4AF217E74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C085102A57]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
-alter table TipoArchivos  drop constraint FKDDAB43C085102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C074E8BAB7]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
-alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
-
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2818,6 +2843,8 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionOrganos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoArchivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArchivos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'InvestigadorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InvestigadorExternos
 
@@ -2955,6 +2982,8 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Firmas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Firmas
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Capitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Capitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoReportes
@@ -2972,6 +3001,8 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Generos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Generos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoLibros
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoResenas
 
@@ -3030,10 +3061,6 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoArchivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArchivos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3313,6 +3340,17 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
     )
 
     create table TipoParticipacionOrganos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoArchivos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -4356,6 +4394,27 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
        primary key (Id)
     )
 
+    create table Firmas (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT null,
+       Producto INT null,
+       Firma1 DATETIME null,
+       Aceptacion1 INT null,
+       Firma2 DATETIME null,
+       Aceptacion2 INT null,
+       Firma3 DATETIME null,
+       Aceptacion3 INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       Usuario1Fk INT null,
+       Usuario2Fk INT null,
+       Usuario3Fk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table Capitulos (
         Id INT IDENTITY NOT NULL,
        NombreCapitulo NVARCHAR(255) null,
@@ -4485,6 +4544,21 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        LibroFk INT null,
+       primary key (Id)
+    )
+
+    create table Archivos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       TipoProducto INT null,
+       Producto INT null,
+       Datos VARBINARY(8000) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoArchivoFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -4876,32 +4950,6 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
-       primary key (Id)
-    )
-
-    create table Archivos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       TipoProducto INT null,
-       Producto INT null,
-       Datos VARBINARY(8000) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       TipoArchivoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoArchivos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -6055,6 +6103,11 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
         foreign key (LibroFk) 
         references Libros
 
+    alter table Archivos 
+        add constraint FKD4AF217E59EC5B70 
+        foreign key (TipoArchivoFk) 
+        references TipoArchivos
+
     alter table CoautorExternoReportes 
         add constraint FK797B39C18FDBB774 
         foreign key (InvestigadorExternoFk) 
@@ -6279,9 +6332,4 @@ alter table TipoArchivos  drop constraint FKDDAB43C074E8BAB7
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table Archivos 
-        add constraint FKD4AF217E59EC5B70 
-        foreign key (TipoArchivoFk) 
-        references TipoArchivos
 

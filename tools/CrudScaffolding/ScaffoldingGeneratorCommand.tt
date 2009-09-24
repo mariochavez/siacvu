@@ -35,21 +35,45 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Revista","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Producto","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Volumen","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Firma1","DateTime", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("NoVolumen","int", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Aceptacion1","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Institucion","Institucion", "Institucion")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Usuario1","Usuario", "Usuario")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Firma2","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Aceptacion2","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Usuario2","Usuario", "Usuario")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Firma3","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Aceptacion3","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Usuario3","Usuario", "Usuario")
+);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Editorial","string", null)

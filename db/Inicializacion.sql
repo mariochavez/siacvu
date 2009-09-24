@@ -122,6 +122,13 @@ GO
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Roles VALUES('Investigadores', GETDATE(), GETDATE(), 1, 1, 1)
 INSERT Roles VALUES('Dgaa', GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Jefe Departamento', GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios culturales',GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios de administración pública',GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios de población',GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios económicos',GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios sociales',GETDATE(), GETDATE(), 1, 1, 1)
+INSERT Roles VALUES('Departamento de estudios urbanos y del medio ambiente',GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT UsuarioRol VALUES(1, 2)
 INSERT UsuarioRol VALUES(2, 2)

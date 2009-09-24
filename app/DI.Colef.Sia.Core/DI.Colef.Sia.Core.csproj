@@ -121,6 +121,7 @@
     <Compile Include="EstatusProyecto.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="ExperienciaProfesional.cs" />
+    <Compile Include="Firma.cs" />
     <Compile Include="FondoConacyt.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
