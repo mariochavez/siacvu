@@ -25,6 +25,26 @@ alter table RevistaPublicaciones  drop constraint FK40B4829364F7D1CD
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B482937A8488F7]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B482937A8488F7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829341CFD2F4]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B4829341CFD2F4
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B48293B9B574C5]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B48293B9B574C5
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829361CF922]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B4829361CF922
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829385102A57]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
 alter table RevistaPublicaciones  drop constraint FK40B4829385102A57
 
@@ -3098,6 +3118,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        ModificadoEl DATETIME null,
        Activo BIT null,
        InstitucionFk INT null,
+       PaisFk INT null,
+       Indice1Fk INT null,
+       Indice2Fk INT null,
+       Indice3Fk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4957,6 +4981,26 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B482937A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B4829341CFD2F4 
+        foreign key (Indice1Fk) 
+        references Indices
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B48293B9B574C5 
+        foreign key (Indice2Fk) 
+        references Indices
+
+    alter table RevistaPublicaciones 
+        add constraint FK40B4829361CF922 
+        foreign key (Indice3Fk) 
+        references Indices
 
     alter table FormacionAcademicas 
         add constraint FK824D8BEA2BAFDC96 

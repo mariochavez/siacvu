@@ -30,6 +30,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Estado = message.Estado;
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
+            model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
+            model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
+            model.Pais = catalogoService.GetPaisById(message.Pais);
         }
     }
 }
