@@ -36,18 +36,33 @@
 	
 	        <% using (Html.BeginForm("Create", "Articulo")){ %>
 	            <%=Html.AntiForgeryToken() %>
-	            <%=Html.Hidden("Id", Model.Form.Id) %>        
-            
+	            <%=Html.Hidden("Id", Model.Form.Id) %>
+                
+                <h4>Datos de la publicaci&oacute;n</h4>
+                <p>
+                    <label>Nombre del art&iacute;culo</label>
+                    <%=Html.TextBox("Titulo", Model.Form.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("Titulo")%>
+                </p>
+                <p>
+                    <label>Tipo de art&iacute;culo</label>
+                    <%=Html.DropDownList("TipoArticulo", Model.Form.TiposArticulos.CreateSelectList<TipoArticuloForm>("Id", "Nombre"),
+                                        "Seleccione ...", new { @class = "tipo requerido" })%>
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("TipoArticulo") %>
+                </p>
+                
+                <h4>Coautores<span class="cvu"></span></h4>
+				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
+	            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>	            
+	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
             
 	            <h4>Referencia bibliogr&aacute;fica</h4>
 	            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-            
-	            <h4>Coautores<span class="cvu"></span></h4>
-				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-	            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-            
-	            <h4>Opcionales</h4>
+	            
+	            <h4>Complementaria CVU</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             
 	            <p class="submit">

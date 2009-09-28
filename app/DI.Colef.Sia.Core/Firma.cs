@@ -5,7 +5,7 @@ using SharpArch.Core.DomainModel;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
 	public class Firma : Entity, IBaseEntity
-    {	
+    {
 		public virtual int TipoProducto { get; set; }
 
 		public virtual int Producto { get; set; }

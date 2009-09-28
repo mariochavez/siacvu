@@ -25,21 +25,6 @@
     <span class="cvu"></span>
 </p>
 <p>
-	<label>Palabra clave 1</label>
-	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
-	<span class="cvu"></span>
-</p>
-<p>
-	<label>Palabra clave 2</label>
-	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
-	<span class="cvu"></span>
-</p>
-<p>
-	<label>Palabra clave 3</label>
-    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
-	<span class="cvu"></span>
-</p>
-<p>
     <label>&Aacute;rea</label>
     <%=Html.DropDownList("Area", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeArea") })%>
@@ -56,4 +41,19 @@
     <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
                 "Seleccione ...")%>
     <span class="cvu"></span>
+</p>
+<p>
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
+</p>
+<p>
+	<label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
+</p>
+<p>
+	<label>Palabra clave 3</label>
+    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
 </p>

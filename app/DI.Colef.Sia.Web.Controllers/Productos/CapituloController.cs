@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class CapituloController : BaseController<Capitulo, CapituloForm>
     {
+        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IAreaMapper areaMapper;
         readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
@@ -50,9 +51,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
-                                  ISearchService searchService, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
+                                  ISearchService searchService, IProyectoMapper proyectoMapper,
+                                  IProyectoService proyectoService, IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+            this.areaTematicaMapper = areaTematicaMapper;
             this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
@@ -485,6 +488,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
 
             //Lista de Catalogos Pendientes
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
@@ -511,6 +515,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Pais"] = form.PaisId;
+            ViewData["AreaTematica"] = form.AreaTematicaId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoParticipante"] = form.TipoParticipanteId;

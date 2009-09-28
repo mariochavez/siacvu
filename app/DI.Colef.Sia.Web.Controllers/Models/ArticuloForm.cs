@@ -13,13 +13,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaginaFinal { get; set; }
         public string FechaEdicion { get; set; }
         public int Participantes { get; set; }
+        public int PosicionAutor { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
         public string FechaPublicacion { get; set; }
         public int Puntuacion { get; set; }
         public bool Activo { get; set; }
+        public bool TieneProyecto { get; set; }
+        public bool ArticuloTraducido { get; set; }
         public string Modificacion { get; set; }
+
+        public string InstitucionNombre { get; set; }
+        public int InstitucionId { get; set; }
 
         public int TipoArticulo { get; set; }
         public int TipoArticuloId { get; set; }
@@ -32,6 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
         public string EstadoProductoNombre { get; set; }
+
+        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
 
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
@@ -95,6 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoArticuloForm[] TiposArticulos { get; set; }
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public PaisForm[] Paises { get; set; }

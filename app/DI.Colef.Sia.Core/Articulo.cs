@@ -36,6 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual EstadoProducto EstadoProducto { get; set; }
 
+        public virtual Institucion Institucion { get; set; }
+
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
@@ -43,6 +45,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaPublicacion { get; set; }
 
         public virtual LineaTematica LineaTematica { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]
@@ -52,7 +56,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Volumen { get; set; }
 
+        public virtual bool TieneProyecto { get; set; }
+
+        public virtual bool ArticuloTraducido { get; set; }
+
         public virtual int Numero { get; set; }
+
+        public virtual int PosicionAutor { get; set; }
 
         public virtual int PaginaInicial { get; set; }
 

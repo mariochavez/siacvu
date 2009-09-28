@@ -49,7 +49,7 @@ function capituloSetup() {
 function articuloSetup() {
     $('#TipoArticulo').dynamicui(
             [
-                ['Artículo traducido a otro idioma', ['#idioma_field']],
+                //['Artículo traducido a otro idioma', ['#idioma_field']],
                 ['Artículo con arbitraje', ['.indice_field']]
             ]
         );
@@ -63,6 +63,22 @@ function articuloSetup() {
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
+    
+    $('#TieneProyecto').dynamicui(
+        [
+            ['1', ['#SelectProyecto_p']]
+        ]
+    );
+
+    $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#ArticuloTraducido').dynamicui(
+        [
+            ['1', ['#idioma_field']]
+        ]
+    );
+
+    $('#ArticuloTraducido')[0].dynamic.setup();
 }
 
 function participacionSetup() {

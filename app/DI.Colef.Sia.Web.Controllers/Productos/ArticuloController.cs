@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoService proyectoService;
 
@@ -47,9 +48,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper, 
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
-                                  IProyectoMapper proyectoMapper, IProyectoService proyectoService)
+                                  IProyectoMapper proyectoMapper, IProyectoService proyectoService,
+                                  IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+            this.areaTematicaMapper = areaTematicaMapper;
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
@@ -98,7 +101,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -417,6 +422,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
@@ -443,6 +449,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
+            ViewData["AreaTematica"] = form.AreaTematicaId;
 
             ViewData["Pais"] = form.PaisId;
             ViewData["Indice1"] = form.Indice1Id;
