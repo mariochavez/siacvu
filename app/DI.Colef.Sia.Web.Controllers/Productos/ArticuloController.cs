@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoService proyectoService;
+        readonly ITipoArchivoMapper tipoArchivoMapper;
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, 
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
@@ -49,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
                                   IProyectoMapper proyectoMapper, IProyectoService proyectoService,
-                                  IAreaTematicaMapper areaTematicaMapper)
+                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -75,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.estadoProductoMapper = estadoProductoMapper;
             this.proyectoMapper = proyectoMapper;
             this.proyectoService = proyectoService;
+            this.tipoArchivoMapper = tipoArchivoMapper;
         }
 
         [Authorize]
@@ -419,6 +421,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
             form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
+
+            form.ArchivoArticulo = new ArchivoForm
+                                       {
+                                           TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos())
+                                       };
 
             //Lista de Catalogos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());

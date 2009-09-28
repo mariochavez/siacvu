@@ -881,6 +881,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoCapitulo, TipoCapituloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            
             Mapper.CreateMap<PeriodoReferencia, PeriodoReferenciaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
@@ -888,9 +889,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>());
+
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Indice1,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice2,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice3,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore());
 
             Mapper.CreateMap<Nivel, NivelForm>()
                 .ForMember(d => d.Modificacion,

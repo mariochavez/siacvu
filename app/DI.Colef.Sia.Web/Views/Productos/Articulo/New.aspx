@@ -64,6 +64,9 @@
 	            
 	            <h4>Complementaria CVU</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+				
+				<h4>Adjuntar archivo</h4>
+				<% Html.RenderPartial("_Files", Model.Form.ArchivoArticulo); %>
             
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>

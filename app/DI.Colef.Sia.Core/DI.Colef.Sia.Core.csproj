@@ -163,6 +163,7 @@
     <Compile Include="NHibernateValidator\ProyectoValidator.cs" />
     <Compile Include="NHibernateValidator\ReporteValidator.cs" />
     <Compile Include="NHibernateValidator\ResenaValidator.cs" />
+    <Compile Include="NHibernateValidator\RevistaPublicacionValidator.cs" />
     <Compile Include="NHibernateValidator\TesisDirigidaValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
