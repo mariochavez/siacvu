@@ -596,8 +596,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Indice3,
                            o => o.Ignore())
                 .ForMember(d => d.AreaTematica,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()

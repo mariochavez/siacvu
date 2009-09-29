@@ -66,7 +66,7 @@ function articuloSetup() {
     
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['#SelectProyecto_p']]
+            ['1', ['.TieneProyecto']]
         ]
     );
 

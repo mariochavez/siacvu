@@ -30,8 +30,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.TipoArticulo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.EstadoProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.FechaAceptacion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.Proyecto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.LineaTematica, "LineaTematicaNombre",
                                                             constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.RevistaPublicacion, "RevistaPublicacionTitulo",
@@ -103,7 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 if (articulo.Proyecto == null)
                 {
-                    constraintValidatorContext.AddInvalid("seleccione el proyecto|Proyecto", "Proyecto");
+                    constraintValidatorContext.AddInvalid("seleccione el proyecto|ProyectoNombre", "ProyectoNombre");
 
                     isValid = false;
                 }
