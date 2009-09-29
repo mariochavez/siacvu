@@ -3,105 +3,112 @@ DROP VIEW [dbo].[Usuarios]
 GO
 
 CREATE VIEW Usuarios AS
-SELECT     17 AS Id, 'Maria Elena' AS Nombre, 'Melendez' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'elena' AS UsuarioNombre, 'elena' AS Clave, 
+SELECT     18 AS Id, 'Maria Elena' AS Nombre, 'Melendez' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'elena' AS UsuarioNombre, 'elena' AS Clave, 
                       'administrador@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-07-29' AS FechaNacimiento, '2005-11-21' AS FechaIngreso, 0 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     16 AS Id, 'Elvira Gloria' AS Nombre, 'Canales' AS ApellidoPaterno, 'Mapula' AS ApellidoMaterno, 'cintia' AS UsuarioNombre, 'cintia' AS Clave, 
+SELECT     17 AS Id, 'Elvira Gloria' AS Nombre, 'Canales' AS ApellidoPaterno, 'Mapula' AS ApellidoMaterno, 'cintia' AS UsuarioNombre, 'cintia' AS Clave, 
                       'dgaa@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1987-01-14' AS FechaNacimiento, '1999-03-07' AS FechaIngreso, 0 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     15 AS Id, 'Alfredo' AS Nombre, 'Hualde' AS ApellidoPaterno, 'Alfaro' AS ApellidoMaterno, 'invhualde' AS UsuarioNombre, 'hualde' AS Clave, 
+SELECT     16 AS Id, 'Alfredo' AS Nombre, 'Hualde' AS ApellidoPaterno, 'Alfaro' AS ApellidoMaterno, 'invhualde' AS UsuarioNombre, 'hualde' AS Clave, 
                       'investigador15@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     14 AS Id, 'Maria del Rocio' AS Nombre, 'Barajas' AS ApellidoPaterno, 'Escamilla' AS ApellidoMaterno, 'invbarajas' AS UsuarioNombre, 
+SELECT     15 AS Id, 'Maria del Rocio' AS Nombre, 'Barajas' AS ApellidoPaterno, 'Escamilla' AS ApellidoMaterno, 'invbarajas' AS UsuarioNombre, 
                       'barajas' AS Clave, 'investigador14@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 
                       1 AS Investigador, 1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     13 AS Id, 'Jorge Agustin' AS Nombre, 'Bustamante' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'invbustamante' AS UsuarioNombre, 
+SELECT     14 AS Id, 'Jorge Agustin' AS Nombre, 'Bustamante' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'invbustamante' AS UsuarioNombre, 
                       'bustamante' AS Clave, 'investigador13@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso,
                        1 AS Investigador, 1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     12 AS Id, 'Rodolfo' AS Nombre, 'Cruz' AS ApellidoPaterno, 'Piñeiro' AS ApellidoMaterno, 'invcruz' AS UsuarioNombre, 'cruz' AS Clave, 
+SELECT     13 AS Id, 'Rodolfo' AS Nombre, 'Cruz' AS ApellidoPaterno, 'Piñeiro' AS ApellidoMaterno, 'invcruz' AS UsuarioNombre, 'cruz' AS Clave, 
                       'investigador12@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     11 AS Id, 'Teresa Elizabeth' AS Nombre, 'Cueva' AS ApellidoPaterno, 'Luna' AS ApellidoMaterno, 'invCueva' AS UsuarioNombre, 'cueva' AS Clave, 
+SELECT     12 AS Id, 'Teresa Elizabeth' AS Nombre, 'Cueva' AS ApellidoPaterno, 'Luna' AS ApellidoMaterno, 'invCueva' AS UsuarioNombre, 'cueva' AS Clave, 
                       'investigador11@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     10 AS Id, 'Carlos Alfonso' AS Nombre, 'De la Parra' AS ApellidoPaterno, 'Renteria' AS ApellidoMaterno, 'invrenteria' AS UsuarioNombre, 
+SELECT     11 AS Id, 'Carlos Alfonso' AS Nombre, 'De la Parra' AS ApellidoPaterno, 'Renteria' AS ApellidoMaterno, 'invrenteria' AS UsuarioNombre, 
                       'renteria' AS Clave, 'investigador10@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 
                       1 AS Investigador, 1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     9 AS Id, 'Laura' AS Nombre, 'Flamand' AS ApellidoPaterno, 'Gomez' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
+SELECT     10 AS Id, 'Laura' AS Nombre, 'Flamand' AS ApellidoPaterno, 'Gomez' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
                       'investigador9@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     8 AS Id, 'Tonatiuh' AS Nombre, 'Guillén' AS ApellidoPaterno, 'López' AS ApellidoMaterno, 'invguillen' AS UsuarioNombre, 'guillen' AS Clave, 
+SELECT     9 AS Id, 'Tonatiuh' AS Nombre, 'Guillén' AS ApellidoPaterno, 'López' AS ApellidoMaterno, 'invguillen' AS UsuarioNombre, 'guillen' AS Clave, 
                       'investigador8@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     7 AS Id, 'Redi' AS Nombre, 'Gomis' AS ApellidoPaterno, 'Hernández' AS ApellidoMaterno, 'invgomis' AS UsuarioNombre, 'gomis' AS Clave, 
+SELECT     8 AS Id, 'Redi' AS Nombre, 'Gomis' AS ApellidoPaterno, 'Hernández' AS ApellidoMaterno, 'invgomis' AS UsuarioNombre, 'gomis' AS Clave, 
                       'investigador7@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     6 AS Id, 'Silvia' AS Nombre, 'López' AS ApellidoPaterno, 'Estrada' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
+SELECT     7 AS Id, 'Silvia' AS Nombre, 'López' AS ApellidoPaterno, 'Estrada' AS ApellidoMaterno, 'invflamand' AS UsuarioNombre, 'flamand' AS Clave, 
                       'investigador6@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     5 AS Id, 'Sárah Eva' AS Nombre, 'Martinez' AS ApellidoPaterno, 'Pellégrini' AS ApellidoMaterno, 'invmartinez' AS UsuarioNombre, 'martinez' AS Clave, 
+SELECT     6 AS Id, 'Sárah Eva' AS Nombre, 'Martinez' AS ApellidoPaterno, 'Pellégrini' AS ApellidoMaterno, 'invmartinez' AS UsuarioNombre, 'martinez' AS Clave, 
                       'investigador5@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1970-06-05' AS FechaNacimiento, '2000-04-03' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     4 AS Id, 'Jorge Héctor' AS Nombre, 'Carrillo' AS ApellidoPaterno, 'Viveros' AS ApellidoMaterno, 'invcarrillo' AS UsuarioNombre, 'carrillo' AS Clave, 
+SELECT     5 AS Id, 'Jorge Héctor' AS Nombre, 'Carrillo' AS ApellidoPaterno, 'Viveros' AS ApellidoMaterno, 'invcarrillo' AS UsuarioNombre, 'carrillo' AS Clave, 
                       'investigador4@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     3 AS Id, 'Sergio' AS Nombre, 'Peña' AS ApellidoPaterno, 'Medina' AS ApellidoMaterno, 'invmedina' AS UsuarioNombre, 'medina' AS Clave, 
+SELECT     4 AS Id, 'Sergio' AS Nombre, 'Peña' AS ApellidoPaterno, 'Medina' AS ApellidoMaterno, 'invmedina' AS UsuarioNombre, 'medina' AS Clave, 
                       'investigador3@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     2 AS Id, 'José María' AS Nombre, 'Ramos' AS ApellidoPaterno, 'Garcia' AS ApellidoMaterno, 'invramos' AS UsuarioNombre, 'ramos' AS Clave, 
+SELECT     3 AS Id, 'José María' AS Nombre, 'Ramos' AS ApellidoPaterno, 'Garcia' AS ApellidoMaterno, 'invramos' AS UsuarioNombre, 'ramos' AS Clave, 
                       'investigador2@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION
-SELECT     1 AS Id, 'Gudelia' AS Nombre, 'Rangel' AS ApellidoPaterno, 'Gómez' AS ApellidoMaterno, 'invrangel' AS UsuarioNombre, 'rangel' AS Clave, 
+SELECT     2 AS Id, 'Gudelia' AS Nombre, 'Rangel' AS ApellidoPaterno, 'Gómez' AS ApellidoMaterno, 'invrangel' AS UsuarioNombre, 'rangel' AS Clave, 
                       'investigador1@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
+					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
+					  'PRT456' AS CodigoRH
+UNION
+SELECT	   1 AS Id, 'Administrador' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMaterno,
+					  'administrador' AS UsuarioNombre, 'password' AS Clave, 'administrador@colef.mx' AS CorreoElectronico,
+					  'M' AS Sexo, '1975-07-29' AS FechaNacimiento, '2005-11-21' AS FechaIngreso, 0 AS Investigador, 1 AS Activo,
+					  'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'ZXCV456123789TJ' AS CURP, 'ZXCV784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH
 UNION

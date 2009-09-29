@@ -92,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoArticuloForm CoautorInternoArticulo { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public ArchivoForm ArchivoArticulo { get; set; }
+        public int TotalAutores { get; set; }
 
         /* Catalogos */
         public TipoArticuloForm[] TiposArticulos { get; set; }

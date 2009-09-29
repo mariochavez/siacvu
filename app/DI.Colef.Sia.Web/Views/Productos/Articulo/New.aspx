@@ -55,7 +55,7 @@
                 
                 <h4>Coautores<span class="cvu"></span></h4>
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-	            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>	            
+	            <% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>            
 	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
             
