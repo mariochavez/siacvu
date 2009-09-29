@@ -55,10 +55,10 @@ function articuloSetup() {
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
-    
+
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['.TieneProyecto']]
+            ['1', ['.tieneproyecto_field']]
         ]
     );
 

@@ -28,18 +28,18 @@
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
-<p class="TieneProyecto">
+<p class="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="TieneProyecto">
+<p class="tieneproyecto_field">
     <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.Encode(Model.LineaTematicaNombre)%>
 </p>
-<p class="TieneProyecto">
+<p class="tieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
     <%=Html.Encode(Model.AreaTematicaNombre)%>
 </p>
