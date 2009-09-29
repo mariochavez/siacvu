@@ -81,6 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
+        public int TotalAutores { get; set; }
 		
 		public CoautorExternoLibroForm[] CoautorExternoLibros { get; set; }
 		public CoautorInternoLibroForm[] CoautorInternoLibros { get; set; }

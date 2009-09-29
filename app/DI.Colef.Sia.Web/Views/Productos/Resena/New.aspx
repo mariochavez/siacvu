@@ -40,6 +40,9 @@
                 <h4>Coautores</h4>
 				<% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
+	            <div class="minilista" id="totalautores_form">
+	                <h5>Creador del articulo + coautores internos + coautores externos = <%=Html.Encode(Model.Form.TotalAutores) %></h5>
+	            </div>
                 
                 <h4>Referencia bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>

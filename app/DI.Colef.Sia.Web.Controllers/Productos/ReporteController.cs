@@ -81,6 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -101,6 +102,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var reporteForm = reporteMapper.Map(reporte);
 
             data.Form = SetupNewForm(reporteForm);
+            data.Form.TotalAutores = reporte.CoautorExternoReportes.Count +
+                                     reporte.CoautorInternoReportes.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -245,6 +248,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoReporte")] CoautorInternoReporteForm form,
                                               int reporteId)
         {
+            var totalAutores = new int();
             var coautorInternoReporte = coautorInternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoReporte.ValidationResults(), true, String.Empty);
@@ -261,9 +265,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var reporte = reporteService.GetReporteById(reporteId);
                 reporte.AddCoautorInterno(coautorInternoReporte);
                 reporteService.SaveReporte(reporte);
+                totalAutores = reporte.CoautorExternoReportes.Count +
+                               reporte.CoautorInternoReportes.Count + 1;
             }
 
             var coautorInternoReporteForm = coautorInternoReporteMapper.Map(coautorInternoReporte);
+            coautorInternoReporteForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoReporteForm);
         }
@@ -290,6 +297,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoReporte")] CoautorExternoReporteForm form,
                                               int reporteId)
         {
+            var totalAutores = new int();
             var coautorExternoReporte = coautorExternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoReporte.ValidationResults(), true, String.Empty);
@@ -306,9 +314,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var reporte = reporteService.GetReporteById(reporteId);
                 reporte.AddCoautorExterno(coautorExternoReporte);
                 reporteService.SaveReporte(reporte);
+                totalAutores = reporte.CoautorExternoReportes.Count +
+                               reporte.CoautorInternoReportes.Count + 1;
             }
 
             var coautorExternoReporteForm = coautorExternoReporteMapper.Map(coautorExternoReporte);
+            coautorExternoReporteForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoReporteForm);
         }

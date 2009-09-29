@@ -302,7 +302,18 @@ var LocalForm = {
             $(handle + '_new').fadeIn('slow');
         }
 
+        LocalForm.calculateAutores();
+
         return false;
+    },
+    calculateAutores: function() {
+        var autorString = $('div#totalautores_form h5').text();
+        var searchValue = autorString.search(/=/);
+        var subtotalAutores = autorString.substring(searchValue + 1);
+
+        var totalAutores = parseInt(subtotalAutores) + 1;
+
+        $('div#totalautores_form h5').text('Creador del articulo + coautores internos + coautores externos = ' + totalAutores);
     }
 };
 

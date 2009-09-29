@@ -50,6 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string TipoParticipacionNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
+        public int TotalAutores { get; set; }
         
         public CoautorExternoEventoForm[] CoautorExternoEventos { get; set; }
         public CoautorInternoEventoForm[] CoautorInternoEventos { get; set; }

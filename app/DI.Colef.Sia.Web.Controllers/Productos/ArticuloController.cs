@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IIdiomaMapper idiomaMapper;
         readonly IPaisMapper paisMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IIndiceMapper indiceMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
@@ -40,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, 
                                   IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, 
-                                  IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, 
+                                  ILineaInvestigacionMapper lineaInvestigacionMapper, 
                                   ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, 
                                   IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
                                   IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, 
@@ -62,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.indiceMapper = indiceMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -359,7 +357,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 articulo.AddCoautorInterno(coautorInternoArticulo);
                 articuloService.SaveArticulo(articulo);
                 totalAutores = articulo.CoautorExternoArticulos.Count +
-                                                          articulo.CoautorInternoArticulos.Count + 1;
+                               articulo.CoautorInternoArticulos.Count + 1;
             }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
