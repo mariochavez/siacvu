@@ -24,9 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                                    .Add(Projections.Property("u.Id"), "UsuarioId"));
 
             var usuarios = Session.CreateCriteria(typeof (Usuario))
-                .CreateAlias("Roles", "r")
-                .Add(Expression.Eq("r.Nombre", "Investigadores"))
-                .Add(Expression.Eq("r.Activo", true))
+                .Add(Expression.Eq("Investigador", true))
                 .Add(Subqueries.PropertyNotIn("Id", investigadores))
                 .AddOrder(Order.Asc("ApellidoPaterno"))
                 .AddOrder(Order.Asc("ApellidoMaterno"))

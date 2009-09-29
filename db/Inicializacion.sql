@@ -106,7 +106,7 @@ SELECT     1 AS Id, 'Gudelia' AS Nombre, 'Rangel' AS ApellidoPaterno, 'Gómez' AS
 					  'PRT456' AS CodigoRH
 UNION
 SELECT     50 AS Id, 'Mario' AS Nombre, 'Chavez' AS ApellidoPaterno, 'Cardenas' AS ApellidoMaterno, 'mario.chavez' AS UsuarioNombre, 'password' AS Clave, 
-                      'investigador1@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
+                      'investigador1@colef.mx' AS CorreoElectronico, 'H' AS Sexo, '1975-08-25' AS FechaNacimiento, '2002-08-13' AS FechaIngreso, 1 AS Investigador, 
                       1 AS Activo, 'Conocida' AS Direccion, '664 951 1236' AS Telefono, 'Casado' AS EstadoCivil, 'QWERTY96321' AS DocumentosIdentidad,
 					  'CACM456123789TJ' AS CURP, 'CACM784512' AS RFC, 'CELPRO142536' AS CedulaProfesional, 'Mexicana' AS Nacionalidad,
 					  'PRT456' AS CodigoRH

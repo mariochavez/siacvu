@@ -43,27 +43,26 @@
                                                         "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changeuser") })%>
                         <%=Html.ValidationMessage("Usuario") %>
                     </p>
-                    <p>
-			            <label>Sexo</label>
-			            <span id="sexo">&nbsp;</span>
-		            </p>
-		            <p>
-			            <label>Fecha de nacimiento</label>
-			            <span id="fechanacimiento">&nbsp;</span>
-			            <span>(Formato dd/mm/yyyy)</span>
-		            </p>
-		            <p>
-			            <label>Fecha de ingreso</label>
-			            <span id="fechaingreso">&nbsp;</span>
-			            <span>(Formato dd/mm/yyyy)</span>
-		            </p>
+                    
+                    <% Html.RenderPartial("_InformacionPersonal", Model.Form); %>
+                    
+		            <h4>Perfil del investigador</h4>	            
                     <p>
                         <label>Ingreso como investigador</label>
 
                         <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class = "datetime input100-requerido", maxlength = 10 })%>
                         <span>(Formato dd/mm/yyyy)</span>
+                        <span class="cvu"></span>
                         <%=Html.ValidationMessage("FechaIngreso")%>
                     </p>
+                    <p>
+                        <label>Fecha de contrato</label>
+
+                        <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+                        <span>(Formato dd/mm/yyyy)</span>
+                        <span class="cvu"></span>
+                        <%=Html.ValidationMessage("FechaContrato")%>
+                    </p>                                      
 		            <p>
                         <label>Expediente SNI</label>
                         <%=Html.TextBox("ExpedienteSNI", Model.Form.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
@@ -81,7 +80,7 @@
                         <%=Html.TextBox("ClaveCVU", Model.Form.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
                     </p>
                 
-                    <h4>Estatus</h4>
+                    <h4>Estado</h4>
                     <% Html.RenderPartial("_NewEstado", Model.Form); %>
 
                     <h4>Grados</h4>

@@ -41,30 +41,22 @@
 			        <label>Usuario</label>
 			        <%=Html.Encode(Model.Form.Nombre) %>
 		        </p>
-		        <p>
-			        <label>Direcci&oacute;n</label>
-			        <%=Html.Encode(Model.Form.UsuarioDireccion) %>&nbsp;
-		        </p>
-		        <p>
-			        <label>Sexo</label>
-			        <%=Html.Encode(HumanizeHelper.Sexo(Model.Form.UsuarioSexo)) %>
-		        </p>
-		        <p>
-			        <label>Fecha de nacimiento</label>
-			        <%=Html.Encode(Model.Form.UsuarioFechaNacimiento) %>
-			        <span>(Formato dd/mm/yyyy)</span>
-		        </p>
-		        <p>
-			        <label>Fecha de ingreso</label>
-			        <%=Html.Encode(Model.Form.UsuarioFechaIngreso) %>
-			        <span>(Formato dd/mm/yyyy)</span>
-		        </p>
+		        
+		        <% Html.RenderPartial("_InformacionPersonal", Model.Form); %>
+		        
+		        <h4>Perfil del investigador</h4>
 		        <p>
 			        <label>Ingreso  como investigador</label>
 			        <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class="datetime input100-requerido", maxlength = 10 })%>
 			        <span>(Formato dd/mm/yyyy)</span>
 			        <%=Html.ValidationMessage("FechaIngreso")%>
 		        </p>
+	            <p>
+		            <label>Fecha de contrato</label>
+		            <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+		            <span>(Formato dd/mm/yyyy)</span>
+		            <%=Html.ValidationMessage("FechaContrato")%>
+	            </p>  		        
 		        <p>
                     <label>Expediente SNI</label>
                     <%=Html.TextBox("ExpedienteSNI", Model.Form.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
