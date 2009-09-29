@@ -13,13 +13,13 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Numero")%>
 </p>
-<p class="pagina_field">
+<p class="EstatusPublicado">
     <label>P&aacute;gina inicial</label> 
     <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaInicial")%>
 </p>
-<p class="pagina_field">    
+<p class="EstatusPublicado">    
     <label>P&aacute;gina final</label>
     <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>

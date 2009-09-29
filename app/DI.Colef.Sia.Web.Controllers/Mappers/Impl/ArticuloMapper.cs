@@ -43,8 +43,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.ArticuloTraducido = message.ArticuloTraducido;
-            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

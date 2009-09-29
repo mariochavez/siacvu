@@ -53,17 +53,18 @@
                 "Seleccione ...", new { @class = "estado requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
-<p>
+<p id="EstatusAceptado">
     <label>Fecha de aceptaci&oacute;n</label>
-    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "input100-requerido", maxlength = 4 })%>
-    <span>(Formato yyyy)</span>
+    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 4 })%>
+    <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
-<p>
+<p class="EstatusPublicado">
     <label>Fecha de publicaci&oacute;n</label>
-    <%=Html.TextBox("FechaPublicacion", Model.FechaAceptacion, new { @class = "input100", maxlength = 4 })%>
+    <%=Html.TextBox("FechaPublicacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 4 })%>
     <span class="cvu"></span>
-    <span>(Formato yyyy)</span>
+    <span>(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>
 <p>
     <label>Periodo de referencia</label>
