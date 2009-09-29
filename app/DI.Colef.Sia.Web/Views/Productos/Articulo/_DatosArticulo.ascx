@@ -28,24 +28,20 @@
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
-<p id="SelectProyecto_p">
+<p class="TieneProyecto">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
-    <%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...")%>
-    <%=Html.ValidationMessage("Proyecto") %>
+    <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
+    <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p>
+<p class="TieneProyecto">
     <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
-    <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
-    <%=Html.ValidationMessage("LineaTematicaNombre")%>
+    <%=Html.Encode(Model.LineaTematicaNombre)%>
 </p>
-<p>
+<p class="TieneProyecto">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.DropDownList("AreaTematica", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("AreaTematica")%>
+    <%=Html.Encode(Model.AreaTematicaNombre)%>
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>

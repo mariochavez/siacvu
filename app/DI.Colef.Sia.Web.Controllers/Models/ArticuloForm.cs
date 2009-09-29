@@ -47,8 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
-
-        public int Proyecto { get; set; }
+        
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
