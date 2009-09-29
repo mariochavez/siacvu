@@ -569,6 +569,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.AnioPublicacion,
+                           o => o.ResolveUsing<PublicacionResolver>())
                 .ForMember(d => d.TipoArticulo,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
@@ -588,12 +590,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Indice1,
-                           o => o.Ignore())
-                .ForMember(d => d.Indice2,
-                           o => o.Ignore())
-                .ForMember(d => d.Indice3,
                            o => o.Ignore())
                 .ForMember(d => d.AreaTematica,
                            o => o.Ignore())

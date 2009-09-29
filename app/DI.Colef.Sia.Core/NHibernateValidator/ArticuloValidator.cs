@@ -45,9 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (articulo.EstadoProducto != null)
                 isValid &= ValidateProductoEstado(articulo, constraintValidatorContext);
 
-            if (articulo.TipoArticulo != null)
-                isValid &= ValidateTipoArticulo(articulo, constraintValidatorContext);
-
             return isValid;
         }
 
@@ -115,40 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             return isValid;
         }
 
-        bool ValidateTipoArticulo(Articulo articulo, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-            
-            if (articulo.TipoArticulo.Nombre.Contains("con arbitraje"))
-            {
-                if (articulo.Indice1 == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el tipo de índice 1|Indice1", "Indice1");
-
-                    isValid = false;
-                }
-
-                if (articulo.Indice2 == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el tipo de índice 2|Indice2", "Indice2");
-
-                    isValid = false;
-                }
-
-                if (articulo.Indice3 == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el tipo de índice 3|Indice3", "Indice3");
-
-                    isValid = false;
-                }
-            }
-
-            return isValid;
-        }
-
         bool ValidateProductoEstado(Articulo articulo, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
@@ -202,6 +165,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
                     isValid = false;
                 }
+
+                if (articulo.FechaPublicacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaPublicacion", "FechaPublicacion");
+                    isValid = false;
+                }
             }
 
             if (articulo.EstadoProducto.Nombre.Contains("Aceptado"))
@@ -211,6 +181,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     constraintValidatorContext.AddInvalid(
                         "formato de fecha no Válido|FechaAceptacion", "FechaAceptacion");
 
+                    isValid = false;
+                }
+
+                if (articulo.FechaAceptacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
                     isValid = false;
                 }
             }

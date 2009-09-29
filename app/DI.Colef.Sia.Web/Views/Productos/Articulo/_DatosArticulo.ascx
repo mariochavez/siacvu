@@ -55,13 +55,13 @@
 </p>
 <p id="EstatusAceptado">
     <label>Fecha de aceptaci&oacute;n</label>
-    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p class="EstatusPublicado">
     <label>Fecha de publicaci&oacute;n</label>
-    <%=Html.TextBox("FechaPublicacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>

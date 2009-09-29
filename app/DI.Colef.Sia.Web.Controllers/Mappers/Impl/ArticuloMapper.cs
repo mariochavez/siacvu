@@ -50,9 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
-            model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
-            model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
-            model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);

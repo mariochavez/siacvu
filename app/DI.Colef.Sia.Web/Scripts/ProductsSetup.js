@@ -47,14 +47,6 @@ function capituloSetup() {
 }
 
 function articuloSetup() {
-    $('#TipoArticulo').dynamicui(
-            [                
-                ['Artículo con arbitraje', ['.indice_field']]
-            ]
-        );
-
-    $('#TipoArticulo')[0].dynamic.setup();
-
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],

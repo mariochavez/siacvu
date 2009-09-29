@@ -25,12 +25,12 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
-<p>
-    <label>A&ntilde;o de publicaci&oacute;n</label>
-    <%=Html.TextBox("FechaPublicacion", Model.FechaAceptacion, new { @class = "input100", maxlength = 4 })%>
-    <span class="cvu"></span>
-    <span>(Formato yyyy)</span>
-</p>
+<%if(Model.Id != 0){ %>
+    <p>
+        <label>A&ntilde;o de publicaci&oacute;n</label>
+        <%=Html.Encode(Model.AnioPublicacion) %>
+    </p>
+<% } %>
 <p>
     <label>Fecha de edici&oacute;n</label>    
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
@@ -47,22 +47,4 @@
     <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Idioma") %>
-</p>
-<p class="indice_field">
-    <label>&Iacute;ndice 1</label>
-    <%=Html.DropDownList("Indice1", Model.Indices1.CreateSelectList<IndiceForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Indice1")%>
-</p>
-<p class="indice_field">
-    <label>&Iacute;ndice 2</label>
-    <%=Html.DropDownList("Indice2", Model.Indices2.CreateSelectList<IndiceForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Indice2")%>
-</p>
-<p class="indice_field">
-    <label>&Iacute;ndice 3</label>
-    <%=Html.DropDownList("Indice3", Model.Indices3.CreateSelectList<IndiceForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Indice3")%>
 </p>

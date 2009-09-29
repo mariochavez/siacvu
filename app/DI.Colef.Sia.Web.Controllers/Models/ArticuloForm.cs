@@ -24,6 +24,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool ArticuloTraducido { get; set; }
         public string Modificacion { get; set; }
 
+        public string AnioPublicacion { get; set; }
+
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
@@ -56,18 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
-
-        public int Indice1 { get; set; }
-        public int Indice1Id { get; set; }
-        public string Indice1Nombre { get; set; }
-
-        public int Indice2 { get; set; }
-        public int Indice2Id { get; set; }
-        public string Indice2Nombre { get; set; }
-
-        public int Indice3 { get; set; }
-        public int Indice3Id { get; set; }
-        public string Indice3Nombre { get; set; }
 
         public int LineaInvestigacion { get; set; }
         public int LineaInvestigacionId { get; set; }
@@ -110,9 +100,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public PaisForm[] Paises { get; set; }
-        public IndiceForm[] Indices1 { get; set; }
-        public IndiceForm[] Indices2 { get; set; }
-        public IndiceForm[] Indices3 { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }

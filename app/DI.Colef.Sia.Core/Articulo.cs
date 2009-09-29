@@ -70,12 +70,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual Indice Indice1 { get; set; }
-
-        public virtual Indice Indice2 { get; set; }
-
-        public virtual Indice Indice3 { get; set; }
-
         public virtual DateTime FechaEdicion { get; set; }
 
         [Valid]

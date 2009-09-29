@@ -433,9 +433,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices());
-            form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
-            form.Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
@@ -459,9 +456,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaTematica"] = form.AreaTematicaId;
 
             ViewData["Pais"] = form.PaisId;
-            ViewData["Indice1"] = form.Indice1Id;
-            ViewData["Indice2"] = form.Indice2Id;
-            ViewData["Indice3"] = form.Indice3Id;
 
             ViewData["LineaInvestigacion"] = form.LineaInvestigacionId;
             ViewData["TipoActividad"] = form.TipoActividadId;

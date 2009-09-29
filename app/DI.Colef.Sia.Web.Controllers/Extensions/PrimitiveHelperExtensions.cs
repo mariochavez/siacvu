@@ -14,7 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Extensions
         {
             //Fecha Vacia se guarda como 01/01/1980
             if (value.IsNullOrEmpty())
-                return DateTime.ParseExact("01/01/1980", "dd/MM/yyyy", null);
+                return DateTime.ParseExact("01/01/1910", "dd/MM/yyyy", null);
 
             try
             {
@@ -32,7 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Extensions
         {
             //Fecha Vacia se guarda como 01/01/1980
             if (value.IsNullOrEmpty())
-                return DateTime.ParseExact("01/01/1980", "dd/MM/yyyy", null);
+                return DateTime.ParseExact("01/01/1910", "dd/MM/yyyy", null);
 
             try
             {
