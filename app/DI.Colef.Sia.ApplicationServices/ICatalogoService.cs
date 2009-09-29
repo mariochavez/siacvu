@@ -473,5 +473,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         AreaTematica[] GetActiveAreaTematicas();
         void SaveAreaTematica(AreaTematica areaTematica);
         AreaTematica[] GetAreaTematicasByLineaTematicaId(int id);
+
+        //Tipo Archivo
+        TipoArchivo GetTipoArchivoById(int id);
+        TipoArchivo[] GetAllTipoArchivos();
+        TipoArchivo[] GetActiveTipoArchivos();
+        void SaveTipoArchivo(TipoArchivo tipoArchivo);
     }
 }

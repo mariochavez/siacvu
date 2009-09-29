@@ -34,19 +34,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ArticuloForm message, Articulo model)
         {
             model.Titulo = message.Titulo;
+            model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
             model.Numero = message.Numero;
             model.Participantes = message.Participantes;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.PosicionAutor = message.PosicionAutor;
+            model.ArticuloTraducido = message.ArticuloTraducido;
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
 
-            model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
-            model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
-            model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
@@ -59,7 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
             if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")
             {

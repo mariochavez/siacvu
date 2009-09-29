@@ -74,18 +74,6 @@
                     <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>&Iacute;ndice 1</label>
-                    <strong><%= Html.Encode(Model.Form.Indice1Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Iacute;ndice 2</label>
-                    <strong><%= Html.Encode(Model.Form.Indice2Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Iacute;ndice 3</label>
-                    <strong><%= Html.Encode(Model.Form.Indice3Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
                     <label>Pa&iacute;s</label>
                     <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
                 </p>
@@ -98,8 +86,8 @@
                     <strong><%= Html.Encode(Model.Form.Numero)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>A&ntilde;o de publicaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
+                    <label>Fecha de publicaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha de edici&oacute;n</label>    
@@ -112,6 +100,10 @@
                 <p>    
                     <label>P&aacute;gina final</label>
                     <strong><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>A&ntilde;o de publicaci&oacute;n</label>
+                    <strong><%=Html.Encode(Model.Form.AnioPublicacion) %></strong><span>Formato (yyyy)</span>
                 </p>
                 
                 <h4>Coautores</h4>

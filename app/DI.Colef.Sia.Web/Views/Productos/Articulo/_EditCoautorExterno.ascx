@@ -32,3 +32,9 @@
 </div><!--end minilista-->
 
 <div id="coautorexterno_form" class="display:hidden;"></div>
+
+<div class="minilista" id="totalautores_form">
+    <h5>
+        Total de Autores = <%=Html.Encode(Model.TotalAutores) %>
+    </h5>
+</div>	

@@ -1,4 +1,5 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 using SharpArch.Core.NHibernateValidator;
@@ -6,6 +7,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
+    [RevistaPublicacionValidator]
     public class RevistaPublicacion : Entity, IBaseEntity
     {
         [DomainSignature]
@@ -27,6 +29,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string Estado { get; set; }
 
         public virtual Institucion Institucion { get; set; }
+
+        public virtual Pais Pais { get; set; }
+
+        public virtual Indice Indice1 { get; set; }
+
+        public virtual Indice Indice2 { get; set; }
+
+        public virtual Indice Indice3 { get; set; }
 
         public virtual int  Puntuacion { get; set; }
 

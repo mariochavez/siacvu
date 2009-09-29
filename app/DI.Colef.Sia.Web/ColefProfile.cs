@@ -120,6 +120,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
                            o => o.Ignore());
+
+            Mapper.CreateMap<Archivo, ArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateParticipacionAcademiaMaps()
@@ -560,11 +564,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<YearDateFormatter>())
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<YearDateFormatter>())
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.AnioPublicacion,
+                           o => o.ResolveUsing<PublicacionResolver>())
                 .ForMember(d => d.TipoArticulo,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
@@ -585,13 +591,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
-                .ForMember(d => d.Indice1,
-                           o => o.Ignore())
-                .ForMember(d => d.Indice2,
-                           o => o.Ignore())
-                .ForMember(d => d.Indice3,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
+                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoArticulo, CoautorInternoArticuloForm>()
@@ -875,6 +875,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoCapitulo, TipoCapituloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            
             Mapper.CreateMap<PeriodoReferencia, PeriodoReferenciaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
@@ -882,9 +883,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>());
+
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Indice1,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice2,
+                           o => o.Ignore())
+                .ForMember(d => d.Indice3,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore());
 
             Mapper.CreateMap<Nivel, NivelForm>()
                 .ForMember(d => d.Modificacion,
@@ -1053,6 +1063,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore());
+
+            Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

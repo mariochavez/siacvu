@@ -57,6 +57,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Idioma Idioma { get; set; }
 
+        public virtual Institucion Institucion { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
+        public virtual bool TieneProyecto { get; set; }
+
+        public virtual int PosicionAutor { get; set; }
+
         [Valid]
 		public virtual IList<CoautorExternoCapitulo> CoautorExternoCapitulos { get; private set; }
 

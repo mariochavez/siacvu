@@ -47,22 +47,30 @@ function capituloSetup() {
 }
 
 function articuloSetup() {
-    $('#TipoArticulo').dynamicui(
-            [
-                ['Artículo traducido a otro idioma', ['#idioma_field']],
-                ['Artículo con arbitraje', ['.indice_field']]
-            ]
-        );
-
-    $('#TipoArticulo')[0].dynamic.setup();
-
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.pagina_field']]
+                ['Publicado', ['.EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
             ]
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#TieneProyecto').dynamicui(
+        [
+            ['1', ['.tieneproyecto_field']]
+        ]
+    );
+
+    $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#ArticuloTraducido').dynamicui(
+        [
+            ['1', ['#idioma_field']]
+        ]
+    );
+
+    $('#ArticuloTraducido')[0].dynamic.setup();
 }
 
 function participacionSetup() {

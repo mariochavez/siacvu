@@ -73,6 +73,7 @@
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
+    <Compile Include="Archivo.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AreaTematica.cs" />
     <Compile Include="Articulo.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="EstatusProyecto.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="ExperienciaProfesional.cs" />
+    <Compile Include="Firma.cs" />
     <Compile Include="FondoConacyt.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="NHibernateValidator\ProyectoValidator.cs" />
     <Compile Include="NHibernateValidator\ReporteValidator.cs" />
     <Compile Include="NHibernateValidator\ResenaValidator.cs" />
+    <Compile Include="NHibernateValidator\RevistaPublicacionValidator.cs" />
     <Compile Include="NHibernateValidator\TesisDirigidaValidator.cs" />
     <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
     <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
@@ -220,6 +223,7 @@
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoApoyo.cs" />
+    <Compile Include="TipoArchivo.cs" />
     <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />

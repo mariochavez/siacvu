@@ -122,6 +122,16 @@
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
+    <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
+    <Compile Include="Mappers\ITipoArchivoMapper.cs" />
+    <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
+    <Compile Include="Models\ArchivoForm.cs" />
+    <Compile Include="Models\TipoArchivoForm.cs" />
+    <Compile Include="Catalogos\TipoArchivoController.cs" />
+    <Compile Include="Mappers\IFirmaMapper.cs" />
+    <Compile Include="Mappers\Impl\FirmaMapper.cs" />
+    <Compile Include="Models\FirmaForm.cs" />
+    <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />
     <Compile Include="Helpers\HumanizeHelper.cs" />

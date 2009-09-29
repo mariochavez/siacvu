@@ -43,6 +43,16 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             rolRepository.SaveOrUpdate(rol);
         }
 
+        public Rol[] GetActiveRoles()
+        {
+            return ((List<Rol>)rolRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public Usuario[] GetAllUsuarios()
+        {
+            return ((List<Usuario>)usuarioRepository.GetAll()).ToArray();
+        }
+
         public Usuario GetUsuarioById(int id)
         {
             return usuarioRepository.Get(id);
@@ -53,6 +63,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             var parameters = new Dictionary<string, object> {{"UsuarioNombre", username}};
 
             return usuarioRepository.FindOne(parameters);   
+        }
+
+        public void SaveUsuario(Usuario usuario)
+        {
+            usuarioRepository.SaveOrUpdate(usuario);
         }
 
         public Investigador GetInvestigadorByUsuario(Usuario usuario)

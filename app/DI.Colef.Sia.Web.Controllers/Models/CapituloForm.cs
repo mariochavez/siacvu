@@ -16,6 +16,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Resumen { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+        public int PosicionAutor { get; set; }
+        public bool TieneProyecto { get; set; }
+
+        public string InstitucionNombre { get; set; }
+        public int InstitucionId { get; set; }
+
+        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
 
         public int TipoCapitulo { get; set; }
         public int TipoCapituloId { get; set; }
@@ -79,6 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		/* Catalogos */
 
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }

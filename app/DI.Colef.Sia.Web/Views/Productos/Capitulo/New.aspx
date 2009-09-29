@@ -37,22 +37,42 @@
 	        <% using (Html.BeginForm("Create", "Capitulo")){ %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
-            
-	            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
-            
+                
+                <h4>Datos de la publicaci&oacute;n</h4>
+                <p>
+                    <label>Nombre del cap&iacute;tulo</label>
+                    <%=Html.TextBox("NombreCapitulo", Model.Form.NombreCapitulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("NombreCapitulo")%>
+                </p>
+                <p>
+                    <label>Tipo de cap&iacute;tulo</label>
+                    <%=Html.DropDownList("TipoCapitulo", Model.Form.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
+                                        "Seleccione ...", new { @class = "tipo requerido" })%>
+                    <%=Html.ValidationMessage("TipoCapitulo") %>
+                </p>
+                <p id="idioma_field">
+                    <label>Idioma al que se tradujo</label>
+                    <%=Html.DropDownList("Idioma", Model.Form.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
+                                "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("Idioma") %>
+                </p>
+	            
 	            <h4>Coautores<span class="cvu"></span></h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
 				<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-            
+				
+	            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
+	            
 	            <h4>Referencia bibliogr&aacute;fica</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
-	            <h4>Responsables</h4>
+	            <h4>Responsables del libro</h4>
 	            <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
 	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
 				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>        
             
-	            <h4>Opcionales</h4>
+	            <h4>Complementaria CVU</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
             
 	            <p class="submit">
