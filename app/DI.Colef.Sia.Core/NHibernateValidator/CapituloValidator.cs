@@ -30,22 +30,45 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.TipoCapitulo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.EstadoProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FechaAceptacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FechaEdicion, constraintValidatorContext);
-                //isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Proyecto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.LineaTematica, "LineaTematicaNombre",
                                                             constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.NombreLibro, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.AutorLibro, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Editorial, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.NoPaginas, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FormaParticipacion, constraintValidatorContext);
             }
 
+            isValid &= TieneProyecto(capitulo, constraintValidatorContext);
             isValid &= ValidateFechas(capitulo, constraintValidatorContext);
 
             if (capitulo.TipoCapitulo != null)
                 isValid &= ValidateTipoCapitulo(capitulo, constraintValidatorContext);
+
+            if (capitulo.EstadoProducto != null)
+                isValid &= ValidateProductoEstado(capitulo, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        bool TieneProyecto(Capitulo capitulo, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (capitulo.TieneProyecto)
+            {
+                if (capitulo.Proyecto == null)
+                {
+                    constraintValidatorContext.AddInvalid("seleccione el proyecto|ProyectoNombre", "ProyectoNombre");
+
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
@@ -54,24 +77,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (capitulo.FechaAceptacion == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
-                isValid = false;
-            }
-
             if (capitulo.FechaEdicion == DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
                     "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (capitulo.FechaAceptacion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
                 isValid = false;
             }
 
@@ -106,6 +115,52 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     constraintValidatorContext.AddInvalid(
                        "seleccione si tiene traductor|Traductor", "Traductor");
 
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
+        }
+
+        bool ValidateProductoEstado(Capitulo capitulo, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (capitulo.EstadoProducto.Nombre.Contains("Publicado"))
+            {
+                if (capitulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "formato de fecha no Válido|FechaPublicacion", "FechaPublicacion");
+
+                    isValid = false;
+                }
+
+                if (capitulo.FechaPublicacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaPublicacion", "FechaPublicacion");
+                    isValid = false;
+                }
+            }
+
+            if (capitulo.EstadoProducto.Nombre.Contains("Aceptado"))
+            {
+                if (capitulo.FechaAceptacion <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "formato de fecha no Válido|FechaAceptacion", "FechaAceptacion");
+
+                    isValid = false;
+                }
+
+                if (capitulo.FechaAceptacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
                     isValid = false;
                 }
             }

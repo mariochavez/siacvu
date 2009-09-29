@@ -45,13 +45,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NoPaginas = message.NoPaginas;
             model.Volumen = message.Volumen;
             model.PosicionAutor = message.PosicionAutor;
-            //model.Editores = message.Editores;
+            model.AutorLibro = message.AutorLibro;
             model.Traductor = message.Traductor;
-            //model.NombreTraductor = message.NombreTraductor;
             model.Resumen = message.Resumen;
             model.TieneProyecto = message.TieneProyecto;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo)

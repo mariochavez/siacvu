@@ -4,8 +4,8 @@
 <p>
     <label>Coautor externo</label>
     <%=Html.TextBox("CoautorExternoArticulo.InvestigadorExternoNombre", Model.CoautorExternoArticulo.InvestigadorExternoNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "CoautorExternoArticulo"), maxlength = 100 })%>
-    <%=Html.Hidden("CoautorExternoArticulo.InvestigadorExternoId", Model.CoautorExternoArticulo.InvestigadorExternoId, new { rel = "#CoautorExternoArticulo.InvestigadorExternoNombre" })%>
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "#InvestigadorExterno"), maxlength = 100 })%>
+    <%=Html.Hidden("CoautorExternoArticulo.InvestigadorExternoId", Model.CoautorExternoArticulo.InvestigadorExternoId, new { rel = "#InvestigadorExterno" })%>
     
     <%--<%=Html.DropDownList("CoautorExternoArticulo.InvestigadorExternoId", Model.CoautoresExternos.CreateSelectList<InvestigadorExternoForm>("Id", "Nombre"),
                 "Seleccione ...", new { rel = "#coautorexterno", @class = "requerido" })%>

@@ -47,6 +47,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual DateTime FechaAceptacion { get; set; }
 
+        public virtual DateTime FechaPublicacion { get; set; }
+
 		public virtual DateTime FechaEdicion { get; set; }
 
         public virtual EstadoProducto EstadoProducto { get; set; }
@@ -90,8 +92,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int Puntuacion { get; set; }
 
 		public virtual string Volumen { get; set; }
-		
-		//public virtual string Editores { get; set; }
         
 		public virtual TipoParticipacion TipoParticipacion { get; set; }
         
@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         
 		public virtual bool Traductor { get; set; }
         
-		//public virtual string NombreTraductor { get; set; }
+		public virtual string AutorLibro { get; set; }
 		
 		public virtual string Resumen { get; set; }
 
