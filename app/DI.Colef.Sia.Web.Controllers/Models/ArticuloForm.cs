@@ -48,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
+        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }

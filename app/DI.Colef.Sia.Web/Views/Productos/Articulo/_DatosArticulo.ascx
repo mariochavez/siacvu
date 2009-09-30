@@ -37,11 +37,11 @@
 </p>
 <p class="tieneproyecto_field">
     <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.Encode(Model.LineaTematicaNombre)%>
+    <%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>
 </p>
 <p class="tieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.Encode(Model.AreaTematicaNombre)%>
+    <%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
