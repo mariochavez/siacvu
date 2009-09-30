@@ -44,6 +44,23 @@ function capituloSetup() {
         );
 
     $('#TipoCapitulo')[0].dynamic.setup();
+
+    $('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['.EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#TieneProyecto').dynamicui(
+        [
+            ['1', ['.tieneproyecto_field']]
+        ]
+    );
+    
+    $('#TieneProyecto')[0].dynamic.setup();
 }
 
 function articuloSetup() {
