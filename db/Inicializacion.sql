@@ -156,6 +156,7 @@ INSERT UsuarioRol VALUES(16, 2)
 INSERT UsuarioRol VALUES(17, 3)
 INSERT UsuarioRol VALUES(18, 1)
 INSERT UsuarioRol VALUES(51, 3)
+INSERT UsuarioRol VALUES(50, 2)
 
 insert into NivelIdiomas values('Bajo', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelIdiomas values('Medio', GETDATE(), GETDATE(), 1, 1, 1)

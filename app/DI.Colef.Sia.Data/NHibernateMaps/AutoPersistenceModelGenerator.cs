@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Alteration;
 using DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions;
 using FluentNHibernate;
 using FluentNHibernate.AutoMap;
@@ -21,9 +22,18 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps
                 .Where(GetAutoMappingFilter)
                 .ConventionDiscovery.Setup(GetConventions())
                 .WithSetup(GetSetup())
+                .WithAlterations(GetAlterations())
                 .UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
 
             return mappings;
+        }
+
+        Action<AutoMappingAlterationCollection> GetAlterations()
+        {
+            return c =>
+                {
+                    c.Add<CoautorInternoAlteration>();
+                };
         }
 
         private Action<AutoMappingExpressions> GetSetup()

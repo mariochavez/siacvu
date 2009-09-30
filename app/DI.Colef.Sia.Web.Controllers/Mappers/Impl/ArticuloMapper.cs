@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             foreach (var coautorId in coautoresInternos)
             {
                 var coautor =
-                    coautorInternoArticuloMapper.Map(new CoautorInternoArticuloForm { InvestigadorId = int.Parse(coautorId) });
+                    coautorInternoArticuloMapper.Map(new CoautorInternoProductoForm { InvestigadorId = int.Parse(coautorId) });
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;

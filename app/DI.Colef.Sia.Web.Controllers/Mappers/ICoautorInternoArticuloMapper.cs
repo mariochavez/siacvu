@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface ICoautorInternoArticuloMapper : IMapper<CoautorInternoArticulo, CoautorInternoArticuloForm>
+    public interface ICoautorInternoArticuloMapper : IMapper<CoautorInternoProducto, CoautorInternoProductoForm>
     {
     }
 }

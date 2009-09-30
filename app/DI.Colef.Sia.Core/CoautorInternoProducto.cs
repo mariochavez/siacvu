@@ -3,9 +3,11 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class CoautorInternoArticulo : Entity, IBaseEntity
+    public class CoautorInternoProducto : Entity, IBaseEntity
     {
         public virtual Investigador Investigador { get; set; }
+
+        public virtual int TipoProducto { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 
@@ -16,5 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+    }
+
+    
+    public class CoautorInternoArticulo : CoautorInternoProducto
+    {
+        
     }
 }

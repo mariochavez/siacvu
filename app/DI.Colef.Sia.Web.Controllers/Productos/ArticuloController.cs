@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IIdiomaMapper idiomaMapper;
         readonly IPaisMapper paisMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IIndiceMapper indiceMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
@@ -36,18 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
 
-        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, 
-                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
-                                  IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, 
-                                  IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, 
-                                  IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, 
-                                  ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, 
-                                  IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
-                                  IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, 
-                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper, 
-                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 
-                                  IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
-                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper)
+        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper, IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -62,7 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.indiceMapper = indiceMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -330,7 +317,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (articulo != null)
                 form.Id = articulo.Id;
 
-            form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
+            form.CoautorInternoProducto = new CoautorInternoProductoForm();
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
@@ -339,7 +326,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoArticulo")]CoautorInternoArticuloForm form, int articuloId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoArticulo")]CoautorInternoProductoForm form, int articuloId)
         {
             var totalAutores = new int();
             var coautorInternoArticulo = coautorInternoArticuloMapper.Map(form);
@@ -426,7 +413,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ArticuloForm();
 
             form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
-            form.CoautorInternoArticulo = new CoautorInternoArticuloForm();
+            form.CoautorInternoProducto = new CoautorInternoProductoForm();
 
             form.ArchivoArticulo = new ArchivoForm
                                        {

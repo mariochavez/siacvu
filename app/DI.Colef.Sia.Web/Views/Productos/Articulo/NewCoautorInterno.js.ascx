@@ -8,7 +8,7 @@ var rel = '#coautorinternoform';
 
 <% if(Model.Id == 0) { %>
     cssclass = 'local';
-    rel = '#CoautorInternoArticulo.InvestigadorId';
+    rel = '#CoautorInternoProducto.InvestigadorId';
 <% } %>
 
 var html = '

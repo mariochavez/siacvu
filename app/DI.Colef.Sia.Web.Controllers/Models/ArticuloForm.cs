@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -85,11 +83,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PeriodoReferenciaPeriodo { get; set; }
 
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }
-        public CoautorInternoArticuloForm[] CoautorInternoArticulos { get; set; }
+        public CoautorInternoProductoForm[] CoautorInternoProductos { get; set; }
 
         /* New */
         public CoautorExternoArticuloForm CoautorExternoArticulo { get; set; }
-        public CoautorInternoArticuloForm CoautorInternoArticulo { get; set; }
+        public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public ArchivoForm ArchivoArticulo { get; set; }
         public int TotalAutores { get; set; }

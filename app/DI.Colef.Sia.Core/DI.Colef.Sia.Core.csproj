@@ -89,10 +89,10 @@
     <Compile Include="CoautorExternoLibro.cs" />
     <Compile Include="CoautorExternoReporte.cs" />
     <Compile Include="CoautorExternoResena.cs" />
-    <Compile Include="CoautorInternoArticulo.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
     <Compile Include="CoautorInternoEvento.cs" />
     <Compile Include="CoautorInternoLibro.cs" />
+    <Compile Include="CoautorInternoProducto.cs" />
     <Compile Include="CoautorInternoReporte.cs" />
     <Compile Include="Convenio.cs" />
     <Compile Include="CoautorInternoResena.cs" />
