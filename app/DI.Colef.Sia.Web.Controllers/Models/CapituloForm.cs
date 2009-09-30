@@ -74,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
+        public int TotalAutores { get; set; }
 
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoCapituloForm[] CoautorInternoCapitulos { get; set; }

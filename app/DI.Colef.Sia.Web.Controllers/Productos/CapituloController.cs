@@ -101,6 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PosicionAutor = 1;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -121,6 +122,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capituloForm = capituloMapper.Map(capitulo);
 
             data.Form = SetupNewForm(capituloForm);
+            data.Form.TotalAutores = capitulo.CoautorExternoCapitulos.Count +
+                                     capitulo.CoautorInternoCapitulos.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -308,6 +311,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")] CoautorInternoCapituloForm form,
                                               int capituloId)
         {
+            var totalAutores = new int();
             var coautorInternoCapitulo = coautorInternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoCapitulo.ValidationResults(), true, String.Empty);
@@ -324,9 +328,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddCoautorInterno(coautorInternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalAutores = capitulo.CoautorExternoCapitulos.Count +
+                               capitulo.CoautorInternoCapitulos.Count + 1;
             }
 
             var coautorInternoCapituloForm = coautorInternoCapituloMapper.Map(coautorInternoCapitulo);
+            coautorInternoCapituloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoCapituloForm);
         }
@@ -354,6 +361,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")] CoautorExternoCapituloForm form,
                                               int capituloId)
         {
+            var totalAutores = new int();
             var coautorExternoCapitulo = coautorExternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoCapitulo.ValidationResults(), true, String.Empty);
@@ -370,9 +378,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddCoautorExterno(coautorExternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalAutores = capitulo.CoautorExternoCapitulos.Count +
+                               capitulo.CoautorInternoCapitulos.Count + 1;
             }
 
             var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
+            coautorExternoCapituloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
         }
