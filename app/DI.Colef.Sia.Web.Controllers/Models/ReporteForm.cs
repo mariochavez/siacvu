@@ -41,6 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PaisNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
+        public int TotalAutores { get; set; }
 
         /* New */
         public CoautorExternoReporteForm[] CoautorExternoReportes { get; set; }

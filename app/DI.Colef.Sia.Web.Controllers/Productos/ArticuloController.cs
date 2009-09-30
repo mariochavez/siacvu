@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IIdiomaMapper idiomaMapper;
         readonly IPaisMapper paisMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IIndiceMapper indiceMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
@@ -40,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, 
                                   IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, 
-                                  IIndiceMapper indiceMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, 
+                                  ILineaInvestigacionMapper lineaInvestigacionMapper, 
                                   ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, 
                                   IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, 
                                   IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, 
@@ -62,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.indiceMapper = indiceMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -101,6 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -121,6 +120,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articuloForm = articuloMapper.Map(articulo);
 
             data.Form = SetupNewForm(articuloForm);
+            data.Form.TotalAutores = articulo.CoautorExternoArticulos.Count +
+                                     articulo.CoautorInternoArticulos.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -338,6 +339,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoArticulo")]CoautorInternoArticuloForm form, int articuloId)
         {
+            var totalAutores = new int();
             var coautorInternoArticulo = coautorInternoArticuloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoArticulo.ValidationResults(), true, String.Empty);
@@ -354,9 +356,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var articulo = articuloService.GetArticuloById(articuloId);
                 articulo.AddCoautorInterno(coautorInternoArticulo);
                 articuloService.SaveArticulo(articulo);
+                totalAutores = articulo.CoautorExternoArticulos.Count +
+                               articulo.CoautorInternoArticulos.Count + 1;
             }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
+            coautorInternoArticuloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoArticuloForm);
         }
@@ -382,6 +387,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoArticulo")]CoautorExternoArticuloForm form, int articuloId)
         {
+            var totalAutores = new int();
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), true, String.Empty);
@@ -398,9 +404,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var articulo = articuloService.GetArticuloById(articuloId);
                 articulo.AddCoautorExterno(coautorExternoArticulo);
                 articuloService.SaveArticulo(articulo);
+                totalAutores = articulo.CoautorExternoArticulos.Count +
+                                                          articulo.CoautorInternoArticulos.Count + 1;
             }
 
             var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
+            coautorExternoArticuloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
         }

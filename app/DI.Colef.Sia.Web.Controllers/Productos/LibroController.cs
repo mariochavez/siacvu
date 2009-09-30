@@ -8,7 +8,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -113,6 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -135,6 +135,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var libroForm = libroMapper.Map(libro);
 
             data.Form = SetupNewForm(libroForm);
+            data.Form.TotalAutores = libro.CoautorExternoLibros.Count +
+                                     libro.CoautorInternoLibros.Count + 1;
 
             FormSetCombos(data.Form);
             
@@ -311,6 +313,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoLibro")]CoautorExternoLibroForm form, int libroId)
         {
+            var totalAutores = new int();
             var coautorExternoLibro = coautorExternoLibroMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoLibro.ValidationResults(), true, String.Empty);
@@ -327,9 +330,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var libro = libroService.GetLibroById(libroId);
                 libro.AddCoautorExterno(coautorExternoLibro);
                 libroService.SaveLibro(libro);
+                totalAutores = libro.CoautorExternoLibros.Count +
+                               libro.CoautorInternoLibros.Count + 1;
             }
 
             var coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
+            coautorExternoLibroForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
@@ -355,6 +361,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoLibro")]CoautorInternoLibroForm form, int libroId)
         {
+            var totalAutores = new int();
             var coautorInternoLibro = coautorInternoLibroMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoLibro.ValidationResults(), true, String.Empty);
@@ -371,9 +378,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var libro = libroService.GetLibroById(libroId);
                 libro.AddCoautorInterno(coautorInternoLibro);
                 libroService.SaveLibro(libro);
+                totalAutores = libro.CoautorExternoLibros.Count +
+                                  libro.CoautorInternoLibros.Count + 1;
             }
 
             var coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
+            coautorInternoLibroForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
         }
