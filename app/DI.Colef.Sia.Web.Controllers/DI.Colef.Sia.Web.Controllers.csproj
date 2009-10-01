@@ -124,6 +124,7 @@
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
     <Compile Include="Mappers\ITipoArchivoMapper.cs" />
+    <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\TipoArchivoForm.cs" />

@@ -36,12 +36,12 @@
     <label>Fecha de aceptaci&oacute;n</label>
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p class="EstatusPublicado">
     <label>Fecha de publicaci&oacute;n</label>
     <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>
@@ -51,7 +51,8 @@
 </p>
 <%if(Model.Id != 0){ %>
     <p>
-        <label>A&ntilde;o de publicaci&oacute;n</label>
-        <%=Html.Encode(Model.AnioPublicacion) %>
+        <label>A&ntilde;o de aceptaci&oacute;n</label>
+        <%=Html.Encode(Model.AnioAceptacion) %>
+        <span class="cvu"></span>
     </p>
 <% } %>

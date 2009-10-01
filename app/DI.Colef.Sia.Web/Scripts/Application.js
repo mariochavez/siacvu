@@ -302,7 +302,11 @@ var LocalForm = {
             $(handle + '_new').fadeIn('slow');
         }
 
-        LocalForm.calculateAutores();
+        if (combo.match(/Coautor/))
+            LocalForm.calculateAutores();
+
+        if (combo.match(/Responsable/))
+            LocalForm.calculateEditores();
 
         return false;
     },
@@ -314,6 +318,15 @@ var LocalForm = {
         var totalAutores = parseInt(subtotalAutores) + 1;
 
         $('div#totalautores_form h5').text('Creador del articulo + coautores internos + coautores externos = ' + totalAutores);
+    },
+    calculateEditores: function() {
+        var autorString = $('div#totaleditores_form h5').text();
+        var searchValue = autorString.search(/=/);
+        var subtotalEditores = autorString.substring(searchValue + 1);
+
+        var totalEditores = parseInt(subtotalEditores) + 1;
+
+        $('div#totaleditores_form h5').text('Total editores = ' + totalEditores);
     }
 };
 
