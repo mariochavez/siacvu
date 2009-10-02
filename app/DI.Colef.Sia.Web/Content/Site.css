@@ -525,11 +525,11 @@ a.editabusqueda {
 
 #forma label {
 	float: left;
-	width: 150px;
+	width: 155px;
 	margin: 0;
 	padding: 3px 10px 0 0;	
 	font-size: 11pt;
-	line-height: 15pt;
+	line-height: 12pt;
 	text-align: right;
 	color: #555;
 }
@@ -667,6 +667,11 @@ a.editabusqueda {
 	font-size: 11pt;
 	line-height: 15pt;
 	color: #CDCCB2;
+}
+
+#forma span.valor {
+    color:#000000;
+    margin: 0 1px;
 }
 
 #forma span.field-validation-error {

@@ -126,6 +126,7 @@
     <Compile Include="Mappers\ITipoArchivoMapper.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
+    <Compile Include="Models\CoautorForm.cs" />
     <Compile Include="Models\CoautorInternoProductoForm.cs" />
     <Compile Include="Models\TipoArchivoForm.cs" />
     <Compile Include="Catalogos\TipoArchivoController.cs" />

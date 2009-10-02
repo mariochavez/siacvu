@@ -89,6 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -109,6 +110,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var eventoForm = eventoMapper.Map(evento);
 
             data.Form = SetupNewForm(eventoForm);
+            data.Form.TotalAutores = evento.CoautorExternoEventos.Count +
+                                     evento.CoautorInternoEventos.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -269,6 +272,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoEvento")] CoautorInternoEventoForm form,
                                               int eventoId)
         {
+            var totalAutores = new int();
             var coautorInternoEvento = coautorInternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoEvento.ValidationResults(), true, String.Empty);
@@ -285,9 +289,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var evento = eventoService.GetEventoById(eventoId);
                 evento.AddCoautorInterno(coautorInternoEvento);
                 eventoService.SaveEvento(evento);
+                totalAutores = evento.CoautorExternoEventos.Count +
+                               evento.CoautorInternoEventos.Count + 1;
             }
 
             var coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
+            coautorInternoEventoForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
         }
@@ -314,7 +321,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoEvento")] CoautorExternoEventoForm form,
                                               int eventoId)
         {
-            CoautorExternoEventoForm coautorExternoEventoForm;
+            var totalAutores = new int();
             var coautorExternoEvento = coautorExternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoEvento.ValidationResults(), true, String.Empty);
@@ -329,20 +336,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (eventoId != 0)
             {
                 var evento = eventoService.GetEventoById(eventoId);
-                foreach (var coautorExterno in evento.CoautorExternoEventos)
-                {
-                    if (coautorExterno.InvestigadorExterno.Id == coautorExternoEvento.InvestigadorExterno.Id)
-                    {
-                        coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
-                        return Rjs("AddCoautorExterno", coautorExternoEventoForm);
-                    }
-                }
-
                 evento.AddCoautorExterno(coautorExternoEvento);
                 eventoService.SaveEvento(evento);
+                totalAutores = evento.CoautorExternoEventos.Count +
+                               evento.CoautorInternoEventos.Count + 1;
             }
 
-            coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
+            var coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
+            coautorExternoEventoForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoEventoForm);
         }

@@ -48,6 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
+        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
@@ -81,16 +83,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaNombre { get; set; }
         
         public string PeriodoReferenciaPeriodo { get; set; }
+        public int TotalAutores
+        {
+            get
+            {
+                return (CoautorExternoArticulos == null ? 0 : CoautorExternoArticulos.Length) +
+                    (CoautorInternoArticulos == null ? 0 : CoautorInternoArticulos.Length) + 1;
+            }
+        }
 
         public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }
-        public CoautorInternoProductoForm[] CoautorInternoProductos { get; set; }
+        public CoautorInternoProductoForm[] CoautorInternoArticulos { get; set; }
 
         /* New */
         public CoautorExternoArticuloForm CoautorExternoArticulo { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public ArchivoForm ArchivoArticulo { get; set; }
-        public int TotalAutores { get; set; }
 
         /* Catalogos */
         public TipoArticuloForm[] TiposArticulos { get; set; }

@@ -88,7 +88,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
-            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -109,8 +108,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articuloForm = articuloMapper.Map(articulo);
 
             data.Form = SetupNewForm(articuloForm);
-            data.Form.TotalAutores = articulo.CoautorExternoArticulos.Count +
-                                     articulo.CoautorInternoArticulos.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -135,22 +132,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ArticuloForm form,
-                                   FormCollection formCollection)
+        public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno, 
+            ArticuloForm form, FormCollection formCollection)
         {
             var coautoresExternos = new string[] {};
-            var coautoresInternos = new string[] {};
 
             if(formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
                     formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
                 coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
 
-            if (formCollection["CoautorInternoArticulo.InvestigadorId_New"] != null &&
-                    formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',').Length > 0)
-                coautoresInternos = formCollection["CoautorInternoArticulo.InvestigadorId_New"].Split(',');
-
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                              coautoresExternos, coautoresInternos);
+                              coautoresExternos, coautorInterno);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
             {
@@ -187,43 +179,43 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var articulo = articuloService.GetArticuloById(id);
+        //[CustomTransaction]
+        //[Authorize(Roles = "Investigadores")]
+        //[AcceptVerbs(HttpVerbs.Put)]
+        //public ActionResult Activate(int id)
+        //{
+        //    var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+        //    if (articulo.Usuario.Id != CurrentUser().Id)
+        //        return RedirectToIndex("no lo puede modificar", true);
 
-            articulo.Activo = true;
-            articulo.ModificadoPor = CurrentUser();
-            articuloService.SaveArticulo(articulo);
+        //    articulo.Activo = true;
+        //    articulo.ModificadoPor = CurrentUser();
+        //    articuloService.SaveArticulo(articulo);
 
-            var form = articuloMapper.Map(articulo);
+        //    var form = articuloMapper.Map(articulo);
 
-            return Rjs(form);
-        }
+        //    return Rjs(form);
+        //}
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var articulo = articuloService.GetArticuloById(id);
+        //[CustomTransaction]
+        //[Authorize(Roles = "Investigadores")]
+        //[AcceptVerbs(HttpVerbs.Put)]
+        //public ActionResult Deactivate(int id)
+        //{
+        //    var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+        //    if (articulo.Usuario.Id != CurrentUser().Id)
+        //        return RedirectToIndex("no lo puede modificar", true);
 
-            articulo.Activo = false;
-            articulo.ModificadoPor = CurrentUser();
-            articuloService.SaveArticulo(articulo);
+        //    articulo.Activo = false;
+        //    articulo.ModificadoPor = CurrentUser();
+        //    articuloService.SaveArticulo(articulo);
 
-            var form = articuloMapper.Map(articulo);
+        //    var form = articuloMapper.Map(articulo);
 
-            return Rjs("Activate", form);
-        }
+        //    return Rjs("Activate", form);
+        //}
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -266,59 +258,56 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewRevistaPublicacion(int id)
-        {
-            var articulo = articuloService.GetArticuloById(id);
+        //[Authorize(Roles = "Investigadores")]
+        //[AcceptVerbs(HttpVerbs.Get)]
+        //public ActionResult NewRevistaPublicacion(int id)
+        //{
+        //    var articulo = articuloService.GetArticuloById(id);
 
-            var form = new ArticuloForm
-                           {
-                               RevistaPublicacion = new RevistaPublicacionForm()
-                           };
+        //    var form = new ArticuloForm
+        //                   {
+        //                       RevistaPublicacion = new RevistaPublicacionForm()
+        //                   };
 
-            if (articulo != null)
-                form.Id = articulo.Id;
+        //    if (articulo != null)
+        //        form.Id = articulo.Id;
 
-            return Rjs("NewRevistaPublicacion", form);
-        }
+        //    return Rjs("NewRevistaPublicacion", form);
+        //}
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddRevistaPublicacion([Bind(Prefix = "RevistaPublicacion")]RevistaPublicacionForm form, int articuloId)
-        {
-            var revistaPublicacion = revistaPublicacionMapper.Map(form);
+        //[CustomTransaction]
+        //[Authorize(Roles = "Investigadores")]
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult AddRevistaPublicacion([Bind(Prefix = "RevistaPublicacion")]RevistaPublicacionForm form, int articuloId)
+        //{
+        //    var revistaPublicacion = revistaPublicacionMapper.Map(form);
 
-            ModelState.AddModelErrors(revistaPublicacion.ValidationResults(), true, String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
+        //    ModelState.AddModelErrors(revistaPublicacion.ValidationResults(), true, String.Empty);
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Rjs("ModelError");
+        //    }
 
-            revistaPublicacion.Activo = true;
-            revistaPublicacion.CreadorPor = CurrentUser();
-            revistaPublicacion.ModificadoPor = CurrentUser();
+        //    revistaPublicacion.Activo = true;
+        //    revistaPublicacion.CreadorPor = CurrentUser();
+        //    revistaPublicacion.ModificadoPor = CurrentUser();
 
-            catalogoService.SaveRevistaPublicacion(revistaPublicacion);
+        //    catalogoService.SaveRevistaPublicacion(revistaPublicacion);
 
-            var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
+        //    var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
 
-            return Rjs("AddRevistaPublicacion", revistaPublicacionForm);
-        }
+        //    return Rjs("AddRevistaPublicacion", revistaPublicacionForm);
+        //}
 
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new ArticuloForm();
+            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId" };
 
             if (articulo != null)
                 form.Id = articulo.Id;
-
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -326,31 +315,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoArticulo")]CoautorInternoProductoForm form, int articuloId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")]CoautorInternoProductoForm form, int articuloId)
         {
-            var totalAutores = new int();
             var coautorInternoArticulo = coautorInternoArticuloMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorInternoArticulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorInternoArticulo.ValidationResults(), false, "CoautorInterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorInternoArticulo.CreadorPor = CurrentUser();
-            coautorInternoArticulo.ModificadoPor = CurrentUser();
-
             if (articuloId != 0)
             {
+                coautorInternoArticulo.CreadorPor = CurrentUser();
+                coautorInternoArticulo.ModificadoPor = CurrentUser();
+
                 var articulo = articuloService.GetArticuloById(articuloId);
-                articulo.AddCoautorInterno(coautorInternoArticulo);
-                articuloService.SaveArticulo(articulo);
-                totalAutores = articulo.CoautorExternoArticulos.Count +
-                                                          articulo.CoautorInternoArticulos.Count + 1;
+                var alreadyHasIt =
+                    articulo.CoautorInternoArticulos.Where(
+                        x => x.Investigador.Id == coautorInternoArticulo.Investigador.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    articulo.AddCoautorInterno(coautorInternoArticulo);
+                    articuloService.SaveArticulo(articulo);
+                }
             }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
-            coautorInternoArticuloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoArticuloForm);
         }

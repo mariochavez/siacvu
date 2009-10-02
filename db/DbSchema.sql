@@ -855,6 +855,26 @@ alter table Departamentos  drop constraint FKDF172AB885102A57
 alter table Departamentos  drop constraint FKDF172AB874E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
+alter table CoautorInternoProductos  drop constraint FKCAE46D9C8336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
+alter table CoautorInternoProductos  drop constraint FKCAE46D9C85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
+alter table CoautorInternoProductos  drop constraint FKCAE46D9C74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC41CB3DA18FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulo'))
+alter table CoautorInternoArticulo  drop constraint FKC41CB3DA18FE0275
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC41CB3DAFCE29076]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulo'))
+alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKAE84C80485102A57]') AND parent_object_id = OBJECT_ID('TipoApoyos'))
 alter table TipoApoyos  drop constraint FKAE84C80485102A57
 
@@ -2243,26 +2263,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
-alter table CoautorInternoProductos  drop constraint FKCAE46D9C8336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
-alter table CoautorInternoProductos  drop constraint FKCAE46D9C85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
-alter table CoautorInternoProductos  drop constraint FKCAE46D9C74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC41CB3DA18FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulo'))
-alter table CoautorInternoArticulo  drop constraint FKC41CB3DA18FE0275
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC41CB3DAFCE29076]') AND parent_object_id = OBJECT_ID('CoautorInternoArticulo'))
-alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoArticulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArticulos
@@ -2360,6 +2360,10 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
     if exists (select * from dbo.sysobjects where id = object_id(N'Indices') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Indices
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoArticulo
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoApoyos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoApoyos
 
@@ -2522,10 +2526,6 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
     if exists (select * from dbo.sysobjects where id = object_id(N'Cursos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cursos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoArticulo
 
     create table TipoInstituciones (
         Id INT IDENTITY NOT NULL,
@@ -3273,6 +3273,25 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
        primary key (Id)
     )
 
+    create table CoautorInternoProductos (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
+       Posicion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorInternoArticulo (
+        CoautorInternoProducto INT not null,
+       ArticuloFk INT null,
+       primary key (CoautorInternoProducto)
+    )
+
     create table TipoApoyos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3818,6 +3837,7 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
         Id INT IDENTITY NOT NULL,
        NombreCapitulo NVARCHAR(255) null,
        FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
        FechaEdicion DATETIME null,
        TieneProyecto BIT null,
        PosicionAutor INT null,
@@ -3827,6 +3847,7 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
        Puntuacion INT null,
        Volumen NVARCHAR(255) null,
        Traductor BIT null,
+       AutorLibro NVARCHAR(255) null,
        Resumen NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -4439,24 +4460,6 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
-    )
-
-    create table CoautorInternoProductos (
-        Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorInternoArticulo (
-        CoautorInternoProducto INT not null,
-       ArticuloFk INT null,
-       primary key (CoautorInternoProducto)
     )
 
     alter table TipoInstituciones 
@@ -5528,6 +5531,31 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
         add constraint FKDF172AB874E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table CoautorInternoProductos 
+        add constraint FKCAE46D9C8336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CoautorInternoProductos 
+        add constraint FKCAE46D9C85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoProductos 
+        add constraint FKCAE46D9C74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table CoautorInternoArticulo 
+        add constraint FKC41CB3DA18FE0275 
+        foreign key (CoautorInternoProducto) 
+        references CoautorInternoProductos
+
+    alter table CoautorInternoArticulo 
+        add constraint FKC41CB3DAFCE29076 
+        foreign key (ArticuloFk) 
+        references Articulos
 
     alter table TipoApoyos 
         add constraint FKAE84C80485102A57 
@@ -7263,28 +7291,3 @@ alter table CoautorInternoArticulo  drop constraint FKC41CB3DAFCE29076
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table CoautorInternoProductos 
-        add constraint FKCAE46D9C8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoProductos 
-        add constraint FKCAE46D9C85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoProductos 
-        add constraint FKCAE46D9C74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table CoautorInternoArticulo 
-        add constraint FKC41CB3DA18FE0275 
-        foreign key (CoautorInternoProducto) 
-        references CoautorInternoProductos
-
-    alter table CoautorInternoArticulo 
-        add constraint FKC41CB3DAFCE29076 
-        foreign key (ArticuloFk) 
-        references Articulos

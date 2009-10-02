@@ -28,6 +28,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static void AddModelErrors(this ModelStateDictionary state, ICollection<IValidationResult> errors,
             bool includePrefix, string excludePrefix)
         {
+            AddModelErrors(state, errors, includePrefix, String.Empty, excludePrefix);
+        }
+
+        public static void AddModelErrors(this ModelStateDictionary state, ICollection<IValidationResult> errors,
+            bool includePrefix, string usePrefix, string excludePrefix)
+        {
             string[] prefixes = {};
             if (!excludePrefix.IsNullOrEmpty())
                 prefixes = excludePrefix.Split(',');
@@ -38,6 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 if (includePrefix && !prefixes.Contains(error.ClassContext.Name))
                 {
                     property = string.Format("{0}.{1}", error.ClassContext.Name, InferPropertyName(error.PropertyName, error.Message));
+                }else if(usePrefix != String.Empty)
+                {
+                    property = string.Format("{0}.{1}", usePrefix, InferPropertyName(error.PropertyName, error.Message));
                 }
                 
                 state.AddModelError(property, StripMessage(error.Message));

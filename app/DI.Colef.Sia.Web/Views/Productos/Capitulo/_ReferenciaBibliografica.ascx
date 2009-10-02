@@ -8,6 +8,12 @@
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
 <p>
+    <label>Autor del libro</label>
+    <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("AutorLibro")%>
+</p>
+<p>
     <label>Resumen</label>
     <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>
     <span class="cvu"></span>

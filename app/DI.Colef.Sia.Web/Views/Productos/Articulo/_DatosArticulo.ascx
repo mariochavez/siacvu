@@ -14,19 +14,21 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
+<!--
 <div id="revistapublicacion_new" class="minilistaboton">
     <p>
 		<span>
     		<%=Html.ActionLink("+ Nueva revista", "NewRevistaPublicacion", new { Id = Model.Id }, new { @class = "remote get" })%>
 		</span>
 	</p>
-</div><!--end minilistaboton-->
+</div>!--end minilistaboton--
 
 <div id="revistapublicacion_form" class="display:hidden;"></div>
+-->
+
 <p>
-    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
-    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
-    <%=Html.ValidationMessage("TieneProyecto")%>
+    <label></label>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
 </p>
 <p class="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
@@ -37,11 +39,11 @@
 </p>
 <p class="tieneproyecto_field">
     <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.Encode(Model.LineaTematicaNombre)%>
+    <%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>
 </p>
 <p class="tieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.Encode(Model.AreaTematicaNombre)%>
+    <%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>

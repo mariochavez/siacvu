@@ -34,8 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -51,8 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
-                                  ISearchService searchService, IProyectoMapper proyectoMapper,
-                                  IProyectoService proyectoService, IAreaTematicaMapper areaTematicaMapper)
+                                  ISearchService searchService, IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -76,8 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -105,6 +100,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            data.Form.PosicionAutor = 1;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -125,6 +122,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capituloForm = capituloMapper.Map(capitulo);
 
             data.Form = SetupNewForm(capituloForm);
+            data.Form.TotalAutores = capitulo.CoautorExternoCapitulos.Count +
+                                     capitulo.CoautorInternoCapitulos.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -312,6 +311,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoCapitulo")] CoautorInternoCapituloForm form,
                                               int capituloId)
         {
+            var totalAutores = new int();
             var coautorInternoCapitulo = coautorInternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoCapitulo.ValidationResults(), true, String.Empty);
@@ -328,9 +328,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddCoautorInterno(coautorInternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalAutores = capitulo.CoautorExternoCapitulos.Count +
+                               capitulo.CoautorInternoCapitulos.Count + 1;
             }
 
             var coautorInternoCapituloForm = coautorInternoCapituloMapper.Map(coautorInternoCapitulo);
+            coautorInternoCapituloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoCapituloForm);
         }
@@ -358,6 +361,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")] CoautorExternoCapituloForm form,
                                               int capituloId)
         {
+            var totalAutores = new int();
             var coautorExternoCapitulo = coautorExternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoCapitulo.ValidationResults(), true, String.Empty);
@@ -374,9 +378,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddCoautorExterno(coautorExternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalAutores = capitulo.CoautorExternoCapitulos.Count +
+                               capitulo.CoautorInternoCapitulos.Count + 1;
             }
 
             var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
+            coautorExternoCapituloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
         }
@@ -500,8 +507,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
-
+            
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
@@ -522,7 +528,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
-            ViewData["Proyecto"] = form.ProyectoId;
         }
     }
 }

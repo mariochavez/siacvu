@@ -152,10 +152,18 @@ var DateTimePicker = {
 var AutoComplete = {
     setup: function() {
         $('input.autocomplete').each(function() {
-            var url = $(this).attr('rel');
+            AutoComplete.config($(this));
+        });
+    },
+    manualSetup: function(input) {
+        var inputBox = $('#' + input);
+        AutoComplete.config(inputBox);
+    },
+    config: function(inputBox) {
+        var url = inputBox.attr('rel');
 
-            var value = $(this).val();
-            $(this).autocomplete(url,
+        var value = inputBox.val();
+        inputBox.autocomplete(url,
             {
                 minChars: 5,
                 delay: 400,
@@ -169,8 +177,7 @@ var AutoComplete = {
                 onFindValue: AutoComplete.findValue
             });
 
-            $(this).val(value);
-        });
+        inputBox.val(value);
     },
     selectItem: function(li, input) {
         AutoComplete.findValue(li, input);
@@ -301,6 +308,10 @@ var LocalForm = {
             $(handle + '_form').hide();
             $(handle + '_new').fadeIn('slow');
         }
+
+        var autores = parseInt($('#totalcoautores').text());
+        autores += 1;
+        $('#totalcoautores').text(autores);
 
         return false;
     }

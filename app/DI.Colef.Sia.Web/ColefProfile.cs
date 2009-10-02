@@ -609,7 +609,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<YearDateFormatter>())
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.TipoCapitulo,
@@ -632,7 +634,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
-                .ForMember(d => d.Proyecto,
+                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoCapituloForm>()

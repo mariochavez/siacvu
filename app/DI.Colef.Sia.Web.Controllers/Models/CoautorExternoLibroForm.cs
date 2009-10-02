@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorExternoLibroForm
@@ -10,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InvestigadorExternoId { get; set; }
         public string InvestigadorExternoNombre { get; set; }
+        public int TotalAutores { get; set; }
 	}
 }

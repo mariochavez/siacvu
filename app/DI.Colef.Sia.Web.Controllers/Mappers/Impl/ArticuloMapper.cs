@@ -92,8 +92,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, 
-            string[] coautoresExternos, string[] coautoresInternos)
+        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo,
+            string[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
             var model = Map(message, usuario, periodo);
 
@@ -108,10 +108,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorExterno(coautor);
             }
 
-            foreach (var coautorId in coautoresInternos)
+            foreach (var coautorInterno in coautoresInternos)
             {
                 var coautor =
-                    coautorInternoArticuloMapper.Map(new CoautorInternoProductoForm { InvestigadorId = int.Parse(coautorId) });
+                    coautorInternoArticuloMapper.Map(coautorInterno);
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;

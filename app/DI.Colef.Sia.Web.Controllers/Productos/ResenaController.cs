@@ -87,6 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -107,6 +108,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var resenaForm = resenaMapper.Map(resena);
 
             data.Form = SetupNewForm(resenaForm);
+            data.Form.TotalAutores = resena.CoautorExternoResenas.Count +
+                                     resena.CoautorInternoResenas.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -284,6 +287,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoResena")] CoautorInternoResenaForm form,
                                               int resenaId)
         {
+            var totalAutores = new int();
             var coautorInternoResena = coautorInternoResenaMapper.Map(form);
 
             ModelState.AddModelErrors(coautorInternoResena.ValidationResults(), true, String.Empty);
@@ -300,9 +304,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var resena = resenaService.GetResenaById(resenaId);
                 resena.AddCoautorInterno(coautorInternoResena);
                 resenaService.SaveResena(resena);
+                totalAutores = resena.CoautorExternoResenas.Count +
+                               resena.CoautorInternoResenas.Count + 1;
             }
 
             var coautorInternoResenaForm = coautorInternoResenaMapper.Map(coautorInternoResena);
+            coautorInternoResenaForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoResenaForm);
         }
@@ -329,6 +336,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoResena")] CoautorExternoResenaForm form,
                                               int resenaId)
         {
+            var totalAutores = new int();
             var coautorExternoResena = coautorExternoResenaMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoResena.ValidationResults(), true, String.Empty);
@@ -345,9 +353,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var resena = resenaService.GetResenaById(resenaId);
                 resena.AddCoautorExterno(coautorExternoResena);
                 resenaService.SaveResena(resena);
+                totalAutores = resena.CoautorExternoResenas.Count +
+                               resena.CoautorInternoResenas.Count + 1;
             }
 
             var coautorExternoResenaForm = coautorExternoResenaMapper.Map(coautorExternoResena);
+            coautorExternoResenaForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoResenaForm);
         }

@@ -22,10 +22,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoArticulos.Add(coautorExternoArticulo);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInternoArticulo)
+        public virtual void AddCoautorInterno(CoautorInternoArticulo coautorInternoArticulo)
         {
             coautorInternoArticulo.TipoProducto = 1; // 1 Representa Articulo
-            CoautorInternoArticulos.Add((CoautorInternoArticulo)coautorInternoArticulo);
+            CoautorInternoArticulos.Add(coautorInternoArticulo);
         }
 
         [NotNull]
