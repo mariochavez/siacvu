@@ -10,7 +10,6 @@
 <p>
     <label>Autor del libro</label>
     <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("AutorLibro")%>
 </p>
 <p>
@@ -21,7 +20,6 @@
 <p>
     <label>Editorial</label>
     <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input420-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>
@@ -33,7 +31,6 @@
     <label>A&ntilde;o de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
     <span>(Formato yyyy)</span>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>

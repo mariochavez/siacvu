@@ -102,6 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PosicionAutor = 1;
             data.Form.TotalAutores = 1;
+            data.Form.TotalEditores = 0;
 
             return View(data);
         }
@@ -124,6 +125,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm(capituloForm);
             data.Form.TotalAutores = capitulo.CoautorExternoCapitulos.Count +
                                      capitulo.CoautorInternoCapitulos.Count + 1;
+
+            data.Form.TotalEditores = capitulo.ResponsableExternoCapitulos.Count +
+                                      capitulo.ResponsableInternoCapitulos.Count;
 
             FormSetCombos(data.Form);
 
@@ -411,6 +415,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddResponsableInterno(
             [Bind(Prefix = "ResponsableInternoCapitulo")] ResponsableInternoCapituloForm form, int capituloId)
         {
+            var totalEditores = new int();
             var responsableInternoCapitulo = responsableInternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(responsableInternoCapitulo.ValidationResults(), true, String.Empty);
@@ -427,9 +432,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddResponsableInterno(responsableInternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalEditores = capitulo.ResponsableExternoCapitulos.Count +
+                               capitulo.ResponsableInternoCapitulos.Count;
             }
 
             var responsableInternoCapituloForm = responsableInternoCapituloMapper.Map(responsableInternoCapitulo);
+            responsableInternoCapituloForm.TotalEditores = totalEditores;
 
             return Rjs("AddResponsableInterno", responsableInternoCapituloForm);
         }
@@ -457,6 +465,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddResponsableExterno(
             [Bind(Prefix = "ResponsableExternoCapitulo")] ResponsableExternoCapituloForm form, int capituloId)
         {
+            var totalEditores = new int();
             var responsableExternoCapitulo = responsableExternoCapituloMapper.Map(form);
 
             ModelState.AddModelErrors(responsableExternoCapitulo.ValidationResults(), true, String.Empty);
@@ -473,9 +482,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capitulo = capituloService.GetCapituloById(capituloId);
                 capitulo.AddResponsableExterno(responsableExternoCapitulo);
                 capituloService.SaveCapitulo(capitulo);
+                totalEditores = capitulo.ResponsableExternoCapitulos.Count +
+                               capitulo.ResponsableInternoCapitulos.Count;
             }
 
             var responsableExternoCapituloForm = responsableExternoCapituloMapper.Map(responsableExternoCapitulo);
+            responsableExternoCapituloForm.TotalEditores = totalEditores;
 
             return Rjs("AddResponsableExterno", responsableExternoCapituloForm);
         }

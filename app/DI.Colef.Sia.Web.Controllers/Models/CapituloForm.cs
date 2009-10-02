@@ -18,7 +18,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Modificacion { get; set; }
         public int PosicionAutor { get; set; }
         public bool TieneProyecto { get; set; }
-        public string AnioPublicacion { get; set; }
+        public string AnioAceptacion { get; set; }
+        public int TotalEditores { get; set; }
 
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }

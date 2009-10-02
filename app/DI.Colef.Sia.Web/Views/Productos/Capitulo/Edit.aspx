@@ -73,7 +73,10 @@
 	            <h4>Responsables del libro</h4>
 	            <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
 	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>        
+				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>
+	            <div class="minilista" id="totaleditores_form">
+	                <h5>Total editores = <%=Html.Encode(Model.Form.TotalEditores) %></h5>
+	            </div>	      
             
 	            <h4>Complementaria CVU</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>

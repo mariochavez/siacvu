@@ -4,13 +4,11 @@
 <p>
     <label>Volumen</label>
     <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 10 })%>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>N&uacute;mero</label>
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p class="EstatusPublicado">
@@ -29,6 +27,7 @@
     <p>
         <label>A&ntilde;o de publicaci&oacute;n</label>
         <%=Html.Encode(Model.AnioPublicacion) %>
+        <span class="cvu"></span>
     </p>
 <% } %>
 <p>

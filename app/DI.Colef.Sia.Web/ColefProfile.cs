@@ -608,6 +608,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Capitulo, CapituloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.AnioAceptacion,
+                           o => o.ResolveUsing<AceptacionResolver>())
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,

@@ -133,6 +133,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveLineaTematica(LineaTematica lineaTematica);
         LineaTematica GetLineaTematicaInstitucionalById(int id);
         LineaTematica[] GetActiveLineaTematicasInstitucionales();
+        LineaTematica GetLineaTematicaInstitucionalByProyectoId(int id);
 
         //Coautor Externo
         CoautorExterno GetCoautorExternoById(int id);
@@ -473,6 +474,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         AreaTematica[] GetActiveAreaTematicas();
         void SaveAreaTematica(AreaTematica areaTematica);
         AreaTematica[] GetAreaTematicasByLineaTematicaId(int id);
+        AreaTematica GetAreaTematicaByProyectoId(int id);
 
         //Tipo Archivo
         TipoArchivo GetTipoArchivoById(int id);

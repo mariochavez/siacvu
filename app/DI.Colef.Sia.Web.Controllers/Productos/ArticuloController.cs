@@ -13,29 +13,43 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
     {
-        readonly IArticuloService articuloService;
-        readonly IInvestigadorService investigadorService;
-        readonly IArticuloMapper articuloMapper;
-        readonly ICatalogoService catalogoService;
-        readonly ITipoArticuloMapper tipoArticuloMapper;
-        readonly IIdiomaMapper idiomaMapper;
-        readonly IPaisMapper paisMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
-        readonly ITipoActividadMapper tipoActividadMapper;
-        readonly ITipoParticipacionMapper tipoParticipacionMapper; 
         readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly IArticuloMapper articuloMapper;
+        readonly IArticuloService articuloService;
+        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly IIdiomaMapper idiomaMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
+        readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPaisMapper paisMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ITipoActividadMapper tipoActividadMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
+        readonly ITipoArticuloMapper tipoArticuloMapper;
+        readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
-        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, IArticuloMapper articuloMapper, ICatalogoService catalogoService, IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper, IIdiomaMapper idiomaMapper, IPaisMapper paisMapper, IRevistaPublicacionMapper revistaPublicacionMapper, ILineaInvestigacionMapper lineaInvestigacionMapper, ITipoActividadMapper tipoActividadMapper, ITipoParticipacionMapper tipoParticipacionMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorExternoMapper investigadorExternoMapper, IInvestigadorMapper investigadorMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper, ICoautorInternoArticuloMapper coautorInternoArticuloMapper, IEstadoProductoMapper estadoProductoMapper, ISearchService searchService, IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper)
+        public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
+                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService,
+                                  IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper,
+                                  IIdiomaMapper idiomaMapper, IPaisMapper paisMapper,
+                                  ILineaInvestigacionMapper lineaInvestigacionMapper,
+                                  ITipoActividadMapper tipoActividadMapper,
+                                  ITipoParticipacionMapper tipoParticipacionMapper, IAreaMapper areaMapper,
+                                  IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IInvestigadorMapper investigadorMapper,
+                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
+                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+                                  IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
+                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper,
+                                  ILineaTematicaMapper lineaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -49,7 +63,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoArticuloMapper = tipoArticuloMapper;
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
-            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -59,6 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
         }
 
         [Authorize]
@@ -68,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Index);
             var articulos = new Articulo[] {};
 
-            if(User.IsInRole("Investigadores"))
+            if (User.IsInRole("Investigadores"))
                 articulos = articuloService.GetAllArticulos(CurrentUser());
             if (User.IsInRole("DGAA"))
                 articulos = articuloService.GetAllArticulos();
@@ -132,23 +146,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno, 
-            ArticuloForm form, FormCollection formCollection)
+        public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
+                                   ArticuloForm form, FormCollection formCollection)
         {
             var coautoresExternos = new string[] {};
 
-            if(formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
-                    formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
+            if (formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
+                formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
                 coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
 
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                              coautoresExternos, coautorInterno);
+                                              coautoresExternos, coautorInterno);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
             {
                 var articuloForm = articuloMapper.Map(articulo);
 
-                ((GenericViewData<ArticuloForm>)ViewData.Model).Form = SetupNewForm(articuloForm);
+                ((GenericViewData<ArticuloForm>) ViewData.Model).Form = SetupNewForm(articuloForm);
                 return ViewNew();
             }
 
@@ -165,11 +179,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo());
 
-            if(!IsValidateModel(articulo, form, Title.Edit))
+            if (!IsValidateModel(articulo, form, Title.Edit))
             {
                 var articuloForm = articuloMapper.Map(articulo);
 
-                ((GenericViewData<ArticuloForm>)ViewData.Model).Form = SetupNewForm(articuloForm);
+                ((GenericViewData<ArticuloForm>) ViewData.Model).Form = SetupNewForm(articuloForm);
                 FormSetCombos(articuloForm);
                 return ViewEdit();
             }
@@ -219,16 +233,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var lineaTematica =
+                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaInstitucionalByProyectoId(select));
+            var areaTematica =
+                areaTematicaMapper.Map(catalogoService.GetAreaTematicaByProyectoId(select));
+
+            var form = new ArticuloForm
+                           {
+                               ProyectoLineaTematicaNombre = lineaTematica.Nombre,
+                               ProyectoAreaTematicaNombre = areaTematica.Nombre
+                           };
+
+            return Rjs("ChangeProyecto", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeArea(int select)
         {
-            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+            var list = new List<DisciplinaForm> {new DisciplinaForm {Id = 0, Nombre = "Seleccione ..."}};
 
             list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
 
             var form = new ArticuloForm
                            {
                                Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
+                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
                            };
 
             return Rjs("ChangeArea", form);
@@ -238,7 +270,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeDisciplina(int select)
         {
-            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+            var list = new List<SubdisciplinaForm> {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}};
 
             list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
 
@@ -304,7 +336,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorInterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId" };
+            var form = new CoautorForm {Controller = "Articulo", IdName = "ArticuloId"};
 
             if (articulo != null)
                 form.Id = articulo.Id;
@@ -315,7 +347,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")]CoautorInternoProductoForm form, int articuloId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form,
+                                              int articuloId)
         {
             var coautorInternoArticulo = coautorInternoArticuloMapper.Map(form);
 
@@ -366,7 +399,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoArticulo")]CoautorExternoArticuloForm form, int articuloId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoArticulo")] CoautorExternoArticuloForm form,
+                                              int articuloId)
         {
             var totalAutores = new int();
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
@@ -386,7 +420,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 articulo.AddCoautorExterno(coautorExternoArticulo);
                 articuloService.SaveArticulo(articulo);
                 totalAutores = articulo.CoautorExternoArticulos.Count +
-                                                          articulo.CoautorInternoArticulos.Count + 1;
+                               articulo.CoautorInternoArticulos.Count + 1;
             }
 
             var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
@@ -426,12 +460,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Subdisciplinas =
+                subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 
             return form;
         }
 
-        private void FormSetCombos(ArticuloForm form)
+        void FormSetCombos(ArticuloForm form)
         {
             ViewData["TipoArticulo"] = form.TipoArticuloId;
             ViewData["Idioma"] = form.IdiomaId;
