@@ -192,6 +192,30 @@ var AutoComplete = {
             var sValue = li.selectValue;
 
         $(field).val(sValue);
+
+        if (field.attr('url') != undefined)
+            AutoComplete.cascade(sValue, field.attr('url'));
+    },
+    cascade: function(value, url) {
+        if (value == 0)
+            value = 0;
+
+        var currentLink = $(this);
+
+        currentLink.showLoading();
+        $.ajax({
+            url: url,
+            data: { select: value },
+            type: 'get',
+            dataType: 'script',
+            success: function(msg) {
+                currentLink.removeLoading();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                currentLink.removeLoading();
+                alert(textStatus);
+            }
+        });
     }
 };
 

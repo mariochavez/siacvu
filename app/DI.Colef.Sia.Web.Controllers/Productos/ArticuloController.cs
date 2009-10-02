@@ -34,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEstadoProductoMapper estadoProductoMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService, 
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService, 
@@ -46,7 +47,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper, 
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, 
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
-                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper)
+                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper,
+                                  ILineaTematicaMapper lineaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -70,6 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
         }
 
         [Authorize]
@@ -234,6 +237,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = articuloMapper.Map(articulo);
 
             return Rjs("Activate", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+
+            var lineaTematica = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaInstitucionalByProyectoId(select));
+            var areaTematica =
+                areaTematicaMapper.Map(catalogoService.GetAreaTematicaByProyectoId(select));
+
+            var form = new ArticuloForm
+                           {
+                               ProyectoLineaTematicaNombre = lineaTematica.Nombre,
+                               ProyectoAreaTematicaNombre = areaTematica.Nombre
+                           };
+
+            return Rjs("ChangeProyecto", form);
         }
 
         [Authorize]

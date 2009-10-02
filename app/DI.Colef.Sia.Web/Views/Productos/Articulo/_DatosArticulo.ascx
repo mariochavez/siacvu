@@ -32,16 +32,14 @@
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field">
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>
+<p class="tieneproyecto_field" id="lineatematica">
+
 </p>
-<p class="tieneproyecto_field">
-    <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>
+<p class="tieneproyecto_field" id="areatematica">
+
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
