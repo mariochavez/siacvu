@@ -37,8 +37,8 @@
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
 <p>
-    <label>Art&iacute;culo traducido a otro idioma</label>
-    <%= Html.CheckBox("ArticuloTraducido", Model.ArticuloTraducido)%>
+    <label></label>
+    <%= Html.CheckBox("ArticuloTraducido", Model.ArticuloTraducido)%> Art&iacute;culo traducido a otro idioma?
     <%=Html.ValidationMessage("ArticuloTraducido")%>
 </p>
 <p id="idioma_field">

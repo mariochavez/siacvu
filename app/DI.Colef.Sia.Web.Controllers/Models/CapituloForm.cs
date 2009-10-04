@@ -24,10 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
 
-        public int AreaTematica { get; set; }
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
         public int TipoCapitulo { get; set; }
         public int TipoCapituloId { get; set; }
         public string TipoCapituloNombre { get; set; }
@@ -35,9 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
         public string EstadoProductoNombre { get; set; }
-
-        public string LineaTematicaNombre { get; set; }
-        public int LineaTematicaId { get; set; }
 
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
@@ -73,24 +66,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
+        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
-        public int TotalAutores { get; set; }
+        public int TotalAutores
+        {
+            get
+            {
+                return (CoautorExternoCapitulos == null ? 0 : CoautorExternoCapitulos.Length) +
+                    (CoautorInternoCapitulos == null ? 0 : CoautorInternoCapitulos.Length) + 1;
+            }
+        }
 
         public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
-        public CoautorInternoCapituloForm[] CoautorInternoCapitulos { get; set; }
+        public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
         public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
         public ResponsableExternoCapituloForm[] ResponsableExternoCapitulos { get; set; }
 		
 		/* New */
 		public CoautorExternoCapituloForm CoautorExternoCapitulo { get; set; }
-		public CoautorInternoCapituloForm CoautorInternoCapitulo { get; set; }
+        public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
 		public ResponsableInternoCapituloForm ResponsableInternoCapitulo { get; set; }
 		public ResponsableExternoCapituloForm ResponsableExternoCapitulo { get; set; }
 		
 		/* Catalogos */
-
-        public AreaTematicaForm[] AreasTematicas { get; set; }
         public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }

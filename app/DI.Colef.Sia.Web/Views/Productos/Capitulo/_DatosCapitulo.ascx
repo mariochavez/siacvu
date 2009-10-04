@@ -7,25 +7,20 @@
 	<span class="cvu"></span>
 </p>
 <p>
-    <label>Tiene proyecto de investigaci&oacute;n de referencia</label>
-    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %>
+    <label></label>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
     <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
 <p class="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field">
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.Encode(Model.LineaTematicaNombre)%>
-</p>
-<p class="tieneproyecto_field">
-    <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.Encode(Model.AreaTematicaNombre)%>
-</p>
+<div class="tieneproyecto_field" id="arealineatematica">
+
+</div>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),

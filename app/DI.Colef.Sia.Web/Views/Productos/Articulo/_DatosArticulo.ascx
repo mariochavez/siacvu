@@ -10,11 +10,13 @@
     <label>Nombre de la revista</label>
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo, 
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
+    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo", url = Url.Action("ChangeRevista") })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
+<div id="indices">
 
+</div>
 <p>
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
@@ -26,12 +28,9 @@
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field" id="lineatematica">
+<div class="tieneproyecto_field" id="arealineatematica">
 
-</p>
-<p class="tieneproyecto_field" id="areatematica">
-
-</p>
+</div>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),

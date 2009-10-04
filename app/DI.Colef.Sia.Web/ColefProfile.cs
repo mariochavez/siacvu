@@ -590,8 +590,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
@@ -635,11 +633,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FormaParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
-                           o => o.Ignore())
-                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
-            Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoCapituloForm>()
+            Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 

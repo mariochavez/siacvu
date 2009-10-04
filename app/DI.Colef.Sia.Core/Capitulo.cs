@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         }
         public virtual void AddCoautorInterno(CoautorInternoCapitulo coautorInternoCapitulo)
         {
+            coautorInternoCapitulo.TipoProducto = 2; // 2 Representa Capitulo
             CoautorInternoCapitulos.Add(coautorInternoCapitulo);
         }
         public virtual void AddResponsableInterno(ResponsableInternoCapitulo responsableInternoCapitulo)
@@ -55,13 +56,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
-		public virtual LineaTematica LineaTematica { get; set; }
-
 		public virtual Idioma Idioma { get; set; }
 
         public virtual Institucion Institucion { get; set; }
-
-        public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual bool TieneProyecto { get; set; }
 

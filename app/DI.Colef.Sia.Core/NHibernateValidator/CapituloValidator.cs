@@ -31,8 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.TipoCapitulo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.EstadoProducto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FechaEdicion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.LineaTematica, "LineaTematicaNombre",
-                                                            constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.NombreLibro, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.AutorLibro, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Editorial, constraintValidatorContext);

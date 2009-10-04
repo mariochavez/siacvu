@@ -30,8 +30,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.TipoArticulo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.EstadoProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.LineaTematica, "LineaTematicaNombre",
-                                                            constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.RevistaPublicacion, "RevistaPublicacionTitulo",
                                                            constraintValidatorContext);
             }

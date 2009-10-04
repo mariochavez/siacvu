@@ -519,7 +519,6 @@
     <Compile Include="Models\CoautorExternoForm.cs" />
     <Compile Include="Models\CoautorExternoReporteForm.cs" />
     <Compile Include="Models\CoautorExternoResenaForm.cs" />
-    <Compile Include="Models\CoautorInternoCapituloForm.cs" />
     <Compile Include="Models\CoautorInternoEventoForm.cs" />
     <Compile Include="Models\CoautorInternoReporteForm.cs" />
     <Compile Include="Models\CoautorInternoResenaForm.cs" />
