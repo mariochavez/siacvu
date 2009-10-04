@@ -112,7 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -135,8 +134,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var libroForm = libroMapper.Map(libro);
 
             data.Form = SetupNewForm(libroForm);
-            data.Form.TotalAutores = libro.CoautorExternoLibros.Count +
-                                     libro.CoautorInternoLibros.Count + 1;
 
             FormSetCombos(data.Form);
             
@@ -161,22 +158,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(LibroForm form, 
-                                   FormCollection formCollection)
+        public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
+                                   LibroForm form)
         {
-            var coautoresExternos = new string[] { };
-            var coautoresInternos = new string[] { };
-
-            if (formCollection["CoautorExternoLibro.InvestigadorExternoId_New"] != null &&
-                    formCollection["CoautorExternoLibro.InvestigadorExternoId_New"].Split(',').Length > 0)
-                coautoresExternos = formCollection["CoautorExternoLibro.InvestigadorExternoId_New"].Split(',');
-
-            if (formCollection["CoautorInternoLibro.InvestigadorId_New"] != null &&
-                    formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',').Length > 0)
-                coautoresInternos = formCollection["CoautorInternoLibro.InvestigadorId_New"].Split(',');
-
             var libro = libroMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                                        coautoresExternos, coautoresInternos);
+                                        coautorExterno, coautorInterno);
             
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
             {
@@ -211,44 +198,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             libroService.SaveLibro(libro);
 
             return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
-        }
-        
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {            
-            var libro = libroService.GetLibroById(id);
-
-            if (libro.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            libro.Activo = true;
-            libro.ModificadoPor = CurrentUser();
-            libroService.SaveLibro(libro);
-
-            var form = libroMapper.Map(libro);
-            
-            return Rjs(form);
-        }
-        
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var libro = libroService.GetLibroById(id);
-
-            if (libro.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            libro.Activo = false;
-            libro.ModificadoPor = CurrentUser();
-            libroService.SaveLibro(libro);
-
-            var form = libroMapper.Map(libro);
-            
-            return Rjs("Activate", form);
         }
 
         [Authorize]
@@ -297,13 +246,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new LibroForm();
+            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId" };
 
             if (libro != null)
                 form.Id = libro.Id;
-
-            form.CoautorExternoLibro = new CoautorExternoLibroForm();
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -311,31 +257,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoLibro")]CoautorExternoLibroForm form, int libroId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")]CoautorExternoProductoForm form, int libroId)
         {
-            var totalAutores = new int();
             var coautorExternoLibro = coautorExternoLibroMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoLibro.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoLibro.ValidationResults(), false, "CoautorExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorExternoLibro.CreadorPor = CurrentUser();
-            coautorExternoLibro.ModificadoPor = CurrentUser();
-
             if (libroId != 0)
             {
+                coautorExternoLibro.CreadorPor = CurrentUser();
+                coautorExternoLibro.ModificadoPor = CurrentUser();
+
                 var libro = libroService.GetLibroById(libroId);
-                libro.AddCoautorExterno(coautorExternoLibro);
-                libroService.SaveLibro(libro);
-                totalAutores = libro.CoautorExternoLibros.Count +
-                               libro.CoautorInternoLibros.Count + 1;
+
+                var alreadyHasIt =
+                    libro.CoautorExternoLibros.Where(
+                        x => x.InvestigadorExterno.Id == coautorExternoLibro.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    libro.AddCoautorExterno(coautorExternoLibro);
+                    libroService.SaveLibro(libro);
+                }
             }
 
             var coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
-            coautorExternoLibroForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
@@ -345,13 +295,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorInterno(int id)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new LibroForm();
+            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId" };
 
             if (libro != null)
                 form.Id = libro.Id;
-
-            form.CoautorInternoLibro = new CoautorInternoLibroForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -359,12 +306,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoLibro")]CoautorInternoLibroForm form, int libroId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")]CoautorInternoProductoForm form, int libroId)
         {
-            var totalAutores = new int();
             var coautorInternoLibro = coautorInternoLibroMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorInternoLibro.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorInternoLibro.ValidationResults(), false, "CoautorInterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -376,14 +322,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libroId != 0)
             {
                 var libro = libroService.GetLibroById(libroId);
-                libro.AddCoautorInterno(coautorInternoLibro);
-                libroService.SaveLibro(libro);
-                totalAutores = libro.CoautorExternoLibros.Count +
-                                  libro.CoautorInternoLibros.Count + 1;
+                 
+                var alreadyHasIt =
+                    libro.CoautorInternoLibros.Where(
+                        x => x.Investigador.Id == coautorInternoLibro.Investigador.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    libro.AddCoautorInterno(coautorInternoLibro);
+                    libroService.SaveLibro(libro);
+                }
             }
 
             var coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
-            coautorInternoLibroForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
         }
@@ -396,9 +347,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         LibroForm SetupNewForm(LibroForm form)
         {
             form = form ?? new LibroForm();
-            
-            form.CoautorExternoLibro = new CoautorExternoLibroForm();
-            form.CoautorInternoLibro = new CoautorInternoLibroForm();
+
+            form.CoautorExternoProducto = new CoautorExternoProductoForm();
+            form.CoautorInternoProducto = new CoautorInternoProductoForm();
+
+            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoLibros.Length;
+            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoLibros.Length;
 
             form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.Ediciones = edicionMapper.Map(catalogoService.GetActiveEdicions());

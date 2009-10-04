@@ -325,26 +325,6 @@ alter table CoautorExternos  drop constraint FKFFA20BAC74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
-alter table CoautorInternoReportes  drop constraint FK276A11CD8336201B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
-alter table CoautorInternoReportes  drop constraint FK276A11CD85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
-alter table CoautorInternoReportes  drop constraint FK276A11CD74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK276A11CD13FE2142]') AND parent_object_id = OBJECT_ID('CoautorInternoReportes'))
-alter table CoautorInternoReportes  drop constraint FK276A11CD13FE2142
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
 alter table TipoProyectos  drop constraint FK1E50E26A85102A57
 
@@ -542,26 +522,6 @@ alter table Disciplinas  drop constraint FK6CD232B385102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CD232B374E8BAB7]') AND parent_object_id = OBJECT_ID('Disciplinas'))
 alter table Disciplinas  drop constraint FK6CD232B374E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK86CBBCE08FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoLibros'))
-alter table CoautorExternoLibros  drop constraint FK86CBBCE08FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK86CBBCE085102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoLibros'))
-alter table CoautorExternoLibros  drop constraint FK86CBBCE085102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK86CBBCE074E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoLibros'))
-alter table CoautorExternoLibros  drop constraint FK86CBBCE074E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK86CBBCE0586827F8]') AND parent_object_id = OBJECT_ID('CoautorExternoLibros'))
-alter table CoautorExternoLibros  drop constraint FK86CBBCE0586827F8
 
 
 
@@ -1110,46 +1070,6 @@ alter table Distinciones  drop constraint FKEF821EEC74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D499948336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D499948336201B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999485102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D4999485102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D4999474E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D4999474E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK17D49994FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorInternoResenas'))
-alter table CoautorInternoResenas  drop constraint FK17D49994FF48CC4D
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA2968108FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA2968108FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681085102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA29681085102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA29681074E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA29681074E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDA296810FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResenas'))
-alter table CoautorExternoResenas  drop constraint FKDA296810FF48CC4D
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK33E5D7A51EDC2D3B]') AND parent_object_id = OBJECT_ID('AreaTematicas'))
 alter table AreaTematicas  drop constraint FK33E5D7A51EDC2D3B
 
@@ -1557,46 +1477,6 @@ alter table Dictamenes  drop constraint FKE29ADD7B85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B74E8BAB7]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7B74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B8336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
-alter table CoautorInternoEventos  drop constraint FKDB55786B8336201B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
-alter table CoautorInternoEventos  drop constraint FKDB55786B85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B74E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
-alter table CoautorInternoEventos  drop constraint FKDB55786B74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDB55786B3BA127C1]') AND parent_object_id = OBJECT_ID('CoautorInternoEventos'))
-alter table CoautorInternoEventos  drop constraint FKDB55786B3BA127C1
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA78FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
-alter table CoautorExternoEventos  drop constraint FKE25BBDA78FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA785102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
-alter table CoautorExternoEventos  drop constraint FKE25BBDA785102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA774E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
-alter table CoautorExternoEventos  drop constraint FKE25BBDA774E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE25BBDA73BA127C1]') AND parent_object_id = OBJECT_ID('CoautorExternoEventos'))
-alter table CoautorExternoEventos  drop constraint FKE25BBDA73BA127C1
 
 
 
@@ -2170,26 +2050,6 @@ alter table Generos  drop constraint FK34B67F8074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK84935DC88336201B]') AND parent_object_id = OBJECT_ID('CoautorInternoLibros'))
-alter table CoautorInternoLibros  drop constraint FK84935DC88336201B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK84935DC885102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoLibros'))
-alter table CoautorInternoLibros  drop constraint FK84935DC885102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK84935DC874E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorInternoLibros'))
-alter table CoautorInternoLibros  drop constraint FK84935DC874E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK84935DC8586827F8]') AND parent_object_id = OBJECT_ID('CoautorInternoLibros'))
-alter table CoautorInternoLibros  drop constraint FK84935DC8586827F8
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E59EC5B70]') AND parent_object_id = OBJECT_ID('Archivos'))
 alter table Archivos  drop constraint FKD4AF217E59EC5B70
 
@@ -2252,26 +2112,6 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA74E8BAB7]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
 alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C18FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
-alter table CoautorExternoReportes  drop constraint FK797B39C18FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C185102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
-alter table CoautorExternoReportes  drop constraint FK797B39C185102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C174E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
-alter table CoautorExternoReportes  drop constraint FK797B39C174E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK797B39C113FE2142]') AND parent_object_id = OBJECT_ID('CoautorExternoReportes'))
-alter table CoautorExternoReportes  drop constraint FK797B39C113FE2142
 
 
 
@@ -2535,6 +2375,46 @@ alter table CoautorInternoCapitulo  drop constraint FK4AEC98B5A1B3F60D
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD196DEE318FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoEvento'))
+alter table CoautorInternoEvento  drop constraint FKD196DEE318FE0275
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD196DEE33BA127C1]') AND parent_object_id = OBJECT_ID('CoautorInternoEvento'))
+alter table CoautorInternoEvento  drop constraint FKD196DEE33BA127C1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D25DC818FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoLibro'))
+alter table CoautorInternoLibro  drop constraint FK3D25DC818FE0275
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D25DC8586827F8]') AND parent_object_id = OBJECT_ID('CoautorInternoLibro'))
+alter table CoautorInternoLibro  drop constraint FK3D25DC8586827F8
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27BD11CD18FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoReporte'))
+alter table CoautorInternoReporte  drop constraint FK27BD11CD18FE0275
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27BD11CD13FE2142]') AND parent_object_id = OBJECT_ID('CoautorInternoReporte'))
+alter table CoautorInternoReporte  drop constraint FK27BD11CD13FE2142
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF5FE7018FE0275]') AND parent_object_id = OBJECT_ID('CoautorInternoResena'))
+alter table CoautorInternoResena  drop constraint FKEF5FE7018FE0275
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF5FE70FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorInternoResena'))
+alter table CoautorInternoResena  drop constraint FKEF5FE70FF48CC4D
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B28FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
 alter table CoautorExternoProductos  drop constraint FK15D3B7B28FDBB774
 
@@ -2572,6 +2452,46 @@ alter table CoautorExternoCapitulo  drop constraint FK713E819D99085EFD
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK713E819DA1B3F60D]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulo'))
 alter table CoautorExternoCapitulo  drop constraint FK713E819DA1B3F60D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8A8B54399085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoEvento'))
+alter table CoautorExternoEvento  drop constraint FKD8A8B54399085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8A8B5433BA127C1]') AND parent_object_id = OBJECT_ID('CoautorExternoEvento'))
+alter table CoautorExternoEvento  drop constraint FKD8A8B5433BA127C1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDF4ABCE099085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoLibro'))
+alter table CoautorExternoLibro  drop constraint FKDF4ABCE099085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDF4ABCE0586827F8]') AND parent_object_id = OBJECT_ID('CoautorExternoLibro'))
+alter table CoautorExternoLibro  drop constraint FKDF4ABCE0586827F8
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK79AE39C199085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoReporte'))
+alter table CoautorExternoReporte  drop constraint FK79AE39C199085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK79AE39C113FE2142]') AND parent_object_id = OBJECT_ID('CoautorExternoReporte'))
+alter table CoautorExternoReporte  drop constraint FK79AE39C113FE2142
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1565D8899085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoResena'))
+alter table CoautorExternoResena  drop constraint FKD1565D8899085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1565D88FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResena'))
+alter table CoautorExternoResena  drop constraint FKD1565D88FF48CC4D
 
 
 
@@ -2834,8 +2754,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReportes
-
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipacionOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipacionOrganos
@@ -2849,8 +2767,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'GrupoInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GrupoInvestigaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Disciplinas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Disciplinas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoLibros
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Ambitos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Ambitos
 
@@ -2896,10 +2812,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Distinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Distinciones
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoResenas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoResenas
-
     if exists (select * from dbo.sysobjects where id = object_id(N'AreaTematicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaTematicas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoActividades') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoActividades
@@ -2943,10 +2855,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'FormaParticipaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormaParticipaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dictamenes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dictamenes
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoEventos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoEventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TesisDirigidas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisDirigidas
 
@@ -2992,8 +2900,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Generos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Generos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoLibros
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoResenas
@@ -3005,8 +2911,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Estados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Estados
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Coordinaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Coordinaciones
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReportes
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Articulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Articulos
 
@@ -3030,11 +2934,27 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoCapitulo
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoEvento
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoLibro
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoReporte') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoReporte
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoResena
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoArticulo
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoCapitulo
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoEvento
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoLibro
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoReporte') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoReporte
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoResena
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Clases') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Clases
 
@@ -3300,18 +3220,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
-    create table CoautorInternoReportes (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ReporteFk INT null,
-       primary key (Id)
-    )
-
     create table TipoProyectos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3440,18 +3348,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        AreaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoLibros (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       LibroFk INT null,
        primary key (Id)
     )
 
@@ -3794,30 +3690,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
-    create table CoautorInternoResenas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ResenaFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoResenas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ResenaFk INT null,
-       primary key (Id)
-    )
-
     create table AreaTematicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4122,30 +3994,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        PeriodoReferenciaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorInternoEventos (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       EventoFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoEventos (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       EventoFk INT null,
        primary key (Id)
     )
 
@@ -4499,18 +4347,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
-    create table CoautorInternoLibros (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       LibroFk INT null,
-       primary key (Id)
-    )
-
     create table Archivos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4578,18 +4414,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        Activo BIT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoReportes (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ReporteFk INT null,
        primary key (Id)
     )
 
@@ -4758,6 +4582,30 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (CoautorInternoProducto)
     )
 
+    create table CoautorInternoEvento (
+        CoautorInternoProducto INT not null,
+       EventoFk INT null,
+       primary key (CoautorInternoProducto)
+    )
+
+    create table CoautorInternoLibro (
+        CoautorInternoProducto INT not null,
+       LibroFk INT null,
+       primary key (CoautorInternoProducto)
+    )
+
+    create table CoautorInternoReporte (
+        CoautorInternoProducto INT not null,
+       ReporteFk INT null,
+       primary key (CoautorInternoProducto)
+    )
+
+    create table CoautorInternoResena (
+        CoautorInternoProducto INT not null,
+       ResenaFk INT null,
+       primary key (CoautorInternoProducto)
+    )
+
     create table CoautorExternoProductos (
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
@@ -4781,6 +4629,30 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table CoautorExternoCapitulo (
         CoautorExternoProducto INT not null,
        CapituloFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
+    create table CoautorExternoEvento (
+        CoautorExternoProducto INT not null,
+       EventoFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
+    create table CoautorExternoLibro (
+        CoautorExternoProducto INT not null,
+       LibroFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
+    create table CoautorExternoReporte (
+        CoautorExternoProducto INT not null,
+       ReporteFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
+    create table CoautorExternoResena (
+        CoautorExternoProducto INT not null,
+       ResenaFk INT null,
        primary key (CoautorExternoProducto)
     )
 
@@ -5113,16 +4985,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (NivelReferenciaFk) 
         references Niveles
 
-    alter table CoautorInternoReportes 
-        add constraint FK276A11CD8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoReportes 
-        add constraint FK276A11CD13FE2142 
-        foreign key (ReporteFk) 
-        references Reportes
-
     alter table Libros 
         add constraint FK439120E7D6323CFC 
         foreign key (TipoPublicacionFk) 
@@ -5242,16 +5104,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK6CD232B3295BC133 
         foreign key (AreaFk) 
         references Areas
-
-    alter table CoautorExternoLibros 
-        add constraint FK86CBBCE08FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoLibros 
-        add constraint FK86CBBCE0586827F8 
-        foreign key (LibroFk) 
-        references Libros
 
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
@@ -5568,26 +5420,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (PeriodoReferenciaFk) 
         references PeriodoReferencias
 
-    alter table CoautorInternoResenas 
-        add constraint FK17D499948336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoResenas 
-        add constraint FK17D49994FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
-
-    alter table CoautorExternoResenas 
-        add constraint FKDA2968108FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoResenas 
-        add constraint FKDA296810FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
-
     alter table AreaTematicas 
         add constraint FK33E5D7A51EDC2D3B 
         foreign key (LineaTematicaFk) 
@@ -5757,26 +5589,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKE29ADD7B11666E2A 
         foreign key (PeriodoReferenciaFk) 
         references PeriodoReferencias
-
-    alter table CoautorInternoEventos 
-        add constraint FKDB55786B8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoEventos 
-        add constraint FKDB55786B3BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
-
-    alter table CoautorExternoEventos 
-        add constraint FKE25BBDA78FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoEventos 
-        add constraint FKE25BBDA73BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
 
     alter table TesisDirigidas 
         add constraint FKEF4DD3119CF67963 
@@ -6088,30 +5900,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ConvenioFk) 
         references Convenios
 
-    alter table CoautorInternoLibros 
-        add constraint FK84935DC88336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table CoautorInternoLibros 
-        add constraint FK84935DC8586827F8 
-        foreign key (LibroFk) 
-        references Libros
-
     alter table Archivos 
         add constraint FKD4AF217E59EC5B70 
         foreign key (TipoArchivoFk) 
         references TipoArchivos
-
-    alter table CoautorExternoReportes 
-        add constraint FK797B39C18FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoReportes 
-        add constraint FK797B39C113FE2142 
-        foreign key (ReporteFk) 
-        references Reportes
 
     alter table Articulos 
         add constraint FK3EB394D73C5C6337 
@@ -6268,6 +6060,46 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (CapituloFk) 
         references Capitulos
 
+    alter table CoautorInternoEvento 
+        add constraint FKD196DEE318FE0275 
+        foreign key (CoautorInternoProducto) 
+        references CoautorInternoProductos
+
+    alter table CoautorInternoEvento 
+        add constraint FKD196DEE33BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table CoautorInternoLibro 
+        add constraint FK3D25DC818FE0275 
+        foreign key (CoautorInternoProducto) 
+        references CoautorInternoProductos
+
+    alter table CoautorInternoLibro 
+        add constraint FK3D25DC8586827F8 
+        foreign key (LibroFk) 
+        references Libros
+
+    alter table CoautorInternoReporte 
+        add constraint FK27BD11CD18FE0275 
+        foreign key (CoautorInternoProducto) 
+        references CoautorInternoProductos
+
+    alter table CoautorInternoReporte 
+        add constraint FK27BD11CD13FE2142 
+        foreign key (ReporteFk) 
+        references Reportes
+
+    alter table CoautorInternoResena 
+        add constraint FKEF5FE7018FE0275 
+        foreign key (CoautorInternoProducto) 
+        references CoautorInternoProductos
+
+    alter table CoautorInternoResena 
+        add constraint FKEF5FE70FF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
+
     alter table CoautorExternoProductos 
         add constraint FK15D3B7B28FDBB774 
         foreign key (InvestigadorExternoFk) 
@@ -6297,6 +6129,46 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK713E819DA1B3F60D 
         foreign key (CapituloFk) 
         references Capitulos
+
+    alter table CoautorExternoEvento 
+        add constraint FKD8A8B54399085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoEvento 
+        add constraint FKD8A8B5433BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table CoautorExternoLibro 
+        add constraint FKDF4ABCE099085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoLibro 
+        add constraint FKDF4ABCE0586827F8 
+        foreign key (LibroFk) 
+        references Libros
+
+    alter table CoautorExternoReporte 
+        add constraint FK79AE39C199085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoReporte 
+        add constraint FK79AE39C113FE2142 
+        foreign key (ReporteFk) 
+        references Reportes
+
+    alter table CoautorExternoResena 
+        add constraint FKD1565D8899085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoResena 
+        add constraint FKD1565D88FF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
 
     alter table Clases 
         add constraint FK14DFAB5DAA0C7213 

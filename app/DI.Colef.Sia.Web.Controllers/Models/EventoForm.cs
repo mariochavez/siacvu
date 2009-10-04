@@ -50,14 +50,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string TipoParticipacionNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
-        public int TotalAutores { get; set; }
-        
-        public CoautorExternoEventoForm[] CoautorExternoEventos { get; set; }
-        public CoautorInternoEventoForm[] CoautorInternoEventos { get; set; }
+        public int TotalAutores
+        {
+            get
+            {
+                return (CoautorExternoEventos == null ? 0 : CoautorExternoEventos.Length) +
+                    (CoautorInternoEventos == null ? 0 : CoautorInternoEventos.Length) + 1;
+            }
+        }
+
+        public CoautorExternoProductoForm[] CoautorExternoEventos { get; set; }
+        public CoautorInternoProductoForm[] CoautorInternoEventos { get; set; }
 
         /* New */
-        public CoautorExternoEventoForm CoautorExternoEvento { get; set; }
-        public CoautorInternoEventoForm CoautorInternoEvento { get; set; }
+        public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
+        public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
 
         /* Catalogos */
         public AmbitoForm[] Ambitos { get; set; }

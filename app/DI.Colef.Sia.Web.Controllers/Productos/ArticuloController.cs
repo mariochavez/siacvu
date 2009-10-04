@@ -150,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
-                                   ArticuloForm form, FormCollection formCollection)
+                                   ArticuloForm form)
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                               coautorExterno, coautorInterno);

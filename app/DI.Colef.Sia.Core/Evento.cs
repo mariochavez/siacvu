@@ -19,11 +19,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddCoautorExterno(CoautorExternoEvento coautorExternoEvento)
         {
+            coautorExternoEvento.TipoProducto = 6; // 6 Representa Evento
             CoautorExternoEventos.Add(coautorExternoEvento);
         }
 
         public virtual void AddCoautorInterno(CoautorInternoEvento coautorInternoEvento)
         {
+            coautorInternoEvento.TipoProducto = 6; // 6 Representa Evento
             CoautorInternoEventos.Add(coautorInternoEvento);
         }
 

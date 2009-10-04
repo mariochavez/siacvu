@@ -7,6 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo);
         Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo,
-                   string[] coautoresExternos, string[] coautoresInternos);
+                   CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos);
     }
 }

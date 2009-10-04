@@ -36,4 +36,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class CoautorExternoEvento : CoautorExternoProducto
+    {
+        
+    }
+
+    public class CoautorExternoLibro : CoautorExternoProducto
+    {
+        
+    }
+
+    public class CoautorExternoReporte : CoautorExternoProducto
+    {
+        
+    }
+
+    public class CoautorExternoResena : CoautorExternoProducto
+    {
+        
+    }
 }

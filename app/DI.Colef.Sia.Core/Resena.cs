@@ -19,11 +19,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddCoautorExterno(CoautorExternoResena coautorExternoResena)
         {
+            coautorExternoResena.TipoProducto = 12; // 12 Representa Resena
             CoautorExternoResenas.Add(coautorExternoResena);
         }
 
         public virtual void AddCoautorInterno(CoautorInternoResena coautorInternoResena)
         {
+            coautorInternoResena.TipoProducto = 12; // 12 Representa Resena
             CoautorInternoResenas.Add(coautorInternoResena);
         }
 

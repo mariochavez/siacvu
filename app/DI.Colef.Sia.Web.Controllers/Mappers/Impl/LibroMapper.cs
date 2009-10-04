@@ -91,32 +91,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, string[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
             var model = Map(message, usuario, periodo);
 
-            foreach (var coautorId in coautoresExternos)
+            if (coautoresExternos != null)
             {
-                var coautor =
-                    coautorExternoLibroMapper.Map(new CoautorExternoLibroForm
-                                                         {InvestigadorExternoId = int.Parse(coautorId)});
+                foreach (var coautorExterno in coautoresExternos)
+                {
+                    var coautor =
+                        coautorExternoLibroMapper.Map(coautorExterno);
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
 
-                model.AddCoautorExterno(coautor);
+                    model.AddCoautorExterno(coautor);
+                }
             }
 
-            foreach (var coautorId in coautoresInternos)
+            if (coautoresInternos != null)
             {
-                var coautor =
-                    coautorInternoLibroMapper.Map(new CoautorInternoLibroForm
-                                                         {InvestigadorId = int.Parse(coautorId)});
+                foreach (var coautorInterno in coautoresInternos)
+                {
+                    var coautor =
+                        coautorInternoLibroMapper.Map(coautorInterno);
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
 
-                model.AddCoautorInterno(coautor);
+                    model.AddCoautorInterno(coautor);
+                }
             }
 
             return model;

@@ -87,7 +87,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-            data.Form.TotalAutores = 1;
 
             return View(data);
         }
@@ -108,8 +107,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var resenaForm = resenaMapper.Map(resena);
 
             data.Form = SetupNewForm(resenaForm);
-            data.Form.TotalAutores = resena.CoautorExternoResenas.Count +
-                                     resena.CoautorInternoResenas.Count + 1;
 
             FormSetCombos(data.Form);
 
@@ -134,22 +131,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(ResenaForm form,
-                                   FormCollection formCollection)
+        public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
+                                   ResenaForm form, FormCollection formCollection)
         {
-            var coautoresExternos = new string[] { };
-            var coautoresInternos = new string[] { };
-
-            if (formCollection["CoautorExternoResena.InvestigadorExternoId_New"] != null &&
-                    formCollection["CoautorExternoResena.InvestigadorExternoId_New"].Split(',').Length > 0)
-                coautoresExternos = formCollection["CoautorExternoResena.InvestigadorExternoId_New"].Split(',');
-
-            if (formCollection["CoautorInternoResena.InvestigadorId_New"] != null &&
-                    formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',').Length > 0)
-                coautoresInternos = formCollection["CoautorInternoResena.InvestigadorId_New"].Split(',');
-
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                                          coautoresExternos, coautoresInternos);
+                                          coautorExterno, coautorInterno);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
             {
@@ -184,44 +171,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             resenaService.SaveResena(resena);
 
             return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreRevista));
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var resena = resenaService.GetResenaById(id);
-
-            if (resena.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            resena.Activo = true;
-            resena.ModificadoPor = CurrentUser();
-            resenaService.SaveResena(resena);
-
-            var form = resenaMapper.Map(resena);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var resena = resenaService.GetResenaById(id);
-
-            if (resena.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            resena.Activo = false;
-            resena.ModificadoPor = CurrentUser();
-            resenaService.SaveResena(resena);
-
-            var form = resenaMapper.Map(resena);
-
-            return Rjs("Activate", form);
         }
 
         [Authorize]
@@ -270,13 +219,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorInterno(int id)
         {
             var resena = resenaService.GetResenaById(id);
-            var form = new ResenaForm();
+            var form = new CoautorForm { Controller = "Resena", IdName = "ResenaId" };
 
             if (resena != null)
                 form.Id = resena.Id;
-
-            form.CoautorInternoResena = new CoautorInternoResenaForm();
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores(CurrentUser()));
 
             return Rjs("NewCoautorInterno", form);
         }
@@ -284,32 +230,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInternoResena")] CoautorInternoResenaForm form,
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form,
                                               int resenaId)
         {
-            var totalAutores = new int();
             var coautorInternoResena = coautorInternoResenaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorInternoResena.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorInternoResena.ValidationResults(), false, "CoautorInterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorInternoResena.CreadorPor = CurrentUser();
-            coautorInternoResena.ModificadoPor = CurrentUser();
-
             if (resenaId != 0)
             {
+                coautorInternoResena.CreadorPor = CurrentUser();
+                coautorInternoResena.ModificadoPor = CurrentUser();
+
                 var resena = resenaService.GetResenaById(resenaId);
-                resena.AddCoautorInterno(coautorInternoResena);
-                resenaService.SaveResena(resena);
-                totalAutores = resena.CoautorExternoResenas.Count +
-                               resena.CoautorInternoResenas.Count + 1;
+
+                var alreadyHasIt =
+                    resena.CoautorInternoResenas.Where(
+                        x => x.Investigador.Id == coautorInternoResena.Investigador.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    resena.AddCoautorInterno(coautorInternoResena);
+                    resenaService.SaveResena(resena);
+                }
             }
 
             var coautorInternoResenaForm = coautorInternoResenaMapper.Map(coautorInternoResena);
-            coautorInternoResenaForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorInterno", coautorInternoResenaForm);
         }
@@ -319,13 +269,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var resena = resenaService.GetResenaById(id);
-            var form = new ResenaForm();
+            var form = new CoautorForm { Controller = "Resena", IdName = "ResenaId" };
 
             if (resena != null)
                 form.Id = resena.Id;
-
-            form.CoautorExternoResena = new CoautorExternoResenaForm();
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -333,32 +280,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoResena")] CoautorExternoResenaForm form,
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int resenaId)
         {
-            var totalAutores = new int();
             var coautorExternoResena = coautorExternoResenaMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoResena.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoResena.ValidationResults(), false, "CoautorExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorExternoResena.CreadorPor = CurrentUser();
-            coautorExternoResena.ModificadoPor = CurrentUser();
-
             if (resenaId != 0)
             {
+                coautorExternoResena.CreadorPor = CurrentUser();
+                coautorExternoResena.ModificadoPor = CurrentUser();
+
                 var resena = resenaService.GetResenaById(resenaId);
-                resena.AddCoautorExterno(coautorExternoResena);
-                resenaService.SaveResena(resena);
-                totalAutores = resena.CoautorExternoResenas.Count +
-                               resena.CoautorInternoResenas.Count + 1;
+
+                var alreadyHasIt =
+                    resena.CoautorExternoResenas.Where(
+                        x => x.InvestigadorExterno.Id == coautorExternoResena.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    resena.AddCoautorExterno(coautorExternoResena);
+                    resenaService.SaveResena(resena);
+                }
             }
 
             var coautorExternoResenaForm = coautorExternoResenaMapper.Map(coautorExternoResena);
-            coautorExternoResenaForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoResenaForm);
         }
@@ -372,8 +323,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ResenaForm();
 
-            form.CoautorExternoResena = new CoautorExternoResenaForm();
-            form.CoautorInternoResena = new CoautorInternoResenaForm();
+            form.CoautorExternoProducto = new CoautorExternoProductoForm();
+            form.CoautorInternoProducto = new CoautorInternoProductoForm();
+
+            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoResenas.Length;
+            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoResenas.Length;
 
             //Lista de Catalogos Pendientes
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
