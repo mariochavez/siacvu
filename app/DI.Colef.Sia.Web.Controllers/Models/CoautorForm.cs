@@ -7,6 +7,7 @@
         public string IdName { get; set; }
 
         public CoautorInternoProductoForm[] CoautoresInternos { get; set; }
+        public CoautorExternoProductoForm[] CoautoresExternos { get; set; }
         public int ModelId { get; set; }
     }
 }

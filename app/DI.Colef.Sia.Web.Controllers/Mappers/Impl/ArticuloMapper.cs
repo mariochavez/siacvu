@@ -90,30 +90,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
             var model = Map(message, usuario, periodo);
 
-            foreach (var coautorId in coautoresExternos)
+            if (coautoresExternos != null)
             {
-                var coautor =
-                    coautorExternoArticuloMapper.Map(new CoautorExternoArticuloForm { InvestigadorExternoId = int.Parse(coautorId) });
-                
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                foreach (var coautorExterno in coautoresExternos)
+                {
+                    var coautor =
+                        coautorExternoArticuloMapper.Map(coautorExterno);
 
-                model.AddCoautorExterno(coautor);
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
+
+                    model.AddCoautorExterno(coautor);
+                }
             }
 
-            foreach (var coautorInterno in coautoresInternos)
+            if (coautoresInternos != null)
             {
-                var coautor =
-                    coautorInternoArticuloMapper.Map(coautorInterno);
+                foreach (var coautorInterno in coautoresInternos)
+                {
+                    var coautor =
+                        coautorInternoArticuloMapper.Map(coautorInterno);
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
 
-                model.AddCoautorInterno(coautor);
+                    model.AddCoautorInterno(coautor);
+                }
             }
 
             return model;

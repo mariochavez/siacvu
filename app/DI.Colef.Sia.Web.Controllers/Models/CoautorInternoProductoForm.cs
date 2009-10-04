@@ -12,6 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InvestigadorUsuarioApellidoMaterno { get; set; }
 
         public int Posicion { get; set; }
+        public static int CoautoresInternos { get; set; }
 
         public string NombreCoautor
         {

@@ -3,10 +3,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var counter = $('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>').length;
+var counter = <%= CoautorInternoProductoForm.CoautoresInternos %>;
 
 var html = '
-    <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>">
+    <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>">
         <h6>
             <%=Html.Encode(Model.NombreCoautor) %>
             <%=Html.Hidden("CoautorInterno[' + counter + '].InvestigadorId", Model.InvestigadorId)%>
@@ -25,7 +25,7 @@ $('#coautorinterno_form').hide();
 $('#coautorinterno_new').show();
 $('#coautorinterno_form').html('');
 
-if($('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>').length == 0)
+if($('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
 {
     $('#coautorinternoEmptyList_form').html('');
     $('#coautorinternoList div:first').before(html);
@@ -38,3 +38,4 @@ if($('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Mode
 }
 
 setupSublistRows();
+<% CoautorInternoProductoForm.CoautoresInternos += 1; %>

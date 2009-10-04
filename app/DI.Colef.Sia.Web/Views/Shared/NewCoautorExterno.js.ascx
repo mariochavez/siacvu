@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ArticuloForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CoautorForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -6,14 +6,9 @@
 var cssclass = 'remote';
 var rel = '#coautorexternoform';
 
-<% if(Model.Id == 0) { %>
-    cssclass = 'local';
-    rel = '#CoautorExternoArticulo.InvestigadorExternoId';
-<% } %>
-
 var html = '
-    <% using (Html.BeginForm("AddCoautorExterno", "Articulo", FormMethod.Post, new { id = "coautorexternoform" })){ %>
-    <%=Html.Hidden("ArticuloId", Model.Id) %>
+    <% using (Html.BeginForm("AddCoautorExterno", Model.Controller, FormMethod.Post, new { id = "coautorexternoform" })){ %>
+    <%=Html.Hidden(Model.IdName, Model.Id)%>
     <% Html.RenderPartial("_NewCoautorExterno"); %>
     <div class="minilistaboton">
         <p>
@@ -29,3 +24,5 @@ $('#coautorexterno_form').html(html);
 $('#coautorexterno_new').hide();
 $('#coautorexterno_form').show();
 DateTimePicker.setup();
+AutoComplete.config($('#CoautorExterno_Nombre'));
+AutoComplete.config($('#CoautorExterno_InstitucionNombre'));

@@ -154,16 +154,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    ArticuloForm form, FormCollection formCollection)
         {
-            var coautoresExternos = new string[] {};
-
-            if (formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"] != null &&
-                formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',').Length > 0)
-                coautoresExternos = formCollection["CoautorExternoArticulo.InvestigadorExternoId_New"].Split(',');
-
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                                              coautoresExternos, coautorInterno);
+                                              coautorExterno, coautorInterno);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
             {
@@ -324,13 +319,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new ArticuloForm();
+            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId" };
 
             if (articulo != null)
                 form.Id = articulo.Id;
-
-            form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -338,32 +330,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoArticulo")] CoautorExternoArticuloForm form,
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int articuloId)
         {
-            var totalAutores = new int();
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), false, "CoautorExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorExternoArticulo.CreadorPor = CurrentUser();
-            coautorExternoArticulo.ModificadoPor = CurrentUser();
-
             if (articuloId != 0)
             {
+                coautorExternoArticulo.CreadorPor = CurrentUser();
+                coautorExternoArticulo.ModificadoPor = CurrentUser();
+
                 var articulo = articuloService.GetArticuloById(articuloId);
-                articulo.AddCoautorExterno(coautorExternoArticulo);
-                articuloService.SaveArticulo(articulo);
-                totalAutores = articulo.CoautorExternoArticulos.Count +
-                               articulo.CoautorInternoArticulos.Count + 1;
+
+                var alreadyHasIt =
+                    articulo.CoautorExternoArticulos.Where(
+                        x => x.InvestigadorExterno.Id == coautorExternoArticulo.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    articulo.AddCoautorExterno(coautorExternoArticulo);
+                    articuloService.SaveArticulo(articulo);
+                }
             }
 
             var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
-            coautorExternoArticuloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
         }
@@ -377,8 +373,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloForm();
 
-            form.CoautorExternoArticulo = new CoautorExternoArticuloForm();
+            form.CoautorExternoProducto = new CoautorExternoProductoForm();
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
+
+            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoArticulos.Length;
+            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoArticulos.Length;
 
             form.ArchivoArticulo = new ArchivoForm
                                        {
