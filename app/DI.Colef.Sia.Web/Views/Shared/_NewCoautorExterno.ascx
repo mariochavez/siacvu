@@ -12,7 +12,7 @@
     <%=Html.TextBox("CoautorExterno.Posicion", 2, new { @class = "input100", maxlength = 3 })%>
 </p>
 <p>
-	<label>Instituci&oacute;n</label>
+	<label>Instituci&oacute;n acad&eacute;mica</label>
 	<%=Html.TextBox("CoautorExterno.InstitucionNombre", "",
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("CoautorExterno.InstitucionId", 0, new { rel = "#CoautorExterno_InstitucionNombre" })%>

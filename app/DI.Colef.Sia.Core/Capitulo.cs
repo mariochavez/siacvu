@@ -21,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		
 		public virtual void AddCoautorExterno(CoautorExternoCapitulo coautorExternoCapitulo)
         {
+            coautorExternoCapitulo.TipoProducto = 2; // 2 Representa Capitulo
             CoautorExternoCapitulos.Add(coautorExternoCapitulo);
         }
         public virtual void AddCoautorInterno(CoautorInternoCapitulo coautorInternoCapitulo)

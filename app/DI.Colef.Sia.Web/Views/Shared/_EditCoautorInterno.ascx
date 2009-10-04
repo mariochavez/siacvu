@@ -9,7 +9,7 @@
 	        <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.CoautoresInternos[i].InvestigadorId) %>">
 	            <h6>
 	                <%=Html.Encode(Model.CoautoresInternos[i].NombreCoautor)%>
-	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId_New", Model.CoautoresInternos[i].InvestigadorId)%>
+	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId", Model.CoautoresInternos[i].InvestigadorId)%>
 	                <span>
                         Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
                         <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>

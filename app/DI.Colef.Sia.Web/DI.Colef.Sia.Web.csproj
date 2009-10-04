@@ -723,7 +723,6 @@
     <Content Include="Views\Productos\Articulo\New.aspx" />
     <Content Include="Views\Productos\Articulo\_DatosArticulo.ascx" />
     <Content Include="Views\Productos\Capitulo\Activate.js.ascx" />
-    <Content Include="Views\Productos\Capitulo\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Productos\Capitulo\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Productos\Capitulo\AddResponsableInterno.js.ascx" />
     <Content Include="Views\Productos\Capitulo\NewResponsableExterno.js.ascx" />
@@ -731,11 +730,8 @@
     <Content Include="Views\Productos\Capitulo\_EditResponsableExterno.ascx" />
     <Content Include="Views\Productos\Capitulo\_EditResponsableInterno.ascx" />
     <Content Include="Views\Productos\Capitulo\Edit.aspx" />
-    <Content Include="Views\Productos\Capitulo\NewCoautorExterno.js.ascx" />
-    <Content Include="Views\Productos\Capitulo\_EditCoautorExterno.ascx" />
     <Content Include="Views\Productos\Capitulo\_NewResponsableExterno.ascx" />
     <Content Include="Views\Productos\Capitulo\_NewResponsableInterno.ascx" />
-    <Content Include="Views\Productos\Capitulo\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Capitulo\_ResponsablesLibro.ascx" />
     <Content Include="Views\Productos\Capitulo\Index.aspx" />
     <Content Include="Views\Productos\Capitulo\New.aspx" />

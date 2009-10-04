@@ -79,13 +79,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public CoautorExternoCapituloForm[] CoautorExternoCapitulos { get; set; }
+        public CoautorExternoProductoForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
         public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
         public ResponsableExternoCapituloForm[] ResponsableExternoCapitulos { get; set; }
 		
 		/* New */
-		public CoautorExternoCapituloForm CoautorExternoCapitulo { get; set; }
+		public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
 		public ResponsableInternoCapituloForm ResponsableInternoCapitulo { get; set; }
 		public ResponsableExternoCapituloForm ResponsableExternoCapitulo { get; set; }

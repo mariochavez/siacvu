@@ -83,7 +83,6 @@
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
     <Compile Include="Clase.cs" />
-    <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
     <Compile Include="CoautorExternoLibro.cs" />
     <Compile Include="CoautorExternoProducto.cs" />

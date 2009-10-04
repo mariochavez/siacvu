@@ -514,7 +514,6 @@
     <Compile Include="Models\CargoInvestigadorForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\CategoriaInvestigadorForm.cs" />
-    <Compile Include="Models\CoautorExternoCapituloForm.cs" />
     <Compile Include="Models\CoautorExternoEventoForm.cs" />
     <Compile Include="Models\CoautorExternoForm.cs" />
     <Compile Include="Models\CoautorExternoReporteForm.cs" />

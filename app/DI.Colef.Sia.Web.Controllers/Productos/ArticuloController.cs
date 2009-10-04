@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
     {
         readonly IAreaMapper areaMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IArticuloMapper articuloMapper;
         readonly IArticuloService articuloService;
         readonly ICatalogoService catalogoService;
@@ -27,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
@@ -51,12 +49,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
-                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper,
-                                  ILineaTematicaMapper lineaTematicaMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
+                                  ITipoArchivoMapper tipoArchivoMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
                                   IProyectoService proyectoService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.areaTematicaMapper = areaTematicaMapper;
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
@@ -76,7 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.proyectoService = proyectoService;
             this.proyectoMapper = proyectoMapper;

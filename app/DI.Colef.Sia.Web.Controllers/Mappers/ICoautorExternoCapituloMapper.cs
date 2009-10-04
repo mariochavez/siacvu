@@ -3,7 +3,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface ICoautorExternoCapituloMapper : IMapper<CoautorExternoCapitulo, CoautorExternoCapituloForm>
+    public interface ICoautorExternoCapituloMapper : IMapper<CoautorExternoCapitulo, CoautorExternoProductoForm>
     {
     }
 }

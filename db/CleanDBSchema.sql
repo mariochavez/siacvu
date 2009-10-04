@@ -165,26 +165,6 @@ alter table EstatusProyectos  drop constraint FKDE910ADD74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE9BFF7578FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulos'))
-alter table CoautorExternoCapitulos  drop constraint FKE9BFF7578FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE9BFF75785102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulos'))
-alter table CoautorExternoCapitulos  drop constraint FKE9BFF75785102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE9BFF75774E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulos'))
-alter table CoautorExternoCapitulos  drop constraint FKE9BFF75774E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE9BFF757A1B3F60D]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulos'))
-alter table CoautorExternoCapitulos  drop constraint FKE9BFF757A1B3F60D
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E85102A57]') AND parent_object_id = OBJECT_ID('Cargos'))
 alter table Cargos  drop constraint FKA8E8D63E85102A57
 
@@ -2555,6 +2535,46 @@ alter table CoautorInternoCapitulo  drop constraint FK4AEC98B5A1B3F60D
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B28FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
+alter table CoautorExternoProductos  drop constraint FK15D3B7B28FDBB774
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B264F7D1CD]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
+alter table CoautorExternoProductos  drop constraint FK15D3B7B264F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B285102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
+alter table CoautorExternoProductos  drop constraint FK15D3B7B285102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B274E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
+alter table CoautorExternoProductos  drop constraint FK15D3B7B274E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK851DDCE699085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulo'))
+alter table CoautorExternoArticulo  drop constraint FK851DDCE699085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK851DDCE6FCE29076]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulo'))
+alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK713E819D99085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulo'))
+alter table CoautorExternoCapitulo  drop constraint FK713E819D99085EFD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK713E819DA1B3F60D]') AND parent_object_id = OBJECT_ID('CoautorExternoCapitulo'))
+alter table CoautorExternoCapitulo  drop constraint FK713E819DA1B3F60D
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14DFAB5DAA0C7213]') AND parent_object_id = OBJECT_ID('Clases'))
 alter table Clases  drop constraint FK14DFAB5DAA0C7213
 
@@ -2780,36 +2800,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B28FDBB774]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
-alter table CoautorExternoProductos  drop constraint FK15D3B7B28FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B264F7D1CD]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
-alter table CoautorExternoProductos  drop constraint FK15D3B7B264F7D1CD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B285102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
-alter table CoautorExternoProductos  drop constraint FK15D3B7B285102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B274E8BAB7]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
-alter table CoautorExternoProductos  drop constraint FK15D3B7B274E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK851DDCE699085EFD]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulo'))
-alter table CoautorExternoArticulo  drop constraint FK851DDCE699085EFD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK851DDCE6FCE29076]') AND parent_object_id = OBJECT_ID('CoautorExternoArticulo'))
-alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
-
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2825,8 +2815,6 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
     if exists (select * from dbo.sysobjects where id = object_id(N'FormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormacionAcademicas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstatusProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusProyectos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoCapitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Cargos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cargos
 
@@ -3042,6 +3030,12 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorInternoCapitulo
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoArticulo
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoCapitulo
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Clases') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Clases
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Areas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Areas
@@ -3071,10 +3065,6 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoArticulo
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3189,18 +3179,6 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
        Activo BIT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoCapitulos (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       CapituloFk INT null,
        primary key (Id)
     )
 
@@ -4780,6 +4758,32 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
        primary key (CoautorInternoProducto)
     )
 
+    create table CoautorExternoProductos (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
+       Posicion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       InstitucionFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table CoautorExternoArticulo (
+        CoautorExternoProducto INT not null,
+       ArticuloFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
+    create table CoautorExternoCapitulo (
+        CoautorExternoProducto INT not null,
+       CapituloFk INT null,
+       primary key (CoautorExternoProducto)
+    )
+
     create table Clases (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4964,26 +4968,6 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
        primary key (Id)
     )
 
-    create table CoautorExternoProductos (
-        Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
-       Posicion INT null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       InstitucionFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table CoautorExternoArticulo (
-        CoautorExternoProducto INT not null,
-       ArticuloFk INT null,
-       primary key (CoautorExternoProducto)
-    )
-
     alter table RevistaPublicaciones 
         add constraint FK40B4829364F7D1CD 
         foreign key (InstitucionFk) 
@@ -5063,16 +5047,6 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
         add constraint FK824D8BEAF4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
-
-    alter table CoautorExternoCapitulos 
-        add constraint FKE9BFF7578FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoCapitulos 
-        add constraint FKE9BFF757A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
 
     alter table RecursoFinancieroProyectos 
         add constraint FKC15ABC1964F7D1CD 
@@ -6294,6 +6268,36 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
         foreign key (CapituloFk) 
         references Capitulos
 
+    alter table CoautorExternoProductos 
+        add constraint FK15D3B7B28FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table CoautorExternoProductos 
+        add constraint FK15D3B7B264F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table CoautorExternoArticulo 
+        add constraint FK851DDCE699085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoArticulo 
+        add constraint FK851DDCE6FCE29076 
+        foreign key (ArticuloFk) 
+        references Articulos
+
+    alter table CoautorExternoCapitulo 
+        add constraint FK713E819D99085EFD 
+        foreign key (CoautorExternoProducto) 
+        references CoautorExternoProductos
+
+    alter table CoautorExternoCapitulo 
+        add constraint FK713E819DA1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos
+
     alter table Clases 
         add constraint FK14DFAB5DAA0C7213 
         foreign key (RamaFk) 
@@ -6363,24 +6367,4 @@ alter table CoautorExternoArticulo  drop constraint FK851DDCE6FCE29076
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table CoautorExternoProductos 
-        add constraint FK15D3B7B28FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table CoautorExternoProductos 
-        add constraint FK15D3B7B264F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table CoautorExternoArticulo 
-        add constraint FK851DDCE699085EFD 
-        foreign key (CoautorExternoProducto) 
-        references CoautorExternoProductos
-
-    alter table CoautorExternoArticulo 
-        add constraint FK851DDCE6FCE29076 
-        foreign key (ArticuloFk) 
-        references Articulos
 

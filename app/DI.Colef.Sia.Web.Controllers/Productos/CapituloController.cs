@@ -13,7 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class CapituloController : BaseController<Capitulo, CapituloForm>
     {
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IAreaMapper areaMapper;
         readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
@@ -34,7 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IProyectoService proyectoService;
         readonly IProyectoMapper proyectoMapper;
 
@@ -52,11 +50,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
-                                  ISearchService searchService, IAreaTematicaMapper areaTematicaMapper,
-                                  ILineaTematicaMapper lineaTematicaMapper, IProyectoService proyectoService, IProyectoMapper proyectoMapper)
+                                  ISearchService searchService, IProyectoService proyectoService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.areaTematicaMapper = areaTematicaMapper;
             this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
@@ -77,7 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.proyectoService = proyectoService;
             this.proyectoMapper = proyectoMapper;
         }
@@ -156,15 +151,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    CapituloForm form, FormCollection formCollection)
         {
-            var coautoresExternos = new string[] { };
             var responsablesExternos = new string[] { };
             var responsablesInternos = new string[] { };
-
-            if (formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"] != null &&
-                    formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',').Length > 0)
-                coautoresExternos = formCollection["CoautorExternoCapitulo.InvestigadorExternoId_New"].Split(',');
 
             if (formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"] != null &&
                     formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',').Length > 0)
@@ -175,7 +166,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
 
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                coautoresExternos, coautorInterno, responsablesExternos, responsablesInternos);
+                                              coautorExterno, coautorInterno, responsablesExternos, responsablesInternos);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {
@@ -323,14 +314,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var capitulo = capituloService.GetCapituloById(id);
-
-            var form = new CapituloForm();
+            var form = new CoautorForm { Controller = "Capitulo", IdName = "CapituloId" };
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
-
-            form.CoautorExternoCapitulo = new CoautorExternoCapituloForm();
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewCoautorExterno", form);
         }
@@ -338,32 +325,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExternoCapitulo")] CoautorExternoCapituloForm form,
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int capituloId)
         {
-            var totalAutores = new int();
             var coautorExternoCapitulo = coautorExternoCapituloMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoCapitulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoCapitulo.ValidationResults(), false, "CoautorExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            coautorExternoCapitulo.CreadorPor = CurrentUser();
-            coautorExternoCapitulo.ModificadoPor = CurrentUser();
-
             if (capituloId != 0)
             {
+
+                coautorExternoCapitulo.CreadorPor = CurrentUser();
+                coautorExternoCapitulo.ModificadoPor = CurrentUser();
+
                 var capitulo = capituloService.GetCapituloById(capituloId);
-                capitulo.AddCoautorExterno(coautorExternoCapitulo);
-                capituloService.SaveCapitulo(capitulo);
-                totalAutores = capitulo.CoautorExternoCapitulos.Count +
-                               capitulo.CoautorInternoCapitulos.Count + 1;
+
+                var alreadyHasIt =
+                    capitulo.CoautorExternoCapitulos.Where(
+                        x => x.InvestigadorExterno.Id == coautorExternoCapitulo.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    capitulo.AddCoautorExterno(coautorExternoCapitulo);
+                    capituloService.SaveCapitulo(capitulo);
+                }
             }
 
             var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
-            coautorExternoCapituloForm.TotalAutores = totalAutores;
 
             return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
         }
@@ -477,10 +469,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CapituloForm();
 
-            form.CoautorExternoCapitulo = new CoautorExternoCapituloForm();
+            form.CoautorExternoProducto = new CoautorExternoProductoForm();
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
             form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
             form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
+
+            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoCapitulos.Length;
+            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoCapitulos.Length;
 
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());

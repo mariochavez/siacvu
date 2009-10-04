@@ -7,31 +7,33 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class CoautorExternoCapituloMapper : AutoFormMapper<CoautorExternoCapitulo, CoautorExternoCapituloForm>, ICoautorExternoCapituloMapper
+    public class CoautorExternoCapituloMapper : AutoFormMapper<CoautorExternoCapitulo, CoautorExternoProductoForm>, ICoautorExternoCapituloMapper
     {
 		readonly ICatalogoService catalogoService;
-		
-		public CoautorExternoCapituloMapper(IRepository<CoautorExternoCapitulo> repository,	ICatalogoService catalogoService) 
+
+        public CoautorExternoCapituloMapper(IRepository<CoautorExternoCapitulo> repository, ICatalogoService catalogoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
         }
 		
-        protected override int GetIdFromMessage(CoautorExternoCapituloForm message)
+        protected override int GetIdFromMessage(CoautorExternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CoautorExternoCapituloForm message, CoautorExternoCapitulo model)
+        protected override void MapToModel(CoautorExternoProductoForm message, CoautorExternoCapitulo model)
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
-			
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+
 			if (model.IsTransient())
             {
                 model.Activo = true;
                 model.CreadorEl = DateTime.Now;
             }
             model.ModificadoEl = DateTime.Now;
+            model.Posicion = message.Posicion;
         }
     }
 }
