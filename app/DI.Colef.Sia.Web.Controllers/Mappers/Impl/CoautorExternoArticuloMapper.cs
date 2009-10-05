@@ -2,12 +2,11 @@ using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class CoautorExternoArticuloMapper : AutoFormMapper<CoautorExternoArticulo, CoautorExternoArticuloForm>, ICoautorExternoArticuloMapper
+    public class CoautorExternoArticuloMapper : AutoFormMapper<CoautorExternoArticulo, CoautorExternoProductoForm>, ICoautorExternoArticuloMapper
     {
         readonly ICatalogoService catalogoService;
 
@@ -17,14 +16,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.catalogoService = catalogoService;
         }
 
-        protected override int GetIdFromMessage(CoautorExternoArticuloForm message)
+        protected override int GetIdFromMessage(CoautorExternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CoautorExternoArticuloForm message, CoautorExternoArticulo model)
+        protected override void MapToModel(CoautorExternoProductoForm message, CoautorExternoArticulo model)
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
             if (model.IsTransient())
             {

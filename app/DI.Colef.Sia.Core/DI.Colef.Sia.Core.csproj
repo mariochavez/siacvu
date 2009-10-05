@@ -83,10 +83,10 @@
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
     <Compile Include="Clase.cs" />
-    <Compile Include="CoautorExternoArticulo.cs" />
     <Compile Include="CoautorExternoCapitulo.cs" />
     <Compile Include="CoautorExternoEvento.cs" />
     <Compile Include="CoautorExternoLibro.cs" />
+    <Compile Include="CoautorExternoProducto.cs" />
     <Compile Include="CoautorExternoReporte.cs" />
     <Compile Include="CoautorExternoResena.cs" />
     <Compile Include="CoautorInternoCapitulo.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="GradoAcademico.cs" />
     <Compile Include="GrupoInvestigacion.cs" />
     <Compile Include="IBaseEntity.cs" />
+    <Compile Include="ICoautor.cs" />
     <Compile Include="IdentificadorLibro.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="IdiomasInvestigador.cs" />

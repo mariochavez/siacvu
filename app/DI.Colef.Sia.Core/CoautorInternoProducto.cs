@@ -25,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
     }
 
-    
     public class CoautorInternoArticulo : CoautorInternoProducto
     {
         

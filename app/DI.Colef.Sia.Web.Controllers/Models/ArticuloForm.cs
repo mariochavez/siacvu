@@ -92,11 +92,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public CoautorExternoArticuloForm[] CoautorExternoArticulos { get; set; }
+        public CoautorExternoProductoForm[] CoautorExternoArticulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoArticulos { get; set; }
 
         /* New */
-        public CoautorExternoArticuloForm CoautorExternoArticulo { get; set; }
+        public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public ArchivoForm ArchivoArticulo { get; set; }
@@ -107,8 +107,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public PaisForm[] Paises { get; set; }
-        public InvestigadorExternoForm[] CoautoresExternos { get; set; }
-        public InvestigadorForm[] CoautoresInternos { get; set; }
+        //public InvestigadorExternoForm[] CoautoresExternos { get; set; }
+        //public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
         public TipoParticipacionForm[] TiposParticipantes { get; set; }

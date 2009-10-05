@@ -22,20 +22,20 @@ var html = '
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#coautorinterno_form').hide();
-$('#coautorinterno_new').show();
-$('#coautorinterno_form').html('');
+$('#coautorinternoForm').hide();
+$('#coautorinternoNew').show();
+$('#coautorinternoForm').html('');
 
-if($('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>').length == 0)
+if($('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
 {
-    $('#coautorinternoEmptyList_form').html('');
+    $('#coautorinternoEmptyListForm').html('');
     $('#coautorinternoList div:first').before(html);
 
-    $('#coautorinterno_' + <%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id)%> + ':first').hide();
-    $('#coautorinterno_' + <%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id)%> + ':first').fadeIn('slow');
+    $('#coautorinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').hide();
+    $('#coautorinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').fadeIn('slow');
 
-    var autores = ($('#coautorinternoList').length - 1) + ($('#coautorexternoList').length - 1)  + 1;
-    $('#totalcoautores').text(autores + 1);
+    var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
+    $('#totalcoautores').text(autores);
 }
 
 setupSublistRows();

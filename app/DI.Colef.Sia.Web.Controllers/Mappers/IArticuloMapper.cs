@@ -7,6 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo);
         Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos);
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos);
     }
 }

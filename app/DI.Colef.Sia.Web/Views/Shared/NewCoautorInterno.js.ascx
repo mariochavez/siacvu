@@ -20,8 +20,8 @@ var html = '
     <% } %>
 ';
 
-$('#coautorinterno_form').html(html);
-$('#coautorinterno_new').hide();
-$('#coautorinterno_form').show();
+$('#coautorinternoForm').html(html);
+$('#coautorinternoNew').hide();
+$('#coautorinternoForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorInterno_Nombre'));

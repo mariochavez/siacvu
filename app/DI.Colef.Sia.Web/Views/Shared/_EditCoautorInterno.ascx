@@ -14,17 +14,17 @@
 	                <span>
                         Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
                         <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>
-                       </span>
+                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>
-        <div class="sublista" id="coautorinternoEmptyList_form">
+        <div class="sublista" id="coautorinternoEmptyListForm">
             <h6><span>No hay coautores internos registrados</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 
-	<div id="coautorinterno_new" class="minilistaboton">
+	<div id="coautorinternoNew" class="minilistaboton">
 		<p>
 			<span>
 	    		<%=Html.ActionLink("+ Nuevo coautor interno", "NewCoautorInterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
@@ -34,4 +34,4 @@
 
 </div><!--end minilista-->
 
-<div id="coautorinterno_form" class="display:hidden;"></div>
+<div id="coautorinternoForm" class="display:hidden;"></div>

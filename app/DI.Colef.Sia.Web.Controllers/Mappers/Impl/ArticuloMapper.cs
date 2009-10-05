@@ -93,14 +93,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
             var model = Map(message, usuario, periodo);
 
-            foreach (var coautorId in coautoresExternos)
+            foreach (var coautoresExterno in coautoresExternos)
             {
                 var coautor =
-                    coautorExternoArticuloMapper.Map(new CoautorExternoArticuloForm { InvestigadorExternoId = int.Parse(coautorId) });
+                    coautorExternoArticuloMapper.Map(coautoresExterno);
                 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
