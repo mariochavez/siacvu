@@ -193,44 +193,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
         }
 
-        //[CustomTransaction]
-        //[Authorize(Roles = "Investigadores")]
-        //[AcceptVerbs(HttpVerbs.Put)]
-        //public ActionResult Activate(int id)
-        //{
-        //    var articulo = articuloService.GetArticuloById(id);
-
-        //    if (articulo.Usuario.Id != CurrentUser().Id)
-        //        return RedirectToIndex("no lo puede modificar", true);
-
-        //    articulo.Activo = true;
-        //    articulo.ModificadoPor = CurrentUser();
-        //    articuloService.SaveArticulo(articulo);
-
-        //    var form = articuloMapper.Map(articulo);
-
-        //    return Rjs(form);
-        //}
-
-        //[CustomTransaction]
-        //[Authorize(Roles = "Investigadores")]
-        //[AcceptVerbs(HttpVerbs.Put)]
-        //public ActionResult Deactivate(int id)
-        //{
-        //    var articulo = articuloService.GetArticuloById(id);
-
-        //    if (articulo.Usuario.Id != CurrentUser().Id)
-        //        return RedirectToIndex("no lo puede modificar", true);
-
-        //    articulo.Activo = false;
-        //    articulo.ModificadoPor = CurrentUser();
-        //    articuloService.SaveArticulo(articulo);
-
-        //    var form = articuloMapper.Map(articulo);
-
-        //    return Rjs("Activate", form);
-        //}
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeProyecto(int select)
@@ -290,46 +252,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        //[Authorize(Roles = "Investigadores")]
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult NewRevistaPublicacion(int id)
-        //{
-        //    var articulo = articuloService.GetArticuloById(id);
-
-        //    var form = new ArticuloForm
-        //                   {
-        //                       RevistaPublicacion = new RevistaPublicacionForm()
-        //                   };
-
-        //    if (articulo != null)
-        //        form.Id = articulo.Id;
-
-        //    return Rjs("NewRevistaPublicacion", form);
-        //}
-
-        //[CustomTransaction]
-        //[Authorize(Roles = "Investigadores")]
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult AddRevistaPublicacion([Bind(Prefix = "RevistaPublicacion")]RevistaPublicacionForm form, int articuloId)
-        //{
-        //    var revistaPublicacion = revistaPublicacionMapper.Map(form);
-
-        //    ModelState.AddModelErrors(revistaPublicacion.ValidationResults(), true, String.Empty);
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Rjs("ModelError");
-        //    }
-
-        //    revistaPublicacion.Activo = true;
-        //    revistaPublicacion.CreadorPor = CurrentUser();
-        //    revistaPublicacion.ModificadoPor = CurrentUser();
-
-        //    catalogoService.SaveRevistaPublicacion(revistaPublicacion);
-
-        //    var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
-
-        //    return Rjs("AddRevistaPublicacion", revistaPublicacionForm);
-        //}
 
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -376,9 +298,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
+            coautorInternoArticuloForm.ParentId = articuloId;
 
             return Rjs("AddCoautorInterno", coautorInternoArticuloForm);
         }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            if (articulo != null)
+            {
+                var coautor = articulo.CoautorInternoArticulos.Where(x => x.Investigador.Id == investigadorId).First();
+                articulo.DeleteCoautorInterno(coautor);
+
+                articuloService.SaveArticulo(articulo);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
+        }
+
 
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]

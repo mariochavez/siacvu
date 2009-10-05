@@ -644,13 +644,10 @@
     <Content Include="Views\ParticipacionAcademia\New.aspx" />
     <Content Include="Views\ParticipacionAcademia\Show.aspx" />
     <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
-    <Content Include="Views\Productos\Articulo\AddRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Articulo\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Articulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Articulo\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
-    <Content Include="Views\Productos\Articulo\_NewRevistaPublicacion.ascx" />
-    <Content Include="Views\Productos\Articulo\NewRevistaPublicacion.js.ascx" />
     <Content Include="Views\Productos\Capitulo\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Capitulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
@@ -705,9 +702,9 @@
     <Content Include="Views\MovilidadAcademica\_NewProductoDerivado.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProyecto.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewTipoActividad.ascx" />
-    <Content Include="Views\Productos\Articulo\Activate.js.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Productos\Articulo\AddCoautorExterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\NewCoautorInterno.js.ascx" />
     <Content Include="Views\Productos\Articulo\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Shared\_EditCoautorInterno.ascx" />

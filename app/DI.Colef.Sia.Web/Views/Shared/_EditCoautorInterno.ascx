@@ -8,12 +8,13 @@
         <% for(int i = 0; i < Model.CoautoresInternos.Length; i++) { %>
 	        <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.CoautoresInternos[i].InvestigadorId) %>">
 	            <h6>
+	                <a href="<%=Url.Action("deletecoautorinterno", null, new{id = Model.ModelId, investigadorId = Model.CoautoresInternos[i].InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.CoautoresInternos[i].NombreCoautor)%>
 	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId_New", Model.CoautoresInternos[i].InvestigadorId)%>
 	                <span>
                         Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
                         <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>
-                        </span>
+                       </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Posicion { get; set; }
 
+        public int ParentId { get; set; }
+
         public string NombreCoautor
         {
             get

@@ -28,6 +28,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoArticulos.Add(coautorInternoArticulo);
         }
 
+        public virtual void DeleteCoautorInterno(CoautorInternoArticulo coautorInternoArticulo)
+        {
+            CoautorInternoArticulos.Remove(coautorInternoArticulo);
+        }
+
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 

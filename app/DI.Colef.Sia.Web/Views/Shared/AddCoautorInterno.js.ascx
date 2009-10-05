@@ -3,11 +3,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var counter = $('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>').length;
+var counter = $('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length;
 
 var html = '
-    <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id) %>">
+    <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>">
         <h6>
+            <a href="<%=Url.Action("deletecoautorinterno", null, new{id = Model.ParentId, investigadorId = Model.InvestigadorId }) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreCoautor) %>
             <%=Html.Hidden("CoautorInterno[' + counter + '].InvestigadorId", Model.InvestigadorId)%>
             <span>
@@ -33,7 +34,7 @@ if($('#coautorinterno_<%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Mode
     $('#coautorinterno_' + <%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id)%> + ':first').hide();
     $('#coautorinterno_' + <%=Html.Encode(Model.Id == 0 ? Model.InvestigadorId : Model.Id)%> + ':first').fadeIn('slow');
 
-    var autores = parseInt($('#totalcoautores').text());
+    var autores = ($('#coautorinternoList').length - 1) + ($('#coautorexternoList').length - 1)  + 1;
     $('#totalcoautores').text(autores + 1);
 }
 
