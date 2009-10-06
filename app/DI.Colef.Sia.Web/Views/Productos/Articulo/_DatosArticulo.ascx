@@ -27,10 +27,10 @@
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
 <p class="tieneproyecto_field" id="lineatematica">
-
+    &nbsp;
 </p>
 <p class="tieneproyecto_field" id="areatematica">
-
+    &nbsp;
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>

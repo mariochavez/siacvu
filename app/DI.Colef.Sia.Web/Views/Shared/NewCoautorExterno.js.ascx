@@ -25,4 +25,4 @@ $('#coautorexternoNew').hide();
 $('#coautorexternoForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorExterno_Nombre'));
-AutoComplete.config($('#CoautorExterno_InstitucionNombre'));
+AutoComplete.config($('#CoautorExterno_Institucion'));

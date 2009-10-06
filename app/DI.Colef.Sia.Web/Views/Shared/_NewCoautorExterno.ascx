@@ -10,8 +10,8 @@
 </p>
 <p>
     <label>Instituci&oacute;n</label>
-    <%=Html.TextBox("CoautorExterno.InstitucionNombre", "",
+    <%=Html.TextBox("CoautorExterno.Institucion", "",
                 new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("CoautorExterno.InstitucionId", 0, new { rel = "#CoautorExterno_InstitucionNombre" })%>
+    <%=Html.Hidden("CoautorExterno.InstitucionId", 0, new { rel = "#CoautorExterno_Institucion" })%>
     <%=Html.ValidationMessage("CoautorExterno.InstitucionId")%>
 </p>

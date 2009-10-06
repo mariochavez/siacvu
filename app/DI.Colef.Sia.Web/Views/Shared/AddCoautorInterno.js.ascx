@@ -19,8 +19,8 @@ var html = '
 	</div><!--end sublista-->
 ';
 
-$('#message').html('');
-$('#message').removeClass('errormessage');
+$('#mensaje-error').html('');
+$('#mensaje-error').removeClass('mensaje-error');
 
 $('#coautorinternoForm').hide();
 $('#coautorinternoNew').show();

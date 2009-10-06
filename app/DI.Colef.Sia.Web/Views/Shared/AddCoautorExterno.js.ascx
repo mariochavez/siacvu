@@ -19,13 +19,12 @@ var html = '
 	</div><!--end sublista-->
 ';
 
-$('#message').html('');
-$('#message').removeClass('errormessage');
+$('#mensaje-error').html('');
+$('#mensaje-error').removeClass('mensaje-error');
 
 $('#coautorexternoForm').hide();
 $('#coautorexternoNew').show();
 $('#coautorexternoForm').html('');
-
 
 if($('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').length == 0)
 {

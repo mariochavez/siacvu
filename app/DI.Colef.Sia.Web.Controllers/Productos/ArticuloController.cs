@@ -340,7 +340,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
 
-            ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), false, "CoautorExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
