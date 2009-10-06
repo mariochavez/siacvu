@@ -702,6 +702,8 @@
     <Content Include="Views\Productos\Articulo\Activate.js.ascx" />
     <Content Include="Views\Shared\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorExterno.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorInterno.ascx" />
     <Content Include="Views\Shared\NewCoautorExterno.js.ascx" />
     <Content Include="Views\Shared\NewCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\_EditCoautorExterno.ascx" />
