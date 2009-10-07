@@ -44,11 +44,12 @@
             
             <h4>Coautores<span class="cvu"></span></h4>
             <% Html.RenderPartial("_Coautoria", Model.Form); %>
-            <% Html.RenderPartial("_EditCoautorInterno", Model.Form); %>
-			<% Html.RenderPartial("_EditCoautorExterno", Model.Form); %>
-            <div class="minilista" id="totalautores_form">
-                <h5>Creador del articulo + coautores internos + coautores externos = <%=Html.Encode(Model.Form.TotalAutores) %></h5>
-            </div>
+			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
+            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
+            <p>
+                <label>Autores</label>
+                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+            </p>
             
             <h4>Opcionales</h4>
 			<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>

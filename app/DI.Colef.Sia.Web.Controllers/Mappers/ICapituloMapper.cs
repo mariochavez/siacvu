@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo);
         Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, string[] coautoresInternos,
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
             string[] responsablesExternos, string[] responsablesInternos);
     }
 }

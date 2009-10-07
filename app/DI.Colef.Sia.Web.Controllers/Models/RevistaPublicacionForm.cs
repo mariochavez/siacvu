@@ -20,12 +20,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Indice1 { get; set; }
         public int Indice1Id { get; set; }
+        public string Indice1Nombre { get; set; }
 
         public int Indice2 { get; set; }
         public int Indice2Id { get; set; }
+        public string Indice2Nombre { get; set; }
 
         public int Indice3 { get; set; }
         public int Indice3Id { get; set; }
+        public string Indice3Nombre { get; set; }
 
         public PaisForm[] Paises { get; set; }
         public IndiceForm[] Indices1 { get; set; }

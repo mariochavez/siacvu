@@ -55,10 +55,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
@@ -87,31 +85,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo,
-            string[] coautoresExternos, string[] coautoresInternos, 
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
             string[] responsablesExternos, string[] responsablesInternos)
         {
             var model = Map(message, usuario, periodo);
-
-            foreach (var coautorId in coautoresExternos)
+            if (coautoresExternos != null)
             {
-                var coautor =
-                    coautorExternoCapituloMapper.Map(new CoautorExternoCapituloForm { InvestigadorExternoId = int.Parse(coautorId) });
+                foreach (var coautorExterno in coautoresExternos)
+                {
+                    var coautor =
+                        coautorExternoCapituloMapper.Map(coautorExterno);
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
 
-                model.AddCoautorExterno(coautor);
+                    model.AddCoautorExterno(coautor);
+                }
             }
 
-            foreach (var coautorId in coautoresInternos)
+            if (coautoresInternos != null)
             {
-                var coautor =
-                    coautorInternoCapituloMapper.Map(new CoautorInternoCapituloForm { InvestigadorId = int.Parse(coautorId) });
+                foreach (var coautorInterno in coautoresInternos)
+                {
+                    var coautor =
+                        coautorInternoCapituloMapper.Map(coautorInterno);
 
-                coautor.CreadorPor = usuario;
-                coautor.ModificadoPor = usuario;
+                    coautor.CreadorPor = usuario;
+                    coautor.ModificadoPor = usuario;
 
-                model.AddCoautorInterno(coautor);
+                    model.AddCoautorInterno(coautor);
+                }
             }
 
             foreach (var responsableId in responsablesExternos)

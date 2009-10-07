@@ -268,8 +268,6 @@
     <Compile Include="Mappers\ITipoInstitucionMapper.cs" />
     <Compile Include="Mappers\ITipoProyectoMapper.cs" />
     <Compile Include="Mappers\ITipoPublicacionMapper.cs" />
-    <Compile Include="Models\CoautorExternoLibroForm.cs" />
-    <Compile Include="Models\CoautorInternoLibroForm.cs" />
     <Compile Include="Models\ConvenioForm.cs" />
     <Compile Include="Models\IdentificadorLibroForm.cs" />
     <Compile Include="Models\LibroForm.cs" />
@@ -514,15 +512,7 @@
     <Compile Include="Models\CargoInvestigadorForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\CategoriaInvestigadorForm.cs" />
-    <Compile Include="Models\CoautorExternoCapituloForm.cs" />
-    <Compile Include="Models\CoautorExternoEventoForm.cs" />
     <Compile Include="Models\CoautorExternoForm.cs" />
-    <Compile Include="Models\CoautorExternoReporteForm.cs" />
-    <Compile Include="Models\CoautorExternoResenaForm.cs" />
-    <Compile Include="Models\CoautorInternoCapituloForm.cs" />
-    <Compile Include="Models\CoautorInternoEventoForm.cs" />
-    <Compile Include="Models\CoautorInternoReporteForm.cs" />
-    <Compile Include="Models\CoautorInternoResenaForm.cs" />
     <Compile Include="Models\CursoForm.cs" />
     <Compile Include="Models\DepartamentoForm.cs" />
     <Compile Include="Models\DependenciaForm.cs" />

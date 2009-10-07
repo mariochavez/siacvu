@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var counter = $('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length;
+var counter =  $('#coautorinternoList div[id^=coautorinterno_]').length;
 
 var html = '
     <div class="sublista" id="coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>">

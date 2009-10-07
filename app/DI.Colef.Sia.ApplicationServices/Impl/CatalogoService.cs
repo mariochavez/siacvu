@@ -888,23 +888,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<LineaTematica>) lineaTematicaList).ToArray();
         }
 
-        public LineaTematica GetLineaTematicaInstitucionalByProyectoId(int id)
-        {
-            if (id == 0)
-                return null;
-
-            var proyectoId = new Dictionary<string, object> {{"Id", id}};
-
-            var proyecto = proyectoRepository.FindOne(proyectoId);
-
-            if (proyecto.LineaTematica == null)
-                return null;
-
-            var lineaTematica = new Dictionary<string, object> {{"Id", proyecto.LineaTematica.Id}};
-            return lineaTematicaRepository.FindOne(lineaTematica);
-
-        }
-
         public CoautorExterno GetCoautorExternoById(int id)
         {
             return coautorExternoRepository.Get(id);
@@ -2452,22 +2435,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public AreaTematica[] GetAreaTematicasByLineaTematicaId(int id)
         {
             return ((List<AreaTematica>)FilterCatalogOptions<AreaTematica>(x => x.Nombre, id, "LineaTematica")).ToArray();
-        }
-
-        public AreaTematica GetAreaTematicaByProyectoId(int id)
-        {
-            if (id == 0)
-                return null;
-
-            var proyectoId = new Dictionary<string, object> { { "Id", id } };
-
-            var proyecto = proyectoRepository.FindOne(proyectoId);
-
-            if (proyecto.AreaTematica == null)
-                return null;
-
-            var areaTematica = new Dictionary<string, object> { { "Id", proyecto.AreaTematica.Id } };
-            return areaTematicaRepository.FindOne(areaTematica);
         }
 
         public TipoArchivo GetTipoArchivoById(int id)

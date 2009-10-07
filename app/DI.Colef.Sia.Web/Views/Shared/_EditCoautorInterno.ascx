@@ -10,7 +10,7 @@
 	            <h6>
 	                <a href="<%=Url.Action("deletecoautorinterno", null, new{id = Model.ModelId, investigadorId = Model.CoautoresInternos[i].InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.CoautoresInternos[i].NombreCoautor)%>
-	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId_New", Model.CoautoresInternos[i].InvestigadorId)%>
+	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId", Model.CoautoresInternos[i].InvestigadorId)%>
 	                <span>
                         Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
                         <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>

@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
     {
         readonly IAreaMapper areaMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IArticuloMapper articuloMapper;
         readonly IArticuloService articuloService;
         readonly ICatalogoService catalogoService;
@@ -27,13 +26,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
         readonly ITipoArticuloMapper tipoArticuloMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IProyectoService proyectoService;
+        readonly IProyectoMapper proyectoMapper;
 
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -48,11 +49,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
                                   IEstadoProductoMapper estadoProductoMapper, ISearchService searchService,
-                                  IAreaTematicaMapper areaTematicaMapper, ITipoArchivoMapper tipoArchivoMapper,
-                                  ILineaTematicaMapper lineaTematicaMapper)
+                                  ITipoArchivoMapper tipoArchivoMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
+                                  IProyectoService proyectoService, IProyectoMapper proyectoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.areaTematicaMapper = areaTematicaMapper;
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
@@ -72,7 +72,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.estadoProductoMapper = estadoProductoMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.proyectoService = proyectoService;
+            this.proyectoMapper = proyectoMapper;
         }
 
         [Authorize]
@@ -193,20 +195,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var articuloForm = new ArticuloForm();
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            articuloForm.RevistaPublicacionIndice1Nombre = revistaPublicacionForm.Indice1Nombre;
+            articuloForm.RevistaPublicacionIndice2Nombre = revistaPublicacionForm.Indice2Nombre;
+            articuloForm.RevistaPublicacionIndice3Nombre = revistaPublicacionForm.Indice3Nombre;
+            articuloForm.RevistaPublicacionId = revistaPublicacionForm.Id;
+
+            return Rjs("ChangeRevista", articuloForm);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeProyecto(int select)
         {
-            var lineaTematica =
-                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaInstitucionalByProyectoId(select));
-            var areaTematica =
-                areaTematicaMapper.Map(catalogoService.GetAreaTematicaByProyectoId(select));
+            var articuloForm = new ArticuloForm();
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
 
-            var form = new ArticuloForm
-                           {
-                               ProyectoLineaTematicaNombre = lineaTematica.Nombre,
-                               ProyectoAreaTematicaNombre = areaTematica.Nombre
-                           };
+            articuloForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
+            articuloForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
+            articuloForm.ProyectoId = proyectoForm.Id;
 
-            return Rjs("ChangeProyecto", form);
+            return Rjs("ChangeProyecto", articuloForm);
         }
 
         [Authorize]
@@ -249,7 +262,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = searchService.Search<Articulo>(x => x.Titulo, q);
             return Content(data);
         }
-
 
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -397,9 +409,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloForm();
 
-            //form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            //form.CoautorInternoProducto = new CoautorInternoProductoForm();
-
             form.ArchivoArticulo = new ArchivoForm
                                        {
                                            TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos())
@@ -407,12 +416,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            //form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            //form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
@@ -430,7 +436,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoArticulo"] = form.TipoArticuloId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["AreaTematica"] = form.AreaTematicaId;
 
             ViewData["Pais"] = form.PaisId;
 

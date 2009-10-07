@@ -19,11 +19,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		
 		public virtual void AddCoautorExterno(CoautorExternoLibro coautorExternoLibro)
         {
+            coautorExternoLibro.TipoProducto = 7; // 7 Representa Libro
             CoautorExternoLibros.Add(coautorExternoLibro);
         }
 
         public virtual void AddCoautorInterno(CoautorInternoLibro coautorInternoLibro)
         {
+            coautorInternoLibro.TipoProducto = 7; // 7 Representa Libro
             CoautorInternoLibros.Add(coautorInternoLibro);
         }
 

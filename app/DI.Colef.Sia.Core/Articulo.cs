@@ -64,10 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPublicacion { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
-
-        public virtual AreaTematica AreaTematica { get; set; }
-
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }

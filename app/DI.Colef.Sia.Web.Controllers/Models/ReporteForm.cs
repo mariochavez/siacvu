@@ -41,14 +41,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PaisNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
-        public int TotalAutores { get; set; }
+        public int TotalAutores
+        {
+            get
+            {
+                return (CoautorExternoReportes == null ? 0 : CoautorExternoReportes.Length) +
+                    (CoautorInternoReportes == null ? 0 : CoautorInternoReportes.Length) + 1;
+            }
+        }
 
         /* New */
-        public CoautorExternoReporteForm[] CoautorExternoReportes { get; set; }
-        public CoautorInternoReporteForm[] CoautorInternoReportes { get; set; }
+        public CoautorExternoProductoForm[] CoautorExternoReportes { get; set; }
+        public CoautorInternoProductoForm[] CoautorInternoReportes { get; set; }
 
-        public CoautorExternoReporteForm CoautorExternoReporte { get; set; }
-        public CoautorInternoReporteForm CoautorInternoReporte { get; set; }
+        public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
+        public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
 
         /* Catalogos */
         public TipoReporteForm[] TiposReportes { get; set; }

@@ -9,6 +9,6 @@
 </p>
 
 <p>
-    <label>Coautor interno</label>
+    <label>Posici&oacute;n coautor interno</label>
     <%=Html.TextBox("CoautorInterno.Posicion", 2, new { @class = "input100", maxlength = 3 })%>
 </p>

@@ -7,7 +7,7 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class CoautorExternoLibroMapper : AutoFormMapper<CoautorExternoLibro, CoautorExternoLibroForm>, ICoautorExternoLibroMapper
+    public class CoautorExternoLibroMapper : AutoFormMapper<CoautorExternoLibro, CoautorExternoProductoForm>, ICoautorExternoLibroMapper
     {
 		readonly ICatalogoService catalogoService;
 		
@@ -17,15 +17,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
 			this.catalogoService = catalogoService;
         }
-		
-        protected override int GetIdFromMessage(CoautorExternoLibroForm message)
+
+        protected override int GetIdFromMessage(CoautorExternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CoautorExternoLibroForm message, CoautorExternoLibro model)
+        protected override void MapToModel(CoautorExternoProductoForm message, CoautorExternoLibro model)
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 			
 			if (model.IsTransient())
             {

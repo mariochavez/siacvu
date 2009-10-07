@@ -38,13 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoProducto { get; set; }
         public int EstadoProductoId { get; set; }
         public string EstadoProductoNombre { get; set; }
-
-        public int AreaTematica { get; set; }
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
-        public int LineaTematicaId { get; set; }
-        public string LineaTematicaNombre { get; set; }
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
@@ -57,6 +50,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
+        public string RevistaPublicacionIndice1Nombre { get; set; }
+        public string RevistaPublicacionIndice2Nombre { get; set; }
+        public string RevistaPublicacionIndice3Nombre { get; set; }
 
         public int LineaInvestigacion { get; set; }
         public int LineaInvestigacionId { get; set; }
@@ -103,7 +99,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoArticuloForm[] TiposArticulos { get; set; }
-        public AreaTematicaForm[] AreasTematicas { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public PaisForm[] Paises { get; set; }

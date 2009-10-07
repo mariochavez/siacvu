@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface ICoautorExternoEventoMapper : IMapper<CoautorExternoEvento, CoautorExternoEventoForm>
+    public interface ICoautorExternoEventoMapper : IMapper<CoautorExternoEvento, CoautorExternoProductoForm>
     {
     }
 }

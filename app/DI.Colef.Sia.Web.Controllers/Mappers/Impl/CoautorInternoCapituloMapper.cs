@@ -7,7 +7,7 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class CoautorInternoCapituloMapper : AutoFormMapper<CoautorInternoCapitulo, CoautorInternoCapituloForm>, ICoautorInternoCapituloMapper
+    public class CoautorInternoCapituloMapper : AutoFormMapper<CoautorInternoCapitulo, CoautorInternoProductoForm>, ICoautorInternoCapituloMapper
     {
         readonly IInvestigadorService investigadorService;
 		
@@ -17,13 +17,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             this.investigadorService = investigadorService;
         }
-		
-        protected override int GetIdFromMessage(CoautorInternoCapituloForm message)
+
+        protected override int GetIdFromMessage(CoautorInternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CoautorInternoCapituloForm message, CoautorInternoCapitulo model)
+        protected override void MapToModel(CoautorInternoProductoForm message, CoautorInternoCapitulo model)
         {
             model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
 			
@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadorEl = DateTime.Now;
             }
             model.ModificadoEl = DateTime.Now;
+            model.Posicion = message.Posicion;
         }
     }
 }
