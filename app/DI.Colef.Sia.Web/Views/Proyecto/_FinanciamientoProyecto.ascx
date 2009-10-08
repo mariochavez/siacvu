@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
     <label>Sector de financiamiento</label>
-    <%=Html.DropDownList("SectorFinanciamiento", Model.SectoresFinanciamientos.CreateSelectList<SectorFinanciamientoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("SectorFinanciamiento", Model.SectoresFinanciamientos.CreateSelectList<SectorForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("SectorFinanciamiento")%>
 </p>

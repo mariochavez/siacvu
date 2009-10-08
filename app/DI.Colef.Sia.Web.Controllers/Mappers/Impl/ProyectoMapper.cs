@@ -59,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoProyecto = catalogoService.GetTipoProyectoById(message.TipoProyecto);
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);
             model.EstatusProyecto = catalogoService.GetEstatusProyectoById(message.EstatusProyecto);
-            model.SectorFinanciamiento = catalogoService.GetSectorFinanciamientoById(message.SectorFinanciamiento);
+            model.SectorFinanciamiento = catalogoService.GetSectorById(message.SectorFinanciamiento);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.LineaTematica = catalogoService.GetLineaTematicaInstitucionalById(message.LineaTematica);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
@@ -79,7 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.SectorEconomico = catalogoService.GetSectorEconomicoById(message.SectorEconomico);
+            model.SectorEconomico = catalogoService.GetSectorById(message.SectorEconomico);
             model.Rama = catalogoService.GetRamaById(message.Rama);
             model.Clase = catalogoService.GetClaseById(message.Clase);
 

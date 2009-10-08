@@ -13,7 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(70)]
 		public virtual string Nombre { get; set; }
 
-	    public virtual bool SectorEconomico { get; set; }
+        [Min(0)]
+	    public virtual int TipoSector { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

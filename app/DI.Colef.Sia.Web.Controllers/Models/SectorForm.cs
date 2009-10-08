@@ -7,6 +7,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
-        public bool SectorEconomico { get; set; }
+        public int TipoSector { get; set; }
+
+        public CustomSelectForm[] TiposSectores { get; set; }
     }
 }

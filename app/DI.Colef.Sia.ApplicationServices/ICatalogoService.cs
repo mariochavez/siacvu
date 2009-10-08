@@ -181,8 +181,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Sector[] GetAllSectores();
         Sector[] GetActiveSectores();
         void SaveSector(Sector sector);
-        Sector GetSectorEconomicoById(int id);
         Sector[] GetActiveSectoresEconomicos();
+        Sector[] GetActiveSectoresFinanciamientos();
 
         //Nivel
         Nivel GetNivelById(int id);
@@ -388,12 +388,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Moneda[] GetAllMonedas();
         Moneda[] GetActiveMonedas();
         void SaveMoneda(Moneda moneda);
-
-        //Sector de financiamiento
-        SectorFinanciamiento GetSectorFinanciamientoById(int id);
-        SectorFinanciamiento[] GetAllSectorFinanciamientos();
-        SectorFinanciamiento[] GetActiveSectorFinanciamientos();
-        void SaveSectorFinanciamiento(SectorFinanciamiento sectorFinanciamiento);
 
         //Producto academico
         ProductoAcademico GetProductoAcademicoById(int id);

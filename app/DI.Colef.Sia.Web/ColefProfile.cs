@@ -1023,9 +1023,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<ProductoAcademico, ProductoAcademicoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<SectorFinanciamiento, SectorFinanciamientoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<USEG, USEGForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());

@@ -458,11 +458,6 @@
     <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Edit.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Index.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\New.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\_Form.ascx" />
     <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sector\Edit.aspx" />
     <Content Include="Views\Catalogos\Sector\Index.aspx" />

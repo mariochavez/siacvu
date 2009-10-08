@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<SectorForm>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -9,7 +10,8 @@
     <%=Html.ValidationMessage("Nombre") %>
 </p>
 <p>
-    <label>Sector econ&oacute;mico</label>
-    <%= Html.CheckBox("SectorEconomico", Model.SectorEconomico)%>
-    <%=Html.ValidationMessage("SectorEconomico")%>
+    <label>Tipo de art&iacute;culo</label>
+    <%=Html.DropDownList("TipoSector", Model.TiposSectores.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("TipoSector") %>
 </p>

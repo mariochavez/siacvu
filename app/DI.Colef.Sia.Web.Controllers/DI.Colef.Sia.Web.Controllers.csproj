@@ -111,7 +111,6 @@
     <Compile Include="Catalogos\ProductoAcademicoController.cs" />
     <Compile Include="Catalogos\ProductoDerivadoController.cs" />
     <Compile Include="Catalogos\RamaController.cs" />
-    <Compile Include="Catalogos\SectorFinanciamientoController.cs" />
     <Compile Include="Catalogos\SubprogramaConacytController.cs" />
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
@@ -138,6 +137,7 @@
     <Compile Include="Mappers\IFirmaMapper.cs" />
     <Compile Include="Mappers\Impl\FirmaMapper.cs" />
     <Compile Include="Models\FirmaForm.cs" />
+    <Compile Include="Models\CustomSelectForm.cs" />
     <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />
@@ -198,10 +198,8 @@
     <Compile Include="Mappers\Impl\ImpactoPoliticaPublicaMapper.cs" />
     <Compile Include="Mappers\Impl\MonedaMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoAcademicoMapper.cs" />
-    <Compile Include="Mappers\Impl\SectorFinanciamientoMapper.cs" />
     <Compile Include="Mappers\Impl\USEGMapper.cs" />
     <Compile Include="Mappers\IProductoAcademicoMapper.cs" />
-    <Compile Include="Mappers\ISectorFinanciamientoMapper.cs" />
     <Compile Include="Mappers\ISubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\ITipoApoyoMapper.cs" />
     <Compile Include="Mappers\ITipoEstudianteMapper.cs" />
@@ -234,7 +232,6 @@
     <Compile Include="Models\ImpactoPoliticaPublicaForm.cs" />
     <Compile Include="Models\MonedaForm.cs" />
     <Compile Include="Models\ProductoAcademicoForm.cs" />
-    <Compile Include="Models\SectorFinanciamientoForm.cs" />
     <Compile Include="Models\SubprogramaConacytForm.cs" />
     <Compile Include="Models\TipoApoyoForm.cs" />
     <Compile Include="Models\TipoEstudianteForm.cs" />

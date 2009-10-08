@@ -18,7 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(SectorForm message, Sector model)
         {
 			model.Nombre = message.Nombre;
-            model.SectorEconomico = message.SectorEconomico;
+            model.TipoSector = message.TipoSector;
         }
     }
 }

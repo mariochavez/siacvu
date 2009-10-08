@@ -91,14 +91,6 @@ insert into ProductoAcademicos values('Tesis de doctorado',GETDATE(), GETDATE(),
 insert into ProductoDerivados values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 insert into ProductoDerivados values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into SectorFinanciamientos values('Gobierno federal',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Gobierno estatal',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Gobierno municipal',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Académico',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Fundaciones',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Privado',GETDATE(), GETDATE(), 1, 1, 1);
-insert into SectorFinanciamientos values('Sociedad civil organizada',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into USEGs values('USEG 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('USEG 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('USEG 3',GETDATE(), GETDATE(), 1, 1, 1);
@@ -367,7 +359,7 @@ insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, null, null, 1, 1);
 
---Sector economico=False
+--Sector = 0
 insert into Sectores values('NO ESPECIFICADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO FEDERAL CENTRALIZADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES', 0,GETDATE(), GETDATE(), 1, 1, 1);
@@ -378,7 +370,7 @@ insert into Sectores values('INSTITUCIONES DEL SECTOR PRIVADO DE EMPRESAS PRODUC
 insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES NO LUCRATIVAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES EXTERNAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('CONSULTORAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
---Sector economico=True
+--Sector economico = 1
 insert into Sectores values('Mineria', 1,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Construccion', 1,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Servicios educativos', 1,GETDATE(), GETDATE(), 1, 1, 1);
@@ -390,6 +382,14 @@ insert into Sectores values('Otros servicios excepto actividades de gobierno', 1
 insert into Sectores values('Actividades de gobierno y organismos internacionales y extraterritoriales', 1,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Informacion en medios masivos', 1,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Servicos Profesiones cientificos y tecnologicos', 1,GETDATE(), GETDATE(), 1, 1, 1);
+--Sector financiamiento = 2
+insert into Sectores values('Gobierno federal', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gobierno estatal', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gobierno municipal', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Académico', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Fundaciones', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Privado', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sociedad civil organizada', 2,GETDATE(), GETDATE(), 1, 1, 1);
 
 --Sector 3=Insituciones del Sector entidades paraestatales
 insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
