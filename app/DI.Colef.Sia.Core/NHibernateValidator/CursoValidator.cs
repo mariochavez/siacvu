@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var curso = value as Curso;
 
             if (!curso.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.ProgramaEstudio, "ProgramaEstudioNombre",
                                                          constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.Institucion, "InstitucionNombre",
@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.NumeroHoras, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.FechaInicial, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.FechaFinal, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Curso>(curso, x => x.FechaFinal, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechaInicialFinal(curso, constraintValidatorContext);

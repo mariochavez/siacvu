@@ -27,11 +27,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var dictamen = value as Dictamen;
 
             if (!dictamen.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Dictamen>(dictamen, x => x.TipoDictamen, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Dictamen>(dictamen, x => x.TipoParticipacion,
                                                             constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Dictamen>(dictamen, x => x.Institucion, "InstitucionNombre", constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Dictamen>(dictamen, x => x.Institucion, "InstitucionNombre", constraintValidatorContext); */
             }
 
             return isValid;

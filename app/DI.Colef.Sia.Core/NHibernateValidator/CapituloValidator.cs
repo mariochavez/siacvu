@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var capitulo = value as Capitulo;
 
             if (!capitulo.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.TipoCapitulo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.EstadoProducto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FechaEdicion, constraintValidatorContext);
@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Editorial, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.NoPaginas, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FormaParticipacion, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Capitulo>(capitulo, x => x.FormaParticipacion, constraintValidatorContext); */
             }
 
             isValid &= TieneProyecto(capitulo, constraintValidatorContext);
