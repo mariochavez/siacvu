@@ -10,8 +10,7 @@
 	            <h6>
 	                <%=Html.Encode(Model.CoautoresExternos[i].InvestigadorExternoNombre)%>
 	                <span>
-                        <strong>Posici&oacute;n</strong> <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
-                        <strong>Instituci&oacute;n</strong> <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
+                        Instituci&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
                     </span>
 	            </h6>
 			</div><!--end sublista-->

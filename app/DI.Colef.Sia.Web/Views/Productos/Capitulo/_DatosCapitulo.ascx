@@ -31,7 +31,6 @@
     <label>Fecha de aceptaci&oacute;n</label>
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
-    <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaAceptacion")%>
 </p>
 <p class="EstatusPublicado">

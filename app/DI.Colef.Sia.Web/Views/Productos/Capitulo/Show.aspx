@@ -136,45 +136,12 @@
 
     <!-- RESPONSABLES DEL LIBRO -->                
                 <h4>Responsables del libro</h4>
-                <p>
-                    <label>Forma de participaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FormaParticipacionNombre)%>&nbsp;</strong>
-                </p>                                
-                <div class="minilista" id="responsableinternoList">
-                    <h5>Investigador Interno</h5>
-
-                    <% if (Model.Form.ResponsableInternoCapitulos != null && Model.Form.ResponsableInternoCapitulos.Length > 0) { %>
-                        <% foreach (var responsableInterno in Model.Form.ResponsableInternoCapitulos){ %>
-                            <div class="sublista" id="responsableinterno_<%=Html.Encode(responsableInterno.InvestigadorId) %>">
-                                <h6>
-                                    <%=Html.Encode(responsableInterno.NombreCoautor)%>
-                                </h6>
-		                    </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="responsableinternoEmptyList_form">
-                            <h6><span>No hay responsables internos registrados</span></h6>
-	                    </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                
-                <div class="minilista" id="responsableexternoList">
-                    <h5>Investigador Externo</h5>
-
-                    <% if (Model.Form.ResponsableExternoCapitulos != null && Model.Form.ResponsableExternoCapitulos.Length > 0) { %>
-                        <% foreach(var responsableExterno in Model.Form.ResponsableExternoCapitulos) { %>
-	                        <div class="sublista" id="responsableexterno_<%=Html.Encode(responsableExterno.InvestigadorExternoId) %>">
-	                            <h6>
-	                                <%=Html.Encode(responsableExterno.InvestigadorExternoNombre)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="responsableexternoEmptyList_form">
-                            <h6><span>No hay responsables externos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
+	            <% Html.RenderPartial("_ShowResponsableInterno", new ResponsableForm { ResponsablesInternos = Model.Form.ResponsableInternoCapitulos, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_ShowResponsableExterno", new ResponsableForm { ResponsablesExternos = Model.Form.ResponsableExternoCapitulos, ModelId = Model.Form.Id }); %>
+	            <p>
+	                <label>Editores</label>
+	                <span id="totaleditores" class="valor"><%=Html.Encode(Model.Form.TotalEditores) %></span>	          
+	            </p>
                 
     <!-- COMPLEMENTARIA CVU -->                
                 <h4>Complementaria CVU</h4>
