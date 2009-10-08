@@ -15,6 +15,14 @@
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
 <p>
+    <label>Instituci&oacute;n</label>
+    <span id="institucion"><%= Html.Encode(Model.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>Pa&iacute;s</label>
+    <span id="pais"><%= Html.Encode(Model.RevistaPublicacionPaisNombre)%>&nbsp;</span>
+</p>
+<p>
     <label>&Iacute;ndice 1</label>
     <span id="indice1"><%= Html.Encode(Model.RevistaPublicacionIndice1Nombre)%>&nbsp;</span>
 </p>

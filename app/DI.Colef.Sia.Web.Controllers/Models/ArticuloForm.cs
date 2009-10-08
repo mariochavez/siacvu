@@ -24,9 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string AnioPublicacion { get; set; }
 
-        public string InstitucionNombre { get; set; }
-        public int InstitucionId { get; set; }
-
         public int TipoArticulo { get; set; }
         public int TipoArticuloId { get; set; }
         public string TipoArticuloNombre { get; set; }
@@ -44,15 +41,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
 
-        public int Pais { get; set; }
-        public int PaisId { get; set; }
-        public string PaisNombre { get; set; }
-
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionIndice1Nombre { get; set; }
         public string RevistaPublicacionIndice2Nombre { get; set; }
         public string RevistaPublicacionIndice3Nombre { get; set; }
+        public string RevistaPublicacionInstitucionNombre { get; set; }
+        public string RevistaPublicacionPaisNombre { get; set; }
 
         public int LineaInvestigacion { get; set; }
         public int LineaInvestigacionId { get; set; }
@@ -104,7 +99,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoArticuloForm[] TiposArticulos { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-        public PaisForm[] Paises { get; set; }
         //public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         //public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }

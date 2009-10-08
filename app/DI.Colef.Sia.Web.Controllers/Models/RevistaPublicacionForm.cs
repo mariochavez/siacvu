@@ -17,6 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int Indice1 { get; set; }
         public int Indice1Id { get; set; }

@@ -26,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ILineaInvestigacionMapper lineaInvestigacionMapper;
-        readonly IPaisMapper paisMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoActividadMapper tipoActividadMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
@@ -39,8 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ArticuloController(IArticuloService articuloService, IInvestigadorService investigadorService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
                                   IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper,
-                                  IIdiomaMapper idiomaMapper, IPaisMapper paisMapper,
-                                  ILineaInvestigacionMapper lineaInvestigacionMapper,
+                                  IIdiomaMapper idiomaMapper, ILineaInvestigacionMapper lineaInvestigacionMapper,
                                   ITipoActividadMapper tipoActividadMapper,
                                   ITipoParticipacionMapper tipoParticipacionMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
@@ -62,7 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.articuloMapper = articuloMapper;
             this.tipoArticuloMapper = tipoArticuloMapper;
             this.idiomaMapper = idiomaMapper;
-            this.paisMapper = paisMapper;
             this.lineaInvestigacionMapper = lineaInvestigacionMapper;
             this.tipoActividadMapper = tipoActividadMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -100,7 +97,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
@@ -200,9 +196,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articuloForm = new ArticuloForm();
             var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
 
+            articuloForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
+            articuloForm.RevistaPublicacionPaisNombre = revistaPublicacionForm.PaisNombre;
             articuloForm.RevistaPublicacionIndice1Nombre = revistaPublicacionForm.Indice1Nombre;
             articuloForm.RevistaPublicacionIndice2Nombre = revistaPublicacionForm.Indice2Nombre;
             articuloForm.RevistaPublicacionIndice3Nombre = revistaPublicacionForm.Indice3Nombre;
+            
             articuloForm.RevistaPublicacionId = revistaPublicacionForm.Id;
 
             return Rjs("ChangeRevista", articuloForm);
@@ -418,11 +417,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
-
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
             form.Subdisciplinas =
@@ -436,9 +433,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoArticulo"] = form.TipoArticuloId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-
-            ViewData["Pais"] = form.PaisId;
-
             ViewData["LineaInvestigacion"] = form.LineaInvestigacionId;
             ViewData["TipoActividad"] = form.TipoActividadId;
             ViewData["TipoParticipante"] = form.TipoParticipanteId;
