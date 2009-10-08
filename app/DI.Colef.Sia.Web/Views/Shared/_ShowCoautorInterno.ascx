@@ -11,7 +11,7 @@
 	                <%=Html.Encode(Model.CoautoresInternos[i].NombreCoautor)%>
 	                <span>
                         Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
-                        </span>
+                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

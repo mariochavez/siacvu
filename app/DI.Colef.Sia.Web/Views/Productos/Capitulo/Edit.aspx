@@ -72,9 +72,12 @@
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
 	            <h4>Responsables del libro</h4>
-	            <% Html.RenderPartial("_ResponsablesLibro", Model.Form); %>
-	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-				<% Html.RenderPartial("_EditResponsableExterno", Model.Form); %>    
+	            <% Html.RenderPartial("_EditResponsableInterno", new ResponsableForm { ResponsablesInternos = Model.Form.ResponsableInternoCapitulos, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_EditResponsableExterno", new ResponsableForm { ResponsablesExternos = Model.Form.ResponsableExternoCapitulos, ModelId = Model.Form.Id } ); %>
+	            <p>
+	                <label>Editores</label>
+	                <span id="totaleditores" class="valor"><%=Html.Encode(Model.Form.TotalEditores) %></span>	          
+	            </p>
             
 	            <h4>Complementaria CVU</h4>
 				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
