@@ -14,9 +14,18 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
-<div id="indices">
-
-</div>
+<p>
+    <label>&Iacute;ndice 1</label>
+    <span id="indice1"><%= Html.Encode(Model.RevistaPublicacionIndice1Nombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>&Iacute;ndice 2</label>
+    <span id="indice2"><%= Html.Encode(Model.RevistaPublicacionIndice2Nombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>&Iacute;ndice 3</label>
+    <span id="indice3"><%= Html.Encode(Model.RevistaPublicacionIndice3Nombre)%>&nbsp;</span>
+</p>
 <p>
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?

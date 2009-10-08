@@ -127,9 +127,12 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
+    <Compile Include="Models\ResponsableForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />
     <Compile Include="Models\CoautorForm.cs" />
     <Compile Include="Models\CoautorInternoProductoForm.cs" />
+    <Compile Include="Models\ResponsableExternoProductoForm.cs" />
+    <Compile Include="Models\ResponsableInternoProductoForm.cs" />
     <Compile Include="Models\TipoArchivoForm.cs" />
     <Compile Include="Catalogos\TipoArchivoController.cs" />
     <Compile Include="Mappers\IFirmaMapper.cs" />
@@ -551,9 +554,7 @@
     <Compile Include="Models\PuestoForm.cs" />
     <Compile Include="Models\ReporteForm.cs" />
     <Compile Include="Models\ResenaForm.cs" />
-    <Compile Include="Models\ResponsableExternoCapituloForm.cs" />
     <Compile Include="Models\ResponsableExternoForm.cs" />
-    <Compile Include="Models\ResponsableInternoCapituloForm.cs" />
     <Compile Include="Models\RevistaPublicacionForm.cs" />
     <Compile Include="Models\RolForm.cs" />
     <Compile Include="Models\SectorForm.cs" />

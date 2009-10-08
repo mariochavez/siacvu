@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CapituloForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -35,17 +36,59 @@
 
         <div id="forma">
             <div id="campos">
+            
+    <!-- DATOS DE LA PUBLICACION -->            
+                <h4>Datos de la publicaci&oacute;n</h4>
+                <p>
+                    <label>Nombre del cap&iacute;tulo</label>
+                    <strong><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</strong>
+                </p>
                 <p>
                     <label>Tipo de cap&iacute;tulo</label>
                     <strong><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Idioma</label>
+                    <label>Idioma al que se tradujo</label>
                     <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
                 </p>
+	            <h4>Coautores</h4>
+	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
+				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
+	            <p>
+	                <label>Autores</label>
+	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+	            </p>
+	            <p>
+	                <label>Posici&oacute;n del autor</label>
+                    <strong><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</strong>
+                </p>
                 <p>
-                    <label>Estado actual</label>
+                    <label></label>
+                    Tiene proyecto de investigaci&oacute;n de referencia? <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Nombre del proyecto de investigaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>L&iacute;nea tem&aacute;tica</label>
+                    <strong><%= Html.Encode(Model.Form.ProyectoLineaTematicaNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica</label>
+                    <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Estatus de la publicaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Fecha de aceptaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                </p>
+                <p>
+                    <label>Fecha de publicaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Periodo de referencia</label>
@@ -53,70 +96,34 @@
                 </p>
                 <p>
                     <label>A&ntilde;o de aceptaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
-                </p>
-                <p>
-                    <label>A&ntilde;o de publicaci&oacute;n/edici&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (yyyy)</span>
-                </p>
-                <p>
-                    <label>Proyecto de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
+                    <strong><%= Html.Encode(Model.Form.AnioAceptacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
                 </p>
                 
-                <h4>Coautores</h4>
-                <div class="minilista" id="coautorinternoList">
-                    <h5>Investigador Interno</h5>
-                    
-                    <% if (Model.Form.CoautorInternoCapitulos != null && Model.Form.CoautorInternoCapitulos.Length > 0){ %>
-                        <% foreach (var coautorInterno in Model.Form.CoautorInternoCapitulos){ %>
-	                        <div class="sublista" id="coautorinterno_<%=Html.Encode(coautorInterno.InvestigadorId) %>">
-	                            <h6>
-	                                <%=Html.Encode(coautorInterno.NombreCoautor)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="coautorinternoEmptyList_form">
-                            <h6><span>No hay coautores internos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                
-                <div class="minilista" id="coautorexternoList">
-                    <h5>Investigador Externo</h5>
-
-                    <% if (Model.Form.CoautorExternoCapitulos != null && Model.Form.CoautorExternoCapitulos.Length > 0){ %>
-                        <% foreach (var coautorExterno in Model.Form.CoautorExternoCapitulos){ %>
-	                        <div class="sublista" id="coautorexterno_<%=Html.Encode(coautorExterno.InvestigadorExternoId) %>">
-	                            <h6>
-	                                <%=Html.Encode(coautorExterno.InvestigadorExternoNombre)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="coautorexternoEmptyList_form">
-                            <h6><span>No hay coautores externos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                
+    <!-- REFERENCIA BIBLIOGRAFICA -->                
                 <h4>Referencia bibliogr&aacute;fica</h4>
-                <p>
-                    <label>Nombre del cap&iacute;tulo</label>
-                    <strong><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</strong>
-                </p>
                 <p>
                     <label>Nombre del libro</label>
                     <strong><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</strong>
                 </p>
                 <p>
+                    <label>Autor del libro</label>
+                    <strong><%= Html.Encode(Model.Form.AutorLibro)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Resumen</label>
+                    <strong><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Editorial</label>
                     <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Volumen</label>
+                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>A&ntilde;o de edici&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (yyyy)</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
@@ -126,8 +133,9 @@
                     <label>N&uacute;mero de p&aacute;ginas</label>
                     <strong><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</strong>
                 </p>                
-                
-                <h4>Responsables</h4>
+
+    <!-- RESPONSABLES DEL LIBRO -->                
+                <h4>Responsables del libro</h4>
                 <p>
                     <label>Forma de participaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FormaParticipacionNombre)%>&nbsp;</strong>
@@ -168,11 +176,8 @@
                     <% } %>
                 </div>
                 
-                <h4>Opcionales</h4>
-                <p>
-                    <label>Volumen</label>
-                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
-                </p>
+    <!-- COMPLEMENTARIA CVU -->                
+                <h4>Complementaria CVU</h4>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
@@ -195,11 +200,7 @@
                 </p>
                 <p>
                     <label>Traductor/Co-Traductor</label>
-                    <strong><%= Html.Encode(Model.Form.Traductor)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Resumen</label>
-                    <strong><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</strong>
+                    <strong><%= HumanizeHelper.Boolean(Model.Form.Traductor)%>&nbsp;</strong>
                 </p>
                 
                 <p class="submit">

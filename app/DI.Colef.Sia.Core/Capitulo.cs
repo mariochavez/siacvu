@@ -9,8 +9,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [CapituloValidator]
-	public class Capitulo : Entity, IBaseEntity
+	public class Capitulo : Entity, IBaseEntity, IResponsable, ICoautor
     {
+        const int tipoProducto = 2; // 2 Representa Capitulo
+
 		public Capitulo()
 		{
 			CoautorExternoCapitulos = new List<CoautorExternoCapitulo>();
@@ -18,24 +20,47 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ResponsableInternoCapitulos = new List<ResponsableInternoCapitulo>();
             ResponsableExternoCapitulos = new List<ResponsableExternoCapitulo>();
 		}
-		
-		public virtual void AddCoautorExterno(CoautorExternoCapitulo coautorExternoCapitulo)
+
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoCapitulo.TipoProducto = 2; // 2 Representa Capitulo
-            CoautorExternoCapitulos.Add(coautorExternoCapitulo);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoCapitulos.Add((CoautorExternoCapitulo)coautorExterno);
         }
-        public virtual void AddCoautorInterno(CoautorInternoCapitulo coautorInternoCapitulo)
+
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoCapitulo.TipoProducto = 2; // 2 Representa Capitulo
-            CoautorInternoCapitulos.Add(coautorInternoCapitulo);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoCapitulos.Add((CoautorInternoCapitulo)coautorInterno);
         }
-        public virtual void AddResponsableInterno(ResponsableInternoCapitulo responsableInternoCapitulo)
+        public virtual void AddResponsableInterno(ResponsableInternoProducto responsableInterno)
         {
-            ResponsableInternoCapitulos.Add(responsableInternoCapitulo);
+            responsableInterno.TipoProducto = tipoProducto;
+            ResponsableInternoCapitulos.Add((ResponsableInternoCapitulo)responsableInterno);
         }
-        public virtual void AddResponsableExterno(ResponsableExternoCapitulo responsableExternoCapitulo)
+        public virtual void AddResponsableExterno(ResponsableExternoProducto responsableExterno)
         {
-            ResponsableExternoCapitulos.Add(responsableExternoCapitulo);
+            responsableExterno.TipoProducto = tipoProducto;
+            ResponsableExternoCapitulos.Add((ResponsableExternoCapitulo)responsableExterno);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoCapitulos.Remove((CoautorInternoCapitulo)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoCapitulos.Remove((CoautorExternoCapitulo)coautorExterno);
+        }
+
+        public virtual void DeleteResponsableInterno(ResponsableInternoProducto coautorInterno)
+        {
+            ResponsableInternoCapitulos.Remove((ResponsableInternoCapitulo)coautorInterno);
+        }
+
+        public virtual void DeleteResponsableExterno(ResponsableExternoProducto coautorExterno)
+        {
+            ResponsableExternoCapitulos.Remove((ResponsableExternoCapitulo)coautorExterno);
         }
 
         [NotNull]

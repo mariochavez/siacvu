@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public bool TieneProyecto { get; set; }
         public string AnioAceptacion { get; set; }
-        public int TotalEditores { get; set; }
 
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
@@ -79,16 +78,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public int TotalEditores
+        {
+            get
+            {
+                return (ResponsableExternoCapitulos == null ? 0 : ResponsableExternoCapitulos.Length) +
+                       (ResponsableInternoCapitulos == null ? 0 : ResponsableInternoCapitulos.Length);
+            }
+        }
+
         public CoautorExternoProductoForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
-        public ResponsableInternoCapituloForm[] ResponsableInternoCapitulos { get; set; }
-        public ResponsableExternoCapituloForm[] ResponsableExternoCapitulos { get; set; }
+        public ResponsableInternoProductoForm[] ResponsableInternoCapitulos { get; set; }
+        public ResponsableExternoProductoForm[] ResponsableExternoCapitulos { get; set; }
 		
 		/* New */
 		public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-		public ResponsableInternoCapituloForm ResponsableInternoCapitulo { get; set; }
-		public ResponsableExternoCapituloForm ResponsableExternoCapitulo { get; set; }
+        public ResponsableInternoProductoForm ResponsableInternoProducto { get; set; }
+        public ResponsableExternoProductoForm ResponsableExternoProducto { get; set; }
 		
 		/* Catalogos */
         public TipoCapituloForm[] TiposCapitulos { get; set; }

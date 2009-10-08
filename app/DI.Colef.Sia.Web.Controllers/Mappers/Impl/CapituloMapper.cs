@@ -85,42 +85,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
-            string[] responsablesExternos, string[] responsablesInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
+            ResponsableExternoProductoForm[] responsablesExternos, ResponsableInternoProductoForm[] responsablesInternos)
         {
             var model = Map(message, usuario, periodo);
-            if (coautoresExternos != null)
+
+            foreach (var coautorExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoCapituloMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoCapituloMapper.Map(coautorExterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
             }
 
-            if (coautoresInternos != null)
+            foreach (var coautorInterno in coautoresInternos)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoCapituloMapper.Map(coautorInterno);
+                var coautor =
+                    coautorInternoCapituloMapper.Map(coautorInterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddCoautorInterno(coautor);
             }
 
-            foreach (var responsableId in responsablesExternos)
+            foreach (var responsableExterno in responsablesExternos)
             {
                 var responsable =
-                    responsableExternoCapituloMapper.Map(new ResponsableExternoCapituloForm { InvestigadorExternoId = int.Parse(responsableId) });
+                    responsableExternoCapituloMapper.Map(responsableExterno);
 
                 responsable.CreadorPor = usuario;
                 responsable.ModificadoPor = usuario;
@@ -128,10 +123,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddResponsableExterno(responsable);
             }
 
-            foreach (var responsableId in responsablesInternos)
+            foreach (var responsableInterno in responsablesInternos)
             {
                 var responsable =
-                    responsableInternoCapituloMapper.Map(new ResponsableInternoCapituloForm { InvestigadorId = int.Parse(responsableId) });
+                    responsableInternoCapituloMapper.Map(responsableInterno);
 
                 responsable.CreadorPor = usuario;
                 responsable.ModificadoPor = usuario;

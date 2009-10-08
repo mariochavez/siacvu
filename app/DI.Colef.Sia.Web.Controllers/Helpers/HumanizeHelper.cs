@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return sexo == "H" ? "Masculino" : (sexo == "M" ? "Femenino" : "");
         }
 
-        public static string Bolean(bool value)
+        public static string Boolean(bool value)
         {
             return value ? "Si" : "No";
         }
