@@ -2205,6 +2205,16 @@ alter table Articulos  drop constraint FK3EB394D770EA6C9E
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D77D866EAB]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D77D866EAB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D73E391E13]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D73E391E13
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D785102A57]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D785102A57
 
@@ -4485,6 +4495,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        ProyectoFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -6021,6 +6033,16 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK3EB394D770EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
+
+    alter table Articulos 
+        add constraint FK3EB394D77D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table Articulos 
+        add constraint FK3EB394D73E391E13 
+        foreign key (SedeFk) 
+        references Sedes
 
     alter table ProductoDerivadoMovilidadAcademicas 
         add constraint FK56549E488718AE0E 

@@ -60,7 +60,8 @@
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, ModelId = Model.Form.Id } ); %>
 	            <p>
 	                <label>Autores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
+	                <span class="cvu"></span>
 	            </p>           
 	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
