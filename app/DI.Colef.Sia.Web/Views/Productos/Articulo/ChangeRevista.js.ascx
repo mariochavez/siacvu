@@ -20,6 +20,6 @@ $('#indices').html('');
 <% if (Model.RevistaPublicacionId != 0){ %>
     $('#indices').html(indice123);
     <% if (Model.RevistaPublicacionIndice1Nombre == "" && Model.RevistaPublicacionIndice2Nombre == "" && Model.RevistaPublicacionIndice2Nombre == ""){ %>
-        $('#indices').html('');    
+        $('#indices').html('');
 <%     }
    } %>

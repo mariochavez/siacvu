@@ -8,7 +8,7 @@
 </p>
 <p>
     <label>Nombre de la revista</label>
-    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo, 
+    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo", url = Url.Action("ChangeRevista") })%>
     <span class="cvu"></span>
@@ -51,7 +51,6 @@
 <p class="EstatusPublicado">
     <label>Fecha de publicaci&oacute;n</label>
     <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="cvu"></span>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>
