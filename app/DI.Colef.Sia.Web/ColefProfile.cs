@@ -642,11 +642,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<ResponsableInternoCapitulo, ResponsableInternoCapituloForm>()
+            Mapper.CreateMap<ResponsableInternoCapitulo, ResponsableInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<ResponsableExternoCapitulo, ResponsableExternoCapituloForm>()
+            Mapper.CreateMap<ResponsableExternoCapitulo, ResponsableExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

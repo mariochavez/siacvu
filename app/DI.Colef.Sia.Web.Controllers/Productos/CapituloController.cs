@@ -124,9 +124,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             data.Form = SetupNewForm(capituloForm);
 
-            data.Form.TotalEditores = capitulo.ResponsableExternoCapitulos.Count +
-                                      capitulo.ResponsableInternoCapitulos.Count;
-
             FormSetCombos(data.Form);
 
             ViewData.Model = data;
@@ -152,21 +149,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
-                                   CapituloForm form, FormCollection formCollection)
+                                   [Bind(Prefix = "ResponsableExterno")] ResponsableExternoProductoForm[] responsableExterno,
+                                   [Bind(Prefix = "ResponsableInterno")] ResponsableInternoProductoForm[] responsableInterno,
+                                   CapituloForm form)
         {
-            var responsablesExternos = new string[] { };
-            var responsablesInternos = new string[] { };
-
-            if (formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"] != null &&
-                    formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',').Length > 0)
-                responsablesExternos = formCollection["ResponsableExternoCapitulo.InvestigadorExternoId_New"].Split(',');
-
-            if (formCollection["ResponsableInternoCapitulo.InvestigadorId_New"] != null &&
-                    formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',').Length > 0)
-                responsablesInternos = formCollection["ResponsableInternoCapitulo.InvestigadorId_New"].Split(',');
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+            responsableExterno = responsableExterno ?? new ResponsableExternoProductoForm[] { };
+            responsableInterno = responsableInterno ?? new ResponsableInternoProductoForm[] { };
 
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
-                                              coautorExterno, coautorInterno, responsablesExternos, responsablesInternos);
+                                              coautorExterno, coautorInterno, responsableExterno, responsableInterno);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
             {
@@ -305,6 +298,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoCapituloForm = coautorInternoCapituloMapper.Map(coautorInternoCapitulo);
+            coautorInternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddCoautorInterno", coautorInternoCapituloForm);
         }
@@ -356,6 +350,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoCapituloForm = coautorExternoCapituloMapper.Map(coautorExternoCapitulo);
+            coautorExternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
         }
@@ -365,14 +360,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewResponsableInterno(int id)
         {
             var capitulo = capituloService.GetCapituloById(id);
-
-            var form = new CapituloForm();
+            var form = new ResponsableForm {Controller = "Capitulo", IdName = "CapituloId"};
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
-
-            form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
-            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
 
             return Rjs("NewResponsableInterno", form);
         }
@@ -381,31 +372,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddResponsableInterno(
-            [Bind(Prefix = "ResponsableInternoCapitulo")] ResponsableInternoCapituloForm form, int capituloId)
+            [Bind(Prefix = "ResponsableInterno")] ResponsableInternoProductoForm form, int capituloId)
         {
-            var totalEditores = new int();
             var responsableInternoCapitulo = responsableInternoCapituloMapper.Map(form);
 
-            ModelState.AddModelErrors(responsableInternoCapitulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(responsableInternoCapitulo.ValidationResults(), false, "ResponsableInterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            responsableInternoCapitulo.CreadorPor = CurrentUser();
-            responsableInternoCapitulo.ModificadoPor = CurrentUser();
-
             if (capituloId != 0)
             {
+                responsableInternoCapitulo.CreadorPor = CurrentUser();
+                responsableInternoCapitulo.ModificadoPor = CurrentUser();
+
                 var capitulo = capituloService.GetCapituloById(capituloId);
-                capitulo.AddResponsableInterno(responsableInternoCapitulo);
-                capituloService.SaveCapitulo(capitulo);
-                totalEditores = capitulo.ResponsableExternoCapitulos.Count +
-                               capitulo.ResponsableInternoCapitulos.Count;
+
+                var alreadyHasIt =
+                    capitulo.ResponsableInternoCapitulos.Where(
+                        x => x.Investigador.Id == responsableInternoCapitulo.Investigador.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    capitulo.AddResponsableInterno(responsableInternoCapitulo);
+                    capituloService.SaveCapitulo(capitulo);
+                }
             }
 
             var responsableInternoCapituloForm = responsableInternoCapituloMapper.Map(responsableInternoCapitulo);
-            responsableInternoCapituloForm.TotalEditores = totalEditores;
+            responsableInternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddResponsableInterno", responsableInternoCapituloForm);
         }
@@ -416,13 +412,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            var form = new CapituloForm();
+            var form = new ResponsableForm { Controller = "Capitulo", IdName = "CapituloId" };
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
-
-            form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
-            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
 
             return Rjs("NewResponsableExterno", form);
         }
@@ -431,31 +424,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddResponsableExterno(
-            [Bind(Prefix = "ResponsableExternoCapitulo")] ResponsableExternoCapituloForm form, int capituloId)
+            [Bind(Prefix = "ResponsableExterno")] ResponsableExternoProductoForm form, int capituloId)
         {
-            var totalEditores = new int();
             var responsableExternoCapitulo = responsableExternoCapituloMapper.Map(form);
 
-            ModelState.AddModelErrors(responsableExternoCapitulo.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(responsableExternoCapitulo.ValidationResults(), false, "ResponsableExterno", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
 
-            responsableExternoCapitulo.CreadorPor = CurrentUser();
-            responsableExternoCapitulo.ModificadoPor = CurrentUser();
-
             if (capituloId != 0)
             {
+                responsableExternoCapitulo.CreadorPor = CurrentUser();
+                responsableExternoCapitulo.ModificadoPor = CurrentUser();
+
                 var capitulo = capituloService.GetCapituloById(capituloId);
-                capitulo.AddResponsableExterno(responsableExternoCapitulo);
-                capituloService.SaveCapitulo(capitulo);
-                totalEditores = capitulo.ResponsableExternoCapitulos.Count +
-                               capitulo.ResponsableInternoCapitulos.Count;
+
+                var alreadyHasIt =
+                    capitulo.ResponsableExternoCapitulos.Where(
+                        x => x.InvestigadorExterno.Id == responsableExternoCapitulo.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    capitulo.AddResponsableExterno(responsableExternoCapitulo);
+                    capituloService.SaveCapitulo(capitulo);
+                }
             }
 
             var responsableExternoCapituloForm = responsableExternoCapituloMapper.Map(responsableExternoCapitulo);
-            responsableExternoCapituloForm.TotalEditores = totalEditores;
+            responsableExternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddResponsableExterno", responsableExternoCapituloForm);
         }
@@ -468,11 +466,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         CapituloForm SetupNewForm(CapituloForm form)
         {
             form = form ?? new CapituloForm();
-
-            form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
-            form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
-            form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
 
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
