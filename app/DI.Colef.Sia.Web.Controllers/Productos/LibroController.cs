@@ -351,9 +351,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorExternoProducto = new CoautorExternoProductoForm();
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
 
-            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoLibros.Length;
-            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoLibros.Length;
-
             form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.Ediciones = edicionMapper.Map(catalogoService.GetActiveEdicions());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());

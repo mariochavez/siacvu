@@ -20,9 +20,9 @@ var html = '
     <% } %>
 ';
 
-$('#coautorexterno_form').html(html);
-$('#coautorexterno_new').hide();
-$('#coautorexterno_form').show();
+$('#coautorexternoForm').html(html);
+$('#coautorexternoNew').hide();
+$('#coautorexternoForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorExterno_Nombre'));
-AutoComplete.config($('#CoautorExterno_InstitucionNombre'));
+AutoComplete.config($('#CoautorExterno_Institucion'));

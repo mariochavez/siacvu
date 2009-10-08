@@ -94,32 +94,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             var model = Map(message, usuario, periodo);
 
-            if (coautoresExternos != null)
+            foreach (var coautoresExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoArticuloMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoArticuloMapper.Map(coautoresExterno);
+                
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
-
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
             }
 
-            if (coautoresInternos != null)
+            foreach (var coautorInterno in coautoresInternos)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoArticuloMapper.Map(coautorInterno);
+                var coautor =
+                    coautorInternoArticuloMapper.Map(coautorInterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddCoautorInterno(coautor);
             }
 
             return model;

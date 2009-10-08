@@ -3,41 +3,39 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-var counter = <%= CoautorExternoProductoForm.CoautoresExternos %>;
+var counter = $('#coautorexternoList div[id^=coautorexterno_]').length;
 
 var html = '
     <div class="sublista" id="coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>">
         <h6>
-            <%=Html.Encode(Model.InvestigadorExternoNombre) %>
-            <%=Html.Hidden("CoautorExterno[' + counter + '].InvestigadorExternoId", Model.InvestigadorExternoId)%>
+            <a href="<%=Url.Action("deletecoautorexterno", null, new{ id = Model.ParentId, investigadorExternoId = Model.InvestigadorExternoId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <%=Html.Encode(Model.InvestigadorExternoNombre)%>
+            <%=Html.Hidden("CoautorExterno['  + counter + '].InvestigadorExternoId", Model.InvestigadorExternoId)%>
             <span>
-                <strong>Posici&oacute;n</strong> <%=Html.Encode(Model.Posicion) %>
-                <%=Html.Hidden("CoautorExterno[' + counter + '].Posicion", Model.Posicion)%>
-                <strong>Instituci&oacute;n</strong> <%=Html.Encode(Model.InstitucionNombre) %>
-                <%=Html.Hidden("CoautorExterno[' + counter + '].InstitucionId", Model.InstitucionId)%>
+                Instituci&oacute;n <%=Html.Encode(Model.InstitucionNombre)%>
+                <%=Html.Hidden("CoautorExterno['  + counter + '].InstitucionId", Model.InstitucionId)%>
             </span>
         </h6>
 	</div><!--end sublista-->
 ';
 
-$('#message').html('');
-$('#message').removeClass('errormessage');
+$('#mensaje-error').html('');
+$('#mensaje-error').removeClass('mensaje-error');
 
-$('#coautorexterno_form').hide();
-$('#coautorexterno_new').show();
-$('#coautorexterno_form').html('');
+$('#coautorexternoForm').hide();
+$('#coautorexternoNew').show();
+$('#coautorexternoForm').html('');
 
 if($('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').length == 0)
 {
-    $('#coautorexternoEmptyList_form').html('');
+    $('#coautorexternoEmptyListForm').html('');
     $('#coautorexternoList div:first').before(html);
 
     $('#coautorexterno_' + <%=Html.Encode(Model.InvestigadorExternoId)%> + ':first').hide();
     $('#coautorexterno_' + <%=Html.Encode(Model.InvestigadorExternoId)%> + ':first').fadeIn('slow');
-
-    var autores = parseInt($('#totalcoautores').text());
-    $('#totalcoautores').text(autores + 1);
+    
+    var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
+    $('#totalcoautores').text(autores);
 }
 
 setupSublistRows();
-<% CoautorExternoProductoForm.CoautoresExternos += 1; %>

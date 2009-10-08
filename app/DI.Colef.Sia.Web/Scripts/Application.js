@@ -127,9 +127,9 @@ var SubForm = {
     },
     cancel: function() {
         var form = $(this).attr('rel');
-        $('#' + form + '_form').hide();
-        $('#' + form + '_new').show();
-        $('#' + form + '_form').html('');
+        $('#' + form + 'Form').hide();
+        $('#' + form + 'New').show();
+        $('#' + form + 'Form').html('');
         
         return false;
     }

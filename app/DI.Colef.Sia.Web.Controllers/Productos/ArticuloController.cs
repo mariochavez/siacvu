@@ -149,9 +149,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
-                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+            [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    ArticuloForm form)
         {
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] {};
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] {};
+
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
                                               coautorExterno, coautorInterno);
 
@@ -305,8 +308,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoArticuloForm = coautorInternoArticuloMapper.Map(coautorInternoArticulo);
+            coautorInternoArticuloForm.ParentId = articuloId;
 
             return Rjs("AddCoautorInterno", coautorInternoArticuloForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            if (articulo != null)
+            {
+                var coautor = articulo.CoautorInternoArticulos.Where(x => x.Investigador.Id == investigadorId).First();
+                articulo.DeleteCoautorInterno(coautor);
+
+                articuloService.SaveArticulo(articulo);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -355,8 +377,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoArticuloForm = coautorExternoArticuloMapper.Map(coautorExternoArticulo);
+            coautorExternoArticuloForm.ParentId = articuloId;
 
             return Rjs("AddCoautorExterno", coautorExternoArticuloForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+
+            if (articulo != null)
+            {
+                var coautor = articulo.CoautorExternoArticulos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                articulo.DeleteCoautorExterno(coautor);
+
+                articuloService.SaveArticulo(articulo);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
         ArticuloForm SetupNewForm()
@@ -368,12 +409,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloForm();
 
-            form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
-
-            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoArticulos.Length;
-            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoArticulos.Length;
-
             form.ArchivoArticulo = new ArchivoForm
                                        {
                                            TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos())
@@ -384,8 +419,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.LineasInvestigaciones = lineaInvestigacionMapper.Map(catalogoService.GetActiveLineaInvestigaciones());
             form.TiposActividades = tipoActividadMapper.Map(catalogoService.GetActiveActividades());
             form.TiposParticipantes = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());

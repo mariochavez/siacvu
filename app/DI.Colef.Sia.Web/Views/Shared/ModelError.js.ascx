@@ -3,8 +3,8 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-$('#message').removeClass('errormessage');
-$('#message').text('');
+$('#mensaje-error').removeClass('mensaje-error');
+$('#mensaje-error').text('');
 
 <% foreach (var key in ViewData.ModelState.Keys) { %>
     <% for (int i = 0; i < ViewData.ModelState[key].Errors.Count; i++) { %> 
@@ -16,6 +16,6 @@ $('#message').text('');
     <% } %>        
 <% } %>
 
-$('#message').addClass('errormessage');
-$('#message').text('Se ha generado un error al realizar la operacion, por favor corrija los siguientes errores.');
+$('#mensaje-error').addClass('mensaje-error');
+$('#mensaje-error').text('Se ha generado un error al realizar la operacion, por favor corrija los siguientes errores.');
 

@@ -102,8 +102,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public PaisForm[] Paises { get; set; }
-        public InvestigadorExternoForm[] CoautoresExternos { get; set; }
-        public InvestigadorForm[] CoautoresInternos { get; set; }
+        //public InvestigadorExternoForm[] CoautoresExternos { get; set; }
+        //public InvestigadorForm[] CoautoresInternos { get; set; }
         public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
         public TipoActividadForm[] TiposActividades { get; set; }
         public TipoParticipacionForm[] TiposParticipantes { get; set; }

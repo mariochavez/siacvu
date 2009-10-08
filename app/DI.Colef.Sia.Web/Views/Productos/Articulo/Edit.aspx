@@ -61,7 +61,7 @@
 	            <p>
 	                <label>Autores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
-	            </p>       
+	            </p>           
 	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
             

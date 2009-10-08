@@ -9,25 +9,43 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ArticuloValidator]
-    public class Articulo : Entity, IBaseEntity
+    public class Articulo : Entity, IBaseEntity, ICoautor
     {
+        const int tipoProducto = 1; // 1 Representa Articulo
+
         public Articulo()
         {
             CoautorExternoArticulos = new List<CoautorExternoArticulo>();
             CoautorInternoArticulos = new List<CoautorInternoArticulo>();
         }
 
-        public virtual void AddCoautorExterno(CoautorExternoArticulo coautorExternoArticulo)
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoArticulo.TipoProducto = 1; // 1 Representa Articulo
-            CoautorExternoArticulos.Add(coautorExternoArticulo);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoArticulos.Add((CoautorExternoArticulo)coautorExterno);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoArticulo coautorInternoArticulo)
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoArticulo.TipoProducto = 1; // 1 Representa Articulo
-            CoautorInternoArticulos.Add(coautorInternoArticulo);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoArticulos.Add((CoautorInternoArticulo)coautorInterno);
         }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoArticulos.Remove((CoautorInternoArticulo)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoArticulos.Remove((CoautorExternoArticulo)coautorExterno);
+        }
+
+        [Valid]
+        public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
+
+        [Valid]
+        public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }
@@ -69,12 +87,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
         public virtual DateTime FechaEdicion { get; set; }
-
-        [Valid]
-        public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
-
-        [Valid]
-        public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
         public virtual LineaInvestigacion LineaInvestigacion { get; set; }
 

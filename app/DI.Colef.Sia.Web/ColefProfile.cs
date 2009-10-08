@@ -595,8 +595,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<CoautorExternoArticulo, CoautorExternoProductoForm>()
+            Mapper.CreateMap<CoautorExternoProducto, CoautorExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

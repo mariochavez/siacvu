@@ -707,6 +707,11 @@ a.editabusqueda {
 	color: #555;
 } 
 
+.sublista h6 img, .sublista-dos h6 img {
+    border: none 0px;
+    
+}
+
 .sublista-dos {
 	background: transparent url(./Images/caja-busqueda-bg.gif) 0 0 repeat-x;
 }

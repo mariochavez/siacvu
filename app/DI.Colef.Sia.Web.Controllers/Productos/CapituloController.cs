@@ -474,9 +474,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ResponsableInternoCapitulo = new ResponsableInternoCapituloForm();
             form.ResponsableExternoCapitulo = new ResponsableExternoCapituloForm();
 
-            CoautorExternoProductoForm.CoautoresExternos = form.Id == 0 ? 0 : form.CoautorExternoCapitulos.Length;
-            CoautorInternoProductoForm.CoautoresInternos = form.Id == 0 ? 0 : form.CoautorInternoCapitulos.Length;
-
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
