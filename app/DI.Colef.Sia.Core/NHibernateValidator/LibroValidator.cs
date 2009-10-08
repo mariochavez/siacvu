@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var libro = value as Libro;
 
             if (!libro.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.TipoPublicacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.EstadoProducto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.LineaTematica, "LineaTematicaNombre",
@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.FechaAceptacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.Editorial, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.Pais, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.NoPaginas, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.NoPaginas, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(libro, constraintValidatorContext);

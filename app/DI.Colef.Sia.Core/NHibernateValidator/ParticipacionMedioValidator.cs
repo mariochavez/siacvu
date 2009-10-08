@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var participacionMedio = value as ParticipacionMedio;
 
             if (!participacionMedio.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.MedioImpreso, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.MedioElectronico, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Genero, constraintValidatorContext);
@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Ciudad, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.EstadoPais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.FechaDifusion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Ambito, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<ParticipacionMedio>(participacionMedio, x => x.Ambito, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(participacionMedio, constraintValidatorContext);

@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var distincion = value as Distincion;
 
             if (!distincion.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.TipoDistincion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.FechaOtorgamiento, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Institucion, "InstitucionNombre",
@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Ambito, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.EstadoPais, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Ciudad, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Distincion>(distincion, x => x.Ciudad, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(distincion, constraintValidatorContext);

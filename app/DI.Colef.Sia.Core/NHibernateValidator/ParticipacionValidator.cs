@@ -27,13 +27,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var participacion = value as Participacion;
 
             if (!participacion.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.OtraParticipacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.FechaPresentacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.Lugar, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.Ciudad, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.EstadoPais, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.Pais, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Participacion>(participacion, x => x.Pais, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(participacion, constraintValidatorContext);

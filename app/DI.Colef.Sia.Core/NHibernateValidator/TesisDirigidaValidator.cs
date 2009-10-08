@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var tesisDirigida = value as TesisDirigida;
 
             if (!tesisDirigida.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.GradoAcademico, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.NombreAlumno, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.FormaParticipacion, constraintValidatorContext);
@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.LineaTematica, "LineaTematicaNombre",
                                                           constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.Pais, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.FechaConclusion, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<TesisDirigida>(tesisDirigida, x => x.FechaConclusion, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(tesisDirigida, constraintValidatorContext);

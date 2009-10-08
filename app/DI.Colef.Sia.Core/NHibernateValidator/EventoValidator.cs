@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var evento = value as Evento;
 
             if (!evento.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.TipoEvento, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.Ambito, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.Titulo, constraintValidatorContext);
@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.LineaTematica, "LineaTematicaNombre",
                                                           constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.FechaInicial, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.FechaFinal, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.FechaFinal, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechaInicialFinal(evento, constraintValidatorContext);

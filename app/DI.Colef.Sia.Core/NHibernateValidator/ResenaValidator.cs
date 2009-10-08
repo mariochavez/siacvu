@@ -27,14 +27,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var resena = value as Resena;
 
             if (!resena.IsTransient())
-            {
+            {/*
                 isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.EstadoProducto, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.FechaAceptacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.LineaTematica, "LineaTematicaNombre",
                                                             constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.Pais, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.FechaEdicion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.TipoResena, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Resena>(resena, x => x.TipoResena, constraintValidatorContext); */
             }
 
             isValid &= ValidateFechas(resena, constraintValidatorContext);
