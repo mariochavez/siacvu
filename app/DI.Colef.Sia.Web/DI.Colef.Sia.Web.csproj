@@ -697,6 +697,8 @@
     <Content Include="Views\MovilidadAcademica\_NewProyecto.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewTipoActividad.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorExterno.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorInterno.ascx" />
     <Content Include="Views\Shared\AddCoautorExterno.js.ascx" />
     <Content Include="Views\Shared\DeleteCoautorExterno.js.ascx" />
     <Content Include="Views\Shared\DeleteCoautorInterno.js.ascx" />

@@ -60,9 +60,9 @@
 </p>
 <p>
     <label>Investigador</label>
-    <strong><%= Html.Encode(HumanizeHelper.Bolean(Model.Investigador))%>&nbsp;</strong>
+    <strong><%= Html.Encode(HumanizeHelper.Boolean(Model.Investigador))%>&nbsp;</strong>
 </p>
 <p>
     <label>Activo</label>
-    <strong><%= Html.Encode(HumanizeHelper.Bolean(Model.Activo))%>&nbsp;</strong>
+    <strong><%= Html.Encode(HumanizeHelper.Boolean(Model.Activo))%>&nbsp;</strong>
 </p>
