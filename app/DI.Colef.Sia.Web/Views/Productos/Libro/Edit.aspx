@@ -37,6 +37,16 @@
             <%=Html.AntiForgeryToken() %>
             <%=Html.Hidden("Id", Model.Form.Id) %>
             
+            <h4>Datos del investigador</h4>
+	            <p>
+                    <label>Departamento</label>
+                    <%= Html.Encode(Model.Form.DepartamentoNombre)%>
+                </p>
+                <p>
+                    <label>Sede</label>
+                    <%= Html.Encode(Model.Form.SedeNombre)%>
+                </p>
+            
             <% Html.RenderPartial("_DatosLibro", Model.Form); %>
             
             <h4>Referencia bibliogr&aacute;fica</h4>

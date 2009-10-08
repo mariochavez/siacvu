@@ -82,8 +82,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
-                //model.Sede = investigador.Sede;
-                //model.Departamento = investigador.Departamento;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;

@@ -123,7 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(curso, form, Title.New, "Curso"))
             {
@@ -144,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var curso = cursoMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(curso, form, Title.Edit))
             {

@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo)
+        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
         {
             var model = Map(message);
 
@@ -77,6 +77,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;
@@ -84,11 +86,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo,
+        public Capitulo Map(CapituloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
             ResponsableExternoProductoForm[] responsablesExternos, ResponsableInternoProductoForm[] responsablesInternos)
         {
-            var model = Map(message, usuario, periodo);
+            var model = Map(message, usuario, periodo, investigador);
 
             foreach (var coautorExterno in coautoresExternos)
             {

@@ -135,7 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
                                    ResenaForm form, FormCollection formCollection)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(),
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
@@ -157,7 +157,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(resena, form, Title.Edit))
             {

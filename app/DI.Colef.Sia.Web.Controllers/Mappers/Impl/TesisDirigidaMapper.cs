@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, PeriodoReferencia periodo)
+        public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
         {
             var model = Map(message);
 
@@ -53,6 +53,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.DepartamentoInvestigador = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;

@@ -5,8 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IResenaMapper : IMapper<Resena, ResenaForm>
     {
-        Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo);
-        Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo,
+        Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador);
+        Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
                    CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos);
     }
 }

@@ -137,7 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    EventoForm form)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo(),
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
@@ -159,7 +159,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EventoForm form)
         {
-            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {

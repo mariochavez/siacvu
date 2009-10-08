@@ -121,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(tesisDirigida, form, Title.New, "TesisDirigida"))
             {
@@ -142,7 +142,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(tesisDirigida, form, Title.Edit))
             {

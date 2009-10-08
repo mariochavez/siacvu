@@ -158,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             responsableExterno = responsableExterno ?? new ResponsableExternoProductoForm[] { };
             responsableInterno = responsableInterno ?? new ResponsableInternoProductoForm[] { };
 
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(),
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
                                               coautorExterno, coautorInterno, responsableExterno, responsableInterno);
 
             if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
@@ -180,7 +180,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CapituloForm form)
         {
-            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(capitulo, form, Title.Edit))
             {

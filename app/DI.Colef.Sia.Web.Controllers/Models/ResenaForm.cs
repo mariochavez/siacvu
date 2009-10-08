@@ -16,6 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave3 { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaEdicion { get; set; }
+        public string DepartamentoNombre { get; set; }
+        public string SedeNombre { get; set; }
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

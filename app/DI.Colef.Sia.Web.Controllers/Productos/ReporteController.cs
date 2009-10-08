@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
                                    ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(),
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
                                             coautorExterno, coautorInterno);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(reporte, form, Title.Edit))
             {

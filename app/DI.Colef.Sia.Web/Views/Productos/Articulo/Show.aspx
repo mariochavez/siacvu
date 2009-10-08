@@ -36,6 +36,15 @@
 
         <div id="forma">
             <div id="campos">
+                <h4>Datos del investigador</h4>
+	            <p>
+                    <label>Departamento</label>
+                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Sede</label>
+                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                </p>
             
     <!--DATOS PUBLICACION-->
                 <h4>Datos de la publicaci&oacute;n</h4>

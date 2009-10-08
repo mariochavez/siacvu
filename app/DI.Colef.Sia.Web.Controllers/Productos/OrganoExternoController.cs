@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(OrganoExternoForm form)
         {
-            var organoExterno = organoExternoMapper.Map(form, CurrentUser());
+            var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(organoExterno, form, Title.New, "OrganoExterno"))
             {
@@ -126,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoExternoForm form)
         {
-            var organoExterno = organoExternoMapper.Map(form, CurrentUser());
+            var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(organoExterno, form, Title.Edit))
             {

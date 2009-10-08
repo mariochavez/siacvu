@@ -108,7 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DistincionForm form)
         {
-            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var distincion = distincionMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             distincion.ModificadoPor = CurrentUser();
 

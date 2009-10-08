@@ -125,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(participacionMedio, form, Title.New, "ParticipacionMedio"))
             {
@@ -146,7 +146,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(participacionMedio, form, Title.Edit))
             {

@@ -103,7 +103,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -124,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(dictamen, form, Title.Edit))
             {

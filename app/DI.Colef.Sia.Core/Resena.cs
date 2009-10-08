@@ -81,6 +81,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
+
         public virtual int Puntuacion { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }

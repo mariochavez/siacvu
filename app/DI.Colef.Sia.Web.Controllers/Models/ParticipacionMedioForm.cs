@@ -16,6 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EspecificacionMedioElectronico { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+        public string DepartamentoNombre { get; set; }
+        public string SedeNombre { get; set; }
 
         public int MedioImpreso { get; set; }
         public int MedioImpresoId { get; set; }

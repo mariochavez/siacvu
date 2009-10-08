@@ -79,8 +79,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaNombre { get; set; }
         
         public string PeriodoReferenciaPeriodo { get; set; }
-        public string Departamento { get; set; }
-        public string Sede { get; set; }
+        public string DepartamentoNombre { get; set; }
+        public string SedeNombre { get; set; }
 
         public int TotalAutores
         {

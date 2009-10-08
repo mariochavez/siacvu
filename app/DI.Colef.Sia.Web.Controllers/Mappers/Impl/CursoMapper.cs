@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
 
-        public Curso Map(CursoForm message, Usuario usuario, PeriodoReferencia periodo)
+        public Curso Map(CursoForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
         {
             var model = Map(message);
 
@@ -55,6 +55,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;

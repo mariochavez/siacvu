@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
         }
 
-        public OrganoExterno Map(OrganoExternoForm message, Usuario usuario)
+        public OrganoExterno Map(OrganoExternoForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -44,6 +44,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;

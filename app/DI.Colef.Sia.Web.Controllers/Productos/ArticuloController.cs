@@ -103,8 +103,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-            //data.Form.Sede = CurrentInvestigador().Sede;
-            //data.Form.Departamento = CurrentInvestigador().Departamento;
             data.Form.PosicionAutor = 1;
 
             return View(data);

@@ -52,7 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Pais = catalogoService.GetPaisById(message.Pais);
         }
 
-        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo)
+        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
         {
             var model = Map(message);
 
@@ -61,6 +61,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.PeriodoReferencia = periodo;
+                model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
+                model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
 
             model.ModificadoPor = usuario;
@@ -68,10 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo,
+        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
-            var model = Map(message, usuario, periodo);
+            var model = Map(message, usuario, periodo, investigador);
 
             if (coautoresExternos != null)
             {

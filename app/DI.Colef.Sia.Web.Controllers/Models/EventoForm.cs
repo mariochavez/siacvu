@@ -14,6 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave3 { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+        public string DepartamentoNombre { get; set; }
+        public string SedeNombre { get; set; }
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }

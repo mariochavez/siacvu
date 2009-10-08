@@ -123,7 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(participacion, form, Title.New, "Participacion"))
             {
@@ -144,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionForm form)
         {
-            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacion = participacionMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
 
             if (!IsValidateModel(participacion, form, Title.Edit))
             {
