@@ -110,6 +110,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Proyecto Proyecto { get; set; }
 
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
+
         public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }
