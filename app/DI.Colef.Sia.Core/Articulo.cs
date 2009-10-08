@@ -56,8 +56,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual EstadoProducto EstadoProducto { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
-
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
@@ -67,8 +65,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
         public virtual string Volumen { get; set; }
 

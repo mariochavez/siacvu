@@ -577,8 +577,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
                 .ForMember(d => d.LineaInvestigacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoActividad,

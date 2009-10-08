@@ -22,7 +22,7 @@
 
 </div>
 <p>
-    <label>Estatus de la publicaci&oacute;n</label>
+    <label>Estatus actual</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
