@@ -115,6 +115,7 @@
     <Compile Include="FondoConacyt.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
+    <Compile Include="FormatoPublicacion.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
@@ -229,6 +230,7 @@
     <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
+    <Compile Include="TipoProducto.cs" />
     <Compile Include="TipoProyecto.cs" />
     <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />

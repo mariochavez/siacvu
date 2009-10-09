@@ -1807,16 +1807,8 @@ alter table Articulos  drop constraint FK3EB394D76425E2FD
 alter table Articulos  drop constraint FK3EB394D74B54D394
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D764F7D1CD]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D764F7D1CD
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D711666E2A]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D711666E2A
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D77A8488F7]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D77A8488F7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D72AF31B56]') AND parent_object_id = OBJECT_ID('Articulos'))
@@ -2283,6 +2275,22 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A85102A57]') AND parent_object_id = OBJECT_ID('TipoProductos'))
+alter table TipoProductos  drop constraint FKB747E45A85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoProductos'))
+alter table TipoProductos  drop constraint FKB747E45A74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF85102A57]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
+alter table FormatoPublicaciones  drop constraint FK9AB9E6CF85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF74E8BAB7]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
+alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2550,6 +2558,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'FormatoPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormatoPublicaciones
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4058,9 +4070,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TipoArticuloFk INT null,
        IdiomaFk INT null,
        EstadoProductoFk INT null,
-       InstitucionFk INT null,
        PeriodoReferenciaFk INT null,
-       PaisFk INT null,
        RevistaPublicacionFk INT null,
        LineaInvestigacionFk INT null,
        TipoActividadFk INT null,
@@ -4455,6 +4465,28 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
+       primary key (Id)
+    )
+
+    create table TipoProductos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table FormatoPublicaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -6719,19 +6751,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references EstadoProductos
 
     alter table Articulos 
-        add constraint FK3EB394D764F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Articulos 
         add constraint FK3EB394D711666E2A 
         foreign key (PeriodoReferenciaFk) 
         references PeriodoReferencias
-
-    alter table Articulos 
-        add constraint FK3EB394D77A8488F7 
-        foreign key (PaisFk) 
-        references Paises
 
     alter table Articulos 
         add constraint FK3EB394D72AF31B56 
@@ -7312,3 +7334,23 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table TipoProductos 
+        add constraint FKB747E45A85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table TipoProductos 
+        add constraint FKB747E45A74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table FormatoPublicaciones 
+        add constraint FK9AB9E6CF85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table FormatoPublicaciones 
+        add constraint FK9AB9E6CF74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios

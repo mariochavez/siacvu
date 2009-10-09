@@ -245,20 +245,23 @@ insert into Convenios values('Centro de Investigación y Docencia Económicas A. C
 insert into Convenios values('Centro de Investigación en Geografía y Geomática Ing. Jorge L. Tamayo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Convenios values('El Colegio de San Luis',GETDATE(), GETDATE(), 1, 1, 1);
 
-
-
 insert into TipoProyectos values('Consultoria',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPublicaciones values('Libro con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Libro sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Libro traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación de libro con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación de libro sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación de un número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Reedición de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Reimpresion de libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Coordinación',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoPublicaciones values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into TipoProductos values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoProductos values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
+
+insert into FormatoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into FormatoPublicaciones values('Memoria de evento',GETDATE(), GETDATE(), 1, 1, 1);
+insert into FormatoPublicaciones values('Número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
+insert into FormatoPublicaciones values('Serie breviarium',GETDATE(), GETDATE(), 1, 1, 1);
+insert into FormatoPublicaciones values('Reportes estadísticos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into FormatoPublicaciones values('Libro traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);

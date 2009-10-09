@@ -30,6 +30,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int TipoPublicacionId { get; set; }
         public string TipoPublicacionNombre { get; set; }
 
+        public int TipoProducto { get; set; }
+        public int TipoProductoId { get; set; }
+        public string TipoProductoNombre { get; set; }
+
+        public int FormatoPublicacion { get; set; }
+        public int FormatoPublicacionId { get; set; }
+        public string FormatoPublicacionNombre { get; set; }
+
         public int Edicion { get; set; }
         public int EdicionId { get; set; }
         public string EdicionNombre { get; set; }
@@ -101,6 +109,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		/* Catalogos */
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }
+        public TipoProductoForm[] TiposProductos { get; set; }
+        public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }
         public EdicionForm[] Ediciones { get; set; }
 		public EstadoProductoForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

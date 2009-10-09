@@ -1,12 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<LibroForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<p>
-    <label>Nombre del libro</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Nombre")%>
-</p>
 <p class="publicado_field">
     <label>ISBN</label>
     <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250", maxlength = 100 })%>

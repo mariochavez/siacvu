@@ -473,5 +473,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoArchivo[] GetAllTipoArchivos();
         TipoArchivo[] GetActiveTipoArchivos();
         void SaveTipoArchivo(TipoArchivo tipoArchivo);
+
+        //Formato Publicacion
+        FormatoPublicacion GetFormatoPublicacionById(int id);
+        FormatoPublicacion[] GetAllFormatoPublicacions();
+        FormatoPublicacion[] GetActiveFormatoPublicacions();
+        void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion);
+
+        //Tipo Producto
+        TipoProducto GetTipoProductoById(int id);
+        TipoProducto[] GetAllTipoProductos();
+        TipoProducto[] GetActiveTipoProductos();
+        void SaveTipoProducto(TipoProducto tipoProducto);
     }
 }

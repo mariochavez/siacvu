@@ -89,7 +89,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoEstudiante> tipoEstudianteRepository;
         readonly IRepository<AreaTematica> areaTematicaRepository;
         readonly IRepository<TipoArchivo> tipoArchivoRepository;
-        readonly IRepository<Proyecto> proyectoRepository;
+        readonly IRepository<TipoProducto> tipoProductoRepository;
+        readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -167,7 +168,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoEstudiante> tipoEstudianteRepository,
             IRepository<AreaTematica> areaTematicaRepository,
             IRepository<TipoArchivo> tipoArchivoRepository,
-            IRepository<Proyecto> proyectoRepository)
+            IRepository<Proyecto> proyectoRepository,
+            IRepository<TipoProducto> tipoProductoRepository,
+            IRepository<FormatoPublicacion> formatoPublicacionRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -245,7 +248,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoEstudianteRepository = tipoEstudianteRepository;
             this.areaTematicaRepository = areaTematicaRepository;
             this.tipoArchivoRepository = tipoArchivoRepository;
-            this.proyectoRepository = proyectoRepository;
+            this.tipoProductoRepository = tipoProductoRepository;
+            this.formatoPublicacionRepository = formatoPublicacionRepository;
         }
 
         protected virtual ISession Session
@@ -2442,6 +2446,60 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoArchivo.ModificadoEl = DateTime.Now;
 
             tipoArchivoRepository.SaveOrUpdate(tipoArchivo);
+        }
+
+        public FormatoPublicacion GetFormatoPublicacionById(int id)
+        {
+            return formatoPublicacionRepository.Get(id);
+        }
+
+        public FormatoPublicacion[] GetAllFormatoPublicacions()
+        {
+            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre)).ToArray();
+        }
+
+        public FormatoPublicacion[] GetActiveFormatoPublicacions()
+        {
+            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion)
+        {
+            if (formatoPublicacion.Id == 0)
+            {
+                formatoPublicacion.Activo = true;
+                formatoPublicacion.CreadorEl = DateTime.Now;
+            }
+            formatoPublicacion.ModificadoEl = DateTime.Now;
+
+            formatoPublicacionRepository.SaveOrUpdate(formatoPublicacion);
+        }
+
+        public TipoProducto GetTipoProductoById(int id)
+        {
+            return tipoProductoRepository.Get(id);
+        }
+
+        public TipoProducto[] GetAllTipoProductos()
+        {
+            return ((List<TipoProducto>)OrderCatalog<TipoProducto>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoProducto[] GetActiveTipoProductos()
+        {
+            return ((List<TipoProducto>)OrderCatalog<TipoProducto>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoProducto(TipoProducto tipoProducto)
+        {
+            if (tipoProducto.Id == 0)
+            {
+                tipoProducto.Activo = true;
+                tipoProducto.CreadorEl = DateTime.Now;
+            }
+            tipoProducto.ModificadoEl = DateTime.Now;
+
+            tipoProductoRepository.SaveOrUpdate(tipoProducto);
         }
     }
 }

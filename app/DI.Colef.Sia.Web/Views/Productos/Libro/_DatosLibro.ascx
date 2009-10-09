@@ -2,6 +2,11 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
+    <label>Nombre del libro</label>
+    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Nombre")%>
+</p>
+<p>
     <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("TipoPublicacion", Model.TiposPublicaciones.CreateSelectList<TipoPublicacionForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "tipo requerido" })%>

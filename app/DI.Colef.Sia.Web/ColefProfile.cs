@@ -715,7 +715,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.NombreEvento,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore());
+                           o => o.Ignore())
+                .ForMember(d => d.TipoProducto,
+                           o => o.Ignore())
+                .ForMember(d => d.FormatoPublicacion,
+                      o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoLibro, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -1059,6 +1063,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
 
             Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<FormatoPublicacion, FormatoPublicacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<TipoProducto, TipoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

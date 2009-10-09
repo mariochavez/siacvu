@@ -36,6 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
         readonly IEdicionMapper edicionMapper;
+        readonly ITipoProductoMapper tipoProductoMapper;
+        readonly IFormatoPublicacionMapper formatoPublicacionMapper;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
@@ -60,7 +62,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ISearchService searchService,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
-                               IProyectoService proyectoService)
+                               IProyectoService proyectoService,
+                               ITipoProductoMapper  tipoProductoMapper,
+                               IFormatoPublicacionMapper formatoPublicacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -85,6 +89,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.proyectoService = proyectoService;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
+            this.tipoProductoMapper = tipoProductoMapper;
+            this.formatoPublicacionMapper = formatoPublicacionMapper;
         }
 
         [Authorize]
@@ -354,6 +360,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.Ediciones = edicionMapper.Map(catalogoService.GetActiveEdicions());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
+            form.TiposProductos = tipoProductoMapper.Map(catalogoService.GetActiveTipoProductos());
+            form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
@@ -373,6 +381,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private void FormSetCombos(LibroForm form)
         {
             ViewData["TipoPublicacion"] = form.TipoPublicacionId;
+            ViewData["TipoProducto"] = form.TipoProductoId;
+            ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;
             ViewData["Edicion"] = form.EdicionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
