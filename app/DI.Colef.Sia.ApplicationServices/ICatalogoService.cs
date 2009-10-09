@@ -491,5 +491,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Reimpresion[] GetAllReimpresions();
         Reimpresion[] GetActiveReimpresions();
         void SaveReimpresion(Reimpresion reimpresion);
+
+        //Editorial
+        Editorial GetEditorialById(int id);
+        Editorial[] GetAllEditorials();
+        Editorial[] GetActiveEditorials();
+        void SaveEditorial(Editorial editorial);
     }
 }

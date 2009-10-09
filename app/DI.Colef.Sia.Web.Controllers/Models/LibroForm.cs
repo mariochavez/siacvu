@@ -5,7 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int Id { get; set; }
         public string Nombre { get; set; }
         public string ISBN { get; set; }
-        public string Editorial { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaPublicacion { get; set; }
         public string FechaEdicion { get; set; }
@@ -43,6 +42,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EdicionId { get; set; }
         public string EdicionNombre { get; set; }
 
+        public int Editorial { get; set; }
+        public int EditorialId { get; set; }
+        public string EditorialNombre { get; set; }
+        public string EditorialPaisNombre { get; set; }
+
         public int Evento { get; set; }
         public int EventoId { get; set; }
         public string EventoNombre { get; set; }
@@ -61,8 +65,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoNombre { get; set; }
         public string ProyectoLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
-
-        public string PaisNombre { get; set; }
 		
 		public int Idioma { get; set; }
 		public int IdiomaId { get; set; }
@@ -118,6 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EventoForm[] Eventos { get; set; }
         public RevistaPublicacionForm[] RevistaPublicaciones { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
+        public EditorialForm[] Editoriales { get; set; }
 		//public FormaParticipacionForm[] FormasParticipaciones { get; set; }
         public ReimpresionForm[] Reimpresiones { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }

@@ -40,6 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IFormatoPublicacionMapper formatoPublicacionMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IReimpresionMapper reimpresionMapper;
+        readonly IEditorialMapper editorialMapper;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
@@ -68,7 +69,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITipoProductoMapper  tipoProductoMapper,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IRevistaPublicacionMapper revistaPublicacionMapper,
-                               IReimpresionMapper reimpresionMapper)
+                               IReimpresionMapper reimpresionMapper,
+                               IEditorialMapper editorialMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -97,6 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.formatoPublicacionMapper = formatoPublicacionMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.reimpresionMapper = reimpresionMapper;
+            this.editorialMapper = editorialMapper;
         }
 
         [Authorize]
@@ -416,6 +419,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             //form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
             form.Reimpresiones = reimpresionMapper.Map(catalogoService.GetActiveReimpresions());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -437,6 +441,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Edicion"] = form.EdicionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Idioma"] = form.IdiomaId;
+            ViewData["Editorial"] = form.EditorialId;
             //ViewData["FormaParticipacion"] = form.FormaParticipacionId;
             ViewData["Reimpresion"] = form.ReimpresionId;
             //ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;

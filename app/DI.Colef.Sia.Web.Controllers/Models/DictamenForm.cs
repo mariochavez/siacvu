@@ -16,10 +16,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FondoConacytId { get; set; }
         public string FondoConacytNombre { get; set; }
 
-        //public int Editorial { get; set; }
-        //public int EditorialId { get; set; }
-        //public string EditorialNombre { get; set; }
-        //public string EditorialInstitucionNombre { get; set; }
+        public int Editorial { get; set; }
+        public int EditorialId { get; set; }
+        public string EditorialNombre { get; set; }
+        public string EditorialInstitucionNombre { get; set; }
 
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
@@ -33,6 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public TipoDictamenForm[] TiposDictamenes { get; set; }
         public FondoConacytForm[] FondosConacyt { get; set; }
-        //public EditorialForm[] Editoriales { get; set; }
+        public EditorialForm[] Editoriales { get; set; }
     }
 }

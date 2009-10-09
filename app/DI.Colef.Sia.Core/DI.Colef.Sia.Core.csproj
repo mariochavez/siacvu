@@ -103,6 +103,7 @@
     <Compile Include="Disciplina.cs" />
     <Compile Include="Distincion.cs" />
     <Compile Include="Edicion.cs" />
+    <Compile Include="Editorial.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />

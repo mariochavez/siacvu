@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.Nombre = message.Nombre;
             model.ISBN = message.ISBN;
-            model.Editorial = message.Editorial;
             model.NoPaginas = message.NoPaginas;
             model.Tiraje = message.Tiraje;
             model.Numero = message.Numero;
@@ -61,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoProducto = catalogoService.GetTipoProductoById(message.TipoProducto);
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
             model.Edicion = catalogoService.GetEdicionById(message.Edicion);
+            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
 		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);

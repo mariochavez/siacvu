@@ -51,6 +51,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Min(1)]
 	    public virtual int PosicionAutor { get; set; }
 
+	    public virtual Editorial Editorial { get; set; }
+
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
         public virtual TipoProducto TipoProducto { get; set; }
@@ -80,8 +82,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string Nombre { get; set; }
 
 		public virtual string ISBN { get; set; }
-
-		public virtual string Editorial { get; set; }
 
         public virtual string Volumen { get; set; }
 
