@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool ConRecursos { get; set; }
 
         //Seccion Financiamiento del Proyecto
-        public virtual SectorFinanciamiento SectorFinanciamiento { get; set; }
+        public virtual Sector SectorFinanciamiento { get; set; }
 
         public virtual FondoConacyt FondoConacyt { get; set; }
 

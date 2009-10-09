@@ -29,7 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IAmbitoMapper ambitoMapper;
         readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
         readonly IMonedaMapper monedaMapper;
-        readonly ISectorFinanciamientoMapper sectorFinanciamientoMapper;
         readonly IProductoAcademicoMapper productoAcademicoMapper;
         readonly IActividadPrevistaMapper actividadPrevistaMapper;
         readonly IUSEGMapper uSEGMapper;
@@ -60,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IInvestigadorExternoMapper investigadorExternoMapper, IParticipanteExternoProyectoMapper participanteExternoProyectoMapper, 
                                   ISedeMapper sedeMapper, ILineaTematicaMapper lineaTematicaMapper, IImpactoPoliticaPublicaMapper impactoPoliticaPublicaMapper, 
                                   IAmbitoMapper ambitoMapper, ITipoFinanciamientoMapper tipoFinanciamientoMapper, IMonedaMapper monedaMapper, 
-                                  ISectorFinanciamientoMapper sectorFinanciamientoMapper, IProductoAcademicoMapper productoAcademicoMapper, 
+                                  IProductoAcademicoMapper productoAcademicoMapper, 
                                   IActividadPrevistaMapper actividadPrevistaMapper, IUSEGMapper uSEGMapper, IInstitucionMapper institucionMapper, 
                                   INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
@@ -87,7 +86,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.ambitoMapper = ambitoMapper;
             this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.monedaMapper = monedaMapper;
-            this.sectorFinanciamientoMapper = sectorFinanciamientoMapper;
             this.productoAcademicoMapper = productoAcademicoMapper;
             this.actividadPrevistaMapper = actividadPrevistaMapper;
             this.uSEGMapper = uSEGMapper;
@@ -688,7 +686,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
             form.EstatusProyectos = estatusProyectoMapper.Map(catalogoService.GetActiveEstatusProyectos());
-            form.SectoresFinanciamientos = sectorFinanciamientoMapper.Map(catalogoService.GetActiveSectorFinanciamientos());
+            form.SectoresFinanciamientos = sectorMapper.Map(catalogoService.GetActiveSectoresFinanciamientos());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
             form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
             form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());

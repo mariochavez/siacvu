@@ -1,6 +1,8 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class SectorFinanciamientoForm
+    public class TipoProductoForm
     {		
 		public int Id { get; set; }
 		public string Nombre { get; set; }

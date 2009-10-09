@@ -181,8 +181,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Sector[] GetAllSectores();
         Sector[] GetActiveSectores();
         void SaveSector(Sector sector);
-        Sector GetSectorEconomicoById(int id);
         Sector[] GetActiveSectoresEconomicos();
+        Sector[] GetActiveSectoresFinanciamientos();
 
         //Nivel
         Nivel GetNivelById(int id);
@@ -389,12 +389,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Moneda[] GetActiveMonedas();
         void SaveMoneda(Moneda moneda);
 
-        //Sector de financiamiento
-        SectorFinanciamiento GetSectorFinanciamientoById(int id);
-        SectorFinanciamiento[] GetAllSectorFinanciamientos();
-        SectorFinanciamiento[] GetActiveSectorFinanciamientos();
-        void SaveSectorFinanciamiento(SectorFinanciamiento sectorFinanciamiento);
-
         //Producto academico
         ProductoAcademico GetProductoAcademicoById(int id);
         ProductoAcademico[] GetAllProductoAcademicos();
@@ -479,5 +473,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoArchivo[] GetAllTipoArchivos();
         TipoArchivo[] GetActiveTipoArchivos();
         void SaveTipoArchivo(TipoArchivo tipoArchivo);
+
+        //Formato Publicacion
+        FormatoPublicacion GetFormatoPublicacionById(int id);
+        FormatoPublicacion[] GetAllFormatoPublicacions();
+        FormatoPublicacion[] GetActiveFormatoPublicacions();
+        void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion);
+
+        //Tipo Producto
+        TipoProducto GetTipoProductoById(int id);
+        TipoProducto[] GetAllTipoProductos();
+        TipoProducto[] GetActiveTipoProductos();
+        void SaveTipoProducto(TipoProducto tipoProducto);
     }
 }

@@ -4,21 +4,20 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class SectorMapper : AutoFormMapper<Sector, SectorForm>, ISectorMapper
+    public class TipoProductoMapper : AutoFormMapper<TipoProducto, TipoProductoForm>, ITipoProductoMapper
     {
-        public SectorMapper(IRepository<Sector> repository) : base(repository)
+        public TipoProductoMapper(IRepository<TipoProducto> repository) : base(repository)
         {
         }
 
-        protected override int GetIdFromMessage(SectorForm message)
+        protected override int GetIdFromMessage(TipoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(SectorForm message, Sector model)
+        protected override void MapToModel(TipoProductoForm message, TipoProducto model)
         {
 			model.Nombre = message.Nombre;
-            model.TipoSector = message.TipoSector;
         }
     }
 }

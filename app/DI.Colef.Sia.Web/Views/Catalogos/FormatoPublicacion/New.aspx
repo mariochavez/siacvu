@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<SectorFinanciamientoForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<FormatoPublicacionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo sector de financiamiento dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta un nuevo formato de publicaci&oacute;n dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>
@@ -29,17 +29,17 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div id="textos">
 	
-	    <% Html.RenderPartial("_Message"); %>    
-	    
+	    <% Html.RenderPartial("_Message"); %>
+	    	
 	    <div id="forma">
-	        <% using (Html.BeginForm("Create", "SectorFinanciamiento")){ %>
+	        <% using (Html.BeginForm("Create", "FormatoPublicacion")){ %>
 	        	<%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
 	            <% Html.RenderPartial("_Form", Model.Form); %>
 	            
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<SectorFinanciamientoController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<FormatoPublicacionController>(x => x.Index(), "Regresar") %>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

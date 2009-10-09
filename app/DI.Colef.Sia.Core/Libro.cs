@@ -38,6 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
+        public virtual TipoProducto TipoProducto { get; set; }
+
+        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
+
         public virtual Edicion Edicion { get; set; }
 
         public virtual RevistaPublicacion NombreRevista { get; set; }

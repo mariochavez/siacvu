@@ -152,7 +152,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InstitucionForm[] Instituciones { get; set; }
         public ConvenioForm[] Convenios { get; set; }
         public EstatusProyectoForm[] EstatusProyectos { get; set; }
-        public SectorFinanciamientoForm[] SectoresFinanciamientos { get; set; }
+        public SectorForm[] SectoresFinanciamientos { get; set; }
         public FondoConacytForm[] FondosConacyt { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }

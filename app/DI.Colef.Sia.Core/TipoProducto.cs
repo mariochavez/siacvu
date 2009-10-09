@@ -6,11 +6,11 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
 	[HasUniqueDomainSignature]
-    public class SectorFinanciamiento : Entity, IBaseEntity
+    public class TipoProducto : Entity, IBaseEntity
     {
 		[DomainSignature]
 		[NotNullNotEmpty]
-        [Length(40)]
+        [Length(50)]
 		public virtual string Nombre { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }

@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<SectorFinanciamientoForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<TipoProductoForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo sector de financiamiento</h3>
+        <h3>Agregar nuevo tipo producto</h3>
         <p>
-            Puede agregar un nuevo sector de financiamiento dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Crear sector de financiamiento</strong>.
+            Puede agregar un nuevo tipo de producto dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo tipo de producto</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<SectorFinanciamientoController>(x => x.New(), "+ Crear sector de financiamiento") %></span>
+            <span><%=Html.ActionLink<TipoProductoController>(x => x.New(), "+ Nuevo tipo de producto") %></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de sectores de financiamiento registrados en el sistema.</p>
+            <p>Lista de tipos de producto registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,31 +39,31 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Sectores de financiamiento</h4>
+		<h4>Tipos de producto</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay sectores de financiamiento registrados</span></h5>
+					<h5><span>No hay tipos de producto registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->
 		<% } else { %>
-			<% foreach (var sectorFinanciamiento in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(sectorFinanciamiento.Id) %>">
+			<% foreach (var tipoProducto in Model.List) { %>
+				<div class="elementolista" id="accion_<%=Html.Encode(tipoProducto.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(sectorFinanciamiento.Nombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(sectorFinanciamiento.Modificacion) %></h6>
+						<h5><span><%=Html.Encode(tipoProducto.Nombre) %></span></h5>
+						<h6>Modificado el <%=Html.Encode(tipoProducto.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
-							<span><%=Html.ActionLink<SectorFinanciamientoController>(x => x.Edit(sectorFinanciamiento.Id), "Editar") %></span>
+							<span><%=Html.ActionLink<TipoProductoController>(x => x.Edit(tipoProducto.Id), "Editar") %></span>
 	                        <span>
-	                            <% if (sectorFinanciamiento.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = sectorFinanciamiento.Id }, new { @class = "remote put" })%>
+	                            <% if (tipoProducto.Activo) { %>
+	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = tipoProducto.Id }, new { @class = "remote put" })%>
 	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = sectorFinanciamiento.Id }, new { @class = "remote put" })%>
+	                                <%=Html.ActionLink("Activar", "Activate", new { id = tipoProducto.Id }, new { @class = "remote put" })%>
 	                            <% } %>
 	                        </span>
 	                   	</p>

@@ -3,7 +3,8 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface ISectorFinanciamientoMapper : IMapper<SectorFinanciamiento, SectorFinanciamientoForm>
+
+    public interface IFormatoPublicacionMapper : IMapper<FormatoPublicacion, FormatoPublicacionForm>
     {
     }
 }

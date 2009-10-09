@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
         readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
-        readonly IRepository<SectorFinanciamiento> sectorFinanciamientoRepository;
         readonly IRepository<ProductoAcademico> productoAcademicoRepository;
         readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<Moneda> monedaRepository;
@@ -90,7 +89,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoEstudiante> tipoEstudianteRepository;
         readonly IRepository<AreaTematica> areaTematicaRepository;
         readonly IRepository<TipoArchivo> tipoArchivoRepository;
-        readonly IRepository<Proyecto> proyectoRepository;
+        readonly IRepository<TipoProducto> tipoProductoRepository;
+        readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -154,7 +154,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoApoyo> tipoApoyoRepository,
             IRepository<SubprogramaConacyt> subprogramaConacytRepository,
             IRepository<Rama> ramaRepository,
-            IRepository<SectorFinanciamiento> sectorFinanciamientoRepository,
             IRepository<ProductoAcademico> productoAcademicoRepository,
             IRepository<USEG> uSEGRepository,
             IRepository<Moneda> monedaRepository,
@@ -169,7 +168,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoEstudiante> tipoEstudianteRepository,
             IRepository<AreaTematica> areaTematicaRepository,
             IRepository<TipoArchivo> tipoArchivoRepository,
-            IRepository<Proyecto> proyectoRepository)
+            IRepository<Proyecto> proyectoRepository,
+            IRepository<TipoProducto> tipoProductoRepository,
+            IRepository<FormatoPublicacion> formatoPublicacionRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -177,7 +178,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoParticipacionOrganoRepository = tipoParticipacionOrganoRepository;
             this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
             this.monedaRepository = monedaRepository;
-            this.sectorFinanciamientoRepository = sectorFinanciamientoRepository;
             this.productoAcademicoRepository = productoAcademicoRepository;
             this.uSEGRepository = uSEGRepository;
             this.departamentoRepository = departamentoRepository;
@@ -248,7 +248,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoEstudianteRepository = tipoEstudianteRepository;
             this.areaTematicaRepository = areaTematicaRepository;
             this.tipoArchivoRepository = tipoArchivoRepository;
-            this.proyectoRepository = proyectoRepository;
+            this.tipoProductoRepository = tipoProductoRepository;
+            this.formatoPublicacionRepository = formatoPublicacionRepository;
         }
 
         protected virtual ISession Session
@@ -1130,7 +1131,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Sector[] GetActiveSectores()
         {
-            return ((List<Sector>) OrderCatalog<Sector>(x => x.Nombre, true)).ToArray();
+            var sectorList = Session.CreateCriteria(typeof (Sector))
+                .Add(Expression.Eq("TipoSector", 0))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<Sector>();
+
+            return ((List<Sector>) sectorList).ToArray();
         }
 
         public void SaveSector(Sector sector)
@@ -1145,15 +1151,20 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             sectorRepository.SaveOrUpdate(sector);
         }
 
-        public Sector GetSectorEconomicoById(int id)
-        {
-            return sectorRepository.FindOne(new Dictionary<string, object> { { "Id", id } });
-        }
-
         public Sector[] GetActiveSectoresEconomicos()
         {
             var sectorList = Session.CreateCriteria(typeof (Sector))
-                .Add(Expression.Eq("SectorEconomico", true))
+                .Add(Expression.Eq("TipoSector", 1))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<Sector>();
+
+            return ((List<Sector>)sectorList).ToArray();
+        }
+
+        public Sector[] GetActiveSectoresFinanciamientos()
+        {
+            var sectorList = Session.CreateCriteria(typeof(Sector))
+                .Add(Expression.Eq("TipoSector", 2))
                 .Add(Restrictions.Eq("Activo", true))
                 .List<Sector>();
 
@@ -2054,33 +2065,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             monedaRepository.SaveOrUpdate(moneda);
         }
 
-        public SectorFinanciamiento GetSectorFinanciamientoById(int id)
-        {
-            return sectorFinanciamientoRepository.Get(id);
-        }
-
-        public SectorFinanciamiento[] GetAllSectorFinanciamientos()
-        {
-            return ((List<SectorFinanciamiento>)OrderCatalog<SectorFinanciamiento>(x => x.Nombre)).ToArray();
-        }
-
-        public SectorFinanciamiento[] GetActiveSectorFinanciamientos()
-        {
-            return ((List<SectorFinanciamiento>) OrderCatalog<SectorFinanciamiento>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveSectorFinanciamiento(SectorFinanciamiento sectorFinanciamiento)
-        {
-            if (sectorFinanciamiento.Id == 0)
-            {
-                sectorFinanciamiento.Activo = true;
-                sectorFinanciamiento.CreadorEl = DateTime.Now;
-            }
-            sectorFinanciamiento.ModificadoEl = DateTime.Now;
-
-            sectorFinanciamientoRepository.SaveOrUpdate(sectorFinanciamiento);
-        }
-
         public ProductoAcademico GetProductoAcademicoById(int id)
         {
             return productoAcademicoRepository.Get(id);
@@ -2462,6 +2446,60 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoArchivo.ModificadoEl = DateTime.Now;
 
             tipoArchivoRepository.SaveOrUpdate(tipoArchivo);
+        }
+
+        public FormatoPublicacion GetFormatoPublicacionById(int id)
+        {
+            return formatoPublicacionRepository.Get(id);
+        }
+
+        public FormatoPublicacion[] GetAllFormatoPublicacions()
+        {
+            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre)).ToArray();
+        }
+
+        public FormatoPublicacion[] GetActiveFormatoPublicacions()
+        {
+            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion)
+        {
+            if (formatoPublicacion.Id == 0)
+            {
+                formatoPublicacion.Activo = true;
+                formatoPublicacion.CreadorEl = DateTime.Now;
+            }
+            formatoPublicacion.ModificadoEl = DateTime.Now;
+
+            formatoPublicacionRepository.SaveOrUpdate(formatoPublicacion);
+        }
+
+        public TipoProducto GetTipoProductoById(int id)
+        {
+            return tipoProductoRepository.Get(id);
+        }
+
+        public TipoProducto[] GetAllTipoProductos()
+        {
+            return ((List<TipoProducto>)OrderCatalog<TipoProducto>(x => x.Nombre)).ToArray();
+        }
+
+        public TipoProducto[] GetActiveTipoProductos()
+        {
+            return ((List<TipoProducto>)OrderCatalog<TipoProducto>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveTipoProducto(TipoProducto tipoProducto)
+        {
+            if (tipoProducto.Id == 0)
+            {
+                tipoProducto.Activo = true;
+                tipoProducto.CreadorEl = DateTime.Now;
+            }
+            tipoProducto.ModificadoEl = DateTime.Now;
+
+            tipoProductoRepository.SaveOrUpdate(tipoProducto);
         }
     }
 }

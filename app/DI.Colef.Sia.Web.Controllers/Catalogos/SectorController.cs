@@ -4,6 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
@@ -39,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new SectorForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -51,7 +52,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var sector = catalogoService.GetSectorById(id);
-            data.Form = sectorMapper.Map(sector);
+            var sectorForm = sectorMapper.Map(sector);
+
+            data.Form = SetupNewForm(sectorForm);
+
+            ViewData["TipoSector"] = data.Form.TipoSector;
 
             ViewData.Model = data;
             return View();
@@ -69,7 +74,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             sector.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sector, form, Title.New))
+            {
+                var sectorForm = sectorMapper.Map(sector);
+
+                ((GenericViewData<SectorForm>) ViewData.Model).Form = SetupNewForm(sectorForm);
                 return ViewNew();
+            }
 
             catalogoService.SaveSector(sector);
 
@@ -87,7 +97,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             sector.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sector, form, Title.Edit))
+            {
+                var sectorForm = sectorMapper.Map(sector);
+
+                ((GenericViewData<SectorForm>)ViewData.Model).Form = SetupNewForm(sectorForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveSector(sector);
 
@@ -130,6 +145,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Sector>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        SectorForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        SectorForm SetupNewForm(SectorForm form)
+        {
+            form = form ?? new SectorForm();
+
+            form.TiposSectores = new[]
+                                     {
+                                         new CustomSelectForm
+                                             {Id = 1, Nombre = "Sector económico"},
+                                         new CustomSelectForm
+                                             {Id = 2, Nombre = "Sector financiamiento"}
+                                     };
+
+            return form;
         }
     }
 }

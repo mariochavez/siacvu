@@ -458,11 +458,6 @@
     <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Edit.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\Index.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\New.aspx" />
-    <Content Include="Views\Catalogos\SectorFinanciamiento\_Form.ascx" />
     <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sector\Edit.aspx" />
     <Content Include="Views\Catalogos\Sector\Index.aspx" />
@@ -604,6 +599,11 @@
     <Content Include="Views\FormacionAcademica\ChangePais.js.ascx" />
     <Content Include="Views\FormacionAcademica\ChangeSector.js.ascx" />
     <Content Include="Views\FormacionAcademica\Show.aspx" />
+    <Content Include="Views\Catalogos\FormatoPublicacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\FormatoPublicacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\FormatoPublicacion\Index.aspx" />
+    <Content Include="Views\Catalogos\FormatoPublicacion\New.aspx" />
+    <Content Include="Views\Catalogos\FormatoPublicacion\_Form.ascx" />
     <Content Include="Views\GrupoInvestigacion\Activate.js.ascx" />
     <Content Include="Views\GrupoInvestigacion\ChangeNivel2.js.ascx" />
     <Content Include="Views\GrupoInvestigacion\ChangeNivel3.js.ascx" />
@@ -918,6 +918,11 @@
     <Content Include="Views\Catalogos\TipoArchivo\Index.aspx" />
     <Content Include="Views\Catalogos\TipoArchivo\New.aspx" />
     <Content Include="Views\Catalogos\TipoArchivo\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoProducto\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoProducto\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoProducto\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoProducto\New.aspx" />
+    <Content Include="Views\Catalogos\TipoProducto\_Form.ascx" />
     <Content Include="Views\Usuario\AddRol.js.ascx" />
     <Content Include="Views\Usuario\Edit.aspx" />
     <Content Include="Views\Usuario\Index.aspx" />

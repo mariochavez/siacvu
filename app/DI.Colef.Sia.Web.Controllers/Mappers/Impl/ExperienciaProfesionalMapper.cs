@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.SectorEconomico = catalogoService.GetSectorEconomicoById(message.SectorEconomico);
+            model.SectorEconomico = catalogoService.GetSectorById(message.SectorEconomico);
             model.Rama = catalogoService.GetRamaById(message.Rama);
             model.Clase = catalogoService.GetClaseById(message.Clase);
         }
