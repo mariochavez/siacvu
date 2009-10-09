@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<Editorial> editorialRepository;
         readonly IRepository<Edicion> edicionRepository;
         readonly IRepository<DirigidoA> dirigidoARepository;
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
@@ -103,6 +104,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Sede> sedeRepository,
             IRepository<Categoria> categoriaRepository,
             IRepository<GradoAcademico> gradoAcademicoRepository,
+            IRepository<Editorial> editorialRepository,
             IRepository<SNI> sniRepository,
             IRepository<Estado> estadoRepository,
             IRepository<Idioma> idiomaRepository,
@@ -214,6 +216,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
+            this.editorialRepository = editorialRepository;
             this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
             this.organizacionRepository = organizacionRepository;
@@ -2500,6 +2503,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoProducto.ModificadoEl = DateTime.Now;
 
             tipoProductoRepository.SaveOrUpdate(tipoProducto);
+        }
+
+        public Editorial GetEditorialById(int id)
+        {
+            return editorialRepository.Get(id);
+        }
+
+        public Editorial[] GetAllEditorials()
+        {
+            return ((List<Editorial>)OrderCatalog<Editorial>(x => x.Nombre, true)).ToArray();
+        }
+
+        public Editorial[] GetActiveEditorials()
+        {
+            return ((List<Editorial>)editorialRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+        }
+
+        public void SaveEditorial(Editorial editorial)
+        {
+            if (editorial.Id == 0)
+            {
+                editorial.Activo = true;
+                editorial.CreadorEl = DateTime.Now;
+            }
+            editorial.ModificadoEl = DateTime.Now;
+
+            editorialRepository.SaveOrUpdate(editorial);
         }
     }
 }

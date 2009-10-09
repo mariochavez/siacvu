@@ -1,15 +1,23 @@
-06:58:35 p.m.	Started adding generated files
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\FormatoPublicacion.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
-06:58:35 p.m.	Added directory C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\_Form.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\New.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\Edit.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\FormatoPublicacion\Activate.js.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\FormatoPublicacionForm.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-06:58:35 p.m.	Added file FormatoPublicacionController.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IFormatoPublicacionService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\FormatoPublicacionService.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IFormatoPublicacionMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-06:58:35 p.m.	Added file C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\FormatoPublicacionMapper.cs to project C:\Net\Projects\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-06:58:35 p.m.	Finished adding generated files
+12:14:11 p.m.	Started adding generated files
+12:14:11 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\Editorial.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\; exists? True
+12:14:12 p.m.	Added directory C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\_Form.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\New.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\Edit.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\Catalogos\Editorial\Activate.js.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\EditorialForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Catalogos\; exists? True
+12:14:12 p.m.	Added file Catalogos\EditorialController.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IEditorialService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\EditorialService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IEditorialMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+12:14:12 p.m.	path = C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\Catalogos\; exists? True
+12:14:12 p.m.	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\EditorialMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+12:14:12 p.m.	Finished adding generated files

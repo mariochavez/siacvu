@@ -16,8 +16,18 @@
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
 <p class="articulo_field">
-    <label>Instituci&oacute;n</label>
+    <label>Instituci&oacute;n de la revista</label>
     <span id="institucion"><%= Html.Encode(Model.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
+</p>
+<p class="capituloLibro_field">
+	<label>Editorial</label>
+	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+	<%=Html.ValidationMessage("Editorial")%>
+</p>
+<p class="capituloLibro_field">
+    <label>Instituci&oacute;n de la editorial</label>
+    <%= Html.Encode(Model.EditorialInstitucionNombre)%>
 </p>
 <p id="proyecto_field">
 	<label>Tipo de proyecto</label>

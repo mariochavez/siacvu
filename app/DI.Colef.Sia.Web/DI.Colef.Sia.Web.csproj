@@ -303,6 +303,11 @@
     <Content Include="Views\Catalogos\Edicion\Index.aspx" />
     <Content Include="Views\Catalogos\Edicion\New.aspx" />
     <Content Include="Views\Catalogos\Edicion\_Form.ascx" />
+    <Content Include="Views\Catalogos\Editorial\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Editorial\Edit.aspx" />
+    <Content Include="Views\Catalogos\Editorial\Index.aspx" />
+    <Content Include="Views\Catalogos\Editorial\New.aspx" />
+    <Content Include="Views\Catalogos\Editorial\_Form.ascx" />
     <Content Include="Views\Catalogos\EstadoPais\Activate.js.ascx" />
     <Content Include="Views\Catalogos\EstadoPais\Edit.aspx" />
     <Content Include="Views\Catalogos\EstadoPais\Index.aspx" />

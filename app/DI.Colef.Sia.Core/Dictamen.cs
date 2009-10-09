@@ -19,7 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        //public virtual Editorial Editorial { get; set; }
+        public virtual Editorial Editorial { get; set; }
 
         public virtual FondoConacyt FondoConacyt { get; set; }
 

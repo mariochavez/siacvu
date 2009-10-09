@@ -76,7 +76,7 @@
 	            <% Html.RenderPartial("_EditResponsableInterno", new ResponsableForm { ResponsablesInternos = Model.Form.ResponsableInternoCapitulos, ModelId = Model.Form.Id }); %>
 				<% Html.RenderPartial("_EditResponsableExterno", new ResponsableForm { ResponsablesExternos = Model.Form.ResponsableExternoCapitulos, ModelId = Model.Form.Id } ); %>
 	            <p>
-	                <label>Edtores</label>
+	                <label>Editores</label>
 	                <span id="totaleditores" class="valor"><%=Html.Encode(Model.Form.TotalEditores) %></span>
 	                <span class="cvu"></span>
 	            </p>

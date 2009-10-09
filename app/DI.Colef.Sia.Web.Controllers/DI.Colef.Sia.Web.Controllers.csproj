@@ -101,6 +101,7 @@
     <Compile Include="Catalogos\CoordinacionController.cs" />
     <Compile Include="Catalogos\DirigidoAController.cs" />
     <Compile Include="Catalogos\EdicionController.cs" />
+    <Compile Include="Catalogos\EditorialController.cs" />
     <Compile Include="Catalogos\EstatusFormacionAcademicaController.cs" />
     <Compile Include="Catalogos\EstatusProyectoController.cs" />
     <Compile Include="Catalogos\FondoConacytController.cs" />
@@ -122,7 +123,9 @@
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Catalogos\FormatoPublicacionController.cs" />
+    <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
+    <Compile Include="Mappers\Impl\EditorialMapper.cs" />
     <Compile Include="Mappers\Impl\FormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoProductoMapper.cs" />
@@ -131,6 +134,7 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
+    <Compile Include="Models\EditorialForm.cs" />
     <Compile Include="Models\FormatoPublicacionForm.cs" />
     <Compile Include="Models\ResponsableForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />

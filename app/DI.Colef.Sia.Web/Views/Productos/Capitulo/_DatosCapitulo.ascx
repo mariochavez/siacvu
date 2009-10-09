@@ -43,10 +43,3 @@
     <label>Periodo de referencia</label>
     <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
-<%if(Model.Id != 0){ %>
-    <p>
-        <label>A&ntilde;o de aceptaci&oacute;n</label>
-        <%=Html.Encode(Model.AnioAceptacion) %>
-        <span class="cvu"></span>
-    </p>
-<% } %>

@@ -485,5 +485,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoProducto[] GetAllTipoProductos();
         TipoProducto[] GetActiveTipoProductos();
         void SaveTipoProducto(TipoProducto tipoProducto);
+
+        //Editorial
+        Editorial GetEditorialById(int id);
+        Editorial[] GetAllEditorials();
+        Editorial[] GetActiveEditorials();
+        void SaveEditorial(Editorial editorial);
     }
 }

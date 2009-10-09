@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDictamenService dictamenService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
-        //readonly IEditorialMapper editorialMapper;
+        readonly IEditorialMapper editorialMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public DictamenController(IDictamenService dictamenService,
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   IFondoConacytMapper fondoConacytMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  //IEditorialMapper editorialMapper,
+                                  IEditorialMapper editorialMapper,
                                   ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.dictamenMapper = dictamenMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            //this.editorialMapper = editorialMapper;
+            this.editorialMapper = editorialMapper;
             this.tipoDictamenMapper = tipoDictamenMapper;
         }
 
@@ -203,7 +203,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
-            //form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditoriales());
+            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             
             return form;
         }
@@ -212,7 +212,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoDictamen"] = form.TipoDictamenId;
             ViewData["FondoConacyt"] = form.FondoConacytId;
-            //ViewData["Editorial"] = form.EditorialId;
+            ViewData["Editorial"] = form.EditorialId;
         }
     }
 }

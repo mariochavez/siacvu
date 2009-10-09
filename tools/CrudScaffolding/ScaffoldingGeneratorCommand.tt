@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("FormatoPublicacion", 1);
+	new EntityScaffoldingDetails("Catalogos.Editorial", 1);
 
 /*
  * Property names should be PascalCase.
@@ -33,6 +33,14 @@ EntityScaffoldingDetails entityScaffoldingDetails =
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
 entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Pais","Pais", "Pais")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Institucion","Institucion", "Institucion")
 );
 
 //entityScaffoldingDetails.EntityProperties.Add(
@@ -80,10 +88,6 @@ entityScaffoldingDetails.EntityProperties.Add(
 //);
 
 //entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Pais","Pais", "Pais")
-//);
-
-//entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("EstadoProducto","EstadoProducto", "EstadoProducto")
 //);
 
@@ -110,7 +114,7 @@ entityScaffoldingDetails.EntityProperties.Add(
 
 // The first parameter should reflect the root directory of your solution
 ScaffoldingGenerator generator = new ScaffoldingGenerator(
-	@"C:\Net\Projects\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
 
 // Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
 //generator.Run();

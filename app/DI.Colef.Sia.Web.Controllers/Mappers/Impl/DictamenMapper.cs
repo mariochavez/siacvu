@@ -29,7 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
-            //model.Editorial = catalogoService.GetEditorialById(message.Editorial);
+            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
         }
 
         public Dictamen Map(DictamenForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
