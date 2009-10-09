@@ -14,6 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotNullNotEmpty]
         [DomainSignature]
+        public virtual string Titulo { get; set; }
+
         public virtual string Descripcion { get; set; }
 
         public virtual DateTime FechaOtorgamiento { get; set; }
@@ -28,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
-        public virtual string Ciudad { get; set; }
+        public virtual string Municipio { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

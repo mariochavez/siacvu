@@ -74,6 +74,14 @@
                     <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
                 </p>
                 <p>
+                    <label>Instituci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionPaisNombre)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>&Iacute;ndice 1</label>
                     <strong><%= Html.Encode(Model.Form.RevistaPublicacionIndice1Nombre)%>&nbsp;</strong>
                 </p>

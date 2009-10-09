@@ -63,6 +63,17 @@ function capituloSetup() {
     $('#TieneProyecto')[0].dynamic.setup();
 }
 
+function dictamenSetup() {
+    $('#TipoDictamen').dynamicui(
+            [
+                ['Artículo', ['.articulo_field']],
+                ['Proyecto de investigación CONACyT', ['#proyecto_field']]
+            ]
+        );
+
+    $('#TipoDictamen')[0].dynamic.setup();
+}
+
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [

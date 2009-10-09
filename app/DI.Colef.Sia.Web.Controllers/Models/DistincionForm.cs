@@ -6,8 +6,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
+        public string Titulo { get; set; }
         public string FechaOtorgamiento { get; set; }
-        public string Ciudad { get; set; }
+        public string Municipio { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }

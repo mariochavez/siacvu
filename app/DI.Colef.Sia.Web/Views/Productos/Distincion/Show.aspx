@@ -46,6 +46,10 @@
                 </p>
                 
                 <p>
+                    <label>T&iacute;tulo de la distinci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</strong>
+                </p>
+                <p>
                     <label>Tipo de distinci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</strong>
                 </p>
@@ -74,8 +78,8 @@
                     <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Ciudad</label>
-                    <strong><%= Html.Encode(Model.Form.Ciudad)%>&nbsp;</strong>
+                    <label>Municipio</label>
+                    <strong><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Periodo de referencia</label>

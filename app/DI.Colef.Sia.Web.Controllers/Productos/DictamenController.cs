@@ -15,22 +15,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDictamenMapper dictamenMapper;
         readonly IDictamenService dictamenService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
-        readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly IFondoConacytMapper fondoConacytMapper;
+        //readonly IEditorialMapper editorialMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public DictamenController(IDictamenService dictamenService,
                                   IDictamenMapper dictamenMapper,
                                   ICatalogoService catalogoService,
                                   IUsuarioService usuarioService,
                                   ITipoDictamenMapper tipoDictamenMapper,
-                                  ITipoParticipacionMapper tipoParticipacionMapper,
+                                  IFondoConacytMapper fondoConacytMapper,
+                                  IRevistaPublicacionMapper revistaPublicacionMapper,
+                                  //IEditorialMapper editorialMapper,
                                   ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.dictamenService = dictamenService;
             this.dictamenMapper = dictamenMapper;
+            this.fondoConacytMapper = fondoConacytMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            //this.editorialMapper = editorialMapper;
             this.tipoDictamenMapper = tipoDictamenMapper;
-            this.tipoParticipacionMapper = tipoParticipacionMapper;
         }
 
         [Authorize]
@@ -115,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
+            return RedirectToIndex(String.Format("Dictamen {0} ha sido creado", dictamen.TipoDictamen));
         }
 
         [CustomTransaction]
@@ -137,7 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
+            return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.TipoDictamen));
         }
 
         [CustomTransaction]
@@ -182,7 +188,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Dictamen>(x => x.Nombre, q);
+            var data = searchService.Search<Dictamen>(x => x.TipoDictamen, q);
             return Content(data);
         }
 
@@ -196,15 +202,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new DictamenForm();
 
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
+            //form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditoriales());
             
             return form;
         }
 
         void FormSetCombos(DictamenForm form)
         {
-            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoDictamen"] = form.TipoDictamenId;
+            ViewData["FondoConacyt"] = form.FondoConacytId;
+            //ViewData["Editorial"] = form.EditorialId;
         }
     }
 }

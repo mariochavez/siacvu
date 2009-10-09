@@ -26,11 +26,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(DictamenForm message, Dictamen model)
         {
-            model.Nombre = message.Nombre;
-
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
-		    model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
-		    model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
+            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            //model.Editorial = catalogoService.GetEditorialById(message.Editorial);
         }
 
         public Dictamen Map(DictamenForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)

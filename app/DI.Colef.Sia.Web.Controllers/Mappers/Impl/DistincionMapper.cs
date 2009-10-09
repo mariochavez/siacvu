@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Descripcion = message.Descripcion;
             model.FechaOtorgamiento = message.FechaOtorgamiento.FromShortDateToDateTime();
-            model.Ciudad = message.Ciudad;
+            model.Municipio = message.Municipio;
 
             model.TipoDistincion = catalogoService.GetTipoDistincionById(message.TipoDistincion);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

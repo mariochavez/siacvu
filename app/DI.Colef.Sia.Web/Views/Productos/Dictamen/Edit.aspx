@@ -58,6 +58,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        dictamenSetup();
     });
 </script>
 </asp:Content>

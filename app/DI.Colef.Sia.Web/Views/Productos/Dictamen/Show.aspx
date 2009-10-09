@@ -44,22 +44,21 @@
                     <label>Sede</label>
                     <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
                 </p>
-                
-                <p>
-	                <label>Nombre del producto dictaminado</label>
-	                <strong><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</strong>
-                </p>
                 <p>
 	                <label>Tipo de dictamen</label>
 	                <strong><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-	                <label>Tipo de participaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
+	                <label>Nombre de la revista</label>
+	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
                 </p>
                 <p>
-	                <label>Instituci&oacute;n solicitante</label>
-	                <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+	                <label>Instituci&oacute;n</label>
+	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+	                <label>Tipo de proyecto</label>
+	                <strong><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Periodo de referencia</label>

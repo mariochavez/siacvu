@@ -308,12 +308,12 @@ insert into Generos values('Comentario',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Generos values('Mesa de análisis',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Generos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Ambitos values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Internacional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Binacional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Ambitos values('Local',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Regional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Estatal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Local',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoOrganos values('Comisión',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Comité',GETDATE(), GETDATE(), 1, 1, 1);
@@ -337,15 +337,14 @@ insert into OtraParticipaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into OtraParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
 insert into OtraParticipaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoDictamenes values('Libros',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Artículos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Proyectos de investigación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Capítulos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Reportes técnicos/Informe técnico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Capítulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDictamenes values('Proyectos de investigación CONACyT',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoDistinciones values('Reconocimientos',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Premios',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDistinciones values('Becas para estancias',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoDistinciones values('Becas para estancias académicas',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Cátedras académicas/Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoEventos values('Congreso',GETDATE(), GETDATE(), 1, 1, 1);

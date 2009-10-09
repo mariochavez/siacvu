@@ -10,10 +10,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [HasUniqueDomainSignature]
     public class Dictamen : Entity, IBaseEntity
     {
-		[DomainSignature]
-		[NotNullNotEmpty]
-		public virtual string Nombre { get; set; }
-
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
@@ -21,13 +17,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+
+        //public virtual Editorial Editorial { get; set; }
+
+        public virtual FondoConacyt FondoConacyt { get; set; }
+
         public virtual int Puntuacion { get; set; }
 
         public virtual TipoDictamen TipoDictamen { get; set; }
-
-        public virtual TipoParticipacion TipoParticipacion { get; set; }
-
-        public virtual Institucion Institucion { get; set; }
 
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 

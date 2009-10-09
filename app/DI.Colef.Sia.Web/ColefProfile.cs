@@ -654,9 +654,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Dictamen, DictamenForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FondoConacyt,
+                           o => o.Ignore())                
                 .ForMember(d => d.TipoDictamen,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore());
         }
 
