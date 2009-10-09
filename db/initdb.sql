@@ -57,9 +57,9 @@ insert into DirigidoAs values('Sector académico', GETDATE(), GETDATE(), 1, 1, 1)
 insert into DirigidoAs values('Sector público', GETDATE(), GETDATE(), 1, 1, 1)
 insert into DirigidoAs values('Sector social', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into Ediciones values('1ra. Edición', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Ediciones values('2da. Edición', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Ediciones values('3ra. Edición', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Ediciones values('Primera edición', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Ediciones values('Segunda edición', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Ediciones values('Tercerca edición', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstatusFormacionAcademicas values('Crédito terminado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2479,6 +2479,10 @@ insert into TipoArchivos values('Reporte de Actividades',GETDATE(), GETDATE(), 1
 insert into TipoArchivos values('Boletin',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Carta de la institución',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Posgrado Colef',GETDATE(), GETDATE(), 1, 1, 1)
+
+insert into Reimpresiones values('Primera',GETDATE(), GETDATE(), 1, 1, 1)
+insert into Reimpresiones values('Segunda',GETDATE(), GETDATE(), 1, 1, 1)
+insert into Reimpresiones values('Tercera',GETDATE(), GETDATE(), 1, 1, 1)
 
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)

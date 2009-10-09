@@ -49,31 +49,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.Traductor = message.Traductor;
+            //model.Traductor = message.Traductor;
             model.NombreTraductor = message.NombreTraductor;
+            model.PosicionAutor = message.PosicionAutor;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-            model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
             model.TipoProducto = catalogoService.GetTipoProductoById(message.TipoProducto);
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
             model.Edicion = catalogoService.GetEdicionById(message.Edicion);
 		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
-		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
-		    model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-		    model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
-            model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
+            model.Reimpresion = catalogoService.GetReimpresionById(message.Reimpresion);
+		    //model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
+            //model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
 
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
-            model.NombreEvento = eventoService.GetEventoById(message.NombreEventoId);
+            model.Evento = eventoService.GetEventoById(message.Evento);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
@@ -99,33 +98,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             var model = Map(message, usuario, periodo, investigador);
 
-            if (coautoresExternos != null)
+            foreach (var coautorExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoLibroMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoLibroMapper.Map(coautorExterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
             }
 
-            if (coautoresInternos != null)
+
+
+            foreach (var coautorInterno in coautoresInternos)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoLibroMapper.Map(coautorInterno);
+                var coautor =
+                    coautorInternoLibroMapper.Map(coautorInterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddCoautorInterno(coautor);
             }
+
 
             return model;
         }

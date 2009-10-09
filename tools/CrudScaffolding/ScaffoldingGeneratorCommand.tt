@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("FormatoPublicacion", 1);
+	new EntityScaffoldingDetails("Reimpresion", 1);
 
 /*
  * Property names should be PascalCase.

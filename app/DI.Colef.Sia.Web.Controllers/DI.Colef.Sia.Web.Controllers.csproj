@@ -124,14 +124,17 @@
     <Compile Include="Catalogos\FormatoPublicacionController.cs" />
     <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\Impl\FormatoPublicacionMapper.cs" />
+    <Compile Include="Mappers\Impl\ReimpresionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoProductoMapper.cs" />
+    <Compile Include="Mappers\IReimpresionMapper.cs" />
     <Compile Include="Mappers\ITipoArchivoMapper.cs" />
     <Compile Include="Mappers\ITipoProductoMapper.cs" />
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\FormatoPublicacionForm.cs" />
+    <Compile Include="Models\ReimpresionForm.cs" />
     <Compile Include="Models\ResponsableForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />
     <Compile Include="Models\CoautorForm.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="Models\CustomSelectForm.cs" />
     <Compile Include="Models\TipoProductoForm.cs" />
     <Compile Include="Catalogos\TipoProductoController.cs" />
+    <Compile Include="Catalogos\ReimpresionController.cs" />
     <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />

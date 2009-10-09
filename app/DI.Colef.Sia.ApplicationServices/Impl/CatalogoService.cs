@@ -91,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoArchivo> tipoArchivoRepository;
         readonly IRepository<TipoProducto> tipoProductoRepository;
         readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
+        readonly IRepository<Reimpresion> reimpresionRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -170,7 +171,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoArchivo> tipoArchivoRepository,
             IRepository<Proyecto> proyectoRepository,
             IRepository<TipoProducto> tipoProductoRepository,
-            IRepository<FormatoPublicacion> formatoPublicacionRepository)
+            IRepository<FormatoPublicacion> formatoPublicacionRepository,
+            IRepository<Reimpresion> reimpresionRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -250,6 +252,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoArchivoRepository = tipoArchivoRepository;
             this.tipoProductoRepository = tipoProductoRepository;
             this.formatoPublicacionRepository = formatoPublicacionRepository;
+            this.reimpresionRepository = reimpresionRepository;
         }
 
         protected virtual ISession Session
@@ -2500,6 +2503,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoProducto.ModificadoEl = DateTime.Now;
 
             tipoProductoRepository.SaveOrUpdate(tipoProducto);
+        }
+
+        public Reimpresion GetReimpresionById(int id)
+        {
+            return reimpresionRepository.Get(id);
+        }
+
+        public Reimpresion[] GetAllReimpresions()
+        {
+            return ((List<Reimpresion>)OrderCatalog<Reimpresion>(x => x.Nombre)).ToArray();
+        }
+
+        public Reimpresion[] GetActiveReimpresions()
+        {
+            return ((List<Reimpresion>)OrderCatalog<Reimpresion>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveReimpresion(Reimpresion reimpresion)
+        {
+            if (reimpresion.Id == 0)
+            {
+                reimpresion.Activo = true;
+                reimpresion.CreadorEl = DateTime.Now;
+            }
+            reimpresion.ModificadoEl = DateTime.Now;
+
+            reimpresionRepository.SaveOrUpdate(reimpresion);
         }
     }
 }

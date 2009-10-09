@@ -1,19 +1,18 @@
 ﻿function libroSetup() {
-    $('#TipoPublicacion').dynamicui(
-            [
-                ['Libro traducido a otro idioma', ['#idioma_field', '.traductor_field']],
-                ['Coordinación de un número especial de revista', ['.coordinacionrevista_field']],
-                ['Coordinación de memoria', ['.coordinacionmemoria_field']],
-                ['Coordinación de libro sin arbitraje', ['.coordinacionlibro_field']],
-            	['Coordinación de libro con arbitraje', ['.coordinacionlibro_field']]
-            ]
-        );
+    $('#FormatoPublicacion').dynamicui(
+        [
+            ['Memoria de evento', ['.memoriaevento_field']],
+            ['Número especial de revista', ['.revista_field']],
+            ['Libro traducido a otro idioma', ['.idioma_field']]
+        ]
+    );
 
-    $('#TipoPublicacion')[0].dynamic.setup();
+    $('#FormatoPublicacion')[0].dynamic.setup();
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.publicado_field']]
+                ['Publicado', ['.estatuspublicado_field']],
+                ['Aceptado', ['#estatusaceptado_field']]
             ]
         );
 
@@ -21,19 +20,11 @@
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['#SelectProyecto_p']]
+            ['1', ['.tieneproyecto_field']]
         ]
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
-
-    $('#Traductor').dynamicui(
-        [
-            ['1', ['.NombreTraductor']]
-        ]
-    );
-
-    $('#Traductor')[0].dynamic.setup();
 }
 
 function capituloSetup() {

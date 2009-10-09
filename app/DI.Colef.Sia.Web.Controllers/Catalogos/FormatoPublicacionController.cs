@@ -5,17 +5,17 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class FormatoPublicacionController : BaseController<FormatoPublicacion, FormatoPublicacionForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IFormatoPublicacionMapper formatoPublicacionMapper;
     
         public FormatoPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
-																	IFormatoPublicacionMapper formatoPublicacionMapper, ISearchService searchService) 
-			: base (usuarioService, searchService, catalogoService)
+                                            IFormatoPublicacionMapper formatoPublicacionMapper, ISearchService searchService) 
+            : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.formatoPublicacionMapper = formatoPublicacionMapper;
@@ -24,9 +24,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 			
-			var formatoPublicacions = catalogoService.GetAllFormatoPublicacions();
+            var formatoPublicacions = catalogoService.GetAllFormatoPublicacions();
             data.List = formatoPublicacionMapper.Map(formatoPublicacions);
 
             return View(data);
@@ -35,10 +35,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new FormatoPublicacionForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var formatoPublicacion = catalogoService.GetFormatoPublicacionById(id);
             data.Form = formatoPublicacionMapper.Map(formatoPublicacion);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
         

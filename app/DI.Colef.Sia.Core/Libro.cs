@@ -9,24 +9,36 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
 	[HasUniqueDomainSignature]
     [LibroValidator]
-    public class Libro : Entity, IBaseEntity
+    public class Libro : Entity, IBaseEntity, ICoautor
     {
+        const int tipoProducto = 7; // 7 Representa Libro
+
 		public Libro()
 		{
 			CoautorExternoLibros = new List<CoautorExternoLibro>();
             CoautorInternoLibros = new List<CoautorInternoLibro>();
 		}
-		
-		public virtual void AddCoautorExterno(CoautorExternoLibro coautorExternoLibro)
+
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoLibro.TipoProducto = 7; // 7 Representa Libro
-            CoautorExternoLibros.Add(coautorExternoLibro);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoLibros.Add((CoautorExternoLibro)coautorExterno);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoLibro coautorInternoLibro)
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoLibro.TipoProducto = 7; // 7 Representa Libro
-            CoautorInternoLibros.Add(coautorInternoLibro);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoLibros.Add((CoautorInternoLibro)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoLibros.Remove((CoautorInternoLibro)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoLibros.Remove((CoautorExternoLibro)coautorExterno);
         }
 
         [NotNull]
@@ -35,6 +47,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
+
+        [Min(1)]
+	    public virtual int PosicionAutor { get; set; }
 
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
@@ -46,9 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion NombreRevista { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
-
-        public virtual Evento NombreEvento { get; set; }
+        public virtual Evento Evento { get; set; }
 
 		public virtual EstadoProducto EstadoProducto { get; set; }
 
@@ -57,10 +70,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual bool TieneProyecto { get; set; }
         
 		public virtual Proyecto Proyecto { get; set; }
-        
-		public virtual LineaTematica LineaTematica { get; set; }
 
 		public virtual DateTime FechaAceptacion { get; set; }
+
+        public virtual DateTime FechaPublicacion { get; set; }
 
 		[DomainSignature]
 		[NotNullNotEmpty]
@@ -74,11 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Numero { get; set; }
 
-        public virtual DateTime FechaEvento { get; set; }
-
 		public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
 		public virtual int NoPaginas { get; set; }
 
@@ -86,7 +95,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Idioma Idioma { get; set; }
 
-		public virtual FormaParticipacion FormaParticipacion { get; set; }
+	    public virtual Reimpresion Reimpresion { get; set; }
+		//public virtual FormaParticipacion FormaParticipacion { get; set; }
 
         [Valid]
 		public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
@@ -94,7 +104,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
 		public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
 
-		public virtual IdentificadorLibro IdentificadorLibro { get; set; }
+		//public virtual IdentificadorLibro IdentificadorLibro { get; set; }
 
         public virtual string PalabraClave1 { get; set; }
 
@@ -102,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-		public virtual bool Traductor { get; set; }
+		//public virtual bool Traductor { get; set; }
 		
 		public virtual string NombreTraductor { get; set; }
 

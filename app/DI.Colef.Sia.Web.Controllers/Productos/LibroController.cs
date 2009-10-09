@@ -38,6 +38,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEdicionMapper edicionMapper;
         readonly ITipoProductoMapper tipoProductoMapper;
         readonly IFormatoPublicacionMapper formatoPublicacionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IReimpresionMapper reimpresionMapper;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
@@ -64,7 +66,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoService eventoService,
                                IProyectoService proyectoService,
                                ITipoProductoMapper  tipoProductoMapper,
-                               IFormatoPublicacionMapper formatoPublicacionMapper)
+                               IFormatoPublicacionMapper formatoPublicacionMapper,
+                               IRevistaPublicacionMapper revistaPublicacionMapper,
+                               IReimpresionMapper reimpresionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -91,6 +95,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.eventoService = eventoService;
             this.tipoProductoMapper = tipoProductoMapper;
             this.formatoPublicacionMapper = formatoPublicacionMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.reimpresionMapper = reimpresionMapper;
         }
 
         [Authorize]
@@ -116,8 +122,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {			
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.PosicionAutor = 1;
+            ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -168,6 +175,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
                                    LibroForm form)
         {
+
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+
             var libro = libroMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
                                         coautorExterno, coautorInterno);
             
@@ -204,6 +215,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             libroService.SaveLibro(libro);
 
             return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeEvento(int select)
+        {
+            var libroForm = new LibroForm();
+            var eventoForm = eventoMapper.Map(eventoService.GetEventoById(select));
+
+            libroForm.EventoFechaInicial = eventoForm.FechaInicial;
+
+            libroForm.EventoFechaFinal = eventoForm.FechaFinal;
+            libroForm.EventoId = eventoForm.Id;
+
+            return Rjs("ChangeEvento", libroForm);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var libroForm = new LibroForm();
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+            
+            libroForm.NombreRevistaInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
+            libroForm.NombreRevistaId = revistaPublicacionForm.Id;
+
+            return Rjs("ChangeRevista", libroForm);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var libroForm = new LibroForm();
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            libroForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
+            libroForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
+            libroForm.ProyectoId = proyectoForm.Id;
+
+            return Rjs("ChangeProyecto", libroForm);
         }
 
         [Authorize]
@@ -292,6 +345,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoLibroForm = coautorExternoLibroMapper.Map(coautorExternoLibro);
+            coautorExternoLibroForm.ParentId = libroId;
 
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
@@ -341,6 +395,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoLibroForm = coautorInternoLibroMapper.Map(coautorInternoLibro);
+            coautorInternoLibroForm.ParentId = libroId;
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
         }
@@ -354,22 +409,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new LibroForm();
 
-            form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
-
             form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.Ediciones = edicionMapper.Map(catalogoService.GetActiveEdicions());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.TiposProductos = tipoProductoMapper.Map(catalogoService.GetActiveTipoProductos());
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
+            //form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
+            form.Reimpresiones = reimpresionMapper.Map(catalogoService.GetActiveReimpresions());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.IdentificadoresLibros = identificadorLibroMapper.Map(catalogoService.GetActiveIdentificadorLibros());
+            //form.IdentificadoresLibros = identificadorLibroMapper.Map(catalogoService.GetActiveIdentificadorLibros());
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
@@ -385,15 +436,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;
             ViewData["Edicion"] = form.EdicionId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["FormaParticipacion"] = form.FormaParticipacionId;
-            ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;
+            //ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+            ViewData["Reimpresion"] = form.ReimpresionId;
+            //ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
-            ViewData["NombreEvento"] = form.NombreEventoId;
+            ViewData["Evento"] = form.EventoId;
         }
     }
 }

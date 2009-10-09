@@ -687,11 +687,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.FechaEvento,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,
                            o => o.Ignore())
                 .ForMember(d => d.Edicion,
@@ -700,19 +700,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
-                           o => o.Ignore())
-                .ForMember(d => d.FormaParticipacion,
-                           o => o.Ignore())
-                .ForMember(d => d.IdentificadorLibro,
+                .ForMember(d => d.Reimpresion,
                            o => o.Ignore())
                 .ForMember(d => d.Area,
                            o => o.Ignore())
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
-                .ForMember(d => d.NombreEvento,
+                .ForMember(d => d.Evento,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
@@ -1069,6 +1063,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoProducto, TipoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Reimpresion, ReimpresionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

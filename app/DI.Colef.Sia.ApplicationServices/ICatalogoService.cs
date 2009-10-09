@@ -485,5 +485,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoProducto[] GetAllTipoProductos();
         TipoProducto[] GetActiveTipoProductos();
         void SaveTipoProducto(TipoProducto tipoProducto);
+
+        //Reimpresion
+        Reimpresion GetReimpresionById(int id);
+        Reimpresion[] GetAllReimpresions();
+        Reimpresion[] GetActiveReimpresions();
+        void SaveReimpresion(Reimpresion reimpresion);
     }
 }

@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<FormatoPublicacionForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReimpresionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el formato de publicaci&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar la reimpresi&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -32,14 +32,14 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    
 	    <div id="forma">
-	        <% using (Html.BeginForm("Update", "FormatoPublicacion", new { Id = Model.Form.Id })) { %>
+	        <% using (Html.BeginForm("Update", "Reimpresion", new { Id = Model.Form.Id })) { %>
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
 	            <% Html.RenderPartial("_Form", Model.Form); %>
 	            
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<FormatoPublicacionController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ReimpresionController>(x => x.Index(), "Regresar") %>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

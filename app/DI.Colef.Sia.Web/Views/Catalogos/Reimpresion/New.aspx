@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<FormatoPublicacionForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReimpresionForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -10,36 +10,36 @@
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
-    <div id="introduccion">
-        <p>
-            Para modificar el formato de publicaci&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.
-		</p>
-    </div><!--end introduccion-->
+	<div id="introduccion">
+	    <p>
+	        Favor de llenar los siguientes campos para dar de alta una nueva reimpresi&oacute;n dentro del sistema.
+	    </p>
+	</div><!--end introduccion-->
 </asp:Content>
 
 <asp:Content ID="sidebarContent" ContentPlaceHolderID="SidebarContentPlaceHolder" runat="server">
-    <div id="barra">
-        <div id="asistente">
-            <h3>Asistente de secci&oacute;n</h3>
-            <% Html.RenderPartial("_EditSidebar"); %>
-        </div><!--end asistente-->
-    </div><!--end barra-->
+	<div id="barra">
+	    <div id="asistente">
+	        <h3>Asistente de secci&oacute;n</h3>
+	        <% Html.RenderPartial("_NewSidebar"); %>
+	    </div><!--end asistente-->
+	</div><!--end barra-->
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
 	<div id="textos">
 	
-	    <% Html.RenderPartial("_Message"); %>    
-	    
+	    <% Html.RenderPartial("_Message"); %>
+	    	
 	    <div id="forma">
-	        <% using (Html.BeginForm("Update", "FormatoPublicacion", new { Id = Model.Form.Id })) { %>
-	            <%=Html.AntiForgeryToken() %>
+	        <% using (Html.BeginForm("Create", "Reimpresion")){ %>
+	        	<%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
 	            <% Html.RenderPartial("_Form", Model.Form); %>
 	            
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<FormatoPublicacionController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ReimpresionController>(x => x.Index(), "Regresar") %>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

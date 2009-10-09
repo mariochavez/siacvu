@@ -5,17 +5,17 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class TipoProductoController : BaseController<TipoProducto, TipoProductoForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly ITipoProductoMapper tipoProductoMapper;
     
         public TipoProductoController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
-																	ITipoProductoMapper tipoProductoMapper, ISearchService searchService) 
-			: base (usuarioService, searchService, catalogoService)
+                                      ITipoProductoMapper tipoProductoMapper, ISearchService searchService) 
+            : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoProductoMapper = tipoProductoMapper;
@@ -24,9 +24,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 			
-			var tipoProductos = catalogoService.GetAllTipoProductos();
+            var tipoProductos = catalogoService.GetAllTipoProductos();
             data.List = tipoProductoMapper.Map(tipoProductos);
 
             return View(data);
@@ -35,10 +35,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = new TipoProductoForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var tipoProducto = catalogoService.GetTipoProductoById(id);
             data.Form = tipoProductoMapper.Map(tipoProducto);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
         

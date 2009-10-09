@@ -192,6 +192,7 @@
     <Compile Include="Puesto.cs" />
     <Compile Include="Rama.cs" />
     <Compile Include="RecursoFinancieroProyecto.cs" />
+    <Compile Include="Reimpresion.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />

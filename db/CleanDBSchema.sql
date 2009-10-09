@@ -395,6 +395,16 @@ alter table Libros  drop constraint FK439120E7D6323CFC
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7357C8471]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7357C8471
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E75D547CE0]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E75D547CE0
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E74BF28190]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E74BF28190
 
@@ -405,13 +415,8 @@ alter table Libros  drop constraint FK439120E798280B8C
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E764F7D1CD]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E764F7D1CD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76167F35C]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E76167F35C
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E73BA127C1]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E73BA127C1
 
 
 
@@ -430,23 +435,13 @@ alter table Libros  drop constraint FK439120E770EA6C9E
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E71EDC2D3B]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E71EDC2D3B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E77A8488F7]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E77A8488F7
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E76425E2FD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7103EADB1]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7103EADB1
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7D72692EA]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7D72692EA
 
 
 
@@ -940,6 +935,16 @@ alter table IdentificadorLibros  drop constraint FK7A9B067774E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A85102A57]') AND parent_object_id = OBJECT_ID('TipoProductos'))
+alter table TipoProductos  drop constraint FKB747E45A85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoProductos'))
+alter table TipoProductos  drop constraint FKB747E45A74E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BD3EE078336201B]') AND parent_object_id = OBJECT_ID('ResponsableInternoProyectos'))
 alter table ResponsableInternoProyectos  drop constraint FK1BD3EE078336201B
 
@@ -1047,6 +1052,16 @@ alter table TipoFinanciamientos  drop constraint FK2D5E463785102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463774E8BAB7]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
 alter table TipoFinanciamientos  drop constraint FK2D5E463774E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF85102A57]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
+alter table FormatoPublicaciones  drop constraint FK9AB9E6CF85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF74E8BAB7]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
+alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
 
 
@@ -1585,18 +1600,18 @@ alter table Dictamenes  drop constraint FKE29ADD7B3E391E13
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B2AF31B56]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B2AF31B56
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BE758F5B4]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7BE758F5B4
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BF1AEE935]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7BF1AEE935
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B2261429F]') AND parent_object_id = OBJECT_ID('Dictamenes'))
-alter table Dictamenes  drop constraint FKE29ADD7B2261429F
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B64F7D1CD]') AND parent_object_id = OBJECT_ID('Dictamenes'))
-alter table Dictamenes  drop constraint FKE29ADD7B64F7D1CD
 
 
 
@@ -2845,23 +2860,13 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A85102A57]') AND parent_object_id = OBJECT_ID('TipoProductos'))
-alter table TipoProductos  drop constraint FKB747E45A85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7013763B85102A57]') AND parent_object_id = OBJECT_ID('Reimpresiones'))
+alter table Reimpresiones  drop constraint FK7013763B85102A57
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB747E45A74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoProductos'))
-alter table TipoProductos  drop constraint FKB747E45A74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF85102A57]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
-alter table FormatoPublicaciones  drop constraint FK9AB9E6CF85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AB9E6CF74E8BAB7]') AND parent_object_id = OBJECT_ID('FormatoPublicaciones'))
-alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7013763B74E8BAB7]') AND parent_object_id = OBJECT_ID('Reimpresiones'))
+alter table Reimpresiones  drop constraint FK7013763B74E8BAB7
 
 
 
@@ -2941,6 +2946,8 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'IdentificadorLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table IdentificadorLibros
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'TipoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProductos
+
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'OrganoExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoExternos
@@ -2950,6 +2957,8 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'GradoAcademicoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GradoAcademicoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoFinanciamientos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoFinanciamientos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'FormatoPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormatoPublicaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstadoPaises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstadoPaises
 
@@ -3133,9 +3142,7 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FormatoPublicaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FormatoPublicaciones
+    if exists (select * from dbo.sysobjects where id = object_id(N'Reimpresiones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Reimpresiones
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3421,21 +3428,21 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
     create table Libros (
         Id INT IDENTITY NOT NULL,
+       PosicionAutor INT null,
        TieneProyecto BIT null,
        FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
        Nombre NVARCHAR(255) null,
        ISBN NVARCHAR(255) null,
        Editorial NVARCHAR(255) null,
        Volumen NVARCHAR(255) null,
        Numero INT null,
-       FechaEvento DATETIME null,
        FechaEdicion DATETIME null,
        NoPaginas INT null,
        Tiraje INT null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
-       Traductor BIT null,
        NombreTraductor NVARCHAR(255) null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
@@ -3445,17 +3452,16 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
        DepartamentoFk INT null,
        SedeFk INT null,
        TipoPublicacionFk INT null,
+       TipoProductoFk INT null,
+       FormatoPublicacionFk INT null,
        EdicionFk INT null,
        NombreRevistaFk INT null,
-       InstitucionFk INT null,
-       NombreEventoFk INT null,
+       EventoFk INT null,
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
-       LineaTematicaFk INT null,
-       PaisFk INT null,
        IdiomaFk INT null,
-       FormaParticipacionFk INT null,
+       ReimpresionFk INT null,
        IdentificadorLibroFk INT null,
        AreaFk INT null,
        DisciplinaFk INT null,
@@ -3735,6 +3741,17 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
        primary key (Id)
     )
 
+    create table TipoProductos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table ResponsableInternoProyectos (
         Id INT IDENTITY NOT NULL,
        CreadorEl DATETIME null,
@@ -3808,6 +3825,17 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
        primary key (Id)
     )
 
+    create table FormatoPublicaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table EstadoPaises (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3833,9 +3861,10 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
     create table Distinciones (
         Id INT IDENTITY NOT NULL,
+       Titulo NVARCHAR(255) null,
        Descripcion NVARCHAR(255) null,
        FechaOtorgamiento DATETIME null,
-       Ciudad NVARCHAR(255) null,
+       Municipio NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4185,7 +4214,6 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
 
     create table Dictamenes (
         Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -4193,9 +4221,9 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
+       RevistaPublicacionFk INT null,
+       FondoConacytFk INT null,
        TipoDictamenFk INT null,
-       TipoParticipacionFk INT null,
-       InstitucionFk INT null,
        PeriodoReferenciaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
@@ -5017,18 +5045,7 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
        primary key (Id)
     )
 
-    create table TipoProductos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table FormatoPublicaciones (
+    create table Reimpresiones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -5210,6 +5227,16 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
         references TipoPublicaciones
 
     alter table Libros 
+        add constraint FK439120E7357C8471 
+        foreign key (TipoProductoFk) 
+        references TipoProductos
+
+    alter table Libros 
+        add constraint FK439120E75D547CE0 
+        foreign key (FormatoPublicacionFk) 
+        references FormatoPublicaciones
+
+    alter table Libros 
         add constraint FK439120E74BF28190 
         foreign key (EdicionFk) 
         references Ediciones
@@ -5220,13 +5247,8 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
         references RevistaPublicaciones
 
     alter table Libros 
-        add constraint FK439120E764F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Libros 
-        add constraint FK439120E76167F35C 
-        foreign key (NombreEventoFk) 
+        add constraint FK439120E73BA127C1 
+        foreign key (EventoFk) 
         references Eventos
 
     alter table Libros 
@@ -5245,24 +5267,14 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
         references Proyectos
 
     alter table Libros 
-        add constraint FK439120E71EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Libros 
-        add constraint FK439120E77A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Libros 
         add constraint FK439120E76425E2FD 
         foreign key (IdiomaFk) 
         references Idiomas
 
     alter table Libros 
-        add constraint FK439120E7103EADB1 
-        foreign key (FormaParticipacionFk) 
-        references FormaParticipaciones
+        add constraint FK439120E7D72692EA 
+        foreign key (ReimpresionFk) 
+        references Reimpresiones
 
     alter table Libros 
         add constraint FK439120E773171E9 
@@ -5885,19 +5897,19 @@ alter table FormatoPublicaciones  drop constraint FK9AB9E6CF74E8BAB7
         references Sedes
 
     alter table Dictamenes 
+        add constraint FKE29ADD7B2AF31B56 
+        foreign key (RevistaPublicacionFk) 
+        references RevistaPublicaciones
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7BE758F5B4 
+        foreign key (FondoConacytFk) 
+        references FondoConacyts
+
+    alter table Dictamenes 
         add constraint FKE29ADD7BF1AEE935 
         foreign key (TipoDictamenFk) 
         references TipoDictamenes
-
-    alter table Dictamenes 
-        add constraint FKE29ADD7B2261429F 
-        foreign key (TipoParticipacionFk) 
-        references TipoParticipaciones
-
-    alter table Dictamenes 
-        add constraint FKE29ADD7B64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
 
     alter table Dictamenes 
         add constraint FKE29ADD7B11666E2A 

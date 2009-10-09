@@ -88,13 +88,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (libro.FechaEvento == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEvento", "FechaEvento");
-                isValid = false;
-            }
-
             if (libro.FechaAceptacion > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
@@ -106,13 +99,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 constraintValidatorContext.AddInvalid(
                     "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (libro.FechaEvento > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEvento", "FechaEvento");
                 isValid = false;
             }
 
@@ -157,21 +143,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Tipo Publicacion - Coordinacion de libro sin/con arbitraje
-            if (libro.TipoPublicacion.Nombre.Contains("Coordinación de libro"))
-            {
-                if (libro.FormaParticipacion == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
+            //if (libro.TipoPublicacion.Nombre.Contains("Coordinación de libro"))
+            //{
+            //    if (libro.FormaParticipacion == null)
+            //    {
+            //        constraintValidatorContext.AddInvalid(
+            //            "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
 
-                    isValid = false;
-                }
-            }
+            //        isValid = false;
+            //    }
+            //}
 
             //Tipo Publicacion - Coordinacion de memoria
             if (libro.TipoPublicacion.Nombre.Contains("de memoria"))
             {
-                if (libro.NombreEvento == null)
+                if (libro.Evento == null)
                 {
                     constraintValidatorContext.AddInvalid(
                         "seleccione el evento|NombreEvento", "NombreEvento");
@@ -187,14 +173,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 {
                     constraintValidatorContext.AddInvalid(
                         "no puede ser nulo, vacío o cero|NombreRevistaTitulo", "NombreRevistaTitulo");
-
-                    isValid = false;
-                }
-
-                if (libro.Institucion == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
 
                     isValid = false;
                 }
@@ -233,13 +211,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (libro.Traductor == false)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el traductor|Traductor", "Traductor");
+                //if (libro.Traductor == false)
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "seleccione el traductor|Traductor", "Traductor");
 
-                    isValid = false;
-                }
+                //    isValid = false;
+                //}
 
                 else
                 {
