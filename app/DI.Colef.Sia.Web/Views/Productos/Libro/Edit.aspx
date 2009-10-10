@@ -47,21 +47,38 @@
                     <%= Html.Encode(Model.Form.SedeNombre)%>
                 </p>
             
-            <% Html.RenderPartial("_DatosLibro", Model.Form); %>
-            
-            <h4>Referencia bibliogr&aacute;fica</h4>
-            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            <h4>Datos de la publicaci&oacute;n</h4>
+            <% Html.RenderPartial("_DatosLibro1", Model.Form); %>
             
             <h4>Coautores<span class="cvu"></span></h4>
-            <% Html.RenderPartial("_Coautoria", Model.Form); %>
 			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
             <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
             <p>
                 <label>Autores</label>
-                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
+                <span class="cvu"></span>          
             </p>
             
-            <h4>Opcionales</h4>
+            <% Html.RenderPartial("_DatosLibro2", Model.Form); %>
+            
+            <h4>Referencia bibliogr&aacute;fica</h4>
+            
+            <p>
+                <label>Edici&oacute;n</label>
+                <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<EdicionForm>("Id", "Nombre"),
+                            "Seleccione ...")%>
+                <%=Html.ValidationMessage("Edicion")%>
+            </p>
+            <p>
+                <label>Reimpresi&oacute;n</label>
+                <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<ReimpresionForm>("Id", "Nombre"),
+                            "Seleccione ...")%>
+                <%=Html.ValidationMessage("Reimpresion")%>
+            </p>
+            <% Html.RenderPartial("_EditEditorial", Model.Form); %>
+            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            
+            <h4>Complementaria CVU</h4>
 			<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
 			
             <p class="submit">

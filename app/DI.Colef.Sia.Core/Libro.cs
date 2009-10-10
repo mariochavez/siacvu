@@ -17,7 +17,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		{
 			CoautorExternoLibros = new List<CoautorExternoLibro>();
             CoautorInternoLibros = new List<CoautorInternoLibro>();
+            EditorialLibros = new List<EditorialLibro>();
 		}
+
+        public virtual void AddEditorial(EditorialLibro editorialLibro)
+        {
+            EditorialLibros.Add(editorialLibro);
+        }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
@@ -103,6 +109,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
 		public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
+
+        [Valid]
+        public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
 
 		//public virtual IdentificadorLibro IdentificadorLibro { get; set; }
 

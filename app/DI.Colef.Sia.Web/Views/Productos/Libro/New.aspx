@@ -57,9 +57,23 @@
             <% Html.RenderPartial("_DatosLibro2", Model.Form); %>
             
             <h4>Referencia bibliogr&aacute;fica</h4>
+            
+            <p>
+                <label>Edici&oacute;n</label>
+                <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<EdicionForm>("Id", "Nombre"),
+                            "Seleccione ...")%>
+                <%=Html.ValidationMessage("Edicion")%>
+            </p>
+            <p>
+                <label>Reimpresi&oacute;n</label>
+                <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<ReimpresionForm>("Id", "Nombre"),
+                            "Seleccione ...")%>
+                <%=Html.ValidationMessage("Reimpresion")%>
+            </p>
+            <% Html.RenderPartial("_EditEditorial", Model.Form); %>
             <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
-            <h4>Opcionales</h4>
+            <h4>Complementaria CVU</h4>
 			<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
 			
             <p class="submit">

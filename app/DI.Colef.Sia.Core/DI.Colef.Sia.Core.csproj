@@ -104,6 +104,7 @@
     <Compile Include="Distincion.cs" />
     <Compile Include="Edicion.cs" />
     <Compile Include="Editorial.cs" />
+    <Compile Include="EditorialLibro.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />

@@ -675,11 +675,14 @@
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\Activate.js.ascx" />
+    <Content Include="Views\Productos\Libro\AddEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeRevista.js.ascx" />
+    <Content Include="Views\Productos\Libro\_ShowEditorial.ascx" />
+    <Content Include="Views\Productos\Libro\NewEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\_DatosLibro2.ascx" />
     <Content Include="Views\Productos\Libro\Edit.aspx" />
     <Content Include="Views\Productos\Libro\Index.aspx" />
@@ -687,6 +690,8 @@
     <Content Include="Views\Productos\Libro\Show.aspx" />
     <Content Include="Views\Productos\Libro\_DatosLibro1.ascx" />
     <Content Include="Views\Productos\Libro\_DatosOpcionales.ascx" />
+    <Content Include="Views\Productos\Libro\_EditEditorial.ascx" />
+    <Content Include="Views\Productos\Libro\_NewEditorialLibro.ascx" />
     <Content Include="Views\Productos\Libro\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\MovilidadAcademica\Activate.js.ascx" />
     <Content Include="Views\MovilidadAcademica\AddProductoDerivado.js.ascx" />

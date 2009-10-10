@@ -41,6 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IReimpresionMapper reimpresionMapper;
         readonly IEditorialMapper editorialMapper;
+        readonly IEditorialLibroMapper editorialLibroMapper;
 
         public LibroController(ILibroService libroService, 
                                ILibroMapper libroMapper,
@@ -70,7 +71,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                IReimpresionMapper reimpresionMapper,
-                               IEditorialMapper editorialMapper)
+                               IEditorialMapper editorialMapper,
+                               IEditorialLibroMapper editorialLibroMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -100,6 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.reimpresionMapper = reimpresionMapper;
             this.editorialMapper = editorialMapper;
+            this.editorialLibroMapper = editorialLibroMapper;
         }
 
         [Authorize]
@@ -175,15 +178,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
-                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+                                   [Bind(Prefix = "EditorialLibro")] EditorialLibroForm[] editorial, 
                                    LibroForm form)
         {
 
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+            editorial = editorial ?? new EditorialLibroForm[] { };
 
             var libro = libroMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
-                                        coautorExterno, coautorInterno);
+                                        coautorExterno, coautorInterno, editorial);
             
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
             {
@@ -401,6 +406,59 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorInternoLibroForm.ParentId = libroId;
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewEditorial(int id)
+        {
+            var libro = libroService.GetLibroById(id);
+            var form = new LibroForm();
+
+            if (libro != null)
+                form.Id = libro.Id;
+
+            form.EditorialLibro = new EditorialLibroForm();
+            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
+
+            return Rjs("NewEditorialLibro", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEditorial([Bind(Prefix = "EditorialLibro")] EditorialLibroForm form,
+                                              int libroId)
+        {
+            var editorialLibro = editorialLibroMapper.Map(form);
+
+            ModelState.AddModelErrors(editorialLibro.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (libroId != 0)
+            {
+                editorialLibro.CreadorPor = CurrentUser();
+                editorialLibro.ModificadoPor = CurrentUser();
+
+                var libro = libroService.GetLibroById(libroId);
+                var alreadyHasIt =
+                    libro.EditorialLibros.Where(
+                        x => x.Editorial.Id == editorialLibro.Editorial.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    libro.AddEditorial(editorialLibro);
+                    libroService.SaveLibro(libro);
+                }
+            }
+
+            var editorialLibroForm = editorialLibroMapper.Map(editorialLibro);
+            editorialLibroForm.ParentId = libroId;
+
+            return Rjs("AddEditorialLibro", editorialLibroForm);
         }
                 
         LibroForm SetupNewForm()

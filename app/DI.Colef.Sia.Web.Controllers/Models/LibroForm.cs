@@ -106,10 +106,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		public CoautorExternoProductoForm[] CoautorExternoLibros { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoLibros { get; set; }
+        public EditorialLibroForm[] EditorialLibros { get; set; }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
+        public EditorialLibroForm EditorialLibro { get; set; }
 		
 		/* Catalogos */
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }

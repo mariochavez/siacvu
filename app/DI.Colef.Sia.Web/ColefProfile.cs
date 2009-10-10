@@ -713,8 +713,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Editorial,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoLibro, CoautorInternoProductoForm>()
@@ -724,6 +722,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CoautorExternoLibro, CoautorExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<EditorialLibro, EditorialLibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Editorial,
+                           o => o.Ignore());
         }
 
         void CreateParticipacionMedioMaps()

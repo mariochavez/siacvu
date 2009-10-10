@@ -2,23 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Edici&oacute;n</label>
-    <%=Html.DropDownList("Edicion", Model.Ediciones.CreateSelectList<EdicionForm>("Id", "Nombre"),
-                "Seleccione ...")%>
-    <%=Html.ValidationMessage("Edicion")%>
-</p>
-<p>
-    <label>Reimpresi&oacute;n</label>
-    <%=Html.DropDownList("Reimpresion", Model.Reimpresiones.CreateSelectList<ReimpresionForm>("Id", "Nombre"),
-                "Seleccione ...")%>
-    <%=Html.ValidationMessage("Reimpresion")%>
-</p>
-<p>
-    <label>Editorial</label>
-    <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input250", maxlength = 100 })%>
-    <%=Html.ValidationMessage("Editorial")%>
-</p>
-<p>
     <label>ISBN</label>
     <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250-requerido", maxlength = 100 })%>
     <span class="cvu"></span>

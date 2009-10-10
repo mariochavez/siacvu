@@ -14,14 +14,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IProyectoService proyectoService;
+        readonly IEditorialLibroMapper editorialLibroMapper;
 		
         public LibroMapper(IRepository<Libro> repository,
 		    ICatalogoService catalogoService,
             ICoautorExternoLibroMapper coautorExternoLibroMapper,
             ICoautorInternoLibroMapper coautorInternoLibroMapper,
             IEventoService eventoService,
-            IProyectoService proyectoService
-		) 
+            IProyectoService proyectoService,
+            IEditorialLibroMapper editorialLibroMapper) 
 			: base(repository)
         {
             this.eventoService = eventoService;
@@ -29,6 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.proyectoService = proyectoService;
+            this.editorialLibroMapper = editorialLibroMapper;
         }		
 		
         protected override int GetIdFromMessage(LibroForm message)
@@ -94,7 +96,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
+            EditorialLibroForm[] editoriales)
         {
             var model = Map(message, usuario, periodo, investigador);
 
@@ -109,8 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorExterno(coautor);
             }
 
-
-
             foreach (var coautorInterno in coautoresInternos)
             {
                 var coautor =
@@ -120,6 +121,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var editorialLibro in editoriales)
+            {
+                var editorial =
+                    editorialLibroMapper.Map(editorialLibro);
+
+                editorial.CreadorPor = usuario;
+                editorial.ModificadoPor = usuario;
+
+                model.AddEditorial(editorial);
             }
 
 

@@ -39,33 +39,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             isValid &= ValidateFechas(libro, constraintValidatorContext);
-            isValid &= TieneProyecto(libro, constraintValidatorContext);
 
-            if (libro.TipoPublicacion != null)
-                isValid &= ValidateTipoPublicacion(libro, constraintValidatorContext);
+            if (libro.FormatoPublicacion != null)
+                isValid &= ValidateFormatoPublicacion(libro, constraintValidatorContext);
 
             if(libro.EstadoProducto != null)
                 isValid &= ValidateEstadoProducto(libro, constraintValidatorContext);
 
-            return isValid;
-        }
-
-        bool TieneProyecto(Libro libro, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (libro.TieneProyecto)
-            {
-                if (libro.Proyecto == null)
-                {
-                    constraintValidatorContext.AddInvalid("seleccione el proyecto|Proyecto", "Proyecto");
-
-                    isValid = false;
-                }
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
+            isValid &= TieneProyecto(libro, constraintValidatorContext);
 
             return isValid;
         }
@@ -74,24 +55,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (libro.FechaAceptacion == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
-                isValid = false;
-            }
-
-            if (libro.FechaEdicion == DateTime.Parse("1900-01-01"))
+            if (libro.FechaEdicion <= DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
                     "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (libro.FechaAceptacion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
                 isValid = false;
             }
 
@@ -108,25 +75,60 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             return isValid;
         }
 
-        bool ValidateEstadoProducto(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        bool ValidateFormatoPublicacion(Libro libro, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 
-            //Estado Producto - Publicado
-            if (libro.EstadoProducto.Nombre.Contains("Publicado"))
+            //Tipo Publicacion - Libro traducido a otro idioma
+            if (libro.FormatoPublicacion.Nombre.Contains("traducido a otro idioma"))
             {
-                if (libro.ISBN == "")
+                if (libro.Idioma == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|ISBN", "ISBN");
+                        "seleccione el idioma de tradución|Idioma", "Idioma");
 
                     isValid = false;
                 }
 
-                if (libro.FechaEdicion <= DateTime.Parse("1910-01-01"))
+                else
+                {
+                    if (libro.NombreTraductor == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no puede ser nulo, vacío o cero|NombreTraductor", "NombreTraductor");
+
+                        isValid = false;
+                    }
+                }
+            }
+
+            //Tipo Publicacion - Memoria de evento
+            if (libro.FormatoPublicacion.Nombre.Contains("Memoria de evento"))
+            {
+                if (libro.Evento == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaEdicion", "FechaEdicion");
+                        "seleccione el evento|Evento", "Evento");
+
+                    isValid = false;
+                }
+            }
+
+            //Tipo Publicacion - Numero especial de revista
+            if (libro.FormatoPublicacion.Nombre.Contains("Número especial de revista"))
+            {
+                if (libro.NombreRevista == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser nulo, vacío o cero|NombreRevistaTitulo", "NombreRevistaTitulo");
+
+                    isValid = false;
+                }
+
+                if (libro.Numero <= 0)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser menor o igual a cero|Numero", "Numero");
 
                     isValid = false;
                 }
@@ -138,96 +140,66 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             return isValid;
         }
 
-        bool ValidateTipoPublicacion(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        bool ValidateEstadoProducto(Libro libro, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 
-            //Tipo Publicacion - Coordinacion de libro sin/con arbitraje
-            //if (libro.TipoPublicacion.Nombre.Contains("Coordinación de libro"))
-            //{
-            //    if (libro.FormaParticipacion == null)
-            //    {
-            //        constraintValidatorContext.AddInvalid(
-            //            "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
-
-            //        isValid = false;
-            //    }
-            //}
-
-            //Tipo Publicacion - Coordinacion de memoria
-            if (libro.TipoPublicacion.Nombre.Contains("de memoria"))
+            //Estado Producto - Aceptado
+            if (libro.EstadoProducto.Nombre.Contains("Aceptado"))
             {
-                if (libro.Evento == null)
+                if (libro.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "seleccione el evento|NombreEvento", "NombreEvento");
+                        "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
 
+                    isValid = false;
+                }
+
+                if (libro.FechaAceptacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "la fecha no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
                     isValid = false;
                 }
             }
 
-            //Tipo Publicacion - Coordinacion de un numero especial de revista
-            if (libro.TipoPublicacion.Nombre.Contains("número especial de revista"))
+            //Estado Producto - Publicado
+            if (libro.EstadoProducto.Nombre.Contains("Publicado"))
             {
-                if (libro.NombreRevista == null)
+                if (libro.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|NombreRevistaTitulo", "NombreRevistaTitulo");
+                        "formato de fecha no válido|FechaPublicacion", "FechaPublicacion");
 
                     isValid = false;
                 }
 
-                if (libro.EstadoProducto != null)
+                if (libro.FechaPublicacion > DateTime.Now)
                 {
-                    if (libro.EstadoProducto.Nombre.Contains("Publicado"))
-                    {
-                        if (libro.Numero == 0)
-                        {
-                            constraintValidatorContext.AddInvalid(
-                                "no puede ser nulo, vacío o cero|Numero", "Numero");
-
-                            isValid = false;
-                        }
-
-                        if (libro.Volumen == "")
-                        {
-                            constraintValidatorContext.AddInvalid(
-                                "no puede ser nulo, vacío o cero|Volumen", "Volumen");
-
-                            isValid = false;
-                        }
-                    }
+                    constraintValidatorContext.AddInvalid(
+                        "la fecha no puede estar en el futuro|FechaPublicacion", "FechaPublicacion");
+                    isValid = false;
                 }
             }
 
-            //Tipo Publicacion - Libro traducido a otro idioma
-            if (libro.TipoPublicacion.Nombre.Contains("otro idioma"))
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
+        }
+
+        bool TieneProyecto(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (libro.TieneProyecto)
             {
-                if (libro.Idioma == null)
+                if (libro.Proyecto == null)
                 {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el idioma de tradución|Idioma", "Idioma");
+                    constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|ProyectoNombre",
+                                                          "ProyectoNombre");
 
                     isValid = false;
-                }
-
-                //if (libro.Traductor == false)
-                //{
-                //    constraintValidatorContext.AddInvalid(
-                //        "seleccione el traductor|Traductor", "Traductor");
-
-                //    isValid = false;
-                //}
-
-                else
-                {
-                    if (libro.NombreTraductor == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no puede ser nulo, vacío o cero|NombreTraductor", "NombreTraductor");
-
-                        isValid = false;
-                    }
                 }
             }
 
