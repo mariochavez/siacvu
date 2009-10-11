@@ -9,7 +9,6 @@
 <p>
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
-    <%=Html.ValidationMessage("TieneProyecto")%>
 </p>
 <p class="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
@@ -18,9 +17,14 @@
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<div class="tieneproyecto_field" id="arealineatematica">
-
-</div>
+<p class="tieneproyecto_field">
+    <label>L&iacute;nea tem&aacute;tica</label>
+    <span id="lineatematica"><%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>&nbsp;</span>
+</p>
+<p class="tieneproyecto_field">
+    <label>&Aacute;rea tem&aacute;tica</label>
+    <span id="areatematica"><%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</span>
+</p>
 <p>
     <label>Estatus actual</label>
     <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),

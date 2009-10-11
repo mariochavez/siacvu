@@ -358,6 +358,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddCoautorExterno", coautorExternoLibroForm);
         }
 
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var libro = libroService.GetLibroById(id);
+
+            if (libro != null)
+            {
+                var coautor = libro.CoautorExternoLibros.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                libro.DeleteCoautorExterno(coautor);
+
+                libroService.SaveLibro(libro);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+        }
+
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
@@ -406,6 +424,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorInternoLibroForm.ParentId = libroId;
 
             return Rjs("AddCoautorInterno", coautorInternoLibroForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var libro = libroService.GetLibroById(id);
+
+            if (libro != null)
+            {
+                var coautor = libro.CoautorInternoLibros.Where(x => x.Investigador.Id == investigadorId).First();
+                libro.DeleteCoautorInterno(coautor);
+
+                libroService.SaveLibro(libro);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
         [Authorize]
@@ -459,6 +495,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             editorialLibroForm.ParentId = libroId;
 
             return Rjs("AddEditorialLibro", editorialLibroForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteEditorial(int id, int editorialId)
+        {
+            var libro = libroService.GetLibroById(id);
+
+            if (libro != null)
+            {
+                var editorial = libro.EditorialLibros.Where(x => x.Editorial.Id == editorialId).First();
+                libro.DeleteEditorial(editorial);
+
+                libroService.SaveLibro(libro);
+            }
+
+            return Rjs("DeleteEditorialLibro", editorialId);
         }
                 
         LibroForm SetupNewForm()

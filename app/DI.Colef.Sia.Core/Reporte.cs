@@ -9,33 +9,49 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ReporteValidator]
-    public class Reporte : Entity, IBaseEntity
+    public class Reporte : Entity, IBaseEntity, ICoautor
     {
+        const int tipoProducto = 11; // 11 Representa Reporte
+
         public Reporte()
         {
             CoautorExternoReportes = new List<CoautorExternoReporte>();
             CoautorInternoReportes = new List<CoautorInternoReporte>();
         }
 
-        public virtual void AddCoautorExterno(CoautorExternoReporte coautorExternoReporte)
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoReporte.TipoProducto = 11; // 11 Representa Reporte
-            CoautorExternoReportes.Add(coautorExternoReporte);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoReportes.Add((CoautorExternoReporte) coautorExterno);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoReporte coautorInternoReporte)
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoReporte.TipoProducto = 11; // 11 Representa Reporte
-            CoautorInternoReportes.Add(coautorInternoReporte);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoReportes.Add((CoautorInternoReporte) coautorInterno);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoReportes.Remove((CoautorInternoReporte)coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoReportes.Remove((CoautorExternoReporte) coautorExterno);
         }
 
         public virtual TipoReporte TipoReporte { get; set; }
+
+        public virtual int PosicionAutor { get; set; }
 
         public virtual EstadoProducto EstadoProducto { get; set; }
 
         public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
+
+        public virtual DateTime FechaPublicacion { get; set; }
 
         public virtual Proyecto Proyecto { get; set; }
 
@@ -80,7 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
-        public virtual DateTime Fecha { get; set; }
+        //public virtual DateTime Fecha { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

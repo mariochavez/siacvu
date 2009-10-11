@@ -81,6 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -221,8 +222,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoReporteForm = coautorInternoReporteMapper.Map(coautorInternoReporte);
+            coautorInternoReporteForm.ParentId = reporteId;
 
             return Rjs("AddCoautorInterno", coautorInternoReporteForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var reporte = reporteService.GetReporteById(id);
+
+            if (reporte != null)
+            {
+                var coautor = reporte.CoautorInternoReportes.Where(x => x.Investigador.Id == investigadorId).First();
+                reporte.DeleteCoautorInterno(coautor);
+
+                reporteService.SaveReporte(reporte);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -271,8 +291,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoReporteForm = coautorExternoReporteMapper.Map(coautorExternoReporte);
+            coautorExternoReporteForm.ParentId = reporteId;
 
             return Rjs("AddCoautorExterno", coautorExternoReporteForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var reporte = reporteService.GetReporteById(id);
+
+            if (reporte != null)
+            {
+                var coautor = reporte.CoautorExternoReportes.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                reporte.DeleteCoautorExterno(coautor);
+
+                reporteService.SaveReporte(reporte);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
         ReporteForm SetupNewForm()

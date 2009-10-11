@@ -1651,6 +1651,22 @@ alter table Firmas  drop constraint FK1BC2D59F85102A57
 alter table Firmas  drop constraint FK1BC2D59F74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039BE30B9132]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
+alter table EditorialLibros  drop constraint FK24039BE30B9132
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B85102A57]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
+alter table EditorialLibros  drop constraint FK24039B85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B74E8BAB7]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
+alter table EditorialLibros  drop constraint FK24039B74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B586827F8]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
+alter table EditorialLibros  drop constraint FK24039B586827F8
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD6A829E09]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD6A829E09
 
@@ -2315,22 +2331,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039BE30B9132]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039BE30B9132
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B85102A57]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B74E8BAB7]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B586827F8]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B586827F8
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2511,6 +2511,8 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Firmas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Firmas
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialLibros
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Capitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Capitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoReportes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoReportes
@@ -2606,8 +2608,6 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialLibros
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3077,7 +3077,9 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
 
     create table Reportes (
         Id INT IDENTITY NOT NULL,
+       PosicionAutor INT null,
        FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
        Titulo NVARCHAR(255) null,
        FechaEdicion DATETIME null,
        Editorial NVARCHAR(255) null,
@@ -3088,7 +3090,6 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
        Puntuacion INT null,
-       Fecha DATETIME null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3976,6 +3977,18 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
        primary key (Id)
     )
 
+    create table EditorialLibros (
+        Id INT IDENTITY NOT NULL,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       EditorialFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       LibroFk INT null,
+       primary key (Id)
+    )
+
     create table Capitulos (
         Id INT IDENTITY NOT NULL,
        NombreCapitulo NVARCHAR(255) null,
@@ -4556,18 +4569,6 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
-       primary key (Id)
-    )
-
-    create table EditorialLibros (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       EditorialFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       LibroFk INT null,
        primary key (Id)
     )
 
@@ -6636,6 +6637,26 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
         foreign key (ModificadoPorFk) 
         references Usuarios
 
+    alter table EditorialLibros 
+        add constraint FK24039BE30B9132 
+        foreign key (EditorialFk) 
+        references Editoriales
+
+    alter table EditorialLibros 
+        add constraint FK24039B85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EditorialLibros 
+        add constraint FK24039B74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table EditorialLibros 
+        add constraint FK24039B586827F8 
+        foreign key (LibroFk) 
+        references Libros
+
     alter table Capitulos 
         add constraint FK3165FEAD6A829E09 
         foreign key (UsuarioFk) 
@@ -7465,23 +7486,3 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table EditorialLibros 
-        add constraint FK24039BE30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
-
-    alter table EditorialLibros 
-        add constraint FK24039B85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table EditorialLibros 
-        add constraint FK24039B74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table EditorialLibros 
-        add constraint FK24039B586827F8 
-        foreign key (LibroFk) 
-        references Libros

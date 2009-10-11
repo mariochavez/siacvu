@@ -47,6 +47,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoLibros.Remove((CoautorExternoLibro)coautorExterno);
         }
 
+        public virtual void DeleteEditorial(EditorialLibro editorialLibro)
+        {
+            EditorialLibros.Remove(editorialLibro);
+        }
+
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 

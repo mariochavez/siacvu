@@ -681,6 +681,7 @@
     <Content Include="Views\Productos\Libro\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeRevista.js.ascx" />
+    <Content Include="Views\Productos\Libro\DeleteEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\_ShowEditorial.ascx" />
     <Content Include="Views\Productos\Libro\NewEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\_DatosLibro2.ascx" />
@@ -718,6 +719,8 @@
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteResponsableInterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\_ShowResponsableInterno.ascx" />
     <Content Include="Views\Shared\_ShowResponsableExterno.ascx" />
     <Content Include="Views\Shared\_NewResponsableInterno.ascx" />

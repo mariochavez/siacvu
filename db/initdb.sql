@@ -2384,7 +2384,7 @@ insert into ProgramaEstudios values('Women''s Rights and Citizenship in Latin Am
 insert into ProgramaEstudios values('zonas +AOE-ridaS', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into TipoReportes values('Cuaderno de trabajo', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoReportes values('Informe técnico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoReportes values('Reporte técnico', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstadoProductos values('Aceptado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into EstadoProductos values('Publicado', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2483,6 +2483,11 @@ insert into TipoArchivos values('Posgrado Colef',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Reimpresiones values('Primera',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Reimpresiones values('Segunda',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Reimpresiones values('Tercera',GETDATE(), GETDATE(), 1, 1, 1)
+
+--valores de prueba
+insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)
+insert into Editoriales values('Editorial 2',GETDATE(), GETDATE(), 1, 2, 13, 1, 1)
+insert into Editoriales values('Editorial 3',GETDATE(), GETDATE(), 1, 3, 14, 1, 1)
 
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)

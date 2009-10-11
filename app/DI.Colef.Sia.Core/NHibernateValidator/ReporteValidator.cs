@@ -61,13 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (reporte.Fecha == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|Fecha", "Fecha");
-                isValid = false;
-            }
-
             if (reporte.FechaAceptacion > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
@@ -79,13 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 constraintValidatorContext.AddInvalid(
                     "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (reporte.Fecha > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|Fecha", "Fecha");
                 isValid = false;
             }
 
@@ -124,14 +110,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío o cero|InstitucionNombre", "InstitucionNombre");
-
-                    isValid = false;
-                }
-
-                if (reporte.Fecha <= DateTime.Parse("1910-01-01"))
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|Fecha", "Fecha");
 
                     isValid = false;
                 }

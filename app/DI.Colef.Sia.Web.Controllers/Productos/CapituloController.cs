@@ -303,6 +303,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddCoautorInterno", coautorInternoCapituloForm);
         }
 
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo != null)
+            {
+                var coautor = capitulo.CoautorInternoCapitulos.Where(x => x.Investigador.Id == investigadorId).First();
+                capitulo.DeleteCoautorInterno(coautor);
+
+                capituloService.SaveCapitulo(capitulo);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
+        }
+
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
@@ -353,6 +371,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorExternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddCoautorExterno", coautorExternoCapituloForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo != null)
+            {
+                var coautor = capitulo.CoautorExternoCapitulos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                capitulo.DeleteCoautorExterno(coautor);
+
+                capituloService.SaveCapitulo(capitulo);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -406,6 +442,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddResponsableInterno", responsableInternoCapituloForm);
         }
 
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteResponsableInterno(int id, int investigadorId)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo != null)
+            {
+                var responsable = capitulo.ResponsableInternoCapitulos.Where(x => x.Investigador.Id == investigadorId).First();
+                capitulo.DeleteResponsableInterno(responsable);
+
+                capituloService.SaveCapitulo(capitulo);
+            }
+
+            return Rjs("DeleteResponsableInterno", investigadorId);
+        }
+
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewResponsableExterno(int id)
@@ -456,6 +510,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             responsableExternoCapituloForm.ParentId = capituloId;
 
             return Rjs("AddResponsableExterno", responsableExternoCapituloForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteResponsableExterno(int id, int investigadorExternoId)
+        {
+            var capitulo = capituloService.GetCapituloById(id);
+
+            if (capitulo != null)
+            {
+                var responsable = capitulo.ResponsableExternoCapitulos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                capitulo.DeleteResponsableExterno(responsable);
+
+                capituloService.SaveCapitulo(capitulo);
+            }
+
+            return Rjs("DeleteResponsableExterno", investigadorExternoId);
         }
 
         CapituloForm SetupNewForm()

@@ -124,10 +124,19 @@ function participacionMedioSetup() {
 }
 
 function reporteSetup() {
+    $('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['#EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+
     $('#TipoReporte').dynamicui(
             [
                 ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Informe técnico', ['.ReporteTecnico']]
+                ['Reporte técnico', ['.ReporteTecnico']]
             ]
         );
 
