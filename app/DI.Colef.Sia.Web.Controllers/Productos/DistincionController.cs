@@ -146,44 +146,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Distinción {0} ha sido modificada", distincion.Titulo));
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var distincion = distincionService.GetDistincionById(id);
-
-            if (distincion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            distincion.Activo = true;
-            distincion.ModificadoPor = CurrentUser();
-            distincionService.SaveDistincion(distincion);
-
-            var form = distincionMapper.Map(distincion);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var distincion = distincionService.GetDistincionById(id);
-
-            if (distincion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            distincion.Activo = false;
-            distincion.ModificadoPor = CurrentUser();
-            distincionService.SaveDistincion(distincion);
-
-            var form = distincionMapper.Map(distincion);
-
-            return Rjs("Activate", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangePais(int select)

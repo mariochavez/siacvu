@@ -1,8 +1,8 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<DictamenForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<% if (Model.RevistaPublicacionId != 0){ %>
-    $('#institucionrevista').html('<%=Html.Encode(Model.RevistaPublicacionInstitucionNombre)%>&nbsp;');
+<% if (Model.EditorialId != 0){ %>
+    $('#institucioneditorial').html('<%=Html.Encode(Model.EditorialInstitucionNombre)%>&nbsp;');
 <% } else { %>
-    $('#institucionrevista').html('&nbsp;');
+    $('#institucioneditorial').html('&nbsp;');
 <% } %>

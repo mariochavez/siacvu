@@ -146,50 +146,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.TipoDictamen));
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var dictamen = dictamenService.GetDictamenById(id);
-
-            if (dictamen.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            dictamen.Activo = true;
-            dictamen.ModificadoPor = CurrentUser();
-            dictamenService.SaveDictamen(dictamen);
-
-            var form = dictamenMapper.Map(dictamen);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var dictamen = dictamenService.GetDictamenById(id);
-
-            if (dictamen.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            dictamen.Activo = false;
-            dictamen.ModificadoPor = CurrentUser();
-            dictamenService.SaveDictamen(dictamen);
-
-            var form = dictamenMapper.Map(dictamen);
-
-            return Rjs("Activate", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Dictamen>(x => x.TipoDictamen, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var dictamenForm = new DictamenForm();
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            dictamenForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
+
+            dictamenForm.RevistaPublicacionId = revistaPublicacionForm.Id;
+
+            return Rjs("ChangeRevista", dictamenForm);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeEditorial(int select)
+        {
+            var dictamenForm = new DictamenForm();
+            var editorialForm = editorialMapper.Map(catalogoService.GetEditorialById(select));
+
+            dictamenForm.EditorialInstitucionNombre = editorialForm.InstitucionNombre;
+
+            dictamenForm.EditorialId = editorialForm.Id;
+
+            return Rjs("ChangeEditorial", dictamenForm);
         }
 
         DictamenForm SetupNewForm()
