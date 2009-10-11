@@ -123,7 +123,7 @@ function participacionMedioSetup() {
     $('#MedioImpreso')[0].dynamic.setup();
 }
 
-function reporteSetup() {
+function reporteSetup() {    
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['#EstatusPublicado']],
@@ -133,15 +133,41 @@ function reporteSetup() {
 
     $('#EstadoProducto')[0].dynamic.setup();
 
+    $('#TieneProyecto').dynamicui(
+        [
+            ['1', ['.tieneproyecto_field']],
+            ['0', ['.notieneproyecto_field']]
+        ]
+    );
+
+    $('#TieneProyecto')[0].dynamic.setup();
+
     $('#TipoReporte').dynamicui(
             [
                 ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico']]
+                ['Reporte técnico', ['.ReporteTecnico', '.notieneproyecto_field']],
+                ['*', ['.ReporteCuaderno']]
             ]
         );
 
     $('#TipoReporte')[0].dynamic.setup();
+
+    Uncheck.setup();
 }
+
+var Uncheck = {
+    setup: function() {
+        $('#TipoReporte').change(Uncheck.uncheckOption);
+    },
+    uncheckOption: function() {
+        var value = $('#TipoReporte :selected').text();
+
+        if (value != 'Reporte técnico')
+            $('#TieneProyecto').attr('checked', false);
+
+        reporteSetup();
+    }
+};
 
 function resenaSetup() {
     $('#TipoResena').dynamicui(

@@ -7,4 +7,10 @@
     $('#indice1').html('<%=Html.Encode(Model.RevistaPublicacionIndice1Nombre)%>&nbsp;');
     $('#indice2').html('<%=Html.Encode(Model.RevistaPublicacionIndice2Nombre)%>&nbsp;');
     $('#indice3').html('<%=Html.Encode(Model.RevistaPublicacionIndice3Nombre)%>&nbsp;');
+<% } else { %>
+    $('#institucion').html('&nbsp;');
+    $('#pais').html('&nbsp;');
+    $('#indice1').html('&nbsp;');
+    $('#indice2').html('&nbsp;');
+    $('#indice3').html('&nbsp;');
 <% } %>

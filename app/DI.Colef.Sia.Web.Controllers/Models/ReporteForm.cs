@@ -5,7 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
 
         public string Titulo { get; set; }
-        public string Editorial { get; set; }
+        //public string Editorial { get; set; }
         public int NoPaginas { get; set; }
         public string Descripcion { get; set; }
         public string Objetivo { get; set; }
@@ -21,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public int PosicionAutor { get; set; }
         public string FechaPublicacion { get; set; }
+        public bool TieneProyecto { get; set; }
 
         public int TipoReporte { get; set; }
         public int TipoReporteId { get; set; }
@@ -33,16 +34,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-
-        public int LineaTematicaId { get; set; }
-        public string LineaTematicaNombre { get; set; }
-
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
-
-        public int Pais { get; set; }
-        public int PaisId { get; set; }
-        public string PaisNombre { get; set; }
+        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaNombre { get; set; }
+        public string ProyectoPalabraClave1 { get; set; }
+        public string ProyectoPalabraClave2 { get; set; }
+        public string ProyectoPalabraClave3 { get; set; }
+        //public string InstitucionNombre { get; set; }
 
         public string PeriodoReferenciaPeriodo { get; set; }
         public int TotalAutores
@@ -67,6 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ProyectoForm[] Proyectos { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
-        public PaisForm[] Paises { get; set; }
+        //public PaisForm[] Paises { get; set; }
     }
 }

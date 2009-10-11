@@ -53,9 +53,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPublicacion { get; set; }
 
-        public virtual Proyecto Proyecto { get; set; }
+        public virtual bool TieneProyecto { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
+        public virtual Proyecto Proyecto { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]
@@ -69,11 +69,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoReporte> CoautorInternoReportes { get; private set; }
 
-        public virtual Institucion Institucion { get; set; }
+        //public virtual string Editorial { get; set; }
 
-        public virtual string Editorial { get; set; }
-
-        public virtual Pais Pais { get; set; }
+        //public virtual Pais Pais { get; set; }
 
         public virtual int NoPaginas { get; set; }
 

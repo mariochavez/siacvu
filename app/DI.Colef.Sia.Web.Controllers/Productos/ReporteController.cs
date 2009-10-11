@@ -79,7 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
 
@@ -174,6 +173,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Reporte>(x => x.Titulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var reporteForm = new ReporteForm();
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            reporteForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
+            reporteForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
+            reporteForm.ProyectoPalabraClave1 = proyectoForm.PalabraClave1;
+            reporteForm.ProyectoPalabraClave2 = proyectoForm.PalabraClave2;
+            reporteForm.ProyectoPalabraClave3 = proyectoForm.PalabraClave3;
+            reporteForm.ProyectoId = proyectoForm.Id;
+
+            return Rjs("ChangeProyecto", reporteForm);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -332,7 +348,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
             return form;
         }
@@ -342,7 +357,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoReporte"] = form.TipoReporteId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             ViewData["Proyecto"] = form.ProyectoId;
-            ViewData["Pais"] = form.PaisId;
         }
     }
 }

@@ -412,8 +412,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoReporte, CoautorInternoProductoForm>()

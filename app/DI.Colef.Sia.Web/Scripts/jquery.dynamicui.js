@@ -32,6 +32,8 @@
             for (var i = 0; i < options.data.length; i++) {
                 if ($select.isChecked() && options.data[i][0] == '1') {
                     showFields(options.data[i][1]);
+                } else if (!$select.isChecked() && options.data[i][0] == '0') {
+                    showFields(options.data[i][1]);
                 } else {
                     hideFields(options.data[i][1]);
                 }

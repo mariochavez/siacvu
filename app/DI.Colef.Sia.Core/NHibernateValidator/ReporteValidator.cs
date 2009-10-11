@@ -87,29 +87,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (reporte.TipoReporte.Nombre.Contains("Cuaderno de trabajo"))
             {
-                if (reporte.Editorial == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|Editorial", "Editorial");
-
-                    isValid = false;
-                }
 
                 if (reporte.FechaEdicion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|FechaEdicion", "FechaEdicion");
-
-                    isValid = false;
-                }
-            }
-
-            if (reporte.TipoReporte.Nombre.Contains("Reporte técnico"))
-            {
-                if (reporte.Institucion == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|InstitucionNombre", "InstitucionNombre");
 
                     isValid = false;
                 }

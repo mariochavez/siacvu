@@ -4,4 +4,7 @@
 <% if (Model.ProyectoId != 0) { %>
     $('#lineatematica').html('<%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>&nbsp;');
     $('#areatematica').html('<%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;');
+<% } else { %>
+    $('#lineatematica').html('&nbsp;');
+    $('#areatematica').html('&nbsp;');
 <% } %>

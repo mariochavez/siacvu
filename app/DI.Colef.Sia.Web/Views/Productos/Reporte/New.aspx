@@ -60,11 +60,9 @@
 
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
                 
-                <h4 id="secciontiporeporte">Referencia bibliogr&aacute;fica</h4>
+                <h4 class="ReporteTecnico">Tem&aacute;tica del reporte t&eacute;cnico</h4>
+                <h4 class="CuadernoTrabajo">Referencia bibliogr&aacute;fica</h4>                
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                
-                <h4>Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar")%>

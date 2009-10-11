@@ -716,6 +716,7 @@
     <Content Include="Views\Catalogos\Reimpresion\Index.aspx" />
     <Content Include="Views\Catalogos\Reimpresion\New.aspx" />
     <Content Include="Views\Catalogos\Reimpresion\_Form.ascx" />
+    <Content Include="Views\Productos\Reporte\ChangeProyecto.js.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
@@ -831,7 +832,6 @@
     <Content Include="Views\Productos\Reporte\Index.aspx" />
     <Content Include="Views\Productos\Reporte\New.aspx" />
     <Content Include="Views\Productos\Reporte\Show.aspx" />
-    <Content Include="Views\Productos\Reporte\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Reporte\_DatosReporte.ascx" />
     <Content Include="Views\Productos\Reporte\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Resena\Activate.js.ascx" />

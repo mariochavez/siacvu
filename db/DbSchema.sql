@@ -535,18 +535,6 @@ alter table Reportes  drop constraint FK26728BE111666E2A
 alter table Reportes  drop constraint FK26728BE170EA6C9E
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE11EDC2D3B]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE11EDC2D3B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE164F7D1CD]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE164F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE17A8488F7]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE17A8488F7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE16A829E09]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE16A829E09
 
@@ -3080,9 +3068,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        PosicionAutor INT null,
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
+       TieneProyecto BIT null,
        Titulo NVARCHAR(255) null,
        FechaEdicion DATETIME null,
-       Editorial NVARCHAR(255) null,
        NoPaginas INT null,
        Descripcion NVARCHAR(255) null,
        Objetivo NVARCHAR(255) null,
@@ -3097,9 +3085,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        EstadoProductoFk INT null,
        PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
-       LineaTematicaFk INT null,
-       InstitucionFk INT null,
-       PaisFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -5241,21 +5226,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK26728BE170EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
-
-    alter table Reportes 
-        add constraint FK26728BE11EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Reportes 
-        add constraint FK26728BE164F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Reportes 
-        add constraint FK26728BE17A8488F7 
-        foreign key (PaisFk) 
-        references Paises
 
     alter table Reportes 
         add constraint FK26728BE16A829E09 
