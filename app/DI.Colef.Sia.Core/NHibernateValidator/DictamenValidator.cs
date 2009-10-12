@@ -34,6 +34,66 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Dictamen>(dictamen, x => x.Institucion, "InstitucionNombre", constraintValidatorContext); */
             }
 
+            isValid &= ValidateProductoDictaminado(dictamen, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        private bool ValidateProductoDictaminado(Dictamen dictamen, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            if (dictamen.TipoDictamen != null)
+            {
+                var upperCaseName = dictamen.TipoDictamen.Nombre.ToLower();
+
+                //Tipo Dictamen - Articulo
+                if (upperCaseName.Contains("artículo"))
+                {
+                    if (dictamen.RevistaPublicacion == null)
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
+
+                        isValid = false;
+                    }
+                }
+
+                //Tipo Dictamen - Capitulo en libro y Libro
+                if (upperCaseName.Contains("libro"))
+                {
+                    if (dictamen.Editorial == null)
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "seleccione la editorial|Editorial", "Editorial");
+
+                        isValid = false;
+                    }
+                }
+
+                //Tipo Dictamen - Proyecto de investigacion CONACyT
+                if (upperCaseName.Contains("proyecto"))
+                {
+                    if (dictamen.FondoConacyt == null)
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "seleccione el tipo de proyecto|FondoConacyt", "FondoConacyt");
+
+                        isValid = false;
+                    }
+                }
+            }
+            else
+            {
+                constraintValidatorContext.AddInvalid(
+                    "seleccione el producto dictaminado|TipoDictamen", "TipoDictamen");
+
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
             return isValid;
         }
     }
