@@ -36,28 +36,33 @@
 	<label>Palabra clave 1</label>
 	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("PalabraClave1")%>
 </p>
 <p class="notieneproyecto_field">
 	<label>Palabra clave 2</label>
 	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("PalabraClave2")%>
 </p>
 <p class="notieneproyecto_field">
 	<label>Palabra clave 3</label>
 	<%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("PalabraClave3")%>
 </p>
 <p class="ReporteCuaderno">
 	<label class="ReporteTecnico">Descripci&oacute;n del informe</label>
 	<label class="CuadernoTrabajo">Descripci&oacute;n del cuaderno</label>
 	<%=Html.TextArea("Descripcion", Model.Descripcion, 3, 35, new { @class = "input420", maxlength = 200 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("Descripcion")%>
 </p>
 <p class="ReporteCuaderno">
 	<label class="ReporteTecnico">Objetivo del informe</label>
 	<label class="CuadernoTrabajo">Objetivo del cuaderno</label>
 	<%=Html.TextArea("Objetivo", Model.Objetivo, 3, 35, new { @class = "input420", maxlength = 200 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("Objetivo")%>
 </p>
 <p class="ReporteCuaderno">
 	<label>No. de p&aacute;ginas</label>

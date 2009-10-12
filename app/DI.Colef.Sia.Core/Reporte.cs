@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoReporte TipoReporte { get; set; }
 
+        [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
         public virtual EstadoProducto EstadoProducto { get; set; }

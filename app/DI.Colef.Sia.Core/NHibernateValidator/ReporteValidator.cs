@@ -35,44 +35,55 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.Pais, constraintValidatorContext); */
             }
 
-            isValid &= ValidateFechas(reporte, constraintValidatorContext);
-
             if (reporte.TipoReporte != null)
                 isValid &= ValidateTipoReporte(reporte, constraintValidatorContext);
+
+            if(reporte.EstadoProducto != null)
+                isValid &= ValidateEstadoProducto(reporte, constraintValidatorContext);
 
             return isValid;
         }
 
-        bool ValidateFechas(Reporte reporte, IConstraintValidatorContext constraintValidatorContext)
+        private bool ValidateEstadoProducto(Reporte reporte, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 
-            if (reporte.FechaAceptacion == DateTime.Parse("1900-01-01"))
+            //Estado Producto - Aceptado
+            if (reporte.EstadoProducto.Nombre.Contains("Aceptado"))
             {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
-                isValid = false;
+                if (reporte.FechaAceptacion <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
+
+                    isValid = false;
+                }
+
+                if (reporte.FechaAceptacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "la fecha no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
+                    isValid = false;
+                }
             }
 
-            if (reporte.FechaEdicion == DateTime.Parse("1900-01-01"))
+            //Estado Producto - Publicado
+            if (reporte.EstadoProducto.Nombre.Contains("Publicado"))
             {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
+                if (reporte.FechaPublicacion <= DateTime.Parse("1910-01-01"))
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "formato de fecha no válido|FechaPublicacion", "FechaPublicacion");
 
-            if (reporte.FechaAceptacion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
-                isValid = false;
-            }
+                    isValid = false;
+                }
 
-            if (reporte.FechaEdicion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
+                if (reporte.FechaPublicacion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "la fecha no puede estar en el futuro|FechaPublicacion", "FechaPublicacion");
+                    isValid = false;
+                }
             }
 
             if (!isValid)
@@ -85,17 +96,89 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (reporte.TipoReporte.Nombre.Contains("Cuaderno de trabajo"))
+            if(reporte.TipoReporte.Nombre.Contains("Reporte técnico"))
             {
-
-                if (reporte.FechaEdicion <= DateTime.Parse("1910-01-01"))
+                if (reporte.TieneProyecto)
                 {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|FechaEdicion", "FechaEdicion");
+                    if (reporte.Proyecto == null)
+                    {
+                        constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|ProyectoNombre",
+                                                              "ProyectoNombre");
 
-                    isValid = false;
+                        isValid = false;
+                    }
                 }
+                else
+                {
+                    if (reporte.PalabraClave1 == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no debe ser nulo o vacío|PalabraClave1", "PalabraClave1");
+
+                        isValid = false;
+                    }
+
+                    if (reporte.PalabraClave2 == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no debe ser nulo o vacío|PalabraClave2", "PalabraClave2");
+
+                        isValid = false;
+                    }
+
+                    if (reporte.PalabraClave3 == "")
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "no debe ser nulo o vacío|PalabraClave3", "PalabraClave3");
+
+                        isValid = false;
+                    }
+                }
+
             }
+
+            if (reporte.Descripcion == "")
+            {
+                constraintValidatorContext.AddInvalid(
+                    "no debe ser nulo o vacío|Descripcion", "Descripcion");
+
+                isValid = false;
+            }
+
+            if (reporte.Objetivo == "")
+            {
+                constraintValidatorContext.AddInvalid(
+                    "no debe ser nulo o vacío|Objetivo", "Objetivo");
+
+                isValid = false;
+            }
+
+            if (reporte.NoPaginas <= 0)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "no puede ser menor o igual a cero|NoPaginas", "NoPaginas");
+
+                isValid = false;
+            }
+
+
+            if (reporte.FechaEdicion <= DateTime.Parse("1910-01-01"))
+            {
+                constraintValidatorContext.AddInvalid(
+                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
+
+                isValid = false;
+            }
+
+            if (reporte.FechaEdicion > DateTime.Now)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "la fecha no puede estar en el futuro|FechaEdicion", "FechaEdicion");
+                isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
