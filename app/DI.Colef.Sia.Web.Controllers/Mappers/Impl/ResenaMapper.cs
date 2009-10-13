@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
             model.TituloLibro = message.TituloLibro;
-            model.Editorial = message.Editorial;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
@@ -57,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);

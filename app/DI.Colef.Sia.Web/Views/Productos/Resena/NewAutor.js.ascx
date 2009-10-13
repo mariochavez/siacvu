@@ -23,3 +23,4 @@ var html = '
 $('#autorresenaForm').html(html);
 $('#autorresenaNew').hide();
 $('#autorresenaForm').show();
+AutoComplete.config($('#AutorResena_Nombre'));

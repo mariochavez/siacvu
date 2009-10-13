@@ -27,7 +27,7 @@
     <p>
 	    <label>&Aacute;rea tem&aacute;tica</label>
 	    <%=Html.DropDownList("AreaTematica", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-            "Seleccione ...")%>
+            "Seleccione ...", new { @class = "requerido" })%>
 	    <%=Html.ValidationMessage("AreaTematica")%>
     </p>
     <p>

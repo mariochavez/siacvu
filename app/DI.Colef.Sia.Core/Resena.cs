@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
             CoautorInternoResenas = new List<CoautorInternoResena>();
-            AutoresResenas = new List<AutorResena>();
+            AutorResenas = new List<AutorResena>();
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddAutor(AutorResena autorResena)
         {
-            AutoresResenas.Add(autorResena);
+            AutorResenas.Add(autorResena);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void DeleteAutor(AutorResena autorResena)
         {
-            AutoresResenas.Remove(autorResena);
+            AutorResenas.Remove(autorResena);
         }
 
         [NotNull]
@@ -60,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Sede Sede { get; set; }
 
         [DomainSignature]
+        [NotNullNotEmpty]
         public virtual string NombreProducto { get; set; }
 
         public virtual TipoResena TipoResena { get; set; }
@@ -68,18 +69,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
 
+        [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
         public virtual string TituloLibro { get; set; }
 
         [Valid]
-        public virtual IList<AutorResena> AutoresResenas { get; private set; }
+        public virtual IList<AutorResena> AutorResenas { get; private set; }
 
         public virtual DateTime FechaEdicion { get; set; }
 
         public virtual Institucion Institucion { get; set; }
         
-        public virtual string Editorial { get; set; }
+        public virtual Editorial Editorial { get; set; }
 
         public virtual Pais Pais { get; set; }
 

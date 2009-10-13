@@ -61,6 +61,7 @@
 	                <label>Posici&oacute;n del autor</label>
                     <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
 	                <span class="cvu"></span>
+	                <%=Html.ValidationMessage("PosicionAutor")%>
                 </p>
                 
                 <div id="resenaBibliografica_field">

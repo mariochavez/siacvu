@@ -9,14 +9,15 @@
 </p>
 <p>
 	<label>Instituci&oacute;n</label>
-    <%=Html.TextBox("InstitucionNombre", Model.LineaTematicaNombre,
+    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.LineaTematicaId, new { rel = "#InstitucionNombre" })%>
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
 	<label>Editorial</label>
-	<%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input420-requerido", maxlength = 100 })%>
+	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido"})%>
 	<%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>

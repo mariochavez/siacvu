@@ -72,7 +72,9 @@
                     <label>Nombre del libro</label>
                     <strong><%= Html.Encode(Model.Form.TituloLibro)%>&nbsp;</strong>
                 </p>
-                <%--<% Html.RenderPartial("_ShowAutor", new ResenaForm { AutorResenas = Model.Form.AutorResenas, ModelId = Model.Form.Id } ); %>--%>
+                
+                <% Html.RenderPartial("_ShowAutor", new ResenaForm { AutorResenas = Model.Form.AutorResenas, Id = Model.Form.Id } ); %>
+                
                 <p>
                     <label>A&ntilde;o de edici&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (yyyy)</span>
@@ -83,7 +85,7 @@
                 </p>
                 <p>
                     <label>Editorial</label>
-                    <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
+                    <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>

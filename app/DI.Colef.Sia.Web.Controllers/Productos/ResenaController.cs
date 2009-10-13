@@ -32,7 +32,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IResenaService resenaService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoResenaMapper tipoResenaMapper;
-        readonly IProyectoService proyectoService;
+        readonly IEditorialMapper editorialMapper;
+        //readonly IProyectoService proyectoService;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -45,7 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
                                 IAutorResenaMapper autorResenaMapper,
-                                ITipoResenaMapper tipoResenaMapper, IRevistaPublicacionMapper revistaPublicacionMapper)
+                                ITipoResenaMapper tipoResenaMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
+                                IEditorialMapper editorialMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -66,7 +68,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.tipoResenaMapper = tipoResenaMapper;
-            this.proyectoService = proyectoService;
+            //this.proyectoService = proyectoService;
+            this.editorialMapper = editorialMapper;
         }
 
         [Authorize]
@@ -379,6 +382,74 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewAutor(int id)
+        {
+            var resena = resenaService.GetResenaById(id);
+            var form = new ResenaForm();
+
+            if (resena != null)
+                form.Id = resena.Id;
+
+            return Rjs("NewAutor", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddAutor([Bind(Prefix = "AutorResena")] AutorResenaForm form,
+                                              int resenaId)
+        {
+            var autorResena = autorResenaMapper.Map(form);
+
+            ModelState.AddModelErrors(autorResena.ValidationResults(), false, "AutorResena", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (resenaId != 0)
+            {
+                autorResena.CreadorPor = CurrentUser();
+                autorResena.ModificadoPor = CurrentUser();
+
+                var resena = resenaService.GetResenaById(resenaId);
+                var alreadyHasIt =
+                    resena.AutorResenas.Where(
+                        x => x.Investigador.Id == autorResena.Investigador.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    resena.AddAutor(autorResena);
+                    resenaService.SaveResena(resena);
+                }
+            }
+
+            var autorResenaForm = autorResenaMapper.Map(autorResena);
+            autorResenaForm.ParentId = resenaId;
+
+            return Rjs("AddAutor", autorResenaForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteAutor(int id, int investigadorId)
+        {
+            var resena = resenaService.GetResenaById(id);
+
+            if (resena != null)
+            {
+                var autor = resena.AutorResenas.Where(x => x.Investigador.Id == investigadorId).First();
+                resena.DeleteAutor(autor);
+
+                resenaService.SaveResena(resena);
+            }
+
+            return Rjs("DeleteAutor", investigadorId);
+        }
+
         ResenaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -393,6 +464,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
@@ -407,6 +479,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoResena"] = form.TipoResenaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["Editorial"] = form.EditorialId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["AreaTematica"] = form.AreaTematicaId;

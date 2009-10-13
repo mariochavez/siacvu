@@ -46,87 +46,84 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (resena.TipoResena == null)
+            if (resena.RevistaPublicacion == null)
             {
                 constraintValidatorContext.AddInvalid(
-                    "debe seleccionar el tipo de publicación|TipoResena", "TipoResena");
+                    "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
 
                 isValid = false;
             }
 
-            else
+            if (resena.LineaTematica == null)
             {
-                if (resena.RevistaPublicacion == null)
+                constraintValidatorContext.AddInvalid(
+                    "no puede ser nulo, vacío o cero|LineaTematicaNombre", "LineaTematicaNombre");
+
+                isValid = false;
+            }
+
+            if (resena.AreaTematica == null)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "seleccione el área temática|AreaTematica", "AreaTematica");
+
+                isValid = false;
+            }
+
+            if (resena.EstadoProducto == null)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "seleccione el estatus de la publicación|EstadoProducto", "EstadoProducto");
+
+                isValid = false;
+            }
+
+            if (resena.TipoResena.Nombre.Contains("Reseña bibliográfica"))
+            {
+                if (resena.TituloLibro == "")
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
+                        "no debe ser nulo o vacío o cero|TituloLibro", "TituloLibro");
 
                     isValid = false;
                 }
 
-                if (resena.LineaTematica == null)
+                if (resena.FechaEdicion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|LineaTematicaNombre", "LineaTematicaNombre");
+                        "formato de fecha no válido|FechaEdicion", "FechaEdicion");
+                    isValid = false;
+                }
+
+                if (resena.FechaEdicion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
+                    isValid = false;
+                }
+
+                if (resena.Institucion == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
 
                     isValid = false;
                 }
 
-                if (resena.EstadoProducto == null)
+                if (resena.Editorial == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|EstadoProducto", "EstadoProducto");
+                        "seleccione la editorial|Editorial", "Editorial");
 
                     isValid = false;
                 }
 
-                if (resena.TipoResena.Nombre.Contains("Reseña bibliográfica"))
+                if (resena.Pais == null)
                 {
-                    if (resena.TituloLibro == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío o cero|TituloLibro", "TituloLibro");
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el país|Pais", "Pais");
 
-                        isValid = false;
-                    }
-
-                    if (resena.FechaEdicion == DateTime.Parse("1900-01-01"))
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                        isValid = false;
-                    }
-
-                    if (resena.FechaEdicion > DateTime.Now)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                        isValid = false;
-                    }
-
-                    if (resena.Institucion == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no puede ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
-
-                        isValid = false;
-                    }
-
-                    if (resena.Editorial == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío o cero|Editorial", "Editorial");
-
-                        isValid = false;
-                    }
-
-                    if (resena.Pais == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no puede ser nulo, vacío o cero|Pais", "Pais");
-
-                        isValid = false;
-                    }
+                    isValid = false;
                 }
             }
 

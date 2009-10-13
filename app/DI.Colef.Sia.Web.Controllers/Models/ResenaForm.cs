@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
         public string TituloLibro { get; set; }
-        public string Editorial { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
@@ -56,6 +55,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionPaisNombre { get; set; }
         public string RevistaPublicacionInstitucionNombre { get; set; }
 
+        public int Editorial { get; set; }
+        public int EditorialId { get; set; }
+        public string EditorialNombre { get; set; }
+
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
@@ -89,13 +92,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public AutorResenaForm[] AutorResena { get; set; }
+        public AutorResenaForm AutorResena { get; set; }
 
         /* Catalogos */
         public TipoResenaForm[] TiposResenas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
+        public EditorialForm[] Editoriales { get; set; }
         public PaisForm[] Paises { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }

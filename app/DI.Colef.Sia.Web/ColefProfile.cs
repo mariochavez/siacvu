@@ -374,6 +374,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.AnioPublicacion,
+                           o => o.ResolveUsing<ResenaPublicacionResolver>())
                 .ForMember(d => d.TipoResena,
                            o => o.Ignore())
                 .ForMember(d => d.AreaTematica,
@@ -383,6 +385,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
+                           o => o.Ignore())
+                .ForMember(d => d.Editorial,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
@@ -398,6 +402,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoResena, CoautorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AutorResena, AutorResenaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
@@ -574,7 +582,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.AnioPublicacion,
-                           o => o.ResolveUsing<PublicacionResolver>())
+                           o => o.ResolveUsing<ArticuloPublicacionResolver>())
                 .ForMember(d => d.TipoArticulo,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,

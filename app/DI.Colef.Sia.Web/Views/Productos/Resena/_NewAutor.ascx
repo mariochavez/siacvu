@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Autor</label>
-	<%=Html.TextBox("Investigador.InvestigadorUsuarioNombre", "",
+	<%=Html.TextBox("AutorResena.Nombre", "",
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Investigador"), maxlength = 100 })%>
-    <%=Html.Hidden("Investigador.InvestigadorId", 0, new { rel = "#AutorResena_Nombre" })%>
+    <%=Html.Hidden("AutorResena.InvestigadorId", 0, new { rel = "#AutorResena_Nombre" })%>
 </p>
