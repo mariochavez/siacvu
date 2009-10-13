@@ -15,6 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class ResenaController : BaseController<Resena, ResenaForm>
     {
         readonly IAreaMapper areaMapper;
+        readonly IAutorResenaMapper autorResenaMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly IIdiomaMapper idiomaMapper;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
@@ -24,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly IPaisMapper paisMapper;
-        readonly IProyectoMapper proyectoMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
@@ -33,22 +36,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
+                                IAreaTematicaMapper areaTematicaMapper, IIdiomaMapper idiomaMapper,
                                 IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper,
-                                IProyectoMapper proyectoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
                                 IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper,
                                 IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
-                                ITipoResenaMapper tipoResenaMapper, IProyectoService proyectoService)
+                                IAutorResenaMapper autorResenaMapper,
+                                ITipoResenaMapper tipoResenaMapper, IRevistaPublicacionMapper revistaPublicacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+            this.areaTematicaMapper = areaTematicaMapper;
+            this.autorResenaMapper = autorResenaMapper;
+            this.idiomaMapper = idiomaMapper;
             this.catalogoService = catalogoService;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.estadoProductoMapper = estadoProductoMapper;
-            this.proyectoMapper = proyectoMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
@@ -86,7 +93,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -132,11 +141,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
-                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+                                   [Bind(Prefix = "AutorResena")] AutorResenaForm[] autor,
                                    ResenaForm form, FormCollection formCollection)
         {
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+            autor = autor ?? new AutorResenaForm[] { };
+
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
-                                          coautorExterno, coautorInterno);
+                                          coautorExterno, coautorInterno, autor);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
             {
@@ -148,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("Reseña {0} ha sido creada", resena.NombreRevista));
+            return RedirectToIndex(String.Format("Reseña {0} ha sido creada", resena.NombreProducto));
         }
 
         [CustomTransaction]
@@ -170,7 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             resenaService.SaveResena(resena);
 
-            return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreRevista));
+            return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreProducto));
         }
 
         [Authorize]
@@ -210,8 +224,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Resena>(x => x.NombreRevista, q);
+            var data = searchService.Search<Resena>(x => x.NombreProducto, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var resenaForm = new ResenaForm();
+            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            resenaForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
+            resenaForm.RevistaPublicacionPaisNombre = revistaPublicacionForm.PaisNombre;
+
+            resenaForm.RevistaPublicacionId = revistaPublicacionForm.Id;
+
+            return Rjs("ChangeRevista", resenaForm);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -230,8 +259,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form,
-                                              int resenaId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form, int resenaId)
         {
             var coautorInternoResena = coautorInternoResenaMapper.Map(form);
 
@@ -241,11 +269,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
+            coautorInternoResena.CreadorPor = CurrentUser();
+            coautorInternoResena.ModificadoPor = CurrentUser();
+
             if (resenaId != 0)
             {
-                coautorInternoResena.CreadorPor = CurrentUser();
-                coautorInternoResena.ModificadoPor = CurrentUser();
-
                 var resena = resenaService.GetResenaById(resenaId);
 
                 var alreadyHasIt =
@@ -260,8 +288,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoResenaForm = coautorInternoResenaMapper.Map(coautorInternoResena);
+            coautorInternoResenaForm.ParentId = resenaId;
 
             return Rjs("AddCoautorInterno", coautorInternoResenaForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var resena = resenaService.GetResenaById(id);
+
+            if (resena != null)
+            {
+                var coautor = resena.CoautorInternoResenas.Where(x => x.Investigador.Id == investigadorId).First();
+                resena.DeleteCoautorInterno(coautor);
+
+                resenaService.SaveResena(resena);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -280,8 +327,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
-                                              int resenaId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form, int resenaId)
         {
             var coautorExternoResena = coautorExternoResenaMapper.Map(form);
 
@@ -310,8 +356,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoResenaForm = coautorExternoResenaMapper.Map(coautorExternoResena);
+            coautorExternoResenaForm.ParentId = resenaId;
 
             return Rjs("AddCoautorExterno", coautorExternoResenaForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var resena = resenaService.GetResenaById(id);
+
+            if (resena != null)
+            {
+                var coautor = resena.CoautorExternoResenas.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                resena.DeleteCoautorExterno(coautor);
+
+                resenaService.SaveResena(resena);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
         ResenaForm SetupNewForm()
@@ -323,18 +388,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ResenaForm();
 
-            form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
-
             //Lista de Catalogos Pendientes
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-
+            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
 
@@ -345,9 +407,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoResena"] = form.TipoResenaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
-            ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;
-
+            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["AreaTematica"] = form.AreaTematicaId;
             ViewData["Area"] = form.AreaId;
             ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;

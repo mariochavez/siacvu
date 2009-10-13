@@ -31,6 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Activo = true;
                 model.CreadorEl = DateTime.Now;
             }
+
             model.ModificadoEl = DateTime.Now;
             model.Posicion = message.Posicion;
         }

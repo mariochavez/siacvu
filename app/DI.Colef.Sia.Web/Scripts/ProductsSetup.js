@@ -172,12 +172,29 @@ var Uncheck = {
 function resenaSetup() {
     $('#TipoResena').dynamicui(
             [
-                ['Nota crítica', ['.NotaCritica']],
-                ['Reseña bibliográfica', ['#ResenaBibliografica_div']]
+                ['*', ['#tipoPublicacion_field']],
+                ['Reseña bibliográfica', ['#resenaBibliografica_field']]
             ]
         );
 
     $('#TipoResena')[0].dynamic.setup();
+
+    $('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['#EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#ResenaTraducida').dynamicui(
+        [
+            ['1', ['#idioma_field']]
+        ]
+    );
+
+    $('#ResenaTraducida')[0].dynamic.setup();
 }
 
 function tesisDirigidaSetup() {

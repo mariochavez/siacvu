@@ -12,19 +12,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
-        readonly IProyectoService proyectoService;
-
-
+        readonly IAutorResenaMapper autorResenaMapper;
+        
         public ResenaMapper(IRepository<Resena> repository, ICatalogoService catalogoService, 
                             ICoautorExternoResenaMapper coautorExternoResenaMapper, 
                             ICoautorInternoResenaMapper coautorInternoResenaMapper,
-                            IProyectoService proyectoService)
+                            IAutorResenaMapper autorResenaMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
-            this.proyectoService = proyectoService;
+            this.autorResenaMapper = autorResenaMapper;
         }
 
         protected override int GetIdFromMessage(ResenaForm message)
@@ -34,25 +33,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(ResenaForm message, Resena model)
         {
-            model.ReferenciaBibliograficaLibro = message.ReferenciaBibliograficaLibro;
-            model.ReferenciaBibliograficaRevista = message.ReferenciaBibliograficaRevista;
+            model.Numero = message.Numero;
+            model.Volumen = message.Volumen;
+            model.ResenaTraducida = message.ResenaTraducida;
+            model.PosicionAutor = message.PosicionAutor;
             model.NombreProducto = message.NombreProducto;
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
             model.TituloLibro = message.TituloLibro;
-            model.NombreRevista = message.NombreRevista;
             model.Editorial = message.Editorial;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            
-            model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
+            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+
+            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
-            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
+            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
@@ -78,36 +82,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
+            AutorResenaForm[] autores)
         {
             var model = Map(message, usuario, periodo, investigador);
-
-            if (coautoresExternos != null)
+            
+            foreach (var coautorExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoResenaMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoResenaMapper.Map(coautorExterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
+            }
+        
+            foreach (var coautorInterno in coautoresInternos)
+            {
+                var coautor =
+                    coautorInternoResenaMapper.Map(coautorInterno);
+
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
+
+                model.AddCoautorInterno(coautor);
             }
 
-            if (coautoresInternos != null)
+            foreach (var autorResena in autores)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoResenaMapper.Map(coautorInterno);
+                var autor =
+                    autorResenaMapper.Map(autorResena);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddAutor(autor);
             }
 
             return model;

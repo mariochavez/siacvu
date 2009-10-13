@@ -1,12 +1,11 @@
 using System;
-using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-	public class EditorialLibro : Entity, IBaseEntity
+    public class AutorResena : Entity, IBaseEntity
     {	
-		public virtual Editorial Editorial { get; set; }
+		public virtual Investigador Investigador { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

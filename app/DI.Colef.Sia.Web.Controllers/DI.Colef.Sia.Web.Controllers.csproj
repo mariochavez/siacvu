@@ -123,9 +123,11 @@
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Catalogos\FormatoPublicacionController.cs" />
+    <Compile Include="Mappers\IAutorResenaMapper.cs" />
     <Compile Include="Mappers\IEditorialLibroMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
+    <Compile Include="Mappers\Impl\AutorResenaMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
     <Compile Include="Mappers\Impl\FormatoPublicacionMapper.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
+    <Compile Include="Models\AutorResenaForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
     <Compile Include="Models\EditorialLibroForm.cs" />
     <Compile Include="Models\FormatoPublicacionForm.cs" />

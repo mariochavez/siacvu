@@ -11,72 +11,46 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ResenaValidator]
     public class Resena : Entity, IBaseEntity
     {
+        const int tipoProducto = 12; // 12 Representa Resena
+
         public Resena()
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
             CoautorInternoResenas = new List<CoautorInternoResena>();
+            AutoresResenas = new List<AutorResena>();
         }
 
-        public virtual void AddCoautorExterno(CoautorExternoResena coautorExternoResena)
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoResena.TipoProducto = 12; // 12 Representa Resena
-            CoautorExternoResenas.Add(coautorExternoResena);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoResenas.Add((CoautorExternoResena)coautorExterno);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoResena coautorInternoResena)
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoResena.TipoProducto = 12; // 12 Representa Resena
-            CoautorInternoResenas.Add(coautorInternoResena);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoResenas.Add((CoautorInternoResena)coautorInterno);
         }
 
-        public virtual TipoResena TipoResena { get; set; }
+        public virtual void AddAutor(AutorResena autorResena)
+        {
+            AutoresResenas.Add(autorResena);
+        }
 
-        public virtual EstadoProducto EstadoProducto { get; set; }
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoResenas.Remove((CoautorInternoResena)coautorInterno);
+        }
 
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoResenas.Remove((CoautorExternoResena)coautorExterno);
+        }
 
-        public virtual DateTime FechaAceptacion { get; set; }
-
-        public virtual Proyecto Proyecto { get; set; }
-
-        public virtual LineaTematica LineaTematica { get; set; }
-
-        public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
-
-        public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
-
-        public virtual string ReferenciaBibliograficaLibro { get; set; }
-
-        public virtual string ReferenciaBibliograficaRevista { get; set; }
-
-        [DomainSignature]
-        public virtual string NombreProducto { get; set; }
-
-        public virtual Pais Pais { get; set; }
-
-        public virtual int PaginaInicial { get; set; }
-
-        public virtual int PaginaFinal { get; set; }
-
-        public virtual string TituloLibro { get; set; }
-
-        public virtual string NombreRevista { get; set; }
-
-        public virtual string Editorial { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
-
-        public virtual Area Area { get; set; }
-
-        public virtual Disciplina Disciplina { get; set; }
-
-        public virtual Subdisciplina Subdisciplina { get; set; }
+        public virtual void DeleteAutor(AutorResena autorResena)
+        {
+            AutoresResenas.Remove(autorResena);
+        }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }
@@ -84,6 +58,68 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
+
+        [DomainSignature]
+        public virtual string NombreProducto { get; set; }
+
+        public virtual TipoResena TipoResena { get; set; }
+
+        public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
+
+        public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
+
+        public virtual int PosicionAutor { get; set; }
+
+        public virtual string TituloLibro { get; set; }
+
+        [Valid]
+        public virtual IList<AutorResena> AutoresResenas { get; private set; }
+
+        public virtual DateTime FechaEdicion { get; set; }
+
+        public virtual Institucion Institucion { get; set; }
+        
+        public virtual string Editorial { get; set; }
+
+        public virtual Pais Pais { get; set; }
+
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+
+        public virtual LineaTematica LineaTematica { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
+        public virtual EstadoProducto EstadoProducto { get; set; }
+
+        public virtual DateTime FechaAceptacion { get; set; }
+
+        public virtual DateTime FechaPublicacion { get; set; }
+        
+        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
+
+        public virtual string Volumen { get; set; }
+
+        public virtual int Numero { get; set; }
+        
+        public virtual int PaginaInicial { get; set; }
+
+        public virtual int PaginaFinal { get; set; }
+
+        public virtual bool ResenaTraducida { get; set; }
+
+        public virtual Idioma Idioma { get; set; }
+
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
         public virtual int Puntuacion { get; set; }
 
