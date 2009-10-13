@@ -40,6 +40,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= ValidateFechas(distincion, constraintValidatorContext);
 
+            if(distincion.Ambito != null)
+                isValid &= ValidateAmbitoDistincion(distincion, constraintValidatorContext);
+
             return isValid;
         }
 
@@ -59,6 +62,70 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 constraintValidatorContext.AddInvalid(
                     "el año no puede estar en el futuro|FechaOtorgamiento", "FechaOtorgamiento");
                 isValid = false;
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
+        }
+
+        private bool ValidateAmbitoDistincion(Distincion distincion, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            var lowerCaseName = distincion.Ambito.Nombre.ToLower();
+
+            //Ambito - estatal
+            if (lowerCaseName.Contains("estatal"))
+            {
+                if (distincion.Pais == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el país|Pais", "Pais");
+
+                    isValid = false;
+                }
+
+                if (distincion.EstadoPais == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el estado|EstadoPais", "EstadoPais");
+
+                    isValid = false;
+                }
+            }
+
+            //Ambito - local
+            if (lowerCaseName.Contains("local"))
+            {
+                if (distincion.Pais == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el país|Pais", "Pais");
+
+                    isValid = false;
+                }
+
+                if (distincion.Municipio == "")
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser nulo, vacío o cero|Municipio", "Municipio");
+
+                    isValid = false;
+                }
+            }
+
+            //Ambito - nacional y regional
+            if (lowerCaseName.Contains("nacional") || lowerCaseName.Contains("regional"))
+            {
+                if (distincion.Pais == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el país|Pais", "Pais");
+
+                    isValid = false;
+                }
             }
 
             if (!isValid)

@@ -65,6 +65,41 @@ function dictamenSetup() {
     $('#TipoDictamen')[0].dynamic.setup();
 }
 
+function distincionSetup() {
+
+    $('#Ambito').dynamicui(
+            [
+                ['Estatal', ['#ambitoestatal']],
+                ['Local', ['#ambitolocal']]
+            ]
+        );
+
+    $('#Ambito')[0].dynamic.setup();
+
+    CheckOptions.setup();
+}
+
+var CheckOptions = {
+    setup: function() {
+        $('#forma').unload(CheckOptions.verifyOptions());
+        $('#Ambito').change(CheckOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText = $('#Ambito :selected').text();
+
+        if (comboText == "Binacional" || comboText == "Internacional" || comboText == "Seleccione ...") {
+            $('#ambitopais').slideUp('fast', function() {
+                $('#ambitopais').fadeOut('fast');
+            });
+        }
+        else {
+            $('#ambitopais').slideDown('fast', function() {
+                $('#ambitopais').fadeIn('fast');
+            });
+        }
+    }
+};
+
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [

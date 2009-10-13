@@ -45,10 +45,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (dictamen.TipoDictamen != null)
             {
-                var upperCaseName = dictamen.TipoDictamen.Nombre.ToLower();
+                var lowerCaseName = dictamen.TipoDictamen.Nombre.ToLower();
 
                 //Tipo Dictamen - Articulo
-                if (upperCaseName.Contains("artículo"))
+                if (lowerCaseName.Contains("artículo"))
                 {
                     if (dictamen.RevistaPublicacion == null)
                     {
@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
 
                 //Tipo Dictamen - Capitulo en libro y Libro
-                if (upperCaseName.Contains("libro"))
+                if (lowerCaseName.Contains("libro"))
                 {
                     if (dictamen.Editorial == null)
                     {
@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
 
                 //Tipo Dictamen - Proyecto de investigacion CONACyT
-                if (upperCaseName.Contains("proyecto"))
+                if (lowerCaseName.Contains("proyecto"))
                 {
                     if (dictamen.FondoConacyt == null)
                     {
