@@ -48,6 +48,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        distincionSetup();
     });
 </script>
 </asp:Content>

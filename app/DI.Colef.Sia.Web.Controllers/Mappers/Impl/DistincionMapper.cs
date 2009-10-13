@@ -24,6 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(DistincionForm message, Distincion model)
         {
+            model.Titulo = message.Titulo;
             model.Descripcion = message.Descripcion;
             model.FechaOtorgamiento = message.FechaOtorgamiento.FromShortDateToDateTime();
             model.Municipio = message.Municipio;

@@ -65,6 +65,41 @@ function dictamenSetup() {
     $('#TipoDictamen')[0].dynamic.setup();
 }
 
+function distincionSetup() {
+
+    $('#Ambito').dynamicui(
+            [
+                ['Estatal', ['#ambitoestatal']],
+                ['Local', ['#ambitolocal']]
+            ]
+        );
+
+    $('#Ambito')[0].dynamic.setup();
+
+    CheckOptions.setup();
+}
+
+var CheckOptions = {
+    setup: function() {
+        $('#forma').unload(CheckOptions.verifyOptions());
+        $('#Ambito').change(CheckOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText = $('#Ambito :selected').text();
+
+        if (comboText == "Binacional" || comboText == "Internacional" || comboText == "Seleccione ...") {
+            $('#ambitopais').slideUp('fast', function() {
+                $('#ambitopais').fadeOut('fast');
+            });
+        }
+        else {
+            $('#ambitopais').slideDown('fast', function() {
+                $('#ambitopais').fadeIn('fast');
+            });
+        }
+    }
+};
+
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [
@@ -145,7 +180,7 @@ function reporteSetup() {
     $('#TipoReporte').dynamicui(
             [
                 ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico', '.notieneproyecto_field']],
+                ['Reporte técnico', ['.ReporteTecnico']],
                 ['*', ['.ReporteCuaderno']]
             ]
         );
@@ -157,15 +192,40 @@ function reporteSetup() {
 
 var Uncheck = {
     setup: function() {
+        $('#forma').unload(Uncheck.verifyOptions());
         $('#TipoReporte').change(Uncheck.uncheckOption);
     },
     uncheckOption: function() {
-        var value = $('#TipoReporte :selected').text();
+        var comboId = '#' + $(this).attr('id');
+        var value = $(comboId + ' :selected').text();
 
-        if (value != 'Reporte técnico')
+        if (value != 'Reporte técnico') {
             $('#TieneProyecto').attr('checked', false);
 
-        reporteSetup();
+            if (!$('#TieneProyecto').attr('checked')) {
+                $('.tieneproyecto_field').hide();
+            }
+
+            $('.notieneproyecto_field').hide();
+        }
+        else {
+            $('.notieneproyecto_field').show();
+        }
+    },
+    verifyOptions: function() {
+        var checked = $('#TieneProyecto').attr('checked');
+        var value = $('#TipoReporte :selected').text();
+
+        if (value == 'Reporte técnico') {
+            if (checked == true) {
+                $('.notieneproyecto_field').hide();
+            }
+        }
+        else {
+            if (checked == false) {
+                $('.notieneproyecto_field').hide();
+            }
+        }
     }
 };
 

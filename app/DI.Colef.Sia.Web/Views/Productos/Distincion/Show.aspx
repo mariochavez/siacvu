@@ -54,7 +54,7 @@
                     <strong><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Descripci&oacute;n</label>
+                    <label>Descripci&oacute;n de la distinci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.Descripcion)%>&nbsp;</strong>
                 </p>
                 <p>
@@ -62,7 +62,7 @@
                     <strong><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
-                    <label>Instituci&oacute;n</label>
+                    <label>Instituci&oacute;n otorgante</label>
                     <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>

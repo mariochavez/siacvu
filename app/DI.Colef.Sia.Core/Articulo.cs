@@ -74,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Numero { get; set; }
 
+        [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
         public virtual int PaginaInicial { get; set; }

@@ -53,8 +53,16 @@
 	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
                 </p>
                 <p>
-	                <label>Instituci&oacute;n</label>
+	                <label>Instituci&oacute;n de la revista</label>
 	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+	                <label>Editorial</label>
+	                <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+	                <label>Instituci&oacute;n de la editorial</label>
+	                <strong><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Tipo de proyecto</label>

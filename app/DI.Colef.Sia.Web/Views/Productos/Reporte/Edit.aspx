@@ -45,21 +45,34 @@
                     <%= Html.Encode(Model.Form.SedeNombre)%>
                 </p>
                 
-                <% Html.RenderPartial("_DatosReporte", Model.Form); %>
-                
+                <h4>Datos del reporte t&eacute;cnico</h4>                
+                <p>
+                    <label>Nombre del reporte</label>
+                    <%=Html.TextArea("Titulo", Model.Form.Titulo, 3, 35, new { @class = "input420-bold-requerido", maxlength = 200 })%>    
+                    <span class="cvu"></span>
+                    <%=Html.ValidationMessage("Titulo")%>
+                </p>
+                <p>
+                    <label>Tipo de reporte</label>
+                    <%=Html.DropDownList("TipoReporte", Model.Form.TiposReportes.CreateSelectList<TipoReporteForm>("Id", "Nombre"),
+                                "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("TipoReporte") %>
+                </p>
+
                 <h4>Coautores<span class="cvu"></span></h4>
 			    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
                 <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id } ); %>
                 <p>
                     <label>Autores</label>
                     <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+                    <span class="cvu"></span>
                 </p>
+
+                <% Html.RenderPartial("_DatosReporte", Model.Form); %>
                 
-                <h4>Referencia bibliogr&aacute;fica</h4>
+                <h4 class="ReporteTecnico">Tem&aacute;tica del reporte t&eacute;cnico</h4>
+                <h4 class="CuadernoTrabajo">Referencia bibliogr&aacute;fica</h4>                
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                
-                <h4>Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar")%>

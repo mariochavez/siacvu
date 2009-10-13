@@ -5,6 +5,7 @@
 	<label>Posici&oacute;n del autor</label>
     <%=Html.TextBox("PosicionAutor", Model.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
 	<span class="cvu"></span>
+	<%=Html.ValidationMessage("PosicionAutor")%>
 </p>
 <p>
     <label>Nombre de la revista</label>

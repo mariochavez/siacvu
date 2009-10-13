@@ -92,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual bool TieneProyecto { get; set; }
 
+        [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
         [Valid]
