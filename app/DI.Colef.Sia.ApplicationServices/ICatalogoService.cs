@@ -497,5 +497,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Editorial[] GetAllEditorials();
         Editorial[] GetActiveEditorials();
         void SaveEditorial(Editorial editorial);
+
+        //Vinculacion APyD
+        VinculacionAPyD GetVinculacionAPyDById(int id);
+        VinculacionAPyD[] GetAllVinculacionAPyDs();
+        VinculacionAPyD[] GetActiveVinculacionAPyDs();
+        void SaveVinculacionAPyD(VinculacionAPyD vinculacionAPyD);
     }
 }

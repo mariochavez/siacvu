@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,10 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class TesisDirigidaService : ITesisDirigidaService
     {
         readonly IRepository<TesisDirigida> tesisDirigidaRepository;
+        readonly IAlumnoQuerying alumnoQuerying;
 
-        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository)
+        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository, IAlumnoQuerying alumnoQuerying)
         {
             this.tesisDirigidaRepository = tesisDirigidaRepository;
+            this.alumnoQuerying = alumnoQuerying;
         }
 
         public TesisDirigida GetTesisDirigidaById(int id)
@@ -45,6 +48,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	    public TesisDirigida[] GetAllTesisDirigidas(Usuario usuario)
 	    {
             return ((List<TesisDirigida>)tesisDirigidaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+	    }
+
+	    public Alumno[] FindActiveAlumnos()
+	    {
+            return alumnoQuerying.FindActiveAlumnos();
 	    }
     }
 }

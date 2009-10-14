@@ -10,13 +10,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [TesisDirigidaValidator]
     public class TesisDirigida : Entity, IBaseEntity
     {
+        public virtual int TipoEstudiante { get; set; }
+
         [DomainSignature]
-		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }
+
+        public virtual VinculacionAPyD VinculacionAPyD { get; set; }
+
+        public virtual FormaParticipacion FormaParticipacion { get; set; }
 
 		public virtual DateTime FechaConclusion { get; set; }
 
-		//public virtual string Autor { get; set; }
+        public virtual bool Concluida { get; set; }
+
+        public virtual Alumno Alumno { get; set; }
 
         public virtual string NombreAlumno { get; set; }
 
@@ -28,21 +35,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Pais Pais { get; set; }
 
-		public virtual FormaParticipacion FormaParticipacion { get; set; }
-
 		public virtual Institucion Institucion { get; set; }
-
-		public virtual ProgramaEstudio ProgramaEstudio { get; set; }
-
-		public virtual LineaTematica LineaTematica { get; set; }
 
 		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
 
 		public virtual Sector Sector { get; set; }
 
-		public virtual Dependencia Dependencia { get; set; }
+		public virtual Organizacion Organizacion { get; set; }
 
-		public virtual Departamento Departamento { get; set; }
+		public virtual Nivel Nivel2 { get; set; }
 
 		public virtual Area Area { get; set; }
 

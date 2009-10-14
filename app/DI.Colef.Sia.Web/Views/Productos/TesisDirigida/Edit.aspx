@@ -45,9 +45,17 @@
                     <%= Html.Encode(Model.Form.SedeNombre)%>
                 </p>
                 
+                <h4>Participaci&oacute;n en tesis</h4>
+                <p>
+                    <label>Tipo de alumno</label>
+                    <%=Html.DropDownList("TipoEstudiante", Model.Form.TiposEstudiantes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                                "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("TipoEstudiante")%>
+                </p>
+                
                 <% Html.RenderPartial("_DatosTesis", Model.Form); %>
 
-                <h4>Opcionales</h4>
+                <h4>Complementaria CVU</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">
@@ -61,7 +69,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
-        tesisDirigidaSetup();
+        tesisSetup();
     });
 </script>
 </asp:Content>

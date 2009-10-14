@@ -12,6 +12,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string NombreAlumno { get; set; }
         public string DepartamentoInvestigadorNombre { get; set; }
         public string SedeNombre { get; set; }
+        public bool Concluida { get; set; }
+
+        public int TipoEstudiante { get; set; }
+        //public int TipoEstudianteId { get; set; }
+        //public string TipoEstudianteNombre { get; set; }
+
+        public int VinculacionAPyD { get; set; }
+        public int VinculacionAPyDId { get; set; }
+        public string VinculacionAPyDNombre { get; set; }
 
         public int GradoAcademico { get; set; }
         public int GradoAcademicoId { get; set; }
@@ -27,24 +36,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
-
-        public int ProgramaEstudioId { get; set; }
-        public string ProgramaEstudioNombre { get; set; }
-
-        public int LineaTematicaId { get; set; }
-        public string LineaTematicaNombre { get; set; }
+        public string InstitucionPaisNombre { get; set; }
 
         public int Sector { get; set; }
         public int SectorId { get; set; }
         public string SectorNombre { get; set; }
 
-        public int Dependencia { get; set; }
-        public int DependenciaId { get; set; }
-        public string DependenciaNombre { get; set; }
+        public int Organizacion { get; set; }
+        public int OrganizacionId { get; set; }
+        public string OrganizacionNombre { get; set; }
 
-        public int Departamento { get; set; }
-        public int DepartamentoId { get; set; }
-        public string DepartamentoNombre { get; set; }
+        public int Nivel2 { get; set; }
+        public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
 
         public int Area { get; set; }
         public int AreaId { get; set; }
@@ -60,15 +64,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string PeriodoReferenciaPeriodo { get; set; }
 
+        public int Alumno { get; set; }
+        public int AlumnoId { get; set; }
+        public string AlumnoNombre { get; set; }
+        public string AlumnoProgramaEstudioNombre { get; set; }
+        public string AlumnoGradoAcademicoNombre { get; set; }
+
         /* Catalogos */
+        public AlumnoForm[] Alumnos { get; set; }
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public PaisForm[] Paises { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }
         public SectorForm[] Sectores { get; set; }
-        public DependenciaForm[] Dependencias { get; set; }
-        public DepartamentoForm[] Departamentos { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles2 { get; set; }
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public CustomSelectForm[] TiposEstudiantes { get; set; }
+        public VinculacionAPyDForm[] VinculacionesAPyDs { get; set; }
     }
 }

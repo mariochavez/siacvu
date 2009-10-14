@@ -65,6 +65,74 @@ function dictamenSetup() {
     $('#TipoDictamen')[0].dynamic.setup();
 }
 
+function tesisSetup() {
+    $('#TipoEstudiante').dynamicui(
+            [
+                ['Interno', ['.AlumnoInterno']],
+                ['Externo', ['.AlumnoExterno']],
+                ['*', ['.AlumnoInternoExterno']]
+            ]
+        );
+
+    $('#TipoEstudiante')[0].dynamic.setup();
+
+    $('#Concluida').dynamicui(
+        [
+            ['1', ['#TesisConcluida']]
+        ]
+    );
+
+    $('#Concluida')[0].dynamic.setup();
+
+    CheckTesisOptions.setup();
+}
+
+var CheckTesisOptions = {
+    setup: function() {
+        $('#forma').unload(CheckTesisOptions.verifyOptions());
+        $('#TipoEstudiante').change(CheckTesisOptions.uncheckOption);
+    },
+    uncheckOption: function() {
+        var value = $('#TipoEstudiante :selected').text();
+
+        if (value == 'Seleccione ...') {
+            $('#Concluida').attr('checked', false);
+
+            if (!$('#Concluida').attr('checked')) {
+                $('#TesisConcluida').hide();
+            }
+        }
+
+        CheckTesisOptions.verifyFormaParticipacion(value);
+    },
+    verifyOptions: function() {
+        var checked = $('#Concluida').attr('checked');
+        var value = $('#TipoEstudiante :selected').text();
+
+        if (value == 'Seleccione ...') {
+            if (checked == true) {
+                $('#TesisConcluida').hide();
+            }
+        }
+        else {
+            CheckTesisOptions.verifyFormaParticipacion(value);
+
+            if (checked == false) {
+                $('#TesisConcluida').hide();
+            }
+        }
+    },
+    verifyFormaParticipacion: function(value) {
+        if (value == 'Externo') {
+            $('#FormaParticipacion').removeClass("requerido");
+        }
+        else {
+            $('#FormaParticipacion').addClass("requerido");
+        }
+    }
+};
+
+
 function distincionSetup() {
 
     $('#Ambito').dynamicui(
@@ -76,13 +144,13 @@ function distincionSetup() {
 
     $('#Ambito')[0].dynamic.setup();
 
-    CheckOptions.setup();
+    CheckDistincionOptions.setup();
 }
 
-var CheckOptions = {
+var CheckDistincionOptions = {
     setup: function() {
-        $('#forma').unload(CheckOptions.verifyOptions());
-        $('#Ambito').change(CheckOptions.verifyOptions);
+        $('#forma').unload(CheckDistincionOptions.verifyOptions());
+        $('#Ambito').change(CheckDistincionOptions.verifyOptions);
     },
     verifyOptions: function() {
         var comboText = $('#Ambito :selected').text();
@@ -255,16 +323,6 @@ function resenaSetup() {
     );
 
     $('#ResenaTraducida')[0].dynamic.setup();
-}
-
-function tesisDirigidaSetup() {
-    $('#GradoAcademico').dynamicui(
-            [
-                ['*', ['#FechaGrado_p']]
-            ]
-        );
-
-    $('#GradoAcademico')[0].dynamic.setup();
 }
 
 function proyectoSetup() {

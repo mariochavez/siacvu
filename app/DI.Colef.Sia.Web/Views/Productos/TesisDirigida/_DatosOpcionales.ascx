@@ -2,21 +2,21 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Sector</label>
-    <%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
-    <span class="cvu"></span>
+	<label>Sector</label>
+	<%=Html.DropDownList("Sector", Model.Sectores.CreateSelectList<SectorForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeSector") })%>
+	<span class="cvu"></span>	
 </p>
 <p>
-    <label>Dependencia</label>
-    <%=Html.DropDownList("Dependencia", Model.Dependencias.CreateSelectList<DependenciaForm>("Id", "Nombre"),
-		    "Seleccione ...")%>
-    <span class="cvu"></span>
+	<label>Organizaci&oacute;n</label>
+	<%=Html.DropDownList("Organizacion", Model.Organizaciones.CreateSelectList<OrganizacionForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeOrganizacion") })%>
+	<span class="cvu"></span>	
 </p>
 <p>
-    <label>Departamento</label>
-    <%=Html.DropDownList("Departamento", Model.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
-	        "Seleccione ...")%>
+	<label>2do. Nivel</label>
+    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeNivel2") })%>
     <span class="cvu"></span>
 </p>
 <p>

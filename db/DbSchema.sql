@@ -1039,6 +1039,10 @@ alter table MedioElectronicos  drop constraint FKC3FA1F2185102A57
 alter table MedioElectronicos  drop constraint FKC3FA1F2174E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C7A8488F7]') AND parent_object_id = OBJECT_ID('Instituciones'))
+alter table Instituciones  drop constraint FK7E69627C7A8488F7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C85102A57]') AND parent_object_id = OBJECT_ID('Instituciones'))
 alter table Instituciones  drop constraint FK7E69627C85102A57
 
@@ -1343,6 +1347,18 @@ alter table Dictamenes  drop constraint FKE29ADD7B85102A57
 alter table Dictamenes  drop constraint FKE29ADD7B74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31184B302FF]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD31184B302FF
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311103EADB1]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311103EADB1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31160EB5201]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD31160EB5201
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3119CF67963]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
 alter table TesisDirigidas  drop constraint FKEF4DD3119CF67963
 
@@ -1351,20 +1367,8 @@ alter table TesisDirigidas  drop constraint FKEF4DD3119CF67963
 alter table TesisDirigidas  drop constraint FKEF4DD3117A8488F7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311103EADB1]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD311103EADB1
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31164F7D1CD]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
 alter table TesisDirigidas  drop constraint FKEF4DD31164F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3115ECF193D]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD3115ECF193D
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3111EDC2D3B]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD3111EDC2D3B
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31111666E2A]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
@@ -1375,12 +1379,12 @@ alter table TesisDirigidas  drop constraint FKEF4DD31111666E2A
 alter table TesisDirigidas  drop constraint FKEF4DD3113E082BED
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31188D0C162]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD31188D0C162
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311EC222BA6]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311EC222BA6
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3117D866EAB]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD3117D866EAB
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311C8628149]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311C8628149
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311295BC133]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
@@ -2351,6 +2355,22 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC85102A57]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
+alter table VinculacionAPyDes  drop constraint FK9D4AA1BC85102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC74E8BAB7]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
+alter table VinculacionAPyDes  drop constraint FK9D4AA1BC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC8B99C795ECF193D]') AND parent_object_id = OBJECT_ID('Alumnos'))
+alter table Alumnos  drop constraint FKC8B99C795ECF193D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC8B99C799CF67963]') AND parent_object_id = OBJECT_ID('Alumnos'))
+alter table Alumnos  drop constraint FKC8B99C799CF67963
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2630,6 +2650,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Departamentos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Departamentos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'VinculacionAPyDes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table VinculacionAPyDes
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Alumnos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Alumnos
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3515,6 +3539,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3772,24 +3797,26 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table TesisDirigidas (
         Id INT IDENTITY NOT NULL,
+       TipoEstudiante INT null,
        Titulo NVARCHAR(255) null,
        FechaConclusion DATETIME null,
+       Concluida BIT null,
        NombreAlumno NVARCHAR(255) null,
        FechaGrado DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       VinculacionAPyDFk INT null,
+       FormaParticipacionFk INT null,
+       AlumnoFk INT null,
        GradoAcademicoFk INT null,
        PaisFk INT null,
-       FormaParticipacionFk INT null,
        InstitucionFk INT null,
-       ProgramaEstudioFk INT null,
-       LineaTematicaFk INT null,
        PeriodoReferenciaFk INT null,
        SectorFk INT null,
-       DependenciaFk INT null,
-       DepartamentoFk INT null,
+       OrganizacionFk INT null,
+       Nivel2Fk INT null,
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
@@ -4605,6 +4632,25 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
+       primary key (Id)
+    )
+
+    create table VinculacionAPyDes (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Alumnos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       ProgramaEstudioFk INT null,
+       GradoAcademicoFk INT null,
        primary key (Id)
     )
 
@@ -5909,6 +5955,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table Instituciones 
+        add constraint FK7E69627C7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table Instituciones 
         add constraint FK7E69627C85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -6289,6 +6340,21 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table TesisDirigidas 
+        add constraint FKEF4DD31184B302FF 
+        foreign key (VinculacionAPyDFk) 
+        references VinculacionAPyDes
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311103EADB1 
+        foreign key (FormaParticipacionFk) 
+        references FormaParticipaciones
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD31160EB5201 
+        foreign key (AlumnoFk) 
+        references Alumnos
+
+    alter table TesisDirigidas 
         add constraint FKEF4DD3119CF67963 
         foreign key (GradoAcademicoFk) 
         references GradoAcademicos
@@ -6299,24 +6365,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Paises
 
     alter table TesisDirigidas 
-        add constraint FKEF4DD311103EADB1 
-        foreign key (FormaParticipacionFk) 
-        references FormaParticipaciones
-
-    alter table TesisDirigidas 
         add constraint FKEF4DD31164F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
-
-    alter table TesisDirigidas 
-        add constraint FKEF4DD3115ECF193D 
-        foreign key (ProgramaEstudioFk) 
-        references ProgramaEstudios
-
-    alter table TesisDirigidas 
-        add constraint FKEF4DD3111EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
 
     alter table TesisDirigidas 
         add constraint FKEF4DD31111666E2A 
@@ -6329,14 +6380,14 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Sectores
 
     alter table TesisDirigidas 
-        add constraint FKEF4DD31188D0C162 
-        foreign key (DependenciaFk) 
-        references Dependencias
+        add constraint FKEF4DD311EC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
 
     alter table TesisDirigidas 
-        add constraint FKEF4DD3117D866EAB 
-        foreign key (DepartamentoFk) 
-        references Departamentos
+        add constraint FKEF4DD311C8628149 
+        foreign key (Nivel2Fk) 
+        references Niveles
 
     alter table TesisDirigidas 
         add constraint FKEF4DD311295BC133 
@@ -7547,3 +7598,23 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+
+    alter table VinculacionAPyDes 
+        add constraint FK9D4AA1BC85102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table VinculacionAPyDes 
+        add constraint FK9D4AA1BC74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Alumnos 
+        add constraint FKC8B99C795ECF193D 
+        foreign key (ProgramaEstudioFk) 
+        references ProgramaEstudios
+
+    alter table Alumnos 
+        add constraint FKC8B99C799CF67963 
+        foreign key (GradoAcademicoFk) 
+        references GradoAcademicos

@@ -525,15 +525,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Sector,
                            o => o.Ignore())
-                .ForMember(d => d.Dependencia,
+                .ForMember(d => d.Organizacion,
                            o => o.Ignore())
-                .ForMember(d => d.Departamento,
+                .ForMember(d => d.Nivel2,
                            o => o.Ignore())
                 .ForMember(d => d.Area,
                            o => o.Ignore())
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
+                           o => o.Ignore())
+                .ForMember(d => d.VinculacionAPyD,
+                           o => o.Ignore())
+                .ForMember(d => d.Alumno,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<Alumno, AlumnoForm>()
+                .ForMember(d => d.ProgramaEstudio,
+                           o => o.Ignore())
+                .ForMember(d => d.GradoAcademico,
                            o => o.Ignore());
         }
 
@@ -836,9 +846,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoArticulo, TipoArticuloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Institucion, InstitucionForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Pais,
+                           o => o.Ignore());
+
+
             Mapper.CreateMap<Indice, IndiceForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -1091,6 +1106,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Pais,
                            o => o.Ignore());
+
+            Mapper.CreateMap<VinculacionAPyD, VinculacionAPyDForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

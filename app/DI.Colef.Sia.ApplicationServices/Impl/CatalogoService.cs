@@ -93,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoProducto> tipoProductoRepository;
         readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
         readonly IRepository<Reimpresion> reimpresionRepository;
+        readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
 
         public CatalogoService(IRepository<Cargo> cargoRepository,
             IRepository<TipoProyecto> tipoProyectoRepository,
@@ -174,7 +175,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<Proyecto> proyectoRepository,
             IRepository<TipoProducto> tipoProductoRepository,
             IRepository<FormatoPublicacion> formatoPublicacionRepository,
-            IRepository<Reimpresion> reimpresionRepository)
+            IRepository<Reimpresion> reimpresionRepository,
+            IRepository<VinculacionAPyD> vinculacionAPyDRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -256,6 +258,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoProductoRepository = tipoProductoRepository;
             this.formatoPublicacionRepository = formatoPublicacionRepository;
             this.reimpresionRepository = reimpresionRepository;
+            this.vinculacionAPyDRepository = vinculacionAPyDRepository;
         }
 
         protected virtual ISession Session
@@ -2560,6 +2563,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             editorial.ModificadoEl = DateTime.Now;
 
             editorialRepository.SaveOrUpdate(editorial);
+        }
+
+        public VinculacionAPyD GetVinculacionAPyDById(int id)
+        {
+            return vinculacionAPyDRepository.Get(id);
+        }
+
+        public VinculacionAPyD[] GetAllVinculacionAPyDs()
+        {
+            return ((List<VinculacionAPyD>)OrderCatalog<VinculacionAPyD>(x => x.Nombre)).ToArray();
+        }
+
+        public VinculacionAPyD[] GetActiveVinculacionAPyDs()
+        {
+            return ((List<VinculacionAPyD>)OrderCatalog<VinculacionAPyD>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveVinculacionAPyD(VinculacionAPyD vinculacionAPyD)
+        {
+            if (vinculacionAPyD.Id == 0)
+            {
+                vinculacionAPyD.Activo = true;
+                vinculacionAPyD.CreadorEl = DateTime.Now;
+            }
+            vinculacionAPyD.ModificadoEl = DateTime.Now;
+
+            vinculacionAPyDRepository.SaveOrUpdate(vinculacionAPyD);
         }
     }
 }

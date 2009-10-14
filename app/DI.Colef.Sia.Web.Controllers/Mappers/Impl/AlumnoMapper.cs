@@ -5,27 +5,27 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class InstitucionMapper : AutoFormMapper<Institucion, InstitucionForm>, IInstitucionMapper
+    public class AlumnoMapper : AutoFormMapper<Alumno, AlumnoForm>, IAlumnoMapper
     {
         readonly ICatalogoService catalogoService;
-        public InstitucionMapper(IRepository<Institucion> repository, ICatalogoService catalogoService)
+
+        public AlumnoMapper(IRepository<Alumno> repository, ICatalogoService catalogoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
         }
 
-        protected override int GetIdFromMessage(InstitucionForm message)
+        protected override int GetIdFromMessage(AlumnoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(InstitucionForm message, Institucion model)
+        protected override void MapToModel(AlumnoForm message, Alumno model)
         {
             model.Nombre = message.Nombre;
-            model.Responsable = message.Responsable;
-            model.Email = message.Email;
 
-            model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
+            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
         }
     }
 }

@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
+    <Compile Include="Alumno.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
     <Compile Include="Archivo.cs" />
@@ -89,7 +90,9 @@
     <Compile Include="Convenio.cs" />
     <Compile Include="Coordinacion.cs" />
     <Compile Include="Curso.cs" />
+    <Compile Include="DataInterfaces\IAlumnoQuerying.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\AlumnoQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\ISearchQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="TipoResena.cs" />
     <Compile Include="USEG.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="VinculacionAPyD.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NHibernateValidator\SpanishValidatorMessages.resx">

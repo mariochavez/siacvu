@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class InstitucionForm
@@ -10,5 +8,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Email { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
+
+        public PaisForm[] Paises { get; set; }
     }
 }
