@@ -19,6 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoCapitulos = new List<CoautorInternoCapitulo>();
             ResponsableInternoCapitulos = new List<ResponsableInternoCapitulo>();
             ResponsableExternoCapitulos = new List<ResponsableExternoCapitulo>();
+            FirmaCapitulos = new List<FirmaCapitulo>();
+            ArchivoCursos = new List<ArchivoCurso>();
 		}
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -41,6 +43,28 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             responsableExterno.TipoProducto = tipoProducto;
             ResponsableExternoCapitulos.Add((ResponsableExternoCapitulo)responsableExterno);
+        }
+
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaCapitulos.Add((FirmaCapitulo)firma);
+        }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivoCursos.Add((ArchivoCurso)archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivoCursos.Remove((ArchivoCurso)archivo);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaCapitulos.Remove((FirmaCapitulo)firma);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -100,6 +124,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
 		public virtual IList<CoautorInternoCapitulo> CoautorInternoCapitulos { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaCapitulo> FirmaCapitulos { get; private set; }
+
+        [Valid]
+        public virtual IList<ArchivoCurso> ArchivoCursos { get; private set; }
 
 		public virtual string NombreLibro { get; set; }
 
