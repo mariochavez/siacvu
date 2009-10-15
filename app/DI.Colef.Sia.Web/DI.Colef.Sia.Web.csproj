@@ -896,7 +896,7 @@
     <Content Include="Views\Rol\Activate.js.ascx" />
     <Content Include="Views\Rol\Index.aspx" />
     <Content Include="Views\Rol\_Form.ascx" />
-    <Content Include="Views\Shared\_Files.ascx" />
+    <Content Include="Views\Shared\_EditArchivo.ascx" />
     <Content Include="Views\Shared\_ShowSidebar.ascx" />
     <Content Include="Views\Shared\_UserInfo.ascx" />
     <Content Include="Views\Shared\_EditSidebar.ascx" />

@@ -408,11 +408,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloForm();
 
-            form.ArchivoArticulo = new ArchivoForm
-                                       {
-                                           TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos())
-                                       };
-
+            form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
             //Lista de Catalogos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());

@@ -12,6 +12,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoArchivoId { get; set; }
         public string TipoArchivoNombre { get; set; }
 
+        public ArchivoForm[] Archivos { get; set; }
+
+        public int ModelId { get; set; }
+
         public TipoArchivoForm[] TipoArchivos { get; set; }
     }
 }
