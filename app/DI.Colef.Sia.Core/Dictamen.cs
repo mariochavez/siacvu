@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -8,6 +9,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [DictamenValidator]
     public class Dictamen : Entity, IBaseEntity
     {
+        const int tipoProducto = 4; // 4 Representa Dictamen
+
+        public Dictamen()
+        {
+            ArchivoDictamenes = new List<ArchivoDictamen>();
+        }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivoDictamenes.Add((ArchivoDictamen) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivoDictamenes.Remove((ArchivoDictamen) archivo);
+        }
+
+        [Valid]
+        public virtual IList<ArchivoDictamen> ArchivoDictamenes { get; private set; }
+
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 

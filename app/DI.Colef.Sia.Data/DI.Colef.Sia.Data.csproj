@@ -89,6 +89,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NHibernateMaps\Alteration\ArchivoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\ResponsableExternoAlteration.cs" />

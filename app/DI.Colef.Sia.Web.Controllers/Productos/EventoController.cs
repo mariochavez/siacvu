@@ -244,8 +244,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorInternoEventoForm = coautorInternoEventoMapper.Map(coautorInternoEvento);
+            coautorInternoEventoForm.ParentId = eventoId;
 
             return Rjs("AddCoautorInterno", coautorInternoEventoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorInterno(int id, int investigadorId)
+        {
+            var evento = eventoService.GetEventoById(id);
+
+            if (evento != null)
+            {
+                var coautor = evento.CoautorInternoEventos.Where(x => x.Investigador.Id == investigadorId).First();
+                evento.DeleteCoautorInterno(coautor);
+
+                eventoService.SaveEvento(evento);
+            }
+
+            return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -294,8 +313,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var coautorExternoEventoForm = coautorExternoEventoMapper.Map(coautorExternoEvento);
+            coautorExternoEventoForm.ParentId = eventoId;
 
             return Rjs("AddCoautorExterno", coautorExternoEventoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
+        {
+            var evento = eventoService.GetEventoById(id);
+
+            if (evento != null)
+            {
+                var coautor = evento.CoautorExternoEventos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                evento.DeleteCoautorExterno(coautor);
+
+                eventoService.SaveEvento(evento);
+            }
+
+            return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
         EventoForm SetupNewForm()

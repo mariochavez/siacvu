@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -10,6 +11,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [HasUniqueDomainSignature]
     public class Curso : Entity, IBaseEntity
     {
+        const int tipoProducto = 3; // 3 Representa Curso
+
+        public Curso()
+        {
+            ArchivoCursos = new List<ArchivoCurso>();
+        }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivoCursos.Add((ArchivoCurso) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivoCursos.Remove((ArchivoCurso) archivo);
+        }
+
+        [Valid]
+        public virtual IList<ArchivoCurso> ArchivoCursos { get; private set; }
+
         public virtual int TipoCurso { get; set; }
 
         public virtual bool EsDiplomado { get; set; }

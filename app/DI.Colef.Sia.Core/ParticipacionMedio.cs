@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -10,6 +11,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ParticipacionMedioValidator]
     public class ParticipacionMedio : Entity, IBaseEntity
     {
+        const int tipoProducto = 10; // 10 Representa Participacion Medio
+
+        public ParticipacionMedio()
+        {
+            ArchivoParticipacionMedios = new List<ArchivoParticipacionMedio>();
+        }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivoParticipacionMedios.Add((ArchivoParticipacionMedio) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivoParticipacionMedios.Remove((ArchivoParticipacionMedio) archivo);
+        }
+
+        [Valid]
+        public virtual IList<ArchivoParticipacionMedio> ArchivoParticipacionMedios { get; private set; }
+
 		[DomainSignature]
 		[NotNullNotEmpty]
 		public virtual string Titulo { get; set; }

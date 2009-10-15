@@ -11,23 +11,50 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [EventoValidator]
     public class Evento : Entity, IBaseEntity
     {
+        const int tipoProducto = 6; // 6 Representa Evento
+
         public Evento()
         {
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
+            ArchivoEventos = new List<ArchivoEvento>();
         }
 
-        public virtual void AddCoautorExterno(CoautorExternoEvento coautorExternoEvento)
+        public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
-            coautorExternoEvento.TipoProducto = 6; // 6 Representa Evento
-            CoautorExternoEventos.Add(coautorExternoEvento);
+            coautorExterno.TipoProducto = tipoProducto;
+            CoautorExternoEventos.Add((CoautorExternoEvento) coautorExterno);
         }
 
-        public virtual void AddCoautorInterno(CoautorInternoEvento coautorInternoEvento)
+        public virtual void AddCoautorInterno(CoautorInternoProducto coautorInterno)
         {
-            coautorInternoEvento.TipoProducto = 6; // 6 Representa Evento
-            CoautorInternoEventos.Add(coautorInternoEvento);
+            coautorInterno.TipoProducto = tipoProducto;
+            CoautorInternoEventos.Add((CoautorInternoEvento) coautorInterno);
         }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivoEventos.Add((ArchivoEvento)archivo);
+        }
+
+        public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
+        {
+            CoautorInternoEventos.Remove((CoautorInternoEvento) coautorInterno);
+        }
+
+        public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
+        {
+            CoautorExternoEventos.Remove((CoautorExternoEvento) coautorExterno);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivoEventos.Remove((ArchivoEvento)archivo);
+        }
+
+        [Valid]
+        public virtual IList<ArchivoEvento> ArchivoEventos { get; private set; }
 
         [NotNullNotEmpty]
         [DomainSignature]
