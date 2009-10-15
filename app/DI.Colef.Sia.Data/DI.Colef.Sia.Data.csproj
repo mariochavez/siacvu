@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="NHibernateMaps\Alteration\CoautorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorExternoAlteration.cs" />
+    <Compile Include="NHibernateMaps\Alteration\FirmaAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\ResponsableExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\ResponsableInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />

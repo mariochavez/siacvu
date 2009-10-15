@@ -29,7 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(FirmaForm message, Firma model)
         {
             model.TipoProducto = message.TipoProducto;
-		    model.Producto = message.Producto;
 		    model.Firma1 = message.Firma1.FromShortDateToDateTime();
 		    model.Aceptacion1 = message.Aceptacion1;
 		    model.Firma2 = message.Firma2.FromShortDateToDateTime();
