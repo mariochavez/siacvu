@@ -25,6 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.NumeroHoras = message.NumeroHoras;
             model.Nombre = message.Nombre;
+            model.TipoCurso = message.TipoCurso;
+            model.EsDiplomado = message.EsDiplomado;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
@@ -34,13 +36,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-            model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
-            model.Nivel4 = catalogoService.GetNivelById(message.Nivel4);
-            model.Nivel5 = catalogoService.GetNivelById(message.Nivel5);
-
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.Diplomado = catalogoService.GetDiplomadoById(message.Diplomado);
             model.Area = catalogoService.GetAreaById(message.Area);
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);

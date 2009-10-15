@@ -2618,6 +2618,11 @@ insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 
 insert into Editoriales values('Editorial 2',GETDATE(), GETDATE(), 1, 2, 13, 1, 1)
 insert into Editoriales values('Editorial 3',GETDATE(), GETDATE(), 1, 3, 14, 1, 1)
 
+--Valores de prueba
+insert into Diplomados values('Diplomado 1',GETDATE(), GETDATE(), 1, 1, 1)
+insert into Diplomados values('Diplomado 2',GETDATE(), GETDATE(), 1, 1, 1)
+insert into Diplomados values('Diplomado 3',GETDATE(), GETDATE(), 1, 1, 1)
+
 INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
 INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,1,1)

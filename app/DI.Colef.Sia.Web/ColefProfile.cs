@@ -562,13 +562,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Nivel2,
                            o => o.Ignore())
-                .ForMember(d => d.Nivel3,
+                .ForMember(d => d.Diplomado,
                            o => o.Ignore())
                 .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel4,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel5,
                            o => o.Ignore())
                 .ForMember(d => d.Organizacion,
                            o => o.Ignore())
@@ -1106,8 +1102,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Pais,
                            o => o.Ignore());
-
             Mapper.CreateMap<VinculacionAPyD, VinculacionAPyDForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<Diplomado, DiplomadoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

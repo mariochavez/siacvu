@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<Diplomado> diplomadoRepository;
         readonly IRepository<Editorial> editorialRepository;
         readonly IRepository<Edicion> edicionRepository;
         readonly IRepository<DirigidoA> dirigidoARepository;
@@ -130,6 +131,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<TipoParticipacion> tipoParticipacionRepository,
             IRepository<PeriodoReferencia> periodoReferenciaRepository,
             IRepository<Nivel> nivelRepository,
+            IRepository<Diplomado> diplomadoRepository,
             IRepository<Sector> sectorRepository,
             IRepository<ProgramaEstudio> programaEstudioRepository,
             IRepository<RevistaPublicacion> revistaPublicacionRepository,
@@ -242,6 +244,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.estadoProductoRepository = estadoProductoRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
+            this.diplomadoRepository = diplomadoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
             this.tipoResenaRepository = tipoResenaRepository;
             this.tipoApoyoRepository = tipoApoyoRepository;
@@ -2590,6 +2593,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             vinculacionAPyD.ModificadoEl = DateTime.Now;
 
             vinculacionAPyDRepository.SaveOrUpdate(vinculacionAPyD);
+        }
+
+        public Diplomado GetDiplomadoById(int id)
+        {
+            return diplomadoRepository.Get(id);
+        }
+
+        public Diplomado[] GetAllDiplomados()
+        {
+            return ((List<Diplomado>)OrderCatalog<Diplomado>(x => x.Nombre)).ToArray();
+        }
+
+        public Diplomado[] GetActiveDiplomados()
+        {
+            return ((List<Diplomado>)OrderCatalog<Diplomado>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveDiplomado(Diplomado diplomado)
+        {
+            if (diplomado.Id == 0)
+            {
+                diplomado.Activo = true;
+                diplomado.CreadorEl = DateTime.Now;
+            }
+            diplomado.ModificadoEl = DateTime.Now;
+
+            diplomadoRepository.SaveOrUpdate(diplomado);
         }
     }
 }

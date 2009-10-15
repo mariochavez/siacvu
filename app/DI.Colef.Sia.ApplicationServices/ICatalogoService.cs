@@ -503,5 +503,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         VinculacionAPyD[] GetAllVinculacionAPyDs();
         VinculacionAPyD[] GetActiveVinculacionAPyDs();
         void SaveVinculacionAPyD(VinculacionAPyD vinculacionAPyD);
+
+        //Diplomado
+        Diplomado GetDiplomadoById(int id);
+        Diplomado[] GetAllDiplomados();
+        Diplomado[] GetActiveDiplomados();
+        void SaveDiplomado(Diplomado diplomado);
     }
 }

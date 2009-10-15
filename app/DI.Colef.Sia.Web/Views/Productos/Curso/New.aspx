@@ -36,9 +36,17 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
+                <h4>Datos del curso</h4>
+                <p>
+                    <label>Tipo de curso</label>
+                    <%=Html.DropDownList("TipoCurso", Model.Form.TiposCursos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("TipoCurso")%>
+                </p>
+                
                 <% Html.RenderPartial("_DatosCurso", Model.Form); %>
             
-                <h4>Opcionales</h4>
+                <h4>Complementaria CVU</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">

@@ -288,6 +288,11 @@
     <Content Include="Views\Catalogos\Dependencia\Index.aspx" />
     <Content Include="Views\Catalogos\Dependencia\New.aspx" />
     <Content Include="Views\Catalogos\Dependencia\_Form.ascx" />
+    <Content Include="Views\Catalogos\Diplomado\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Diplomado\Edit.aspx" />
+    <Content Include="Views\Catalogos\Diplomado\Index.aspx" />
+    <Content Include="Views\Catalogos\Diplomado\New.aspx" />
+    <Content Include="Views\Catalogos\Diplomado\_Form.ascx" />
     <Content Include="Views\Catalogos\DirigidoA\Activate.js.ascx" />
     <Content Include="Views\Catalogos\DirigidoA\Edit.aspx" />
     <Content Include="Views\Catalogos\DirigidoA\Index.aspx" />
@@ -665,9 +670,6 @@
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
     <Content Include="Views\Productos\Curso\ChangeArea.js.ascx" />
     <Content Include="Views\Productos\Curso\ChangeDisciplina.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeNivel2.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeNivel3.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeNivel4.js.ascx" />
     <Content Include="Views\Productos\Curso\ChangeSector.js.ascx" />
     <Content Include="Views\Productos\Curso\ChangeOrganizacion.js.ascx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
