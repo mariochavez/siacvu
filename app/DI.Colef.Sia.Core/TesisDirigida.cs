@@ -16,12 +16,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public TesisDirigida()
         {
             ArchivoTesisDirigidas = new List<ArchivoTesisDirigida>();
+            FirmaTesisDirigidas = new List<FirmaTesisDirigida>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoTesisDirigidas.Add((ArchivoTesisDirigida) archivo);
+        }
+
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaTesisDirigidas.Add((FirmaTesisDirigida)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaTesisDirigidas.Remove((FirmaTesisDirigida)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -31,6 +43,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoTesisDirigida> ArchivoTesisDirigidas { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaTesisDirigida> FirmaTesisDirigidas { get; private set; }
 
         public virtual int TipoEstudiante { get; set; }
 

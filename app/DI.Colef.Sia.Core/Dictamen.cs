@@ -14,12 +14,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public Dictamen()
         {
             ArchivoDictamenes = new List<ArchivoDictamen>();
+            FirmaDictamenes = new List<FirmaDictamen>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoDictamenes.Add((ArchivoDictamen) archivo);
+        }
+
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaDictamenes.Add((FirmaDictamen)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaDictamenes.Remove((FirmaDictamen)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -29,6 +41,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoDictamen> ArchivoDictamenes { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaDictamen> FirmaDictamenes { get; private set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

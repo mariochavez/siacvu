@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoLibros = new List<CoautorInternoLibro>();
             EditorialLibros = new List<EditorialLibro>();
             ArchivoLibros = new List<ArchivoLibro>();
+            FirmaLibros = new List<FirmaLibro>();
 		}
 
         public virtual void AddEditorial(EditorialLibro editorialLibro)
@@ -44,6 +45,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoLibros.Add((ArchivoLibro)archivo);
         }
 
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaLibros.Add((FirmaLibro)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaLibros.Remove((FirmaLibro)firma);
+        }
+
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
         {
             CoautorInternoLibros.Remove((CoautorInternoLibro)coautorInterno);
@@ -66,6 +78,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoLibro> ArchivoLibros { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaLibro> FirmaLibros { get; private set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

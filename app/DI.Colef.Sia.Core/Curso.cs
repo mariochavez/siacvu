@@ -16,12 +16,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public Curso()
         {
             ArchivoCursos = new List<ArchivoCurso>();
+            FirmaCursos = new List<FirmaCurso>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoCursos.Add((ArchivoCurso) archivo);
+        }
+
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaCursos.Add((FirmaCurso)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaCursos.Remove((FirmaCurso)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -31,6 +43,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoCurso> ArchivoCursos { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaCurso> FirmaCursos { get; private set; }
 
         public virtual int TipoCurso { get; set; }
 

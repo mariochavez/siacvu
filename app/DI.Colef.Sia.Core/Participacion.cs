@@ -16,12 +16,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public Participacion()
         {
             ArchivoParticipaciones = new List<ArchivoParticipacion>();
+            FirmaParticipaciones = new List<FirmaParticipacion>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoParticipaciones.Add((ArchivoParticipacion) archivo);
+        }
+
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaParticipaciones.Add((FirmaParticipacion)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaParticipaciones.Remove((FirmaParticipacion)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -31,6 +43,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoParticipacion> ArchivoParticipaciones { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaParticipacion> FirmaParticipaciones { get; private set; }
 
         [DomainSignature]
 		[NotNullNotEmpty]
