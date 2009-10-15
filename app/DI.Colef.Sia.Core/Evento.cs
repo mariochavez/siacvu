@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             ArchivoEventos = new List<ArchivoEvento>();
+            FirmaEventos = new List<FirmaEvento>();
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -38,6 +39,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoEventos.Add((ArchivoEvento)archivo);
         }
 
+        public virtual void AddFirma(Firma firma)
+        {
+            firma.TipoProducto = tipoProducto;
+            FirmaEventos.Add((FirmaEvento)firma);
+        }
+
+        public virtual void DeleteFirma(Firma firma)
+        {
+            FirmaEventos.Remove((FirmaEvento)firma);
+        }
+
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
         {
             CoautorInternoEventos.Remove((CoautorInternoEvento) coautorInterno);
@@ -55,6 +67,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoEvento> ArchivoEventos { get; private set; }
+
+        [Valid]
+        public virtual IList<FirmaEvento> FirmaEventos { get; private set; }
 
         [NotNullNotEmpty]
         [DomainSignature]

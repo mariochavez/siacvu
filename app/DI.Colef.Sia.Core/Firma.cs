@@ -36,7 +36,67 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual bool Activo { get; set; }
     }
 
+    public class FirmaArticulo : Firma
+    {
+
+    }
+
     public class FirmaCapitulo : Firma
+    {
+
+    }
+
+    public class FirmaCurso : Firma
+    {
+
+    }
+
+    public class FirmaDictamen : Firma
+    {
+
+    }
+
+    public class FirmaDistincion : Firma
+    {
+
+    }
+
+    public class FirmaEvento : Firma
+    {
+
+    }
+
+    public class FirmaLibro : Firma
+    {
+
+    }
+
+    public class FirmaOrganoExterno : Firma
+    {
+
+    }
+
+    public class FirmaParticipacion : Firma
+    {
+
+    }
+
+    public class FirmaParticipacionMedio : Firma
+    {
+
+    }
+
+    public class FirmaReporte : Firma
+    {
+
+    }
+
+    public class FirmaResena : Firma
+    {
+
+    }
+
+    public class FirmaTesisDirigida : Firma
     {
 
     }
