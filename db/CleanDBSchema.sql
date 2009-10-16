@@ -1815,7 +1815,15 @@ alter table CoautorExternos  drop constraint FKFFA20BAC74E8BAB7
 
 
 
-    
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC8B99C795ECF193D]') AND parent_object_id = OBJECT_ID('Alumnos'))
+alter table Alumnos  drop constraint FKC8B99C795ECF193D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC8B99C799CF67963]') AND parent_object_id = OBJECT_ID('Alumnos'))
+alter table Alumnos  drop constraint FKC8B99C799CF67963
+
+
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD884456A72C4C6B8]') AND parent_object_id = OBJECT_ID('UsuarioRol'))
 alter table UsuarioRol  drop constraint FKD884456A72C4C6B8
@@ -3409,7 +3417,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
-    
+    if exists (select * from dbo.sysobjects where id = object_id(N'Alumnos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Alumnos
+
     if exists (select * from dbo.sysobjects where id = object_id(N'Usuarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Usuarios
 
     if exists (select * from dbo.sysobjects where id = object_id(N'UsuarioRol') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table UsuarioRol
@@ -4757,7 +4766,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    
     create table UsuarioRol (
         UsuarioFk INT not null,
        RolFk INT not null
@@ -6024,7 +6032,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (FormaParticipacionFk) 
         references FormaParticipaciones
 
-    
     alter table TesisDirigidas 
         add constraint FKEF4DD3119CF67963 
         foreign key (GradoAcademicoFk) 
@@ -6680,7 +6687,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (RamaFk) 
         references Ramas
 
-    
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 
         foreign key (RolFk) 
