@@ -35,16 +35,6 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <h4>Datos del investigador</h4>
-	            <p>
-                    <label>Departamento</label>
-                    <%= Html.Encode(Model.Form.DepartamentoInvestigadorNombre)%>
-                </p>
-                <p>
-                    <label>Sede</label>
-                    <%= Html.Encode(Model.Form.SedeNombre)%>
-                </p>
-                
                 <h4>Participaci&oacute;n en tesis</h4>
                 <p>
                     <label>Tipo de alumno</label>

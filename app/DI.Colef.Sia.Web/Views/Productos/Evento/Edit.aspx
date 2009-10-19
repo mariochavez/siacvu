@@ -34,17 +34,7 @@
             <% using (Html.BeginForm("Update", "Evento")){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
-                
-                <h4>Datos del investigador</h4>
-	            <p>
-                    <label>Departamento</label>
-                    <%= Html.Encode(Model.Form.DepartamentoNombre)%>
-                </p>
-                <p>
-                    <label>Sede</label>
-                    <%= Html.Encode(Model.Form.SedeNombre)%>
-                </p>
-                
+
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>
                              
                 <h4>Coautores<span class="cvu"></span></h4>
