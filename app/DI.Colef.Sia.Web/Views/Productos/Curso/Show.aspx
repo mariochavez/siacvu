@@ -70,10 +70,6 @@
 	                <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-	                <label>Periodo de referencia</label>
-	                <strong><%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>&nbsp;</strong>
-                </p>
-                <p>
                     <label>Fecha inicial</label>
                     <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
@@ -94,18 +90,6 @@
                 <p>
 	                <label>Nivel 2</label>
                     <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 3</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel3Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 4</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel4Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 5</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel5Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>&Aacute;rea</label>

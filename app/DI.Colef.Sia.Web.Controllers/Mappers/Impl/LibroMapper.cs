@@ -69,9 +69,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Reimpresion = catalogoService.GetReimpresionById(message.Reimpresion);
 		    //model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             //model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+            
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
 
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
             model.Evento = eventoService.GetEventoById(message.Evento);

@@ -154,10 +154,6 @@
                     <label>Idioma al que se tradujo</label>
                     <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
-                </p>
                 
                 <h4>Complementaria CVU</h4>
                 <p>

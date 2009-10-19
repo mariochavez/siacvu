@@ -792,6 +792,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaRepository.SaveOrUpdate(area);
         }
 
+        public Area[] GetAreasByAreaTematicaId(int id)
+        {
+            return ((List<Area>)FilterCatalogOptions<Area>(x => x.Nombre, id, "AreaTematica")).ToArray();
+        }
+
         public Disciplina GetDisciplinaById(int id)
         {
             return disciplinaRepository.Get(id);

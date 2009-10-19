@@ -62,9 +62,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+            
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
+
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
         }
 

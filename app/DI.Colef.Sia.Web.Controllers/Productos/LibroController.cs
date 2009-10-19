@@ -29,8 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IIdentificadorLibroMapper identificadorLibroMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IProyectoService proyectoService;
         readonly IEventoMapper eventoMapper;
@@ -57,10 +55,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
                                ICoautorInternoLibroMapper coautorInternoLibroMapper,
                                IIdentificadorLibroMapper identificadorLibroMapper,
-                               IAreaMapper areaMapper,
                                IInvestigadorMapper investigadorMapper,
                                IInvestigadorExternoMapper investigadorExternoMapper,
-                               IDisciplinaMapper disciplinaMapper,
                                IInvestigadorService investigadorService,
                                ISubdisciplinaMapper subdisciplinaMapper,
                                ISearchService searchService,
@@ -91,8 +87,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorService = investigadorService;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.identificadorLibroMapper = identificadorLibroMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.proyectoService = proyectoService;
             this.eventoMapper = eventoMapper;
@@ -264,39 +258,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             libroForm.ProyectoId = proyectoForm.Id;
 
             return Rjs("ChangeProyecto", libroForm);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int select)
-        {
-            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
-
-            var form = new LibroForm
-                           {
-                               Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
-                           };
-
-            return Rjs("ChangeArea", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int select)
-        {
-            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
-
-            var form = new LibroForm
-                           {
-                               Subdisciplinas = list.ToArray()
-                           };
-
-            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
@@ -537,9 +498,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             //form.IdentificadoresLibros = identificadorLibroMapper.Map(catalogoService.GetActiveIdentificadorLibros());
 
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 			
             return form;
         }
@@ -556,8 +515,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //ViewData["FormaParticipacion"] = form.FormaParticipacionId;
             ViewData["Reimpresion"] = form.ReimpresionId;
             //ViewData["IdentificadorLibro"] = form.IdentificadorLibroId;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
             ViewData["Evento"] = form.EventoId;
         }

@@ -144,10 +144,6 @@
                     <label>L&iacute;nea tem&aacute;tica</label>
                     <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>&nbsp;</strong>
-                </p>
                 
                 <h4>Opcionales</h4>
                 <p>

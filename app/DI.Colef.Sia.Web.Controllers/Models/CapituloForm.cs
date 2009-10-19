@@ -52,14 +52,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoParticipanteId { get; set; }
         public string TipoParticipanteNombre { get; set; }
 
-        public int Area { get; set; }
-        public int AreaId { get; set; }
         public string AreaNombre { get; set; }
-
-        public int Disciplina { get; set; }
-        public int DisciplinaId { get; set; }
         public string DisciplinaNombre { get; set; }
-
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
@@ -110,8 +104,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public FormaParticipacionForm[] FormasParticipaciones { get; set; }
 		public TipoParticipacionForm[] TiposParticipaciones { get; set; }
 		public TipoParticipanteForm[] TiposParticipantes { get; set; }
-		public AreaForm[] Areas { get; set; }
-		public DisciplinaForm[] Disciplinas { get; set; }
 		public SubdisciplinaForm[] Subdisciplinas { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
     }

@@ -14,14 +14,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class ResenaController : BaseController<Resena, ResenaForm>
     {
-        readonly IAreaMapper areaMapper;
         readonly IAutorResenaMapper autorResenaMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IEstadoProductoMapper estadoProductoMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
@@ -40,8 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IAreaTematicaMapper areaTematicaMapper, IIdiomaMapper idiomaMapper,
                                 IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
-                                IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper,
-                                IDisciplinaMapper disciplinaMapper,
+                                IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
@@ -61,8 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
@@ -187,39 +182,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             resenaService.SaveResena(resena);
 
             return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreProducto));
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int select)
-        {
-            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
-
-            var form = new ResenaForm
-                           {
-                               Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeArea", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int select)
-        {
-            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
-
-            var form = new ResenaForm
-                           {
-                               Subdisciplinas = list.ToArray()
-                           };
-
-            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
@@ -466,10 +428,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -482,8 +442,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["AreaTematica"] = form.AreaTematicaId;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }

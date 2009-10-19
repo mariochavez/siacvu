@@ -43,9 +43,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.ArticuloTraducido = message.ArticuloTraducido;
+
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
+
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
@@ -53,9 +55,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
             model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
             model.TipoParticipante = catalogoService.GetTipoParticipacionById(message.TipoParticipante);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
+
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
             if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")

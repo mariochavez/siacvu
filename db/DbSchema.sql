@@ -551,10 +551,6 @@ alter table Dictamenes  drop constraint FKE29ADD7BE758F5B4
 alter table Dictamenes  drop constraint FKE29ADD7BF1AEE935
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B11666E2A]') AND parent_object_id = OBJECT_ID('Dictamenes'))
-alter table Dictamenes  drop constraint FKE29ADD7B11666E2A
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B85102A57]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7B85102A57
 
@@ -617,10 +613,6 @@ alter table TesisDirigidas  drop constraint FKEF4DD3117A8488F7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31164F7D1CD]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
 alter table TesisDirigidas  drop constraint FKEF4DD31164F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31111666E2A]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD31111666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3113E082BED]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
@@ -703,10 +695,6 @@ alter table Cursos  drop constraint FK8E38D63E5ECF193D
 alter table Cursos  drop constraint FK8E38D63E64F7D1CD
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E11666E2A]') AND parent_object_id = OBJECT_ID('Cursos'))
-alter table Cursos  drop constraint FK8E38D63E11666E2A
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E3E082BED]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63E3E082BED
 
@@ -773,10 +761,6 @@ alter table Capitulos  drop constraint FK3165FEADE5A51EE5
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD4B54D394
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD11666E2A]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD11666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD6425E2FD]') AND parent_object_id = OBJECT_ID('Capitulos'))
@@ -1023,10 +1007,6 @@ alter table Distinciones  drop constraint FKEF821EEC7A8488F7
 alter table Distinciones  drop constraint FKEF821EECC0410E89
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC11666E2A]') AND parent_object_id = OBJECT_ID('Distinciones'))
-alter table Distinciones  drop constraint FKEF821EEC11666E2A
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC6A829E09]') AND parent_object_id = OBJECT_ID('Distinciones'))
 alter table Distinciones  drop constraint FKEF821EEC6A829E09
 
@@ -1127,10 +1107,6 @@ alter table Articulos  drop constraint FK3EB394D76425E2FD
 alter table Articulos  drop constraint FK3EB394D74B54D394
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D711666E2A]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D711666E2A
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D72AF31B56]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D72AF31B56
 
@@ -1201,10 +1177,6 @@ alter table ParticipacionMedios  drop constraint FK6CE1FC41FEB3CEEC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41D93EC5CD]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
 alter table ParticipacionMedios  drop constraint FK6CE1FC41D93EC5CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4111666E2A]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
-alter table ParticipacionMedios  drop constraint FK6CE1FC4111666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4170EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
@@ -1321,6 +1293,10 @@ alter table Categorias  drop constraint FK9AD9767285102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AD9767274E8BAB7]') AND parent_object_id = OBJECT_ID('Categorias'))
 alter table Categorias  drop constraint FK9AD9767274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1527E798A77AB9C]') AND parent_object_id = OBJECT_ID('Areas'))
+alter table Areas  drop constraint FK1527E798A77AB9C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1527E7985102A57]') AND parent_object_id = OBJECT_ID('Areas'))
@@ -1489,10 +1465,6 @@ alter table Reportes  drop constraint FK26728BE177237615
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE14B54D394]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE14B54D394
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE111666E2A]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE111666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE170EA6C9E]') AND parent_object_id = OBJECT_ID('Reportes'))
@@ -1671,14 +1643,6 @@ alter table ProgramaEstudios  drop constraint FK51F4869085102A57
 alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F85102A57]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
-alter table PeriodoReferencias  drop constraint FK91FCA7F85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK91FCA7F74E8BAB7]') AND parent_object_id = OBJECT_ID('PeriodoReferencias'))
-alter table PeriodoReferencias  drop constraint FK91FCA7F74E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B6A829E09]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B6A829E09
 
@@ -1705,10 +1669,6 @@ alter table Participaciones  drop constraint FK56CA0A1B90FFB19B
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B64F7D1CD]') AND parent_object_id = OBJECT_ID('Participaciones'))
 alter table Participaciones  drop constraint FK56CA0A1B64F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B11666E2A]') AND parent_object_id = OBJECT_ID('Participaciones'))
-alter table Participaciones  drop constraint FK56CA0A1B11666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK56CA0A1B70EA6C9E]') AND parent_object_id = OBJECT_ID('Participaciones'))
@@ -1897,10 +1857,6 @@ alter table Resenas  drop constraint FKF708AE628A77AB9C
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE624B54D394]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE624B54D394
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6211666E2A]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6211666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626425E2FD]') AND parent_object_id = OBJECT_ID('Resenas'))
@@ -2355,10 +2311,6 @@ alter table Libros  drop constraint FK439120E73BA127C1
 alter table Libros  drop constraint FK439120E74B54D394
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E711666E2A]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E711666E2A
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E770EA6C9E]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E770EA6C9E
 
@@ -2425,10 +2377,6 @@ alter table ParticipacionAcademias  drop constraint FK23DC16D07A8488F7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK23DC16D04B54D394]') AND parent_object_id = OBJECT_ID('ParticipacionAcademias'))
 alter table ParticipacionAcademias  drop constraint FK23DC16D04B54D394
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK23DC16D011666E2A]') AND parent_object_id = OBJECT_ID('ParticipacionAcademias'))
-alter table ParticipacionAcademias  drop constraint FK23DC16D011666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK23DC16D070EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipacionAcademias'))
@@ -2533,10 +2481,6 @@ alter table Eventos  drop constraint FK9DD523437A8488F7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523431EDC2D3B]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD523431EDC2D3B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234311666E2A]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD5234311666E2A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343FA1D058B]') AND parent_object_id = OBJECT_ID('Eventos'))
@@ -2814,8 +2758,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'PeriodoReferencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table PeriodoReferencias
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Participaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Participaciones
 
@@ -3451,7 +3393,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        EditorialFk INT null,
        FondoConacytFk INT null,
        TipoDictamenFk INT null,
-       PeriodoReferenciaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3501,7 +3442,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        GradoAcademicoFk INT null,
        PaisFk INT null,
        InstitucionFk INT null,
-       PeriodoReferenciaFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
        Nivel2Fk INT null,
@@ -3555,7 +3495,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        NivelEstudioFk INT null,
        ProgramaEstudioFk INT null,
        InstitucionFk INT null,
-       PeriodoReferenciaFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
        Nivel2Fk INT null,
@@ -3595,7 +3534,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        SedeFk INT null,
        TipoCapituloFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        IdiomaFk INT null,
        InstitucionFk INT null,
        PaisFk INT null,
@@ -3789,7 +3727,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        AmbitoFk INT null,
        PaisFk INT null,
        EstadoPaisFk INT null,
-       PeriodoReferenciaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -3880,7 +3817,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        TipoArticuloFk INT null,
        IdiomaFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        RevistaPublicacionFk INT null,
        LineaInvestigacionFk INT null,
        TipoActividadFk INT null,
@@ -3919,7 +3855,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        MedioImpresoFk INT null,
        MedioElectronicoFk INT null,
        GeneroFk INT null,
-       PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        DirigidoAFk INT null,
        LineaTematicaFk INT null,
@@ -3992,6 +3927,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       AreaTematicaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4202,7 +4138,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Activo BIT null,
        TipoReporteFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -4391,20 +4326,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table PeriodoReferencias (
-        Id INT IDENTITY NOT NULL,
-       Periodo NVARCHAR(255) null,
-       Orden INT null,
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     create table Participaciones (
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(255) null,
@@ -4422,7 +4343,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        OtraParticipacionFk INT null,
        TipoPresentacionFk INT null,
        InstitucionFk INT null,
-       PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        PaisFk INT null,
        EstadoPaisFk INT null,
@@ -4596,7 +4516,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        LineaTematicaFk INT null,
        AreaTematicaFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        IdiomaFk INT null,
        AreaFk INT null,
        DisciplinaFk INT null,
@@ -4916,7 +4835,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        NombreRevistaFk INT null,
        EventoFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        IdiomaFk INT null,
        ReimpresionFk INT null,
@@ -4976,7 +4894,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        InstitucionFk INT null,
        PaisFk INT null,
        EstadoProductoFk INT null,
-       PeriodoReferenciaFk INT null,
        ProyectoFk INT null,
        LineaTematicaFk INT null,
        UsuarioFk INT null,
@@ -5050,7 +4967,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        EstadoPaisFk INT null,
        PaisFk INT null,
        LineaTematicaFk INT null,
-       PeriodoReferenciaFk INT null,
        TipoFinanciamientoFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -5762,11 +5678,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references TipoDictamenes
 
     alter table Dictamenes 
-        add constraint FKE29ADD7B11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Dictamenes 
         add constraint FKE29ADD7B85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -5845,11 +5756,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKEF4DD31164F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
-
-    alter table TesisDirigidas 
-        add constraint FKEF4DD31111666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table TesisDirigidas 
         add constraint FKEF4DD3113E082BED 
@@ -5952,11 +5858,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references Instituciones
 
     alter table Cursos 
-        add constraint FK8E38D63E11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Cursos 
         add constraint FK8E38D63E3E082BED 
         foreign key (SectorFk) 
         references Sectores
@@ -6040,11 +5941,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK3165FEAD4B54D394 
         foreign key (EstadoProductoFk) 
         references EstadoProductos
-
-    alter table Capitulos 
-        add constraint FK3165FEAD11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table Capitulos 
         add constraint FK3165FEAD6425E2FD 
@@ -6352,11 +6248,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references EstadoPaises
 
     alter table Distinciones 
-        add constraint FKEF821EEC11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Distinciones 
         add constraint FKEF821EEC6A829E09 
         foreign key (UsuarioFk) 
         references Usuarios
@@ -6482,11 +6373,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references EstadoProductos
 
     alter table Articulos 
-        add constraint FK3EB394D711666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Articulos 
         add constraint FK3EB394D72AF31B56 
         foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
@@ -6575,11 +6461,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK6CE1FC41D93EC5CD 
         foreign key (GeneroFk) 
         references Generos
-
-    alter table ParticipacionMedios 
-        add constraint FK6CE1FC4111666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table ParticipacionMedios 
         add constraint FK6CE1FC4170EA6C9E 
@@ -6725,6 +6606,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK9AD9767274E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Areas 
+        add constraint FK1527E798A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table Areas 
         add constraint FK1527E7985102A57 
@@ -6935,11 +6821,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK26728BE14B54D394 
         foreign key (EstadoProductoFk) 
         references EstadoProductos
-
-    alter table Reportes 
-        add constraint FK26728BE111666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table Reportes 
         add constraint FK26728BE170EA6C9E 
@@ -7161,16 +7042,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table PeriodoReferencias 
-        add constraint FK91FCA7F85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table PeriodoReferencias 
-        add constraint FK91FCA7F74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
     alter table Participaciones 
         add constraint FK56CA0A1B6A829E09 
         foreign key (UsuarioFk) 
@@ -7205,11 +7076,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK56CA0A1B64F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
-
-    alter table Participaciones 
-        add constraint FK56CA0A1B11666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table Participaciones 
         add constraint FK56CA0A1B70EA6C9E 
@@ -7445,11 +7311,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKF708AE624B54D394 
         foreign key (EstadoProductoFk) 
         references EstadoProductos
-
-    alter table Resenas 
-        add constraint FKF708AE6211666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table Resenas 
         add constraint FKF708AE626425E2FD 
@@ -8017,11 +7878,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references EstadoProductos
 
     alter table Libros 
-        add constraint FK439120E711666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
-
-    alter table Libros 
         add constraint FK439120E770EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
@@ -8105,11 +7961,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK23DC16D04B54D394 
         foreign key (EstadoProductoFk) 
         references EstadoProductos
-
-    alter table ParticipacionAcademias 
-        add constraint FK23DC16D011666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table ParticipacionAcademias 
         add constraint FK23DC16D070EA6C9E 
@@ -8240,11 +8091,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK9DD523431EDC2D3B 
         foreign key (LineaTematicaFk) 
         references LineaTematicas
-
-    alter table Eventos 
-        add constraint FK9DD5234311666E2A 
-        foreign key (PeriodoReferenciaFk) 
-        references PeriodoReferencias
 
     alter table Eventos 
         add constraint FK9DD52343FA1D058B 

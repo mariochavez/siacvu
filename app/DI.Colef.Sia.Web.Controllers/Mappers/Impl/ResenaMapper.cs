@@ -58,9 +58,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)

@@ -82,10 +82,6 @@
                     <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
-                </p>
-                <p>
                     <label>Proyecto</label>
                     <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                 </p>

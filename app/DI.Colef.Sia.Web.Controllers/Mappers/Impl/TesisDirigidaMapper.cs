@@ -29,24 +29,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Titulo = message.Titulo;
             model.NombreAlumno = message.NombreAlumno;
             model.Concluida = message.Concluida;
+            model.TipoEstudiante = message.TipoEstudiante;
 
             model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
 
             model.Alumno = alumnoService.GetAlumnoById(message.Alumno);
-
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.Sector = catalogoService.GetSectorById(message.Sector);
-            model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.TipoEstudiante = message.TipoEstudiante;
             model.VinculacionAPyD = catalogoService.GetVinculacionAPyDById(message.VinculacionAPyD);
+
+            // Sector - Organizacion - Nivel2 son en forma de cascada
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
+
+            var organizacion = catalogoService.GetNivelById(message.Nivel2).Organizacion.Id;
+            model.Organizacion = catalogoService.GetOrganizacionById(organizacion);
+
+            var sector = catalogoService.GetOrganizacionById(organizacion).Sector.Id;
+            model.Sector = catalogoService.GetSectorById(sector);
+
+            // Area - Disciplina - Subdisciplina son en forma de cascada
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
         }
 
         public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, Investigador investigador)

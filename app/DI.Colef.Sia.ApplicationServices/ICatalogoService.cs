@@ -111,6 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Area[] GetAllAreas();
         Area[] GetActiveAreas();
         void SaveArea(Area area);
+        Area[] GetAreasByAreaTematicaId(int id);
 
         //Disciplina
         Disciplina GetDisciplinaById(int id);

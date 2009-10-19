@@ -654,19 +654,11 @@
     <Content Include="Views\ParticipacionAcademia\New.aspx" />
     <Content Include="Views\ParticipacionAcademia\Show.aspx" />
     <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
-    <Content Include="Views\Productos\Articulo\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\Articulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Articulo\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Articulo\ChangeRevista.js.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
-    <Content Include="Views\Productos\Capitulo\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\Capitulo\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Capitulo\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
-    <Content Include="Views\Productos\Curso\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeDisciplina.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeSector.js.ascx" />
-    <Content Include="Views\Productos\Curso\ChangeOrganizacion.js.ascx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
     <Content Include="Views\Productos\Dictamen\ChangeRevista.js.ascx" />
     <Content Include="Views\Productos\Dictamen\ChangeEditorial.js.ascx" />
@@ -678,8 +670,6 @@
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\AddEditorialLibro.js.ascx" />
-    <Content Include="Views\Productos\Libro\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\Libro\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\ChangeRevista.js.ascx" />
@@ -728,8 +718,6 @@
     <Content Include="Views\Productos\Resena\_ShowAutor.ascx" />
     <Content Include="Views\Productos\TesisDirigida\ChangeAlumno.js.ascx" />
     <Content Include="Views\Productos\TesisDirigida\ChangeInstitucion.js.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeOrganizacion.js.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeSector.js.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
@@ -838,8 +826,6 @@
     <Content Include="Views\Productos\Reporte\Show.aspx" />
     <Content Include="Views\Productos\Reporte\_DatosReporte.ascx" />
     <Content Include="Views\Productos\Reporte\_ReferenciaBibliografica.ascx" />
-    <Content Include="Views\Productos\Resena\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\Resena\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\Resena\Edit.aspx" />
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
@@ -847,8 +833,6 @@
     <Content Include="Views\Productos\Resena\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Resena\_DatosResena.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeArea.js.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\ChangeArea.js.ascx" />

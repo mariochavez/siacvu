@@ -12,13 +12,11 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class CapituloController : BaseController<Capitulo, CapituloForm>
-    {
-        readonly IAreaMapper areaMapper;
+    {   
         readonly ICapituloService capituloService;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
@@ -43,8 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IInvestigadorExternoMapper investigadorExternoMapper,
                                   IFormaParticipacionMapper formaParticipacionMapper,
                                   ITipoParticipacionMapper tipoParticipacionMapper,
-                                  ITipoParticipanteMapper tipoParticipanteMapper, IAreaMapper areaMapper,
-                                  IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                  ITipoParticipanteMapper tipoParticipanteMapper, ISubdisciplinaMapper subdisciplinaMapper,
                                   ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                                   ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
@@ -66,8 +63,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.formaParticipacionMapper = formaParticipacionMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.tipoParticipanteMapper = tipoParticipanteMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
@@ -207,39 +202,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             capituloForm.ProyectoId = proyectoForm.Id;
 
             return Rjs("ChangeProyecto", capituloForm);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int select)
-        {
-            var list = new List<DisciplinaForm> {new DisciplinaForm {Id = 0, Nombre = "Seleccione ..."}};
-
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
-
-            var form = new CapituloForm
-                           {
-                               Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }
-                           };
-
-            return Rjs("ChangeArea", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int select)
-        {
-            var list = new List<SubdisciplinaForm> {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}};
-
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
-
-            var form = new CapituloForm
-                           {
-                               Subdisciplinas = list.ToArray()
-                           };
-
-            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
@@ -550,10 +512,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
-            
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -567,8 +526,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoParticipante"] = form.TipoParticipanteId;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }

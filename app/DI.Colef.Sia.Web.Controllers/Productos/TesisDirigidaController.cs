@@ -13,37 +13,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class TesisDirigidaController : BaseController<TesisDirigida, TesisDirigidaForm>
     {
-        readonly IAreaMapper areaMapper;
         readonly ICatalogoService catalogoService;
-        readonly IDepartamentoMapper departamentoMapper;
-        readonly IDependenciaMapper dependenciaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly IPaisMapper paisMapper;
-        readonly ISectorMapper sectorMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
-        readonly ITipoEstudianteMapper tipoEstudianteMapper;
         readonly IVinculacionAPyDMapper vinculacionApyDMapper;
         readonly IAlumnoMapper alumnoMapper;
         readonly IAlumnoService alumnoService;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly INivelMapper nivelMapper;
         readonly IInstitucionMapper institucionMapper;
 
-        public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService, ITesisDirigidaMapper tesisDirigidaMapper, ICatalogoService catalogoService,
+        public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
+                               ITesisDirigidaMapper tesisDirigidaMapper,
+                               ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
                                IPaisMapper paisMapper,
                                IFormaParticipacionMapper formaParticipacionMapper,
-                               ISectorMapper sectorMapper,
-                               IDependenciaMapper dependenciaMapper, IDepartamentoMapper departamentoMapper,
-                               IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
-                               ISearchService searchService, ITipoEstudianteMapper tipoEstudianteMapper,
+                               ISearchService searchService,
                                IVinculacionAPyDMapper vinculacionApyDMapper, IAlumnoMapper alumnoMapper,
-                               IAlumnoService alumnoService, IOrganizacionMapper organizacionMapper, 
+                               IAlumnoService alumnoService,
                                INivelMapper nivelMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -53,17 +45,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.paisMapper = paisMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
-            this.sectorMapper = sectorMapper;
-            this.dependenciaMapper = dependenciaMapper;
-            this.departamentoMapper = departamentoMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
-            this.tipoEstudianteMapper = tipoEstudianteMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
             this.alumnoMapper = alumnoMapper;
             this.alumnoService = alumnoService;
-            this.organizacionMapper = organizacionMapper;
             this.nivelMapper = nivelMapper;
             this.institucionMapper = institucionMapper;
         }
@@ -205,72 +190,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSector(int select)
-        {
-            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
-
-            var form = new TesisDirigidaForm
-                           {
-                               Organizaciones = list.ToArray(),
-                               Niveles2 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeSector", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeOrganizacion(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
-
-            var form = new TesisDirigidaForm
-                           {
-                               Niveles2 = list.ToArray()
-                           };
-
-            return Rjs("ChangeOrganizacion", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int select)
-        {
-            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
-
-            var form = new TesisDirigidaForm
-                           {
-                               Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeArea", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int select)
-        {
-            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
-
-            var form = new TesisDirigidaForm
-                           {
-                               Subdisciplinas = list.ToArray()
-                           };
-
-            return Rjs("ChangeDisciplina", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<TesisDirigida>(x => x.Titulo, q);
@@ -293,10 +212,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
 
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
-
             form.TiposEstudiantes = new[]
                                         {
                                             new CustomSelectForm {Id = 1, Nombre = "Interno"},
@@ -305,9 +220,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
 
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -320,11 +234,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
-            ViewData["Sector"] = form.SectorId;
-            ViewData["Organizacion"] = form.OrganizacionId;
             ViewData["Nivel2"] = form.Nivel2Id;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }

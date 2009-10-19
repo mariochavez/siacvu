@@ -100,14 +100,6 @@
                     <label>Fecha de publicaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>A&ntilde;o de aceptaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.AnioAceptacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
-                </p>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->                
                 <h4>Referencia bibliogr&aacute;fica</h4>

@@ -68,10 +68,6 @@
                 <p>
                     <label>Fecha de presentaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
                 </p>                
                 <p>
                     <label>Proyecto</label>
