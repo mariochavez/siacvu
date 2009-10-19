@@ -112,8 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPublicacion { get; set; }
         
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
         public virtual string Volumen { get; set; }
 
         public virtual int Numero { get; set; }

@@ -188,7 +188,6 @@
     <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="ParticipanteExternoProyecto.cs" />
     <Compile Include="ParticipanteInternoProyecto.cs" />
-    <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="ProductoAcademico.cs" />
     <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />

@@ -57,8 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
-        
         /* Catalogos */
         public SectorForm[] Sectores { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }

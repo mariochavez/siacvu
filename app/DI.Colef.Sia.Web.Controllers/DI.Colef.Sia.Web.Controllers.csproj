@@ -336,7 +336,6 @@
     <Compile Include="Catalogos\NivelEstudioController.cs" />
     <Compile Include="Catalogos\OrganizacionController.cs" />
     <Compile Include="Catalogos\PaisController.cs" />
-    <Compile Include="Catalogos\PeriodoReferenciaController.cs" />
     <Compile Include="Catalogos\ProgramaEstudioController.cs" />
     <Compile Include="Catalogos\ResponsableExternoController.cs" />
     <Compile Include="Catalogos\RevistaPublicacionController.cs" />
@@ -467,7 +466,6 @@
     <Compile Include="Mappers\Impl\PaisMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipacionMedioMapper.cs" />
-    <Compile Include="Mappers\Impl\PeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\Impl\ProgramaEstudioMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
     <Compile Include="Mappers\Impl\ReporteMapper.cs" />
@@ -503,7 +501,6 @@
     <Compile Include="Mappers\IPaisMapper.cs" />
     <Compile Include="Mappers\IParticipacionMapper.cs" />
     <Compile Include="Mappers\IParticipacionMedioMapper.cs" />
-    <Compile Include="Mappers\IPeriodoReferenciaMapper.cs" />
     <Compile Include="Mappers\IProgramaEstudioMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
     <Compile Include="Mappers\IReporteMapper.cs" />
@@ -579,7 +576,6 @@
     <Compile Include="Models\PaisForm.cs" />
     <Compile Include="Models\ParticipacionForm.cs" />
     <Compile Include="Models\ParticipacionMedioForm.cs" />
-    <Compile Include="Models\PeriodoReferenciaForm.cs" />
     <Compile Include="Models\ProgramaEstudioForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
     <Compile Include="Models\ReporteForm.cs" />

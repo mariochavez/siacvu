@@ -54,9 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPaisId { get; set; }
         public string EstadoPaisNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
-
-		/* Catalogos */
+        /* Catalogos */
         public MedioImpresoForm[] MediosImpresos { get; set; }
 		public MedioElectronicoForm[] MediosElectronicos { get; set; }
 		public GeneroForm[] Generos { get; set; }

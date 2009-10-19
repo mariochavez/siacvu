@@ -91,7 +91,3 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Idioma") %>
 </p>
-<p>
-	<label>Periodo de referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

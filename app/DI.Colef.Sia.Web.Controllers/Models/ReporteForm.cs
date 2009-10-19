@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoPalabraClave3 { get; set; }
         //public string InstitucionNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
         public int TotalAutores
         {
             get

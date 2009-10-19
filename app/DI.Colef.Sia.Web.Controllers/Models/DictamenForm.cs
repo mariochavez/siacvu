@@ -25,8 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionInstitucionNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
-
         /* New */
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         

@@ -98,7 +98,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -151,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] {};
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] {};
 
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                               coautorExterno, coautorInterno);
 
             if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
@@ -173,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ArticuloForm form)
         {
-            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(articulo, form, Title.Edit))
             {

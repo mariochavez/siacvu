@@ -59,8 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-
+            
             return View(data);
         }
 
@@ -106,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(participacionAcademia, form, Title.New, "ParticipacionAcademia"))
             {
@@ -127,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
 
             participacionAcademia.ModificadoPor = CurrentUser();
 

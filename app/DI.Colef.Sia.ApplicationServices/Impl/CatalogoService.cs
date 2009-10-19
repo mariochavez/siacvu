@@ -59,7 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<ResponsableExterno> responsableExternoRepository;
         readonly IRepository<TipoCapitulo> tipoCapituloRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
-        readonly IRepository<PeriodoReferencia> periodoReferenciaRepository;
         readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
         readonly IRepository<Organizacion> organizacionRepository;
         readonly IRepository<Dependencia> dependenciaRepository;
@@ -129,7 +128,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             IRepository<ResponsableExterno> responsableExternoRepository,
             IRepository<TipoCapitulo> tipoCapituloRepository,
             IRepository<TipoParticipacion> tipoParticipacionRepository,
-            IRepository<PeriodoReferencia> periodoReferenciaRepository,
             IRepository<Nivel> nivelRepository,
             IRepository<Diplomado> diplomadoRepository,
             IRepository<Sector> sectorRepository,
@@ -218,7 +216,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.responsableExternoRepository = responsableExternoRepository;
             this.tipoCapituloRepository = tipoCapituloRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
-            this.periodoReferenciaRepository = periodoReferenciaRepository;
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
@@ -1034,45 +1031,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoParticipacion.ModificadoEl = DateTime.Now;
 
             tipoParticipacionRepository.SaveOrUpdate(tipoParticipacion);
-        }
-
-        public PeriodoReferencia GetPeriodoReferenciaById(int id)
-        {
-            return periodoReferenciaRepository.Get(id);
-        }
-
-        public PeriodoReferencia[] GetAllPeriodoReferencias()
-        {
-            return ((List<PeriodoReferencia>) OrderCatalog<PeriodoReferencia>(x => x.Orden)).ToArray();
-        }
-
-        public PeriodoReferencia[] GetActivePeriodoReferencias()
-        {
-            return ((List<PeriodoReferencia>) OrderCatalog<PeriodoReferencia>(x => x.Orden, true)).ToArray();
-        }
-
-        public PeriodoReferencia GetCurrentPeriodoReferencia()
-        {
-            var criteria = Session.CreateCriteria(typeof (PeriodoReferencia))
-                .SetProjection(Projections.ProjectionList()
-                                   .Add(Projections.Max("Orden")))
-                .List();
-
-            var periodo = new Dictionary<string, object> { { "Orden", criteria[0] } };
-
-            return periodoReferenciaRepository.FindOne(periodo); 
-        }
-
-        public void SavePeriodoReferencia(PeriodoReferencia periodoReferencia)
-        {
-            if (periodoReferencia.Id == 0)
-            {
-                periodoReferencia.Activo = true;
-                periodoReferencia.CreadorEl = DateTime.Now;
-            }
-            periodoReferencia.ModificadoEl = DateTime.Now;
-
-            periodoReferenciaRepository.SaveOrUpdate(periodoReferencia);
         }
 
         public RevistaPublicacion GetRevistaPublicacionById(int id)

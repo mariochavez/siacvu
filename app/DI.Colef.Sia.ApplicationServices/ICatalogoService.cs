@@ -164,12 +164,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoParticipacion[] GetActiveTipoParticipaciones();
         void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
 
-        //Periodo de Referencia
-        PeriodoReferencia GetPeriodoReferenciaById(int id);
-        PeriodoReferencia[] GetAllPeriodoReferencias();
-        PeriodoReferencia[] GetActivePeriodoReferencias();
-        void SavePeriodoReferencia(PeriodoReferencia periodoReferencia);
-
         //Revista de Publicacion
         RevistaPublicacion GetRevistaPublicacionById(int id);
         RevistaPublicacion[] GetAllRevistaPublicaciones();
@@ -343,7 +337,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProductoDerivado[] GetAllProductoDerivados();
         ProductoDerivado[] GetActiveProductoDerivados();
         void SaveProductoDerivado(ProductoDerivado productoDerivado);
-        PeriodoReferencia GetCurrentPeriodoReferencia();
 
         //Tipo Resena
         TipoResena GetTipoResenaById(int id);

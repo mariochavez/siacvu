@@ -79,7 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -129,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
                                    ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                             coautorExterno, coautorInterno);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
@@ -151,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ReporteForm form)
         {
-            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(reporte, form, Title.Edit))
             {

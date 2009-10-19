@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Evento = eventoService.GetEventoById(message.Evento);
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -85,7 +85,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -95,11 +94,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
             EditorialLibroForm[] editoriales)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
 
             foreach (var coautorExterno in coautoresExternos)
             {

@@ -33,8 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
-
         /* Catalogos */
         public PaisForm[] Paises { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }

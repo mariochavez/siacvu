@@ -108,8 +108,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual EstadoProducto EstadoProducto { get; set; }
 
-		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
 		public virtual Idioma Idioma { get; set; }
 
         public virtual Institucion Institucion { get; set; }

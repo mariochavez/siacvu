@@ -20,10 +20,6 @@
     <%=Html.ValidationMessage("FechaAceptacion")%>					
 </p>
 <p>
-	<label>Periodo Referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>
-<p>
 	<label>Proyecto</label>
 
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),

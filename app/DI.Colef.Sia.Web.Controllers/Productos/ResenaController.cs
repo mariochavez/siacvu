@@ -97,7 +97,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -152,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
             autor = autor ?? new AutorResenaForm[] { };
 
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, autor);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
@@ -174,7 +173,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(resena, form, Title.Edit))
             {

@@ -59,7 +59,3 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
 </p>
-<p>
-    <label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

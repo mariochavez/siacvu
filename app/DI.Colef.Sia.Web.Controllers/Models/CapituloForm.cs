@@ -69,7 +69,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
         public int TotalAutores
         {
             get

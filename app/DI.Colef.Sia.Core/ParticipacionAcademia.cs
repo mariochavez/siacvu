@@ -30,8 +30,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaAceptacion { get; set; }
 
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
         public virtual Proyecto Proyecto { get; set; }
 
         public virtual DateTime FechaEdicion { get; set; }

@@ -57,10 +57,6 @@
 	<%=Html.ValidationMessage("DirigidoA")%>
 </p>
 <p>
-	<label>Periodo de referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>
-<p>
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
                 "Seleccione ...")%>

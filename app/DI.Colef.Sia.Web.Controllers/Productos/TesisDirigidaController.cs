@@ -92,8 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-
+            
             return View(data);
         }
 
@@ -138,7 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(tesisDirigida, form, Title.New, "TesisDirigida"))
             {
@@ -159,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(tesisDirigida, form, Title.Edit))
             {

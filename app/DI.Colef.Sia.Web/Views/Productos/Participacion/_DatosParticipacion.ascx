@@ -39,10 +39,6 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
-<p>
-	<label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>
 <p id="PresentacionInvestigacion">
 	<label>Proyecto</label>
 	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),

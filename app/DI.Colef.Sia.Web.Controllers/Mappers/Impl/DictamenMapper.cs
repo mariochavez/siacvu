@@ -32,7 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
         }
 
-        public Dictamen Map(DictamenForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -40,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }

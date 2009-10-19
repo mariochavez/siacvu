@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -78,7 +78,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -88,10 +87,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
 
             foreach (var coautoresExterno in coautoresExternos)
             {

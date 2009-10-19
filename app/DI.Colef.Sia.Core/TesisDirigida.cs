@@ -74,8 +74,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Institucion Institucion { get; set; }
 
-		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
 		public virtual Sector Sector { get; set; }
 
 		public virtual Organizacion Organizacion { get; set; }
