@@ -38,12 +38,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
-
-        public int AreaTematica { get; set; }
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaNombre { get; set; }
+        public string ProyectoPalabraClave1 { get; set; }
+        public string ProyectoPalabraClave2 { get; set; }
+        public string ProyectoPalabraClave3 { get; set; }
 
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
@@ -67,9 +69,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         //public int Subdisciplina { get; set; }
         //public int SubdisciplinaId { get; set; }
-        public string AreaNombre { get; set; }
-        public string AreaDisciplinaNombre { get; set; }
-        public string AreaDisciplinaSubdisciplinaNombre { get; set; }
+
+        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
         
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
@@ -90,7 +97,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public ArchivoForm ArchivoArticulo { get; set; }
 
         public TipoArchivoForm[] TipoArchivos { get; set; }
