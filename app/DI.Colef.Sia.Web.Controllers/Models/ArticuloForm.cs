@@ -5,12 +5,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
-        public string Volumen { get; set; }
+        public int Volumen { get; set; }
         public int Numero { get; set; }
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
         public string FechaEdicion { get; set; }
-        public int Participantes { get; set; }
+        //public int Participantes { get; set; }
         public int PosicionAutor { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
@@ -41,6 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
 
+        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
+
         public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionIndice1Nombre { get; set; }
@@ -49,23 +53,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionInstitucionNombre { get; set; }
         public string RevistaPublicacionPaisNombre { get; set; }
 
-        public int LineaInvestigacion { get; set; }
-        public int LineaInvestigacionId { get; set; }
-        public string LineaInvestigacionNombre { get; set; }
+        //public int LineaInvestigacion { get; set; }
+        //public int LineaInvestigacionId { get; set; }
+        //public string LineaInvestigacionNombre { get; set; }
 
-        public int TipoActividad { get; set; }
-        public int TipoActividadId { get; set; }
-        public string TipoActividadNombre { get; set; }
+        //public int TipoActividad { get; set; }
+        //public int TipoActividadId { get; set; }
+        //public string TipoActividadNombre { get; set; }
 
-        public int TipoParticipante { get; set; }
-        public int TipoParticipanteId { get; set; }
-        public string TipoParticipanteNombre { get; set; }
+        //public int TipoParticipante { get; set; }
+        //public int TipoParticipanteId { get; set; }
+        //public string TipoParticipanteNombre { get; set; }
 
+        //public int Subdisciplina { get; set; }
+        //public int SubdisciplinaId { get; set; }
         public string AreaNombre { get; set; }
-        public string DisciplinaNombre { get; set; }
-        public int Subdisciplina { get; set; }
-        public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
+        public string AreaDisciplinaNombre { get; set; }
+        public string AreaDisciplinaSubdisciplinaNombre { get; set; }
         
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
@@ -92,13 +96,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoArchivoForm[] TipoArchivos { get; set; }
 
         /* Catalogos */
+        public CustomSelectForm[] Volumenes { get; set; }
         public TipoArticuloForm[] TiposArticulos { get; set; }
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
-        public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
-        public TipoActividadForm[] TiposActividades { get; set; }
-        public TipoParticipacionForm[] TiposParticipantes { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        //public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
+        //public TipoActividadForm[] TiposActividades { get; set; }
+        //public TipoParticipacionForm[] TiposParticipantes { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
     }
 }

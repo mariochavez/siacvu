@@ -574,15 +574,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
                 .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
-                .ForMember(d => d.LineaInvestigacion,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoActividad,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoParticipante,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
+                //.ForMember(d => d.LineaInvestigacion,
+                //           o => o.Ignore())
+                //.ForMember(d => d.TipoActividad,
+                //           o => o.Ignore())
+                //.ForMember(d => d.TipoParticipante,
+                //           o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -1042,6 +1040,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
 
             Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()

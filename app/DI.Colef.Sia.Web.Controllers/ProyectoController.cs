@@ -695,7 +695,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.TiposEstudiantes = tipoEstudianteMapper.Map(catalogoService.GetActiveTipoEstudiantes());
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
 
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicasInstitucionales());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
 
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());

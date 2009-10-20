@@ -1,12 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ArticuloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<p>
+<p class="EstatusPublicado">
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 10 })%>
-    <%=Html.ValidationMessage("Volumen")%>
+    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Volumen") %>
 </p>
-<p>
+<p class="EstatusPublicado">
     <label>N&uacute;mero</label>
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("Numero")%>
@@ -30,13 +31,13 @@
         <span class="cvu"></span>
     </p>
 <% } %>
-<p>
+<p class="EstatusPublicado">
     <label>A&ntilde;o de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
     <span>(Formato yyyy)</span>
     <%=Html.ValidationMessage("FechaEdicion")%>
 </p>
-<p>
+<p class="EstatusPublicado">
     <label></label>
     <%= Html.CheckBox("ArticuloTraducido", Model.ArticuloTraducido)%> Art&iacute;culo traducido a otro idioma?
     <%=Html.ValidationMessage("ArticuloTraducido")%>

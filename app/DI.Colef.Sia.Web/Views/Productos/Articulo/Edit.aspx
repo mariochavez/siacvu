@@ -65,15 +65,12 @@
 	            </p>           
 	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
-            
-	            <h4>Referencia bibliogr&aacute;fica</h4>
+
+	            <h4 class="EstatusPublicado">Referencia bibliogr&aacute;fica</h4>
 	            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-	            
-	            <h4>Complementaria CVU</h4>
-				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
 				
-				<h4>Adjuntar archivo</h4>
-				<% Html.RenderPartial("_Files", Model.Form.ArchivoArticulo); %>
+				<h4>Archivos</h4>
+				<% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivoArticulos, ModelId = Model.Form.Id }); %>
             
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>

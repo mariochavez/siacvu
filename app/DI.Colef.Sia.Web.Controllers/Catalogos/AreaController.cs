@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            data.Form = new AreaForm();
 
             return View(data);
         }
@@ -56,11 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var area = catalogoService.GetAreaById(id);
-            var areaForm = areaMapper.Map(area);
-
-            data.Form = SetupNewForm(areaForm);
-
-            FormSetCombos(data.Form);
+            data.Form = areaMapper.Map(area);
 
             ViewData.Model = data;
             return View();
@@ -78,12 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             area.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(area, form, Title.New))
-            {
-                var areaForm = areaMapper.Map(area);
-
-                ((GenericViewData<AreaForm>)ViewData.Model).Form = SetupNewForm(areaForm);
                 return ViewNew();
-            }
 
             catalogoService.SaveArea(area);
 
@@ -101,13 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             area.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(area, form, Title.Edit))
-            {
-                var areaForm = areaMapper.Map(area);
-
-                ((GenericViewData<AreaForm>)ViewData.Model).Form = SetupNewForm(areaForm);
-                FormSetCombos(areaForm);
                 return ViewEdit();
-            }
 
             catalogoService.SaveArea(area);
 
@@ -150,25 +135,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<Area>(x => x.Nombre, q);
             return Content(data);
-        }
-
-        AreaForm SetupNewForm()
-        {
-            return SetupNewForm(null);
-        }
-
-        AreaForm SetupNewForm(AreaForm form)
-        {
-            form = form ?? new AreaForm();
-
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-
-            return form;
-        }
-
-        private void FormSetCombos(AreaForm form)
-        {
-            ViewData["AreaTematica"] = form.AreaTematicaId;
         }
     }
 }

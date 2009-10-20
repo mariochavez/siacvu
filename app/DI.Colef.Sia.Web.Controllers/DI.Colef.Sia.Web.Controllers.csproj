@@ -125,6 +125,8 @@
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Catalogos\FormatoPublicacionController.cs" />
     <Compile Include="Catalogos\VinculacionAPyDController.cs" />
+    <Compile Include="Collections\ICustomCollection.cs" />
+    <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="Mappers\IAlumnoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
     <Compile Include="Mappers\IDiplomadoMapper.cs" />

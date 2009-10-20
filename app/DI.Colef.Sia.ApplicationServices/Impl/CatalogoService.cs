@@ -792,11 +792,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaRepository.SaveOrUpdate(area);
         }
 
-        public Area[] GetAreasByAreaTematicaId(int id)
-        {
-            return ((List<Area>)FilterCatalogOptions<Area>(x => x.Nombre, id, "AreaTematica")).ToArray();
-        }
-
         public Disciplina GetDisciplinaById(int id)
         {
             return disciplinaRepository.Get(id);
@@ -886,21 +881,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             lineaTematica.ModificadoEl = DateTime.Now;
 
             lineaTematicaRepository.SaveOrUpdate(lineaTematica);
-        }
-
-        public LineaTematica GetLineaTematicaInstitucionalById(int id)
-        {
-            return lineaTematicaRepository.FindOne(new Dictionary<string, object> { { "Id", id } });
-        }
-
-        public LineaTematica[] GetActiveLineaTematicasInstitucionales()
-        {
-            var lineaTematicaList = Session.CreateCriteria(typeof(LineaTematica))
-                .Add(Expression.Eq("LineaTematicaInstitucional", true))
-                .Add(Restrictions.Eq("Activo", true))
-                .List<LineaTematica>();
-
-            return ((List<LineaTematica>) lineaTematicaList).ToArray();
         }
 
         public CoautorExterno GetCoautorExternoById(int id)

@@ -14,15 +14,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         readonly ICatalogoService catalogoService;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
 
         public SubdisciplinaController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                        ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService,
-                                       IDisciplinaMapper disciplinaMapper)
+                                       IDisciplinaMapper disciplinaMapper, IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.disciplinaMapper = disciplinaMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
         [Authorize]
