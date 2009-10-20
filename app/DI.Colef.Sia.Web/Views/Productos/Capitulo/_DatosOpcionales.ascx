@@ -13,12 +13,6 @@
 				"Seleccione ...")%>
     <span class="cvu"></span>
 </p>
-<p>
-    <label>Subdisciplina</label>
-    <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
-				"Seleccione ...")%>
-    <span class="cvu"></span>    
-</p>
 <p id="traductor_field">
     <label>Traductor/Co-Traductor</label>
     <%=Html.CheckBox("Traductor", Model.Traductor)%>

@@ -9,7 +9,7 @@
 </p>
 <p>
     <label>Autor del libro</label>
-    <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420", maxlength = 100 })%>
     <%=Html.ValidationMessage("AutorLibro")%>
 </p>
 <p>
@@ -19,12 +19,15 @@
 </p>
 <p>
     <label>Editorial</label>
-    <%=Html.TextBox("Editorial", Model.Editorial, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100", maxlength = 100 })%>
+    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...")%>
+    <%=Html.ValidationMessage("Volumen")%>
     <span class="cvu"></span>
 </p>
 <p>

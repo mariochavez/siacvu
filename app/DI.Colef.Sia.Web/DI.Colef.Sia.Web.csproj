@@ -655,7 +655,6 @@
     <Content Include="Views\ParticipacionAcademia\Show.aspx" />
     <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
     <Content Include="Views\Productos\Articulo\Show.aspx" />
-    <Content Include="Views\Productos\Capitulo\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
     <Content Include="Views\Productos\Dictamen\ChangeRevista.js.ascx" />

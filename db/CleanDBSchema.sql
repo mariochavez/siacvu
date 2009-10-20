@@ -2190,28 +2190,8 @@ alter table EditorialLibros  drop constraint FK24039B586827F8
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD6A829E09]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD6A829E09
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD7D866EAB]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD7D866EAB
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD3E391E13]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD3E391E13
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADE5A51EE5]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEADE5A51EE5
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD4B54D394
 
 
 
@@ -2220,18 +2200,28 @@ alter table Capitulos  drop constraint FK3165FEAD6425E2FD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD64F7D1CD]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD64F7D1CD
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD8A77AB9C]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD8A77AB9C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4B54D394]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD4B54D394
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADE30B9132]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEADE30B9132
 
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD7A8488F7]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD7A8488F7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD103EADB1]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD103EADB1
 
 
 
@@ -2245,23 +2235,18 @@ alter table Capitulos  drop constraint FK3165FEAD437DED87
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD295BC133]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD295BC133
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD6A829E09]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD6A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADBC063744]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEADBC063744
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD7D866EAB]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD7D866EAB
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADF4FE4035]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEADF4FE4035
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD3E391E13]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD3E391E13
 
 
 
@@ -3444,6 +3429,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
+  
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4893,37 +4879,33 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Capitulos (
         Id INT IDENTITY NOT NULL,
        NombreCapitulo NVARCHAR(255) null,
+       PosicionAutor INT null,
+       TieneProyecto BIT null,
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
-       FechaEdicion DATETIME null,
-       TieneProyecto BIT null,
-       PosicionAutor INT null,
        NombreLibro NVARCHAR(255) null,
-       Editorial NVARCHAR(255) null,
-       NoPaginas INT null,
-       Puntuacion INT null,
-       Volumen NVARCHAR(255) null,
-       Traductor BIT null,
        AutorLibro NVARCHAR(255) null,
        Resumen NVARCHAR(255) null,
+       Volumen INT null,
+       FechaEdicion DATETIME null,
+       NoPaginas INT null,
+       Puntuacion INT null,
+       Traductor BIT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       TipoCapituloFk INT null,
+       IdiomaFk INT null,
+       ProyectoFk INT null,
+       AreaTematicaFk INT null,
+       EstadoProductoFk INT null,
+       EditorialFk INT null,
+       PaisFk INT null,
+       TipoParticipacionFk INT null,
+       TipoParticipanteFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       TipoCapituloFk INT null,
-       EstadoProductoFk INT null,
-       IdiomaFk INT null,
-       InstitucionFk INT null,
-       PaisFk INT null,
-       FormaParticipacionFk INT null,
-       TipoParticipacionFk INT null,
-       TipoParticipanteFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
-       ProyectoFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5143,6 +5125,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        PaginaFinal INT null,
        FechaEdicion DATETIME null,
        ArticuloTraducido BIT null,
+       Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -6417,6 +6400,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (FormaParticipacionFk) 
         references FormaParticipaciones
 
+    
 
     alter table TesisDirigidas 
         add constraint FKEF4DD3119CF67963 
@@ -6739,24 +6723,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Libros
 
     alter table Capitulos 
-        add constraint FK3165FEAD7D866EAB 
-        foreign key (DepartamentoFk) 
-        references Departamentos
-
-    alter table Capitulos 
-        add constraint FK3165FEAD3E391E13 
-        foreign key (SedeFk) 
-        references Sedes
-
-    alter table Capitulos 
         add constraint FK3165FEADE5A51EE5 
         foreign key (TipoCapituloFk) 
         references TipoCapitulos
-
-    alter table Capitulos 
-        add constraint FK3165FEAD4B54D394 
-        foreign key (EstadoProductoFk) 
-        references EstadoProductos
 
     alter table Capitulos 
         add constraint FK3165FEAD6425E2FD 
@@ -6764,19 +6733,29 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Idiomas
 
     alter table Capitulos 
-        add constraint FK3165FEAD64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
+        add constraint FK3165FEAD70EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Capitulos 
+        add constraint FK3165FEAD8A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
+
+    alter table Capitulos 
+        add constraint FK3165FEAD4B54D394 
+        foreign key (EstadoProductoFk) 
+        references EstadoProductos
+
+    alter table Capitulos 
+        add constraint FK3165FEADE30B9132 
+        foreign key (EditorialFk) 
+        references Editoriales
 
     alter table Capitulos 
         add constraint FK3165FEAD7A8488F7 
         foreign key (PaisFk) 
         references Paises
-
-    alter table Capitulos 
-        add constraint FK3165FEAD103EADB1 
-        foreign key (FormaParticipacionFk) 
-        references FormaParticipaciones
 
     alter table Capitulos 
         add constraint FK3165FEAD2261429F 
@@ -6789,24 +6768,14 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references TipoParticipantes
 
     alter table Capitulos 
-        add constraint FK3165FEAD295BC133 
-        foreign key (AreaFk) 
-        references Areas
+        add constraint FK3165FEAD7D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
 
     alter table Capitulos 
-        add constraint FK3165FEADBC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Capitulos 
-        add constraint FK3165FEADF4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table Capitulos 
-        add constraint FK3165FEAD70EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
+        add constraint FK3165FEAD3E391E13 
+        foreign key (SedeFk) 
+        references Sedes
 
     alter table MovilidadAcademicas 
         add constraint FK684440B07A8C3DE5 
@@ -7267,3 +7236,4 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
+

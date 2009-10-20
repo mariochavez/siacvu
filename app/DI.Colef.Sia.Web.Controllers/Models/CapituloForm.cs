@@ -7,9 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string FechaAceptacion { get; set; }
 		public string FechaEdicion { get; set; }
 		public string NombreLibro { get; set; }
-		public string Editorial { get; set; }
 		public int NoPaginas { get; set; }
-		public string Volumen { get; set; }
 		public string AutorLibro { get; set; }
         public bool Traductor { get; set; }
         public string FechaPublicacion { get; set; }
@@ -20,9 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneProyecto { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-
-        public string InstitucionNombre { get; set; }
-        public int InstitucionId { get; set; }
+        public int Volumen { get; set; }
 
         public int TipoCapitulo { get; set; }
         public int TipoCapituloId { get; set; }
@@ -40,10 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
 
-        public int FormaParticipacion { get; set; }
-        public int FormaParticipacionId { get; set; }
-        public string FormaParticipacionNombre { get; set; }
-
         public int TipoParticipacion { get; set; }
         public int TipoParticipacionId { get; set; }
         public string TipoParticipacionNombre { get; set; }
@@ -52,16 +44,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoParticipanteId { get; set; }
         public string TipoParticipanteNombre { get; set; }
 
-        public string AreaNombre { get; set; }
-        public string DisciplinaNombre { get; set; }
-        public int Subdisciplina { get; set; }
-        public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
+        //public string AreaNombre { get; set; }
+        //public string DisciplinaNombre { get; set; }
+        //public int Subdisciplina { get; set; }
+        //public int SubdisciplinaId { get; set; }
+        //public string SubdisciplinaNombre { get; set; }
 
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-        public string ProyectoLineaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string ProyectoAreaTematicaSubdisciplinaNombre { get; set; }
+
+        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
+
+        public int Editorial { get; set; }
+        public int EditorialId { get; set; }
+        public string EditorialNombre { get; set; }
 
         public int TotalAutores
         {
@@ -93,6 +100,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ResponsableExternoProductoForm ResponsableExternoProducto { get; set; }
 		
 		/* Catalogos */
+        public CustomSelectForm[] Volumenes { get; set; }
+        public EditorialForm[] Editoriales { get; set; }
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public TipoCapituloForm[] TiposCapitulos { get; set; }
         public EstadoProductoForm[] EstadosProductos { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
@@ -104,7 +114,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public FormaParticipacionForm[] FormasParticipaciones { get; set; }
 		public TipoParticipacionForm[] TiposParticipaciones { get; set; }
 		public TipoParticipanteForm[] TiposParticipantes { get; set; }
-		public SubdisciplinaForm[] Subdisciplinas { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
     }
 }

@@ -613,9 +613,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipante,
                            o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
+                .ForMember(d => d.Editorial,
                            o => o.Ignore())
-                .ForMember(d => d.FormaParticipacion,
+                .ForMember(d => d.AreaTematica,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore());

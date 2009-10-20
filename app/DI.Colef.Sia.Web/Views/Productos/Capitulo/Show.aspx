@@ -57,10 +57,12 @@
                     <label>Tipo de cap&iacute;tulo</label>
                     <strong><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Idioma al que se tradujo</label>
-                    <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
-                </p>
+                <% if (Model.Form.TipoCapituloNombre.Contains("otro idioma")) { %>
+                    <p>
+                        <label>Idioma al que se tradujo</label>
+                        <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
 	            <h4>Coautores</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
@@ -76,30 +78,68 @@
                     <label></label>
                     Tiene proyecto de investigaci&oacute;n de referencia? <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Nombre del proyecto de investigaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoLineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
-                </p>
+                <% if (Model.Form.TieneProyecto) { %>
+                    <p>
+                        <label>Nombre del proyecto de investigaci&oacute;n</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>L&iacute;nea tem&aacute;tica</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaLineaTematicaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>&Aacute;rea tem&aacute;tica</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>&Aacute;rea</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>Disciplina</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>Subdisciplina</label>
+                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
+                    </p>
+                <% } else { %>
+                    <p>
+                        <label>L&iacute;nea tem&aacute;tica</label>
+                        <strong><%= Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre) %>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>&Aacute;rea tem&aacute;tica</label>
+                        <strong><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>&Aacute;rea</label>
+                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>Disciplina</label>
+                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>Subdisciplina</label>
+                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
                 </p>
+                <% if (Model.Form.EstadoProductoNombre.Contains("Aceptado")){ %>
                 <p>
                     <label>Fecha de aceptaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
+                <% } else { %>
                 <p>
                     <label>Fecha de publicaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
+                <% } %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->                
                 <h4>Referencia bibliogr&aacute;fica</h4>
@@ -117,11 +157,11 @@
                 </p>
                 <p>
                     <label>Editorial</label>
-                    <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
+                    <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Volumen</label>
-                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
+                    <strong><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>A&ntilde;o de edici&oacute;n</label>
@@ -154,18 +194,6 @@
                 <p>
                     <label>Tipo de participante</label>
                     <strong><%= Html.Encode(Model.Form.TipoParticipanteNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Aacute;rea</label>
-                    <strong><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Disciplina</label>
-                    <strong><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Subdisciplina</label>
-                    <strong><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>Traductor/Co-Traductor</label>

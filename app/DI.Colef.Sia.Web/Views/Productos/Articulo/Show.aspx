@@ -196,7 +196,7 @@
                     <h4>Referencia bibliogr&aacute;fica</h4>
                     <p>
                         <label>Volumen</label>
-                        <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
+                        <strong><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</strong>
                     </p>
                     <p>
                         <label>N&uacute;mero</label>

@@ -41,37 +41,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.NombreCapitulo = message.NombreCapitulo;
             model.NombreLibro = message.NombreLibro;
-            model.Editorial = message.Editorial;
             model.NoPaginas = message.NoPaginas;
-            model.Volumen = message.Volumen;
             model.PosicionAutor = message.PosicionAutor;
             model.AutorLibro = message.AutorLibro;
             model.Traductor = message.Traductor;
             model.Resumen = message.Resumen;
             model.TieneProyecto = message.TieneProyecto;
+            model.Volumen = message.Volumen;
 
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
             model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
-            
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
-            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
-
-            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
-            model.Area = catalogoService.GetAreaById(area);
-
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)

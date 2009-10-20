@@ -118,6 +118,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Idioma Idioma { get; set; }
 
+        public virtual int Puntuacion { get; set; }
+
         //public virtual LineaInvestigacion LineaInvestigacion { get; set; }
 
         //public virtual TipoActividad TipoActividad { get; set; }
