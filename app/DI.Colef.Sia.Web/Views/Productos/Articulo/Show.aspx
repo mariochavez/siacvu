@@ -80,14 +80,9 @@
                         <label>Nombre de la revista</label>
                         <strong><%=Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
                     </p>
-                    <p>
-                        <label>Instituci&oacute;n</label>
-                        <strong><%=Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Pa&iacute;s</label>
-                        <strong><%=Html.Encode(Model.Form.RevistaPublicacionPaisNombre)%>&nbsp;</strong>
-                    </p>
+                    
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                    
                     <p>
                         <label>&Iacute;ndice 1</label>
                         <strong><%=Html.Encode(Model.Form.RevistaPublicacionIndice1Nombre)%>&nbsp;</strong>
@@ -111,26 +106,9 @@
                         <label>Nombre del proyecto de investigaci&oacute;n</label>
                         <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                     </p>
-                    <p>
-                        <label>L&iacute;nea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaLineaTematicaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Disciplina</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Subdisciplina</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
-                    </p>
+                    
+                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                    
                     <p>
                         <label>Palabra clave 1</label>
                         <strong><%= Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</strong>
@@ -144,26 +122,9 @@
                         <strong><%= Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</strong>
                     </p>
                 <% } else { %>
-                    <p>
-                        <label>L&iacute;nea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre) %>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Disciplina</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Subdisciplina</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
-                    </p>
+                
+                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+
                     <p>
                         <label>Palabra clave 1</label>
                         <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>

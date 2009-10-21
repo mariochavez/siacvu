@@ -61,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)

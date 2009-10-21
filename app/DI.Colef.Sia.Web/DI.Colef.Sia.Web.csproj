@@ -718,6 +718,9 @@
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
+    <Content Include="Views\Shared\_ShowAreaTematica.ascx" />
+    <Content Include="Views\Shared\_ShowProyecto.ascx" />
+    <Content Include="Views\Shared\_ShowRevista.ascx" />
     <Content Include="Views\Shared\DeleteResponsableInterno.js.ascx" />
     <Content Include="Views\Shared\DeleteResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\_ShowResponsableInterno.ascx" />

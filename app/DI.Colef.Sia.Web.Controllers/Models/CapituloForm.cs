@@ -58,7 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoAreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
         public string ProyectoAreaTematicaSubdisciplinaNombre { get; set; }
 
-        public int AreaTematica { get; set; }
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
         public string AreaTematicaLineaTematicaNombre { get; set; }
@@ -98,7 +97,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public ResponsableInternoProductoForm ResponsableInternoProducto { get; set; }
         public ResponsableExternoProductoForm ResponsableExternoProducto { get; set; }
-		
+
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public ProyectoForm Proyecto { get; set; }
+        public AreaTematicaForm AreaTematica { get; set; }
+
 		/* Catalogos */
         public CustomSelectForm[] Volumenes { get; set; }
         public EditorialForm[] Editoriales { get; set; }

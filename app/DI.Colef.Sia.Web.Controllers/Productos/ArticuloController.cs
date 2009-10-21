@@ -126,7 +126,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var articulo = articuloService.GetArticuloById(id);
-            data.Form = articuloMapper.Map(articulo);
+
+            var articuloForm = articuloMapper.Map(articulo);
+
+            data.Form = SetupShowForm(articuloForm);
 
             ViewData.Model = data;
             return View();
@@ -180,38 +183,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return RedirectToIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
         }
-
-        //[Authorize]
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult ChangeRevista(int select)
-        //{
-        //    var articuloForm = new ArticuloForm();
-        //    var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
-
-        //    articuloForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
-        //    articuloForm.RevistaPublicacionPaisNombre = revistaPublicacionForm.PaisNombre;
-        //    articuloForm.RevistaPublicacionIndice1Nombre = revistaPublicacionForm.Indice1Nombre;
-        //    articuloForm.RevistaPublicacionIndice2Nombre = revistaPublicacionForm.Indice2Nombre;
-        //    articuloForm.RevistaPublicacionIndice3Nombre = revistaPublicacionForm.Indice3Nombre;
-            
-        //    articuloForm.RevistaPublicacionId = revistaPublicacionForm.Id;
-
-        //    return Rjs("ChangeRevista", articuloForm);
-        //}
-
-        //[Authorize]
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult ChangeProyecto(int select)
-        //{
-        //    var articuloForm = new ArticuloForm();
-        //    var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
-
-        //    articuloForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
-        //    articuloForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
-        //    articuloForm.ProyectoId = proyectoForm.Id;
-
-        //    return Rjs("ChangeProyecto", articuloForm);
-        //}
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -385,12 +356,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["Volumen"] = form.Volumen;
             ViewData["TipoArticulo"] = form.TipoArticuloId;
-            ViewData["AreaTematica"] = form.AreaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProductoId;
             //ViewData["LineaInvestigacion"] = form.LineaInvestigacionId;
             //ViewData["TipoActividad"] = form.TipoActividadId;
             //ViewData["TipoParticipante"] = form.TipoParticipanteId;
+        }
+
+        private ArticuloForm SetupShowForm(ArticuloForm form)
+        {
+            form = form ?? new ArticuloForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                  };
+
+            return form;
         }
     }
 }

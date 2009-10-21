@@ -139,7 +139,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var capitulo = capituloService.GetCapituloById(id);
-            data.Form = capituloMapper.Map(capitulo);
+            var articuloForm = capituloMapper.Map(capitulo);
+
+            data.Form = SetupShowForm(articuloForm);
 
             ViewData.Model = data;
             return View();
@@ -197,20 +199,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return RedirectToIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
         }
-
-        //[Authorize]
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult ChangeProyecto(int select)
-        //{
-        //    var capituloForm = new CapituloForm();
-        //    var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
-
-        //    capituloForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
-        //    capituloForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
-        //    capituloForm.ProyectoId = proyectoForm.Id;
-
-        //    return Rjs("ChangeProyecto", capituloForm);
-        //}
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
@@ -529,7 +517,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(CapituloForm form)
         {
-            ViewData["AreaTematica"] = form.AreaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Volumen"] = form.Volumen;
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
@@ -538,6 +526,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Pais"] = form.PaisId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoParticipante"] = form.TipoParticipanteId;
+        }
+
+        private CapituloForm SetupShowForm(CapituloForm form)
+        {
+            form = form ?? new CapituloForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                  };
+
+            return form;
         }
     }
 }

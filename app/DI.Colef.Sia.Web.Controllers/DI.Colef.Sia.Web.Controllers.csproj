@@ -152,6 +152,7 @@
     <Compile Include="Models\AlumnoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\AutorResenaForm.cs" />
+    <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
     <Compile Include="Models\EditorialLibroForm.cs" />

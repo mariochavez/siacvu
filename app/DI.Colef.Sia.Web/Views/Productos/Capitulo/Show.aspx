@@ -83,47 +83,10 @@
                         <label>Nombre del proyecto de investigaci&oacute;n</label>
                         <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                     </p>
-                    <p>
-                        <label>L&iacute;nea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaLineaTematicaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Disciplina</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Subdisciplina</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
-                    </p>
+                    
+                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } else { %>
-                    <p>
-                        <label>L&iacute;nea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre) %>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea tem&aacute;tica</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>&Aacute;rea</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Disciplina</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Subdisciplina</label>
-                        <strong><%= Html.Encode(Model.Form.AreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
-                    </p>
+                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 <% } %>
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>

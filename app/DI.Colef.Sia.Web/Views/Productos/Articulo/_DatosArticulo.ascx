@@ -28,9 +28,9 @@
 </p>
 <p class="notieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.DropDownList("AreaTematica", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("AreaTematica")%>
+    <%=Html.ValidationMessage("AreaTematicaId")%>
 </p>
 <p class="notieneproyecto_field">
 	<label>Palabra clave 1</label>

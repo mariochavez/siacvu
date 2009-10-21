@@ -53,6 +53,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematica { get; set; }
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaNombre { get; set; }
 
         public int ImpactoPoliticaPublica { get; set; }
         public int ImpactoPoliticaPublicaId { get; set; }
