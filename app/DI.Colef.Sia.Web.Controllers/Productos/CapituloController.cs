@@ -27,7 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IPaisMapper paisMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-        readonly IEstadoProductoMapper estadoProductoMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
@@ -49,7 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-                                  IInvestigadorService investigadorService, IEstadoProductoMapper estadoProductoMapper,
+                                  IInvestigadorService investigadorService,
                                   ISearchService searchService, IProyectoService proyectoService, IProyectoMapper proyectoMapper,
                                   ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper, 
                                   IEditorialMapper editorialMapper)
@@ -58,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.catalogoService = catalogoService;
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
-            this.estadoProductoMapper = estadoProductoMapper;
             this.capituloMapper = capituloMapper;
             this.tipoCapituloMapper = tipoCapituloMapper;
             this.idiomaMapper = idiomaMapper;
@@ -501,7 +499,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
-            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
@@ -522,7 +520,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Volumen"] = form.Volumen;
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Pais"] = form.PaisId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["TipoParticipante"] = form.TipoParticipanteId;

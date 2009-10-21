@@ -58,10 +58,6 @@ INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 INSERT UsuarioRol VALUES(4, 3)
 
-insert into NivelIdiomas values('Bajo', GETDATE(), GETDATE(), 1, 1, 1)
-insert into NivelIdiomas values('Medio', GETDATE(), GETDATE(), 1, 1, 1)
-insert into NivelIdiomas values('Alto', GETDATE(), GETDATE(), 1, 1, 1)
-
 insert into USEGs values('Cartografía Digital',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Geo-Estadística',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Análisis Espacial',GETDATE(), GETDATE(), 1, 1, 1);
@@ -70,10 +66,6 @@ insert into DirigidoAs values('Sector privado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into DirigidoAs values('Sector académico', GETDATE(), GETDATE(), 1, 1, 1)
 insert into DirigidoAs values('Sector público', GETDATE(), GETDATE(), 1, 1, 1)
 insert into DirigidoAs values('Sector social', GETDATE(), GETDATE(), 1, 1, 1)
-
-insert into Ediciones values('Primera edición', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Ediciones values('Segunda edición', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Ediciones values('Tercerca edición', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstatusFormacionAcademicas values('Crédito terminado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into EstatusFormacionAcademicas values('Grado obtenido',GETDATE(), GETDATE(), 1, 1, 1);
@@ -150,9 +142,6 @@ insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1,
 insert into TipoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Coordinación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPublicaciones values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into TipoProductos values('Con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoProductos values('Sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into FormatoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormatoPublicaciones values('Memoria de evento',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2387,9 +2376,6 @@ insert into ProgramaEstudios values('zonas +AOE-ridaS', GETDATE(), GETDATE(), 1,
 insert into TipoReportes values('Cuaderno de trabajo', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoReportes values('Reporte técnico', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into EstadoProductos values('Aceptado', GETDATE(), GETDATE(), 1, 1, 1)
-insert into EstadoProductos values('Publicado', GETDATE(), GETDATE(), 1, 1, 1)
-
 insert into NivelEstudios values('Licenciatura', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Maestría', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Doctorado', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2455,10 +2441,6 @@ insert into FondoConacyts values('CONACyT Ciencia Básica', GETDATE(), GETDATE(),
 insert into FondoConacyts values('CONACyT Fondo Mixto', GETDATE(), GETDATE(), 1, 1, 1)
 insert into FondoConacyts values('CONACyT Fondo Sectorial', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into TipoEstudiantes values('Interno',GETDATE(), GETDATE(), 1, 1,1)
-insert into TipoEstudiantes values('Egresado',GETDATE(), GETDATE(), 1, 1,1)
-insert into TipoEstudiantes values('Externo',GETDATE(), GETDATE(), 1, 1,1)
-
 insert into TipoArchivos values('Carta de la Revista',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Carta de la Editorial',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Carta de Aceptación',GETDATE(), GETDATE(), 1, 1, 1)
@@ -2475,10 +2457,6 @@ insert into TipoArchivos values('Reporte de Actividades',GETDATE(), GETDATE(), 1
 insert into TipoArchivos values('Boletin',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Carta de la institución',GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoArchivos values('Posgrado Colef',GETDATE(), GETDATE(), 1, 1, 1)
-
-insert into Reimpresiones values('Primera',GETDATE(), GETDATE(), 1, 1, 1)
-insert into Reimpresiones values('Segunda',GETDATE(), GETDATE(), 1, 1, 1)
-insert into Reimpresiones values('Tercera',GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into VinculacionAPyDes values('Tesis orientada al Desarrollo Local', GETDATE(), GETDATE(), 1, 1, 1)
 insert into VinculacionAPyDes values('Tesis Orientada a la Contribución del Bienestar social', GETDATE(), GETDATE(), 1, 1, 1)

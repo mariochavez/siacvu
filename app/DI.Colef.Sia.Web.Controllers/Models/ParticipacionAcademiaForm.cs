@@ -20,8 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PaisNombre { get; set; }
 
         public int EstadoProducto { get; set; }
-        public int EstadoProductoId { get; set; }
-        public string EstadoProductoNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
@@ -35,7 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public PaisForm[] Paises { get; set; }
-        public EstadoProductoForm[] EstadosProductos { get; set; }
+        public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
     }
 }

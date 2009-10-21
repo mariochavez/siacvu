@@ -114,7 +114,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string NombreEstudiante { get; set; }
 
-        public virtual TipoEstudiante TipoEstudiante { get; set; }
+        public virtual int TipoEstudiante { get; set; }
 
         public virtual GradoAcademico GradoAcademico { get; set; }
 

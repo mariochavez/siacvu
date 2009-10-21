@@ -48,7 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             //model.Fecha = message.Fecha.FromShortDateToDateTime();
 
             model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             //model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             //model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

@@ -29,21 +29,21 @@
 <p>
 	<label>Nivel de conversaci&oacute;n</label>
 
-	<%=Html.DropDownList("NivelConversacion", Model.NivelesConversacion.CreateSelectList<NivelIdiomaForm>("Id", "Nombre"),
+	<%=Html.DropDownList("NivelConversacion", Model.NivelesConversacion.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("NivelConversacion")%>
 </p>
 <p>
 	<label>Nivel de lectura</label>
 
-	<%=Html.DropDownList("NivelLectura", Model.NivelesLectura.CreateSelectList<NivelIdiomaForm>("Id", "Nombre"),
+	<%=Html.DropDownList("NivelLectura", Model.NivelesLectura.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("NivelLectura")%>
 </p>
 <p>
 	<label>Nivel de escritura</label>
 
-	<%=Html.DropDownList("NivelEscritura", Model.NivelesEscritura.CreateSelectList<NivelIdiomaForm>("Id", "Nombre"),
+	<%=Html.DropDownList("NivelEscritura", Model.NivelesEscritura.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
 		"Seleccione ...")%>
 	<%=Html.ValidationMessage("NivelEscritura")%>
 </p>

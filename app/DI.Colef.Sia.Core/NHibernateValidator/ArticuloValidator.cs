@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (articulo.EstadoProducto.Nombre.Contains("Publicado"))
+            if (articulo.EstadoProducto == 2)
             {
                 if (articulo.PaginaInicial > articulo.PaginaFinal)
                 {
@@ -154,7 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
             }
 
-            if (articulo.EstadoProducto.Nombre.Contains("Aceptado"))
+            if (articulo.EstadoProducto == 1)
             {
                 if (articulo.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {

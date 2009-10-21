@@ -59,14 +59,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
-            model.TipoProducto = catalogoService.GetTipoProductoById(message.TipoProducto);
+            model.TipoProducto = message.TipoProducto;
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
-            model.Edicion = catalogoService.GetEdicionById(message.Edicion);
+            model.Edicion = message.Edicion;
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
-		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Reimpresion = catalogoService.GetReimpresionById(message.Reimpresion);
+            model.Reimpresion = message.Reimpresion;
 		    //model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             //model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
             

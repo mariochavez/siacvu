@@ -50,7 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             //model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
@@ -59,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
-            if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")
+            if (model.EstadoProducto == 0 || model.EstadoProducto != 2)
             {
                 model.PaginaInicial = 0;
                 model.PaginaFinal = 0;

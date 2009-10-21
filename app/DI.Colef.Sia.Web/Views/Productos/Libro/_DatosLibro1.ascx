@@ -14,7 +14,7 @@
 </p>
 <p>
     <label>Tipo de producto</label>
-    <%=Html.DropDownList("TipoProducto", Model.TiposProductos.CreateSelectList<TipoProductoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("TipoProducto", Model.TiposProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoProducto")%>
 </p>

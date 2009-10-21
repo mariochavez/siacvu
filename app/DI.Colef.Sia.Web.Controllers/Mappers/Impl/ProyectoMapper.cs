@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.USEG = catalogoService.GetUSEGById(message.USEG);
             model.ProductoAcademico = catalogoService.GetProductoAcademicoById(message.ProductoAcademico);
             model.ActividadPrevista = catalogoService.GetActividadPrevistaById(message.ActividadPrevista);
-            model.TipoEstudiante = catalogoService.GetTipoEstudianteById(message.TipoEstudiante);
+            model.TipoEstudiante = message.TipoEstudiante;
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);

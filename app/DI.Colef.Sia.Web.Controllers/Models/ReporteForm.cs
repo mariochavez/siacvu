@@ -28,8 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string TipoReporteNombre { get; set; }
 
         public int EstadoProducto { get; set; }
-        public int EstadoProductoId { get; set; }
-        public string EstadoProductoNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
@@ -59,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoReporteForm[] TiposReportes { get; set; }
-        public EstadoProductoForm[] EstadosProductos { get; set; }
+        public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }

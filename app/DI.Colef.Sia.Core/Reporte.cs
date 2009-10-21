@@ -61,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
-        public virtual EstadoProducto EstadoProducto { get; set; }
+        public virtual int EstadoProducto { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
 

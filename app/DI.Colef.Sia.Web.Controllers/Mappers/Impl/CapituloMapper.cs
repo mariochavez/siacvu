@@ -55,7 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);

@@ -18,21 +18,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string IdiomaNombre { get; set; }
 
         public int NivelConversacion { get; set; }
-        public int NivelConversacionId { get; set; }
-        public string NivelConversacionNombre { get; set; }
-
         public int NivelLectura { get; set; }
-        public int NivelLecturaId { get; set; }
-        public string NivelLecturaNombre { get; set; }
-
         public int NivelEscritura { get; set; }
-        public int NivelEscrituraId { get; set; }
-        public string NivelEscrituraNombre { get; set; }
 
         /* Catalogos */
         public IdiomaForm[] Idiomas { get; set; }
-        public NivelIdiomaForm[] NivelesConversacion { get; set; }
-        public NivelIdiomaForm[] NivelesLectura { get; set; }
-        public NivelIdiomaForm[] NivelesEscritura { get; set; }
+        public CustomSelectForm[] NivelesConversacion { get; set; }
+        public CustomSelectForm[] NivelesLectura { get; set; }
+        public CustomSelectForm[] NivelesEscritura { get; set; }
     }
 }

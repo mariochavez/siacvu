@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -46,16 +47,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
         readonly IEstatusProyectoMapper estatusProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
-        readonly ITipoEstudianteMapper tipoEstudianteMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly IRamaMapper ramaMapper;
         readonly IClaseMapper claseMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ICustomCollection customCollection;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
                                   IInvestigadorMapper investigadorMapper, IResponsableInternoProyectoMapper responsableInternoProyectoMapper, 
-                                  IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, 
+                                  IParticipanteInternoProyectoMapper participanteInternoProyectoMapper, ICustomCollection customCollection,
                                   IInvestigadorExternoMapper investigadorExternoMapper, IParticipanteExternoProyectoMapper participanteExternoProyectoMapper, 
                                   ISedeMapper sedeMapper, ILineaTematicaMapper lineaTematicaMapper, IImpactoPoliticaPublicaMapper impactoPoliticaPublicaMapper, 
                                   IAmbitoMapper ambitoMapper, ITipoFinanciamientoMapper tipoFinanciamientoMapper, IMonedaMapper monedaMapper, 
@@ -65,12 +66,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
                                   ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
                                   ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper,
-                                  IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper, ITipoEstudianteMapper tipoEstudianteMapper,
+                                  IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper,
                                   IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
                                   IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+        
             this.catalogoService = catalogoService;
+            this.customCollection = customCollection;
             this.proyectoService = proyectoService;
             this.proyectoMapper = proyectoMapper;
             this.tipoProyectoMapper = tipoProyectoMapper;
@@ -103,7 +106,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
             this.estatusProyectoMapper = estatusProyectoMapper;
             this.fondoConacytMapper = fondoConacytMapper;
-            this.tipoEstudianteMapper = tipoEstudianteMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.ramaMapper = ramaMapper;
             this.claseMapper = claseMapper;
@@ -692,7 +694,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());
             form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
             form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
-            form.TiposEstudiantes = tipoEstudianteMapper.Map(catalogoService.GetActiveTipoEstudiantes());
+            form.TiposEstudiantes = customCollection.TipoAlumnoCursoCustomCollection();
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
@@ -746,7 +748,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["USEG"] = form.USEGId;
             ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
             ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
-            ViewData["TipoEstudiante"] = form.TipoEstudianteId;
+            ViewData["TipoEstudiante"] = form.TipoEstudiante;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["Sector"] = form.SectorId;
             ViewData["Organizacion"] = form.OrganizacionId;

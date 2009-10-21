@@ -49,8 +49,8 @@
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
-    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
 <p id="EstatusAceptado">

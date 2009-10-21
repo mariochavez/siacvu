@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -16,40 +17,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
-        readonly IEstadoProductoMapper estadoProductoMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly IPaisMapper paisMapper;
         readonly IProyectoMapper proyectoMapper;
         readonly IReporteMapper reporteMapper;
         readonly IReporteService reporteService;
         readonly ITipoReporteMapper tipoReporteMapper;
         readonly IProyectoService proyectoService;
-
+        readonly ICustomCollection customCollection;
 
         public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
                                  IUsuarioService usuarioService, ITipoReporteMapper tipoReporteMapper,
-                                 IEstadoProductoMapper estadoProductoMapper,
                                  IProyectoMapper proyectoMapper,
                                  IInvestigadorExternoMapper investigadorExternoMapper,
-                                 IInvestigadorMapper investigadorMapper,
-                                 IPaisMapper paisMapper, IInvestigadorService investigadorService,
-                                 ICoautorExternoReporteMapper coautorExternoReporteMapper,
+                                 IInvestigadorMapper investigadorMapper, IInvestigadorService investigadorService,
+                                 ICoautorExternoReporteMapper coautorExternoReporteMapper, ICustomCollection customCollection,
                                  ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService,
                                  IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.customCollection = customCollection;
             this.reporteService = reporteService;
             this.reporteMapper = reporteMapper;
             this.tipoReporteMapper = tipoReporteMapper;
-            this.estadoProductoMapper = estadoProductoMapper;
             this.proyectoMapper = proyectoMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
-            this.paisMapper = paisMapper;
             this.investigadorService = investigadorService;
             this.coautorExternoReporteMapper = coautorExternoReporteMapper;
             this.coautorInternoReporteMapper = coautorInternoReporteMapper;
@@ -343,7 +339,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
-            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
@@ -354,7 +350,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(ReporteForm form)
         {
             ViewData["TipoReporte"] = form.TipoReporteId;
-            ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Proyecto"] = form.ProyectoId;
         }
     }

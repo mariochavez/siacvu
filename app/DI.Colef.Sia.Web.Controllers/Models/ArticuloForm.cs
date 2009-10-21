@@ -33,8 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string IdiomaNombre { get; set; }
 
         public int EstadoProducto { get; set; }
-        public int EstadoProductoId { get; set; }
-        public string EstadoProductoNombre { get; set; }
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
@@ -99,7 +97,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoArticuloForm[] TiposArticulos { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
-        public EstadoProductoForm[] EstadosProductos { get; set; }
+        public CustomSelectForm[] EstadosProductos { get; set; }
         //public LineaInvestigacionForm[] LineasInvestigaciones { get; set; }
         //public TipoActividadForm[] TiposActividades { get; set; }
         //public TipoParticipacionForm[] TiposParticipantes { get; set; }
