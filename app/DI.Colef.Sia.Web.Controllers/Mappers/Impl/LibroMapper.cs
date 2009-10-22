@@ -50,35 +50,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            //model.Traductor = message.Traductor;
             model.NombreTraductor = message.NombreTraductor;
             model.PosicionAutor = message.PosicionAutor;
+            model.TipoProducto = message.TipoProducto;
+            model.Edicion = message.Edicion;
+            model.EstadoProducto = message.EstadoProducto;
+            model.Reimpresion = message.Reimpresion;
 
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
-            model.TipoProducto = message.TipoProducto;
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
-            model.Edicion = message.Edicion;
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
-            model.EstadoProducto = message.EstadoProducto;
-            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Reimpresion = message.Reimpresion;
-		    //model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
-            //model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
-            
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
-            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
-
-            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
-            model.Area = catalogoService.GetAreaById(area);
-
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.Evento = eventoService.GetEventoById(message.Evento);
         }
 

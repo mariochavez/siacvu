@@ -138,7 +138,8 @@
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
                         <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                    </p>                
+                    </p>
+                <% } %>
                     
         <!--DATOS REFERENCIA BIBLIOGRAFICA-->
                     <h4>Referencia bibliogr&aacute;fica</h4>
@@ -178,8 +179,8 @@
                     <% } %>
                 <% } %>
                 
-                <p class="submit">
-                    <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
+                <p class="submit">                    
+                    <%= Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
                 </p>
              </div><!--end campos-->
         </div><!--end lista-->

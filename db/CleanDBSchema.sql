@@ -420,18 +420,8 @@ alter table Libros  drop constraint FK439120E76425E2FD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7295BC133]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7295BC133
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7BC063744]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7BC063744
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7F4FE4035]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7F4FE4035
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E78A77AB9C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E78A77AB9C
 
 
 
@@ -3610,9 +3600,7 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
        EventoFk INT null,
        ProyectoFk INT null,
        IdiomaFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
+       AreaTematicaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5515,19 +5503,9 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references Idiomas
 
     alter table Libros 
-        add constraint FK439120E7295BC133 
-        foreign key (AreaFk) 
-        references Areas
-
-    alter table Libros 
-        add constraint FK439120E7BC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Libros 
-        add constraint FK439120E7F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
+        add constraint FK439120E78A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table GrupoInvestigaciones 
         add constraint FK742C6D093E082BED 

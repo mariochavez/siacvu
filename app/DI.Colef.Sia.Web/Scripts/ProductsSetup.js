@@ -20,7 +20,8 @@
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['.tieneproyecto_field']]
+            ['1', ['#tieneproyecto_field']],
+            ['0', ['#notieneproyecto_field']]
         ]
     );
 

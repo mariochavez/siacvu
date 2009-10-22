@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        //public bool Traductor { get; set; }
         public string NombreTraductor { get; set; }
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
@@ -51,34 +50,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int NombreRevistaId { get; set; }
         public string NombreRevistaTitulo { get; set; }
-        public string NombreRevistaInstitucionNombre { get; set; }
 
-		public int EstadoProducto { get; set; }
+        public int AreaTematicaId { get; set; }
+        public int EstadoProducto { get; set; }
 
 		public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-        public string ProyectoLineaTematicaNombre { get; set; }
-        public string ProyectoAreaTematicaNombre { get; set; }
 		
 		public int Idioma { get; set; }
 		public int IdiomaId { get; set; }
         public string IdiomaNombre { get; set; }
 
         public int Reimpresion { get; set; }
-
-        //public int FormaParticipacion { get; set; }
-        //public int FormaParticipacionId { get; set; }
-        //public string FormaParticipacionNombre { get; set; }
-
-        //public int IdentificadorLibro { get; set; }
-        //public int IdentificadorLibroId { get; set; }
-        //public string IdentificadorLibroNombre { get; set; }
-
-		public string AreaNombre { get; set; }
-        public string DisciplinaNombre { get; set; }
-		public int Subdisciplina { get; set; }
-		public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
 
         public int TotalAutores
         {
@@ -97,23 +80,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public EditorialLibroForm EditorialLibro { get; set; }
+
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public RevistaPublicacionForm RevistaPublicacion { get; set; }
+        public ProyectoForm Proyecto { get; set; }
+        public AreaTematicaForm AreaTematica { get; set; }
 		
 		/* Catalogos */
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }
         public CustomSelectForm[] TiposProductos { get; set; }
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public EventoForm[] Eventos { get; set; }
-        public RevistaPublicacionForm[] RevistaPublicaciones { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
         public EditorialForm[] Editoriales { get; set; }
-		//public FormaParticipacionForm[] FormasParticipaciones { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }
-        public InvestigadorExternoForm[] CoautoresExternos { get; set; }
-        public InvestigadorForm[] CoautoresInternos { get; set; }
-		//public IdentificadorLibroForm[] IdentificadoresLibros { get; set; }
-		public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

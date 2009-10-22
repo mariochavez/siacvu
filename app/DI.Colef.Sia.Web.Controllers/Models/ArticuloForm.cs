@@ -35,9 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-        public string ProyectoPalabraClave1 { get; set; }
-        public string ProyectoPalabraClave2 { get; set; }
-        public string ProyectoPalabraClave3 { get; set; }
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }

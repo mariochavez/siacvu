@@ -30,20 +30,12 @@
                 "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeEvento")})%>
     <%=Html.ValidationMessage("Evento")%>
 </p>
-<p class="memoriaevento_field">
-    <label>Fecha del evento</label>
-    <span id="fechaevento"><%= Html.Encode(Model.EventoFechaInicial)%> - <%= Html.Encode(Model.EventoFechaFinal)%>&nbsp;</span>
-</p>
 <p class="revista_field">
     <label>Nombre de la revista</label>
     <%=Html.TextBox("NombreRevistaTitulo", Model.NombreRevistaTitulo, 
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("NombreRevistaId", Model.NombreRevistaId, new { rel = "#NombreRevistaTitulo", url = Url.Action("ChangeRevista") })%>
+    <%=Html.Hidden("NombreRevistaId", Model.NombreRevistaId, new { rel = "#NombreRevistaTitulo"})%>
     <%=Html.ValidationMessage("NombreRevistaTitulo") %>
-</p>
-<p class="revista_field">
-    <label>Instituci&oacute;n</label>
-    <span id="institucion"><%= Html.Encode(Model.NombreRevistaInstitucionNombre)%>&nbsp;</span>
 </p>
 <p class="revista_field">
     <label>N&uacute;mero</label>
