@@ -9,28 +9,21 @@
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field">
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <span id="lineatematica"><%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>&nbsp;</span>
+<p class="notieneproyecto_field">
+	<label>Instancia a la que se presenta el reporte</label>
+    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
-<p class="tieneproyecto_field">
+<p class="notieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <span id="areatematica"><%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</span>
-</p>
-<p class="tieneproyecto_field">
-    <label>Palabra clave 1</label>
-    <span id="proyectopalabraclave1"><%=Html.Encode(Model.ProyectoPalabraClave1)%>&nbsp;</span>
-</p>
-<p class="tieneproyecto_field">
-    <label>Palabra clave 2</label>
-    <span id="proyectopalabraclave2"><%=Html.Encode(Model.ProyectoPalabraClave2)%>&nbsp;</span>
-</p>
-<p class="tieneproyecto_field">
-    <label>Palabra clave 3</label>
-    <span id="proyectopalabraclave3"><%=Html.Encode(Model.ProyectoPalabraClave3)%>&nbsp;</span>
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("AreaTematicaId")%>
 </p>
 <p class="notieneproyecto_field">
 	<label>Palabra clave 1</label>
@@ -71,9 +64,9 @@
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>
 <p class="ReporteCuaderno">
-	<label>Fecha de edici&oacute;n</label>
-	<%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-	<span>(Formato dd/mm/yyyy)</span>
+	<label>A&ntilde;o de edici&oacute;n</label>
+	<%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
+	<span>(Formato yyyy)</span>
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("FechaEdicion")%>	
 </p>

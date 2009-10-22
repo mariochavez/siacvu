@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (reporte.TipoReporte != null)
                 isValid &= ValidateTipoReporte(reporte, constraintValidatorContext);
 
-            if(reporte.EstadoProducto != null)
+            if(reporte.EstadoProducto != 0)
                 isValid &= ValidateEstadoProducto(reporte, constraintValidatorContext);
 
             return isValid;
@@ -110,31 +110,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
                 else
                 {
-                    if (reporte.PalabraClave1 == "")
+                    if (reporte.Institucion == null)
                     {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío|PalabraClave1", "PalabraClave1");
+                        constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|InstitucionNombre",
+                                                              "InstitucionNombre");
 
                         isValid = false;
                     }
-
-                    if (reporte.PalabraClave2 == "")
+                    if (reporte.AreaTematica == null)
                     {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío|PalabraClave2", "PalabraClave2");
-
-                        isValid = false;
-                    }
-
-                    if (reporte.PalabraClave3 == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío|PalabraClave3", "PalabraClave3");
+                        constraintValidatorContext.AddInvalid("seleccione el área temática|AreaTematicaId",
+                                                              "AreaTematicaId");
 
                         isValid = false;
                     }
                 }
-
             }
 
             if (reporte.Descripcion == "")

@@ -32,7 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ReporteForm message, Reporte model)
         {
             model.Titulo = message.Titulo;
-            //model.Editorial = message.Editorial;
             model.NoPaginas = message.NoPaginas;
             model.Descripcion = message.Descripcion;
             model.Objetivo = message.Objetivo;
@@ -42,17 +41,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PosicionAutor = message.PosicionAutor;
             model.TieneProyecto = message.TieneProyecto;
             
-            model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
+            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
-            //model.Fecha = message.Fecha.FromShortDateToDateTime();
 
             model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            //model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
-            //model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            //model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
         }
 
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)

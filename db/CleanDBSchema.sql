@@ -620,6 +620,16 @@ alter table Reportes  drop constraint FK26728BE170EA6C9E
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE164F7D1CD]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE164F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE18A77AB9C]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE18A77AB9C
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE16A829E09]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE16A829E09
 
@@ -3725,25 +3735,27 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
 
     create table Reportes (
         Id INT IDENTITY NOT NULL,
+       Titulo NVARCHAR(255) null,
        PosicionAutor INT null,
        EstadoProducto INT null,
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
        TieneProyecto BIT null,
-       Titulo NVARCHAR(255) null,
-       FechaEdicion DATETIME null,
-       NoPaginas INT null,
-       Descripcion NVARCHAR(255) null,
-       Objetivo NVARCHAR(255) null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
+       Descripcion NVARCHAR(255) null,
+       Objetivo NVARCHAR(255) null,
+       NoPaginas INT null,
+       FechaEdicion DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoReporteFk INT null,
        ProyectoFk INT null,
+       InstitucionFk INT null,
+       AreaTematicaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -5616,6 +5628,16 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         add constraint FK26728BE170EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
+
+    alter table Reportes 
+        add constraint FK26728BE164F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table Reportes 
+        add constraint FK26728BE18A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table Reportes 
         add constraint FK26728BE17D866EAB 

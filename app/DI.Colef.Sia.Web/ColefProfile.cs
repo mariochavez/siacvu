@@ -396,12 +396,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoReporte,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoReporte, CoautorInternoProductoForm>()

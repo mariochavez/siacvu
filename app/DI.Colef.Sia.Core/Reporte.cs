@@ -56,7 +56,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoReporte> ArchivoReportes { get; private set; }
 
+        [DomainSignature]
+        [NotNullNotEmpty]
+        public virtual string Titulo { get; set; }
+
         public virtual TipoReporte TipoReporte { get; set; }
+
+        [Valid]
+        public virtual IList<CoautorExternoReporte> CoautorExternoReportes { get; private set; }
+
+        [Valid]
+        public virtual IList<CoautorInternoReporte> CoautorInternoReportes { get; private set; }
 
         [Min(1)]
         public virtual int PosicionAutor { get; set; }
@@ -71,33 +81,23 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Proyecto Proyecto { get; set; }
 
-        [DomainSignature]
-        [NotNullNotEmpty]
-        public virtual string Titulo { get; set; }
+        public virtual Institucion Institucion { get; set; }
 
-        public virtual DateTime FechaEdicion { get; set; }
-
-        [Valid]
-        public virtual IList<CoautorExternoReporte> CoautorExternoReportes { get; private set; }
-
-        [Valid]
-        public virtual IList<CoautorInternoReporte> CoautorInternoReportes { get; private set; }
-
-        //public virtual string Editorial { get; set; }
-
-        //public virtual Pais Pais { get; set; }
-
-        public virtual int NoPaginas { get; set; }
-
-        public virtual string Descripcion { get; set; }
-
-        public virtual string Objetivo { get; set; }
+        public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual string PalabraClave1 { get; set; }
 
         public virtual string PalabraClave2 { get; set; }
 
         public virtual string PalabraClave3 { get; set; }
+
+        public virtual string Descripcion { get; set; }
+
+        public virtual string Objetivo { get; set; }
+
+        public virtual int NoPaginas { get; set; }
+
+        public virtual DateTime FechaEdicion { get; set; }
 
         public virtual int Puntuacion { get; set; }
 
@@ -107,8 +107,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
-
-        //public virtual DateTime Fecha { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

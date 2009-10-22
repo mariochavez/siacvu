@@ -72,69 +72,75 @@
                             
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
+                    <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Fecha de aceptaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <p>
-                    <label>Fecha de publicaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
+                <% if (Model.Form.EstadoProducto == 1){ %>
+                    <p>
+                        <label>Fecha de aceptaci&oacute;n</label>
+                        <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } if (Model.Form.EstadoProducto == 2){ %>
+                    <p>
+                        <label>Fecha de publicaci&oacute;n</label>
+                        <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } %>
                 
-    <!-- REFERENCIA BIBLIOGRAFICA -->
-                <h4>Referencia bibliogr&aacute;fica</h4>
-                <p>
-                    <label></label>
-                    Tiene proyecto de investigaci&oacute;n de referencia?
-                    <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Nombre del proyecto de investigaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoLineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Palabra clave 1 del reporte</label>
-	                <strong><%= Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Palabra clave 2 del reporte</label>
-	                <strong><%= Html.Encode(Model.Form.ProyectoPalabraClave2)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Palabra clave 3 del reporte</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</strong>
-                </p>
+                <% if (Model.Form.TipoReporteNombre.Contains("Cuaderno")){ %>
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+                    <% Html.RenderPartial("_ShowCuadernoTrabajo", Model.Form); %>
+                <% } else {%>
+                    <h4>Tem&aacute;tica del reporte t&eacute;cnico</h4>
+                    <p>
+                        <label></label>
+                        Tiene proyecto de investigaci&oacute;n de referencia?
+                        <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
+                    </p>
+                    
+                    <% if (Model.Form.TieneProyecto) { %>
+                        <p>
+                            <label>Nombre del proyecto de investigaci&oacute;n</label>
+                            <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
+                        </p>
+                        
+                        <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                        
+                        <p>
+	                        <label>Palabra clave 1</label>
+	                        <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</strong>
+                        </p>
+                        <p>
+	                        <label>Palabra clave 2</label>
+	                        <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave2)%>&nbsp;</strong>
+                        </p>
+                        <p>
+	                        <label>Palabra clave 3</label>
+                            <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</strong>
+                        </p>
+                    <% } else { %>
+                        <p>
+                            <label>Instancia a la que se presenta el reporte</label>
+	                        <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                        </p>
+                        
+                        <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                        
+                        <p>
+	                        <label>Palabra clave 1</label>
+	                        <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+                        </p>
+                        <p>
+	                        <label>Palabra clave 2</label>
+	                        <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+                        </p>
+                        <p>
+	                        <label>Palabra clave 3</label>
+                            <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                        </p>
+                    <% } %>
+                    <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
+                <% } %>
                 
-                <p>
-	                <label>Palabra clave 1</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Palabra clave 2</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Palabra clave 3</label>
-                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Descripci&oacute;n del reporte</label>
-                    <strong><%= Html.Encode(Model.Form.Descripcion)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Objetivo del reporte</label>
-                    <strong><%= Html.Encode(Model.Form.Objetivo)%>&nbsp;</strong>
-                </p>
                 <p>
                     <label>No. de p&aacute;ginas</label>
                     <strong><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</strong>
@@ -143,6 +149,7 @@
                     <label>Fecha de edici&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
+  
                 
                 <p class="submit">
                     <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar") %>

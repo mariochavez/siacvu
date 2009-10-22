@@ -26,6 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoReporteMapper tipoReporteMapper;
         readonly IProyectoService proyectoService;
         readonly ICustomCollection customCollection;
+        readonly IAreaTematicaMapper areaTematicaMapper;
 
         public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
@@ -35,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IInvestigadorMapper investigadorMapper, IInvestigadorService investigadorService,
                                  ICoautorExternoReporteMapper coautorExternoReporteMapper, ICustomCollection customCollection,
                                  ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService,
-                                 IProyectoService proyectoService)
+                                 IProyectoService proyectoService, IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -50,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoReporteMapper = coautorExternoReporteMapper;
             this.coautorInternoReporteMapper = coautorInternoReporteMapper;
             this.proyectoService = proyectoService;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
         [Authorize]
@@ -110,7 +112,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var reporte = reporteService.GetReporteById(id);
-            data.Form = reporteMapper.Map(reporte);
+
+            var reporteForm = reporteMapper.Map(reporte);
+            data.Form = SetupShowForm(reporteForm);
 
             ViewData.Model = data;
             return View();
@@ -168,23 +172,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Reporte>(x => x.Titulo, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeProyecto(int select)
-        {
-            var reporteForm = new ReporteForm();
-            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
-
-            reporteForm.ProyectoLineaTematicaNombre = proyectoForm.LineaTematicaNombre;
-            reporteForm.ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre;
-            reporteForm.ProyectoPalabraClave1 = proyectoForm.PalabraClave1;
-            reporteForm.ProyectoPalabraClave2 = proyectoForm.PalabraClave2;
-            reporteForm.ProyectoPalabraClave3 = proyectoForm.PalabraClave3;
-            reporteForm.ProyectoId = proyectoForm.Id;
-
-            return Rjs("ChangeProyecto", reporteForm);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -338,6 +325,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
 
             //Lista de Catalogos Pendientes
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
@@ -349,9 +337,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(ReporteForm form)
         {
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["TipoReporte"] = form.TipoReporteId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["Proyecto"] = form.ProyectoId;
+        }
+
+        private ReporteForm SetupShowForm(ReporteForm form)
+        {
+            form = form ?? new ReporteForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                  };
+
+            return form;
         }
     }
 }

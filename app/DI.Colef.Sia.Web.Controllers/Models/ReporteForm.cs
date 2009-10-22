@@ -3,16 +3,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class ReporteForm
     {
         public int Id { get; set; }
-
         public string Titulo { get; set; }
-        //public string Editorial { get; set; }
         public int NoPaginas { get; set; }
         public string Descripcion { get; set; }
         public string Objetivo { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        //public string Fecha { get; set; }
         public string FechaEdicion { get; set; }
         public string FechaAceptacion { get; set; }
         public bool Activo { get; set; }
@@ -29,15 +26,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int EstadoProducto { get; set; }
 
-        public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-        public string ProyectoLineaTematicaNombre { get; set; }
-        public string ProyectoAreaTematicaNombre { get; set; }
         public string ProyectoPalabraClave1 { get; set; }
         public string ProyectoPalabraClave2 { get; set; }
         public string ProyectoPalabraClave3 { get; set; }
-        //public string InstitucionNombre { get; set; }
+
+        public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
+
+        public int AreaTematicaId { get; set; }
 
         public int TotalAutores
         {
@@ -55,12 +53,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
 
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public ProyectoForm Proyecto { get; set; }
+        public AreaTematicaForm AreaTematica { get; set; }
+
         /* Catalogos */
+        public AreaTematicaForm[] AreasTematicas { get; set; }
         public TipoReporteForm[] TiposReportes { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
-        //public PaisForm[] Paises { get; set; }
     }
 }
