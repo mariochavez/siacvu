@@ -182,7 +182,7 @@ function articuloSetup() {
     $('#TieneProyecto').dynamicui(
         [
             ['1', ['#tieneproyecto_field']],
-            ['0', ['.notieneproyecto_field']]
+            ['0', ['#notieneproyecto_field']]
         ]
     );
 

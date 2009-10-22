@@ -2,7 +2,6 @@ using System;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
@@ -119,14 +118,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Idioma Idioma { get; set; }
 
         public virtual int Puntuacion { get; set; }
-
-        //public virtual LineaInvestigacion LineaInvestigacion { get; set; }
-
-        //public virtual TipoActividad TipoActividad { get; set; }
-
-        //public virtual TipoParticipacion TipoParticipante { get; set; }
-
-        //public virtual int Participantes { get; set; }
 
         public virtual Departamento Departamento { get; set; }
 

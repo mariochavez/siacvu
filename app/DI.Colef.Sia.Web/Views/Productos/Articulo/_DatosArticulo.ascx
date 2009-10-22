@@ -26,23 +26,23 @@
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="notieneproyecto_field">
+<p id="notieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
     <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("AreaTematicaId")%>
 </p>
-<p class="notieneproyecto_field">
+<p>
 	<label>Palabra clave 1</label>
 	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
 	<span class="cvu"></span>
 </p>
-<p class="notieneproyecto_field">
+<p>
 	<label>Palabra clave 2</label>
 	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
 	<span class="cvu"></span>
 </p>
-<p class="notieneproyecto_field">
+<p>
 	<label>Palabra clave 3</label>
     <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
 	<span class="cvu"></span>

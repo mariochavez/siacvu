@@ -37,7 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
             model.Numero = message.Numero;
-            //model.Participantes = message.Participantes;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
@@ -53,9 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.EstadoProducto = message.EstadoProducto;
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            //model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
-            //model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
-            //model.TipoParticipante = catalogoService.GetTipoParticipacionById(message.TipoParticipante);
 
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 

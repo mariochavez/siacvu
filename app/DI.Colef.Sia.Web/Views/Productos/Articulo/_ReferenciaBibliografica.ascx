@@ -24,13 +24,6 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
-<%if(Model.Id != 0){ %>
-    <p>
-        <label>A&ntilde;o de publicaci&oacute;n</label>
-        <%=Html.Encode(Model.AnioPublicacion) %>
-        <span class="cvu"></span>
-    </p>
-<% } %>
 <p class="EstatusPublicado">
     <label>A&ntilde;o de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>

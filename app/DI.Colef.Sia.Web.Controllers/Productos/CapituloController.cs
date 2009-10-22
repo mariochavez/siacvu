@@ -27,11 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IPaisMapper paisMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ITipoParticipanteMapper tipoParticipanteMapper;
-        readonly IProyectoService proyectoService;
-        readonly IProyectoMapper proyectoMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IEditorialMapper editorialMapper;
@@ -66,13 +63,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.formaParticipacionMapper = formaParticipacionMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.tipoParticipanteMapper = tipoParticipanteMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
             this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
             this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
-            this.proyectoService = proyectoService;
-            this.proyectoMapper = proyectoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.editorialMapper = editorialMapper;
             this.customCollection = customCollection;

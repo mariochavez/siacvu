@@ -93,15 +93,15 @@
                     <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
                 </p>
                 <% if (Model.Form.EstadoProducto == 1){ %>
-                <p>
-                    <label>Fecha de aceptaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <% } else { %>
-                <p>
-                    <label>Fecha de publicaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
+                    <p>
+                        <label>Fecha de aceptaci&oacute;n</label>
+                        <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } if (Model.Form.EstadoProducto == 2) { %>
+                    <p>
+                        <label>Fecha de publicaci&oacute;n</label>
+                        <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    </p>
                 <% } %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->                
