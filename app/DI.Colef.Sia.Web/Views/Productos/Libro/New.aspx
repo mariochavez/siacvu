@@ -60,13 +60,13 @@
             
             <p>
                 <label>Edici&oacute;n</label>
-                <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<EdicionForm>("Id", "Nombre"),
+                <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                             "Seleccione ...")%>
                 <%=Html.ValidationMessage("Edicion")%>
             </p>
             <p>
                 <label>Reimpresi&oacute;n</label>
-                <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<ReimpresionForm>("Id", "Nombre"),
+                <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                             "Seleccione ...")%>
                 <%=Html.ValidationMessage("Reimpresion")%>
             </p>

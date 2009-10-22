@@ -27,8 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
             return new[]
                        {
                            new CustomSelectForm {Id = 1, Nombre = "Primera edición"},
-                           new CustomSelectForm {Id = 1, Nombre = "Segunda edición"},
-                           new CustomSelectForm {Id = 2, Nombre = "Tercera edición"}
+                           new CustomSelectForm {Id = 2, Nombre = "Segunda edición"},
+                           new CustomSelectForm {Id = 3, Nombre = "Tercera edición"}
                        };
         }
 
@@ -37,8 +37,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
             return new[]
                        {
                            new CustomSelectForm {Id = 1, Nombre = "Primera"},
-                           new CustomSelectForm {Id = 1, Nombre = "Segunda"},
-                           new CustomSelectForm {Id = 2, Nombre = "Tercera"}
+                           new CustomSelectForm {Id = 2, Nombre = "Segunda"},
+                           new CustomSelectForm {Id = 3, Nombre = "Tercera"}
                        };
         }
 
@@ -58,8 +58,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
             return new[]
                        {
                            new CustomSelectForm {Id = 1, Nombre = "Bajo"},
-                           new CustomSelectForm {Id = 1, Nombre = "Medio"},
-                           new CustomSelectForm {Id = 2, Nombre = "Alto"}
+                           new CustomSelectForm {Id = 2, Nombre = "Medio"},
+                           new CustomSelectForm {Id = 3, Nombre = "Alto"}
                        };
         }
 

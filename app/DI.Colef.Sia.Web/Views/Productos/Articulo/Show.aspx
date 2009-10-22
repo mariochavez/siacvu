@@ -140,9 +140,9 @@
                 <% } %>
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
+                    <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
                 </p>
-                <% if (Model.Form.EstadoProductoNombre.Contains("Aceptado")) { %>
+                <% if (Model.Form.EstadoProducto == 1) { %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
                         <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
