@@ -62,8 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-
+            
             return View(data);
         }
 
@@ -109,7 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -130,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(dictamen, form, Title.Edit))
             {

@@ -9,7 +9,7 @@
 </p>
 <p>
     <label>Estado actual</label>
-    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
@@ -18,10 +18,6 @@
     <%=Html.TextBox("FechaAceptacion", Model.FechaAceptacion, new { @class = "input100-requerido", maxlength = 4 })%>
     <span>(Formato yyyy)</span>
     <%=Html.ValidationMessage("FechaAceptacion")%>					
-</p>
-<p>
-	<label>Periodo Referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>
 <p>
 	<label>Proyecto</label>

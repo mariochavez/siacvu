@@ -37,28 +37,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
             model.Numero = message.Numero;
-            model.Participantes = message.Participantes;
+            //model.Participantes = message.Participantes;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.ArticuloTraducido = message.ArticuloTraducido;
+
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
+
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
-            model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
-            model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
-            model.TipoParticipante = catalogoService.GetTipoParticipacionById(message.TipoParticipante);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
+            //model.LineaInvestigacion = catalogoService.GetLineaInvestigacionById(message.LineaInvestigacion);
+            //model.TipoActividad = catalogoService.GetTipoActividadById(message.TipoActividad);
+            //model.TipoParticipante = catalogoService.GetTipoParticipacionById(message.TipoParticipante);
+
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
-            if (model.EstadoProducto == null || model.EstadoProducto.Nombre != "Publicado")
+            if (model.EstadoProducto == 0 || model.EstadoProducto != 2)
             {
                 model.PaginaInicial = 0;
                 model.PaginaFinal = 0;
@@ -70,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -78,7 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -88,10 +88,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Articulo Map(ArticuloForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
 
             foreach (var coautoresExterno in coautoresExternos)
             {

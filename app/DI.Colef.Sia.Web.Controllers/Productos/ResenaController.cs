@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -14,15 +15,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class ResenaController : BaseController<Resena, ResenaForm>
     {
-        readonly IAreaMapper areaMapper;
         readonly IAutorResenaMapper autorResenaMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly ICustomCollection customCollection;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
@@ -38,10 +37,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
                                 IAreaTematicaMapper areaTematicaMapper, IIdiomaMapper idiomaMapper,
-                                IUsuarioService usuarioService, IEstadoProductoMapper estadoProductoMapper,
+                                IUsuarioService usuarioService, ICustomCollection customCollection,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
-                                IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper, IAreaMapper areaMapper,
-                                IDisciplinaMapper disciplinaMapper,
+                                IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
@@ -56,13 +54,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.catalogoService = catalogoService;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
-            this.estadoProductoMapper = estadoProductoMapper;
+            this.customCollection = customCollection;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
@@ -97,7 +93,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -152,7 +147,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
             autor = autor ?? new AutorResenaForm[] { };
 
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador(),
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, autor);
 
             if (!IsValidateModel(resena, form, Title.New, "Resena"))
@@ -174,7 +169,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ResenaForm form)
         {
-            var resena = resenaMapper.Map(form, CurrentUser(), CurrentPeriodo(), CurrentInvestigador());
+            var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(resena, form, Title.Edit))
             {
@@ -188,39 +183,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             resenaService.SaveResena(resena);
 
             return RedirectToIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreProducto));
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeArea(int select)
-        {
-            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
-
-            var form = new ResenaForm
-                           {
-                               Disciplinas = list.ToArray(),
-                               Subdisciplinas = new[] {new SubdisciplinaForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeArea", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeDisciplina(int select)
-        {
-            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
-
-            var form = new ResenaForm
-                           {
-                               Subdisciplinas = list.ToArray()
-                           };
-
-            return Rjs("ChangeDisciplina", form);
         }
 
         [Authorize]
@@ -461,16 +423,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
-            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -478,13 +438,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(ResenaForm form)
         {
             ViewData["TipoResena"] = form.TipoResenaId;
-            ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["AreaTematica"] = form.AreaTematicaId;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
             ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }

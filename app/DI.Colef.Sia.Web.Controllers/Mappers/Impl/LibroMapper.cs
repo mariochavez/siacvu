@@ -59,25 +59,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.TipoPublicacion = catalogoService.GetTipoPublicacionById(message.TipoPublicacion);
-            model.TipoProducto = catalogoService.GetTipoProductoById(message.TipoProducto);
+            model.TipoProducto = message.TipoProducto;
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
-            model.Edicion = catalogoService.GetEdicionById(message.Edicion);
+            model.Edicion = message.Edicion;
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
-		    model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Reimpresion = catalogoService.GetReimpresionById(message.Reimpresion);
+            model.Reimpresion = message.Reimpresion;
 		    //model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             //model.IdentificadorLibro = catalogoService.GetIdentificadorLibroById(message.IdentificadorLibro);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+            
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
 
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
             model.Evento = eventoService.GetEventoById(message.Evento);
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -85,7 +90,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -95,11 +99,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Libro Map(LibroForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Libro Map(LibroForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
             EditorialLibroForm[] editoriales)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
 
             foreach (var coautorExterno in coautoresExternos)
             {

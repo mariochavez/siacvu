@@ -61,7 +61,3 @@
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
     <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>
-<p>
-    <label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

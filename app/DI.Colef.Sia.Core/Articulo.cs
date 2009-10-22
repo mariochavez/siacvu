@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    [HasUniqueDomainSignature]
     [ArticuloValidator]
     public class Articulo : Entity, IBaseEntity, ICoautor
     {
@@ -65,6 +64,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoArticulos.Remove((ArchivoArticulo)archivo);
         }
 
+        [NotNullNotEmpty]
+        public virtual string Titulo { get; set; }
+
+        public virtual TipoArticulo TipoArticulo { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
 
@@ -77,51 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaArticulo> FirmaArticulos { get; private set; }
 
-        [NotNull]
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual TipoArticulo TipoArticulo { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
-
-        public virtual EstadoProducto EstadoProducto { get; set; }
-
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
-        public virtual DateTime FechaAceptacion { get; set; }
-
-        public virtual DateTime FechaPublicacion { get; set; }
-
-        [DomainSignature]
-        [NotNullNotEmpty]
-        public virtual string Titulo { get; set; }
-
-        public virtual string Volumen { get; set; }
-
-        public virtual bool TieneProyecto { get; set; }
-
-        public virtual bool ArticuloTraducido { get; set; }
-
-        public virtual int Numero { get; set; }
-
         [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
-        public virtual int PaginaInicial { get; set; }
-
-        public virtual int PaginaFinal { get; set; }
-
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual DateTime FechaEdicion { get; set; }
+        public virtual bool TieneProyecto { get; set; }
 
-        public virtual LineaInvestigacion LineaInvestigacion { get; set; }
+        public virtual Proyecto Proyecto { get; set; }
 
-        public virtual TipoActividad TipoActividad { get; set; }
-
-        public virtual TipoParticipacion TipoParticipante { get; set; }
-
-        public virtual int Participantes { get; set; }
+        public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual string PalabraClave1 { get; set; }
 
@@ -129,17 +98,42 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-        public virtual Area Area { get; set; }
+        public virtual int EstadoProducto { get; set; }
 
-        public virtual Disciplina Disciplina { get; set; }
+        public virtual DateTime FechaAceptacion { get; set; }
 
-        public virtual Subdisciplina Subdisciplina { get; set; }
+        public virtual DateTime FechaPublicacion { get; set; }
 
-        public virtual Proyecto Proyecto { get; set; }
+        public virtual int Volumen { get; set; }
+
+        public virtual int Numero { get; set; }
+
+        public virtual int PaginaInicial { get; set; }
+
+        public virtual int PaginaFinal { get; set; }
+
+        public virtual DateTime FechaEdicion { get; set; }
+
+        public virtual bool ArticuloTraducido { get; set; }
+
+        public virtual Idioma Idioma { get; set; }
+
+        public virtual int Puntuacion { get; set; }
+
+        //public virtual LineaInvestigacion LineaInvestigacion { get; set; }
+
+        //public virtual TipoActividad TipoActividad { get; set; }
+
+        //public virtual TipoParticipacion TipoParticipante { get; set; }
+
+        //public virtual int Participantes { get; set; }
 
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
+
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

@@ -53,6 +53,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematica { get; set; }
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
+        public string AreaTematicaSubdisciplinaNombre { get; set; }
 
         public int ImpactoPoliticaPublica { get; set; }
         public int ImpactoPoliticaPublicaId { get; set; }
@@ -71,8 +75,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ActividadPrevistaNombre { get; set; }
 
         public int TipoEstudiante { get; set; }
-        public int TipoEstudianteId { get; set; }
-        public string TipoEstudianteNombre { get; set; }
 
         public int GradoAcademico { get; set; }
         public int GradoAcademicoId { get; set; }
@@ -160,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public USEGForm[] Usegs { get; set; }
         public ProductoAcademicoForm[] ProductosAcademicos { get; set; }
         public ActividadPrevistaForm[] ActividadesPrevistas { get; set; }
-        public TipoEstudianteForm[] TiposEstudiantes { get; set; }
+        public CustomSelectForm[] TiposEstudiantes { get; set; }
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public SectorForm[] Sectores { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }

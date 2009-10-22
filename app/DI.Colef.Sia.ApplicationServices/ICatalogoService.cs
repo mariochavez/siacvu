@@ -131,8 +131,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         LineaTematica[] GetAllLineaTematicas();
         LineaTematica[] GetActiveLineaTematicas();
         void SaveLineaTematica(LineaTematica lineaTematica);
-        LineaTematica GetLineaTematicaInstitucionalById(int id);
-        LineaTematica[] GetActiveLineaTematicasInstitucionales();
 
         //Coautor Externo
         CoautorExterno GetCoautorExternoById(int id);
@@ -163,12 +161,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoParticipacion[] GetAllTipoParticipaciones();
         TipoParticipacion[] GetActiveTipoParticipaciones();
         void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
-
-        //Periodo de Referencia
-        PeriodoReferencia GetPeriodoReferenciaById(int id);
-        PeriodoReferencia[] GetAllPeriodoReferencias();
-        PeriodoReferencia[] GetActivePeriodoReferencias();
-        void SavePeriodoReferencia(PeriodoReferencia periodoReferencia);
 
         //Revista de Publicacion
         RevistaPublicacion GetRevistaPublicacionById(int id);
@@ -290,12 +282,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoReporte[] GetActiveTipoReportes();
         void SaveTipoReporte(TipoReporte tipoReporte);
 
-        //Estado Producto
-        EstadoProducto GetEstadoProductoById(int id);
-        EstadoProducto[] GetAllEstadoProductos();
-        EstadoProducto[] GetActiveEstadoProductos();
-        void SaveEstadoProducto(EstadoProducto estadoProducto);
-
         //Nivel de Estudios
         NivelEstudio GetNivelEstudioById(int id);
         NivelEstudio[] GetAllNivelEstudios();
@@ -343,7 +329,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProductoDerivado[] GetAllProductoDerivados();
         ProductoDerivado[] GetActiveProductoDerivados();
         void SaveProductoDerivado(ProductoDerivado productoDerivado);
-        PeriodoReferencia GetCurrentPeriodoReferencia();
 
         //Tipo Resena
         TipoResena GetTipoResenaById(int id);
@@ -425,23 +410,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas();
         void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica);
 
-        //Nivel de Idioma
-        NivelIdioma GetNivelIdiomaById(int id);
-        NivelIdioma[] GetAllNivelIdiomas();
-        NivelIdioma[] GetActiveNivelIdiomas();
-        void SaveNivelIdioma(NivelIdioma nivelIdioma);
-
         //Dirigido a
         DirigidoA GetDirigidoAById(int id);
         DirigidoA[] GetAllDirigidoAs();
         DirigidoA[] GetActiveDirigidoAs();
         void SaveDirigidoA(DirigidoA dirigidoA);
-
-        //Edicion
-        Edicion GetEdicionById(int id);
-        Edicion[] GetAllEdicions();
-        Edicion[] GetActiveEdicions();
-        void SaveEdicion(Edicion edicion);
 
         //Estatus Proyecto
         EstatusProyecto GetEstatusProyectoById(int id);
@@ -454,12 +427,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         FondoConacyt[] GetAllFondoConacyts();
         FondoConacyt[] GetActiveFondoConacyts();
         void SaveFondoConacyt(FondoConacyt fondoConacyt);
-
-        //Tipo Estudiante
-        TipoEstudiante GetTipoEstudianteById(int id);
-        TipoEstudiante[] GetAllTipoEstudiantes();
-        TipoEstudiante[] GetActiveTipoEstudiantes();
-        void SaveTipoEstudiante(TipoEstudiante tipoEstudiante);
 
         //Area Tematica
         AreaTematica GetAreaTematicaById(int id);
@@ -479,18 +446,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         FormatoPublicacion[] GetAllFormatoPublicacions();
         FormatoPublicacion[] GetActiveFormatoPublicacions();
         void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion);
-
-        //Tipo Producto
-        TipoProducto GetTipoProductoById(int id);
-        TipoProducto[] GetAllTipoProductos();
-        TipoProducto[] GetActiveTipoProductos();
-        void SaveTipoProducto(TipoProducto tipoProducto);
-
-        //Reimpresion
-        Reimpresion GetReimpresionById(int id);
-        Reimpresion[] GetAllReimpresions();
-        Reimpresion[] GetActiveReimpresions();
-        void SaveReimpresion(Reimpresion reimpresion);
 
         //Editorial
         Editorial GetEditorialById(int id);

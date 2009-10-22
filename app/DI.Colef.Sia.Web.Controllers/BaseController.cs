@@ -55,13 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var usuario = CurrentUser();
             return usuarioService.GetInvestigadorByUsuario(usuario);
         }
-
-        protected PeriodoReferencia CurrentPeriodo()
-        {
-            var id = 17;
-            return catalogoService.GetPeriodoReferenciaById(id);
-        }
-
+        
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(message);

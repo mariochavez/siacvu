@@ -96,20 +96,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual TipoPublicacion TipoPublicacion { get; set; }
 
-        public virtual TipoProducto TipoProducto { get; set; }
+        public virtual int TipoProducto { get; set; }
 
         public virtual FormatoPublicacion FormatoPublicacion { get; set; }
 
-        public virtual Edicion Edicion { get; set; }
+        public virtual int Edicion { get; set; }
 
         public virtual RevistaPublicacion NombreRevista { get; set; }
 
         public virtual Evento Evento { get; set; }
 
-		public virtual EstadoProducto EstadoProducto { get; set; }
+		public virtual int EstadoProducto { get; set; }
 
-		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-		
 		public virtual bool TieneProyecto { get; set; }
         
 		public virtual Proyecto Proyecto { get; set; }
@@ -124,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string ISBN { get; set; }
 
-        public virtual string Volumen { get; set; }
+        public virtual int Volumen { get; set; }
 
         public virtual int Numero { get; set; }
 
@@ -136,7 +134,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Idioma Idioma { get; set; }
 
-	    public virtual Reimpresion Reimpresion { get; set; }
+	    public virtual int Reimpresion { get; set; }
 		//public virtual FormaParticipacion FormaParticipacion { get; set; }
 
         [Valid]

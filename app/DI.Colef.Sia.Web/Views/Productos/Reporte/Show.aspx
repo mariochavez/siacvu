@@ -82,10 +82,6 @@
                     <label>Fecha de publicaci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
-                </p>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->
                 <h4>Referencia bibliogr&aacute;fica</h4>

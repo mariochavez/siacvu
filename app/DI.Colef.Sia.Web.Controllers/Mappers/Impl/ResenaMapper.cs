@@ -51,19 +51,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
+
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+
+            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
+            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
+
+            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
+            model.Area = catalogoService.GetAreaById(area);
         }
 
-        public Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -71,7 +76,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -81,11 +85,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Resena Map(ResenaForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
             AutorResenaForm[] autores)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
             
             foreach (var coautorExterno in coautoresExternos)
             {

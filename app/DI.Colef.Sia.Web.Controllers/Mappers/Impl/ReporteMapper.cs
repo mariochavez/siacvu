@@ -48,14 +48,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             //model.Fecha = message.Fecha.FromShortDateToDateTime();
 
             model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);
-            model.EstadoProducto = catalogoService.GetEstadoProductoById(message.EstadoProducto);
+            model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             //model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             //model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             //model.Pais = catalogoService.GetPaisById(message.Pais);
         }
 
-        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador)
+        public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -63,7 +63,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.PeriodoReferencia = periodo;
                 model.Sede = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Sede;
                 model.Departamento = investigador.CargosInvestigador[investigador.CargosInvestigador.Count - 1].Departamento;
             }
@@ -73,10 +72,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Reporte Map(ReporteForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador,
+        public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
         {
-            var model = Map(message, usuario, periodo, investigador);
+            var model = Map(message, usuario, investigador);
 
             if (coautoresExternos != null)
             {

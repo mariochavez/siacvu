@@ -15,11 +15,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual bool Profesor { get; set; }
 
-        public virtual NivelIdioma NivelConversacion { get; set; }
+        public virtual int NivelConversacion { get; set; }
 
-        public virtual NivelIdioma NivelLectura { get; set; }
+        public virtual int NivelLectura { get; set; }
 
-        public virtual NivelIdioma NivelEscritura { get; set; }
+        public virtual int NivelEscritura { get; set; }
 
         public virtual DateTime FechaEvaluacion { get; set; }
 

@@ -15,7 +15,8 @@
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 100 })%>
+    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...")%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>

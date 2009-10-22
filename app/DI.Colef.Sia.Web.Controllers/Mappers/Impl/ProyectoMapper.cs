@@ -61,13 +61,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.EstatusProyecto = catalogoService.GetEstatusProyectoById(message.EstatusProyecto);
             model.SectorFinanciamiento = catalogoService.GetSectorById(message.SectorFinanciamiento);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
-            model.LineaTematica = catalogoService.GetLineaTematicaInstitucionalById(message.LineaTematica);
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
             model.ImpactoPoliticaPublica = catalogoService.GetImpactoPoliticaPublicaById(message.ImpactoPoliticaPublica);
             model.USEG = catalogoService.GetUSEGById(message.USEG);
             model.ProductoAcademico = catalogoService.GetProductoAcademicoById(message.ProductoAcademico);
             model.ActividadPrevista = catalogoService.GetActividadPrevistaById(message.ActividadPrevista);
-            model.TipoEstudiante = catalogoService.GetTipoEstudianteById(message.TipoEstudiante);
+            model.TipoEstudiante = message.TipoEstudiante;
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);

@@ -81,10 +81,6 @@
                     <label>Municipio</label>
                     <strong><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>&nbsp;</strong>
-                 </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DistincionController>(x => x.Index(), "Regresar") %>

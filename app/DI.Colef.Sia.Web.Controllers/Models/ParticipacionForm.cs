@@ -50,9 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
-				
-		/* Catalogos */
+        /* Catalogos */
         public OtraParticipacionForm[] OtrasParticipaciones { get; set; }
 		public TipoPresentacionForm[] TiposPresentaciones { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

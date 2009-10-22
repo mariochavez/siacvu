@@ -135,8 +135,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
@@ -151,12 +149,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaEvaluacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.NivelConversacion,
-                           o => o.Ignore())
-                .ForMember(d => d.NivelEscritura,
-                           o => o.Ignore())
-                .ForMember(d => d.NivelLectura,
                            o => o.Ignore());
         }
 
@@ -196,8 +188,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.ActividadPrevista,
                            o => o.Ignore())
                 .ForMember(d => d.USEG,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoEstudiante,
                            o => o.Ignore())
                 .ForMember(d => d.GradoAcademico,
                            o => o.Ignore())
@@ -382,17 +372,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore())
                 .ForMember(d => d.Editorial,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
@@ -422,8 +406,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoReporte,
-                           o => o.Ignore())
-                .ForMember(d => d.EstadoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.Proyecto,
                            o => o.Ignore());
@@ -523,15 +505,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.FormaParticipacion,
                            o => o.Ignore())
-                .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Organizacion,
-                           o => o.Ignore())
                 .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
@@ -564,14 +538,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Diplomado,
                            o => o.Ignore())
-                .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Organizacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
-                           o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
         }
@@ -592,21 +558,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoArticulo,
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
-                .ForMember(d => d.LineaInvestigacion,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoActividad,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoParticipante,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
+                //.ForMember(d => d.LineaInvestigacion,
+                //           o => o.Ignore())
+                //.ForMember(d => d.TipoActividad,
+                //           o => o.Ignore())
+                //.ForMember(d => d.TipoParticipante,
+                //           o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -631,19 +589,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipante,
                            o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.FormaParticipacion,
+                .ForMember(d => d.Editorial,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore());
@@ -712,23 +662,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.TipoPublicacion,
                            o => o.Ignore())
-                .ForMember(d => d.Edicion,
-                           o => o.Ignore())
-                .ForMember(d => d.EstadoProducto,
-                           o => o.Ignore())
                 .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.Reimpresion,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
                            o => o.Ignore())
                 .ForMember(d => d.Evento,
                            o => o.Ignore())
                 .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoProducto,
                            o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
                            o => o.Ignore());
@@ -899,15 +837,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoCapitulo, TipoCapituloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            
-            Mapper.CreateMap<PeriodoReferencia, PeriodoReferenciaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaInicial,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaFinal,
-                           o => o.AddFormatter<StandardDateFormatter>());
-
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
@@ -987,9 +916,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoReporte, TipoReporteForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<EstadoProducto, EstadoProductoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<NivelEstudio, NivelEstudioForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
@@ -1060,13 +986,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<EstatusFormacionAcademica, EstatusFormacionAcademicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<NivelIdioma, NivelIdiomaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<DirigidoA, DirigidoAForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<Edicion, EdicionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<EstatusProyecto, EstatusProyectoForm>()
@@ -1075,26 +995,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<FondoConacyt, FondoConacytForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoEstudiante, TipoEstudianteForm>()
-              .ForMember(d => d.Modificacion,
-                         o => o.ResolveUsing<ModificadoResolver>());
-
             Mapper.CreateMap<AreaTematica, AreaTematicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.LineaTematica,
+                           o => o.Ignore())
+                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
 
             Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<FormatoPublicacion, FormatoPublicacionForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoProducto, TipoProductoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<Reimpresion, ReimpresionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<Editorial, EditorialForm>()

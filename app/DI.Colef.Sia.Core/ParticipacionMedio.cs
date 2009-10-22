@@ -74,8 +74,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Tema { get; set; }
 
-		public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
 		public virtual Proyecto Proyecto { get; set; }
 
         public virtual DirigidoA DirigidoA { get; set; }

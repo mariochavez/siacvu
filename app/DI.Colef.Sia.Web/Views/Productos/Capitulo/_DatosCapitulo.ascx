@@ -11,25 +11,23 @@
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
 </p>
-<p class="tieneproyecto_field">
+<p id="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field">
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <span id="lineatematica"><%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>&nbsp;</span>
-</p>
-<p class="tieneproyecto_field">
+<p id="notieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <span id="areatematica"><%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</span>
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("AreaTematicaId")%>    
 </p>
 <p>
     <label>Estatus actual</label>
-    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
 <p id="EstatusAceptado">
@@ -43,8 +41,4 @@
     <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
-</p>
-<p>
-    <label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>

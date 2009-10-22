@@ -35,9 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaEvaluacion = message.FechaEvaluacion.FromShortDateToDateTime();
 
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.NivelConversacion = catalogoService.GetNivelIdiomaById(message.NivelConversacion);
-            model.NivelEscritura = catalogoService.GetNivelIdiomaById(message.NivelEscritura);
-            model.NivelLectura = catalogoService.GetNivelIdiomaById(message.NivelLectura);
+            model.NivelConversacion = message.NivelConversacion;
+            model.NivelEscritura = message.NivelEscritura;
+            model.NivelLectura = message.NivelLectura;
         }
 
         public IdiomasInvestigador Map(IdiomasInvestigadorForm message, Usuario usuario)

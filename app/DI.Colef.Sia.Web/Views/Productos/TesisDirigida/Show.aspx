@@ -73,18 +73,6 @@
                 <p>
                     <label>Instituci&oacute;n</label>
                     <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Programa de estudio</label>
-                    <strong><%= Html.Encode(Model.Form.ProgramaEstudioNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
                 </p>                
                 <p>
                     <label>Nombre del alumno</label>
@@ -93,16 +81,16 @@
                 
                 <h4>Opcionales</h4>
                 <p>
-                    <label>Sector</label>
-                    <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
+	                <label>Sector</label>
+	                <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Dependencia</label>
-                    <strong><%= Html.Encode(Model.Form.DependenciaNombre)%>&nbsp;</strong>
+	                <label>Organizaci&oacute;n</label>
+	                <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-                    <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+	                <label>Nivel 2</label>
+                    <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>&Aacute;rea</label>

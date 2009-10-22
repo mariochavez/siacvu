@@ -4,6 +4,7 @@ using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
@@ -12,12 +13,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     public class AreaController : BaseController<Area, AreaForm>
     {
         readonly IAreaMapper areaMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICatalogoService catalogoService;
 
-        public AreaController(IUsuarioService usuarioService, ICatalogoService catalogoService, IAreaMapper areaMapper,
+        public AreaController(IUsuarioService usuarioService,
+                              ICatalogoService catalogoService,
+                              IAreaMapper areaMapper,
+                              IAreaTematicaMapper areaTematicaMapper,
                               ISearchService searchService) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.areaTematicaMapper = areaTematicaMapper;
             this.areaMapper = areaMapper;
         }
 

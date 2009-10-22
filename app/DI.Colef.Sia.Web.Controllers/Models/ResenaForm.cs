@@ -37,8 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string TipoResenaNombre { get; set; }
 
         public int EstadoProducto { get; set; }
-        public int EstadoProductoId { get; set; }
-        public string EstadoProductoNombre { get; set; }
 
         public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
@@ -63,19 +61,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
 
-        public int Area { get; set; }
-        public int AreaId { get; set; }
         public string AreaNombre { get; set; }
-
-        public int Disciplina { get; set; }
-        public int DisciplinaId { get; set; }
         public string DisciplinaNombre { get; set; }
-
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
 
-        public string PeriodoReferenciaPeriodo { get; set; }
         public int TotalAutores
         {
             get
@@ -96,15 +87,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoResenaForm[] TiposResenas { get; set; }
-        public EstadoProductoForm[] EstadosProductos { get; set; }
+        public CustomSelectForm[] EstadosProductos { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public EditorialForm[] Editoriales { get; set; }
         public PaisForm[] Paises { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
-        public AreaForm[] Areas { get; set; }
-        public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

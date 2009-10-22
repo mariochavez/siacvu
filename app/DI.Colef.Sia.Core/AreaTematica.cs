@@ -15,6 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 	    public virtual LineaTematica LineaTematica { get; set; }
 
+	    public virtual Subdisciplina Subdisciplina { get; set; }
+
 		public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }

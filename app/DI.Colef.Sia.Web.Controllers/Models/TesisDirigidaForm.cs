@@ -38,31 +38,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionNombre { get; set; }
         public string InstitucionPaisNombre { get; set; }
 
-        public int Sector { get; set; }
-        public int SectorId { get; set; }
         public string SectorNombre { get; set; }
-
-        public int Organizacion { get; set; }
-        public int OrganizacionId { get; set; }
         public string OrganizacionNombre { get; set; }
-
         public int Nivel2 { get; set; }
         public int Nivel2Id { get; set; }
         public string Nivel2Nombre { get; set; }
 
-        public int Area { get; set; }
-        public int AreaId { get; set; }
         public string AreaNombre { get; set; }
-
-        public int Disciplina { get; set; }
-        public int DisciplinaId { get; set; }
         public string DisciplinaNombre { get; set; }
-
         public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
-
-        public string PeriodoReferenciaPeriodo { get; set; }
 
         public int Alumno { get; set; }
         public int AlumnoId { get; set; }
@@ -75,11 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public PaisForm[] Paises { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }
-        public SectorForm[] Sectores { get; set; }
-        public OrganizacionForm[] Organizaciones { get; set; }
         public NivelForm[] Niveles2 { get; set; }
-        public AreaForm[] Areas { get; set; }
-        public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
         public CustomSelectForm[] TiposEstudiantes { get; set; }
         public VinculacionAPyDForm[] VinculacionesAPyDs { get; set; }

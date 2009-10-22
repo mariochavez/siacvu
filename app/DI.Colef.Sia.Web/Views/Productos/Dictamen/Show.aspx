@@ -68,10 +68,6 @@
 	                <label>Tipo de proyecto</label>
 	                <strong><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-	                <label>Periodo de referencia</label>
-	                <strong><%=Html.Encode(Model.Form.PeriodoReferenciaPeriodo)%>&nbsp;</strong>
-                </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DictamenController>(x => x.Index(), "Regresar") %>

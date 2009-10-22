@@ -37,17 +37,7 @@
 	        <% using (Html.BeginForm("Update", "Capitulo")){ %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
-                
-                <h4>Datos del investigador</h4>
-	            <p>
-                    <label>Departamento</label>
-                    <%= Html.Encode(Model.Form.DepartamentoNombre)%>
-                </p>
-                <p>
-                    <label>Sede</label>
-                    <%= Html.Encode(Model.Form.SedeNombre)%>
-                </p>
-                
+
 	            <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
                     <label>Nombre del cap&iacute;tulo</label>
@@ -68,7 +58,7 @@
                     <%=Html.ValidationMessage("Idioma") %>
                 </p>
 	            
-	            <h4>Coautores<span class="cvu"></span></h4>
+	            <h4>Coautores</h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>

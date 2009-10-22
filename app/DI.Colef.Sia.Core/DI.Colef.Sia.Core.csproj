@@ -107,13 +107,11 @@
     <Compile Include="DirigidoA.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Distincion.cs" />
-    <Compile Include="Edicion.cs" />
     <Compile Include="Editorial.cs" />
     <Compile Include="EditorialLibro.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />
-    <Compile Include="EstadoProducto.cs" />
     <Compile Include="EstatusFormacionAcademica.cs" />
     <Compile Include="EstatusProyecto.cs" />
     <Compile Include="Evento.cs" />
@@ -178,7 +176,6 @@
     </Compile>
     <Compile Include="Nivel.cs" />
     <Compile Include="NivelEstudio.cs" />
-    <Compile Include="NivelIdioma.cs" />
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
     <Compile Include="OtraParticipacion.cs" />
@@ -188,7 +185,6 @@
     <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="ParticipanteExternoProyecto.cs" />
     <Compile Include="ParticipanteInternoProyecto.cs" />
-    <Compile Include="PeriodoReferencia.cs" />
     <Compile Include="ProductoAcademico.cs" />
     <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
@@ -199,7 +195,6 @@
     <Compile Include="Puesto.cs" />
     <Compile Include="Rama.cs" />
     <Compile Include="RecursoFinancieroProyecto.cs" />
-    <Compile Include="Reimpresion.cs" />
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
@@ -229,7 +224,6 @@
     <Compile Include="TipoDictamen.cs" />
     <Compile Include="TipoDistincion.cs" />
     <Compile Include="TipoEstancia.cs" />
-    <Compile Include="TipoEstudiante.cs" />
     <Compile Include="TipoEvento.cs" />
     <Compile Include="TipoFinanciamiento.cs" />
     <Compile Include="TipoInstitucion.cs" />
@@ -238,7 +232,6 @@
     <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
-    <Compile Include="TipoProducto.cs" />
     <Compile Include="TipoProyecto.cs" />
     <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />

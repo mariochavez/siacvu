@@ -37,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 articulo.Activo = true;
                 articulo.CreadorEl = DateTime.Now;
+                articulo.Puntuacion = 0;
             }
 
             if(articulo.Idioma == null && articulo.TipoArticulo != null)

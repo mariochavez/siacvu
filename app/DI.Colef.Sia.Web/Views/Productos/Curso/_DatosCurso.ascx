@@ -60,7 +60,3 @@
     <span class="cvu"></span>
 	<%=Html.ValidationMessage("NumeroHoras")%>
 </p>
-<p>
-	<label>Periodo de referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

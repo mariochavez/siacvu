@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -16,21 +17,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IParticipacionAcademiaMapper participacionAcademiaMapper;
         readonly ICatalogoService catalogoService;
         readonly IPaisMapper paisMapper;
-        readonly IEstadoProductoMapper estadoProductoMapper;
+        readonly ICustomCollection customCollection;
         readonly IProyectoMapper proyectoMapper;
         readonly IProyectoService proyectoService;
 
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService, IParticipacionAcademiaMapper participacionAcademiaMapper,
-                                               ICatalogoService catalogoService, IUsuarioService usuarioService, ISearchService searchService, IPaisMapper paisMapper, 
-                                               IEstadoProductoMapper estadoProductoMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
+                                               ICatalogoService catalogoService, IUsuarioService usuarioService, ISearchService searchService, IPaisMapper paisMapper,
+                                               ICustomCollection customCollection, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.participacionAcademiaService = participacionAcademiaService;
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
-            this.estadoProductoMapper = estadoProductoMapper;
+            this.customCollection = customCollection;
             this.proyectoMapper = proyectoMapper;
             this.proyectoService = proyectoService;
         }
@@ -59,8 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.PeriodoReferenciaPeriodo = CurrentPeriodo().Periodo;
-
+            
             return View(data);
         }
 
@@ -106,7 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
 
             if (!IsValidateModel(participacionAcademia, form, Title.New, "ParticipacionAcademia"))
             {
@@ -127,7 +127,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentPeriodo());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
 
             participacionAcademia.ModificadoPor = CurrentUser();
 
@@ -202,7 +202,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.EstadosProductos = estadoProductoMapper.Map(catalogoService.GetActiveEstadoProductos());
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             return form;
         }
@@ -210,7 +210,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(ParticipacionAcademiaForm form)
         {
             ViewData["Pais"] = form.PaisId;
-            ViewData["EstadoProducto"] = form.EstadoProductoId;
+            ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Proyecto"] = form.ProyectoId;
         }
     }

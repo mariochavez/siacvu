@@ -38,34 +38,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= TieneProyecto(articulo, constraintValidatorContext);
             isValid &= ArticuloTraducido(articulo, constraintValidatorContext);
-            isValid &= ValidateFechas(articulo, constraintValidatorContext);
 
             if (articulo.EstadoProducto != null)
                 isValid &= ValidateProductoEstado(articulo, constraintValidatorContext);
-
-            return isValid;
-        }
-
-        bool ValidateFechas(Articulo articulo, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (articulo.FechaEdicion == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (articulo.FechaEdicion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
@@ -114,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (articulo.EstadoProducto.Nombre.Contains("Publicado"))
+            if (articulo.EstadoProducto == 2)
             {
                 if (articulo.PaginaInicial > articulo.PaginaFinal)
                 {
@@ -132,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid =  false;
                 }
 
-                if (articulo.Volumen == "")
+                if (articulo.Volumen == 0)
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Volumen", "Volumen");
@@ -151,15 +126,22 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if (articulo.FechaEdicion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaEdicion", "FechaEdicion");
+                        "formato de fecha no válido|FechaEdicion", "FechaEdicion");
 
+                    isValid = false;
+                }
+
+                if (articulo.FechaEdicion > DateTime.Now)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
                     isValid = false;
                 }
 
                 if (articulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaPublicacion", "FechaPublicacion");
+                        "formato de fecha no válido|FechaPublicacion", "FechaPublicacion");
 
                     isValid = false;
                 }
@@ -172,12 +154,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
             }
 
-            if (articulo.EstadoProducto.Nombre.Contains("Aceptado"))
+            if (articulo.EstadoProducto == 1)
             {
                 if (articulo.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaAceptacion", "FechaAceptacion");
+                        "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
 
                     isValid = false;
                 }

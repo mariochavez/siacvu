@@ -11,53 +11,46 @@
     <label>Nombre de la revista</label>
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo", url = Url.Action("ChangeRevista") })%>
+    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
-</p>
-<p>
-    <label>Instituci&oacute;n</label>
-    <span id="institucion"><%= Html.Encode(Model.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <span id="pais"><%= Html.Encode(Model.RevistaPublicacionPaisNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>&Iacute;ndice 1</label>
-    <span id="indice1"><%= Html.Encode(Model.RevistaPublicacionIndice1Nombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>&Iacute;ndice 2</label>
-    <span id="indice2"><%= Html.Encode(Model.RevistaPublicacionIndice2Nombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>&Iacute;ndice 3</label>
-    <span id="indice3"><%= Html.Encode(Model.RevistaPublicacionIndice3Nombre)%>&nbsp;</span>
 </p>
 <p>
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
 </p>
-<p class="tieneproyecto_field">
+<p id="tieneproyecto_field">
     <label>Nombre del proyecto de investigaci&oacute;n</label>
     <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre", url = Url.Action("ChangeProyecto") })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="tieneproyecto_field">
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <span id="lineatematica"><%=Html.Encode(Model.ProyectoLineaTematicaNombre)%>&nbsp;</span>
-</p>
-<p class="tieneproyecto_field">
+<p class="notieneproyecto_field">
     <label>&Aacute;rea tem&aacute;tica</label>
-    <span id="areatematica"><%=Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</span>
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("AreaTematicaId")%>
+</p>
+<p class="notieneproyecto_field">
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
+</p>
+<p class="notieneproyecto_field">
+	<label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
+</p>
+<p class="notieneproyecto_field">
+	<label>Palabra clave 3</label>
+    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
+	<span class="cvu"></span>
 </p>
 <p>
     <label>Estatus de la publicaci&oacute;n</label>
-    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "estado requerido" })%>
+    <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("EstadoProducto")%>
 </p>
 <p id="EstatusAceptado">
@@ -71,8 +64,4 @@
     <%=Html.TextBox("FechaPublicacion", Model.FechaPublicacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>
-</p>
-<p>
-    <label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>

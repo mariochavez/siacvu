@@ -32,7 +32,7 @@
     </p>
     <p>
         <label>Estatus de la publicaci&oacute;n</label>
-        <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<EstadoProductoForm>("Id", "Nombre"),
+        <%=Html.DropDownList("EstadoProducto", Model.EstadosProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
             "Seleccione ...", new { @class = "requerido" })%>
         <%=Html.ValidationMessage("EstadoProducto") %>
     </p>
@@ -90,8 +90,4 @@
                 "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Idioma") %>
-</p>
-<p>
-	<label>Periodo de referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
 </p>

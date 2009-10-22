@@ -5,6 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IParticipacionMedioMapper : IMapper<ParticipacionMedio, ParticipacionMedioForm>
     {
-        ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, PeriodoReferencia periodo, Investigador investigador);
+        ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador);
     }
 }

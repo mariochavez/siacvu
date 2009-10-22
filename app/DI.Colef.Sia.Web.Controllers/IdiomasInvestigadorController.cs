@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -15,20 +16,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IIdiomasInvestigadorMapper idiomasInvestigadorMapper;
         readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
-        readonly INivelIdiomaMapper nivelIdiomaMapper;
+        readonly ICustomCollection customCollection;
 
         public IdiomasInvestigadorController(IIdiomasInvestigadorService idiomasInvestigadorService,
                                              IIdiomasInvestigadorMapper idiomasInvestigadorMapper,
                                              ICatalogoService catalogoService, IUsuarioService usuarioService,
                                              ISearchService searchService, IIdiomaMapper idiomaMapper,
-                                             INivelIdiomaMapper nivelIdiomaMapper)
+                                             ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.idiomasInvestigadorService = idiomasInvestigadorService;
             this.idiomasInvestigadorMapper = idiomasInvestigadorMapper;
             this.idiomaMapper = idiomaMapper;
-            this.nivelIdiomaMapper = nivelIdiomaMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -192,18 +193,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.NivelesConversacion = nivelIdiomaMapper.Map(catalogoService.GetActiveNivelIdiomas());
-            form.NivelesEscritura = nivelIdiomaMapper.Map(catalogoService.GetActiveNivelIdiomas());
-            form.NivelesLectura = nivelIdiomaMapper.Map(catalogoService.GetActiveNivelIdiomas());
+            form.NivelesConversacion = customCollection.NivelIdiomaCustomCollection();
+            form.NivelesEscritura = customCollection.NivelIdiomaCustomCollection();
+            form.NivelesLectura = customCollection.NivelIdiomaCustomCollection();
             return form;
         }
 
         private void FormSetCombos(IdiomasInvestigadorForm form)
         {
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["NivelConversacion"] = form.NivelConversacionId;
-            ViewData["NivelLectura"] = form.NivelLecturaId;
-            ViewData["NivelEscritura"] = form.NivelEscrituraId;
+            ViewData["NivelConversacion"] = form.NivelConversacion;
+            ViewData["NivelLectura"] = form.NivelLectura;
+            ViewData["NivelEscritura"] = form.NivelEscritura;
         }
     }
 }

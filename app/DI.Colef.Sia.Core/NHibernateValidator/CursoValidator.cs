@@ -64,24 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (curso.FechaInicial > DateTime.Parse("1910-01-01") || curso.FechaFinal > DateTime.Parse("1910-01-01"))
             {
-                if (curso.FechaInicial < curso.PeriodoReferencia.FechaInicial ||
-                    curso.FechaInicial > curso.PeriodoReferencia.FechaFinal)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "fecha inicial debe de estar entre el periodo actual|FechaInicial", "FechaInicial");
-
-                    isValid = false;
-                }
-
-                if (curso.FechaFinal > curso.PeriodoReferencia.FechaFinal ||
-                    curso.FechaFinal < curso.PeriodoReferencia.FechaInicial)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "fecha final debe de estar entre el periodo actual|FechaFinal", "FechaFinal");
-
-                    isValid = false;
-                }
-
                 if (curso.FechaInicial >= curso.FechaFinal)
                 {
                     constraintValidatorContext.AddInvalid(

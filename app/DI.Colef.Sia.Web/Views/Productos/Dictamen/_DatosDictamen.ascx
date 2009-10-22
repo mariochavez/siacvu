@@ -35,7 +35,3 @@
         "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("FondoConacyt")%>
 </p>
-<p>
-	<label>Periodo de referencia</label>
-	<%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

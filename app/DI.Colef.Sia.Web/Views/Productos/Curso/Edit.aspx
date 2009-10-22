@@ -34,17 +34,7 @@
             <% using (Html.BeginForm("Update", "Curso")){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
-                
-                <h4>Datos del investigador</h4>
-	            <p>
-                    <label>Departamento</label>
-                    <%= Html.Encode(Model.Form.DepartamentoNombre)%>
-                </p>
-                <p>
-                    <label>Sede</label>
-                    <%= Html.Encode(Model.Form.SedeNombre)%>
-                </p>
-                
+
                 <h4>Datos del curso</h4>
                 <p>
                     <label>Tipo de curso</label>

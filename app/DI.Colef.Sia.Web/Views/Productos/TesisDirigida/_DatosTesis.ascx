@@ -81,7 +81,3 @@
     <label>Pa&iacute;s</label>
     <span id="institucionpais"><%= Html.Encode(Model.InstitucionPaisNombre) %>&nbsp;</span>
 </p>
-<p class="AlumnoInternoExterno">
-    <label>Periodo de referencia</label>
-    <%=Html.Encode(Model.PeriodoReferenciaPeriodo)%>
-</p>

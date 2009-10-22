@@ -6,31 +6,33 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
-namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     [HandleError]
     public class AreaTematicaController : BaseController<AreaTematica, AreaTematicaForm>
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
     
         public AreaTematicaController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
-								      IAreaTematicaMapper areaTematicaMapper, ISearchService searchService,
-                                      ILineaTematicaMapper lineaTematicaMapper) 
-			: base (usuarioService, searchService, catalogoService)
+                                      IAreaTematicaMapper areaTematicaMapper, ISearchService searchService,
+                                      ILineaTematicaMapper lineaTematicaMapper, ISubdisciplinaMapper subdisciplinaMapper) 
+            : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
+            var data = CreateViewDataWithTitle(Title.Index);
 			
-			var areaTematicas = catalogoService.GetAllAreaTematicas();
+            var areaTematicas = catalogoService.GetAllAreaTematicas();
             data.List = areaTematicaMapper.Map(areaTematicas);
 
             return View(data);
@@ -39,10 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {			
-			var data = CreateViewDataWithTitle(Title.New);
+            var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
 			
-			return View(data);
+            return View(data);
         }
         
         [AcceptVerbs(HttpVerbs.Get)]
@@ -58,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             FormSetCombos(data.Form);
 
-			ViewData.Model = data;
+            ViewData.Model = data;
             return View();
         }
         
@@ -154,7 +156,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new AreaTematicaForm();
 
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicasInstitucionales());
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -162,6 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(AreaTematicaForm form)
         {
             ViewData["LineaTematica"] = form.LineaTematicaId;
+            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

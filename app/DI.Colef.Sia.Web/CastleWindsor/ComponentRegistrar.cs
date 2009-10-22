@@ -32,6 +32,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.CastleWindsor
                     .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
                     .If(x => x.Namespace.EndsWith("Security"))
                     .WithService.FirstInterface());
+
+            container.Register(
+                AllTypes.Pick()
+                    .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
+                    .If(x => x.Name.EndsWith("Collection"))
+                    .WithService.FirstNonGenericCoreInterface(
+                    "DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections"));
         }
 
         static void AddQueryingTo(IWindsorContainer container)

@@ -106,14 +106,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual AreaTematica AreaTematica { get; set; }
 
-        public virtual EstadoProducto EstadoProducto { get; set; }
+        public virtual int EstadoProducto { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
         
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
         public virtual string Volumen { get; set; }
 
         public virtual int Numero { get; set; }

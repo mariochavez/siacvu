@@ -62,9 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoDictamen TipoDictamen { get; set; }
 
-        public virtual PeriodoReferencia PeriodoReferencia { get; set; }
-
-		public virtual Usuario CreadorPor { get; set; }
+        public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }
 
