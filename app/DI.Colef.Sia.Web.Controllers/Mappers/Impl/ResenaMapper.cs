@@ -34,7 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ResenaForm message, Resena model)
         {
             model.Numero = message.Numero;
-            model.Volumen = message.Volumen;
             model.ResenaTraducida = message.ResenaTraducida;
             model.PosicionAutor = message.PosicionAutor;
             model.NombreProducto = message.NombreProducto;
@@ -44,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
+            model.Volumen = message.Volumen;
 
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
@@ -52,20 +52,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
             model.EstadoProducto = message.EstadoProducto;
-            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
-            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
-
-            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
-            model.Area = catalogoService.GetAreaById(area);
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)

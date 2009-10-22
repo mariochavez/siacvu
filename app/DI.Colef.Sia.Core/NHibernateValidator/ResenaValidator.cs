@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (resena.TipoResena != null)
                 isValid &= ValidateTipoResena(resena, constraintValidatorContext);
 
-            if (resena.EstadoProducto != null)
+            if (resena.EstadoProducto != 0)
                 isValid &= ValidateEstadoProducto(resena, constraintValidatorContext);
             
             return isValid;
@@ -54,14 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (resena.LineaTematica == null)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no puede ser nulo, vacío o cero|LineaTematicaNombre", "LineaTematicaNombre");
-
-                isValid = false;
-            }
-
             if (resena.AreaTematica == null)
             {
                 constraintValidatorContext.AddInvalid(
@@ -70,7 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (resena.EstadoProducto == null)
+            if (resena.EstadoProducto == 0)
             {
                 constraintValidatorContext.AddInvalid(
                     "seleccione el estatus de la publicación|EstadoProducto", "EstadoProducto");
@@ -174,7 +166,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (resena.Volumen == "")
+                if (resena.Volumen == 0)
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío o cero|Volumen", "Volumen");

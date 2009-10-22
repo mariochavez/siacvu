@@ -368,17 +368,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ResenaPublicacionResolver>())
                 .ForMember(d => d.TipoResena,
                            o => o.Ignore())
-                .ForMember(d => d.AreaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
                            o => o.Ignore())
                 .ForMember(d => d.Editorial,
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoResena, CoautorInternoProductoForm>()

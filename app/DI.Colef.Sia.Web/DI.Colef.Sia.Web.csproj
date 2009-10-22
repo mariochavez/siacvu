@@ -682,7 +682,6 @@
     <Content Include="Views\MovilidadAcademica\_NewTipoActividad.ascx" />
     <Content Include="Views\Productos\Reporte\ChangeProyecto.js.ascx" />
     <Content Include="Views\Productos\Resena\AddAutor.js.ascx" />
-    <Content Include="Views\Productos\Resena\ChangeRevista.js.ascx" />
     <Content Include="Views\Productos\Resena\DeleteAutor.js.ascx" />
     <Content Include="Views\Productos\Resena\NewAutor.js.ascx" />
     <Content Include="Views\Productos\Resena\_EditAutor.ascx" />
@@ -717,7 +716,6 @@
     <Content Include="Views\Productos\Articulo\Edit.aspx" />
     <Content Include="Views\Shared\_EditCoautorExterno.ascx" />
     <Content Include="Views\Shared\_NewCoautorInterno.ascx" />
-    <Content Include="Views\Productos\Articulo\_DatosOpcionales.ascx" />
     <Content Include="Views\Shared\_NewCoautorExterno.ascx" />
     <Content Include="Views\Productos\Articulo\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Articulo\Index.aspx" />
@@ -805,7 +803,6 @@
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
     <Content Include="Views\Productos\Resena\Show.aspx" />
-    <Content Include="Views\Productos\Resena\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Resena\_DatosResena.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />

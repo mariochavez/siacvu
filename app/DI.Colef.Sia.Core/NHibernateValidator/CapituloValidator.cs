@@ -45,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (capitulo.TipoCapitulo != null)
                 isValid &= ValidateTipoCapitulo(capitulo, constraintValidatorContext);
 
-            if (capitulo.EstadoProducto != null)
+            if (capitulo.EstadoProducto != 0)
                 isValid &= ValidateProductoEstado(capitulo, constraintValidatorContext);
 
             return isValid;

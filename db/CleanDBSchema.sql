@@ -550,21 +550,6 @@ alter table TipoParticipaciones  drop constraint FK20CDD2C574E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626A829E09]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE626A829E09
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627D866EAB]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE627D866EAB
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623E391E13]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE623E391E13
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623CD531E8]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE623CD531E8
 
@@ -590,11 +575,6 @@ alter table Resenas  drop constraint FKF708AE622AF31B56
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE621EDC2D3B]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE621EDC2D3B
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE628A77AB9C
 
@@ -605,18 +585,18 @@ alter table Resenas  drop constraint FKF708AE626425E2FD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62295BC133]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62295BC133
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626A829E09]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE626A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62BC063744]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62BC063744
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627D866EAB]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE627D866EAB
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62F4FE4035]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62F4FE4035
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623E391E13]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623E391E13
 
 
 
@@ -3713,35 +3693,31 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
        PosicionAutor INT null,
        TituloLibro NVARCHAR(255) null,
        FechaEdicion DATETIME null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
        EstadoProducto INT null,
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
-       Volumen NVARCHAR(255) null,
+       Volumen INT null,
        Numero INT null,
        PaginaInicial INT null,
        PaginaFinal INT null,
        ResenaTraducida BIT null,
-       PalabraClave1 NVARCHAR(255) null,
-       PalabraClave2 NVARCHAR(255) null,
-       PalabraClave3 NVARCHAR(255) null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       UsuarioFk INT null,
-       DepartamentoFk INT null,
-       SedeFk INT null,
        TipoResenaFk INT null,
        InstitucionFk INT null,
        EditorialFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
-       LineaTematicaFk INT null,
        AreaTematicaFk INT null,
        IdiomaFk INT null,
-       AreaFk INT null,
-       DisciplinaFk INT null,
-       SubdisciplinaFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5587,16 +5563,6 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references Roles
 
     alter table Resenas 
-        add constraint FKF708AE627D866EAB 
-        foreign key (DepartamentoFk) 
-        references Departamentos
-
-    alter table Resenas 
-        add constraint FKF708AE623E391E13 
-        foreign key (SedeFk) 
-        references Sedes
-
-    alter table Resenas 
         add constraint FKF708AE623CD531E8 
         foreign key (TipoResenaFk) 
         references TipoResenas
@@ -5622,11 +5588,6 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references RevistaPublicaciones
 
     alter table Resenas 
-        add constraint FKF708AE621EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Resenas 
         add constraint FKF708AE628A77AB9C 
         foreign key (AreaTematicaFk) 
         references AreaTematicas
@@ -5637,19 +5598,14 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references Idiomas
 
     alter table Resenas 
-        add constraint FKF708AE62295BC133 
-        foreign key (AreaFk) 
-        references Areas
+        add constraint FKF708AE627D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
 
     alter table Resenas 
-        add constraint FKF708AE62BC063744 
-        foreign key (DisciplinaFk) 
-        references Disciplinas
-
-    alter table Resenas 
-        add constraint FKF708AE62F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
+        add constraint FKF708AE623E391E13 
+        foreign key (SedeFk) 
+        references Sedes
 
     alter table Reportes 
         add constraint FK26728BE177237615 

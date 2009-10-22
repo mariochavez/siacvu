@@ -193,21 +193,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeRevista(int select)
-        {
-            var resenaForm = new ResenaForm();
-            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
-
-            resenaForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
-            resenaForm.RevistaPublicacionPaisNombre = revistaPublicacionForm.PaisNombre;
-
-            resenaForm.RevistaPublicacionId = revistaPublicacionForm.Id;
-
-            return Rjs("ChangeRevista", resenaForm);
-        }
-
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
@@ -422,6 +407,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ResenaForm();
 
             //Lista de Catalogos Pendientes
+            form.Volumenes = customCollection.VolumenCustomCollection();
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -430,20 +416,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
 
         void FormSetCombos(ResenaForm form)
         {
+            ViewData["Volumen"] = form.Volumen;
             ViewData["TipoResena"] = form.TipoResenaId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["AreaTematica"] = form.AreaTematicaId;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
     }
 }
