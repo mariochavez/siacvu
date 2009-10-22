@@ -42,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.ArticuloTraducido = message.ArticuloTraducido;
+            model.EstadoProducto = message.EstadoProducto;
 
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
@@ -49,10 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoArticulo = catalogoService.GetTipoArticuloById(message.TipoArticulo);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.EstadoProducto = message.EstadoProducto;
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
 
             if (model.EstadoProducto == 0 || model.EstadoProducto != 2)

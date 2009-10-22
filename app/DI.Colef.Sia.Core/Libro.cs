@@ -135,8 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Idioma Idioma { get; set; }
 
 	    public virtual int Reimpresion { get; set; }
-		//public virtual FormaParticipacion FormaParticipacion { get; set; }
-
+		
         [Valid]
 		public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
 
@@ -146,7 +145,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
 
-		//public virtual IdentificadorLibro IdentificadorLibro { get; set; }
+        public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual string PalabraClave1 { get; set; }
 
@@ -154,17 +153,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-		//public virtual bool Traductor { get; set; }
-		
 		public virtual string NombreTraductor { get; set; }
 
-		public virtual Area Area { get; set; }
-
-		public virtual Disciplina Disciplina { get; set; }
-
-        public virtual int Puntuacion { get; set; }
-
-		public virtual Subdisciplina Subdisciplina { get; set; }
+		public virtual int Puntuacion { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 
