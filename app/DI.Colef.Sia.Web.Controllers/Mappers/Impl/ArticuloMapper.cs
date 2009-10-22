@@ -42,6 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.ArticuloTraducido = message.ArticuloTraducido;
+            model.PaginaInicial = message.PaginaInicial;
+            model.PaginaFinal = message.PaginaFinal;
 
             model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
@@ -54,17 +56,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
 
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-
-            if (model.EstadoProducto == 0 || model.EstadoProducto != 2)
-            {
-                model.PaginaInicial = 0;
-                model.PaginaFinal = 0;
-            }
-            else
-            {
-                model.PaginaInicial = message.PaginaInicial;
-                model.PaginaFinal = message.PaginaFinal;
-            }
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)

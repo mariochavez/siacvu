@@ -76,8 +76,10 @@
                     <% Html.RenderPartial("_DatosResena", Model.Form); %>
                 </div>
                 
-                <h4>Referencia bibliogr&aacute;fica</h4>
-				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                <div id="tipoPublicacion_field">
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+				</div>
         		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar")%>

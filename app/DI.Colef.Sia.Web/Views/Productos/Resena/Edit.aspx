@@ -61,10 +61,11 @@
 	                <label>Posici&oacute;n del autor</label>
                     <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
 	                <span class="cvu"></span>
+	                <%=Html.ValidationMessage("PosicionAutor")%>
                 </p>
                 
                 <div id="resenaBibliografica_field">
-                    <h4>Referencia de la obra rese&ntilde;ada</h4>
+                    <h4>Referencia de la obra reseñada</h4>
                     <p>
 	                    <label>Nombre del libro</label>
                         <%=Html.TextBox("TituloLibro", Model.Form.TituloLibro, new { @class = "input420-requerido", maxlength = 100 })%>
@@ -75,8 +76,10 @@
                     <% Html.RenderPartial("_DatosResena", Model.Form); %>
                 </div>
                 
-                <h4>Referencia bibliogr&aacute;fica</h4>
-				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                <div id="tipoPublicacion_field">
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+				</div>
         		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar")%>

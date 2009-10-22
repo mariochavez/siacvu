@@ -311,7 +311,7 @@ function resenaSetup() {
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['#EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado']],
                 ['Aceptado', ['#EstatusAceptado']]
             ]
         );

@@ -51,12 +51,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
-            model.EstadoProducto = message.EstadoProducto;
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+
+            if (message.EstadoProducto != 0)
+                model.EstadoProducto = message.EstadoProducto;
         }
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
