@@ -439,6 +439,7 @@ alter table ArchivoParticipacion  drop constraint FK4232889782C3B7BC
 alter table ArchivoParticipacion  drop constraint FK42328897FDAD320E
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD42B3782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoParticipacionMedio'))
 alter table ArchivoParticipacionMedio  drop constraint FKD42B3782C3B7BC
 
@@ -453,6 +454,10 @@ alter table ArchivoReporte  drop constraint FK4682E10D82C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4682E10D13FE2142]') AND parent_object_id = OBJECT_ID('ArchivoReporte'))
 alter table ArchivoReporte  drop constraint FK4682E10D13FE2142
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623CD531E8]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623CD531E8
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE95B9CBC82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoResena'))
@@ -471,18 +476,24 @@ alter table ArchivoTesisDirigida  drop constraint FK6EC3CA8882C3B7BC
 alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574585102A57]') AND parent_object_id = OBJECT_ID('TipoReportes'))
 alter table TipoReportes  drop constraint FK6D81574585102A57
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574574E8BAB7]') AND parent_object_id = OBJECT_ID('TipoReportes'))
 alter table TipoReportes  drop constraint FK6D81574574E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE628A77AB9C
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C85102A57]') AND parent_object_id = OBJECT_ID('Idiomas'))
 alter table Idiomas  drop constraint FKB635BD3C85102A57
 
 
+<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C74E8BAB7]') AND parent_object_id = OBJECT_ID('Idiomas'))
 alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
@@ -493,6 +504,18 @@ alter table Generos  drop constraint FK34B67F8085102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8074E8BAB7]') AND parent_object_id = OBJECT_ID('Generos'))
 alter table Generos  drop constraint FK34B67F8074E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626A829E09]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE626A829E09
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627D866EAB]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE627D866EAB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623E391E13]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623E391E13
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4D7DCA9385102A57]') AND parent_object_id = OBJECT_ID('FondoConacyts'))
@@ -3035,7 +3058,47 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+<<<<<<< HEAD:db/DbSchema.sql
     create table EstatusFormacionAcademicas (
+=======
+    create table Resenas (
+        Id INT IDENTITY NOT NULL,
+       NombreProducto NVARCHAR(255) null,
+       PosicionAutor INT null,
+       TituloLibro NVARCHAR(255) null,
+       FechaEdicion DATETIME null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
+       EstadoProducto INT null,
+       FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
+       Volumen INT null,
+       Numero INT null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       ResenaTraducida BIT null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoResenaFk INT null,
+       InstitucionFk INT null,
+       EditorialFk INT null,
+       PaisFk INT null,
+       RevistaPublicacionFk INT null,
+       AreaTematicaFk INT null,
+       IdiomaFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Reportes (
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -5227,6 +5290,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ArticuloFk) 
         references Articulos
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table ArchivoCapitulo 
         add constraint FK6F93781982C3B7BC 
         foreign key (Archivo) 
@@ -5246,6 +5310,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK73A5D66B2E9FF2CA 
         foreign key (CursoFk) 
         references Cursos
+=======
+    alter table Resenas 
+        add constraint FKF708AE623CD531E8 
+        foreign key (TipoResenaFk) 
+        references TipoResenas
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
     alter table ArchivoDictamen 
         add constraint FKD7DDAA1C82C3B7BC 
@@ -5267,6 +5337,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (DistincionFk) 
         references Distinciones
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table ArchivoEvento 
         add constraint FK94C557A482C3B7BC 
         foreign key (Archivo) 
@@ -5276,12 +5347,19 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK94C557A43BA127C1 
         foreign key (EventoFk) 
         references Eventos
+=======
+    alter table Resenas 
+        add constraint FKF708AE628A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
     alter table ArchivoLibro 
         add constraint FKA3244AFA82C3B7BC 
         foreign key (Archivo) 
         references Archivos
 
+<<<<<<< HEAD:db/DbSchema.sql
     alter table ArchivoLibro 
         add constraint FKA3244AFA586827F8 
         foreign key (LibroFk) 
@@ -5296,6 +5374,22 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK3CF46F8320ACA338 
         foreign key (OrganoExternoFk) 
         references OrganoExternos
+=======
+    alter table Resenas 
+        add constraint FKF708AE626A829E09 
+        foreign key (UsuarioFk) 
+        references Usuarios
+
+    alter table Resenas 
+        add constraint FKF708AE627D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table Resenas 
+        add constraint FKF708AE623E391E13 
+        foreign key (SedeFk) 
+        references Sedes
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/DbSchema.sql
 
     alter table ArchivoParticipacion 
         add constraint FK4232889782C3B7BC 

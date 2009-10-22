@@ -11,7 +11,7 @@
 	<label>Instituci&oacute;n</label>
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.LineaTematicaId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>

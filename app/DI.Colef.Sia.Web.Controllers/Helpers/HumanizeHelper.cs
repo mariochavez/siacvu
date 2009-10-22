@@ -25,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreTipoProducto = "Sin arbitraje";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreTipoProducto;
@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreEstadoProducto = "Publicado";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreEstadoProducto;
@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreEdicion = "Tercera edición";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreEdicion;
@@ -88,7 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreReimpresion = "Tercera";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreReimpresion;
@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreVolumen = "IV";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreVolumen;
@@ -135,7 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreNivelIdioma = "Alto";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreNivelIdioma;
@@ -154,7 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreTipoAlumnoCurso = "Externo";
                     break;
                 default:
-                    return null;
+                    return "";
             }
 
             return nombreTipoAlumnoCurso;

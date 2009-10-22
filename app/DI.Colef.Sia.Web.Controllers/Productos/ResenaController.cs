@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -26,13 +25,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly IPaisMapper paisMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITipoResenaMapper tipoResenaMapper;
         readonly IEditorialMapper editorialMapper;
-        //readonly IProyectoService proyectoService;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -40,12 +36,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IUsuarioService usuarioService, ICustomCollection customCollection,
                                 IInvestigadorExternoMapper investigadorExternoMapper,
                                 IInvestigadorMapper investigadorMapper, IPaisMapper paisMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper, IInvestigadorService investigadorService,
-                                ICoautorExternoResenaMapper coautorExternoResenaMapper,
+                                IInvestigadorService investigadorService, ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
                                 IAutorResenaMapper autorResenaMapper,
-                                ITipoResenaMapper tipoResenaMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
-                                IEditorialMapper editorialMapper)
+                                ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -55,16 +49,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.customCollection = customCollection;
-            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.tipoResenaMapper = tipoResenaMapper;
-            //this.proyectoService = proyectoService;
             this.editorialMapper = editorialMapper;
         }
 
@@ -128,7 +119,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var resena = resenaService.GetResenaById(id);
-            data.Form = resenaMapper.Map(resena);
+
+            var resenaForm = resenaMapper.Map(resena);
+            data.Form = SetupShowForm(resenaForm);
 
             ViewData.Model = data;
             return View();
@@ -191,21 +184,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Resena>(x => x.NombreProducto, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeRevista(int select)
-        {
-            var resenaForm = new ResenaForm();
-            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
-
-            resenaForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
-            resenaForm.RevistaPublicacionPaisNombre = revistaPublicacionForm.PaisNombre;
-
-            resenaForm.RevistaPublicacionId = revistaPublicacionForm.Id;
-
-            return Rjs("ChangeRevista", resenaForm);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -422,6 +400,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ResenaForm();
 
             //Lista de Catalogos Pendientes
+            form.Volumenes = customCollection.VolumenCustomCollection();
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -430,20 +409,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
 
         void FormSetCombos(ResenaForm form)
         {
+            ViewData["Volumen"] = form.Volumen;
             ViewData["TipoResena"] = form.TipoResenaId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["AreaTematica"] = form.AreaTematicaId;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
+        }
+
+        private ResenaForm SetupShowForm(ResenaForm form)
+        {
+            form = form ?? new ResenaForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                  };
+
+            return form;
         }
     }
 }

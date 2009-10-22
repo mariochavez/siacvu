@@ -3,7 +3,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class ResenaForm
     {
         public int Id { get; set; }
-        public string Volumen { get; set; }
         public int Numero { get; set; }
         public int PosicionAutor { get; set; }
         public bool ResenaTraducida { get; set; }
@@ -20,13 +19,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
         public string AnioPublicacion { get; set; }
+        public int Volumen { get; set; }
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        public int AreaTematica { get; set; }
         public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
 
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
@@ -38,20 +36,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int EstadoProducto { get; set; }
 
-        public int Proyecto { get; set; }
-        public int ProyectoId { get; set; }
-        public string ProyectoNombre { get; set; }
-
-        public int LineaTematicaId { get; set; }
-        public string LineaTematicaNombre { get; set; }
-
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
-        public string RevistaPublicacionPaisNombre { get; set; }
-        public string RevistaPublicacionInstitucionNombre { get; set; }
 
         public int Editorial { get; set; }
         public int EditorialId { get; set; }
@@ -60,12 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
-
-        public string AreaNombre { get; set; }
-        public string DisciplinaNombre { get; set; }
-        public int Subdisciplina { get; set; }
-        public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
 
         public int TotalAutores
         {
@@ -85,15 +68,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public AutorResenaForm AutorResena { get; set; }
 
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public RevistaPublicacionForm RevistaPublicacion { get; set; }
+        public AreaTematicaForm AreaTematica { get; set; }
+
         /* Catalogos */
         public TipoResenaForm[] TiposResenas { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
+        public CustomSelectForm[] Volumenes { get; set; }
         public InvestigadorExternoForm[] CoautoresExternos { get; set; }
         public InvestigadorForm[] CoautoresInternos { get; set; }
         public EditorialForm[] Editoriales { get; set; }
         public PaisForm[] Paises { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

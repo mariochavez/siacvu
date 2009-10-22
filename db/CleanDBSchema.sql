@@ -550,6 +550,7 @@ alter table ArchivoParticipacion  drop constraint FK42328897FDAD320E
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD42B3782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoParticipacionMedio'))
 alter table ArchivoParticipacionMedio  drop constraint FKD42B3782C3B7BC
 
@@ -567,6 +568,10 @@ alter table ArchivoReporte  drop constraint FK4682E10D82C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4682E10D13FE2142]') AND parent_object_id = OBJECT_ID('ArchivoReporte'))
 alter table ArchivoReporte  drop constraint FK4682E10D13FE2142
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623CD531E8]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623CD531E8
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
 
 
@@ -590,6 +595,7 @@ alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574585102A57]') AND parent_object_id = OBJECT_ID('TipoReportes'))
 alter table TipoReportes  drop constraint FK6D81574585102A57
 
@@ -597,6 +603,10 @@ alter table TipoReportes  drop constraint FK6D81574585102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6D81574574E8BAB7]') AND parent_object_id = OBJECT_ID('TipoReportes'))
 alter table TipoReportes  drop constraint FK6D81574574E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE628A77AB9C
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
 
 
@@ -605,6 +615,7 @@ alter table Idiomas  drop constraint FKB635BD3C85102A57
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C74E8BAB7]') AND parent_object_id = OBJECT_ID('Idiomas'))
 alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
@@ -617,6 +628,20 @@ alter table Generos  drop constraint FK34B67F8085102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8074E8BAB7]') AND parent_object_id = OBJECT_ID('Generos'))
 alter table Generos  drop constraint FK34B67F8074E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626A829E09]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE626A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627D866EAB]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE627D866EAB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623E391E13]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE623E391E13
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
 
 
@@ -3632,10 +3657,42 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table EstatusFormacionAcademicas (
         Id INT IDENTITY NOT NULL,
+<<<<<<< HEAD:db/CleanDBSchema.sql
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+=======
+       NombreProducto NVARCHAR(255) null,
+       PosicionAutor INT null,
+       TituloLibro NVARCHAR(255) null,
+       FechaEdicion DATETIME null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
+       EstadoProducto INT null,
+       FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
+       Volumen INT null,
+       Numero INT null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       ResenaTraducida BIT null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoResenaFk INT null,
+       InstitucionFk INT null,
+       EditorialFk INT null,
+       PaisFk INT null,
+       RevistaPublicacionFk INT null,
+       AreaTematicaFk INT null,
+       IdiomaFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5609,6 +5666,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (TesisDirigidaFk) 
         references TesisDirigidas
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table Dictamenes 
         add constraint FKE29ADD7B7D866EAB 
         foreign key (DepartamentoFk) 
@@ -5623,6 +5681,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKE29ADD7B2AF31B56 
         foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
+=======
+    alter table Resenas 
+        add constraint FKF708AE623CD531E8 
+        foreign key (TipoResenaFk) 
+        references TipoResenas
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
     alter table Dictamenes 
         add constraint FKE29ADD7BE30B9132 
@@ -5684,6 +5748,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (InstitucionFk) 
         references Instituciones
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table TesisDirigidas 
         add constraint FKEF4DD3113E082BED 
         foreign key (SectorFk) 
@@ -5693,12 +5758,19 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKEF4DD311EC222BA6 
         foreign key (OrganizacionFk) 
         references Organizaciones
+=======
+    alter table Resenas 
+        add constraint FKF708AE628A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
     alter table TesisDirigidas 
         add constraint FKEF4DD311C8628149 
         foreign key (Nivel2Fk) 
         references Niveles
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table TesisDirigidas 
         add constraint FKEF4DD311295BC133 
         foreign key (AreaFk) 
@@ -5713,6 +5785,17 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKEF4DD311F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+=======
+    alter table Resenas 
+        add constraint FKF708AE627D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table Resenas 
+        add constraint FKF708AE623E391E13 
+        foreign key (SedeFk) 
+        references Sedes
+>>>>>>> 2b0679d5e71c23ee2f10e83547ca2c87c0f3f038:db/CleanDBSchema.sql
 
     alter table TesisDirigidas 
         add constraint FKEF4DD3111A3D8ED8 

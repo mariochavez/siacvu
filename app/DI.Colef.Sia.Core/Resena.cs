@@ -67,13 +67,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
 
-        [NotNull]
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual Departamento Departamento { get; set; }
-
-        public virtual Sede Sede { get; set; }
-
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string NombreProducto { get; set; }
@@ -102,9 +95,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
-
         public virtual AreaTematica AreaTematica { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
 
         public virtual int EstadoProducto { get; set; }
 
@@ -112,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPublicacion { get; set; }
         
-        public virtual string Volumen { get; set; }
+        public virtual int Volumen { get; set; }
 
         public virtual int Numero { get; set; }
         
@@ -124,19 +121,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Idioma Idioma { get; set; }
 
-        public virtual Area Area { get; set; }
-
-        public virtual Disciplina Disciplina { get; set; }
-
-        public virtual Subdisciplina Subdisciplina { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
-
         public virtual int Puntuacion { get; set; }
+
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

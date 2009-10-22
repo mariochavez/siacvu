@@ -39,7 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             isValid &= TieneProyecto(articulo, constraintValidatorContext);
             isValid &= ArticuloTraducido(articulo, constraintValidatorContext);
 
-            if (articulo.EstadoProducto != null)
+            if (articulo.EstadoProducto != 0)
                 isValid &= ValidateProductoEstado(articulo, constraintValidatorContext);
 
             return isValid;

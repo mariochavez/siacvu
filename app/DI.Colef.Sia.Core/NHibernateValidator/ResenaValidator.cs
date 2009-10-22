@@ -31,13 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             }
 
-            isValid &= ResenaTraducida(resena, constraintValidatorContext);
-
             if (resena.TipoResena != null)
                 isValid &= ValidateTipoResena(resena, constraintValidatorContext);
-
-            if (resena.EstadoProducto != null)
-                isValid &= ValidateEstadoProducto(resena, constraintValidatorContext);
             
             return isValid;
         }
@@ -54,23 +49,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (resena.LineaTematica == null)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no puede ser nulo, vacío o cero|LineaTematicaNombre", "LineaTematicaNombre");
-
-                isValid = false;
-            }
-
             if (resena.AreaTematica == null)
             {
                 constraintValidatorContext.AddInvalid(
-                    "seleccione el área temática|AreaTematica", "AreaTematica");
+                    "seleccione el área temática|AreaTematicaId", "AreaTematicaId");
 
                 isValid = false;
             }
 
-            if (resena.EstadoProducto == null)
+            if (resena.EstadoProducto == 0)
             {
                 constraintValidatorContext.AddInvalid(
                     "seleccione el estatus de la publicación|EstadoProducto", "EstadoProducto");
@@ -127,16 +114,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 }
             }
 
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
-        bool ValidateEstadoProducto(Resena resena, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
             //Estado Producto - Aceptado
             if (resena.EstadoProducto == 1)
             {
@@ -174,10 +151,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (resena.Volumen == "")
+                if (resena.Volumen == 0)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|Volumen", "Volumen");
+                        "seleccione el volumen|Volumen", "Volumen");
 
                     isValid = false;
                 }
@@ -201,29 +178,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
                 if (resena.PaginaInicial == 0 && resena.PaginaFinal == 0)
                 {
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial",
+                                                          "PaginaInicial");
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal",
+                                                          "PaginaFinal");
                     isValid = false;
                 }
-            }
 
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
-        bool ResenaTraducida(Resena resena, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (resena.ResenaTraducida)
-            {
-                if (resena.Idioma == null)
+                if (resena.ResenaTraducida)
                 {
-                    constraintValidatorContext.AddInvalid("seleccione el idioma|Idioma", "Idioma");
+                    if (resena.Idioma == null)
+                    {
+                        constraintValidatorContext.AddInvalid("seleccione el idioma|Idioma", "Idioma");
 
-                    isValid = false;
+                        isValid = false;
+                    }
                 }
             }
 
