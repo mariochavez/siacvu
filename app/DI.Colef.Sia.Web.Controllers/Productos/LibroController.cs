@@ -186,21 +186,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeEvento(int select)
-        {
-            var libroForm = new LibroForm();
-            var eventoForm = eventoMapper.Map(eventoService.GetEventoById(select));
-
-            libroForm.EventoFechaInicial = eventoForm.FechaInicial;
-
-            libroForm.EventoFechaFinal = eventoForm.FechaFinal;
-            libroForm.EventoId = eventoForm.Id;
-
-            return Rjs("ChangeEvento", libroForm);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Libro>(x => x.Nombre, q);
@@ -448,7 +433,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["Editorial"] = form.EditorialId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Reimpresion"] = form.Reimpresion;
             ViewData["Evento"] = form.EventoId;
@@ -460,8 +444,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      //RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                                      //RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionInstitucionNombre = form.NombreRevista.InstitucionNombre,
+                                      RevistaPublicacionPaisNombre = form.NombreRevista.PaisNombre,
 
                                       ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
                                       ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,

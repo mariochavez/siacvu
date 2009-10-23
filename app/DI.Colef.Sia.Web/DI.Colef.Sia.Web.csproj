@@ -647,7 +647,6 @@
     <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
     <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Libro\AddEditorialLibro.js.ascx" />
-    <Content Include="Views\Productos\Libro\ChangeEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\DeleteEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\_ShowEditorial.ascx" />
     <Content Include="Views\Productos\Libro\NewEditorialLibro.js.ascx" />

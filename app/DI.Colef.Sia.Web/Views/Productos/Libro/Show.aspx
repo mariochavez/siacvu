@@ -64,17 +64,6 @@
                     <strong><%= Html.Encode(Model.Form.FormatoPublicacionNombre)%>&nbsp;</strong>
                 </p>
                 
-                <% if (Model.Form.FormatoPublicacionNombre.Contains("otro idioma")){ %>
-                    <p>
-                        <label>Idioma</label>
-                        <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
-                    </p>
-                    <p>
-                        <label>Nombre del traductor</label>
-                        <strong><%= Html.Encode(Model.Form.NombreTraductor)%>&nbsp;</strong>
-                    </p>
-                <% } %>
-                
                 <% if (Model.Form.FormatoPublicacionNombre.Contains("evento")){ %>
                     <p>
                         <label>Nombre del evento</label>
@@ -95,6 +84,17 @@
                     <p>
                         <label>N&uacute;mero</label>
                         <strong><%= Html.Encode(Model.Form.Numero)%>&nbsp;</strong>
+                    </p>
+                <% } %>
+                
+                <% if (Model.Form.FormatoPublicacionNombre.Contains("otro idioma")){ %>
+                    <p>
+                        <label>Idioma</label>
+                        <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+                        <label>Nombre del traductor</label>
+                        <strong><%= Html.Encode(Model.Form.NombreTraductor)%>&nbsp;</strong>
                     </p>
                 <% } %>
                 

@@ -295,6 +295,34 @@ alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
 alter table InvestigadorExternos  drop constraint FK2FE0968874E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7D6323CFC]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7D6323CFC
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E75D547CE0]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E75D547CE0
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E73BA127C1]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E73BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E798280B8C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E798280B8C
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E76425E2FD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E770EA6C9E]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E770EA6C9E
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E78A77AB9C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E78A77AB9C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76A829E09]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E76A829E09
 
@@ -305,38 +333,6 @@ alter table Libros  drop constraint FK439120E77D866EAB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E73E391E13]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E73E391E13
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7E30B9132]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7E30B9132
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7D6323CFC]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E7D6323CFC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E75D547CE0]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E75D547CE0
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E798280B8C]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E798280B8C
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E73BA127C1]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E73BA127C1
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E770EA6C9E]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E770EA6C9E
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E76425E2FD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E78A77AB9C]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E78A77AB9C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E785102A57]') AND parent_object_id = OBJECT_ID('Libros'))
@@ -2974,40 +2970,39 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
 
     create table Libros (
         Id INT IDENTITY NOT NULL,
-       PosicionAutor INT null,
-       TipoProducto INT null,
-       Edicion INT null,
-       EstadoProducto INT null,
-       TieneProyecto BIT null,
-       FechaAceptacion DATETIME null,
-       FechaPublicacion DATETIME null,
        Nombre NVARCHAR(255) null,
-       ISBN NVARCHAR(255) null,
-       Volumen INT null,
+       TipoProducto INT null,
        Numero INT null,
-       FechaEdicion DATETIME null,
-       NoPaginas INT null,
-       Tiraje INT null,
-       Reimpresion INT null,
+       NombreTraductor NVARCHAR(255) null,
+       PosicionAutor INT null,
+       TieneProyecto BIT null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
-       NombreTraductor NVARCHAR(255) null,
+       EstadoProducto INT null,
+       FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
+       Edicion INT null,
+       Reimpresion INT null,
+       ISBN NVARCHAR(255) null,
+       Tiraje INT null,
+       FechaEdicion DATETIME null,
+       Volumen INT null,
+       NoPaginas INT null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       TipoPublicacionFk INT null,
+       FormatoPublicacionFk INT null,
+       EventoFk INT null,
+       NombreRevistaFk INT null,
+       IdiomaFk INT null,
+       ProyectoFk INT null,
+       AreaTematicaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       EditorialFk INT null,
-       TipoPublicacionFk INT null,
-       FormatoPublicacionFk INT null,
-       NombreRevistaFk INT null,
-       EventoFk INT null,
-       ProyectoFk INT null,
-       IdiomaFk INT null,
-       AreaTematicaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5118,6 +5113,41 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references Usuarios
 
     alter table Libros 
+        add constraint FK439120E7D6323CFC 
+        foreign key (TipoPublicacionFk) 
+        references TipoPublicaciones
+
+    alter table Libros 
+        add constraint FK439120E75D547CE0 
+        foreign key (FormatoPublicacionFk) 
+        references FormatoPublicaciones
+
+    alter table Libros 
+        add constraint FK439120E73BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
+    alter table Libros 
+        add constraint FK439120E798280B8C 
+        foreign key (NombreRevistaFk) 
+        references RevistaPublicaciones
+
+    alter table Libros 
+        add constraint FK439120E76425E2FD 
+        foreign key (IdiomaFk) 
+        references Idiomas
+
+    alter table Libros 
+        add constraint FK439120E770EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
+    alter table Libros 
+        add constraint FK439120E78A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
+
+    alter table Libros 
         add constraint FK439120E76A829E09 
         foreign key (UsuarioFk) 
         references Usuarios
@@ -5131,46 +5161,6 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         add constraint FK439120E73E391E13 
         foreign key (SedeFk) 
         references Sedes
-
-    alter table Libros 
-        add constraint FK439120E7E30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
-
-    alter table Libros 
-        add constraint FK439120E7D6323CFC 
-        foreign key (TipoPublicacionFk) 
-        references TipoPublicaciones
-
-    alter table Libros 
-        add constraint FK439120E75D547CE0 
-        foreign key (FormatoPublicacionFk) 
-        references FormatoPublicaciones
-
-    alter table Libros 
-        add constraint FK439120E798280B8C 
-        foreign key (NombreRevistaFk) 
-        references RevistaPublicaciones
-
-    alter table Libros 
-        add constraint FK439120E73BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
-
-    alter table Libros 
-        add constraint FK439120E770EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table Libros 
-        add constraint FK439120E76425E2FD 
-        foreign key (IdiomaFk) 
-        references Idiomas
-
-    alter table Libros 
-        add constraint FK439120E78A77AB9C 
-        foreign key (AreaTematicaFk) 
-        references AreaTematicas
 
     alter table Libros 
         add constraint FK439120E785102A57 

@@ -76,74 +76,44 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoLibros.Remove((ArchivoLibro)archivo);
         }
 
+        [DomainSignature]
+        [NotNullNotEmpty]
+        public virtual string Nombre { get; set; }
+
+        public virtual TipoPublicacion TipoPublicacion { get; set; }
+
+        public virtual int TipoProducto { get; set; }
+
+        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
+
+        public virtual Evento Evento { get; set; }
+
+        public virtual RevistaPublicacion NombreRevista { get; set; }
+
+        public virtual int Numero { get; set; }
+
+        public virtual Idioma Idioma { get; set; }
+
+        public virtual string NombreTraductor { get; set; }
+
+        [Valid]
+        public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
+
+        [Valid]
+        public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
+
         [Valid]
         public virtual IList<ArchivoLibro> ArchivoLibros { get; private set; }
 
         [Valid]
         public virtual IList<FirmaLibro> FirmaLibros { get; private set; }
 
-        [NotNull]
-        public virtual Usuario Usuario { get; set; }
-
-        public virtual Departamento Departamento { get; set; }
-
-        public virtual Sede Sede { get; set; }
-
         [Min(1)]
 	    public virtual int PosicionAutor { get; set; }
 
-	    public virtual Editorial Editorial { get; set; }
+        public virtual bool TieneProyecto { get; set; }
 
-		public virtual TipoPublicacion TipoPublicacion { get; set; }
-
-        public virtual int TipoProducto { get; set; }
-
-        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
-
-        public virtual int Edicion { get; set; }
-
-        public virtual RevistaPublicacion NombreRevista { get; set; }
-
-        public virtual Evento Evento { get; set; }
-
-		public virtual int EstadoProducto { get; set; }
-
-		public virtual bool TieneProyecto { get; set; }
-        
-		public virtual Proyecto Proyecto { get; set; }
-
-		public virtual DateTime FechaAceptacion { get; set; }
-
-        public virtual DateTime FechaPublicacion { get; set; }
-
-		[DomainSignature]
-		[NotNullNotEmpty]
-		public virtual string Nombre { get; set; }
-
-		public virtual string ISBN { get; set; }
-
-        public virtual int Volumen { get; set; }
-
-        public virtual int Numero { get; set; }
-
-		public virtual DateTime FechaEdicion { get; set; }
-
-		public virtual int NoPaginas { get; set; }
-
-        public virtual int Tiraje { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
-
-	    public virtual int Reimpresion { get; set; }
-		
-        [Valid]
-		public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
-
-        [Valid]
-		public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
-
-        [Valid]
-        public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
+        public virtual Proyecto Proyecto { get; set; }
 
         public virtual AreaTematica AreaTematica { get; set; }
 
@@ -153,9 +123,37 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-		public virtual string NombreTraductor { get; set; }
+        public virtual int EstadoProducto { get; set; }
+
+        public virtual DateTime FechaAceptacion { get; set; }
+
+        public virtual DateTime FechaPublicacion { get; set; }
+
+        public virtual int Edicion { get; set; }
+
+        public virtual int Reimpresion { get; set; }
+
+        [Valid]
+        public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
+
+		public virtual string ISBN { get; set; }
+
+        public virtual int Tiraje { get; set; }
+
+        public virtual DateTime FechaEdicion { get; set; }
+
+        public virtual int Volumen { get; set; }
+
+		public virtual int NoPaginas { get; set; }
 
 		public virtual int Puntuacion { get; set; }
+
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
 
 		public virtual Usuario CreadorPor { get; set; }
 

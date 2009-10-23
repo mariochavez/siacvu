@@ -27,7 +27,7 @@
 <p class="memoriaevento_field">
     <label>Nombre del evento</label>
     <%=Html.DropDownList("Evento", Model.Eventos.CreateSelectList<EventoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeEvento")})%>
+                "Seleccione ...", new { @class = "requerido"})%>
     <%=Html.ValidationMessage("Evento")%>
 </p>
 <p class="revista_field">
