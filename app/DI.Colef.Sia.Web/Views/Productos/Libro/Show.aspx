@@ -64,7 +64,7 @@
                     <strong><%= Html.Encode(Model.Form.FormatoPublicacionNombre)%>&nbsp;</strong>
                 </p>
                 
-                <% if (Model.Form.IdiomaNombre != "") { %>
+                <% if (Model.Form.FormatoPublicacionNombre.Contains("otro idioma")){ %>
                     <p>
                         <label>Idioma</label>
                         <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
@@ -75,7 +75,7 @@
                     </p>
                 <% } %>
                 
-                <% if (Model.Form.EventoNombre != "") { %>
+                <% if (Model.Form.FormatoPublicacionNombre.Contains("evento")){ %>
                     <p>
                         <label>Nombre del evento</label>
                         <strong><%= Html.Encode(Model.Form.EventoNombre)%>&nbsp;</strong>
@@ -86,12 +86,12 @@
                     </p>
                 <% } %>
                 
-                <% if (Model.Form.NombreRevistaTitulo != "") { %>
+                <% if (Model.Form.FormatoPublicacionNombre.Contains("revista")){ %>
                     <p>
                         <label>Nombre de la revista</label>
                         <strong><%= Html.Encode(Model.Form.NombreRevistaTitulo)%>&nbsp;</strong>
                     </p>
-                    
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                     <p>
                         <label>N&uacute;mero</label>
                         <strong><%= Html.Encode(Model.Form.Numero)%>&nbsp;</strong>
@@ -123,9 +123,9 @@
                         <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
                     </p>
                     
-                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>                    
+                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } else { %>
-                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>                    
+                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 <% } %>
                 
                 <p>
@@ -180,7 +180,7 @@
                 </p>
                 <p>
                     <label>Volumen</label>
-                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
+                    <strong><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</strong>
                 </p>
                 <p>
                     <label>No. de p&aacute;ginas</label>

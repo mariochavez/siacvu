@@ -15,22 +15,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class LibroController : BaseController<Libro, LibroForm>
     {
         readonly ILibroService libroService;
-        readonly IInvestigadorService investigadorService;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
         readonly ITipoPublicacionMapper tipoPublicacionMapper;
-        readonly IProyectoMapper proyectoMapper;
         readonly IIdiomaMapper idiomaMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly IProyectoService proyectoService;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
         readonly IFormatoPublicacionMapper formatoPublicacionMapper;
-        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IEditorialMapper editorialMapper;
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
@@ -43,20 +36,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IUsuarioService usuarioService,
                                IAreaTematicaMapper areaTematicaMapper,
                                ITipoPublicacionMapper tipoPublicacionMapper,
-                               IProyectoMapper proyectoMapper,
                                IIdiomaMapper idiomaMapper,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
                                ICoautorInternoLibroMapper coautorInternoLibroMapper,
-                               IInvestigadorMapper investigadorMapper,
-                               IInvestigadorExternoMapper investigadorExternoMapper,
-                               IInvestigadorService investigadorService,
-                               ISubdisciplinaMapper subdisciplinaMapper,
                                ISearchService searchService,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
-                               IProyectoService proyectoService,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
-                               IRevistaPublicacionMapper revistaPublicacionMapper,
                                IEditorialMapper editorialMapper,
                                IEditorialLibroMapper editorialLibroMapper)
             : base(usuarioService, searchService, catalogoService)
@@ -67,19 +53,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.libroService = libroService;
             this.libroMapper = libroMapper;
             this.tipoPublicacionMapper = tipoPublicacionMapper;
-            this.proyectoMapper = proyectoMapper;
             this.idiomaMapper = idiomaMapper;
-            this.investigadorMapper = investigadorMapper;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
-            this.investigadorExternoMapper = investigadorExternoMapper;
-            this.investigadorService = investigadorService;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
-            this.proyectoService = proyectoService;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
             this.formatoPublicacionMapper = formatoPublicacionMapper;
-            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.editorialMapper = editorialMapper;
             this.editorialLibroMapper = editorialLibroMapper;
         }
@@ -108,6 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionAutor = 1;
+            ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
             return View(data);
@@ -117,7 +97,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var libro = libroService.GetLibroById(id);
@@ -163,7 +142,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                    [Bind(Prefix = "EditorialLibro")] EditorialLibroForm[] editorial, 
                                    LibroForm form)
         {
-
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
             editorial = editorial ?? new EditorialLibroForm[] { };
@@ -444,7 +422,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         LibroForm SetupNewForm(LibroForm form)
         {
             form = form ?? new LibroForm();
-
             
             form.Volumenes = customCollection.VolumenCustomCollection();
             form.Ediciones = customCollection.EdicionCustomCollection();
@@ -483,6 +460,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      //RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      //RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+
                                       ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
                                       ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
                                       ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
