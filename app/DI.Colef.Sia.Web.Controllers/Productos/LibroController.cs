@@ -328,7 +328,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorInterno", investigadorId);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEditorial(int id)
         {
@@ -398,7 +398,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DeleteEditorialLibro", editorialId);
         }
-                
+
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewEvento(int id)
+        {
+            var libro = libroService.GetLibroById(id);
+
+            var form = new LibroForm
+                           {
+                               Evento = new EventoForm()
+                           };
+
+            if (libro != null)
+                form.Id = libro.Id;
+
+            return Rjs("NewEvento", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEvento([Bind(Prefix = "Evento")]EventoForm form, int libroId)
+        {
+            var evento = eventoMapper.Map(form);
+            evento.Usuario = CurrentUser();
+
+           ModelState.AddModelErrors(evento.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            evento.CreadorPor = CurrentUser();
+            evento.ModificadoPor = CurrentUser();
+            evento.Activo = true;
+
+            eventoService.SaveEvento(evento);
+
+            var eventoForm = eventoMapper.Map(evento);
+
+            return Rjs("AddEvento", eventoForm);
+        }
+
         LibroForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -413,7 +455,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposProductos = customCollection.TipoProductoCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
-            form.Eventos = eventoMapper.Map(eventoService.GetActiveEventos());
             form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
@@ -435,7 +476,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Reimpresion"] = form.Reimpresion;
-            ViewData["Evento"] = form.EventoId;
         }
 
         private LibroForm SetupShowForm(LibroForm form)

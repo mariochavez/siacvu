@@ -37,7 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int Edicion { get; set; }
 
-        public int Evento { get; set; }
         public int EventoId { get; set; }
         public string EventoNombre { get; set; }
         public string EventoFechaInicial { get; set; }
@@ -57,6 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string IdiomaNombre { get; set; }
 
         public int Reimpresion { get; set; }
+
+        public EventoForm Evento { get; set; }
 
         public int TotalAutores
         {
@@ -90,7 +91,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
-        public EventoForm[] Eventos { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
         public EditorialForm[] Editoriales { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }

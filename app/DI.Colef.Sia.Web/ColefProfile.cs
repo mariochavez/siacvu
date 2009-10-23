@@ -650,8 +650,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
-                .ForMember(d => d.Evento,
-                           o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
                            o => o.Ignore());
 

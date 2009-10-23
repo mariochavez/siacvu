@@ -26,10 +26,22 @@
 </p>
 <p class="memoriaevento_field">
     <label>Nombre del evento</label>
-    <%=Html.DropDownList("Evento", Model.Eventos.CreateSelectList<EventoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido"})%>
-    <%=Html.ValidationMessage("Evento")%>
+    <%=Html.TextBox("EventoNombre", Model.EventoNombre,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Evento"), maxlength = 100 })%>
+    <%=Html.Hidden("EventoId", Model.EventoId, new { rel = "#EventoNombre" })%>
+    <%=Html.ValidationMessage("EventoNombre")%>
 </p>
+<div id="eventoNew" class="minilistaboton memoriaevento_field">
+    <p>
+        <label></label>
+	    <span>
+		    <%=Html.ActionLink("+ Nuevo evento", "NewEvento", new { Id = Model.Id }, new { @class = "remote get" })%>
+	    </span>
+    </p>
+</div><!--end minilistaboton-->
+
+<div id="eventoForm" class="display:hidden;"></div>
+    
 <p class="revista_field">
     <label>Nombre de la revista</label>
     <%=Html.TextBox("NombreRevistaTitulo", Model.NombreRevistaTitulo, 

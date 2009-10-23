@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.NombreRevista = catalogoService.GetRevistaPublicacionById(message.NombreRevistaId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            model.Evento = eventoService.GetEventoById(message.Evento);
+            model.Evento = eventoService.GetEventoById(message.EventoId);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)

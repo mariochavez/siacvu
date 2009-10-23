@@ -108,7 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if (libro.Evento == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "seleccione el evento|Evento", "Evento");
+                        "no puede ser nulo, vacío o cero|EventoNombre", "EventoNombre");
 
                     isValid = false;
                 }
