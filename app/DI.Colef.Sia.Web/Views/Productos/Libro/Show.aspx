@@ -92,8 +92,6 @@
                         <strong><%= Html.Encode(Model.Form.NombreRevistaTitulo)%>&nbsp;</strong>
                     </p>
                     
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                    
                     <p>
                         <label>N&uacute;mero</label>
                         <strong><%= Html.Encode(Model.Form.Numero)%>&nbsp;</strong>

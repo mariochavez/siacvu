@@ -482,22 +482,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new LibroForm();
 
             form.ShowFields = new ShowFieldsForm
-            {
-                RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                  {
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
 
-                ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
-                ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
-                ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
-                ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
-
-                AreaTematicaNombre = form.AreaTematica.Nombre,
-                AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
-            };
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                  };
 
             return form;
         }

@@ -89,7 +89,7 @@
                 <% if (Model.Form.TipoReporteNombre.Contains("Cuaderno")){ %>
                     <h4>Referencia bibliogr&aacute;fica</h4>
                     <% Html.RenderPartial("_ShowCuadernoTrabajo", Model.Form); %>
-                <% } else {%>
+                <% } if (Model.Form.TipoReporteNombre.Contains("Reporte")){%>
                     <h4>Tem&aacute;tica del reporte t&eacute;cnico</h4>
                     <p>
                         <label></label>
@@ -139,17 +139,7 @@
                         </p>
                     <% } %>
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
-                <% } %>
-                
-                <p>
-                    <label>No. de p&aacute;ginas</label>
-                    <strong><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Fecha de edici&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
-  
+                <% } %>  
                 
                 <p class="submit">
                     <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar") %>

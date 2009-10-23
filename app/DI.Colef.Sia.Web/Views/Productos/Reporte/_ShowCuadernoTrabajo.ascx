@@ -9,3 +9,11 @@
     <label>Objetivo del cuaderno</label>
     <strong><%= Html.Encode(Model.Objetivo)%>&nbsp;</strong>
 </p>
+<p>
+    <label>No. de p&aacute;ginas</label>
+    <strong><%= Html.Encode(Model.NoPaginas)%>&nbsp;</strong>
+</p>
+<p>
+    <label>Fecha de edici&oacute;n</label>
+    <strong><%= Html.Encode(Model.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+</p>
