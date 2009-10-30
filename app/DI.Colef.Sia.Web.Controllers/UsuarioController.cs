@@ -10,7 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     public class UsuarioController : BaseController<Usuario, UsuarioForm>
     {
-        readonly IUsuarioService usuarioService;
+        new readonly IUsuarioService usuarioService;
         readonly IUsuarioMapper usuarioMapper;
         readonly IRolMapper rolMapper;
 

@@ -416,23 +416,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Evento, EventoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaInicial,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaFinal,
+                .ForMember(d => d.FechaEvento,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Ambito,
-                           o => o.Ignore())
-                .ForMember(d => d.DirigidoA,
                            o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
                            o => o.Ignore())
-                .ForMember(d => d.EstadoPais,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoFinanciamiento,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoEvento, CoautorInternoProductoForm>()
@@ -440,6 +432,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<CoautorExternoEvento, CoautorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<InstitucionEvento, InstitucionEventoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

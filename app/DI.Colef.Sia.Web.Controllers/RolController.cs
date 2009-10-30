@@ -10,7 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     public class RolController : BaseController<Rol, RolForm>
     {
-        readonly IUsuarioService usuarioService;
+        new readonly IUsuarioService usuarioService;
         readonly IRolMapper rolMapper;
 
         public RolController(IUsuarioService usuarioService, IRolMapper rolMapper,
