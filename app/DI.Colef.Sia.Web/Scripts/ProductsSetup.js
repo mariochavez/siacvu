@@ -59,8 +59,9 @@ function capituloSetup() {
 function dictamenSetup() {
     $('#TipoDictamen').dynamicui(
             [
-                ['Artículo', ['.articulo_field']],
-                ['Proyecto de investigación CONACyT', ['#proyecto_field']]
+                ['Artículo', ['#articulo_field']],
+                ['Proyecto de investigación CONACyT', ['#proyecto_field']],
+                ['Capítulo en libro', ['#capituloLibro_field']]
             ]
         );
 
@@ -135,17 +136,7 @@ var CheckTesisOptions = {
 };
 
 
-function distincionSetup() {
-
-    $('#Ambito').dynamicui(
-            [
-                ['Estatal', ['#ambitoestatal']],
-                ['Local', ['#ambitolocal']]
-            ]
-        );
-
-    $('#Ambito')[0].dynamic.setup();
-
+function distincionSetup() {    
     CheckDistincionOptions.setup();
 }
 
@@ -157,14 +148,28 @@ var CheckDistincionOptions = {
     verifyOptions: function() {
         var comboText = $('#Ambito :selected').text();
 
-        if (comboText == "Binacional" || comboText == "Internacional" || comboText == "Seleccione ...") {
+        if (comboText != "Binacional" && comboText != "Internacional") {
             $('#ambitopais').slideUp('fast', function() {
                 $('#ambitopais').fadeOut('fast');
             });
-        }
-        else {
+            $('.ambitoestatallocal').slideDown('fast', function() {
+                $('.ambitoestatallocal').fadeIn('fast');
+            });
+        } else {
             $('#ambitopais').slideDown('fast', function() {
                 $('#ambitopais').fadeIn('fast');
+            });
+            $('.ambitoestatallocal').slideUp('fast', function() {
+                $('.ambitoestatallocal').fadeOut('fast');
+            });
+        }
+
+        if (comboText == "Seleccione ...") {
+            $('#ambitopais').slideUp('fast', function() {
+                $('#ambitopais').fadeOut('fast');
+            });
+            $('.ambitoestatallocal').slideUp('fast', function() {
+                $('.ambitoestatallocal').fadeOut('fast');
             });
         }
     }

@@ -637,8 +637,6 @@
     <Content Include="Views\Productos\Articulo\Show.aspx" />
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
-    <Content Include="Views\Productos\Dictamen\ChangeRevista.js.ascx" />
-    <Content Include="Views\Productos\Dictamen\ChangeEditorial.js.ascx" />
     <Content Include="Views\Productos\Dictamen\Show.aspx" />
     <Content Include="Views\Productos\Distincion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Distincion\Show.aspx" />

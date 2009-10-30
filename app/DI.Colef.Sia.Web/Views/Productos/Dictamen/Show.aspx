@@ -45,29 +45,35 @@
                     <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
                 </p>
                 <p>
-	                <label>Tipo de dictamen</label>
+	                <label>Producto dictaminado</label>
 	                <strong><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-	                <label>Nombre de la revista</label>
-	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Instituci&oacute;n de la revista</label>
-	                <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Editorial</label>
-	                <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Instituci&oacute;n de la editorial</label>
-	                <strong><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Tipo de proyecto</label>
-	                <strong><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</strong>
-                </p>
+                <% if (Model.Form.TipoDictamenNombre.Contains("Artículo")){ %>
+                    <p>
+	                    <label>Nombre de la revista</label>
+	                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
+                    </p>
+                    <p>
+	                    <label>Instituci&oacute;n de la revista</label>
+	                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
+                <% if (Model.Form.TipoDictamenNombre.Contains("Capítulo") || Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
+                    <p>
+	                    <label>Editorial</label>
+	                    <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
+                    </p>
+                    <p>
+	                    <label>Instituci&oacute;n de la editorial</label>
+	                    <strong><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
+                <% if(Model.Form.TipoDictamenNombre.Contains("Proyecto")){ %>
+                    <p>
+	                    <label>Tipo de proyecto</label>
+	                    <strong><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DictamenController>(x => x.Index(), "Regresar") %>
