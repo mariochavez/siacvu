@@ -49,7 +49,7 @@
 			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
             <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
             <p>
-                <label>Autores</label>
+                <label>Total de autores</label>
                 <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
                 <span class="cvu"></span>          
             </p>
@@ -62,12 +62,14 @@
                 <label>Edici&oacute;n</label>
                 <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                             "Seleccione ...")%>
+                <span class="cvu"></span>
                 <%=Html.ValidationMessage("Edicion")%>
             </p>
             <p>
                 <label>Reimpresi&oacute;n</label>
                 <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                             "Seleccione ...")%>
+                <span class="cvu"></span>
                 <%=Html.ValidationMessage("Reimpresion")%>
             </p>
             <% Html.RenderPartial("_EditEditorial", Model.Form); %>

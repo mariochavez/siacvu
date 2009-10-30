@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string FechaEdicion { get; set; }
 		public string NombreLibro { get; set; }
 		public int NoPaginas { get; set; }
+        public int NoCitas { get; set; }
 		public string AutorLibro { get; set; }
         public bool Traductor { get; set; }
         public string FechaPublicacion { get; set; }

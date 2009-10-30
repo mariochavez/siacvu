@@ -138,6 +138,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int NoPaginas { get; set; }
 
+        public virtual int NoCitas { get; set; }
+
         [Valid]
         public virtual IList<ResponsableInternoCapitulo> ResponsableInternoCapitulos { get; private set; }
 

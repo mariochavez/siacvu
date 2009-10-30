@@ -5,11 +5,13 @@
     <label>Volumen</label>
     <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen") %>
 </p>
 <p class="EstatusPublicado">
     <label>N&uacute;mero</label>
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Numero")%>
 </p>
 <p class="EstatusPublicado">

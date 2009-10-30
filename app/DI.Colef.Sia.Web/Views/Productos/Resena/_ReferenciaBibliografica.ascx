@@ -6,6 +6,7 @@
     <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
 <p>

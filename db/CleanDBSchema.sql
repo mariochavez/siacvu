@@ -4678,6 +4678,7 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
        Volumen INT null,
        FechaEdicion DATETIME null,
        NoPaginas INT null,
+       NoCitas INT null,
        Puntuacion INT null,
        Traductor BIT null,
        CreadorEl DATETIME null,

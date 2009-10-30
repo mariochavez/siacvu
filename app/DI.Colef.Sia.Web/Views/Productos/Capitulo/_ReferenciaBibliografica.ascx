@@ -10,6 +10,7 @@
 <p>
     <label>Autor del libro</label>
     <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("AutorLibro")%>
 </p>
 <p>
@@ -47,4 +48,10 @@
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>
+</p>
+<p>
+    <label>No. de citas</label>
+    <%=Html.TextBox("NoCitas", Model.NoCitas, new { @class = "input100-requerido", maxlength = 4 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("NoCitas")%>
 </p>

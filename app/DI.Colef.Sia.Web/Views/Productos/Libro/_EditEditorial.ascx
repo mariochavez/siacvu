@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <div class="minilista" id="editoriallibroList">
-    <h5>Editorial</h5>
+    <h5>Editorial<span class="cvu"></span></h5>
 
     <% if (Model.EditorialLibros != null && Model.EditorialLibros.Length > 0){ %>
         <% for (int i = 0; i < Model.EditorialLibros.Length; i++){ %>

@@ -16,5 +16,4 @@
 <p id="traductor_field">
     <label>Traductor/Co-Traductor</label>
     <%=Html.CheckBox("Traductor", Model.Traductor)%>
-    <span class="cvu"></span>
 </p>
