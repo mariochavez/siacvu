@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             ArchivoEventos = new List<ArchivoEvento>();
             FirmaEventos = new List<FirmaEvento>();
+            InstitucionEventos = new List<InstitucionEvento>();
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -43,6 +44,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             firma.TipoProducto = tipoProducto;
             FirmaEventos.Add((FirmaEvento)firma);
+        }
+
+        public virtual void AddInstitucion(InstitucionEvento institucion)
+        {
+            InstitucionEventos.Add(institucion);
+        }
+
+        public virtual void DeleteInstitucion(InstitucionEvento institucion)
+        {
+            InstitucionEventos.Remove(institucion);
         }
 
         public virtual void DeleteFirma(Firma firma)
@@ -75,17 +86,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]
         public virtual string Nombre { get; set; }
 
-        public virtual Ambito Ambito { get; set; }
-
         public virtual TipoEvento TipoEvento { get; set; }
 
         public virtual TipoParticipacion TipoParticipacion { get; set; }
 
-        public virtual DirigidoA DirigidoA { get; set; }
+        [Valid]
+        public virtual IList<InstitucionEvento> InstitucionEventos { get; private set; }
 
-        public virtual string Titulo { get; set; }
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
+
+        public virtual Ambito Ambito { get; set; }
 
         public virtual bool Invitacion { get; set; }
+
+        public virtual string TituloTrabajo { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoEvento> CoautorExternoEventos { get; private set; }
@@ -93,27 +111,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
-        public virtual Institucion Institucion { get; set; }
+        public virtual DateTime FechaEvento { get; set; }
 
-        public virtual string Ciudad { get; set; }
-
-        public virtual EstadoPais EstadoPais { get; set; }
+        public virtual string Lugar { get; set; }
 
         public virtual Pais Pais { get; set; }
-
-        public virtual LineaTematica LineaTematica { get; set; }
-
-        public virtual DateTime FechaInicial { get; set; }
-
-        public virtual DateTime FechaFinal { get; set; }
-
-        public virtual TipoFinanciamiento TipoFinanciamiento { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

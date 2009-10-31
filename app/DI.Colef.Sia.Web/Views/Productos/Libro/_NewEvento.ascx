@@ -9,16 +9,9 @@
     <%=Html.ValidationMessage("Evento.Nombre")%>
 </p>
 <p>
-    <label>Fecha inicial</label>
-	<%=Html.TextBox("Evento.FechaInicial", Model.Evento.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <label>Fecha del evento</label>
+	<%=Html.TextBox("Evento.FechaEvento", Model.Evento.FechaEvento, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span>
-    <%=Html.ValidationMessage("Evento.FechaInicial")%>
+    <%=Html.ValidationMessage("Evento.FechaEvento")%>
 </p>
-<p>
-    <label>Fecha final</label>
-	<%=Html.TextBox("Evento.FechaFinal", Model.Evento.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Evento.FechaFinal")%>
- </p>

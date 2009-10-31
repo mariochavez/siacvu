@@ -430,6 +430,26 @@ alter table Libros  drop constraint FK439120E774E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D64F7D1CD]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
+alter table InstitucionEventos  drop constraint FKCE705D5D64F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D85102A57]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
+alter table InstitucionEventos  drop constraint FKCE705D5D85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D74E8BAB7]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
+alter table InstitucionEventos  drop constraint FKCE705D5D74E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D3BA127C1]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
+alter table InstitucionEventos  drop constraint FKCE705D5D3BA127C1
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D096A829E09]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
 alter table GrupoInvestigaciones  drop constraint FK742C6D096A829E09
 
@@ -1300,11 +1320,6 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343C93A1EF1]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD52343C93A1EF1
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234342002BEE]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD5234342002BEE
 
@@ -1315,33 +1330,13 @@ alter table Eventos  drop constraint FK9DD523432261429F
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523437B40DE3F]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD523437B40DE3F
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234364F7D1CD]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD5234364F7D1CD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343C0410E89]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD52343C0410E89
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343C93A1EF1]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD52343C93A1EF1
 
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523437A8488F7]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD523437A8488F7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523431EDC2D3B]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD523431EDC2D3B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343FA1D058B]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD52343FA1D058B
 
 
 
@@ -2999,6 +2994,8 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Libros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Libros
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'InstitucionEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table InstitucionEventos
+
     if exists (select * from dbo.sysobjects where id = object_id(N'GrupoInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GrupoInvestigaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Disciplinas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Disciplinas
@@ -3600,6 +3597,19 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
        primary key (Id)
     )
 
+    create table InstitucionEventos (
+        Id INT IDENTITY NOT NULL,
+       ObjetivoEvento NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InstitucionFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       EventoFk INT null,
+       primary key (Id)
+    )
+
     create table GrupoInvestigaciones (
         Id INT IDENTITY NOT NULL,
        NombreGrupoInvestigacion NVARCHAR(255) null,
@@ -4148,26 +4158,20 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
     create table Eventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       Titulo NVARCHAR(255) null,
-       Invitacion BIT null,
-       Ciudad NVARCHAR(255) null,
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
+       Invitacion BIT null,
+       TituloTrabajo NVARCHAR(255) null,
+       FechaEvento DATETIME null,
+       Lugar NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       AmbitoFk INT null,
        TipoEventoFk INT null,
        TipoParticipacionFk INT null,
-       DirigidoAFk INT null,
-       InstitucionFk INT null,
-       EstadoPaisFk INT null,
+       AmbitoFk INT null,
        PaisFk INT null,
-       LineaTematicaFk INT null,
-       TipoFinanciamientoFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -5497,6 +5501,16 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         foreign key (SedeFk) 
         references Sedes
 
+    alter table InstitucionEventos 
+        add constraint FKCE705D5D64F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table InstitucionEventos 
+        add constraint FKCE705D5D3BA127C1 
+        foreign key (EventoFk) 
+        references Eventos
+
     alter table GrupoInvestigaciones 
         add constraint FK742C6D093E082BED 
         foreign key (SectorFk) 
@@ -6008,11 +6022,6 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references Clases
 
     alter table Eventos 
-        add constraint FK9DD52343C93A1EF1 
-        foreign key (AmbitoFk) 
-        references Ambitos
-
-    alter table Eventos 
         add constraint FK9DD5234342002BEE 
         foreign key (TipoEventoFk) 
         references TipoEventos
@@ -6023,34 +6032,14 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
         references TipoParticipaciones
 
     alter table Eventos 
-        add constraint FK9DD523437B40DE3F 
-        foreign key (DirigidoAFk) 
-        references DirigidoAs
-
-    alter table Eventos 
-        add constraint FK9DD5234364F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Eventos 
-        add constraint FK9DD52343C0410E89 
-        foreign key (EstadoPaisFk) 
-        references EstadoPaises
+        add constraint FK9DD52343C93A1EF1 
+        foreign key (AmbitoFk) 
+        references Ambitos
 
     alter table Eventos 
         add constraint FK9DD523437A8488F7 
         foreign key (PaisFk) 
         references Paises
-
-    alter table Eventos 
-        add constraint FK9DD523431EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table Eventos 
-        add constraint FK9DD52343FA1D058B 
-        foreign key (TipoFinanciamientoFk) 
-        references TipoFinanciamientos
 
     alter table Eventos 
         add constraint FK9DD523437D866EAB 

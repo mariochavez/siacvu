@@ -640,10 +640,13 @@
     <Content Include="Views\Productos\Dictamen\Show.aspx" />
     <Content Include="Views\Productos\Distincion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Distincion\Show.aspx" />
-    <Content Include="Views\Productos\Evento\ChangePais.js.ascx" />
+    <Content Include="Views\Productos\Evento\AddInstitucion.js.ascx" />
+    <Content Include="Views\Productos\Evento\_ShowInstitucion.ascx" />
+    <Content Include="Views\Productos\Evento\DeleteInstitucion.js.ascx" />
+    <Content Include="Views\Productos\Evento\NewInstitucion.js.ascx" />
     <Content Include="Views\Productos\Evento\Show.aspx" />
-    <Content Include="Views\Productos\Evento\_Coautoria.ascx" />
-    <Content Include="Views\Productos\Evento\_DatosOpcionales.ascx" />
+    <Content Include="Views\Productos\Evento\_EditInstitucion.ascx" />
+    <Content Include="Views\Productos\Evento\_NewInstitucion.ascx" />
     <Content Include="Views\Productos\Libro\AddEditorialLibro.js.ascx" />
     <Content Include="Views\Productos\Libro\AddEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\_NewEvento.ascx" />

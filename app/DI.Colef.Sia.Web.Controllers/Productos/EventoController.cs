@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
         readonly IDirigidoAMapper dirigidoAMapper;
+        readonly IInstitucionEventoMapper institucionEventoMapper;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
@@ -44,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
-                                ISearchService searchService)
+                                ISearchService searchService, IInstitucionEventoMapper institucionEventoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -62,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
+            this.institucionEventoMapper = institucionEventoMapper;
         }
 
         [Authorize]
@@ -134,10 +136,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+                                   [Bind(Prefix = "InstitucionEvento")] InstitucionEventoForm[] institucion,
                                    EventoForm form)
         {
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+            institucion = institucion ?? new InstitucionEventoForm[] { };
+
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                                          coautorExterno, coautorInterno);
+                                          coautorExterno, coautorInterno, institucion);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
@@ -172,22 +179,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             eventoService.SaveEvento(evento);
 
             return RedirectToIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangePais(int select)
-        {
-            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
-
-            var form = new EventoForm
-                           {
-                               EstadoPaises = list.ToArray()
-                           };
-
-            return Rjs("ChangePais", form);
         }
 
         [Authorize]
@@ -335,6 +326,74 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", investigadorExternoId);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewInstitucion(int id)
+        {
+            var evento = eventoService.GetEventoById(id);
+            var form = new EventoForm();
+
+            if (evento != null)
+                form.Id = evento.Id;
+
+            return Rjs("NewInstitucion", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddInstitucion([Bind(Prefix = "InstitucionEvento")] InstitucionEventoForm form,
+                                              int eventoId)
+        {
+            var institucionEvento = institucionEventoMapper.Map(form);
+
+            ModelState.AddModelErrors(institucionEvento.ValidationResults(), false, "InstitucionEvento", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (eventoId != 0)
+            {
+                institucionEvento.CreadorPor = CurrentUser();
+                institucionEvento.ModificadoPor = CurrentUser();
+
+                var evento = eventoService.GetEventoById(eventoId);
+                var alreadyHasIt =
+                    evento.InstitucionEventos.Where(
+                        x => x.Institucion.Id == institucionEvento.Institucion.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    evento.AddInstitucion(institucionEvento);
+                    eventoService.SaveEvento(evento);
+                }
+            }
+
+            var institucionEventoForm = institucionEventoMapper.Map(institucionEvento);
+            institucionEventoForm.ParentId = eventoId;
+
+            return Rjs("AddInstitucion", institucionEventoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteInstitucion(int id, int institucionId)
+        {
+            var evento = eventoService.GetEventoById(id);
+
+            if (evento != null)
+            {
+                var institucion = evento.InstitucionEventos.Where(x => x.Institucion.Id == institucionId).First();
+                evento.DeleteInstitucion(institucion);
+
+                eventoService.SaveEvento(evento);
+            }
+
+            return Rjs("DeleteInstitucion", institucionId);
+        }
+
         EventoForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -351,20 +410,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
             form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
-            form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
 
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            if (form.Id == 0)
-            {
-                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-                form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
-            }
-            else
-                form.EstadoPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
 
             return form;
         }
@@ -372,12 +419,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(EventoForm form)
         {
             ViewData["Ambito"] = form.AmbitoId;
-            ViewData["DirigidoA"] = form.DirigidoAId;
             ViewData["TipoEvento"] = form.TipoEventoId;
-            ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["Pais"] = form.PaisId;
-            ViewData["EstadoPais"] = form.EstadoPaisId;
         }
     }
 }

@@ -12,16 +12,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
+        readonly IInstitucionEventoMapper institucionEventoMapper;
 
         public EventoMapper(IRepository<Evento> repository, ICatalogoService catalogoService,
             ICoautorExternoEventoMapper coautorExternoEventoMapper,
-            ICoautorInternoEventoMapper coautorInternoEventoMapper
+            ICoautorInternoEventoMapper coautorInternoEventoMapper, IInstitucionEventoMapper institucionEventoMapper
         )
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
+            this.institucionEventoMapper = institucionEventoMapper;
         }
 
         protected override int GetIdFromMessage(EventoForm message)
@@ -32,25 +34,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(EventoForm message, Evento model)
         {
             model.Nombre = message.Nombre;
-            model.Titulo = message.Titulo;
+            model.TituloTrabajo = message.TituloTrabajo;
             model.Invitacion = message.Invitacion;
-            model.Ciudad = message.Ciudad;
+            model.Lugar = message.Lugar;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
 
-            model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
-            model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
+            model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
 
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
-            model.DirigidoA = catalogoService.GetDirigidoAById(message.DirigidoA);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
-            model.TipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(message.TipoFinanciamiento);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
@@ -71,36 +67,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
+            InstitucionEventoForm[] instituciones)
         {
             var model = Map(message, usuario, investigador);
 
-            if (coautoresExternos != null)
+            foreach (var coautorExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoEventoMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoEventoMapper.Map(coautorExterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
             }
 
-            if (coautoresInternos != null)
+            foreach (var coautorInterno in coautoresInternos)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoEventoMapper.Map(coautorInterno);
+                var coautor =
+                    coautorInternoEventoMapper.Map(coautorInterno);
 
-                    coautor.CreadorPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadorPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var institucion in instituciones)
+            {
+                var institucionEvento =
+                    institucionEventoMapper.Map(institucion);
+
+                institucionEvento.CreadorPor = usuario;
+                institucionEvento.ModificadoPor = usuario;
+
+                model.AddInstitucion(institucionEvento);
             }
 
             return model;

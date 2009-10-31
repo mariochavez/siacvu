@@ -421,8 +421,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEvento([Bind(Prefix = "Evento")]EventoForm form, int libroId)
         {
-            var evento = eventoMapper.Map(form);
-            evento.Usuario = CurrentUser();
+            var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
            ModelState.AddModelErrors(evento.ValidationResults(), true, String.Empty);
             if (!ModelState.IsValid)

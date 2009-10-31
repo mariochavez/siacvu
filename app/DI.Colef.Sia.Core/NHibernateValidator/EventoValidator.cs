@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {/*
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.TipoEvento, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.Ambito, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.Titulo, constraintValidatorContext);
+                isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.TituloTrabajo, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.TipoParticipacion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.Institucion, "InstitucionNombre",
                                                           constraintValidatorContext);
@@ -44,39 +44,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Evento>(evento, x => x.FechaFinal, constraintValidatorContext); */
             }
 
-            isValid &= ValidateFechaInicialFinal(evento, constraintValidatorContext);
+            isValid &= ValidateFechas(evento, constraintValidatorContext);
 
             return isValid;
         }
 
-        bool ValidateFechaInicialFinal(Evento evento, IConstraintValidatorContext constraintValidatorContext)
+        private bool ValidateFechas(Evento evento, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 
-            if (evento.FechaInicial == DateTime.Parse("1900-01-01"))
+            if (evento.FechaEvento == DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaInicial", "FechaInicial");
+                    "formato de fecha no válido|FechaEvento", "FechaEvento");
                 isValid = false;
             }
 
-            if (evento.FechaFinal == DateTime.Parse("1900-01-01"))
+            if (evento.FechaEvento > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaFinal", "FechaFinal");
+                    "el año no puede estar en el futuro|FechaEvento", "FechaEvento");
                 isValid = false;
-            }
-
-            if (evento.FechaInicial > DateTime.Parse("1910-01-01") || evento.FechaFinal > DateTime.Parse("1910-01-01"))
-            {
-                if (evento.FechaInicial >= evento.FechaFinal)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
-                    constraintValidatorContext.AddInvalid(
-                        "fecha final debe ser mayor a la inicial|FechaFinal", "FechaFinal");
-                    isValid = false;
-                }
             }
 
             if (!isValid)

@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (proyecto.TipoEstudiante == null)
+                if (proyecto.TipoEstudiante == 0)
                 {
                     constraintValidatorContext.AddInvalid(
                         "seleccione el tipo de estudiante|TipoEstudiante", "TipoEstudiante");

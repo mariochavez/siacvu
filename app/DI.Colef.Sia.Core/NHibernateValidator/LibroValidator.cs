@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (libro.FormatoPublicacion != null)
                 isValid &= ValidateFormatoPublicacion(libro, constraintValidatorContext);
 
-            if(libro.EstadoProducto != null)
+            if(libro.EstadoProducto != 0)
                 isValid &= ValidateEstadoProducto(libro, constraintValidatorContext);
 
             isValid &= TieneProyecto(libro, constraintValidatorContext);
