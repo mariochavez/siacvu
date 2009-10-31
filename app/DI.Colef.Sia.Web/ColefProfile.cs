@@ -673,23 +673,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<ParticipacionMedio, ParticipacionMedioForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaDifusion,
+                .ForMember(d => d.FechaPresentacion,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.MedioImpreso,
+                .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.DirigidoA,
                            o => o.Ignore())
-                .ForMember(d => d.MedioElectronico,
-                           o => o.Ignore())
-                .ForMember(d => d.Genero,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
-                           o => o.Ignore())
                 .ForMember(d => d.Ambito,
-                           o => o.Ignore())
-                .ForMember(d => d.EstadoPais,
                            o => o.Ignore());
         }
 

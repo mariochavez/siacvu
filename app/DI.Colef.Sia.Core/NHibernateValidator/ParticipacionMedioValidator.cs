@@ -44,12 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= ValidateFechas(participacionMedio, constraintValidatorContext);
 
-            if (participacionMedio.MedioElectronico != null)
-                isValid &= ValidateMedioElectronico(participacionMedio, constraintValidatorContext);
-
-            if (participacionMedio.MedioImpreso != null)
-                isValid &= ValidateMedioImpreso(participacionMedio, constraintValidatorContext);
-
             return isValid;
         }
 
@@ -57,14 +51,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (participacionMedio.FechaDifusion == DateTime.Parse("1900-01-01"))
+            if (participacionMedio.FechaPresentacion == DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
                     "formato de fecha no válido|FechaDifusion", "FechaDifusion");
                 isValid = false;
             }
 
-            if (participacionMedio.FechaDifusion > DateTime.Now)
+            if (participacionMedio.FechaPresentacion > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
                     "el año no puede estar en el futuro|FechaDifusion", "FechaDifusion");
@@ -73,53 +67,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!isValid)
                 constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
-        bool ValidateMedioElectronico(ParticipacionMedio participacionMedio, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (participacionMedio.MedioElectronico.Nombre.Contains("Otro"))
-            {
-                if (participacionMedio.EspecificacionMedioElectronico == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|EspecificacionMedioElectronico", "EspecificacionMedioElectronico");
-
-                    isValid = false;
-                }
-            }
-
-            return isValid;
-        }
-
-        bool ValidateMedioImpreso(ParticipacionMedio participacionMedio, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (participacionMedio.MedioImpreso != null)
-            {
-                if (participacionMedio.MedioImpreso.Nombre.Contains("Otro"))
-                {
-                    if (participacionMedio.EspecificacionMedioImpreso == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío o cero|EspecificacionMedioImpreso", "EspecificacionMedioImpreso");
-
-                        isValid = false;
-                    }
-                }
-
-                if (participacionMedio.NotaPeriodistica == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                            "no debe ser nulo o vacío o cero|NotaPeriodistica", "NotaPeriodistica");
-
-                    isValid = false;
-                }
-            }
 
             return isValid;
         }

@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -10,15 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class ParticipacionMedioMapper : AutoFormMapper<ParticipacionMedio, ParticipacionMedioForm>, IParticipacionMedioMapper
     {
 		readonly ICatalogoService catalogoService;
-        readonly IProyectoService proyectoService;
 
-		public ParticipacionMedioMapper(IRepository<ParticipacionMedio> repository
-		, ICatalogoService catalogoService, IProyectoService proyectoService
-		) 
+		public ParticipacionMedioMapper(IRepository<ParticipacionMedio> repository,
+		    ICatalogoService catalogoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
-		    this.proyectoService = proyectoService;
         }		
 		
         protected override int GetIdFromMessage(ParticipacionMedioForm message)
@@ -29,27 +25,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ParticipacionMedioForm message, ParticipacionMedio model)
         {
             model.Titulo = message.Titulo;
-            model.Nombre = message.Nombre;
-            model.Ciudad = message.Ciudad;
-            model.EspecificacionMedioElectronico = message.EspecificacionMedioElectronico;
-            model.EspecificacionMedioImpreso = message.EspecificacionMedioImpreso;
-            model.Tema = message.Tema;
-            model.NotaPeriodistica = message.NotaPeriodistica;
+            model.Institucion = message.Institucion;
+            model.LugarPresentacion = message.LugarPresentacion;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
 
-            model.FechaDifusion = message.FechaDifusion.FromShortDateToDateTime();
+            model.FechaPresentacion = message.FechaPresentacion.FromShortDateToDateTime();
 
-			model.MedioImpreso = catalogoService.GetMedioImpresoById(message.MedioImpreso);
+            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.DirigidoA = catalogoService.GetDirigidoAById(message.DirigidoA);
-		    model.MedioElectronico = catalogoService.GetMedioElectronicoById(message.MedioElectronico);
-		    model.Genero = catalogoService.GetGeneroById(message.Genero);
-		    model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
-		    model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
 		    model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
-		    model.Pais = catalogoService.GetPaisById(message.Pais);
-		    model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
         }
 
         public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador)

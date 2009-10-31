@@ -778,9 +778,7 @@
     <Content Include="Views\Productos\OrganoExterno\New.aspx" />
     <Content Include="Views\Productos\OrganoExterno\Show.aspx" />
     <Content Include="Views\Productos\OrganoExterno\_DatosOrganoExterno.ascx" />
-    <Content Include="Views\Productos\ParticipacionMedio\ChangePais.js.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Show.aspx" />
-    <Content Include="Views\Productos\ParticipacionMedio\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\ParticipacionMedio\Edit.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\Index.aspx" />
     <Content Include="Views\Productos\ParticipacionMedio\New.aspx" />
