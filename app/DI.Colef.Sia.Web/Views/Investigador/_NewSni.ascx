@@ -17,6 +17,6 @@
 </p>
 <p>
     <label>Expediente SNI</label>
-    <%=Html.TextBox("ExpedienteSNI", Model.SNIInvestigador.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
+    <%=Html.TextBox("SNIInvestigador.ExpedienteSNI", Model.SNIInvestigador.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
     <span class="cvu"></span> 
 </p>

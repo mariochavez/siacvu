@@ -83,7 +83,7 @@
 </tr>
 <tr>
 	<td>verifyVisible</td>
-	<td>EstadoFechaFinal_Field</td>
+	<td>EstadoInvestigador_FechaFinal</td>
 	<td></td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@
 </tr>
 <tr>
 	<td>verifyNotVisible</td>
-	<td>EstadoFechaFinal_Field</td>
+	<td>EstadoInvestigador_FechaFinal</td>
 	<td></td>
 </tr>
 <tr>

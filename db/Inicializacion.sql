@@ -452,13 +452,14 @@ insert into TipoDistinciones values('Premios',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Becas para estancias académicas',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDistinciones values('Cátedras académicas/Patrimoniales',GETDATE(), GETDATE(), 1, 1, 1);
 
+insert into TipoEventos values('Evento Estratégico (El Colef)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Congreso',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEventos values('Conferencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Coloquio',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Foro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Conferencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoEventos values('Simposium',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Seminario',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEventos values('Taller',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEventos values('Simposium',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoEventos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoFinanciamientos values('Fiscal',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoFinanciamientos values('Complementario',GETDATE(), GETDATE(), 1, 1, 1);
@@ -971,16 +972,11 @@ insert into Instituciones values('COLEF - CICESE',null,null,GETDATE(), GETDATE()
 insert into Instituciones values('Instituto de la Mujer para el Estado de Baja California',null,null,GETDATE(), GETDATE(), 1, null, 1, 1);
 insert into Instituciones values('Arizona State University',null,null,GETDATE(), GETDATE(), 1, null, 1, 1);
 
-insert into TipoParticipaciones values('Ponente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Conferencia magistral',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Poster',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Coordinador de mesa',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Organizador',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Co-organizador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Conferencista magistral',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Ponente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Participante',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);

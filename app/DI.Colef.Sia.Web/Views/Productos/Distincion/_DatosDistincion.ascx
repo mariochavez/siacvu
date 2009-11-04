@@ -49,14 +49,14 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
-<p id="ambitoestatal">
+<p class="ambitoestatallocal">
     <label>Estado</label>
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("EstadoPais") %>
 </p>
-<p id="ambitolocal">
+<p class="ambitoestatallocal">
     <label>Municipio</label>
     <%=Html.TextBox("Municipio", Model.Municipio, new { @class = "input420", maxlength = 100 })%>
     <%=Html.ValidationMessage("Municipio")%>

@@ -3,8 +3,8 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface IParticipacionMapper : IMapper<Participacion, ParticipacionForm>
+    public interface IInstitucionEventoMapper : IMapper<InstitucionEvento, InstitucionEventoForm>
     {
-        Participacion Map(ParticipacionForm message, Usuario usuario, Investigador investigador);
+
     }
 }

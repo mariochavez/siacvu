@@ -44,74 +44,13 @@
                     <label>Sede</label>
                     <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
                 </p>
-                
+                <p>
+                    <label>Tipo de participaci&oacuten</label>
+                    <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
+                </p>
                 <p>
                     <label>T&iacute;tulo</label>
                     <strong><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Nombre</label>
-                    <strong><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Medio impreso</label>
-                    <strong><%= Html.Encode(Model.Form.MedioImpresoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Especificaci&oacute;n de medio impreso</label>
-                    <strong><%= Html.Encode(Model.Form.EspecificacionMedioImpreso)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Medio electr&oacute;nico</label>
-                    <strong><%= Html.Encode(Model.Form.MedioElectronicoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Especificaci&oacute;n de medio electr&oacute;nico</label>
-                    <strong><%= Html.Encode(Model.Form.EspecificacionMedioElectronico)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>G&eacute;nero</label>
-                    <strong><%= Html.Encode(Model.Form.GeneroNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Tema</label>
-                    <strong><%= Html.Encode(Model.Form.Tema)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Dirigido a</label>
-                    <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Proyecto</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Aacute;mbito</label>
-                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Fecha de difusi&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaDifusion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>                
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Estado</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Ciudad</label>
-                    <strong><%= Html.Encode(Model.Form.Ciudad)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Nota period&iacute;stica</label>
-                    <strong><%= Html.Encode(Model.Form.NotaPeriodistica)%>&nbsp;</strong>
                 </p>
                 <p>
 	                <label>Palabra clave 1</label>
@@ -124,6 +63,29 @@
                 <p>
 	                <label>Palabra clave 3</label>
                     <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
+                <p>
+                    <label>Instituci&oacute;n responsable/Nombre del medio</label>
+                    <strong><%= Html.Encode(Model.Form.Institucion)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>&Aacute;mbito</label>
+                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Dirigido a</label>
+                    <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Lugar de la presentaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.LugarPresentacion)%>&nbsp;</strong>
+                </p>
+                <p>
+                    <label>Fecha de la presentaci&oacute;n</label>
+                    <strong><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
                 <p class="submit">

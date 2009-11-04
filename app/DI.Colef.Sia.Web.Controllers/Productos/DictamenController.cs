@@ -156,34 +156,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeRevista(int select)
-        {
-            var dictamenForm = new DictamenForm();
-            var revistaPublicacionForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
-
-            dictamenForm.RevistaPublicacionInstitucionNombre = revistaPublicacionForm.InstitucionNombre;
-
-            dictamenForm.RevistaPublicacionId = revistaPublicacionForm.Id;
-
-            return Rjs("ChangeRevista", dictamenForm);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeEditorial(int select)
-        {
-            var dictamenForm = new DictamenForm();
-            var editorialForm = editorialMapper.Map(catalogoService.GetEditorialById(select));
-
-            dictamenForm.EditorialInstitucionNombre = editorialForm.InstitucionNombre;
-
-            dictamenForm.EditorialId = editorialForm.Id;
-
-            return Rjs("ChangeEditorial", dictamenForm);
-        }
-
         DictamenForm SetupNewForm()
         {
             return SetupNewForm(null);

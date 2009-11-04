@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -15,43 +13,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
         readonly IAmbitoMapper ambitoMapper;
         readonly ICatalogoService catalogoService;
-        readonly IEstadoPaisMapper estadoPaisMapper;
-        readonly IGeneroMapper generoMapper;
-        readonly IMedioElectronicoMapper medioElectronicoMapper;
-        readonly IMedioImpresoMapper medioImpresoMapper;
-        readonly IPaisMapper paisMapper;
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly IParticipacionMedioService participacionMedioService;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
         readonly IDirigidoAMapper dirigidoAMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ITipoParticipacionMapper tipoParticipacionMapper;
 
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService,
                                             IParticipacionMedioMapper participacionMedioMapper,
                                             ICatalogoService catalogoService,
                                             IUsuarioService usuarioService,
-                                            IMedioImpresoMapper medioImpresoMapper,
-                                            IMedioElectronicoMapper medioElectronicoMapper,
-                                            IGeneroMapper generoMapper,
-                                            IProyectoMapper proyectoMapper,
                                             IAmbitoMapper ambitoMapper,
-                                            IPaisMapper paisMapper,
+                                            ITipoParticipacionMapper tipoParticipacionMapper,
+                                            IAreaTematicaMapper areaTematicaMapper,
                                             IDirigidoAMapper dirigidoAMapper,
-                                            IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
-                                            IProyectoService proyectoService)
+                                            ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.areaTematicaMapper = areaTematicaMapper;
+            this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.participacionMedioService = participacionMedioService;
             this.participacionMedioMapper = participacionMedioMapper;
-            this.medioImpresoMapper = medioImpresoMapper;
-            this.medioElectronicoMapper = medioElectronicoMapper;
-            this.generoMapper = generoMapper;
-            this.proyectoMapper = proyectoMapper;
             this.ambitoMapper = ambitoMapper;
-            this.paisMapper = paisMapper;
-            this.estadoPaisMapper = estadoPaisMapper;
-            this.proyectoService = proyectoService;
             this.dirigidoAMapper = dirigidoAMapper;
         }
 
@@ -81,7 +65,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             
             return View(data);
         }
@@ -115,7 +98,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-            data.Form = participacionMedioMapper.Map(participacionMedio);
+
+            var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
+
+            data.Form = SetupShowForm(participacionMedioForm);
 
             ViewData.Model = data;
             return View();
@@ -139,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Nombre));
+            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Titulo));
         }
 
         [CustomTransaction]
@@ -161,68 +147,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Nombre));
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-
-            if (participacionMedio.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacionMedio.Activo = true;
-            participacionMedio.ModificadoPor = CurrentUser();
-            participacionMedioService.SaveParticipacionMedio(participacionMedio);
-
-            var form = participacionMedioMapper.Map(participacionMedio);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-
-            if (participacionMedio.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacionMedio.Activo = false;
-            participacionMedio.ModificadoPor = CurrentUser();
-            participacionMedioService.SaveParticipacionMedio(participacionMedio);
-
-            var form = participacionMedioMapper.Map(participacionMedio);
-
-            return Rjs("Activate", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangePais(int select)
-        {
-            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
-
-            var form = new ParticipacionMedioForm
-                           {
-                               EstadosPaises = list.ToArray()
-                           };
-
-            return Rjs("ChangePais", form);
+            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Titulo));
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<ParticipacionMedio>(x => x.Nombre, q);
+            var data = searchService.Search<ParticipacionMedio>(x => x.Titulo, q);
             return Content(data);
         }
 
@@ -235,35 +167,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ParticipacionMedioForm();
 
-            form.MediosImpresos = medioImpresoMapper.Map(catalogoService.GetActiveMedioImpresos());
-            form.MediosElectronicos = medioElectronicoMapper.Map(catalogoService.GetActiveMedioElectronicos());
-            form.Generos = generoMapper.Map(catalogoService.GetActiveGeneros());
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
-
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            if (form.Id == 0)
-            {
-                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
-            }
-            else
-                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 
             return form;
         }
 
         void FormSetCombos(ParticipacionMedioForm form)
         {
-            ViewData["MedioImpreso"] = form.MedioImpresoId;
-            ViewData["MedioElectronico"] = form.MedioElectronicoId;
-            ViewData["Genero"] = form.GeneroId;
-            ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Ambito"] = form.AmbitoId;
-            ViewData["Pais"] = form.PaisId;
-            ViewData["EstadoPais"] = form.EstadoPaisId;
             ViewData["DirigidoA"] = form.DirigidoAId;
+            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
+        }
+
+        private ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
+        {
+            form = form ?? new ParticipacionMedioForm();
+
+            form.ShowFields = new ShowFieldsForm
+            {
+                AreaTematicaNombre = form.AreaTematica.Nombre,
+                AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
+                AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
+                AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+            };
+
+            return form;
         }
     }
 }

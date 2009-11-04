@@ -59,8 +59,9 @@ function capituloSetup() {
 function dictamenSetup() {
     $('#TipoDictamen').dynamicui(
             [
-                ['Artículo', ['.articulo_field']],
-                ['Proyecto de investigación CONACyT', ['#proyecto_field']]
+                ['Artículo', ['#articulo_field']],
+                ['Proyecto de investigación CONACyT', ['#proyecto_field']],
+                ['Capítulo en libro', ['#capituloLibro_field']]
             ]
         );
 
@@ -135,17 +136,7 @@ var CheckTesisOptions = {
 };
 
 
-function distincionSetup() {
-
-    $('#Ambito').dynamicui(
-            [
-                ['Estatal', ['#ambitoestatal']],
-                ['Local', ['#ambitolocal']]
-            ]
-        );
-
-    $('#Ambito')[0].dynamic.setup();
-
+function distincionSetup() {    
     CheckDistincionOptions.setup();
 }
 
@@ -157,14 +148,28 @@ var CheckDistincionOptions = {
     verifyOptions: function() {
         var comboText = $('#Ambito :selected').text();
 
-        if (comboText == "Binacional" || comboText == "Internacional" || comboText == "Seleccione ...") {
+        if (comboText != "Binacional" && comboText != "Internacional") {
             $('#ambitopais').slideUp('fast', function() {
                 $('#ambitopais').fadeOut('fast');
             });
-        }
-        else {
+            $('.ambitoestatallocal').slideDown('fast', function() {
+                $('.ambitoestatallocal').fadeIn('fast');
+            });
+        } else {
             $('#ambitopais').slideDown('fast', function() {
                 $('#ambitopais').fadeIn('fast');
+            });
+            $('.ambitoestatallocal').slideUp('fast', function() {
+                $('.ambitoestatallocal').fadeOut('fast');
+            });
+        }
+
+        if (comboText == "Seleccione ...") {
+            $('#ambitopais').slideUp('fast', function() {
+                $('#ambitopais').fadeOut('fast');
+            });
+            $('.ambitoestatallocal').slideUp('fast', function() {
+                $('.ambitoestatallocal').fadeOut('fast');
             });
         }
     }
@@ -211,23 +216,51 @@ function participacionSetup() {
 }
 
 function participacionMedioSetup() {
-    $('#MedioElectronico').dynamicui(
-            [
-                ['Otro', ['#OtroMedioElectronico']]
-            ]
-        );
-
-    $('#MedioElectronico')[0].dynamic.setup();
-
-    $('#MedioImpreso').dynamicui(
-            [
-                ['*', ['.NotaPeriodistica_p']],
-                ['Otro', ['#OtroMedioImpreso']]
-            ]
-        );
-
-    $('#MedioImpreso')[0].dynamic.setup();
+    CheckParticipacionMedioOptions.setup();
 }
+
+var CheckParticipacionMedioOptions = {
+    setup: function() {
+        $('#forma').unload(CheckParticipacionMedioOptions.verifyOptions());
+        $('#TipoParticipacion').change(CheckParticipacionMedioOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText = $('#TipoParticipacion :selected').text();
+
+        if (comboText != "Presentación de libro" && comboText != "Presentación resultados de investigación" && comboText != "Periódico/Diario") {
+            $('#titulo_label').slideUp('fast', function() {
+                $('#titulo_label').fadeOut('fast');
+            });            
+        } else if (comboText != "Presentación de libro") {
+            $('#libro_label').slideDown('fast', function() {
+                $('#libro_label').fadeIn('fast');
+            });
+        } else if (comboText != "Presentación resultados de investigación") {
+            $('#investigacion_label').slideDown('fast', function() {
+                $('#investigacion_label').fadeIn('fast');
+            });
+        } else if (comboText != "Periódico/Diario") {
+            $('#notaPeriodistica_label').slideDown('fast', function() {
+                $('#notaPeriodistica_label').fadeIn('fast');
+            });
+        }
+
+        if (comboText == "Seleccione ...") {
+            $('#titulo_label').slideUp('fast', function() {
+                $('#titulo_label').fadeOut('fast');
+            });
+            $('#libro_label').slideUp('fast', function() {
+                $('#libro_label').fadeOut('fast');
+            });
+            $('#investigacion_label').slideUp('fast', function() {
+                $('#investigacion_label').fadeOut('fast');
+            });
+            $('#notaPeriodistica_label').slideUp('fast', function() {
+                $('#notaPeriodistica_label').fadeOut('fast');
+            });            
+        }
+    }
+};
 
 function reporteSetup() {    
     $('#EstadoProducto').dynamicui(

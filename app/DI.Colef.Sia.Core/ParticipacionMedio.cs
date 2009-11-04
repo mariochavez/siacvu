@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ParticipacionMedioValidator]
     public class ParticipacionMedio : Entity, IBaseEntity
     {
-        const int tipoProducto = 10; // 10 Representa Participacion Medio
+        const int tipoProducto = 10; // 10 Representa Participacion en Medios
 
         public ParticipacionMedio()
         {
@@ -47,10 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaParticipacionMedio> FirmaParticipacionMedios { get; private set; }
 
-		[DomainSignature]
-		[NotNullNotEmpty]
-		public virtual string Titulo { get; set; }
-
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
@@ -58,39 +54,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
-        public virtual int Puntuacion { get; set; }
-		
-		public virtual string Nombre { get; set; }
+		public virtual TipoParticipacion TipoParticipacion { get; set; }
 
-        public virtual string EspecificacionMedioImpreso { get; set; }
-
-        public virtual string EspecificacionMedioElectronico { get; set; }
-        
-		public virtual MedioImpreso MedioImpreso { get; set; }
-
-		public virtual MedioElectronico MedioElectronico { get; set; }
-        
-		public virtual Genero Genero { get; set; }
-
-		public virtual string Tema { get; set; }
-
-		public virtual Proyecto Proyecto { get; set; }
-
-        public virtual DirigidoA DirigidoA { get; set; }
-
-		public virtual LineaTematica LineaTematica { get; set; }
-
-		public virtual Ambito Ambito { get; set; }
-
-        public virtual DateTime FechaDifusion { get; set; }
-
-		public virtual Pais Pais { get; set; }
-
-		public virtual EstadoPais EstadoPais { get; set; }
-
-		public virtual string Ciudad { get; set; }
-
-        public virtual string NotaPeriodistica { get; set; }
+        [DomainSignature]
+        [NotNullNotEmpty]
+        public virtual string Titulo { get; set; }
 
         public virtual string PalabraClave1 { get; set; }
 
@@ -98,7 +66,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-		public virtual Usuario CreadorPor { get; set; }
+        public virtual AreaTematica AreaTematica { get; set; }
+		
+		public virtual string Institucion { get; set; }
+
+        public virtual Ambito Ambito { get; set; }
+
+        public virtual DirigidoA DirigidoA { get; set; }
+
+        public virtual string LugarPresentacion { get; set; }
+
+        public virtual DateTime FechaPresentacion { get; set; }
+        
+        public virtual int Puntuacion { get; set; }
+        
+        public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }
 

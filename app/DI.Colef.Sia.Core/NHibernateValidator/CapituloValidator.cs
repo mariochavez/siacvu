@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if (capitulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaPublicacion", "FechaPublicacion");
+                        "formato de fecha no válido|FechaPublicacion", "FechaPublicacion");
 
                     isValid = false;
                 }
@@ -150,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if (capitulo.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(
-                        "formato de fecha no Válido|FechaAceptacion", "FechaAceptacion");
+                        "formato de fecha no válido|FechaAceptacion", "FechaAceptacion");
 
                     isValid = false;
                 }

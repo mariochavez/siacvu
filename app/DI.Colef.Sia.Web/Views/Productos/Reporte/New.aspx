@@ -49,11 +49,11 @@
                     <%=Html.ValidationMessage("TipoReporte") %>
                 </p>
 
-                <h4>Coautores<span class="cvu"></span></h4>
+                <h4>Coautores</h4>
 			    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
                 <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id } ); %>
                 <p>
-                    <label>Autores</label>
+                    <label>Total de autores</label>
                     <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
                     <span class="cvu"></span>
                 </p>

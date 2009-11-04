@@ -42,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreCapitulo = message.NombreCapitulo;
             model.NombreLibro = message.NombreLibro;
             model.NoPaginas = message.NoPaginas;
+            model.NoCitas = message.NoCitas;
             model.PosicionAutor = message.PosicionAutor;
             model.AutorLibro = message.AutorLibro;
             model.Traductor = message.Traductor;

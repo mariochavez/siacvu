@@ -2,21 +2,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Tipo de evento</label>
-	<%=Html.DropDownList("TipoEvento", Model.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("TipoEvento") %>
-</p>
-<p>
-    <label>Nombre del evento</label>
-	<%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>
-	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-    <label>Con invitaci&oacute;n</label>
-    <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
-    <%=Html.ValidationMessage("Invitacion")%>
+    <label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
+	<span class="cvu"></span>
+</p>
+<p>
+    <label>Palabra clave 3</label>
+	<%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
+	<span class="cvu"></span>
 </p>
 <p>
     <label>&Aacute;mbito</label>
@@ -25,8 +23,7 @@
 	<%=Html.ValidationMessage("Ambito") %>
 </p>
 <p>
-    <label>T&iacute;tulo del trabajo</label>
-	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-requerido", maxlength = 100 })%>
-	<span class="cvu"></span>
-	<%=Html.ValidationMessage("Titulo")%>
+    <label>Con invitaci&oacute;n</label>
+    <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
+    <%=Html.ValidationMessage("Invitacion")%>
 </p>

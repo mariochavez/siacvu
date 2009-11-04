@@ -4,6 +4,7 @@
 <p>
     <label>Nombre del libro</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>

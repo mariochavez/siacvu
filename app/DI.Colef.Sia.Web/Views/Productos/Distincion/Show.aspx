@@ -69,18 +69,24 @@
                     <label>&Aacute;mbito</label>
                     <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
                 </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Estado del pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Municipio</label>
-                    <strong><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</strong>
-                </p>
+                <% if(Model.Form.AmbitoNombre != "Binacional" && Model.Form.AmbitoNombre != "Internacional"){ %>
+                    <p>
+                        <label>Pa&iacute;s</label>
+                        <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
+                <% if(Model.Form.AmbitoNombre.Contains("Estatal")){ %>
+                    <p>
+                        <label>Estado del pa&iacute;s</label>
+                        <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
+                    </p>
+                <% } %>
+                <% if(Model.Form.AmbitoNombre.Contains("Local")){ %>
+                    <p>
+                        <label>Municipio</label>
+                        <strong><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</strong>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DistincionController>(x => x.Index(), "Regresar") %>

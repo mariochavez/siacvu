@@ -134,6 +134,7 @@
     <Compile Include="ImpactoPoliticaPublica.cs" />
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
+    <Compile Include="InstitucionEvento.cs" />
     <Compile Include="Investigador.cs" />
     <Compile Include="IResponsable.cs" />
     <Compile Include="Libro.cs" />
