@@ -5,14 +5,14 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    [SNIInvestigadorValidator]
+    //[SNIInvestigadorValidator]
     public class SNIInvestigador : Entity, IBaseEntity
     {
         [NotEmptyDate]
-        public virtual DateTime FechaInicial { get; set; }
+        public virtual DateTime Fecha { get; set; }
 
-        [NotEmptyDate]
-        public virtual DateTime FechaFinal { get; set; }
+        [Length(40)]
+        public virtual string ExpedienteSNI { get; set; }
 
         [NotNull]
         public virtual SNI SNI { get; set; }

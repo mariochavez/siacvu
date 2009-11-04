@@ -127,6 +127,7 @@
     <Compile Include="Mappers\IAlumnoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
     <Compile Include="Mappers\IDiplomadoMapper.cs" />
+    <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
     <Compile Include="Mappers\IEditorialLibroMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\AlumnoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\AutorResenaForm.cs" />
+    <Compile Include="Models\DireccionRegionalForm.cs" />
     <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />

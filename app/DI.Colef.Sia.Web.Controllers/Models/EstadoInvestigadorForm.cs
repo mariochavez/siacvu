@@ -3,7 +3,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class EstadoInvestigadorForm
     {
         public int Id { get; set; }
-        public string Fecha { get; set; }
+        public string FechaInicial { get; set; }
+        public string FechaFinal { get; set; }
         public string EstadoNombre { get; set; }
         public int Estado { get; set; }
 

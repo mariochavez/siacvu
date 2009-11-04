@@ -5,17 +5,17 @@
 
 var html = '
     <div id="grado_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><%=Html.Encode(Model.GradoAcademicoNombre)%> <span><%=Html.Encode(Model.Fecha)%>, Area: <%=Html.Encode(Model.AreaInvestigacion)%></span></h6>
-        <span><%=Html.Encode(Model.Descripcion.Substring(0, Model.Descripcion.Length < 40 ? Model.Descripcion.Length : 40))%></span>
+        <h6><%=Html.Encode(Model.GradoAcademicoNombre)%> <span><%=Html.Encode(Model.Fecha)%>, Institución: <%=Html.Encode(Model.InstitucionNombre)%></span></h6>
+        <span><%=Html.Encode(Model.Programa.Substring(0, Model.Programa.Length < 40 ? Model.Programa.Length : 40))%></span>
     </div><!--end estadolista-->
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#grado_form').hide();
-$('#grado_new').show();
-$('#grado_form').html('');
+$('#gradoForm').hide();
+$('#gradoNew').show();
+$('#gradoForm').html('');
 $('#gradoList div:first').before(html);
 
 $('#grado_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

@@ -15,13 +15,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper;
         readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
+        readonly ICatalogoService catalogoService;
 
         public InvestigadorMapper(IRepository<Investigador> repository, 
             IUsuarioService usuarioService, ICargoInvestigadorMapper cargoInvestigadorMapper,
             ICategoriaInvestigadorMapper categoriaInvestigadorMapper,
             IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper,
             IEstadoInvestigadorMapper estadoInvestigadorMapper,
-            ISNIInvestigadorMapper sniInvestigadorMapper)
+            ISNIInvestigadorMapper sniInvestigadorMapper,
+            ICatalogoService catalogoService)
             : base(repository)
         {
             this.usuarioService = usuarioService;
@@ -30,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.gradoAcademicoInvestigadorMapper = gradoAcademicoInvestigadorMapper;
             this.estadoInvestigadorMapper = estadoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
+            this.catalogoService = catalogoService;
         }
 
         protected override int GetIdFromMessage(InvestigadorForm message)
@@ -78,9 +81,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.ModificadoPor = usuario;
 
+            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
+            model.AreaTematica1 = message.AreaTematica1;
+            model.AreaTematica2 = message.AreaTematica2;
+            model.AreaTematica3 = message.AreaTematica3;
+
             model.ExpedienteAcademico = message.ExpedienteAcademico;
             model.ExpedienteProduccion = message.ExpedienteProduccion;
-            model.ExpedienteSNI = message.ExpedienteSNI;
             model.ClaveCVU = message.ClaveCVU;
 
             return model;

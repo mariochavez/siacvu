@@ -26,9 +26,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(GradoAcademicoInvestigadorForm message, GradoAcademicoInvestigador model)
         {
             model.Fecha = message.Fecha.FromShortDateToDateTime();
-            model.AreaInvestigacion = message.AreaInvestigacion;
-            model.Descripcion = message.Descripcion;
-            model.Detalle = message.Detalle;
+            model.Programa = message.Programa;
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.Pais = catalogoService.GetPaisById(message.Pais);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
 
             if (model.IsTransient())

@@ -622,6 +622,7 @@
     <Content Include="Views\IdiomasInvestigador\Show.aspx" />
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
+    <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\MovilidadAcademica\AddProductoAcademico.js.ascx" />
     <Content Include="Views\MovilidadAcademica\NewProductoAcademico.js.ascx" />

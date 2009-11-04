@@ -10,7 +10,9 @@ $('#mensaje-error').text('');
     <% for (int i = 0; i < ViewData.ModelState[key].Errors.Count; i++) { %> 
         var html = '<span class="field-validation-error"><%=Html.Encode(ViewData.ModelState[key].Errors[i].ErrorMessage) %></span>';
         
-        var parent = $('#<%=Html.Encode(key.Replace(".", "_"))%>').parent();
+        var anchor = $('#<%=Html.Encode(key.Replace(".", "_"))%>').attr('id') == null ? $('#<%=Html.Encode(key.Replace(".", "_"))%>Id') : $('#<%=Html.Encode(key.Replace(".", "_"))%>');
+        var parent = $(anchor).parent();
+
         $(parent).find('.field-validation-error').remove();
         $(parent).append(html);
     <% } %>        

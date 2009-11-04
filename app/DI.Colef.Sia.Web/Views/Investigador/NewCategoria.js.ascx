@@ -17,7 +17,7 @@ var html = '
     <% } %>
 ';
 
-$('#categoria_form').html(html);
-$('#categoria_new').hide();
-$('#categoria_form').show();
+$('#categoriaForm').html(html);
+$('#categoriaNew').hide();
+$('#categoriaForm').show();
 DateTimePicker.setup();

@@ -5,16 +5,20 @@
 
 var html = '
     <div id="estado_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><%=Html.Encode(Model.EstadoNombre) %> <span><%=Html.Encode(Model.Fecha) %></span></h6>
+        <h6><%=Html.Encode(Model.EstadoNombre) %> 
+            <span>
+                <%=Html.Encode(Model.FechaInicial) %> <% if (Model.EstadoNombre != "Activo" && Model.EstadoNombre != "Baja") { %> a <%=Html.Encode(Model.FechaInicial) %> <% } %>
+            </span>
+        </h6>
     </div><!--end estadolista-->
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#estado_form').hide();
-$('#estado_new').show();
-$('#estado_form').html('');
+$('#estadoForm').hide();
+$('#estadoNew').show();
+$('#estadoForm').html('');
 $('#estadoList div:first').before(html);
 
 $('#estado_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

@@ -5,13 +5,18 @@
     <label>SNI</label>
     <%=Html.DropDownList("SNIInvestigador.SNI", Model.SNIs.CreateSelectList<SNIForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span> 
     <%=Html.ValidationMessage("SNIInvestigador.SNI")%>
 </p>
 <p>
     <label>Periodo</label>
-    <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.SNIInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
-    <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.SNIInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("SNIInvestigador.Fecha", Model.SNIInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
     <span>(Formato dd/mm/yyyy)</span>
-    <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
-    <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
+    <span class="cvu"></span> 
+    <%=Html.ValidationMessage("SNIInvestigador.Fecha")%>
+</p>
+<p>
+    <label>Expediente SNI</label>
+    <%=Html.TextBox("ExpedienteSNI", Model.SNIInvestigador.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
+    <span class="cvu"></span> 
 </p>

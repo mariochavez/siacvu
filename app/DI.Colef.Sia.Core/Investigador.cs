@@ -48,11 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotEmptyDate]
         public virtual DateTime FechaIngreso { get; set; }
 
-        [NotEmptyDate]
         public virtual DateTime FechaContrato { get; set; }
-
-        [Length(40)]
-        public virtual string ExpedienteSNI { get; set; }
 
         [Length(40)]
         public virtual string ExpedienteProduccion { get; set; }
@@ -62,6 +58,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Length(20)]
         public virtual string ClaveCVU { get; set; }
+
+        [NotNull]
+        public virtual LineaTematica LineaTematica { get; set; }
+
+        public virtual string AreaTematica1 { get; set; }
+
+        public virtual string AreaTematica2 { get; set; }
+
+        public virtual string AreaTematica3 { get; set; }
 
         [NotEmpty]
         [Valid]

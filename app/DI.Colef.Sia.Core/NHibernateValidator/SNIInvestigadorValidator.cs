@@ -19,30 +19,32 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
     {
         public bool IsValid(object value, IConstraintValidatorContext constraintValidatorContext)
         {
-            var sniInvestigador = value as SNIInvestigador;
-            if (sniInvestigador != null)
-            {
-                if(sniInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
-                {
-                    constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial invalida o nula|FechaInicial", x => x.FechaInicial);
-                }
-                else if (sniInvestigador.FechaFinal <= DateTime.Parse("1910-01-01"))
-                {
-                    constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha final invalida o nula|FechaFinal", x => x.FechaFinal);
-                }
-                else if (sniInvestigador.FechaInicial >= sniInvestigador.FechaFinal)
-                {
-                    constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial debe ser menor a Fecha final|FechaInicial", x => x.FechaInicial);
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial debe ser menor a Fecha final|FechaFinal", x => x.FechaFinal);
-                    return false;
-                }
-                return true;
-            }
+            var isValid = true;
+            //var sniInvestigador = value as SNIInvestigador;
+            //if (sniInvestigador != null)
+            //{
+            //    if(sniInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
+            //    {
+            //        constraintValidatorContext.DisableDefaultError();
+            //        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial inválida o nula|FechaInicial", x => x.FechaInicial);
+            //        isValid = false;
+            //    }
+            //    else if (sniInvestigador.FechaFinal <= DateTime.Parse("1910-01-01"))
+            //    {
+            //        constraintValidatorContext.DisableDefaultError();
+            //        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
+            //        isValid = false;
+            //    }
+            //    else if (sniInvestigador.FechaInicial >= sniInvestigador.FechaFinal)
+            //    {
+            //        constraintValidatorContext.DisableDefaultError();
+            //        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial debe ser menor a Fecha final|FechaInicial", x => x.FechaInicial);
+            //        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>("Fecha inicial debe ser menor a Fecha final|FechaFinal", x => x.FechaFinal);
+            //        isValid = false;
+            //    }
+            //}
 
-            return false;
+            return isValid;
         }
     }
 }

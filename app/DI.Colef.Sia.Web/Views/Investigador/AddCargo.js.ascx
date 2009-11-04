@@ -5,17 +5,17 @@
 
 var html = '
     <div id="cargo_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><%=Html.Encode(Model.CargoNombre)%> <span><%=Html.Encode(Model.Fecha)%>, <%=Html.Encode(Model.SedeNombre)%></span></h6>
-        <span><%=Html.Encode(Model.DepartamentoNombre)%></span>
+        <h6><%=Html.Encode(Model.CargoNombre)%> <span><%=Html.Encode(Model.PuestoNombre)%>, <%=Html.Encode(Model.SedeNombre)%></span></h6>
+        <span><%=Html.Encode(Model.DepartamentoNombre)%>, <%=Html.Encode(Model.DireccionRegionalNombre) %></span>
     </div><!--end estadolista-->
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#cargo_form').hide();
-$('#cargo_new').show();
-$('#cargo_form').html('');
+$('#cargoForm').hide();
+$('#cargoNew').show();
+$('#cargoForm').html('');
 $('#cargoList div:first').before(html);
 
 $('#cargo_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

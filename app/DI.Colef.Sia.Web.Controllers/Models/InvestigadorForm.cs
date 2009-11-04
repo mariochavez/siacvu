@@ -2,14 +2,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class InvestigadorForm
     {
-		public int Id { get; set; }
+        public int Id { get; set; }
         public string FechaIngreso { get; set; }
         public string FechaContrato { get; set; }
 
-        public string ExpedienteSNI { get; set; }
         public string ExpedienteProduccion { get; set; }
         public string ExpedienteAcademico { get; set; }
         public string ClaveCVU { get; set; }
+
+        public int LineaTematica { get; set; }
+        public string AreaTematica1 { get; set; }
+        public string AreaTematica2 { get; set; }
+        public string AreaTematica3 { get; set; }
 
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
@@ -72,5 +76,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DepartamentoForm[] Departamentos { get; set; }
         public SedeForm[] Sedes { get; set; }
         public SNIForm[] SNIs { get; set; }
+        public PaisForm[] Paises { get; set; }
+        public LineaTematicaForm[] LineasTematicas { get; set; }
+
+        public PuestoForm[] Puestos { get; set; }
+        public DireccionRegionalForm[] DireccionesRegionales { get; set; }
     }
 }

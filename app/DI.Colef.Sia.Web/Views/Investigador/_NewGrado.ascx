@@ -2,29 +2,32 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Grado</label>
+    <label>Grado Académico</label>
     <%=Html.DropDownList("GradoAcademicoInvestigador.GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.GradoAcademico")%>
 </p>
 <p>
-    <label>Fecha</label>
+    <label>Fecha de obtención de grado</label>
     <%=Html.TextBox("GradoAcademicoInvestigador.Fecha", Model.GradoAcademicoInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.Fecha")%>
 </p>
 <p>
-    <label>Descripcion</label>
-    <%=Html.TextBox("GradoAcademicoInvestigador.Descripcion", Model.GradoAcademicoInvestigador.Descripcion, new { @class = "input250-requerido", maxlength = 40 })%>
-    <%=Html.ValidationMessage("GradoAcademicoInvestigador.Descripcion")%>
+    <label>Nombre del programa</label>
+    <%=Html.TextBox("GradoAcademicoInvestigador.Programa", Model.GradoAcademicoInvestigador.Programa, new { @class = "input420-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("GradoAcademicoInvestigador.Programa")%>
 </p>
 <p>
-    <label>Area</label>
-    <%=Html.TextBox("GradoAcademicoInvestigador.AreaInvestigacion", Model.GradoAcademicoInvestigador.AreaInvestigacion, new { @class = "input250", maxlength = 40 })%>
-    <%=Html.ValidationMessage("GradoAcademicoInvestigador.AreaInvestigacion")%>
+    <label>Instituci&oacute;n</label>
+    <%=Html.TextBox("GradoAcademicoInvestigador.InstitucionNombre", Model.GradoAcademicoInvestigador.InstitucionNombre,
+                new { @class = "autocomplete buscar-requerido", maxlength = 100, rel = Url.Action("Search", "Institucion") })%>
+    <%=Html.Hidden("GradoAcademicoInvestigador.InstitucionId", Model.GradoAcademicoInvestigador.InstitucionId, new { rel = "#GradoAcademicoInvestigador_InstitucionNombre" })%>
+    <%=Html.ValidationMessage("GradoAcademicoInvestigador.Institucion")%>
 </p> 
 <p>
-    <label>Detalle</label>
-    <%=Html.TextArea("GradoAcademicoInvestigador.Detalle", Model.GradoAcademicoInvestigador.Detalle, 3, 35, new { @class = "input250", maxlength = 100 })%>
-    <span>(Descripcion narrativa)</span>
+    <label>Pa&iacute;s</label>
+    <%=Html.DropDownList("GradoAcademicoInvestigador.Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido"})%>
+    <%=Html.ValidationMessage("GradoAcademicoInvestigador.Pais")%>
 </p>

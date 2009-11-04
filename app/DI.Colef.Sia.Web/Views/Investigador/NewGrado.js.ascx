@@ -17,7 +17,9 @@ var html = '
     <% } %>
 ';
 
-$('#grado_form').html(html);
-$('#grado_new').hide();
-$('#grado_form').show();
+$('#gradoForm').html(html);
+$('#gradoNew').hide();
+$('#gradoForm').show();
+
+AutoComplete.manualSetup('GradoAcademicoInvestigador_InstitucionNombre');
 DateTimePicker.setup();

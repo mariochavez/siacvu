@@ -15,14 +15,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Length(40)]
         [NotNullNotEmpty]
-        public virtual string Descripcion { get; set; }
+        public virtual string Programa { get; set; }
 
-        [Length(40)]
-        [NotNullNotEmpty]
-        public virtual string AreaInvestigacion { get; set; }
+        [NotNull]
+        public virtual Institucion Institucion { get; set; }
 
-        [Length(100)]
-        public virtual string Detalle { get; set; }
+        [NotNull]
+        public virtual Pais Pais { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

@@ -73,12 +73,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Usuario,
                            o => o.Ignore())
                 .ForMember(d => d.Nombre,
+                           o => o.Ignore())
+                .ForMember(d => d.LineaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<EstadoInvestigador, EstadoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Fecha,
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Estado,
                            o => o.Ignore());
@@ -89,6 +93,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Fecha,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.GradoAcademico,
+                           o => o.Ignore())
+                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<CategoriaInvestigador, CategoriaInvestigadorForm>()
@@ -102,21 +108,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CargoInvestigador, CargoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Fecha,
-                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.Cargo,
                            o => o.Ignore())
                 .ForMember(d => d.Departamento,
                            o => o.Ignore())
-                .ForMember(d => d.Sede,
+                .ForMember(d => d.Puesto,
+                           o => o.Ignore())
+                .ForMember(d => d.DireccionRegional,
                            o => o.Ignore());
 
             Mapper.CreateMap<SNIInvestigador, SNIInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaInicial,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaFinal,
+                .ForMember(d => d.Fecha,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
                            o => o.Ignore());
@@ -729,6 +733,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Puesto, PuestoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<DireccionRegional, DireccionRegionalForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.Sede, o => o.Ignore());
 
             Mapper.CreateMap<Departamento, DepartamentoForm>()
                 .ForMember(d => d.Modificacion,

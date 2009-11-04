@@ -355,17 +355,20 @@ var RemoteForm = {
 
         var currentCombo = $(formname + ' p :input');
         var handle = $(currentCombo).attr('rel');
-        var value = $(currentCombo).val();
 
-        if (value == null | value == "")
-            return false;
+        if (handle != null) {
+            var value = $(currentCombo).val();
 
-        if ($(handle + 'List ' + handle + '_' + value).length > 0) {
-            $(handle + '_form').hide();
-            $(handle + '_new').show();
-            return false;
+            if (value == null | value == "")
+                return false;
+
+            if ($(handle + 'List ' + handle + '_' + value).length > 0) {
+                $(handle + '_form').hide();
+                $(handle + '_new').show();
+                return false;
+            }
         }
-
+        
         currentLink.showLoading();
 
         $.ajax({

@@ -5,10 +5,13 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [EstadoInvestigadorValidator]
     public class EstadoInvestigador : Entity, IBaseEntity
     {
         [NotEmptyDate]
-        public virtual DateTime Fecha { get; set; }
+        public virtual DateTime FechaInicial { get; set; }
+
+        public virtual DateTime FechaFinal { get; set; }
 
         [NotNull]
         public virtual Estado Estado { get; set; }

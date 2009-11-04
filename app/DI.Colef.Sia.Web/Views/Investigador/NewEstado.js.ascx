@@ -17,7 +17,9 @@ var html = '
     <% } %>
 ';
 
-$('#estado_form').html(html);
-$('#estado_new').hide();
-$('#estado_form').show();
+$('#estadoForm').html(html);
+$('#estadoNew').hide();
+$('#estadoForm').show();
+
 DateTimePicker.setup();
+investigadorSetup();

@@ -464,5 +464,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Diplomado[] GetAllDiplomados();
         Diplomado[] GetActiveDiplomados();
         void SaveDiplomado(Diplomado diplomado);
+
+        // Direccion Regional
+        DireccionRegional GetDireccionRegionalById(int id);
+        DireccionRegional[] GetAllDireccionesRegionales();
+        DireccionRegional[] GetActiveDireccionesRegionales();
+        void SaveDireccionRegional(DireccionRegional direccionRegional);
     }
 }

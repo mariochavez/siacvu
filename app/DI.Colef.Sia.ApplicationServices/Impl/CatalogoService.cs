@@ -13,158 +13,146 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
     public class CatalogoService : ICatalogoService
     {
-        readonly IRepository<ProgramaEstudio> programaEstudioRepository;
-        readonly IRepository<Diplomado> diplomadoRepository;
-        readonly IRepository<Editorial> editorialRepository;
-        readonly IRepository<DirigidoA> dirigidoARepository;
-        readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
-        readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
-        readonly IRepository<ProductoAcademico> productoAcademicoRepository;
-        readonly IRepository<USEG> uSEGRepository;
-        readonly IRepository<Moneda> monedaRepository;
-        readonly IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository;
-        readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
-        readonly IRepository<Convenio> convenioRepository;
-        readonly IRepository<TipoEstancia> tipoEstanciaRepository;
-        readonly IRepository<TipoInstitucion> tipoInstitucionRepository;
-        readonly IRepository<TipoProyecto> tipoProyectoRepository;
-        readonly IRepository<TipoPublicacion> tipoPublicacionRepository;
-        readonly IRepository<Sector> sectorRepository;
-        readonly IRepository<Nivel> nivelRepository;
-        readonly IRepository<Cargo> cargoRepository;
-        readonly IRepository<Departamento> departamentoRepository;
-        readonly IRepository<Puesto> puestoRepository;
-        readonly IRepository<Sede> sedeRepository;
-        readonly IRepository<Categoria> categoriaRepository;
-        readonly IRepository<GradoAcademico> gradoAcademicoRepository;
-        readonly IRepository<SNI> sniRepository;
-        readonly IRepository<Estado> estadoRepository;
-        readonly IRepository<Idioma> idiomaRepository;
-        readonly IRepository<Pais> paisRepository;
-        readonly IRepository<TipoArticulo> tipoArticuloRepository;
-        readonly IRepository<Institucion> institucionRepository;
-        readonly IRepository<Indice> indiceRepository;
-        readonly IRepository<InvestigadorExterno> investigadorExternoRepository;
-        readonly IRepository<TipoParticipante> tipoParticipanteRepository;
-        readonly IRepository<LineaInvestigacion> lineaInvestigacionRepository;
-        readonly IRepository<TipoActividad> tipoActividadRepository;
-        readonly IRepository<Area> areaRepository;
-        readonly IRepository<Disciplina> disciplinaRepository;
-        readonly IRepository<Subdisciplina> subdisciplinaRepository;
-        readonly IRepository<LineaTematica> lineaTematicaRepository;
-        readonly IRepository<CoautorExterno> coautorExternoRepository;
-        readonly IRepository<FormaParticipacion> formaParticipacionRepository;
-        readonly IRepository<ResponsableExterno> responsableExternoRepository;
-        readonly IRepository<TipoCapitulo> tipoCapituloRepository;
-        readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
-        readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
-        readonly IRepository<Organizacion> organizacionRepository;
-        readonly IRepository<Dependencia> dependenciaRepository;
         readonly IRepository<Ambito> ambitoRepository;
-        readonly IRepository<EstadoPais> estadoPaisRepository;
-        readonly IRepository<Genero> generoRepository;
-        readonly IRepository<MedioElectronico> medioElectronicoRepository;
-        readonly IRepository<MedioImpreso> medioImpresoRepository;
-        readonly IRepository<OtraParticipacion> otraParticipacionRepository;
-        readonly IRepository<TipoDictamen> tipoDictamenRepository;
-        readonly IRepository<TipoDistincion> tipoDistincionRepository;
-        readonly IRepository<TipoEvento> tipoEventoRepository;
-        readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
-        readonly IRepository<TipoOrgano> tipoOrganoRepository;
-        readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
-        readonly IRepository<TipoReporte> tipoReporteRepository;
-        readonly IRepository<NivelEstudio> nivelEstudioRepository;
-        readonly IRepository<ProductoDerivado> productoDerivadoRepository;
-        readonly IRepository<TipoResena> tipoResenaRepository;
-        readonly IRepository<TipoApoyo> tipoApoyoRepository;
-        readonly IRepository<SubprogramaConacyt> subprogramaConacytRepository;
-        readonly IRepository<Rama> ramaRepository;
+        readonly IRepository<Area> areaRepository;
+        readonly IRepository<AreaTematica> areaTematicaRepository;
+        readonly IRepository<Cargo> cargoRepository;
+        readonly IRepository<Categoria> categoriaRepository;
         readonly IRepository<Clase> claseRepository;
+        readonly IRepository<CoautorExterno> coautorExternoRepository;
+        readonly IRepository<Convenio> convenioRepository;
         readonly IRepository<Coordinacion> coordinacionRepository;
+        readonly IRepository<Departamento> departamentoRepository;
+        readonly IRepository<Dependencia> dependenciaRepository;
+        readonly IRepository<Diplomado> diplomadoRepository;
+        readonly IRepository<DireccionRegional> direccionRegionalRepository;
+        readonly IRepository<DirigidoA> dirigidoARepository;
+        readonly IRepository<Disciplina> disciplinaRepository;
+        readonly IRepository<Editorial> editorialRepository;
+        readonly IRepository<EstadoPais> estadoPaisRepository;
+        readonly IRepository<Estado> estadoRepository;
+        readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
         readonly IRepository<EstatusProyecto> estatusProyectoRepository;
         readonly IRepository<FondoConacyt> fondoConacytRepository;
-        readonly IRepository<AreaTematica> areaTematicaRepository;
-        readonly IRepository<TipoArchivo> tipoArchivoRepository;
+        readonly IRepository<FormaParticipacion> formaParticipacionRepository;
         readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
+        readonly IRepository<Genero> generoRepository;
+        readonly IRepository<GradoAcademico> gradoAcademicoRepository;
+        readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
+        readonly IRepository<Idioma> idiomaRepository;
+        readonly IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository;
+        readonly IRepository<Indice> indiceRepository;
+        readonly IRepository<Institucion> institucionRepository;
+        readonly IRepository<InvestigadorExterno> investigadorExternoRepository;
+        readonly IRepository<LineaInvestigacion> lineaInvestigacionRepository;
+        readonly IRepository<LineaTematica> lineaTematicaRepository;
+        readonly IRepository<MedioElectronico> medioElectronicoRepository;
+        readonly IRepository<MedioImpreso> medioImpresoRepository;
+        readonly IRepository<Moneda> monedaRepository;
+        readonly IRepository<NivelEstudio> nivelEstudioRepository;
+        readonly IRepository<Nivel> nivelRepository;
+        readonly IRepository<Organizacion> organizacionRepository;
+        readonly IRepository<OtraParticipacion> otraParticipacionRepository;
+        readonly IRepository<Pais> paisRepository;
+        readonly IRepository<ProductoAcademico> productoAcademicoRepository;
+        readonly IRepository<ProductoDerivado> productoDerivadoRepository;
+        readonly IRepository<ProgramaEstudio> programaEstudioRepository;
+        readonly IRepository<Puesto> puestoRepository;
+        readonly IRepository<Rama> ramaRepository;
+        readonly IRepository<ResponsableExterno> responsableExternoRepository;
+        readonly IRepository<RevistaPublicacion> revistaPublicacionRepository;
+        readonly IRepository<Sector> sectorRepository;
+        readonly IRepository<Sede> sedeRepository;
+        readonly IRepository<SNI> sniRepository;
+        readonly IRepository<Subdisciplina> subdisciplinaRepository;
+        readonly IRepository<SubprogramaConacyt> subprogramaConacytRepository;
+        readonly IRepository<TipoActividad> tipoActividadRepository;
+        readonly IRepository<TipoApoyo> tipoApoyoRepository;
+        readonly IRepository<TipoArchivo> tipoArchivoRepository;
+        readonly IRepository<TipoArticulo> tipoArticuloRepository;
+        readonly IRepository<TipoCapitulo> tipoCapituloRepository;
+        readonly IRepository<TipoDictamen> tipoDictamenRepository;
+        readonly IRepository<TipoDistincion> tipoDistincionRepository;
+        readonly IRepository<TipoEstancia> tipoEstanciaRepository;
+        readonly IRepository<TipoEvento> tipoEventoRepository;
+        readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
+        readonly IRepository<TipoInstitucion> tipoInstitucionRepository;
+        readonly IRepository<TipoOrgano> tipoOrganoRepository;
+        readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
+        readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
+        readonly IRepository<TipoParticipante> tipoParticipanteRepository;
+        readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
+        readonly IRepository<TipoProyecto> tipoProyectoRepository;
+        readonly IRepository<TipoPublicacion> tipoPublicacionRepository;
+        readonly IRepository<TipoReporte> tipoReporteRepository;
+        readonly IRepository<TipoResena> tipoResenaRepository;
+        readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
 
-        public CatalogoService(IRepository<Cargo> cargoRepository,
-            IRepository<TipoProyecto> tipoProyectoRepository,
-            IRepository<IdentificadorLibro> identificadorLibroRepository,
-            IRepository<Convenio> convenioRepository,
-            IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository,
-            IRepository<TipoInstitucion> tipoInstitucionRepository,
-            IRepository<Departamento> departamentoRepository,
-            IRepository<Puesto> puestoRepository,
-            IRepository<Sede> sedeRepository,
-            IRepository<Categoria> categoriaRepository,
-            IRepository<GradoAcademico> gradoAcademicoRepository,
-            IRepository<Editorial> editorialRepository,
-            IRepository<SNI> sniRepository,
-            IRepository<Estado> estadoRepository,
-            IRepository<Idioma> idiomaRepository,
-            IRepository<Pais> paisRepository,
-            IRepository<DirigidoA> dirigidoARepository,
-            IRepository<TipoArticulo> tipoArticuloRepository,
-            IRepository<Institucion> institucionRepository,
-            IRepository<Indice> indiceRepository,
-            IRepository<InvestigadorExterno> investigadorExternoRepository,
-            IRepository<TipoParticipante> tipoParticipanteRepository,
-            IRepository<LineaInvestigacion> lineaInvestigacionRepository,
-            IRepository<TipoActividad> tipoActividadRepository,
-            IRepository<Area> areaRepository,
-            IRepository<Disciplina> disciplinaRepository,
-            IRepository<Subdisciplina> subdisciplinaRepository,
-            IRepository<LineaTematica> lineaTematicaRepository,
-            IRepository<CoautorExterno> coautorExternoRepository,
-            IRepository<FormaParticipacion> formaParticipacionRepository,
-            IRepository<ResponsableExterno> responsableExternoRepository,
-            IRepository<TipoCapitulo> tipoCapituloRepository,
-            IRepository<TipoParticipacion> tipoParticipacionRepository,
-            IRepository<Nivel> nivelRepository,
-            IRepository<Diplomado> diplomadoRepository,
-            IRepository<Sector> sectorRepository,
-            IRepository<ProgramaEstudio> programaEstudioRepository,
-            IRepository<RevistaPublicacion> revistaPublicacionRepository,
-            IRepository<Organizacion> organizacionRepository,
-            IRepository<Dependencia> dependenciaRepository,
-            IRepository<Ambito> ambitoRepository,
-            IRepository<EstadoPais> estadoPaisRepository,
-            IRepository<Genero> generoRepository,
-            IRepository<TipoEstancia> tipoEstanciaRepository,
-            IRepository<MedioElectronico> medioElectronicoRepository,
-            IRepository<MedioImpreso> medioImpresoRepository,
-            IRepository<OtraParticipacion> otraParticipacionRepository,
-            IRepository<TipoDictamen> tipoDictamenRepository,
-            IRepository<TipoDistincion> tipoDistincionRepository,
-            IRepository<TipoEvento> tipoEventoRepository,
-            IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
-            IRepository<TipoOrgano> tipoOrganoRepository,
-            IRepository<TipoPresentacion> tipoPresentacionRepository,
-            IRepository<TipoReporte> tipoReporteRepository,
-            IRepository<TipoPublicacion> tipoPublicacionRepository,
-            IRepository<NivelEstudio> nivelEstudioRepository,
-            IRepository<ProductoDerivado> productoDerivadoRepository,
-            IRepository<TipoResena> tipoResenaRepository,
-            IRepository<TipoApoyo> tipoApoyoRepository,
-            IRepository<SubprogramaConacyt> subprogramaConacytRepository,
-            IRepository<Rama> ramaRepository,
-            IRepository<ProductoAcademico> productoAcademicoRepository,
-            IRepository<USEG> uSEGRepository,
-            IRepository<Moneda> monedaRepository,
-            IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository,
-            IRepository<ActividadPrevista> actividadPrevistaRepository,
-            IRepository<Clase> claseRepository,
-            IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
-            IRepository<Coordinacion> coordinacionRepository,
-            IRepository<EstatusProyecto> estatusProyectoRepository,
-            IRepository<FondoConacyt> fondoConacytRepository,
-            IRepository<AreaTematica> areaTematicaRepository,
-            IRepository<TipoArchivo> tipoArchivoRepository,
-            IRepository<Proyecto> proyectoRepository,
-            IRepository<FormatoPublicacion> formatoPublicacionRepository,
-            IRepository<VinculacionAPyD> vinculacionAPyDRepository)
+        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<TipoProyecto> tipoProyectoRepository,
+                               IRepository<IdentificadorLibro> identificadorLibroRepository,
+                               IRepository<Convenio> convenioRepository,
+                               IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository,
+                               IRepository<TipoInstitucion> tipoInstitucionRepository,
+                               IRepository<Departamento> departamentoRepository, IRepository<Puesto> puestoRepository,
+                               IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository,
+                               IRepository<GradoAcademico> gradoAcademicoRepository,
+                               IRepository<Editorial> editorialRepository, IRepository<SNI> sniRepository,
+                               IRepository<Estado> estadoRepository, IRepository<Idioma> idiomaRepository,
+                               IRepository<Pais> paisRepository, IRepository<DirigidoA> dirigidoARepository,
+                               IRepository<TipoArticulo> tipoArticuloRepository,
+                               IRepository<Institucion> institucionRepository, IRepository<Indice> indiceRepository,
+                               IRepository<InvestigadorExterno> investigadorExternoRepository,
+                               IRepository<TipoParticipante> tipoParticipanteRepository,
+                               IRepository<LineaInvestigacion> lineaInvestigacionRepository,
+                               IRepository<TipoActividad> tipoActividadRepository, IRepository<Area> areaRepository,
+                               IRepository<Disciplina> disciplinaRepository,
+                               IRepository<Subdisciplina> subdisciplinaRepository,
+                               IRepository<LineaTematica> lineaTematicaRepository,
+                               IRepository<CoautorExterno> coautorExternoRepository,
+                               IRepository<FormaParticipacion> formaParticipacionRepository,
+                               IRepository<ResponsableExterno> responsableExternoRepository,
+                               IRepository<TipoCapitulo> tipoCapituloRepository,
+                               IRepository<TipoParticipacion> tipoParticipacionRepository,
+                               IRepository<Nivel> nivelRepository, IRepository<Diplomado> diplomadoRepository,
+                               IRepository<Sector> sectorRepository,
+                               IRepository<ProgramaEstudio> programaEstudioRepository,
+                               IRepository<RevistaPublicacion> revistaPublicacionRepository,
+                               IRepository<Organizacion> organizacionRepository,
+                               IRepository<Dependencia> dependenciaRepository, IRepository<Ambito> ambitoRepository,
+                               IRepository<EstadoPais> estadoPaisRepository, IRepository<Genero> generoRepository,
+                               IRepository<TipoEstancia> tipoEstanciaRepository,
+                               IRepository<MedioElectronico> medioElectronicoRepository,
+                               IRepository<MedioImpreso> medioImpresoRepository,
+                               IRepository<OtraParticipacion> otraParticipacionRepository,
+                               IRepository<TipoDictamen> tipoDictamenRepository,
+                               IRepository<TipoDistincion> tipoDistincionRepository,
+                               IRepository<TipoEvento> tipoEventoRepository,
+                               IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
+                               IRepository<TipoOrgano> tipoOrganoRepository,
+                               IRepository<TipoPresentacion> tipoPresentacionRepository,
+                               IRepository<TipoReporte> tipoReporteRepository,
+                               IRepository<TipoPublicacion> tipoPublicacionRepository,
+                               IRepository<NivelEstudio> nivelEstudioRepository,
+                               IRepository<ProductoDerivado> productoDerivadoRepository,
+                               IRepository<TipoResena> tipoResenaRepository, IRepository<TipoApoyo> tipoApoyoRepository,
+                               IRepository<SubprogramaConacyt> subprogramaConacytRepository,
+                               IRepository<Rama> ramaRepository,
+                               IRepository<ProductoAcademico> productoAcademicoRepository,
+                               IRepository<USEG> uSEGRepository, IRepository<Moneda> monedaRepository,
+                               IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository,
+                               IRepository<ActividadPrevista> actividadPrevistaRepository,
+                               IRepository<Clase> claseRepository,
+                               IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
+                               IRepository<Coordinacion> coordinacionRepository,
+                               IRepository<EstatusProyecto> estatusProyectoRepository,
+                               IRepository<FondoConacyt> fondoConacytRepository,
+                               IRepository<AreaTematica> areaTematicaRepository,
+                               IRepository<TipoArchivo> tipoArchivoRepository,
+                               IRepository<FormatoPublicacion> formatoPublicacionRepository,
+                               IRepository<VinculacionAPyD> vinculacionAPyDRepository,
+                               IRepository<DireccionRegional> direccionRegionalRepository)
         {
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
@@ -241,6 +229,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoArchivoRepository = tipoArchivoRepository;
             this.formatoPublicacionRepository = formatoPublicacionRepository;
             this.vinculacionAPyDRepository = vinculacionAPyDRepository;
+            this.direccionRegionalRepository = direccionRegionalRepository;
         }
 
         protected virtual ISession Session
@@ -252,41 +241,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             }
         }
 
-        protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression)
-        {
-            return OrderCatalog(expression, false);
-        }
-
-        protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression, bool active)
-        {
-            var propertyInfo = ReflectionHelper.GetProperty(expression);
-
-            var criteria = DetachedCriteria.For(typeof (T))
-                .AddOrder(Order.Asc(propertyInfo.Name));
-
-            if (active)
-                criteria.Add(Restrictions.Eq("Activo", true));
-
-            var list = criteria.GetExecutableCriteria(Session).List<T>();
-
-            return list;
-        }
-
-        protected IList<T> FilterCatalogOptions<T>(Expression<Func<T, object>> expression, int id, string parentCombo)
-        {
-            var propertyInfo = ReflectionHelper.GetProperty(expression);
-
-            var criteria = DetachedCriteria.For(typeof(T))
-                .CreateAlias(parentCombo, "pc")
-                .Add(Expression.Eq("pc.Id", id))
-                .Add(Restrictions.Eq("Activo", true))
-                .AddOrder(Order.Asc(propertyInfo.Name));
-
-
-            var list = criteria.GetExecutableCriteria(Session).List<T>();
-
-            return list;
-        }
+        #region ICatalogoService Members
 
         public Cargo GetCargoById(int id)
         {
@@ -803,7 +758,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Disciplina[] GetDisciplinasByAreaId(int id)
         {
-            return ((List<Disciplina>)FilterCatalogOptions<Disciplina>(x => x.Nombre, id, "Area")).ToArray();
+            return ((List<Disciplina>) FilterCatalogOptions<Disciplina>(x => x.Nombre, id, "Area")).ToArray();
         }
 
         public Subdisciplina GetSubdisciplinaById(int id)
@@ -835,7 +790,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id)
         {
-            return ((List<Subdisciplina>)FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
+            return
+                ((List<Subdisciplina>) FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
         }
 
         public LineaTematica GetLineaTematicaById(int id)
@@ -1095,17 +1051,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 .Add(Restrictions.Eq("Activo", true))
                 .List<Sector>();
 
-            return ((List<Sector>)sectorList).ToArray();
+            return ((List<Sector>) sectorList).ToArray();
         }
 
         public Sector[] GetActiveSectoresFinanciamientos()
         {
-            var sectorList = Session.CreateCriteria(typeof(Sector))
+            var sectorList = Session.CreateCriteria(typeof (Sector))
                 .Add(Expression.Eq("TipoSector", 2))
                 .Add(Restrictions.Eq("Activo", true))
                 .List<Sector>();
 
-            return ((List<Sector>)sectorList).ToArray();
+            return ((List<Sector>) sectorList).ToArray();
         }
 
         public Nivel GetNivelById(int id)
@@ -1137,12 +1093,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Nivel[] GetNivelesByNivelId(int id)
         {
-            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "NivelReferencia")).ToArray();
+            return ((List<Nivel>) FilterCatalogOptions<Nivel>(x => x.Nombre, id, "NivelReferencia")).ToArray();
         }
 
         public Nivel[] GetNivelesByOrganizacionId(int id)
         {
-            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
+            return ((List<Nivel>) FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
         }
 
         public Organizacion GetOrganizacionById(int id)
@@ -1174,7 +1130,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Organizacion[] GetOrganizacionesBySectorId(int id)
         {
-            return ((List<Organizacion>)FilterCatalogOptions<Organizacion>(x => x.Nombre, id, "Sector")).ToArray();
+            return ((List<Organizacion>) FilterCatalogOptions<Organizacion>(x => x.Nombre, id, "Sector")).ToArray();
         }
 
         public Dependencia GetDependenciaById(int id)
@@ -1260,7 +1216,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstadoPais[] GetEstadoPaisesByPaisId(int id)
         {
-            return ((List<EstadoPais>)FilterCatalogOptions<EstadoPais>(x => x.Nombre, id, "Pais")).ToArray();
+            return ((List<EstadoPais>) FilterCatalogOptions<EstadoPais>(x => x.Nombre, id, "Pais")).ToArray();
         }
 
         public Genero GetGeneroById(int id)
@@ -1783,12 +1739,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoResena[] GetAllTipoResenas()
         {
-            return ((List<TipoResena>)OrderCatalog<TipoResena>(x => x.Nombre)).ToArray();
+            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Nombre)).ToArray();
         }
 
         public TipoResena[] GetActiveTipoResenas()
         {
-            return ((List<TipoResena>)OrderCatalog<TipoResena>(x => x.Nombre, true)).ToArray();
+            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoResena(TipoResena tipoResena)
@@ -1805,7 +1761,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Rama[] GetRamasBySectorId(int id)
         {
-            return ((List<Rama>)FilterCatalogOptions<Rama>(x => x.Nombre, id, "Sector")).ToArray();
+            return ((List<Rama>) FilterCatalogOptions<Rama>(x => x.Nombre, id, "Sector")).ToArray();
         }
 
         public TipoApoyo GetTipoApoyoById(int id)
@@ -1820,7 +1776,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoApoyo[] GetActiveTipoApoyos()
         {
-            return ((List<TipoApoyo>)OrderCatalog<TipoApoyo>(x => x.Nombre, true)).ToArray();
+            return ((List<TipoApoyo>) OrderCatalog<TipoApoyo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoApoyo(TipoApoyo tipoApoyo)
@@ -1864,7 +1820,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Clase[] GetClasesByRamaId(int id)
         {
-            return ((List<Clase>)FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
+            return ((List<Clase>) FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
         }
 
         public Rama GetRamaById(int id)
@@ -1879,7 +1835,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Rama[] GetActiveRamas()
         {
-            return ((List<Rama>)OrderCatalog<Rama>(x => x.Nombre, true)).ToArray();
+            return ((List<Rama>) OrderCatalog<Rama>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveRama(Rama rama)
@@ -1928,7 +1884,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ImpactoPoliticaPublica[] GetAllImpactoPoliticaPublicas()
         {
-            return ((List<ImpactoPoliticaPublica>)OrderCatalog<ImpactoPoliticaPublica>(x => x.Nombre)).ToArray();
+            return ((List<ImpactoPoliticaPublica>) OrderCatalog<ImpactoPoliticaPublica>(x => x.Nombre)).ToArray();
         }
 
         public ImpactoPoliticaPublica[] GetActiveImpactoPoliticaPublicas()
@@ -1955,7 +1911,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Moneda[] GetAllMonedas()
         {
-            return ((List<Moneda>)OrderCatalog<Moneda>(x => x.Nombre)).ToArray();
+            return ((List<Moneda>) OrderCatalog<Moneda>(x => x.Nombre)).ToArray();
         }
 
         public Moneda[] GetActiveMonedas()
@@ -1982,7 +1938,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ProductoAcademico[] GetAllProductoAcademicos()
         {
-            return ((List<ProductoAcademico>)OrderCatalog<ProductoAcademico>(x => x.Nombre)).ToArray();
+            return ((List<ProductoAcademico>) OrderCatalog<ProductoAcademico>(x => x.Nombre)).ToArray();
         }
 
         public ProductoAcademico[] GetActiveProductoAcademicos()
@@ -2009,7 +1965,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public USEG[] GetAllUSEGs()
         {
-            return ((List<USEG>)OrderCatalog<USEG>(x => x.Nombre)).ToArray();
+            return ((List<USEG>) OrderCatalog<USEG>(x => x.Nombre)).ToArray();
         }
 
         public USEG[] GetActiveUSEGs()
@@ -2036,7 +1992,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ActividadPrevista[] GetAllActividadPrevistas()
         {
-            return ((List<ActividadPrevista>)OrderCatalog<ActividadPrevista>(x => x.Nombre)).ToArray();
+            return ((List<ActividadPrevista>) OrderCatalog<ActividadPrevista>(x => x.Nombre)).ToArray();
         }
 
         public ActividadPrevista[] GetActiveActividadPrevistas()
@@ -2063,7 +2019,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Coordinacion[] GetAllCoordinacions()
         {
-            return ((List<Coordinacion>)OrderCatalog<Coordinacion>(x => x.Nombre)).ToArray();
+            return ((List<Coordinacion>) OrderCatalog<Coordinacion>(x => x.Nombre)).ToArray();
         }
 
         public Coordinacion[] GetActiveCoordinacions()
@@ -2090,12 +2046,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos()
         {
-            return ((List<TipoParticipacionOrgano>)OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre)).ToArray();
+            return ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre)).ToArray();
         }
 
         public TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos()
         {
-            return ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
+            return
+                ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano)
@@ -2117,12 +2074,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas()
         {
-            return ((List<EstatusFormacionAcademica>)OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre)).ToArray();
+            return ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre)).ToArray();
         }
 
         public EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas()
         {
-            return ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray();
+            return
+                ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray
+                    ();
         }
 
         public void SaveEstatusFormacionAcademica(EstatusFormacionAcademica estatusFormacionAcademica)
@@ -2144,12 +2103,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public DirigidoA[] GetAllDirigidoAs()
         {
-            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre)).ToArray();
+            return ((List<DirigidoA>) OrderCatalog<DirigidoA>(x => x.Nombre)).ToArray();
         }
 
         public DirigidoA[] GetActiveDirigidoAs()
         {
-            return ((List<DirigidoA>)OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
+            return ((List<DirigidoA>) OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDirigidoA(DirigidoA dirigidoA)
@@ -2171,12 +2130,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstatusProyecto[] GetAllEstatusProyectos()
         {
-            return ((List<EstatusProyecto>)OrderCatalog<EstatusProyecto>(x => x.Nombre)).ToArray();
+            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Nombre)).ToArray();
         }
 
         public EstatusProyecto[] GetActiveEstatusProyectos()
         {
-            return ((List<EstatusProyecto>)OrderCatalog<EstatusProyecto>(x => x.Nombre, true)).ToArray();
+            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEstatusProyecto(EstatusProyecto estatusProyecto)
@@ -2198,12 +2157,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FondoConacyt[] GetAllFondoConacyts()
         {
-            return ((List<FondoConacyt>)OrderCatalog<FondoConacyt>(x => x.Nombre)).ToArray();
+            return ((List<FondoConacyt>) OrderCatalog<FondoConacyt>(x => x.Nombre)).ToArray();
         }
 
         public FondoConacyt[] GetActiveFondoConacyts()
         {
-            return ((List<FondoConacyt>)OrderCatalog<FondoConacyt>(x => x.Nombre, true)).ToArray();
+            return ((List<FondoConacyt>) OrderCatalog<FondoConacyt>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveFondoConacyt(FondoConacyt fondoConacyt)
@@ -2217,7 +2176,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
             fondoConacytRepository.SaveOrUpdate(fondoConacyt);
         }
-        
+
         public AreaTematica GetAreaTematicaById(int id)
         {
             return areaTematicaRepository.Get(id);
@@ -2225,12 +2184,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public AreaTematica[] GetAllAreaTematicas()
         {
-            return ((List<AreaTematica>)OrderCatalog<AreaTematica>(x => x.Nombre)).ToArray();
+            return ((List<AreaTematica>) OrderCatalog<AreaTematica>(x => x.Nombre)).ToArray();
         }
 
         public AreaTematica[] GetActiveAreaTematicas()
         {
-            return ((List<AreaTematica>)OrderCatalog<AreaTematica>(x => x.Nombre, true)).ToArray();
+            return ((List<AreaTematica>) OrderCatalog<AreaTematica>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveAreaTematica(AreaTematica areaTematica)
@@ -2247,7 +2206,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public AreaTematica[] GetAreaTematicasByLineaTematicaId(int id)
         {
-            return ((List<AreaTematica>)FilterCatalogOptions<AreaTematica>(x => x.Nombre, id, "LineaTematica")).ToArray();
+            return
+                ((List<AreaTematica>) FilterCatalogOptions<AreaTematica>(x => x.Nombre, id, "LineaTematica")).ToArray();
         }
 
         public TipoArchivo GetTipoArchivoById(int id)
@@ -2257,12 +2217,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoArchivo[] GetAllTipoArchivos()
         {
-            return ((List<TipoArchivo>)OrderCatalog<TipoArchivo>(x => x.Nombre)).ToArray();
+            return ((List<TipoArchivo>) OrderCatalog<TipoArchivo>(x => x.Nombre)).ToArray();
         }
 
         public TipoArchivo[] GetActiveTipoArchivos()
         {
-            return ((List<TipoArchivo>)OrderCatalog<TipoArchivo>(x => x.Nombre, true)).ToArray();
+            return ((List<TipoArchivo>) OrderCatalog<TipoArchivo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoArchivo(TipoArchivo tipoArchivo)
@@ -2284,12 +2244,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FormatoPublicacion[] GetAllFormatoPublicacions()
         {
-            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre)).ToArray();
+            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Nombre)).ToArray();
         }
 
         public FormatoPublicacion[] GetActiveFormatoPublicacions()
         {
-            return ((List<FormatoPublicacion>)OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
+            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion)
@@ -2311,12 +2271,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Editorial[] GetAllEditorials()
         {
-            return ((List<Editorial>)OrderCatalog<Editorial>(x => x.Nombre)).ToArray();
+            return ((List<Editorial>) OrderCatalog<Editorial>(x => x.Nombre)).ToArray();
         }
 
         public Editorial[] GetActiveEditorials()
         {
-            return ((List<Editorial>)OrderCatalog<Editorial>(x => x.Nombre, true)).ToArray();
+            return ((List<Editorial>) OrderCatalog<Editorial>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEditorial(Editorial editorial)
@@ -2338,12 +2298,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public VinculacionAPyD[] GetAllVinculacionAPyDs()
         {
-            return ((List<VinculacionAPyD>)OrderCatalog<VinculacionAPyD>(x => x.Nombre)).ToArray();
+            return ((List<VinculacionAPyD>) OrderCatalog<VinculacionAPyD>(x => x.Nombre)).ToArray();
         }
 
         public VinculacionAPyD[] GetActiveVinculacionAPyDs()
         {
-            return ((List<VinculacionAPyD>)OrderCatalog<VinculacionAPyD>(x => x.Nombre, true)).ToArray();
+            return ((List<VinculacionAPyD>) OrderCatalog<VinculacionAPyD>(x => x.Activo, true)).ToArray();
         }
 
         public void SaveVinculacionAPyD(VinculacionAPyD vinculacionAPyD)
@@ -2365,12 +2325,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Diplomado[] GetAllDiplomados()
         {
-            return ((List<Diplomado>)OrderCatalog<Diplomado>(x => x.Nombre)).ToArray();
+            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Nombre)).ToArray();
         }
 
         public Diplomado[] GetActiveDiplomados()
         {
-            return ((List<Diplomado>)OrderCatalog<Diplomado>(x => x.Nombre, true)).ToArray();
+            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Activo, true)).ToArray();
         }
 
         public void SaveDiplomado(Diplomado diplomado)
@@ -2383,6 +2343,71 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             diplomado.ModificadoEl = DateTime.Now;
 
             diplomadoRepository.SaveOrUpdate(diplomado);
+        }
+
+        public DireccionRegional GetDireccionRegionalById(int id)
+        {
+            return direccionRegionalRepository.Get(id);
+        }
+
+        public DireccionRegional[] GetAllDireccionesRegionales()
+        {
+            return ((List<DireccionRegional>) OrderCatalog<DireccionRegional>(x => x.Nombre)).ToArray();
+        }
+
+        public DireccionRegional[] GetActiveDireccionesRegionales()
+        {
+            return ((List<DireccionRegional>) OrderCatalog<DireccionRegional>(x => x.Activo, true)).ToArray();
+        }
+
+        public void SaveDireccionRegional(DireccionRegional direccionRegional)
+        {
+            if (direccionRegional.Id == 0)
+            {
+                direccionRegional.Activo = true;
+                direccionRegional.CreadorEl = DateTime.Now;
+            }
+            direccionRegional.ModificadoEl = DateTime.Now;
+
+            direccionRegionalRepository.SaveOrUpdate(direccionRegional);
+        }
+
+        #endregion
+
+        protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression)
+        {
+            return OrderCatalog(expression, false);
+        }
+
+        protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression, bool active)
+        {
+            var propertyInfo = ReflectionHelper.GetProperty(expression);
+
+            var criteria = DetachedCriteria.For(typeof (T))
+                .AddOrder(Order.Asc(propertyInfo.Name));
+
+            if (active)
+                criteria.Add(Restrictions.Eq("Activo", true));
+
+            var list = criteria.GetExecutableCriteria(Session).List<T>();
+
+            return list;
+        }
+
+        protected IList<T> FilterCatalogOptions<T>(Expression<Func<T, object>> expression, int id, string parentCombo)
+        {
+            var propertyInfo = ReflectionHelper.GetProperty(expression);
+
+            var criteria = DetachedCriteria.For(typeof (T))
+                .CreateAlias(parentCombo, "pc")
+                .Add(Expression.Eq("pc.Id", id))
+                .Add(Restrictions.Eq("Activo", true))
+                .AddOrder(Order.Asc(propertyInfo.Name));
+
+
+            var list = criteria.GetExecutableCriteria(Session).List<T>();
+
+            return list;
         }
     }
 }

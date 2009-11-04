@@ -353,3 +353,13 @@ function proyectoSetup() {
 
     $('#ConConvenio')[0].dynamic.setup();
 }
+
+function investigadorSetup() {
+    $('#EstadoInvestigador_Estado').dynamicui(
+            [
+                [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['.EstadoFechaFinal_Field']]
+            ]
+        );
+
+    $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+}

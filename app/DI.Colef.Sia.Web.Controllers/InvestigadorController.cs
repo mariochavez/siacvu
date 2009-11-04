@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -6,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -28,6 +30,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
         readonly ICargoInvestigadorMapper cargoInvestigadorMapper;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
+        readonly IPaisMapper paisMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IPuestoMapper puestoMapper;
+        readonly IDireccionRegionalMapper direccionRegionalMapper;
 
         public InvestigadorController(IInvestigadorService investigadorService,
             IUsuarioService usuarioService,
@@ -46,6 +52,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ICategoriaInvestigadorMapper categoriaInvestigadorMapper,
             ICargoInvestigadorMapper cargoInvestigadorMapper,
             ISNIInvestigadorMapper sniInvestigadorMapper,
+            IPaisMapper paisMapper, ILineaTematicaMapper lineaTematicaMapper,
+            IPuestoMapper puestoMapper, IDireccionRegionalMapper direccionRegionalMapper,
                                       ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -65,6 +73,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.categoriaInvestigadorMapper = categoriaInvestigadorMapper;
             this.cargoInvestigadorMapper = cargoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
+            this.paisMapper = paisMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.puestoMapper = puestoMapper;
+            this.direccionRegionalMapper = direccionRegionalMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -82,7 +94,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {			
 			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            data.Form = SetupNewForm(0);
+            ViewData["GradoAcademicoInvestigador.Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -123,7 +136,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(investigador, form, Title.New, "Investigador"))
             {
-                ((GenericViewData<InvestigadorForm>)ViewData.Model).Form = SetupNewForm();
+                ((GenericViewData<InvestigadorForm>)ViewData.Model).Form = SetupNewForm(form.Usuario);
+                
                 return ViewNew();
             }
 
@@ -227,11 +241,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var investigador = investigadorService.GetInvestigadorById(id);
             var form = new InvestigadorForm
-            {
-                Id = investigador.Id,
-                GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
-                GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados())
-            };
+                           {
+                               Id = investigador.Id,
+                               GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
+                               GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
+                               Paises = paisMapper.Map(catalogoService.GetActivePaises())
+                           };
+
+            ViewData["GradoAcademicoInvestigador.Pais"] = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return Rjs("NewGrado", form);
         }
@@ -307,7 +324,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 Id = investigador.Id,
                 CargoInvestigador = new CargoInvestigadorForm(),
                 Cargos = cargoMapper.Map(catalogoService.GetActiveCargos()),
-                Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
+                Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
+                DireccionesRegionales = direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
                 Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos())
             };
 
@@ -383,24 +401,46 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        InvestigadorForm SetupNewForm()
+        InvestigadorForm SetupNewForm(int usuarioId)
         {
-            return new InvestigadorForm
-            {
-                EstadoInvestigador = new EstadoInvestigadorForm(),
-                GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
-                CategoriaInvestigador = new CategoriaInvestigadorForm(),
-                CargoInvestigador = new CargoInvestigadorForm(),
-                SNIInvestigador = new SNIInvestigadorForm(),
+            Usuario usuario = usuarioId == 0 ? null : usuarioService.GetUsuarioById(usuarioId);
 
-                Usuarios = usuarioMapper.Map(investigadorService.FindUsuariosToBeInvestigador()),
-                Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
-                GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
-                Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias()),
-                Cargos = cargoMapper.Map(catalogoService.GetActiveCargos()),
-                Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
-                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
-                SNIs = sniMapper.Map(catalogoService.GetActiveSNIs())
+            return new InvestigadorForm
+                       {
+                           EstadoInvestigador = new EstadoInvestigadorForm(),
+                           GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
+                           CategoriaInvestigador = new CategoriaInvestigadorForm(),
+                           CargoInvestigador = new CargoInvestigadorForm(),
+                           SNIInvestigador = new SNIInvestigadorForm(),
+
+                           Usuarios = usuarioMapper.Map(investigadorService.FindUsuariosToBeInvestigador()),
+                           Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
+                           GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
+                           Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias()),
+                           Cargos = cargoMapper.Map(catalogoService.GetActiveCargos()),
+                           Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
+                           DireccionesRegionales = direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
+                           Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
+                           SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
+                           Paises = paisMapper.Map(catalogoService.GetActivePaises()),
+                           LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
+
+                           UsuarioApellidoMaterno = usuario != null ? usuario.ApellidoMaterno : String.Empty,
+                           UsuarioApellidoPaterno = usuario != null ? usuario.ApellidoPaterno : String.Empty,
+                           UsuarioNombre = usuario != null ? usuario.Nombre : String.Empty,
+                           UsuarioCedulaProfesional = usuario != null ? usuario.CedulaProfesional : String.Empty,
+                           UsuarioCodigoRH = usuario != null ? usuario.CodigoRH : String.Empty,
+                           UsuarioCorreoElectronico = usuario != null ? usuario.CorreoElectronico : String.Empty,
+                           UsuarioCURP = usuario != null ? usuario.CURP : String.Empty,
+                           UsuarioDireccion = usuario != null ? usuario.Direccion : String.Empty,
+                           UsuarioDocumentosIdentidad = usuario != null ? usuario.DocumentosIdentidad : String.Empty,
+                           UsuarioEstadoCivil = usuario != null ? usuario.EstadoCivil : String.Empty,
+                           UsuarioFechaIngreso = usuario != null ? usuario.FechaIngreso.ToCustomShortDateString() : String.Empty,
+                           UsuarioFechaNacimiento = usuario != null ? usuario.FechaNacimiento.ToCustomShortDateString() : String.Empty,
+                           UsuarioNacionalidad = usuario != null ? usuario.Nacionalidad : String.Empty,
+                           UsuarioRFC = usuario != null ? usuario.RFC : String.Empty,
+                           UsuarioSexo = usuario != null ? usuario.Sexo : String.Empty,
+                           UsuarioTelefono = usuario != null ? usuario.Telefono : String.Empty
             };
         }
     }

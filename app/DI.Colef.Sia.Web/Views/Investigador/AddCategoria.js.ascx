@@ -12,9 +12,9 @@ var html = '
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#categoria_form').hide();
-$('#categoria_new').show();
-$('#categoria_form').html('');
+$('#categoriaForm').hide();
+$('#categoriaNew').show();
+$('#categoriaForm').html('');
 $('#categoriaList div:first').before(html);
 
 $('#categoria_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

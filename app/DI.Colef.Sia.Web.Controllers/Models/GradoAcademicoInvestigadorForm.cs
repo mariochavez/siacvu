@@ -4,11 +4,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public int Id { get; set; }
         public string Fecha { get; set; }
-        public string GradoAcademicoNombre { get; set; }
+
         public int GradoAcademico { get; set; }
-        public string Descripcion { get; set; }
-        public string AreaInvestigacion { get; set; }
-        public string Detalle { get; set; }
+        public string GradoAcademicoNombre { get; set; }
+
+        public string Programa { get; set; }
+        public string InstitucionNombre { get; set; }
+        public int InstitucionId { get; set; }
+        public int Pais { get; set; }
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

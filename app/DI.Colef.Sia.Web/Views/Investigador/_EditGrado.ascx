@@ -2,18 +2,18 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="gradoList" class="minilista">
-	<h5>Grado</h5>
+	<h5>Grado Académico</h5>
 	<% foreach(var grado in Model.GradosAcademicosInvestigador) { %>
         <div id="estado_<%=Html.Encode(grado.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(grado.GradoAcademicoNombre)%> <span><%=Html.Encode(grado.Fecha)%>, Area: <%=Html.Encode(grado.AreaInvestigacion)%></span></h6>
-    	    <span><%=Html.Encode(grado.Descripcion.Substring(0, grado.Descripcion.Length < 40 ? grado.Descripcion.Length : 40))%></span>
+    	    <h6><%=Html.Encode(grado.GradoAcademicoNombre)%> <span><%=Html.Encode(grado.Fecha)%></span></h6>
+    	    <span><%=Html.Encode(grado.InstitucionNombre)%>: <%=Html.Encode(grado.Programa.Substring(0, grado.Programa.Length < 40 ? grado.Programa.Length : 40))%></span>
         </div><!--end estadolista-->
     <% } %>
     
-    <div id="grado_new" class="minilistaboton">
+    <div id="gradoNew" class="minilistaboton">
 		<p><span><%=Html.ActionLink("+ Nuevo Grado", "NewGrado", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->
 
-<div id="grado_form" class="display:hidden;"></div>
+<div id="gradoForm" class="display:hidden;"></div>

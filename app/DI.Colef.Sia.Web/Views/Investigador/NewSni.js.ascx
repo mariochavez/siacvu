@@ -17,7 +17,7 @@ var html = '
     <% } %>
 ';
 
-$('#sni_form').html(html);
-$('#sni_new').hide();
-$('#sni_form').show();
+$('#sniForm').html(html);
+$('#sniNew').hide();
+$('#sniForm').show();
 DateTimePicker.setup();

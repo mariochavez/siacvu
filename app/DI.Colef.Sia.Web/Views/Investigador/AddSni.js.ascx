@@ -5,16 +5,17 @@
 
 var html = '
     <div id="sni_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><%=Html.Encode(Model.SNINombre) %> <span>De <%=Html.Encode(Model.FechaInicial) %> a <%=Html.Encode(Model.FechaFinal) %></span></h6>
+        <h6><%=Html.Encode(Model.SNINombre) %> <span> <%=Html.Encode(Model.Fecha) %></span></h6>
+        <span>Expediente <%=Html.Encode(Model.ExpedienteSNI) %></span>
     </div>
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#sni_form').hide();
-$('#sni_new').show();
-$('#sni_form').html('');
+$('#sniForm').hide();
+$('#sniNew').show();
+$('#sniForm').html('');
 $('#sniList div:first').before(html);
 
 $('#sni_' + <%=Html.Encode(Model.Id) %> + ':first').hide();

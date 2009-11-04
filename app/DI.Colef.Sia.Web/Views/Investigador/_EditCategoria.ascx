@@ -9,10 +9,10 @@
         </div><!--end estadolista-->
     <% } %>
     
-    <div id="categoria_new" class="minilistaboton">
+    <div id="categoriaNew" class="minilistaboton">
 		<p><span><%=Html.ActionLink("+ Nueva Categoria", "NewCategoria", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->
 
-<div id="categoria_form" class="display:hidden;"></div>
+<div id="categoriaForm" class="display:hidden;"></div>

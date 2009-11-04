@@ -1,4 +1,14 @@
-﻿jQuery.dynamicui = function(select, options) {
+﻿Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
+jQuery.dynamicui = function(select, options) {
     var me = this;
 
     // Create jQuery object for input element
@@ -14,18 +24,31 @@
 
     this.setup = setupFields;
 
+    function isArray(obj) {
+        return obj && !(obj.propertyIsEnumerable('length')) && typeof obj === 'object' && typeof obj.length === 'number';
+    }
+
     function setupFields() {
         if (options.data == null)
             return;
 
         if ($select.isDropDownList()) {
             for (var i = 0; i < options.data.length; i++) {
-                if ($select.isSelected(options.data[i][0])) {
-                    showFields(options.data[i][1]);
-                } else if (options.data[i][0] == '*' && !$select.isSelected('Seleccione ...')) {
-                    showFields(options.data[i][1]);
+                if (isArray(options.data[i][0])) {
+                    var value = $select.selectedText();
+                    if (options.data[i][0].contains(value) || (options.data[i][0].contains('*') && !$select.isSelected('Seleccione ...'))) {
+                        showFields(options.data[i][1]);
+                    } else {
+                        hideFields(options.data[i][1]);
+                    }
                 } else {
-                    hideFields(options.data[i][1]);
+                    if ($select.isSelected(options.data[i][0])) {
+                        showFields(options.data[i][1]);
+                    } else if (options.data[i][0] == '*' && !$select.isSelected('Seleccione ...')) {
+                        showFields(options.data[i][1]);
+                    } else {
+                        hideFields(options.data[i][1]);
+                    }
                 }
             }
         } else if ($select.isCheckBox()) {
@@ -48,9 +71,15 @@
         for (var i = 0; i < fields.length; i++) {
             var field = fields[i];
 
-            $(field).slideDown('fast', function() {
-                $(field).fadeIn('fast');
-            });
+            if (!$(field).is(':visible')) {
+                if ($(field).hasClass('noeffect')) {
+                    $(field).show();
+                } else {
+                    $(field).slideDown('fast', function() {
+                        $(field).fadeIn('fast');
+                    });
+                }
+            }
         }
     }
 
@@ -61,9 +90,15 @@
         for (var i = 0; i < fields.length; i++) {
             var field = fields[i];
 
-            $(field).slideUp('fast', function() {
-                $(field).fadeOut('fast');
-            });
+            if ($(field).is(':visible')) {
+                if ($(field).hasClass('noeffect')) {
+                    $(field).hide();
+                } else {
+                    $(field).slideUp('fast', function() {
+                        $(field).fadeOut('fast');
+                    });
+                }
+            }
         }
     }
 }
@@ -126,6 +161,42 @@ jQuery.fn.isDropDownList = function()
     }
 }
 
+jQuery.fn.isMultiSelectBox = function() {
+    ///     <summary>
+    ///     Determines if the element is a multi selection select box. 
+    ///     </summary>
+    ///     <returns type="Boolean" />
+    return (jQuery(this).formElementType() === "select-multiple");
+}
+
+jQuery.fn.isSelectBox = function() {
+    ///     <summary>
+    ///     Determines if the element is a single selection 2 or more rows select box.
+    ///     </summary>
+    ///     <returns type="Boolean" />
+
+    var type = jQuery(this).formElementType();
+    var size = (this).attr("size");
+
+    if (type !== "select-one") {
+        return false;
+    }
+    else {
+        if (typeof size === "undefined")
+            return false;
+        else
+            return (parseInt(size) > 1);
+    }
+}
+
+jQuery.fn.isRadioBox = function() {
+    ///     <summary>
+    ///     Determines if the element is a radiobox.
+    ///     </summary>
+    ///     <returns type="Boolean" />
+    return (jQuery(this).formElementType() === "radio");
+}
+
 /* Determines if the list of provided values are selected. The pre-condition for this is the element is a select box. 
    This performs an 'AND' search - all the values must be selected for the function to return true.
    Example: $("#element").isSelected("1","2");
@@ -158,6 +229,60 @@ jQuery.fn.isSelected = function() {
     }
 
     return result;
+}
+
+jQuery.fn.selectedItem = function(index) {
+    ///     <summary>
+    ///     Retrieves the Nth selected item from a radiobox or select box list. If N is greater than the number of selected items
+    /// then the last item is returned.
+    /// Example: $("#element").selectedItem(2); // the 3rd selected item.
+    ///     </summary>
+    ///     <param name="index" type="Number"> The selected index to retrieve, this is zero based. </param>
+    ///     <returns type="jQuery" />
+    var current = jQuery(this);
+    if (typeof index === "undefined" || isNaN(index))
+        index = 0;
+
+    if (current.isRadioBox()) {
+        var selected = jQuery("input[type='radio'][name='" + current.attr("name") + "'][checked]");
+        if (index > selected.length - 1)
+            index = selected.length - 1;
+        else if (index < 0)
+            index = 0;
+
+        if (selected.length > 0)
+            return jQuery(selected[index]);
+    }
+    else if (current.isSelectBox() || current.isMultiSelectBox() || current.isDropDownList()) {
+        var selected = jQuery("#" + current.attr("id") + " option:selected");
+        if (index > selected.length - 1)
+            index = selected.length - 1;
+        else if (index < 0)
+            index = 0;
+
+        if (selected.length > 0)
+            return jQuery(selected[index]);
+    }
+
+    return current; // is this the proper behaviour?
+}
+
+jQuery.fn.selectedValue = function() {
+    ///     <summary>
+    ///     Gets the value of the first selected item in a radiobox list or select box list.
+    ///     </summary>
+    ///     <returns type="String" />
+    var current = jQuery(this);
+    return current.selectedItem(0).val();
+}
+
+jQuery.fn.selectedText = function() {
+    ///     <summary>
+    ///     Gets the text of the first selected item in a select box list.
+    ///     </summary>
+    ///     <returns type="String" />
+    var current = jQuery(this);
+    return current.selectedItem(0).text();
 }
 
 jQuery.fn.elementExists = function() {

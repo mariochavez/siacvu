@@ -5,23 +5,26 @@
     <label>Cargo</label>
     <%=Html.DropDownList("CargoInvestigador.Cargo", Model.Cargos.CreateSelectList<CargoForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("CargoInvestigador.Cargo")%>
 </p>
 <p>
-    <label>Fecha</label>
-    <%=Html.TextBox("CargoInvestigador.Fecha", Model.CargoInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span>(Formato dd/mm/yyyy)</span>
-    <%=Html.ValidationMessage("CargoInvestigador.Fecha")%>
+    <label>Puesto</label>
+    <%=Html.DropDownList("CargoInvestigador.Puesto", Model.Puestos.CreateSelectList<PuestoForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("CargoInvestigador.Puesto")%>
 </p>
 <p>
     <label>Departamento</label>
     <%=Html.DropDownList("CargoInvestigador.Departamento", Model.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("CargoInvestigador.Departamento")%>
 </p>
 <p>
-    <label>Sede:</label>
-    <%=Html.DropDownList("CargoInvestigador.Sede", Model.Sedes.CreateSelectList<SedeForm>("Id", "Nombre"),
+    <label>Direcci&oacute;n regional:</label>
+    <%=Html.DropDownList("CargoInvestigador.DireccionRegional", Model.DireccionesRegionales.CreateSelectList<DireccionRegionalForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("CargoInvestigador.Sede")%>
+    <%=Html.ValidationMessage("CargoInvestigador.DireccionRegional")%>
 </p>

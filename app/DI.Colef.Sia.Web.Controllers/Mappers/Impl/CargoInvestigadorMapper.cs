@@ -2,7 +2,6 @@ using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
@@ -24,10 +23,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(CargoInvestigadorForm message, CargoInvestigador model)
         {
-            model.Fecha = message.Fecha.FromShortDateToDateTime();
             model.Cargo = catalogoService.GetCargoById(message.Cargo);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
-            model.Sede = catalogoService.GetSedeById(message.Sede);
+            model.Puesto = catalogoService.GetPuestoById(message.Puesto);
+            model.DireccionRegional = catalogoService.GetDireccionRegionalById(message.DireccionRegional);
+            if (model.DireccionRegional != null)
+                model.Sede = model.DireccionRegional.Sede;
 
             if (model.IsTransient())
             {

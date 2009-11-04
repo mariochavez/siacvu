@@ -5,14 +5,15 @@
 	<h5>SNI</h5>
 	<% foreach(var sni in Model.SNIsInvestigador) { %>
         <div id="estado_<%=Html.Encode(sni.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(sni.SNINombre)%> <span>De <%=Html.Encode(sni.FechaInicial) %> a <%=Html.Encode(sni.FechaFinal) %></span></h6>
+    	    <h6><%=Html.Encode(sni.SNINombre)%> <span>De <%=Html.Encode(sni.Fecha) %> </span></h6>
+    	    <span>Expediente <%=Html.Encode(sni.ExpedienteSNI) %></span>
         </div><!--end estadolista-->
     <% } %>
     
-    <div id="sni_new" class="minilistaboton">
+    <div id="sniNew" class="minilistaboton">
 		<p><span><%=Html.ActionLink("+ Nuevo SNI", "NewSNI", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->
 
-<div id="sni_form" class="display:hidden;"></div>
+<div id="sniForm" class="display:hidden;"></div>

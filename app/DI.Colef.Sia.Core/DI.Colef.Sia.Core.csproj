@@ -104,6 +104,7 @@
     <Compile Include="Dependencia.cs" />
     <Compile Include="Dictamen.cs" />
     <Compile Include="Diplomado.cs" />
+    <Compile Include="DireccionRegional.cs" />
     <Compile Include="DirigidoA.cs" />
     <Compile Include="Disciplina.cs" />
     <Compile Include="Distincion.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
     <Compile Include="NHibernateValidator\CapituloValidator.cs" />
+    <Compile Include="NHibernateValidator\EstadoInvestigadorValidator.cs" />
     <Compile Include="NHibernateValidator\FormacionAcademicaValidator.cs" />
     <Compile Include="NHibernateValidator\CursoValidator.cs" />
     <Compile Include="NHibernateValidator\DictamenValidator.cs" />

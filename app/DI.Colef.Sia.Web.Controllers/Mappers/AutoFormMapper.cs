@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
+using DecisionesInteligentes.Colef.Sia.Core;
 using SharpArch.Core.DomainModel;
 using SharpArch.Core.PersistenceSupport;
 
@@ -11,6 +14,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         public override K Map<T, K>(T model)
         {
             return Mapper.Map<T, K>(model);
+        }
+
+        public T GetLatest<T>(IList<T> objects) where T: IBaseEntity
+        {
+            var entity = (from o in objects
+                          orderby o.CreadorEl descending
+                          select o).FirstOrDefault();
+
+            return entity;
         }
     }
 }
