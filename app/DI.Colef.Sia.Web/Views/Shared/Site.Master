@@ -115,7 +115,9 @@
 						</tbody>
 					</table>	
 				</div>
-				<li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>			
+				<% if(Page.User.IsInRole("Dgaa")) { %>
+				    <li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
+				<% } %>		
 			</ul>
 		</div><!--end menu-->	
 			

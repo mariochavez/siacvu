@@ -5,55 +5,55 @@
 
 <p>
     <label>Direcci&oacute;n</label>
-    <span id="direccion"><%=Html.Encode(Model.UsuarioDireccion) %>&nbsp;</span>
+    <span id="direccion" class="valor"><%=Html.Encode(Model.UsuarioDireccion) %>&nbsp;</span>
 </p> 
 <p>
     <label>Tel&eacute;fono</label>
-    <span id="telefono"><%=Html.Encode(Model.UsuarioTelefono) %>&nbsp;</span>
+    <span id="telefono" class="valor"><%=Html.Encode(Model.UsuarioTelefono) %>&nbsp;</span>
 </p>
 <p>
     <label>Correo electr&oacute;nico</label>
-    <span id="correoelectronico"><%=Html.Encode(Model.UsuarioCorreoElectronico) %>&nbsp;</span>
+    <span id="correoelectronico" class="valor"><%=Html.Encode(Model.UsuarioCorreoElectronico) %>&nbsp;</span>
 </p>
 <p>
     <label>Estado civil</label>
-    <span id="estadocivil">&nbsp;</span>
+    <span id="estadocivil" class="valor"><%=Html.Encode(Model.UsuarioEstadoCivil) %>&nbsp;</span>
 </p>
 <p>
     <label>Fecha de nacimiento</label>
-    <span id="fechanacimiento"><%=Html.Encode(Model.UsuarioFechaNacimiento) %>&nbsp;</span>
+    <span id="fechanacimiento" class="valor"><%=Html.Encode(Model.UsuarioFechaNacimiento) %>&nbsp;</span>
     <span>(Formato dd/mm/yyyy)</span>
 </p>
 <p>
     <label>Documentos de identidad</label>
-    <span id="documentosidentidad">&nbsp;</span>
+    <span id="documentosidentidad" class="valor"><%=Html.Encode(Model.UsuarioDocumentosIdentidad) %>&nbsp;</span>
 </p>
 <p>
     <label>CURP</label>
-    <span id="curp">&nbsp;</span>
+    <span id="curp" class="valor"><%=Html.Encode(Model.UsuarioCURP) %>&nbsp;</span>
 </p>
 <p>
     <label>RFC</label>
-    <span id="rfc">&nbsp;</span>
+    <span id="rfc" class="valor"><%=Html.Encode(Model.UsuarioRFC) %>&nbsp;</span>
 </p>
 <p>
     <label>Sexo</label>
-    <span id="sexo"><%=Html.Encode(HumanizeHelper.Sexo(Model.UsuarioSexo)) %>&nbsp;</span>
+    <span id="sexo" class="valor"><%=Html.Encode(HumanizeHelper.Sexo(Model.UsuarioSexo)) %>&nbsp;</span>
 </p>
 <p>
     <label>Nacionalidad</label>
-    <span id="nacionalidad">&nbsp;</span>
+    <span id="nacionalidad" class="valor"><%=Html.Encode(Model.UsuarioNacionalidad) %>&nbsp;</span>
 </p>	
 <p>
     <label>Fecha de ingreso</label>
-    <span id="fechaingreso"><%=Html.Encode(Model.UsuarioFechaIngreso) %>&nbsp;</span>
+    <span id="fechaingreso" class="valor"><%=Html.Encode(Model.UsuarioFechaIngreso) %>&nbsp;</span>
     <span>(Formato dd/mm/yyyy)</span>
 </p>
 <p>
-    <label>N&uacute;n. de c&eacute;dula profesional</label>
-    <span id="cedulaprofesional">&nbsp;</span>
+    <label>N&uacute;m. de c&eacute;dula profesional</label>
+    <span id="cedulaprofesional" class="valor"><%=Html.Encode(Model.UsuarioCedulaProfesional) %>&nbsp;</span>
 </p>	         
 <p>
     <label>C&oacute;digo RH</label>
-    <span id="codigorh">&nbsp;</span>
+    <span id="codigorh" class="valor"><%=Html.Encode(Model.UsuarioCodigoRH) %>&nbsp;</span>
 </p>	

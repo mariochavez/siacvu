@@ -32,14 +32,12 @@
         <% Html.RenderPartial("_Message"); %>
 	    <div id="forma">
 	    
-            <% using (Html.BeginForm("Update", "Investigador")) { %>
-                <%=Html.AntiForgeryToken() %>
-                <%=Html.Hidden("Id", Model.Form.Id) %>
+            <div id="campos">
 
                 <h4>Informaci&oacute;n personal</h4>
 		        <p>
 			        <label>Usuario</label>
-			        <%=Html.Encode(Model.Form.Nombre) %>
+			        <span class="valor"><%=Html.Encode(Model.Form.Nombre) %></span>
 		        </p>
 		        
 		        <% Html.RenderPartial("_InformacionPersonal", Model.Form); %>
@@ -47,50 +45,48 @@
 		        <h4>Perfil ac&aacute;demico del investigador</h4>
 		        <p>
 			        <label>Ingreso  como investigador</label>
-			        <%=Html.TextBox("FechaIngreso", Model.Form.FechaIngreso, new { @class="datetime input100-requerido", maxlength = 10 })%>
+			        <span class="valor"><%=Html.Encode(Model.Form.FechaIngreso) %></span>
 			        <span>(Formato dd/mm/yyyy)</span>
-			        <%=Html.ValidationMessage("FechaIngreso")%>
 		        </p>
 	            <p>
 		            <label>Fecha de contrato</label>
-		            <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %></span>
 		            <span>(Formato dd/mm/yyyy)</span>
-		            <%=Html.ValidationMessage("FechaContrato")%>
 	            </p>
 	            
 	            <h4>Grados</h4>
-			    <% Html.RenderPartial("_EditGrado", Model.Form); %>
+			    <% Html.RenderPartial("_ShowGrado", Model.Form); %>
 	            
 	            <h4>Perfil ac&aacute;demico del investigador</h4> 		        
                 <p>
                     <label>Expediente producci&oacute;n</label>
-                    <%=Html.TextBox("ExpedienteProduccion", Model.Form.ExpedienteProduccion, new { @class = "input250", maxlength = 40 })%>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteProduccion)%></span>
                 </p> 
                 <p>
                     <label>Expediente acad&eacute;mico</label>
-                    <%=Html.TextBox("ExpedienteAcademico", Model.Form.ExpedienteAcademico, new { @class = "input250", maxlength = 40 })%>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteAcademico)%></span>
                 </p>                         
                 <p>
                     <label>Clave CVU</label>
-                    <%=Html.TextBox("ClaveCVU", Model.Form.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
+                    <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%></span>
                 </p>
 		        <h4>Estatus</h4>
-			    <% Html.RenderPartial("_EditEstado", Model.Form); %>
+			    <% Html.RenderPartial("_ShowEstado", Model.Form); %>
 		        
 		        <h4>Cargos</h4>
-			    <% Html.RenderPartial("_EditCargo", Model.Form); %>
+			    <% Html.RenderPartial("_ShowCargo", Model.Form); %>
 			    
 		        <h4>Categor&iacute;as</h4>
-			    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
+			    <% Html.RenderPartial("_ShowCategoria", Model.Form); %>
 		        
 		        <h4>Sistema nacional de investigadores (SNI)</h4>
-			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
+			    <% Html.RenderPartial("_ShowSni", Model.Form); %>                                  
 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
+                    <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
                 </p>
                             
-            <% } %>
+            </div><!--end campos-->
             
 	    </div><!--end forma-->	
     		

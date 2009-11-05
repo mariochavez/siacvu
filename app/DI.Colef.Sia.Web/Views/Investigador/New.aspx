@@ -74,7 +74,7 @@
                     <h4>Cargos</h4>
                     <% Html.RenderPartial("_NewCargo", Model.Form); %>
                     
-                    <h4>Categorias</h4>
+                    <h4>Categor&iacute;as</h4>
                     <% Html.RenderPartial("_NewCategoria", Model.Form); %>
                     
                     <h4>Sistema nacional de investigadores (SNI)</h4>

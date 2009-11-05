@@ -670,8 +670,9 @@ a.editabusqueda {
 }
 
 #forma span.valor {
-    color:#000000;
+    color:#555555;
     margin: 0 1px;
+    font-weight:bold;
 }
 
 #forma span.field-validation-error {

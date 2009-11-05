@@ -52,9 +52,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return usuarioQuerying.FindUsuariosToBeInvestigador();
         }
 
-        public Investigador[] GetActiveInvestigadores(Usuario usuario)
+        public Investigador GetInvestigadorByUsuario(string usuarioNombre)
         {
-            return investigadorQuerying.GetActiveInvestigadores(usuario);
+            return investigadorQuerying.FindInvestigadorByUsuario(usuarioNombre);
         }
     }
 }

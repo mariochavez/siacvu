@@ -76,6 +76,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToAction("Edit", new { id = id });
         }
 
+        protected ActionResult NotAuthorized()
+        {
+            return RedirectToIndex("No tiene autorización para ver la página solicitada.");
+        }
+
         protected ViewResult ViewEdit()
         {
             return View("Edit");

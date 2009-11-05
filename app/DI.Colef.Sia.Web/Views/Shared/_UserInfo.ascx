@@ -5,6 +5,6 @@
         <%=Html.ActionLinkForAreas<FormacionAcademicaController>(x => x.Index(), "Formaci&oacute;n acad&eacute;mica")%> / 
         <%=Html.ActionLinkForAreas<ExperienciaProfesionalController>(x => x.Index(), "Experiencia profesional") %> / 
         <%=Html.ActionLinkForAreas<ApoyoConacytController>(x => x.Index(), "Apoyo CONACYT") %> / 
-        <a title="Perfil" href="#">Perfil</a> / <%=Html.ActionLink("Cerrar Sesión", "Destroy", "Session")%>
+        <%=Html.ActionLink("Perfil", "Perfil", "Investigador")%> / <%=Html.ActionLink("Cerrar Sesión", "Destroy", "Session")%>
     </p>
 </div><!--end usuario-->

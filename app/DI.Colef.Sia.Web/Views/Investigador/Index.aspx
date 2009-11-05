@@ -61,14 +61,10 @@
     				
 			        <div class="elementobotones">
 				        <p>
-				            <span><%=Html.ActionLink<InvestigadorController>(x => x.Edit(investigador.Id), "Editar")%></span> 
-				            <span>
-				                <% if (investigador.Activo) { %>
-                                    <%=Html.ActionLink("Desactivar", "Deactivate", new { id = investigador.Id }, new { @class = "remote put" })%>
-                                <% } else { %>
-                                    <%=Html.ActionLink("Activar", "Activate", new { id = investigador.Id }, new { @class = "remote put" })%>
-                                <% } %>
-				            </span>
+				            <% if(User.IsInRole("Dgaa") || User.Identity.Name == investigador.UsuarioNombre) { %>
+				                <span><%=Html.ActionLink<InvestigadorController>(x => x.Edit(investigador.Id), "Editar")%></span> 
+				                <span><%=Html.ActionLink("Ver", "Show", new { id = investigador.Id })%></span>
+				            <% } %>
 				        </p>
 			        </div><!--end elementobotones-->	
     				

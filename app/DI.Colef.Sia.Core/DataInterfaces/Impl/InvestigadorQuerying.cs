@@ -27,20 +27,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return investigadorList.Count == 0 ? null : investigadorList[0];
         }
 
-        public Investigador[] GetActiveInvestigadores(Usuario usuario)
+        public Investigador FindInvestigadorByUsuario(string usuarioNombre)
         {
-            var investigadores = DetachedCriteria.For(typeof (Investigador))
+            var investigador = Session.CreateCriteria(typeof(Investigador))
                 .CreateAlias("Usuario", "u")
-                .SetProjection(Projections.ProjectionList()
-                                   .Add(Projections.Property("u.Id"), "UsuarioId"));
+                .Add(Expression.Eq("u.UsuarioNombre", usuarioNombre))
+                .UniqueResult();
 
-            var investigadorList = Session.CreateCriteria(typeof(Investigador))
-                .CreateAlias("Usuario", "u")
-                .Add(Expression.Eq("u.Activo", true))
-                .Add(Subqueries.Ne(usuario.Id, investigadores))
-                .List<Investigador>();
-
-            return ((List<Investigador>) investigadorList).ToArray();
+            return investigador as Investigador;
         }
     }
 }

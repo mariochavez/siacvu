@@ -69,6 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.direccionRegionalMapper = direccionRegionalMapper;
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
@@ -80,6 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -91,6 +93,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -106,9 +109,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
+            if(!User.IsInRole("Dgaa") && CurrentUser().Id != id)
+                return NotAuthorized();
+
             var data = CreateViewDataWithTitle(Title.Show);
 
             var investigador = investigadorService.GetInvestigadorById(id);
@@ -118,6 +125,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        [ActionName("Perfil")]
+        public ActionResult Show()
+        {
+            var data = CreateViewDataWithTitle(Title.Show);
+
+            var investigador = investigadorService.GetInvestigadorByUsuario(User.Identity.Name);
+            data.Form = investigadorMapper.Map(investigador);
+
+            ViewData.Model = data;
+            return View("Show");
+        }
+
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -139,6 +161,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                  investigador.Usuario.ApellidoMaterno));
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -156,6 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                  investigador.Usuario.ApellidoMaterno));
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -169,6 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs(form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)
@@ -182,6 +207,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Activate", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeUser(int select)
         {
@@ -191,6 +217,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeUser", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEstado(int id)
         {
@@ -205,6 +232,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewEstado", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEstado([Bind(Prefix = "EstadoInvestigador")] EstadoInvestigadorForm form,
@@ -230,6 +258,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddEstado", estadoInvestigadorForm);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewGrado(int id)
         {
@@ -248,6 +277,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewGrado", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddGrado([Bind(Prefix = "GradoAcademicoInvestigador")] GradoAcademicoInvestigadorForm form,
@@ -273,6 +303,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddGrado", gradoAcademicoInvestigadorForm);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCategoria(int id)
         {
@@ -287,6 +318,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewCategoria", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCategoria([Bind(Prefix = "CategoriaInvestigador")] CategoriaInvestigadorForm form,
@@ -312,6 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddCategoria", categoriaInvestigadorForm);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCargo(int id)
         {
@@ -330,6 +363,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewCargo", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCargo([Bind(Prefix = "CargoInvestigador")] CargoInvestigadorForm form, int investigadorId)
@@ -354,6 +388,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddCargo", cargoInvestigadorForm);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewSni(int id)
         {
@@ -368,6 +403,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewSni", form);
         }
 
+        [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddSni([Bind(Prefix = "SNIInvestigador")] SNIInvestigadorForm form, int investigadorId)
@@ -392,6 +428,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("AddSni", sniInvestigadorForm);
         }
 
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {

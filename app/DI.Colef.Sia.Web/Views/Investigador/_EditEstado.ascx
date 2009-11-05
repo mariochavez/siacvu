@@ -5,7 +5,8 @@
 	<h5>Estatus</h5>
 	<% foreach(var estado in Model.EstadosInvestigador) { %>
         <div id="estado_<%=Html.Encode(estado.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(estado.EstadoNombre) %> <span><%=Html.Encode(estado.FechaInicial) %></span></h6>
+            <h6><a href="<%=Url.Action("DeleteEstado", null, new{id = estado.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+    	    <%=Html.Encode(estado.EstadoNombre) %> <span><%=Html.Encode(estado.FechaInicial) %></span></h6>
         </div><!--end estadolista-->
     <% } %>
     

@@ -11,6 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         // Querying
         Usuario[] FindUsuariosToBeInvestigador();
-        Investigador[] GetActiveInvestigadores(Usuario usuario);
+        Investigador GetInvestigadorByUsuario(string usuarioNombre);
     }
 }

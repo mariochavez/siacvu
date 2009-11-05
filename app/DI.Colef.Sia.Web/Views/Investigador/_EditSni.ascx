@@ -5,7 +5,8 @@
 	<h5>SNI</h5>
 	<% foreach(var sni in Model.SNIsInvestigador) { %>
         <div id="estado_<%=Html.Encode(sni.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(sni.SNINombre)%> <span>De <%=Html.Encode(sni.Fecha) %> </span></h6>
+            <h6><a href="<%=Url.Action("DeleteSni", null, new{id = sni.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+    	    <%=Html.Encode(sni.SNINombre)%> <span>De <%=Html.Encode(sni.Fecha) %> </span></h6>
     	    <span>Expediente <%=Html.Encode(sni.ExpedienteSNI) %></span>
         </div><!--end estadolista-->
     <% } %>
