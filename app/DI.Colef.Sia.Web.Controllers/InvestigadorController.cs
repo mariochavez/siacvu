@@ -127,12 +127,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        [ActionName("Perfil")]
-        public ActionResult Show()
+        public ActionResult Perfil()
         {
+            var investigador = CurrentInvestigador();
+            if (investigador == null)
+                return NoInvestigadorProfile();
+
             var data = CreateViewDataWithTitle(Title.Show);
 
-            var investigador = investigadorService.GetInvestigadorByUsuario(User.Identity.Name);
             data.Form = investigadorMapper.Map(investigador);
 
             ViewData.Model = data;

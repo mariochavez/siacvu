@@ -622,6 +622,11 @@
     <Content Include="Views\IdiomasInvestigador\Show.aspx" />
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
+    <Content Include="Views\Investigador\_ShowSni.ascx" />
+    <Content Include="Views\Investigador\_ShowCategoria.ascx" />
+    <Content Include="Views\Investigador\_ShowCargo.ascx" />
+    <Content Include="Views\Investigador\_ShowEstado.ascx" />
+    <Content Include="Views\Investigador\_ShowGrado.ascx" />
     <Content Include="Views\Investigador\Show.aspx" />
     <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />

@@ -81,6 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex("No tiene autorización para ver la página solicitada.");
         }
 
+        protected ActionResult NoInvestigadorProfile()
+        {
+            return NoInvestigadorProfile(String.Empty);
+        }
+
+        protected ActionResult NoInvestigadorProfile(string message)
+        {
+            return RedirectToIndex("No existe perfil de investigador definido para éste usuario. " + message);
+        }
+
         protected ViewResult ViewEdit()
         {
             return View("Edit");
