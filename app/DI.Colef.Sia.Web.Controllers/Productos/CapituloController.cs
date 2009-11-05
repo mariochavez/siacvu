@@ -94,7 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult New()
         {
             if (CurrentInvestigador() == null)
-                return RedirectToIndex("No existe perfil de investigador definido para éste usuario, por tal motivo no puede crear nuevos productos.");
+                return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
