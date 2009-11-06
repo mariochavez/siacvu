@@ -27,6 +27,25 @@ namespace Tests.DI.Colef.Sia.Data
             };
     }
 
+    [Subject(typeof(InvestigadorQuerying))]
+    public class InvestigadorQueryingTests : ConnectionSetup
+    {
+        static IInvestigadorQuerying investigadorQuerying;
+        static Investigador[] investigadores;
+
+        Because of = () =>
+        {
+            investigadorQuerying = new InvestigadorQuerying();
+            //investigadores = investigadorQuerying.FindUsuariosToBeInvestigador();
+        };
+
+        It should_found_one_user = () =>
+        {
+            investigadores.ShouldNotBeEmpty();
+            investigadores.Length.ShouldBeGreaterThan(1);
+        };
+    }
+
     [Subject("ConnectionSetup")]
     public class ConnectionSetup
     {

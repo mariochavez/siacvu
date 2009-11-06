@@ -29,6 +29,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ParseResult(results);
         }
 
+        public string SearchInvestigador(string value, Investigador investigador)
+        {
+            var results = searchQuerying.SearchInvestigador(value, investigador);
+            return ParseResult(results);
+        }
+
         public string SearchMovilidadAcademica(string value)
         {
             var results = searchQuerying.SearchMovilidadAcademica(value);

@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoArticuloMapper tipoArticuloMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
+        readonly IInvestigadorMapper investigadorMapper;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -30,7 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IIdiomaMapper idiomaMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, ISearchService searchService,
                                   ITipoArchivoMapper tipoArchivoMapper,
-                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection)
+                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
+                                  IInvestigadorMapper investigadorMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -43,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoArchivoMapper = tipoArchivoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.customCollection = customCollection;
+            this.investigadorMapper = investigadorMapper;
         }
 
         [Authorize]
