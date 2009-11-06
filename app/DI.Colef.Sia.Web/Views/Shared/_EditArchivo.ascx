@@ -20,7 +20,7 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="archivoEmptyListForm">
-            <h6><span>No hay archivos adjuntados</span></h6>
+            <h6><span>No hay archivos adjuntos</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 	
