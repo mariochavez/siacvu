@@ -304,21 +304,18 @@ insert into Generos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Ambitos values('Internacional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Binacional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Ambitos values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Nacional/Federal',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Regional',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Ambitos values('Estatal',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Ambitos values('Local',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Ambitos values('Local/Municipal',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoOrganos values('Comisión',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Comité',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Consejo',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Junta',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Subcomité',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Consorsio',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Red',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Grupo',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comité de Evaluación (CONACyT)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Consejo Editorial',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comités Evaluadores (Premios)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Consejos (Consultivos)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comisiones',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Comités (Sub-Comités)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoOrganos values('Grupos de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoPresentaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoPresentaciones values('Presentación de resultados de investigación',GETDATE(), GETDATE(), 1, 1, 1);
@@ -389,6 +386,11 @@ insert into Sectores values('Académico interinstitucional', 2,GETDATE(), GETDATE
 insert into Sectores values('Fundaciones', 2,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Sociedad Civil Organizada', 2,GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sectores values('Privado', 2,GETDATE(), GETDATE(), 1, 1, 1);
+--Sector Organo Externo = 3
+insert into Sectores values('Académico (Educación Superior)', 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gubernamental/Público', 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Social', 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Privado', 3,GETDATE(), GETDATE(), 1, 1, 1);
 
 --Sector 3=Insituciones del Sector entidades paraestatales
 insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
@@ -2423,12 +2425,6 @@ insert into SubprogramaConacyts values('Cátedras patrimoniales', GETDATE(), GETD
 insert into SubprogramaConacyts values('Repatriación/Consolidación', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo ciencia básica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo mixto', GETDATE(), GETDATE(), 1, 1, 1)
-
-insert into TipoParticipacionOrganos values('Miembro',GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoParticipacionOrganos values('Asesor',GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoParticipacionOrganos values('Evaluador',GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoParticipacionOrganos values('Jurado',GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoParticipacionOrganos values('Otro',GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstatusProyectos values('Vigente', GETDATE(), GETDATE(), 1, 1, 1)
 insert into EstatusProyectos values('Terminado', GETDATE(), GETDATE(), 1, 1, 1)

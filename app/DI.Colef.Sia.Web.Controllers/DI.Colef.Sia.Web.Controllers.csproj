@@ -115,7 +115,6 @@
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
     <Compile Include="Catalogos\TipoInstitucionController.cs" />
-    <Compile Include="Catalogos\TipoParticipacionOrganoController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
@@ -210,7 +209,6 @@
     <Compile Include="Mappers\Impl\ResponsableInternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\SubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\Impl\TipoApoyoMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoParticipacionOrganoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
     <Compile Include="Mappers\IParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
@@ -227,7 +225,6 @@
     <Compile Include="Mappers\IProductoAcademicoMapper.cs" />
     <Compile Include="Mappers\ISubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\ITipoApoyoMapper.cs" />
-    <Compile Include="Mappers\ITipoParticipacionOrganoMapper.cs" />
     <Compile Include="Mappers\ITipoResenaMapper.cs" />
     <Compile Include="Mappers\IUSEGMapper.cs" />
     <Compile Include="Models\ActividadPrevistaForm.cs" />
@@ -256,7 +253,6 @@
     <Compile Include="Models\ProductoAcademicoForm.cs" />
     <Compile Include="Models\SubprogramaConacytForm.cs" />
     <Compile Include="Models\TipoApoyoForm.cs" />
-    <Compile Include="Models\TipoParticipacionOrganoForm.cs" />
     <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Models\USEGForm.cs" />
     <Compile Include="ParticipacionAcademiaController.cs" />

@@ -11,7 +11,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [OrganoExternoValidator]
     public class OrganoExterno : Entity, IBaseEntity
     {
-
         const int tipoProducto = 8; // 8 Representa Organo Externo
 
         public OrganoExterno()
@@ -48,32 +47,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaOrganoExterno> FirmaOrganoExternos { get; private set; }
 
-        [DomainSignature]
-        [NotNullNotEmpty]
-        public virtual string Nombre { get; set; }
-
-        public virtual string Siglas { get; set; }
-
-        public virtual TipoOrgano TipoOrgano { get; set; }
-
-        public virtual TipoParticipacionOrgano TipoParticipacion { get; set; }
-
-        public virtual Sector Sector { get; set; }
-
-        public virtual Nivel Nivel { get; set; }
-
-        public virtual Ambito Ambito { get; set; }
-
-        public virtual DateTime FechaInicial { get; set; }
-
-        public virtual DateTime FechaFinal { get; set; }
-
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
+
+        [DomainSignature]
+        [NotNullNotEmpty]
+        public virtual string Nombre { get; set; }
+
+        public virtual string Participacion { get; set; }
+
+        public virtual DateTime FechaInicial { get; set; }
+
+        public virtual DateTime FechaFinal { get; set; }
+        
+        public virtual string Siglas { get; set; }
+
+        public virtual TipoOrgano TipoOrgano { get; set; }
+
+        public virtual Sector Sector { get; set; }
+
+        public virtual Ambito Ambito { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

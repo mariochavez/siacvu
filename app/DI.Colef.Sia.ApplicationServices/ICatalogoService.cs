@@ -175,6 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveSector(Sector sector);
         Sector[] GetActiveSectoresEconomicos();
         Sector[] GetActiveSectoresFinanciamientos();
+        Sector[] GetActiveSectoresOrganosExternos();
 
         //Nivel
         Nivel GetNivelById(int id);
@@ -397,13 +398,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Coordinacion[] GetAllCoordinacions();
         Coordinacion[] GetActiveCoordinacions();
         void SaveCoordinacion(Coordinacion coordinacion);
-
-        //Tipo de Participacion en Organos
-        TipoParticipacionOrgano GetTipoParticipacionOrganoById(int id);
-        TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos();
-        TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos();
-        void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano);
-
+        
         //Estatus de Formacion Academica
         EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id);
         EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas();

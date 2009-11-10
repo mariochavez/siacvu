@@ -455,11 +455,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoOrgano,
                            o => o.Ignore())
-                .ForMember(d => d.TipoParticipacion,
-                           o => o.Ignore())
                 .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel,
                            o => o.Ignore())
                 .ForMember(d => d.Ambito,
                            o => o.Ignore());
@@ -955,9 +951,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<Coordinacion, CoordinacionForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoParticipacionOrgano, TipoParticipacionOrganoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<EstatusFormacionAcademica, EstatusFormacionAcademicaForm>()

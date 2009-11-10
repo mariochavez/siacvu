@@ -232,7 +232,6 @@
     <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
-    <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />

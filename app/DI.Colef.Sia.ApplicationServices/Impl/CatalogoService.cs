@@ -79,7 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
         readonly IRepository<TipoInstitucion> tipoInstitucionRepository;
         readonly IRepository<TipoOrgano> tipoOrganoRepository;
-        readonly IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
@@ -144,7 +143,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<ImpactoPoliticaPublica> impactoPoliticaPublicaRepository,
                                IRepository<ActividadPrevista> actividadPrevistaRepository,
                                IRepository<Clase> claseRepository,
-                               IRepository<TipoParticipacionOrgano> tipoParticipacionOrganoRepository,
                                IRepository<Coordinacion> coordinacionRepository,
                                IRepository<EstatusProyecto> estatusProyectoRepository,
                                IRepository<FondoConacyt> fondoConacytRepository,
@@ -157,7 +155,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
             this.cargoRepository = cargoRepository;
-            this.tipoParticipacionOrganoRepository = tipoParticipacionOrganoRepository;
             this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
             this.monedaRepository = monedaRepository;
             this.productoAcademicoRepository = productoAcademicoRepository;
@@ -1062,6 +1059,16 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 .List<Sector>();
 
             return ((List<Sector>) sectorList).ToArray();
+        }
+
+        public Sector[] GetActiveSectoresOrganosExternos()
+        {
+            var sectorList = Session.CreateCriteria(typeof(Sector))
+                .Add(Expression.Eq("TipoSector", 3))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<Sector>();
+
+            return ((List<Sector>)sectorList).ToArray();
         }
 
         public Nivel GetNivelById(int id)
@@ -2037,34 +2044,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             coordinacion.ModificadoEl = DateTime.Now;
 
             coordinacionRepository.SaveOrUpdate(coordinacion);
-        }
-
-        public TipoParticipacionOrgano GetTipoParticipacionOrganoById(int id)
-        {
-            return tipoParticipacionOrganoRepository.Get(id);
-        }
-
-        public TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos()
-        {
-            return ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos()
-        {
-            return
-                ((List<TipoParticipacionOrgano>) OrderCatalog<TipoParticipacionOrgano>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano)
-        {
-            if (tipoParticipacionOrgano.Id == 0)
-            {
-                tipoParticipacionOrgano.Activo = true;
-                tipoParticipacionOrgano.CreadorEl = DateTime.Now;
-            }
-            tipoParticipacionOrgano.ModificadoEl = DateTime.Now;
-
-            tipoParticipacionOrganoRepository.SaveOrUpdate(tipoParticipacionOrgano);
         }
 
         public EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id)

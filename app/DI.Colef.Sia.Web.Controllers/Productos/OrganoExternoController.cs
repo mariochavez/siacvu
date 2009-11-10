@@ -13,29 +13,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
         readonly IAmbitoMapper ambitoMapper;
         readonly ICatalogoService catalogoService;
-        readonly INivelMapper nivelMapper;
         readonly IOrganoExternoMapper organoExternoMapper;
         readonly IOrganoExternoService organoExternoService;
         readonly ISectorMapper sectorMapper;
         readonly ITipoOrganoMapper tipoOrganoMapper;
-        readonly ITipoParticipacionOrganoMapper tipoParticipacionOrganoMapper;
-
+        
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
-                                       ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                       ICatalogoService catalogoService,
+                                       IUsuarioService usuarioService,
                                        ITipoOrganoMapper tipoOrganoMapper,
-                                       ITipoParticipacionOrganoMapper tipoParticipacionOrganoMapper, ISectorMapper sectorMapper,
-                                       INivelMapper nivelMapper,
-                                       IAmbitoMapper ambitoMapper, ISearchService searchService)
+                                       ISectorMapper sectorMapper,
+                                       IAmbitoMapper ambitoMapper,
+                                       ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.organoExternoService = organoExternoService;
             this.organoExternoMapper = organoExternoMapper;
             this.tipoOrganoMapper = tipoOrganoMapper;
-            this.tipoParticipacionOrganoMapper = tipoParticipacionOrganoMapper;
             this.sectorMapper = sectorMapper;
-            this.nivelMapper = nivelMapper;
             this.ambitoMapper = ambitoMapper;
         }
 
@@ -144,44 +141,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Órgano Externo {0} ha sido modificado", organoExterno.Nombre));
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var organoExterno = organoExternoService.GetOrganoExternoById(id);
-
-            if (organoExterno.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            organoExterno.Activo = true;
-            organoExterno.ModificadoPor = CurrentUser();
-            organoExternoService.SaveOrganoExterno(organoExterno);
-
-            var form = organoExternoMapper.Map(organoExterno);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var organoExterno = organoExternoService.GetOrganoExternoById(id);
-
-            if (organoExterno.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            organoExterno.Activo = false;
-            organoExterno.ModificadoPor = CurrentUser();
-            organoExternoService.SaveOrganoExterno(organoExterno);
-
-            var form = organoExternoMapper.Map(organoExterno);
-
-            return Rjs("Activate", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -200,9 +159,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new OrganoExternoForm();
 
             form.TiposOrganos = tipoOrganoMapper.Map(catalogoService.GetActiveTipoOrganos());
-            form.TiposParticipaciones = tipoParticipacionOrganoMapper.Map(catalogoService.GetActiveTipoParticipacionOrganos());
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectoresOrganosExternos());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
 
             return form;
@@ -211,9 +168,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(OrganoExternoForm form)
         {
             ViewData["TipoOrgano"] = form.TipoOrganoId;
-            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["Sector"] = form.SectorId;
-            ViewData["Nivel"] = form.NivelId;
             ViewData["Ambito"] = form.AmbitoId;
         }
     }
