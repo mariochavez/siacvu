@@ -114,7 +114,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capitulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (capitulo.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                   capitulo.CoautorInternoCapitulos.Where(
+                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (capitulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var capituloForm = capituloMapper.Map(capitulo);

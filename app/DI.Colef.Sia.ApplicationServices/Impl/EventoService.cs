@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,10 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class EventoService : IEventoService
     {
         readonly IRepository<Evento> eventoRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public EventoService(IRepository<Evento> eventoRepository)
+        public EventoService(IRepository<Evento> eventoRepository, IProductoQuerying productoQuerying)
         {
             this.eventoRepository = eventoRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Evento GetEventoById(int id)
@@ -43,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Evento[] GetAllEventos(Usuario usuario)
 	    {
-            return ((List<Evento>)eventoRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Evento>(usuario, "CoautorInternoEventos");
 	    }
     }
 }

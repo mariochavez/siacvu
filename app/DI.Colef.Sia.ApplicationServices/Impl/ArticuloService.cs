@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,11 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Articulo> articuloRepository;
         readonly IRepository<Idioma> idiomaRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public ArticuloService(IRepository<Articulo> articuloRepository, IRepository<Idioma> idiomaRepository)
+        public ArticuloService(IRepository<Articulo> articuloRepository, IRepository<Idioma> idiomaRepository, 
+                               IProductoQuerying productoQuerying)
         {
             this.articuloRepository = articuloRepository;
             this.idiomaRepository = idiomaRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Articulo GetArticuloById(int id)
@@ -54,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Articulo[] GetAllArticulos(Usuario usuario)
         {
-            return ((List<Articulo>)articuloRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Articulo>(usuario, "CoautorInternoArticulos");
         }
     }
 }

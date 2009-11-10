@@ -95,7 +95,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (reporte == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (reporte.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                   reporte.CoautorInternoReportes.Where(
+                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (reporte.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var reporteForm = reporteMapper.Map(reporte);

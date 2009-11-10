@@ -107,7 +107,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (evento == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (evento.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                    evento.CoautorInternoEventos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (evento.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var eventoForm = eventoMapper.Map(evento);
