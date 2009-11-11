@@ -169,6 +169,13 @@ INSERT UsuarioRol VALUES(18, 1)
 INSERT UsuarioRol VALUES(51, 3)
 INSERT UsuarioRol VALUES(50, 2)
 
+insert into ConsejoComisiones values('Consejo Académico', 2, 0, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisión Dictaminadora', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisiones Evaluadoras Departamentales', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisiones Académicas de Programas de Posgrado', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Consejo Editorial', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Consejo de Biblioteca', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+
 insert into USEGs values('Cartografía Digital',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Geo-Estadística',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Análisis Espacial',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2584,10 +2591,12 @@ insert into Diplomados values('Diplomado 1',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 2',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 3',GETDATE(), GETDATE(), 1, 1, 1)
 
+--Valores de prueba
 insert into Puestos values('Puesto 1', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Puestos values('Puesto 2', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Puestos values('Puesto 3', GETDATE(), GETDATE(), 1, 1, 1)
 
+--Valores de prueba
 insert into DireccionRegionales values('Dirección 1',GETDATE(), GETDATE(), 1, 6, 1, 1)
 insert into DireccionRegionales values('Dirección 2',GETDATE(), GETDATE(), 1, 7, 1, 1)
 insert into DireccionRegionales values('Dirección 3',GETDATE(), GETDATE(), 1, 8, 1, 1)

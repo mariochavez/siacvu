@@ -97,6 +97,7 @@
     <Compile Include="Catalogos\AmbitoController.cs" />
     <Compile Include="Catalogos\AreaTematicaController.cs" />
     <Compile Include="Catalogos\ClaseController.cs" />
+    <Compile Include="Catalogos\ConsejoComisionController.cs" />
     <Compile Include="Catalogos\ConvenioController.cs" />
     <Compile Include="Catalogos\CoordinacionController.cs" />
     <Compile Include="Catalogos\DiplomadoController.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="Mappers\IAlumnoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
+    <Compile Include="Mappers\IConsejoComisionMapper.cs" />
     <Compile Include="Mappers\IDiplomadoMapper.cs" />
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
     <Compile Include="Mappers\IEditorialLibroMapper.cs" />
@@ -133,13 +135,16 @@
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\AlumnoMapper.cs" />
     <Compile Include="Mappers\Impl\AutorResenaMapper.cs" />
+    <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
     <Compile Include="Mappers\Impl\DiplomadoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
     <Compile Include="Mappers\Impl\FormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\Impl\InstitucionEventoMapper.cs" />
+    <Compile Include="Mappers\Impl\OrganoInternoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
     <Compile Include="Mappers\Impl\VinculacionAPyDMapper.cs" />
+    <Compile Include="Mappers\IOrganoInternoMapper.cs" />
     <Compile Include="Mappers\ITipoArchivoMapper.cs" />
     <Compile Include="Mappers\IVinculacionAPyDMapper.cs" />
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
@@ -147,8 +152,10 @@
     <Compile Include="Models\AlumnoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\AutorResenaForm.cs" />
+    <Compile Include="Models\ConsejoComisionForm.cs" />
     <Compile Include="Models\DireccionRegionalForm.cs" />
     <Compile Include="Models\InstitucionEventoForm.cs" />
+    <Compile Include="Models\OrganoInternoForm.cs" />
     <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
@@ -167,6 +174,7 @@
     <Compile Include="Models\FirmaForm.cs" />
     <Compile Include="Models\CustomSelectForm.cs" />
     <Compile Include="Models\VinculacionAPyDForm.cs" />
+    <Compile Include="Productos\OrganoInternoController.cs" />
     <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />

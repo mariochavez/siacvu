@@ -465,5 +465,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         DireccionRegional[] GetAllDireccionesRegionales();
         DireccionRegional[] GetActiveDireccionesRegionales();
         void SaveDireccionRegional(DireccionRegional direccionRegional);
+
+        //Consejo o Comision
+        ConsejoComision GetConsejoComisionById(int id);
+        ConsejoComision[] GetAllConsejoComisions();
+        ConsejoComision[] GetActiveConsejoComisions();
+        void SaveConsejoComision(ConsejoComision consejoComision);
     }
 }

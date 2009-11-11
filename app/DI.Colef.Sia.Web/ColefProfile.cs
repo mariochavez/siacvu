@@ -40,6 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateParticipacionMedioMaps();
             CreateDistincionMaps();
             CreateOrganosExternosMaps();
+            CreateOrganosInternosMaps();
             CreateEventosMaps();
             CreateReportesMaps();
             CreateResenasMaps();
@@ -128,6 +129,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Archivo, ArchivoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        private void CreateOrganosInternosMaps()
+        {
+            Mapper.CreateMap<OrganoInterno, OrganoInternoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.ConsejoComision,
+                           o => o.Ignore());
         }
 
         private void CreateParticipacionAcademiaMaps()
@@ -988,6 +1002,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<Diplomado, DiplomadoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<ConsejoComision, ConsejoComisionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

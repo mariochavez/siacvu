@@ -87,6 +87,7 @@
     <Compile Include="Clase.cs" />
     <Compile Include="CoautorExternoProducto.cs" />
     <Compile Include="CoautorInternoProducto.cs" />
+    <Compile Include="ConsejoComision.cs" />
     <Compile Include="Convenio.cs" />
     <Compile Include="Coordinacion.cs" />
     <Compile Include="Curso.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="NivelEstudio.cs" />
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
+    <Compile Include="OrganoInterno.cs" />
     <Compile Include="OtraParticipacion.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Participacion.cs" />

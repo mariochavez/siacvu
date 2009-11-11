@@ -71,5 +71,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                            new CustomSelectForm {Id = 2, Nombre = "Externo"}
                        };
         }
+
+        public CustomSelectForm[] PeriodoCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Primer periodo"},
+                           new CustomSelectForm {Id = 2, Nombre = "Segundo periodo"}
+                       };
+        }
     }
 }

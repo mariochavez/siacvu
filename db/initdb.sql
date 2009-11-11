@@ -58,6 +58,14 @@ INSERT UsuarioRol VALUES(2, 2)
 INSERT UsuarioRol VALUES(3, 2)
 INSERT UsuarioRol VALUES(4, 3)
 
+insert into ConsejoComisiones values('Consejo Académico', 2, 0, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisión Dictaminadora', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisiones Evaluadoras Departamentales', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Comisiones Académicas de Programas de Posgrado', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Consejo Editorial', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into ConsejoComisiones values('Consejo de Biblioteca', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
+
+
 insert into USEGs values('Cartografía Digital',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Geo-Estadística',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Análisis Espacial',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2474,9 +2482,19 @@ insert into Diplomados values('Diplomado 1',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 2',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 3',GETDATE(), GETDATE(), 1, 1, 1)
 
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Expediente SNI' ,'Produccion','Academico','CVU', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1)
-INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
-INSERT CargoInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,3,6,1,1,1)
+--Valores de prueba
+insert into Puestos values('Puesto 1', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Puestos values('Puesto 2', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Puestos values('Puesto 3', GETDATE(), GETDATE(), 1, 1, 1)
+
+--Valores de prueba
+insert into DireccionRegionales values('Dirección 1',GETDATE(), GETDATE(), 1, 6, 1, 1)
+insert into DireccionRegionales values('Dirección 2',GETDATE(), GETDATE(), 1, 7, 1, 1)
+insert into DireccionRegionales values('Dirección 3',GETDATE(), GETDATE(), 1, 8, 1, 1)
+
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1, 1)
+--INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
+INSERT CargoInvestigadores VALUES('Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,3,6,1,1,1,1)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
-INSERT GradoAcademicoInvestigadores VALUES('Jan  5 2009 12:00AM','Migracion en la frontera norte de Mexico','Ciencias Sociales',null,'Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
+--INSERT GradoAcademicoInvestigadores VALUES('Jan  5 2009 12:00AM','Migracion en la frontera norte de Mexico','Ciencias Sociales',null,'Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1)
 INSERT SNIInvestigadores VALUES('Feb  2 2009 12:00AM','Feb  2 2010 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,2,1,1,1)
