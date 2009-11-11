@@ -38,40 +38,40 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Producto dictaminado</label>
-	                <strong><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TipoDictamenNombre.Contains("Artículo")){ %>
                     <p>
 	                    <label>Nombre de la revista</label>
-	                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</span>
                     </p>
                     <p>
 	                    <label>Instituci&oacute;n de la revista</label>
-	                    <strong><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 <% if (Model.Form.TipoDictamenNombre.Contains("Capítulo") || Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
                     <p>
 	                    <label>Editorial</label>
-	                    <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
                     </p>
                     <p>
 	                    <label>Instituci&oacute;n de la editorial</label>
-	                    <strong><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 <% if(Model.Form.TipoDictamenNombre.Contains("Proyecto")){ %>
                     <p>
 	                    <label>Tipo de proyecto</label>
-	                    <strong><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 

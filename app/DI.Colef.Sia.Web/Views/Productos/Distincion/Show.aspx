@@ -38,53 +38,54 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 
                 <p>
                     <label>T&iacute;tulo de la distinci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de distinci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoDistincionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Descripci&oacute;n de la distinci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.Descripcion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Descripcion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de otorgamiento</label>
-                    <strong><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n otorgante</label>
-                    <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>&Aacute;mbito</label>
-                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
                 </p>
                 <% if(Model.Form.AmbitoNombre != "Binacional" && Model.Form.AmbitoNombre != "Internacional"){ %>
                     <p>
                         <label>Pa&iacute;s</label>
-                        <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 <% if(Model.Form.AmbitoNombre.Contains("Estatal")){ %>
                     <p>
                         <label>Estado del pa&iacute;s</label>
-                        <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 <% if(Model.Form.AmbitoNombre.Contains("Local")){ %>
                     <p>
                         <label>Municipio</label>
-                        <strong><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</span>
                     </p>
                 <% } %>
                 

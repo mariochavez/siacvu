@@ -39,34 +39,36 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
                     <label>Nombre del &oacute;rgano</label>
-                    <strong><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Consejo o Comisi&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.ConsejoComisionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.ConsejoComisionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>                
                 <p>
                     <label>Fecha final</label>
-                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <% if (Model.Form.ConsejoComisionNombre.Contains("mico")) { %>
+                <% if (Model.Form.ConsejoComisionNombre.Contains("Académico")) { %>
                     <p>
                         <label>Periodo</label>
-                        <strong><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</strong>
+                        <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>
                     </p>
                 <% } %>
                 
