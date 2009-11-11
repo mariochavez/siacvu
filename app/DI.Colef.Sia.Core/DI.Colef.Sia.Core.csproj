@@ -95,6 +95,8 @@
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\AlumnoQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\IProductoQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\ProductoQuerying.cs" />
     <Compile Include="DataInterfaces\ISearchQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,11 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Libro> libroRepository;
         readonly IRepository<Idioma> idiomaRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public LibroService(IRepository<Libro> libroRepository, IRepository<Idioma> idiomaRepository)
+        public LibroService(IRepository<Libro> libroRepository, IRepository<Idioma> idiomaRepository, IProductoQuerying productoQuerying)
         {
             this.libroRepository = libroRepository;
             this.idiomaRepository = idiomaRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Libro GetLibroById(int id)
@@ -54,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Libro[] GetAllLibros(Usuario usuario)
 	    {
-            return ((List<Libro>)libroRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Libro>(usuario, "CoautorInternoLibros");
 	    }
     }
 }

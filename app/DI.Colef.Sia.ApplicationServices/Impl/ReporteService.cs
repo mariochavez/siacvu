@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,10 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ReporteService : IReporteService
     {
         readonly IRepository<Reporte> reporteRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public ReporteService(IRepository<Reporte> reporteRepository)
+        public ReporteService(IRepository<Reporte> reporteRepository, IProductoQuerying productoQuerying)
         {
             this.reporteRepository = reporteRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Reporte GetReporteById(int id)
@@ -44,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Reporte[] GetAllReportes(Usuario usuario)
 	    {
-            return ((List<Reporte>)reporteRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Reporte>(usuario, "CoautorInternoReportes");
 	    }
     }
 }

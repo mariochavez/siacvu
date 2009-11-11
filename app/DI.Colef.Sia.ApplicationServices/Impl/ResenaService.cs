@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,10 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ResenaService : IResenaService
     {
         readonly IRepository<Resena> resenaRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public ResenaService(IRepository<Resena> resenaRepository)
+        public ResenaService(IRepository<Resena> resenaRepository, IProductoQuerying productoQuerying)
         {
             this.resenaRepository = resenaRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Resena GetResenaById(int id)
@@ -44,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Resena[] GetAllResenas(Usuario usuario)
 	    {
-            return ((List<Resena>)resenaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Resena>(usuario, "CoautorInternoResenas");
 	    }
     }
 }

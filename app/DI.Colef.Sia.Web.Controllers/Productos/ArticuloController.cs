@@ -90,7 +90,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (articulo.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                   articulo.CoautorInternoArticulos.Where(
+                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (articulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var articuloForm = articuloMapper.Map(articulo);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -9,11 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Capitulo> capituloRepository;
         readonly IRepository<Idioma> idiomaRepository;
+        readonly IProductoQuerying productoQuerying;
 
-        public CapituloService(IRepository<Capitulo> capituloRepository, IRepository<Idioma> idiomaRepository)
+        public CapituloService(IRepository<Capitulo> capituloRepository, IRepository<Idioma> idiomaRepository,
+                               IProductoQuerying productoQuerying)
         {
             this.capituloRepository = capituloRepository;
             this.idiomaRepository = idiomaRepository;
+            this.productoQuerying = productoQuerying;
         }
 
         public Capitulo GetCapituloById(int id)
@@ -54,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Capitulo[] GetAllCapitulos(Usuario usuario)
 	    {
-            return ((List<Capitulo>)capituloRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
+            return productoQuerying.GetProductosByUsuario<Capitulo>(usuario, "CoautorInternoCapitulos");
 	    }
     }
 }
