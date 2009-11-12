@@ -268,6 +268,11 @@
     <Content Include="Views\Catalogos\CoautorExterno\Index.aspx" />
     <Content Include="Views\Catalogos\CoautorExterno\New.aspx" />
     <Content Include="Views\Catalogos\CoautorExterno\_Form.ascx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Edit.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Index.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\New.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\_Form.ascx" />
     <Content Include="Views\Catalogos\Convenio\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Convenio\Edit.aspx" />
     <Content Include="Views\Catalogos\Convenio\Index.aspx" />
@@ -630,6 +635,9 @@
     <Content Include="Views\MovilidadAcademica\Show.aspx" />
     <Content Include="Views\MovilidadAcademica\_EditProductoAcademico.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProductoAcademico.ascx" />
+    <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\Index.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\New.aspx" />
     <Content Include="Views\ParticipacionAcademia\Activate.js.ascx" />
     <Content Include="Views\ParticipacionAcademia\Edit.aspx" />
     <Content Include="Views\ParticipacionAcademia\Index.aspx" />
@@ -682,6 +690,8 @@
     <Content Include="Views\MovilidadAcademica\_NewProductoDerivado.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewProyecto.ascx" />
     <Content Include="Views\MovilidadAcademica\_NewTipoActividad.ascx" />
+    <Content Include="Views\Productos\OrganoInterno\Show.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\_DatosOrganoInterno.ascx" />
     <Content Include="Views\Productos\Reporte\_ShowReporteTecnico.ascx" />
     <Content Include="Views\Productos\Reporte\_ShowCuadernoTrabajo.ascx" />
     <Content Include="Views\Productos\Resena\AddAutor.js.ascx" />

@@ -135,7 +135,6 @@ var CheckTesisOptions = {
     }
 };
 
-
 function distincionSetup() {    
     CheckDistincionOptions.setup();
 }
@@ -396,3 +395,27 @@ function investigadorSetup() {
 
     $('#EstadoInvestigador_Estado')[0].dynamic.setup();
 }
+
+function organoInternoSetup() {
+    CheckOrganoInternoOptions.setup();
+}
+
+var CheckOrganoInternoOptions = {
+    setup: function() {
+        $('#forma').unload(CheckOrganoInternoOptions.verifyOptions());
+        $('#ConsejoComision').change(CheckOrganoInternoOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText = $('#ConsejoComision :selected').text();
+
+        if (comboText == "Consejo Académico" || comboText == "Seleccione ...") {
+            $('#periodo_field').slideUp('fast', function() {
+                $('#periodo_field').fadeOut('fast');
+            });
+        } else {
+            $('#periodo_field').slideDown('fast', function() {
+                $('#periodo_field').fadeIn('fast');
+            });
+        }
+    }
+};

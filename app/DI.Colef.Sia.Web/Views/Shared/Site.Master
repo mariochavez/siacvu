@@ -70,7 +70,7 @@
 								<td><%=Html.ActionLinkForAreas<MovilidadAcademicaController>(x => x.Index(), "Estancias acad&eacute;mica")%></td>
 								<td><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Participacion y organizaci&oacute;n de eventos")%></td>
 								<td><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></td>
-								<td>Internos</td>
+								<td><%=Html.ActionLinkForAreas<OrganoInternoController>(x => x.Index(), "Internos")%></td>
 								<td>Consultorias</td>
 							</tr>
 							<tr>

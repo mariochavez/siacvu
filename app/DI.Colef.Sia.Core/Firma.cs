@@ -76,6 +76,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
+    public class FirmaOrganoInterno : Firma
+    {
+
+    }
+
     public class FirmaParticipacion : Firma
     {
 

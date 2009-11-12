@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<CursoForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<OrganoInternoForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -15,7 +16,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del curso como est&aacute; en el sistema.
+            Aqu&iacute; se muestra la informaci&oacute;n detallada del &oacute;rgano interno como est&aacute; en el sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -44,70 +45,35 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                
+                <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
-	                <label>Nombre del curso</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
+                    <label>Nombre del &oacute;rgano</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>
-	                <label>Programa de estudio</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.ProgramaEstudioNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Instituci&oacute;n</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Nivel de Estudio</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.NivelEstudioNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>N&uacute;mero de horas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NumeroHoras)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Pa&iacute;s</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                    <label>Consejo o Comisi&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ConsejoComisionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
                     <span>Formato (dd/mm/yyyy)</span>
-                </p>
+                </p>                
                 <p>
                     <label>Fecha final</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
                     <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <h4>Opcionales</h4>                
-                <p>
-	                <label>Sector</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Organizaci&oacute;n</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Nivel 2</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>&Aacute;rea</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Disciplina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Subdisciplina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</span>
-                </p>
+                <% if (Model.Form.ConsejoComisionNombre.Contains("Académico")) { %>
+                    <p>
+                        <label>Periodo</label>
+                        <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
-                    <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>
+                    <%=Html.ActionLink<OrganoInternoController>(x => x.Index(), "Regresar") %>
                 </p>
             </div><!--end campos-->
         </div><!--end lista-->

@@ -410,6 +410,36 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1970EA6C9E
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA6A829E09]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA6A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA7D866EAB]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA7D866EAB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA3E391E13]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA3E391E13
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA9E4F194A]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA9E4F194A
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA85102A57]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA85102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA74E8BAB7]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA74E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4C871ABE85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicos'))
 alter table GradoAcademicos  drop constraint FK4C871ABE85102A57
 
@@ -542,6 +572,16 @@ alter table ArchivoOrganoExterno  drop constraint FK3CF46F8382C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3CF46F8320ACA338]') AND parent_object_id = OBJECT_ID('ArchivoOrganoExterno'))
 alter table ArchivoOrganoExterno  drop constraint FK3CF46F8320ACA338
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8C70CE9182C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoOrganoInterno'))
+alter table ArchivoOrganoInterno  drop constraint FK8C70CE9182C3B7BC
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8C70CE91B291B950]') AND parent_object_id = OBJECT_ID('ArchivoOrganoInterno'))
+alter table ArchivoOrganoInterno  drop constraint FK8C70CE91B291B950
 
 
 
@@ -1147,6 +1187,16 @@ alter table FirmaOrganoExterno  drop constraint FK75DD91C93F1A7365
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75DD91C920ACA338]') AND parent_object_id = OBJECT_ID('FirmaOrganoExterno'))
 alter table FirmaOrganoExterno  drop constraint FK75DD91C920ACA338
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE798E7F3F1A7365]') AND parent_object_id = OBJECT_ID('FirmaOrganoInterno'))
+alter table FirmaOrganoInterno  drop constraint FKE798E7F3F1A7365
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE798E7FB291B950]') AND parent_object_id = OBJECT_ID('FirmaOrganoInterno'))
+alter table FirmaOrganoInterno  drop constraint FKE798E7FB291B950
 
 
 
@@ -1927,6 +1977,16 @@ alter table DirigidoAs  drop constraint FK6708195585102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6708195574E8BAB7]') AND parent_object_id = OBJECT_ID('DirigidoAs'))
 alter table DirigidoAs  drop constraint FK6708195574E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB1E3720485102A57]') AND parent_object_id = OBJECT_ID('ConsejoComisiones'))
+alter table ConsejoComisiones  drop constraint FKB1E3720485102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB1E3720474E8BAB7]') AND parent_object_id = OBJECT_ID('ConsejoComisiones'))
+alter table ConsejoComisiones  drop constraint FKB1E3720474E8BAB7
 
 
 
@@ -3001,6 +3061,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'OrganoInternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoInternos
+
     if exists (select * from dbo.sysobjects where id = object_id(N'GradoAcademicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GradoAcademicos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstatusFormacionAcademicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusFormacionAcademicas
@@ -3024,6 +3086,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoLibro
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoExterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoExterno
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoInterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoInterno
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacion
 
@@ -3086,6 +3150,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'FirmaLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaLibro
 
     if exists (select * from dbo.sysobjects where id = object_id(N'FirmaOrganoExterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaOrganoExterno
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaOrganoInterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaOrganoInterno
 
     if exists (select * from dbo.sysobjects where id = object_id(N'FirmaParticipacion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaParticipacion
 
@@ -3176,6 +3242,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'IdiomasInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table IdiomasInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'DirigidoAs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table DirigidoAs
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ConsejoComisiones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ConsejoComisiones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Ambitos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Ambitos
 
@@ -3607,6 +3675,24 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
+    create table OrganoInternos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       Periodo INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+       ConsejoComisionFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table GradoAcademicos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3701,6 +3787,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table ArchivoOrganoExterno (
         Archivo INT not null,
        OrganoExternoFk INT null,
+       primary key (Archivo)
+    )
+
+    create table ArchivoOrganoInterno (
+        Archivo INT not null,
+       OrganoInternoFk INT null,
        primary key (Archivo)
     )
 
@@ -4066,6 +4158,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table FirmaOrganoExterno (
         Firma INT not null,
        OrganoExternoFk INT null,
+       primary key (Firma)
+    )
+
+    create table FirmaOrganoInterno (
+        Firma INT not null,
+       OrganoInternoFk INT null,
        primary key (Firma)
     )
 
@@ -4630,6 +4728,19 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table DirigidoAs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table ConsejoComisiones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       Duracion INT null,
+       Reeleccion BIT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -5437,6 +5548,21 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ProyectoFk) 
         references Proyectos
 
+    alter table OrganoInternos 
+        add constraint FKECD0AAEA7D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table OrganoInternos 
+        add constraint FKECD0AAEA3E391E13 
+        foreign key (SedeFk) 
+        references Sedes
+
+    alter table OrganoInternos 
+        add constraint FKECD0AAEA9E4F194A 
+        foreign key (ConsejoComisionFk) 
+        references ConsejoComisiones
+
     alter table Editoriales 
         add constraint FKFB2915907A8488F7 
         foreign key (PaisFk) 
@@ -5531,6 +5657,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK3CF46F8320ACA338 
         foreign key (OrganoExternoFk) 
         references OrganoExternos
+
+    alter table ArchivoOrganoInterno 
+        add constraint FK8C70CE9182C3B7BC 
+        foreign key (Archivo) 
+        references Archivos
+
+    alter table ArchivoOrganoInterno 
+        add constraint FK8C70CE91B291B950 
+        foreign key (OrganoInternoFk) 
+        references OrganoInternos
 
     alter table ArchivoParticipacion 
         add constraint FK4232889782C3B7BC 
@@ -5916,6 +6052,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK75DD91C920ACA338 
         foreign key (OrganoExternoFk) 
         references OrganoExternos
+
+    alter table FirmaOrganoInterno 
+        add constraint FKE798E7F3F1A7365 
+        foreign key (Firma) 
+        references Firmas
+
+    alter table FirmaOrganoInterno 
+        add constraint FKE798E7FB291B950 
+        foreign key (OrganoInternoFk) 
+        references OrganoInternos
 
     alter table FirmaParticipacion 
         add constraint FK3D78735E3F1A7365 

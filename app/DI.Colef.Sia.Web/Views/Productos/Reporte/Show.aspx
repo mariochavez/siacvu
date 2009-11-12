@@ -39,22 +39,22 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 
     <!-- DATOS DEL REPORTE TECNICO-->
                 <p>
                     <label>Nombre del reporte</label>
-                    <strong><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 
                 <p>
                     <label>Tipo de reporte</label>
-                    <strong><%= Html.Encode(Model.Form.TipoReporteNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoReporteNombre)%>&nbsp;</span>
                 </p>    
                 
                 <h4>Coautores</h4>
@@ -67,22 +67,24 @@
 	            
 	            <p>
 	                <label>Posici&oacute;n del autor</label>
-                    <strong><%= Html.Encode(Model.Form.PosicionAutor) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PosicionAutor) %>&nbsp;</span>
                 </p>
                             
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
-                    <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.EstadoProducto == 1){ %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 2){ %>
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } %>
                 
@@ -94,48 +96,48 @@
                     <p>
                         <label></label>
                         Tiene proyecto de investigaci&oacute;n de referencia?
-                        <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
+                        <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                     </p>
                     
                     <% if (Model.Form.TieneProyecto) { %>
                         <p>
                             <label>Nombre del proyecto de investigaci&oacute;n</label>
-                            <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
+                            <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
                         </p>
                         
                         <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                         
                         <p>
 	                        <label>Palabra clave 1</label>
-	                        <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</strong>
+	                        <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</span>
                         </p>
                         <p>
 	                        <label>Palabra clave 2</label>
-	                        <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave2)%>&nbsp;</strong>
+	                        <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave2)%>&nbsp;</span>
                         </p>
                         <p>
 	                        <label>Palabra clave 3</label>
-                            <strong><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</strong>
+                            <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</span>
                         </p>
                     <% } else { %>
                         <p>
                             <label>Instancia a la que se presenta el reporte</label>
-	                        <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+	                        <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                         </p>
                         
                         <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                         
                         <p>
 	                        <label>Palabra clave 1</label>
-	                        <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+	                        <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
                         </p>
                         <p>
 	                        <label>Palabra clave 2</label>
-	                        <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+	                        <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
                         </p>
                         <p>
 	                        <label>Palabra clave 3</label>
-                            <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                            <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                         </p>
                     <% } %>
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>

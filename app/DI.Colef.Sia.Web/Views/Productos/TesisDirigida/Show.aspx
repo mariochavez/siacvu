@@ -38,71 +38,72 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoInvestigadorNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoInvestigadorNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 
                 <p>
                     <label>T&iacute;tulo</label>
-                    <strong><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de conclusi&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
-                
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                </p>                
                 <p>
                     <label>Grado acad&eacute;mico</label>
-                    <strong><%= Html.Encode(Model.Form.GradoAcademicoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.GradoAcademicoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de obtenci&oacute;n del grado</label>
-                    <strong><%= Html.Encode(Model.Form.FechaGrado)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaGrado)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Forma de participaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FormaParticipacionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.FormaParticipacionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                 </p>                
                 <p>
                     <label>Nombre del alumno</label>
-                    <strong><%= Html.Encode(Model.Form.NombreAlumno)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreAlumno)%>&nbsp;</span>
                 </p>               
                 
                 <h4>Opcionales</h4>
                 <p>
 	                <label>Sector</label>
-	                <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Organizaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Nivel 2</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>&Aacute;rea</label>
-                    <strong><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Disciplina</label>
-                    <strong><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Subdisciplina</label>
-                    <strong><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">

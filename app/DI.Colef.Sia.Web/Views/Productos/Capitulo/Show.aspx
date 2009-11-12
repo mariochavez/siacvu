@@ -40,27 +40,27 @@
             <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
                     <label>Nombre del cap&iacute;tulo</label>
-                    <strong><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de cap&iacute;tulo</label>
-                    <strong><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TipoCapituloNombre.Contains("otro idioma")) { %>
                     <p>
                         <label>Idioma al que se tradujo</label>
-                        <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
 	            <h4>Coautores</h4>
@@ -72,16 +72,16 @@
 	            </p>
 	            <p>
 	                <label>Posici&oacute;n del autor</label>
-                    <strong><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
                 <p>
                     <label></label>
-                    Tiene proyecto de investigaci&oacute;n de referencia? <strong><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</strong>
+                    Tiene proyecto de investigaci&oacute;n de referencia? <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TieneProyecto) { %>
                     <p>
                         <label>Nombre del proyecto de investigaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
                     </p>
                     
                     <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
@@ -90,17 +90,19 @@
                 <% } %>
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
-                    <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.EstadoProducto == 1){ %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 2) { %>
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } %>
                 
@@ -108,35 +110,36 @@
                 <h4>Referencia bibliogr&aacute;fica</h4>
                 <p>
                     <label>Nombre del libro</label>
-                    <strong><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Autor del libro</label>
-                    <strong><%= Html.Encode(Model.Form.AutorLibro)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.AutorLibro)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Resumen</label>
-                    <strong><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Editorial</label>
-                    <strong><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Volumen</label>
-                    <strong><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>A&ntilde;o de edici&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
+                    <span>Formato (yyyy)</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>N&uacute;mero de p&aacute;ginas</label>
-                    <strong><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
                 </p>                
 
     <!-- RESPONSABLES DEL LIBRO -->                
@@ -152,15 +155,15 @@
                 <h4>Complementaria CVU</h4>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de participante</label>
-                    <strong><%= Html.Encode(Model.Form.TipoParticipanteNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipanteNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Traductor/Co-Traductor</label>
-                    <strong><%= HumanizeHelper.Boolean(Model.Form.Traductor)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Traductor)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">
