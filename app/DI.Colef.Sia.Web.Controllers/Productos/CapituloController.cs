@@ -275,7 +275,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 capituloService.SaveCapitulo(capitulo);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -345,7 +347,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 capituloService.SaveCapitulo(capitulo);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -414,7 +418,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 capituloService.SaveCapitulo(capitulo);
             }
 
-            return Rjs("DeleteResponsableInterno", investigadorId);
+            var form = new ResponsableForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteResponsableInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -484,7 +490,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 capituloService.SaveCapitulo(capitulo);
             }
 
-            return Rjs("DeleteResponsableExterno", investigadorExternoId);
+            var form = new ResponsableForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteResponsableExterno", form);
         }
 
         CapituloForm SetupNewForm()

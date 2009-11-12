@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ResponsableForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -14,16 +14,11 @@ var html = '
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#responsableexterno_<%=Html.Encode(Model) %>').remove();
+$('#responsableexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').remove();
 
-if(<%=Html.Encode(Model) %> > 0)
-{
-    var editores = ($('#responsableinternoList div[id^=responsableinterno_]').length) + ($('#responsableexternoList div[id^=responsableexterno_]').length);
-    $('#totaleditores').text(editores);
-    
-    if($('#responsableexternoList div[id^=responsableexterno_]').length == 0) {
-        $('#responsableexternoList div:first').before(html);
-    }
-}
+deleteElement(html, '#responsableexternoList div[id^=responsableexterno_]', '#responsableexternoList', 'ResponsableExterno', 'InvestigadorExternoId', 'FormaParticipacionId');
+
+var editores = ($('#responsableinternoList div[id^=responsableinterno_]').length) + ($('#responsableexternoList div[id^=responsableexterno_]').length);
+$('#totaleditores').text(editores);
 
 setupSublistRows();

@@ -9,9 +9,9 @@
 	        <div class="sublista" id="responsableinterno_<%=Html.Encode(Model.ResponsablesInternos[i].InvestigadorId) %>">
 	            <h6>
 	                <a href="<%=Url.Action("deleteresponsableinterno", null, new{id = Model.ModelId, investigadorId = Model.ResponsablesInternos[i].InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-	                <%=Html.Encode(Model.ResponsablesInternos[i].NombreResponsable)%>
+	                <%=Html.Encode(Model.ResponsablesInternos[i].NombreResponsable)%>, 
 	                <%=Html.Hidden("ResponsableInterno[" + i + "].InvestigadorId", Model.ResponsablesInternos[i].InvestigadorId)%>
-	                <span>
+	                <span id="posicioninterno_<%=Html.Encode(Model.ResponsablesInternos[i].Posicion) %>">
                         Posici&oacute;n <%=Html.Encode(Model.ResponsablesInternos[i].Posicion)%>
                         <%=Html.Hidden("ResponsableInterno[" + i + "].Posicion", Model.ResponsablesInternos[i].Posicion)%>
                     </span>

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CoautorForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -13,17 +13,12 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
+$('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').remove();
 
-$('#coautorexterno_<%=Html.Encode(Model) %>').remove();
+deleteElement(html, '#coautorexternoList div[id^=coautorexterno_]', '#coautorexternoList', 'CoautorExterno', 'InvestigadorExternoId', 'InstitucionId');
 
-if(<%=Html.Encode(Model) %> > 0)
-{
-    var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
-    $('#totalcoautores').text(autores);
-    
-    if($('#coautorexternoList div[id^=coautorexterno_]').length == 0) {
-        $('#coautorexternoList div:first').before(html);
-    }
-}
+var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
+$('#totalcoautores').text(autores);
+
 
 setupSublistRows();

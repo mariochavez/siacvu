@@ -9,5 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ResponsableInternoProductoForm[] ResponsablesInternos { get; set; }
         public ResponsableExternoProductoForm[] ResponsablesExternos { get; set; }
         public int ModelId { get; set; }
+        public int InvestigadorExternoId { get; set; }
+        public int InvestigadorId { get; set; }
     }
 }

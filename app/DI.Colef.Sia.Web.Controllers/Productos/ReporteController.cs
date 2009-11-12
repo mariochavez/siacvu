@@ -248,7 +248,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 reporteService.SaveReporte(reporte);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -317,7 +319,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 reporteService.SaveReporte(reporte);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         ReporteForm SetupNewForm()
