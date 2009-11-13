@@ -15,7 +15,7 @@ $('#message').html('');
 $('#message').removeClass('errormessage');
 $('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').remove();
 
-deleteElement(html, '#coautorinternoList div[id^=coautorinterno_]', '#coautorinternoList', 'CoautorInterno', 'InvestigadorId', 'Posicion');
+deleteElement(html, '#coautorinternoList div[id^=coautorinterno_]', '#coautorinternoList');
 
 var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
 $('#totalcoautores').text(autores);

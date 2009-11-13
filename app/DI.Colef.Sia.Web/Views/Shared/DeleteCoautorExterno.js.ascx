@@ -15,7 +15,7 @@ $('#message').html('');
 $('#message').removeClass('errormessage');
 $('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').remove();
 
-deleteElement(html, '#coautorexternoList div[id^=coautorexterno_]', '#coautorexternoList', 'CoautorExterno', 'InvestigadorExternoId', 'InstitucionId');
+deleteElement(html, '#coautorexternoList div[id^=coautorexterno_]', '#coautorexternoList');
 
 var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
 $('#totalcoautores').text(autores);

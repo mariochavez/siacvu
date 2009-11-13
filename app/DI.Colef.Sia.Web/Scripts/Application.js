@@ -30,32 +30,24 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
-function deleteElement(html, selectorString, listName, fieldName, fieldNameId1, fieldNameId2) {
-    var totalCoautoresExternos = $(selectorString).length;
+function deleteElement(html, selectorString, listName) {
+    var totalCoautores = $(selectorString).length;
     var counter = 0;
-    var elements = [];
 
-    $(selectorString).each(function() {
-        var id = $(this).attr('id');
-        var text = $('#' + id + ' h6').text().split(',');
-        var coautorId = $(this).attr('id').split('_');
-        var institucionId = $('#' + id + ' h6 span').attr('id').split('_');
-        var linkHref = $('#' + id + ' h6 a').attr('href');
-        var imgsrc = $('#' + id + ' h6 a img').attr('src');
-        var row = $(this).remove();
-        var nombreInvestigador = text[0].trim() + ', ';
-        var nombreInstitucion = text[1].trim();
+    if (totalCoautores != 0) {
+        $(selectorString).each(function() {
+            var thisId = $(this).attr('id');
 
-        var newRow = '<div id="' + id + '" class="sublista"><h6><a href="' + linkHref + '" class="remote delete"><img src="' + imgsrc + '" /></a>' + nombreInvestigador + '<input type="hidden" value="' + coautorId[1] + '" name="' + fieldName + '[' + counter + '].' + fieldNameId1 + '" id="' + fieldName + '[' + counter + ']_' + fieldNameId1 + '"/> <span id="' + institucionId[0] + '_' + institucionId[1] + '">' + nombreInstitucion + '<input type="hidden" value="' + institucionId[1] + '" name="' + fieldName + '[' + counter + '].' + fieldNameId2 + '" id="' + fieldName + '[' + counter + ']_' + fieldNameId2 + '"/></span></h6></div>';
+            $('#' + thisId + " input:hidden").each(function() {
+                var newId = $(this).attr('id').replace(/[0-9]/, counter);
+                var newName = newId.replace('_', '.');
 
-        elements[counter] = newRow;
-        counter += 1;
-    });
+                $(this).attr('id', newId);
+                $(this).attr('name', newName);
+            });
 
-    if (totalCoautoresExternos != 0) {
-        for (var i = 0; i < totalCoautoresExternos; i++) {
-            $(listName + ' div:first').before(elements[i]);
-        }
+            counter += 1;
+        });
     } else {
         $(listName + ' div:first').before(html);
     }

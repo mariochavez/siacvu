@@ -13,10 +13,9 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-
 $('#responsableinterno_<%=Html.Encode(Model.InvestigadorId) %>').remove();
 
-deleteElement(html, '#responsableinternoList div[id^=responsableinterno_]', '#responsableinternoList', 'ResponsableInterno', 'InvestigadorId', 'Posicion');
+deleteElement(html, '#responsableinternoList div[id^=responsableinterno_]', '#responsableinternoList');
 
 var editores = ($('#responsableinternoList div[id^=responsableinterno_]').length) + ($('#responsableexternoList div[id^=responsableexterno_]').length);
 $('#totaleditores').text(editores);

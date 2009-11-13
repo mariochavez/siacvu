@@ -13,10 +13,9 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-
 $('#responsableexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').remove();
 
-deleteElement(html, '#responsableexternoList div[id^=responsableexterno_]', '#responsableexternoList', 'ResponsableExterno', 'InvestigadorExternoId', 'FormaParticipacionId');
+deleteElement(html, '#responsableexternoList div[id^=responsableexterno_]', '#responsableexternoList');
 
 var editores = ($('#responsableinternoList div[id^=responsableinterno_]').length) + ($('#responsableexternoList div[id^=responsableexterno_]').length);
 $('#totaleditores').text(editores);
