@@ -5,6 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
+        public bool TipoInstitucion { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
@@ -12,10 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoEstancia { get; set; }
         public int TipoEstanciaId { get; set; }
         public string TipoEstanciaNombre { get; set; }
-
-        public int TipoInstitucion { get; set; }
-        public int TipoInstitucionId { get; set; }
-        public string TipoInstitucionNombre { get; set; }
         
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
@@ -30,7 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
-        public TipoInstitucionForm[] TiposInstituciones { get; set; }
         public ConvenioForm[] Convenios { get; set; }
     }
 }

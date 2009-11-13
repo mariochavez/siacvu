@@ -321,10 +321,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoInstitucion,
-                           o => o.Ignore())
-                .ForMember(d => d.Convenio,
                            o => o.Ignore());
         }
 
@@ -897,9 +893,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoEstancia, TipoEstanciaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoInstitucion, TipoInstitucionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoProyecto, TipoProyectoForm>()

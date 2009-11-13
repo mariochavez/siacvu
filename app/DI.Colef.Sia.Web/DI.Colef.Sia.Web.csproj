@@ -523,11 +523,6 @@
     <Content Include="Views\Catalogos\TipoFinanciamiento\Index.aspx" />
     <Content Include="Views\Catalogos\TipoFinanciamiento\New.aspx" />
     <Content Include="Views\Catalogos\TipoFinanciamiento\_Form.ascx" />
-    <Content Include="Views\Catalogos\TipoInstitucion\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\TipoInstitucion\Edit.aspx" />
-    <Content Include="Views\Catalogos\TipoInstitucion\Index.aspx" />
-    <Content Include="Views\Catalogos\TipoInstitucion\New.aspx" />
-    <Content Include="Views\Catalogos\TipoInstitucion\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoOrgano\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoOrgano\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoOrgano\Index.aspx" />

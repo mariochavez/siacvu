@@ -10,7 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual TipoEstancia TipoEstancia { get; set; }
 
-        public virtual TipoInstitucion TipoInstitucion { get; set; }
+        public virtual bool TipoInstitucion { get; set; }
 
         public virtual Institucion Institucion { get; set; }
 

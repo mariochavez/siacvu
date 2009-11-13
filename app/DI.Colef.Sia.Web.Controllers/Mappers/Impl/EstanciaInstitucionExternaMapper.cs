@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -28,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
-            model.TipoInstitucion = catalogoService.GetTipoInstitucionById(message.TipoInstitucion);
+            model.TipoInstitucion = message.TipoInstitucion;
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);

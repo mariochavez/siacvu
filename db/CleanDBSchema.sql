@@ -175,16 +175,6 @@ alter table Cargos  drop constraint FKA8E8D63E74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E185102A57]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
-alter table TipoInstituciones  drop constraint FK77542E185102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK77542E174E8BAB7]') AND parent_object_id = OBJECT_ID('TipoInstituciones'))
-alter table TipoInstituciones  drop constraint FK77542E174E8BAB7
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1964F7D1CD]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
 alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1964F7D1CD
 
@@ -1875,6 +1865,41 @@ alter table Organizaciones  drop constraint FK66FEAE5974E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0197A8C3DE5]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197A8C3DE5
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01964F7D1CD]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE01964F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0191EDC2D3B]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE0191EDC2D3B
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE019201EE7BB]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE019201EE7BB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0196A829E09]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE0196A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01985102A57]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE01985102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01974E8BAB7]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C85102A57]') AND parent_object_id = OBJECT_ID('Idiomas'))
 alter table Idiomas  drop constraint FKB635BD3C85102A57
 
@@ -2885,46 +2910,6 @@ alter table Alumnos  drop constraint FKC8B99C799CF67963
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0197A8C3DE5]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197A8C3DE5
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0198BB69942]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE0198BB69942
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01964F7D1CD]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE01964F7D1CD
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0191EDC2D3B]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE0191EDC2D3B
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE019201EE7BB]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE019201EE7BB
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0196A829E09]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE0196A829E09
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01985102A57]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE01985102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01974E8BAB7]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
-
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2942,8 +2927,6 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'EstatusProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Cargos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cargos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoInstituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoInstituciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'RecursoFinancieroProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table RecursoFinancieroProyectos
 
@@ -3094,6 +3077,8 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Paises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Paises
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Organizaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Organizaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaInstitucionExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaInstitucionExternas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
 
@@ -3249,8 +3234,6 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Alumnos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Alumnos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaInstitucionExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaInstitucionExternas
-
     create table SNIs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3368,17 +3351,6 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
     )
 
     create table Cargos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table TipoInstituciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -4509,6 +4481,24 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
        primary key (Id)
     )
 
+    create table EstanciaInstitucionExternas (
+        Id INT IDENTITY NOT NULL,
+       TipoInstitucion BIT null,
+       FechaInicial DATETIME null,
+       FechaFinal DATETIME null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TipoEstanciaFk INT null,
+       InstitucionFk INT null,
+       LineaTematicaFk INT null,
+       ConvenioFk INT null,
+       UsuarioFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table Idiomas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -5251,24 +5241,6 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
-       primary key (Id)
-    )
-
-    create table EstanciaInstitucionExternas (
-        Id INT IDENTITY NOT NULL,
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       TipoEstanciaFk INT null,
-       TipoInstitucionFk INT null,
-       InstitucionFk INT null,
-       LineaTematicaFk INT null,
-       ConvenioFk INT null,
-       UsuarioFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -6242,6 +6214,26 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
         foreign key (SectorFk) 
         references Sectores
 
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE0197A8C3DE5 
+        foreign key (TipoEstanciaFk) 
+        references TipoEstancias
+
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE01964F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE0191EDC2D3B 
+        foreign key (LineaTematicaFk) 
+        references LineaTematicas
+
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE019201EE7BB 
+        foreign key (ConvenioFk) 
+        references Convenios
+
     alter table FirmaArticulo 
         add constraint FK405349573F1A7365 
         foreign key (Firma) 
@@ -6841,29 +6833,4 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
         add constraint FKC1D5F88D8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table EstanciaInstitucionExternas 
-        add constraint FKA2BE0197A8C3DE5 
-        foreign key (TipoEstanciaFk) 
-        references TipoEstancias
-
-    alter table EstanciaInstitucionExternas 
-        add constraint FKA2BE0198BB69942 
-        foreign key (TipoInstitucionFk) 
-        references TipoInstituciones
-
-    alter table EstanciaInstitucionExternas 
-        add constraint FKA2BE01964F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table EstanciaInstitucionExternas 
-        add constraint FKA2BE0191EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
-
-    alter table EstanciaInstitucionExternas 
-        add constraint FKA2BE019201EE7BB 
-        foreign key (ConvenioFk) 
-        references Convenios
 

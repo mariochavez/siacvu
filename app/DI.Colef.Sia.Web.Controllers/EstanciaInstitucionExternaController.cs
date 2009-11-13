@@ -15,14 +15,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
-        readonly ITipoInstitucionMapper tipoInstitucionMapper;
         readonly IConvenioMapper convenioMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
                                             ICatalogoService catalogoService, IUsuarioService usuarioService, 
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
-                                            ITipoInstitucionMapper tipoInstitucionMapper, 
                                             IConvenioMapper convenioMapper, 
                                             ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
@@ -31,7 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.estanciaInstitucionExternaService = estanciaInstitucionExternaService;
             this.estanciaInstitucionExternaMapper = estanciaInstitucionExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
-            this.tipoInstitucionMapper = tipoInstitucionMapper;
             this.convenioMapper = convenioMapper;
         }
 
@@ -201,7 +198,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
-            form.TiposInstituciones = tipoInstitucionMapper.Map(catalogoService.GetActiveTipoInstituciones());
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
 
             return form;
@@ -210,7 +206,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
-            ViewData["TipoInstitucion"] = form.TipoInstitucionId;
             ViewData["Convenio"] = form.ConvenioId;
         }
     }

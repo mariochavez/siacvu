@@ -229,7 +229,6 @@
     <Compile Include="TipoEstancia.cs" />
     <Compile Include="TipoEvento.cs" />
     <Compile Include="TipoFinanciamiento.cs" />
-    <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
     <Compile Include="TipoParticipante.cs" />

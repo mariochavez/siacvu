@@ -220,9 +220,6 @@ insert into TipoEstancias values('Académica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Sabática',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoEstancias values('Postdoctoral',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoInstituciones values('Nacional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoInstituciones values('Extranjera',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into Convenios values('Centro de Investigación Científica y de Educación Superior de Ensenada',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Convenios values('Centro de Investigación y Desarrollo Tecnológico en Electroquímica',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Convenios values('Consejo Latinoamericano de Ciencias Sociales',GETDATE(), GETDATE(), 1, 1, 1);

@@ -8,12 +8,6 @@
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
 <p>
-    <label>Tipo de instituci&oacute;n</label>
-    <%=Html.DropDownList("TipoInstitucion", Model.TiposInstituciones.CreateSelectList<TipoInstitucionForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("TipoInstitucion") %>
-</p>
-<p>
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class="datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
