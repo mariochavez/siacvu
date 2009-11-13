@@ -321,27 +321,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoInstitucion,
-                           o => o.Ignore())
-                .ForMember(d => d.Convenio,
                            o => o.Ignore());
-
-            Mapper.CreateMap<TipoActividadMovilidadAcademica, TipoActividadMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProductoDerivadoMovilidadAcademica, ProductoDerivadoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProductoAcademicoMovilidadAcademica, ProductoAcademicoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProyectoMovilidadAcademica, ProyectoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateFormacionAcademicaMaps()
@@ -913,9 +893,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoEstancia, TipoEstanciaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoInstitucion, TipoInstitucionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoProyecto, TipoProyectoForm>()

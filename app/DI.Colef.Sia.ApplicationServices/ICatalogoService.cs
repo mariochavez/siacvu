@@ -301,12 +301,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoProyecto[] GetActiveTipoProyectos();
         void SaveTipoProyecto(TipoProyecto tipoProyecto);
 
-        //Tipo de Institucion
-        TipoInstitucion GetTipoInstitucionById(int id);
-        TipoInstitucion[] GetAllTipoInstituciones();
-        TipoInstitucion[] GetActiveTipoInstituciones();
-        void SaveTipoInstitucion(TipoInstitucion tipoInstitucion);
-
         //Tipo de Estancia
         TipoEstancia GetTipoEstanciaById(int id);
         TipoEstancia[] GetAllTipoEstancias();

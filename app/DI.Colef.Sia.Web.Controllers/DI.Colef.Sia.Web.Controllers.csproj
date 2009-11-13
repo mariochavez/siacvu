@@ -115,7 +115,6 @@
     <Compile Include="Catalogos\SubprogramaConacytController.cs" />
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
-    <Compile Include="Catalogos\TipoInstitucionController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
@@ -210,7 +209,6 @@
     <Compile Include="Mappers\Impl\ParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteInternoProyectoMapper.cs" />
-    <Compile Include="Mappers\Impl\ProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\ProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\RamaMapper.cs" />
     <Compile Include="Mappers\Impl\RecursoFinancieroProyectoMapper.cs" />
@@ -221,7 +219,6 @@
     <Compile Include="Mappers\IParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\IParticipanteInternoProyectoMapper.cs" />
-    <Compile Include="Mappers\IProductoAcademicoMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\IProyectoMapper.cs" />
     <Compile Include="Mappers\IRamaMapper.cs" />
     <Compile Include="Mappers\IRecursoFinancieroProyectoMapper.cs" />
@@ -251,7 +248,6 @@
     <Compile Include="Models\ParticipacionAcademiaForm.cs" />
     <Compile Include="Models\ParticipanteExternoProyectoForm.cs" />
     <Compile Include="Models\ParticipanteInternoProyectoForm.cs" />
-    <Compile Include="Models\ProductoAcademicoMovilidadAcademicaForm.cs" />
     <Compile Include="Models\ProyectoForm.cs" />
     <Compile Include="Models\RamaForm.cs" />
     <Compile Include="Models\RecursoFinancieroProyectoForm.cs" />
@@ -278,19 +274,11 @@
     <Compile Include="Mappers\IMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\MovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\ProductoDerivadoMapper.cs" />
-    <Compile Include="Mappers\Impl\ProductoDerivadoMovilidadAcademicaMapper.cs" />
-    <Compile Include="Mappers\Impl\ProyectoMovilidadAcademicaMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoActividadMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoEstanciaMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoInstitucionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoPublicacionMapper.cs" />
     <Compile Include="Mappers\IProductoDerivadoMapper.cs" />
-    <Compile Include="Mappers\IProductoDerivadoMovilidadAcademicaMapper.cs" />
-    <Compile Include="Mappers\IProyectoMovilidadAcademicaMapper.cs" />
-    <Compile Include="Mappers\ITipoActividadMovilidadAcademicaMapper.cs" />
     <Compile Include="Mappers\ITipoEstanciaMapper.cs" />
-    <Compile Include="Mappers\ITipoInstitucionMapper.cs" />
     <Compile Include="Mappers\ITipoProyectoMapper.cs" />
     <Compile Include="Mappers\ITipoPublicacionMapper.cs" />
     <Compile Include="Models\ConvenioForm.cs" />
@@ -298,11 +286,7 @@
     <Compile Include="Models\LibroForm.cs" />
     <Compile Include="Models\MovilidadAcademicaForm.cs" />
     <Compile Include="Models\ProductoDerivadoForm.cs" />
-    <Compile Include="Models\ProductoDerivadoMovilidadAcademicaForm.cs" />
-    <Compile Include="Models\ProyectoMovilidadAcademicaForm.cs" />
-    <Compile Include="Models\TipoActividadMovilidadAcademicaForm.cs" />
     <Compile Include="Models\TipoEstanciaForm.cs" />
-    <Compile Include="Models\TipoInstitucionForm.cs" />
     <Compile Include="Models\TipoProyectoForm.cs" />
     <Compile Include="Models\TipoPublicacionForm.cs" />
     <Compile Include="MovilidadAcademicaController.cs" />

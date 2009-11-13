@@ -78,7 +78,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoEstancia> tipoEstanciaRepository;
         readonly IRepository<TipoEvento> tipoEventoRepository;
         readonly IRepository<TipoFinanciamiento> tipoFinanciamientoRepository;
-        readonly IRepository<TipoInstitucion> tipoInstitucionRepository;
         readonly IRepository<TipoOrgano> tipoOrganoRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
@@ -94,7 +93,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<IdentificadorLibro> identificadorLibroRepository,
                                IRepository<Convenio> convenioRepository,
                                IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository,
-                               IRepository<TipoInstitucion> tipoInstitucionRepository,
                                IRepository<Departamento> departamentoRepository, IRepository<Puesto> puestoRepository,
                                IRepository<Sede> sedeRepository, IRepository<Categoria> categoriaRepository,
                                IRepository<GradoAcademico> gradoAcademicoRepository,
@@ -173,7 +171,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.paisRepository = paisRepository;
             this.estatusFormacionAcademicaRepository = estatusFormacionAcademicaRepository;
             this.identificadorLibroRepository = identificadorLibroRepository;
-            this.tipoInstitucionRepository = tipoInstitucionRepository;
             this.tipoArticuloRepository = tipoArticuloRepository;
             this.institucionRepository = institucionRepository;
             this.indiceRepository = indiceRepository;
@@ -1605,33 +1602,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoProyecto.ModificadoEl = DateTime.Now;
 
             tipoProyectoRepository.SaveOrUpdate(tipoProyecto);
-        }
-
-        public TipoInstitucion GetTipoInstitucionById(int id)
-        {
-            return tipoInstitucionRepository.Get(id);
-        }
-
-        public TipoInstitucion[] GetAllTipoInstituciones()
-        {
-            return ((List<TipoInstitucion>) OrderCatalog<TipoInstitucion>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoInstitucion[] GetActiveTipoInstituciones()
-        {
-            return ((List<TipoInstitucion>) OrderCatalog<TipoInstitucion>(x => x.Activo, true)).ToArray();
-        }
-
-        public void SaveTipoInstitucion(TipoInstitucion tipoInstitucion)
-        {
-            if (tipoInstitucion.Id == 0)
-            {
-                tipoInstitucion.Activo = true;
-                tipoInstitucion.CreadorEl = DateTime.Now;
-            }
-            tipoInstitucion.ModificadoEl = DateTime.Now;
-
-            tipoInstitucionRepository.SaveOrUpdate(tipoInstitucion);
         }
 
         public TipoEstancia GetTipoEstanciaById(int id)

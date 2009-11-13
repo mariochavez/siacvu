@@ -2,69 +2,32 @@ using System;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [MovilidadAcademicaValidator]
     public class MovilidadAcademica : Entity, IBaseEntity
     {
-        public MovilidadAcademica()
-        {
-            TipoActividadMovilidadAcademicas = new List<TipoActividadMovilidadAcademica>();
-            ProductoDerivadoMovilidadAcademicas = new List<ProductoDerivadoMovilidadAcademica>();
-            ProyectoMovilidadAcademicas = new List<ProyectoMovilidadAcademica>();
-            ProductoAcademicoMovilidadAcademicas = new List<ProductoAcademicoMovilidadAcademica>();
-        }
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
 
-        public virtual void AddTipoActividad(TipoActividadMovilidadAcademica tipoActividadMovilidadAcademica)
-        {
-            TipoActividadMovilidadAcademicas.Add(tipoActividadMovilidadAcademica);
-        }
+        public virtual Departamento Departamento { get; set; }
 
-        public virtual void AddProductoDerivado(ProductoDerivadoMovilidadAcademica productoDerivadoMovilidadAcademica)
-        {
-            ProductoDerivadoMovilidadAcademicas.Add(productoDerivadoMovilidadAcademica);
-        }
-
-        public virtual void AddProyecto(ProyectoMovilidadAcademica proyectoMovilidadAcademica)
-        {
-            ProyectoMovilidadAcademicas.Add(proyectoMovilidadAcademica);
-        }
-
-        public virtual void AddProductoAcademico(ProductoAcademicoMovilidadAcademica productoAcademicoMovilidadAcademica)
-        {
-            ProductoAcademicoMovilidadAcademicas.Add(productoAcademicoMovilidadAcademica);
-        }
+        public virtual Sede Sede { get; set; }
 
         public virtual TipoEstancia TipoEstancia { get; set; }
 
-        public virtual TipoInstitucion TipoInstitucion { get; set; }
-
         public virtual Institucion Institucion { get; set; }
+
+        public virtual Nivel Nivel2 { get; set; }
 
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
+        public virtual string Actividades { get; set; }
 
-        public virtual Convenio Convenio { get; set; }
-
-        [Valid]
-        public virtual IList<TipoActividadMovilidadAcademica> TipoActividadMovilidadAcademicas { get; private set; }
-
-        [Valid]
-        public virtual IList<ProductoDerivadoMovilidadAcademica> ProductoDerivadoMovilidadAcademicas { get; private set; }
-
-        [Valid]
-        public virtual IList<ProyectoMovilidadAcademica> ProyectoMovilidadAcademicas { get; private set; }
-
-        [Valid]
-        public virtual IList<ProductoAcademicoMovilidadAcademica> ProductoAcademicoMovilidadAcademicas { get; private set; }
-
-        [NotNull]
-        public virtual Usuario Usuario { get; set; }
+        public virtual string Logros { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 
