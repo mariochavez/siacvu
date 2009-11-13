@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateResenasMaps();
             CreateFormacionAcademicaMaps();
             CreateLibrosMaps();
-            CreateMovilidadAcademicaMaps();
+            CreateEstanciaInstitucionExternaMaps();
             CreateGrupoInvestigacionMaps();
             CreateExperienciaProfesionalMaps();
             CreateApoyoConacytMaps();
@@ -311,9 +311,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
         }
 
-        private void CreateMovilidadAcademicaMaps()
+        private void CreateEstanciaInstitucionExternaMaps()
         {
-            Mapper.CreateMap<MovilidadAcademica, MovilidadAcademicaForm>()
+            Mapper.CreateMap<EstanciaInstitucionExterna, EstanciaInstitucionExternaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaInicial,
@@ -326,22 +326,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Convenio,
                            o => o.Ignore());
-
-            Mapper.CreateMap<TipoActividadMovilidadAcademica, TipoActividadMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProductoDerivadoMovilidadAcademica, ProductoDerivadoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProductoAcademicoMovilidadAcademica, ProductoAcademicoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<ProyectoMovilidadAcademica, ProyectoMovilidadAcademicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateFormacionAcademicaMaps()

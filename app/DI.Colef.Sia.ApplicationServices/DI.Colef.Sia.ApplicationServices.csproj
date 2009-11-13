@@ -76,7 +76,7 @@
     <Compile Include="IIdiomasInvestigadorService.cs" />
     <Compile Include="IInvestigadorService.cs" />
     <Compile Include="ILibroService.cs" />
-    <Compile Include="IMovilidadAcademicaService.cs" />
+    <Compile Include="IEstanciaInstitucionExternaService.cs" />
     <Compile Include="Impl\AlumnoService.cs" />
     <Compile Include="Impl\ApoyoConacytService.cs" />
     <Compile Include="Impl\ArticuloService.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Impl\IdiomasInvestigadorService.cs" />
     <Compile Include="Impl\InvestigadorService.cs" />
     <Compile Include="Impl\LibroService.cs" />
-    <Compile Include="Impl\MovilidadAcademicaService.cs" />
+    <Compile Include="Impl\EstanciaInstitucionExternaService.cs" />
     <Compile Include="Impl\OrganoExternoService.cs" />
     <Compile Include="Impl\OrganoInternoService.cs" />
     <Compile Include="Impl\ParticipacionAcademiaService.cs" />

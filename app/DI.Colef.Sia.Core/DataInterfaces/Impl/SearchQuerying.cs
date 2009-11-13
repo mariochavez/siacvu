@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public Search[] SearchMovilidadAcademica(string value)
         {
-            var criteria = DetachedCriteria.For(typeof (MovilidadAcademica))
+            var criteria = DetachedCriteria.For(typeof (EstanciaInstitucionExterna))
                 .CreateAlias("Institucion", "i", JoinType.InnerJoin)
                 .SetFetchMode("Institucion", FetchMode.Eager)
                 .SetMaxResults(20)

@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<MovilidadAcademicaForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<EstanciaInstitucionExternaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la movilidad acad&eacute;mica utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p>Para modificar la estancia en instituci&oacute;n externa utilice los siguientes campos para realizar cambios dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 
@@ -31,26 +31,14 @@
         <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 	    
-            <% using (Html.BeginForm("Update", "MovilidadAcademica")){ %>
+            <% using (Html.BeginForm("Update", "EstanciaInstitucionExterna")){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <% Html.RenderPartial("_DatosMovilidadAcademica", Model.Form); %>
-                
-                <h4>Tipos de actividades</h4>
-                <% Html.RenderPartial("_EditTipoActividad", Model.Form); %>
-            
-                <h4>Productos derivados</h4>
-                <% Html.RenderPartial("_EditProductoDerivado", Model.Form); %>
-                
-                <h4>Productos acad&eacute;micos</h4>
-                <% Html.RenderPartial("_EditProductoAcademico", Model.Form); %>
-                
-                <h4>Proyectos</h4>
-                <% Html.RenderPartial("_EditProyecto", Model.Form); %>
+                <% Html.RenderPartial("_DatosEstanciaInstitucionExterna", Model.Form); %>
                 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<MovilidadAcademicaController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.Index(), "Regresar")%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

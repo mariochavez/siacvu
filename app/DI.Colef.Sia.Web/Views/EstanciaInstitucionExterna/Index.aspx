@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<MovilidadAcademicaForm>>" %>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<EstanciaInstitucionExternaForm>>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -11,15 +11,15 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-	    <h3>Agregar nueva movilidad acad&eacute;mica</h3>
+	    <h3>Agregar nueva estancia en instituci&oacute;n externa</h3>
 		<p>
-		    Puede agregar una nueva movilidad acad&eacute;mica dentro de la lista de administraci&oacute;n de
-		    otros presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva movilidad acad&eacute;mica</strong>.
+		    Puede agregar una nueva estancia en instituci&oacute;n externa dentro de la lista de administraci&oacute;n de
+		    otros presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva estancia en instituci&oacute;n externa</strong>.
 		</p>
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<MovilidadAcademicaController>(x => x.New(), "+ Nueva movilidad académica", new { title = "Nueva movilidad academica" })%>
+		        <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.New(), "+ Nueva estancia en institución externa", new { title = "Nueva estancia en institución externa" })%>
 		    </span>
 		</div>
 	
@@ -30,7 +30,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de movilidades acad&eacute;micas registradas en el sistema.</p>
+            <p>Lista de estancias en instituciones externas registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -43,28 +43,28 @@
     <% Html.RenderPartial("_Search"); %>
     
 	<div id="lista">
-	    <h4>Movilidades acad&eacute;micas</h4>
+	    <h4>Estancias en instituciones externas</h4>
 	    
 	    <% if(Model.List == null || Model.List.Length == 0) { %>	        
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay movilidades acad&eacute;micas registradas</span></h5>
+					<h5><span>No hay estancias en instituciones externas registradas</span></h5>
 				</div><!--end elementodescripcion-->	
 
 			</div><!--end elementolista-->
 		    
         <% } else { %>
-            <% foreach (var movilidadAcademica in Model.List){ %>
-                <div class="elementolista" id="accion_<%=Html.Encode(movilidadAcademica.Id) %>">
+            <% foreach (var estanciaInstitucionExterna in Model.List){ %>
+                <div class="elementolista" id="accion_<%=Html.Encode(estanciaInstitucionExterna.Id) %>">
 			        <div class="elementodescripcion">
-			            <h5><span><%=Html.Encode(movilidadAcademica.InstitucionNombre)%></span></h5>
-				        <h6>Modificado el <%=Html.Encode(movilidadAcademica.Modificacion)%></h6>
+			            <h5><span><%=Html.Encode(estanciaInstitucionExterna.InstitucionNombre)%></span></h5>
+				        <h6>Modificado el <%=Html.Encode(estanciaInstitucionExterna.Modificacion)%></h6>
 			        </div><!--end elementodescripcion-->
     				
 			        <div class="elementobotones">
 				        <p>
-				            <span><%=Html.ActionLink<MovilidadAcademicaController>(x => x.Edit(movilidadAcademica.Id), "Editar") %></span> 
-				            <span><%=Html.ActionLink("Ver", "Show", new { id = movilidadAcademica.Id })%></span>
+				            <span><%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.Edit(estanciaInstitucionExterna.Id), "Editar")%></span> 
+				            <span><%=Html.ActionLink("Ver", "Show", new { id = estanciaInstitucionExterna.Id })%></span>
 				        </p>
 			        </div><!--end elementobotones-->	
     				

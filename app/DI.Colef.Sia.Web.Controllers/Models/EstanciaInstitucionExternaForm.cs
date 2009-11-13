@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class MovilidadAcademicaForm
+    public class EstanciaInstitucionExternaForm
     {
         public int Id { get; set; }
         public string FechaInicial { get; set; }
@@ -27,24 +27,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ConvenioId { get; set; }
         public string ConvenioNombre { get; set; }
 
-        /* New */
-        public TipoActividadMovilidadAcademicaForm[] TipoActividadMovilidadAcademicas { get; set; }
-        public ProductoDerivadoMovilidadAcademicaForm[] ProductoDerivadoMovilidadAcademicas { get; set; }
-        public ProductoAcademicoMovilidadAcademicaForm[] ProductoAcademicoMovilidadAcademicas { get; set; }
-        public ProyectoMovilidadAcademicaForm[] ProyectoMovilidadAcademicas { get; set; }
-
-        public TipoActividadMovilidadAcademicaForm TipoActividadMovilidadAcademica { get; set; }
-        public ProductoDerivadoMovilidadAcademicaForm ProductoDerivadoMovilidadAcademica { get; set; }
-        public ProductoAcademicoMovilidadAcademicaForm ProductoAcademicoMovilidadAcademica { get; set; }
-        public ProyectoMovilidadAcademicaForm ProyectoMovilidadAcademica { get; set; }
 
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
         public TipoInstitucionForm[] TiposInstituciones { get; set; }
         public ConvenioForm[] Convenios { get; set; }
-        public TipoActividadForm[] TiposActividades { get; set; }
-        public ProductoDerivadoForm[] ProductosDerivados { get; set; }
-        public ProductoAcademicoForm[] ProductosAcademicos { get; set; }
-        public ProyectoForm[] Proyectos { get; set; }
     }
 }

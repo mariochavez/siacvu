@@ -144,7 +144,7 @@
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
     <Compile Include="Moneda.cs" />
-    <Compile Include="MovilidadAcademica.cs" />
+    <Compile Include="EstanciaInstitucionExterna.cs" />
     <Compile Include="NHibernateValidator\ApoyoConacytValidator.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
@@ -159,7 +159,7 @@
     <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
     <Compile Include="NHibernateValidator\IdiomasInvestigadorValidator.cs" />
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
-    <Compile Include="NHibernateValidator\MovilidadAcademicaValidator.cs" />
+    <Compile Include="NHibernateValidator\EstanciaInstitucionExternaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionAcademiaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
@@ -193,12 +193,9 @@
     <Compile Include="ParticipanteExternoProyecto.cs" />
     <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="ProductoAcademico.cs" />
-    <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
-    <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />
     <Compile Include="Proyecto.cs" />
-    <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Rama.cs" />
     <Compile Include="RecursoFinancieroProyecto.cs" />
@@ -223,7 +220,6 @@
     <Compile Include="SubprogramaConacyt.cs" />
     <Compile Include="TesisDirigida.cs" />
     <Compile Include="TipoActividad.cs" />
-    <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArchivo.cs" />
     <Compile Include="TipoArticulo.cs" />
