@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <div class="minilista" id="autorresenaList">
-    <h5>Autor</h5>
+    <h5>Autor(es)</h5>
 
     <% if (Model.AutorResenas != null && Model.AutorResenas.Length > 0){ %>
         <% for (int i = 0; i < Model.AutorResenas.Length; i++){ %>

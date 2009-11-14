@@ -165,8 +165,7 @@
                     </p>
                     <p>
                         <label></label>
-                        Rese&ntilde;a traducida a otro idioma?
-                        <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ResenaTraducida) %>&nbsp;</span>
+                        <span class="valor">Rese&ntilde;a traducida a otro idioma? <%= HumanizeHelper.Boolean(Model.Form.ResenaTraducida) %>&nbsp;</span>
                     </p>
                     <% if (Model.Form.ResenaTraducida){ %>
                         <p>

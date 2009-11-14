@@ -399,7 +399,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 resenaService.SaveResena(resena);
             }
 
-            return Rjs("DeleteAutor", investigadorId);
+            var form = new AutorResenaForm {InvestigadorId = investigadorId};
+
+            return Rjs("DeleteAutor", form);
         }
 
         ResenaForm SetupNewForm()
