@@ -42,14 +42,14 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Ambito") %>
 </p>
-<p id="ambitopais">
+<p id="ambitopais" class="noeffect">
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangePais") })%>
+        "Seleccione ...", new { @class = "requerido"})%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
-<p class="ambitoestatallocal">
+<p id="ambitoestatal" class="noeffect">
     <label>Estado</label>
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>

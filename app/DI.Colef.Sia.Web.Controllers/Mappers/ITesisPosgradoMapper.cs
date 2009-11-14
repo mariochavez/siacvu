@@ -3,7 +3,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface IAlumnoMapper : IMapper<Alumno, AlumnoForm>
+    public interface ITesisPosgradoMapper : IMapper<TesisPosgrado, TesisPosgradoForm>
     {
     }
 }

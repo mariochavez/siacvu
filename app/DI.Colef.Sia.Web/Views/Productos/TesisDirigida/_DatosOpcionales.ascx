@@ -3,13 +3,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
 	<label>2do. Nivel</label>
-    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
+    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <span class="cvu"></span>
 </p>
 <p>
     <label>Subdisciplina</label>
-    <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
+    <%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <span class="cvu"></span>
 </p>

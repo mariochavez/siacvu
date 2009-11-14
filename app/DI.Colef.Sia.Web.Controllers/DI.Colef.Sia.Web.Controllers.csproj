@@ -123,7 +123,7 @@
     <Compile Include="Catalogos\VinculacionAPyDController.cs" />
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
-    <Compile Include="Mappers\IAlumnoMapper.cs" />
+    <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
     <Compile Include="Mappers\IConsejoComisionMapper.cs" />
     <Compile Include="Mappers\IDiplomadoMapper.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
-    <Compile Include="Mappers\Impl\AlumnoMapper.cs" />
+    <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
     <Compile Include="Mappers\Impl\AutorResenaMapper.cs" />
     <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
     <Compile Include="Mappers\Impl\DiplomadoMapper.cs" />
@@ -148,7 +148,7 @@
     <Compile Include="Mappers\IVinculacionAPyDMapper.cs" />
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
-    <Compile Include="Models\AlumnoForm.cs" />
+    <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\AutorResenaForm.cs" />
     <Compile Include="Models\ConsejoComisionForm.cs" />

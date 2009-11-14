@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -15,41 +16,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IPaisMapper paisMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
         readonly IVinculacionAPyDMapper vinculacionApyDMapper;
-        readonly IAlumnoMapper alumnoMapper;
-        readonly IAlumnoService alumnoService;
         readonly INivelMapper nivelMapper;
-        readonly IInstitucionMapper institucionMapper;
+        readonly ICustomCollection customCollection;
+        readonly ITesisPosgradoMapper tesisPosgradoMapper;
+        readonly ITesisPosgradoService tesisPosgradoService;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
-                               IPaisMapper paisMapper,
                                IFormaParticipacionMapper formaParticipacionMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
                                ISearchService searchService,
-                               IVinculacionAPyDMapper vinculacionApyDMapper, IAlumnoMapper alumnoMapper,
-                               IAlumnoService alumnoService,
-                               INivelMapper nivelMapper, IInstitucionMapper institucionMapper)
+                               IVinculacionAPyDMapper vinculacionApyDMapper,
+                               INivelMapper nivelMapper, ICustomCollection customCollection,
+                               ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
             this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
-            this.paisMapper = paisMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
-            this.alumnoMapper = alumnoMapper;
-            this.alumnoService = alumnoService;
             this.nivelMapper = nivelMapper;
-            this.institucionMapper = institucionMapper;
+            this.customCollection = customCollection;
+            this.tesisPosgradoMapper = tesisPosgradoMapper;
+            this.tesisPosgradoService = tesisPosgradoService;
         }
 
         [Authorize]
@@ -78,7 +76,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             
             return View(data);
         }
@@ -112,7 +109,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
-            data.Form = tesisDirigidaMapper.Map(tesisDirigida);
+
+            var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
+
+            data.Form = SetupShowForm(tesisDirigidaForm);
 
             ViewData.Model = data;
             return View();
@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", tesisDirigida.Titulo));
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", tesisDirigida.Titulo != "" ? tesisDirigida.Titulo : tesisDirigida.TesisPosgrado.Titulo));
         }
 
         [CustomTransaction]
@@ -158,36 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", tesisDirigida.Titulo));
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeAlumno(int select)
-        {
-            var tesisDirigidaForm = new TesisDirigidaForm();
-            var alumnoForm = alumnoMapper.Map(alumnoService.GetAlumnoById(select));
-
-            tesisDirigidaForm.AlumnoProgramaEstudioNombre = alumnoForm.ProgramaEstudioNombre;
-            tesisDirigidaForm.AlumnoGradoAcademicoNombre = alumnoForm.GradoAcademicoNombre;
-
-            tesisDirigidaForm.AlumnoId = alumnoForm.Id;
-
-            return Rjs("ChangeAlumno", tesisDirigidaForm);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var tesisDirigidaForm = new TesisDirigidaForm();
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            tesisDirigidaForm.InstitucionPaisNombre = institucionForm.PaisNombre;
-
-            tesisDirigidaForm.InstitucionId = institucionForm.Id;
-
-            return Rjs("ChangeInstitucion", tesisDirigidaForm);
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", tesisDirigida.Titulo != "" ? tesisDirigida.Titulo : tesisDirigida.TesisPosgrado.Titulo));
         }
 
         [Authorize]
@@ -208,36 +179,43 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new TesisDirigidaForm();
 
             //Lista de Catalogos Pendientes
-            form.Alumnos = alumnoMapper.Map(tesisDirigidaService.FindActiveAlumnos());
-
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
-
-            form.TiposEstudiantes = new[]
-                                        {
-                                            new CustomSelectForm {Id = 1, Nombre = "Interno"},
-                                            new CustomSelectForm {Id = 2, Nombre = "Externo"}
-                                        };
-
+            form.TiposEstudiantes = customCollection.TipoAlumnoCursoCustomCollection();
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
-
             form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
 
             return form;
         }
 
         void FormSetCombos(TesisDirigidaForm form)
         {
+            ViewData["TesisPosgradoId"] = form.TesisPosgradoId;
             ViewData["TipoEstudiante"] = form.TipoEstudiante;
-            ViewData["Alumno"] = form.AlumnoId;
             ViewData["VinculacionAPyD"] = form.VinculacionAPyDId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
-            ViewData["Pais"] = form.PaisId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
-            ViewData["Nivel2"] = form.Nivel2Id;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+        }
+
+        private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)
+        {
+            form = form ?? new TesisDirigidaForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+                                  };
+            return form;
         }
     }
 }

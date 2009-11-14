@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -20,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IPaisMapper paisMapper;
         readonly IDiplomadoMapper diplomadoMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly ICustomCollection customCollection;
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
@@ -28,8 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                INivelMapper nivelMapper,
                                INivelEstudioMapper nivelEstudioMapper,
                                IPaisMapper paisMapper,
-                               ISubdisciplinaMapper subdisciplinaMapper
-                               , ISearchService searchService)
+                               ISubdisciplinaMapper subdisciplinaMapper, 
+                               ISearchService searchService, ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -40,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.nivelMapper = nivelMapper;
             this.paisMapper = paisMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -169,11 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CursoForm();
 
-            form.TiposCursos = new[]
-                                        {
-                                            new CustomSelectForm {Id = 1, Nombre = "Curso interno"},
-                                            new CustomSelectForm {Id = 2, Nombre = "Curso externo"}
-                                        };
+            form.TiposCursos = customCollection.TipoAlumnoCursoCustomCollection();
 
             form.NivelEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());

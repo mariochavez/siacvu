@@ -9,14 +9,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class TesisDirigidaMapper : AutoFormMapper<TesisDirigida, TesisDirigidaForm>, ITesisDirigidaMapper
     {
 		readonly ICatalogoService catalogoService;
-        readonly IAlumnoService alumnoService;
+        readonly ITesisPosgradoService tesisPosgradoService;
 
 		public TesisDirigidaMapper(IRepository<TesisDirigida> repository, ICatalogoService catalogoService,
-                                   IAlumnoService alumnoService) 
+                                   ITesisPosgradoService tesisPosgradoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
-		    this.alumnoService = alumnoService;
+		    this.tesisPosgradoService = tesisPosgradoService;
         }		
 		
         protected override int GetIdFromMessage(TesisDirigidaForm message)
@@ -28,36 +28,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Titulo = message.Titulo;
             model.NombreAlumno = message.NombreAlumno;
-            model.Concluida = message.Concluida;
             model.TipoEstudiante = message.TipoEstudiante;
 
-            model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();
-            model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
-
-            model.Alumno = alumnoService.GetAlumnoById(message.Alumno);
+            model.TesisPosgrado = tesisPosgradoService.GetTesisPosgradoById(message.TesisPosgradoId);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.VinculacionAPyD = catalogoService.GetVinculacionAPyDById(message.VinculacionAPyD);
 
-            // Sector - Organizacion - Nivel2 son en forma de cascada
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-
-            var organizacion = catalogoService.GetNivelById(message.Nivel2).Organizacion.Id;
-            model.Organizacion = catalogoService.GetOrganizacionById(organizacion);
-
-            var sector = catalogoService.GetOrganizacionById(organizacion).Sector.Id;
-            model.Sector = catalogoService.GetSectorById(sector);
-
-            // Area - Disciplina - Subdisciplina son en forma de cascada
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
-            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
-
-            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
-            model.Area = catalogoService.GetAreaById(area);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, Investigador investigador)

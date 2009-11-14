@@ -8,12 +8,12 @@ s.collect do |line|
   
   if(nocodeline)
     invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)Usuarios/)
-    invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)Alumnos/) unless !invalidrow.nil?
-    invalidrow = statement.match(/alter table Alumnos(.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)references(.*)/) unless !invalidrow.nil?
+    invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)TesisPosgrados/) unless !invalidrow.nil?
+    invalidrow = statement.match(/alter table TesisPosgrados(.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)references(.*)/) unless !invalidrow.nil?
 
     if(invalidrow == nil)
       createtable = statement.match(/^.*create table Usuarios/)
-      createtable = statement.match(/^.*create table Alumnos/) unless !createtable.nil?
+      createtable = statement.match(/^.*create table TesisPosgrados/) unless !createtable.nil?
       if(createtable == nil)
         o.puts statement
         o.puts "\n"
@@ -27,8 +27,8 @@ s.collect do |line|
 end
 
     invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)Usuarios/)
-    invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)Alumnos/) unless !invalidrow.nil?
-    invalidrow = statement.match(/alter table Alumnos(.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)references(.*)/) unless !invalidrow.nil?
+    invalidrow = statement.match(/alter table (.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)TesisPosgrados/) unless !invalidrow.nil?
+    invalidrow = statement.match(/alter table TesisPosgrados(.*)\n(.*)add(.*)\n(.*)foreign(.*)\n(.*)references(.*)/) unless !invalidrow.nil?
 
     if(invalidrow == nil)
       o.puts statement

@@ -477,29 +477,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TesisDirigida, TesisDirigidaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaConclusion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.GradoAcademico,
+                           o => o.Ignore())
+                .ForMember(d => d.FormaParticipacion,
+                           o => o.Ignore())
+                .ForMember(d => d.VinculacionAPyD,
+                           o => o.Ignore());
+
+
+            Mapper.CreateMap<TesisPosgrado, TesisPosgradoForm>()
                 .ForMember(d => d.FechaGrado,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.GradoAcademico,
                            o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
                 .ForMember(d => d.FormaParticipacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore())
                 .ForMember(d => d.VinculacionAPyD,
                            o => o.Ignore())
-                .ForMember(d => d.Alumno,
-                           o => o.Ignore());
-
-            Mapper.CreateMap<Alumno, AlumnoForm>()
                 .ForMember(d => d.ProgramaEstudio,
-                           o => o.Ignore())
-                .ForMember(d => d.GradoAcademico,
                            o => o.Ignore());
         }
 
