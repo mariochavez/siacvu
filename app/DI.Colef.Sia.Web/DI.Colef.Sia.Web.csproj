@@ -569,6 +569,10 @@
     <Content Include="Views\Catalogos\VinculacionAPyD\Index.aspx" />
     <Content Include="Views\Catalogos\VinculacionAPyD\New.aspx" />
     <Content Include="Views\Catalogos\VinculacionAPyD\_Form.ascx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Activate.js.ascx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Edit.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Index.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\New.aspx" />
     <Content Include="Views\ExperienciaProfesional\ChangeArea.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\ChangeDisciplina.js.ascx" />
     <Content Include="Views\ExperienciaProfesional\ChangeNivel2.js.ascx" />
