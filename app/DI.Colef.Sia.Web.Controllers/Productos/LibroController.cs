@@ -408,7 +408,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 libroService.SaveLibro(libro);
             }
 
-            return Rjs("DeleteEditorialLibro", editorialId);
+            var form = new EditorialLibroForm {EditorialId = editorialId};
+
+            return Rjs("DeleteEditorialLibro", form);
         }
 
         [Authorize(Roles = "Investigadores")]

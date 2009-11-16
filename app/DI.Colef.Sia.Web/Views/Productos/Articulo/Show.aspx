@@ -98,8 +98,8 @@
                 <% } %>
                 <p>
                     <label></label>
-                    Tiene proyecto de investigaci&oacute;n de referencia?
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                    
+                    <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TieneProyecto) { %>
                     <p>
@@ -172,7 +172,7 @@
                     </p>
                     <p>
                         <label></label>
-                        Art&iacute;culo traducido a otro idioma? <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ArticuloTraducido)%>&nbsp;</span>
+                        <span class="valor">Art&iacute;culo traducido a otro idioma? <%= HumanizeHelper.Boolean(Model.Form.ArticuloTraducido)%>&nbsp;</span>
                     </p>
                     <% if (Model.Form.ArticuloTraducido) { %>
                         <p>

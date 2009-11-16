@@ -70,7 +70,7 @@
                     <label>&Aacute;mbito</label>
                     <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
                 </p>
-                <% if(Model.Form.AmbitoNombre != "Binacional" && Model.Form.AmbitoNombre != "Internacional"){ %>
+                <% if(Model.Form.AmbitoNombre == "Binacional" || Model.Form.AmbitoNombre == "Internacional"){ %>
                     <p>
                         <label>Pa&iacute;s</label>
                         <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
@@ -83,6 +83,10 @@
                     </p>
                 <% } %>
                 <% if(Model.Form.AmbitoNombre.Contains("Local")){ %>
+                    <p>
+                        <label>Estado del pa&iacute;s</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</span>
+                    </p>
                     <p>
                         <label>Municipio</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</span>

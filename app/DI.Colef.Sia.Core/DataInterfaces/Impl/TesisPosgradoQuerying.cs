@@ -6,7 +6,7 @@ using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 {
-    public class AlumnoQuerying : IAlumnoQuerying
+    public class TesisPosgradoQuerying : ITesisPosgradoQuerying
     {
         protected virtual ISession Session
         {
@@ -17,18 +17,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
         }
 
-        public Alumno[] FindActiveAlumnos()
+        public TesisPosgrado[] FindActiveTesisPosgrados()
         {
             //var investigadores = DetachedCriteria.For(typeof (TesisDirigida))
-            //    .CreateAlias("Alumno", "a")
+            //    .CreateAlias("TesisPosgrado", "a")
             //    .SetProjection(Projections.ProjectionList()
             //                       .Add(Projections.Property("a.Id"), "AlumnoId"));
 
-            var alumnos = Session.CreateCriteria(typeof(Alumno))
-                .AddOrder(Order.Asc("Nombre"))
-                .List<Alumno>();
+            var tesisPosgrados = Session.CreateCriteria(typeof(TesisPosgrado))
+                .AddOrder(Order.Asc("Titulo"))
+                .List<TesisPosgrado>();
 
-            return ((List<Alumno>) alumnos).ToArray();
+            return ((List<TesisPosgrado>) tesisPosgrados).ToArray();
         }
     }
 }

@@ -15,5 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public NivelForm[] Niveles { get; set; }
         public OrganizacionForm[] Organizaciones { get; set; }
+
+        public string OrganizacionNombre { get; set; }
+
+        public string OrganizacionSectorNombre { get; set; }
     }
 }

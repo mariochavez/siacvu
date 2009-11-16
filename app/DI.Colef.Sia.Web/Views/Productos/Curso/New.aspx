@@ -60,6 +60,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        cursoSetup();
     });
 </script>
 </asp:Content>

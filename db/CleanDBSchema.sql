@@ -1570,8 +1570,18 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC44A2723A
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC6A829E09]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CC6A829E09
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3116C7A4C4B]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD3116C7A4C4B
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31184B302FF]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD31184B302FF
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
 
 
@@ -1580,6 +1590,7 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC85102A57
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC74E8BAB7]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
 
@@ -1627,6 +1638,25 @@ alter table TipoPublicaciones  drop constraint FK7522403174E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK20CDD2C585102A57]') AND parent_object_id = OBJECT_ID('TipoParticipaciones'))
 alter table TipoParticipaciones  drop constraint FK20CDD2C585102A57
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3119CF67963]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD3119CF67963
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31164F7D1CD]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD31164F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311C8628149]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311C8628149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311F4FE4035]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311F4FE4035
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
 
 
@@ -1715,6 +1745,7 @@ alter table Alumnos  drop constraint FKC8B99C795ECF193D
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC8B99C799CF67963]') AND parent_object_id = OBJECT_ID('Alumnos'))
 alter table Alumnos  drop constraint FKC8B99C799CF67963
 
@@ -1727,6 +1758,10 @@ alter table UsuarioRol  drop constraint FKD884456A72C4C6B8
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD884456A6A829E09]') AND parent_object_id = OBJECT_ID('UsuarioRol'))
 alter table UsuarioRol  drop constraint FKD884456A6A829E09
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EC8628149]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EC8628149
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
 
 
@@ -1735,6 +1770,7 @@ alter table TipoEstancias  drop constraint FK53E7616285102A57
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
 alter table TipoEstancias  drop constraint FK53E7616274E8BAB7
 
@@ -1747,6 +1783,10 @@ alter table TipoApoyos  drop constraint FKAE84C80485102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKAE84C80474E8BAB7]') AND parent_object_id = OBJECT_ID('TipoApoyos'))
 alter table TipoApoyos  drop constraint FKAE84C80474E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EF4FE4035]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EF4FE4035
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
 
 
@@ -2900,8 +2940,32 @@ alter table Eventos  drop constraint FK9DD523436A829E09
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523437D866EAB]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD523437D866EAB
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B32884B302FF]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B32884B302FF
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B328103EADB1]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B328103EADB1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B3285ECF193D]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B3285ECF193D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B3289CF67963]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B3289CF67963
+
+
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
 
 
@@ -3246,7 +3310,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ParticipacionAcademias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipacionAcademias
 
+<<<<<<< HEAD
     if exists (select * from dbo.sysobjects where id = object_id(N'Instituciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Instituciones
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'TesisPosgrados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisPosgrados
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
     if exists (select * from dbo.sysobjects where id = object_id(N'GrupoInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table GrupoInvestigaciones
 
@@ -4272,6 +4340,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table ExperienciaProfesionales (
         Id INT IDENTITY NOT NULL,
+<<<<<<< HEAD
        Entidad NVARCHAR(255) null,
        Nombramiento NVARCHAR(255) null,
        FechaInicial DATETIME null,
@@ -4293,6 +4362,21 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        PaisFk INT null,
        AreaFk INT null,
        DisciplinaFk INT null,
+=======
+       TipoEstudiante INT null,
+       Titulo NVARCHAR(255) null,
+       NombreAlumno NVARCHAR(255) null,
+       Puntuacion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       TesisPosgradoFk INT null,
+       VinculacionAPyDFk INT null,
+       FormaParticipacionFk INT null,
+       GradoAcademicoFk INT null,
+       InstitucionFk INT null,
+       Nivel2Fk INT null,
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
        SubdisciplinaFk INT null,
        SectorEconomicoFk INT null,
        RamaFk INT null,
@@ -4349,10 +4433,29 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table TipoParticipaciones (
         Id INT IDENTITY NOT NULL,
+<<<<<<< HEAD
+=======
+       TipoCurso INT null,
+       EsDiplomado BIT null,
+       NombreDiplomado NVARCHAR(255) null,
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+<<<<<<< HEAD
+=======
+       DiplomadoFk INT null,
+       NivelEstudioFk INT null,
+       ProgramaEstudioFk INT null,
+       InstitucionFk INT null,
+       Nivel2Fk INT null,
+       PaisFk INT null,
+       SubdisciplinaFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -6289,6 +6392,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ProyectoFk) 
         references Proyectos
 
+<<<<<<< HEAD
     alter table Participaciones 
         add constraint FK56CA0A1B7A8488F7 
         foreign key (PaisFk) 
@@ -6323,6 +6427,22 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK40B4829341CFD2F4 
         foreign key (Indice1Fk) 
         references Indices
+=======
+    alter table TesisDirigidas 
+        add constraint FKEF4DD31164F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311C8628149 
+        foreign key (Nivel2Fk) 
+        references Niveles
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311F4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
     alter table RevistaPublicaciones 
         add constraint FK40B48293B9B574C5 
@@ -6354,16 +6474,24 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (InstitucionFk) 
         references Instituciones
 
+<<<<<<< HEAD
     alter table Resenas 
         add constraint FKF708AE62E30B9132 
         foreign key (EditorialFk) 
         references Editoriales
+=======
+    alter table Cursos 
+        add constraint FK8E38D63EC8628149 
+        foreign key (Nivel2Fk) 
+        references Niveles
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
     alter table Resenas 
         add constraint FKF708AE627A8488F7 
         foreign key (PaisFk) 
         references Paises
 
+<<<<<<< HEAD
     alter table Resenas 
         add constraint FKF708AE622AF31B56 
         foreign key (RevistaPublicacionFk) 
@@ -6378,6 +6506,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKF708AE626425E2FD 
         foreign key (IdiomaFk) 
         references Idiomas
+=======
+    alter table Cursos 
+        add constraint FK8E38D63EF4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+>>>>>>> de4a1d4dd6db1876244a59deae46b583ad38cc3f
 
     alter table Resenas 
         add constraint FKF708AE627D866EAB 

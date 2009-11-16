@@ -58,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     "seleccione el tipo de alumno|TipoEstudiante", "TipoEstudiante");
                 isValid = false;
             }
-            else
+            else if (tesisDirigida.TipoEstudiante == 2)
             {
                 if (tesisDirigida.Titulo == "")
                 {
@@ -67,69 +67,48 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (tesisDirigida.Concluida)
+                if (tesisDirigida.VinculacionAPyD == null)
                 {
-                    if (tesisDirigida.FechaConclusion <= DateTime.Parse("1910-01-01"))
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "formato de fecha no válido|FechaConclusion", "FechaConclusion");
-                        isValid = false;
-                    }
-
-                    if (tesisDirigida.FechaConclusion > DateTime.Now)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "el año no puede estar en el futuro|FechaConclusion", "FechaConclusion");
-                        isValid = false;
-                    }
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione la vinculación con la APyD|VinculacionAPyD", "VinculacionAPyD");
+                    isValid = false;
                 }
 
-                if (tesisDirigida.TipoEstudiante == 1)
+                if (tesisDirigida.FormaParticipacion == null)
                 {
-                    if (tesisDirigida.FormaParticipacion == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
-                        isValid = false;
-                    }
-
-                    if (tesisDirigida.Alumno == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "seleccione el nombre del alumno|Alumno", "Alumno");
-                        isValid = false;
-                    }
-
-                    if (tesisDirigida.FechaGrado <= DateTime.Parse("1910-01-01"))
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "formato de fecha no válido|FechaGrado", "FechaGrado");
-                        isValid = false;
-                    }
-
-                    if (tesisDirigida.FechaGrado > DateTime.Now)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "el año no puede estar en el futuro|FechaGrado", "FechaGrado");
-                        isValid = false;
-                    }
-
-                    if (tesisDirigida.Pais == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "seleccione el país|Pais", "Pais");
-                        isValid = false;
-                    }
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione la forma de participación|FormaParticipacion", "FormaParticipacion");
+                    isValid = false;
                 }
 
-                if (tesisDirigida.TipoEstudiante == 2)
+                if (tesisDirigida.NombreAlumno == "")
                 {
-                    if (tesisDirigida.GradoAcademico == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "seleccione el grado académico|GradoAcademico", "GradoAcademico");
-                        isValid = false;
-                    }
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser nulo, vacío o cero|NombreAlumno", "NombreAlumno");
+                    isValid = false;
+                }
+
+                if (tesisDirigida.GradoAcademico == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el grado académico|GradoAcademico", "GradoAcademico");
+                    isValid = false;
+                }
+
+                if (tesisDirigida.Institucion == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no puede ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
+                    isValid = false;
+                }
+            }
+            else
+            {
+                if (tesisDirigida.TesisPosgrado == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione la tesis|TesisPosgrado", "TesisPosgrado");
+                    isValid = false;
                 }
             }
 

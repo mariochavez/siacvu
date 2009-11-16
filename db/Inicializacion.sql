@@ -2,8 +2,8 @@ IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[Usuario
 DROP VIEW [dbo].[Usuarios]
 GO
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[Alumnos]'))
-DROP VIEW [dbo].[Alumnos]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[TesisPosgrados]'))
+DROP VIEW [dbo].[TesisPosgrados]
 GO
 
 CREATE VIEW Usuarios AS
@@ -131,10 +131,16 @@ SELECT	   51 AS Id, 'DGAA' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMater
 GO
 
 --Valores de prueba para la vista de Alumnos
-CREATE VIEW Alumnos AS
-SELECT 2 AS Id, 'Natalia Zamudio Santos' AS Nombre, 1 AS GradoAcademicoFk, 1 AS ProgramaEstudioFk
+--Vinculacion con la APyD 1 => Tesis orientada al Desarrollo Local
+--Forma de Participacion 1 => Editor
+--ProgramaEstudioFk 47 => Ciencias Educativas
+--Grado Academico 1 => Licenciatura
+CREATE VIEW TesisPosgrados AS
+SELECT		2 AS Id, 'Tesis Posgrado 2' AS Titulo, 'Natalia Zamudio Santos' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,  
+			1 AS VinculacionApyDFk, 1 AS FormaParticipacionFk, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk
 UNION
-SELECT 1 AS Id, 'Alejandro Valdéz Ruíz' AS Nombre, 1 AS GradoAcademicoFk, 1 AS ProgramaEstudioFk
+SELECT		1 AS Id, 'Tesis Posgrado 1' AS Titulo, 'Alejandro Valdéz Ruíz' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,
+			1 AS VinculacionApyDFk, 1 AS FormaParticipacionFk, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
@@ -2572,11 +2578,11 @@ insert into VinculacionAPyDes values('Tesis orientada a las políticas públicas',
 insert into VinculacionAPyDes values('Tesis orientada al desarrollo socioeconómico', GETDATE(), GETDATE(), 1, 1, 1)
 
 --Valores de prueba
-insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, null, null, 1, 1);
+insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, null, 1, 1);
+insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, null, 1, 1);
+insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 2, null, 1, 1);
+insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 2, null, 1, 1);
+insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 3, null, 1, 1);
 
 --Valores de prueba
 insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)

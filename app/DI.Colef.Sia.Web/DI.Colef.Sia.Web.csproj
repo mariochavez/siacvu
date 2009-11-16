@@ -640,7 +640,6 @@
     <Content Include="Views\Productos\Capitulo\Show.aspx" />
     <Content Include="Views\Productos\Curso\Show.aspx" />
     <Content Include="Views\Productos\Dictamen\Show.aspx" />
-    <Content Include="Views\Productos\Distincion\ChangePais.js.ascx" />
     <Content Include="Views\Productos\Distincion\Show.aspx" />
     <Content Include="Views\Productos\Evento\AddInstitucion.js.ascx" />
     <Content Include="Views\Productos\Evento\_ShowInstitucion.ascx" />
@@ -679,11 +678,13 @@
     <Content Include="Views\Productos\Resena\_EditAutor.ascx" />
     <Content Include="Views\Productos\Resena\_NewAutor.ascx" />
     <Content Include="Views\Productos\Resena\_ShowAutor.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeAlumno.js.ascx" />
-    <Content Include="Views\Productos\TesisDirigida\ChangeInstitucion.js.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\_ShowTesisExterna.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\_ShowTesisInterna.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
+    <Content Include="Views\Shared\_Show2doNivel.ascx" />
+    <Content Include="Views\Shared\_ShowSubdisciplina.ascx" />
     <Content Include="Views\Shared\_ShowAreaTematica.ascx" />
     <Content Include="Views\Shared\_ShowProyecto.ascx" />
     <Content Include="Views\Shared\_ShowRevista.ascx" />

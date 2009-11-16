@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<AutorResenaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -13,14 +13,8 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
+$('#autorresena_<%=Html.Encode(Model.InvestigadorId) %>').remove();
 
-$('#autorresena_<%=Html.Encode(Model) %>').remove();
-
-if(<%=Html.Encode(Model) %> > 0)
-{    
-    if($('#autorresenaList div[id^=autorresena_]').length == 0) {
-        $('#autorresenaList div:first').before(html);
-    }
-}
+deleteElement(html, '#autorresenaList div[id^=autorresena_]', '#autorresenaList');
 
 setupSublistRows();

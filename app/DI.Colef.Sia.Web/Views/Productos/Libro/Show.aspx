@@ -113,8 +113,7 @@
                 </p>
                 <p>
                     <label></label>
-                    Tiene proyecto de investigaci&oacute;n de referencia?
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto)%>&nbsp;</span>
+                    <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto)%>&nbsp;</span>
                 </p>
                 
                 <% if (Model.Form.TieneProyecto) { %>

@@ -76,7 +76,7 @@
                 </p>
                 <p>
                     <label></label>
-                    Tiene proyecto de investigaci&oacute;n de referencia? <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                    <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TieneProyecto) { %>
                     <p>
@@ -140,7 +140,11 @@
                 <p>
                     <label>N&uacute;mero de p&aacute;ginas</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
-                </p>                
+                </p>    
+                <p>
+                    <label>N&uacute;mero de citas</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
+                </p>             
 
     <!-- RESPONSABLES DEL LIBRO -->                
                 <h4>Responsables del libro</h4>

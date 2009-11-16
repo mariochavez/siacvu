@@ -79,14 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             //Ambito - estatal
             if (lowerCaseName.Contains("estatal"))
             {
-                if (distincion.Pais == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el país|Pais", "Pais");
-
-                    isValid = false;
-                }
-
                 if (distincion.EstadoPais == null)
                 {
                     constraintValidatorContext.AddInvalid(
@@ -97,12 +89,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Ambito - local
-            if (lowerCaseName.Contains("local"))
+            if (lowerCaseName.Contains("local/municipal"))
             {
-                if (distincion.Pais == null)
+                if (distincion.EstadoPais == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "seleccione el país|Pais", "Pais");
+                        "seleccione el estado|EstadoPais", "EstadoPais");
 
                     isValid = false;
                 }
@@ -117,7 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Ambito - nacional y regional
-            if (lowerCaseName.Contains("nacional") || lowerCaseName.Contains("regional"))
+            if (lowerCaseName.Contains("binacional") || lowerCaseName.Contains("internacional"))
             {
                 if (distincion.Pais == null)
                 {

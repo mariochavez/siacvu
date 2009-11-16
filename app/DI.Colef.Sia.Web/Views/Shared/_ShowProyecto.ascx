@@ -3,21 +3,21 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
-    <strong><%= Html.Encode(Model.ProyectoAreaTematicaLineaTematicaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.ProyectoAreaTematicaLineaTematicaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>&Aacute;rea tem&aacute;tica</label>
-    <strong><%= Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.ProyectoAreaTematicaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>&Aacute;rea</label>
-    <strong><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>Disciplina</label>
-    <strong><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>Subdisciplina</label>
-    <strong><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.ProyectoAreaTematicaSubdisciplinaNombre)%>&nbsp;</span>
 </p>
