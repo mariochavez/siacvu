@@ -369,6 +369,7 @@
     <Content Include="Views\Catalogos\Indice\New.aspx" />
     <Content Include="Views\Catalogos\Indice\_Form.ascx" />
     <Content Include="Views\Catalogos\Institucion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Institucion\ChangePais.js.ascx" />
     <Content Include="Views\Catalogos\Institucion\Edit.aspx" />
     <Content Include="Views\Catalogos\Institucion\Index.aspx" />
     <Content Include="Views\Catalogos\Institucion\New.aspx" />
@@ -664,7 +665,6 @@
     <Content Include="Views\Productos\Libro\_EditEditorial.ascx" />
     <Content Include="Views\Productos\Libro\_NewEditorialLibro.ascx" />
     <Content Include="Views\Productos\Libro\_ReferenciaBibliografica.ascx" />
-    <Content Include="Views\EstanciaInstitucionExterna\Activate.js.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Edit.aspx" />
     <Content Include="Views\EstanciaInstitucionExterna\Index.aspx" />
     <Content Include="Views\EstanciaInstitucionExterna\New.aspx" />

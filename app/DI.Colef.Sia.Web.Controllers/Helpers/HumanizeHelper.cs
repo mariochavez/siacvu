@@ -178,5 +178,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return nombrePeriodo;
         }
+
+        public static string TipoInstitucion(bool tipoInstitucion)
+        {
+            string nombreTipoInstitucion;
+
+            switch (tipoInstitucion)
+            {
+                case false:
+                    nombreTipoInstitucion = "Extranjera";
+                    break;
+                case true:
+                    nombreTipoInstitucion = "Nacional";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoInstitucion;
+        }
     }
 }
