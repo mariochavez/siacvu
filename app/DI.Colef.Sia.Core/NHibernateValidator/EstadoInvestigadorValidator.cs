@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if(estadoInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<EstadoInvestigador, DateTime>("Fecha inicial inválida o nula|FechaInicial", x => x.FechaInicial);
+                    constraintValidatorContext.AddInvalid<EstadoInvestigador, DateTime>("fecha inicial inválida o nula|FechaInicial", x => x.FechaInicial);
                     isValid = false;
                 }
 
@@ -36,16 +36,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     {
                         constraintValidatorContext.DisableDefaultError();
                         constraintValidatorContext.AddInvalid<EstadoInvestigador, DateTime>(
-                            "Fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
+                            "fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
                         isValid = false;
                     }
                     else if (estadoInvestigador.FechaInicial >= estadoInvestigador.FechaFinal)
                     {
                         constraintValidatorContext.DisableDefaultError();
                         constraintValidatorContext.AddInvalid<EstadoInvestigador, DateTime>(
-                            "Fecha inicial debe ser menor a fecha final|FechaInicial", x => x.FechaInicial);
+                            "fecha inicial debe ser menor a fecha final|FechaInicial", x => x.FechaInicial);
                         constraintValidatorContext.AddInvalid<EstadoInvestigador, DateTime>(
-                            "Fecha final debe ser mayor a fecha inicial|FechaFinal", x => x.FechaFinal);
+                            "fecha final debe ser mayor a fecha inicial|FechaFinal", x => x.FechaFinal);
                         isValid = false;
                     }
                 }

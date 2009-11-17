@@ -210,6 +210,7 @@
     <Content Include="Content\Images\corner_left.png" />
     <Content Include="Content\Images\corner_right.png" />
     <Content Include="Content\Images\dot.gif" />
+    <Content Include="Content\Images\eliminar-icon.png" />
     <Content Include="Content\Images\medium-brown-button.png" />
     <Content Include="Content\Images\normal-brown-button.png" />
     <Content Include="Content\Images\normal-white-button.png" />
@@ -218,6 +219,7 @@
     <Content Include="Content\Images\select-requerido-icon.gif" />
     <Content Include="Content\Images\small-white-button.png" />
     <Content Include="Content\Images\subcontenido-bg.gif" />
+    <Content Include="Content\Images\upload_progress.gif" />
     <Content Include="Content\Images\usuario-icon.gif" />
     <Content Include="Content\jquery.autocomplete.css" />
     <Content Include="NHvalidator.config" />
@@ -226,7 +228,11 @@
     <Content Include="Scripts\jquery.autocomplete.js" />
     <Content Include="Scripts\jquery.clearfield.min.js" />
     <Content Include="Scripts\jquery.dynamicui.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\ProductsSetup.js" />
+    <Content Include="Scripts\swfobjects.js" />
+    <Content Include="Scripts\Upload.js" />
+    <Content Include="Scripts\uploadify.swf" />
     <Content Include="Views\ApoyoConacyt\Activate.js.ascx" />
     <Content Include="Views\ApoyoConacyt\Edit.aspx" />
     <Content Include="Views\ApoyoConacyt\Index.aspx" />
@@ -622,6 +628,7 @@
     <Content Include="Views\IdiomasInvestigador\Show.aspx" />
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
+    <Content Include="Views\Investigador\Create.js.ascx" />
     <Content Include="Views\Investigador\_ShowSni.ascx" />
     <Content Include="Views\Investigador\_ShowCategoria.ascx" />
     <Content Include="Views\Investigador\_ShowCargo.ascx" />

@@ -90,4 +90,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class ArchivoInvestigador : Archivo
+    {
+        
+    }
 }

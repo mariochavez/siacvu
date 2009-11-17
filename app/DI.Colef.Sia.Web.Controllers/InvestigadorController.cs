@@ -148,20 +148,45 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(InvestigadorForm form)
         {
             var investigador = investigadorMapper.Map(form, CurrentUser());
+            ModelState.AddModelErrors(investigador.ValidationResults(), true, "Investigador");
 
-            if (!IsValidateModel(investigador, form, Title.New, "Investigador"))
+            if(!ModelState.IsValid)
             {
-                ((GenericViewData<InvestigadorForm>) ViewData.Model).Form = SetupNewForm(form.Usuario);
-
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
             investigadorService.SaveInvestigador(investigador);
+            SetMessage(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+                                     investigador.Usuario.ApellidoPaterno,
+                                     investigador.Usuario.ApellidoMaterno));
 
-            return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
-                                                 investigador.Usuario.ApellidoPaterno,
-                                                 investigador.Usuario.ApellidoMaterno));
+            // NOTE: Hay que quitar esto
+            ViewData["Rollback"] = true;
+
+            return Rjs("Create", investigador.Id);
         }
+
+        //[Authorize(Roles = "Dgaa")]
+        //[CustomTransaction]
+        //[ValidateAntiForgeryToken]
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult Create(InvestigadorForm form)
+        //{
+        //    var investigador = investigadorMapper.Map(form, CurrentUser());
+
+        //    if (!IsValidateModel(investigador, form, Title.New, "Investigador"))
+        //    {
+        //        ((GenericViewData<InvestigadorForm>) ViewData.Model).Form = SetupNewForm(form.Usuario);
+
+        //        return ViewNew();
+        //    }
+
+        //    investigadorService.SaveInvestigador(investigador);
+
+        //    return RedirectToIndex(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+        //                                         investigador.Usuario.ApellidoPaterno,
+        //                                         investigador.Usuario.ApellidoMaterno));
+        //}
 
         [Authorize(Roles = "Dgaa")]
         [CustomTransaction]

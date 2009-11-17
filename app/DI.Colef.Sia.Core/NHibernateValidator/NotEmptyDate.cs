@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
     {
         public NotEmptyDateAttribute()
         {
-            Message = "Fecha inválida o nula";
+            Message = "fecha inválida o nula";
         }
 
         public string Message { get; set; }

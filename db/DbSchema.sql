@@ -1931,6 +1931,14 @@ alter table ArchivoTesisDirigida  drop constraint FK6EC3CA8882C3B7BC
 alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE7BD528882C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoInvestigador'))
+alter table ArchivoInvestigador  drop constraint FKE7BD528882C3B7BC
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE7BD52888336201B]') AND parent_object_id = OBJECT_ID('ArchivoInvestigador'))
+alter table ArchivoInvestigador  drop constraint FKE7BD52888336201B
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE5A612A185102A57]') AND parent_object_id = OBJECT_ID('TipoCapitulos'))
 alter table TipoCapitulos  drop constraint FKE5A612A185102A57
 
@@ -2652,6 +2660,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoResena
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoTesisDirigida
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoInvestigador') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoInvestigador
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoCapitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoCapitulos
 
@@ -4429,6 +4439,12 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table ArchivoTesisDirigida (
         Archivo INT not null,
        TesisDirigidaFk INT null,
+       primary key (Archivo)
+    )
+
+    create table ArchivoInvestigador (
+        Archivo INT not null,
+       InvestigadorFk INT null,
        primary key (Archivo)
     )
 
@@ -7184,6 +7200,16 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK6EC3CA88954C47FF 
         foreign key (TesisDirigidaFk) 
         references TesisDirigidas
+
+    alter table ArchivoInvestigador 
+        add constraint FKE7BD528882C3B7BC 
+        foreign key (Archivo) 
+        references Archivos
+
+    alter table ArchivoInvestigador 
+        add constraint FKE7BD52888336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table TipoCapitulos 
         add constraint FKE5A612A185102A57 
