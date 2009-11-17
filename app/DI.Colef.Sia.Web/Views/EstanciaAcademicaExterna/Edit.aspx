@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<InstitucionForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<EstanciaAcademicaExternaForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar la instituci&oacute;n utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar el estancia academica externa utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -32,14 +32,14 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    
 	    <div id="forma">
-	        <% using (Html.BeginForm("Update", "Institucion", new { Id = Model.Form.Id })) { %>
+	        <% using (Html.BeginForm("Update", "EstanciaAcademicaExterna", new { Id = Model.Form.Id })) { %>
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
-	            <% Html.RenderPartial("_Form", Model.Form); %>
+
 	            
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InstitucionController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Index(), "Regresar") %>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

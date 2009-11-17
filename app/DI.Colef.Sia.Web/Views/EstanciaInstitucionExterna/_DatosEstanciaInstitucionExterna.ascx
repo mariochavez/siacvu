@@ -4,8 +4,21 @@
 <p>
     <label>Tipo de estancia</label>
     <%=Html.DropDownList("TipoEstancia", Model.TiposEstancias.CreateSelectList<TipoEstanciaForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class = "requerido" })%>
+		"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoEstancia") %>
+</p>
+<p>
+    <label>Instituci&oacute;n de destino</label>
+    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
+</p>
+<p>
+    <label>2do. Nivel</label>
+    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
+		"Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Nivel2") %>
 </p>
 <p>
     <label>Fecha inicial</label>
@@ -20,22 +33,12 @@
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>
-    <label>Instituci&oacute;n</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
+    <label>Actividades acad&eacute;micas previstas</label>
+    <%=Html.TextBox("Actividades", Model.Actividades, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Actividades")%>
 </p>
 <p>
-    <label>L&iacute;nea tem&aacute;tica</label>
-    <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-                new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
-    <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
-    <%=Html.ValidationMessage("LineaTematicaNombre")%>
-</p>
-<p>
-    <label>Convenio</label>
-    <%=Html.DropDownList("Convenio", Model.Convenios.CreateSelectList<ConvenioForm>("Id", "Nombre"),
-				"Seleccione ...")%>
-    <%=Html.ValidationMessage("Convenio") %>
+    <label>Principales logros</label>
+    <%=Html.TextBox("Logros", Model.Logros, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Logros")%>
 </p>

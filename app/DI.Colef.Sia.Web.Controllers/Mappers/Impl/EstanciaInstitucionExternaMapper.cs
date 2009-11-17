@@ -23,17 +23,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(EstanciaInstitucionExternaForm message, EstanciaInstitucionExterna model)
         {
+            model.Actividades = message.Actividades;
+            model.Logros = message.Logros;
+
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
-            model.TipoInstitucion = message.TipoInstitucion;
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
-            model.Convenio = catalogoService.GetConvenioById(message.Convenio);
         }
 
-        public EstanciaInstitucionExterna Map(EstanciaInstitucionExternaForm message, Usuario usuario)
+        public EstanciaInstitucionExterna Map(EstanciaInstitucionExternaForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -41,6 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
+                model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
+                model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
             }
 
             model.ModificadoPor = usuario;

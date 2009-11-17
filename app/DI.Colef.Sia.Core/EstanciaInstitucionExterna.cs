@@ -8,22 +8,26 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [EstanciaInstitucionExternaValidator]
     public class EstanciaInstitucionExterna : Entity, IBaseEntity
     {
+        [NotNull]
+        public virtual Usuario Usuario { get; set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
+        
         public virtual TipoEstancia TipoEstancia { get; set; }
 
-        public virtual bool TipoInstitucion { get; set; }
-
         public virtual Institucion Institucion { get; set; }
+
+        public virtual Nivel Nivel2 { get; set; }
 
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }
 
-        public virtual LineaTematica LineaTematica { get; set; }
+        public virtual string Actividades { get; set; }
 
-        public virtual Convenio Convenio { get; set; }
-
-        [NotNull]
-        public virtual Usuario Usuario { get; set; }
+        public virtual string Logros { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

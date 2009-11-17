@@ -30,11 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (!movilidadAcademica.IsTransient())
             {
                 isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.TipoEstancia, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.TipoInstitucion, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.FechaInicial, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.FechaFinal, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.LineaTematica, "LineaTematicaNombre",
-                                                            constraintValidatorContext);
             }
 
             isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.Institucion, "InstitucionNombre",

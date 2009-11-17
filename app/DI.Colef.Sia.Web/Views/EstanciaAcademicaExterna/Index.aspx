@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<InstitucionForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<EstanciaAcademicaExternaForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva instituci&oacute;n</h3>
+        <h3>Agregar nuevo estancia academica externa</h3>
         <p>
-            Puede agregar una nueva instituci&oacute;n dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva instituci&oacute;n</strong>.
+            Puede agregar un nuevo estancia academica externa dentro de la lista de administraci&oacute;n
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo estancia academica externa</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<InstitucionController>(x => x.New(), "+ Nueva Institución")%></span>
+            <span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.New(), "+ Nuevo estancia academica externa") %></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de instituciones registradas en el sistema.</p>
+            <p>Lista de estancia academica externa registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,31 +39,31 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Instituciones</h4>
+		<h4>Estancias Academicas Externas</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay instituciones definidas</span></h5>
+					<h5><span>No hay estancia academica externa registrados</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->
 		<% } else { %>
-			<% foreach (var institucion in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(institucion.Id) %>">
+			<% foreach (var estanciaAcademicaExterna in Model.List) { %>
+				<div class="elementolista" id="accion_<%=Html.Encode(estanciaAcademicaExterna.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(institucion.Nombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(institucion.Modificacion) %></h6>
+						<h5><span><%=Html.Encode(estanciaAcademicaExterna.Nombre) %></span></h5>
+						<h6>Modificado el <%=Html.Encode(estanciaAcademicaExterna.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
-							<span><%=Html.ActionLink<InstitucionController>(x => x.Edit(institucion.Id), "Editar") %></span>
+							<span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Edit(estanciaAcademicaExterna.Id), "Editar") %></span>
 	                        <span>
-	                            <% if (institucion.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = institucion.Id }, new { @class = "remote put" })%>
+	                            <% if (estanciaAcademicaExterna.Activo) { %>
+	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = estanciaAcademicaExterna.Id }, new { @class = "remote put" })%>
 	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = institucion.Id }, new { @class = "remote put" })%>
+	                                <%=Html.ActionLink("Activar", "Activate", new { id = estanciaAcademicaExterna.Id }, new { @class = "remote put" })%>
 	                            <% } %>
 	                        </span>
 	                   	</p>

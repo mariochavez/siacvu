@@ -15,13 +15,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
-        readonly IConvenioMapper convenioMapper;
+        readonly INivelMapper nivelMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
                                             ICatalogoService catalogoService, IUsuarioService usuarioService, 
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
-                                            IConvenioMapper convenioMapper, 
+                                            IConvenioMapper convenioMapper,
+                                            INivelMapper nivelMapper,
                                             ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
@@ -29,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.estanciaInstitucionExternaService = estanciaInstitucionExternaService;
             this.estanciaInstitucionExternaMapper = estanciaInstitucionExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
-            this.convenioMapper = convenioMapper;
+            this.nivelMapper = nivelMapper;
         }
 
         [Authorize]
@@ -53,10 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
+            if (CurrentInvestigador() == null)
+                return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
+
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["FechaInicial"] = DateTime.Now.ToString("dd/MM/yyyy");
-            ViewData["FechaFinal"] = DateTime.Now.ToString("dd/MM/yyyy");
+            //ViewData["FechaInicial"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return View(data);
         }
@@ -71,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (movilidadAcademica == null)
                 return RedirectToIndex("no ha sido encontrado", true);
+
             if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
@@ -91,7 +95,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var movilidadAcademica = estanciaInstitucionExternaService.GetEstanciaInstitucionExternaById(id);
-            data.Form = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
+            var movilidadAcademicaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
+
+            data.Form = SetupShowForm(movilidadAcademicaForm);
 
             ViewData.Model = data;
             return View();
@@ -103,8 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(EstanciaInstitucionExternaForm form,FormCollection formCollection)
         {
-
-            var movilidadAcademica = estanciaInstitucionExternaMapper.Map(form, CurrentUser());
+            var movilidadAcademica = estanciaInstitucionExternaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "EstanciaInstitucionExterna"))
             {
@@ -116,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia en Institución Externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
         }
 
         [CustomTransaction]
@@ -125,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(EstanciaInstitucionExternaForm form)
         {
-            var movilidadAcademica = estanciaInstitucionExternaMapper.Map(form, CurrentUser());
+            var movilidadAcademica = estanciaInstitucionExternaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(movilidadAcademica, form, Title.Edit))
             {
@@ -138,45 +143,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Movilidad Académica {0} ha sido modificada", movilidadAcademica.LineaTematica.Nombre));
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var movilidadAcademica = estanciaInstitucionExternaService.GetEstanciaInstitucionExternaById(id);
-
-            if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            movilidadAcademica.Activo = true;
-            movilidadAcademica.ModificadoPor = CurrentUser();
-            estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
-
-            var form = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var movilidadAcademica = estanciaInstitucionExternaService.GetEstanciaInstitucionExternaById(id);
-
-            if (movilidadAcademica.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            movilidadAcademica.Activo = false;
-            movilidadAcademica.ModificadoPor = CurrentUser();
-            estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
-
-            var form = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
-
-            return Rjs("Activate", form);
+            return RedirectToIndex(String.Format("Estancia en Institución Externa {0} ha sido modificada", movilidadAcademica.Institucion.Nombre));
         }
 
         [Authorize]
@@ -198,7 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
-            form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
 
             return form;
         }
@@ -206,7 +173,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
-            ViewData["Convenio"] = form.ConvenioId;
+            ViewData["Nivel2"] = form.Nivel2Id;
+        }
+
+        private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
+        {
+            form = form ?? new EstanciaInstitucionExternaForm();
+            
+            return form;
         }
     }
 }

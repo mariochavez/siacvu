@@ -36,33 +36,45 @@
 
         <div id="forma">
             <div id="campos">
-                <p>
-                    <label>Tipo de estancia</label>
-                    <strong><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</strong>
+                <h4>Datos del investigador</h4>
+	            <p>
+                    <label>Departamento</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Tipo de instituci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.TipoInstitucionNombre)%>&nbsp;</strong>
+                    <label>Sede</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
+                </p>
+                <h4>Datos de la estancia en instituciones externas</h4>
+            	<p>
+                    <label>Tipo de estancia</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Instituci&oacute;n de destino</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>2do. Nivel</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
-                    <label>Instituci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                    <label>Actividades acad&eacute;micas previstas</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Actividades)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Convenio</label>
-                    <strong><%= Html.Encode(Model.Form.ConvenioNombre)%>&nbsp;</strong>
+                    <label>Principales logros</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Logros)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">

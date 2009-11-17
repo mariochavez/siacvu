@@ -321,6 +321,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
+                           o => o.Ignore())
+                .ForMember(d => d.Nivel2,
                            o => o.Ignore());
         }
 
@@ -747,8 +749,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.Pais,
+                           o => o.Ignore())
+                .ForMember(d => d.EstadoPais,
+                           o => o.Ignore())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore())
+                .ForMember(d => d.Sector,
                            o => o.Ignore());
-
 
             Mapper.CreateMap<Indice, IndiceForm>()
                 .ForMember(d => d.Modificacion,
