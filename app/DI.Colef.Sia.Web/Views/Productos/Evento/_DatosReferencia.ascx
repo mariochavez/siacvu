@@ -13,7 +13,7 @@
 	<%=Html.TextBox("Lugar", Model.Lugar, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Lugar")%>
 </p>
-<p>
+<p id="Ambito_field">
     <label>Pa&iacute;s</label>
 	<%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>

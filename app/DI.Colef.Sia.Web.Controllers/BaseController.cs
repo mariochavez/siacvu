@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -55,7 +57,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var usuario = CurrentUser();
             return usuarioService.GetInvestigadorByUsuario(usuario);
         }
-        
+
+        protected Pais GetDefaultPais()
+        {
+            var paises = catalogoService.GetActivePaises();
+            return catalogoService.GetPaisById((from p in paises where p.Nombre == "México" select p.Id).FirstOrDefault());
+        }
+
+        protected bool IsInternacionalOrBinacional(string ambitoNombre, string[] ambitos)
+        {
+            var esInternacional = false;
+
+            for (var i = 0; i < ambitos.Length; i++)
+            {
+                if (ambitoNombre == ambitos[i])
+                    esInternacional = true;
+            }
+
+            return esInternacional;
+        }
+
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(message);

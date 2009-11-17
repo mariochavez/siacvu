@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InstitucionEventoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -13,14 +13,8 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
+$('#institucionevento_<%=Html.Encode(Model.InstitucionId) %>').remove();
 
-$('#institucionevento_<%=Html.Encode(Model) %>').remove();
-
-if(<%=Html.Encode(Model) %> > 0)
-{    
-    if($('#institucioneventoList div[id^=institucionevento_]').length == 0) {
-        $('#institucioneventoList div:first').before(html);
-    }
-}
+deleteElement(html, '#institucioneventoList div[id^=institucionevento_]', '#institucioneventoList');
 
 setupSublistRows();

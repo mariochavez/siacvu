@@ -338,15 +338,15 @@
 .mensaje-error {
 	margin: 20px 20px 0 20px;
 	padding: 10px 20px;
+	background-color: #ffb7bc;
 	border: 1px solid #FF0000;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #9f1d20;
 }
 
 .mensaje-error p {
 	margin: 0;
-	font-size: 10pt;
-	font-weight: bold;
-	color: #FF0000;
-
 }
 
 /*---<mensaje-acierto>---*/
@@ -515,6 +515,17 @@ a.editabusqueda {
 	letter-spacing: 1pt;
 	border-top: 1px solid #EFF1E7;
 	color: #555;
+}
+
+#forma p.waiting {
+    display:none;
+    padding: 15px 0 0 170px;
+}
+
+#forma p.waiting span {
+    font-weight: bold;
+	text-decoration: none;
+	color:#555555;
 }
 
 #forma p {
@@ -899,3 +910,34 @@ a.minilistacancelar {
     vertical-align: middle;
     margin: 2px;
 }
+
+
+/* Uploadify */
+div.progress_container {
+  padding-bottom: 10px;
+  display: none;
+}
+div.status_message {
+  font-size: 12px;
+  font-style: italic;
+  line-height: 16px;
+}
+div.progress_bar {
+  -moz-background-clip: border;
+  -moz-background-inline-policy: continuous;
+  -moz-background-origin: padding;
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #abd2e7;
+  overflow: hidden;
+  width: 400px;
+}
+div.progress_bar div.progress {
+  -moz-background-clip: border;
+  -moz-background-inline-policy: continuous;
+  -moz-background-origin: padding;
+  background: transparent url(./images/upload_progress.gif) repeat-x scroll 0 0;
+  border-right: 1px solid #abd2e7;
+  height: 17px;
+}
+/*.uploadifyQueueItem { }
+.uploadifyQueueItem img { }*/

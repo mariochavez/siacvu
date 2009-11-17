@@ -1,12 +1,15 @@
 using System;
+using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class InstitucionEvento : Entity, IBaseEntity
     {
+        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string ObjetivoEvento { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }

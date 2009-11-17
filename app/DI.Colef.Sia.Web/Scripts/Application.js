@@ -3,6 +3,7 @@
 });
 
 function setupDocument() {
+    RemoteFormV2.setup();
     RemoteLink.setup();
     RemoteForm.setup();
     LocalForm.setup();
@@ -443,3 +444,35 @@ var RemoteLink = {
         return false;
     }
 };
+
+RemoteFormV2 = {
+    setup: function() {
+        $('form.remote').submit(RemoteFormV2.send);
+    },
+    send: function() {
+        var method = $(this).attr('method');
+        var url = $(this).attr('action');
+        var data = $(this).serialize();
+
+        $('p.submit').hide();
+        $('p.waiting').show();
+        $.ajax({
+            url: url,
+            data: data,
+            type: method,
+            dataType: 'script',
+            success: function(msg) {
+                if ($('span.field-validation-error').length > 0)
+                    $('p.submit').show();
+                $('p.waiting').hide();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(textStatus);
+                $('p.submit').show();
+                $('p.#waiting').hide();
+            }
+        });
+
+        return false;
+    }
+}

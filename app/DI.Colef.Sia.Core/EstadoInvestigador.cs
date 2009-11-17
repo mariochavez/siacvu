@@ -8,7 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [EstadoInvestigadorValidator]
     public class EstadoInvestigador : Entity, IBaseEntity
     {
-        [NotEmptyDate]
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }

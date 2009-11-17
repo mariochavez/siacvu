@@ -5,7 +5,7 @@
     <label>T&iacute;tulo de la tesis</label>
     <%=Html.DropDownList("TesisPosgradoId", Model.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "Titulo"),
                 "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("TesisPosgradoId")%>
+    <%=Html.ValidationMessage("TesisPosgrado")%>
 </p>
 <p class="AlumnoExterno">
     <label>T&iacute;tulo de la tesis</label>

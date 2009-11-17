@@ -32,7 +32,7 @@
         <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 	    
-            <% using (Html.BeginForm("Create", "Investigador")) { %>
+            <% using (Html.BeginForm("Create", "Investigador", FormMethod.Post, new{ @class = "remote"})) { %>
                     <%=Html.AntiForgeryToken() %>
                     <%=Html.Hidden("Id", Model.Form.Id) %>
                     
@@ -80,8 +80,14 @@
                     <h4>Sistema nacional de investigadores (SNI)</h4>
                     <% Html.RenderPartial("_NewSni", Model.Form); %>
                     
+                    <h4>Archivos</h4>
+                    <% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivosInvestigador, ModelId = Model.Form.Id }); %>
+                    
                     <p class="submit">
-                        <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
+                        <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar", new{id="regresar"})%>
+                    </p>
+                    <p class="waiting">
+                        <img src='<%=ResolveUrl("~/Content/Images/ajax-loader.gif") %>' /> <span>Guardando informaci&oacute;n ...</span>
                     </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -93,6 +99,21 @@
         setupDocument();
 
         investigadorSetup();
+
+        $("#uploadify").uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': 'uploadfile',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': 'uploads',
+            'queueID': 'fileQueue',
+            'auto': false,
+            'multi': true,
+            'buttonText': 'Buscar',
+            'onProgress': progress,
+            'onComplete': complete,
+            'onAllComplete': completeAll,
+            'onSelectOnce': selectOnce
+        });
     });
 </script>
 </asp:Content>
