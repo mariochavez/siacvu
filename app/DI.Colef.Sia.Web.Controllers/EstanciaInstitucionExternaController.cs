@@ -179,7 +179,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
         {
             form = form ?? new EstanciaInstitucionExternaForm();
-            
+
+            form.ShowFields = new ShowFieldsForm
+            {
+                InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                InstitucionPaisNombre = form.Institucion.PaisNombre,
+                InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                InstitucionCiudadNombre = form.Institucion.Ciudad,
+
+                Nivel2Nombre= form.Nivel2.Nombre,
+                Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+            };
+
             return form;
         }
     }

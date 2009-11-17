@@ -47,6 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateFormacionAcademicaMaps();
             CreateLibrosMaps();
             CreateEstanciaInstitucionExternaMaps();
+            CreateEstanciaAcademicaExternaMaps();
             CreateGrupoInvestigacionMaps();
             CreateExperienciaProfesionalMaps();
             CreateApoyoConacytMaps();
@@ -321,9 +322,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel2,
                            o => o.Ignore());
+        }
+
+        private void CreateEstanciaAcademicaExternaMaps()
+        {
+            Mapper.CreateMap<EstanciaAcademicaExterna, EstanciaAcademicaExternaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>());
         }
 
         private void CreateFormacionAcademicaMaps()

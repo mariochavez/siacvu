@@ -42,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                model.GradoAcademico = GetLatest(investigador.GradosAcademicosInvestigador).GradoAcademico;
+                //model.GradoAcademico = GetLatest(investigador.GradosAcademicosInvestigador).GradoAcademico;
                 //model.TipoEstancia = GetLatest(investigador).TipoEstancia;
             }
 

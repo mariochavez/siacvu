@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
         }
 

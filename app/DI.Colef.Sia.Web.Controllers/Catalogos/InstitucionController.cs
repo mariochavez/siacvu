@@ -57,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.TipoInstitucion = true;
 
             return View(data);
         }
@@ -178,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
 
-            var form = new DistincionForm
+            var form = new InstitucionForm
             {
                 EstadosPaises = list.ToArray()
             };
@@ -207,11 +206,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectoresOrganosExternos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+
             if (form.Id == 0)
-            {
-                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
-            }
 
             else
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
