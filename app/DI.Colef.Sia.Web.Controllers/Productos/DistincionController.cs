@@ -111,6 +111,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
+            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                distincion.Pais = GetDefaultPais();
+
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
                 var distincionForm = distincionMapper.Map(distincion);
@@ -132,7 +135,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            distincion.ModificadoPor = CurrentUser();
+            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                distincion.Pais = GetDefaultPais();
 
             if (!IsValidateModel(distincion, form, Title.Edit))
             {

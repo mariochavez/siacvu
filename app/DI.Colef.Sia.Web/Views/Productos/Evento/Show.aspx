@@ -58,7 +58,9 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
+                <% if (Model.Form.TipoEventoNombre.Contains("Evento Estratégico (El Colef)")){ %>
+                    <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
+                <% } %>
                 
                 <p>
 	                <label>Palabra clave 1</label>
@@ -80,17 +82,25 @@
                     <label>Con invitaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Invitacion)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>T&iacute;tulo del trabajo</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
-                </p>
                 
-                <h4>Coautores</h4>
-				<% Html.RenderPartial("_ShowCoautorInterno",
-                                       new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id });%>
-	            <% Html.RenderPartial("_ShowCoautorExterno",
-                                       new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id });%>
-                
+                <% if (Model.Form.TipoParticipacionNombre.Contains("Conferencista magistral") || Model.Form.TipoParticipacionNombre.Contains("Ponente")){ %>
+                    <p>
+                        <label>T&iacute;tulo del trabajo</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
+                    </p>
+                    
+                    <h4>Coautores</h4>
+				    <% Html.RenderPartial("_ShowCoautorInterno",
+                                           new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id });%>
+	                <% Html.RenderPartial("_ShowCoautorExterno",
+                                           new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id });%>
+                    
+                    <p>
+	                    <label>Total de autores</label>
+	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
+	                </p>
+	            <% } %>
+	            
                 <p>
                     <label>Fecha del evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaEvento)%>&nbsp;</span>
@@ -100,10 +110,13 @@
                     <label>Lugar(Ciudad/Estado)</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Lugar)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                </p>
+                
+                <% if(Model.Form.AmbitoNombre.Contains("Binacional") || Model.Form.AmbitoNombre.Contains("Internacional")){ %>
+                    <p>
+                        <label>Pa&iacute;s</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar") %>

@@ -91,7 +91,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -153,6 +152,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, institucion);
 
+            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                evento.Pais = GetDefaultPais();
+
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
                 var eventoForm = eventoMapper.Map(evento);
@@ -173,6 +175,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Update(EventoForm form)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+
+            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                evento.Pais = GetDefaultPais();
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {
@@ -402,7 +407,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 eventoService.SaveEvento(evento);
             }
 
-            return Rjs("DeleteInstitucion", institucionId);
+            var form = new InstitucionEventoForm {InstitucionId = institucionId};
+
+            return Rjs("DeleteInstitucion", form);
         }
 
         EventoForm SetupNewForm()

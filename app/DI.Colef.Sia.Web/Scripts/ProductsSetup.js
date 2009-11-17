@@ -305,3 +305,29 @@ function cursoSetup() {
 
     $('#TipoCurso')[0].dynamic.setup();
 }
+
+function eventoSetup() {
+    $('#TipoEvento').dynamicui(
+            [
+                ['Evento Estratégico (El Colef)', ['#TipoEvento_field']]
+            ]
+        );
+
+    $('#TipoEvento')[0].dynamic.setup();
+
+    $('#TipoParticipacion').dynamicui(
+            [
+                [['Conferencista magistral', 'Ponente'], ['#TipoParticipacion_fields']]
+            ]
+        );
+
+    $('#TipoParticipacion')[0].dynamic.setup();
+
+    $('#Ambito').dynamicui(
+            [
+                [['Internacional', 'Binacional'], ['#Ambito_field']]
+            ]
+        );
+
+    $('#Ambito')[0].dynamic.setup();
+}
