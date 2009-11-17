@@ -61,7 +61,7 @@ function dictamenSetup() {
             [
                 ['Artículo', ['#articulo_field']],
                 ['Proyecto de investigación CONACyT', ['#proyecto_field']],
-                ['Capítulo en libro', ['#capituloLibro_field']]
+                [['Capítulo en libro', 'Libro'], ['#capituloLibro_field']]
             ]
         );
 
@@ -72,108 +72,24 @@ function tesisSetup() {
     $('#TipoEstudiante').dynamicui(
             [
                 ['Interno', ['.AlumnoInterno']],
-                ['Externo', ['.AlumnoExterno']],
-                ['*', ['.AlumnoInternoExterno']]
+                ['Externo', ['.AlumnoExterno']]
             ]
         );
 
     $('#TipoEstudiante')[0].dynamic.setup();
-
-    $('#Concluida').dynamicui(
-        [
-            ['1', ['#TesisConcluida']]
-        ]
-    );
-
-    $('#Concluida')[0].dynamic.setup();
-
-    CheckTesisOptions.setup();
 }
 
-var CheckTesisOptions = {
-    setup: function() {
-        $('#forma').unload(CheckTesisOptions.verifyOptions());
-        $('#TipoEstudiante').change(CheckTesisOptions.uncheckOption);
-    },
-    uncheckOption: function() {
-        var value = $('#TipoEstudiante :selected').text();
+function distincionSetup() {
+    $('#Ambito').dynamicui(
+            [
+                [['Internacional', 'Binacional'], ['#ambitopais']],
+                [['Estatal', 'Local/Municipal'], ['#ambitoestatal']],
+                ['Local/Municipal', ['.ambitoestatallocal']]
+            ]
+        );
 
-        if (value == 'Seleccione ...') {
-            $('#Concluida').attr('checked', false);
-
-            if (!$('#Concluida').attr('checked')) {
-                $('#TesisConcluida').hide();
-            }
-        }
-
-        CheckTesisOptions.verifyFormaParticipacion(value);
-    },
-    verifyOptions: function() {
-        var checked = $('#Concluida').attr('checked');
-        var value = $('#TipoEstudiante :selected').text();
-
-        if (value == 'Seleccione ...') {
-            if (checked == true) {
-                $('#TesisConcluida').hide();
-            }
-        }
-        else {
-            CheckTesisOptions.verifyFormaParticipacion(value);
-
-            if (checked == false) {
-                $('#TesisConcluida').hide();
-            }
-        }
-    },
-    verifyFormaParticipacion: function(value) {
-        if (value == 'Externo') {
-            $('#FormaParticipacion').removeClass("requerido");
-        }
-        else {
-            $('#FormaParticipacion').addClass("requerido");
-        }
-    }
-};
-
-
-function distincionSetup() {    
-    CheckDistincionOptions.setup();
+    $('#Ambito')[0].dynamic.setup();
 }
-
-var CheckDistincionOptions = {
-    setup: function() {
-        $('#forma').unload(CheckDistincionOptions.verifyOptions());
-        $('#Ambito').change(CheckDistincionOptions.verifyOptions);
-    },
-    verifyOptions: function() {
-        var comboText = $('#Ambito :selected').text();
-
-        if (comboText != "Binacional" && comboText != "Internacional") {
-            $('#ambitopais').slideUp('fast', function() {
-                $('#ambitopais').fadeOut('fast');
-            });
-            $('.ambitoestatallocal').slideDown('fast', function() {
-                $('.ambitoestatallocal').fadeIn('fast');
-            });
-        } else {
-            $('#ambitopais').slideDown('fast', function() {
-                $('#ambitopais').fadeIn('fast');
-            });
-            $('.ambitoestatallocal').slideUp('fast', function() {
-                $('.ambitoestatallocal').fadeOut('fast');
-            });
-        }
-
-        if (comboText == "Seleccione ...") {
-            $('#ambitopais').slideUp('fast', function() {
-                $('#ambitopais').fadeOut('fast');
-            });
-            $('.ambitoestatallocal').slideUp('fast', function() {
-                $('.ambitoestatallocal').fadeOut('fast');
-            });
-        }
-    }
-};
 
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
@@ -284,54 +200,13 @@ function reporteSetup() {
     $('#TipoReporte').dynamicui(
             [
                 ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico']],
+                ['Reporte técnico', ['.ReporteTecnico', '.notieneproyecto_field']],
                 ['*', ['.ReporteCuaderno']]
             ]
         );
 
     $('#TipoReporte')[0].dynamic.setup();
-
-    Uncheck.setup();
 }
-
-var Uncheck = {
-    setup: function() {
-        $('#forma').unload(Uncheck.verifyOptions());
-        $('#TipoReporte').change(Uncheck.uncheckOption);
-    },
-    uncheckOption: function() {
-        var comboId = '#' + $(this).attr('id');
-        var value = $(comboId + ' :selected').text();
-
-        if (value != 'Reporte técnico') {
-            $('#TieneProyecto').attr('checked', false);
-
-            if (!$('#TieneProyecto').attr('checked')) {
-                $('.tieneproyecto_field').hide();
-            }
-
-            $('.notieneproyecto_field').hide();
-        }
-        else {
-            $('.notieneproyecto_field').show();
-        }
-    },
-    verifyOptions: function() {
-        var checked = $('#TieneProyecto').attr('checked');
-        var value = $('#TipoReporte :selected').text();
-
-        if (value == 'Reporte técnico') {
-            if (checked == true) {
-                $('.notieneproyecto_field').hide();
-            }
-        }
-        else {
-            if (checked == false) {
-                $('.notieneproyecto_field').hide();
-            }
-        }
-    }
-};
 
 function resenaSetup() {
     $('#TipoResena').dynamicui(
@@ -395,4 +270,64 @@ function investigadorSetup() {
         );
 
     $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+}
+
+function organoInternoSetup() {
+    CheckOrganoInternoOptions.setup();
+}
+
+var CheckOrganoInternoOptions = {
+    setup: function() {
+        $('#forma').unload(CheckOrganoInternoOptions.verifyOptions());
+        $('#ConsejoComision').change(CheckOrganoInternoOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText = $('#ConsejoComision :selected').text();
+
+        if (comboText == "Consejo Académico" || comboText == "Seleccione ...") {
+            $('#periodo_field').slideUp('fast', function() {
+                $('#periodo_field').fadeOut('fast');
+            });
+        } else {
+            $('#periodo_field').slideDown('fast', function() {
+                $('#periodo_field').fadeIn('fast');
+            });
+        }
+    }
+};
+
+function cursoSetup() {
+    $('#TipoCurso').dynamicui(
+            [
+                ['Interno', ['.cursointerno']]
+            ]
+        );
+
+    $('#TipoCurso')[0].dynamic.setup();
+}
+
+function eventoSetup() {
+    $('#TipoEvento').dynamicui(
+            [
+                ['Evento Estratégico (El Colef)', ['#TipoEvento_field']]
+            ]
+        );
+
+    $('#TipoEvento')[0].dynamic.setup();
+
+    $('#TipoParticipacion').dynamicui(
+            [
+                [['Conferencista magistral', 'Ponente'], ['#TipoParticipacion_fields']]
+            ]
+        );
+
+    $('#TipoParticipacion')[0].dynamic.setup();
+
+    $('#Ambito').dynamicui(
+            [
+                [['Internacional', 'Binacional'], ['#Ambito_field']]
+            ]
+        );
+
+    $('#Ambito')[0].dynamic.setup();
 }

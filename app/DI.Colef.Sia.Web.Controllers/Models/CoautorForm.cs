@@ -9,5 +9,7 @@
         public CoautorInternoProductoForm[] CoautoresInternos { get; set; }
         public CoautorExternoProductoForm[] CoautoresExternos { get; set; }
         public int ModelId { get; set; }
+        public int InvestigadorExternoId { get; set; }
+        public int InvestigadorId { get; set; }
     }
 }

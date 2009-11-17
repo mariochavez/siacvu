@@ -107,15 +107,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libro == null)
                 return RedirectToIndex("no ha sido encontrado", true);
 
-            if (libro.Usuario.Id != CurrentUser().Id)
+            var coautorExists =
+                libro.CoautorInternoLibros.Where(
+                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (libro.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
-                        
+
             var libroForm = libroMapper.Map(libro);
 
             data.Form = SetupNewForm(libroForm);
 
             FormSetCombos(data.Form);
-            
+
             ViewData.Model = data;
             return View();
         }
@@ -260,7 +264,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 libroService.SaveLibro(libro);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -328,7 +334,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 libroService.SaveLibro(libro);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -399,7 +408,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 libroService.SaveLibro(libro);
             }
 
-            return Rjs("DeleteEditorialLibro", editorialId);
+            var form = new EditorialLibroForm {EditorialId = editorialId};
+
+            return Rjs("DeleteEditorialLibro", form);
         }
 
         [Authorize(Roles = "Investigadores")]

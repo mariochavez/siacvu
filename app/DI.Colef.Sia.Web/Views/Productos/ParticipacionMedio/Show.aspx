@@ -38,54 +38,55 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de participaci&oacuten</label>
-                    <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>T&iacute;tulo</label>
-                    <strong><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Palabra clave 1</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Palabra clave 2</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Palabra clave 3</label>
-                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Instituci&oacute;n responsable/Nombre del medio</label>
-                    <strong><%= Html.Encode(Model.Form.Institucion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Institucion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>&Aacute;mbito</label>
-                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Dirigido a</label>
-                    <strong><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DirigidoANombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Lugar de la presentaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.LugarPresentacion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.LugarPresentacion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de la presentaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
                 <p class="submit">

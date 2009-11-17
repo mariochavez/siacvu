@@ -8,7 +8,7 @@ var counter = $('#autorresenaList div[id^=autorresena_]').length;
 var html = '
     <div class="sublista" id="autorresena_<%=Html.Encode(Model.InvestigadorId) %>">
         <h6>
-            <a href="<%=Url.Action("DeleteAutor", null, new{ id = Model.ParentId, autorId = Model.InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <a href="<%=Url.Action("DeleteAutor", null, new{ id = Model.ParentId, investigadorId = Model.InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreAutor)%>
             <%=Html.Hidden("AutorResena['  + counter + '].InvestigadorId", Model.InvestigadorId)%>
         </h6>

@@ -31,6 +31,29 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
+function deleteElement(html, selectorString, listName) {
+    var totalCoautores = $(selectorString).length;
+    var counter = 0;
+
+    if (totalCoautores != 0) {
+        $(selectorString).each(function() {
+            var thisId = $(this).attr('id');
+
+            $('#' + thisId + " input:hidden").each(function() {
+                var newId = $(this).attr('id').replace(/[0-9]/, counter);
+                var newName = newId.replace('_', '.');
+
+                $(this).attr('id', newId);
+                $(this).attr('name', newName);
+            });
+
+            counter += 1;
+        });
+    } else {
+        $(listName + ' div:first').before(html);
+    }
+}
+
 var PopMenu = {
     currentPop: null,
     timeout: 500,

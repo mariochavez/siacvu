@@ -1,15 +1,21 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CursoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<p>
+<p class="cursointerno">
     <label></label>
     <%= Html.CheckBox("EsDiplomado", Model.EsDiplomado)%> Es diplomado?
 </p>
-<p>
+
+<%--<p>
 	<label>Nombre del diplomado</label>
     <%=Html.DropDownList("Diplomado", Model.Diplomados.CreateSelectList<DiplomadoForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
 	<%=Html.ValidationMessage("Diplomado")%>
+</p>--%>
+<p class="cursointerno">
+	<label>Nombre del diplomado</label>
+    <%=Html.TextBox("NombreDiplomado", Model.NombreDiplomado, new { @class = "input420-requerido", maxlength = 100 })%>
+	<%=Html.ValidationMessage("NombreDiplomado")%>
 </p>
 <p>
 	<label>Nombre del curso</label>

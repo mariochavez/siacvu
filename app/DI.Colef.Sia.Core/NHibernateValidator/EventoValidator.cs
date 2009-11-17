@@ -46,6 +46,60 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= ValidateFechas(evento, constraintValidatorContext);
 
+            if(evento.TipoParticipacion != null)
+                isValid &= ValidateTipoParticipacion(evento, constraintValidatorContext);
+
+            if (evento.Ambito != null)
+                isValid &= ValidateAmbitoEvento(evento, constraintValidatorContext);
+
+            return isValid;
+        }
+
+        private bool ValidateTipoParticipacion(Evento evento, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            var lowerCaseName = evento.TipoParticipacion.Nombre.ToLower();
+
+            if (lowerCaseName.Contains("conferencista magistral") ||
+                lowerCaseName.Contains("ponente"))
+            {
+                if (evento.TituloTrabajo == "")
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "no debe ser nulo, vacío o cero|TituloTrabajo", "TituloTrabajo");
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
+            return isValid;
+
+        }
+
+        private bool ValidateAmbitoEvento(Evento evento, IConstraintValidatorContext constraintValidatorContext)
+        {
+            var isValid = true;
+
+            var lowerCaseName = evento.Ambito.Nombre.ToLower();
+
+            //Ambito - internacional y binacional
+            if (lowerCaseName.Contains("binacional") || lowerCaseName.Contains("internacional"))
+            {
+                if (evento.Pais == null)
+                {
+                    constraintValidatorContext.AddInvalid(
+                        "seleccione el país|Pais", "Pais");
+
+                    isValid = false;
+                }
+            }
+
+            if (!isValid)
+                constraintValidatorContext.DisableDefaultError();
+
             return isValid;
         }
 

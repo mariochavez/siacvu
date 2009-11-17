@@ -11,5 +11,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int DisciplinaId { get; set; }
 
         public DisciplinaForm[] Disciplinas { get; set; }
+
+        public string DisciplinaNombre { get; set; }
+
+        public string DisciplinaAreaNombre { get; set; }
     }
 }

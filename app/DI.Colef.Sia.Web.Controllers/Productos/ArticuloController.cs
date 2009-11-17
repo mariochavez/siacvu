@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITipoArticuloMapper tipoArticuloMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
+        readonly IInvestigadorMapper investigadorMapper;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -30,7 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IIdiomaMapper idiomaMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, ISearchService searchService,
                                   ITipoArchivoMapper tipoArchivoMapper,
-                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection)
+                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
+                                  IInvestigadorMapper investigadorMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -43,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoArchivoMapper = tipoArchivoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.customCollection = customCollection;
+            this.investigadorMapper = investigadorMapper;
         }
 
         [Authorize]
@@ -87,7 +90,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articulo == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (articulo.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                   articulo.CoautorInternoArticulos.Where(
+                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (articulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var articuloForm = articuloMapper.Map(articulo);
@@ -238,7 +246,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 articuloService.SaveArticulo(articulo);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -307,7 +317,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 articuloService.SaveArticulo(articulo);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         ArticuloForm SetupNewForm()

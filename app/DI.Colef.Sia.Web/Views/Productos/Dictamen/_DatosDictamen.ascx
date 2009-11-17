@@ -15,7 +15,7 @@
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
-<p id="capituloLibro_field">
+<p id="capituloLibro_field" class="noeffect">
 	<label>Editorial</label>
 	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>

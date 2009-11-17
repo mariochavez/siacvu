@@ -95,7 +95,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (reporte == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (reporte.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                   reporte.CoautorInternoReportes.Where(
+                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (reporte.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var reporteForm = reporteMapper.Map(reporte);
@@ -243,7 +248,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 reporteService.SaveReporte(reporte);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -312,7 +319,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 reporteService.SaveReporte(reporte);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         ReporteForm SetupNewForm()

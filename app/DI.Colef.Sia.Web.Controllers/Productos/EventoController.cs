@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -92,7 +91,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -107,7 +105,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (evento == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (evento.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                    evento.CoautorInternoEventos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (evento.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var eventoForm = eventoMapper.Map(evento);
@@ -149,6 +152,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, institucion);
 
+            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                evento.Pais = GetDefaultPais();
+
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
                 var eventoForm = eventoMapper.Map(evento);
@@ -169,6 +175,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Update(EventoForm form)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+
+            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                evento.Pais = GetDefaultPais();
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {
@@ -257,7 +266,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 eventoService.SaveEvento(evento);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -326,7 +337,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 eventoService.SaveEvento(evento);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         [Authorize]
@@ -394,7 +407,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 eventoService.SaveEvento(evento);
             }
 
-            return Rjs("DeleteInstitucion", institucionId);
+            var form = new InstitucionEventoForm {InstitucionId = institucionId};
+
+            return Rjs("DeleteInstitucion", form);
         }
 
         EventoForm SetupNewForm()

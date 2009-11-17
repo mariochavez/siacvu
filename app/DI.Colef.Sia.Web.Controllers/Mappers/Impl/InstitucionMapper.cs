@@ -22,10 +22,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(InstitucionForm message, Institucion model)
         {
             model.Nombre = message.Nombre;
-            model.Responsable = message.Responsable;
+            model.Siglas = message.Siglas;
+            model.Sede = message.Sede;
+            model.PaginaWeb = message.PaginaWeb;
             model.Email = message.Email;
+            model.Telefono = message.Telefono;
+            model.TipoInstitucion = message.TipoInstitucion;
+            model.Ciudad = message.Ciudad;
 
             model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
+            model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
+            model.Sector = catalogoService.GetSectorById(message.Sector);
         }
     }
 }

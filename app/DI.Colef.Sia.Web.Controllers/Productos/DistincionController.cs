@@ -64,7 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             
             return View(data);
         }
@@ -112,6 +111,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
+            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                distincion.Pais = GetDefaultPais();
+
             if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
             {
                 var distincionForm = distincionMapper.Map(distincion);
@@ -133,7 +135,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var distincion = distincionMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            distincion.ModificadoPor = CurrentUser();
+            if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
+                distincion.Pais = GetDefaultPais();
 
             if (!IsValidateModel(distincion, form, Title.Edit))
             {
@@ -150,25 +153,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangePais(int select)
-        {
-            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
-
-            var form = new DistincionForm
-                           {
-                               EstadosPaises = list.ToArray()
-                           };
-
-            return Rjs("ChangePais", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Distincion>(x => x.Descripcion, q);
+            var data = searchService.Search<Distincion>(x => x.Titulo, q);
             return Content(data);
         }
 

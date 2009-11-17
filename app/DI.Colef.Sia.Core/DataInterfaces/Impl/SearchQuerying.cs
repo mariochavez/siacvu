@@ -38,9 +38,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public Search[] SearchInvestigador(string value)
         {
+            return SearchInvestigador(value, null);
+        }
+
+        public Search[] SearchInvestigador(string value, Investigador investigador)
+        {
             string[] values = value.Split(' ');
 
-            var criteria = DetachedCriteria.For(typeof (Investigador))
+            var criteria = DetachedCriteria.For(typeof(Investigador))
                 .CreateAlias("Usuario", "u", JoinType.InnerJoin)
                 .SetFetchMode("Usuario", FetchMode.Eager)
                 .SetMaxResults(20)
@@ -53,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .AddOrder(Order.Asc("u.ApellidoPaterno"))
                 .AddOrder(Order.Asc("u.ApellidoMaterno"))
                 .AddOrder(Order.Asc("u.Nombre"))
-                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (InvestigadorDTO)));
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(InvestigadorDTO)));
 
             if (values.Length == 1)
                 criteria.Add(Expression.Or(Expression.Or(Expression.Like("u.ApellidoPaterno", values[0] + "%"),
@@ -83,6 +88,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var result = new List<Search>();
             foreach (var item in list)
             {
+                if (investigador != null)
+                    if (item.Id == investigador.Id)
+                        continue;
+
                 result.Add(new Search {Id = item.Id, Nombre = item.NombreCompleto()});
             }
 
@@ -91,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public Search[] SearchMovilidadAcademica(string value)
         {
-            var criteria = DetachedCriteria.For(typeof (MovilidadAcademica))
+            var criteria = DetachedCriteria.For(typeof (EstanciaInstitucionExterna))
                 .CreateAlias("Institucion", "i", JoinType.InnerJoin)
                 .SetFetchMode("Institucion", FetchMode.Eager)
                 .SetMaxResults(20)

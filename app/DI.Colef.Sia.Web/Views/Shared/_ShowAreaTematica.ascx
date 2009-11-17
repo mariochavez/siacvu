@@ -3,21 +3,21 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
-    <strong><%= Html.Encode(Model.AreaTematicaLineaTematicaNombre) %>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.AreaTematicaLineaTematicaNombre) %>&nbsp;</span>
 </p>
 <p>
     <label>&Aacute;rea tem&aacute;tica</label>
-    <strong><%= Html.Encode(Model.AreaTematicaNombre) %>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.AreaTematicaNombre) %>&nbsp;</span>
 </p>
 <p>
     <label>&Aacute;rea</label>
-    <strong><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>Disciplina</label>
-    <strong><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>Subdisciplina</label>
-    <strong><%= Html.Encode(Model.AreaTematicaSubdisciplinaNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaNombre)%>&nbsp;</span>
 </p>

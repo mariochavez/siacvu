@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -15,15 +16,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         readonly ICatalogoService catalogoService;
         readonly IInstitucionMapper institucionMapper;
         readonly IPaisMapper paisMapper;
+        readonly IEstadoPaisMapper estadoPaisMapper;
+        readonly IAmbitoMapper ambitoMapper;
+        readonly ISectorMapper sectorMapper;
 
-        public InstitucionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                     IInstitucionMapper institucionMapper, ISearchService searchService,
-                                     IPaisMapper paisMapper)
+        public InstitucionController(IUsuarioService usuarioService,
+                                    ICatalogoService catalogoService,
+                                    IInstitucionMapper institucionMapper,
+                                    ISearchService searchService,
+                                    IEstadoPaisMapper estadoPaisMapper,
+                                    IAmbitoMapper ambitoMapper,
+                                    ISectorMapper sectorMapper,
+                                    IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;
             this.paisMapper = paisMapper;
+            this.estadoPaisMapper = estadoPaisMapper;
+            this.ambitoMapper = ambitoMapper;
+            this.sectorMapper = sectorMapper;
         }
 
         [Authorize]
@@ -45,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+            data.Form.TipoInstitucion = true;
 
             return View(data);
         }
@@ -159,6 +172,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangePais(int select)
+        {
+            var list = new List<EstadoPaisForm> { new EstadoPaisForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(select)));
+
+            var form = new DistincionForm
+            {
+                EstadosPaises = list.ToArray()
+            };
+
+            return Rjs("ChangePais", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Institucion>(x => x.Nombre, q);
@@ -175,7 +204,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form = form ?? new InstitucionForm();
 
             //Lista de Catalogos
+            form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectoresOrganosExternos());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            if (form.Id == 0)
+            {
+                var pais = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(pais));
+            }
+
+            else
+                form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
 
             return form;
         }
@@ -183,6 +222,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         private void FormSetCombos(InstitucionForm form)
         {
             ViewData["Pais"] = form.PaisId;
+            ViewData["EstadoPais"] = form.EstadoPaisId;
+            ViewData["Ambito"] = form.AmbitoId;
+            ViewData["Sector"] = form.SectorId;
         }
     }
 }

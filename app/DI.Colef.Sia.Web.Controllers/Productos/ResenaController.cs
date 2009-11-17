@@ -102,7 +102,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resena == null)
                 return RedirectToIndex("no ha sido encontrado", true);
-            if (resena.Usuario.Id != CurrentUser().Id)
+
+            var coautorExists =
+                resena.CoautorInternoResenas.Where(
+                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
+            if (resena.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                 return RedirectToIndex("no lo puede modificar", true);
 
             var resenaForm = resenaMapper.Map(resena);
@@ -254,7 +259,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 resenaService.SaveResena(resena);
             }
 
-            return Rjs("DeleteCoautorInterno", investigadorId);
+            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+
+            return Rjs("DeleteCoautorInterno", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -322,7 +329,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 resenaService.SaveResena(resena);
             }
 
-            return Rjs("DeleteCoautorExterno", investigadorExternoId);
+            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+
+            return Rjs("DeleteCoautorExterno", form);
         }
 
         [Authorize]
@@ -390,7 +399,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 resenaService.SaveResena(resena);
             }
 
-            return Rjs("DeleteAutor", investigadorId);
+            var form = new AutorResenaForm {InvestigadorId = investigadorId};
+
+            return Rjs("DeleteAutor", form);
         }
 
         ResenaForm SetupNewForm()

@@ -25,13 +25,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Nombre = message.Nombre;
             model.Siglas = message.Siglas;
+            model.Participacion = message.Participacion;
+
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoOrgano = catalogoService.GetTipoOrganoById(message.TipoOrgano);
-            model.TipoParticipacion = catalogoService.GetTipoParticipacionOrganoById(message.TipoParticipacion);
             model.Sector = catalogoService.GetSectorById(message.Sector);
-            model.Nivel = catalogoService.GetNivelById(message.Nivel);
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
         }
 

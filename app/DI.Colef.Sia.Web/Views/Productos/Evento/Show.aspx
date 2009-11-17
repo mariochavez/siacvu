@@ -39,71 +39,84 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Nombre del evento</label>
-                    <strong><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de evento</label>
-                    <strong><%= Html.Encode(Model.Form.TipoEventoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoEventoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
+                <% if (Model.Form.TipoEventoNombre.Contains("Evento Estratégico (El Colef)")){ %>
+                    <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
+                <% } %>
                 
                 <p>
 	                <label>Palabra clave 1</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Palabra clave 2</label>
-                    <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Palabra clave 3</label>
-                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>&Aacute;mbito</label>
-                    <strong><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Con invitaci&oacute;n</label>
-                    <strong><%= HumanizeHelper.Boolean(Model.Form.Invitacion)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>T&iacute;tulo del trabajo</label>
-                    <strong><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Invitacion)%>&nbsp;</span>
                 </p>
                 
-                <h4>Coautores</h4>
-				<% Html.RenderPartial("_ShowCoautorInterno",
-                                       new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id });%>
-	            <% Html.RenderPartial("_ShowCoautorExterno",
-                                       new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id });%>
-                
-
+                <% if (Model.Form.TipoParticipacionNombre.Contains("Conferencista magistral") || Model.Form.TipoParticipacionNombre.Contains("Ponente")){ %>
+                    <p>
+                        <label>T&iacute;tulo del trabajo</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
+                    </p>
+                    
+                    <h4>Coautores</h4>
+				    <% Html.RenderPartial("_ShowCoautorInterno",
+                                           new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id });%>
+	                <% Html.RenderPartial("_ShowCoautorExterno",
+                                           new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id });%>
+                    
+                    <p>
+	                    <label>Total de autores</label>
+	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
+	                </p>
+	            <% } %>
+	            
                 <p>
                     <label>Fecha del evento</label>
-                    <strong><%= Html.Encode(Model.Form.FechaEvento)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaEvento)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Lugar(Ciudad/Estado)</label>
-                    <strong><%= Html.Encode(Model.Form.Lugar)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Lugar)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
+                
+                <% if(Model.Form.AmbitoNombre.Contains("Binacional") || Model.Form.AmbitoNombre.Contains("Internacional")){ %>
+                    <p>
+                        <label>Pa&iacute;s</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar") %>

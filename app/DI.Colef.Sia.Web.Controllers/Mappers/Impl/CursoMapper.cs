@@ -27,6 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.TipoCurso = message.TipoCurso;
             model.EsDiplomado = message.EsDiplomado;
+            model.NombreDiplomado = message.NombreDiplomado;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
@@ -38,25 +39,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Diplomado = catalogoService.GetDiplomadoById(message.Diplomado);
-
-
-            // Sector - Organizacion - Nivel2 son en forma de cascada
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-
-            var organizacion = catalogoService.GetNivelById(message.Nivel2).Organizacion.Id;
-            model.Organizacion = catalogoService.GetOrganizacionById(organizacion);
-
-            var sector = catalogoService.GetOrganizacionById(organizacion).Sector.Id;
-            model.Sector = catalogoService.GetSectorById(sector);
-
-            // Area - Disciplina - Subdisciplina son en forma de cascada
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-
-            var disciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina).Disciplina.Id;
-            model.Disciplina = catalogoService.GetDisciplinaById(disciplina);
-
-            var area = catalogoService.GetDisciplinaById(disciplina).Area.Id;
-            model.Area = catalogoService.GetAreaById(area);
         }
 
         public Curso Map(CursoForm message, Usuario usuario, Investigador investigador)

@@ -71,7 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
-    <Compile Include="Alumno.cs" />
+    <Compile Include="EstanciaAcademicaExterna.cs" />
+    <Compile Include="TesisPosgrado.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
     <Compile Include="Archivo.cs" />
@@ -87,13 +88,16 @@
     <Compile Include="Clase.cs" />
     <Compile Include="CoautorExternoProducto.cs" />
     <Compile Include="CoautorInternoProducto.cs" />
+    <Compile Include="ConsejoComision.cs" />
     <Compile Include="Convenio.cs" />
     <Compile Include="Coordinacion.cs" />
     <Compile Include="Curso.cs" />
-    <Compile Include="DataInterfaces\IAlumnoQuerying.cs" />
+    <Compile Include="DataInterfaces\ITesisPosgradoQuerying.cs" />
     <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
-    <Compile Include="DataInterfaces\Impl\AlumnoQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\TesisPosgradoQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\IProductoQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\ProductoQuerying.cs" />
     <Compile Include="DataInterfaces\ISearchQuerying.cs" />
     <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
@@ -141,7 +145,7 @@
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
     <Compile Include="Moneda.cs" />
-    <Compile Include="MovilidadAcademica.cs" />
+    <Compile Include="EstanciaInstitucionExterna.cs" />
     <Compile Include="NHibernateValidator\ApoyoConacytValidator.cs" />
     <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
     <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
@@ -156,7 +160,7 @@
     <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
     <Compile Include="NHibernateValidator\IdiomasInvestigadorValidator.cs" />
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
-    <Compile Include="NHibernateValidator\MovilidadAcademicaValidator.cs" />
+    <Compile Include="NHibernateValidator\EstanciaInstitucionExternaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionAcademiaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
@@ -181,6 +185,7 @@
     <Compile Include="NivelEstudio.cs" />
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
+    <Compile Include="OrganoInterno.cs" />
     <Compile Include="OtraParticipacion.cs" />
     <Compile Include="Pais.cs" />
     <Compile Include="Participacion.cs" />
@@ -189,12 +194,9 @@
     <Compile Include="ParticipanteExternoProyecto.cs" />
     <Compile Include="ParticipanteInternoProyecto.cs" />
     <Compile Include="ProductoAcademico.cs" />
-    <Compile Include="ProductoAcademicoMovilidadAcademica.cs" />
     <Compile Include="ProductoDerivado.cs" />
-    <Compile Include="ProductoDerivadoMovilidadAcademica.cs" />
     <Compile Include="ProgramaEstudio.cs" />
     <Compile Include="Proyecto.cs" />
-    <Compile Include="ProyectoMovilidadAcademica.cs" />
     <Compile Include="Puesto.cs" />
     <Compile Include="Rama.cs" />
     <Compile Include="RecursoFinancieroProyecto.cs" />
@@ -219,7 +221,6 @@
     <Compile Include="SubprogramaConacyt.cs" />
     <Compile Include="TesisDirigida.cs" />
     <Compile Include="TipoActividad.cs" />
-    <Compile Include="TipoActividadMovilidadAcademica.cs" />
     <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArchivo.cs" />
     <Compile Include="TipoArticulo.cs" />
@@ -229,10 +230,8 @@
     <Compile Include="TipoEstancia.cs" />
     <Compile Include="TipoEvento.cs" />
     <Compile Include="TipoFinanciamiento.cs" />
-    <Compile Include="TipoInstitucion.cs" />
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
-    <Compile Include="TipoParticipacionOrgano.cs" />
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />

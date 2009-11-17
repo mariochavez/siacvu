@@ -30,10 +30,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {/*
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Siglas, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.TipoOrgano, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.TipoParticipacion,
+                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Participacion,
                                                          constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Sector, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Nivel, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.Ambito, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaInicial, constraintValidatorContext);
                 isValid &= !ValidateIsNullOrEmpty<OrganoExterno>(organoExterno, x => x.FechaFinal, constraintValidatorContext); */

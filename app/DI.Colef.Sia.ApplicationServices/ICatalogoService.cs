@@ -175,6 +175,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveSector(Sector sector);
         Sector[] GetActiveSectoresEconomicos();
         Sector[] GetActiveSectoresFinanciamientos();
+        Sector[] GetActiveSectoresOrganosExternos();
 
         //Nivel
         Nivel GetNivelById(int id);
@@ -300,12 +301,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoProyecto[] GetActiveTipoProyectos();
         void SaveTipoProyecto(TipoProyecto tipoProyecto);
 
-        //Tipo de Institucion
-        TipoInstitucion GetTipoInstitucionById(int id);
-        TipoInstitucion[] GetAllTipoInstituciones();
-        TipoInstitucion[] GetActiveTipoInstituciones();
-        void SaveTipoInstitucion(TipoInstitucion tipoInstitucion);
-
         //Tipo de Estancia
         TipoEstancia GetTipoEstanciaById(int id);
         TipoEstancia[] GetAllTipoEstancias();
@@ -397,13 +392,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Coordinacion[] GetAllCoordinacions();
         Coordinacion[] GetActiveCoordinacions();
         void SaveCoordinacion(Coordinacion coordinacion);
-
-        //Tipo de Participacion en Organos
-        TipoParticipacionOrgano GetTipoParticipacionOrganoById(int id);
-        TipoParticipacionOrgano[] GetAllTipoParticipacionOrganos();
-        TipoParticipacionOrgano[] GetActiveTipoParticipacionOrganos();
-        void SaveTipoParticipacionOrgano(TipoParticipacionOrgano tipoParticipacionOrgano);
-
+        
         //Estatus de Formacion Academica
         EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id);
         EstatusFormacionAcademica[] GetAllEstatusFormacionAcademicas();
@@ -470,5 +459,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         DireccionRegional[] GetAllDireccionesRegionales();
         DireccionRegional[] GetActiveDireccionesRegionales();
         void SaveDireccionRegional(DireccionRegional direccionRegional);
+
+        //Consejo o Comision
+        ConsejoComision GetConsejoComisionById(int id);
+        ConsejoComision[] GetAllConsejoComisions();
+        ConsejoComision[] GetActiveConsejoComisions();
+        void SaveConsejoComision(ConsejoComision consejoComision);
     }
 }

@@ -55,24 +55,28 @@
                     <%=Html.ValidationMessage("TipoParticipacion")%>
                 </p>
                 
-                <% Html.RenderPartial("_EditInstitucion", Model.Form); %>
+                <div id="TipoEvento_field">
+                    <% Html.RenderPartial("_EditInstitucion", Model.Form); %>
+                </div>
                 
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>
                 
-                <p>
-                    <label>T&iacute;tulo del trabajo</label>
-	                <%=Html.TextBox("TituloTrabajo", Model.Form.TituloTrabajo, new { @class = "input420-requerido", maxlength = 100 })%>
-	                <span class="cvu"></span>
-	                <%=Html.ValidationMessage("TituloTrabajo")%>
-                </p>
-                
-                <h4>Coautores<span class="cvu"></span></h4>
-				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id } ); %>
-	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id } ); %>
-	            <p>
-	                <label>Total de autores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
-	            </p>
+                <div id="TipoParticipacion_fields">
+                    <p>
+                        <label>T&iacute;tulo del trabajo</label>
+	                    <%=Html.TextBox("TituloTrabajo", Model.Form.TituloTrabajo, new { @class = "input420-requerido", maxlength = 100 })%>
+	                    <span class="cvu"></span>
+	                    <%=Html.ValidationMessage("TituloTrabajo")%>
+                    </p>
+                    
+                    <h4>Coautores<span class="cvu"></span></h4>
+				    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id } ); %>
+	                <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id } ); %>
+	                <p>
+	                    <label>Total de autores</label>
+	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+	                </p>
+                </div>
                 
 				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>
         				
@@ -87,6 +91,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        eventoSetup();
     });
 </script>
 </asp:Content>

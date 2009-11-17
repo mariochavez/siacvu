@@ -66,6 +66,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
+    public class ArchivoOrganoInterno : Archivo
+    {
+
+    }
+
     public class ArchivoParticipacion : Archivo
     {
 

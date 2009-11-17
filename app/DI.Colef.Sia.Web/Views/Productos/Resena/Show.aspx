@@ -39,21 +39,21 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <strong><%=Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
-                    <strong><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
                     <label>Nombre de la publicaci&oacute;n</label>
-                    <strong><%=Html.Encode(Model.Form.NombreProducto)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de publicaci&oacute;n</label>
-                    <strong><%=Html.Encode(Model.Form.TipoResenaNombre)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.TipoResenaNombre)%>&nbsp;</span>
                 </p>
                 
                 <h4>Coautores</h4>
@@ -71,13 +71,13 @@
 	            </p>
 	            <p>
 	                <label>Posici&oacute;n del autor</label>
-                    <strong><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</strong>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TipoResenaNombre.Contains("Reseña")){ %>
                     <h4>Referencia de la obra rese&ntilde;ada</h4>
                     <p>
                         <label>Nombre del libro</label>
-                        <strong><%=Html.Encode(Model.Form.TituloLibro)%>&nbsp;</strong>
+                        <span class="valor"><%=Html.Encode(Model.Form.TituloLibro)%>&nbsp;</span>
                     </p>
                     
                     <%
@@ -85,19 +85,20 @@
                     
                     <p>
                         <label>A&ntilde;o de edici&oacute;n</label>
-                        <strong><%=Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (yyyy)</span>
+                        <span class="valor"><%=Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                     <p>
                         <label>Instituci&oacute;n</label>
-                        <strong><%=Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                        <span class="valor"><%=Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>Editorial</label>
-                        <strong><%=Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</strong>
+                        <span class="valor"><%=Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>Pa&iacute;s</label>
-                        <strong><%=Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
+                        <span class="valor"><%=Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
                 
@@ -105,7 +106,7 @@
                     <h4>Referencia bibliogr&aacute;fica</h4>
                     <p>
                         <label>Revista en que se publica</label>
-                        <strong><%=Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</strong>
+                        <span class="valor"><%=Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</span>
                     </p>
                     
                     <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
@@ -114,60 +115,62 @@
                     
                    <p>
 	                    <label>Palabra clave 1</label>
-	                    <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
                     </p>
                     <p>
 	                    <label>Palabra clave 2</label>
-	                    <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+	                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
                     </p>
                     <p>
 	                    <label>Palabra clave 3</label>
-                        <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>Estatus de la publicaci&oacute;n</label>
-                        <strong><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</strong>
+                        <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                     </p>
                 <% } %>
                 <% if (Model.Form.EstadoProducto == 1){ %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 2){ %>
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
                     </p>                
                     <p>
                         <label>Volumen</label>
-                        <strong><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</strong>
+                        <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>N&uacute;mero</label>
-                        <strong><%= Html.Encode(Model.Form.Numero)%>&nbsp;</strong>
+                        <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>P&aacute;gina inicial</label> 
-                        <strong><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</strong> 
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span> 
                     </p>
                     <p>    
                         <label>P&aacute;gina final</label>
-                        <strong><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</strong> 
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
                     </p>
                     <p>
                         <label>A&ntilde;o de publicaci&oacute;n</label>
-                        <strong><%= Html.Encode(Model.Form.AnioPublicacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.AnioPublicacion)%>&nbsp;</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                     <p>
                         <label></label>
-                        Rese&ntilde;a traducida a otro idioma?
-                        <strong><%= HumanizeHelper.Boolean(Model.Form.ResenaTraducida) %>&nbsp;</strong>
+                        <span class="valor">Rese&ntilde;a traducida a otro idioma? <%= HumanizeHelper.Boolean(Model.Form.ResenaTraducida) %>&nbsp;</span>
                     </p>
                     <% if (Model.Form.ResenaTraducida){ %>
                         <p>
                             <label>Idioma al que se tradujo</label>
-                            <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
+                            <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
                         </p>
                     <% } %>
                 <% } %>
