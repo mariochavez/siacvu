@@ -333,7 +333,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaInicial,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
-                           o => o.AddFormatter<StandardDateFormatter>());
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.TipoEstancia,
+                           o => o.Ignore());
         }
 
         private void CreateFormacionAcademicaMaps()

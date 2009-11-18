@@ -39,11 +39,11 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Grado acad&eacute;mico</label>
-                    <span class="valor">&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.GradoAcademicoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de estancia</label>
-                    <span class="valor">&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
                 </p>
                 <h4>Datos de la estancia acad&eacute;mica externa</h4>
             	<p>

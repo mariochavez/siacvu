@@ -11,11 +11,12 @@
 	    <label>Estado</label>
 	    <span class="valor"><%= Html.Encode(Model.InstitucionEstadoPaisNombre)%>&nbsp;</span>
 	</p>
+<% } else { %>
+    <p>
+        <label>Pa&iacute;s</label>
+        <span class="valor"><%= Html.Encode(Model.InstitucionPaisNombre)%>&nbsp;</span>
+    </p>
 <% } %>
-<p>
-    <label>Pa&iacute;s</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionPaisNombre)%>&nbsp;</span>
-</p>
 <p>
     <label>Tipo de instituci&oacute;n</label>
     <span class="valor"><%= HumanizeHelper.TipoInstitucion(Model.InstitucionTipoInstitucionNombre)%>&nbsp;</span>

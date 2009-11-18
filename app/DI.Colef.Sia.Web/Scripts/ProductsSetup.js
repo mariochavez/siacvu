@@ -240,28 +240,14 @@ function investigadorSetup() {
 }
 
 function organoInternoSetup() {
-    CheckOrganoInternoOptions.setup();
+    $('#ConsejoComision').dynamicui(
+            [
+                [['Comisión Dictaminadora', 'Comisiones Evaluadoras Departamentales', 'Comisiones Académicas de Programas de Posgrado', 'Consejo Editorial', 'Consejo de Biblioteca'], ['#periodo_field']]
+            ]
+        );
+
+    $('#ConsejoComision')[0].dynamic.setup();
 }
-
-var CheckOrganoInternoOptions = {
-    setup: function() {
-        $('#forma').unload(CheckOrganoInternoOptions.verifyOptions());
-        $('#ConsejoComision').change(CheckOrganoInternoOptions.verifyOptions);
-    },
-    verifyOptions: function() {
-        var comboText = $('#ConsejoComision :selected').text();
-
-        if (comboText == "Consejo Académico" || comboText == "Seleccione ...") {
-            $('#periodo_field').slideUp('fast', function() {
-                $('#periodo_field').fadeOut('fast');
-            });
-        } else {
-            $('#periodo_field').slideDown('fast', function() {
-                $('#periodo_field').fadeIn('fast');
-            });
-        }
-    }
-};
 
 function cursoSetup() {
     $('#TipoCurso').dynamicui(

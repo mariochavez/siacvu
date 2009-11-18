@@ -2,6 +2,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+    <label>Tipo de estancia</label>
+    <%=Html.DropDownList("TipoEstancia", Model.TiposEstancias.CreateSelectList<TipoEstanciaForm>("Id", "Nombre"),
+		"Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("TipoEstancia") %>
+</p>
+<p>
 	<label>Instituci&oacute;n de procedencia</label>
 	<%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
@@ -10,7 +16,7 @@
 </p>
 <p>
 	<label>L&iacute;neas de investigaci&oacute;n</label>
-	<%=Html.TextBox("LineasInvestigacion", Model.LineasInvestigacion, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextBox("LineasInvestigacion", Model.LineasInvestigacion, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("LineasInvestigacion")%>
 </p>
 <p>
@@ -27,11 +33,11 @@
 </p>
 <p>
 	<label>Actividades acad&eacute;micas previstas</label>
-	<%=Html.TextBox("Actividades", Model.Actividades, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextBox("Actividades", Model.Actividades, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Actividades")%>
 </p>
 <p>
 	<label>Principales logros</label>
-	<%=Html.TextBox("Logros", Model.Logros, new { @class = "input250", maxlength = 100 })%>
+	<%=Html.TextArea("Logros", Model.Logros, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Logros")%>
 </p>
