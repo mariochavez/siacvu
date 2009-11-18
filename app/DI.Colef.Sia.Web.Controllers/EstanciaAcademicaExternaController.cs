@@ -170,6 +170,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new EstanciaAcademicaExternaForm();
 
+            form.ShowFields = new ShowFieldsForm
+            {
+                InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                InstitucionPaisNombre = form.Institucion.PaisNombre,
+                InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                InstitucionCiudadNombre = form.Institucion.Ciudad,
+            };
+
             return form;
         }
     }

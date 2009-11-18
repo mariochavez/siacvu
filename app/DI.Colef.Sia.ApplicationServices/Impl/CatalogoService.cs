@@ -561,6 +561,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             }
             institucion.ModificadoEl = DateTime.Now;
 
+            if (institucion.Pais.Nombre == "México")
+                institucion.TipoInstitucion = true;
+            else
+                institucion.TipoInstitucion = false;
+
             institucionRepository.SaveOrUpdate(institucion);
         }
 

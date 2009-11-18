@@ -16,9 +16,9 @@
 </p>
 <p>
     <label>2do. Nivel</label>
-    <%=Html.DropDownList("Nivel2", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
+    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Nivel2") %>
+    <%=Html.ValidationMessage("Nivel2Id") %>
 </p>
 <p>
     <label>Fecha inicial</label>

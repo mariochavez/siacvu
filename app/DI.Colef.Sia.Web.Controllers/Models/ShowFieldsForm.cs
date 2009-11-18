@@ -24,5 +24,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nivel2Nombre { get; set; }
         public string Nivel2OrganizacionNombre { get; set; }
         public string Nivel2OrganizacionSectorNombre { get; set; }
+
+        public bool InstitucionTipoInstitucionNombre { get; set; }
+        public string InstitucionPaisNombre { get; set; }
+        public string InstitucionEstadoPaisNombre { get; set; }
+        public string InstitucionCiudadNombre { get; set; }
     }
 }

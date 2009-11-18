@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Telefono { get; set; }
 
+        [NotNull]
 	    public virtual Pais Pais { get; set; }
 
         public virtual bool TipoInstitucion { get; set; }

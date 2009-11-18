@@ -13,7 +13,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string GradoAcademicoNombre { get; set; }
 
-        public int Institucion { get; set; }
         public int InstitucionId { get; set; }
+        public string InstitucionNombre { get; set; }
+
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public InstitucionForm Institucion { get; set; }
     }
 }

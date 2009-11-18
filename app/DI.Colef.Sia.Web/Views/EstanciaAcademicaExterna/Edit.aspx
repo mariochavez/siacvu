@@ -12,7 +12,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el estancia academica externa utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar la estancia acad&eacute;mica externa utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -36,7 +36,7 @@
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
-
+				<% Html.RenderPartial("_DatosEstanciaAcademicaExterna", Model.Form); %>
 	            
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Index(), "Regresar") %>
