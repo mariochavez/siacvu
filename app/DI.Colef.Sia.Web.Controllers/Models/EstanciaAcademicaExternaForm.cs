@@ -11,10 +11,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
+        //Espacio para Agregar Mapeos
+        public int TipoEstancia { get; set; }
+        public int TipoEstanciaId { get; set; }
+        public string TipoEstanciaNombre { get; set; }
+
         public string GradoAcademicoNombre { get; set; }
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
+
+        /* Catalogos */
+        public TipoEstanciaForm[] TiposEstancias { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }

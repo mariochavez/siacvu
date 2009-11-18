@@ -1,9 +1,11 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [EstanciaAcademicaExternaValidator]
     public class EstanciaAcademicaExterna : Entity, IBaseEntity
     {
         [NotNull]

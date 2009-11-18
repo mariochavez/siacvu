@@ -17,7 +17,7 @@
             presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva estancia acad&eacute;mica externa</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.New(), "+ Nueva estancia académica externa") %></span>
+            <span><%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.New(), "+ Nueva estancia académica externa")%></span>
         </div>
     </div>
 </asp:Content>

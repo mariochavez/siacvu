@@ -32,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
         }
 
         public EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario, Investigador investigador)
@@ -42,8 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
-                //model.GradoAcademico = GetLatest(investigador.GradosAcademicosInvestigador).GradoAcademico;
-                //model.TipoEstancia = GetLatest(investigador).TipoEstancia;
+                model.GradoAcademico = GetLatest(investigador.GradosAcademicosInvestigador).GradoAcademico;
             }
 
             model.ModificadoPor = usuario;

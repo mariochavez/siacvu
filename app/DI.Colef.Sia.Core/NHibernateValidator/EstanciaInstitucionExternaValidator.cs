@@ -37,12 +37,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             isValid &= !ValidateIsNullOrEmpty<EstanciaInstitucionExterna>(movilidadAcademica, x => x.Institucion, "InstitucionNombre",
                                                constraintValidatorContext);
 
-            isValid &= ValidateFechas(movilidadAcademica, constraintValidatorContext);
+            isValid &= ValidateFechaInicialFinal(movilidadAcademica, constraintValidatorContext);
 
             return isValid;
         }
 
-        bool ValidateFechas(EstanciaInstitucionExterna estanciaInstitucionExterna, IConstraintValidatorContext constraintValidatorContext)
+        bool ValidateFechaInicialFinal(EstanciaInstitucionExterna estanciaInstitucionExterna, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 
@@ -60,23 +60,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (estanciaInstitucionExterna.FechaInicial > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaInicial", "FechaInicial");
-                isValid = false;
-            }
-
-            if (estanciaInstitucionExterna.FechaFinal > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaFinal", "FechaFinal");
-                isValid = false;
-            }
-
             if (estanciaInstitucionExterna.FechaInicial > DateTime.Parse("1910-01-01") || estanciaInstitucionExterna.FechaFinal > DateTime.Parse("1910-01-01"))
             {
-                if (estanciaInstitucionExterna.FechaInicial > estanciaInstitucionExterna.FechaFinal)
+                if (estanciaInstitucionExterna.FechaInicial >= estanciaInstitucionExterna.FechaFinal)
                 {
                     constraintValidatorContext.AddInvalid(
                         "fecha inicial debe ser menor a la final|FechaInicial", "FechaInicial");
