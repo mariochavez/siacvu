@@ -426,7 +426,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionEventos());
             form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());
 
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());

@@ -10,7 +10,7 @@
     <%=Html.ValidationMessage("Nombre") %>
 </p>
 <p>
-    <label>Tipo de art&iacute;culo</label>
+    <label>Tipo de sector</label>
     <%=Html.DropDownList("TipoSector", Model.TiposSectores.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoSector") %>

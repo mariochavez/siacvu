@@ -13,6 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]		
 		public virtual string Nombre { get; set; }
 
+        [Min(1)]
+	    public virtual int Tipo { get; set; }
+
         public virtual Usuario CreadorPor { get; set; }
 
 		public virtual DateTime CreadorEl { get; set; }

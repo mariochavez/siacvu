@@ -16,5 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections
         CustomSelectForm[] PeriodicidadCustomCollection();
         CustomSelectForm[] ClasificacionSievaCustomCollection();
         CustomSelectForm[] FormatoRevistaCustomCollection();
+        CustomSelectForm[] SectorCustomCollection();
+        CustomSelectForm[] TipoParticipacionCustomCollection();
     }
 }

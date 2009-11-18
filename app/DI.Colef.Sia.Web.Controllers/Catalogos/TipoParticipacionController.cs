@@ -2,9 +2,10 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using SharpArch.Web.NHibernate;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -13,14 +14,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
+        readonly ICustomCollection customCollection;
 
         public TipoParticipacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
                                            ITipoParticipacionMapper tipoParticipacionMapper,
-                                           ISearchService searchService)
+                                           ISearchService searchService, ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -40,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         public ActionResult New()
         {
             var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new TipoParticipacionForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -52,7 +55,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var tipoParticipacion = catalogoService.GetTipoParticipacionById(id);
-            data.Form = tipoParticipacionMapper.Map(tipoParticipacion);
+            var tipoParticipacionForm = tipoParticipacionMapper.Map(tipoParticipacion);
+
+            data.Form = SetupNewForm(tipoParticipacionForm);
+
+            ViewData["Tipo"] = data.Form.Tipo;
 
             ViewData.Model = data;
             return View();
@@ -70,11 +77,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             tipoParticipacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoParticipacion, form, Title.New))
-                return ViewNew();
+            {
+                var tipoParticipacionForm = tipoParticipacionMapper.Map(tipoParticipacion);
+
+                ((GenericViewData<TipoParticipacionForm>)ViewData.Model).Form = SetupNewForm(tipoParticipacionForm);
+                return ViewNew();   
+            }
 
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
-            return RedirectToIndex(String.Format("Tipo de Participación {0} ha sido creada", tipoParticipacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de participación {0} ha sido creada", tipoParticipacion.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]
@@ -88,11 +100,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             tipoParticipacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoParticipacion, form, Title.Edit))
+            {
+                var tipoParticipacionForm = tipoParticipacionMapper.Map(tipoParticipacion);
+
+                ((GenericViewData<TipoParticipacionForm>)ViewData.Model).Form = SetupNewForm(tipoParticipacionForm);
                 return ViewEdit();
+            }
 
             catalogoService.SaveTipoParticipacion(tipoParticipacion);
 
-            return RedirectToIndex(String.Format("Tipo de Participación {0} ha sido modificada", tipoParticipacion.Nombre));
+            return RedirectToIndex(String.Format("Tipo de participación {0} ha sido modificada", tipoParticipacion.Nombre));
         }
 
         [Authorize(Roles = "DGAA")]
@@ -131,6 +148,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var data = searchService.Search<TipoParticipacion>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        TipoParticipacionForm SetupNewForm()
+        {
+            return SetupNewForm(null);
+        }
+
+        TipoParticipacionForm SetupNewForm(TipoParticipacionForm form)
+        {
+            form = form ?? new TipoParticipacionForm();
+
+            form.TiposParticipaciones = customCollection.TipoParticipacionCustomCollection();
+
+            return form;
         }
     }
 }

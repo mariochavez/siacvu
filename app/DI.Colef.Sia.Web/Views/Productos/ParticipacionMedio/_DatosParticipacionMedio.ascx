@@ -9,10 +9,10 @@
 	<%=Html.ValidationMessage("TipoParticipacion")%>
 </p>
 <p>
-	<label id="libro_label">Nombre del libro</label>
-	<label id="investigacion_label">Nombre del proyecto de investigaci&oacute;n</label>
-	<label id="notaPeriodistica_label">Nota period&iacute;stica</label>
-	<label id="titulo_label">T&iacute;tulo/Tema presentado</label>
+	<label class="noeffect" id="libro_label">Nombre del libro</label>
+	<label class="noeffect" id="investigacion_label">Nombre del proyecto de investigaci&oacute;n</label>
+	<label class="noeffect" id="notaPeriodistica_label">Nota period&iacute;stica</label>
+	<label class="noeffect" id="titulo_label">T&iacute;tulo/Tema presentado</label>
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Titulo")%>

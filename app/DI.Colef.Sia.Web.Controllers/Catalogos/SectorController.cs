@@ -2,10 +2,10 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
-using SharpArch.Web.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
@@ -14,13 +14,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     {
         readonly ICatalogoService catalogoService;
         readonly ISectorMapper sectorMapper;
+        readonly ICustomCollection customCollection;
 
         public SectorController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                ISectorMapper sectorMapper, ISearchService searchService)
+                                ISectorMapper sectorMapper, ISearchService searchService, ICustomCollection customCollection)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
             this.sectorMapper = sectorMapper;
+            this.customCollection = customCollection;
         }
 
         [Authorize]
@@ -156,13 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             form = form ?? new SectorForm();
 
-            form.TiposSectores = new[]
-                                     {
-                                         new CustomSelectForm
-                                             {Id = 1, Nombre = "Sector económico"},
-                                         new CustomSelectForm
-                                             {Id = 2, Nombre = "Sector financiamiento"}
-                                     };
+            form.TiposSectores = customCollection.SectorCustomCollection();
 
             return form;
         }

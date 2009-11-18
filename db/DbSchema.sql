@@ -871,6 +871,14 @@ alter table EstanciaAcademicaExternas  drop constraint FK43CB631585102A57
 alter table EstanciaAcademicaExternas  drop constraint FK43CB631574E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE685102A57]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
+alter table AreaInvestigaciones  drop constraint FKC1B18FE685102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE674E8BAB7]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
+alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26B980285102A57]') AND parent_object_id = OBJECT_ID('TipoArticulos'))
 alter table TipoArticulos  drop constraint FK26B980285102A57
 
@@ -2355,14 +2363,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B85102A57
 alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE685102A57]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
-alter table AreaInvestigaciones  drop constraint FKC1B18FE685102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE674E8BAB7]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
-alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoCapitulo
@@ -2490,6 +2490,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'TesisPosgrados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisPosgrados
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AreaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaInvestigaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoArticulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArticulos
 
@@ -2690,8 +2692,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Eventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Eventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'AreaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaInvestigaciones
 
     create table ResponsableInternoProductos (
         Id INT IDENTITY NOT NULL,
@@ -3449,6 +3449,17 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        primary key (Id)
     )
 
+    create table AreaInvestigaciones (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
     create table TipoArticulos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3816,6 +3827,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table TipoParticipaciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       Tipo INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4764,17 +4776,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     )
 
     create table Dependencias (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table AreaInvestigaciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
@@ -5872,6 +5873,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     alter table EstanciaAcademicaExternas 
         add constraint FK43CB631574E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table AreaInvestigaciones 
+        add constraint FKC1B18FE685102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table AreaInvestigaciones 
+        add constraint FKC1B18FE674E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
 
@@ -7727,15 +7738,5 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     alter table Dependencias 
         add constraint FK4ECBCD2B74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table AreaInvestigaciones 
-        add constraint FKC1B18FE685102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table AreaInvestigaciones 
-        add constraint FKC1B18FE674E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios

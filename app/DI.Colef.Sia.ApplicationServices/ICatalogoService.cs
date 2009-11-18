@@ -161,6 +161,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoParticipacion[] GetAllTipoParticipaciones();
         TipoParticipacion[] GetActiveTipoParticipaciones();
         void SaveTipoParticipacion(TipoParticipacion tipoParticipacion);
+        TipoParticipacion[] GetTipoParticipacionCapitulos();
+        TipoParticipacion[] GetTipoParticipacionEventos();
+        TipoParticipacion[] GetTipoParticipacionParticipacionMedios();
 
         //Revista de Publicacion
         RevistaPublicacion GetRevistaPublicacionById(int id);

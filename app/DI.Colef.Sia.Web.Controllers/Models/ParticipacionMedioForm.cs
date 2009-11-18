@@ -14,7 +14,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
+
         public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
 
         public int DirigidoA { get; set; }
         public int DirigidoAId { get; set; }
@@ -33,9 +36,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DirigidoAForm[] DirigidosA { get; set; }
         public TipoParticipacionForm[] TiposParticipaciones { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
-
-        /* Show */
-        public ShowFieldsForm ShowFields { get; set; }
-        public AreaTematicaForm AreaTematica { get; set; }
     }
 }
