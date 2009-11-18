@@ -465,6 +465,7 @@
     <Content Include="Views\Catalogos\RevistaPublicacion\Edit.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Show.aspx" />
     <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
     <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Sector\Edit.aspx" />

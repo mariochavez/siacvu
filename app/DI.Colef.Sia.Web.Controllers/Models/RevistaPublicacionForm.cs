@@ -4,11 +4,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public string Periodicidad { get; set; }
+        public int Periodicidad { get; set; }
         public string Issn { get; set; }
-        public string Detalle { get; set; }
-        public string Tipo { get; set; }
-        public string Estado { get; set; }
+        public string DepartamentoAcademico { get; set; }
+        public string Contacto { get; set; }
+        public string Email { get; set; }
+        public string PaginaWeb { get; set; }
+        public string Telefono { get; set; }
+        public int TipoRevista { get; set; }
+        public int ClasificacionSieva { get; set; }
+        public string DescripcionRevista { get; set; }
+        public string FactorImpacto { get; set; }
+        public int FormatoRevista { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
@@ -31,9 +38,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Indice3Id { get; set; }
         public string Indice3Nombre { get; set; }
 
+        public int Indice4 { get; set; }
+        public int Indice4Id { get; set; }
+        public string Indice4Nombre { get; set; }
+
+        public int AreaInvestigacion { get; set; }
+        public int AreaInvestigacionId { get; set; }
+        public string AreaInvestigacionNombre { get; set; }
+
+        /* Catalogos */
+        public CustomSelectForm[] Periodicidades { get; set; }
+        public CustomSelectForm[] TipoRevistas { get; set; }
+        public CustomSelectForm[] ClasificacionesSieva { get; set; }
+        public CustomSelectForm[] FormatoRevistas { get; set; }
         public PaisForm[] Paises { get; set; }
         public IndiceForm[] Indices1 { get; set; }
         public IndiceForm[] Indices2 { get; set; }
         public IndiceForm[] Indices3 { get; set; }
+        public IndiceForm[] Indices4 { get; set; }
+        public AreaInvestigacionForm[] AreasInvestigacion { get; set; }
     }
 }

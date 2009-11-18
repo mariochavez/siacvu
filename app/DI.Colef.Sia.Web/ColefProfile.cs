@@ -825,6 +825,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Indice3,
                            o => o.Ignore())
+                .ForMember(d => d.Indice4,
+                           o => o.Ignore())
+                .ForMember(d => d.AreaInvestigacion,
+                           o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore());
 

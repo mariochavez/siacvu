@@ -53,7 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Indice Indice4 { get; set; }
 
-        public virtual int  Puntuacion { get; set; }
+        public virtual int Puntuacion { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

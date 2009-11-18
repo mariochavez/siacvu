@@ -22,7 +22,7 @@
     <%=Html.ValidationMessage("Sede")%>
 </p>
 <p>
-    <label>P&aacute;gina WEB</label>
+    <label>P&aacute;gina web</label>
     <%=Html.TextBox("PaginaWeb", Model.PaginaWeb, new { @class = "input420-requerido", maxlength = 100 })%>    
     <%=Html.ValidationMessage("PaginaWeb")%>
 </p>
@@ -32,7 +32,7 @@
     <%=Html.ValidationMessage("Email")%>
 </p>
 <p>
-    <label>Tel&eacute;fono y/o Fax</label>
+    <label>Tel&eacute;fono y/o fax</label>
     <%=Html.TextBox("Telefono", Model.Telefono, new { @class = "input420-requerido", maxlength = 100 })%>    
     <%=Html.ValidationMessage("Telefono")%>
 </p>
