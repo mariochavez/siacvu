@@ -468,5 +468,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ConsejoComision[] GetAllConsejoComisions();
         ConsejoComision[] GetActiveConsejoComisions();
         void SaveConsejoComision(ConsejoComision consejoComision);
+
+        //Area de investigacion
+        AreaInvestigacion GetAreaInvestigacionById(int id);
+        AreaInvestigacion[] GetAllAreaInvestigacions();
+        AreaInvestigacion[] GetActiveAreaInvestigacions();
+        void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion);
     }
 }

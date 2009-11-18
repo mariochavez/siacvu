@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("EstanciaAcademicaExterna", 3);
+	new EntityScaffoldingDetails("Catalogos.AreaInvestigacion", 1);
 
 /*
  * Property names should be PascalCase.
@@ -35,29 +35,29 @@ entityScaffoldingDetails.EntityProperties.Add(
 	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
 );
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Institucion","Institucion", "Institucion")
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Institucion","Institucion", "Institucion")
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("LineasInvestigacion","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("LineasInvestigacion","string", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaInicial","DateTime", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("FechaInicial","DateTime", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("FechaFinal","DateTime", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("FechaFinal","DateTime", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Actividades","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Actividades","string", null)
+//);
 
-entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("Logros","string", null)
-);
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("Logros","string", null)
+//);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("Pais","Pais", "Pais")

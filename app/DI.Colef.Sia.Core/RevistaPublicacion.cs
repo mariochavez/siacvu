@@ -15,20 +15,33 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        [Length(50)]
-        public virtual string Periodicidad { get; set; }
+        public virtual Institucion Institucion { get; set; }
 
-        [Length(50)]
+        public virtual string DepartamentoAcademico { get; set; }
+
         public virtual string Issn { get; set; }
 
-        [Length(255)]
-        public virtual string Detalle { get; set; }
+        public virtual string Contacto { get; set; }
 
-        public virtual string Tipo { get; set; }
+        public virtual string Email { get; set; }
 
-        public virtual string Estado { get; set; }
+        public virtual string PaginaWeb { get; set; }
 
-        public virtual Institucion Institucion { get; set; }
+        public virtual string Telefono { get; set; }
+
+        public virtual int TipoRevista { get; set; }
+
+        public virtual int ClasificacionSieva { get; set; }
+
+        public virtual string DescripcionRevista { get; set; }
+
+        public virtual string FactorImpacto { get; set; }
+
+        public virtual int FormatoRevista { get; set; }
+        
+        public virtual int Periodicidad { get; set; }
+
+        public virtual AreaInvestigacion AreaInvestigacion { get; set; }
 
         public virtual Pais Pais { get; set; }
 
@@ -37,6 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Indice Indice2 { get; set; }
 
         public virtual Indice Indice3 { get; set; }
+
+        public virtual Indice Indice4 { get; set; }
 
         public virtual int  Puntuacion { get; set; }
 

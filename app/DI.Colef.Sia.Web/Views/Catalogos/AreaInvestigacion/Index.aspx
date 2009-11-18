@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
-    Inherits="System.Web.Mvc.ViewPage<GenericViewData<IndiceForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos"%>
+    Inherits="System.Web.Mvc.ViewPage<GenericViewData<AreaInvestigacionForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -11,13 +11,13 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo &iacute;ndice</h3>
+        <h3>Agregar nueva &aacute;rea de investigaci&oacute;n</h3>
         <p>
-            Puede agregar un nuevo &iacute;ndice dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo &iacute;ndice</strong>.
+            Puede agregar una nueva &aacute;rea de investigaci&oacute;n dentro de la lista de administraci&oacute;n
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva &aacute;rea de investigaci&oacute;n</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IndiceController>(x => x.New(), "+ Nuevo índice")%></span>
+            <span><%=Html.ActionLink<AreaInvestigacionController>(x => x.New(), "+ Nueva área de investigación") %></span>
         </div>
     </div>
 </asp:Content>
@@ -26,7 +26,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de &iacute;ndices registrados en el sistema.</p>
+            <p>Lista de &aacute;reas de investigaci&oacute;n registradas en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,31 +39,31 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>&Iacute;ndices</h4>
+		<h4>&Aacute;reas de investigaci&oacute;n</h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">
 				<div class="elementodescripcion">
-					<h5><span>No hay &iacute;ndices registrados</span></h5>
+					<h5><span>No hay &aacute;reas de investigaci&oacute;n registradas</span></h5>
 				</div><!--end elementodescripcion-->
 
 			</div><!--end elementolista-->
 		<% } else { %>
-			<% foreach (var indice in Model.List) { %>
-				<div class="elementolista" id="accion_<%=Html.Encode(indice.Id) %>">
+			<% foreach (var areaInvestigacion in Model.List) { %>
+				<div class="elementolista" id="accion_<%=Html.Encode(areaInvestigacion.Id) %>">
 					<div class="elementodescripcion">
-						<h5><span><%=Html.Encode(indice.Nombre) %></span></h5>
-						<h6>Modificado el <%=Html.Encode(indice.Modificacion) %></h6>
+						<h5><span><%=Html.Encode(areaInvestigacion.Nombre) %></span></h5>
+						<h6>Modificado el <%=Html.Encode(areaInvestigacion.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">
 						<p>
-							<span><%=Html.ActionLink<IndiceController>(x => x.Edit(indice.Id), "Editar") %></span>
+							<span><%=Html.ActionLink<AreaInvestigacionController>(x => x.Edit(areaInvestigacion.Id), "Editar") %></span>
 	                        <span>
-	                            <% if (indice.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = indice.Id }, new { @class = "remote put" })%>
+	                            <% if (areaInvestigacion.Activo) { %>
+	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = areaInvestigacion.Id }, new { @class = "remote put" })%>
 	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = indice.Id }, new { @class = "remote put" })%>
+	                                <%=Html.ActionLink("Activar", "Activate", new { id = areaInvestigacion.Id }, new { @class = "remote put" })%>
 	                            <% } %>
 	                        </span>
 	                   	</p>

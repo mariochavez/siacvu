@@ -23,11 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(RevistaPublicacionForm message, RevistaPublicacion model)
         {
             model.Titulo = message.Titulo;
-            model.Periodicidad = message.Periodicidad;
             model.Issn = message.Issn;
-            model.Detalle = message.Detalle;
-            model.Tipo = message.Tipo;
-            model.Estado = message.Estado;
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);

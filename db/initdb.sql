@@ -65,6 +65,28 @@ insert into ConsejoComisiones values('Comisiones Académicas de Programas de Posg
 insert into ConsejoComisiones values('Consejo Editorial', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
 insert into ConsejoComisiones values('Consejo de Biblioteca', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
 
+insert into AreaInvestigaciones values('Administración Pública',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Antropología',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Arte',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Ciencias de la Información',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Cultura',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Demografía',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Derecho',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Economía',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Educación',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Estudios Agrarios',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Estudios Ambientales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Estudios Territoriales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Filosofía y Ciencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Geografía',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Historia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Lengua y Literatura',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Multidisciplinarias (Ciencias Sociales y Humanidades)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Política',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Psicología',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Relaciones Internacionales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Salud',GETDATE(), GETDATE(), 1, 1, 1);
+insert into AreaInvestigaciones values('Sociología',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into USEGs values('Cartografía Digital',GETDATE(), GETDATE(), 1, 1, 1);
 insert into USEGs values('Geo-Estadística',GETDATE(), GETDATE(), 1, 1, 1);
@@ -466,19 +488,19 @@ insert into TipoArticulos values('Artículo sin arbitraje',GETDATE(), GETDATE(), 
 insert into TipoArticulos values('Artículo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoArticulos values('Memoria de Congreso/Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Indices values('CLASE',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('CONACYT',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('DIALNET',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('ECON-LIT',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('HAPI',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('HLAS',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('IN-RECS',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('ISI',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('JSTOR',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('LATINDEX',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('RedAlyc',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('Otro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Indices values('Sin índice',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Indice Revistas CONACyT','Índice de Revistas Mexicanas de Investigación Científica y Tecnológica (CONACyT)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('CLASE','Citas Latinoamericanas en Ciencias Sociales y Humanidades',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Red ALyC','Red de Revistas Científicas de América Latina y El Caribe',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Latindex','Sistema Regional para Revistas Científicas de América Latina, El Caribe, España y Portugal',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('HAPI','Hispanic American Periodicals Index',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('CSA','Cambridge Scientific Abstracts',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('HLAS','Hand Book of Latin American Studies',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('LANIC','Latin American Network Information Center',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('LADB','Latin America Data Base (Universidad de Nuevo México)',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('IRESIE','Indice de Revistas de Educación Superior e Investigación Educativa',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('HELA','Hemeroteca Latinoamericana',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Otro', null,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Indices values('Sin índice', null,GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Instituciones values('Universidad Externado de Colombia',null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('Ayuntamiento de Matamoros',null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);

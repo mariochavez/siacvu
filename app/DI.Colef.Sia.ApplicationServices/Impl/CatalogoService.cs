@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
+        readonly IRepository<AreaInvestigacion> areaInvestigacionRepository;
         readonly IRepository<ConsejoComision> consejoComisionRepository;
         readonly IRepository<Ambito> ambitoRepository;
         readonly IRepository<Area> areaRepository;
@@ -116,6 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<TipoParticipacion> tipoParticipacionRepository,
                                IRepository<Nivel> nivelRepository, IRepository<Diplomado> diplomadoRepository,
                                IRepository<Sector> sectorRepository,
+                               IRepository<AreaInvestigacion> areaInvestigacionRepository,
                                IRepository<ProgramaEstudio> programaEstudioRepository,
                                IRepository<RevistaPublicacion> revistaPublicacionRepository,
                                IRepository<Organizacion> organizacionRepository,
@@ -172,6 +174,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.estatusFormacionAcademicaRepository = estatusFormacionAcademicaRepository;
             this.identificadorLibroRepository = identificadorLibroRepository;
             this.tipoArticuloRepository = tipoArticuloRepository;
+            this.areaInvestigacionRepository = areaInvestigacionRepository;
             this.institucionRepository = institucionRepository;
             this.indiceRepository = indiceRepository;
             this.investigadorExternoRepository = investigadorExternoRepository;
@@ -2384,6 +2387,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             consejoComision.ModificadoEl = DateTime.Now;
 
             consejoComisionRepository.SaveOrUpdate(consejoComision);
+        }
+
+        public AreaInvestigacion GetAreaInvestigacionById(int id)
+        {
+            return areaInvestigacionRepository.Get(id);
+        }
+
+        public AreaInvestigacion[] GetAllAreaInvestigacions()
+        {
+            return ((List<AreaInvestigacion>)OrderCatalog<AreaInvestigacion>(x => x.Nombre)).ToArray();
+        }
+
+        public AreaInvestigacion[] GetActiveAreaInvestigacions()
+        {
+            return ((List<AreaInvestigacion>)OrderCatalog<AreaInvestigacion>(x => x.Activo, true)).ToArray();
+        }
+
+        public void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion)
+        {
+            if (areaInvestigacion.Id == 0)
+            {
+                areaInvestigacion.Activo = true;
+                areaInvestigacion.CreadorEl = DateTime.Now;
+            }
+            areaInvestigacion.ModificadoEl = DateTime.Now;
+
+            areaInvestigacionRepository.SaveOrUpdate(areaInvestigacion);
         }
 
         #endregion
