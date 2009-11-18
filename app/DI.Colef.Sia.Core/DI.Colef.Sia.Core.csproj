@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
+    <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
     <Compile Include="TesisPosgrado.cs" />
     <Compile Include="Ambito.cs" />

@@ -3,7 +3,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface IIndiceMapper : IMapper<Indice, IndiceForm>
+    public interface IAreaInvestigacionMapper : IMapper<AreaInvestigacion, AreaInvestigacionForm>
     {
 
     }

@@ -996,6 +996,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<ConsejoComision, ConsejoComisionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<AreaInvestigacion, AreaInvestigacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }

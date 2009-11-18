@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(IndiceForm message, Indice model)
         {
 			model.Nombre = message.Nombre;
+            model.Detalle = message.Detalle;
         }
     }
 }

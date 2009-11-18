@@ -183,5 +183,105 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             return value ? "Nacional" : "Extranjera";
         }
+
+        public static string TipoRevista(int tipoRevista)
+        {
+            string nombreTipoRevista;
+
+            switch (tipoRevista)
+            {
+                case 1:
+                    nombreTipoRevista = "Con arbitraje anónimo";
+                    break;
+                case 2:
+                    nombreTipoRevista = "Sin arbitraje anónimo";
+                    break;
+                case 3:
+                    nombreTipoRevista = "Sin arbitraje";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoRevista;
+        }
+
+        public static string Periodicidad(int periodicidad)
+        {
+            string nombrePeriodicidad;
+
+            switch (periodicidad)
+            {
+                case 1:
+                    nombrePeriodicidad = "Mensual";
+                    break;
+                case 2:
+                    nombrePeriodicidad = "Bimestral";
+                    break;
+                case 3:
+                    nombrePeriodicidad = "Trimestral";
+                    break;
+                case 4:
+                    nombrePeriodicidad = "Cuatrimestral";
+                    break;
+                case 5:
+                    nombrePeriodicidad = "Semestral";
+                    break;
+                case 6:
+                    nombrePeriodicidad = "Anual";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombrePeriodicidad;
+        }
+
+        public static string ClasificacionSieva(int clasificacionSieva)
+        {
+            string nombreClasificacionSieva;
+
+            switch (clasificacionSieva)
+            {
+                case 1:
+                    nombreClasificacionSieva = "Tipo A";
+                    break;
+                case 2:
+                    nombreClasificacionSieva = "Tipo B";
+                    break;
+                case 3:
+                    nombreClasificacionSieva = "Tipo C";
+                    break;
+                case 4:
+                    nombreClasificacionSieva = "Tipo D";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreClasificacionSieva;
+        }
+
+        public static string FormatoRevista(int formatoRevista)
+        {
+            string nombreFormatoRevista;
+
+            switch (formatoRevista)
+            {
+                case 1:
+                    nombreFormatoRevista = "Revista impresa";
+                    break;
+                case 2:
+                    nombreFormatoRevista = "Revista electrónica";
+                    break;
+                case 3:
+                    nombreFormatoRevista = "Ambas";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreFormatoRevista;
+        }
     }
 }
