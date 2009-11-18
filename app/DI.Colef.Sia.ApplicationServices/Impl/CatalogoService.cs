@@ -953,6 +953,36 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoParticipacionRepository.SaveOrUpdate(tipoParticipacion);
         }
 
+        public TipoParticipacion[] GetTipoParticipacionCapitulos()
+        {
+            var tipoParticipacionList = Session.CreateCriteria(typeof(TipoParticipacion))
+                .Add(Expression.Eq("Tipo", 1))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<TipoParticipacion>();
+
+            return ((List<TipoParticipacion>) tipoParticipacionList).ToArray();
+        }
+
+        public TipoParticipacion[] GetTipoParticipacionEventos()
+        {
+            var tipoParticipacionList = Session.CreateCriteria(typeof(TipoParticipacion))
+                .Add(Expression.Eq("Tipo", 2))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<TipoParticipacion>();
+
+            return ((List<TipoParticipacion>)tipoParticipacionList).ToArray();
+        }
+
+        public TipoParticipacion[] GetTipoParticipacionParticipacionMedios()
+        {
+            var tipoParticipacionList = Session.CreateCriteria(typeof(TipoParticipacion))
+                .Add(Expression.Eq("Tipo", 3))
+                .Add(Restrictions.Eq("Activo", true))
+                .List<TipoParticipacion>();
+
+            return ((List<TipoParticipacion>)tipoParticipacionList).ToArray();
+        }
+
         public RevistaPublicacion GetRevistaPublicacionById(int id)
         {
             return revistaPublicacionRepository.Get(id);

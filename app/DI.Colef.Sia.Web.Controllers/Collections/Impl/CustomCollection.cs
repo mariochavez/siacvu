@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
@@ -78,6 +79,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        {
                            new CustomSelectForm {Id = 1, Nombre = "Primer periodo"},
                            new CustomSelectForm {Id = 2, Nombre = "Segundo periodo"}
+                       };
+        }
+
+        public CustomSelectForm[] SectorCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Sector económico"},
+                           new CustomSelectForm {Id = 2, Nombre = "Sector financiamiento"},
+                           new CustomSelectForm {Id = 3, Nombre = "Sector órgano externo"}
+                       };
+        }
+
+        public CustomSelectForm[] TipoParticipacionCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "en capítulos"},
+                           new CustomSelectForm {Id = 2, Nombre = "en eventos"},
+                           new CustomSelectForm {Id = 3, Nombre = "en participación en medios"}
                        };
         }
     }

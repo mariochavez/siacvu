@@ -54,14 +54,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             if (participacionMedio.FechaPresentacion == DateTime.Parse("1900-01-01"))
             {
                 constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaDifusion", "FechaDifusion");
+                    "formato de fecha no válido|FechaPresentacion", "FechaPresentacion");
                 isValid = false;
             }
 
             if (participacionMedio.FechaPresentacion > DateTime.Now)
             {
                 constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaDifusion", "FechaDifusion");
+                    "el año no puede estar en el futuro|FechaPresentacion", "FechaPresentacion");
                 isValid = false;
             }
 

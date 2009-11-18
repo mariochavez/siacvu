@@ -119,7 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoInternoService.SaveOrganoInterno(organoInterno);
 
-            return RedirectToIndex(String.Format("Órgano Interno {0} ha sido creado", organoInterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano interno {0} ha sido creado", organoInterno.Nombre));
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -141,7 +141,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             
             organoInternoService.SaveOrganoInterno(organoInterno);
 
-            return RedirectToIndex(String.Format("Órgano Interno {0} ha sido modificado", organoInterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano interno {0} ha sido modificado", organoInterno.Nombre));
         }
 
         [Authorize]

@@ -132,51 +132,18 @@ function participacionSetup() {
 }
 
 function participacionMedioSetup() {
-    CheckParticipacionMedioOptions.setup();
+
+    $('#TipoParticipacion').dynamicui(
+            [
+                ['Presentación de libro', ['#libro_label']],
+                ['Presentación resultados de investigación', ['#investigacion_label']],
+                ['Periódico/Diario', ['#notaPeriodistica_label']],
+                [['Seleccione ...', 'Conferencias', 'Demostraciones', 'Ferias Científicas y Tecnológicas', 'Ferias Empresariales', 'Medios Impresos', 'Radio', 'Revistas de Divulgación', 'Seminarios', 'Simposium', 'Talleres', 'Teatro', 'Televisión', 'Video'], ['#titulo_label']]
+            ]
+        );
+
+    $('#TipoParticipacion')[0].dynamic.setup();
 }
-
-var CheckParticipacionMedioOptions = {
-    setup: function() {
-        $('#forma').unload(CheckParticipacionMedioOptions.verifyOptions());
-        $('#TipoParticipacion').change(CheckParticipacionMedioOptions.verifyOptions);
-    },
-    verifyOptions: function() {
-        var comboText = $('#TipoParticipacion :selected').text();
-
-        if (comboText != "Presentación de libro" && comboText != "Presentación resultados de investigación" && comboText != "Periódico/Diario") {
-            $('#titulo_label').slideUp('fast', function() {
-                $('#titulo_label').fadeOut('fast');
-            });            
-        } else if (comboText != "Presentación de libro") {
-            $('#libro_label').slideDown('fast', function() {
-                $('#libro_label').fadeIn('fast');
-            });
-        } else if (comboText != "Presentación resultados de investigación") {
-            $('#investigacion_label').slideDown('fast', function() {
-                $('#investigacion_label').fadeIn('fast');
-            });
-        } else if (comboText != "Periódico/Diario") {
-            $('#notaPeriodistica_label').slideDown('fast', function() {
-                $('#notaPeriodistica_label').fadeIn('fast');
-            });
-        }
-
-        if (comboText == "Seleccione ...") {
-            $('#titulo_label').slideUp('fast', function() {
-                $('#titulo_label').fadeOut('fast');
-            });
-            $('#libro_label').slideUp('fast', function() {
-                $('#libro_label').fadeOut('fast');
-            });
-            $('#investigacion_label').slideUp('fast', function() {
-                $('#investigacion_label').fadeOut('fast');
-            });
-            $('#notaPeriodistica_label').slideUp('fast', function() {
-                $('#notaPeriodistica_label').fadeOut('fast');
-            });            
-        }
-    }
-};
 
 function reporteSetup() {    
     $('#EstadoProducto').dynamicui(
