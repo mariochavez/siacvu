@@ -7,7 +7,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
-    [RevistaPublicacionValidator]
+    //[RevistaPublicacionValidator]
     public class RevistaPublicacion : Entity, IBaseEntity
     {
         [DomainSignature]

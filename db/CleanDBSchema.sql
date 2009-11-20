@@ -1740,6 +1740,11 @@ alter table Cursos  drop constraint FK8E38D63E5ECF193D
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EE5D82963]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EE5D82963
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E64F7D1CD]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63E64F7D1CD
 
@@ -2955,6 +2960,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6595ECF193D]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE6595ECF193D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE65964F7D1CD]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE65964F7D1CD
+
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -3284,6 +3299,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AreaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaInvestigaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'CursoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CursoInvestigadores
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -4477,6 +4494,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        DiplomadoFk INT null,
        NivelEstudioFk INT null,
        ProgramaEstudioFk INT null,
+       CursoInvestigadorFk INT null,
        InstitucionFk INT null,
        Nivel2Fk INT null,
        PaisFk INT null,

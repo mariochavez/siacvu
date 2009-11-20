@@ -9,11 +9,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class CursoMapper : AutoFormMapper<Curso, CursoForm>, ICursoMapper
     {
         readonly ICatalogoService catalogoService;
+        readonly ICursoInvestigadorService cursoInvestigadorService;
 
-        public CursoMapper(IRepository<Curso> repository, ICatalogoService catalogoService)
+        public CursoMapper(IRepository<Curso> repository, ICatalogoService catalogoService, ICursoInvestigadorService cursoInvestigadorService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
+            this.cursoInvestigadorService = cursoInvestigadorService;
         }
 
         protected override int GetIdFromMessage(CursoForm message)
@@ -37,10 +39,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
 
+            model.CursoInvestigador = cursoInvestigadorService.GetCursoInvestigadorById(message.CursoInvestigadorId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.Diplomado = catalogoService.GetDiplomadoById(message.Diplomado);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Curso Map(CursoForm message, Usuario usuario, Investigador investigador)

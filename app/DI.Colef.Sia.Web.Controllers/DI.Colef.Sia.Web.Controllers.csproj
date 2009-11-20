@@ -125,9 +125,12 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\IAreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\ICursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
@@ -155,6 +158,7 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
+    <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />

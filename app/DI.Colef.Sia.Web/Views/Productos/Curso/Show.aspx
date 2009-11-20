@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<CursoForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -44,67 +45,42 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                
+                        
+                <h4>Datos del curso</h4>
                 <p>
-	                <label>Nombre del curso</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Programa de estudio</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.ProgramaEstudioNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Instituci&oacute;n</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Nivel de Estudio</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.NivelEstudioNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>N&uacute;mero de horas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NumeroHoras)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Pa&iacute;s</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Fecha inicial</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <p>
-                    <label>Fecha final</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
+                    <label>Tipo de curso</label>
+                    <span class="valor"><%= HumanizeHelper.TipoAlumnoCurso(Model.Form.TipoCurso) %>&nbsp;</span>
                 </p>
                 
-                <h4>Opcionales</h4>                
+                <% if(Model.Form.TipoCurso == 1){ %>
+                    <p>
+                        <label></label>
+                        <span class="valor">Es diplomado? <%= HumanizeHelper.Boolean(Model.Form.EsDiplomado)%>&nbsp;</span>
+                    </p>
+                    <%if(Model.Form.EsDiplomado){ %>
+                        <p>
+                            <label>Nombre del diplomado</label>
+                            <span class="valor"><%= Html.Encode(Model.Form.NombreDiplomado) %>&nbsp;</span>
+                        </p>
+                        <% Html.RenderPartial("_ShowCursoExternoDiplomado", Model.Form); %>
+                    <% } else { %>
+                        <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
+                    <% } %>
+                <% } %>
+                <% if(Model.Form.TipoCurso == 2){ %>
+                    <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
+                    <% Html.RenderPartial("_ShowCursoExternoDiplomado", Model.Form); %>
+                <% } %>
+                
+                <h4>Complementaria CVU</h4>                
+                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                
                 <p>
-	                <label>Sector</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</span>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
-                <p>
-	                <label>Organizaci&oacute;n</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Nivel 2</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>&Aacute;rea</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Disciplina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Subdisciplina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>
