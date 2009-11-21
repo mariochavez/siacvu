@@ -4843,6 +4843,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TipoProducto INT not null,
        Nombre NVARCHAR(255) null,
        Datos VARBINARY(8000) null,
+       Contenido NVARCHAR(255) null,
+       Tamano INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,

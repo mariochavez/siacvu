@@ -469,7 +469,7 @@ RemoteFormV2 = {
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus);
                 $('p.submit').show();
-                $('p.#waiting').hide();
+                $('p.waiting').hide();
             }
         });
 

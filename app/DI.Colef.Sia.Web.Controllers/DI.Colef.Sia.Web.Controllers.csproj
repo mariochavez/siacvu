@@ -178,6 +178,7 @@
     <Compile Include="Models\CustomSelectForm.cs" />
     <Compile Include="Models\VinculacionAPyDForm.cs" />
     <Compile Include="Productos\OrganoInternoController.cs" />
+    <Compile Include="Security\CookieLessAuthorizeAttribute.cs" />
     <Compile Include="UsuarioController.cs" />
     <Compile Include="GrupoInvestigacionController.cs" />
     <Compile Include="ExperienciaProfesionalController.cs" />

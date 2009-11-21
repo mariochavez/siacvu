@@ -100,11 +100,13 @@
 
         investigadorSetup();
 
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        
         $("#uploadify").uploadify({
             'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': 'uploadfile',
+            'script': '<%=Url.Action("AddFile") %>',
             'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': 'uploads',
+            'folder': '<%=Url.Action("AddFile") %>',
             'queueID': 'fileQueue',
             'auto': false,
             'multi': true,
@@ -112,7 +114,9 @@
             'onProgress': progress,
             'onComplete': complete,
             'onAllComplete': completeAll,
-            'onSelectOnce': selectOnce
+            'onSelectOnce': selectOnce,
+            'onError': error,
+            'scriptData': { token: auth }
         });
     });
 </script>

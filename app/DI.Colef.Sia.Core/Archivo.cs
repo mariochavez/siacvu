@@ -15,6 +15,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual byte[] Datos { get; set; }
 
+        public virtual string Contenido { get; set; }
+
+        public virtual int Tamano { get; set; }
+
         public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }

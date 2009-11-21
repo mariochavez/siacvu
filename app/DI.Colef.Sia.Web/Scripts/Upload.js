@@ -87,5 +87,13 @@ function startUpload() {
 
     $('.progress_container').show();
 
+    $('#uploadify').uploadifySettings(
+        'scriptData', { '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(), 'investigadorId': $('#Id').val() }
+    );
+    
     $('#uploadify').uploadifyUpload();
+}
+
+function error(event, queueID, fileObj, errorObj) {
+    alert('Error');
 }

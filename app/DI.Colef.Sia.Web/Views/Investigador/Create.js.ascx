@@ -10,6 +10,6 @@ $('span.field-validation-error').remove();
 $('input').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
 
-$('#id').val('<%=Model.ToNullSafeString() %>');
+$('#id').val('<%=Model %>');
 
 startUpload();

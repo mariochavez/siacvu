@@ -1,12 +1,13 @@
 using System;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -160,10 +161,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 
-            // NOTE: Hay que quitar esto
             ViewData["Rollback"] = true;
-
             return Rjs("Create", investigador.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Dgaa")]
+        [CustomTransaction]
+        //[ValidateAntiForgeryToken]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var investigador = investigadorService.GetInvestigadorById(1);
+
+            var file = Request.Files["fileData"];
+            var archivo = new ArchivoInvestigador
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadorEl = DateTime.Now,
+                                  CreadorPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength,
+                                  TipoProducto = 1
+                              };
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            investigador.AddArchivo(archivo);
+            investigadorService.SaveInvestigador(investigador);
+
+            return Content("Hi");
         }
 
         //[Authorize(Roles = "Dgaa")]
