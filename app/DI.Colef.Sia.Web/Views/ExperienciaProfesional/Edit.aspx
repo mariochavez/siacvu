@@ -39,15 +39,6 @@
                     
                     <% Html.RenderPartial("_DatosExperienciaProfesional", Model.Form); %>
                     
-                    <h4>Estructura funcional</h4>
-                    <% Html.RenderPartial("_EstructuraFuncional", Model.Form); %>
-                    
-                    <h4>&Aacute;rea conocimiento</h4>
-                    <% Html.RenderPartial("_AreaConocimiento", Model.Form); %>
-                    
-                    <h4>Actividad econ&oacute;mica</h4>
-                    <% Html.RenderPartial("_ActividadEconomica", Model.Form); %>
-                    
                     <p class="submit">
                         <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ExperienciaProfesionalController>(x => x.Index(), "Regresar")%>
                     </p>

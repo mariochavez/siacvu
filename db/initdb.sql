@@ -890,12 +890,35 @@ insert into Instituciones values('COLEF - CICESE',null,null,null,null,null,0,nul
 insert into Instituciones values('Instituto de la Mujer para el Estado de Baja California',null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('Arizona State University',null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 
-insert into TipoParticipaciones values('Organizador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Co-organizador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Conferencista magistral',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Ponente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Participante',GETDATE(), GETDATE(), 1, 1, 1);
+--Tipo participacion capitulos
+insert into TipoParticipaciones values('Autor', 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Traductor', 1, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Inventor', 1, GETDATE(), GETDATE(), 1, 1, 1);
 
+--Tipo participacion eventos
+insert into TipoParticipaciones values('Organizador', 2, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Co-organizador', 2, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Conferencista magistral', 2, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Ponente', 2, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Participante', 2, GETDATE(), GETDATE(), 1, 1, 1);
+
+--Tipo participacion participacion en medios
+insert into TipoParticipaciones values('Presentación de libro', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Presentación resultados de investigación', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Periódico/Diario', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Conferencias', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Demostraciones', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Ferias Científicas y Tecnológicas', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Ferias Empresariales', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Medios Impresos', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Radio', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Revistas de Divulgación', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Seminarios', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Simposium', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Talleres', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Teatro', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Televisión', 3, GETDATE(), GETDATE(), 1, 1, 1);
+insert into TipoParticipaciones values('Video', 3, GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
@@ -3303,11 +3326,11 @@ insert into VinculacionAPyDes values('Tesis orientada a las políticas públicas',
 insert into VinculacionAPyDes values('Tesis orientada al desarrollo socioeconómico', GETDATE(), GETDATE(), 1, 1, 1)
 
 --Valores de prueba
-insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, null, null, 1, 1);
-insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, null, null, 1, 1);
+insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 --Valores de prueba
 insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)

@@ -11,5 +11,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int RamaId { get; set; }
 
         public RamaForm[] Ramas { get; set; }
+
+        public string RamaNombre { get; set; }
+
+        public string RamaSectorNombre { get; set; }
     }
 }

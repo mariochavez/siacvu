@@ -21,6 +21,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaDisciplinaNombre { get; set; }
         public string SubdisciplinaDisciplinaAreaNombre { get; set; }
 
+        public string ClaseNombre { get; set; }
+        public string ClaseRamaNombre { get; set; }
+        public string ClaseRamaSectorEconomicoNombre { get; set; }
+
         public string Nivel2Nombre { get; set; }
         public string Nivel2OrganizacionNombre { get; set; }
         public string Nivel2OrganizacionSectorNombre { get; set; }

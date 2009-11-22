@@ -28,16 +28,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!participacionAcademia.IsTransient())
             {
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.EstadoProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.FechaAceptacion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.FechaEdicion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Proyecto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.LineaTematica, "LineaTematicaNombre",
-                                                                         constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Institucion, "InstitucionNombre",
-                                                                         constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Pais, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Revista, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.EstadoProducto, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.FechaAceptacion, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.FechaEdicion, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Proyecto, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.LineaTematica, "LineaTematicaNombre",
+                //                                                         constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Institucion, "InstitucionNombre",
+                //                                                         constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.Pais, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<ParticipacionAcademia>(participacionAcademia, x => x.RevistaPublicacion, "RevistaPublicacionTitulo",
+                //                                                         constraintValidatorContext);
             }
 
             isValid &= ValidateFechas(participacionAcademia, constraintValidatorContext);

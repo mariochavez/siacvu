@@ -3462,11 +3462,11 @@ insert into VinculacionAPyDes values('Tesis orientada a las políticas públicas',
 insert into VinculacionAPyDes values('Tesis orientada al desarrollo socioeconómico', GETDATE(), GETDATE(), 1, 1, 1)
 
 --Valores de prueba
-insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, null, 1, 1);
-insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, null, 1, 1);
-insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 2, null, 1, 1);
-insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 2, null, 1, 1);
-insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 3, null, 1, 1);
+insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 --Valores de prueba
 insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)

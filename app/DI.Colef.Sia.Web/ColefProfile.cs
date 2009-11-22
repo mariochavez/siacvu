@@ -159,8 +159,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
                 .ForMember(d => d.Editorial,
-                           o => o.Ignore())
-                .ForMember(d => d.Proyecto,
                            o => o.Ignore());
         }
 
@@ -286,33 +284,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Organizacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel3,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel4,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel5,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel6,
-                           o => o.Ignore())
                 .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.SectorEconomico,
-                           o => o.Ignore())
-                .ForMember(d => d.Rama,
-                           o => o.Ignore())
-                .ForMember(d => d.Clase,
                            o => o.Ignore());
         }
 
@@ -843,8 +815,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Nivel, NivelForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.NivelReferencia
-                           , o => o.Ignore())
                 .ForMember(d => d.Organizacion
                            , o => o.Ignore());
 

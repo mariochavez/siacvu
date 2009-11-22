@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(NivelForm message, Nivel model)
         {
 			model.Nombre = message.Nombre;
-            model.NivelReferencia = catalogoService.GetNivelById(message.NivelReferencia);
             model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
         }
     }

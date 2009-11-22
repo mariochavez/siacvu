@@ -38,95 +38,57 @@
             <div id="campos">
                 <p>
                     <label>Nombramiento</label>
-                    <strong><%= Html.Encode(Model.Form.Nombramiento)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombramiento)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Entidad</label>
-                    <strong><%= Html.Encode(Model.Form.Entidad)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Entidad)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
-                <h4>Estructura funcional</h4>
-                <p>
-                    <label>Sector</label>
-                    <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Organizaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 2</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 3</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel3Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 4</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel4Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 5</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel5Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 6</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel6Nombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
                 
-                <h4>&Aacute;rea conocimiento</h4>
-                <p>
-                    <label>&Aacute;rea</label>
-                    <strong><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Disciplina</label>
-                    <strong><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Subdisciplina</label>
-                    <strong><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</strong>
-                </p>                
-                <h4>Actividad econ&oacute;mica</h4>
-                <p>
-                    <label>Sector econ&oacute;mico</label>
-                    <strong><%= Html.Encode(Model.Form.SectorEconomicoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Rama</label>
-                    <strong><%= Html.Encode(Model.Form.RamaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Clase</label>
-                    <strong><%= Html.Encode(Model.Form.ClaseNombre)%>&nbsp;</strong>
-                </p>
+                <% if (Model.Form.Nivel2Id != 0) { %>
+                	<h4>Estructura funcional</h4>
+                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                <% } %>
+                        
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	<h4>&Aacute;rea de conocimiento</h4>
+                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% } %>
+                
+                
+                <% if (Model.Form.ClaseId != 0) { %>
+                	<h4>Actividad econ&oacute;mica</h4>
+                	<% Html.RenderPartial("_ShowClase", Model.Form.ShowFields); %>
+                <% } %>
+                
                 <p>
                     <label>L&iacute;nea de investigaci&oacute;n 1</label>
-                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion1)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.LineaInvestigacion1)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>L&iacute;nea de investigaci&oacute;n 2</label>
-                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion2)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.LineaInvestigacion2)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>L&iacute;nea de investigaci&oacute;n 3</label>
-                    <strong><%= Html.Encode(Model.Form.LineaInvestigacion3)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.LineaInvestigacion3)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Principales logros</label>
-                    <strong><%= Html.Encode(Model.Form.PrincipalesLogros)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PrincipalesLogros)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">

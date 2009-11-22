@@ -172,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
-            ViewData["Nivel2"] = form.Nivel2Id;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)

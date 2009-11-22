@@ -19,9 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
-
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
                                                IParticipacionAcademiaMapper participacionAcademiaMapper,
@@ -30,9 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                ISearchService searchService,
                                                IPaisMapper paisMapper,
                                                IEditorialMapper editorialMapper,
-                                               ICustomCollection customCollection,
-                                               IProyectoMapper proyectoMapper,
-                                               IProyectoService proyectoService
+                                               ICustomCollection customCollection
             ) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -41,8 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -179,7 +172,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Volumenes = customCollection.VolumenCustomCollection();
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             return form;
         }
 
@@ -187,9 +179,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["Pais"] = form.PaisId;
             ViewData["Volumen"] = form.Volumen;
-            ViewData["Editorial"] = form.PaisId;
+            ViewData["Editorial"] = form.EditorialId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["Proyecto"] = form.ProyectoId;
         }
     }
 }

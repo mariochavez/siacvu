@@ -56,10 +56,11 @@
     <%=Html.ValidationMessage("FechaPublicacion")%>					
 </p>
 <p>
-	<label>Proyecto</label>
-	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Proyecto") %>
+	<label>Proyecto</label>	
+    <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
+    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
+    <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
 <p>
     <label>A&ntilde;o de edici&oacute;n</label>
