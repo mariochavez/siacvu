@@ -1,5 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<TesisDirigidaForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -52,7 +53,7 @@
 			<% foreach (var tesis in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(tesis.Id) %>">
 					<div class="elementodescripcion">
-					    <h5><span><%= tesis.Titulo != "" ? Html.Encode(tesis.Titulo) : Html.Encode(tesis.TesisPosgrado.Titulo) %></span></h5>
+					    <h5><span><%= IndexValueHelper.GetTesisIndexStringValue(tesis) %></span></h5>
 						<h6>Modificado el <%=Html.Encode(tesis.Modificacion) %></h6>
 					</div><!--end elementodescripcion-->
 

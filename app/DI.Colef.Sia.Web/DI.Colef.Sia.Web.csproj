@@ -646,6 +646,9 @@
     <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
+    <Content Include="Views\Productos\Curso\_ShowCursoExternoDiplomado.ascx" />
+    <Content Include="Views\Productos\Curso\_ShowCursoExterno.ascx" />
+    <Content Include="Views\Productos\Curso\_ShowCursoInvestigador.ascx" />
     <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
     <Content Include="Views\Productos\OrganoInterno\Index.aspx" />
     <Content Include="Views\Productos\OrganoInterno\New.aspx" />

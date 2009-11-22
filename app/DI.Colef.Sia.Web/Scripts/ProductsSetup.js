@@ -260,14 +260,24 @@ function organoInternoSetup() {
     $('#ConsejoComision')[0].dynamic.setup();
 }
 
-function cursoSetup() {
+function cursoSetup() {    
     $('#TipoCurso').dynamicui(
             [
-                ['Interno', ['.cursointerno']]
+                ['Interno', ['.cursointerno_field', '#cursointernodiplomado_field']],
+                ['Externo', ['.cursoexterno_field', '.cursoexternodiplomado_field']]
             ]
         );
 
     $('#TipoCurso')[0].dynamic.setup();
+
+    $('#EsDiplomado').dynamicui(
+            [
+                ['1', ['.diplomado_field', '.cursoexternodiplomado_field']],
+                ['0', ['#cursointernodiplomado_field']]
+            ]
+        );
+
+    $('#EsDiplomado')[0].dynamic.setup();
 }
 
 function eventoSetup() {

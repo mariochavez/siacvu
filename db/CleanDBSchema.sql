@@ -1750,8 +1750,18 @@ alter table TipoEstancias  drop constraint FK53E7616285102A57
 
 
 
+<<<<<<< HEAD
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616274E8BAB7]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
 alter table TipoEstancias  drop constraint FK53E7616274E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EE5D82963]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EE5D82963
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E64F7D1CD]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E64F7D1CD
+>>>>>>> 605817c87b124f9bc891e071b191412e49553b4e
 
 
 
@@ -2955,7 +2965,21 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
 
 
+<<<<<<< HEAD
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoProductos
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6595ECF193D]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE6595ECF193D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE65964F7D1CD]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE65964F7D1CD
+
+
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
+>>>>>>> 605817c87b124f9bc891e071b191412e49553b4e
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoCapitulo
 
@@ -3285,7 +3309,13 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
 
+<<<<<<< HEAD
     create table ResponsableInternoProductos (
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'CursoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CursoInvestigadores
+
+    create table SNIs (
+>>>>>>> 605817c87b124f9bc891e071b191412e49553b4e
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
        Posicion INT null,
@@ -4487,6 +4517,20 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+<<<<<<< HEAD
+=======
+       DiplomadoFk INT null,
+       NivelEstudioFk INT null,
+       ProgramaEstudioFk INT null,
+       CursoInvestigadorFk INT null,
+       InstitucionFk INT null,
+       Nivel2Fk INT null,
+       PaisFk INT null,
+       SubdisciplinaFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+>>>>>>> 605817c87b124f9bc891e071b191412e49553b4e
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)

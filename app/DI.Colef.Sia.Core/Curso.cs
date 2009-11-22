@@ -8,7 +8,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [CursoValidator]
-    [HasUniqueDomainSignature]
+    //[HasUniqueDomainSignature]
     public class Curso : Entity, IBaseEntity
     {
         const int tipoProducto = 3; // 3 Representa Curso
@@ -59,8 +59,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }
 
-        [DomainSignature]
+        //[DomainSignature]
         public virtual string Nombre { get; set; }
+
+        public virtual CursoInvestigador CursoInvestigador { get; set; }
 
         public virtual Institucion Institucion { get; set; }
         

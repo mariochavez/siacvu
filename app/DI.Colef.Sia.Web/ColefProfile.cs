@@ -529,12 +529,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Pais,
                            o => o.Ignore())
-                .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
                 .ForMember(d => d.Diplomado,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
+
+            Mapper.CreateMap<CursoInvestigador, CursoInvestigadorForm>()
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
+                           o => o.AddFormatter<StandardDateFormatter>());
         }
 
         void CreateArticulosMaps()

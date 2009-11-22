@@ -6,6 +6,10 @@ IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[TesisPo
 DROP VIEW [dbo].[TesisPosgrados]
 GO
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[CursoInvestigadores]'))
+DROP VIEW [dbo].[CursoInvestigadores]
+GO
+
 CREATE VIEW Usuarios AS
 SELECT     18 AS Id, 'Maria Elena' AS Nombre, 'Melendez' AS ApellidoPaterno, 'Fernandez' AS ApellidoMaterno, 'elena' AS UsuarioNombre, 'elena' AS Clave, 
                       'administrador@colef.mx' AS CorreoElectronico, 'M' AS Sexo, '1975-07-29' AS FechaNacimiento, '2005-11-21' AS FechaIngreso, 0 AS Investigador, 
@@ -131,16 +135,27 @@ SELECT	   51 AS Id, 'DGAA' AS Nombre, '' AS ApellidoPaterno, '' AS ApellidoMater
 GO
 
 --Valores de prueba para la vista de Alumnos
---Vinculacion con la APyD 1 => Tesis orientada al Desarrollo Local
---Forma de Participacion 1 => Editor
+--VinculacionApyDFk 1 => Tesis orientada al Desarrollo Local
+--FormaParticipacionFk 1 => Editor
 --ProgramaEstudioFk 47 => Ciencias Educativas
---Grado Academico 1 => Licenciatura
+--GradoAcademicoFk 1 => Licenciatura
 CREATE VIEW TesisPosgrados AS
 SELECT		2 AS Id, 'Tesis Posgrado 2' AS Titulo, 'Natalia Zamudio Santos' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,  
 			1 AS VinculacionApyDFk, 1 AS FormaParticipacionFk, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk
 UNION
 SELECT		1 AS Id, 'Tesis Posgrado 1' AS Titulo, 'Alejandro Valdéz Ruíz' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,
 			1 AS VinculacionApyDFk, 1 AS FormaParticipacionFk, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk
+GO
+
+--Valores de prueba para la vista de CursosInvestigadores
+--ProgramaEstudioFk 47 => Ciencias Educativas
+--InstitucionFk 14 => UABC Mexicali
+CREATE VIEW CursoInvestigadores AS
+SELECT		2 AS Id, 'Teoría económica y regional' AS Nombre, 'Aguilar Benítez Ismael' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
+			'Feb  27 2009 12:00AM' AS FechaFinal, 60 AS NumeroHoras, 47 AS ProgramaEstudioFk, 14 AS InstitucionFk
+UNION
+SELECT		1 AS Id, 'Teorías del desarrollo' AS Nombre, 'Martínez Pellégrini Sárah Eva' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
+			'Feb  27 2009 12:00AM' AS FechaFinal, 30 AS NumeroHoras, 47 AS ProgramaEstudioFk, 14 AS InstitucionFk
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
