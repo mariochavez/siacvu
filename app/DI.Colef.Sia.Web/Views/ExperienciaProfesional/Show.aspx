@@ -62,12 +62,10 @@
                 	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 <% } %>
                         
-                
                 <% if (Model.Form.SubdisciplinaId != 0) { %>
                 	<h4>&Aacute;rea de conocimiento</h4>
                 	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
-                
                 
                 <% if (Model.Form.ClaseId != 0) { %>
                 	<h4>Actividad econ&oacute;mica</h4>

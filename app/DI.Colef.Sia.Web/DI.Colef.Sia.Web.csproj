@@ -739,7 +739,6 @@
     <Content Include="Views\FormacionAcademica\Index.aspx" />
     <Content Include="Views\FormacionAcademica\New.aspx" />
     <Content Include="Views\FormacionAcademica\_DatosFormacionAcademica.ascx" />
-    <Content Include="Views\FormacionAcademica\_DatosOpcionales.ascx" />
     <Content Include="Views\Investigador\Activate.js.ascx" />
     <Content Include="Views\Investigador\AddEstado.js.ascx" />
     <Content Include="Views\Investigador\AddGrado.js.ascx" />

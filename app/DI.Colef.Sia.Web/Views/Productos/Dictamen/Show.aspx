@@ -45,6 +45,15 @@
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
                 <p>
+	                <label>Nombre del producto dictaminado</label>
+	                <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
+                </p>
+                <p>
+	                <label>Fecha de dictamen</label>
+	                <span class="valor"><%= Html.Encode(Model.Form.FechaDictamen)%>&nbsp;</span>
+	                </span><span>Formato (dd/mm/yyyy)</span>
+                </p>
+                <p>
 	                <label>Producto dictaminado</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</span>
                 </p>

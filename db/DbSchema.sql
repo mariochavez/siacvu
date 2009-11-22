@@ -3250,6 +3250,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table Dictamenes (
         Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       FechaDictamen DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,

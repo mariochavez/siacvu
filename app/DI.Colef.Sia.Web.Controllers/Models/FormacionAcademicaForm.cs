@@ -34,35 +34,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPaisId { get; set; }
         public string EstadoPaisNombre { get; set; }
 
-        public int Sector { get; set; }
-        public int SectorId { get; set; }
-        public string SectorNombre { get; set; }
-
-        public int Organizacion { get; set; }
-        public int OrganizacionId { get; set; }
-        public string OrganizacionNombre { get; set; }
-
-        public int Area { get; set; }
-        public int AreaId { get; set; }
-        public string AreaNombre { get; set; }
-
-        public int Disciplina { get; set; }
-        public int DisciplinaId { get; set; }
-        public string DisciplinaNombre { get; set; }
-
-        public int Subdisciplina { get; set; }
+        public int Nivel2Id { get; set; }
         public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
+
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
+        public NivelForm Nivel2 { get; set; }
+        public SubdisciplinaForm Subdisciplina { get; set; }
 
         /* Catalogos */
         public NivelEstudioForm[] NivelesEstudios { get; set; }
         public EstatusFormacionAcademicaForm[] EstatusFormacionAcademicas { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }
-        public SectorForm[] Sectores { get; set; }
-        public OrganizacionForm[] Organizaciones { get; set; }
-        public AreaForm[] Areas { get; set; }
-        public DisciplinaForm[] Disciplinas { get; set; }
+        public NivelForm[] Niveles2 { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

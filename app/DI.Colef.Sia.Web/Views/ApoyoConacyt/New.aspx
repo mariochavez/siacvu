@@ -12,7 +12,7 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Favor de llenar los siguientes campos para dar de alta un nuevo apoyo del Conacyt dentro del sistema.</p>
+		<p>Favor de llenar los siguientes campos para dar de alta un nuevo apoyo del CONACyT dentro del sistema.</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 

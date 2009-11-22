@@ -21,6 +21,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Nivel Nivel2 { get; set; }
 
+        public virtual string DepartamentoDestino { get; set; }
+
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }

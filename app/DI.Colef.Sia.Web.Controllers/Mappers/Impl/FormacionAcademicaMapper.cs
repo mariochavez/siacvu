@@ -35,11 +35,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);
-            model.Sector = catalogoService.GetSectorById(message.Sector);
-            model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public FormacionAcademica Map(FormacionAcademicaForm message, Usuario usuario)

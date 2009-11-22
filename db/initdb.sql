@@ -3282,6 +3282,7 @@ insert into Clases values('Servicios de apoyo para efectuar tramites leglaes', G
 insert into TipoApoyos values('Formacion académica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoApoyos values('Proyecto científico', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoApoyos values('Desarrollo tecnológico', GETDATE(), GETDATE(), 1, 1, 1)
+insert into TipoApoyos values('Nuevos negocios', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into SubprogramaConacyts values('Fondo sectorial', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Beca', GETDATE(), GETDATE(), 1, 1, 1)
@@ -3293,6 +3294,7 @@ insert into SubprogramaConacyts values('Cátedras patrimoniales', GETDATE(), GETD
 insert into SubprogramaConacyts values('Repatriación/Consolidación', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo ciencia básica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into SubprogramaConacyts values('Fondo mixto', GETDATE(), GETDATE(), 1, 1, 1)
+insert into SubprogramaConacyts values('Apoyos especiales', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into EstatusProyectos values('Vigente', GETDATE(), GETDATE(), 1, 1, 1)
 insert into EstatusProyectos values('Terminado', GETDATE(), GETDATE(), 1, 1, 1)

@@ -3,28 +3,24 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Nivel de estudio</label>
-
     <%=Html.DropDownList("NivelEstudio", Model.NivelesEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
+		"Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NivelEstudio") %>
 </p>
 <p>
-    <label>N&uacute;mero de c&eacute;dula</label>
-
-    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 4, size = 14 })%>
+    <label>N&uacute;mero de c&eacute;dula profesional</label>
+    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 20, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
 <p>
     <label>T&iacute;tulo de grado</label>
-
     <%=Html.TextBox("TituloGrado", Model.TituloGrado, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("TituloGrado")%>
 </p>
 <p>
     <label>Fecha de obtenci&oacute;n</label>
- 
     <%=Html.TextBox("FechaObtencion", Model.FechaObtencion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span>
@@ -32,7 +28,6 @@
 </p>
 <p>
     <label>Instituci&oacute;n</label>
-    
     <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
@@ -40,21 +35,18 @@
 </p>
 <p>
     <label>T&iacute;tulo de tesis</label>
-
     <%=Html.TextBox("TituloTesis", Model.TituloTesis, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloTesis")%>
 </p>
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
-    
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
 </p>
 <p>
     <label>Pa&iacute;s</label>
-
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangePais") })%>
     <span class="cvu"></span>
@@ -62,7 +54,6 @@
 </p>
 <p>
     <label>Estado</label>
-
     <%=Html.DropDownList("EstadoPais", Model.EstadosPaises.CreateSelectList<EstadoPaisForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
@@ -70,15 +61,31 @@
 </p>
 <p>
     <label>Ciudad</label>
-
     <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Ciudad")%>
 </p>
 <p>
     <label>Estatus</label>
-
     <%=Html.DropDownList("Estatus", Model.EstatusFormacionAcademicas.CreateSelectList<EstatusFormacionAcademicaForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Estatus")%>
+</p>
+
+<h4>Estructura funcional</h4>
+<p>
+	<label>2do. Nivel</label>
+    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
+		"Seleccione ...", new { @class = "requerido" })%>
+	<span class="cvu"></span>
+    <%=Html.ValidationMessage("Nivel2Id") %>
+</p>
+
+<h4>&Aacute;rea de conocimiento</h4>
+<p>
+	<label>Subdisciplina</label>
+	<%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
+		"Seleccione ...")%>
+	<span class="cvu"></span>
+	<%=Html.ValidationMessage("SubdisciplinaId") %>
 </p>

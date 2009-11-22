@@ -13,7 +13,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Para modificar el apoyo del Conacyt utilice los siguientes campos para realizar cambios dentro del sistema.
+            Para modificar el apoyo del CONACyT utilice los siguientes campos para realizar cambios dentro del sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

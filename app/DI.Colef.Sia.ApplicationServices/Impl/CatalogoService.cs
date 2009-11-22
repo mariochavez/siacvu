@@ -1136,11 +1136,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelRepository.SaveOrUpdate(nivel);
         }
 
-        public Nivel[] GetNivelesByNivelId(int id)
-        {
-            return ((List<Nivel>) FilterCatalogOptions<Nivel>(x => x.Nombre, id, "NivelReferencia")).ToArray();
-        }
-
         public Nivel[] GetNivelesByOrganizacionId(int id)
         {
             return ((List<Nivel>) FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
@@ -1821,7 +1816,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public SubprogramaConacyt[] GetActiveSubprogramasConacyt()
         {
-            return ((List<SubprogramaConacyt>) OrderCatalog<SubprogramaConacyt>(x => x.Activo, true)).ToArray();
+            return ((List<SubprogramaConacyt>)OrderCatalog<SubprogramaConacyt>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveSubprogramaConacyt(SubprogramaConacyt subprogramaConacyt)

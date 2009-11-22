@@ -186,7 +186,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Nivel[] GetActiveNiveles();
         void SaveNivel(Nivel nivel);
         Nivel[] GetNivelesByOrganizacionId(int id);
-        Nivel[] GetNivelesByNivelId(int id);
 
         //Programa de estudio
         ProgramaEstudio GetProgramaEstudioById(int id);

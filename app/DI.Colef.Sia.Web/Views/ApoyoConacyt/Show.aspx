@@ -16,7 +16,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del apoyo de CONACYT como est&aacute; en el sistema.
+            Aqu&iacute; se muestra la informaci&oacute;n detallada del apoyo de CONACyT como est&aacute; en el sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -38,35 +38,35 @@
             <div id="campos">
                 <p>
                     <label>No. de apoyo</label>
-                    <strong><%= Html.Encode(Model.Form.NoApoyo)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NoApoyo)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de apoyo</label>
-                    <strong><%= Html.Encode(Model.Form.TipoApoyoNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoApoyoNombre)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Subprograma del CONACYT</label>
-                    <strong><%= Html.Encode(Model.Form.SubprogramaConacytNombre)%>&nbsp;</strong>
+                    <label>Subprograma del CONACyT</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.SubprogramaConacytNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <strong><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <strong><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>                
                 <p>
 	                <label>Palabra clave 1</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Palabra clave 2</label>
-	                <strong><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Palabra clave 3</label>
-                    <strong><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">
