@@ -649,7 +649,6 @@
     <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
     <Content Include="Views\Productos\OrganoInterno\Index.aspx" />
     <Content Include="Views\Productos\OrganoInterno\New.aspx" />
-    <Content Include="Views\ParticipacionAcademia\Activate.js.ascx" />
     <Content Include="Views\ParticipacionAcademia\Edit.aspx" />
     <Content Include="Views\ParticipacionAcademia\Index.aspx" />
     <Content Include="Views\ParticipacionAcademia\New.aspx" />

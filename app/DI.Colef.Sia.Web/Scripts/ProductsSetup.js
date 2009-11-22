@@ -91,6 +91,17 @@ function distincionSetup() {
     $('#Ambito')[0].dynamic.setup();
 }
 
+function participacionAcademiaSetup() {
+	$('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['#EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+}
+
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [
