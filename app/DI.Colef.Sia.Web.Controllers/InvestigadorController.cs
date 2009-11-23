@@ -167,7 +167,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [CookieLessAuthorize(Roles = "Dgaa")]
         [CustomTransaction]
-        //[ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
         {
