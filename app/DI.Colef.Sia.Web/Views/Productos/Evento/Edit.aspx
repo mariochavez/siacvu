@@ -47,6 +47,11 @@
                                 "Seleccione ...", new { @class = "requerido" })%>
 	                <%=Html.ValidationMessage("TipoEvento") %>
                 </p>
+                <p class="TipoEvento_field">
+                    <label>Objetivo del evento</label>
+	                <%=Html.TextArea("ObjetivoEvento", Model.Form.ObjetivoEvento, 5, 35, new { @class = "input420-requerido", maxlength = 100 })%>
+	                <%=Html.ValidationMessage("ObjetivoEvento")%>
+                </p>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
                     <%=Html.DropDownList("TipoParticipacion", Model.Form.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
@@ -55,7 +60,7 @@
                     <%=Html.ValidationMessage("TipoParticipacion")%>
                 </p>
                 
-                <div id="TipoEvento_field">
+                <div class="TipoEvento_field">
                     <% Html.RenderPartial("_EditInstitucion", Model.Form); %>
                 </div>
                 

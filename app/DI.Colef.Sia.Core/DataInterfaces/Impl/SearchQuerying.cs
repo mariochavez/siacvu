@@ -98,6 +98,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchOrganoInterno(string value)
+        {
+            var criteria = DetachedCriteria.For(typeof(OrganoInterno))
+                .CreateAlias("ConsejoComision", "cm", JoinType.InnerJoin)
+                .SetFetchMode("ConsejoComision", FetchMode.Eager)
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("cm.Nombre"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("cm.Nombre"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(OrganoInternoDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<OrganoInternoDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search { Id = item.Id, Nombre = item.Nombre });
+            }
+
+            return result.ToArray();
+        }
+
         public Search[] SearchMovilidadAcademica(string value)
         {
             var criteria = DetachedCriteria.For(typeof (EstanciaInstitucionExterna))
@@ -199,6 +223,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         #endregion
 
+        #region Nested type: OrganoInternoDTO
+
+        class OrganoInternoDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        #endregion
+
         #region Nested type: ApoyoConacytDTO
 
         class ApoyoConacytDTO
@@ -218,5 +252,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         }
 
         #endregion
+
     }
 }

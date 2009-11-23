@@ -33,6 +33,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoOrgano = catalogoService.GetTipoOrganoById(message.TipoOrgano);
             model.Sector = catalogoService.GetSectorById(message.Sector);
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
+
+            model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.Ciudad = message.Ciudad;
         }
 
         public OrganoExterno Map(OrganoExternoForm message, Usuario usuario, Investigador investigador)

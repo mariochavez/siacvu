@@ -12,10 +12,6 @@
 	            	<a href="<%=Url.Action("DeleteInstitucion", null, new{ id = Model.Id, autorId = Model.InstitucionEventos[i].InstitucionId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.InstitucionEventos[i].InstitucionNombre)%>
                     <%=Html.Hidden("InstitucionEvento[" + i + "].InstitucionId", Model.InstitucionEventos[i].InstitucionId)%>
-                     <span>
-                        Objetivo del evento <%=Html.Encode(Model.InstitucionEventos[i].ObjetivoEvento)%>
-                        <%=Html.Hidden("InstitucionEvento[" + i + "].ObjetivoEvento", Model.InstitucionEventos[i].ObjetivoEvento)%>
-                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

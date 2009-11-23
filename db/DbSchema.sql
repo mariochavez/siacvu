@@ -671,6 +671,10 @@ alter table OrganoExternos  drop constraint FK55BF0AAE3E082BED
 alter table OrganoExternos  drop constraint FK55BF0AAEC93A1EF1
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7A8488F7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
 alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
 
@@ -2910,7 +2914,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table InstitucionEventos (
         Id INT IDENTITY NOT NULL,
-       ObjetivoEvento NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3233,6 +3236,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Siglas NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3242,6 +3246,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        TipoOrganoFk INT null,
        SectorFk INT null,
        AmbitoFk INT null,
+       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3444,6 +3449,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table Instituciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       AgrupaInstitucion NVARCHAR(255) null,
        Siglas NVARCHAR(255) null,
        Sede NVARCHAR(255) null,
        PaginaWeb NVARCHAR(255) null,
@@ -3489,6 +3495,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table Eventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       ObjetivoEvento NVARCHAR(255) null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
@@ -3663,7 +3670,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table OrganoInternos (
         Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Periodo INT null,
@@ -5529,6 +5535,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK55BF0AAEC93A1EF1 
         foreign key (AmbitoFk) 
         references Ambitos
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
 
     alter table OrganoExternos 
         add constraint FK55BF0AAE85102A57 

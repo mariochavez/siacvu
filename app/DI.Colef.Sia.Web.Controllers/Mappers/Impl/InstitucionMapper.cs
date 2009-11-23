@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Telefono = message.Telefono;
             model.TipoInstitucion = message.TipoInstitucion;
             model.Ciudad = message.Ciudad;
+            model.AgrupaInstitucion = message.AgrupaInstitucion;
 
             model.Pais = catalogoService.GetPaisById(message.Pais);
             model.EstadoPais = catalogoService.GetEstadoPaisById(message.EstadoPais);

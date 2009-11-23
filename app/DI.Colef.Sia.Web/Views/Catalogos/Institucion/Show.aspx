@@ -42,6 +42,10 @@
                     <span class="valor"><%=Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>
+                    <label>Agrupar instituci&oacute;n</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AgrupaInstitucion)%>&nbsp;</span>
+                </p>
+                <p>
                     <label>Siglas de la instituci&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Siglas)%>&nbsp;</span>
                 </p>

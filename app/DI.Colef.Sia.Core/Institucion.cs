@@ -12,6 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]
 		public virtual string Nombre { get; set; }
 
+        public virtual string AgrupaInstitucion { get; set; }
+
         public virtual string Siglas { get; set; }
 
         public virtual string Sede { get; set; }

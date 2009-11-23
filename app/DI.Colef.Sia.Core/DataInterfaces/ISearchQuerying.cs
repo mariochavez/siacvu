@@ -8,5 +8,6 @@
         Search[] SearchApoyoConacyt(string value);
         Search[] SearchIdiomaInvestigador(string value);
         Search[] SearchInvestigador(string value, Investigador investigador);
+        Search[] SearchOrganoInterno(string value);
     }
 }

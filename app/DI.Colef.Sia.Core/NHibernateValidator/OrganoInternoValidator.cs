@@ -33,8 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= ValidateFechaInicialFinal(organoInterno, constraintValidatorContext);
 
-            if (organoInterno.ConsejoComision != null)
-                isValid &= ValidateConsejoComision(organoInterno, constraintValidatorContext);
+            isValid &= ValidateConsejoComision(organoInterno, constraintValidatorContext);
 
             return isValid;
         }
@@ -43,13 +42,22 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (organoInterno.ConsejoComision.Nombre != "Consejo Académico")
+            if (organoInterno.ConsejoComision == null)
             {
-                if(organoInterno.Periodo == 0)
+                constraintValidatorContext.AddInvalid(
+                            "seleccione el consejo o comisión|ConsejoComision", "ConsejoComision");
+                isValid = false;
+            }
+            else
+            {
+                if (organoInterno.ConsejoComision.Nombre != "Consejo Académico")
                 {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el periodo|Periodo", "Periodo");
-                    isValid = false;
+                    if (organoInterno.Periodo == 0)
+                    {
+                        constraintValidatorContext.AddInvalid(
+                            "seleccione el periodo|Periodo", "Periodo");
+                        isValid = false;
+                    }
                 }
             }
 

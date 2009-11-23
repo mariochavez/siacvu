@@ -12,5 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         string SearchApoyoConacyt(string value);
         string SearchIdiomaInvestigador(string value);
         string SearchInvestigador(string value, Investigador investigador);
+        string SearchOrganoInterno(string value);
     }
 }

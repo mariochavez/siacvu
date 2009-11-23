@@ -8,6 +8,12 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
+    <label>Siglas</label>
+    <%=Html.TextBox("Siglas", Model.Siglas, new { @class = "input420-requerido", maxlength = 100 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Siglas")%>
+</p>
+<p>
     <label>Describa su participaci&oacute;n</label>
     <%=Html.TextArea("Participacion", Model.Participacion, 3, 35, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
@@ -28,10 +34,15 @@
     <%=Html.ValidationMessage("FechaFinal")%>
 </p>
 <p>
-    <label>Siglas</label>
-    <%=Html.TextBox("Siglas", Model.Siglas, new { @class = "input420-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Siglas")%>
+    <label>Ciudad/Estado</label>
+    <%=Html.TextBox("Ciudad", Model.Ciudad, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Ciudad")%>
+</p>
+<p>
+    <label>Pa&iacute;s</label>
+    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Pais")%>
 </p>
 <p>
     <label>Tipo de &oacute;rgano</label>

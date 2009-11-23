@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EventoForm
@@ -15,6 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
+        public string ObjetivoEvento { get; set; }
 
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }

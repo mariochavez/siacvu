@@ -119,7 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoInternoService.SaveOrganoInterno(organoInterno);
 
-            return RedirectToIndex(String.Format("Órgano interno {0} ha sido creado", organoInterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano interno {0} ha sido creado", organoInterno.ConsejoComision.Nombre));
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -141,14 +141,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             
             organoInternoService.SaveOrganoInterno(organoInterno);
 
-            return RedirectToIndex(String.Format("Órgano interno {0} ha sido modificado", organoInterno.Nombre));
+            return RedirectToIndex(String.Format("Órgano interno {0} ha sido modificado", organoInterno.ConsejoComision.Nombre));
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<OrganoInterno>(x => x.Nombre, q);
+            var data = searchService.SearchOrganoInterno(q);
             return Content(data);
         }
 

@@ -283,7 +283,7 @@ function cursoSetup() {
 function eventoSetup() {
     $('#TipoEvento').dynamicui(
             [
-                ['Evento Estratégico (El Colef)', ['#TipoEvento_field']]
+                ['Evento Estratégico (El Colef)', ['.TipoEvento_field']]
             ]
         );
 

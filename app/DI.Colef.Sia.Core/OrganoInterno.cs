@@ -53,10 +53,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
-		
-		[DomainSignature]
-		[NotNullNotEmpty]
-		public virtual string Nombre { get; set; }
 
 		public virtual ConsejoComision ConsejoComision { get; set; }
 

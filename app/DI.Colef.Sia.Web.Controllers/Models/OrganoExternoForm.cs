@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class OrganoExternoForm
@@ -12,6 +14,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
+        public string Ciudad { get; set; }
+
+        public int Pais { get; set; }
+        public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
 
         public int TipoOrgano { get; set; }
         public int TipoOrganoId { get; set; }
@@ -29,5 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoOrganoForm[] TiposOrganos { get; set; }
         public SectorForm[] Sectores { get; set; }
         public AmbitoForm[] Ambitos { get; set; }
+        public PaisForm[] Paises { get; set; }
     }
 }

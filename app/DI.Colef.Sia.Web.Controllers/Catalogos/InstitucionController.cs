@@ -138,37 +138,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
             return RedirectToIndex(String.Format("Institución {0} ha sido modificada", institucion.Nombre));
         }
-
-        [Authorize(Roles = "DGAA")]
-        [CustomTransaction]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var institucion = catalogoService.GetInstitucionById(id);
-            institucion.Activo = true;
-            institucion.ModificadoPor = CurrentUser();
-            catalogoService.SaveInstitucion(institucion);
-
-            var form = institucionMapper.Map(institucion);
-
-            return Rjs(form);
-        }
-
-        [Authorize(Roles = "DGAA")]
-        [CustomTransaction]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var institucion = catalogoService.GetInstitucionById(id);
-            institucion.Activo = false;
-            institucion.ModificadoPor = CurrentUser();
-            catalogoService.SaveInstitucion(institucion);
-
-            var form = institucionMapper.Map(institucion);
-
-            return Rjs("Activate", form);
-        }
-
+        
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangePais(int select)

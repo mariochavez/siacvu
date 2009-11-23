@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(InstitucionEventoForm message, InstitucionEvento model)
         {
-            model.ObjetivoEvento = message.ObjetivoEvento;
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 			
 			if (model.IsTransient())
