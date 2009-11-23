@@ -38,69 +38,56 @@
             <div id="campos">
                 <p>
                     <label>Nivel de estudio</label>
-                    <strong><%= Html.Encode(Model.Form.NivelEstudioNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NivelEstudioNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>N&uacute;mero de c&eacute;dula</label>
-                    <strong><%= Html.Encode(Model.Form.NumeroCedula)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NumeroCedula)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>T&iacute;tulo de grado</label>
-                    <strong><%= Html.Encode(Model.Form.TituloGrado)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TituloGrado)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de obtenci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaObtencion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaObtencion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Instituci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>T&iacute;tulo de tesis</label>
-                    <strong><%= Html.Encode(Model.Form.TituloTesis)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.TituloTesis)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Estado</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.EstadoPaisNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Ciudad</label>
-                    <strong><%= Html.Encode(Model.Form.Ciudad)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Ciudad)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Estatus</label>
-                    <strong><%= Html.Encode(Model.Form.EstatusNombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.EstatusNombre)%>&nbsp;</span>
                 </p>
-                <h4>Opcionales</h4>
-                <p>
-	                <label>Sector</label>
-	                <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Organizaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>&Aacute;rea</label>
-                    <strong><%= Html.Encode(Model.Form.AreaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Disciplina</label>
-                    <strong><%= Html.Encode(Model.Form.DisciplinaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Subdisciplina</label>
-                    <strong><%= Html.Encode(Model.Form.SubdisciplinaNombre)%>&nbsp;</strong>
-                </p>
+                
+                <% if (Model.Form.Nivel2Id != 0) { %>
+                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                <% } %>
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<FormacionAcademicaController>(x => x.Index(), "Regresar") %>

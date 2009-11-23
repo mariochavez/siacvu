@@ -10,5 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoSector { get; set; }
 
         public CustomSelectForm[] TiposSectores { get; set; }
+
+        public string CodigoConacyt { get; set; }
     }
 }

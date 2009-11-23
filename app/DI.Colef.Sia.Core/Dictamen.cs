@@ -52,6 +52,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
+        [NotNullNotEmpty]
+        public virtual string Nombre { get; set; }
+
+        public virtual DateTime FechaDictamen { get; set; }
+
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
         public virtual Editorial Editorial { get; set; }

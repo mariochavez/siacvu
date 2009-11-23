@@ -44,7 +44,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                
+                <h4>Datos de la distinci&oacute;n</h4>
                 <p>
                     <label>T&iacute;tulo de la distinci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo)%>&nbsp;</span>

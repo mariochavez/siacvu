@@ -5,6 +5,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
@@ -37,56 +38,58 @@
             <div id="campos">
                 <p>
                     <label>Nombre del producto</label>
-                    <strong><%= Html.Encode(Model.Form.NombreProducto) %>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Estado actual</label>
-                    <strong><%= Html.Encode(Model.Form.EstadoProductoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>A&ntilde;o de aceptaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</strong><span>Formato (yyyy)</span>
-                </p>
-                <p>
-                    <label>Periodo de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.PeriodoReferenciaPeriodo) %>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Proyecto de referencia</label>
-                    <strong><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Fecha de edici&oacute;n</label>    
-                    <strong><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <strong><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <strong><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-                    <label>Revista</label>
-                    <strong><%= Html.Encode(Model.Form.Revista)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Instituci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</strong>
+                    <label>Nombre de la revista</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionTitulo) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Volumen</label>
-                    <strong><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</strong>
+                        <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>N&uacute;mero del volumen</label>
-                    <strong><%= Html.Encode(Model.Form.NoVolumen)%>&nbsp;</strong>
+	                <label>Instituci&oacute;n</label>
+	                <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Editorial</label>
-                    <strong><%= Html.Encode(Model.Form.Editorial)%>&nbsp;</strong>
-                </p>                
+                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Estado actual</label>
+                    <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
+                </p>
+                <% if (Model.Form.EstadoProducto == 1) { %>
+                    <p>
+                        <label>Fecha de aceptaci&oacute;n</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;
+                        </span><span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } if (Model.Form.EstadoProducto == 2){ %>
+                    <p>
+                        <label>Fecha de publicaci&oacute;n</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;
+                        </span><span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } %>
+                <p>
+                    <label>Proyecto de referencia</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>A&ntilde;o de edici&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
+                    <span>(Formato yyyy)</span>
+                </p>
+                <p>
+                    <label>L&iacute;nea tem&aacute;tica</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</span>
+                </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ParticipacionAcademiaController>(x => x.Index(), "Regresar") %>

@@ -1,6 +1,7 @@
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
@@ -24,6 +25,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(DictamenForm message, Dictamen model)
         {
+            model.Nombre = message.Nombre;
+            model.FechaDictamen = message.FechaDictamen.FromShortDateToDateTime();
+
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);

@@ -99,9 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
 
-            var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
-
-            data.Form = SetupShowForm(participacionMedioForm);
+            data.Form = participacionMedioMapper.Map(participacionMedio);
 
             ViewData.Model = data;
             return View();
@@ -169,7 +167,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionParticipacionMedios());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 
             return form;
@@ -181,22 +179,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["DirigidoA"] = form.DirigidoAId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["AreaTematicaId"] = form.AreaTematicaId;
-        }
-
-        private ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
-        {
-            form = form ?? new ParticipacionMedioForm();
-
-            form.ShowFields = new ShowFieldsForm
-            {
-                AreaTematicaNombre = form.AreaTematica.Nombre,
-                AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
-            };
-
-            return form;
         }
     }
 }

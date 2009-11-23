@@ -37,13 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
 		    model.FechaCreacion = message.FechaCreacion.FromShortDateToDateTime();
 
-		    model.Sector = catalogoService.GetSectorById(message.Sector);
-		    model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
-		    model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-		    model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
-		    model.Nivel4 = catalogoService.GetNivelById(message.Nivel4);
-		    model.Nivel5 = catalogoService.GetNivelById(message.Nivel5);
-		    model.Nivel6 = catalogoService.GetNivelById(message.Nivel6);
+		    model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
         }
 
         public GrupoInvestigacion Map(GrupoInvestigacionForm message, Usuario usuario)

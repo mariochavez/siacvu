@@ -1,9 +1,9 @@
 using System;
-using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", tesisDirigida.Titulo != "" ? tesisDirigida.Titulo : tesisDirigida.TesisPosgrado.Titulo));
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
         }
 
         [CustomTransaction]
@@ -158,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", tesisDirigida.Titulo != "" ? tesisDirigida.Titulo : tesisDirigida.TesisPosgrado.Titulo));
+            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
         }
 
         [Authorize]

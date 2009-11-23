@@ -8,3 +8,8 @@
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
+<p>
+    <label>Detalle de &iacute;ndice</label>
+    <%=Html.TextArea("Detalle", Model.Detalle, 3, 35, new { @class = "input420-requerido", maxlength = 200 })%>
+    <%=Html.ValidationMessage("Detalle") %>
+</p>

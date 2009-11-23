@@ -16,7 +16,7 @@
 </p>
 <p>
     <label>Descripci&oacute;n de la distinci&oacute;n</label>
-    <%=Html.TextBox("Descripcion", Model.Descripcion, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.TextArea("Descripcion", Model.Descripcion, 3, 35, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Descripcion")%>
 </p>

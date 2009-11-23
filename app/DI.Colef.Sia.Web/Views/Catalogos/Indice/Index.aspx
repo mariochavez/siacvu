@@ -13,11 +13,11 @@
     <div id="subcontenido">
         <h3>Agregar nuevo &iacute;ndice</h3>
         <p>
-            Puede agregar un nuevo &Iacute;ndice dentro de la lista de administraci&oacute;n de
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo &Iacute;ndice</strong>.
+            Puede agregar un nuevo &iacute;ndice dentro de la lista de administraci&oacute;n de
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo &iacute;ndice</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IndiceController>(x => x.New(), "+ Nuevo &iacute;ndice")%></span>
+            <span><%=Html.ActionLink<IndiceController>(x => x.New(), "+ Nuevo índice")%></span>
         </div>
     </div>
 </asp:Content>

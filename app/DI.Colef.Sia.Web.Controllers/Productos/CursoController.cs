@@ -1,10 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -22,6 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDiplomadoMapper diplomadoMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ICustomCollection customCollection;
+        readonly ICursoInvestigadorService cursoInvestigadorService;
+        readonly ICursoInvestigadorMapper cursoInvestigadorMapper;
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
@@ -31,7 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                INivelEstudioMapper nivelEstudioMapper,
                                IPaisMapper paisMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
-                               ISearchService searchService, ICustomCollection customCollection)
+                               ISearchService searchService, ICustomCollection customCollection,
+                               ICursoInvestigadorService cursoInvestigadorService, ICursoInvestigadorMapper cursoInvestigadorMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -43,6 +46,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.paisMapper = paisMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.customCollection = customCollection;
+            this.cursoInvestigadorMapper = cursoInvestigadorMapper;
+            this.cursoInvestigadorService = cursoInvestigadorService;
         }
 
         [Authorize]
@@ -106,7 +111,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var curso = cursoService.GetCursoById(id);
-            data.Form = cursoMapper.Map(curso);
+
+            var cursoForm = cursoMapper.Map(curso);
+
+            data.Form = SetupShowForm(cursoForm);
 
             ViewData.Model = data;
             return View();
@@ -125,12 +133,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var cursoForm = cursoMapper.Map(curso);
 
                 ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
+                FormSetCombos(cursoForm);
                 return ViewNew();
             }
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido creado", curso.Nombre));
+            return RedirectToIndex(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
         }
 
         [CustomTransaction]
@@ -152,7 +161,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", curso.Nombre));
+            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
         }
 
         [Authorize]
@@ -179,6 +188,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Diplomados = diplomadoMapper.Map(catalogoService.GetActiveDiplomados());
             form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
             form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.CursosInvestigadores = cursoInvestigadorMapper.Map(cursoInvestigadorService.GetAllCursosInvestigador());
 
             return form;
         }
@@ -189,8 +199,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["NivelEstudio"] = form.NivelEstudioId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Diplomado"] = form.DiplomadoId;
-            ViewData["Nivel2"] = form.Nivel2Id;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+            ViewData["CursoInvestigadorId"] = form.CursoInvestigadorId;
+        }
+
+        private CursoForm SetupShowForm(CursoForm form)
+        {
+            form = form ?? new CursoForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+                                  };
+
+            return form;
         }
     }
 }

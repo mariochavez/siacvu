@@ -91,6 +91,17 @@ function distincionSetup() {
     $('#Ambito')[0].dynamic.setup();
 }
 
+function participacionAcademiaSetup() {
+	$('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['#EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+}
+
 function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [
@@ -132,51 +143,18 @@ function participacionSetup() {
 }
 
 function participacionMedioSetup() {
-    CheckParticipacionMedioOptions.setup();
+
+    $('#TipoParticipacion').dynamicui(
+            [
+                ['Presentación de libro', ['#libro_label']],
+                ['Presentación resultados de investigación', ['#investigacion_label']],
+                ['Periódico/Diario', ['#notaPeriodistica_label']],
+                [['Seleccione ...', 'Conferencias', 'Demostraciones', 'Ferias Científicas y Tecnológicas', 'Ferias Empresariales', 'Medios Impresos', 'Radio', 'Revistas de Divulgación', 'Seminarios', 'Simposium', 'Talleres', 'Teatro', 'Televisión', 'Video'], ['#titulo_label']]
+            ]
+        );
+
+    $('#TipoParticipacion')[0].dynamic.setup();
 }
-
-var CheckParticipacionMedioOptions = {
-    setup: function() {
-        $('#forma').unload(CheckParticipacionMedioOptions.verifyOptions());
-        $('#TipoParticipacion').change(CheckParticipacionMedioOptions.verifyOptions);
-    },
-    verifyOptions: function() {
-        var comboText = $('#TipoParticipacion :selected').text();
-
-        if (comboText != "Presentación de libro" && comboText != "Presentación resultados de investigación" && comboText != "Periódico/Diario") {
-            $('#titulo_label').slideUp('fast', function() {
-                $('#titulo_label').fadeOut('fast');
-            });            
-        } else if (comboText != "Presentación de libro") {
-            $('#libro_label').slideDown('fast', function() {
-                $('#libro_label').fadeIn('fast');
-            });
-        } else if (comboText != "Presentación resultados de investigación") {
-            $('#investigacion_label').slideDown('fast', function() {
-                $('#investigacion_label').fadeIn('fast');
-            });
-        } else if (comboText != "Periódico/Diario") {
-            $('#notaPeriodistica_label').slideDown('fast', function() {
-                $('#notaPeriodistica_label').fadeIn('fast');
-            });
-        }
-
-        if (comboText == "Seleccione ...") {
-            $('#titulo_label').slideUp('fast', function() {
-                $('#titulo_label').fadeOut('fast');
-            });
-            $('#libro_label').slideUp('fast', function() {
-                $('#libro_label').fadeOut('fast');
-            });
-            $('#investigacion_label').slideUp('fast', function() {
-                $('#investigacion_label').fadeOut('fast');
-            });
-            $('#notaPeriodistica_label').slideUp('fast', function() {
-                $('#notaPeriodistica_label').fadeOut('fast');
-            });            
-        }
-    }
-};
 
 function reporteSetup() {    
     $('#EstadoProducto').dynamicui(
@@ -273,37 +251,33 @@ function investigadorSetup() {
 }
 
 function organoInternoSetup() {
-    CheckOrganoInternoOptions.setup();
+    $('#ConsejoComision').dynamicui(
+            [
+                [['Comisión Dictaminadora', 'Comisiones Evaluadoras Departamentales', 'Comisiones Académicas de Programas de Posgrado', 'Consejo Editorial', 'Consejo de Biblioteca'], ['#periodo_field']]
+            ]
+        );
+
+    $('#ConsejoComision')[0].dynamic.setup();
 }
 
-var CheckOrganoInternoOptions = {
-    setup: function() {
-        $('#forma').unload(CheckOrganoInternoOptions.verifyOptions());
-        $('#ConsejoComision').change(CheckOrganoInternoOptions.verifyOptions);
-    },
-    verifyOptions: function() {
-        var comboText = $('#ConsejoComision :selected').text();
-
-        if (comboText == "Consejo Académico" || comboText == "Seleccione ...") {
-            $('#periodo_field').slideUp('fast', function() {
-                $('#periodo_field').fadeOut('fast');
-            });
-        } else {
-            $('#periodo_field').slideDown('fast', function() {
-                $('#periodo_field').fadeIn('fast');
-            });
-        }
-    }
-};
-
-function cursoSetup() {
+function cursoSetup() {    
     $('#TipoCurso').dynamicui(
             [
-                ['Interno', ['.cursointerno']]
+                ['Interno', ['.cursointerno_field', '#cursointernodiplomado_field']],
+                ['Externo', ['.cursoexterno_field', '.cursoexternodiplomado_field']]
             ]
         );
 
     $('#TipoCurso')[0].dynamic.setup();
+
+    $('#EsDiplomado').dynamicui(
+            [
+                ['1', ['.diplomado_field', '.cursoexternodiplomado_field']],
+                ['0', ['#cursointernodiplomado_field']]
+            ]
+        );
+
+    $('#EsDiplomado')[0].dynamic.setup();
 }
 
 function eventoSetup() {

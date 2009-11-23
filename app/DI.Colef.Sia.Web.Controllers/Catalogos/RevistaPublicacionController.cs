@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -16,15 +17,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         readonly ICatalogoService catalogoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IPaisMapper paisMapper;
+        readonly ICustomCollection customCollection;
+        readonly IAreaInvestigacionMapper areaInvestigacionMapper;
         readonly IIndiceMapper indiceMapper;
 
-        public RevistaPublicacionController(IUsuarioService usuarioService, ICatalogoService catalogoService,
-                                            IRevistaPublicacionMapper revistaPublicacionMapper,
-                                            ISearchService searchService, IPaisMapper paisMapper,
-                                  IIndiceMapper indiceMapper)
+        public RevistaPublicacionController(IUsuarioService usuarioService,
+                                        ICatalogoService catalogoService,
+                                        ICustomCollection customCollection,
+                                        IAreaInvestigacionMapper areaInvestigacionMapper,
+                                        IRevistaPublicacionMapper revistaPublicacionMapper,
+                                        ISearchService searchService, IPaisMapper paisMapper,
+                                        IIndiceMapper indiceMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.customCollection = customCollection;
+            this.areaInvestigacionMapper = areaInvestigacionMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.paisMapper = paisMapper;
             this.indiceMapper = indiceMapper;
@@ -178,20 +186,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form = form ?? new RevistaPublicacionForm();
 
             //Lista de Catalogos
+            form.Periodicidades = customCollection.PeriodicidadCustomCollection();
+            form.TipoRevistas = customCollection.TipoRevistaCustomCollection();
+            form.ClasificacionesSieva = customCollection.ClasificacionSievaCustomCollection();
+            form.FormatoRevistas = customCollection.FormatoRevistaCustomCollection();
+
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.AreasInvestigacion = areaInvestigacionMapper.Map(catalogoService.GetActiveAreaInvestigacions());
             form.Indices1 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.Indices2 = indiceMapper.Map(catalogoService.GetActiveIndices());
             form.Indices3 = indiceMapper.Map(catalogoService.GetActiveIndices());
+            form.Indices4 = indiceMapper.Map(catalogoService.GetActiveIndices());
 
             return form;
         }
 
         private void FormSetCombos(RevistaPublicacionForm form)
         {
+            ViewData["Periodicidad"] = form.Periodicidad;
+            ViewData["TipoRevista"] = form.TipoRevista;
+            ViewData["ClasificacionSieva"] = form.ClasificacionSieva;
+            ViewData["FormatoRevista"] = form.FormatoRevista;
             ViewData["Pais"] = form.PaisId;
             ViewData["Indice1"] = form.Indice1Id;
             ViewData["Indice2"] = form.Indice2Id;
             ViewData["Indice3"] = form.Indice3Id;
+            ViewData["Indice4"] = form.Indice4Id;
+            ViewData["AreaInvestigacion"] = form.AreaInvestigacionId;
         }
     }
 }

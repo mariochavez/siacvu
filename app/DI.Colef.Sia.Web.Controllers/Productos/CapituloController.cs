@@ -517,7 +517,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetActiveTipoParticipaciones());
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionCapitulos());
             form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
 
             return form;

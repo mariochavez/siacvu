@@ -8,3 +8,8 @@
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
+<p>
+    <label>Codigo CONACyT</label>
+    <%=Html.TextBox("CodigoConacyt", Model.CodigoConacyt, new { @class = "input420-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("CodigoConacyt")%>
+</p>

@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -35,20 +34,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaInvestigacion3 = message.LineaInvestigacion3;
             model.PrincipalesLogros = message.PrincipalesLogros;
 
-            model.Sector = catalogoService.GetSectorById(message.Sector);
-            model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-            model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
-            model.Nivel4 = catalogoService.GetNivelById(message.Nivel4);
-            model.Nivel5 = catalogoService.GetNivelById(message.Nivel5);
-            model.Nivel6 = catalogoService.GetNivelById(message.Nivel6);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.SectorEconomico = catalogoService.GetSectorById(message.SectorEconomico);
-            model.Rama = catalogoService.GetRamaById(message.Rama);
-            model.Clase = catalogoService.GetClaseById(message.Clase);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+            model.Clase = catalogoService.GetClaseById(message.ClaseId);
         }
 
         public ExperienciaProfesional Map(ExperienciaProfesionalForm message, Usuario usuario)

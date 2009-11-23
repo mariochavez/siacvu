@@ -54,10 +54,18 @@
                     <label>Instituci&oacute;n de destino</label>
                     <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
                 </p>
+                
+                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                
                 <p>
-                    <label>2do. Nivel</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</span>
+                    <label>Departamento de destino</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoDestino)%>&nbsp;</span>
                 </p>
+                
+                <% if (Model.Form.Nivel2Id != 0) { %>
+                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                <% } %>
+                
                 <p>
                     <label>Fecha inicial</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>

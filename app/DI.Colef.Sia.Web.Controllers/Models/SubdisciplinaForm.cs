@@ -15,5 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DisciplinaNombre { get; set; }
 
         public string DisciplinaAreaNombre { get; set; }
+
+        public string CodigoConacyt { get; set; }
     }
 }

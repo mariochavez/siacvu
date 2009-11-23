@@ -14,17 +14,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 		readonly IEstanciaAcademicaExternaService estanciaAcademicaExternaService;
         readonly IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper;
         readonly ICatalogoService catalogoService;
-    
-        public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService, 
-			IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper, 
-			ICatalogoService catalogoService,
+        readonly ITipoEstanciaMapper tipoEstanciaMapper;
+
+        public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
+            IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper,
+            ICatalogoService catalogoService,
             IUsuarioService usuarioService,
-            ISearchService searchService
-			) : base(usuarioService, searchService, catalogoService)
+            ISearchService searchService, ITipoEstanciaMapper tipoEstanciaMapper)
+            : base(usuarioService, searchService, catalogoService)
         {
-			this.catalogoService = catalogoService;
+            this.catalogoService = catalogoService;
             this.estanciaAcademicaExternaService = estanciaAcademicaExternaService;
             this.estanciaAcademicaExternaMapper = estanciaAcademicaExternaMapper;
+            this.tipoEstanciaMapper = tipoEstanciaMapper;
         }
 
         [Authorize]
@@ -105,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(EstanciaAcademicaExternaForm form)
         {
             var estanciaAcademicaExterna = estanciaAcademicaExternaMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
+
             if (!IsValidateModel(estanciaAcademicaExterna, form, Title.New, "EstanciaAcademicaExterna"))
             {
                 var estanciaAcademicaExternaForm = estanciaAcademicaExternaMapper.Map(estanciaAcademicaExterna);
@@ -116,7 +118,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna);
 
-            return RedirectToIndex(String.Format("Estancia Académica Externa {0} ha sido creada", estanciaAcademicaExterna.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia académica externa {0} ha sido creada", estanciaAcademicaExterna.Institucion.Nombre));
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -126,7 +128,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Update(EstanciaAcademicaExternaForm form)
         {
             var estanciaAcademicaExterna = estanciaAcademicaExternaMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
+
             if (!IsValidateModel(estanciaAcademicaExterna, form, Title.Edit))
             {
                 var estanciaAcademicaExternaForm = estanciaAcademicaExternaMapper.Map(estanciaAcademicaExterna);
@@ -135,10 +137,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 FormSetCombos(estanciaAcademicaExternaForm);
                 return ViewEdit();
             }
-            
+
             estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna);
 
-            return RedirectToIndex(String.Format("Estancia Académica Externa {0} ha sido modificada", estanciaAcademicaExterna.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia académica externa {0} ha sido modificada", estanciaAcademicaExterna.Institucion.Nombre));
         }
         
         [Authorize]
@@ -148,27 +150,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = searchService.Search<EstanciaAcademicaExterna>(x => x.Institucion.Nombre, q);
             return Content(data);
         }
-                
+
         EstanciaAcademicaExternaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
-        
+
         EstanciaAcademicaExternaForm SetupNewForm(EstanciaAcademicaExternaForm form)
         {
-			form = form ?? new EstanciaAcademicaExternaForm();
-			
+            form = form ?? new EstanciaAcademicaExternaForm();
+
+            //Lista de Catalogos Pendientes
+            form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
+
             return form;
         }
-        
+
         private void FormSetCombos(EstanciaAcademicaExternaForm form)
         {
-
+            ViewData["TipoEstancia"] = form.TipoEstanciaId;
         }
 
         private EstanciaAcademicaExternaForm SetupShowForm(EstanciaAcademicaExternaForm form)
         {
             form = form ?? new EstanciaAcademicaExternaForm();
+
+            form.ShowFields = new ShowFieldsForm
+            {
+                InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                InstitucionPaisNombre = form.Institucion.PaisNombre,
+                InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                InstitucionCiudadNombre = form.Institucion.Ciudad,
+            };
 
             return form;
         }

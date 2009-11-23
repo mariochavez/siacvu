@@ -17,23 +17,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IParticipacionAcademiaMapper participacionAcademiaMapper;
         readonly ICatalogoService catalogoService;
         readonly IPaisMapper paisMapper;
+        readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
 
-
-        public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService, IParticipacionAcademiaMapper participacionAcademiaMapper,
-                                               ICatalogoService catalogoService, IUsuarioService usuarioService, ISearchService searchService, IPaisMapper paisMapper,
-                                               ICustomCollection customCollection, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
-            : base(usuarioService, searchService, catalogoService)
+        public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
+                                               IParticipacionAcademiaMapper participacionAcademiaMapper,
+                                               ICatalogoService catalogoService,
+                                               IUsuarioService usuarioService,
+                                               ISearchService searchService,
+                                               IPaisMapper paisMapper,
+                                               IEditorialMapper editorialMapper,
+                                               ICustomCollection customCollection
+            ) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.editorialMapper = editorialMapper;
             this.participacionAcademiaService = participacionAcademiaService;
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -57,6 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
+            if (CurrentInvestigador() == null)
+                return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
+
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
@@ -106,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             if (!IsValidateModel(participacionAcademia, form, Title.New, "ParticipacionAcademia"))
             {
@@ -127,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionAcademiaForm form)
         {
-            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser());
+            var participacionAcademia = participacionAcademiaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             participacionAcademia.ModificadoPor = CurrentUser();
 
@@ -143,44 +148,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             participacionAcademiaService.SaveParticipacionAcademia(participacionAcademia);
 
             return RedirectToIndex(String.Format("Participación en academia {0} ha sido modificada", participacionAcademia.NombreProducto));
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
-
-            if (participacionAcademia.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacionAcademia.Activo = true;
-            participacionAcademia.ModificadoPor = CurrentUser();
-            participacionAcademiaService.SaveParticipacionAcademia(participacionAcademia);
-
-            var form = participacionAcademiaMapper.Map(participacionAcademia);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
-
-            if (participacionAcademia.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacionAcademia.Activo = false;
-            participacionAcademia.ModificadoPor = CurrentUser();
-            participacionAcademiaService.SaveParticipacionAcademia(participacionAcademia);
-
-            var form = participacionAcademiaMapper.Map(participacionAcademia);
-
-            return Rjs("Activate", form);
         }
 
         [Authorize]
@@ -202,16 +169,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
+            form.Volumenes = customCollection.VolumenCustomCollection();
             return form;
         }
 
         private void FormSetCombos(ParticipacionAcademiaForm form)
         {
             ViewData["Pais"] = form.PaisId;
+            ViewData["Volumen"] = form.Volumen;
+            ViewData["Editorial"] = form.EditorialId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["Proyecto"] = form.ProyectoId;
         }
     }
 }

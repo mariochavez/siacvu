@@ -93,7 +93,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
-            data.Form = grupoInvestigacionMapper.Map(grupoInvestigacion);
+            var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
+
+            data.Form = SetupShowForm(grupoInvestigacionForm);
             
             ViewData.Model = data;
             return View();
@@ -139,155 +141,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido modificado", grupoInvestigacion.NombreGrupoInvestigacion));
         }
         
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {            
-            var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
-
-            if (grupoInvestigacion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            grupoInvestigacion.Activo = true;
-            grupoInvestigacion.ModificadoPor = CurrentUser();
-            grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
-
-            var form = grupoInvestigacionMapper.Map(grupoInvestigacion);
-            
-            return Rjs(form);
-        }
-        
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
-
-            if (grupoInvestigacion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            grupoInvestigacion.Activo = false;
-            grupoInvestigacion.ModificadoPor = CurrentUser();
-            grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
-
-            var form = grupoInvestigacionMapper.Map(grupoInvestigacion);
-            
-            return Rjs("Activate", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSector(int select)
-        {
-            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
-
-            var form = new GrupoInvestigacionForm
-                           {
-                               Organizaciones = list.ToArray(),
-                               Niveles2 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeSector", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeOrganizacion(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
-
-            var form = new GrupoInvestigacionForm
-                           {
-                               Niveles2 = list.ToArray(),
-                               Niveles3 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles4 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles5 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}},
-                               Niveles6 = new[] {new NivelForm {Id = 0, Nombre = "Seleccione ..."}}
-                           };
-
-            return Rjs("ChangeOrganizacion", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel2(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
-
-            var form = new GrupoInvestigacionForm
-            {
-                Niveles3 = list.ToArray(),
-                Niveles4 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
-
-            return Rjs("ChangeNivel2", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel3(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
-
-            var form = new GrupoInvestigacionForm
-            {
-                Niveles4 = list.ToArray(),
-                Niveles5 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } },
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
-
-            return Rjs("ChangeNivel3", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel4(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
-
-            var form = new GrupoInvestigacionForm
-            {
-                Niveles5 = list.ToArray(),
-                Niveles6 = new[] { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }
-            };
-
-            return Rjs("ChangeNivel4", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel5(int select)
-        {
-            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
-
-            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByNivelId(select)));
-
-            var form = new GrupoInvestigacionForm
-            {   
-                Niveles6 = list.ToArray()
-            };
-
-            return Rjs("ChangeNivel5", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -305,26 +158,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			form = form ?? new GrupoInvestigacionForm();
 
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
-            form.Niveles3 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
-            form.Niveles4 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
-            form.Niveles5 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
-            form.Niveles6 = nivelMapper.Map(catalogoService.GetNivelesByNivelId(form.Nivel2Id));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
 
 			return form;
         }
         
         private void FormSetCombos(GrupoInvestigacionForm form)
         {
-			ViewData["Sector"] = form.SectorId;
-			ViewData["Organizacion"] = form.OrganizacionId;
-			ViewData["Nivel2"] = form.Nivel2Id;
-			ViewData["Nivel3"] = form.Nivel3Id;
-			ViewData["Nivel4"] = form.Nivel4Id;
-			ViewData["Nivel5"] = form.Nivel5Id;
-			ViewData["Nivel6"] = form.Nivel6Id;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+        }
+
+        private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
+        {
+            form = form ?? new GrupoInvestigacionForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+                                  };
+
+            return form;
         }
     }
 }

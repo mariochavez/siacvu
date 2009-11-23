@@ -159,7 +159,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             form = form ?? new NivelForm();
 
-            form.Niveles = nivelMapper.Map(catalogoService.GetActiveNiveles());
             form.Organizaciones = organizacionMapper.Map(catalogoService.GetActiveOrganizaciones());
 
             return form;
@@ -167,7 +166,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
         private void FormSetCombos(NivelForm form)
         {
-            ViewData["NivelReferencia"] = form.NivelReferenciaId;
             ViewData["Organizacion"] = form.OrganizacionId;
         }
     }

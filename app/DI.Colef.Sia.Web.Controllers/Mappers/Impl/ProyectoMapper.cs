@@ -69,41 +69,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ActividadPrevista = catalogoService.GetActividadPrevistaById(message.ActividadPrevista);
             model.TipoEstudiante = message.TipoEstudiante;
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
-            model.Sector = catalogoService.GetSectorById(message.Sector);
-            model.Organizacion = catalogoService.GetOrganizacionById(message.Organizacion);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2);
-            model.Nivel3 = catalogoService.GetNivelById(message.Nivel3);
-            model.Nivel4 = catalogoService.GetNivelById(message.Nivel4);
-            model.Nivel5 = catalogoService.GetNivelById(message.Nivel5);
-            model.Nivel6 = catalogoService.GetNivelById(message.Nivel6);
-            model.Area = catalogoService.GetAreaById(message.Area);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
-            model.SectorEconomico = catalogoService.GetSectorById(message.SectorEconomico);
-            model.Rama = catalogoService.GetRamaById(message.Rama);
-            model.Clase = catalogoService.GetClaseById(message.Clase);
 
-            ///Campos Prototipo
-            //model.Responsable = message.Responsable;
-            //model.ProductoEsperado = message.ProductoEsperado;
-            //model.FechaRegistro = message.FechaRegistro.FromShortDateToDateTime();
-            //model.FechaTramite = message.FechaTramite.FromShortDateToDateTime();
-            //model.Coordinacion = catalogoService.GetCoordinacionById(message.Coordinacion);
-
-            ///Campos Nunca Usados
-            //model.OtroImpacto = message.OtroImpacto;
-            //model.Monto = message.Monto;
-            //model.IncluirWeb = message.IncluirWeb;
-            //model.Entidad = message.Entidad;
-            //model.OtraEmpresaInstitucionParticipante = message.OtraEmpresaInstitucionParticipante;
-            //model.FechaEntregaCompromiso = message.FechaEntregaCompromiso.FromShortDateToDateTime();
-            //model.Sede = catalogoService.GetSedeById(message.Sede);
-            //model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
-            //model.TipoFinanciamiento = catalogoService.GetTipoFinanciamientoById(message.TipoFinanciamiento);
-            //model.Moneda = catalogoService.GetMonedaById(message.Moneda);
-            //model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
-            //model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
-            //model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+            model.Clase = catalogoService.GetClaseById(message.ClaseId);
         }
 
         public Proyecto Map(ProyectoForm message, Usuario usuario)

@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(SubdisciplinaForm message, Subdisciplina model)
         {
 			model.Nombre = message.Nombre;
+            model.CodigoConacyt = message.CodigoConacyt;
             model.Disciplina = catalogoService.GetDisciplinaById(message.Disciplina);
         }
     }

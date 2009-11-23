@@ -44,12 +44,21 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                <h4>Datos de la participaci&oacute;n en medio</h4>
                 <p>
-                    <label>Tipo de participaci&oacuten</label>
+                    <label>Tipo de participaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>T&iacute;tulo</label>
+                    <% if (Model.Form.TipoParticipacionNombre.Contains("Presentación de libro")){ %>
+                        <label>Nombre del libro</label>
+                    <% } else if (Model.Form.TipoParticipacionNombre.Contains("Presentación resultados de investigación")){ %>
+                        <label>Nombre del proyecto de investigaci&oacute;n</label>
+                    <% } else if(Model.Form.TipoParticipacionNombre.Contains("Periódico/Diario")){ %>
+                        <label>Nota period&iacute;stica</label>
+                    <% } else { %>
+                        <label>T&iacute;tulo/Tema presentado</label>
+                    <% } %>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 <p>
@@ -64,9 +73,14 @@
 	                <label>Palabra clave 3</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
+                <p>
+                    <label>L&iacute;nea tem&aacute;tica</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre)%>&nbsp;</span>
+                </p>                
                 <p>
                     <label>Instituci&oacute;n responsable/Nombre del medio</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Institucion)%>&nbsp;</span>

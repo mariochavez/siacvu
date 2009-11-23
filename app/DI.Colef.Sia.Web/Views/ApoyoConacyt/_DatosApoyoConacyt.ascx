@@ -3,21 +3,21 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>No. de apoyo</label>
-    <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido", maxlength = 2 })%>
+    <%=Html.TextBox("NoApoyo", Model.NoApoyo, new { @class = "input100-requerido", maxlength = 10 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoApoyo")%>
 </p>
 <p>
     <label>Tipo de apoyo</label>
     <%=Html.DropDownList("TipoApoyo", Model.TiposApoyos.CreateSelectList<TipoApoyoForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class ="requerido" })%>
+		"Seleccione ...", new { @class ="requerido" })%>
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("TipoApoyo") %>
 </p>
 <p>
-    <label>Subprograma de CONACYT</label>
+    <label>Subprograma de CONACyT</label>
     <%=Html.DropDownList("SubprogramaConacyt", Model.SubprogramasConacyts.CreateSelectList<SubprogramaConacytForm>("Id", "Nombre"),
-				"Seleccione ...", new { @class ="requerido" })%>
+		"Seleccione ...", new { @class ="requerido" })%>
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("SubprogramaConacyt") %>
 </p>

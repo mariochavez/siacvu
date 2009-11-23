@@ -65,7 +65,7 @@
                     <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <% if (Model.Form.ConsejoComisionNombre.Contains("Académico")) { %>
+                <% if (Model.Form.ConsejoComisionNombre != "Consejo Académico" && Model.Form.ConsejoComisionNombre != ""){ %>
                     <p>
                         <label>Periodo</label>
                         <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>

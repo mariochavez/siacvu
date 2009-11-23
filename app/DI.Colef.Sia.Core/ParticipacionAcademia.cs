@@ -14,15 +14,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [DomainSignature]
         public virtual string NombreProducto { get; set; }
 
-        public virtual string Revista { get; set; }
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual string Volumen { get; set; }
-
-        public virtual int NoVolumen { get; set; }
+        public virtual int Volumen { get; set; }
 
         public virtual Institucion Institucion { get; set; }
 
-        public virtual string Editorial { get; set; }
+        public virtual Editorial Editorial { get; set; }
 
         public virtual Pais Pais { get; set; }
 
@@ -30,13 +28,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaAceptacion { get; set; }
 
+        public virtual DateTime FechaPublicacion { get; set; }
+
         public virtual Proyecto Proyecto { get; set; }
 
         public virtual DateTime FechaEdicion { get; set; }
 
         public virtual LineaTematica LineaTematica { get; set; }
 
+        [NotNull]
         public virtual Usuario Usuario { get; set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

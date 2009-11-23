@@ -2,6 +2,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+	<label>Nombre del producto dictaminado</label>
+    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("Nombre")%>
+</p>
+<p>
+    <label>Fecha de dictamen</label>
+    <%=Html.TextBox("FechaDictamen", Model.FechaDictamen, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <span>(Formato dd/mm/yyyy)</span>
+    <%=Html.ValidationMessage("FechaDictamen")%>
+</p>
+<p>
 	<label>Producto dictaminado</label>
 	<%=Html.DropDownList("TipoDictamen", Model.TiposDictamenes.CreateSelectList<TipoDictamenForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>

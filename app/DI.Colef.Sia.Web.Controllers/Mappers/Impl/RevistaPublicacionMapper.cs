@@ -23,17 +23,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(RevistaPublicacionForm message, RevistaPublicacion model)
         {
             model.Titulo = message.Titulo;
-            model.Periodicidad = message.Periodicidad;
+            model.DepartamentoAcademico = message.DepartamentoAcademico;
             model.Issn = message.Issn;
-            model.Detalle = message.Detalle;
-            model.Tipo = message.Tipo;
-            model.Estado = message.Estado;
+            model.Contacto = message.Contacto;
+            model.Email = message.Email;
+            model.PaginaWeb = message.PaginaWeb;
+            model.Telefono = message.Telefono;
+            model.TipoRevista = message.TipoRevista;
+            model.ClasificacionSieva = message.ClasificacionSieva;
+            model.DescripcionRevista = message.DescripcionRevista;
+            model.FactorImpacto = message.FactorImpacto;
+            model.FormatoRevista = message.FormatoRevista;
+            model.Periodicidad = message.Periodicidad;
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
             model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
             model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
+            model.Indice4 = catalogoService.GetIndiceById(message.Indice4);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+            model.AreaInvestigacion = catalogoService.GetAreaInvestigacionById(message.AreaInvestigacion);
         }
     }
 }

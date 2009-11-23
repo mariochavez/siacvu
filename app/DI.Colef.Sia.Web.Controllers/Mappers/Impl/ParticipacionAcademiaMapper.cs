@@ -27,22 +27,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ParticipacionAcademiaForm message, ParticipacionAcademia model)
         {
             model.NombreProducto = message.NombreProducto;
-            model.Revista = message.Revista;
             model.Volumen = message.Volumen;
-            model.NoVolumen = message.NoVolumen;
-            model.Editorial = message.Editorial;
+            model.EstadoProducto = message.EstadoProducto;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.EstadoProducto = message.EstadoProducto;
-            model.Proyecto = proyectoService.GetProyectoById(message.Proyecto);
+            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
+            model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematicaId);
         }
 
-        public ParticipacionAcademia Map(ParticipacionAcademiaForm message, Usuario usuario)
+        public ParticipacionAcademia Map(ParticipacionAcademiaForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);
 
@@ -50,6 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
+                model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
+                model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
             }
 
             model.ModificadoPor = usuario;

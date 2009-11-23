@@ -37,9 +37,6 @@
                 
                 <% Html.RenderPartial("_DatosFormacionAcademica", Model.Form); %>
 
-                <h4>Datos Opcionales</h4>
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-        		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<FormacionAcademicaController>(x => x.Index(), "Regresar")%>
                 </p>

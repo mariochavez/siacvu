@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
@@ -78,6 +79,78 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        {
                            new CustomSelectForm {Id = 1, Nombre = "Primer periodo"},
                            new CustomSelectForm {Id = 2, Nombre = "Segundo periodo"}
+                       };
+        }
+
+        public CustomSelectForm[] TipoRevistaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Con arbitraje anónimo"},
+                           new CustomSelectForm {Id = 2, Nombre = "Sin arbitraje anónimo"},
+                           new CustomSelectForm {Id = 3, Nombre = "Sin arbitraje"}
+                       };
+        }
+
+        public CustomSelectForm[] PeriodicidadCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Mensual"},
+                           new CustomSelectForm {Id = 2, Nombre = "Bimestral"},
+                           new CustomSelectForm {Id = 3, Nombre = "Trimestral"},
+                           new CustomSelectForm {Id = 4, Nombre = "Cuatrimestral"},
+                           new CustomSelectForm {Id = 5, Nombre = "Semestral"},
+                           new CustomSelectForm {Id = 6, Nombre = "Anual"}
+                       };
+        }
+
+        public CustomSelectForm[] ClasificacionSievaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Tipo A"},
+                           new CustomSelectForm {Id = 2, Nombre = "Tipo B"},
+                           new CustomSelectForm {Id = 3, Nombre = "Tipo C"},
+                           new CustomSelectForm {Id = 4, Nombre = "Tipo D"}
+                       };
+        }
+
+        public CustomSelectForm[] FormatoRevistaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Revista impresa"},
+                           new CustomSelectForm {Id = 2, Nombre = "Revista electrónica"},
+                           new CustomSelectForm {Id = 3, Nombre = "Ambas"}
+                       };
+        }
+
+        public CustomSelectForm[] SectorCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Sector económico"},
+                           new CustomSelectForm {Id = 2, Nombre = "Sector financiamiento"},
+                           new CustomSelectForm {Id = 3, Nombre = "Sector órgano externo"}
+                       };
+        }
+
+        public CustomSelectForm[] TipoParticipacionCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "en capítulos"},
+                           new CustomSelectForm {Id = 2, Nombre = "en eventos"},
+                           new CustomSelectForm {Id = 3, Nombre = "en participación en medios"}
+                       };
+        }
+
+        public CustomSelectForm[] EstatusFormacionAcademicaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm()
                        };
         }
     }

@@ -47,6 +47,7 @@
                 </p>
                 
     <!-- DATOS DEL REPORTE TECNICO-->
+                <h4>Datos del reporte t&eacute;cnico</h4>
                 <p>
                     <label>Nombre del reporte</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>

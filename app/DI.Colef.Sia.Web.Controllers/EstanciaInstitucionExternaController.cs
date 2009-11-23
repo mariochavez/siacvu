@@ -59,7 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            //ViewData["FechaInicial"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return View(data);
         }
@@ -121,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Estancia en Institución Externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
         }
 
         [CustomTransaction]
@@ -143,7 +142,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Estancia en Institución Externa {0} ha sido modificada", movilidadAcademica.Institucion.Nombre));
+            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido modificada", movilidadAcademica.Institucion.Nombre));
         }
 
         [Authorize]
@@ -173,13 +172,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
-            ViewData["Nivel2"] = form.Nivel2Id;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
         {
             form = form ?? new EstanciaInstitucionExternaForm();
-            
+
+            form.ShowFields = new ShowFieldsForm
+            {
+                InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                InstitucionPaisNombre = form.Institucion.PaisNombre,
+                InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                InstitucionCiudadNombre = form.Institucion.Ciudad,
+
+                Nivel2Nombre= form.Nivel2.Nombre,
+                Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+            };
+
             return form;
         }
     }
