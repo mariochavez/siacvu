@@ -211,32 +211,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.USEG,
                            o => o.Ignore())
                 .ForMember(d => d.GradoAcademico,
-                           o => o.Ignore())
-                .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Organizacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel3,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel4,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel5,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel6,
-                           o => o.Ignore())
-                .ForMember(d => d.Area,
-                           o => o.Ignore())
-                .ForMember(d => d.Disciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
-                           o => o.Ignore())
-                .ForMember(d => d.SectorEconomico,
-                           o => o.Ignore())
-                .ForMember(d => d.Rama,
-                           o => o.Ignore())
-                .ForMember(d => d.Clase,
                            o => o.Ignore());
 
             Mapper.CreateMap<ResponsableInternoProyecto, ResponsableInternoProyectoForm>()
@@ -658,21 +632,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaCreacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.Sector,
-                           o => o.Ignore())
-                .ForMember(d => d.Organizacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel2,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel3,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel4,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel5,
-                           o => o.Ignore())
-                .ForMember(d => d.Nivel6,
-                           o => o.Ignore());
+                           o => o.AddFormatter<StandardDateFormatter>());
         }
 
         void CreateCatalogosMaps()

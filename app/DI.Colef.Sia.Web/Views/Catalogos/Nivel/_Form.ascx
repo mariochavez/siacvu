@@ -10,6 +10,11 @@
     <%=Html.ValidationMessage("Nombre") %>
 </p>
 <p>
+    <label>Codigo CONACyT</label>
+    <%=Html.TextBox("CodigoConacyt", Model.CodigoConacyt, new { @class = "input420-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("CodigoConacyt")%>
+</p>
+<p>
 	<label>Organizaci&oacute;n</label>
 	<%=Html.DropDownList("Organizacion", Model.Organizaciones.CreateSelectList<OrganizacionForm>("Id", "Nombre"),
 		"Seleccione ...")%>

@@ -93,7 +93,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
-            data.Form = grupoInvestigacionMapper.Map(grupoInvestigacion);
+            var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
+
+            data.Form = SetupShowForm(grupoInvestigacionForm);
             
             ViewData.Model = data;
             return View();
@@ -156,21 +158,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
 			form = form ?? new GrupoInvestigacionForm();
 
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
 
 			return form;
         }
         
         private void FormSetCombos(GrupoInvestigacionForm form)
         {
-			ViewData["Sector"] = form.SectorId;
-			ViewData["Organizacion"] = form.OrganizacionId;
-			ViewData["Nivel2"] = form.Nivel2Id;
-			ViewData["Nivel3"] = form.Nivel3Id;
-			ViewData["Nivel4"] = form.Nivel4Id;
-			ViewData["Nivel5"] = form.Nivel5Id;
-			ViewData["Nivel6"] = form.Nivel6Id;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+        }
+
+        private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
+        {
+            form = form ?? new GrupoInvestigacionForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+                                  };
+
+            return form;
         }
     }
 }

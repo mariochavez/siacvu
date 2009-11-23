@@ -318,47 +318,47 @@ insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Prevención y oportuna detección de cáncer cervicouterino para las mixtecas migrantes de Oaxaca a Baja California', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Antropología del arte indígena transfronterizo. La identidad estético religiosa en la ritualidad contemporánea', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Un análisis comparativo de la interacción en los corredores fronterizos Vancouver-Seatle y San Diego-Tijuana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Los que no se rindieron: las actividades revolucionarias magonistas en la region fronteriza México-Estados Unidos, 1910-1913', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Identidad, racismos y estereotipos en la frontera México-Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('United State-Mexico border communities in the Nafta Era', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('El papel de las normas ambientales  y las estretegias competitivas en el cuidado ambiental  de la industria en México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Hacia una política de articulación entre los perfiles educativos  y las necesidades del desarrollo regional. (Etapa III)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Las remesas de migrantes mexicanos en Estados Unidos y su impacto en la economía mexicana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Estudio demográfico retrospectivo: movilidad, empleo y familia en México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('El envejecimiento en México: la siguiente crisis de la transición demográfica', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Condiciones de salud y bienestar de la población envejecida en la Ciudad de México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Uso y significado de la casa como lugar de trabajo y relaciones de género en trabajadores por cuenta propia en el hogar de Tijuana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Migración, empleo y vivienda en los municipios y condados de la frontera internacional Estados Unidos-México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Programa de salud reproductiva', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Construyendo através de las fronteras:  consolidación del consorcio transfronterizo para la acción y la investigación sobre género y salud reproductiva en la frontera México-Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Grupo de intercambio académico sobre salud reproductiva', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Migración internacional, riesgos asociados al cruce de la frontera y programas locales de ayuda al migrante.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Encuesta sobre Migración en la Frontera Norte de México (Fase V)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Estudio para impulsar el mejoramiento de la calidad del empleo en la industria maquiladora de exportación.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Inmigración laboral de latinoamérica en España: sectores de ocupación, perfiles  y redes sociales.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('La transformación de la industria automotriz y del vestido: comparación entre México, Estados Unidos y Canadá.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Integración norteamericana y desarrollo: impactos del tratado de libre comercio en la reestructuración industrial y el empleo.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Producción de computadoras personales en México y su articulación con la producción global: una valoración de su estado actual y su futuro potencial.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Desarrollo del internet y el ecomercio en México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Migración y religión: análisis de la relación entre las afiliaciones religiosas y la redefinición identitaria de los migrantes mexicanos en el Sur de California', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Actualización del módulo urbano del programa regional de desarrollo del corredor costero Tijuana-Ensenada', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Uso y manejo sustentable del agua en el medio urbano de la frontera norte de México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Turismo, migración y empleo en el municipio de playas de Rosarito, B.C.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Planeación de una estrategia de desarrollo sustentable para las comunidades locales en la reserva de la biósfera el Pinacate y el gran Desierto del Altar.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Elaboración-reformulación del Plan de Desarrollo Urbano en  Nuevo Laredo', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('La movilidad laboral geográfica como recurso social en la cuenca carbonífera de Coahuila.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Un grito silenciado: mujer madre en la frontera Este Méxicoamericana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Apostando a un sueño: la experiencia de las mujeres que van a parir a Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos metrópolis del Noreste. Hacia un modelo alternativo  para Monterrey y Saltillo.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
-insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('El asma in Tijuana: multiple medical systems (El asma en Tijuana: múltiples sistemas médicos)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Trayectoria del crecimiento urbano y evaluación de la planeación en ciudades intermedias de la frontera norte de México: Piedras Negras, Matamoros y Reynosa', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('La reforma municipal en México. Agenda para una reforma legislativa', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Prevención y oportuna detección de cáncer cervicouterino para las mixtecas migrantes de Oaxaca a Baja California', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Antropología del arte indígena transfronterizo. La identidad estético religiosa en la ritualidad contemporánea', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Un análisis comparativo de la interacción en los corredores fronterizos Vancouver-Seatle y San Diego-Tijuana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Los que no se rindieron: las actividades revolucionarias magonistas en la region fronteriza México-Estados Unidos, 1910-1913', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Identidad, racismos y estereotipos en la frontera México-Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('United State-Mexico border communities in the Nafta Era', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('El papel de las normas ambientales  y las estretegias competitivas en el cuidado ambiental  de la industria en México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Hacia una política de articulación entre los perfiles educativos  y las necesidades del desarrollo regional. (Etapa III)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Las remesas de migrantes mexicanos en Estados Unidos y su impacto en la economía mexicana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Estudio demográfico retrospectivo: movilidad, empleo y familia en México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('El envejecimiento en México: la siguiente crisis de la transición demográfica', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Condiciones de salud y bienestar de la población envejecida en la Ciudad de México.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Uso y significado de la casa como lugar de trabajo y relaciones de género en trabajadores por cuenta propia en el hogar de Tijuana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Migración, empleo y vivienda en los municipios y condados de la frontera internacional Estados Unidos-México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Programa de salud reproductiva', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Construyendo através de las fronteras:  consolidación del consorcio transfronterizo para la acción y la investigación sobre género y salud reproductiva en la frontera México-Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Grupo de intercambio académico sobre salud reproductiva', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Migración internacional, riesgos asociados al cruce de la frontera y programas locales de ayuda al migrante.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Encuesta sobre Migración en la Frontera Norte de México (Fase V)', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Estudio para impulsar el mejoramiento de la calidad del empleo en la industria maquiladora de exportación.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Inmigración laboral de latinoamérica en España: sectores de ocupación, perfiles  y redes sociales.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('La transformación de la industria automotriz y del vestido: comparación entre México, Estados Unidos y Canadá.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Integración norteamericana y desarrollo: impactos del tratado de libre comercio en la reestructuración industrial y el empleo.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Producción de computadoras personales en México y su articulación con la producción global: una valoración de su estado actual y su futuro potencial.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Desarrollo del internet y el ecomercio en México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Migración y religión: análisis de la relación entre las afiliaciones religiosas y la redefinición identitaria de los migrantes mexicanos en el Sur de California', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Actualización del módulo urbano del programa regional de desarrollo del corredor costero Tijuana-Ensenada', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Uso y manejo sustentable del agua en el medio urbano de la frontera norte de México', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Turismo, migración y empleo en el municipio de playas de Rosarito, B.C.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Planeación de una estrategia de desarrollo sustentable para las comunidades locales en la reserva de la biósfera el Pinacate y el gran Desierto del Altar.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Elaboración-reformulación del Plan de Desarrollo Urbano en  Nuevo Laredo', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('La movilidad laboral geográfica como recurso social en la cuenca carbonífera de Coahuila.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Un grito silenciado: mujer madre en la frontera Este Méxicoamericana', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Apostando a un sueño: la experiencia de las mujeres que van a parir a Estados Unidos', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Crecimiento, planeación y gestión urbana de dos metrópolis del Noreste. Hacia un modelo alternativo  para Monterrey y Saltillo.', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Estudio comparativo de la urbanización popular en ciudades de la frontera tamaulipeca', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Zonas de alto riesgo, regeneración urbana y reactivación social: la zona poniente de Cd. Juárez, de cara a los retos de competitividad internacional del centro urbano', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
+insert into Proyectos values('Estudio de opinión pública en Ojinaga Chihuahua', 0, GETDATE(), GETDATE(), GETDATE(), GETDATE(), 0, null, null, null, null, null, null, null, 0, GETDATE(), 0, null, 0,GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 1, 1, 1)
 
 insert into Paises values('México', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Paises values('España', GETDATE(), GETDATE(), 1, 1, 1)
@@ -516,55 +516,55 @@ insert into TipoFinanciamientos values('Financiamiento externo',GETDATE(), GETDA
 insert into TipoFinanciamientos values('Mixto',GETDATE(), GETDATE(), 1, 1, 1);
 
 --Sector = 0
-insert into Sectores values('NO ESPECIFICADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO FEDERAL CENTRALIZADO', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO DE LAS ENTIDADES FEDERATIVAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR DE EDUCACION SUPERIOR PUBLICAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR DE EDUCACION SUPERIOR PRIVADAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR PRIVADO DE EMPRESAS PRODUCTIVAS (ADIAT)', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES NO LUCRATIVAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES EXTERNAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('CONSULTORAS', 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('NO ESPECIFICADO', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO FEDERAL CENTRALIZADO', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR GOBIERNO DE LAS ENTIDADES FEDERATIVAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR DE EDUCACION SUPERIOR PUBLICAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR DE EDUCACION SUPERIOR PRIVADAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR PRIVADO DE EMPRESAS PRODUCTIVAS (ADIAT)', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES NO LUCRATIVAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('INSTITUCIONES DEL SECTOR DE ENTIDADES EXTERNAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('CONSULTORAS', null, 0,GETDATE(), GETDATE(), 1, 1, 1);
 --Sector economico = 1
-insert into Sectores values('Mineria', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Construccion', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicios educativos', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicios de Salud y asistencia social', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicios financieros y de Seguros', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicios de esparcimiento culturales y deportivos y otros servicios recreativos', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicios de alojamiento temporal y reparacion de alimentos y bebidas', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Otros servicios excepto actividades de gobierno', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Actividades de gobierno y organismos internacionales y extraterritoriales', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Informacion en medios masivos', 1,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Servicos Profesiones cientificos y tecnologicos', 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Mineria', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Construccion', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios educativos', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de Salud y asistencia social', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios financieros y de Seguros', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de esparcimiento culturales y deportivos y otros servicios recreativos', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicios de alojamiento temporal y reparacion de alimentos y bebidas', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Otros servicios excepto actividades de gobierno', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Actividades de gobierno y organismos internacionales y extraterritoriales', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Informacion en medios masivos', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Servicos Profesiones cientificos y tecnologicos', null, 1,GETDATE(), GETDATE(), 1, 1, 1);
 --Sector financiamiento = 2
-insert into Sectores values('Gobierno federal', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Gobierno estatal', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Gobierno municipal', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Gubernamental binacional', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Fondos CONACyT', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('UC-MEXUS/CONACyT', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Académico interinstitucional', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Fundaciones', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Sociedad Civil Organizada', 2,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Privado', 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gobierno federal', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gobierno estatal', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gobierno municipal', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gubernamental binacional', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Fondos CONACyT', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('UC-MEXUS/CONACyT', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Académico interinstitucional', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Fundaciones', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Sociedad Civil Organizada', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Privado', null, 2,GETDATE(), GETDATE(), 1, 1, 1);
 --Sector Organo Externo = 3
-insert into Sectores values('Académico (Educación Superior)', 3,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Gubernamental/Público', 3,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Social', 3,GETDATE(), GETDATE(), 1, 1, 1);
-insert into Sectores values('Privado', 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Académico (Educación Superior)', null, 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Gubernamental/Público', null, 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Social', null, 3,GETDATE(), GETDATE(), 1, 1, 1);
+insert into Sectores values('Privado', null, 3,GETDATE(), GETDATE(), 1, 1, 1);
 
 --Sector 3=Insituciones del Sector entidades paraestatales
-insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('EL COLEGIO DE LA FRONTERA NORTE, A. C.',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('EL COLEGIO DE LA FRONTERA SUR',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('CORPORACION MEXICANA DE INVESTIGACION EN MATERIALES, S. A. DE C. V.',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('ESCUELA NACIONAL DE ANTROPOLOGIA E HISTORIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('SECRETARIA DE SALUD',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('SECRETARIA DE ENERGIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
-insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('EL COLEGIO DE MEXICO, A. C.', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('EL COLEGIO DE LA FRONTERA NORTE, A. C.', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('EL COLEGIO DE LA FRONTERA SUR', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('CORPORACION MEXICANA DE INVESTIGACION EN MATERIALES, S. A. DE C. V.', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('ESCUELA NACIONAL DE ANTROPOLOGIA E HISTORIA', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE SALUD', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE EDUCACION Y CULTURA', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('SECRETARIA DE ENERGIA', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Organizaciones values('TECNOLOGICO UNIVERSITARIO DE BAJA CALIFORNIA', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 insert into Departamentos values('Departamento de estudios culturales',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Departamentos values('Departamento de estudios de administración pública',GETDATE(), GETDATE(), 1, 1, 1);
@@ -1954,77 +1954,77 @@ insert into LineaInvestigaciones values('Procesos culturales', GETDATE(), GETDAT
 insert into LineaInvestigaciones values('Urbanización del norte de México', GETDATE(), GETDATE(), 1, 1, 1)
 insert into LineaInvestigaciones values('N/A', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into Areas values('Lógica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Matematicas', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Astronomia y astrofisica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Fisica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Quimica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias de la vida', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias de la tierra y del cosmos', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias agroquimicas y veterinarias ', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias de la tecnologia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Antropologia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Demografia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias economicas', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Geografia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Historia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias juridicas y derecho', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Linguistica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Pedagogia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Ciencias politicas', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Psicologia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Artes y letras', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Sociologia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Etica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Filosofia', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Areas values('Prospectiva', GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Lógica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Matematicas', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Astronomia y astrofisica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Fisica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Quimica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias de la vida', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias de la tierra y del cosmos', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias agroquimicas y veterinarias ', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias de la tecnologia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Antropologia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Demografia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias economicas', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Geografia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Historia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias juridicas y derecho', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Linguistica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Pedagogia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Ciencias politicas', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Psicologia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Artes y letras', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Sociologia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Etica', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Filosofia', null, GETDATE(), GETDATE(), 1, 1, 1)
+insert into Areas values('Prospectiva', null, GETDATE(), GETDATE(), 1, 1, 1)
 
 --Areas 1=Logica 2=Matematicas
-insert into Disciplinas values('Aplicacion de la logica', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Logica deductiva', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Logica general', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Logica inductiva', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Metodologia', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Otras especialidades en materia de logica', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Algebra', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Analisis y analisis funcional', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Informatica matematica', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Geometria', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Teoria de los numeros', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Analisis numerico', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Investigacion operativa', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Disciplinas values('Calculo de probabilidades', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Estadistica', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Topologia', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Informatica', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Sistemas', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Otras especialidades en materia de matematicas', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Fecundidad', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Demografia general', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Demografia geografica', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Demografica historica', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Mortalidad', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Caracteristicas de las poblaciones', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Evolucion demografica', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Disciplinas values('Otras especialidades en materia de demografia', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Aplicacion de la logica', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Logica deductiva', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Logica general', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Logica inductiva', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Metodologia', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Otras especialidades en materia de logica', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Algebra', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Analisis y analisis funcional', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Informatica matematica', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Geometria', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Teoria de los numeros', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Analisis numerico', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Investigacion operativa', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Disciplinas values('Calculo de probabilidades',  null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Estadistica', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Topologia', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Informatica', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Sistemas', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Otras especialidades en materia de matematicas', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Fecundidad', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Demografia general', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Demografia geografica', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Demografica historica', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Mortalidad', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Caracteristicas de las poblaciones', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Evolucion demografica', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Disciplinas values('Otras especialidades en materia de demografia', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
 
 --insert into Subdisciplinas values('Tasa de natalidad', GETDATE(), GETDATE(), 1, DisciplinaFk, 1, 1)
 --Disciplinas 1 = Aplicacion de la logica 2 = Logica deductiva
-insert into Subdisciplinas values('Tasa de natalidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Fecunidad general', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Ilegitimidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Nupcialidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Esterilidad y fecundidad', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Otros', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Metodologia de la investigacion', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Metodologia de analisis', GETDATE(), GETDATE(), 1, 1, 1, 1)
-insert into Subdisciplinas values('Teoria', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Movilidad y migraciones internas', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Movilidad y migraciones internacionales', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Demografica local', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Demografia regional', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Demografia rural', GETDATE(), GETDATE(), 1, 2, 1, 1)
-insert into Subdisciplinas values('Demografia urbana', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Tasa de natalidad', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Fecunidad general', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Ilegitimidad', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Nupcialidad', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Esterilidad y fecundidad', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Otros', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Metodologia de la investigacion', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Metodologia de analisis', null, GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into Subdisciplinas values('Teoria', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Movilidad y migraciones internas', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Movilidad y migraciones internacionales', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografica local', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografia regional', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografia rural', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into Subdisciplinas values('Demografia urbana', null, GETDATE(), GETDATE(), 1, 2, 1, 1)
 
 --Valores de prueba
 --insert into AreaTematicas values('Area tematica 1', GETDATE(), GETDATE(), 1, LineaTematicaFk, SubdisciplinaFk, 1, 1)
@@ -3464,11 +3464,11 @@ insert into VinculacionAPyDes values('Tesis orientada a las políticas públicas',
 insert into VinculacionAPyDes values('Tesis orientada al desarrollo socioeconómico', GETDATE(), GETDATE(), 1, 1, 1)
 
 --Valores de prueba
-insert into Niveles values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1, 1);
-insert into Niveles values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1, 1);
-insert into Niveles values('Nivel 3',GETDATE(), GETDATE(), 1, 2, 1, 1);
-insert into Niveles values('Nivel 4',GETDATE(), GETDATE(), 1, 2, 1, 1);
-insert into Niveles values('Nivel 5',GETDATE(), GETDATE(), 1, 3, 1, 1);
+insert into Niveles values('Nivel 1', null, GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 2', null, GETDATE(), GETDATE(), 1, 1, 1, 1);
+insert into Niveles values('Nivel 3', null, GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 4', null, GETDATE(), GETDATE(), 1, 2, 1, 1);
+insert into Niveles values('Nivel 5', null, GETDATE(), GETDATE(), 1, 3, 1, 1);
 
 --Valores de prueba
 insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)

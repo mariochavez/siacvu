@@ -4,65 +4,65 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
     <label>Nombre Completo</label>
-    <strong><%= Html.Encode(Model.NombreCompleto)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.NombreCompleto)%>&nbsp;</span>
 </p>
 <p>
     <label>Usuario</label>
-    <strong><%= Html.Encode(Model.UsuarioNombre)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.UsuarioNombre)%>&nbsp;</span>
 </p>
 <p>
     <label>Direcci&oacute;n</label>
-    <strong><%= Html.Encode(Model.Direccion)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.Direccion)%>&nbsp;</span>
 </p>
 <p>
     <label>Tel&eacute;fono</label>
-    <strong><%= Html.Encode(Model.Telefono) %>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.Telefono) %>&nbsp;</span>
 </p>
 <p>
     <label>Correo electr&oacute;nico</label>
-    <strong><%= Html.Encode(Model.CorreoElectronico)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.CorreoElectronico)%>&nbsp;</span>
 </p>
 <p>
     <label>Estado civil</label>
-    <strong><%= Html.Encode(Model.EstadoCivil)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.EstadoCivil)%>&nbsp;</span>
 </p>
 <p>
     <label>Sexo</label>
-    <strong><%=Html.Encode(HumanizeHelper.Sexo(Model.Sexo)) %>&nbsp;</strong>
+    <span class="valor"><%=Html.Encode(HumanizeHelper.Sexo(Model.Sexo)) %>&nbsp;</span>
 </p>
 <p>
     <label>C.U.R.P.</label>
-    <strong><%= Html.Encode(Model.CURP) %>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.CURP) %>&nbsp;</span>
 </p>
 <p>
     <label>R.F.C.</label>
-    <strong><%= Html.Encode(Model.RFC)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.RFC)%>&nbsp;</span>
 </p>
 <p>
     <label>C&eacute;dula profesional</label>
-    <strong><%= Html.Encode(Model.CedulaProfesional)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.CedulaProfesional)%>&nbsp;</span>
 </p>
 <p>
     <label>Nacionalidad</label>
-    <strong><%= Html.Encode(Model.Nacionalidad)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.Nacionalidad)%>&nbsp;</span>
 </p>
 <p>
     <label>C&oacute;digo R.H.</label>
-    <strong><%= Html.Encode(Model.CodigoRH)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.CodigoRH)%>&nbsp;</span>
 </p>
 <p>
     <label>Fecha nacimiento</label>
-    <strong><%= Html.Encode(Model.FechaNacimiento)%>&nbsp;</strong><span>Formato (yyyy)</span>
+    <span class="valor"><%= Html.Encode(Model.FechaNacimiento)%>&nbsp;</span><span>Formato (yyyy)</span>
 </p>
 <p>
     <label>Fecha ingreso</label>
-    <strong><%= Html.Encode(Model.FechaIngreso)%>&nbsp;</strong><span>Formato (yyyy)</span>
+    <span class="valor"><%= Html.Encode(Model.FechaIngreso)%>&nbsp;</span><span>Formato (yyyy)</span>
 </p>
 <p>
     <label>Investigador</label>
-    <strong><%= Html.Encode(HumanizeHelper.Boolean(Model.Investigador))%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(HumanizeHelper.Boolean(Model.Investigador))%>&nbsp;</span>
 </p>
 <p>
     <label>Activo</label>
-    <strong><%= Html.Encode(HumanizeHelper.Boolean(Model.Activo))%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(HumanizeHelper.Boolean(Model.Activo))%>&nbsp;</span>
 </p>

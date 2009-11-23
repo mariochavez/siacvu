@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<IdiomasInvestigadorForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -37,43 +38,43 @@
             <div id="campos">
                 <p>
 	                <label>Idioma</label>
-	                <strong><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Lengua materna</label>
-	                <strong><%= Html.Encode(Model.Form.LenguaMaterna)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.LenguaMaterna)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Traductor</label>
-	                <strong><%= Html.Encode(Model.Form.Traductor)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.Traductor)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Profesor</label>
-	                <strong><%= Html.Encode(Model.Form.Profesor)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.Profesor)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Nivel de conversaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.NivelConversacionNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= HumanizeHelper.NivelIdioma(Model.Form.NivelConversacion)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Nivel de lectura</label>
-	                <strong><%= Html.Encode(Model.Form.NivelLecturaNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= HumanizeHelper.NivelIdioma(Model.Form.NivelLectura)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Nivel de escritura</label>
-	                <strong><%= Html.Encode(Model.Form.NivelEscrituraNombre)%>&nbsp;</strong>
+	                <span class="valor"><%= HumanizeHelper.NivelIdioma(Model.Form.NivelEscritura)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Fecha de evaluaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.FechaEvaluacion)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.FechaEvaluacion)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Nombre del documento probatorio</label>
-	                <strong><%= Html.Encode(Model.Form.NombreDocumentoProbatorio)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.NombreDocumentoProbatorio)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Puntuaci&oacute;n/porcentaje</label>
-	                <strong><%= Html.Encode(Model.Form.Puntuacion)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.Puntuacion)%>&nbsp;</span>
                 </p>                
                 
                 <p class="submit">

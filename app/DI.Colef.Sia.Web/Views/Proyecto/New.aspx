@@ -71,7 +71,7 @@
                 <h4>Participaci&oacute;n de estudiantes</h4>
                 <% Html.RenderPartial("_ParticipacionEstudianteProyecto", Model.Form); %>
                 
-                <h4>Opcionales CVU</h4>
+                <h4>Complementaria CVU</h4>
                 <% Html.RenderPartial("_EstructuraFuncional", Model.Form); %>
                 <% Html.RenderPartial("_AreaConocimiento", Model.Form); %>
                 <% Html.RenderPartial("_ActividadEconomica", Model.Form); %>

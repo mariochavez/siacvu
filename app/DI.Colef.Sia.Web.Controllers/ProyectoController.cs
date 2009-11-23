@@ -164,7 +164,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var proyecto = proyectoService.GetProyectoById(id);
-            data.Form = proyectoMapper.Map(proyecto);
+            var proyectoForm = proyectoMapper.Map(proyecto);
+
+            data.Form = SetupShowForm(proyectoForm);
 
             ViewData.Model = data;
             return View();
@@ -468,33 +470,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
             form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
 
-            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            form.Organizaciones = organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(form.SectorId));
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(form.OrganizacionId));
-
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(form.AreaId));
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(form.DisciplinaId));
-
-            form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
-            form.Ramas = ramaMapper.Map(catalogoService.GetRamasBySectorId(form.SectorEconomicoId));
-            form.Clases = claseMapper.Map(catalogoService.GetClasesByRamaId(form.RamaId));
-
-            ///Catalogos Prototipo
-            //form.Coordinaciones = coordinacionMapper.Map(catalogoService.GetActiveCoordinacions());
-
-            ///Catalogos Nunca Usados
-            //form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            //form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            //form.ParticipantesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            //form.ParticipantesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            //form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
-            //form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
-            //form.TiposFinanciamientos = tipoFinanciamientoMapper.Map(catalogoService.GetActiveTipoFinanciamientos());
-            //form.Monedas = monedaMapper.Map(catalogoService.GetActiveMonedas());
-            //form.Instituciones = institucionMapper.Map(catalogoService.GetActiveInstituciones());
-            //form.NivelesEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            //form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
+            form.Clases = claseMapper.Map(catalogoService.GetActiveClases());
 
             return form;
         }
@@ -514,31 +492,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
             ViewData["TipoEstudiante"] = form.TipoEstudiante;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
-            ViewData["Sector"] = form.SectorId;
-            ViewData["Organizacion"] = form.OrganizacionId;
-            ViewData["Nivel2"] = form.Nivel2Id;
-            ViewData["Nivel3"] = form.Nivel3Id;
-            ViewData["Nivel4"] = form.Nivel4Id;
-            ViewData["Nivel5"] = form.Nivel5Id;
-            ViewData["Nivel6"] = form.Nivel6Id;
-            ViewData["Area"] = form.AreaId;
-            ViewData["Disciplina"] = form.DisciplinaId;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
-            ViewData["SectorEconomico"] = form.SectorEconomicoId;
-            ViewData["Rama"] = form.RamaId;
-            ViewData["Clase"] = form.ClaseId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+            ViewData["ClaseId"] = form.ClaseId;
+        }
 
-            ///Catalogos Prototipo
-            //ViewData["Coordinacion"] = form.CoordinacionId;
+        private ProyectoForm SetupShowForm(ProyectoForm form)
+        {
+            form = form ?? new ProyectoForm();
 
-            ///Catalogos Nunca Usados
-            //ViewData["Sede"] = form.SedeId;
-            //ViewData["Ambito"] = form.AmbitoId;
-            //ViewData["TipoFinanciamiento"] = form.TipoFinanciamientoId;
-            //ViewData["Moneda"] = form.MonedaId;
-            //ViewData["Institucion"] = form.InstitucionId;
-            //ViewData["NivelEstudio"] = form.NivelEstudioId;
-            //ViewData["Departamento"] = form.DepartamentoId;
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+
+                                      ClaseNombre = form.Clase.Nombre,
+                                      ClaseRamaNombre = form.Clase.RamaNombre,
+                                      ClaseRamaSectorEconomicoNombre = form.Clase.RamaSectorNombre
+                                  };
+
+            return form;
         }
     }
 }

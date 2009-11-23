@@ -42,7 +42,6 @@
             
             <% Html.RenderPartial("_DatosGrupoInvestigacion", Model.Form); %>
 
-            <h4>Estructura Funcional</h4>
             <% Html.RenderPartial("_EstructuraFuncional", Model.Form); %>
             
             <p class="submit">

@@ -82,12 +82,10 @@
                 </p>
                 
                 <% if (Model.Form.Nivel2Id != 0) { %>
-                	<h4>Estructura funcional</h4>
                 	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 <% } %>
                 
                 <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<h4>&Aacute;rea de conocimiento</h4>
                 	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
                 

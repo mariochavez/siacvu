@@ -20,19 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual DateTime FechaCreacion { get; set; }
 
-		public virtual Sector Sector { get; set; }
-
-		public virtual Organizacion Organizacion { get; set; }
-
 		public virtual Nivel Nivel2 { get; set; }
-
-		public virtual Nivel Nivel3 { get; set; }
-
-		public virtual Nivel Nivel4 { get; set; }
-
-		public virtual Nivel Nivel5 { get; set; }
-
-		public virtual Nivel Nivel6 { get; set; }
 
 		public virtual bool Lider { get; set; }
 

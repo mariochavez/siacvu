@@ -45,6 +45,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                <h4>Datos de la tesis</h4>
                 <p>
                     <label>Tipo de Alumno</label>
                     <span class="valor"><%= HumanizeHelper.TipoAlumnoCurso(Model.Form.TipoEstudiante) %>&nbsp;</span>                    
@@ -56,7 +57,6 @@
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form);%>
                 <% } %>
                 
-                <h4>Complementaria CVU</h4>
                 <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>

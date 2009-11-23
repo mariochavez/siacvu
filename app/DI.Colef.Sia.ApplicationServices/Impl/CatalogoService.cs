@@ -255,7 +255,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Cargo[] GetActiveCargos()
         {
-            return ((List<Cargo>)OrderCatalog<Cargo>(x => x.Activo, true)).ToArray();
+            return ((List<Cargo>)OrderCatalog<Cargo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveCargo(Cargo cargo)
@@ -282,7 +282,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Departamento[] GetActiveDepartamentos()
         {
-            return ((List<Departamento>) OrderCatalog<Departamento>(x => x.Activo, true)).ToArray();
+            return ((List<Departamento>) OrderCatalog<Departamento>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDepartamento(Departamento departamento)
@@ -309,7 +309,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Puesto[] GetActivePuestos()
         {
-            return ((List<Puesto>) OrderCatalog<Puesto>(x => x.Activo, true)).ToArray();
+            return ((List<Puesto>) OrderCatalog<Puesto>(x => x.Nombre, true)).ToArray();
         }
 
         public void SavePuesto(Puesto puesto)
@@ -336,7 +336,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Sede[] GetActiveSedes()
         {
-            return ((List<Sede>) OrderCatalog<Sede>(x => x.Activo, true)).ToArray();
+            return ((List<Sede>) OrderCatalog<Sede>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveSede(Sede sede)
@@ -363,7 +363,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Categoria[] GetActiveCategorias()
         {
-            return ((List<Categoria>) OrderCatalog<Categoria>(x => x.Activo, true)).ToArray();
+            return ((List<Categoria>) OrderCatalog<Categoria>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveCategoria(Categoria categoria)
@@ -390,7 +390,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public GradoAcademico[] GetActiveGrados()
         {
-            return ((List<GradoAcademico>) OrderCatalog<GradoAcademico>(x => x.Activo, true)).ToArray();
+            return ((List<GradoAcademico>) OrderCatalog<GradoAcademico>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveGradoAcademico(GradoAcademico gradoAcademico)
@@ -417,7 +417,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public SNI[] GetActiveSNIs()
         {
-            return ((List<SNI>) OrderCatalog<SNI>(x => x.Activo, true)).ToArray();
+            return ((List<SNI>) OrderCatalog<SNI>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveSNI(SNI sni)
@@ -444,7 +444,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Estado[] GetActiveEstados()
         {
-            return ((List<Estado>) OrderCatalog<Estado>(x => x.Activo, true)).ToArray();
+            return ((List<Estado>) OrderCatalog<Estado>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEstado(Estado estado)
@@ -471,7 +471,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Idioma[] GetActiveIdiomas()
         {
-            return ((List<Idioma>) OrderCatalog<Idioma>(x => x.Activo, true)).ToArray();
+            return ((List<Idioma>) OrderCatalog<Idioma>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveIdioma(Idioma idioma)
@@ -498,7 +498,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Pais[] GetActivePaises()
         {
-            return ((List<Pais>) OrderCatalog<Pais>(x => x.Activo, true)).ToArray();
+            return ((List<Pais>) OrderCatalog<Pais>(x => x.Nombre, true)).ToArray();
         }
 
         public void SavePais(Pais pais)
@@ -525,7 +525,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoArticulo[] GetActiveArticulos()
         {
-            return ((List<TipoArticulo>) OrderCatalog<TipoArticulo>(x => x.Activo, true)).ToArray();
+            return ((List<TipoArticulo>) OrderCatalog<TipoArticulo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoArticulo(TipoArticulo tipoArticulo)
@@ -552,7 +552,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Institucion[] GetActiveInstituciones()
         {
-            return ((List<Institucion>) OrderCatalog<Institucion>(x => x.Activo, true)).ToArray();
+            return ((List<Institucion>) OrderCatalog<Institucion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveInstitucion(Institucion institucion)
@@ -584,7 +584,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Indice[] GetActiveIndices()
         {
-            return ((List<Indice>) OrderCatalog<Indice>(x => x.Activo, true)).ToArray();
+            return ((List<Indice>) OrderCatalog<Indice>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveIndice(Indice indice)
@@ -611,7 +611,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public InvestigadorExterno[] GetActiveInvestigadorExternos()
         {
-            return ((List<InvestigadorExterno>) OrderCatalog<InvestigadorExterno>(x => x.Activo, true)).ToArray();
+            return ((List<InvestigadorExterno>) OrderCatalog<InvestigadorExterno>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveInvestigadorExterno(InvestigadorExterno investigadorExterno)
@@ -638,7 +638,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipante[] GetActiveParticipantes()
         {
-            return ((List<TipoParticipante>) OrderCatalog<TipoParticipante>(x => x.Activo, true)).ToArray();
+            return ((List<TipoParticipante>) OrderCatalog<TipoParticipante>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoParticipante(TipoParticipante tipoParticipante)
@@ -665,7 +665,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaInvestigacion[] GetActiveLineaInvestigaciones()
         {
-            return ((List<LineaInvestigacion>) OrderCatalog<LineaInvestigacion>(x => x.Activo, true)).ToArray();
+            return ((List<LineaInvestigacion>) OrderCatalog<LineaInvestigacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveLineaInvestigacion(LineaInvestigacion lineaInvestigacion)
@@ -692,7 +692,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoActividad[] GetActiveActividades()
         {
-            return ((List<TipoActividad>) OrderCatalog<TipoActividad>(x => x.Activo, true)).ToArray();
+            return ((List<TipoActividad>) OrderCatalog<TipoActividad>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoActividad(TipoActividad tipoActividad)
@@ -719,7 +719,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Area[] GetActiveAreas()
         {
-            return ((List<Area>) OrderCatalog<Area>(x => x.Activo, true)).ToArray();
+            return ((List<Area>) OrderCatalog<Area>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveArea(Area area)
@@ -746,7 +746,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Disciplina[] GetActiveDisciplinas()
         {
-            return ((List<Disciplina>) OrderCatalog<Disciplina>(x => x.Activo, true)).ToArray();
+            return ((List<Disciplina>) OrderCatalog<Disciplina>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDisciplina(Disciplina disciplina)
@@ -778,7 +778,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Subdisciplina[] GetActiveSubdisciplinas()
         {
-            return ((List<Subdisciplina>) OrderCatalog<Subdisciplina>(x => x.Activo, true)).ToArray();
+            return ((List<Subdisciplina>) OrderCatalog<Subdisciplina>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveSubdisciplina(Subdisciplina subdisciplina)
@@ -793,12 +793,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subdisciplinaRepository.SaveOrUpdate(subdisciplina);
         }
 
-        public Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id)
-        {
-            return
-                ((List<Subdisciplina>) FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
-        }
-
         public LineaTematica GetLineaTematicaById(int id)
         {
             return lineaTematicaRepository.Get(id);
@@ -811,7 +805,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public LineaTematica[] GetActiveLineaTematicas()
         {
-            return ((List<LineaTematica>) OrderCatalog<LineaTematica>(x => x.Activo, true)).ToArray();
+            return ((List<LineaTematica>) OrderCatalog<LineaTematica>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveLineaTematica(LineaTematica lineaTematica)
@@ -838,7 +832,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public CoautorExterno[] GetActiveCoautorExternos()
         {
-            return ((List<CoautorExterno>) OrderCatalog<CoautorExterno>(x => x.Activo, true)).ToArray();
+            return ((List<CoautorExterno>) OrderCatalog<CoautorExterno>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveCoautorExterno(CoautorExterno coautorExterno)
@@ -865,7 +859,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FormaParticipacion[] GetActiveFormaParticipaciones()
         {
-            return ((List<FormaParticipacion>) OrderCatalog<FormaParticipacion>(x => x.Activo, true)).ToArray();
+            return ((List<FormaParticipacion>) OrderCatalog<FormaParticipacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveFormaParticipacion(FormaParticipacion formaParticipacion)
@@ -892,7 +886,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ResponsableExterno[] GetActiveResponsableExternos()
         {
-            return ((List<ResponsableExterno>) OrderCatalog<ResponsableExterno>(x => x.Activo, true)).ToArray();
+            return ((List<ResponsableExterno>) OrderCatalog<ResponsableExterno>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveResponsableExterno(ResponsableExterno responsableExterno)
@@ -919,7 +913,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoCapitulo[] GetActiveTipoCapitulos()
         {
-            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Activo, true)).ToArray();
+            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
@@ -946,7 +940,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoParticipacion[] GetActiveTipoParticipaciones()
         {
-            return ((List<TipoParticipacion>) OrderCatalog<TipoParticipacion>(x => x.Activo, true)).ToArray();
+            return ((List<TipoParticipacion>) OrderCatalog<TipoParticipacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoParticipacion(TipoParticipacion tipoParticipacion)
@@ -1032,7 +1026,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ProgramaEstudio[] GetActiveProgramaEstudios()
         {
-            return ((List<ProgramaEstudio>) OrderCatalog<ProgramaEstudio>(x => x.Activo, true)).ToArray();
+            return ((List<ProgramaEstudio>) OrderCatalog<ProgramaEstudio>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveProgramaEstudio(ProgramaEstudio programaEstudio)
@@ -1121,7 +1115,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Nivel[] GetActiveNiveles()
         {
-            return ((List<Nivel>) OrderCatalog<Nivel>(x => x.Activo, true)).ToArray();
+            return ((List<Nivel>) OrderCatalog<Nivel>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveNivel(Nivel nivel)
@@ -1136,11 +1130,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelRepository.SaveOrUpdate(nivel);
         }
 
-        public Nivel[] GetNivelesByOrganizacionId(int id)
-        {
-            return ((List<Nivel>) FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
-        }
-
         public Organizacion GetOrganizacionById(int id)
         {
             return organizacionRepository.Get(id);
@@ -1153,7 +1142,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Organizacion[] GetActiveOrganizaciones()
         {
-            return ((List<Organizacion>) OrderCatalog<Organizacion>(x => x.Activo, true)).ToArray();
+            return ((List<Organizacion>) OrderCatalog<Organizacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveOrganizacion(Organizacion organizacion)
@@ -1185,7 +1174,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Dependencia[] GetActiveDependencias()
         {
-            return ((List<Dependencia>) OrderCatalog<Dependencia>(x => x.Activo, true)).ToArray();
+            return ((List<Dependencia>) OrderCatalog<Dependencia>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDependencia(Dependencia dependencia)
@@ -1212,7 +1201,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Ambito[] GetActiveAmbitos()
         {
-            return ((List<Ambito>) OrderCatalog<Ambito>(x => x.Activo, true)).ToArray();
+            return ((List<Ambito>) OrderCatalog<Ambito>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveAmbito(Ambito ambito)
@@ -1239,7 +1228,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstadoPais[] GetActiveEstadoPaises()
         {
-            return ((List<EstadoPais>) OrderCatalog<EstadoPais>(x => x.Activo, true)).ToArray();
+            return ((List<EstadoPais>) OrderCatalog<EstadoPais>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEstadoPais(EstadoPais estadoPais)
@@ -1271,7 +1260,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Genero[] GetActiveGeneros()
         {
-            return ((List<Genero>) OrderCatalog<Genero>(x => x.Activo, true)).ToArray();
+            return ((List<Genero>) OrderCatalog<Genero>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveGenero(Genero genero)
@@ -1298,7 +1287,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public MedioElectronico[] GetActiveMedioElectronicos()
         {
-            return ((List<MedioElectronico>) OrderCatalog<MedioElectronico>(x => x.Activo, true)).ToArray();
+            return ((List<MedioElectronico>) OrderCatalog<MedioElectronico>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveMedioElectronico(MedioElectronico medioElectronico)
@@ -1325,7 +1314,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public MedioImpreso[] GetActiveMedioImpresos()
         {
-            return ((List<MedioImpreso>) OrderCatalog<MedioImpreso>(x => x.Activo, true)).ToArray();
+            return ((List<MedioImpreso>) OrderCatalog<MedioImpreso>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveMedioImpreso(MedioImpreso medioImpreso)
@@ -1352,7 +1341,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public OtraParticipacion[] GetActiveOtraParticipaciones()
         {
-            return ((List<OtraParticipacion>) OrderCatalog<OtraParticipacion>(x => x.Activo, true)).ToArray();
+            return ((List<OtraParticipacion>) OrderCatalog<OtraParticipacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveOtraParticipacion(OtraParticipacion otraParticipacion)
@@ -1379,7 +1368,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoDictamen[] GetActiveTipoDictamenes()
         {
-            return ((List<TipoDictamen>) OrderCatalog<TipoDictamen>(x => x.Activo, true)).ToArray();
+            return ((List<TipoDictamen>) OrderCatalog<TipoDictamen>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoDictamen(TipoDictamen tipoDictamen)
@@ -1406,7 +1395,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoDistincion[] GetActiveTipoDistinciones()
         {
-            return ((List<TipoDistincion>) OrderCatalog<TipoDistincion>(x => x.Activo, true)).ToArray();
+            return ((List<TipoDistincion>) OrderCatalog<TipoDistincion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoDistincion(TipoDistincion tipoDistincion)
@@ -1433,7 +1422,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoEvento[] GetActiveTipoEventos()
         {
-            return ((List<TipoEvento>) OrderCatalog<TipoEvento>(x => x.Activo, true)).ToArray();
+            return ((List<TipoEvento>) OrderCatalog<TipoEvento>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoEvento(TipoEvento tipoEvento)
@@ -1460,7 +1449,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoFinanciamiento[] GetActiveTipoFinanciamientos()
         {
-            return ((List<TipoFinanciamiento>) OrderCatalog<TipoFinanciamiento>(x => x.Activo, true)).ToArray();
+            return ((List<TipoFinanciamiento>) OrderCatalog<TipoFinanciamiento>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoFinanciamiento(TipoFinanciamiento tipoFinanciamiento)
@@ -1487,7 +1476,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoOrgano[] GetActiveTipoOrganos()
         {
-            return ((List<TipoOrgano>) OrderCatalog<TipoOrgano>(x => x.Activo, true)).ToArray();
+            return ((List<TipoOrgano>) OrderCatalog<TipoOrgano>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoOrgano(TipoOrgano tipoOrgano)
@@ -1514,7 +1503,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoPresentacion[] GetActiveTipoPresentaciones()
         {
-            return ((List<TipoPresentacion>) OrderCatalog<TipoPresentacion>(x => x.Activo, true)).ToArray();
+            return ((List<TipoPresentacion>) OrderCatalog<TipoPresentacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoPresentacion(TipoPresentacion tipoPresentacion)
@@ -1541,7 +1530,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoReporte[] GetActiveTipoReportes()
         {
-            return ((List<TipoReporte>) OrderCatalog<TipoReporte>(x => x.Activo, true)).ToArray();
+            return ((List<TipoReporte>) OrderCatalog<TipoReporte>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoReporte(TipoReporte tipoReporte)
@@ -1568,7 +1557,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public NivelEstudio[] GetActiveNivelEstudios()
         {
-            return ((List<NivelEstudio>) OrderCatalog<NivelEstudio>(x => x.Activo, true)).ToArray();
+            return ((List<NivelEstudio>) OrderCatalog<NivelEstudio>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveNivelEstudio(NivelEstudio nivelEstudio)
@@ -1595,7 +1584,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoPublicacion[] GetActiveTipoPublicacions()
         {
-            return ((List<TipoPublicacion>) OrderCatalog<TipoPublicacion>(x => x.Activo, true)).ToArray();
+            return ((List<TipoPublicacion>) OrderCatalog<TipoPublicacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoPublicacion(TipoPublicacion tipoPublicacion)
@@ -1622,7 +1611,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoProyecto[] GetActiveTipoProyectos()
         {
-            return ((List<TipoProyecto>) OrderCatalog<TipoProyecto>(x => x.Activo, true)).ToArray();
+            return ((List<TipoProyecto>) OrderCatalog<TipoProyecto>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoProyecto(TipoProyecto tipoProyecto)
@@ -1649,7 +1638,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoEstancia[] GetActiveTipoEstancias()
         {
-            return ((List<TipoEstancia>) OrderCatalog<TipoEstancia>(x => x.Activo, true)).ToArray();
+            return ((List<TipoEstancia>) OrderCatalog<TipoEstancia>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoEstancia(TipoEstancia tipoEstancia)
@@ -1676,7 +1665,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Convenio[] GetActiveConvenios()
         {
-            return ((List<Convenio>) OrderCatalog<Convenio>(x => x.Activo, true)).ToArray();
+            return ((List<Convenio>) OrderCatalog<Convenio>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveConvenio(Convenio convenio)
@@ -1703,7 +1692,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public IdentificadorLibro[] GetActiveIdentificadorLibros()
         {
-            return ((List<IdentificadorLibro>) OrderCatalog<IdentificadorLibro>(x => x.Activo, true)).ToArray();
+            return ((List<IdentificadorLibro>) OrderCatalog<IdentificadorLibro>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveIdentificadorLibro(IdentificadorLibro identificadorLibro)
@@ -1730,7 +1719,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ProductoDerivado[] GetActiveProductoDerivados()
         {
-            return ((List<ProductoDerivado>) OrderCatalog<ProductoDerivado>(x => x.Activo, true)).ToArray();
+            return ((List<ProductoDerivado>) OrderCatalog<ProductoDerivado>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveProductoDerivado(ProductoDerivado productoDerivado)
@@ -1757,7 +1746,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoResena[] GetActiveTipoResenas()
         {
-            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Activo, true)).ToArray();
+            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoResena(TipoResena tipoResena)
@@ -1789,7 +1778,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoApoyo[] GetActiveTipoApoyos()
         {
-            return ((List<TipoApoyo>) OrderCatalog<TipoApoyo>(x => x.Activo, true)).ToArray();
+            return ((List<TipoApoyo>) OrderCatalog<TipoApoyo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoApoyo(TipoApoyo tipoApoyo)
@@ -1831,11 +1820,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subprogramaConacytRepository.SaveOrUpdate(subprogramaConacyt);
         }
 
-        public Clase[] GetClasesByRamaId(int id)
-        {
-            return ((List<Clase>) FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
-        }
-
         public Rama GetRamaById(int id)
         {
             return ramaRepository.Get(id);
@@ -1848,7 +1832,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Rama[] GetActiveRamas()
         {
-            return ((List<Rama>) OrderCatalog<Rama>(x => x.Activo, true)).ToArray();
+            return ((List<Rama>) OrderCatalog<Rama>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveRama(Rama rama)
@@ -1875,7 +1859,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Clase[] GetActiveClases()
         {
-            return ((List<Clase>) OrderCatalog<Clase>(x => x.Activo, true)).ToArray();
+            return ((List<Clase>) OrderCatalog<Clase>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveClase(Clase clase)
@@ -1902,7 +1886,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ImpactoPoliticaPublica[] GetActiveImpactoPoliticaPublicas()
         {
-            return ((List<ImpactoPoliticaPublica>) OrderCatalog<ImpactoPoliticaPublica>(x => x.Activo, true)).ToArray();
+            return ((List<ImpactoPoliticaPublica>) OrderCatalog<ImpactoPoliticaPublica>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveImpactoPoliticaPublica(ImpactoPoliticaPublica impactoPoliticaPublica)
@@ -1929,7 +1913,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Moneda[] GetActiveMonedas()
         {
-            return ((List<Moneda>) OrderCatalog<Moneda>(x => x.Activo, true)).ToArray();
+            return ((List<Moneda>) OrderCatalog<Moneda>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveMoneda(Moneda moneda)
@@ -1956,7 +1940,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ProductoAcademico[] GetActiveProductoAcademicos()
         {
-            return ((List<ProductoAcademico>) OrderCatalog<ProductoAcademico>(x => x.Activo, true)).ToArray();
+            return ((List<ProductoAcademico>) OrderCatalog<ProductoAcademico>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveProductoAcademico(ProductoAcademico productoAcademico)
@@ -1983,7 +1967,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public USEG[] GetActiveUSEGs()
         {
-            return ((List<USEG>) OrderCatalog<USEG>(x => x.Activo, true)).ToArray();
+            return ((List<USEG>) OrderCatalog<USEG>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveUSEG(USEG uSEG)
@@ -2010,7 +1994,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ActividadPrevista[] GetActiveActividadPrevistas()
         {
-            return ((List<ActividadPrevista>) OrderCatalog<ActividadPrevista>(x => x.Activo, true)).ToArray();
+            return ((List<ActividadPrevista>) OrderCatalog<ActividadPrevista>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveActividadPrevista(ActividadPrevista actividadPrevista)
@@ -2037,7 +2021,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Coordinacion[] GetActiveCoordinacions()
         {
-            return ((List<Coordinacion>) OrderCatalog<Coordinacion>(x => x.Activo, true)).ToArray();
+            return ((List<Coordinacion>) OrderCatalog<Coordinacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveCoordinacion(Coordinacion coordinacion)
@@ -2065,7 +2049,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public EstatusFormacionAcademica[] GetActiveEstatusFormacionAcademicas()
         {
             return
-                ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Activo, true)).ToArray
+                ((List<EstatusFormacionAcademica>) OrderCatalog<EstatusFormacionAcademica>(x => x.Nombre, true)).ToArray
                     ();
         }
 
@@ -2093,7 +2077,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public DirigidoA[] GetActiveDirigidoAs()
         {
-            return ((List<DirigidoA>) OrderCatalog<DirigidoA>(x => x.Activo, true)).ToArray();
+            return ((List<DirigidoA>) OrderCatalog<DirigidoA>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDirigidoA(DirigidoA dirigidoA)
@@ -2120,7 +2104,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public EstatusProyecto[] GetActiveEstatusProyectos()
         {
-            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Activo, true)).ToArray();
+            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEstatusProyecto(EstatusProyecto estatusProyecto)
@@ -2147,7 +2131,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FondoConacyt[] GetActiveFondoConacyts()
         {
-            return ((List<FondoConacyt>) OrderCatalog<FondoConacyt>(x => x.Activo, true)).ToArray();
+            return ((List<FondoConacyt>) OrderCatalog<FondoConacyt>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveFondoConacyt(FondoConacyt fondoConacyt)
@@ -2174,7 +2158,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public AreaTematica[] GetActiveAreaTematicas()
         {
-            return ((List<AreaTematica>) OrderCatalog<AreaTematica>(x => x.Activo, true)).ToArray();
+            return ((List<AreaTematica>) OrderCatalog<AreaTematica>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveAreaTematica(AreaTematica areaTematica)
@@ -2207,7 +2191,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public TipoArchivo[] GetActiveTipoArchivos()
         {
-            return ((List<TipoArchivo>) OrderCatalog<TipoArchivo>(x => x.Activo, true)).ToArray();
+            return ((List<TipoArchivo>) OrderCatalog<TipoArchivo>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveTipoArchivo(TipoArchivo tipoArchivo)
@@ -2234,7 +2218,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public FormatoPublicacion[] GetActiveFormatoPublicacions()
         {
-            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Activo, true)).ToArray();
+            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion)
@@ -2261,7 +2245,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Editorial[] GetActiveEditorials()
         {
-            return ((List<Editorial>) OrderCatalog<Editorial>(x => x.Activo, true)).ToArray();
+            return ((List<Editorial>) OrderCatalog<Editorial>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveEditorial(Editorial editorial)
@@ -2288,7 +2272,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public VinculacionAPyD[] GetActiveVinculacionAPyDs()
         {
-            return ((List<VinculacionAPyD>) OrderCatalog<VinculacionAPyD>(x => x.Activo, true)).ToArray();
+            return ((List<VinculacionAPyD>) OrderCatalog<VinculacionAPyD>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveVinculacionAPyD(VinculacionAPyD vinculacionAPyD)
@@ -2315,7 +2299,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public Diplomado[] GetActiveDiplomados()
         {
-            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Activo, true)).ToArray();
+            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDiplomado(Diplomado diplomado)
@@ -2342,7 +2326,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public DireccionRegional[] GetActiveDireccionesRegionales()
         {
-            return ((List<DireccionRegional>) OrderCatalog<DireccionRegional>(x => x.Activo, true)).ToArray();
+            return ((List<DireccionRegional>) OrderCatalog<DireccionRegional>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveDireccionRegional(DireccionRegional direccionRegional)
@@ -2369,7 +2353,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public ConsejoComision[] GetActiveConsejoComisions()
         {
-            return ((List<ConsejoComision>)OrderCatalog<ConsejoComision>(x => x.Activo, true)).ToArray();
+            return ((List<ConsejoComision>)OrderCatalog<ConsejoComision>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveConsejoComision(ConsejoComision consejoComision)
@@ -2396,7 +2380,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public AreaInvestigacion[] GetActiveAreaInvestigacions()
         {
-            return ((List<AreaInvestigacion>)OrderCatalog<AreaInvestigacion>(x => x.Activo, true)).ToArray();
+            return ((List<AreaInvestigacion>)OrderCatalog<AreaInvestigacion>(x => x.Nombre, true)).ToArray();
         }
 
         public void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion)

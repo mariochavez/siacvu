@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(AreaForm message, Area model)
         {
 			model.Nombre = message.Nombre;
+            model.CodigoConacyt = message.CodigoConacyt;
         }
     }
 }

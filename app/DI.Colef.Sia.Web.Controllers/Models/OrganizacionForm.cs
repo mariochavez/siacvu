@@ -11,5 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int SectorId { get; set; }
 
         public SectorForm[] Sectores { get; set; }
+
+        public string CodigoConacyt { get; set; }
     }
 }

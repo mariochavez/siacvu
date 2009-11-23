@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EstanciaInstitucionExternaForm
@@ -7,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaFinal { get; set; }
         public string Actividades { get; set; }
         public string Logros { get; set; }
+        public string DepartamentoDestino { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 

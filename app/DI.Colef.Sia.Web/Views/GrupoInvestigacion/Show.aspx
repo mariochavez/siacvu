@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<GrupoInvestigacionForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
@@ -38,76 +39,50 @@
             <div id="campos">
                 <p>
                     <label>Nombre del grupo de investigaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.NombreGrupoInvestigacion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreGrupoInvestigacion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de creaci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
-                <h4>Estructura funcional</h4>
-                <p>
-	                <label>Sector</label>
-	                <strong><%= Html.Encode(Model.Form.SectorNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Organizaci&oacute;n</label>
-	                <strong><%= Html.Encode(Model.Form.OrganizacionNombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 2</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel2Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 3</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel3Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 4</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel4Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 5</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel5Nombre)%>&nbsp;</strong>
-                </p>
-                <p>
-	                <label>Nivel 6</label>
-                    <strong><%= Html.Encode(Model.Form.Nivel6Nombre)%>&nbsp;</strong>
-                </p>
+                
+                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>L&iacute;der</label>
-                    <strong><%= Html.Encode(Model.Form.Lider)%>&nbsp;</strong>
+                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Lider)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Nombre</label>
-                    <strong><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Miembros</label>
-                    <strong><%= Html.Encode(Model.Form.Miembros)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Miembros)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Impacto</label>
-                    <strong><%= Html.Encode(Model.Form.Impacto)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Impacto)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Vinculaci&oacute;n del sector productivo</label>
-	                <strong><%= Html.Encode(Model.Form.VinculacionSectorProductivo)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.VinculacionSectorProductivo)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Vinculaci&oacute;n del sector social</label>
-	                <strong><%= Html.Encode(Model.Form.VinculacionSectorSocial)%>&nbsp;</strong>
+	                <span class="valor"><%= Html.Encode(Model.Form.VinculacionSectorSocial)%>&nbsp;</span>
                 </p>
                 <p>
 	                <label>Colaboraci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.Colaboracion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Colaboracion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Administraci&oacute;n</label>
-                    <strong><%= Html.Encode(Model.Form.Administracion)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.Administracion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Programa registrado</label>
-                    <strong><%= Html.Encode(Model.Form.ProgramaRegistrado)%>&nbsp;</strong>
+                    <span class="valor"><%= Html.Encode(Model.Form.ProgramaRegistrado)%>&nbsp;</span>
                 </p>
                 
                 <p class="submit">

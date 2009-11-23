@@ -124,7 +124,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Subdisciplina[] GetAllSubdisciplinas();
         Subdisciplina[] GetActiveSubdisciplinas();
         void SaveSubdisciplina(Subdisciplina subdisciplina);
-        Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id);
 
         //Linea Tematica
         LineaTematica GetLineaTematicaById(int id);
@@ -185,7 +184,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Nivel[] GetAllNiveles();
         Nivel[] GetActiveNiveles();
         void SaveNivel(Nivel nivel);
-        Nivel[] GetNivelesByOrganizacionId(int id);
 
         //Programa de estudio
         ProgramaEstudio GetProgramaEstudioById(int id);
@@ -338,7 +336,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Clase[] GetAllClases();
         Clase[] GetActiveClases();
         void SaveClase(Clase clase);
-        Clase[] GetClasesByRamaId(int id);
 
         //Rama
         Rama GetRamaById(int id);

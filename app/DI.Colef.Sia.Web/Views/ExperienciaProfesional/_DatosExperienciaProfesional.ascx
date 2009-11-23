@@ -34,8 +34,6 @@
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
-
-<h4>Estructura funcional</h4>
 <p>
 	<label>2do. Nivel</label>
     <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -43,8 +41,6 @@
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("Nivel2Id") %>
 </p>
-
-<h4>&Aacute;rea de conocimiento</h4>
 <p>
 	<label>Subdisciplina</label>
 	<%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
@@ -52,8 +48,6 @@
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("SubdisciplinaId") %>
 </p>
-
-<h4>Actividad econ&oacute;mica</h4>
 <p>
     <label>Clase</label>
     <%=Html.DropDownList("ClaseId", Model.Clases.CreateSelectList<ClaseForm>("Id", "Nombre"),

@@ -15,6 +15,10 @@
     <%=Html.ValidationMessage("InstitucionNombre")%>
 </p>
 <p>
+    <label>Departamento de destino</label>
+    <%=Html.TextBox("DepartamentoDestino", Model.DepartamentoDestino, new { @class = "input420-requerido", maxlength = 100 })%>
+</p>
+<p>
     <label>2do. Nivel</label>
     <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>

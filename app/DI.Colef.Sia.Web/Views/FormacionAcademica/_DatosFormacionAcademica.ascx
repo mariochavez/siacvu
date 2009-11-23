@@ -10,7 +10,7 @@
 </p>
 <p>
     <label>N&uacute;mero de c&eacute;dula profesional</label>
-    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 20, size = 14 })%>
+    <%=Html.TextBox("NumeroCedula", Model.NumeroCedula, new { @class = "input250-requerido", maxlength = 20 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NumeroCedula")%>
 </p>
@@ -71,8 +71,6 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Estatus")%>
 </p>
-
-<h4>Estructura funcional</h4>
 <p>
 	<label>2do. Nivel</label>
     <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
@@ -80,8 +78,6 @@
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("Nivel2Id") %>
 </p>
-
-<h4>&Aacute;rea de conocimiento</h4>
 <p>
 	<label>Subdisciplina</label>
 	<%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),

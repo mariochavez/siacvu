@@ -9,6 +9,7 @@
     <label>&Aacute;rea tem&aacute;tica</label>
     <span class="valor"><%= Html.Encode(Model.AreaTematicaNombre) %>&nbsp;</span>
 </p>
+<h4>&Aacute;rea del conocimiento</h4>
 <p>
     <label>&Aacute;rea</label>
     <span class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>

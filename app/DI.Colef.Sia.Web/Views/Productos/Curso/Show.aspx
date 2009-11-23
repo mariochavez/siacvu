@@ -72,7 +72,6 @@
                     <% Html.RenderPartial("_ShowCursoExternoDiplomado", Model.Form); %>
                 <% } %>
                 
-                <h4>Complementaria CVU</h4>                
                 <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 
                 <p>

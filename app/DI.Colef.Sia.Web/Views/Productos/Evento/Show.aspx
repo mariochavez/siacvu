@@ -45,6 +45,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                <h4>Datos del evento</h4>
                 <p>
                     <label>Nombre del evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>

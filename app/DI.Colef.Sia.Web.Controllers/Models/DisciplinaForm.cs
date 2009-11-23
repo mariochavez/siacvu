@@ -11,5 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaId { get; set; }
 
         public AreaForm[] Areas { get; set; }
+
+        public string CodigoConacyt { get; set; }
     }
 }

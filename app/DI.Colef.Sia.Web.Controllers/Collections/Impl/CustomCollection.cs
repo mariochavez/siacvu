@@ -145,5 +145,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                            new CustomSelectForm {Id = 3, Nombre = "en participación en medios"}
                        };
         }
+
+        public CustomSelectForm[] EstatusFormacionAcademicaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm()
+                       };
+        }
     }
 }
