@@ -27,14 +27,9 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("FechaOtorgamiento")%>
 </p>
-<p>
-    <label>Instituci&oacute;n otorgante</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución otorgante", IsShowForm = false }); %>
+
 <p>
     <label>&Aacute;mbito</label>
     <%=Html.DropDownList("Ambito", Model.Ambitos.CreateSelectList<AmbitoForm>("Id", "Nombre"),

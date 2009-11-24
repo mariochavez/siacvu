@@ -12,13 +12,9 @@
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p class="notieneproyecto_field">
-	<label>Instancia a la que se presenta el reporte</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div class="notieneproyecto_field">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Instancia a la que se presenta el reporte", IsShowForm = false }); %>
+</div>
 <div class="notieneproyecto_field">
     <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
 </div>

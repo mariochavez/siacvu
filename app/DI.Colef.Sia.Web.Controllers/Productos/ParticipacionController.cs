@@ -24,6 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoMapper proyectoMapper;
         readonly ITipoPresentacionMapper tipoPresentacionMapper;
         readonly IProyectoService proyectoService;
+        readonly IInstitucionMapper institucionMapper;
 
         public ParticipacionController(IParticipacionService participacionService,
                                        IParticipacionMapper participacionMapper,
@@ -36,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        IPaisMapper paisMapper,
                                        IInvestigadorService investigadorService,
                                        IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
-                                       IProyectoService proyectoService)
+                                       IProyectoService proyectoService, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -50,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.estadoPaisMapper = estadoPaisMapper;
             this.investigadorService = investigadorService;
             this.proyectoService = proyectoService;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -113,7 +115,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var participacion = participacionService.GetParticipacionById(id);
-            data.Form = participacionMapper.Map(participacion);
+            var participacionForm = participacionMapper.Map(participacion);
+            data.Form = SetupShowForm(participacionForm);
 
             ViewData.Model = data;
             return View();
@@ -162,44 +165,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return RedirectToIndex(String.Format("Participación {0} ha sido modificada", participacion.Titulo));
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Activate(int id)
-        {
-            var participacion = participacionService.GetParticipacionById(id);
-
-            if (participacion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacion.Activo = true;
-            participacion.ModificadoPor = CurrentUser();
-            participacionService.SaveParticipacion(participacion);
-
-            var form = participacionMapper.Map(participacion);
-
-            return Rjs(form);
-        }
-
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Deactivate(int id)
-        {
-            var participacion = participacionService.GetParticipacionById(id);
-
-            if (participacion.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
-
-            participacion.Activo = false;
-            participacion.ModificadoPor = CurrentUser();
-            participacionService.SaveParticipacion(participacion);
-
-            var form = participacionMapper.Map(participacion);
-
-            return Rjs("Activate", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangePais(int select)
@@ -222,6 +187,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Participacion>(x => x.Titulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
         }
 
         ParticipacionForm SetupNewForm()
@@ -258,6 +242,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
+        }
+
+        private ParticipacionForm SetupShowForm(ParticipacionForm form)
+        {
+            form = form ?? new ParticipacionForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionNombre = form.Institucion.Nombre,
+
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución organizadora"
+                                  };
+
+            return form;
         }
     }
 }

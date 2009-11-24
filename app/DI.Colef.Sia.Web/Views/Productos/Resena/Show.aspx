@@ -88,10 +88,9 @@
                         <span class="valor"><%=Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
                         <span>Formato (yyyy)</span>
                     </p>
-                    <p>
-                        <label>Instituci&oacute;n</label>
-                        <span class="valor"><%=Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                    </p>
+                    
+                    <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                    
                     <p>
                         <label>Editorial</label>
                         <span class="valor"><%=Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>

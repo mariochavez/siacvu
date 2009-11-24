@@ -44,5 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
+
+        /*Show*/
+        public ShowFieldsForm ShowFields { get; set; }
+        public InstitucionForm Institucion { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
+        readonly IInstitucionMapper institucionMapper;
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
                                                IParticipacionAcademiaMapper participacionAcademiaMapper,
@@ -27,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                ISearchService searchService,
                                                IPaisMapper paisMapper,
                                                IEditorialMapper editorialMapper,
-                                               ICustomCollection customCollection
+                                               ICustomCollection customCollection, IInstitucionMapper institucionMapper
             ) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -36,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -99,7 +101,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
-            data.Form = participacionAcademiaMapper.Map(participacionAcademia);
+            var participacionAcademiaForm = participacionAcademiaMapper.Map(participacionAcademia);
+            data.Form = SetupShowForm(participacionAcademiaForm);
 
             ViewData.Model = data;
             return View();
@@ -158,6 +161,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
+        }
+
         ParticipacionAcademiaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -181,6 +203,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Volumen"] = form.Volumen;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+        }
+
+        private ParticipacionAcademiaForm SetupShowForm(ParticipacionAcademiaForm form)
+        {
+            form = form ?? new ParticipacionAcademiaForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución"
+                                  };
+
+            return form;
         }
     }
 }

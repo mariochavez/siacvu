@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IInstitucionMapper institucionMapper;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -45,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IAutorResenaMapper autorResenaMapper,
                                 ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper,
                                 ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper)
+                                ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -67,6 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -202,6 +204,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Resena>(x => x.NombreProducto, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
         }
 
         [Authorize]
@@ -477,6 +498,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
                                       RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
 
@@ -486,7 +513,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
                                       AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
-                                      IsShowForm = true
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución"
                                   };
 
             return form;

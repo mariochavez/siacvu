@@ -282,7 +282,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
                                       Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
 
-                                      IsShowForm = true
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución"
                                   };
             return form;
         }

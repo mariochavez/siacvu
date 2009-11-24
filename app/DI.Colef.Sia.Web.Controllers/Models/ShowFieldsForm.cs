@@ -45,5 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ModelId { get; set; }
         public bool IsShowForm { get; set; }
+        public string InstitucionLabel { get; set; }
     }
 }

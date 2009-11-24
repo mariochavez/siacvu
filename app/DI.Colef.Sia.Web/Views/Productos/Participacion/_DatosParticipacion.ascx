@@ -26,13 +26,9 @@
 	    <%=Html.ValidationMessage("Autor")%>
     </p>
 </div>
-<p id="Platicas">
-	<label>Instituci&oacute;n organizadora</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div id="Platicas">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución organizadora", IsShowForm = false }); %>
+</div>
 <p>
 	<label>Fecha de presentaci&oacute;n</label>
 	<%=Html.TextBox("FechaPresentacion", Model.FechaPresentacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>

@@ -61,10 +61,9 @@
                     <label>Autor</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreAutor)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Instituci&oacute;n organizadora</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Fecha de presentaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</span>

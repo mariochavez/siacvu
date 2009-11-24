@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class DistincionForm
@@ -38,5 +36,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AmbitoForm[] Ambitos { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }
+        
+        /*Show*/
+        public ShowFieldsForm ShowFields { get; set; }
+        public InstitucionForm Institucion { get; set; }
     }
 }

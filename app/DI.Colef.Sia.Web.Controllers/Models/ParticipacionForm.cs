@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ParticipacionForm
@@ -57,5 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }
         public InvestigadorForm[] Autores { get; set; }
+
+        /*Show*/
+        public ShowFieldsForm ShowFields { get; set; }
+        public InstitucionForm Institucion { get; set; }
     }
 }

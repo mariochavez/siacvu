@@ -13,13 +13,9 @@
 		"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
-<p>
-	<label>Instituci&oacute;n de procedencia</label>
-	<%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución de procedencia", IsShowForm = false }); %>
+
 <p>
 	<label>L&iacute;neas de investigaci&oacute;n</label>
 	<%=Html.TextBox("LineasInvestigacion", Model.LineasInvestigacion, new { @class = "input420-requerido", maxlength = 100 })%>

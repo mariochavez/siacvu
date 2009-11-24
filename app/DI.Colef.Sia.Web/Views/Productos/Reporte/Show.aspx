@@ -121,10 +121,7 @@
                             <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</span>
                         </p>
                     <% } else { %>
-                        <p>
-                            <label>Instancia a la que se presenta el reporte</label>
-	                        <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                        </p>
+                        <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
                         
                         <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                         
