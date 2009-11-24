@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ProyectoForm
@@ -50,7 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
 
-        public int AreaTematica { get; set; }
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
         public string AreaTematicaLineaTematicaNombre { get; set; }
@@ -80,15 +81,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int GradoAcademicoId { get; set; }
         public string GradoAcademicoNombre { get; set; }
 
-        //public int Nivel2 { get; set; }
         public int Nivel2Id { get; set; }
         public string Nivel2Nombre { get; set; }
 
-        //public int Subdisciplina { get; set; }
         public int SubdisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
 
-        //public int Clase { get; set; }
         public int ClaseId { get; set; }
         public string ClaseNombre { get; set; }
 
@@ -97,6 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ClaseForm Clase { get; set; }
         public SubdisciplinaForm Subdisciplina { get; set; }
         public NivelForm Nivel2 { get; set; }
+        public AreaTematicaForm AreaTematica { get; set; }
 
         /* New */
         public ResponsableInternoProyectoForm[] ResponsableInternoProyectos { get; set; }
@@ -122,7 +121,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EstatusProyectoForm[] EstatusProyectos { get; set; }
         public SectorForm[] SectoresFinanciamientos { get; set; }
         public FondoConacytForm[] FondosConacyt { get; set; }
-        public AreaTematicaForm[] AreasTematicas { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }
         public ImpactoPoliticaPublicaForm[] ImpactosPoliticasPublicas { get; set; }
         public USEGForm[] Usegs { get; set; }
@@ -130,8 +128,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ActividadPrevistaForm[] ActividadesPrevistas { get; set; }
         public CustomSelectForm[] TiposEstudiantes { get; set; }
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
-        public NivelForm[] Niveles2 { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
-        public ClaseForm[] Clases { get; set; }
     }
 }

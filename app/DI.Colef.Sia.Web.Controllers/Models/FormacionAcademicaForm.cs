@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class FormacionAcademicaForm
@@ -35,7 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EstadoPaisNombre { get; set; }
 
         public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
+
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
@@ -47,7 +52,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EstatusFormacionAcademicaForm[] EstatusFormacionAcademicas { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }
-        public NivelForm[] Niveles2 { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

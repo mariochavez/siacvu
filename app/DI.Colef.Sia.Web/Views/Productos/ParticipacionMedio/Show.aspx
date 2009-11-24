@@ -73,10 +73,9 @@
 	                <label>Palabra clave 3</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>&Aacute;rea tem&aacute;tica</label>
                     <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre)%>&nbsp;</span>

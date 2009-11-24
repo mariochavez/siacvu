@@ -31,7 +31,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionPaisNombre { get; set; }
 
         public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
+
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
+
         public int TesisPosgradoId { get; set; }
 
         public NivelForm Nivel2 { get; set; }
@@ -41,8 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }
-        public NivelForm[] Niveles2 { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
         public CustomSelectForm[] TiposEstudiantes { get; set; }
         public VinculacionAPyDForm[] VinculacionesAPyDs { get; set; }
         public TesisPosgradoForm[] TesisPosgrados { get; set; }

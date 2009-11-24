@@ -18,13 +18,9 @@
     <label>Departamento de destino</label>
     <%=Html.TextBox("DepartamentoDestino", Model.DepartamentoDestino, new { @class = "input420-requerido", maxlength = 100 })%>
 </p>
-<p>
-    <label>2do. Nivel</label>
-    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
-		"Seleccione ...", new { @class = "requerido" })%>
-	<span class="cvu"></span>
-    <%=Html.ValidationMessage("Nivel2Id") %>
-</p>
+
+<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Nivel2Id , Nivel2Nombre = Model.Nivel2Nombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class="datetime input100-requerido", maxlength = 10 })%>

@@ -198,8 +198,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
                            o => o.Ignore())
-                .ForMember(d => d.AreaTematica,
-                           o => o.Ignore())
                 .ForMember(d => d.ImpactoPoliticaPublica,
                            o => o.Ignore())
                 .ForMember(d => d.SectorFinanciamiento,

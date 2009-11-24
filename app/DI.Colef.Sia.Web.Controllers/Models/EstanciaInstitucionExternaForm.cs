@@ -22,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string TipoEstanciaNombre { get; set; }
 
         public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
         
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
@@ -33,6 +34,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
-        public NivelForm[] Niveles2 { get; set; }
     }
 }
