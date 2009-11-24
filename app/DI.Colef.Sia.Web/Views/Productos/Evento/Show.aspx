@@ -55,6 +55,10 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEventoNombre)%>&nbsp;</span>
                 </p>
                 <p>
+                    <label>Objetivo del evento</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ObjetivoEvento)%>&nbsp;</span>
+                </p>
+                <p>
                     <label>Tipo de participaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>

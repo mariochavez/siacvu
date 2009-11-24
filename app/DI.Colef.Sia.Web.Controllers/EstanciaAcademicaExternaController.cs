@@ -15,15 +15,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
+        readonly IGradoAcademicoMapper gradoAcademicoMapper;
 
         public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
             IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper,
             ICatalogoService catalogoService,
+            IGradoAcademicoMapper gradoAcademicoMapper,
             IUsuarioService usuarioService,
             ISearchService searchService, ITipoEstanciaMapper tipoEstanciaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.estanciaAcademicaExternaService = estanciaAcademicaExternaService;
             this.estanciaAcademicaExternaMapper = estanciaAcademicaExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
@@ -162,6 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
+            form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
 
             return form;
         }
@@ -169,6 +173,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaAcademicaExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
+            ViewData["GradoAcademico"] = form.GradoAcademicoId;
         }
 
         private EstanciaAcademicaExternaForm SetupShowForm(EstanciaAcademicaExternaForm form)

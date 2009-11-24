@@ -47,10 +47,6 @@
                 </p>
                 <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
-                    <label>Nombre del &oacute;rgano</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
-                </p>
-                <p>
                     <label>Consejo o Comisi&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.ConsejoComisionNombre)%>&nbsp;</span>
                 </p>

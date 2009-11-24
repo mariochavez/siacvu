@@ -9,9 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        [NotNullNotEmpty]
-        public virtual string ObjetivoEvento { get; set; }
-
         public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }

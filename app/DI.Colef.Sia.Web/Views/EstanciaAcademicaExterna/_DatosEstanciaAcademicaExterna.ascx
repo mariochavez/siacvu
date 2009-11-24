@@ -2,6 +2,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+    <label>Grado acad&eacute;mico</label>
+    <%=Html.DropDownList("GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
+		"Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("GradoAcademico")%>
+</p>
+<p>
     <label>Tipo de estancia</label>
     <%=Html.DropDownList("TipoEstancia", Model.TiposEstancias.CreateSelectList<TipoEstanciaForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
@@ -33,11 +39,11 @@
 </p>
 <p>
 	<label>Actividades acad&eacute;micas previstas</label>
-	<%=Html.TextBox("Actividades", Model.Actividades, new { @class = "input420-requerido", maxlength = 100 })%>
+	<%=Html.TextArea("Actividades", Model.Actividades, 5, 35, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Actividades")%>
 </p>
 <p>
 	<label>Principales logros</label>
-	<%=Html.TextArea("Logros", Model.Logros, new { @class = "input420-requerido", maxlength = 100 })%>
+	<%=Html.TextArea("Logros", Model.Logros, 5, 35, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Logros")%>
 </p>

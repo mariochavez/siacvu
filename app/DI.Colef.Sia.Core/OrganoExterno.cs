@@ -72,6 +72,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Ambito Ambito { get; set; }
 
+        public virtual string Ciudad { get; set; }
+
+        public virtual Pais Pais { get; set; }
+
         public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }

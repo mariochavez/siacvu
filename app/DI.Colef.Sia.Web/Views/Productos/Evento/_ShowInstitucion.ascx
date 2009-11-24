@@ -10,9 +10,6 @@
 	        <div class="sublista" id="institucionevento_<%=Html.Encode(Model.InstitucionEventos[i].InstitucionId) %>">
 	            <h6>
 	                <%=Html.Encode(Model.InstitucionEventos[i].InstitucionNombre)%>
-                     <span>
-                        Objetivo del evento <%=Html.Encode(Model.InstitucionEventos[i].ObjetivoEvento)%>
-                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

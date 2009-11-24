@@ -7,9 +7,14 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <p>
     <label>Nombre de la instituci&oacute;n</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input250-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
+</p>
+<p>
+    <label>Agrupar instituci&oacute;n</label>
+    <%=Html.TextBox("AgrupaInstitucion", Model.AgrupaInstitucion, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("AgrupaInstitucion")%>
 </p>
 <p>
     <label>Siglas de la instituci&oacute;n</label>

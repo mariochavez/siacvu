@@ -674,7 +674,7 @@ a.editabusqueda {
 }
 
 #forma span {
-	margin: 0 10px;
+	margin: 0 5px; /* 10px */
 	font-size: 11pt;
 	line-height: 15pt;
 	color: #CDCCB2;

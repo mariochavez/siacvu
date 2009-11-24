@@ -16,12 +16,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoEstanciaId { get; set; }
         public string TipoEstanciaNombre { get; set; }
 
+        public int GradoAcademico { get; set; }
+        public int GradoAcademicoId { get; set; }
         public string GradoAcademicoNombre { get; set; }
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
         /* Catalogos */
+        public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public TipoEstanciaForm[] TiposEstancias { get; set; }
 
         /* Show */

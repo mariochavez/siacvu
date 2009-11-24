@@ -88,6 +88,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoEvento TipoEvento { get; set; }
 
+        public virtual string ObjetivoEvento { get; set; }
+
         public virtual TipoParticipacion TipoParticipacion { get; set; }
 
         [Valid]

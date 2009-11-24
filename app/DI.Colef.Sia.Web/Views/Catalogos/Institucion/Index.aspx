@@ -59,13 +59,7 @@
 					<div class="elementobotones">
 						<p>
 							<span><%=Html.ActionLink<InstitucionController>(x => x.Edit(institucion.Id), "Editar") %></span>
-	                        <span>
-	                            <% if (institucion.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = institucion.Id }, new { @class = "remote put" })%>
-	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = institucion.Id }, new { @class = "remote put" })%>
-	                            <% } %>
-	                        </span>
+			            	<span><%=Html.ActionLink("Ver", "Show", new { id = institucion.Id })%></span>
 	                   	</p>
 					</div><!--end elementobotones-->
 		

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -17,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IOrganoExternoService organoExternoService;
         readonly ISectorMapper sectorMapper;
         readonly ITipoOrganoMapper tipoOrganoMapper;
+        readonly IPaisMapper paisMapper;
         
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
@@ -25,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        ITipoOrganoMapper tipoOrganoMapper,
                                        ISectorMapper sectorMapper,
                                        IAmbitoMapper ambitoMapper,
-                                       ISearchService searchService)
+                                       ISearchService searchService, IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -34,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoOrganoMapper = tipoOrganoMapper;
             this.sectorMapper = sectorMapper;
             this.ambitoMapper = ambitoMapper;
+            this.paisMapper = paisMapper;
         }
 
         [Authorize]
@@ -62,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             return View(data);
         }
 
@@ -161,6 +164,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposOrganos = tipoOrganoMapper.Map(catalogoService.GetActiveTipoOrganos());
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectoresOrganosExternos());
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
             return form;
         }
@@ -170,6 +174,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoOrgano"] = form.TipoOrganoId;
             ViewData["Sector"] = form.SectorId;
             ViewData["Ambito"] = form.AmbitoId;
+            ViewData["Pais"] = form.PaisId;
         }
     }
 }

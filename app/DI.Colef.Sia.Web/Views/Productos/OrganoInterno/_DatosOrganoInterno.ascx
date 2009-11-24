@@ -2,12 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Nombre del &oacute;rgano</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Nombre")%>
-</p>
-<p>
     <label>Consejo o Comisi&oacute;n</label>
     <%=Html.DropDownList("ConsejoComision", Model.ConsejosComisiones.CreateSelectList<ConsejoComisionForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>

@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(OrganoInternoForm message, OrganoInterno model)
         {
-			model.Nombre = message.Nombre;
             model.Periodo = message.Periodo;
 
 		    model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();

@@ -9,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PaginaWeb { get; set; }
 		public string Email { get; set; }
         public string Telefono { get; set; }
+        public string AgrupaInstitucion { get; set; }
         public bool TipoInstitucion { get; set; }
         public string Ciudad { get; set; }
 		public bool Activo { get; set; }
