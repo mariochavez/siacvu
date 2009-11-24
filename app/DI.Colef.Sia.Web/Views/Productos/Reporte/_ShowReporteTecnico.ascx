@@ -3,17 +3,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Descripci&oacute;n del informe</label>
-    <strong><%= Html.Encode(Model.Descripcion)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.Descripcion)%>&nbsp;</span>
 </p>
 <p>
     <label>Objetivo del informe</label>
-    <strong><%= Html.Encode(Model.Objetivo)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.Objetivo)%>&nbsp;</span>
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>
-    <strong><%= Html.Encode(Model.NoPaginas)%>&nbsp;</strong>
+    <span class="valor"><%= Html.Encode(Model.NoPaginas)%>&nbsp;</span>
 </p>
 <p>
     <label>Fecha de edici&oacute;n</label>
-    <strong><%= Html.Encode(Model.FechaEdicion)%>&nbsp;</strong><span>Formato (dd/mm/yyyy)</span>
+    <span class="valor"><%= Html.Encode(Model.FechaEdicion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
 </p>

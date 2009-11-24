@@ -19,12 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-		//public int Nivel2 { get; set; }
 		public int Nivel2Id { get; set; }
         public string Nivel2Nombre { get; set; }
-		
-		/* Catalogos */
-        public NivelForm[] Niveles2 { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }

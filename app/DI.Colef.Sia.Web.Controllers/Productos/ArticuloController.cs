@@ -24,6 +24,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
         readonly IInvestigadorMapper investigadorMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAreaMapper areaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -32,7 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper, ISearchService searchService,
                                   ITipoArchivoMapper tipoArchivoMapper,
                                   IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
-                                  IInvestigadorMapper investigadorMapper)
+                                  IInvestigadorMapper investigadorMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -46,6 +51,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.customCollection = customCollection;
             this.investigadorMapper = investigadorMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaMapper = areaMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [Authorize]
@@ -179,6 +188,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Articulo>(x => x.Titulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+
+                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+
+            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -337,7 +371,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 
             return form;
         }
@@ -346,7 +379,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["Volumen"] = form.Volumen;
             ViewData["TipoArticulo"] = form.TipoArticuloId;
-            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
         }
@@ -370,7 +402,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

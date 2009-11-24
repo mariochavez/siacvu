@@ -34,27 +34,11 @@
 	<span class="cvu"></span>
     <%=Html.ValidationMessage("Pais") %>
 </p>
-<p>
-	<label>2do. Nivel</label>
-    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
-		"Seleccione ...", new { @class = "requerido" })%>
-	<span class="cvu"></span>
-    <%=Html.ValidationMessage("Nivel2Id") %>
-</p>
-<p>
-	<label>Subdisciplina</label>
-	<%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
-		"Seleccione ...")%>
-	<span class="cvu"></span>
-	<%=Html.ValidationMessage("SubdisciplinaId") %>
-</p>
-<p>
-    <label>Clase</label>
-    <%=Html.DropDownList("ClaseId", Model.Clases.CreateSelectList<ClaseForm>("Id", "Nombre"),
-	    "Seleccione ...")%>
-	<span class="cvu"></span>
-    <%=Html.ValidationMessage("ClaseId") %>
-</p>
+
+<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Nivel2Id , Nivel2Nombre = Model.Nivel2Nombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.SubdisciplinaId, SubdisciplinaNombre = Model.SubdisciplinaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_ShowClase", new ShowFieldsForm { ClaseId = Model.ClaseId, ClaseNombre = Model.ClaseNombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
     <label>L&iacute;nea de investigaci&oacute;n 1</label>
     <%=Html.TextArea("LineaInvestigacion1", Model.LineaInvestigacion1, 3, 35, new { @class = "input420", maxlength = 100 })%>

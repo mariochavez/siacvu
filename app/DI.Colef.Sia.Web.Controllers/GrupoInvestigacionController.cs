@@ -20,12 +20,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly INivelMapper nivelMapper;
     
         public GrupoInvestigacionController(IGrupoInvestigacionService grupoInvestigacionService, 
-			IGrupoInvestigacionMapper grupoInvestigacionMapper, 
-			ICatalogoService catalogoService, IUsuarioService usuarioService,
-            ISectorMapper sectorMapper,
-            IOrganizacionMapper organizacionMapper,
-            ISearchService searchService,
-            INivelMapper nivelMapper)
+			                                IGrupoInvestigacionMapper grupoInvestigacionMapper, 
+			                                ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                            ISectorMapper sectorMapper,
+                                            IOrganizacionMapper organizacionMapper,
+                                            ISearchService searchService,
+                                            INivelMapper nivelMapper)
             : base(usuarioService, searchService, catalogoService)
         {
 			this.catalogoService = catalogoService;
@@ -58,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {			
 			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            data.Form = new GrupoInvestigacionForm();
 
             return View(data);
         }
@@ -76,11 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (grupoInvestigacion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
-                        
-            var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
 
-            data.Form = SetupNewForm(grupoInvestigacionForm);
-            FormSetCombos(data.Form);
+            data.Form = grupoInvestigacionMapper.Map(grupoInvestigacion);
             
 			ViewData.Model = data;
             return View();
@@ -110,10 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser());
             
             if (!IsValidateModel(grupoInvestigacion, form, Title.New, "GrupoInvestigacion"))
-            {
-                ((GenericViewData<GrupoInvestigacionForm>)ViewData.Model).Form = SetupNewForm();
                 return ViewNew();
-            }
 
             grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
 
@@ -129,13 +123,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser());
             
             if (!IsValidateModel(grupoInvestigacion, form, Title.Edit))
-            {
-                var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
-
-                ((GenericViewData<GrupoInvestigacionForm>)ViewData.Model).Form = SetupNewForm(grupoInvestigacionForm);
-                FormSetCombos(grupoInvestigacionForm);
                 return ViewEdit();
-            }
             
             grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
             return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido modificado", grupoInvestigacion.NombreGrupoInvestigacion));
@@ -149,23 +137,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        GrupoInvestigacionForm SetupNewForm()
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel(int select)
         {
-            return SetupNewForm(null);
-        }
-        
-        GrupoInvestigacionForm SetupNewForm(GrupoInvestigacionForm form)
-        {
-			form = form ?? new GrupoInvestigacionForm();
+            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
+            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
+            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
 
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
+            var form = new ShowFieldsForm
+                           {
+                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
+                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
+                               Nivel2Id = nivelForm.Id
+                           };
 
-			return form;
-        }
-        
-        private void FormSetCombos(GrupoInvestigacionForm form)
-        {
-            ViewData["Nivel2Id"] = form.Nivel2Id;
+            return Rjs("ChangeNivel", form);
         }
 
         private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
@@ -176,7 +163,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   {
                                       Nivel2Nombre = form.Nivel2.Nombre,
                                       Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

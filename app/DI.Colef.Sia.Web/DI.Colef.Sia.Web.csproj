@@ -677,6 +677,11 @@
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableExterno.js.ascx" />
     <Content Include="Views\Shared\AddResponsableInterno.js.ascx" />
+    <Content Include="Views\Shared\ChangeNivel.js.ascx" />
+    <Content Include="Views\Shared\ChangeSubdisciplina.js.ascx" />
+    <Content Include="Views\Shared\ChangeClase.js.ascx" />
+    <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
+    <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
     <Content Include="Views\Shared\_ShowClase.ascx" />
     <Content Include="Views\Shared\_ShowInstitucion.ascx" />
     <Content Include="Views\Shared\_Show2doNivel.ascx" />
@@ -717,7 +722,6 @@
     <Content Include="Views\Productos\Capitulo\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Capitulo\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Curso\Edit.aspx" />
-    <Content Include="Views\Productos\Curso\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\Curso\Index.aspx" />
     <Content Include="Views\Productos\Curso\New.aspx" />
     <Content Include="Views\Productos\Curso\_DatosCurso.ascx" />
@@ -793,9 +797,6 @@
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\Show.aspx" />
-    <Content Include="Views\Proyecto\_ActividadEconomica.ascx" />
-    <Content Include="Views\Proyecto\_AreaConocimiento.ascx" />
-    <Content Include="Views\Proyecto\_EstructuraFuncional.ascx" />
     <Content Include="Views\Proyecto\_ParticipacionEstudianteProyecto.ascx" />
     <Content Include="Views\Proyecto\_ProductoAcademicoProyecto.ascx" />
     <Content Include="Views\Proyecto\_TematicaProyecto.ascx" />

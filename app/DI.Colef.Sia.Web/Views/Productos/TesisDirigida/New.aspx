@@ -45,7 +45,6 @@
                 
                 <% Html.RenderPartial("_DatosTesis", Model.Form); %>
 
-                <h4>Complementaria CVU</h4>
                 <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
         				
                 <p class="submit">

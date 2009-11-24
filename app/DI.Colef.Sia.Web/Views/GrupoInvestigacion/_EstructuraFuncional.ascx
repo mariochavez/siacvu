@@ -1,13 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GrupoInvestigacionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<p>
-    <label>Nivel 2</label>
-    <%=Html.DropDownList("Nivel2Id", Model.Niveles2.CreateSelectList<NivelForm>("Id", "Nombre"),
-        "Seleccione ...")%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Nivel2Id") %>
-</p>
+
+<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Nivel2Id , Nivel2Nombre = Model.Nivel2Nombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
     <label>L&iacute;der</label>
     <%= Html.CheckBox("Lider", Model.Lider) %>

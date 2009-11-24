@@ -9,12 +9,9 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
 </p>
-<p>
-    <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("AreaTematicaId")%>
-</p>
+
+<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
     <label>Palabra clave 1</label>
     <%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>

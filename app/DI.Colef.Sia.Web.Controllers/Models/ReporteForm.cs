@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionNombre { get; set; }
 
         public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
 
         public int TotalAutores
         {
@@ -59,7 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaTematicaForm AreaTematica { get; set; }
 
         /* Catalogos */
-        public AreaTematicaForm[] AreasTematicas { get; set; }
         public TipoReporteForm[] TiposReportes { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

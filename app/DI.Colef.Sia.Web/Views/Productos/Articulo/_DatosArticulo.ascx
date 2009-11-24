@@ -26,12 +26,9 @@
     <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
     <%=Html.ValidationMessage("ProyectoNombre")%>
 </p>
-<p id="notieneproyecto_field">
-    <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("AreaTematicaId")%>
-</p>
+<div id="notieneproyecto_field">
+    <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+</div>
 <p>
 	<label>Palabra clave 1</label>
 	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>

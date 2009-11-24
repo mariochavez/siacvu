@@ -264,6 +264,85 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+
+                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+
+            return Rjs("ChangeAreaTematica", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel(int select)
+        {
+            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
+            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
+            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
+
+            var form = new ShowFieldsForm
+                           {
+                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
+                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
+                               Nivel2Id = nivelForm.Id
+                           };
+
+            return Rjs("ChangeNivel", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSubdisciplina(int select)
+        {
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+                               SubdisciplinaId = subdisciplinaForm.Id
+                           };
+
+            return Rjs("ChangeSubdisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeClase(int select)
+        {
+            var claseForm = claseMapper.Map(catalogoService.GetClaseById(select));
+            var ramaForm = ramaMapper.Map(catalogoService.GetRamaById(claseForm.RamaId));
+            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(ramaForm.SectorId));
+
+            var form = new ShowFieldsForm
+                           {
+                               ClaseRamaNombre = ramaForm.Nombre,
+                               ClaseRamaSectorEconomicoNombre = sectorForm.Nombre,
+                               ClaseId = claseForm.Id
+                           };
+
+            return Rjs("ChangeClase", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewResponsableInterno(int id)
         {
             var proyecto = proyectoService.GetProyectoById(id);
@@ -468,11 +547,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
-
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
-            form.Clases = claseMapper.Map(catalogoService.GetActiveClases());
 
             return form;
         }
@@ -485,16 +559,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
             ViewData["FondoConacyt"] = form.FondoConacytId;
             ViewData["LineaTematica"] = form.LineaTematicaId;
-            ViewData["AreaTematica"] = form.AreaTematicaId;
             ViewData["ImpactoPoliticaPublica"] = form.ImpactoPoliticaPublicaId;
             ViewData["USEG"] = form.USEGId;
             ViewData["ProductoAcademico"] = form.ProductoAcademicoId;
             ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
             ViewData["TipoEstudiante"] = form.TipoEstudiante;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
-            ViewData["Nivel2Id"] = form.Nivel2Id;
-            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
-            ViewData["ClaseId"] = form.ClaseId;
         }
 
         private ProyectoForm SetupShowForm(ProyectoForm form)
@@ -513,7 +583,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
                                       ClaseNombre = form.Clase.Nombre,
                                       ClaseRamaNombre = form.Clase.RamaNombre,
-                                      ClaseRamaSectorEconomicoNombre = form.Clase.RamaSectorNombre
+                                      ClaseRamaSectorEconomicoNombre = form.Clase.RamaSectorNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

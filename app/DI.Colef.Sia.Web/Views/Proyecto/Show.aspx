@@ -154,14 +154,9 @@
                     <label>Palabra clave 3</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>L&iacute;nea tem&aacute;tica institucional</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.LineaTematicaNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica institucional</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Impacto en la pol&iacute;tica p&uacute;blica</label>
                     <span class="valor"><%= Html.Encode(Model.Form.ImpactoPoliticaPublicaNombre)%>&nbsp;</span>

@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
@@ -29,9 +31,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nivel2OrganizacionNombre { get; set; }
         public string Nivel2OrganizacionSectorNombre { get; set; }
 
+        public string InstitucionNombre { get; set; }
         public bool InstitucionTipoInstitucionNombre { get; set; }
         public string InstitucionPaisNombre { get; set; }
         public string InstitucionEstadoPaisNombre { get; set; }
-        public string InstitucionCiudadNombre { get; set; }
+        public string InstitucionCiudad { get; set; }
+
+        public int Nivel2Id { get; set; }
+        public int SubdisciplinaId { get; set; }
+        public int ClaseId { get; set; }
+        public int AreaTematicaId { get; set; }
+        public int InstitucionId { get; set; }
+
+        public int ModelId { get; set; }
+        public bool IsShowForm { get; set; }
     }
 }
