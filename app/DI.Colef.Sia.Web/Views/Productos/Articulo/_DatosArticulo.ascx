@@ -7,14 +7,9 @@
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("PosicionAutor")%>
 </p>
-<p>
-    <label>Nombre de la revista</label>
-    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
-</p>
+
+<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+
 <p>
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?

@@ -4,8 +4,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
     {
+        public string RevistaPublicacionTitulo { get; set; }
         public string RevistaPublicacionInstitucionNombre { get; set; }
         public string RevistaPublicacionPaisNombre { get; set; }
+        public string RevistaPublicacionIndice1Nombre { get; set; }
+        public string RevistaPublicacionIndice2Nombre { get; set; }
+        public string RevistaPublicacionIndice3Nombre { get; set; }
 
         public string ProyectoAreaTematicaLineaTematicaNombre { get; set; }
         public string ProyectoAreaTematicaNombre { get; set; }
@@ -42,9 +46,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ClaseId { get; set; }
         public int AreaTematicaId { get; set; }
         public int InstitucionId { get; set; }
+        public int RevistaPublicacionId { get; set; }
 
         public int ModelId { get; set; }
         public bool IsShowForm { get; set; }
         public string InstitucionLabel { get; set; }
+        public string RevistaLabel { get; set; }
     }
 }

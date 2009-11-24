@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -37,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ITipoArchivoMapper tipoArchivoMapper,
                                   IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
                                   IInvestigadorMapper investigadorMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper)
+                                ISubdisciplinaMapper subdisciplinaMapper, IRevistaPublicacionMapper revistaPublicacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -55,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
         }
 
         [Authorize]
@@ -188,6 +190,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Articulo>(x => x.Titulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
+
+            return Rjs("ChangeRevista", form);
         }
 
         [Authorize]
@@ -389,8 +411,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
                                       RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
                                       ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
                                       ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
@@ -404,7 +430,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
                                       AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
-                                      IsShowForm = true
+                                      IsShowForm = true,
+                                      RevistaLabel = "Nombre de la revista"
                                   };
 
             return form;

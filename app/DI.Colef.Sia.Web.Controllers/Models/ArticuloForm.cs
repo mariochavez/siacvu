@@ -38,9 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
-        public string RevistaPublicacionIndice1Nombre { get; set; }
-        public string RevistaPublicacionIndice2Nombre { get; set; }
-        public string RevistaPublicacionIndice3Nombre { get; set; }
 
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
