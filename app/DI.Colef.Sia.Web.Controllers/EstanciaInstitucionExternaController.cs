@@ -16,6 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly INivelMapper nivelMapper;
+        readonly ISectorMapper sectorMapper;
+        readonly IOrganizacionMapper organizacionMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
@@ -23,7 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
                                             IConvenioMapper convenioMapper,
                                             INivelMapper nivelMapper,
-                                            ISearchService searchService)
+                                            ISearchService searchService, ISectorMapper sectorMapper,
+                                            IOrganizacionMapper organizacionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -31,6 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.estanciaInstitucionExternaMapper = estanciaInstitucionExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
             this.nivelMapper = nivelMapper;
+            this.sectorMapper = sectorMapper;
+            this.organizacionMapper = organizacionMapper;
         }
 
         [Authorize]
@@ -153,6 +158,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeNivel(int select)
+        {
+            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
+            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
+            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
+
+            var form = new ShowFieldsForm
+                           {
+                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
+                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
+                               Nivel2Id = nivelForm.Id
+                           };
+
+            return Rjs("ChangeNivel", form);
+        }
+
         EstanciaInstitucionExternaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -164,7 +187,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
-            form.Niveles2 = nivelMapper.Map(catalogoService.GetActiveNiveles());
 
             return form;
         }
@@ -172,7 +194,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
-            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)
@@ -180,16 +201,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form = form ?? new EstanciaInstitucionExternaForm();
 
             form.ShowFields = new ShowFieldsForm
-            {
-                InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
-                InstitucionPaisNombre = form.Institucion.PaisNombre,
-                InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
-                InstitucionCiudadNombre = form.Institucion.Ciudad,
+                                  {
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionCiudadNombre = form.Institucion.Ciudad,
 
-                Nivel2Nombre= form.Nivel2.Nombre,
-                Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre
-            };
+                                      Nivel2Nombre = form.Nivel2.Nombre,
+                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
+                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+
+                                      IsShowForm = true
+                                  };
 
             return form;
         }

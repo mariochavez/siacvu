@@ -74,12 +74,13 @@
                 
                 <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                
+                <h4>Complementaria CVU</h4>
                 <p>
                     <label>Pa&iacute;s</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
-                
-                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>

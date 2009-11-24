@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ResenaForm
@@ -25,6 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
 
         public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
 
         public int Idioma { get; set; }
         public int IdiomaId { get; set; }
@@ -82,6 +85,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EditorialForm[] Editoriales { get; set; }
         public PaisForm[] Paises { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
-        public AreaTematicaForm[] AreasTematicas { get; set; }
     }
 }

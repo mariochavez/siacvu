@@ -32,12 +32,9 @@
     <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
 	<span class="cvu"></span>
 </p>
-<p>
-    <label>&Aacute;rea tem&aacute;tica</label>
-    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("AreaTematicaId")%>
-</p>
+
+<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
 	<label>Instituci&oacute;n responsable/Nombre del medio</label>
 	<%=Html.TextBox("Institucion", Model.Institucion, new { @class = "input420-requerido", maxlength = 100 })%>

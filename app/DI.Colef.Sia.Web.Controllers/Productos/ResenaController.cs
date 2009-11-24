@@ -29,6 +29,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IResenaService resenaService;
         readonly ITipoResenaMapper tipoResenaMapper;
         readonly IEditorialMapper editorialMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAreaMapper areaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -39,7 +43,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService, ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
                                 IAutorResenaMapper autorResenaMapper,
-                                ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper)
+                                ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper,
+                                ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -57,6 +63,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.tipoResenaMapper = tipoResenaMapper;
             this.editorialMapper = editorialMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaMapper = areaMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [Authorize]
@@ -192,6 +202,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Resena>(x => x.NombreProducto, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+
+                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+
+            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -422,7 +457,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 
             return form;
         }
@@ -435,7 +469,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Pais"] = form.PaisId;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         private ResenaForm SetupShowForm(ResenaForm form)
@@ -451,7 +484,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

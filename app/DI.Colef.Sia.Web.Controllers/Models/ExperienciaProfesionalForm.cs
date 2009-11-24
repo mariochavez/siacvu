@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ExperienciaProfesionalForm
@@ -16,8 +18,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         //Espacio para Agregar Mapeos
         public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
+
         public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
+
         public int ClaseId { get; set; }
+        public string ClaseNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
@@ -30,9 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ClaseForm Clase { get; set; }
 
         /* Catalogos */
-        public NivelForm[] Niveles2 { get; set; }
         public PaisForm[] Paises { get; set; }
-        public SubdisciplinaForm[] Subdisciplinas { get; set; }
-        public ClaseForm[] Clases { get; set; }
     }
 }

@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionIndice3Nombre { get; set; }
 
         public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
         
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
@@ -75,7 +76,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public CustomSelectForm[] Volumenes { get; set; }
         public TipoArticuloForm[] TiposArticulos { get; set; }
-        public AreaTematicaForm[] AreasTematicas { get; set; }
         public IdiomaForm[] Idiomas { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

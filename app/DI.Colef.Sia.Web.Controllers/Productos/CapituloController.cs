@@ -32,6 +32,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IEditorialMapper editorialMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAreaMapper areaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -40,15 +44,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IInvestigadorExternoMapper investigadorExternoMapper,
                                   IFormaParticipacionMapper formaParticipacionMapper,
                                   ITipoParticipacionMapper tipoParticipacionMapper,
-                                  ITipoParticipanteMapper tipoParticipanteMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                                  ITipoParticipanteMapper tipoParticipanteMapper,
                                   ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                                   ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                                   IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
                                   IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
                                   IInvestigadorService investigadorService,
                                   ISearchService searchService, IProyectoService proyectoService, IProyectoMapper proyectoMapper,
-                                  ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper, 
-                                  IEditorialMapper editorialMapper)
+                                  ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper,
+                                  IEditorialMapper editorialMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -70,6 +75,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.editorialMapper = editorialMapper;
             this.customCollection = customCollection;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaMapper = areaMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [Authorize]
@@ -206,6 +215,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Capitulo>(x => x.NombreCapitulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+
+                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+
+            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -506,7 +540,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.Volumenes = customCollection.VolumenCustomCollection();
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
@@ -525,7 +558,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(CapituloForm form)
         {
-            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["Volumen"] = form.Volumen;
             ViewData["TipoCapitulo"] = form.TipoCapituloId;
@@ -552,7 +584,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

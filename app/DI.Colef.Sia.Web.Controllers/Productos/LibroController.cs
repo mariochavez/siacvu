@@ -28,6 +28,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAreaMapper areaMapper;
+        readonly IDisciplinaMapper disciplinaMapper;
+        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public LibroController(ILibroService libroService, 
                                ICustomCollection customCollection,
@@ -44,7 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoService eventoService,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IEditorialMapper editorialMapper,
-                               IEditorialLibroMapper editorialLibroMapper)
+                               IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -61,6 +66,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.formatoPublicacionMapper = formatoPublicacionMapper;
             this.editorialMapper = editorialMapper;
             this.editorialLibroMapper = editorialLibroMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaMapper = areaMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [Authorize]
@@ -197,6 +206,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Libro>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+
+                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+
+            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -473,7 +507,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
-            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 			
             return form;
         }
@@ -487,7 +520,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Idioma"] = form.IdiomaId;
-            ViewData["AreaTematicaId"] = form.AreaTematicaId;
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 
@@ -510,7 +542,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
                                       AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre
+                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
+
+                                      IsShowForm = true
                                   };
 
             return form;

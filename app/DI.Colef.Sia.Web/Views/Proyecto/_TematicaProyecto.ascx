@@ -28,12 +28,9 @@
                                 "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeLineaTematica") })%>
     <%=Html.ValidationMessage("LineaTematica")%>
 </p>
-<p>
-    <label>&Aacute;rea tem&aacute;tica institucional</label>
-    <%=Html.DropDownList("AreaTematica", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-                                "Seleccione ...")%>
-    <%=Html.ValidationMessage("AreaTematica")%>
-</p>
+
+<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+
 <p>
     <label>Impacto en la pol&iacute;tica p&uacute;blica</label>
     <%=Html.DropDownList("ImpactoPoliticaPublica", Model.ImpactosPoliticasPublicas.CreateSelectList<ImpactoPoliticaPublicaForm>("Id", "Nombre"),
