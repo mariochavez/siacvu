@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CursoForm
@@ -49,6 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public SubdisciplinaForm Subdisciplina { get; set; }
         public NivelForm Nivel2 { get; set; }
         public ShowFieldsForm ShowFields { get; set; }
+        public InstitucionForm Institucion { get; set; }
 
         /* Catalogos */
         public NivelEstudioForm[] NivelEstudios { get; set; }

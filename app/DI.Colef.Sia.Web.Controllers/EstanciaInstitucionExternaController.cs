@@ -205,7 +205,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
-                                      InstitucionCiudadNombre = form.Institucion.Ciudad,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
 
                                       Nivel2Nombre = form.Nivel2.Nombre,
                                       Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,

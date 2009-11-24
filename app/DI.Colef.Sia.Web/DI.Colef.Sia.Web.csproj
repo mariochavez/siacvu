@@ -681,6 +681,7 @@
     <Content Include="Views\Shared\ChangeSubdisciplina.js.ascx" />
     <Content Include="Views\Shared\ChangeClase.js.ascx" />
     <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
+    <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
     <Content Include="Views\Shared\_ShowClase.ascx" />
     <Content Include="Views\Shared\_ShowInstitucion.ascx" />
     <Content Include="Views\Shared\_Show2doNivel.ascx" />

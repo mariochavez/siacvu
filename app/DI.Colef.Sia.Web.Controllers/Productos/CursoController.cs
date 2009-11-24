@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISectorMapper sectorMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly IAreaMapper areaMapper;
+        readonly IInstitucionMapper institucionMapper;
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
@@ -41,7 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ISearchService searchService, ICustomCollection customCollection,
                                ICursoInvestigadorService cursoInvestigadorService, ICursoInvestigadorMapper cursoInvestigadorMapper,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper, IDisciplinaMapper disciplinaMapper,
-                               IAreaMapper areaMapper)
+                               IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -59,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.sectorMapper = sectorMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.areaMapper = areaMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -217,6 +219,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            };
 
             return Rjs("ChangeSubdisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
         }
 
         CursoForm SetupNewForm()

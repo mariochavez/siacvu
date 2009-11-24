@@ -49,14 +49,9 @@
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
-<p class="cursoexterno_field">
-	<label>Instituci&oacute;n</label>
-	<%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div class="cursoexterno_field">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, ModelId = Model.Id, IsShowForm = false}); %>
+</div>
 <p class="cursoexternodiplomado_field">
     <label>Fecha inicial</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
