@@ -29,6 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper, ICatalogoService catalogoService,
@@ -38,7 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ITipoArchivoMapper tipoArchivoMapper,
                                   IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
                                   IInvestigadorMapper investigadorMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper, IRevistaPublicacionMapper revistaPublicacionMapper)
+                                  ISubdisciplinaMapper subdisciplinaMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
+                                  IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -57,6 +60,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.proyectoMapper = proyectoMapper;
+            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -190,6 +195,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Articulo>(x => x.Titulo, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               ProyectoId = proyectoForm.Id,
+
+                               ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
+                               ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
+                               ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                               ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
+                               ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
+                           };
+
+            return Rjs("ChangeProyecto", form);
         }
 
         [Authorize]
@@ -423,6 +448,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
                                       ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
                                       ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+                                      ProyectoNombre = form.Proyecto.Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,

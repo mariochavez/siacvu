@@ -51,13 +51,9 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>					
 </p>
-<p>
-	<label>Proyecto</label>	
-    <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
-    <%=Html.ValidationMessage("ProyectoNombre")%>
-</p>
+
+<% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+
 <p>
     <label>A&ntilde;o de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>

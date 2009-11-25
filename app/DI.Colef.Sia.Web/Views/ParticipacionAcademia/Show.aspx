@@ -76,10 +76,9 @@
                         </span><span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } %>
-                <p>
-                    <label>Proyecto de referencia</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>A&ntilde;o de edici&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>

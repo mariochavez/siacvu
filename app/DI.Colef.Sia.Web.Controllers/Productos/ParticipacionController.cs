@@ -191,6 +191,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               ProyectoId = proyectoForm.Id,
+
+                               ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
+                               ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
+                               ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                               ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
+                               ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
+                           };
+
+            return Rjs("ChangeProyecto", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeInstitucion(int select)
         {
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
@@ -220,7 +240,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Autores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
             form.OtrasParticipaciones = otraParticipacionMapper.Map(catalogoService.GetActiveOtraParticipaciones());
             form.TiposPresentaciones = tipoPresentacionMapper.Map(catalogoService.GetActiveTipoPresentaciones());
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
 
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             if (form.Id == 0)
@@ -239,7 +258,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Autor"] = form.AutorId;
             ViewData["OtraParticipacion"] = form.OtraParticipacionId;
             ViewData["TipoPresentacion"] = form.TipoPresentacionId;
-            ViewData["Proyecto"] = form.ProyectoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
         }
@@ -250,6 +268,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+                                      ProyectoNombre = form.Proyecto.Nombre,
+
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
