@@ -79,6 +79,10 @@ alter table OrganoExternos  drop constraint FK55BF0AAE3E082BED
 alter table OrganoExternos  drop constraint FK55BF0AAEC93A1EF1
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7A8488F7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
 alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
 
@@ -671,17 +675,8 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197D866EAB
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE0193E391E13
 
 
-<<<<<<< HEAD:db/DbSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0197A8C3DE5]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197A8C3DE5
-=======
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7A8488F7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01964F7D1CD]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
@@ -2666,6 +2661,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Siglas NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -2675,6 +2671,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TipoOrganoFk INT null,
        SectorFk INT null,
        AmbitoFk INT null,
+       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -2984,6 +2981,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Eventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       ObjetivoEvento NVARCHAR(255) null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
@@ -3008,10 +3006,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table EstatusFormacionAcademicas (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/DbSchema.sql
        Nombre NVARCHAR(255) null,
-=======
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3115,7 +3110,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table OrganoInternos (
         Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Periodo INT null,
@@ -3164,7 +3158,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table InstitucionEventos (
         Id INT IDENTITY NOT NULL,
-       ObjetivoEvento NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3213,27 +3206,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Puestos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-<<<<<<< HEAD:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-=======
-       Participacion NVARCHAR(255) null,
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       Siglas NVARCHAR(255) null,
-       Ciudad NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       UsuarioFk INT null,
-       DepartamentoFk INT null,
-       SedeFk INT null,
-       TipoOrganoFk INT null,
-       SectorFk INT null,
-       AmbitoFk INT null,
-       PaisFk INT null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3580,17 +3555,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table TipoApoyos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-<<<<<<< HEAD:db/DbSchema.sql
-=======
-       AgrupaInstitucion NVARCHAR(255) null,
-       Siglas NVARCHAR(255) null,
-       Sede NVARCHAR(255) null,
-       PaginaWeb NVARCHAR(255) null,
-       Email NVARCHAR(255) null,
-       Telefono NVARCHAR(255) null,
-       TipoInstitucion BIT null,
-       Ciudad NVARCHAR(255) null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3633,17 +3597,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table ResponsableExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-<<<<<<< HEAD:db/DbSchema.sql
-=======
-       ObjetivoEvento NVARCHAR(255) null,
-       PalabraClave1 NVARCHAR(255) null,
-       PalabraClave2 NVARCHAR(255) null,
-       PalabraClave3 NVARCHAR(255) null,
-       Invitacion BIT null,
-       TituloTrabajo NVARCHAR(255) null,
-       FechaEvento DATETIME null,
-       Lugar NVARCHAR(255) null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3666,6 +3619,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Instituciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       AgrupaInstitucion NVARCHAR(255) null,
        Siglas NVARCHAR(255) null,
        Sede NVARCHAR(255) null,
        PaginaWeb NVARCHAR(255) null,
@@ -3812,13 +3766,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table Cargos (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/DbSchema.sql
        Nombre NVARCHAR(255) null,
-=======
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       Periodo INT null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4851,6 +4799,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Ambitos
 
     alter table OrganoExternos 
+        add constraint FK55BF0AAE7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
+    alter table OrganoExternos 
         add constraint FK55BF0AAE85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -5590,57 +5543,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (SedeFk) 
         references Sedes
 
-<<<<<<< HEAD:db/DbSchema.sql
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE0197A8C3DE5 
         foreign key (TipoEstanciaFk) 
         references TipoEstancias
-=======
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE803FA562 
-        foreign key (TipoOrganoFk) 
-        references TipoOrganos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE3E082BED 
-        foreign key (SectorFk) 
-        references Sectores
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAEC93A1EF1 
-        foreign key (AmbitoFk) 
-        references Ambitos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table LineaTematicas 
-        add constraint FK7004441E85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table LineaTematicas 
-        add constraint FK7004441E74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD9CF67963 
-        foreign key (GradoAcademicoFk) 
-        references GradoAcademicos
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/DbSchema.sql
 
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE01964F7D1CD 

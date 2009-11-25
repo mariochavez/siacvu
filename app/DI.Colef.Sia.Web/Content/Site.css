@@ -20,7 +20,7 @@
 
 #titulo h1 {
 	float: left;
-	width: 600px;
+	width: 570px;
 	margin: 0;
 }
 
@@ -30,9 +30,9 @@
 
 #usuario p {
 	float: left;
-	width: 370px;
+	width: 400px;
 	margin: 0;
-	padding: 25px 10px 0 0;
+	padding: 20px 10px 0 0;
 	font-size: 11pt;
 	font-weight: bold;
 	text-align: right;

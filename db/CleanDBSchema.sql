@@ -100,6 +100,11 @@ alter table OrganoExternos  drop constraint FK55BF0AAEC93A1EF1
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7A8488F7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
 alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
 
@@ -840,18 +845,8 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE0193E391E13
 
 
 
-<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0197A8C3DE5]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197A8C3DE5
-=======
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE7A8488F7]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
 
 
 
@@ -3236,6 +3231,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Siglas NVARCHAR(255) null,
+       Ciudad NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3245,6 +3241,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TipoOrganoFk INT null,
        SectorFk INT null,
        AmbitoFk INT null,
+       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3554,6 +3551,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Eventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       ObjetivoEvento NVARCHAR(255) null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
@@ -3578,10 +3576,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table EstatusFormacionAcademicas (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/CleanDBSchema.sql
        Nombre NVARCHAR(255) null,
-=======
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3685,7 +3680,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table OrganoInternos (
         Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Periodo INT null,
@@ -3734,7 +3728,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table InstitucionEventos (
         Id INT IDENTITY NOT NULL,
-       ObjetivoEvento NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3783,27 +3776,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Puestos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-<<<<<<< HEAD:db/CleanDBSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-=======
-       Participacion NVARCHAR(255) null,
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       Siglas NVARCHAR(255) null,
-       Ciudad NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       UsuarioFk INT null,
-       DepartamentoFk INT null,
-       SedeFk INT null,
-       TipoOrganoFk INT null,
-       SectorFk INT null,
-       AmbitoFk INT null,
-       PaisFk INT null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4212,17 +4187,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table DirigidoAs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-<<<<<<< HEAD:db/CleanDBSchema.sql
-=======
-       ObjetivoEvento NVARCHAR(255) null,
-       PalabraClave1 NVARCHAR(255) null,
-       PalabraClave2 NVARCHAR(255) null,
-       PalabraClave3 NVARCHAR(255) null,
-       Invitacion BIT null,
-       TituloTrabajo NVARCHAR(255) null,
-       FechaEvento DATETIME null,
-       Lugar NVARCHAR(255) null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4367,13 +4331,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
     create table TipoOrganos (
         Id INT IDENTITY NOT NULL,
-<<<<<<< HEAD:db/CleanDBSchema.sql
        Nombre NVARCHAR(255) null,
-=======
-       FechaInicial DATETIME null,
-       FechaFinal DATETIME null,
-       Periodo INT null,
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -5331,6 +5289,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (AmbitoFk) 
         references Ambitos
 
+    alter table OrganoExternos 
+        add constraint FK55BF0AAE7A8488F7 
+        foreign key (PaisFk) 
+        references Paises
+
     alter table Organizaciones 
         add constraint FK66FEAE593E082BED 
         foreign key (SectorFk) 
@@ -5640,144 +5603,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK8BA36D77C8628149 
         foreign key (Nivel2Fk) 
         references Niveles
-<<<<<<< HEAD:db/CleanDBSchema.sql
-=======
-
-    alter table Proyectos 
-        add constraint FK8BA36D77F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table Proyectos 
-        add constraint FK8BA36D7744A2723A 
-        foreign key (ClaseFk) 
-        references Clases
-
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E70EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E778FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E7770EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table AutorResenas 
-        add constraint FK4DBBE718336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table AutorResenas 
-        add constraint FK4DBBE71FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
-
-    alter table ResponsableInternoProyectos 
-        add constraint FK1BD3EE078336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table ResponsableInternoProyectos 
-        add constraint FK1BD3EE0770EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE7D866EAB 
-        foreign key (DepartamentoFk) 
-        references Departamentos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE3E391E13 
-        foreign key (SedeFk) 
-        references Sedes
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE803FA562 
-        foreign key (TipoOrganoFk) 
-        references TipoOrganos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE3E082BED 
-        foreign key (SectorFk) 
-        references Sectores
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAEC93A1EF1 
-        foreign key (AmbitoFk) 
-        references Ambitos
-
-    alter table OrganoExternos 
-        add constraint FK55BF0AAE7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD9CF67963 
-        foreign key (GradoAcademicoFk) 
-        references GradoAcademicos
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table Editoriales 
-        add constraint FKFB2915907A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Editoriales 
-        add constraint FKFB29159064F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table EstadoPaises 
-        add constraint FKD3B80B527A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Distinciones 
-        add constraint FKEF821EECB2CAFCD8 
-        foreign key (TipoDistincionFk) 
-        references TipoDistinciones
-
-    alter table Distinciones 
-        add constraint FKEF821EEC64F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Distinciones 
-        add constraint FKEF821EECC93A1EF1 
-        foreign key (AmbitoFk) 
-        references Ambitos
-
-    alter table Distinciones 
-        add constraint FKEF821EEC7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
->>>>>>> c04193c867925af25a2777ae8aa7a482d3a1caac:db/CleanDBSchema.sql
 
     alter table Proyectos 
         add constraint FK8BA36D77F4FE4035 
