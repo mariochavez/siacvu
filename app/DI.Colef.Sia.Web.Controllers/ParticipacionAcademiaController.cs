@@ -20,6 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
         readonly IInstitucionMapper institucionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
                                                IParticipacionAcademiaMapper participacionAcademiaMapper,
@@ -27,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                IUsuarioService usuarioService,
                                                ISearchService searchService,
                                                IPaisMapper paisMapper,
+                                               IRevistaPublicacionMapper revistaPublicacionMapper,
                                                IEditorialMapper editorialMapper,
                                                ICustomCollection customCollection, IInstitucionMapper institucionMapper
             ) : base(usuarioService, searchService, catalogoService)
@@ -37,6 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.institucionMapper = institucionMapper;
         }
 
@@ -163,6 +166,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                RevistaPublicacionId = revistaForm.Id,
+
+                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+            };
+
+            return Rjs("ChangeRevista", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeInstitucion(int select)
         {
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
@@ -211,6 +234,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+
                                       InstitucionNombre = form.Institucion.Nombre,
                                       InstitucionCiudad = form.Institucion.Ciudad,
                                       InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
@@ -218,6 +248,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
                                       IsShowForm = true,
+                                      RevistaLabel = "Nombre de la revista",
                                       InstitucionLabel = "Institución"
                                   };
 

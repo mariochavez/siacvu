@@ -4,14 +4,10 @@
 <p>
 	<label>Nombre del producto</label>
 	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreProducto")%>						
-</p>
-<label>Nombre de la revista</label>
-    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
-    <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
-</p>
+	<%=Html.ValidationMessage("NombreProducto")%>
+							
+<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+
 <p>
     <label>Volumen</label>
     <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),

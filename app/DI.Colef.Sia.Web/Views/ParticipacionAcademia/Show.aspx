@@ -40,10 +40,9 @@
                     <label>Nombre del producto</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Nombre de la revista</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionTitulo) %>&nbsp;</span>
-                </p>
+                <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                <% } %>
                 <p>
                     <label>Volumen</label>
                         <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>

@@ -117,10 +117,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             //Tipo Publicacion - Numero especial de revista
             if (libro.FormatoPublicacion.Nombre.Contains("Número especial de revista"))
             {
-                if (libro.NombreRevista == null)
+                if (libro.RevistaPublicacion == null)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|NombreRevistaTitulo", "NombreRevistaTitulo");
+                        "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
 
                     isValid = false;
                 }

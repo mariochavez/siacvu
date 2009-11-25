@@ -34,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -44,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService, ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
                                 IAutorResenaMapper autorResenaMapper,
+                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                 ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper,
                                 ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
@@ -52,6 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.autorResenaMapper = autorResenaMapper;
             this.idiomaMapper = idiomaMapper;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.catalogoService = catalogoService;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
@@ -204,6 +207,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Resena>(x => x.NombreProducto, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
+
+            return Rjs("ChangeRevista", form);
         }
 
         [Authorize]
@@ -504,8 +527,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
                                       RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
@@ -514,6 +541,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
                                       IsShowForm = true,
+                                      RevistaLabel = "Revista en que se publica",
                                       InstitucionLabel = "Institución"
                                   };
 

@@ -76,11 +76,9 @@
                 <% } %>
                 
                 <% if (Model.Form.FormatoPublicacionNombre.Contains("revista")){ %>
-                    <p>
-                        <label>Nombre de la revista</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.NombreRevistaTitulo)%>&nbsp;</span>
-                    </p>
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                	<% } %>
                     <p>
                         <label>N&uacute;mero</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>

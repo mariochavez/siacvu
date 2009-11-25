@@ -88,7 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Evento Evento { get; set; }
 
-        public virtual RevistaPublicacion NombreRevista { get; set; }
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
         public virtual int Numero { get; set; }
 
