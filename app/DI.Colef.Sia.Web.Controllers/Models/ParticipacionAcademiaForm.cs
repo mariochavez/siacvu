@@ -49,5 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ShowFieldsForm ShowFields { get; set; }
         public InstitucionForm Institucion { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
+        public ProyectoForm Proyecto { get; set; }
     }
 }

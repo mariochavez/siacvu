@@ -68,11 +68,10 @@
                     <label>Fecha de presentaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaPresentacion)%>&nbsp;</span>
                     <span>Formato (dd/mm/yyyy)</span>
-                </p>                
-                <p>
-                    <label>Proyecto</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
                 </p>
+                          
+                <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Lugar</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Lugar)%>&nbsp;</span>

@@ -114,12 +114,7 @@
                     <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.TieneProyecto) { %>
-                    <p>
-                        <label>Nombre del proyecto de investigaci&oacute;n</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
-                    </p>
-                    
+                <% if (Model.Form.TieneProyecto) { %>                    
                     <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } else { %>
                     <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>

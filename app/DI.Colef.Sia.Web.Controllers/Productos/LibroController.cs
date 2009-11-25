@@ -33,6 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
         public LibroController(ILibroService libroService, 
                                ICustomCollection customCollection,
@@ -50,8 +52,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoService eventoService,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IEditorialMapper editorialMapper,
-                               IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper)
+                               IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, 
+                               IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -73,6 +76,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
+            this.proyectoMapper = proyectoMapper;
+            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -233,6 +238,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            var form = new ShowFieldsForm
+            {
+                ProyectoId = proyectoForm.Id,
+
+                ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
+                ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
+                ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
+                ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
+            };
+
+            return Rjs("ChangeProyecto", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
@@ -243,15 +268,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
 
             var form = new ShowFieldsForm
-                           {
-                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+            {
+                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
 
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+                SubdisciplinaNombre = subdisciplinaForm.Nombre,
+                SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
-                               AreaTematicaId = areaTematicaForm.Id
-                           };
+                AreaTematicaId = areaTematicaForm.Id
+            };
 
             return Rjs("ChangeAreaTematica", form);
         }
@@ -564,6 +589,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
                                       ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
                                       ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+                                      ProyectoNombre = form.Proyecto.Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,

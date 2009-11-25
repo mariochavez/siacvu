@@ -37,7 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoPresentacionId { get; set; }
         public string TipoPresentacionNombre { get; set; }
 
-		public int Proyecto { get; set; }
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
@@ -55,7 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public OtraParticipacionForm[] OtrasParticipaciones { get; set; }
 		public TipoPresentacionForm[] TiposPresentaciones { get; set; }
-        public ProyectoForm[] Proyectos { get; set; }
 		public PaisForm[] Paises { get; set; }
 		public EstadoPaisForm[] EstadosPaises { get; set; }
         public InvestigadorForm[] Autores { get; set; }
@@ -63,5 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }
         public InstitucionForm Institucion { get; set; }
+        public ProyectoForm Proyecto { get; set; }
     }
 }

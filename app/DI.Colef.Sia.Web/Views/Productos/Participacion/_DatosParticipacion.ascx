@@ -35,12 +35,9 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
-<p id="PresentacionInvestigacion">
-	<label>Proyecto</label>
-	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Proyecto") %>
-</p>
+<div id="PresentacionInvestigacion">
+    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+</div>
 <p>
 	<label>Lugar</label>
 	<%=Html.TextBox("Lugar", Model.Lugar, new { @class = "input250-requerido", maxlength = 100 })%>
