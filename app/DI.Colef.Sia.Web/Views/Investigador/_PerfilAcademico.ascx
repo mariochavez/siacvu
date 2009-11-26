@@ -4,10 +4,14 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
-    <label>L&iacute;nea tem&aacute;tica institucional</label>
-    <%=Html.DropDownList("LineaTematica", Model.LineasTematicas.CreateSelectList<LineaTematicaForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido"})%>
-    <%=Html.ValidationMessage("LineaTematica")%>
+    <label>L&iacute;nea tem&aacute;tica Institucional</label>
+    <span id="span_lineatematica" class="valor"><%= Html.Encode(Model.AreaTematicaLineaTematicaNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>&Aacute;rea tem&aacute;tica Institucional</label>
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changearea") })%>
+    <%=Html.ValidationMessage("AreaTematicaId")%>
 </p>
 <p>
     <label>Area tem&aacute;tica 1</label>

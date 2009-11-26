@@ -76,7 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Nombre,
                            o => o.Ignore())
-                .ForMember(d => d.LineaTematica,
+                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<EstadoInvestigador, EstadoInvestigadorForm>()
@@ -95,8 +95,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Fecha,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.GradoAcademico,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<CategoriaInvestigador, CategoriaInvestigadorForm>()
@@ -504,8 +502,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>());
-                //.ForMember(d => d.Idioma,
-                //           o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -632,8 +628,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<DireccionRegional, DireccionRegionalForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Sede, o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<Departamento, DepartamentoForm>()
                 .ForMember(d => d.Modificacion,
@@ -641,7 +636,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             Mapper.CreateMap<Sede, SedeForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.DireccionRegional, o => o.Ignore());
 
             Mapper.CreateMap<Categoria, CategoriaForm>()
                 .ForMember(d => d.Modificacion,

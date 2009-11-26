@@ -18,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(SedeForm message, Sede model)
         {
 			model.Nombre = message.Nombre;
-            model.Descripcion = message.Descripcion;
         }
     }
 }

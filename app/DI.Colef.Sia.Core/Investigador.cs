@@ -74,7 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string ClaveCVU { get; set; }
 
         [NotNull]
-        public virtual LineaTematica LineaTematica { get; set; }
+        public virtual AreaTematica AreaTematica { get; set; }
 
         public virtual string AreaTematica1 { get; set; }
 

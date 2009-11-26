@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
@@ -24,14 +25,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
-        readonly ICatalogoService catalogoService;
+        protected readonly ICatalogoService catalogoService;
+        protected readonly IInstitucionMapper institucionMapper;
 
-        public BaseController(IUsuarioService usuarioService, ISearchService searchService, 
-                              ICatalogoService catalogoService)
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService) :this(usuarioService, searchService, catalogoService, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper)
         {
             this.usuarioService = usuarioService;
             this.searchService = searchService;
             this.catalogoService = catalogoService;
+            this.institucionMapper = institucionMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -44,6 +52,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public virtual ActionResult Search(int searchId)
         {
             return RedirectToEdit(searchId);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            if (institucionMapper == null)
+                return Content("Action not supported");
+
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                InstitucionId = institucionForm.Id,
+
+                InstitucionCiudad = institucionForm.Ciudad,
+                InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                InstitucionPaisNombre = institucionForm.PaisNombre,
+                InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+            };
+
+            return Rjs("ChangeInstitucion", form);
         }
 
         protected Usuario CurrentUser()

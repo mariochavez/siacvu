@@ -12,11 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
     public class DireccionRegionalMapper : AutoFormMapper<DireccionRegional, DireccionRegionalForm>, IDireccionRegionalMapper
     {
-        readonly ICatalogoService catalogoService;
-
-        public DireccionRegionalMapper(IRepository<DireccionRegional> repository, ICatalogoService catalogoService) : base(repository)
+        public DireccionRegionalMapper(IRepository<DireccionRegional> repository) : base(repository)
         {
-            this.catalogoService = catalogoService;
         }
 
         protected override int GetIdFromMessage(DireccionRegionalForm message)
@@ -27,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(DireccionRegionalForm message, DireccionRegional model)
         {
             model.Nombre = message.Nombre;
-            model.Sede = catalogoService.GetSedeById(message.Sede);
         }
     }
 }

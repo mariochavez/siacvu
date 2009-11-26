@@ -52,13 +52,13 @@
 			        <%=Html.ValidationMessage("FechaIngreso")%>
 		        </p>
 	            <p>
-		            <label>Fecha de contrato</label>
+		            <label>Fecha de contrato indeterminado</label>
 		            <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100-requerido", maxlength = 10 })%>
 		            <span>(Formato dd/mm/yyyy)</span>
 		            <%=Html.ValidationMessage("FechaContrato")%>
 	            </p>
 	            
-	            <h4>Grados</h4>
+	            <h4>Grado Acad&eacute;mico</h4>
 			    <% Html.RenderPartial("_EditGrado", Model.Form); %>
 	            
 	            <h4>Perfil ac&aacute;demico del investigador</h4> 		        
@@ -74,16 +74,16 @@
                     <label>Clave CVU</label>
                     <%=Html.TextBox("ClaveCVU", Model.Form.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
                 </p>
-		        <h4>Estatus</h4>
+		        <h4>Estatus del Investigador</h4>
 			    <% Html.RenderPartial("_EditEstado", Model.Form); %>
 		        
-		        <h4>Cargos</h4>
+		        <h4>Adscripci&oacute;n en El Colef</h4>
 			    <% Html.RenderPartial("_EditCargo", Model.Form); %>
 			    
-		        <h4>Categor&iacute;as</h4>
+		        <h4>Categor&iacute;a del investigador</h4>
 			    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
 		        
-		        <h4>Sistema nacional de investigadores (SNI)</h4>
+		        <h4>Sistema nacional de investigadores</h4>
 			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
 
                 <p class="submit">

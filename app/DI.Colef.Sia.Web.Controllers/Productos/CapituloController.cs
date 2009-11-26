@@ -627,7 +627,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            //form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.TiposLibro = customCollection.TipoLibroCustomCollection();
 
             return form;
@@ -636,7 +635,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(CapituloForm form)
         {
             ViewData["TipoCapitulo"] = form.TipoCapitulo;
-            //ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["TipoLibro"] = form.TipoLibro;
         }

@@ -10,7 +10,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ExpedienteAcademico { get; set; }
         public string ClaveCVU { get; set; }
 
-        public int LineaTematica { get; set; }
+        public int AreaTematica { get; set; }
+        public string AreaTematicaLineaTematicaNombre { get; set; }
+
         public string AreaTematica1 { get; set; }
         public string AreaTematica2 { get; set; }
         public string AreaTematica3 { get; set; }
@@ -76,8 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DepartamentoForm[] Departamentos { get; set; }
         public SedeForm[] Sedes { get; set; }
         public SNIForm[] SNIs { get; set; }
-        public PaisForm[] Paises { get; set; }
-        public LineaTematicaForm[] LineasTematicas { get; set; }
+        public AreaTematicaForm[] AreasTematicas { get; set; }
 
         public PuestoForm[] Puestos { get; set; }
         public DireccionRegionalForm[] DireccionesRegionales { get; set; }

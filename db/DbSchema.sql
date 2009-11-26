@@ -7,6 +7,10 @@ alter table SNIs  drop constraint FKF16DB6DA85102A57
 alter table SNIs  drop constraint FKF16DB6DA74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B08FE7BABE]') AND parent_object_id = OBJECT_ID('Sedes'))
+alter table Sedes  drop constraint FK2EA40B08FE7BABE
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B0885102A57]') AND parent_object_id = OBJECT_ID('Sedes'))
 alter table Sedes  drop constraint FK2EA40B0885102A57
 
@@ -749,10 +753,6 @@ alter table GradoAcademicoInvestigadores  drop constraint FK265240DD9CF67963
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD64F7D1CD]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
 alter table GradoAcademicoInvestigadores  drop constraint FK265240DD64F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD7A8488F7]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
-alter table GradoAcademicoInvestigadores  drop constraint FK265240DD7A8488F7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
@@ -1787,10 +1787,6 @@ alter table Estados  drop constraint FKE112A3FE85102A57
 alter table Estados  drop constraint FKE112A3FE74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB3E391E13]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
-alter table DireccionRegionales  drop constraint FKB8FBCFAB3E391E13
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB85102A57]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
 alter table DireccionRegionales  drop constraint FKB8FBCFAB85102A57
 
@@ -1899,8 +1895,8 @@ alter table LineaInvestigaciones  drop constraint FKF062672774E8BAB7
 alter table Investigadores  drop constraint FKE67B58B96A829E09
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B91EDC2D3B]') AND parent_object_id = OBJECT_ID('Investigadores'))
-alter table Investigadores  drop constraint FKE67B58B91EDC2D3B
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B98A77AB9C]') AND parent_object_id = OBJECT_ID('Investigadores'))
+alter table Investigadores  drop constraint FKE67B58B98A77AB9C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B985102A57]') AND parent_object_id = OBJECT_ID('Investigadores'))
@@ -2593,10 +2589,10 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table Sedes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       Descripcion NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       DireccionRegionalFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3291,7 +3287,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        Activo BIT null,
        GradoAcademicoFk INT null,
        InstitucionFk INT null,
-       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
@@ -4223,7 +4218,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       SedeFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4322,7 +4316,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
-       LineaTematicaFk INT null,
+       AreaTematicaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4454,6 +4448,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table Clases (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CodigoConacyt NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4570,6 +4565,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table Ramas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CodigoConacyt NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4660,6 +4656,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKF16DB6DA74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Sedes 
+        add constraint FK2EA40B08FE7BABE 
+        foreign key (DireccionRegionalFk) 
+        references DireccionRegionales
 
     alter table Sedes 
         add constraint FK2EA40B0885102A57 
@@ -5590,11 +5591,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK265240DD64F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
-
-    alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
 
     alter table GradoAcademicoInvestigadores 
         add constraint FK265240DD85102A57 
@@ -6887,11 +6883,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table DireccionRegionales 
-        add constraint FKB8FBCFAB3E391E13 
-        foreign key (SedeFk) 
-        references Sedes
-
-    alter table DireccionRegionales 
         add constraint FKB8FBCFAB85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -7027,9 +7018,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table Investigadores 
-        add constraint FKE67B58B91EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
+        add constraint FKE67B58B98A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table Investigadores 
         add constraint FKE67B58B985102A57 

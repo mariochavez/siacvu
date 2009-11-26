@@ -27,8 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
             model.Puesto = catalogoService.GetPuestoById(message.Puesto);
             model.DireccionRegional = catalogoService.GetDireccionRegionalById(message.DireccionRegional);
-            if (model.DireccionRegional != null)
-                model.Sede = model.DireccionRegional.Sede;
+            if (model.Sede != null)
+                model.DireccionRegional = model.Sede.DireccionRegional;
 
             if (model.IsTransient())
             {

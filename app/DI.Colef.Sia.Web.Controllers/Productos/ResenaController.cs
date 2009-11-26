@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAutorResenaMapper autorResenaMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IIdiomaMapper idiomaMapper;
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
@@ -33,7 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
@@ -49,13 +47,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper,
                                 ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, institucionMapper)
         {
             this.areaTematicaMapper = areaTematicaMapper;
             this.autorResenaMapper = autorResenaMapper;
             this.idiomaMapper = idiomaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.catalogoService = catalogoService;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.customCollection = customCollection;
@@ -71,7 +68,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -229,24 +225,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("ChangeRevista", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+        //[Authorize]
+        //[AcceptVerbs(HttpVerbs.Get)]
+        //public ActionResult ChangeInstitucion(int select)
+        //{
+        //    var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
+        //    var form = new ShowFieldsForm
+        //                   {
+        //                       InstitucionId = institucionForm.Id,
 
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
+        //                       InstitucionCiudad = institucionForm.Ciudad,
+        //                       InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+        //                       InstitucionPaisNombre = institucionForm.PaisNombre,
+        //                       InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+        //                   };
 
-            return Rjs("ChangeInstitucion", form);
-        }
+        //    return Rjs("ChangeInstitucion", form);
+        //}
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]

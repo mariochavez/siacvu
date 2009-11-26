@@ -266,6 +266,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                AreaTematicaId = areaTematicaForm.Id
                            };
 
+
             return Rjs("ChangeAreaTematica", form);
         }
 
