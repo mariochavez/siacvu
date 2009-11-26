@@ -507,11 +507,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.TipoCapitulo,
-                           o => o.Ignore())
-                //.ForMember(d => d.Idioma,
-                //           o => o.Ignore())
-                .ForMember(d => d.Editorial,
                            o => o.Ignore());
+                //.ForMember(d => d.Idioma,
+                //           o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -526,6 +524,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<AutorExternoCapitulo, AutorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+
+            Mapper.CreateMap<EditorialCapitulo, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorInternoCapituloMapper autorInternoCapituloMapper;
         readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IProyectoService proyectoService;
+        readonly IEditorialCapituloMapper editorialCapituloMapper;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		                      ICatalogoService catalogoService,
@@ -21,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                               ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                               IAutorInternoCapituloMapper autorInternoCapituloMapper,
                               IAutorExternoCapituloMapper autorExternoCapituloMapper,
-                              IProyectoService proyectoService) 
+                              IProyectoService proyectoService, IEditorialCapituloMapper editorialCapituloMapper) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
@@ -30,6 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             this.autorInternoCapituloMapper = autorInternoCapituloMapper;
             this.autorExternoCapituloMapper = autorExternoCapituloMapper;
 		    this.proyectoService = proyectoService;
+		    this.editorialCapituloMapper = editorialCapituloMapper;
         }		
 		
         protected override int GetIdFromMessage(CapituloForm message)
@@ -53,7 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
-            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
             model.TipoCapitulo = message.TipoCapitulo;
             model.EstadoProducto = message.EstadoProducto;
             //model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
@@ -79,16 +80,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos)
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador, 
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
+            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos, EditorialProductoForm[] editoriales)
         {
             var model = Map(message, usuario, investigador);
 
             foreach (var coautorExterno in coautoresExternos)
             {
-                var coautor =
-                    coautorExternoCapituloMapper.Map(coautorExterno);
+                var coautor = coautorExternoCapituloMapper.Map(coautorExterno);
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -98,8 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             foreach (var coautorInterno in coautoresInternos)
             {
-                var coautor =
-                    coautorInternoCapituloMapper.Map(coautorInterno);
+                var coautor = coautorInternoCapituloMapper.Map(coautorInterno);
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -109,8 +108,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             foreach (var autorExterno in autoresExternos)
             {
-                var autor =
-                    autorExternoCapituloMapper.Map(autorExterno);
+                var autor = autorExternoCapituloMapper.Map(autorExterno);
 
                 autor.CreadorPor = usuario;
                 autor.ModificadoPor = usuario;
@@ -120,13 +118,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             foreach (var autorInterno in autoresInternos)
             {
-                var autor =
-                    autorInternoCapituloMapper.Map(autorInterno);
+                var autor = autorInternoCapituloMapper.Map(autorInterno);
 
                 autor.CreadorPor = usuario;
                 autor.ModificadoPor = usuario;
 
                 model.AddAutorInterno(autor);
+            }
+
+            foreach (var editorial in editoriales)
+            {
+                var editorialProducto = editorialCapituloMapper.Map(editorial);
+
+                editorialProducto.CreadorPor = usuario;
+                editorialProducto.ModificadoPor = usuario;
+
+                model.AddEditorial(editorialProducto);
             }
 
             return model;

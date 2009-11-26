@@ -18,12 +18,11 @@
                         "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
-<p>
-    <label>Editorial(es)</label>
-    <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Editorial")%>
-</p>
+
+<h4>Editorial(es)</h4>
+<% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
+
+
 <p>
     <label>Resumen</label>
     <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>

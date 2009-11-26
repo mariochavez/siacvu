@@ -668,12 +668,17 @@
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
     <Content Include="Views\Shared\AddAutorExterno.js.ascx" />
     <Content Include="Views\Shared\AddAutorInterno.js.ascx" />
+    <Content Include="Views\Shared\AddEditorial.js.ascx" />
     <Content Include="Views\Shared\ChangeNivel.js.ascx" />
     <Content Include="Views\Shared\ChangeSubdisciplina.js.ascx" />
     <Content Include="Views\Shared\ChangeClase.js.ascx" />
     <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
     <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
     <Content Include="Views\Shared\ChangeRevista.js.ascx" />
+    <Content Include="Views\Shared\DeleteEditorial.js.ascx" />
+    <Content Include="Views\Shared\NewEditorial.js.ascx" />
+    <Content Include="Views\Shared\_EditEditorial.ascx" />
+    <Content Include="Views\Shared\_NewEditorial.ascx" />
     <Content Include="Views\Shared\_ShowClase.ascx" />
     <Content Include="Views\Shared\_ShowInstitucion.ascx" />
     <Content Include="Views\Shared\_Show2doNivel.ascx" />

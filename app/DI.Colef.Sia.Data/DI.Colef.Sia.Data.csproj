@@ -92,6 +92,7 @@
     <Compile Include="NHibernateMaps\Alteration\ArchivoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorExternoAlteration.cs" />
+    <Compile Include="NHibernateMaps\Alteration\EditorialAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\FirmaAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\AutorExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\AutorInternoAlteration.cs" />

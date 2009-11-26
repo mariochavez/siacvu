@@ -129,10 +129,12 @@
     <Compile Include="Mappers\IAreaInvestigacionMapper.cs" />
     <Compile Include="Mappers\IContenidoLibroMapper.cs" />
     <Compile Include="Mappers\ICursoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\IEditorialCapituloMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\ContenidoLibroMapper.cs" />
     <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
+    <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IAutorResenaMapper.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Models\AreaInvestigacionForm.cs" />
     <Compile Include="Models\ContenidoLibroForm.cs" />
     <Compile Include="Models\CursoInvestigadorForm.cs" />
+    <Compile Include="Models\EditorialProductoForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />

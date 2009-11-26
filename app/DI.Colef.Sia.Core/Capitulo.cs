@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [CapituloValidator]
-	public class Capitulo : Entity, IBaseEntity, IAutor, ICoautor
+	public class Capitulo : Entity, IBaseEntity, IAutor, ICoautor, IEditorial
     {
         const int tipoProducto = 2; // 2 Representa Capitulo
 
@@ -21,6 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorExternoCapitulos = new List<AutorExternoCapitulo>();
             FirmaCapitulos = new List<FirmaCapitulo>();
             ArchivoCapitulos = new List<ArchivoCapitulo>();
+            EditorialCapitulos = new List<EditorialCapitulo>();
 		}
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -55,6 +56,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoCapitulos.Add((ArchivoCapitulo)archivo);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialCapitulos.Add((EditorialCapitulo) editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialCapitulos.Remove((EditorialCapitulo) editorial);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -145,6 +157,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<AutorExternoCapitulo> AutorExternoCapitulos { get; private set; }
+
+        [Valid]
+        public virtual IList<EditorialCapitulo> EditorialCapitulos { get; private set; }
 
         public virtual int Puntuacion { get; set; }
 

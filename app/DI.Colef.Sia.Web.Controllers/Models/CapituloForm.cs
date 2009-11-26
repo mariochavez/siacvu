@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CapituloForm
@@ -38,10 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
 
-        public int Editorial { get; set; }
-        public int EditorialId { get; set; }
-        public string EditorialNombre { get; set; }
-
         public int TotalAutores
         {
             get
@@ -64,12 +58,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
         public AutorInternoProductoForm[] AutorInternoCapitulos { get; set; }
         public AutorExternoProductoForm[] AutorExternoCapitulos { get; set; }
+        public EditorialProductoForm[] EditorialCapitulos { get; set; }
 		
 		/* New */
 		public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public AutorInternoProductoForm AutorInternoProducto { get; set; }
         public AutorExternoProductoForm AutorExternoProducto { get; set; }
+        public EditorialProductoForm EditorialProducto { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
@@ -78,7 +74,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ProyectoForm Proyecto { get; set; }
 
 		/* Catalogos */
-        public EditorialForm[] Editoriales { get; set; }
         public CustomSelectForm[] TiposCapitulos { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         //public IdiomaForm[] Idiomas { get; set; }

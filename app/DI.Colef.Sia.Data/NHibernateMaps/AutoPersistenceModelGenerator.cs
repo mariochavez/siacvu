@@ -38,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps
                     c.Add<AutorInternoAlteration>();
                     c.Add<ArchivoAlteration>();
                     c.Add<FirmaAlteration>();
+                    c.Add<EditorialAlteration>();
                 };
         }
 
