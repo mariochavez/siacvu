@@ -49,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.NombreTraductor = message.NombreTraductor;
             model.PosicionAutor = message.PosicionAutor;
             model.TipoProducto = message.TipoProducto;
             model.Edicion = message.Edicion;
@@ -58,11 +57,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
-		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
@@ -89,7 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            EditorialLibroForm[] editoriales)
+            EditorialProductoForm[] editoriales)
         {
             var model = Map(message, usuario, investigador);
 
@@ -115,15 +112,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorInterno(coautor);
             }
 
-            foreach (var editorialLibro in editoriales)
+            foreach (var editorial in editoriales)
             {
-                var editorial =
-                    editorialLibroMapper.Map(editorialLibro);
+                var editorialProducto = editorialLibroMapper.Map(editorial);
 
-                editorial.CreadorPor = usuario;
-                editorial.ModificadoPor = usuario;
+                editorialProducto.CreadorPor = usuario;
+                editorialProducto.ModificadoPor = usuario;
 
-                model.AddEditorial(editorial);
+                model.AddEditorial(editorialProducto);
             }
 
 

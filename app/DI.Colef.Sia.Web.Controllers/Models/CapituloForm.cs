@@ -23,10 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoLibro { get; set; }
         public int EstadoProducto { get; set; }
 
-        //public int Idioma { get; set; }
-        //public int IdiomaId { get; set; }
-        //public string IdiomaNombre { get; set; }
-
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
@@ -76,7 +72,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		/* Catalogos */
         public CustomSelectForm[] TiposCapitulos { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
-        //public IdiomaForm[] Idiomas { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public CustomSelectForm[] TiposLibro { get; set; }
     }

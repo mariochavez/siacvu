@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class LibroForm
@@ -7,12 +9,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ISBN { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaPublicacion { get; set; }
-        public string FechaEdicion { get; set; }
         public int Volumen { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
-        public string NombreTraductor { get; set; }
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
@@ -39,8 +39,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int EventoId { get; set; }
         public string EventoNombre { get; set; }
-        public string EventoFechaInicial { get; set; }
-        public string EventoFechaFinal { get; set; }
+        public string EventoFechaEvento { get; set; }
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
@@ -55,10 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-		
-		public int Idioma { get; set; }
-		public int IdiomaId { get; set; }
-        public string IdiomaNombre { get; set; }
 
         public int ContenidoLibro { get; set; }
         public int ContenidoLibroId { get; set; }
@@ -79,18 +74,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		public CoautorExternoProductoForm[] CoautorExternoLibros { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoLibros { get; set; }
-        public EditorialLibroForm[] EditorialLibros { get; set; }
+        public EditorialProductoForm[] EditorialLibros { get; set; }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public EditorialLibroForm EditorialLibro { get; set; }
+        public EditorialProductoForm EditorialProducto { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
         public SubdisciplinaForm Subdisciplina { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
+        public ProyectoForm Proyecto { get; set; }
 		
 		/* Catalogos */
         public CustomSelectForm[] TiposProductos { get; set; }
@@ -99,8 +95,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ContenidoLibroForm[] ContenidosLibros { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
-		public IdiomaForm[] Idiomas { get; set; }
-        public EditorialForm[] Editoriales { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }
     }
 }

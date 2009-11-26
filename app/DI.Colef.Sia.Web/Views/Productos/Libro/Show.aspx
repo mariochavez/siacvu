@@ -45,6 +45,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                
     <!--DATOS PUBLICACION-->
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
@@ -63,19 +64,17 @@
                     <label>Contenido del libro</label>
                     <span class="valor"><%= Html.Encode(Model.Form.ContenidoLibroNombre)%>&nbsp;</span>
                 </p>
-                
-                <% if (Model.Form.FormatoPublicacionNombre.Contains("evento")){ %>
+                <% if (Model.Form.ContenidoLibroNombre.Contains("evento")){ %>
                     <p>
                         <label>Nombre del evento</label>
                         <span class="valor"><%= Html.Encode(Model.Form.EventoNombre)%>&nbsp;</span>
                     </p>
                     <p>
                         <label>Fecha del evento</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.EventoFechaInicial)%> - <%= Html.Encode(Model.Form.EventoFechaFinal)%> &nbsp;</span>
+                        <span class="valor"><%= Html.Encode(Model.Form.EventoFechaEvento)%>&nbsp;</span>
                     </p>
                 <% } %>
-                
-                <% if (Model.Form.FormatoPublicacionNombre.Contains("revista")){ %>
+                <% if (Model.Form.ContenidoLibroNombre.Contains("revista")){ %>
                     <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
                     	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 	<% } %>
@@ -84,21 +83,9 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
                     </p>
                 <% } %>
-                
-                <% if (Model.Form.FormatoPublicacionNombre.Contains("otro idioma")){ %>
-                    <p>
-                        <label>Idioma</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Nombre del traductor</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.NombreTraductor)%>&nbsp;</span>
-                    </p>
-                <% } %>
-                
                 <p>
                     <label></label>
-                    <span class="valor">Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
                 
                 <% if (Model.Form.TieneProyecto) { %>                    
@@ -106,7 +93,7 @@
                 <% } %>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-
+                
                 <p>
                     <label>Palabra clave 1</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
@@ -124,6 +111,7 @@
                 	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
                 
+    <!--COAUTORES DE LA PUBLICACION-->
                 <h4>Coautores de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno",
                                        new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id });%>
@@ -137,6 +125,8 @@
 	                <label>Posici&oacute;n del autor</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
+                
+    <!--ESTAUS DE LA PUBLICACION-->            
                 <h4>Estatus de la publicaci&oacute;n</h4>
                 <p>
                     <label>Estado actual</label>
@@ -148,45 +138,42 @@
                         <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
                         <span>Formato (yyyy)</span>
                     </p>
-                <% } if (Model.Form.EstadoProducto == 2){ %>
+                <% } if (Model.Form.EstadoProducto == 2) { %>
                     <p>
                         <label>A&ntilde;o de publicaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
                         <span>Formato (yyyy)</span>
                     </p>
                 
-                <h4>Referencia bibliogr&aacute;fica</h4>
-                
-                <% Html.RenderPartial("_ShowEditorial", Model.Form); %>
-                
-                <p>
-                    <label>ISBN</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ISBN)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Edici&oacute;n</label>
-                    <span class="valor"><%= HumanizeHelper.Edicion(Model.Form.Edicion)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Reimpresi&oacute;n</label>
-                    <span class="valor"><%= HumanizeHelper.Reimpresion(Model.Form.Reimpresion)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Volumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>No. de p&aacute;ginas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Tiraje</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>A&ntilde;o de edici&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span><span>Formato (yyyy)</span>
-                </p>
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+                    
+				    <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialLibros, ModelId = Model.Form.Id }); %>
+				    
+                    <p>
+                        <label>ISBN</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.ISBN)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Edici&oacute;n</label>
+                        <span class="valor"><%= HumanizeHelper.Edicion(Model.Form.Edicion)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Reimpresi&oacute;n</label>
+                        <span class="valor"><%= HumanizeHelper.Reimpresion(Model.Form.Reimpresion)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Volumen</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>No. de p&aacute;ginas</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Tiraje</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>

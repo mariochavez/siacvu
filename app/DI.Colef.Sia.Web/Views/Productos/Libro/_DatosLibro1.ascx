@@ -43,16 +43,24 @@
 
 <div id="eventoForm" class="display:hidden;"></div>
 
+<div class="revista_field">
+    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+</div>
+<p class="revista_field">
+    <label>N&uacute;mero</label>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("Numero")%>
+</p>
 <p>
     <label></label>
-    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> ¿Existe proyecto de investigaci&oacute;n de referencia?
 </p>
 <div id="tieneproyecto_field">
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
-<div id="notieneproyecto_field">
-    <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
-</div>
+
+<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, IsShowForm = false}); %>
+
 <p>
 	<label>Palabra clave 1</label>
 	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
@@ -70,24 +78,3 @@
 </p>
 
 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.SubdisciplinaId, SubdisciplinaNombre = Model.SubdisciplinaNombre, ModelId = Model.Id, IsShowForm = false }); %>
-
-<div class="revista_field">
-    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
-</div>
-<p class="revista_field">
-    <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
-    <%=Html.ValidationMessage("Numero")%>
-</p>
-<p class="idioma_field">
-    <label>Idioma al que se tradujo</label>
-    <%=Html.DropDownList("Idioma", Model.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Idioma") %>
-</p>
-<p class="idioma_field">
-    <label>Nombre del traductor</label>
-    <%= Html.TextBox("NombreTraductor", Model.NombreTraductor, new { @class = "input250-requerido", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("NombreTraductor")%>
-</p>

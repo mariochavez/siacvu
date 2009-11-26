@@ -56,10 +56,11 @@
             
             <% Html.RenderPartial("_DatosLibro2", Model.Form); %>
             
-            <h4>Referencia bibliogr&aacute;fica</h4>
-            
-            <% Html.RenderPartial("_EditEditorial", Model.Form); %>
-            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            <div class="estatuspublicado_field">
+                <h4>Referencia bibliogr&aacute;fica</h4>
+                
+                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			</div>
 			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>

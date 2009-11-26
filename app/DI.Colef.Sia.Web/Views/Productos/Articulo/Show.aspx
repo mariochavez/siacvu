@@ -53,11 +53,11 @@
                 </p>
                 <p>
                     <label>Tipo de art&iacute;culo</label>
-                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoArticulo)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoArticulo, 1)%>&nbsp;</span>
                 </p>
                 <p>
                     <label></label>
-                    <span class="valor">Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
                 
                 <% if (Model.Form.TieneProyecto) { %>                    
@@ -139,11 +139,6 @@
                     <p>    
                         <label>A la p&aacute;gina</label>
                         <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>A&ntilde;o de edici&oacute;n</label>    
-                        <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
-                        <span>Formato (yyyy)</span>
                     </p>
                 <% } %>
                 

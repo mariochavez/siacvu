@@ -102,21 +102,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (articulo.FechaEdicion <= DateTime.Parse("1910-01-01"))
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-
-                    isValid = false;
-                }
-
-                if (articulo.FechaEdicion > DateTime.Now)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                    isValid = false;
-                }
-
                 if (articulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(

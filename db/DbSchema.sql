@@ -347,10 +347,6 @@ alter table Libros  drop constraint FK439120E78A77AB9C
 alter table Libros  drop constraint FK439120E7F4FE4035
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E76425E2FD
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E72AF31B56]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E72AF31B56
 
@@ -1551,22 +1547,6 @@ alter table FirmaTesisDirigida  drop constraint FKE834EF293F1A7365
 alter table FirmaTesisDirigida  drop constraint FKE834EF29954C47FF
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039BE30B9132]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039BE30B9132
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B85102A57]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B74E8BAB7]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK24039B586827F8]') AND parent_object_id = OBJECT_ID('EditorialLibros'))
-alter table EditorialLibros  drop constraint FK24039B586827F8
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
 
@@ -2123,6 +2103,34 @@ alter table CategoriaInvestigadores  drop constraint FK2110064774E8BAB7
 alter table CategoriaInvestigadores  drop constraint FK211006478336201B
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK92545087E30B9132]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
+alter table EditorialProductos  drop constraint FK92545087E30B9132
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508785102A57]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
+alter table EditorialProductos  drop constraint FK9254508785102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508774E8BAB7]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
+alter table EditorialProductos  drop constraint FK9254508774E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK381727364DBE1A6B]') AND parent_object_id = OBJECT_ID('EditorialCapitulo'))
+alter table EditorialCapitulo  drop constraint FK381727364DBE1A6B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK38172736A1B3F60D]') AND parent_object_id = OBJECT_ID('EditorialCapitulo'))
+alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE032A8F64DBE1A6B]') AND parent_object_id = OBJECT_ID('EditorialLibro'))
+alter table EditorialLibro  drop constraint FKE032A8F64DBE1A6B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE032A8F6586827F8]') AND parent_object_id = OBJECT_ID('EditorialLibro'))
+alter table EditorialLibro  drop constraint FKE032A8F6586827F8
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3185102A57]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
 alter table TipoOrganos  drop constraint FK75A1DA3185102A57
 
@@ -2237,26 +2245,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE685102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE674E8BAB7]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
 alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK92545087E30B9132]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
-alter table EditorialProductos  drop constraint FK92545087E30B9132
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508785102A57]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
-alter table EditorialProductos  drop constraint FK9254508785102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508774E8BAB7]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
-alter table EditorialProductos  drop constraint FK9254508774E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK381727364DBE1A6B]') AND parent_object_id = OBJECT_ID('EditorialCapitulo'))
-alter table EditorialCapitulo  drop constraint FK381727364DBE1A6B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK38172736A1B3F60D]') AND parent_object_id = OBJECT_ID('EditorialCapitulo'))
-alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
 
 
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
@@ -2463,8 +2451,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'FirmaTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaTesisDirigida
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialLibros
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Capitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Capitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TesisPosgrados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisPosgrados
@@ -2567,6 +2553,12 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CategoriaInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CategoriaInvestigadores
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialCapitulo
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialLibro
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoOrganos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoOrganos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
@@ -2586,10 +2578,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AreaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaInvestigaciones
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialCapitulo
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -2924,8 +2912,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        NoPaginas INT null,
        Tiraje INT null,
        Numero INT null,
-       NombreTraductor NVARCHAR(255) null,
-       FechaEdicion DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -2936,7 +2922,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        ProyectoFk INT null,
        AreaTematicaFk INT null,
        SubdisciplinaFk INT null,
-       IdiomaFk INT null,
        RevistaPublicacionFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -4005,18 +3990,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        primary key (Firma)
     )
 
-    create table EditorialLibros (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       EditorialFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       LibroFk INT null,
-       primary key (Id)
-    )
-
     create table Capitulos (
         Id INT IDENTITY NOT NULL,
        NombreCapitulo NVARCHAR(255) null,
@@ -4283,7 +4256,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        Numero INT null,
        PaginaInicial INT null,
        PaginaFinal INT null,
-       FechaEdicion DATETIME null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
@@ -4527,6 +4499,30 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        primary key (Id)
     )
 
+    create table EditorialProductos (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       EditorialFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table EditorialCapitulo (
+        EditorialProducto INT not null,
+       CapituloFk INT null,
+       primary key (EditorialProducto)
+    )
+
+    create table EditorialLibro (
+        EditorialProducto INT not null,
+       LibroFk INT null,
+       primary key (EditorialProducto)
+    )
+
     create table TipoOrganos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4653,24 +4649,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
-    )
-
-    create table EditorialProductos (
-        Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       EditorialFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table EditorialCapitulo (
-        EditorialProducto INT not null,
-       CapituloFk INT null,
-       primary key (EditorialProducto)
     )
 
     alter table SNIs 
@@ -5107,11 +5085,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
         add constraint FK439120E7F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
-
-    alter table Libros 
-        add constraint FK439120E76425E2FD 
-        foreign key (IdiomaFk) 
-        references Idiomas
 
     alter table Libros 
         add constraint FK439120E72AF31B56 
@@ -6613,26 +6586,6 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
         foreign key (TesisDirigidaFk) 
         references TesisDirigidas
 
-    alter table EditorialLibros 
-        add constraint FK24039BE30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
-
-    alter table EditorialLibros 
-        add constraint FK24039B85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table EditorialLibros 
-        add constraint FK24039B74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table EditorialLibros 
-        add constraint FK24039B586827F8 
-        foreign key (LibroFk) 
-        references Libros
-
     alter table Capitulos 
         add constraint FK3165FEAD70EA6C9E 
         foreign key (ProyectoFk) 
@@ -7328,6 +7281,41 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
         foreign key (InvestigadorFk) 
         references Investigadores
 
+    alter table EditorialProductos 
+        add constraint FK92545087E30B9132 
+        foreign key (EditorialFk) 
+        references Editoriales
+
+    alter table EditorialProductos 
+        add constraint FK9254508785102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table EditorialProductos 
+        add constraint FK9254508774E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table EditorialCapitulo 
+        add constraint FK381727364DBE1A6B 
+        foreign key (EditorialProducto) 
+        references EditorialProductos
+
+    alter table EditorialCapitulo 
+        add constraint FK38172736A1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos
+
+    alter table EditorialLibro 
+        add constraint FKE032A8F64DBE1A6B 
+        foreign key (EditorialProducto) 
+        references EditorialProductos
+
+    alter table EditorialLibro 
+        add constraint FKE032A8F6586827F8 
+        foreign key (LibroFk) 
+        references Libros
+
     alter table TipoOrganos 
         add constraint FK75A1DA3185102A57 
         foreign key (CreadorPorFk) 
@@ -7472,28 +7460,3 @@ alter table EditorialCapitulo  drop constraint FK38172736A1B3F60D
         add constraint FKC1B18FE674E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
-    alter table EditorialProductos 
-        add constraint FK92545087E30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
-
-    alter table EditorialProductos 
-        add constraint FK9254508785102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table EditorialProductos 
-        add constraint FK9254508774E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table EditorialCapitulo 
-        add constraint FK381727364DBE1A6B 
-        foreign key (EditorialProducto) 
-        references EditorialProductos
-
-    alter table EditorialCapitulo 
-        add constraint FK38172736A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos

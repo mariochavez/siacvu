@@ -485,8 +485,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
@@ -505,9 +503,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaAceptacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.TipoCapitulo,
-                           o => o.Ignore());
+                           o => o.AddFormatter<YearDateFormatter>());
                 //.ForMember(d => d.Idioma,
                 //           o => o.Ignore());
 
@@ -576,10 +572,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.FechaEdicion,
-                           o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.Idioma,
-                           o => o.Ignore())
+                .ForMember(d => d.EventoFechaEvento,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.ContenidoLibro,
                            o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
@@ -593,11 +587,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<EditorialLibro, EditorialLibroForm>()
+            Mapper.CreateMap<EditorialLibro, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Editorial,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateParticipacionMedioMaps()

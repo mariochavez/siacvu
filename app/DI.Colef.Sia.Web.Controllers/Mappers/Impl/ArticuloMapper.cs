@@ -48,7 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);

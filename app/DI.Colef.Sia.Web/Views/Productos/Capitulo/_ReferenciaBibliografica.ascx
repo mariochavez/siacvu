@@ -19,7 +19,7 @@
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 
-<h4>Editorial(es)</h4>
+
 <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
 
 

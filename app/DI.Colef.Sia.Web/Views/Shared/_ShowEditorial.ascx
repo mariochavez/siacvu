@@ -9,9 +9,7 @@
         <% for (int i = 0; i < Model.Editoriales.Length; i++){ %>
 	        <div class="sublista" id="editorial_<%=Html.Encode(Model.Editoriales[i].EditorialId) %>">
 	            <h6>
-	            	<a href="<%=Url.Action("DeleteEditorial", null, new{ id = Model.Id, editorialId = Model.Editoriales[i].EditorialId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.Editoriales[i].EditorialNombre)%>
-	                <%=Html.Hidden("Editorial[" + i + "].EditorialId", Model.Editoriales[i].EditorialId)%>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>
@@ -20,15 +18,5 @@
             <h6><span>No hay editoriales registradas</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
-
-	<div id="editorialNew" class="minilistaboton">
-		<p>
-			<span>
-		    	<%=Html.ActionLink("+ Nueva editorial", "NewEditorial", new { Id = Model.Id }, new { @class = "remote get" })%>
-			</span>
-		</p>
-	</div><!--end minilistaboton-->
-
 </div><!--end minilista-->
 	
-<div id="editorialForm" class="display:hidden;"></div>

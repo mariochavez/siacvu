@@ -176,7 +176,6 @@
     <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
-    <Compile Include="Models\EditorialLibroForm.cs" />
     <Compile Include="Models\FormatoPublicacionForm.cs" />
     <Compile Include="Models\AutorForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />
