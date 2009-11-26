@@ -310,6 +310,16 @@ alter table CoautorExternos  drop constraint FKFFA20BAC74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBBE7856185102A57]') AND parent_object_id = OBJECT_ID('ContenidoLibros'))
+alter table ContenidoLibros  drop constraint FKBBE7856185102A57
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBBE7856174E8BAB7]') AND parent_object_id = OBJECT_ID('ContenidoLibros'))
+alter table ContenidoLibros  drop constraint FKBBE7856174E8BAB7
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
 alter table TipoProyectos  drop constraint FK1E50E26A85102A57
 
@@ -2817,6 +2827,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'ContenidoLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ContenidoLibros
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoArchivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoArchivos
@@ -3331,6 +3343,17 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     )
 
     create table CoautorExternos (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table ContenidoLibros (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CreadorEl DATETIME null,
