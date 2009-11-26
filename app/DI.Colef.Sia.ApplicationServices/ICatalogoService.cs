@@ -143,12 +143,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ResponsableExterno[] GetActiveResponsableExternos();
         void SaveResponsableExterno(ResponsableExterno responsableExterno);
 
-        //Tipo de Capitulo
-        TipoCapitulo GetTipoCapituloById(int id);
-        TipoCapitulo[] GetAllTipoCapitulos();
-        TipoCapitulo[] GetActiveTipoCapitulos();
-        void SaveTipoCapitulo(TipoCapitulo tipoCapitulo);
-
         //Tipo de Participacion
         TipoParticipacion GetTipoParticipacionById(int id);
         TipoParticipacion[] GetAllTipoParticipaciones();

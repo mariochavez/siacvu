@@ -45,24 +45,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NoCitas = message.NoCitas;
             model.PosicionAutor = message.PosicionAutor;
             model.AutorLibro = message.AutorLibro;
-            model.Traductor = message.Traductor;
             model.Resumen = message.Resumen;
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
+            model.TipoLibro = message.TipoLibro;
 
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
             model.Editorial = catalogoService.GetEditorialById(message.Editorial);
-            model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
+            model.TipoCapitulo = message.TipoCapitulo;
             model.EstadoProducto = message.EstadoProducto;
-            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
-            model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
+            //model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)

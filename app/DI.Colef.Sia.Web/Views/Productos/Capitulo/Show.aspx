@@ -55,14 +55,9 @@
                 </p>
                 <p>
                     <label>Tipo de cap&iacute;tulo</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapitulo)%>&nbsp;</span>
                 </p>
-                <% if (Model.Form.TipoCapituloNombre.Contains("otro idioma")) { %>
-                    <p>
-                        <label>Idioma al que se tradujo</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
-                    </p>
-                <% } %>
+                
 	            <h4>Coautores</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
@@ -78,11 +73,15 @@
                     <label></label>
                     <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
-                <% if (Model.Form.TieneProyecto) { %>                    
-                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
-                <% } else { %>
-                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <% if (Model.Form.TieneProyecto) { %>      
+	                <p>
+	                    <label>Nombre del proyecto de investigaci&oacute;n</label>
+	                    <span class="valor"><%=Html.Encode(Model.Form.ProyectoNombre) %></span>	          
+	                </p>
                 <% } %>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>

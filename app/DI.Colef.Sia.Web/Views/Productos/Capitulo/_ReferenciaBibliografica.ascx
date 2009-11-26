@@ -8,10 +8,22 @@
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
 <p>
-    <label>Autor del libro</label>
+    <label>Autor(es) del libro</label>
     <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("AutorLibro")%>
+</p>
+<p>
+    <label>Tipo de libro</label>
+    <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("TipoLibro")%>
+</p>
+<p>
+    <label>Editorial(es)</label>
+    <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Editorial")%>
 </p>
 <p>
     <label>Resumen</label>
@@ -19,29 +31,10 @@
     <span class="cvu"></span>
 </p>
 <p>
-    <label>Editorial</label>
-    <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Editorial")%>
-</p>
-<p>
     <label>Volumen</label>
-    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-    <%=Html.ValidationMessage("Volumen")%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 4 })%>
     <span class="cvu"></span>
-</p>
-<p>
-    <label>A&ntilde;o de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
-    <span>(Formato yyyy)</span>
-    <%=Html.ValidationMessage("FechaEdicion")%>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido"})%>
-    <%=Html.ValidationMessage("Pais") %>
+    <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>

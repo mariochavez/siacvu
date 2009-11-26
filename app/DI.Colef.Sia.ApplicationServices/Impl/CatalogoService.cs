@@ -73,7 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoActividad> tipoActividadRepository;
         readonly IRepository<TipoApoyo> tipoApoyoRepository;
         readonly IRepository<TipoArchivo> tipoArchivoRepository;
-        readonly IRepository<TipoCapitulo> tipoCapituloRepository;
         readonly IRepository<TipoDictamen> tipoDictamenRepository;
         readonly IRepository<TipoDistincion> tipoDistincionRepository;
         readonly IRepository<TipoEstancia> tipoEstanciaRepository;
@@ -111,7 +110,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<CoautorExterno> coautorExternoRepository,
                                IRepository<FormaParticipacion> formaParticipacionRepository,
                                IRepository<ResponsableExterno> responsableExternoRepository,
-                               IRepository<TipoCapitulo> tipoCapituloRepository,
                                IRepository<TipoParticipacion> tipoParticipacionRepository,
                                IRepository<Nivel> nivelRepository, IRepository<Diplomado> diplomadoRepository,
                                IRepository<Sector> sectorRepository,
@@ -185,7 +183,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.coautorExternoRepository = coautorExternoRepository;
             this.formaParticipacionRepository = formaParticipacionRepository;
             this.responsableExternoRepository = responsableExternoRepository;
-            this.tipoCapituloRepository = tipoCapituloRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
@@ -869,33 +866,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             responsableExterno.ModificadoEl = DateTime.Now;
 
             responsableExternoRepository.SaveOrUpdate(responsableExterno);
-        }
-
-        public TipoCapitulo GetTipoCapituloById(int id)
-        {
-            return tipoCapituloRepository.Get(id);
-        }
-
-        public TipoCapitulo[] GetAllTipoCapitulos()
-        {
-            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoCapitulo[] GetActiveTipoCapitulos()
-        {
-            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
-        {
-            if (tipoCapitulo.Id == 0)
-            {
-                tipoCapitulo.Activo = true;
-                tipoCapitulo.CreadorEl = DateTime.Now;
-            }
-            tipoCapitulo.ModificadoEl = DateTime.Now;
-
-            tipoCapituloRepository.SaveOrUpdate(tipoCapitulo);
         }
 
         public TipoParticipacion GetTipoParticipacionById(int id)

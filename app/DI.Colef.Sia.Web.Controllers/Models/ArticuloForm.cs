@@ -60,13 +60,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
-        public ProyectoForm Proyecto { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
         public SubdisciplinaForm Subdisciplina { get; set; }
+        public ProyectoForm Proyecto { get; set; }
 
         /* Catalogos */
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] TiposArticulos { get; set; }
-        public ProyectoForm[] Proyectos { get; set; }
     }
 }

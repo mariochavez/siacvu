@@ -157,7 +157,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form = form ?? new AreaTematicaForm();
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-            form.Subdisciplinas = subdisciplinaMapper.Map(catalogoService.GetActiveSubdisciplinas());
 
             return form;
         }
@@ -165,7 +164,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         private void FormSetCombos(AreaTematicaForm form)
         {
             ViewData["LineaTematica"] = form.LineaTematicaId;
-            ViewData["Subdisciplina"] = form.SubdisciplinaId;
         }
     }
 }

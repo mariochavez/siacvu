@@ -255,17 +255,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
                                AreaTematicaId = areaTematicaForm.Id
                            };
@@ -536,9 +528,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
                                       IsShowForm = true,
                                       RevistaLabel = "Revista en que se publica",

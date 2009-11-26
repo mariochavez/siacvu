@@ -503,22 +503,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.TipoCapitulo,
                            o => o.Ignore())
-                .ForMember(d => d.Idioma,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoParticipante,
-                           o => o.Ignore())
+                //.ForMember(d => d.Idioma,
+                //           o => o.Ignore())
                 .ForMember(d => d.Editorial,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoCapitulo, CoautorInternoProductoForm>()
@@ -734,9 +726,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TipoParticipacion, TipoParticipacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoCapitulo, TipoCapituloForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<RevistaPublicacion, RevistaPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
@@ -892,8 +882,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.LineaTematica,
-                           o => o.Ignore())
-                .ForMember(d => d.Subdisciplina,
                            o => o.Ignore());
 
             Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()

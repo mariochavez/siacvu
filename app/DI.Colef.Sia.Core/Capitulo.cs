@@ -91,9 +91,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string NombreCapitulo { get; set; }
 
-        public virtual TipoCapitulo TipoCapitulo { get; set; }
+        public virtual int TipoCapitulo { get; set; }
 
-        public virtual Idioma Idioma { get; set; }
+        //public virtual Idioma Idioma { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoCapitulo> CoautorExternoCapitulos { get; private set; }
@@ -116,6 +116,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual AreaTematica AreaTematica { get; set; }
 
+        public virtual Subdisciplina Subdisciplina { get; set; }
+
         public virtual int EstadoProducto { get; set; }
 
 		public virtual DateTime FechaAceptacion { get; set; }
@@ -126,15 +128,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string AutorLibro { get; set; }
 
+        public virtual int TipoLibro { get; set; }
+
         public virtual string Resumen { get; set; }
 
         public virtual Editorial Editorial { get; set; }
 
         public virtual int Volumen { get; set; }
-
-		public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
         public virtual int NoPaginas { get; set; }
 
@@ -147,12 +147,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<ResponsableExternoCapitulo> ResponsableExternoCapitulos { get; private set; }
 
         public virtual int Puntuacion { get; set; }
-        
-		public virtual TipoParticipacion TipoParticipacion { get; set; }
-        
-		public virtual TipoParticipante TipoParticipante { get; set; }
-        
-		public virtual bool Traductor { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }
