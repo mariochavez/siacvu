@@ -19,16 +19,3 @@
         <span class="valor"><%= Html.Encode(Model.AreaTematicaNombre) %>&nbsp;</span>
     </p>
 <% } %>
-<h4>&Aacute;rea del conocimiento</h4>
-<p>
-    <label>&Aacute;rea</label>
-    <span id="span_areaareatematica" class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Disciplina</label>
-    <span id="span_disciplinaareatematica" class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaDisciplinaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Subdisciplina</label>
-    <span id="span_subdisciplinaareatematica" class="valor"><%= Html.Encode(Model.AreaTematicaSubdisciplinaNombre)%>&nbsp;</span>
-</p>

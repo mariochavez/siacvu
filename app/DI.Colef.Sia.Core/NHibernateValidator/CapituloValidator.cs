@@ -40,10 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             isValid &= TieneProyecto(capitulo, constraintValidatorContext);
-            isValid &= ValidateFechas(capitulo, constraintValidatorContext);
-
-            if (capitulo.TipoCapitulo != null)
-                isValid &= ValidateTipoCapitulo(capitulo, constraintValidatorContext);
 
             if (capitulo.EstadoProducto != 0)
                 isValid &= ValidateProductoEstado(capitulo, constraintValidatorContext);
@@ -60,58 +56,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 if (capitulo.Proyecto == null)
                 {
                     constraintValidatorContext.AddInvalid("seleccione el proyecto|ProyectoNombre", "ProyectoNombre");
-
-                    isValid = false;
-                }
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
-        bool ValidateFechas(Capitulo capitulo, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (capitulo.FechaEdicion == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (capitulo.FechaEdicion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
-        bool ValidateTipoCapitulo(Capitulo capitulo, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (capitulo.TipoCapitulo.Nombre.Contains("otro idioma"))
-            {
-                if (capitulo.Idioma == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el idioma de tradución|Idioma", "Idioma");
-
-                    isValid = false;
-                }
-                if(capitulo.Traductor == false)
-                {
-                    constraintValidatorContext.AddInvalid(
-                       "seleccione si tiene traductor|Traductor", "Traductor");
 
                     isValid = false;
                 }

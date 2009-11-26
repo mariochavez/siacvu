@@ -228,7 +228,6 @@
     <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArchivo.cs" />
     <Compile Include="TipoArticulo.cs" />
-    <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />
     <Compile Include="TipoDistincion.cs" />
     <Compile Include="TipoEstancia.cs" />

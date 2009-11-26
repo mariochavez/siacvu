@@ -269,17 +269,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
                                AreaTematicaId = areaTematicaForm.Id
                            };

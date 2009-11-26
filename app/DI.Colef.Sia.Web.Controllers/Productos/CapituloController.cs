@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ICapituloMapper capituloMapper;
-        readonly ITipoCapituloMapper tipoCapituloMapper;
         readonly IPaisMapper paisMapper;
         readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
         readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
@@ -41,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
-                                  ITipoCapituloMapper tipoCapituloMapper, IIdiomaMapper idiomaMapper,
+                                  IIdiomaMapper idiomaMapper,
                                   IPaisMapper paisMapper, IInvestigadorMapper investigadorMapper,
                                   IInvestigadorExternoMapper investigadorExternoMapper,
                                   IFormaParticipacionMapper formaParticipacionMapper,
@@ -62,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.capituloService = capituloService;
             this.investigadorService = investigadorService;
             this.capituloMapper = capituloMapper;
-            this.tipoCapituloMapper = tipoCapituloMapper;
             this.idiomaMapper = idiomaMapper;
             this.paisMapper = paisMapper;
             this.investigadorMapper = investigadorMapper;
@@ -111,7 +109,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -223,22 +220,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeProyecto(int select)
+        public ActionResult ChangeSubdisciplina(int select)
         {
-            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
 
             var form = new ShowFieldsForm
-                           {
-                               ProyectoId = proyectoForm.Id,
+            {
+                SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+                SubdisciplinaId = subdisciplinaForm.Id
+            };
 
-                               ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
-                               ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
-                               ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                               ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
-                               ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
-                           };
-
-            return Rjs("ChangeProyecto", form);
+            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -248,17 +243,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
                                AreaTematicaId = areaTematicaForm.Id
                            };
@@ -563,19 +550,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new CapituloForm();
 
             //Lista de Catalogos Pendientes
-            form.Volumenes = customCollection.VolumenCustomCollection();
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
-            form.TiposCapitulos = tipoCapituloMapper.Map(catalogoService.GetActiveTipoCapitulos());
+            form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.ResponsablesInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
-            form.ResponsablesExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionCapitulos());
-            form.TiposParticipantes = tipoParticipanteMapper.Map(catalogoService.GetActiveParticipantes());
+            //form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.TiposLibro = customCollection.TipoLibroCustomCollection();
 
             return form;
         }
@@ -583,13 +562,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(CapituloForm form)
         {
             ViewData["Editorial"] = form.EditorialId;
-            ViewData["Volumen"] = form.Volumen;
-            ViewData["TipoCapitulo"] = form.TipoCapituloId;
-            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["TipoCapitulo"] = form.TipoCapitulo;
+            //ViewData["Idioma"] = form.IdiomaId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["Pais"] = form.PaisId;
-            ViewData["TipoParticipacion"] = form.TipoParticipacionId;
-            ViewData["TipoParticipante"] = form.TipoParticipanteId;
+            ViewData["TipoLibro"] = form.TipoLibro;
         }
 
         private CapituloForm SetupShowForm(CapituloForm form)
@@ -598,18 +574,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
-                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
-                                      ProyectoNombre = form.Proyecto.Nombre,
-
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
+
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
 
                                       IsShowForm = true
                                   };

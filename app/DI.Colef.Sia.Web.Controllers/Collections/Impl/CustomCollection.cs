@@ -7,11 +7,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
     {
         public CustomSelectForm[] TipoProductoCustomCollection()
         {
+            return TipoProductoCustomCollection(0);
+        }
+
+        public CustomSelectForm[] TipoProductoCustomCollection(int tipoProducto)
+        {
+            var lowerUpperS = tipoProducto == 0 ? "S" : "S".ToLower();
+            var lowerUpperC = tipoProducto == 0 ? "C" : "C".ToLower();
+
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = "Con arbitraje"},
-                           new CustomSelectForm {Id = 2, Nombre = "Sin arbitraje"}
+                           new CustomSelectForm {Id = 1, Nombre = GetNombreProducto(tipoProducto) + lowerUpperC + "on arbitraje"},
+                           new CustomSelectForm {Id = 2, Nombre = GetNombreProducto(tipoProducto) + lowerUpperS + "in arbitraje"}
                        };
+        }
+
+        public CustomSelectForm[] TipoLibroCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Coordinación"},
+                           new CustomSelectForm {Id = 2, Nombre = "Compilación"}
+                       };
+        }
+
+        private string GetNombreProducto(int tipoProducto)
+        {
+            var nombreProducto = "";
+
+            switch (tipoProducto)
+            {
+                case 0:
+                    nombreProducto = "";
+                    break;
+                case 1:
+                    nombreProducto = "Artículo ";
+                    break;
+                case 2:
+                    nombreProducto = "Capítulo ";
+                    break;
+            }
+
+            return nombreProducto;
         }
 
         public CustomSelectForm[] EstadoProductoCustomCollection()

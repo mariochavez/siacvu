@@ -39,26 +39,10 @@
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
-                <p>
-                    <label>Nombre del cap&iacute;tulo</label>
-                    <%=Html.TextBox("NombreCapitulo", Model.Form.NombreCapitulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-                    <span class="cvu"></span>
-                    <%=Html.ValidationMessage("NombreCapitulo")%>
-                </p>
-                <p>
-                    <label>Tipo de cap&iacute;tulo</label>
-                    <%=Html.DropDownList("TipoCapitulo", Model.Form.TiposCapitulos.CreateSelectList<TipoCapituloForm>("Id", "Nombre"),
-                                        "Seleccione ...", new { @class = "tipo requerido" })%>
-                    <%=Html.ValidationMessage("TipoCapitulo") %>
-                </p>
-                <p id="idioma_field">
-                    <label>Idioma al que se tradujo</label>
-                    <%=Html.DropDownList("Idioma", Model.Form.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-                                "Seleccione ...", new { @class = "requerido" })%>
-                    <%=Html.ValidationMessage("Idioma") %>
-                </p>
+                <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
+
 	            
-	            <h4>Coautores<span class="cvu"></span></h4>
+	            <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>
@@ -66,23 +50,20 @@
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
 	                <span class="cvu"></span>
 	            </p>
-				
-	            <% Html.RenderPartial("_DatosCapitulo", Model.Form); %>
-	            
-	            <h4>Referencia bibliogr&aacute;fica</h4>
-				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-            
-	            <h4>Responsables del libro</h4>
-	            <% Html.RenderPartial("_EditResponsableInterno", new ResponsableForm { ResponsablesInternos = Model.Form.ResponsableInternoCapitulos, ModelId = Model.Form.Id }); %>
-				<% Html.RenderPartial("_EditResponsableExterno", new ResponsableForm { ResponsablesExternos = Model.Form.ResponsableExternoCapitulos, ModelId = Model.Form.Id } ); %>
-	            <p>
-	                <label>Editores</label>
-	                <span id="totaleditores" class="valor"><%=Html.Encode(Model.Form.TotalEditores) %></span>
+                <p>
+	                <label>Posici&oacute;n del autor</label>
+                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
 	                <span class="cvu"></span>
-	            </p>
-            
-	            <h4>Complementaria CVU</h4>
-				<% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
+	                <%=Html.ValidationMessage("PosicionAutor")%>
+                </p>
+				
+				<h4>Estatus de la publicaci&oacute;n</h4>
+	            <% Html.RenderPartial("_EstatusPublicacion", Model.Form); %>
+	            
+	            <div id="publicado_fields">
+	                <h4>Referencia bibliogr&aacute;fica</h4>
+				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
             
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>

@@ -199,26 +199,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeProyecto(int select)
-        {
-            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               ProyectoId = proyectoForm.Id,
-
-                               ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
-                               ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
-                               ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                               ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
-                               ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
-                           };
-
-            return Rjs("ChangeProyecto", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeRevista(int select)
         {
             var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
@@ -244,17 +224,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
                                AreaTematicaId = areaTematicaForm.Id
                            };
@@ -443,18 +415,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
-                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
-                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
-                                      ProyectoNombre = form.Proyecto.Nombre,
-
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
                                       IsShowForm = true,
                                       RevistaLabel = "Nombre de la revista"

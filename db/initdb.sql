@@ -923,10 +923,6 @@ insert into TipoParticipaciones values('Video', 3, GETDATE(), GETDATE(), 1, 1, 1
 insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into TipoCapitulos values('Capítulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);
@@ -1892,18 +1888,18 @@ insert into Subdisciplinas values('Demografia urbana', null, GETDATE(), GETDATE(
 
 --Valores de prueba
 --insert into AreaTematicas values('Area tematica 1', GETDATE(), GETDATE(), 1, LineaTematicaFk, SubdisciplinaFk, 1, 1)
---1 = ESTUDIOS CULTURALES LineaTematicaFk => 1 = Tasa de natalidad SubdisciplinaFk
---2 = MIGRACIÓN LineaTematicaFk => 2 = Fecunidad general SubdisciplinaFk
-insert into AreaTematicas values('Area tematica 1', GETDATE(), GETDATE(), 1, 1, 1, 1, 1)
-insert into AreaTematicas values('Area tematica 2', GETDATE(), GETDATE(), 1, 1, 1, 1, 1)
-insert into AreaTematicas values('Area tematica 3', GETDATE(), GETDATE(), 1, 1, 1, 1, 1)
-insert into AreaTematicas values('Area tematica 4', GETDATE(), GETDATE(), 1, 1, 1, 1, 1)
-insert into AreaTematicas values('Area tematica 5', GETDATE(), GETDATE(), 1, 1, 1, 1, 1)
-insert into AreaTematicas values('Area tematica 6', GETDATE(), GETDATE(), 1, 2, 2, 1, 1)
-insert into AreaTematicas values('Area tematica 7', GETDATE(), GETDATE(), 1, 2, 2, 1, 1)
-insert into AreaTematicas values('Area tematica 8', GETDATE(), GETDATE(), 1, 2, 2, 1, 1)
-insert into AreaTematicas values('Area tematica 9', GETDATE(), GETDATE(), 1, 2, 2, 1, 1)
-insert into AreaTematicas values('Area tematica 10', GETDATE(), GETDATE(), 1, 2, 2, 1, 1)
+--1 = ESTUDIOS CULTURALES LineaTematicaFk 
+--2 = MIGRACIÓN LineaTematicaFk 
+insert into AreaTematicas values('Area tematica 1', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into AreaTematicas values('Area tematica 2', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into AreaTematicas values('Area tematica 3', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into AreaTematicas values('Area tematica 4', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into AreaTematicas values('Area tematica 5', GETDATE(), GETDATE(), 1, 1, 1, 1)
+insert into AreaTematicas values('Area tematica 6', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into AreaTematicas values('Area tematica 7', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into AreaTematicas values('Area tematica 8', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into AreaTematicas values('Area tematica 9', GETDATE(), GETDATE(), 1, 2, 1, 1)
+insert into AreaTematicas values('Area tematica 10', GETDATE(), GETDATE(), 1, 2, 1, 1)
 
 insert into RevistaPublicaciones values('AMERICAN NATURALIST', null, '0003-0147', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('AMERICAN NEPTUNE', null, '0003-0155', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
