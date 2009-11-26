@@ -10,7 +10,7 @@
 <p>
     <label>&Aacute;rea tem&aacute;tica Institucional</label>
     <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<AreaTematicaForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changearea") })%>
+                        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changeareatematica") })%>
     <%=Html.ValidationMessage("AreaTematicaId")%>
 </p>
 <p>
@@ -36,7 +36,7 @@
     <span class="cvu"></span>
 </p>                         
 <p>
-    <label>Clave CVU</label>
+    <label>Clave de CVU-CONACyT</label>
     <%=Html.TextBox("ClaveCVU", Model.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
 </p>
  

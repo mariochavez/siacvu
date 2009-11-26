@@ -553,27 +553,28 @@ insert into Categorias values('Asociado A',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Categorias values('Asociado B',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Categorias values('Asociado C',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into Cargos values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Presidente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Secretario General Académico',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Secretario General de Planeación y Desarrollo Institucional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Vinculación Institucional',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Asuntos Académicos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director General de Docencia',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director Regional Noroeste ',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios de Administración Pública',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios Culturales',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios Económicos',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios Sociales',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios de Población ',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Director del Departamento de Estudios Urbanos y del Medio Ambiente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador del Doctorado en Ciencias Sociales',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de la Maestría en Desarrollo Regional ',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de la Maestría en Demografía',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de la Maestría en Economía Aplicada',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de la Maestría en Administración Integral y del Medio Ambiente',GETDATE(), GETDATE(), 1, 1, 1);
-insert into Cargos values('Coordinador de la Maestría en Estudios Socioculturales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Presidente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Secretario General Académico',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Secretario General de Planeación y Desarrollo Institucional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director General de Vinculación Institucional',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director General de Asuntos Académicos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director General de Docencia',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director Regional Noroeste ',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios de Administración Pública',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios Culturales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios Económicos',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios Sociales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios de Población ',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Director del Departamento de Estudios Urbanos y del Medio Ambiente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador del Doctorado en Ciencias Sociales',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador de la Maestría en Desarrollo Regional ',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador de la Maestría en Demografía',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador de la Maestría en Economía Aplicada',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador de la Maestría en Administración Integral y del Medio Ambiente',GETDATE(), GETDATE(), 1, 1, 1);
+insert into Puestos values('Coordinador de la Maestría en Estudios Socioculturales',GETDATE(), GETDATE(), 1, 1, 1);
+
 
 insert into SNIs values('No pertenece',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Candidato',GETDATE(), GETDATE(), 1, 1, 1);
@@ -3311,11 +3312,6 @@ insert into Editoriales values('Editorial 3',GETDATE(), GETDATE(), 1, 3, 14, 1, 
 insert into Diplomados values('Diplomado 1',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 2',GETDATE(), GETDATE(), 1, 1, 1)
 insert into Diplomados values('Diplomado 3',GETDATE(), GETDATE(), 1, 1, 1)
-
---Valores de prueba
-insert into Puestos values('Puesto 1', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Puestos values('Puesto 2', GETDATE(), GETDATE(), 1, 1, 1)
-insert into Puestos values('Puesto 3', GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into DireccionRegionales values('Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1)
 insert into DireccionRegionales values('Dirección Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1)

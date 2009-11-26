@@ -108,13 +108,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CargoInvestigador, CargoInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Cargo,
+                .ForMember(d => d.Sede,
                            o => o.Ignore())
                 .ForMember(d => d.Departamento,
                            o => o.Ignore())
                 .ForMember(d => d.Puesto,
-                           o => o.Ignore())
-                .ForMember(d => d.DireccionRegional,
                            o => o.Ignore());
 
             Mapper.CreateMap<SNIInvestigador, SNIInvestigadorForm>()
@@ -625,10 +623,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         void CreateCatalogosMaps()
         {
             Mapper.CreateMap<Rol, RolForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-
-            Mapper.CreateMap<Cargo, CargoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 

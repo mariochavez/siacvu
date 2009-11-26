@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <% if(Model.AreaTematicaId != 0){ %>
-    $('#span_lineatematica').html('<%=Html.Encode(Model.AreaTematicaLineaTematicaNombre)%>&nbsp;');
+    $('#span_lineatematica').html('<%=Html.Encode(Model.AreaTematicaNombre)%>&nbsp;');
 <% } else { %>
     $('#span_lineatematica').html('&nbsp;');
 <% } %>

@@ -62,7 +62,7 @@
                         <span>(Formato dd/mm/yyyy)</span>
                     </p>
                     
-                    <h4>Grado Acad&eacute;mico</h4>
+                    <h4>Grado Acad&eacute;mico del Investigador</h4>
                     <% Html.RenderPartial("_NewGrado", Model.Form); %>
                     
                     <h4>Perfil acad&eacute;mico del Investigador</h4>

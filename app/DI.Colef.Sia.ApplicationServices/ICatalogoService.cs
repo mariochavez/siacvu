@@ -4,12 +4,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
     public interface ICatalogoService
     {
-        //Cargo
-        Cargo GetCargoById(int id);
-        Cargo[] GetAllCargos();
-        Cargo[] GetActiveCargos();
-        void SaveCargo(Cargo cargo);
-
         //Departamento
         Departamento GetDepartamentoById(int id);
         Departamento[] GetAllDepartamentos();

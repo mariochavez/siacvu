@@ -23,12 +23,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(CargoInvestigadorForm message, CargoInvestigador model)
         {
-            model.Cargo = catalogoService.GetCargoById(message.Cargo);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
             model.Puesto = catalogoService.GetPuestoById(message.Puesto);
-            model.DireccionRegional = catalogoService.GetDireccionRegionalById(message.DireccionRegional);
-            if (model.Sede != null)
-                model.DireccionRegional = model.Sede.DireccionRegional;
+            model.Sede = catalogoService.GetSedeById(message.Sede);
 
             if (model.IsTransient())
             {

@@ -1235,14 +1235,6 @@ alter table CoautorExternos  drop constraint FKFFA20BAC85102A57
 alter table CoautorExternos  drop constraint FKFFA20BAC74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E85102A57]') AND parent_object_id = OBJECT_ID('Cargos'))
-alter table Cargos  drop constraint FKA8E8D63E85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA8E8D63E74E8BAB7]') AND parent_object_id = OBJECT_ID('Cargos'))
-alter table Cargos  drop constraint FKA8E8D63E74E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBBE7856185102A57]') AND parent_object_id = OBJECT_ID('ContenidoLibros'))
 alter table ContenidoLibros  drop constraint FKBBE7856185102A57
 
@@ -2223,10 +2215,6 @@ alter table Cursos  drop constraint FK8E38D63E85102A57
 alter table Cursos  drop constraint FK8E38D63E74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D136FF2CA]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
-alter table CargoInvestigadores  drop constraint FKC1D5F88D136FF2CA
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D37E25AD5]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
 alter table CargoInvestigadores  drop constraint FKC1D5F88D37E25AD5
 
@@ -2237,10 +2225,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D7D866EAB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D3E391E13]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
 alter table CargoInvestigadores  drop constraint FKC1D5F88D3E391E13
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88DFE7BABE]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
-alter table CargoInvestigadores  drop constraint FKC1D5F88DFE7BABE
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D85102A57]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
@@ -2440,8 +2424,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'Generos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Generos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'Cargos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Cargos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ContenidoLibros') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ContenidoLibros
 
@@ -3734,17 +3716,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Id)
     )
 
-    create table Cargos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     create table ContenidoLibros (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4658,11 +4629,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CargoFk INT null,
        PuestoFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       DireccionRegionalFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
@@ -6214,16 +6183,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table Cargos 
-        add constraint FKA8E8D63E85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table Cargos 
-        add constraint FKA8E8D63E74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
     alter table ContenidoLibros 
         add constraint FKBBE7856185102A57 
         foreign key (CreadorPorFk) 
@@ -7450,11 +7409,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table CargoInvestigadores 
-        add constraint FKC1D5F88D136FF2CA 
-        foreign key (CargoFk) 
-        references Cargos
-
-    alter table CargoInvestigadores 
         add constraint FKC1D5F88D37E25AD5 
         foreign key (PuestoFk) 
         references Puestos
@@ -7468,11 +7422,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKC1D5F88D3E391E13 
         foreign key (SedeFk) 
         references Sedes
-
-    alter table CargoInvestigadores 
-        add constraint FKC1D5F88DFE7BABE 
-        foreign key (DireccionRegionalFk) 
-        references DireccionRegionales
 
     alter table CargoInvestigadores 
         add constraint FKC1D5F88D85102A57 

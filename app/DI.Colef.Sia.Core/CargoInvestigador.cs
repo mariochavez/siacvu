@@ -7,9 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     public class CargoInvestigador : Entity, IBaseEntity
     {
         [NotNull]
-        public virtual Cargo Cargo { get; set; }
-
-        [NotNull]
         public virtual Puesto Puesto { get; set; }
 
         [NotNull]
@@ -17,9 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [NotNull]
         public virtual Sede Sede { get; set; }
-
-        [NotNull]
-        public virtual DireccionRegional DireccionRegional { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

@@ -88,7 +88,6 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="AutorResena.cs" />
     <Compile Include="Capitulo.cs" />
-    <Compile Include="Cargo.cs" />
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />
