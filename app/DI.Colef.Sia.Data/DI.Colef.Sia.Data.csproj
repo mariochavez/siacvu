@@ -93,8 +93,8 @@
     <Compile Include="NHibernateMaps\Alteration\CoautorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\CoautorExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\FirmaAlteration.cs" />
-    <Compile Include="NHibernateMaps\Alteration\ResponsableExternoAlteration.cs" />
-    <Compile Include="NHibernateMaps\Alteration\ResponsableInternoAlteration.cs" />
+    <Compile Include="NHibernateMaps\Alteration\AutorExternoAlteration.cs" />
+    <Compile Include="NHibernateMaps\Alteration\AutorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyToManyConvention.cs" />

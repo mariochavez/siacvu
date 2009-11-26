@@ -41,7 +41,6 @@
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
 
-	            
 	            <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
@@ -64,7 +63,7 @@
 	                <h4>Referencia bibliogr&aacute;fica</h4>
 				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-            
+				
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
 	            </p>

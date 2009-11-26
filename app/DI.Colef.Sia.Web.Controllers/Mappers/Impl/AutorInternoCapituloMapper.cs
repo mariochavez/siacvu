@@ -7,23 +7,23 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class ResponsableInternoCapituloMapper : AutoFormMapper<ResponsableInternoCapitulo, ResponsableInternoProductoForm>, IResponsableInternoCapituloMapper
+    public class AutorInternoCapituloMapper : AutoFormMapper<AutorInternoCapitulo, AutorInternoProductoForm>, IAutorInternoCapituloMapper
     {
         readonly IInvestigadorService investigadorService;
 		
-		public ResponsableInternoCapituloMapper(IRepository<ResponsableInternoCapitulo> repository,
+		public AutorInternoCapituloMapper(IRepository<AutorInternoCapitulo> repository,
             IInvestigadorService investigadorService)
 			: base(repository)
         {
             this.investigadorService = investigadorService;
         }
 
-        protected override int GetIdFromMessage(ResponsableInternoProductoForm message)
+        protected override int GetIdFromMessage(AutorInternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(ResponsableInternoProductoForm message, ResponsableInternoCapitulo model)
+        protected override void MapToModel(AutorInternoProductoForm message, AutorInternoCapitulo model)
         {
             model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
 			

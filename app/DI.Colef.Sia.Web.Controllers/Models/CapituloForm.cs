@@ -55,21 +55,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         {
             get
             {
-                return (ResponsableExternoCapitulos == null ? 0 : ResponsableExternoCapitulos.Length) +
-                       (ResponsableInternoCapitulos == null ? 0 : ResponsableInternoCapitulos.Length);
+                return (AutorExternoCapitulos == null ? 0 : AutorExternoCapitulos.Length) +
+                       (AutorInternoCapitulos == null ? 0 : AutorInternoCapitulos.Length);
             }
         }
 
         public CoautorExternoProductoForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
-        public ResponsableInternoProductoForm[] ResponsableInternoCapitulos { get; set; }
-        public ResponsableExternoProductoForm[] ResponsableExternoCapitulos { get; set; }
+        public AutorInternoProductoForm[] AutorInternoCapitulos { get; set; }
+        public AutorExternoProductoForm[] AutorExternoCapitulos { get; set; }
 		
 		/* New */
 		public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public ResponsableInternoProductoForm ResponsableInternoProducto { get; set; }
-        public ResponsableExternoProductoForm ResponsableExternoProducto { get; set; }
+        public AutorInternoProductoForm AutorInternoProducto { get; set; }
+        public AutorExternoProductoForm AutorExternoProducto { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }

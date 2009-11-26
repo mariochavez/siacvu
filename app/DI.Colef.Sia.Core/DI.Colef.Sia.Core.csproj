@@ -145,7 +145,7 @@
     <Compile Include="Institucion.cs" />
     <Compile Include="InstitucionEvento.cs" />
     <Compile Include="Investigador.cs" />
-    <Compile Include="IResponsable.cs" />
+    <Compile Include="IAutor.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
@@ -208,8 +208,8 @@
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
-    <Compile Include="ResponsableExternoProducto.cs" />
-    <Compile Include="ResponsableInternoProducto.cs" />
+    <Compile Include="AutorExternoProducto.cs" />
+    <Compile Include="AutorInternoProducto.cs" />
     <Compile Include="ResponsableInternoProyecto.cs" />
     <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />

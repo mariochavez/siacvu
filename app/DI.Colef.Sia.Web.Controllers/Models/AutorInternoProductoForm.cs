@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ResponsableInternoProductoForm
+    public class AutorInternoProductoForm
     {
         public int Id { get; set; }
         public bool Activo { get; set; }
@@ -15,12 +15,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ParentId { get; set; }
 
-        public string NombreResponsable
+        public string NombreAutor
         {
             get
             {
-                return string.Format("{0} {1} {2}", InvestigadorUsuarioApellidoPaterno,
-                                     InvestigadorUsuarioApellidoMaterno, InvestigadorUsuarioNombre);
+                return string.Format("{0} {1} {2}", InvestigadorUsuarioNombre, InvestigadorUsuarioApellidoPaterno,
+                                     InvestigadorUsuarioApellidoMaterno);
             }
         }
     }

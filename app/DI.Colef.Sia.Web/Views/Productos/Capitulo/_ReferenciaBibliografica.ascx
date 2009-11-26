@@ -7,12 +7,11 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
-<p>
-    <label>Autor(es) del libro</label>
-    <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("AutorLibro")%>
-</p>
+
+<h4>Autor(es) del libro</h4>
+<% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoCapitulos, ModelId = Model.Id }); %>
+<% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoCapitulos, ModelId = Model.Id } ); %>
+
 <p>
     <label>Tipo de libro</label>
     <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),

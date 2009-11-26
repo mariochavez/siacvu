@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [CapituloValidator]
-	public class Capitulo : Entity, IBaseEntity, IResponsable, ICoautor
+	public class Capitulo : Entity, IBaseEntity, IAutor, ICoautor
     {
         const int tipoProducto = 2; // 2 Representa Capitulo
 
@@ -17,8 +17,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		{
 			CoautorExternoCapitulos = new List<CoautorExternoCapitulo>();
             CoautorInternoCapitulos = new List<CoautorInternoCapitulo>();
-            ResponsableInternoCapitulos = new List<ResponsableInternoCapitulo>();
-            ResponsableExternoCapitulos = new List<ResponsableExternoCapitulo>();
+            AutorInternoCapitulos = new List<AutorInternoCapitulo>();
+            AutorExternoCapitulos = new List<AutorExternoCapitulo>();
             FirmaCapitulos = new List<FirmaCapitulo>();
             ArchivoCapitulos = new List<ArchivoCapitulo>();
 		}
@@ -34,15 +34,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             coautorInterno.TipoProducto = tipoProducto;
             CoautorInternoCapitulos.Add((CoautorInternoCapitulo)coautorInterno);
         }
-        public virtual void AddResponsableInterno(ResponsableInternoProducto responsableInterno)
+        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
         {
-            responsableInterno.TipoProducto = tipoProducto;
-            ResponsableInternoCapitulos.Add((ResponsableInternoCapitulo)responsableInterno);
+            autorInterno.TipoProducto = tipoProducto;
+            AutorInternoCapitulos.Add((AutorInternoCapitulo)autorInterno);
         }
-        public virtual void AddResponsableExterno(ResponsableExternoProducto responsableExterno)
+        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
         {
-            responsableExterno.TipoProducto = tipoProducto;
-            ResponsableExternoCapitulos.Add((ResponsableExternoCapitulo)responsableExterno);
+            autorExterno.TipoProducto = tipoProducto;
+            AutorExternoCapitulos.Add((AutorExternoCapitulo)autorExterno);
         }
 
         public virtual void AddFirma(Firma firma)
@@ -77,14 +77,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoCapitulos.Remove((CoautorExternoCapitulo)coautorExterno);
         }
 
-        public virtual void DeleteResponsableInterno(ResponsableInternoProducto coautorInterno)
+        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
         {
-            ResponsableInternoCapitulos.Remove((ResponsableInternoCapitulo)coautorInterno);
+            AutorInternoCapitulos.Remove((AutorInternoCapitulo)coautorInterno);
         }
 
-        public virtual void DeleteResponsableExterno(ResponsableExternoProducto coautorExterno)
+        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
         {
-            ResponsableExternoCapitulos.Remove((ResponsableExternoCapitulo)coautorExterno);
+            AutorExternoCapitulos.Remove((AutorExternoCapitulo)coautorExterno);
         }
 
         [DomainSignature]
@@ -141,10 +141,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int NoCitas { get; set; }
 
         [Valid]
-        public virtual IList<ResponsableInternoCapitulo> ResponsableInternoCapitulos { get; private set; }
+        public virtual IList<AutorInternoCapitulo> AutorInternoCapitulos { get; private set; }
 
         [Valid]
-        public virtual IList<ResponsableExternoCapitulo> ResponsableExternoCapitulos { get; private set; }
+        public virtual IList<AutorExternoCapitulo> AutorExternoCapitulos { get; private set; }
 
         public virtual int Puntuacion { get; set; }
 

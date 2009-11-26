@@ -11,24 +11,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		readonly ICatalogoService catalogoService;
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
-        readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-        readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
+        readonly IAutorInternoCapituloMapper autorInternoCapituloMapper;
+        readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IProyectoService proyectoService;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		                      ICatalogoService catalogoService,
                               ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                               ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
-                              IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-                              IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
+                              IAutorInternoCapituloMapper autorInternoCapituloMapper,
+                              IAutorExternoCapituloMapper autorExternoCapituloMapper,
                               IProyectoService proyectoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
-            this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
-            this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
+            this.autorInternoCapituloMapper = autorInternoCapituloMapper;
+            this.autorExternoCapituloMapper = autorExternoCapituloMapper;
 		    this.proyectoService = proyectoService;
         }		
 		
@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            ResponsableExternoProductoForm[] responsablesExternos, ResponsableInternoProductoForm[] responsablesInternos)
+            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos)
         {
             var model = Map(message, usuario, investigador);
 
@@ -107,26 +107,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorInterno(coautor);
             }
 
-            foreach (var responsableExterno in responsablesExternos)
+            foreach (var autorExterno in autoresExternos)
             {
-                var responsable =
-                    responsableExternoCapituloMapper.Map(responsableExterno);
+                var autor =
+                    autorExternoCapituloMapper.Map(autorExterno);
 
-                responsable.CreadorPor = usuario;
-                responsable.ModificadoPor = usuario;
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
 
-                model.AddResponsableExterno(responsable);
+                model.AddAutorExterno(autor);
             }
 
-            foreach (var responsableInterno in responsablesInternos)
+            foreach (var autorInterno in autoresInternos)
             {
-                var responsable =
-                    responsableInternoCapituloMapper.Map(responsableInterno);
+                var autor =
+                    autorInternoCapituloMapper.Map(autorInterno);
 
-                responsable.CreadorPor = usuario;
-                responsable.ModificadoPor = usuario;
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
 
-                model.AddResponsableInterno(responsable);
+                model.AddAutorInterno(autor);
             }
 
             return model;

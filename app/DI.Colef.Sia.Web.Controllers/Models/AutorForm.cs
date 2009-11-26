@@ -1,13 +1,13 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ResponsableForm
+    public class AutorForm
     {
         public int Id { get; set; }
         public string Controller { get; set; }
         public string IdName { get; set; }
 
-        public ResponsableInternoProductoForm[] ResponsablesInternos { get; set; }
-        public ResponsableExternoProductoForm[] ResponsablesExternos { get; set; }
+        public AutorInternoProductoForm[] AutoresInternos { get; set; }
+        public AutorExternoProductoForm[] AutoresExternos { get; set; }
         public int ModelId { get; set; }
         public int InvestigadorExternoId { get; set; }
         public int InvestigadorId { get; set; }

@@ -851,50 +851,6 @@ alter table SNIInvestigadores  drop constraint FK6A7A949C74E8BAB7
 alter table SNIInvestigadores  drop constraint FK6A7A949C8336201B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF31F01B78336201B]') AND parent_object_id = OBJECT_ID('ResponsableInternoProductos'))
-alter table ResponsableInternoProductos  drop constraint FKF31F01B78336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF31F01B785102A57]') AND parent_object_id = OBJECT_ID('ResponsableInternoProductos'))
-alter table ResponsableInternoProductos  drop constraint FKF31F01B785102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF31F01B774E8BAB7]') AND parent_object_id = OBJECT_ID('ResponsableInternoProductos'))
-alter table ResponsableInternoProductos  drop constraint FKF31F01B774E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK550E475645769F82]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulo'))
-alter table ResponsableInternoCapitulo  drop constraint FK550E475645769F82
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK550E4756A1B3F60D]') AND parent_object_id = OBJECT_ID('ResponsableInternoCapitulo'))
-alter table ResponsableInternoCapitulo  drop constraint FK550E4756A1B3F60D
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5D335A858FDBB774]') AND parent_object_id = OBJECT_ID('ResponsableExternoProductos'))
-alter table ResponsableExternoProductos  drop constraint FK5D335A858FDBB774
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5D335A85103EADB1]') AND parent_object_id = OBJECT_ID('ResponsableExternoProductos'))
-alter table ResponsableExternoProductos  drop constraint FK5D335A85103EADB1
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5D335A8585102A57]') AND parent_object_id = OBJECT_ID('ResponsableExternoProductos'))
-alter table ResponsableExternoProductos  drop constraint FK5D335A8585102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5D335A8574E8BAB7]') AND parent_object_id = OBJECT_ID('ResponsableExternoProductos'))
-alter table ResponsableExternoProductos  drop constraint FK5D335A8574E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEB68948AB7DD3410]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulo'))
-alter table ResponsableExternoCapitulo  drop constraint FKEB68948AB7DD3410
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEB68948AA1B3F60D]') AND parent_object_id = OBJECT_ID('ResponsableExternoCapitulo'))
-alter table ResponsableExternoCapitulo  drop constraint FKEB68948AA1B3F60D
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2185102A57]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
 alter table MedioElectronicos  drop constraint FKC3FA1F2185102A57
 
@@ -2235,6 +2191,50 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE685102A57
 alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK140229918336201B]') AND parent_object_id = OBJECT_ID('AutorInternoProductos'))
+alter table AutorInternoProductos  drop constraint FK140229918336201B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1402299185102A57]') AND parent_object_id = OBJECT_ID('AutorInternoProductos'))
+alter table AutorInternoProductos  drop constraint FK1402299185102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1402299174E8BAB7]') AND parent_object_id = OBJECT_ID('AutorInternoProductos'))
+alter table AutorInternoProductos  drop constraint FK1402299174E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9CC896BE751FC11F]') AND parent_object_id = OBJECT_ID('AutorInternoCapitulo'))
+alter table AutorInternoCapitulo  drop constraint FK9CC896BE751FC11F
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9CC896BEA1B3F60D]') AND parent_object_id = OBJECT_ID('AutorInternoCapitulo'))
+alter table AutorInternoCapitulo  drop constraint FK9CC896BEA1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F38FDBB774]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
+alter table AutorExternoProductos  drop constraint FKA32D18F38FDBB774
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F364F7D1CD]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
+alter table AutorExternoProductos  drop constraint FKA32D18F364F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F385102A57]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
+alter table AutorExternoProductos  drop constraint FKA32D18F385102A57
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F374E8BAB7]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
+alter table AutorExternoProductos  drop constraint FKA32D18F374E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9642E24AC6FC9223]') AND parent_object_id = OBJECT_ID('AutorExternoCapitulo'))
+alter table AutorExternoCapitulo  drop constraint FK9642E24AC6FC9223
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9642E24AA1B3F60D]') AND parent_object_id = OBJECT_ID('AutorExternoCapitulo'))
+alter table AutorExternoCapitulo  drop constraint FK9642E24AA1B3F60D
+
+
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Sedes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Sedes
@@ -2338,14 +2338,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoActividades') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoActividades
 
     if exists (select * from dbo.sysobjects where id = object_id(N'SNIInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table SNIInvestigadores
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableInternoCapitulo
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableExternoProductos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ResponsableExternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ResponsableExternoCapitulo
 
     if exists (select * from dbo.sysobjects where id = object_id(N'MedioElectronicos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MedioElectronicos
 
@@ -2562,6 +2554,14 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'CargoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CargoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AreaInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AreaInvestigaciones
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoCapitulo
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorExternoProductos
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorExternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorExternoCapitulo
 
     create table SNIs (
         Id INT IDENTITY NOT NULL,
@@ -3361,44 +3361,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
-    )
-
-    create table ResponsableInternoProductos (
-        Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
-       Posicion INT null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table ResponsableInternoCapitulo (
-        ResponsableInternoProducto INT not null,
-       CapituloFk INT null,
-       primary key (ResponsableInternoProducto)
-    )
-
-    create table ResponsableExternoProductos (
-        Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       FormaParticipacionFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table ResponsableExternoCapitulo (
-        ResponsableExternoProducto INT not null,
-       CapituloFk INT null,
-       primary key (ResponsableExternoProducto)
     )
 
     create table MedioElectronicos (
@@ -4626,6 +4588,44 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        primary key (Id)
     )
 
+    create table AutorInternoProductos (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
+       Posicion INT null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table AutorInternoCapitulo (
+        AutorInternoProducto INT not null,
+       CapituloFk INT null,
+       primary key (AutorInternoProducto)
+    )
+
+    create table AutorExternoProductos (
+        Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
+       CreadorEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       InstitucionFk INT null,
+       CreadorPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table AutorExternoCapitulo (
+        AutorExternoProducto INT not null,
+       CapituloFk INT null,
+       primary key (AutorExternoProducto)
+    )
+
     alter table SNIs 
         add constraint FKF16DB6DA85102A57 
         foreign key (CreadorPorFk) 
@@ -5690,61 +5690,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK6A7A949C8336201B 
         foreign key (InvestigadorFk) 
         references Investigadores
-
-    alter table ResponsableInternoProductos 
-        add constraint FKF31F01B78336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table ResponsableInternoProductos 
-        add constraint FKF31F01B785102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table ResponsableInternoProductos 
-        add constraint FKF31F01B774E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table ResponsableInternoCapitulo 
-        add constraint FK550E475645769F82 
-        foreign key (ResponsableInternoProducto) 
-        references ResponsableInternoProductos
-
-    alter table ResponsableInternoCapitulo 
-        add constraint FK550E4756A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
-
-    alter table ResponsableExternoProductos 
-        add constraint FK5D335A858FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table ResponsableExternoProductos 
-        add constraint FK5D335A85103EADB1 
-        foreign key (FormaParticipacionFk) 
-        references FormaParticipaciones
-
-    alter table ResponsableExternoProductos 
-        add constraint FK5D335A8585102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table ResponsableExternoProductos 
-        add constraint FK5D335A8574E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table ResponsableExternoCapitulo 
-        add constraint FKEB68948AB7DD3410 
-        foreign key (ResponsableExternoProducto) 
-        references ResponsableExternoProductos
-
-    alter table ResponsableExternoCapitulo 
-        add constraint FKEB68948AA1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
 
     alter table MedioElectronicos 
         add constraint FKC3FA1F2185102A57 
@@ -7420,3 +7365,58 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKC1B18FE674E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table AutorInternoProductos 
+        add constraint FK140229918336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table AutorInternoProductos 
+        add constraint FK1402299185102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table AutorInternoProductos 
+        add constraint FK1402299174E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table AutorInternoCapitulo 
+        add constraint FK9CC896BE751FC11F 
+        foreign key (AutorInternoProducto) 
+        references AutorInternoProductos
+
+    alter table AutorInternoCapitulo 
+        add constraint FK9CC896BEA1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos
+
+    alter table AutorExternoProductos 
+        add constraint FKA32D18F38FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table AutorExternoProductos 
+        add constraint FKA32D18F364F7D1CD 
+        foreign key (InstitucionFk) 
+        references Instituciones
+
+    alter table AutorExternoProductos 
+        add constraint FKA32D18F385102A57 
+        foreign key (CreadorPorFk) 
+        references Usuarios
+
+    alter table AutorExternoProductos 
+        add constraint FKA32D18F374E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table AutorExternoCapitulo 
+        add constraint FK9642E24AC6FC9223 
+        foreign key (AutorExternoProducto) 
+        references AutorExternoProductos
+
+    alter table AutorExternoCapitulo 
+        add constraint FK9642E24AA1B3F60D 
+        foreign key (CapituloFk) 
+        references Capitulos

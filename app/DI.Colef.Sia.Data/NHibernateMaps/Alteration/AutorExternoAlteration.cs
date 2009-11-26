@@ -4,11 +4,11 @@ using FluentNHibernate.AutoMap.Alterations;
 
 namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Alteration
 {
-    public class ResponsableExternoAlteration : IAutoMappingAlteration
+    public class AutorExternoAlteration : IAutoMappingAlteration
     {
         public void Alter(AutoPersistenceModel model)
         {
-            model.ForTypesThatDeriveFrom<ResponsableExternoProducto>(
+            model.ForTypesThatDeriveFrom<AutorExternoProducto>(
                     map => map.DiscriminateSubClassesOnColumn("TipoProducto", 1));
         }
     }

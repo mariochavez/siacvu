@@ -4,13 +4,13 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class ResponsableInternoProducto : Entity, IBaseEntity
+    public class AutorExternoProducto : Entity, IBaseEntity
     {
         [NotNull]
-        public virtual Investigador Investigador { get; set; }
+        public virtual InvestigadorExterno InvestigadorExterno { get; set; }
 
-        [Min(1)]
-        public virtual int Posicion { get; set; }
+        [NotNull]
+        public virtual Institucion Institucion { get; set; }
 
         public virtual int TipoProducto { get; set; }
 
@@ -22,11 +22,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime ModificadoEl { get; set; }
 
-        public virtual bool Activo { get; set; }   
+        public virtual bool Activo { get; set; }
     }
 
-    public class ResponsableInternoCapitulo : ResponsableInternoProducto
+    public class AutorExternoCapitulo : AutorExternoProducto
     {
-        
+
     }
 }

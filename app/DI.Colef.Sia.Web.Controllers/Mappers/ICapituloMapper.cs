@@ -8,6 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador);
         Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            ResponsableExternoProductoForm[] responsablesExternos, ResponsableInternoProductoForm[] responsablesInternos);
+            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos);
     }
 }
