@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="AreaInvestigacion.cs" />
+    <Compile Include="ContenidoLibro.cs" />
     <Compile Include="CursoInvestigador.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
     <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />

@@ -907,6 +907,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<AreaInvestigacion, AreaInvestigacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<ContenidoLibro, ContenidoLibroForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
     }
 }
