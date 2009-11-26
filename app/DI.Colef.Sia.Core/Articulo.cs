@@ -66,7 +66,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        public virtual TipoArticulo TipoArticulo { get; set; }
+        public virtual int TipoArticulo { get; set; }
+
+        public virtual bool TieneProyecto { get; set; }
+
+        public virtual Proyecto Proyecto { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
@@ -83,25 +97,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
-        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
-
-        public virtual bool TieneProyecto { get; set; }
-
-        public virtual Proyecto Proyecto { get; set; }
-
-        public virtual AreaTematica AreaTematica { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
-
         public virtual int EstadoProducto { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
+        
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
         public virtual int Volumen { get; set; }
 
@@ -112,10 +114,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int PaginaFinal { get; set; }
 
         public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual bool ArticuloTraducido { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

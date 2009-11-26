@@ -44,13 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Puntuacion = 0;
             }
 
-            if(articulo.Idioma == null && articulo.TipoArticulo != null)
-            {
-                var idioma = new Dictionary<string, object> { { "Nombre", "Español" } };
-
-                articulo.Idioma = idiomaRepository.FindOne(idioma);
-            }
-
             articulo.ModificadoEl = DateTime.Now;
 
             articuloRepository.SaveOrUpdate(articulo);

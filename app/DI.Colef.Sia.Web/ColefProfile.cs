@@ -483,17 +483,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.AnioPublicacion,
-                           o => o.ResolveUsing<ArticuloPublicacionResolver>())
-                .ForMember(d => d.TipoArticulo,
-                           o => o.Ignore())
-                .ForMember(d => d.Idioma,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ArticuloPublicacionResolver>());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
