@@ -8,15 +8,23 @@
     <%=Html.ValidationMessage("ISBN")%>
 </p>
 <p>
-    <label>A&ntilde;o de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
-    <span>(Formato yyyy)</span>
-    <%=Html.ValidationMessage("FechaEdicion")%>
+    <label>Edici&oacute;n</label>
+    <%=Html.DropDownList("Edicion", Model.Ediciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...")%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Edicion")%>
+</p>
+<p>
+    <label>Reimpresi&oacute;n</label>
+    <%=Html.DropDownList("Reimpresion", Model.Reimpresiones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...")%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Reimpresion")%>
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100", maxlength = 4 })%>
+    <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
@@ -29,4 +37,10 @@
     <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input100", maxlength = 5 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Tiraje")%>
+</p>
+<p>
+    <label>A&ntilde;o de edici&oacute;n</label>
+    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
+    <span>(Formato yyyy)</span>
+    <%=Html.ValidationMessage("FechaEdicion")%>
 </p>

@@ -80,10 +80,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
+        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
 
         public virtual int TipoProducto { get; set; }
 
-        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
+        public virtual ContenidoLibro ContenidoLibro { get; set; }
+
+        public virtual Evento Evento { get; set; }
 
         public virtual bool TieneProyecto { get; set; }
 
@@ -98,16 +101,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string PalabraClave3 { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
-
-        public virtual Evento Evento { get; set; }
-
-        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
-
-        public virtual int Numero { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
-
-        public virtual string NombreTraductor { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoLibro> CoautorExternoLibros { get; private set; }
@@ -124,30 +117,36 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Min(1)]
 	    public virtual int PosicionAutor { get; set; }
 
-        
-
         public virtual int EstadoProducto { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
 
+        [Valid]
+        public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
+
+        public virtual string ISBN { get; set; }
+
         public virtual int Edicion { get; set; }
 
         public virtual int Reimpresion { get; set; }
 
-        [Valid]
-        public virtual IList<EditorialLibro> EditorialLibros { get; private set; }
+        public virtual int Volumen { get; set; }
 
-		public virtual string ISBN { get; set; }
+        public virtual int NoPaginas { get; set; }
 
         public virtual int Tiraje { get; set; }
+        
+        public virtual int Numero { get; set; }
+
+        public virtual Idioma Idioma { get; set; }
+
+        public virtual string NombreTraductor { get; set; }
 
         public virtual DateTime FechaEdicion { get; set; }
 
-        public virtual int Volumen { get; set; }
-
-		public virtual int NoPaginas { get; set; }
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
 		public virtual int Puntuacion { get; set; }
 

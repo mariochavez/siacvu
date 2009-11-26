@@ -570,12 +570,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaAceptacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaPublicacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
+                           o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.Idioma,
+                           o => o.Ignore())
+                .ForMember(d => d.ContenidoLibro,
                            o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
                            o => o.Ignore());

@@ -15,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class LibroController : BaseController<Libro, LibroForm>
     {
         readonly ILibroService libroService;
+        readonly IContenidoLibroMapper contenidoLibroMapper;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
         readonly IIdiomaMapper idiomaMapper;
@@ -50,12 +51,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoService eventoService,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IEditorialMapper editorialMapper,
+                               IContenidoLibroMapper contenidoLibroMapper,
                                IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, 
                                IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.contenidoLibroMapper = contenidoLibroMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
@@ -243,7 +246,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
                                AreaTematicaId = areaTematicaForm.Id
                            };
 
@@ -520,6 +522,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
+            form.ContenidosLibros = contenidoLibroMapper.Map(catalogoService.GetActiveContenidoLibros());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
@@ -535,6 +538,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Idioma"] = form.IdiomaId;
+            ViewData["ContenidoLibro"] = form.ContenidoLibroId;
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 
