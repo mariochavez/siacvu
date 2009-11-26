@@ -59,14 +59,9 @@
 	                <span class="valor"><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.TipoDictamenNombre.Contains("Artículo")){ %>
-                    <p>
-	                    <label>Nombre de la revista</label>
-	                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</span>
-                    </p>
-                    <p>
-	                    <label>Instituci&oacute;n de la revista</label>
-	                    <span class="valor"><%= Html.Encode(Model.Form.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
-                    </p>
+                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                	<% } %>
                 <% } %>
                 <% if (Model.Form.TipoDictamenNombre.Contains("Capítulo") || Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
                     <p>

@@ -88,10 +88,9 @@
                         <span class="valor"><%=Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
                         <span>Formato (yyyy)</span>
                     </p>
-                    <p>
-                        <label>Instituci&oacute;n</label>
-                        <span class="valor"><%=Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                    </p>
+                    
+                    <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                    
                     <p>
                         <label>Editorial</label>
                         <span class="valor"><%=Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
@@ -104,12 +103,9 @@
                 
                 <% if (Model.Form.TipoResenaNombre != ""){ %>
                     <h4>Referencia bibliogr&aacute;fica</h4>
-                    <p>
-                        <label>Revista en que se publica</label>
-                        <span class="valor"><%=Html.Encode(Model.Form.RevistaPublicacionTitulo)%>&nbsp;</span>
-                    </p>
-                    
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                	<% } %>
                     
                     <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                     

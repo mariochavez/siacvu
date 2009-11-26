@@ -5,20 +5,12 @@
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
 </p>
-<p class="tieneproyecto_field">
-    <label>Nombre del proyecto de investigaci&oacute;n</label>
-    <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
-    <%=Html.ValidationMessage("ProyectoNombre")%>
-</p>
-<p class="notieneproyecto_field">
-	<label>Instancia a la que se presenta el reporte</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div class="tieneproyecto_field">
+    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+</div>
+<div class="notieneproyecto_field">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Instancia a la que se presenta el reporte", IsShowForm = false }); %>
+</div>
 <div class="notieneproyecto_field">
     <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
 </div>

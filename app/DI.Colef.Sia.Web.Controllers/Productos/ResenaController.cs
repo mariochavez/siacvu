@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAutorResenaMapper autorResenaMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IIdiomaMapper idiomaMapper;
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
@@ -33,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ResenaController(IResenaService resenaService, IResenaMapper resenaMapper,
                                 ICatalogoService catalogoService,
@@ -43,15 +43,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService, ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper, ISearchService searchService,
                                 IAutorResenaMapper autorResenaMapper,
+                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                 ITipoResenaMapper tipoResenaMapper, IEditorialMapper editorialMapper,
                                 ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                ISubdisciplinaMapper subdisciplinaMapper)
-            : base(usuarioService, searchService, catalogoService)
+                                ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper)
         {
             this.areaTematicaMapper = areaTematicaMapper;
             this.autorResenaMapper = autorResenaMapper;
             this.idiomaMapper = idiomaMapper;
-            this.catalogoService = catalogoService;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.customCollection = customCollection;
@@ -206,22 +207,53 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
+
+            return Rjs("ChangeRevista", form);
+        }
+
+        //[Authorize]
+        //[AcceptVerbs(HttpVerbs.Get)]
+        //public ActionResult ChangeInstitucion(int select)
+        //{
+        //    var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+        //    var form = new ShowFieldsForm
+        //                   {
+        //                       InstitucionId = institucionForm.Id,
+
+        //                       InstitucionCiudad = institucionForm.Ciudad,
+        //                       InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+        //                       InstitucionPaisNombre = institucionForm.PaisNombre,
+        //                       InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+        //                   };
+
+        //    return Rjs("ChangeInstitucion", form);
+        //}
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(areaTematicaForm.SubdisciplinaId));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
-                               SubdisciplinaNombre = subdisciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
 
                                AreaTematicaId = areaTematicaForm.Id
                            };
@@ -477,16 +509,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
                                       RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaAreaNombre = form.AreaTematica.SubdisciplinaDisciplinaAreaNombre,
-                                      AreaTematicaSubdisciplinaDisciplinaNombre = form.AreaTematica.SubdisciplinaDisciplinaNombre,
-                                      AreaTematicaSubdisciplinaNombre = form.AreaTematica.SubdisciplinaNombre,
 
-                                      IsShowForm = true
+                                      IsShowForm = true,
+                                      RevistaLabel = "Revista en que se publica",
+                                      InstitucionLabel = "Institución"
                                   };
 
             return form;

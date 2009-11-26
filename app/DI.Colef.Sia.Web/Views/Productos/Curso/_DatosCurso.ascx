@@ -50,7 +50,7 @@
 	<%=Html.ValidationMessage("Nombre")%>
 </p>
 <div class="cursoexterno_field">
-    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, ModelId = Model.Id, IsShowForm = false}); %>
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
 </div>
 <p class="cursoexternodiplomado_field">
     <label>Fecha inicial</label>

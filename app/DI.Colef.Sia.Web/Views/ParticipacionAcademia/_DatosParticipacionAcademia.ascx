@@ -4,27 +4,19 @@
 <p>
 	<label>Nombre del producto</label>
 	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-	<%=Html.ValidationMessage("NombreProducto")%>						
-</p>
-<label>Nombre de la revista</label>
-    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
-    <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
-</p>
+	<%=Html.ValidationMessage("NombreProducto")%>
+							
+<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+
 <p>
     <label>Volumen</label>
     <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Volumen")%>
 </p>
-<p>
-    <label>Instituci&oacute;n</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+
 <p>
     <label>Editorial</label>
     <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
@@ -55,13 +47,9 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPublicacion")%>					
 </p>
-<p>
-	<label>Proyecto</label>	
-    <%=Html.TextBox("ProyectoNombre", Model.ProyectoNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Proyecto"), maxlength = 100 })%>
-    <%=Html.Hidden("ProyectoId", Model.ProyectoId, new { rel = "#ProyectoNombre" })%>
-    <%=Html.ValidationMessage("ProyectoNombre")%>
-</p>
+
+<% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+
 <p>
     <label>A&ntilde;o de edici&oacute;n</label>
     <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>

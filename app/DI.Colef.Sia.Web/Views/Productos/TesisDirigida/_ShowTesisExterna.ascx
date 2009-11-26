@@ -21,11 +21,5 @@
     <label>Grado acad&eacute;mico obtenido/por obtener</label>
     <span class="valor"><%= Html.Encode(Model.GradoAcademicoNombre) %>&nbsp;</span>
 </p>
-<p>
-    <label>Instituci&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionNombre) %>&nbsp;</span>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionPaisNombre) %>&nbsp;</span>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", Model.ShowFields); %>

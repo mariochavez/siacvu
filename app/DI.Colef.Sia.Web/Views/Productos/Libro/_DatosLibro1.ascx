@@ -43,13 +43,9 @@
 
 <div id="eventoForm" class="display:hidden;"></div>
     
-<p class="revista_field">
-    <label>Nombre de la revista</label>
-    <%=Html.TextBox("NombreRevistaTitulo", Model.NombreRevistaTitulo, 
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("NombreRevistaId", Model.NombreRevistaId, new { rel = "#NombreRevistaTitulo"})%>
-    <%=Html.ValidationMessage("NombreRevistaTitulo") %>
-</p>
+<div class="revista_field">
+    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+</div>
 <p class="revista_field">
     <label>N&uacute;mero</label>
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>

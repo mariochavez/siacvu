@@ -20,13 +20,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
         readonly ITipoDistincionMapper tipoDistincionMapper;
+        readonly IInstitucionMapper institucionMapper;
 
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
                                     ICatalogoService catalogoService, IUsuarioService usuarioService,
                                     ITipoDistincionMapper tipoDistincionMapper,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
-                                    IEstadoPaisMapper estadoPaisMapper, ISearchService searchService)
+                                    IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
+                                    IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -36,6 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -97,7 +100,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var distincion = distincionService.GetDistincionById(id);
-            data.Form = distincionMapper.Map(distincion);
+
+            var distincionForm = distincionMapper.Map(distincion);
+            data.Form = SetupShowForm(distincionForm);
 
             ViewData.Model = data;
             return View();
@@ -159,6 +164,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
+        }
+
         DistincionForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -189,6 +213,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
+        }
+
+        private DistincionForm SetupShowForm(DistincionForm form)
+        {
+            form = form ?? new DistincionForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución otorgante"
+                                  };
+
+            return form;
         }
     }
 }

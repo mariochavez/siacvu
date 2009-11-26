@@ -50,10 +50,6 @@
                     <label>Tipo de estancia</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Instituci&oacute;n de destino</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                </p>
                 
                 <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
                 

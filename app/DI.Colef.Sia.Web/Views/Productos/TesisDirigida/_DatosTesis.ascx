@@ -36,10 +36,6 @@
     <span class="cvu"></span>                
     <%=Html.ValidationMessage("GradoAcademico") %>
 </p>
-<p class="AlumnoExterno">
-    <label>Instituci&oacute;n</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div class="AlumnoExterno">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+</div>

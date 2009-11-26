@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <% if(!Model.IsShowForm){ %>
     <p>
-        <label>Instituci&oacute;n</label>
+        <label><%= Html.Encode(Model.InstitucionLabel) %></label>
         <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
                 new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
         <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre", url = Url.Action("ChangeInstitucion") })%>
@@ -12,7 +12,7 @@
     </p>
 <% } else { %>
     <p>
-        <label>Instituci&oacute;n</label>
+        <label><%= Html.Encode(Model.InstitucionLabel) %></label>
         <span class="valor"><%= Html.Encode(Model.InstitucionNombre)%>&nbsp;</span>
     </p>
 <% } %>

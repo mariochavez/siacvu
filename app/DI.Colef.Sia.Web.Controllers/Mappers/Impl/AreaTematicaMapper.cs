@@ -25,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.Nombre = message.Nombre;
 
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.Subdisciplina);
         }
     }
 }

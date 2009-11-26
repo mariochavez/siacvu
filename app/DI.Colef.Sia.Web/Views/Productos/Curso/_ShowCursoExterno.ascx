@@ -13,7 +13,5 @@
     <label>Nombre del curso</label>
     <span class="valor"><%= Html.Encode(Model.Nombre) %>&nbsp;</span>
 </p>
-<p>
-    <label>Instituci&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionNombre) %>&nbsp;</span>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", Model.ShowFields); %>

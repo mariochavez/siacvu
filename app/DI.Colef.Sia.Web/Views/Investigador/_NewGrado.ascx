@@ -22,12 +22,10 @@
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("GradoAcademicoInvestigador.InstitucionNombre", Model.GradoAcademicoInvestigador.InstitucionNombre,
                 new { @class = "autocomplete buscar-requerido", maxlength = 100, rel = Url.Action("Search", "Institucion") })%>
-    <%=Html.Hidden("GradoAcademicoInvestigador.InstitucionId", Model.GradoAcademicoInvestigador.InstitucionId, new { rel = "#GradoAcademicoInvestigador_InstitucionNombre" })%>
+    <%=Html.Hidden("GradoAcademicoInvestigador.InstitucionId", Model.GradoAcademicoInvestigador.InstitucionId, new { rel = "#GradoAcademicoInvestigador_InstitucionNombre", url = Url.Action("ChangeInstitucion") })%>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.Institucion")%>
 </p> 
 <p>
     <label>Pa&iacute;s</label>
-    <%=Html.DropDownList("GradoAcademicoInvestigador.Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido"})%>
-    <%=Html.ValidationMessage("GradoAcademicoInvestigador.Pais")%>
+    <span id="span_pais" class="valor"><%= Html.Encode(Model.GradoAcademicoInvestigador.InstitucionPaisNombre)%>&nbsp;</span>
 </p>

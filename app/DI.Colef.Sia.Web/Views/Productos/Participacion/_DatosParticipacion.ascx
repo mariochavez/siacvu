@@ -26,25 +26,18 @@
 	    <%=Html.ValidationMessage("Autor")%>
     </p>
 </div>
-<p id="Platicas">
-	<label>Instituci&oacute;n organizadora</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-    new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div id="Platicas">
+    <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución organizadora", IsShowForm = false }); %>
+</div>
 <p>
 	<label>Fecha de presentaci&oacute;n</label>
 	<%=Html.TextBox("FechaPresentacion", Model.FechaPresentacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
-<p id="PresentacionInvestigacion">
-	<label>Proyecto</label>
-	<%=Html.DropDownList("Proyecto", Model.Proyectos.CreateSelectList<ProyectoForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Proyecto") %>
-</p>
+<div id="PresentacionInvestigacion">
+    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+</div>
 <p>
 	<label>Lugar</label>
 	<%=Html.TextBox("Lugar", Model.Lugar, new { @class = "input250-requerido", maxlength = 100 })%>

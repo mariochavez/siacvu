@@ -58,6 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ShowFieldsForm ShowFields { get; set; }
         public ProyectoForm Proyecto { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
+        public InstitucionForm Institucion { get; set; }
 
         /* Catalogos */
         public TipoReporteForm[] TiposReportes { get; set; }

@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly INivelMapper nivelMapper;
         readonly ISectorMapper sectorMapper;
         readonly IOrganizacionMapper organizacionMapper;
+        readonly IInstitucionMapper institucionMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
@@ -26,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IConvenioMapper convenioMapper,
                                             INivelMapper nivelMapper,
                                             ISearchService searchService, ISectorMapper sectorMapper,
-                                            IOrganizacionMapper organizacionMapper)
+                                            IOrganizacionMapper organizacionMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -36,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.nivelMapper = nivelMapper;
             this.sectorMapper = sectorMapper;
             this.organizacionMapper = organizacionMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -160,6 +162,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeNivel(int select)
         {
             var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
@@ -206,12 +227,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionNombre = form.Institucion.Nombre,
 
                                       Nivel2Nombre = form.Nivel2.Nombre,
                                       Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
                                       Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
 
-                                      IsShowForm = true
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución de destino"
                                   };
 
             return form;

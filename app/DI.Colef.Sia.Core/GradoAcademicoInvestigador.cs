@@ -20,9 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        [NotNull]
-        public virtual Pais Pais { get; set; }
-
         public virtual Usuario CreadorPor { get; set; }
 
         public virtual DateTime CreadorEl { get; set; }

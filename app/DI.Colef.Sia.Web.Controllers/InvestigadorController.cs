@@ -1,6 +1,4 @@
 using System;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -17,11 +15,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly ICargoInvestigadorMapper cargoInvestigadorMapper;
         readonly ICargoMapper cargoMapper;
-        readonly ICatalogoService catalogoService;
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
         readonly ICategoriaMapper categoriaMapper;
         readonly IDepartamentoMapper departamentoMapper;
         readonly IDireccionRegionalMapper direccionRegionalMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
         readonly IEstadoMapper estadoMapper;
         readonly IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper;
@@ -29,7 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IPaisMapper paisMapper;
         readonly IPuestoMapper puestoMapper;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ISNIMapper sniMapper;
@@ -44,13 +41,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper,
                                       ICategoriaInvestigadorMapper categoriaInvestigadorMapper,
                                       ICargoInvestigadorMapper cargoInvestigadorMapper,
-                                      ISNIInvestigadorMapper sniInvestigadorMapper, IPaisMapper paisMapper,
+                                      ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       ILineaTematicaMapper lineaTematicaMapper, IPuestoMapper puestoMapper,
-                                      IDireccionRegionalMapper direccionRegionalMapper, ISearchService searchService)
-            : base(usuarioService, searchService, catalogoService)
+                                      IDireccionRegionalMapper direccionRegionalMapper, ISearchService searchService,
+            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper)
         {
             this.investigadorService = investigadorService;
-            this.catalogoService = catalogoService;
             this.investigadorMapper = investigadorMapper;
             this.usuarioMapper = usuarioMapper;
             this.estadoMapper = estadoMapper;
@@ -64,10 +61,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.categoriaInvestigadorMapper = categoriaInvestigadorMapper;
             this.cargoInvestigadorMapper = cargoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
-            this.paisMapper = paisMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.puestoMapper = puestoMapper;
             this.direccionRegionalMapper = direccionRegionalMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
         [Authorize(Roles = "Dgaa")]
@@ -88,8 +85,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm(0);
-            ViewData["GradoAcademicoInvestigador.Pais"] =
-                (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -274,6 +269,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeUser", form);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            if (areaTematicaMapper == null)
+                return Content("Action not supported");
+
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+
+            var form = new ShowFieldsForm
+            {
+                AreaTematicaId = areaTematicaForm.Id,
+                AreaTematicaNombre = areaTematicaForm.LineaTematicaNombre
+            };
+
+            return Rjs("ChangeAreaTematica", form);
+        }
+
         [Authorize(Roles = "Dgaa")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEstado(int id)
@@ -324,12 +337,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            {
                                Id = investigador.Id,
                                GradoAcademicoInvestigador = new GradoAcademicoInvestigadorForm(),
-                               GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
-                               Paises = paisMapper.Map(catalogoService.GetActivePaises())
+                               GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados())
                            };
-
-            ViewData["GradoAcademicoInvestigador.Pais"] =
-                (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return Rjs("NewGrado", form);
         }
@@ -520,8 +529,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
                            Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                            SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
-                           Paises = paisMapper.Map(catalogoService.GetActivePaises()),
-                           LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas()),
+                           AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),
                            UsuarioApellidoMaterno = usuario != null ? usuario.ApellidoMaterno : String.Empty,
                            UsuarioApellidoPaterno = usuario != null ? usuario.ApellidoPaterno : String.Empty,
                            UsuarioNombre = usuario != null ? usuario.Nombre : String.Empty,

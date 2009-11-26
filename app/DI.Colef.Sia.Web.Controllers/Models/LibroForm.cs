@@ -42,8 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EventoFechaInicial { get; set; }
         public string EventoFechaFinal { get; set; }
 
-        public int NombreRevistaId { get; set; }
-        public string NombreRevistaTitulo { get; set; }
+        public int RevistaPublicacionId { get; set; }
+        public string RevistaPublicacionTitulo { get; set; }
 
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ShowFieldsForm ShowFields { get; set; }
         public ProyectoForm Proyecto { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
-        public RevistaPublicacionForm NombreRevista { get; set; }
+        public RevistaPublicacionForm RevistaPublicacion { get; set; }
 		
 		/* Catalogos */
         public TipoPublicacionForm[] TiposPublicaciones { get; set; }

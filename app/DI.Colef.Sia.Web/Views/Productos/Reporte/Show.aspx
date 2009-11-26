@@ -100,12 +100,7 @@
                         <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                     </p>
                     
-                    <% if (Model.Form.TieneProyecto) { %>
-                        <p>
-                            <label>Nombre del proyecto de investigaci&oacute;n</label>
-                            <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
-                        </p>
-                        
+                    <% if (Model.Form.TieneProyecto) { %>                        
                         <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                         
                         <p>
@@ -121,10 +116,7 @@
                             <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</span>
                         </p>
                     <% } else { %>
-                        <p>
-                            <label>Instancia a la que se presenta el reporte</label>
-	                        <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                        </p>
+                        <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
                         
                         <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                         

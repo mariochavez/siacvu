@@ -19,13 +19,9 @@
 	<span class="cvu"></span>
 	<%=Html.ValidationMessage("TipoDictamen") %>
 </p>
-<p id="articulo_field">
-    <label>Nombre de la revista</label>
-    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
-    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
-    <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
-</p>
+<div id="articulo_field">
+    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+</div>
 <p id="capituloLibro_field" class="noeffect">
 	<label>Editorial</label>
 	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),

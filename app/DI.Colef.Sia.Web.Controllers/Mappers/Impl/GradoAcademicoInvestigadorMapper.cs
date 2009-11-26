@@ -28,7 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Fecha = message.Fecha.FromShortDateToDateTime();
             model.Programa = message.Programa;
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
 
             if (model.IsTransient())

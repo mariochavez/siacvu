@@ -23,11 +23,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EditorialNombre { get; set; }
         public string EditorialInstitucionNombre { get; set; }
 
-        public string RevistaPublicacionTitulo { get; set; }
         public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionInstitucionNombre { get; set; }
+        public string RevistaPublicacionTitulo { get; set; }
 
-        /* New */
+        /* Show */
+        public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         
         /* Catalogos */

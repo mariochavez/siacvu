@@ -99,7 +99,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var dictamen = dictamenService.GetDictamenById(id);
-            data.Form = dictamenMapper.Map(dictamen);
+
+            var dictamenForm = dictamenMapper.Map(dictamen);
+
+            data.Form = SetupShowForm(dictamenForm);
 
             ViewData.Model = data;
             return View();
@@ -156,6 +159,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                RevistaPublicacionId = revistaForm.Id,
+
+                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+            };
+
+            return Rjs("ChangeRevista", form);
+        }
+
         DictamenForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -177,6 +200,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoDictamen"] = form.TipoDictamenId;
             ViewData["FondoConacyt"] = form.FondoConacytId;
             ViewData["Editorial"] = form.EditorialId;
+        }
+
+        private DictamenForm SetupShowForm(DictamenForm form)
+        {
+            form = form ?? new DictamenForm();
+
+            form.ShowFields = new ShowFieldsForm
+            {
+                RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
+                RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+                
+                IsShowForm = true,
+                RevistaLabel = "Nombre de la revista"
+            };
+
+            return form;
         }
     }
 }

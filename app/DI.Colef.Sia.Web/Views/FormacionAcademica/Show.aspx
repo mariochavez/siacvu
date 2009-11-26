@@ -52,10 +52,9 @@
                     <label>Fecha de obtenci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaObtencion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
-                <p>
-                    <label>Instituci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>T&iacute;tulo de tesis</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TituloTesis)%>&nbsp;</span>

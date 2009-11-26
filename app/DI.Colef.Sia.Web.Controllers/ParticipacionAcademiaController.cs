@@ -19,6 +19,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
+        readonly IInstitucionMapper institucionMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IProyectoMapper proyectoMapper;
+        readonly IProyectoService proyectoService;
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
                                                IParticipacionAcademiaMapper participacionAcademiaMapper,
@@ -26,8 +30,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                IUsuarioService usuarioService,
                                                ISearchService searchService,
                                                IPaisMapper paisMapper,
+                                               IRevistaPublicacionMapper revistaPublicacionMapper,
                                                IEditorialMapper editorialMapper,
-                                               ICustomCollection customCollection
+                                               ICustomCollection customCollection, IInstitucionMapper institucionMapper,
+                                               IProyectoMapper proyectoMapper, IProyectoService proyectoService
             ) : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -36,6 +42,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.participacionAcademiaMapper = participacionAcademiaMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
+            this.revistaPublicacionMapper = revistaPublicacionMapper;
+            this.institucionMapper = institucionMapper;
+            this.proyectoMapper = proyectoMapper;
+            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -99,7 +109,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = CreateViewDataWithTitle(Title.Show);
 
             var participacionAcademia = participacionAcademiaService.GetParticipacionAcademiaById(id);
-            data.Form = participacionAcademiaMapper.Map(participacionAcademia);
+            var participacionAcademiaForm = participacionAcademiaMapper.Map(participacionAcademia);
+            data.Form = SetupShowForm(participacionAcademiaForm);
 
             ViewData.Model = data;
             return View();
@@ -158,6 +169,65 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRevista(int select)
+        {
+            var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                RevistaPublicacionId = revistaForm.Id,
+
+                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+            };
+
+            return Rjs("ChangeRevista", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeProyecto(int select)
+        {
+            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
+
+            var form = new ShowFieldsForm
+            {
+                ProyectoId = proyectoForm.Id,
+
+                ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
+                ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
+                ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
+                ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
+            };
+
+            return Rjs("ChangeProyecto", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
+        }
+
         ParticipacionAcademiaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -181,6 +251,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Volumen"] = form.Volumen;
             ViewData["Editorial"] = form.EditorialId;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+        }
+
+        private ParticipacionAcademiaForm SetupShowForm(ParticipacionAcademiaForm form)
+        {
+            form = form ?? new ParticipacionAcademiaForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
+                                      RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
+                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
+                                      RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
+                                      RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
+                                      RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+       
+                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
+                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
+                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
+                                      ProyectoNombre = form.Proyecto.Nombre,
+
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
+                                      IsShowForm = true,
+                                      RevistaLabel = "Nombre de la revista",
+                                      InstitucionLabel = "Institución"
+                                  };
+
+            return form;
         }
     }
 }

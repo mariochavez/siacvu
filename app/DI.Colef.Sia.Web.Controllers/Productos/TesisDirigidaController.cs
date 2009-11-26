@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISectorMapper sectorMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly IAreaMapper areaMapper;
+        readonly IInstitucionMapper institucionMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
@@ -39,8 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IVinculacionAPyDMapper vinculacionApyDMapper,
                                INivelMapper nivelMapper, ICustomCollection customCollection,
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
-                               IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper, 
-                               IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper)
+                               IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
+                               IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -58,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.sectorMapper = sectorMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.areaMapper = areaMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -181,6 +183,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucion(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+                           {
+                               InstitucionId = institucionForm.Id,
+
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
+
+            return Rjs("ChangeInstitucion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeNivel(int select)
         {
             var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
@@ -249,6 +270,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
+                                      InstitucionNombre = form.Institucion.Nombre,
+                                      InstitucionCiudad = form.Institucion.Ciudad,
+                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
+                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
+                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
+
                                       SubdisciplinaNombre = form.Subdisciplina.Nombre,
                                       SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
                                       SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
@@ -257,7 +284,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
                                       Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
 
-                                      IsShowForm = true
+                                      IsShowForm = true,
+                                      InstitucionLabel = "Institución"
                                   };
             return form;
         }

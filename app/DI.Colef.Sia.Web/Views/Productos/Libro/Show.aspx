@@ -76,11 +76,9 @@
                 <% } %>
                 
                 <% if (Model.Form.FormatoPublicacionNombre.Contains("revista")){ %>
-                    <p>
-                        <label>Nombre de la revista</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.NombreRevistaTitulo)%>&nbsp;</span>
-                    </p>
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                	<% } %>
                     <p>
                         <label>N&uacute;mero</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
@@ -116,12 +114,7 @@
                     <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.TieneProyecto) { %>
-                    <p>
-                        <label>Nombre del proyecto de investigaci&oacute;n</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.ProyectoNombre)%>&nbsp;</span>
-                    </p>
-                    
+                <% if (Model.Form.TieneProyecto) { %>                    
                     <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } else { %>
                     <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>

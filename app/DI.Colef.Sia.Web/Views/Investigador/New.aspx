@@ -46,7 +46,7 @@
                     
                     <% Html.RenderPartial("_InformacionPersonal", Model.Form); %>
                     
-		            <h4>Perfil ac&aacute;demico del investigador</h4>	            
+		            <h4>Perfil ac&aacute;demico del Investigador</h4>	            
                     <p>
                         <label>Ingreso como investigador</label>
 
@@ -56,28 +56,28 @@
                         <%=Html.ValidationMessage("FechaIngreso")%>
                     </p>
                     <p>
-                        <label>Fecha de contrato</label>
+                        <label>Fecha de contrato indeterminado</label>
 
                         <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100", maxlength = 10 })%>
                         <span>(Formato dd/mm/yyyy)</span>
                     </p>
                     
-                    <h4>Grados</h4>
+                    <h4>Grado Acad&eacute;mico</h4>
                     <% Html.RenderPartial("_NewGrado", Model.Form); %>
                     
-                    <h4>Perfil del investigador</h4>
+                    <h4>Perfil acad&eacute;mico del Investigador</h4>
                     <% Html.RenderPartial("_PerfilAcademico", Model.Form); %>
                     
-                    <h4>Estatus</h4>
+                    <h4>Estatus del Investigador</h4>
                     <% Html.RenderPartial("_NewEstado", Model.Form); %>
 
-                    <h4>Cargos</h4>
+                    <h4>Adscripci&oacute;n en El Colef</h4>
                     <% Html.RenderPartial("_NewCargo", Model.Form); %>
                     
-                    <h4>Categor&iacute;as</h4>
+                    <h4>Categor&iacute;a del investigador</h4>
                     <% Html.RenderPartial("_NewCategoria", Model.Form); %>
                     
-                    <h4>Sistema nacional de investigadores (SNI)</h4>
+                    <h4>Sistema nacional de investigadores</h4>
                     <% Html.RenderPartial("_NewSni", Model.Form); %>
                     
                     <h4>Archivos</h4>

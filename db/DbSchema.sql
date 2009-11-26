@@ -591,8 +591,8 @@ alter table LineaInvestigaciones  drop constraint FKF062672774E8BAB7
 alter table Investigadores  drop constraint FKE67B58B96A829E09
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B91EDC2D3B]') AND parent_object_id = OBJECT_ID('Investigadores'))
-alter table Investigadores  drop constraint FKE67B58B91EDC2D3B
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B98A77AB9C]') AND parent_object_id = OBJECT_ID('Investigadores'))
+alter table Investigadores  drop constraint FKE67B58B98A77AB9C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B985102A57]') AND parent_object_id = OBJECT_ID('Investigadores'))
@@ -1407,8 +1407,8 @@ alter table Libros  drop constraint FK439120E75D547CE0
 alter table Libros  drop constraint FK439120E73BA127C1
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E798280B8C]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E798280B8C
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E72AF31B56]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E72AF31B56
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E76425E2FD]') AND parent_object_id = OBJECT_ID('Libros'))
@@ -1615,10 +1615,6 @@ alter table Articulos  drop constraint FK3EB394D774E8BAB7
 alter table AreaTematicas  drop constraint FK33E5D7A51EDC2D3B
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK33E5D7A5F4FE4035]') AND parent_object_id = OBJECT_ID('AreaTematicas'))
-alter table AreaTematicas  drop constraint FK33E5D7A5F4FE4035
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK33E5D7A585102A57]') AND parent_object_id = OBJECT_ID('AreaTematicas'))
 alter table AreaTematicas  drop constraint FK33E5D7A585102A57
 
@@ -1689,10 +1685,6 @@ alter table Monedas  drop constraint FK34FE812085102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34FE812074E8BAB7]') AND parent_object_id = OBJECT_ID('Monedas'))
 alter table Monedas  drop constraint FK34FE812074E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB3E391E13]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
-alter table DireccionRegionales  drop constraint FKB8FBCFAB3E391E13
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB85102A57]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
@@ -1955,10 +1947,6 @@ alter table GradoAcademicoInvestigadores  drop constraint FK265240DD9CF67963
 alter table GradoAcademicoInvestigadores  drop constraint FK265240DD64F7D1CD
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD7A8488F7]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
-alter table GradoAcademicoInvestigadores  drop constraint FK265240DD7A8488F7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
 alter table GradoAcademicoInvestigadores  drop constraint FK265240DD85102A57
 
@@ -2069,6 +2057,10 @@ alter table SNIs  drop constraint FKF16DB6DA85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF16DB6DA74E8BAB7]') AND parent_object_id = OBJECT_ID('SNIs'))
 alter table SNIs  drop constraint FKF16DB6DA74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B08FE7BABE]') AND parent_object_id = OBJECT_ID('Sedes'))
+alter table Sedes  drop constraint FK2EA40B08FE7BABE
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B0885102A57]') AND parent_object_id = OBJECT_ID('Sedes'))
@@ -3150,7 +3142,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
-       LineaTematicaFk INT null,
+       AreaTematicaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -3171,6 +3163,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Clases (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CodigoConacyt NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3969,7 +3962,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        TipoPublicacionFk INT null,
        FormatoPublicacionFk INT null,
        EventoFk INT null,
-       NombreRevistaFk INT null,
+       RevistaPublicacionFk INT null,
        IdiomaFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
@@ -4139,7 +4132,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        ModificadoEl DATETIME null,
        Activo BIT null,
        LineaTematicaFk INT null,
-       SubdisciplinaFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4199,7 +4191,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       SedeFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4419,6 +4410,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Ramas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
+       CodigoConacyt NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4437,7 +4429,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        Activo BIT null,
        GradoAcademicoFk INT null,
        InstitucionFk INT null,
-       PaisFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
@@ -4540,10 +4531,10 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     create table Sedes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       Descripcion NVARCHAR(255) null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       DireccionRegionalFk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5439,9 +5430,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table Investigadores 
-        add constraint FKE67B58B91EDC2D3B 
-        foreign key (LineaTematicaFk) 
-        references LineaTematicas
+        add constraint FKE67B58B98A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table Investigadores 
         add constraint FKE67B58B985102A57 
@@ -6459,8 +6450,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Eventos
 
     alter table Libros 
-        add constraint FK439120E798280B8C 
-        foreign key (NombreRevistaFk) 
+        add constraint FK439120E72AF31B56 
+        foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
 
     alter table Libros 
@@ -6719,11 +6710,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references LineaTematicas
 
     alter table AreaTematicas 
-        add constraint FK33E5D7A5F4FE4035 
-        foreign key (SubdisciplinaFk) 
-        references Subdisciplinas
-
-    alter table AreaTematicas 
         add constraint FK33E5D7A585102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -6812,11 +6798,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FK34FE812074E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
-    alter table DireccionRegionales 
-        add constraint FKB8FBCFAB3E391E13 
-        foreign key (SedeFk) 
-        references Sedes
 
     alter table DireccionRegionales 
         add constraint FKB8FBCFAB85102A57 
@@ -7144,11 +7125,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Instituciones
 
     alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD7A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table GradoAcademicoInvestigadores 
         add constraint FK265240DD85102A57 
         foreign key (CreadorPorFk) 
         references Usuarios
@@ -7287,6 +7263,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKF16DB6DA74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Sedes 
+        add constraint FK2EA40B08FE7BABE 
+        foreign key (DireccionRegionalFk) 
+        references DireccionRegionales
 
     alter table Sedes 
         add constraint FK2EA40B0885102A57 
