@@ -8,10 +8,10 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 <p>
-    <label>Tipo de publicaci&oacute;n</label>
-    <%=Html.DropDownList("TipoPublicacion", Model.TiposPublicaciones.CreateSelectList<TipoPublicacionForm>("Id", "Nombre"),
+    <label>Formato de publicaci&oacute;n</label>
+    <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<FormatoPublicacionForm>("Id", "Nombre"),
         "Seleccione ...")%>
-    <%=Html.ValidationMessage("TipoPublicacion") %>
+    <%=Html.ValidationMessage("FormatoPublicacion")%>
 </p>
 <p>
     <label>Tipo de producto</label>
@@ -20,10 +20,10 @@
     <%=Html.ValidationMessage("TipoProducto")%>
 </p>
 <p>
-    <label>Formato de publicaci&oacute;n</label>
-    <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<FormatoPublicacionForm>("Id", "Nombre"),
+    <label>Contenido del libro</label>
+    <%=Html.DropDownList("ContenidoLibro", Model.ContenidosLibros.CreateSelectList<ContenidoLibroForm>("Id", "Nombre"),
         "Seleccione ...")%>
-    <%=Html.ValidationMessage("FormatoPublicacion")%>
+    <%=Html.ValidationMessage("ContenidoLibro")%>
 </p>
 <p class="memoriaevento_field">
     <label>Nombre del evento</label>
@@ -42,7 +42,35 @@
 </div><!--end minilistaboton-->
 
 <div id="eventoForm" class="display:hidden;"></div>
-    
+
+<p>
+    <label></label>
+    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> Tiene proyecto de investigaci&oacute;n de referencia?
+</p>
+<div id="tieneproyecto_field">
+    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
+</div>
+<div id="notieneproyecto_field">
+    <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+</div>
+<p>
+	<label>Palabra clave 1</label>
+	<%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 100 })%>
+	<span class="cvu"></span>
+</p>
+<p>
+	<label>Palabra clave 2</label>
+	<%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 100 })%>
+	<span class="cvu"></span>
+</p>
+<p>
+	<label>Palabra clave 3</label>
+    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 100 })%>
+    <span class="cvu"></span>
+</p>
+
+<% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.SubdisciplinaId, SubdisciplinaNombre = Model.SubdisciplinaNombre, ModelId = Model.Id, IsShowForm = false }); %>
+
 <div class="revista_field">
     <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
 </div>

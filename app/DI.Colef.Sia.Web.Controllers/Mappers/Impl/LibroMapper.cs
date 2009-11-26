@@ -56,8 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.EstadoProducto = message.EstadoProducto;
             model.Reimpresion = message.Reimpresion;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
 
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
@@ -65,6 +65,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+            model.ContenidoLibro = catalogoService.GetContenidoLibroById(message.ContenidoLibro);
             model.Evento = eventoService.GetEventoById(message.EventoId);
         }
 

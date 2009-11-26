@@ -46,7 +46,6 @@
                     <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
             
-    <!--DATOS PUBLICACION-->
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
                     <label>Nombre del art&iacute;culo</label>
