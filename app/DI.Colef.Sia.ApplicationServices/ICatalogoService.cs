@@ -458,5 +458,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         AreaInvestigacion[] GetAllAreaInvestigacions();
         AreaInvestigacion[] GetActiveAreaInvestigacions();
         void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion);
+
+        //Contenido de libro
+        ContenidoLibro GetContenidoLibroById(int id);
+        ContenidoLibro[] GetAllContenidoLibros();
+        ContenidoLibro[] GetActiveContenidoLibros();
+        void SaveContenidoLibro(ContenidoLibro contenidoLibro);
     }
 }

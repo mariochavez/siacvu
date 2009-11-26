@@ -99,6 +99,7 @@
     <Compile Include="Catalogos\AreaTematicaController.cs" />
     <Compile Include="Catalogos\ClaseController.cs" />
     <Compile Include="Catalogos\ConsejoComisionController.cs" />
+    <Compile Include="Catalogos\ContenidoLibroController.cs" />
     <Compile Include="Catalogos\ConvenioController.cs" />
     <Compile Include="Catalogos\CoordinacionController.cs" />
     <Compile Include="Catalogos\DiplomadoController.cs" />
@@ -126,9 +127,11 @@
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\IAreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\IContenidoLibroMapper.cs" />
     <Compile Include="Mappers\ICursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\Impl\ContenidoLibroMapper.cs" />
     <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
+    <Compile Include="Models\ContenidoLibroForm.cs" />
     <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />

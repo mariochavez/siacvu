@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
+        readonly IRepository<ContenidoLibro> contenidoLibroRepository;
         readonly IRepository<AreaInvestigacion> areaInvestigacionRepository;
         readonly IRepository<ConsejoComision> consejoComisionRepository;
         readonly IRepository<Ambito> ambitoRepository;
@@ -118,6 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<ProgramaEstudio> programaEstudioRepository,
                                IRepository<RevistaPublicacion> revistaPublicacionRepository,
                                IRepository<Organizacion> organizacionRepository,
+                               IRepository<ContenidoLibro> contenidoLibroRepository,
                                IRepository<Dependencia> dependenciaRepository, IRepository<Ambito> ambitoRepository,
                                IRepository<EstadoPais> estadoPaisRepository, IRepository<Genero> generoRepository,
                                IRepository<TipoEstancia> tipoEstanciaRepository,
@@ -188,6 +190,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
+            this.contenidoLibroRepository = contenidoLibroRepository;
             this.editorialRepository = editorialRepository;
             this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
@@ -2333,6 +2336,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaInvestigacion.ModificadoEl = DateTime.Now;
 
             areaInvestigacionRepository.SaveOrUpdate(areaInvestigacion);
+        }
+
+        public ContenidoLibro GetContenidoLibroById(int id)
+        {
+            return contenidoLibroRepository.Get(id);
+        }
+
+        public ContenidoLibro[] GetAllContenidoLibros()
+        {
+            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre)).ToArray();
+        }
+        
+        public ContenidoLibro[] GetActiveContenidoLibros()
+        {
+            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveContenidoLibro(ContenidoLibro contenidoLibro)
+        {
+            if(contenidoLibro.Id == 0)
+            {
+                contenidoLibro.Activo = true;
+                contenidoLibro.CreadorEl = DateTime.Now;
+            }
+            contenidoLibro.ModificadoEl = DateTime.Now;
+            
+            contenidoLibroRepository.SaveOrUpdate(contenidoLibro);
         }
 
         #endregion
