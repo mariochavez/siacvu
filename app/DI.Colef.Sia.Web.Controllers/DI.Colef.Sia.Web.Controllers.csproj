@@ -117,7 +117,6 @@
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
-    <Compile Include="Catalogos\TipoPublicacionController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Catalogos\FormatoPublicacionController.cs" />
@@ -289,11 +288,9 @@
     <Compile Include="Mappers\Impl\ProductoDerivadoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoEstanciaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoProyectoMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoPublicacionMapper.cs" />
     <Compile Include="Mappers\IProductoDerivadoMapper.cs" />
     <Compile Include="Mappers\ITipoEstanciaMapper.cs" />
     <Compile Include="Mappers\ITipoProyectoMapper.cs" />
-    <Compile Include="Mappers\ITipoPublicacionMapper.cs" />
     <Compile Include="Models\ConvenioForm.cs" />
     <Compile Include="Models\IdentificadorLibroForm.cs" />
     <Compile Include="Models\LibroForm.cs" />
@@ -301,7 +298,6 @@
     <Compile Include="Models\ProductoDerivadoForm.cs" />
     <Compile Include="Models\TipoEstanciaForm.cs" />
     <Compile Include="Models\TipoProyectoForm.cs" />
-    <Compile Include="Models\TipoPublicacionForm.cs" />
     <Compile Include="EstanciaInstitucionExternaController.cs" />
     <Compile Include="Productos\ArticuloController.cs" />
     <Compile Include="Productos\CapituloController.cs" />
@@ -330,7 +326,6 @@
     <Compile Include="Catalogos\SectorController.cs" />
     <Compile Include="Catalogos\SubdisciplinaController.cs" />
     <Compile Include="Catalogos\TipoActividadController.cs" />
-    <Compile Include="Catalogos\TipoArticuloController.cs" />
     <Compile Include="Catalogos\TipoParticipacionController.cs" />
     <Compile Include="Catalogos\TipoParticipanteController.cs" />
     <Compile Include="ControllerEnums.cs" />
@@ -474,7 +469,6 @@
     <Compile Include="Mappers\Impl\UsuarioMapper.cs" />
     <Compile Include="Mappers\Impl\SubdisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoActividadMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\TipoParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\TipoParticipanteMapper.cs" />
     <Compile Include="Mappers\INivelEstudioMapper.cs" />
@@ -512,7 +506,6 @@
     <Compile Include="Mappers\Resolvers\ModificadoResolver.cs" />
     <Compile Include="Mappers\ISubdisciplinaMapper.cs" />
     <Compile Include="Mappers\ITipoActividadMapper.cs" />
-    <Compile Include="Mappers\ITipoArticuloMapper.cs" />
     <Compile Include="Mappers\ITipoParticipacionMapper.cs" />
     <Compile Include="Mappers\ITipoParticipanteMapper.cs" />
     <Compile Include="Catalogos\MedioElectronicoController.cs" />
@@ -580,7 +573,6 @@
     <Compile Include="Models\UsuarioForm.cs" />
     <Compile Include="Models\SubdisciplinaForm.cs" />
     <Compile Include="Models\TipoActividadForm.cs" />
-    <Compile Include="Models\TipoArticuloForm.cs" />
     <Compile Include="Models\TipoParticipacionForm.cs" />
     <Compile Include="Models\TipoParticipanteForm.cs" />
     <Compile Include="Catalogos\OtraParticipacionController.cs" />

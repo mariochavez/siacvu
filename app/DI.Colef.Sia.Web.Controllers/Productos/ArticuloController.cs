@@ -18,12 +18,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
-        readonly IIdiomaMapper idiomaMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
-        readonly ITipoArticuloMapper tipoArticuloMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
-        readonly IInvestigadorMapper investigadorMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
@@ -33,28 +30,32 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoService proyectoService;
 
         public ArticuloController(IArticuloService articuloService,
-                                  IArticuloMapper articuloMapper, ICatalogoService catalogoService,
-                                  IUsuarioService usuarioService, ITipoArticuloMapper tipoArticuloMapper,
-                                  IIdiomaMapper idiomaMapper, ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
-                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper, ISearchService searchService,
+                                  IArticuloMapper articuloMapper,
+                                  ICatalogoService catalogoService,
+                                  IUsuarioService usuarioService,
+                                  ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
+                                  ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
+                                  ISearchService searchService,
                                   ITipoArchivoMapper tipoArchivoMapper,
-                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
-                                  IInvestigadorMapper investigadorMapper, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                  ISubdisciplinaMapper subdisciplinaMapper, IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IProyectoMapper proyectoMapper, IProyectoService proyectoService)
-            : base(usuarioService, searchService, catalogoService)
+                                  IAreaTematicaMapper areaTematicaMapper,
+                                  ICustomCollection customCollection,
+                                  ILineaTematicaMapper lineaTematicaMapper,
+                                  IAreaMapper areaMapper,
+                                  IDisciplinaMapper disciplinaMapper,
+                                  ISubdisciplinaMapper subdisciplinaMapper,
+                                  IRevistaPublicacionMapper revistaPublicacionMapper,
+                                  IProyectoMapper proyectoMapper,
+                                  IProyectoService proyectoService
+            ) : base(usuarioService, searchService, catalogoService)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.catalogoService = catalogoService;
             this.articuloService = articuloService;
             this.articuloMapper = articuloMapper;
-            this.tipoArticuloMapper = tipoArticuloMapper;
-            this.idiomaMapper = idiomaMapper;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.customCollection = customCollection;
-            this.investigadorMapper = investigadorMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
@@ -90,7 +91,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Idioma"] = (from p in data.Form.Idiomas where p.Nombre == "Español" select p.Id).FirstOrDefault();
             data.Form.PosicionAutor = 1;
 
             return View(data);
@@ -215,6 +215,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            };
 
             return Rjs("ChangeRevista", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSubdisciplina(int select)
+        {
+            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
+            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
+            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
+
+            var form = new ShowFieldsForm
+            {
+                SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
+                SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
+                SubdisciplinaId = subdisciplinaForm.Id
+            };
+
+            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -385,10 +403,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ArticuloForm();
 
             form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
-            form.Volumenes = customCollection.VolumenCustomCollection();
-            //Lista de Catalogos
-            form.TiposArticulos = tipoArticuloMapper.Map(catalogoService.GetActiveArticulos());
-            form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
+            form.TiposArticulos = customCollection.TipoProductoCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
             return form;
@@ -396,9 +411,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(ArticuloForm form)
         {
-            ViewData["Volumen"] = form.Volumen;
-            ViewData["TipoArticulo"] = form.TipoArticuloId;
-            ViewData["Idioma"] = form.IdiomaId;
+            ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
         }
 
@@ -414,6 +427,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
+
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+
+                                      ProyectoNombre = form.Proyecto.Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,

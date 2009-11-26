@@ -105,20 +105,11 @@ function articuloSetup() {
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['#tieneproyecto_field']],
-            ['0', ['#notieneproyecto_field']]
+            ['1', ['#tieneproyecto_field']]
         ]
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
-
-    $('#ArticuloTraducido').dynamicui(
-        [
-            ['1', ['#idioma_field']]
-        ]
-    );
-
-    $('#ArticuloTraducido')[0].dynamic.setup();
 }
 
 function participacionSetup() {

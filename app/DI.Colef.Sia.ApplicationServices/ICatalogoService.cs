@@ -64,12 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Pais[] GetActivePaises();
         void SavePais(Pais pais);
 
-        //TipoArticulo
-        TipoArticulo GetTipoArticuloById(int id);
-        TipoArticulo[] GetAllTipoArticulos();
-        TipoArticulo[] GetActiveArticulos();
-        void SaveTipoArticulo(TipoArticulo tipoArticulo);
-
         //Institucion
         Institucion GetInstitucionById(int id);
         Institucion[] GetAllInstituciones();
@@ -282,12 +276,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         NivelEstudio[] GetAllNivelEstudios();
         NivelEstudio[] GetActiveNivelEstudios();
         void SaveNivelEstudio(NivelEstudio nivelEstudio);
-
-        //Tipo de publicacion
-        TipoPublicacion GetTipoPublicacionById(int id);
-        TipoPublicacion[] GetAllTipoPublicacions();
-        TipoPublicacion[] GetActiveTipoPublicacions();
-        void SaveTipoPublicacion(TipoPublicacion tipoPublicacion);
 
         //Tipo de Proyecto
         TipoProyecto GetTipoProyectoById(int id);

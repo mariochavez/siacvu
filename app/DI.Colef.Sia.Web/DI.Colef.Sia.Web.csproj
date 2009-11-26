@@ -500,11 +500,6 @@
     <Content Include="Views\Catalogos\TipoApoyo\Index.aspx" />
     <Content Include="Views\Catalogos\TipoApoyo\New.aspx" />
     <Content Include="Views\Catalogos\TipoApoyo\_Form.ascx" />
-    <Content Include="Views\Catalogos\TipoArticulo\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\TipoArticulo\Edit.aspx" />
-    <Content Include="Views\Catalogos\TipoArticulo\Index.aspx" />
-    <Content Include="Views\Catalogos\TipoArticulo\New.aspx" />
-    <Content Include="Views\Catalogos\TipoArticulo\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoDictamen\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoDictamen\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoDictamen\Index.aspx" />
@@ -555,11 +550,6 @@
     <Content Include="Views\Catalogos\TipoProyecto\Index.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\New.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\_Form.ascx" />
-    <Content Include="Views\Catalogos\TipoPublicacion\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\TipoPublicacion\Edit.aspx" />
-    <Content Include="Views\Catalogos\TipoPublicacion\Index.aspx" />
-    <Content Include="Views\Catalogos\TipoPublicacion\New.aspx" />
-    <Content Include="Views\Catalogos\TipoPublicacion\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoReporte\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoReporte\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoReporte\Index.aspx" />

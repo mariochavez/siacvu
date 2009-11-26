@@ -581,6 +581,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
                                       SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
 
+                                      ProyectoNombre = form.Proyecto.Nombre,
+
                                       IsShowForm = true
                                   };
 
