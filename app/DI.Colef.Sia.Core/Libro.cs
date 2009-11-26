@@ -80,11 +80,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
-        public virtual TipoPublicacion TipoPublicacion { get; set; }
 
         public virtual int TipoProducto { get; set; }
 
         public virtual FormatoPublicacion FormatoPublicacion { get; set; }
+
+        public virtual bool TieneProyecto { get; set; }
+
+        public virtual Proyecto Proyecto { get; set; }
+
+        public virtual AreaTematica AreaTematica { get; set; }
+
+        public virtual string PalabraClave1 { get; set; }
+
+        public virtual string PalabraClave2 { get; set; }
+
+        public virtual string PalabraClave3 { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
 
         public virtual Evento Evento { get; set; }
 
@@ -111,17 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Min(1)]
 	    public virtual int PosicionAutor { get; set; }
 
-        public virtual bool TieneProyecto { get; set; }
-
-        public virtual Proyecto Proyecto { get; set; }
-
-        public virtual AreaTematica AreaTematica { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
+        
 
         public virtual int EstadoProducto { get; set; }
 

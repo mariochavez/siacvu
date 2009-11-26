@@ -227,7 +227,6 @@
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArchivo.cs" />
-    <Compile Include="TipoArticulo.cs" />
     <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />
     <Compile Include="TipoDistincion.cs" />
@@ -239,7 +238,6 @@
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
-    <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />
     <Compile Include="TipoResena.cs" />
     <Compile Include="USEG.cs" />

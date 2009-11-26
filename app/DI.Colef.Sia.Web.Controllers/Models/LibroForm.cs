@@ -86,7 +86,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
 		
 		/* Catalogos */
-        public TipoPublicacionForm[] TiposPublicaciones { get; set; }
         public CustomSelectForm[] TiposProductos { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }

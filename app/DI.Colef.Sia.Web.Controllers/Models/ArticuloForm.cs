@@ -20,8 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneProyecto { get; set; }
         public string Modificacion { get; set; }
 
-        public string AnioPublicacion { get; set; }
-
         public int TipoArticulo { get; set; }
         public int EstadoProducto { get; set; }
         

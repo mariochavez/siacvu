@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILibroService libroService;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
-        readonly ITipoPublicacionMapper tipoPublicacionMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
@@ -42,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
                                IAreaTematicaMapper areaTematicaMapper,
-                               ITipoPublicacionMapper tipoPublicacionMapper,
                                IIdiomaMapper idiomaMapper,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
                                ICoautorInternoLibroMapper coautorInternoLibroMapper,
@@ -63,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.customCollection = customCollection;
             this.libroService = libroService;
             this.libroMapper = libroMapper;
-            this.tipoPublicacionMapper = tipoPublicacionMapper;
             this.idiomaMapper = idiomaMapper;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
@@ -550,7 +547,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposProductos = customCollection.TipoProductoCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
-            form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
@@ -561,7 +557,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         
         private void FormSetCombos(LibroForm form)
         {
-            ViewData["TipoPublicacion"] = form.TipoPublicacionId;
             ViewData["TipoProducto"] = form.TipoProducto;
             ViewData["Volumen"] = form.Volumen;
             ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;

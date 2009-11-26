@@ -487,9 +487,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaPublicacion,
                            o => o.AddFormatter<YearDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
-                           o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.AnioPublicacion,
-                           o => o.ResolveUsing<ArticuloPublicacionResolver>());
+                           o => o.AddFormatter<YearDateFormatter>());
 
             Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
@@ -585,8 +583,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FechaEdicion,
                            o => o.AddFormatter<YearDateFormatter>())
-                .ForMember(d => d.TipoPublicacion,
-                           o => o.Ignore())
                 .ForMember(d => d.Idioma,
                            o => o.Ignore())
                 .ForMember(d => d.FormatoPublicacion,
@@ -677,9 +673,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<Pais, PaisForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoArticulo, TipoArticuloForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
@@ -838,9 +831,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoProyecto, TipoProyectoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoPublicacion, TipoPublicacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<ProductoDerivado, ProductoDerivadoForm>()
