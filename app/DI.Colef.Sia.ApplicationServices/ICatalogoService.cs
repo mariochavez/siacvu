@@ -64,12 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Pais[] GetActivePaises();
         void SavePais(Pais pais);
 
-        //TipoArticulo
-        TipoArticulo GetTipoArticuloById(int id);
-        TipoArticulo[] GetAllTipoArticulos();
-        TipoArticulo[] GetActiveArticulos();
-        void SaveTipoArticulo(TipoArticulo tipoArticulo);
-
         //Institucion
         Institucion GetInstitucionById(int id);
         Institucion[] GetAllInstituciones();
@@ -148,12 +142,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ResponsableExterno[] GetAllResponsableExternos();
         ResponsableExterno[] GetActiveResponsableExternos();
         void SaveResponsableExterno(ResponsableExterno responsableExterno);
-
-        //Tipo de Capitulo
-        TipoCapitulo GetTipoCapituloById(int id);
-        TipoCapitulo[] GetAllTipoCapitulos();
-        TipoCapitulo[] GetActiveTipoCapitulos();
-        void SaveTipoCapitulo(TipoCapitulo tipoCapitulo);
 
         //Tipo de Participacion
         TipoParticipacion GetTipoParticipacionById(int id);
@@ -288,12 +276,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         NivelEstudio[] GetAllNivelEstudios();
         NivelEstudio[] GetActiveNivelEstudios();
         void SaveNivelEstudio(NivelEstudio nivelEstudio);
-
-        //Tipo de publicacion
-        TipoPublicacion GetTipoPublicacionById(int id);
-        TipoPublicacion[] GetAllTipoPublicacions();
-        TipoPublicacion[] GetActiveTipoPublicacions();
-        void SaveTipoPublicacion(TipoPublicacion tipoPublicacion);
 
         //Tipo de Proyecto
         TipoProyecto GetTipoProyectoById(int id);
@@ -470,5 +452,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         AreaInvestigacion[] GetAllAreaInvestigacions();
         AreaInvestigacion[] GetActiveAreaInvestigacions();
         void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion);
+
+        //Contenido de libro
+        ContenidoLibro GetContenidoLibroById(int id);
+        ContenidoLibro[] GetAllContenidoLibros();
+        ContenidoLibro[] GetActiveContenidoLibros();
+        void SaveContenidoLibro(ContenidoLibro contenidoLibro);
     }
 }

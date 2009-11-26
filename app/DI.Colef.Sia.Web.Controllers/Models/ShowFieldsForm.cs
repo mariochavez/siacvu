@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
@@ -11,18 +9,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaPublicacionIndice2Nombre { get; set; }
         public string RevistaPublicacionIndice3Nombre { get; set; }
 
-        public string ProyectoNombre { get; set; }
-        public string ProyectoAreaTematicaLineaTematicaNombre { get; set; }
-        public string ProyectoAreaTematicaNombre { get; set; }
-        public string ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
-        public string ProyectoAreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
-        public string ProyectoAreaTematicaSubdisciplinaNombre { get; set; }
-
         public string AreaTematicaNombre { get; set; }
         public string AreaTematicaLineaTematicaNombre { get; set; }
-        public string AreaTematicaSubdisciplinaNombre { get; set; }
-        public string AreaTematicaSubdisciplinaDisciplinaNombre { get; set; }
-        public string AreaTematicaSubdisciplinaDisciplinaAreaNombre { get; set; }
 
         public string SubdisciplinaNombre { get; set; }
         public string SubdisciplinaDisciplinaNombre { get; set; }
@@ -41,6 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InstitucionPaisNombre { get; set; }
         public string InstitucionEstadoPaisNombre { get; set; }
         public string InstitucionCiudad { get; set; }
+
+        public string ProyectoNombre { get; set; }
 
         public int Nivel2Id { get; set; }
         public int SubdisciplinaId { get; set; }

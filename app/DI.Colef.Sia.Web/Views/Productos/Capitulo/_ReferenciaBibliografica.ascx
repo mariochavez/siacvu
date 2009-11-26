@@ -7,41 +7,32 @@
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
+
+<h4>Autor(es) del libro</h4>
+<% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoCapitulos, ModelId = Model.Id }); %>
+<% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoCapitulos, ModelId = Model.Id } ); %>
+
 <p>
-    <label>Autor del libro</label>
-    <%=Html.TextBox("AutorLibro", Model.AutorLibro, new { @class = "input420", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("AutorLibro")%>
+    <label>Tipo de libro</label>
+    <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("TipoLibro")%>
 </p>
+
+<h4>Editorial(es)</h4>
+<% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
+
+
 <p>
     <label>Resumen</label>
     <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>
     <span class="cvu"></span>
 </p>
 <p>
-    <label>Editorial</label>
-    <%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Editorial")%>
-</p>
-<p>
     <label>Volumen</label>
-    <%=Html.DropDownList("Volumen", Model.Volumenes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-    <%=Html.ValidationMessage("Volumen")%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 4 })%>
     <span class="cvu"></span>
-</p>
-<p>
-    <label>A&ntilde;o de edici&oacute;n</label>
-    <%=Html.TextBox("FechaEdicion", Model.FechaEdicion, new { @class = "input100-requerido", maxlength = 4 })%>
-    <span>(Formato yyyy)</span>
-    <%=Html.ValidationMessage("FechaEdicion")%>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido"})%>
-    <%=Html.ValidationMessage("Pais") %>
+    <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>

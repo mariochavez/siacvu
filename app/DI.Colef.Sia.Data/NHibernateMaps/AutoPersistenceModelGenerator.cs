@@ -34,10 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps
                 {
                     c.Add<CoautorInternoAlteration>();
                     c.Add<CoautorExternoAlteration>();
-                    c.Add<ResponsableExternoAlteration>();
-                    c.Add<ResponsableInternoAlteration>();
+                    c.Add<AutorExternoAlteration>();
+                    c.Add<AutorInternoAlteration>();
                     c.Add<ArchivoAlteration>();
                     c.Add<FirmaAlteration>();
+                    c.Add<EditorialAlteration>();
                 };
         }
 

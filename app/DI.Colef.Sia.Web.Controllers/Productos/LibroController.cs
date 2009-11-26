@@ -15,9 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class LibroController : BaseController<Libro, LibroForm>
     {
         readonly ILibroService libroService;
+        readonly IContenidoLibroMapper contenidoLibroMapper;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
-        readonly ITipoPublicacionMapper tipoPublicacionMapper;
         readonly IIdiomaMapper idiomaMapper;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
@@ -42,7 +42,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
                                IAreaTematicaMapper areaTematicaMapper,
-                               ITipoPublicacionMapper tipoPublicacionMapper,
                                IIdiomaMapper idiomaMapper,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
                                ICoautorInternoLibroMapper coautorInternoLibroMapper,
@@ -52,18 +51,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoService eventoService,
                                IFormatoPublicacionMapper formatoPublicacionMapper,
                                IEditorialMapper editorialMapper,
+                               IContenidoLibroMapper contenidoLibroMapper,
                                IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, 
                                IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.contenidoLibroMapper = contenidoLibroMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
             this.libroService = libroService;
             this.libroMapper = libroMapper;
-            this.tipoPublicacionMapper = tipoPublicacionMapper;
             this.idiomaMapper = idiomaMapper;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
@@ -238,37 +238,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeProyecto(int select)
-        {
-            var proyectoForm = proyectoMapper.Map(proyectoService.GetProyectoById(select));
-
-            var form = new ShowFieldsForm
-            {
-                ProyectoId = proyectoForm.Id,
-
-                ProyectoAreaTematicaLineaTematicaNombre = proyectoForm.AreaTematicaLineaTematicaNombre,
-                ProyectoAreaTematicaNombre = proyectoForm.AreaTematicaNombre,
-                ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaDisciplinaNombre,
-                ProyectoAreaTematicaSubdisciplinaNombre = proyectoForm.AreaTematicaSubdisciplinaNombre
-            };
-
-            return Rjs("ChangeProyecto", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
             var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
             var form = new ShowFieldsForm
+<<<<<<< HEAD:app/DI.Colef.Sia.Web.Controllers/Productos/LibroController.cs
             {
                 AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
 
                 AreaTematicaId = areaTematicaForm.Id
             };
+=======
+                           {
+                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+                               AreaTematicaId = areaTematicaForm.Id
+                           };
+>>>>>>> 9cdcf53415310b0d0517a1f1de4bf26cd7bea957:app/DI.Colef.Sia.Web.Controllers/Productos/LibroController.cs
 
             return Rjs("ChangeAreaTematica", form);
         }
@@ -542,8 +529,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposProductos = customCollection.TipoProductoCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
-            form.TiposPublicaciones = tipoPublicacionMapper.Map(catalogoService.GetActiveTipoPublicacions());
             form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
+            form.ContenidosLibros = contenidoLibroMapper.Map(catalogoService.GetActiveContenidoLibros());
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
@@ -553,13 +540,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         
         private void FormSetCombos(LibroForm form)
         {
-            ViewData["TipoPublicacion"] = form.TipoPublicacionId;
             ViewData["TipoProducto"] = form.TipoProducto;
             ViewData["Volumen"] = form.Volumen;
             ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Idioma"] = form.IdiomaId;
+            ViewData["ContenidoLibro"] = form.ContenidoLibroId;
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 
@@ -575,13 +562,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-
-                                      ProyectoAreaTematicaLineaTematicaNombre = form.Proyecto.AreaTematicaLineaTematicaNombre,
-                                      ProyectoAreaTematicaNombre = form.Proyecto.AreaTematicaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaAreaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaAreaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaDisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaDisciplinaNombre,
-                                      ProyectoAreaTematicaSubdisciplinaNombre = form.Proyecto.AreaTematicaSubdisciplinaNombre,
-                                      ProyectoNombre = form.Proyecto.Nombre,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,

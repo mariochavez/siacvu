@@ -11,25 +11,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		readonly ICatalogoService catalogoService;
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
-        readonly IResponsableInternoCapituloMapper responsableInternoCapituloMapper;
-        readonly IResponsableExternoCapituloMapper responsableExternoCapituloMapper;
+        readonly IAutorInternoCapituloMapper autorInternoCapituloMapper;
+        readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IProyectoService proyectoService;
+        readonly IEditorialCapituloMapper editorialCapituloMapper;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		                      ICatalogoService catalogoService,
                               ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                               ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
-                              IResponsableInternoCapituloMapper responsableInternoCapituloMapper,
-                              IResponsableExternoCapituloMapper responsableExternoCapituloMapper,
-                              IProyectoService proyectoService) 
+                              IAutorInternoCapituloMapper autorInternoCapituloMapper,
+                              IAutorExternoCapituloMapper autorExternoCapituloMapper,
+                              IProyectoService proyectoService, IEditorialCapituloMapper editorialCapituloMapper) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
-            this.responsableInternoCapituloMapper = responsableInternoCapituloMapper;
-            this.responsableExternoCapituloMapper = responsableExternoCapituloMapper;
+            this.autorInternoCapituloMapper = autorInternoCapituloMapper;
+            this.autorExternoCapituloMapper = autorExternoCapituloMapper;
 		    this.proyectoService = proyectoService;
+		    this.editorialCapituloMapper = editorialCapituloMapper;
         }		
 		
         protected override int GetIdFromMessage(CapituloForm message)
@@ -45,24 +47,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NoCitas = message.NoCitas;
             model.PosicionAutor = message.PosicionAutor;
             model.AutorLibro = message.AutorLibro;
-            model.Traductor = message.Traductor;
             model.Resumen = message.Resumen;
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
+            model.TipoLibro = message.TipoLibro;
 
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
-            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
-            model.TipoCapitulo = catalogoService.GetTipoCapituloById(message.TipoCapitulo);
+            model.TipoCapitulo = message.TipoCapitulo;
             model.EstadoProducto = message.EstadoProducto;
-            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
-            model.TipoParticipante = catalogoService.GetTipoParticipanteById(message.TipoParticipante);
+            //model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)
@@ -82,16 +80,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return model;
         }
 
-        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            ResponsableExternoProductoForm[] responsablesExternos, ResponsableInternoProductoForm[] responsablesInternos)
+        public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador, 
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
+            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos, EditorialProductoForm[] editoriales)
         {
             var model = Map(message, usuario, investigador);
 
             foreach (var coautorExterno in coautoresExternos)
             {
-                var coautor =
-                    coautorExternoCapituloMapper.Map(coautorExterno);
+                var coautor = coautorExternoCapituloMapper.Map(coautorExterno);
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -101,8 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             foreach (var coautorInterno in coautoresInternos)
             {
-                var coautor =
-                    coautorInternoCapituloMapper.Map(coautorInterno);
+                var coautor = coautorInternoCapituloMapper.Map(coautorInterno);
 
                 coautor.CreadorPor = usuario;
                 coautor.ModificadoPor = usuario;
@@ -110,26 +106,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorInterno(coautor);
             }
 
-            foreach (var responsableExterno in responsablesExternos)
+            foreach (var autorExterno in autoresExternos)
             {
-                var responsable =
-                    responsableExternoCapituloMapper.Map(responsableExterno);
+                var autor = autorExternoCapituloMapper.Map(autorExterno);
 
-                responsable.CreadorPor = usuario;
-                responsable.ModificadoPor = usuario;
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
 
-                model.AddResponsableExterno(responsable);
+                model.AddAutorExterno(autor);
             }
 
-            foreach (var responsableInterno in responsablesInternos)
+            foreach (var autorInterno in autoresInternos)
             {
-                var responsable =
-                    responsableInternoCapituloMapper.Map(responsableInterno);
+                var autor = autorInternoCapituloMapper.Map(autorInterno);
 
-                responsable.CreadorPor = usuario;
-                responsable.ModificadoPor = usuario;
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
 
-                model.AddResponsableInterno(responsable);
+                model.AddAutorInterno(autor);
+            }
+
+            foreach (var editorial in editoriales)
+            {
+                var editorialProducto = editorialCapituloMapper.Map(editorial);
+
+                editorialProducto.CreadorPor = usuario;
+                editorialProducto.ModificadoPor = usuario;
+
+                model.AddEditorial(editorialProducto);
             }
 
             return model;

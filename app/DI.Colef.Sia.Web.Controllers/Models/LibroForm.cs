@@ -50,12 +50,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int EstadoProducto { get; set; }
 
+        public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
+
 		public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 		
 		public int Idioma { get; set; }
 		public int IdiomaId { get; set; }
         public string IdiomaNombre { get; set; }
+
+        public int ContenidoLibro { get; set; }
+        public int ContenidoLibroId { get; set; }
+        public string ContenidoLibroNombre { get; set; }
 
         public int Reimpresion { get; set; }
 
@@ -81,15 +88,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
-        public ProyectoForm Proyecto { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
+        public SubdisciplinaForm Subdisciplina { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
 		
 		/* Catalogos */
-        public TipoPublicacionForm[] TiposPublicaciones { get; set; }
         public CustomSelectForm[] TiposProductos { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }
+        public ContenidoLibroForm[] ContenidosLibros { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }

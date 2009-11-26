@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [CapituloValidator]
-	public class Capitulo : Entity, IBaseEntity, IResponsable, ICoautor
+	public class Capitulo : Entity, IBaseEntity, IAutor, ICoautor, IEditorial
     {
         const int tipoProducto = 2; // 2 Representa Capitulo
 
@@ -17,10 +17,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		{
 			CoautorExternoCapitulos = new List<CoautorExternoCapitulo>();
             CoautorInternoCapitulos = new List<CoautorInternoCapitulo>();
-            ResponsableInternoCapitulos = new List<ResponsableInternoCapitulo>();
-            ResponsableExternoCapitulos = new List<ResponsableExternoCapitulo>();
+            AutorInternoCapitulos = new List<AutorInternoCapitulo>();
+            AutorExternoCapitulos = new List<AutorExternoCapitulo>();
             FirmaCapitulos = new List<FirmaCapitulo>();
             ArchivoCapitulos = new List<ArchivoCapitulo>();
+            EditorialCapitulos = new List<EditorialCapitulo>();
 		}
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -34,15 +35,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             coautorInterno.TipoProducto = tipoProducto;
             CoautorInternoCapitulos.Add((CoautorInternoCapitulo)coautorInterno);
         }
-        public virtual void AddResponsableInterno(ResponsableInternoProducto responsableInterno)
+        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
         {
-            responsableInterno.TipoProducto = tipoProducto;
-            ResponsableInternoCapitulos.Add((ResponsableInternoCapitulo)responsableInterno);
+            autorInterno.TipoProducto = tipoProducto;
+            AutorInternoCapitulos.Add((AutorInternoCapitulo)autorInterno);
         }
-        public virtual void AddResponsableExterno(ResponsableExternoProducto responsableExterno)
+        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
         {
-            responsableExterno.TipoProducto = tipoProducto;
-            ResponsableExternoCapitulos.Add((ResponsableExternoCapitulo)responsableExterno);
+            autorExterno.TipoProducto = tipoProducto;
+            AutorExternoCapitulos.Add((AutorExternoCapitulo)autorExterno);
         }
 
         public virtual void AddFirma(Firma firma)
@@ -55,6 +56,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoCapitulos.Add((ArchivoCapitulo)archivo);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialCapitulos.Add((EditorialCapitulo) editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialCapitulos.Remove((EditorialCapitulo) editorial);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -77,23 +89,23 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoCapitulos.Remove((CoautorExternoCapitulo)coautorExterno);
         }
 
-        public virtual void DeleteResponsableInterno(ResponsableInternoProducto coautorInterno)
+        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
         {
-            ResponsableInternoCapitulos.Remove((ResponsableInternoCapitulo)coautorInterno);
+            AutorInternoCapitulos.Remove((AutorInternoCapitulo)coautorInterno);
         }
 
-        public virtual void DeleteResponsableExterno(ResponsableExternoProducto coautorExterno)
+        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
         {
-            ResponsableExternoCapitulos.Remove((ResponsableExternoCapitulo)coautorExterno);
+            AutorExternoCapitulos.Remove((AutorExternoCapitulo)coautorExterno);
         }
 
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string NombreCapitulo { get; set; }
 
-        public virtual TipoCapitulo TipoCapitulo { get; set; }
+        public virtual int TipoCapitulo { get; set; }
 
-        public virtual Idioma Idioma { get; set; }
+        //public virtual Idioma Idioma { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoCapitulo> CoautorExternoCapitulos { get; private set; }
@@ -116,6 +128,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual AreaTematica AreaTematica { get; set; }
 
+        public virtual Subdisciplina Subdisciplina { get; set; }
+
         public virtual int EstadoProducto { get; set; }
 
 		public virtual DateTime FechaAceptacion { get; set; }
@@ -126,33 +140,28 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string AutorLibro { get; set; }
 
+        public virtual int TipoLibro { get; set; }
+
         public virtual string Resumen { get; set; }
 
         public virtual Editorial Editorial { get; set; }
 
         public virtual int Volumen { get; set; }
 
-		public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual Pais Pais { get; set; }
-
         public virtual int NoPaginas { get; set; }
 
         public virtual int NoCitas { get; set; }
 
         [Valid]
-        public virtual IList<ResponsableInternoCapitulo> ResponsableInternoCapitulos { get; private set; }
+        public virtual IList<AutorInternoCapitulo> AutorInternoCapitulos { get; private set; }
 
         [Valid]
-        public virtual IList<ResponsableExternoCapitulo> ResponsableExternoCapitulos { get; private set; }
+        public virtual IList<AutorExternoCapitulo> AutorExternoCapitulos { get; private set; }
+
+        [Valid]
+        public virtual IList<EditorialCapitulo> EditorialCapitulos { get; private set; }
 
         public virtual int Puntuacion { get; set; }
-        
-		public virtual TipoParticipacion TipoParticipacion { get; set; }
-        
-		public virtual TipoParticipante TipoParticipante { get; set; }
-        
-		public virtual bool Traductor { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

@@ -302,10 +302,6 @@ insert into TipoProyectos values('Consultoría',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into FormatoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormatoPublicaciones values('Memoria de evento',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormatoPublicaciones values('Número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
@@ -585,11 +581,6 @@ insert into SNIs values('Nivel 1',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 2',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Nivel 3',GETDATE(), GETDATE(), 1, 1, 1);
 insert into SNIs values('Emerito',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into TipoArticulos values('Artículo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoArticulos values('Artículo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
---insert into TipoArticulos values('Artículo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
---insert into TipoArticulos values('Memoria de Congreso/Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Indices values('Indice Revistas CONACyT','Índice de Revistas Mexicanas de Investigación Científica y Tecnológica (CONACyT)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('CLASE','Citas Latinoamericanas en Ciencias Sociales y Humanidades',GETDATE(), GETDATE(), 1, 1, 1);
@@ -1026,10 +1017,6 @@ insert into TipoParticipaciones values('Video', 3, GETDATE(), GETDATE(), 1, 1, 1
 insert into TipoActividades values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Docencia',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoActividades values('Vinculación',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into TipoCapitulos values('Capítulo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoCapitulos values('Capítulo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
   
 insert into FormaParticipaciones values('Editor',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormaParticipaciones values('Compilador',GETDATE(), GETDATE(), 1, 1, 1);

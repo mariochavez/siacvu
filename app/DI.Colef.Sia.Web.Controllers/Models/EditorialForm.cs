@@ -16,5 +16,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         //Catalogos
         public PaisForm[] Paises { get; set; }
+
+        /*Fields for has many*/
+        public string Controller { get; set; }
+        public string IdName { get; set; }
+
+        public EditorialProductoForm[] Editoriales { get; set; }
+        public int ModelId { get; set; }
+        public int EditorialId { get; set; }
     }
 }

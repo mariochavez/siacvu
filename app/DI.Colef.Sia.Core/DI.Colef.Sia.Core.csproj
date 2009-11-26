@@ -72,8 +72,11 @@
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="AreaInvestigacion.cs" />
+    <Compile Include="ContenidoLibro.cs" />
     <Compile Include="CursoInvestigador.cs" />
+    <Compile Include="EditorialProducto.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
+    <Compile Include="IEditorial.cs" />
     <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoInternoValidator.cs" />
     <Compile Include="TesisPosgrado.cs" />
@@ -144,7 +147,7 @@
     <Compile Include="Institucion.cs" />
     <Compile Include="InstitucionEvento.cs" />
     <Compile Include="Investigador.cs" />
-    <Compile Include="IResponsable.cs" />
+    <Compile Include="IAutor.cs" />
     <Compile Include="Libro.cs" />
     <Compile Include="MedioElectronico.cs" />
     <Compile Include="MedioImpreso.cs" />
@@ -207,8 +210,8 @@
     <Compile Include="Reporte.cs" />
     <Compile Include="Resena.cs" />
     <Compile Include="ResponsableExterno.cs" />
-    <Compile Include="ResponsableExternoProducto.cs" />
-    <Compile Include="ResponsableInternoProducto.cs" />
+    <Compile Include="AutorExternoProducto.cs" />
+    <Compile Include="AutorInternoProducto.cs" />
     <Compile Include="ResponsableInternoProyecto.cs" />
     <Compile Include="RevistaPublicacion.cs" />
     <Compile Include="Rol.cs" />
@@ -227,8 +230,6 @@
     <Compile Include="TipoActividad.cs" />
     <Compile Include="TipoApoyo.cs" />
     <Compile Include="TipoArchivo.cs" />
-    <Compile Include="TipoArticulo.cs" />
-    <Compile Include="TipoCapitulo.cs" />
     <Compile Include="TipoDictamen.cs" />
     <Compile Include="TipoDistincion.cs" />
     <Compile Include="TipoEstancia.cs" />
@@ -239,7 +240,6 @@
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
-    <Compile Include="TipoPublicacion.cs" />
     <Compile Include="TipoReporte.cs" />
     <Compile Include="TipoResena.cs" />
     <Compile Include="USEG.cs" />

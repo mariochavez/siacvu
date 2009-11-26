@@ -15,9 +15,3 @@
                 "Seleccione ...")%>
     <%=Html.ValidationMessage("LineaTematica")%>
 </p>
-<p>
-    <label>Subdisciplina</label>
-    <%=Html.DropDownList("Subdisciplina", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
-                        "Seleccione ...")%>
-    <%=Html.ValidationMessage("Subdisciplina")%>
-</p>

@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.CreadorEl = DateTime.Now;
             }
 
-            if (libro.Idioma == null && libro.TipoPublicacion != null)
+            if (libro.Idioma == null)
             {
                 var idioma = new Dictionary<string, object> {{"Nombre", "Español"}};
 

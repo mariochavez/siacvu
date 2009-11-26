@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
+        readonly IRepository<ContenidoLibro> contenidoLibroRepository;
         readonly IRepository<AreaInvestigacion> areaInvestigacionRepository;
         readonly IRepository<ConsejoComision> consejoComisionRepository;
         readonly IRepository<Ambito> ambitoRepository;
@@ -72,8 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoActividad> tipoActividadRepository;
         readonly IRepository<TipoApoyo> tipoApoyoRepository;
         readonly IRepository<TipoArchivo> tipoArchivoRepository;
-        readonly IRepository<TipoArticulo> tipoArticuloRepository;
-        readonly IRepository<TipoCapitulo> tipoCapituloRepository;
         readonly IRepository<TipoDictamen> tipoDictamenRepository;
         readonly IRepository<TipoDistincion> tipoDistincionRepository;
         readonly IRepository<TipoEstancia> tipoEstanciaRepository;
@@ -84,7 +83,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
         readonly IRepository<TipoProyecto> tipoProyectoRepository;
-        readonly IRepository<TipoPublicacion> tipoPublicacionRepository;
         readonly IRepository<TipoReporte> tipoReporteRepository;
         readonly IRepository<TipoResena> tipoResenaRepository;
         readonly IRepository<USEG> uSEGRepository;
@@ -101,7 +99,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<Editorial> editorialRepository, IRepository<SNI> sniRepository,
                                IRepository<Estado> estadoRepository, IRepository<Idioma> idiomaRepository,
                                IRepository<Pais> paisRepository, IRepository<DirigidoA> dirigidoARepository,
-                               IRepository<TipoArticulo> tipoArticuloRepository,
                                IRepository<Institucion> institucionRepository, IRepository<Indice> indiceRepository,
                                IRepository<InvestigadorExterno> investigadorExternoRepository,
                                IRepository<TipoParticipante> tipoParticipanteRepository,
@@ -113,7 +110,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<CoautorExterno> coautorExternoRepository,
                                IRepository<FormaParticipacion> formaParticipacionRepository,
                                IRepository<ResponsableExterno> responsableExternoRepository,
-                               IRepository<TipoCapitulo> tipoCapituloRepository,
                                IRepository<TipoParticipacion> tipoParticipacionRepository,
                                IRepository<Nivel> nivelRepository, IRepository<Diplomado> diplomadoRepository,
                                IRepository<Sector> sectorRepository,
@@ -121,6 +117,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<ProgramaEstudio> programaEstudioRepository,
                                IRepository<RevistaPublicacion> revistaPublicacionRepository,
                                IRepository<Organizacion> organizacionRepository,
+                               IRepository<ContenidoLibro> contenidoLibroRepository,
                                IRepository<Dependencia> dependenciaRepository, IRepository<Ambito> ambitoRepository,
                                IRepository<EstadoPais> estadoPaisRepository, IRepository<Genero> generoRepository,
                                IRepository<TipoEstancia> tipoEstanciaRepository,
@@ -134,7 +131,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<TipoOrgano> tipoOrganoRepository,
                                IRepository<TipoPresentacion> tipoPresentacionRepository,
                                IRepository<TipoReporte> tipoReporteRepository,
-                               IRepository<TipoPublicacion> tipoPublicacionRepository,
                                IRepository<NivelEstudio> nivelEstudioRepository,
                                IRepository<ProductoDerivado> productoDerivadoRepository,
                                IRepository<TipoResena> tipoResenaRepository, IRepository<TipoApoyo> tipoApoyoRepository,
@@ -154,7 +150,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<VinculacionAPyD> vinculacionAPyDRepository,
                                IRepository<DireccionRegional> direccionRegionalRepository)
         {
-            this.tipoPublicacionRepository = tipoPublicacionRepository;
             this.actividadPrevistaRepository = actividadPrevistaRepository;
             this.cargoRepository = cargoRepository;
             this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
@@ -173,7 +168,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.paisRepository = paisRepository;
             this.estatusFormacionAcademicaRepository = estatusFormacionAcademicaRepository;
             this.identificadorLibroRepository = identificadorLibroRepository;
-            this.tipoArticuloRepository = tipoArticuloRepository;
             this.areaInvestigacionRepository = areaInvestigacionRepository;
             this.institucionRepository = institucionRepository;
             this.indiceRepository = indiceRepository;
@@ -189,11 +183,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.coautorExternoRepository = coautorExternoRepository;
             this.formaParticipacionRepository = formaParticipacionRepository;
             this.responsableExternoRepository = responsableExternoRepository;
-            this.tipoCapituloRepository = tipoCapituloRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
+            this.contenidoLibroRepository = contenidoLibroRepository;
             this.editorialRepository = editorialRepository;
             this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
@@ -511,33 +505,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             pais.ModificadoEl = DateTime.Now;
 
             paisRepository.SaveOrUpdate(pais);
-        }
-
-        public TipoArticulo GetTipoArticuloById(int id)
-        {
-            return tipoArticuloRepository.Get(id);
-        }
-
-        public TipoArticulo[] GetAllTipoArticulos()
-        {
-            return ((List<TipoArticulo>) OrderCatalog<TipoArticulo>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoArticulo[] GetActiveArticulos()
-        {
-            return ((List<TipoArticulo>) OrderCatalog<TipoArticulo>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoArticulo(TipoArticulo tipoArticulo)
-        {
-            if (tipoArticulo.Id == 0)
-            {
-                tipoArticulo.Activo = true;
-                tipoArticulo.CreadorEl = DateTime.Now;
-            }
-            tipoArticulo.ModificadoEl = DateTime.Now;
-
-            tipoArticuloRepository.SaveOrUpdate(tipoArticulo);
         }
 
         public Institucion GetInstitucionById(int id)
@@ -899,33 +866,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             responsableExterno.ModificadoEl = DateTime.Now;
 
             responsableExternoRepository.SaveOrUpdate(responsableExterno);
-        }
-
-        public TipoCapitulo GetTipoCapituloById(int id)
-        {
-            return tipoCapituloRepository.Get(id);
-        }
-
-        public TipoCapitulo[] GetAllTipoCapitulos()
-        {
-            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoCapitulo[] GetActiveTipoCapitulos()
-        {
-            return ((List<TipoCapitulo>) OrderCatalog<TipoCapitulo>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoCapitulo(TipoCapitulo tipoCapitulo)
-        {
-            if (tipoCapitulo.Id == 0)
-            {
-                tipoCapitulo.Activo = true;
-                tipoCapitulo.CreadorEl = DateTime.Now;
-            }
-            tipoCapitulo.ModificadoEl = DateTime.Now;
-
-            tipoCapituloRepository.SaveOrUpdate(tipoCapitulo);
         }
 
         public TipoParticipacion GetTipoParticipacionById(int id)
@@ -1570,33 +1510,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             nivelEstudio.ModificadoEl = DateTime.Now;
 
             nivelEstudioRepository.SaveOrUpdate(nivelEstudio);
-        }
-
-        public TipoPublicacion GetTipoPublicacionById(int id)
-        {
-            return tipoPublicacionRepository.Get(id);
-        }
-
-        public TipoPublicacion[] GetAllTipoPublicacions()
-        {
-            return ((List<TipoPublicacion>) OrderCatalog<TipoPublicacion>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoPublicacion[] GetActiveTipoPublicacions()
-        {
-            return ((List<TipoPublicacion>) OrderCatalog<TipoPublicacion>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoPublicacion(TipoPublicacion tipoPublicacion)
-        {
-            if (tipoPublicacion.Id == 0)
-            {
-                tipoPublicacion.Activo = true;
-                tipoPublicacion.CreadorEl = DateTime.Now;
-            }
-            tipoPublicacion.ModificadoEl = DateTime.Now;
-
-            tipoPublicacionRepository.SaveOrUpdate(tipoPublicacion);
         }
 
         public TipoProyecto GetTipoProyectoById(int id)
@@ -2393,6 +2306,33 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaInvestigacion.ModificadoEl = DateTime.Now;
 
             areaInvestigacionRepository.SaveOrUpdate(areaInvestigacion);
+        }
+
+        public ContenidoLibro GetContenidoLibroById(int id)
+        {
+            return contenidoLibroRepository.Get(id);
+        }
+
+        public ContenidoLibro[] GetAllContenidoLibros()
+        {
+            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre)).ToArray();
+        }
+        
+        public ContenidoLibro[] GetActiveContenidoLibros()
+        {
+            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre, true)).ToArray();
+        }
+
+        public void SaveContenidoLibro(ContenidoLibro contenidoLibro)
+        {
+            if(contenidoLibro.Id == 0)
+            {
+                contenidoLibro.Activo = true;
+                contenidoLibro.CreadorEl = DateTime.Now;
+            }
+            contenidoLibro.ModificadoEl = DateTime.Now;
+            
+            contenidoLibroRepository.SaveOrUpdate(contenidoLibro);
         }
 
         #endregion

@@ -18,23 +18,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Puntuacion { get; set; }
         public bool Activo { get; set; }
         public bool TieneProyecto { get; set; }
-        public bool ArticuloTraducido { get; set; }
         public string Modificacion { get; set; }
 
-        public string AnioPublicacion { get; set; }
-
         public int TipoArticulo { get; set; }
-        public int TipoArticuloId { get; set; }
-        public string TipoArticuloNombre { get; set; }
-
-        public int Idioma { get; set; }
-        public int IdiomaId { get; set; }
-        public string IdiomaNombre { get; set; }
-
         public int EstadoProducto { get; set; }
         
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
+
+        public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
@@ -67,14 +60,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
-        public ProyectoForm Proyecto { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
+        public SubdisciplinaForm Subdisciplina { get; set; }
+        public ProyectoForm Proyecto { get; set; }
 
         /* Catalogos */
-        public CustomSelectForm[] Volumenes { get; set; }
-        public TipoArticuloForm[] TiposArticulos { get; set; }
-        public IdiomaForm[] Idiomas { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
-        public ProyectoForm[] Proyectos { get; set; }
+        public CustomSelectForm[] TiposArticulos { get; set; }
     }
 }

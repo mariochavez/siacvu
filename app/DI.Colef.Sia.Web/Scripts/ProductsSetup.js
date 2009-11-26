@@ -29,17 +29,9 @@
 }
 
 function capituloSetup() {
-    $('#TipoCapitulo').dynamicui(
-            [
-                ['Capítulo traducido a otro idioma', ['#idioma_field', '#traductor_field']]
-            ]
-        );
-
-    $('#TipoCapitulo')[0].dynamic.setup();
-
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado', '#publicado_fields']],
                 ['Aceptado', ['#EstatusAceptado']]
             ]
         );
@@ -48,8 +40,7 @@ function capituloSetup() {
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['#tieneproyecto_field']],
-            ['0', ['#notieneproyecto_field']]
+            ['1', ['#tieneproyecto_field']]
         ]
     );
     
@@ -114,20 +105,11 @@ function articuloSetup() {
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['#tieneproyecto_field']],
-            ['0', ['#notieneproyecto_field']]
+            ['1', ['#tieneproyecto_field']]
         ]
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
-
-    $('#ArticuloTraducido').dynamicui(
-        [
-            ['1', ['#idioma_field']]
-        ]
-    );
-
-    $('#ArticuloTraducido')[0].dynamic.setup();
 }
 
 function participacionSetup() {

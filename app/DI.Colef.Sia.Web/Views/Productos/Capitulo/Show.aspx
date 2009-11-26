@@ -55,14 +55,9 @@
                 </p>
                 <p>
                     <label>Tipo de cap&iacute;tulo</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapituloNombre)%>&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapitulo)%>&nbsp;</span>
                 </p>
-                <% if (Model.Form.TipoCapituloNombre.Contains("otro idioma")) { %>
-                    <p>
-                        <label>Idioma al que se tradujo</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre)%>&nbsp;</span>
-                    </p>
-                <% } %>
+                
 	            <h4>Coautores</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
@@ -78,11 +73,15 @@
                     <label></label>
                     <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
-                <% if (Model.Form.TieneProyecto) { %>                    
-                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
-                <% } else { %>
-                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <% if (Model.Form.TieneProyecto) { %>      
+	                <p>
+	                    <label>Nombre del proyecto de investigaci&oacute;n</label>
+	                    <span class="valor"><%=Html.Encode(Model.Form.ProyectoNombre) %></span>	          
+	                </p>
                 <% } %>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
@@ -124,15 +123,6 @@
                     <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>A&ntilde;o de edici&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaEdicion)%>&nbsp;</span>
-                    <span>Formato (yyyy)</span>
-                </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                </p>
-                <p>
                     <label>N&uacute;mero de p&aacute;ginas</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
                 </p>    
@@ -143,27 +133,8 @@
 
     <!-- RESPONSABLES DEL LIBRO -->                
                 <h4>Responsables del libro</h4>
-	            <% Html.RenderPartial("_ShowResponsableInterno", new ResponsableForm { ResponsablesInternos = Model.Form.ResponsableInternoCapitulos, ModelId = Model.Form.Id }); %>
-				<% Html.RenderPartial("_ShowResponsableExterno", new ResponsableForm { ResponsablesExternos = Model.Form.ResponsableExternoCapitulos, ModelId = Model.Form.Id }); %>
-	            <p>
-	                <label>Editores</label>
-	                <span id="totaleditores" class="valor"><%=Html.Encode(Model.Form.TotalEditores) %></span>	          
-	            </p>
-                
-    <!-- COMPLEMENTARIA CVU -->                
-                <h4>Complementaria CVU</h4>
-                <p>
-                    <label>Tipo de participaci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Tipo de participante</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoParticipanteNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Traductor/Co-Traductor</label>
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Traductor)%>&nbsp;</span>
-                </p>
+	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>

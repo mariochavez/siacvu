@@ -37,30 +37,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             isValid &= TieneProyecto(articulo, constraintValidatorContext);
-            isValid &= ArticuloTraducido(articulo, constraintValidatorContext);
 
             if (articulo.EstadoProducto != 0)
                 isValid &= ValidateProductoEstado(articulo, constraintValidatorContext);
-
-            return isValid;
-        }
-
-        bool ArticuloTraducido(Articulo articulo, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (articulo.ArticuloTraducido)
-            {
-                if (articulo.Idioma == null)
-                {
-                    constraintValidatorContext.AddInvalid("seleccione el idioma|Idioma", "Idioma");
-
-                    isValid = false;
-                }
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
 
             return isValid;
         }
