@@ -166,10 +166,6 @@ insert into TipoProyectos values('Consultoría',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Coordinación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPublicaciones values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into FormatoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormatoPublicaciones values('Memoria de evento',GETDATE(), GETDATE(), 1, 1, 1);
 insert into FormatoPublicaciones values('Número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
@@ -482,11 +478,6 @@ insert into Sedes values('Ciudad Juárez','Dirección general regional noroeste',G
 insert into Sedes values('Tijuana','Tijuana',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sedes values('Mexicali','Dirección general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Sedes values('Nogales','Dirección general regional noroeste',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into TipoArticulos values('Artículo con arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoArticulos values('Artículo sin arbitraje',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoArticulos values('Artículo traducido a otro idioma',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoArticulos values('Memoria de Congreso/Ponencia publicada',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into Indices values('Indice Revistas CONACyT','Índice de Revistas Mexicanas de Investigación Científica y Tecnológica (CONACyT)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into Indices values('CLASE','Citas Latinoamericanas en Ciencias Sociales y Humanidades',GETDATE(), GETDATE(), 1, 1, 1);
