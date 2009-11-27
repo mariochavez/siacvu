@@ -25,7 +25,7 @@
 
 <p>
     <label>Resumen</label>
-    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>
+    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420-requerido", maxlength = 500 })%>
     <span class="cvu"></span>
 </p>
 <p>
