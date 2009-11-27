@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
@@ -44,5 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool IsShowForm { get; set; }
         public string InstitucionLabel { get; set; }
         public string RevistaLabel { get; set; }
+
+        public string DireccionRegionalNombre { get; set; }
     }
 }

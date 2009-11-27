@@ -25,7 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(CategoriaInvestigadorForm message, CategoriaInvestigador model)
         {
-            model.Fecha = message.Fecha.FromShortDateToDateTime();
+            model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
+            model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             model.Categoria = catalogoService.GetCategoriaById(message.Categoria);
 
             if (model.IsTransient())

@@ -9,6 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int DireccionRegional { get; set; }
         public int DireccionRegionalId { get; set; }
+        public string DireccionRegionalNombre { get; set; }
 
         public DireccionRegionalForm[] DireccionesRegionales { get; set; }
     }

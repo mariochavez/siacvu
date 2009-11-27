@@ -2,13 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Cargo</label>
-    <%=Html.DropDownList("CargoInvestigador.Cargo", Model.Cargos.CreateSelectList<CargoForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("CargoInvestigador.Cargo")%>
-</p>
-<p>
     <label>Puesto</label>
     <%=Html.DropDownList("CargoInvestigador.Puesto", Model.Puestos.CreateSelectList<PuestoForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>
@@ -23,8 +16,13 @@
     <%=Html.ValidationMessage("CargoInvestigador.Departamento")%>
 </p>
 <p>
+    <label>Sede</label>
+    <%=Html.DropDownList("CargoInvestigador.Sede", Model.Sedes.CreateSelectList<SedeForm>("Id", "Nombre"),
+                "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("changesede") })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("CargoInvestigador.Sede")%>
+</p>
+<p>
     <label>Direcci&oacute;n regional:</label>
-    <%=Html.DropDownList("CargoInvestigador.DireccionRegional", Model.DireccionesRegionales.CreateSelectList<DireccionRegionalForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("CargoInvestigador.DireccionRegional")%>
+    <span id="span_direccionregional" class="valor">&nbsp;</span>
 </p>

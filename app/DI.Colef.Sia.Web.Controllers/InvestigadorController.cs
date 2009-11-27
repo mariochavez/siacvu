@@ -42,8 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       IPuestoMapper puestoMapper,
                                       IDireccionRegionalMapper direccionRegionalMapper, ISearchService searchService,
-            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper)
-            : base(usuarioService, searchService, catalogoService, institucionMapper)
+            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.investigadorService = investigadorService;
             this.investigadorMapper = investigadorMapper;
@@ -416,8 +416,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                Id = investigador.Id,
                                CargoInvestigador = new CargoInvestigadorForm(),
                                Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
-                               DireccionesRegionales =
-                                   direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
+                               Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
                                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos())
                            };
 
@@ -519,8 +518,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
                            Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias()),
                            Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
-                           DireccionesRegionales =
-                               direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
+                           Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
                            Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                            SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
                            AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),

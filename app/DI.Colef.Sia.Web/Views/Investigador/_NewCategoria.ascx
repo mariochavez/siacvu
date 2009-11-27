@@ -9,9 +9,11 @@
     <%=Html.ValidationMessage("CategoriaInvestigador.Categoria")%>
 </p>
 <p>                       
-    <label>Fecha</label>
-    <%=Html.TextBox("CategoriaInvestigador.Fecha", Model.CategoriaInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <label>Periodo</label>
+    <%=Html.TextBox("CategoriaInvestigador.FechaInicial", Model.CategoriaInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
+    <%=Html.TextBox("CategoriaInvestigador.FechaFinal", Model.CategoriaInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span> 
-    <%=Html.ValidationMessage("CategoriaInvestigador.Fecha")%>
+    <%=Html.ValidationMessage("CategoriaInvestigador.FechaInicial")%>
+    <%=Html.ValidationMessage("CategoriaInvestigador.FechaFinal")%>
 </p>

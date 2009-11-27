@@ -80,7 +80,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaTematicaForm[] AreasTematicas { get; set; }
 
         public PuestoForm[] Puestos { get; set; }
-        public DireccionRegionalForm[] DireccionesRegionales { get; set; }
 
         public ArchivoForm[] ArchivosInvestigador { get; set; }
         public ArchivoForm ArchivoInvestigador { get; set; }
