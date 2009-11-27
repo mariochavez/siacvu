@@ -258,11 +258,6 @@
     <Content Include="Views\Catalogos\Area\Index.aspx" />
     <Content Include="Views\Catalogos\Area\New.aspx" />
     <Content Include="Views\Catalogos\Area\_Form.ascx" />
-    <Content Include="Views\Catalogos\Cargo\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\Cargo\Edit.aspx" />
-    <Content Include="Views\Catalogos\Cargo\Index.aspx" />
-    <Content Include="Views\Catalogos\Cargo\New.aspx" />
-    <Content Include="Views\Catalogos\Cargo\_Form.ascx" />
     <Content Include="Views\Catalogos\Categoria\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Categoria\Edit.aspx" />
     <Content Include="Views\Catalogos\Categoria\Index.aspx" />
@@ -584,6 +579,7 @@
     <Content Include="Views\IdiomasInvestigador\Show.aspx" />
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
+    <Content Include="Views\Investigador\ChangeSede.js.ascx" />
     <Content Include="Views\Investigador\Create.js.ascx" />
     <Content Include="Views\Investigador\_ShowSni.ascx" />
     <Content Include="Views\Investigador\_ShowCategoria.ascx" />

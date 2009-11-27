@@ -14,78 +14,67 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class LibroController : BaseController<Libro, LibroForm>
     {
-        readonly ILibroService libroService;
         readonly ICatalogoService catalogoService;
-        readonly ILibroMapper libroMapper;
-        readonly IIdiomaMapper idiomaMapper;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IEditorialMapper editorialMapper;
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ILibroMapper libroMapper;
+        readonly ILibroService libroService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAreaMapper areaMapper;
         readonly IDisciplinaMapper disciplinaMapper;
         readonly ISubdisciplinaMapper subdisciplinaMapper;
+        readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
 
-        public LibroController(ILibroService libroService, 
-                               ICustomCollection customCollection,
-                               ILibroMapper libroMapper,
+        public LibroController(ILibroService libroService,
+                               ICustomCollection customCollection, ILibroMapper libroMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
-                               IAreaTematicaMapper areaTematicaMapper,
-                               IIdiomaMapper idiomaMapper,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
                                ICoautorInternoLibroMapper coautorInternoLibroMapper,
                                ISearchService searchService,
                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
-                               IEditorialMapper editorialMapper,
-                               IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, 
-                               IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                               ISubdisciplinaMapper subdisciplinaMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
+                               IEditorialLibroMapper editorialLibroMapper,
+                               ILineaTematicaMapper lineaTematicaMapper, 
+                               IAreaMapper areaMapper,
+                               IDisciplinaMapper disciplinaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.areaTematicaMapper = areaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
             this.libroService = libroService;
             this.libroMapper = libroMapper;
-            this.idiomaMapper = idiomaMapper;
             this.coautorExternoLibroMapper = coautorExternoLibroMapper;
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
-            this.editorialMapper = editorialMapper;
             this.editorialLibroMapper = editorialLibroMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.areaMapper = areaMapper;
             this.disciplinaMapper = disciplinaMapper;
             this.subdisciplinaMapper = subdisciplinaMapper;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Index() 
+        public ActionResult Index()
         {
             var data = CreateViewDataWithTitle(Title.Index);
-            var libros = new Libro[] { };
+            var libros = new Libro[] {};
 
             if (User.IsInRole("Investigadores"))
                 libros = libroService.GetAllLibros(CurrentUser());
             if (User.IsInRole("DGAA"))
                 libros = libroService.GetAllLibros();
-			
+
             data.List = libroMapper.Map(libros);
 
             return View(data);
@@ -101,6 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionAutor = 1;
+
             ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
             return View(data);
@@ -149,7 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData.Model = data;
             return View();
         }
-        
+
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
@@ -165,12 +155,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                         coautorExterno, coautorInterno, editorial);
-            
+
             if (!IsValidateModel(libro, form, Title.New, "Libro"))
             {
                 var libroForm = libroMapper.Map(libro);
 
-                ((GenericViewData<LibroForm>)ViewData.Model).Form = SetupNewForm(libroForm);
+                ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
                 return ViewNew();
             }
 
@@ -178,7 +168,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return RedirectToIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
         }
-        
+
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
@@ -186,16 +176,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Update(LibroForm form)
         {
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
+
             if (!IsValidateModel(libro, form, Title.Edit))
             {
                 var libroForm = libroMapper.Map(libro);
 
-                ((GenericViewData<LibroForm>)ViewData.Model).Form = SetupNewForm(libroForm);
+                ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
                 FormSetCombos(libroForm);
                 return ViewEdit();
             }
-            
+
             libroService.SaveLibro(libro);
 
             return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
@@ -234,15 +224,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
 
             var form = new ShowFieldsForm
-            {
-                RevistaPublicacionId = revistaForm.Id,
-
-                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
-                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
-                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
-                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
-            };
+                           {
+                               RevistaPublicacionId = revistaForm.Id,
+                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+                           };
 
             return Rjs("ChangeRevista", form);
         }
@@ -252,14 +241,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+            var lineaTematicaForm =
+                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
                                AreaTematicaId = areaTematicaForm.Id
                            };
-
 
             return Rjs("ChangeAreaTematica", form);
         }
@@ -269,7 +258,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId" };
+            var form = new CoautorForm {Controller = "Libro", IdName = "LibroId"};
 
             if (libro != null)
                 form.Id = libro.Id;
@@ -280,7 +269,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")]CoautorExternoProductoForm form, int libroId)
+        public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
+                                              int libroId)
         {
             var coautorExternoLibro = coautorExternoLibroMapper.Map(form);
 
@@ -323,13 +313,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (libro != null)
             {
-                var coautor = libro.CoautorExternoLibros.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                var coautor =
+                    libro.CoautorExternoLibros.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
                 libro.DeleteCoautorExterno(coautor);
 
                 libroService.SaveLibro(libro);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
+            var form = new CoautorForm {ModelId = id, InvestigadorExternoId = investigadorExternoId};
 
             return Rjs("DeleteCoautorExterno", form);
         }
@@ -339,7 +330,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorInterno(int id)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId" };
+            var form = new CoautorForm {Controller = "Libro", IdName = "LibroId"};
 
             if (libro != null)
                 form.Id = libro.Id;
@@ -350,7 +341,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")]CoautorInternoProductoForm form, int libroId)
+        public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form,
+                                              int libroId)
         {
             var coautorInternoLibro = coautorInternoLibroMapper.Map(form);
 
@@ -366,7 +358,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (libroId != 0)
             {
                 var libro = libroService.GetLibroById(libroId);
-                 
+
                 var alreadyHasIt =
                     libro.CoautorInternoLibros.Where(
                         x => x.Investigador.Id == coautorInternoLibro.Investigador.Id).Count();
@@ -399,7 +391,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 libroService.SaveLibro(libro);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+            var form = new CoautorForm {ModelId = id, InvestigadorId = investigadorId};
 
 
             return Rjs("DeleteCoautorInterno", form);
@@ -495,11 +487,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEvento([Bind(Prefix = "Evento")]EventoForm form, int libroId)
+        public ActionResult AddEvento([Bind(Prefix = "Evento")] EventoForm form, int libroId)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-           ModelState.AddModelErrors(evento.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(evento.ValidationResults(), true, String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -520,22 +512,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             return SetupNewForm(null);
         }
-        
+
         LibroForm SetupNewForm(LibroForm form)
         {
             form = form ?? new LibroForm();
-            
             form.Ediciones = customCollection.EdicionCustomCollection();
             form.TiposProductos = customCollection.TipoProductoCustomCollection(3);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.FormatosPublicaciones = customCollection.FormatoPublicacionCustomCollection();
             form.ContenidosLibros = customCollection.ContenidoLibroCustomCollection();
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
-			
+
             return form;
         }
-        
-        private void FormSetCombos(LibroForm form)
+
+        void FormSetCombos(LibroForm form)
         {
             ViewData["TipoProducto"] = form.TipoProducto;
             ViewData["FormatoPublicacion"] = form.FormatoPublicacion;
@@ -545,7 +536,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 
-        private LibroForm SetupShowForm(LibroForm form)
+        static LibroForm SetupShowForm(LibroForm form)
         {
             form = form ?? new LibroForm();
 
@@ -557,7 +548,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 

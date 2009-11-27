@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     public class InvestigadorController : BaseController<Investigador, InvestigadorForm>
     {
         readonly ICargoInvestigadorMapper cargoInvestigadorMapper;
-        readonly ICargoMapper cargoMapper;
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
         readonly ICategoriaMapper categoriaMapper;
         readonly IDepartamentoMapper departamentoMapper;
@@ -26,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPuestoMapper puestoMapper;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ISNIMapper sniMapper;
@@ -36,16 +34,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ICatalogoService catalogoService, IInvestigadorMapper investigadorMapper,
                                       IUsuarioMapper usuarioMapper, IEstadoMapper estadoMapper,
                                       IGradoAcademicoMapper gradoAcademicoMapper, ICategoriaMapper categoriaMapper,
-                                      ICargoMapper cargoMapper, IDepartamentoMapper departamentoMapper,
+                                      IDepartamentoMapper departamentoMapper,
                                       ISNIMapper sniMapper, IEstadoInvestigadorMapper estadoInvestigadorMapper,
                                       IGradoAcademicoInvestigadorMapper gradoAcademicoInvestigadorMapper,
                                       ICategoriaInvestigadorMapper categoriaInvestigadorMapper,
                                       ICargoInvestigadorMapper cargoInvestigadorMapper,
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
-                                      ILineaTematicaMapper lineaTematicaMapper, IPuestoMapper puestoMapper,
+                                      IPuestoMapper puestoMapper,
                                       IDireccionRegionalMapper direccionRegionalMapper, ISearchService searchService,
-            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper)
-            : base(usuarioService, searchService, catalogoService, institucionMapper)
+            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.investigadorService = investigadorService;
             this.investigadorMapper = investigadorMapper;
@@ -53,7 +51,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.estadoMapper = estadoMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.categoriaMapper = categoriaMapper;
-            this.cargoMapper = cargoMapper;
             this.departamentoMapper = departamentoMapper;
             this.sniMapper = sniMapper;
             this.estadoInvestigadorMapper = estadoInvestigadorMapper;
@@ -61,7 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.categoriaInvestigadorMapper = categoriaInvestigadorMapper;
             this.cargoInvestigadorMapper = cargoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
-            this.lineaTematicaMapper = lineaTematicaMapper;
             this.puestoMapper = puestoMapper;
             this.direccionRegionalMapper = direccionRegionalMapper;
             this.areaTematicaMapper = areaTematicaMapper;
@@ -419,10 +415,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            {
                                Id = investigador.Id,
                                CargoInvestigador = new CargoInvestigadorForm(),
-                               Cargos = cargoMapper.Map(catalogoService.GetActiveCargos()),
                                Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
-                               DireccionesRegionales =
-                                   direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
+                               Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
                                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos())
                            };
 
@@ -523,10 +517,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            Estados = estadoMapper.Map(catalogoService.GetActiveEstados()),
                            GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados()),
                            Categorias = categoriaMapper.Map(catalogoService.GetActiveCategorias()),
-                           Cargos = cargoMapper.Map(catalogoService.GetActiveCargos()),
                            Puestos = puestoMapper.Map(catalogoService.GetActivePuestos()),
-                           DireccionesRegionales =
-                               direccionRegionalMapper.Map(catalogoService.GetActiveDireccionesRegionales()),
+                           Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
                            Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                            SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
                            AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),

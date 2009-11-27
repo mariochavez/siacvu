@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Ambito> ambitoRepository;
         readonly IRepository<Area> areaRepository;
         readonly IRepository<AreaTematica> areaTematicaRepository;
-        readonly IRepository<Cargo> cargoRepository;
         readonly IRepository<Categoria> categoriaRepository;
         readonly IRepository<Clase> claseRepository;
         readonly IRepository<CoautorExterno> coautorExternoRepository;
@@ -85,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
 
-        public CatalogoService(IRepository<Cargo> cargoRepository, IRepository<TipoProyecto> tipoProyectoRepository,
+        public CatalogoService(IRepository<TipoProyecto> tipoProyectoRepository,
                                IRepository<IdentificadorLibro> identificadorLibroRepository,
                                IRepository<Convenio> convenioRepository,
                                IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository,
@@ -145,7 +144,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<DireccionRegional> direccionRegionalRepository)
         {
             this.actividadPrevistaRepository = actividadPrevistaRepository;
-            this.cargoRepository = cargoRepository;
             this.impactoPoliticaPublicaRepository = impactoPoliticaPublicaRepository;
             this.monedaRepository = monedaRepository;
             this.productoAcademicoRepository = productoAcademicoRepository;
@@ -227,33 +225,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         }
 
         #region ICatalogoService Members
-
-        public Cargo GetCargoById(int id)
-        {
-            return cargoRepository.Get(id);
-        }
-
-        public Cargo[] GetAllCargos()
-        {
-            return ((List<Cargo>) OrderCatalog<Cargo>(x => x.Nombre)).ToArray();
-        }
-
-        public Cargo[] GetActiveCargos()
-        {
-            return ((List<Cargo>)OrderCatalog<Cargo>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveCargo(Cargo cargo)
-        {
-            if (cargo.Id == 0)
-            {
-                cargo.Activo = true;
-                cargo.CreadorEl = DateTime.Now;
-            }
-            cargo.ModificadoEl = DateTime.Now;
-
-            cargoRepository.SaveOrUpdate(cargo);
-        }
 
         public Departamento GetDepartamentoById(int id)
         {

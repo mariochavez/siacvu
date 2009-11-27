@@ -5,10 +5,12 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [CategoriaInvestigadorValidator]
     public class CategoriaInvestigador : Entity, IBaseEntity
     {
-        [NotEmptyDate]
-        public virtual DateTime Fecha { get; set; }
+        public virtual DateTime FechaInicial { get; set; }
+
+        public virtual DateTime FechaFinal { get; set; }
 
         [NotNull]
         public virtual Categoria Categoria { get; set; }

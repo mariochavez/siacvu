@@ -307,7 +307,6 @@
     <Compile Include="Catalogos\EstadoController.cs" />
     <Compile Include="Catalogos\FormaParticipacionController.cs" />
     <Compile Include="Catalogos\GradoAcademicoController.cs" />
-    <Compile Include="Catalogos\CargoController.cs" />
     <Compile Include="Catalogos\IdiomaController.cs" />
     <Compile Include="Catalogos\IndiceController.cs" />
     <Compile Include="Catalogos\InstitucionController.cs" />
@@ -380,7 +379,6 @@
     <Compile Include="Mappers\Formatters\StandardDateTimeFormatter.cs" />
     <Compile Include="Mappers\Formatters\YesNoBooleanFormatter.cs" />
     <Compile Include="Mappers\IAreaMapper.cs" />
-    <Compile Include="Mappers\ICargoMapper.cs" />
     <Compile Include="Mappers\ICategoriaInvestigadorMapper.cs" />
     <Compile Include="Mappers\ICategoriaMapper.cs" />
     <Compile Include="Mappers\ICoautorExternoMapper.cs" />
@@ -399,7 +397,6 @@
     <Compile Include="Mappers\ILineaTematicaMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\Impl\AreaMapper.cs" />
-    <Compile Include="Mappers\Impl\CargoMapper.cs" />
     <Compile Include="Mappers\Impl\CategoriaMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoArticuloMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoCapituloMapper.cs" />
@@ -510,7 +507,6 @@
     <Compile Include="Models\AreaForm.cs" />
     <Compile Include="Models\ArticuloForm.cs" />
     <Compile Include="Models\CapituloForm.cs" />
-    <Compile Include="Models\CargoForm.cs" />
     <Compile Include="Models\CargoInvestigadorForm.cs" />
     <Compile Include="Models\CategoriaForm.cs" />
     <Compile Include="Models\CategoriaInvestigadorForm.cs" />

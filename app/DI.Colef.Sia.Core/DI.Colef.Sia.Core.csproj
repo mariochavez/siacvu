@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="AreaInvestigacion.cs" />
+    <Compile Include="NHibernateValidator\CategoriaInvestigadorValidator.cs" />
     <Compile Include="CursoInvestigador.cs" />
     <Compile Include="EditorialProducto.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="AutorResena.cs" />
     <Compile Include="Capitulo.cs" />
-    <Compile Include="Cargo.cs" />
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaInvestigador.cs" />

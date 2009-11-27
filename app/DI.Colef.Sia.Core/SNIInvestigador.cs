@@ -5,7 +5,7 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    //[SNIInvestigadorValidator]
+    [SNIInvestigadorValidator]
     public class SNIInvestigador : Entity, IBaseEntity
     {
         [NotEmptyDate]

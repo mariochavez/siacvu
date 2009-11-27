@@ -74,14 +74,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EstadoForm[] Estados { get; set; }
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public CategoriaForm[] Categorias { get; set; }
-        public CargoForm[] Cargos { get; set; }
         public DepartamentoForm[] Departamentos { get; set; }
         public SedeForm[] Sedes { get; set; }
         public SNIForm[] SNIs { get; set; }
         public AreaTematicaForm[] AreasTematicas { get; set; }
 
         public PuestoForm[] Puestos { get; set; }
-        public DireccionRegionalForm[] DireccionesRegionales { get; set; }
 
         public ArchivoForm[] ArchivosInvestigador { get; set; }
         public ArchivoForm ArchivoInvestigador { get; set; }

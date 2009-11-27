@@ -27,19 +27,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly ISearchService searchService;
         protected readonly ICatalogoService catalogoService;
         protected readonly IInstitucionMapper institucionMapper;
+        protected readonly ISedeMapper sedeMapper;
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService) :this(usuarioService, searchService, catalogoService, null)
+                              ICatalogoService catalogoService) :this(usuarioService, searchService, catalogoService, null, null)
         {
         }
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper)
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
         {
             this.usuarioService = usuarioService;
             this.searchService = searchService;
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;
+            this.sedeMapper = sedeMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -74,6 +76,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             };
 
             return Rjs("ChangeInstitucion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSede(int select)
+        {
+            if (sedeMapper == null)
+                return Content("Action not supported");
+
+            var sedeForm = sedeMapper.Map(catalogoService.GetSedeById(select));
+
+            var form = new ShowFieldsForm
+            {
+                DireccionRegionalNombre = sedeForm.DireccionRegionalNombre
+            };
+
+            return Rjs("ChangeSede", form);
         }
 
         protected Usuario CurrentUser()
