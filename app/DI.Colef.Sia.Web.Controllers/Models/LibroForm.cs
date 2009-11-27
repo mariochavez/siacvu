@@ -10,6 +10,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaAceptacion { get; set; }
         public string FechaPublicacion { get; set; }
         public int Volumen { get; set; }
+        public int ContenidoLibro { get; set; }
+        public int FormatoPublicacion { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
@@ -25,15 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public bool TieneProyecto { get; set; }
 
-		public int TipoPublicacion { get; set; }
-		public int TipoPublicacionId { get; set; }
-        public string TipoPublicacionNombre { get; set; }
-
         public int TipoProducto { get; set; }
-
-        public int FormatoPublicacion { get; set; }
-        public int FormatoPublicacionId { get; set; }
-        public string FormatoPublicacionNombre { get; set; }
 
         public int Edicion { get; set; }
 
@@ -54,10 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
-
-        public int ContenidoLibro { get; set; }
-        public int ContenidoLibroId { get; set; }
-        public string ContenidoLibroNombre { get; set; }
 
         public int Reimpresion { get; set; }
 
@@ -90,9 +80,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		
 		/* Catalogos */
         public CustomSelectForm[] TiposProductos { get; set; }
-        public CustomSelectForm[] Volumenes { get; set; }
-        public FormatoPublicacionForm[] FormatosPublicaciones { get; set; }
-        public ContenidoLibroForm[] ContenidosLibros { get; set; }
+        public CustomSelectForm[] FormatosPublicaciones { get; set; }
+        public CustomSelectForm[] ContenidosLibros { get; set; }
         public CustomSelectForm[] Ediciones { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }

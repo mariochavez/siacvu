@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        public virtual TipoReporte TipoReporte { get; set; }
+        public virtual int TipoReporte { get; set; }
 
         [Valid]
         public virtual IList<CoautorExternoReporte> CoautorExternoReportes { get; private set; }
@@ -93,11 +93,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Descripcion { get; set; }
 
+        public virtual int Numero { get; set; }
+
         public virtual string Objetivo { get; set; }
 
         public virtual int NoPaginas { get; set; }
-
-        public virtual DateTime FechaEdicion { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

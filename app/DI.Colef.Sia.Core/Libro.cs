@@ -82,11 +82,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
-        public virtual FormatoPublicacion FormatoPublicacion { get; set; }
+        public virtual int FormatoPublicacion { get; set; }
 
         public virtual int TipoProducto { get; set; }
 
-        public virtual ContenidoLibro ContenidoLibro { get; set; }
+        public virtual int ContenidoLibro { get; set; }
 
         public virtual Evento Evento { get; set; }
 

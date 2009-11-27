@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoMapper proyectoMapper;
         readonly IReporteMapper reporteMapper;
         readonly IReporteService reporteService;
-        readonly ITipoReporteMapper tipoReporteMapper;
         readonly IProyectoService proyectoService;
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
@@ -35,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
-                                 IUsuarioService usuarioService, ITipoReporteMapper tipoReporteMapper,
+                                 IUsuarioService usuarioService,
                                  IProyectoMapper proyectoMapper,
                                  IInvestigadorExternoMapper investigadorExternoMapper,
                                  IInvestigadorMapper investigadorMapper, IInvestigadorService investigadorService,
@@ -50,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.customCollection = customCollection;
             this.reporteService = reporteService;
             this.reporteMapper = reporteMapper;
-            this.tipoReporteMapper = tipoReporteMapper;
             this.proyectoMapper = proyectoMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
@@ -385,7 +383,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
 
             //Lista de Catalogos Pendientes
-            form.TiposReportes = tipoReporteMapper.Map(catalogoService.GetActiveTipoReportes());
+            form.TiposReportes = customCollection.TipoReporteCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
@@ -396,7 +394,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(ReporteForm form)
         {
-            ViewData["TipoReporte"] = form.TipoReporteId;
+            ViewData["TipoReporte"] = form.TipoReporte;
             ViewData["EstadoProducto"] = form.EstadoProducto;
         }
 

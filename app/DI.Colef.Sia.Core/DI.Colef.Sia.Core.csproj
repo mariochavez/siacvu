@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="AreaInvestigacion.cs" />
-    <Compile Include="ContenidoLibro.cs" />
     <Compile Include="CursoInvestigador.cs" />
     <Compile Include="EditorialProducto.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
@@ -131,7 +130,6 @@
     <Compile Include="FondoConacyt.cs" />
     <Compile Include="FormacionAcademica.cs" />
     <Compile Include="FormaParticipacion.cs" />
-    <Compile Include="FormatoPublicacion.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />
@@ -239,7 +237,6 @@
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
-    <Compile Include="TipoReporte.cs" />
     <Compile Include="TipoResena.cs" />
     <Compile Include="USEG.cs" />
     <Compile Include="Usuario.cs" />

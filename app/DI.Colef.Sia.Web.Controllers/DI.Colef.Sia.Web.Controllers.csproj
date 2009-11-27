@@ -99,7 +99,6 @@
     <Compile Include="Catalogos\AreaTematicaController.cs" />
     <Compile Include="Catalogos\ClaseController.cs" />
     <Compile Include="Catalogos\ConsejoComisionController.cs" />
-    <Compile Include="Catalogos\ContenidoLibroController.cs" />
     <Compile Include="Catalogos\ConvenioController.cs" />
     <Compile Include="Catalogos\CoordinacionController.cs" />
     <Compile Include="Catalogos\DiplomadoController.cs" />
@@ -120,19 +119,16 @@
     <Compile Include="Catalogos\TipoProyectoController.cs" />
     <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
-    <Compile Include="Catalogos\FormatoPublicacionController.cs" />
     <Compile Include="Catalogos\VinculacionAPyDController.cs" />
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\IAreaInvestigacionMapper.cs" />
-    <Compile Include="Mappers\IContenidoLibroMapper.cs" />
     <Compile Include="Mappers\ICursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\IEditorialCapituloMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
-    <Compile Include="Mappers\Impl\ContenidoLibroMapper.cs" />
     <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
@@ -143,7 +139,6 @@
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
     <Compile Include="Mappers\IEditorialLibroMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
-    <Compile Include="Mappers\IFormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
     <Compile Include="Mappers\Impl\AutorResenaMapper.cs" />
@@ -151,7 +146,6 @@
     <Compile Include="Mappers\Impl\DiplomadoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
-    <Compile Include="Mappers\Impl\FormatoPublicacionMapper.cs" />
     <Compile Include="Mappers\Impl\InstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\OrganoInternoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoArchivoMapper.cs" />
@@ -162,7 +156,6 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
-    <Compile Include="Models\ContenidoLibroForm.cs" />
     <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EditorialProductoForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
@@ -176,7 +169,6 @@
     <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
-    <Compile Include="Models\FormatoPublicacionForm.cs" />
     <Compile Include="Models\AutorForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />
     <Compile Include="Models\CoautorForm.cs" />
@@ -471,7 +463,6 @@
     <Compile Include="Mappers\Impl\TipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoOrganoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoPresentacionMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoReporteMapper.cs" />
     <Compile Include="Mappers\Impl\UsuarioMapper.cs" />
     <Compile Include="Mappers\Impl\SubdisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoActividadMapper.cs" />
@@ -507,7 +498,6 @@
     <Compile Include="Mappers\ITipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\ITipoOrganoMapper.cs" />
     <Compile Include="Mappers\ITipoPresentacionMapper.cs" />
-    <Compile Include="Mappers\ITipoReporteMapper.cs" />
     <Compile Include="Mappers\IUsuarioMapper.cs" />
     <Compile Include="Mappers\Resolvers\ModificadoResolver.cs" />
     <Compile Include="Mappers\ISubdisciplinaMapper.cs" />
@@ -575,7 +565,6 @@
     <Compile Include="Models\TipoFinanciamientoForm.cs" />
     <Compile Include="Models\TipoOrganoForm.cs" />
     <Compile Include="Models\TipoPresentacionForm.cs" />
-    <Compile Include="Models\TipoReporteForm.cs" />
     <Compile Include="Models\UsuarioForm.cs" />
     <Compile Include="Models\SubdisciplinaForm.cs" />
     <Compile Include="Models\TipoActividadForm.cs" />
@@ -602,7 +591,6 @@
     <Compile Include="Catalogos\TipoFinanciamientoController.cs" />
     <Compile Include="Catalogos\TipoOrganoController.cs" />
     <Compile Include="Catalogos\TipoPresentacionController.cs" />
-    <Compile Include="Catalogos\TipoReporteController.cs" />
     <Compile Include="Security\AuthenticationModule.cs" />
     <Compile Include="Security\IFormsAuthentication.cs" />
     <Compile Include="Security\Impl\FormsAuthentication.cs" />

@@ -15,7 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class LibroController : BaseController<Libro, LibroForm>
     {
         readonly ILibroService libroService;
-        readonly IContenidoLibroMapper contenidoLibroMapper;
         readonly ICatalogoService catalogoService;
         readonly ILibroMapper libroMapper;
         readonly IIdiomaMapper idiomaMapper;
@@ -23,7 +22,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IFormatoPublicacionMapper formatoPublicacionMapper;
         readonly IEditorialMapper editorialMapper;
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
@@ -49,16 +47,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
-                               IFormatoPublicacionMapper formatoPublicacionMapper,
                                IEditorialMapper editorialMapper,
-                               IContenidoLibroMapper contenidoLibroMapper,
                                IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper, 
                                IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, IProyectoMapper proyectoMapper, IProyectoService proyectoService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.contenidoLibroMapper = contenidoLibroMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
@@ -69,7 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
-            this.formatoPublicacionMapper = formatoPublicacionMapper;
             this.editorialMapper = editorialMapper;
             this.editorialLibroMapper = editorialLibroMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
@@ -531,13 +525,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new LibroForm();
             
-            form.Volumenes = customCollection.VolumenCustomCollection();
             form.Ediciones = customCollection.EdicionCustomCollection();
-            form.TiposProductos = customCollection.TipoProductoCustomCollection();
+            form.TiposProductos = customCollection.TipoProductoCustomCollection(3);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-
-            form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
-            form.ContenidosLibros = contenidoLibroMapper.Map(catalogoService.GetActiveContenidoLibros());
+            form.FormatosPublicaciones = customCollection.FormatoPublicacionCustomCollection();
+            form.ContenidosLibros = customCollection.ContenidoLibroCustomCollection();
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
 			
             return form;
@@ -546,11 +538,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private void FormSetCombos(LibroForm form)
         {
             ViewData["TipoProducto"] = form.TipoProducto;
-            ViewData["Volumen"] = form.Volumen;
-            ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;
+            ViewData["FormatoPublicacion"] = form.FormatoPublicacion;
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["ContenidoLibro"] = form.ContenidoLibroId;
+            ViewData["ContenidoLibro"] = form.ContenidoLibro;
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 

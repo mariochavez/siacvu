@@ -54,16 +54,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Edicion = message.Edicion;
             model.EstadoProducto = message.EstadoProducto;
             model.Reimpresion = message.Reimpresion;
+            model.FormatoPublicacion = message.FormatoPublicacion;
+            model.ContenidoLibro = message.ContenidoLibro;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
-
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.FormatoPublicacion = catalogoService.GetFormatoPublicacionById(message.FormatoPublicacion);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
-            model.ContenidoLibro = catalogoService.GetContenidoLibroById(message.ContenidoLibro);
             model.Evento = eventoService.GetEventoById(message.EventoId);
         }
 

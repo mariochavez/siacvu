@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.NoPaginas, constraintValidatorContext); */
             }
 
-            if (libro.FormatoPublicacion != null)
+            if (libro.FormatoPublicacion != 0)
                 isValid &= ValidateFormatoPublicacion(libro, constraintValidatorContext);
 
             if(libro.EstadoProducto != 0)
@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Tipo Publicacion - Memoria de evento
-            if (libro.FormatoPublicacion.Nombre.Contains("Memoria de evento"))
+            if (libro.FormatoPublicacion == 2)
             {
                 if (libro.Evento == null)
                 {
@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Tipo Publicacion - Numero especial de revista
-            if (libro.FormatoPublicacion.Nombre.Contains("Número especial de revista"))
+            if (libro.FormatoPublicacion == 3)
             {
                 if (libro.RevistaPublicacion == null)
                 {

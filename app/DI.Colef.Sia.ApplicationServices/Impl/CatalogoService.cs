@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class CatalogoService : ICatalogoService
     {
         readonly IRepository<ActividadPrevista> actividadPrevistaRepository;
-        readonly IRepository<ContenidoLibro> contenidoLibroRepository;
         readonly IRepository<AreaInvestigacion> areaInvestigacionRepository;
         readonly IRepository<ConsejoComision> consejoComisionRepository;
         readonly IRepository<Ambito> ambitoRepository;
@@ -39,7 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<EstatusProyecto> estatusProyectoRepository;
         readonly IRepository<FondoConacyt> fondoConacytRepository;
         readonly IRepository<FormaParticipacion> formaParticipacionRepository;
-        readonly IRepository<FormatoPublicacion> formatoPublicacionRepository;
         readonly IRepository<Genero> generoRepository;
         readonly IRepository<GradoAcademico> gradoAcademicoRepository;
         readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
@@ -83,7 +81,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
         readonly IRepository<TipoProyecto> tipoProyectoRepository;
-        readonly IRepository<TipoReporte> tipoReporteRepository;
         readonly IRepository<TipoResena> tipoResenaRepository;
         readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
@@ -117,7 +114,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<ProgramaEstudio> programaEstudioRepository,
                                IRepository<RevistaPublicacion> revistaPublicacionRepository,
                                IRepository<Organizacion> organizacionRepository,
-                               IRepository<ContenidoLibro> contenidoLibroRepository,
                                IRepository<Dependencia> dependenciaRepository, IRepository<Ambito> ambitoRepository,
                                IRepository<EstadoPais> estadoPaisRepository, IRepository<Genero> generoRepository,
                                IRepository<TipoEstancia> tipoEstanciaRepository,
@@ -130,7 +126,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
                                IRepository<TipoOrgano> tipoOrganoRepository,
                                IRepository<TipoPresentacion> tipoPresentacionRepository,
-                               IRepository<TipoReporte> tipoReporteRepository,
                                IRepository<NivelEstudio> nivelEstudioRepository,
                                IRepository<ProductoDerivado> productoDerivadoRepository,
                                IRepository<TipoResena> tipoResenaRepository, IRepository<TipoApoyo> tipoApoyoRepository,
@@ -146,7 +141,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<FondoConacyt> fondoConacytRepository,
                                IRepository<AreaTematica> areaTematicaRepository,
                                IRepository<TipoArchivo> tipoArchivoRepository,
-                               IRepository<FormatoPublicacion> formatoPublicacionRepository,
                                IRepository<VinculacionAPyD> vinculacionAPyDRepository,
                                IRepository<DireccionRegional> direccionRegionalRepository)
         {
@@ -187,7 +181,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.revistaPublicacionRepository = revistaPublicacionRepository;
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
-            this.contenidoLibroRepository = contenidoLibroRepository;
             this.editorialRepository = editorialRepository;
             this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
@@ -206,7 +199,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoFinanciamientoRepository = tipoFinanciamientoRepository;
             this.tipoOrganoRepository = tipoOrganoRepository;
             this.tipoPresentacionRepository = tipoPresentacionRepository;
-            this.tipoReporteRepository = tipoReporteRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
             this.diplomadoRepository = diplomadoRepository;
@@ -221,7 +213,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.fondoConacytRepository = fondoConacytRepository;
             this.areaTematicaRepository = areaTematicaRepository;
             this.tipoArchivoRepository = tipoArchivoRepository;
-            this.formatoPublicacionRepository = formatoPublicacionRepository;
             this.vinculacionAPyDRepository = vinculacionAPyDRepository;
             this.direccionRegionalRepository = direccionRegionalRepository;
         }
@@ -1458,33 +1449,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoPresentacionRepository.SaveOrUpdate(tipoPresentacion);
         }
 
-        public TipoReporte GetTipoReporteById(int id)
-        {
-            return tipoReporteRepository.Get(id);
-        }
-
-        public TipoReporte[] GetAllTipoReportes()
-        {
-            return ((List<TipoReporte>) OrderCatalog<TipoReporte>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoReporte[] GetActiveTipoReportes()
-        {
-            return ((List<TipoReporte>) OrderCatalog<TipoReporte>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoReporte(TipoReporte tipoReporte)
-        {
-            if (tipoReporte.Id == 0)
-            {
-                tipoReporte.Activo = true;
-                tipoReporte.CreadorEl = DateTime.Now;
-            }
-            tipoReporte.ModificadoEl = DateTime.Now;
-
-            tipoReporteRepository.SaveOrUpdate(tipoReporte);
-        }
-
         public NivelEstudio GetNivelEstudioById(int id)
         {
             return nivelEstudioRepository.Get(id);
@@ -2119,33 +2083,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoArchivoRepository.SaveOrUpdate(tipoArchivo);
         }
 
-        public FormatoPublicacion GetFormatoPublicacionById(int id)
-        {
-            return formatoPublicacionRepository.Get(id);
-        }
-
-        public FormatoPublicacion[] GetAllFormatoPublicacions()
-        {
-            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Nombre)).ToArray();
-        }
-
-        public FormatoPublicacion[] GetActiveFormatoPublicacions()
-        {
-            return ((List<FormatoPublicacion>) OrderCatalog<FormatoPublicacion>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion)
-        {
-            if (formatoPublicacion.Id == 0)
-            {
-                formatoPublicacion.Activo = true;
-                formatoPublicacion.CreadorEl = DateTime.Now;
-            }
-            formatoPublicacion.ModificadoEl = DateTime.Now;
-
-            formatoPublicacionRepository.SaveOrUpdate(formatoPublicacion);
-        }
-
         public Editorial GetEditorialById(int id)
         {
             return editorialRepository.Get(id);
@@ -2306,33 +2243,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaInvestigacion.ModificadoEl = DateTime.Now;
 
             areaInvestigacionRepository.SaveOrUpdate(areaInvestigacion);
-        }
-
-        public ContenidoLibro GetContenidoLibroById(int id)
-        {
-            return contenidoLibroRepository.Get(id);
-        }
-
-        public ContenidoLibro[] GetAllContenidoLibros()
-        {
-            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre)).ToArray();
-        }
-        
-        public ContenidoLibro[] GetActiveContenidoLibros()
-        {
-            return ((List<ContenidoLibro>)OrderCatalog<ContenidoLibro>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveContenidoLibro(ContenidoLibro contenidoLibro)
-        {
-            if(contenidoLibro.Id == 0)
-            {
-                contenidoLibro.Activo = true;
-                contenidoLibro.CreadorEl = DateTime.Now;
-            }
-            contenidoLibro.ModificadoEl = DateTime.Now;
-            
-            contenidoLibroRepository.SaveOrUpdate(contenidoLibro);
         }
 
         #endregion

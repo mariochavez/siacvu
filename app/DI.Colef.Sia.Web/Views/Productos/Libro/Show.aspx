@@ -54,17 +54,17 @@
                 </p>
                 <p>
                     <label>Formato de publicaci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FormatoPublicacionNombre)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.FormatoPublicacion(Model.Form.FormatoPublicacion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de producto</label>
-                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoProducto)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoProducto, 3)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Contenido del libro</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ContenidoLibroNombre)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.ContenidoLibro(Model.Form.ContenidoLibro)%>&nbsp;</span>
                 </p>
-                <% if (Model.Form.ContenidoLibroNombre.Contains("evento")){ %>
+                <% if (Model.Form.ContenidoLibro == 2){ %>
                     <p>
                         <label>Nombre del evento</label>
                         <span class="valor"><%= Html.Encode(Model.Form.EventoNombre)%>&nbsp;</span>
@@ -74,7 +74,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.EventoFechaEvento)%>&nbsp;</span>
                     </p>
                 <% } %>
-                <% if (Model.Form.ContenidoLibroNombre.Contains("revista")){ %>
+                <% if (Model.Form.ContenidoLibro == 3){ %>
                     <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
                     	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 	<% } %>
