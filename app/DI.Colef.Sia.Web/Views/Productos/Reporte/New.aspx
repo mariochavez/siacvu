@@ -35,21 +35,39 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
-                <h4>Datos del reporte t&eacute;cnico</h4>                
+                <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del reporte</label>
-                    <%=Html.TextArea("Titulo", Model.Form.Titulo, 3, 35, new { @class = "input420-bold-requerido", maxlength = 200 })%>    
+                    <label>Nombre de la publicaci&oacute;n</label>
+                    <%=Html.TextBox("Titulo", Model.Form.Titulo, new { @class = "input420-bold-requerido", maxlength = 200 })%>    
                     <span class="cvu"></span>
                     <%=Html.ValidationMessage("Titulo")%>
                 </p>
                 <p>
-                    <label>Tipo de reporte</label>
-                    <%=Html.DropDownList("TipoReporte", Model.Form.TiposReportes.CreateSelectList<TipoReporteForm>("Id", "Nombre"),
+                    <label>Tipo de publicaci&oacute;n</label>
+                    <%=Html.DropDownList("TipoReporte", Model.Form.TiposReportes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                                 "Seleccione ...", new { @class = "requerido" })%>
                     <%=Html.ValidationMessage("TipoReporte") %>
                 </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.Form.AreaTematicaId, AreaTematicaNombre = Model.Form.AreaTematicaNombre, ModelId = Model.Form.Id, IsShowForm = false }); %>
+                
+                <p>
+	                <label>Palabra clave 1</label>
+	                <%=Html.TextBox("PalabraClave1", Model.Form.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
+	                <span class="cvu"></span>
+                </p>
+                <p>
+	                <label>Palabra clave 2</label>
+	                <%=Html.TextBox("PalabraClave2", Model.Form.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
+	                <span class="cvu"></span>
+                </p>
+                <p>
+	                <label>Palabra clave 3</label>
+                    <%=Html.TextBox("PalabraClave3", Model.Form.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
+	                <span class="cvu"></span>
+                </p>
 
-                <h4>Coautores</h4>
+                <h4>Coautores de la publicaci&oacute;n</h4>
 			    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
                 <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id } ); %>
                 <p>

@@ -148,8 +148,7 @@ function reporteSetup() {
 
     $('#TieneProyecto').dynamicui(
         [
-            ['1', ['.tieneproyecto_field']],
-            ['0', ['.notieneproyecto_field']]
+            ['1', ['.tieneproyecto_field']]
         ]
     );
 
@@ -157,9 +156,9 @@ function reporteSetup() {
 
     $('#TipoReporte').dynamicui(
             [
-                ['Cuaderno de trabajo', ['.CuadernoTrabajo']],
-                ['Reporte técnico', ['.ReporteTecnico', '.notieneproyecto_field']],
-                ['*', ['.ReporteCuaderno']]
+                ['Documento de trabajo', ['.DocumentoTrabajo']],
+                ['Reporte técnico', ['.ReporteTecnico']],
+                ['*', ['.ReporteDocumento']]
             ]
         );
 
