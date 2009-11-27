@@ -403,7 +403,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ArticuloForm();
 
             form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
-            form.TiposArticulos = customCollection.TipoProductoCustomCollection();
+            form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
             return form;

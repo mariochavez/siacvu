@@ -19,13 +19,13 @@
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 
-<h4>Editorial(es)</h4>
+
 <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
 
 
 <p>
     <label>Resumen</label>
-    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>
+    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420-requerido", maxlength = 500 })%>
     <span class="cvu"></span>
 </p>
 <p>

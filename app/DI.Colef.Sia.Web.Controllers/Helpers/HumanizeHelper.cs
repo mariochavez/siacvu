@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
     public class HumanizeHelper
@@ -14,21 +16,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string TipoProducto(int tipoProducto)
         {
+            return TipoProducto(tipoProducto, 0);
+        }
+
+        public static string TipoProducto(int tipoProducto, int producto)
+        {
             string nombreTipoProducto;
+            var lowerUpperS = producto == 0 ? "S" : "s";
+            var lowerUpperC = producto == 0 ? "C" : "c";
 
             switch (tipoProducto)
             {
                 case 1:
-                    nombreTipoProducto = "Con arbitraje";
+                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperC + "on arbitraje";
                     break;
                 case 2:
-                    nombreTipoProducto = "Sin arbitraje";
+                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperS + "in arbitraje";
                     break;
                 default:
                     return "";
             }
 
             return nombreTipoProducto;
+        }
+
+        private static string GetNombreProducto(int tipoProducto)
+        {
+            var nombreProducto = "";
+
+            switch (tipoProducto)
+            {
+                case 0:
+                    nombreProducto = "";
+                    break;
+                case 1:
+                    nombreProducto = "Artículo ";
+                    break;
+                case 2:
+                    nombreProducto = "Capítulo ";
+                    break;
+            }
+
+            return nombreProducto;
         }
 
         public static string EstadoProducto(int estadoProducto)
@@ -282,6 +311,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return nombreFormatoRevista;
+        }
+
+        public static string TipoLibro(int tipoLibro)
+        {
+            string nombreTipoLibro;
+
+            switch (tipoLibro)
+            {
+                case 1:
+                    nombreTipoLibro = "Coordinación";
+                    break;
+                case 2:
+                    nombreTipoLibro = "Compilación";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoLibro;
         }
     }
 }

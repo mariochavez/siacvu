@@ -54,7 +54,7 @@
                 </p>
                 <p>
                     <label></label>
-                    <%= Html.CheckBox("TieneProyecto", Model.Form.TieneProyecto)%> Existe proyecto de investigaci&oacute;n de referencia?
+                    <%= Html.CheckBox("TieneProyecto", Model.Form.TieneProyecto)%> ¿Existe proyecto de investigaci&oacute;n de referencia?
                 </p>
                 <div id="tieneproyecto_field">
                     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.Form.ProyectoId, ProyectoNombre = Model.Form.ProyectoNombre, IsShowForm = false }); %>
@@ -90,9 +90,11 @@
 	            </p>
 	            
 	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
-            
-	            <h4 class="EstatusPublicado">Referencia bibliogr&aacute;fica</h4>
-	            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                
+                <div class="EstatusPublicado">
+	                <h4>Referencia bibliogr&aacute;fica</h4>
+	                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+				</div>
 				
 				<h4>Documentos de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivoArticulos, ModelId = Model.Form.Id }); %>

@@ -38,8 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Libro>(libro, x => x.NoPaginas, constraintValidatorContext); */
             }
 
-            isValid &= ValidateFechas(libro, constraintValidatorContext);
-
             if (libro.FormatoPublicacion != null)
                 isValid &= ValidateFormatoPublicacion(libro, constraintValidatorContext);
 
@@ -51,56 +49,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             return isValid;
         }
 
-        bool ValidateFechas(Libro libro, IConstraintValidatorContext constraintValidatorContext)
-        {
-            var isValid = true;
-
-            if (libro.FechaEdicion <= DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (libro.FechaEdicion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
-
-            if (!isValid)
-                constraintValidatorContext.DisableDefaultError();
-
-            return isValid;
-        }
-
         bool ValidateFormatoPublicacion(Libro libro, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
-
-            //Tipo Publicacion - Libro traducido a otro idioma
-            if (libro.FormatoPublicacion.Nombre.Contains("traducido a otro idioma"))
-            {
-                if (libro.Idioma == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el idioma de tradución|Idioma", "Idioma");
-
-                    isValid = false;
-                }
-
-                else
-                {
-                    if (libro.NombreTraductor == "")
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no puede ser nulo, vacío o cero|NombreTraductor", "NombreTraductor");
-
-                        isValid = false;
-                    }
-                }
-            }
 
             //Tipo Publicacion - Memoria de evento
             if (libro.FormatoPublicacion.Nombre.Contains("Memoria de evento"))

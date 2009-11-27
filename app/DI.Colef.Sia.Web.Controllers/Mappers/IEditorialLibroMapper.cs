@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface IEditorialLibroMapper : IMapper<EditorialLibro, EditorialLibroForm>
+    public interface IEditorialLibroMapper : IMapper<EditorialLibro, EditorialProductoForm>
     {
     }
 }

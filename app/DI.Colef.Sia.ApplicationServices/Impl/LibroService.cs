@@ -43,13 +43,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.CreadorEl = DateTime.Now;
             }
 
-            if (libro.Idioma == null)
-            {
-                var idioma = new Dictionary<string, object> {{"Nombre", "Español"}};
-
-                libro.Idioma = idiomaRepository.FindOne(idioma);
-            }
-
             libro.ModificadoEl = DateTime.Now;
             
             libroRepository.SaveOrUpdate(libro);

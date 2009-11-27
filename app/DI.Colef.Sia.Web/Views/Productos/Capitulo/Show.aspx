@@ -55,10 +55,24 @@
                 </p>
                 <p>
                     <label>Tipo de cap&iacute;tulo</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoCapitulo)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoCapitulo, 2)%>&nbsp;</span>
                 </p>
+                <p>
+                    <label></label>
+                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                </p>
+                <% if (Model.Form.TieneProyecto) { %>      
+	                <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                <% } %>
                 
-	            <h4>Coautores</h4>
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% } %>
+                
+    <!-- Coautores de la publicacion -->            
+	            <h4>Coautores de la publicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>
@@ -69,55 +83,51 @@
 	                <label>Posici&oacute;n del autor</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label></label>
-                    <span class="valor">Tiene proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
-                </p>
-                <% if (Model.Form.TieneProyecto) { %>      
-	                <p>
-	                    <label>Nombre del proyecto de investigaci&oacute;n</label>
-	                    <span class="valor"><%=Html.Encode(Model.Form.ProyectoNombre) %></span>	          
-	                </p>
-                <% } %>
                 
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
+    <!-- ESTATUS DE LA PUBLICACION -->
+                <h4>Estatus de la publicaci&oacute;n</h4>
                 <p>
                     <label>Estatus de la publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
                 <% if (Model.Form.EstadoProducto == 1){ %>
                     <p>
-                        <label>Fecha de aceptaci&oacute;n</label>
+                        <label>A&ntilde;o de aceptaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 2) { %>
                     <p>
-                        <label>Fecha de publicaci&oacute;n</label>
+                        <label>A&ntilde;o de publicaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                 <% } %>
                 
-    <!-- REFERENCIA BIBLIOGRAFICA -->                
+    <!-- REFERENCIA BIBLIOGRAFICA -->
+                <% if (Model.Form.EstadoProducto == 2){ %>
                 <h4>Referencia bibliogr&aacute;fica</h4>
                 <p>
                     <label>Nombre del libro</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Autor del libro</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AutorLibro)%>&nbsp;</span>
-                </p>
+                
+                <h4>Autor(es) del libro</h4>
+	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
+				
+				<p>
+				    <label>Tipo de libro</label>
+                    <span class="valor"><%= HumanizeHelper.TipoLibro(Model.Form.TipoLibro)%>&nbsp;</span>
+				</p>
+				
+				<% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
+				
                 <p>
                     <label>Resumen</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Editorial</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
-                </p>
+                
                 <p>
                     <label>Volumen</label>
                     <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
@@ -129,12 +139,8 @@
                 <p>
                     <label>N&uacute;mero de citas</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
-                </p>             
-
-    <!-- RESPONSABLES DEL LIBRO -->                
-                <h4>Responsables del libro</h4>
-	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
-				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
+                </p>
+                <% } %>      
                 
                 <p class="submit">
                     <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>

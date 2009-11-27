@@ -44,13 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 capitulo.CreadorEl = DateTime.Now;
             }
 
-            //if (capitulo.Idioma == null && capitulo.TipoCapitulo != null)
-            //{
-            //    var idioma = new Dictionary<string, object> { { "Nombre", "Español" } };
-
-            //    capitulo.Idioma = idiomaRepository.FindOne(idioma);
-            //}
-
             capitulo.ModificadoEl = DateTime.Now;
             
             capituloRepository.SaveOrUpdate(capitulo);

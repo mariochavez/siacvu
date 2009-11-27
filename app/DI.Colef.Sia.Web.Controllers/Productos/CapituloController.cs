@@ -618,10 +618,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+
                                       SubdisciplinaNombre = form.Subdisciplina.Nombre,
                                       SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
                                       SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
                                       ProyectoNombre = form.Proyecto.Nombre,
+
                                       IsShowForm = true
                                   };
 

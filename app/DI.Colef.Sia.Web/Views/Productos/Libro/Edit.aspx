@@ -40,7 +40,7 @@
             <h4>Datos de la publicaci&oacute;n</h4>
             <% Html.RenderPartial("_DatosLibro1", Model.Form); %>
             
-            <h4>Coautores<span class="cvu"></span></h4>
+            <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
             <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
             <p>
@@ -51,24 +51,11 @@
             
             <% Html.RenderPartial("_DatosLibro2", Model.Form); %>
             
-            <h4>Referencia bibliogr&aacute;fica</h4>
-            
-            <p>
-                <label>Edici&oacute;n</label>
-                <%=Html.DropDownList("Edicion", Model.Form.Ediciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                            "Seleccione ...")%>
-                <span class="cvu"></span>
-                <%=Html.ValidationMessage("Edicion")%>
-            </p>
-            <p>
-                <label>Reimpresi&oacute;n</label>
-                <%=Html.DropDownList("Reimpresion", Model.Form.Reimpresiones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                            "Seleccione ...")%>
-                <span class="cvu"></span>
-                <%=Html.ValidationMessage("Reimpresion")%>
-            </p>
-            <% Html.RenderPartial("_EditEditorial", Model.Form); %>
-            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+            <div class="estatuspublicado_field">
+                <h4>Referencia bibliogr&aacute;fica</h4>
+                
+                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			</div>
 			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>

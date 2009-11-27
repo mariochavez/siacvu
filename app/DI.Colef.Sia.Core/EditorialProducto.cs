@@ -26,4 +26,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class EditorialLibro : EditorialProducto
+    {
+
+    }
 }

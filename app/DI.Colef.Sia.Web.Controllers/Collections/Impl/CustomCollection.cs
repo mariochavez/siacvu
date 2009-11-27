@@ -12,8 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
 
         public CustomSelectForm[] TipoProductoCustomCollection(int tipoProducto)
         {
-            var lowerUpperS = tipoProducto == 0 ? "S" : "S".ToLower();
-            var lowerUpperC = tipoProducto == 0 ? "C" : "C".ToLower();
+            var lowerUpperS = tipoProducto == 0 ? "S" : "s";
+            var lowerUpperC = tipoProducto == 0 ? "C" : "c";
 
             return new[]
                        {

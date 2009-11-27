@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
 	[HasUniqueDomainSignature]
     [LibroValidator]
-    public class Libro : Entity, IBaseEntity, ICoautor
+    public class Libro : Entity, IBaseEntity, ICoautor, IEditorial
     {
         const int tipoProducto = 7; // 7 Representa Libro
 
@@ -21,11 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoLibros = new List<ArchivoLibro>();
             FirmaLibros = new List<FirmaLibro>();
 		}
-
-        public virtual void AddEditorial(EditorialLibro editorialLibro)
-        {
-            EditorialLibros.Add(editorialLibro);
-        }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
@@ -51,7 +46,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             FirmaLibros.Add((FirmaLibro)firma);
         }
 
-        public virtual void DeleteFirma(Firma firma)
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+
+            editorial.TipoProducto = tipoProducto;
+            EditorialLibros.Add((EditorialLibro) editorial);
+        }
+
+	    public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialLibros.Remove((EditorialLibro) editorial);
+        }
+
+	    public virtual void DeleteFirma(Firma firma)
         {
             FirmaLibros.Remove((FirmaLibro)firma);
         }
@@ -64,11 +71,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
         {
             CoautorExternoLibros.Remove((CoautorExternoLibro)coautorExterno);
-        }
-
-        public virtual void DeleteEditorial(EditorialLibro editorialLibro)
-        {
-            EditorialLibros.Remove(editorialLibro);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -139,12 +141,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int Tiraje { get; set; }
         
         public virtual int Numero { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
-
-        public virtual string NombreTraductor { get; set; }
-
-        public virtual DateTime FechaEdicion { get; set; }
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
