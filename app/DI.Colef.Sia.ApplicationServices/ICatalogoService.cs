@@ -259,12 +259,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoPresentacion[] GetActiveTipoPresentaciones();
         void SaveTipoPresentacion(TipoPresentacion tipoPresentacion);
 
-        //Tipo Reporte
-        TipoReporte GetTipoReporteById(int id);
-        TipoReporte[] GetAllTipoReportes();
-        TipoReporte[] GetActiveTipoReportes();
-        void SaveTipoReporte(TipoReporte tipoReporte);
-
         //Nivel de Estudios
         NivelEstudio GetNivelEstudioById(int id);
         NivelEstudio[] GetAllNivelEstudios();
@@ -405,12 +399,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoArchivo[] GetActiveTipoArchivos();
         void SaveTipoArchivo(TipoArchivo tipoArchivo);
 
-        //Formato Publicacion
-        FormatoPublicacion GetFormatoPublicacionById(int id);
-        FormatoPublicacion[] GetAllFormatoPublicacions();
-        FormatoPublicacion[] GetActiveFormatoPublicacions();
-        void SaveFormatoPublicacion(FormatoPublicacion formatoPublicacion);
-
         //Editorial
         Editorial GetEditorialById(int id);
         Editorial[] GetAllEditorials();
@@ -446,11 +434,5 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         AreaInvestigacion[] GetAllAreaInvestigacions();
         AreaInvestigacion[] GetActiveAreaInvestigacions();
         void SaveAreaInvestigacion(AreaInvestigacion areaInvestigacion);
-
-        //Contenido de libro
-        ContenidoLibro GetContenidoLibroById(int id);
-        ContenidoLibro[] GetAllContenidoLibros();
-        ContenidoLibro[] GetActiveContenidoLibros();
-        void SaveContenidoLibro(ContenidoLibro contenidoLibro);
     }
 }

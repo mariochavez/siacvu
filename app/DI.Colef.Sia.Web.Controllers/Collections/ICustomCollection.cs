@@ -8,7 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections
         CustomSelectForm[] EstadoProductoCustomCollection();
         CustomSelectForm[] EdicionCustomCollection();
         CustomSelectForm[] ReimpresionCustomCollection();
-        CustomSelectForm[] VolumenCustomCollection();
         CustomSelectForm[] NivelIdiomaCustomCollection();
         CustomSelectForm[] TipoAlumnoCursoCustomCollection();
         CustomSelectForm[] PeriodoCustomCollection();
@@ -20,5 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections
         CustomSelectForm[] TipoParticipacionCustomCollection();
         CustomSelectForm[] TipoProductoCustomCollection(int tipoProducto);
         CustomSelectForm[] TipoLibroCustomCollection();
+        CustomSelectForm[] FormatoPublicacionCustomCollection();
+        CustomSelectForm[] ContenidoLibroCustomCollection();
+        CustomSelectForm[] TipoReporteCustomCollection();
     }
 }

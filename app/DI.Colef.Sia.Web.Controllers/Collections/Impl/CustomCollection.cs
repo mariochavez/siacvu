@@ -31,6 +31,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] FormatoPublicacionCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Libro"},
+                           new CustomSelectForm {Id = 2, Nombre = "Coordinación"},
+                           new CustomSelectForm {Id = 3, Nombre = "Compilación"}
+                       };
+        }
+
+        public CustomSelectForm[] ContenidoLibroCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Obra científica"},
+                           new CustomSelectForm {Id = 2, Nombre = "Memoria de evento"},
+                           new CustomSelectForm {Id = 3, Nombre = "Número especial de revista"},
+                           new CustomSelectForm {Id = 4, Nombre = "Serie breviarium"},
+                           new CustomSelectForm {Id = 5, Nombre = "Reportes estadísticos"}
+                       };
+        }
+
+        public CustomSelectForm[] TipoReporteCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Documento de trabajo"},
+                           new CustomSelectForm {Id = 2, Nombre = "Reporte técnico"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";
@@ -45,6 +76,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                     break;
                 case 2:
                     nombreProducto = "Capítulo ";
+                    break;
+                case 3:
+                    nombreProducto = "Libro ";
                     break;
             }
 
@@ -77,17 +111,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                            new CustomSelectForm {Id = 1, Nombre = "Primera"},
                            new CustomSelectForm {Id = 2, Nombre = "Segunda"},
                            new CustomSelectForm {Id = 3, Nombre = "Tercera"}
-                       };
-        }
-
-        public CustomSelectForm[] VolumenCustomCollection()
-        {
-            return new[]
-                       {
-                           new CustomSelectForm {Id = 1, Nombre = "I"},
-                           new CustomSelectForm {Id = 2, Nombre = "II"},
-                           new CustomSelectForm {Id = 3, Nombre = "III"},
-                           new CustomSelectForm {Id = 4, Nombre = "IV"}
                        };
         }
 

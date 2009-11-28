@@ -96,7 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if(reporte.TipoReporte.Nombre.Contains("Reporte técnico"))
+            if(reporte.TipoReporte == 2)
             {
                 if (reporte.TieneProyecto)
                 {
@@ -148,22 +148,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 constraintValidatorContext.AddInvalid(
                     "no puede ser menor o igual a cero|NoPaginas", "NoPaginas");
 
-                isValid = false;
-            }
-
-
-            if (reporte.FechaEdicion <= DateTime.Parse("1910-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-
-                isValid = false;
-            }
-
-            if (reporte.FechaEdicion > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "la fecha no puede estar en el futuro|FechaEdicion", "FechaEdicion");
                 isValid = false;
             }
 

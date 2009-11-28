@@ -55,6 +55,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 case 2:
                     nombreProducto = "Capítulo ";
                     break;
+                case 3:
+                    nombreProducto = "Libro ";
+                    break;
             }
 
             return nombreProducto;
@@ -330,6 +333,75 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return nombreTipoLibro;
+        }
+
+        public static string FormatoPublicacion(int formatoPublicacion)
+        {
+            string nombreFormatoPublicacion;
+
+            switch (formatoPublicacion)
+            {
+                case 1:
+                    nombreFormatoPublicacion = "Libro";
+                    break;
+                case 2:
+                    nombreFormatoPublicacion = "Coordinación";
+                    break;
+                case 3:
+                    nombreFormatoPublicacion = "Compilación";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreFormatoPublicacion;
+        }
+
+        public static string ContenidoLibro(int contenidoLibro)
+        {
+            string nombreContenidoLibro;
+
+            switch (contenidoLibro)
+            {
+                case 1:
+                    nombreContenidoLibro = "Obra científica";
+                    break;
+                case 2:
+                    nombreContenidoLibro = "Memoria de evento";
+                    break;
+                case 3:
+                    nombreContenidoLibro = "Número especial de revista";
+                    break;
+                case 4:
+                    nombreContenidoLibro = "Serie breviarium";
+                    break;
+                case 5:
+                    nombreContenidoLibro = "Reportes estadísticos";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreContenidoLibro;
+        }
+
+        public static string TipoReporte(int tipoReporte)
+        {
+            string nombreTipoReporte;
+
+            switch (tipoReporte)
+            {
+                case 1:
+                    nombreTipoReporte = "Documento de trabajo";
+                    break;
+                case 2:
+                    nombreTipoReporte = "Reporte técnico";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoReporte;
         }
     }
 }

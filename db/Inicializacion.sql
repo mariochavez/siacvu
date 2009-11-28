@@ -302,14 +302,6 @@ insert into TipoProyectos values('Consultoría',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Investigación',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoProyectos values('Planes de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into FormatoPublicaciones values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into FormatoPublicaciones values('Coordinación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into FormatoPublicaciones values('Compilación',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into ContenidoLibros values('Obra científica',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ContenidoLibros values('Memoria de evento',GETDATE(), GETDATE(), 1, 1, 1);
-insert into ContenidoLibros values('Número especial de revista',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into IdentificadorLibros values('Publicado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Editado',GETDATE(), GETDATE(), 1, 1, 1);
 insert into IdentificadorLibros values('Traducido',GETDATE(), GETDATE(), 1, 1, 1);

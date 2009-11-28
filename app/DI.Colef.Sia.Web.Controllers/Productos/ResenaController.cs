@@ -476,7 +476,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form = form ?? new ResenaForm();
 
             //Lista de Catalogos Pendientes
-            form.Volumenes = customCollection.VolumenCustomCollection();
             form.TiposResenas = tipoResenaMapper.Map(catalogoService.GetActiveTipoResenas());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());

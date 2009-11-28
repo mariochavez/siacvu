@@ -40,12 +40,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.PosicionAutor = message.PosicionAutor;
             model.TieneProyecto = message.TieneProyecto;
+            model.TipoReporte = message.TipoReporte;
+            model.Numero = message.Numero;
             
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
-            model.TipoReporte = catalogoService.GetTipoReporteById(message.TipoReporte);
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

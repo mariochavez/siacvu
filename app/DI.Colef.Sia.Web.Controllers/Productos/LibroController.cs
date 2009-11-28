@@ -14,15 +14,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class LibroController : BaseController<Libro, LibroForm>
     {
-        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
-        readonly IContenidoLibroMapper contenidoLibroMapper;
-        readonly ICustomCollection customCollection;
-        readonly IEditorialLibroMapper editorialLibroMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IFormatoPublicacionMapper formatoPublicacionMapper;
+        readonly IEditorialLibroMapper editorialLibroMapper;
+        readonly ICustomCollection customCollection;
+        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILibroMapper libroMapper;
         readonly ILibroService libroService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
@@ -31,20 +30,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
-        public LibroController(ILibroService libroService, ICustomCollection customCollection, ILibroMapper libroMapper,
-                               ICatalogoService catalogoService, IUsuarioService usuarioService,
-                               IAreaTematicaMapper areaTematicaMapper, 
+        public LibroController(ILibroService libroService,
+                               ICustomCollection customCollection, ILibroMapper libroMapper,
+                               ICatalogoService catalogoService,
+                               IUsuarioService usuarioService,
                                ICoautorExternoLibroMapper coautorExternoLibroMapper,
-                               ICoautorInternoLibroMapper coautorInternoLibroMapper, ISearchService searchService,
-                               IRevistaPublicacionMapper revistaPublicacionMapper, IEventoMapper eventoMapper,
-                               IEventoService eventoService, IFormatoPublicacionMapper formatoPublicacionMapper,
-                               IContenidoLibroMapper contenidoLibroMapper,
-                               IEditorialLibroMapper editorialLibroMapper, ILineaTematicaMapper lineaTematicaMapper,
-            IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper)
+                               ICoautorInternoLibroMapper coautorInternoLibroMapper,
+                               ISearchService searchService,
+                               IRevistaPublicacionMapper revistaPublicacionMapper,
+                               IEventoMapper eventoMapper,
+                               IEventoService eventoService,
+                               IEditorialLibroMapper editorialLibroMapper,
+                               ILineaTematicaMapper lineaTematicaMapper, 
+                               IAreaMapper areaMapper,
+                               IDisciplinaMapper disciplinaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.contenidoLibroMapper = contenidoLibroMapper;
-            this.areaTematicaMapper = areaTematicaMapper;
+            this.catalogoService = catalogoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
             this.libroService = libroService;
@@ -53,7 +56,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
-            this.formatoPublicacionMapper = formatoPublicacionMapper;
             this.editorialLibroMapper = editorialLibroMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.disciplinaMapper = disciplinaMapper;
@@ -514,14 +516,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         LibroForm SetupNewForm(LibroForm form)
         {
             form = form ?? new LibroForm();
-
-            form.Volumenes = customCollection.VolumenCustomCollection();
             form.Ediciones = customCollection.EdicionCustomCollection();
-            form.TiposProductos = customCollection.TipoProductoCustomCollection();
+            form.TiposProductos = customCollection.TipoProductoCustomCollection(3);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-
-            form.FormatosPublicaciones = formatoPublicacionMapper.Map(catalogoService.GetActiveFormatoPublicacions());
-            form.ContenidosLibros = contenidoLibroMapper.Map(catalogoService.GetActiveContenidoLibros());
+            form.FormatosPublicaciones = customCollection.FormatoPublicacionCustomCollection();
+            form.ContenidosLibros = customCollection.ContenidoLibroCustomCollection();
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
 
             return form;
@@ -530,11 +529,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(LibroForm form)
         {
             ViewData["TipoProducto"] = form.TipoProducto;
-            ViewData["Volumen"] = form.Volumen;
-            ViewData["FormatoPublicacion"] = form.FormatoPublicacionId;
+            ViewData["FormatoPublicacion"] = form.FormatoPublicacion;
             ViewData["Edicion"] = form.Edicion;
             ViewData["EstadoProducto"] = form.EstadoProducto;
-            ViewData["ContenidoLibro"] = form.ContenidoLibroId;
+            ViewData["ContenidoLibro"] = form.ContenidoLibro;
             ViewData["Reimpresion"] = form.Reimpresion;
         }
 

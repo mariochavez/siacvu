@@ -9,7 +9,7 @@
 </p>
 <p>
     <label>Formato de publicaci&oacute;n</label>
-    <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<FormatoPublicacionForm>("Id", "Nombre"),
+    <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("FormatoPublicacion")%>
 </p>
@@ -21,7 +21,7 @@
 </p>
 <p>
     <label>Contenido del libro</label>
-    <%=Html.DropDownList("ContenidoLibro", Model.ContenidosLibros.CreateSelectList<ContenidoLibroForm>("Id", "Nombre"),
+    <%=Html.DropDownList("ContenidoLibro", Model.ContenidosLibros.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
         "Seleccione ...")%>
     <%=Html.ValidationMessage("ContenidoLibro")%>
 </p>

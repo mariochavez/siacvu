@@ -278,11 +278,6 @@
     <Content Include="Views\Catalogos\ConsejoComision\Index.aspx" />
     <Content Include="Views\Catalogos\ConsejoComision\New.aspx" />
     <Content Include="Views\Catalogos\ConsejoComision\_Form.ascx" />
-    <Content Include="Views\Catalogos\ContenidoLibro\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\ContenidoLibro\Edit.aspx" />
-    <Content Include="Views\Catalogos\ContenidoLibro\Index.aspx" />
-    <Content Include="Views\Catalogos\ContenidoLibro\New.aspx" />
-    <Content Include="Views\Catalogos\ContenidoLibro\_Form.ascx" />
     <Content Include="Views\Catalogos\Convenio\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Convenio\Edit.aspx" />
     <Content Include="Views\Catalogos\Convenio\Index.aspx" />
@@ -550,11 +545,6 @@
     <Content Include="Views\Catalogos\TipoProyecto\Index.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\New.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\_Form.ascx" />
-    <Content Include="Views\Catalogos\TipoReporte\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\TipoReporte\Edit.aspx" />
-    <Content Include="Views\Catalogos\TipoReporte\Index.aspx" />
-    <Content Include="Views\Catalogos\TipoReporte\New.aspx" />
-    <Content Include="Views\Catalogos\TipoReporte\_Form.ascx" />
     <Content Include="Views\Catalogos\TipoResena\Activate.js.ascx" />
     <Content Include="Views\Catalogos\TipoResena\Edit.aspx" />
     <Content Include="Views\Catalogos\TipoResena\Index.aspx" />
@@ -573,11 +563,6 @@
     <Content Include="Views\ExperienciaProfesional\Show.aspx" />
     <Content Include="Views\FormacionAcademica\ChangePais.js.ascx" />
     <Content Include="Views\FormacionAcademica\Show.aspx" />
-    <Content Include="Views\Catalogos\FormatoPublicacion\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\FormatoPublicacion\Edit.aspx" />
-    <Content Include="Views\Catalogos\FormatoPublicacion\Index.aspx" />
-    <Content Include="Views\Catalogos\FormatoPublicacion\New.aspx" />
-    <Content Include="Views\Catalogos\FormatoPublicacion\_Form.ascx" />
     <Content Include="Views\GrupoInvestigacion\Show.aspx" />
     <Content Include="Views\GrupoInvestigacion\_EstructuraFuncional.ascx" />
     <Content Include="Views\GrupoInvestigacion\Edit.aspx" />
@@ -665,6 +650,8 @@
     <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
     <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
     <Content Include="Views\Shared\ChangeRevista.js.ascx" />
+    <Content Include="Views\Shared\ChangeInstitucionShort.js.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucionShort.ascx" />
     <Content Include="Views\Shared\DeleteEditorial.js.ascx" />
     <Content Include="Views\Shared\NewEditorial.js.ascx" />
     <Content Include="Views\Shared\_EditEditorial.ascx" />

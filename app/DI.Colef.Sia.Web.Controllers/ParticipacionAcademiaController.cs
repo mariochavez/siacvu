@@ -221,7 +221,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
             form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.Volumenes = customCollection.VolumenCustomCollection();
             return form;
         }
 
