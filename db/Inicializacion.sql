@@ -3235,9 +3235,6 @@ insert into ProgramaEstudios values('Vivienda', GETDATE(), GETDATE(), 1, 1, 1)
 insert into ProgramaEstudios values('Women''s Rights and Citizenship in Latin America', GETDATE(), GETDATE(), 1, 1, 1)
 insert into ProgramaEstudios values('zonas +AOE-ridaS', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into TipoReportes values('Cuaderno de trabajo', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoReportes values('Reporte técnico', GETDATE(), GETDATE(), 1, 1, 1)
-
 insert into NivelEstudios values('Licenciatura', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Maestría', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Doctorado', GETDATE(), GETDATE(), 1, 1, 1)

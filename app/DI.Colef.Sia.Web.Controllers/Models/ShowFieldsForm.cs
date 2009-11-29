@@ -34,6 +34,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string ProyectoNombre { get; set; }
 
+        public string PalabraClave1 { get; set; }
+        public string PalabraClave2 { get; set; }
+        public string PalabraClave3 { get; set; }
+
+        public string FechaAceptacion { get; set; }
+        public string FechaPublicacion { get; set; }
+        public int EstadoProducto { get; set; }
+
+        public CustomSelectForm[] EstadosProductos { get; set; }
+
         public int Nivel2Id { get; set; }
         public int SubdisciplinaId { get; set; }
         public int ClaseId { get; set; }
