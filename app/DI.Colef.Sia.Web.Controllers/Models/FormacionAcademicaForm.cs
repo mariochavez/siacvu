@@ -51,5 +51,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EstatusFormacionAcademicaForm[] EstatusFormacionAcademicas { get; set; }
         public PaisForm[] Paises { get; set; }
         public EstadoPaisForm[] EstadosPaises { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CapituloForm
@@ -74,5 +76,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CustomSelectForm[] EstadosProductos { get; set; }
         public ProyectoForm[] Proyectos { get; set; }
         public CustomSelectForm[] TiposLibro { get; set; }
+
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }
