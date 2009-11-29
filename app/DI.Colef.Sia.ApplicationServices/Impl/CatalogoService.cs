@@ -80,7 +80,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
         readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
         readonly IRepository<TipoProyecto> tipoProyectoRepository;
-        readonly IRepository<TipoResena> tipoResenaRepository;
         readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
 
@@ -127,7 +126,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<TipoPresentacion> tipoPresentacionRepository,
                                IRepository<NivelEstudio> nivelEstudioRepository,
                                IRepository<ProductoDerivado> productoDerivadoRepository,
-                               IRepository<TipoResena> tipoResenaRepository, IRepository<TipoApoyo> tipoApoyoRepository,
+                               IRepository<TipoApoyo> tipoApoyoRepository,
                                IRepository<SubprogramaConacyt> subprogramaConacytRepository,
                                IRepository<Rama> ramaRepository,
                                IRepository<ProductoAcademico> productoAcademicoRepository,
@@ -201,7 +200,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoProyectoRepository = tipoProyectoRepository;
             this.diplomadoRepository = diplomadoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
-            this.tipoResenaRepository = tipoResenaRepository;
             this.tipoApoyoRepository = tipoApoyoRepository;
             this.subprogramaConacytRepository = subprogramaConacytRepository;
             this.ramaRepository = ramaRepository;
@@ -1585,33 +1583,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             productoDerivado.ModificadoEl = DateTime.Now;
 
             productoDerivadoRepository.SaveOrUpdate(productoDerivado);
-        }
-
-        public TipoResena GetTipoResenaById(int id)
-        {
-            return tipoResenaRepository.Get(id);
-        }
-
-        public TipoResena[] GetAllTipoResenas()
-        {
-            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoResena[] GetActiveTipoResenas()
-        {
-            return ((List<TipoResena>) OrderCatalog<TipoResena>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoResena(TipoResena tipoResena)
-        {
-            if (tipoResena.Id == 0)
-            {
-                tipoResena.Activo = true;
-                tipoResena.CreadorEl = DateTime.Now;
-            }
-            tipoResena.ModificadoEl = DateTime.Now;
-
-            tipoResenaRepository.SaveOrUpdate(tipoResena);
         }
 
         public Rama[] GetRamasBySectorId(int id)

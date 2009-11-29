@@ -545,11 +545,6 @@
     <Content Include="Views\Catalogos\TipoProyecto\Index.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\New.aspx" />
     <Content Include="Views\Catalogos\TipoProyecto\_Form.ascx" />
-    <Content Include="Views\Catalogos\TipoResena\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\TipoResena\Edit.aspx" />
-    <Content Include="Views\Catalogos\TipoResena\Index.aspx" />
-    <Content Include="Views\Catalogos\TipoResena\New.aspx" />
-    <Content Include="Views\Catalogos\TipoResena\_Form.ascx" />
     <Content Include="Views\Catalogos\VinculacionAPyD\Activate.js.ascx" />
     <Content Include="Views\Catalogos\VinculacionAPyD\Edit.aspx" />
     <Content Include="Views\Catalogos\VinculacionAPyD\Index.aspx" />

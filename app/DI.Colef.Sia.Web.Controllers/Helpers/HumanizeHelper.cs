@@ -403,5 +403,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return nombreTipoReporte;
         }
+
+        public static string TipoResena(int tipoResena)
+        {
+            string nombreTipoResena;
+
+            switch (tipoResena)
+            {
+                case 1:
+                    nombreTipoResena = "Nota crítica";
+                    break;
+                case 2:
+                    nombreTipoResena = "Reseña bibliográfica";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoResena;
+        }
     }
 }

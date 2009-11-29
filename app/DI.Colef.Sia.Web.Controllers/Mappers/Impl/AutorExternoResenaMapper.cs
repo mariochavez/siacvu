@@ -6,11 +6,11 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class AutorExternoCapituloMapper : AutoFormMapper<AutorExternoCapitulo, AutorExternoProductoForm>, IAutorExternoCapituloMapper
+    public class AutorExternoResenaMapper : AutoFormMapper<AutorExternoResena, AutorExternoProductoForm>, IAutorExternoResenaMapper
     {
-		readonly ICatalogoService catalogoService;
+        readonly ICatalogoService catalogoService;
 		
-		public AutorExternoCapituloMapper(IRepository<AutorExternoCapitulo> repository,	ICatalogoService catalogoService) 
+		public AutorExternoResenaMapper(IRepository<AutorExternoResena> repository,	ICatalogoService catalogoService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
@@ -21,16 +21,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
-        protected override void MapToModel(AutorExternoProductoForm message, AutorExternoCapitulo model)
+        protected override void MapToModel(AutorExternoProductoForm message, AutorExternoResena model)
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-			
-			if (model.IsTransient())
+
+            if (model.IsTransient())
             {
                 model.Activo = true;
                 model.CreadorEl = DateTime.Now;
             }
+
             model.ModificadoEl = DateTime.Now;
         }
     }

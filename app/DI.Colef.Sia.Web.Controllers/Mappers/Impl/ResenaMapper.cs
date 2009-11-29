@@ -11,18 +11,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
-        readonly IAutorResenaMapper autorResenaMapper;
+        readonly IAutorInternoResenaMapper autorInternoResenaMapper;
+        readonly IAutorExternoResenaMapper autorExternoResenaMapper;
+        readonly IEditorialResenaMapper editorialResenaMapper;
         
-        public ResenaMapper(IRepository<Resena> repository, ICatalogoService catalogoService, 
+        public ResenaMapper(IRepository<Resena> repository,
+                            ICatalogoService catalogoService, 
                             ICoautorExternoResenaMapper coautorExternoResenaMapper, 
                             ICoautorInternoResenaMapper coautorInternoResenaMapper,
-                            IAutorResenaMapper autorResenaMapper)
-            : base(repository)
+                            IAutorInternoResenaMapper autorInternoResenaMapper,
+                            IAutorExternoResenaMapper autorExternoResenaMapper,
+                            IEditorialResenaMapper editorialResenaMapper
+            ) : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
-            this.autorResenaMapper = autorResenaMapper;
+            this.autorInternoResenaMapper = autorInternoResenaMapper;
+            this.autorExternoResenaMapper = autorExternoResenaMapper;
+            this.editorialResenaMapper = editorialResenaMapper;
         }
 
         protected override int GetIdFromMessage(ResenaForm message)
@@ -33,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ResenaForm message, Resena model)
         {
             model.Numero = message.Numero;
-            model.ResenaTraducida = message.ResenaTraducida;
             model.PosicionAutor = message.PosicionAutor;
             model.NombreProducto = message.NombreProducto;
             model.PaginaInicial = message.PaginaInicial;
@@ -43,17 +49,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.Volumen = message.Volumen;
+            model.TipoResena = message.TipoResena;
 
-            model.FechaEdicion = message.FechaEdicion.FromYearDateToDateTime();
-            model.FechaAceptacion = message.FechaAceptacion.FromShortDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromShortDateToDateTime();
+            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
-            model.TipoResena = catalogoService.GetTipoResenaById(message.TipoResena);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
 
             if (message.EstadoProducto != 0)
@@ -79,7 +82,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
-            AutorResenaForm[] autores)
+            AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos, EditorialProductoForm[] editoriales)
         {
             var model = Map(message, usuario, investigador);
             
@@ -105,15 +108,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.AddCoautorInterno(coautor);
             }
 
-            foreach (var autorResena in autores)
+            foreach (var autorExterno in autoresExternos)
             {
-                var autor =
-                    autorResenaMapper.Map(autorResena);
+                var autor = autorExternoResenaMapper.Map(autorExterno);
 
                 autor.CreadorPor = usuario;
                 autor.ModificadoPor = usuario;
 
-                model.AddAutor(autor);
+                model.AddAutorExterno(autor);
+            }
+
+            foreach (var autorInterno in autoresInternos)
+            {
+                var autor = autorInternoResenaMapper.Map(autorInterno);
+
+                autor.CreadorPor = usuario;
+                autor.ModificadoPor = usuario;
+
+                model.AddAutorInterno(autor);
+            }
+
+            foreach (var editorial in editoriales)
+            {
+                var editorialProducto = editorialResenaMapper.Map(editorial);
+
+                editorialProducto.CreadorPor = usuario;
+                editorialProducto.ModificadoPor = usuario;
+
+                model.AddEditorial(editorialProducto);
             }
 
             return model;

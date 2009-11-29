@@ -6,33 +6,34 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class AutorResenaMapper : AutoFormMapper<AutorResena, AutorResenaForm>, IAutorResenaMapper
+    public class AutorInternoResenaMapper : AutoFormMapper<AutorInternoResena, AutorInternoProductoForm>, IAutorInternoResenaMapper
     {
-		readonly IInvestigadorService investigadorService;
+        readonly IInvestigadorService investigadorService;
 		
-		public AutorResenaMapper(IRepository<AutorResena> repository,
+		public AutorInternoResenaMapper(IRepository<AutorInternoResena> repository,
             IInvestigadorService investigadorService)
-			: base(repository)
-        {	
+            : base(repository)
+        {
             this.investigadorService = investigadorService;
         }
-		
-        protected override int GetIdFromMessage(AutorResenaForm message)
+
+        protected override int GetIdFromMessage(AutorInternoProductoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(AutorResenaForm message, AutorResena model)
+        protected override void MapToModel(AutorInternoProductoForm message, AutorInternoResena model)
         {
             model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
-			
-			if (model.IsTransient())
+
+            if (model.IsTransient())
             {
                 model.Activo = true;
                 model.CreadorEl = DateTime.Now;
             }
 
             model.ModificadoEl = DateTime.Now;
+            model.Posicion = message.Posicion;
         }
     }
 }

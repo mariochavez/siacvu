@@ -296,12 +296,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ProductoDerivado[] GetActiveProductoDerivados();
         void SaveProductoDerivado(ProductoDerivado productoDerivado);
 
-        //Tipo Resena
-        TipoResena GetTipoResenaById(int id);
-        TipoResena[] GetAllTipoResenas();
-        TipoResena[] GetActiveTipoResenas();
-        void SaveTipoResena(TipoResena tipoResena);
-
         //Clase
         Clase GetClaseById(int id);
         Clase[] GetAllClases();

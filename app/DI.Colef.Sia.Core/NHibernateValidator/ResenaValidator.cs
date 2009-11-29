@@ -65,42 +65,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (resena.TipoResena.Nombre.Contains("Reseña bibliográfica"))
+            if (resena.TipoResena == 2)
             {
                 if (resena.TituloLibro == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío o cero|TituloLibro", "TituloLibro");
-
-                    isValid = false;
-                }
-
-                if (resena.FechaEdicion <= DateTime.Parse("1910-01-01"))
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                    isValid = false;
-                }
-
-                if (resena.FechaEdicion > DateTime.Now)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
-                    isValid = false;
-                }
-
-                if (resena.Institucion == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no puede ser nulo, vacío o cero|InstitucionNombre", "InstitucionNombre");
-
-                    isValid = false;
-                }
-
-                if (resena.Editorial == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione la editorial|Editorial", "Editorial");
 
                     isValid = false;
                 }
@@ -183,16 +153,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal",
                                                           "PaginaFinal");
                     isValid = false;
-                }
-
-                if (resena.ResenaTraducida)
-                {
-                    if (resena.Idioma == null)
-                    {
-                        constraintValidatorContext.AddInvalid("seleccione el idioma|Idioma", "Idioma");
-
-                        isValid = false;
-                    }
                 }
             }
 

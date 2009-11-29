@@ -5,7 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public int Numero { get; set; }
         public int PosicionAutor { get; set; }
-        public bool ResenaTraducida { get; set; }
         public string NombreProducto { get; set; }
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
@@ -15,10 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string PalabraClave3 { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaPublicacion { get; set; }
-        public string FechaEdicion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        public string AnioPublicacion { get; set; }
         public int Volumen { get; set; }
 
         public bool Activo { get; set; }
@@ -27,25 +24,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
 
-        public int Idioma { get; set; }
-        public int IdiomaId { get; set; }
-        public string IdiomaNombre { get; set; }
+        public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
 
         public int TipoResena { get; set; }
-        public int TipoResenaId { get; set; }
-        public string TipoResenaNombre { get; set; }
-
         public int EstadoProducto { get; set; }
-
-        public int InstitucionId { get; set; }
-        public string InstitucionNombre { get; set; }
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
-
-        public int Editorial { get; set; }
-        public int EditorialId { get; set; }
-        public string EditorialNombre { get; set; }
 
         public int Pais { get; set; }
         public int PaisId { get; set; }
@@ -63,26 +49,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public CoautorExternoProductoForm[] CoautorExternoResenas { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoResenas { get; set; }
-        public AutorResenaForm[] AutorResenas { get; set; }
+        public AutorInternoProductoForm[] AutorInternoResenas { get; set; }
+        public AutorExternoProductoForm[] AutorExternoResenas { get; set; }
+        public EditorialProductoForm[] EditorialResenas { get; set; }
 
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public AutorResenaForm AutorResena { get; set; }
+        public AutorInternoProductoForm[] AutorInternoResena { get; set; }
+        public AutorExternoProductoForm[] AutorExternoResena { get; set; }
+        public EditorialProductoForm[] EditorialResena { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
-        public InstitucionForm Institucion { get; set; }
+        public SubdisciplinaForm Subdisciplina { get; set; }
 
         /* Catalogos */
-        public TipoResenaForm[] TiposResenas { get; set; }
+        public CustomSelectForm[] TiposResenas { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
-        public CustomSelectForm[] Volumenes { get; set; }
-        public InvestigadorExternoForm[] CoautoresExternos { get; set; }
-        public InvestigadorForm[] CoautoresInternos { get; set; }
-        public EditorialForm[] Editoriales { get; set; }
         public PaisForm[] Paises { get; set; }
-        public IdiomaForm[] Idiomas { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

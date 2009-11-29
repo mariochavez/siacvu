@@ -29,4 +29,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         
     }
+
+    public class AutorInternoResena : AutorInternoProducto
+    {
+
+    }
 }
