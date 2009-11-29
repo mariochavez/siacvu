@@ -27,22 +27,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInstitucionMapper institucionMapper;
 
-        public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
+        public ReporteController(IReporteService reporteService,
+                                 IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
                                  IUsuarioService usuarioService,
                                  IProyectoMapper proyectoMapper,
                                  IInvestigadorExternoMapper investigadorExternoMapper,
-                                 IInvestigadorMapper investigadorMapper, IInvestigadorService investigadorService,
-                                 ICoautorExternoReporteMapper coautorExternoReporteMapper, ICustomCollection customCollection,
-                                 ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService,
-                                 IProyectoService proyectoService, IAreaTematicaMapper areaTematicaMapper, ILineaTematicaMapper lineaTematicaMapper, 
-                                 IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                 ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
+                                 IInvestigadorMapper investigadorMapper,
+                                 IInvestigadorService investigadorService,
+                                 ICoautorExternoReporteMapper coautorExternoReporteMapper,
+                                 ICustomCollection customCollection,
+                                 ICoautorInternoReporteMapper coautorInternoReporteMapper,
+                                 ISearchService searchService,
+                                 IProyectoService proyectoService,
+                                 IAreaTematicaMapper areaTematicaMapper,
+                                 ILineaTematicaMapper lineaTematicaMapper, 
+                                 IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -58,9 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.proyectoService = proyectoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.institucionMapper = institucionMapper;
         }
 
@@ -194,21 +193,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
+        public ActionResult ChangeInstitucionShort(int select)
         {
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
             var form = new ShowFieldsForm
                            {
                                InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                               InstitucionPaisNombre = institucionForm.PaisNombre
                            };
 
-            return Rjs("ChangeInstitucion", form);
+            return Rjs("ChangeInstitucionShort", form);
         }
 
         [Authorize]
@@ -405,15 +400,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ShowFields = new ShowFieldsForm
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       IsShowForm = true,
+                                      //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"
                                   };
 

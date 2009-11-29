@@ -631,7 +631,7 @@
     <Content Include="Views\Productos\OrganoInterno\Show.aspx" />
     <Content Include="Views\Productos\OrganoInterno\_DatosOrganoInterno.ascx" />
     <Content Include="Views\Productos\Reporte\_ShowReporteTecnico.ascx" />
-    <Content Include="Views\Productos\Reporte\_ShowCuadernoTrabajo.ascx" />
+    <Content Include="Views\Productos\Reporte\_ShowDocumentoTrabajo.ascx" />
     <Content Include="Views\Productos\Resena\AddAutor.js.ascx" />
     <Content Include="Views\Productos\Resena\DeleteAutor.js.ascx" />
     <Content Include="Views\Productos\Resena\NewAutor.js.ascx" />

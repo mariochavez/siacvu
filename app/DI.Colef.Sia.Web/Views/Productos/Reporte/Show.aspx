@@ -47,18 +47,36 @@
                 </p>
                 
     <!-- DATOS DEL REPORTE TECNICO-->
-                <h4>Datos del reporte t&eacute;cnico</h4>
+                <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del reporte</label>
+                    <label>Nombre de la publicaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
                 
                 <p>
-                    <label>Tipo de reporte</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.TipoReporteNombre)%>&nbsp;</span>
+                    <label>Tipo de publicaci&oacute;n</label>
+                    <span class="valor"><%= HumanizeHelper.TipoReporte(Model.Form.TipoReporte)%>&nbsp;</span>
+                </p>
+                
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</span>
                 </p>    
                 
-                <h4>Coautores</h4>
+                <p>
+                    <label>Palabra clave 1</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Palabra clave 2</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Palabra clave 3</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
+                </p>
+                
+                <h4>Coautores de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id } ); %>
 	            <p>
@@ -70,69 +88,43 @@
 	                <label>Posici&oacute;n del autor</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PosicionAutor) %>&nbsp;</span>
                 </p>
-                            
+                
+                <h4>Estatus de la publicaci&oacute;n</h4>        
                 <p>
-                    <label>Estatus de la publicaci&oacute;n</label>
+                    <label>Estado actual</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
-                <% if (Model.Form.EstadoProducto == 1){ %>
+                <% if (Model.Form.EstadoProducto == 1) { %>
                     <p>
-                        <label>Fecha de aceptaci&oacute;n</label>
+                        <label>A&ntilde;o de aceptaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                 <% } if (Model.Form.EstadoProducto == 2){ %>
                     <p>
-                        <label>Fecha de publicaci&oacute;n</label>
+                        <label>A&ntilde;o de publicaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
-                        <span>Formato (dd/mm/yyyy)</span>
+                        <span>Formato (yyyy)</span>
                     </p>
                 <% } %>
                 
-                <% if (Model.Form.TipoReporteNombre.Contains("Cuaderno")){ %>
-                    <h4>Referencia bibliogr&aacute;fica</h4>
-                    <% Html.RenderPartial("_ShowCuadernoTrabajo", Model.Form); %>
-                <% } if (Model.Form.TipoReporteNombre.Contains("Reporte")){%>
-                    <h4>Tem&aacute;tica del reporte t&eacute;cnico</h4>
+                <% if (Model.Form.TipoReporte == 1){ %>
+                    <h4>Contenido del documento de trabajo</h4>
+                    <% Html.RenderPartial("_ShowInstitucionShort", Model.Form.ShowFields); %>
+                    <% Html.RenderPartial("_ShowDocumentoTrabajo", Model.Form); %>
+                <% } if (Model.Form.TipoReporte == 2){%>
+                    <h4>Contenido del reporte t&eacute;cnico</h4>
+                    <% Html.RenderPartial("_ShowInstitucionShort", Model.Form.ShowFields); %>
                     <p>
                         <label></label>
-                        Tiene proyecto de investigaci&oacute;n de referencia?
+                        ¿Existe proyecto de investigaci&oacute;n de referencia?
                         <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                     </p>
                     
-                    <% if (Model.Form.TieneProyecto) { %>                        
+                    <% if (Model.Form.TieneProyecto) { %>
                         <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
-                        
-                        <p>
-	                        <label>Palabra clave 1</label>
-	                        <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave1)%>&nbsp;</span>
-                        </p>
-                        <p>
-	                        <label>Palabra clave 2</label>
-	                        <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave2)%>&nbsp;</span>
-                        </p>
-                        <p>
-	                        <label>Palabra clave 3</label>
-                            <span class="valor"><%=Html.Encode(Model.Form.ProyectoPalabraClave3)%>&nbsp;</span>
-                        </p>
-                    <% } else { %>
-                        <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
-                        
-                        <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                        
-                        <p>
-	                        <label>Palabra clave 1</label>
-	                        <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
-                        </p>
-                        <p>
-	                        <label>Palabra clave 2</label>
-	                        <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
-                        </p>
-                        <p>
-	                        <label>Palabra clave 3</label>
-                            <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
-                        </p>
                     <% } %>
+                        
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
                 <% } %>  
                 

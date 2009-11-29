@@ -45,12 +45,16 @@
                 <p>
                     <label>Tipo de publicaci&oacute;n</label>
                     <%=Html.DropDownList("TipoReporte", Model.Form.TiposReportes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                                "Seleccione ...", new { @class = "requerido" })%>
+                        "Seleccione ...", new { @class = "requerido" })%>
                     <%=Html.ValidationMessage("TipoReporte") %>
                 </p>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.Form.AreaTematicaId, AreaTematicaNombre = Model.Form.AreaTematicaNombre, ModelId = Model.Form.Id, IsShowForm = false }); %>
-                
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica</label>
+                    <%=Html.TextBox("AreaTematicaNombre", Model.Form.AreaTematicaNombre,
+                            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "AreaTematica"), maxlength = 100 })%>
+                    <%=Html.Hidden("AreaTematicaId", Model.Form.AreaTematicaId, new { rel = "#AreaTematicaNombre" })%>
+                    <%=Html.ValidationMessage("AreaTematicaNombre")%>
+                </p>
                 <p>
 	                <label>Palabra clave 1</label>
 	                <%=Html.TextBox("PalabraClave1", Model.Form.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
@@ -78,8 +82,8 @@
 
                 <% Html.RenderPartial("_DatosReporte", Model.Form); %>
                 
-                <h4 class="ReporteTecnico">Tem&aacute;tica del reporte t&eacute;cnico</h4>
-                <h4 class="CuadernoTrabajo">Referencia bibliogr&aacute;fica</h4>                
+                <h4 class="ReporteTecnico">Contenido del reporte t&eacute;cnico</h4>
+                <h4 class="DocumentoTrabajo">Contenido del documento de trabajo</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
         		
                 <p class="submit">
