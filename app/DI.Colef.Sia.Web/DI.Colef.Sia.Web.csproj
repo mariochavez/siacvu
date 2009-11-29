@@ -651,6 +651,8 @@
     <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
     <Content Include="Views\Shared\ChangeRevista.js.ascx" />
     <Content Include="Views\Shared\ChangeInstitucionShort.js.ascx" />
+    <Content Include="Views\Shared\_ShowEstadoProducto.ascx" />
+    <Content Include="Views\Shared\_ShowPalabrasClave.ascx" />
     <Content Include="Views\Shared\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Shared\_ShowInstitucionShort.ascx" />
     <Content Include="Views\Shared\DeleteEditorial.js.ascx" />
