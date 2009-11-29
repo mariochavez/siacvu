@@ -2,24 +2,37 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <h4>&Aacute;rea del conocimiento</h4>
-<p>
-    <label>&Aacute;rea</label>
-    <span id="span_area" class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Disciplina</label>
-    <span id="span_disciplina" class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaNombre)%>&nbsp;</span>
-</p>
 <% if(!Model.IsShowForm){ %>
     <p>
-        <label>Subdisciplina</label>
-        <%=Html.TextBox("SubdisciplinaNombre", Model.SubdisciplinaNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Subdisciplina"), maxlength = 100 })%>
-        <%=Html.Hidden("SubdisciplinaId", Model.SubdisciplinaId, new { rel = "#SubdisciplinaNombre", url = Url.Action("ChangeSubdisciplina") })%>
+        <label>&Aacute;rea</label>
+        <%=Html.DropDownList("AreaId", Model.Areas.CreateSelectList<AreaForm>("Id", "Nombre"),
+            "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeArea") })%>
         <span class="cvu"></span>
-        <%=Html.ValidationMessage("SubdisciplinaNombre")%>
+        <%=Html.ValidationMessage("AreaId")%>
     </p>
+    <p>
+        <label>Disciplina</label>
+        <%=Html.DropDownList("DisciplinaId", Model.Disciplinas.CreateSelectList<DisciplinaForm>("Id", "Nombre"),
+            "Seleccione ...", new { @class = "cascade", rel = Url.Action("ChangeDisciplina") })%>
+        <span class="cvu"></span>
+        <%=Html.ValidationMessage("DisciplinaId")%>
+    </p>
+    <p>
+        <label>Subdisciplina</label>
+        <%=Html.DropDownList("SubdisciplinaId", Model.Subdisciplinas.CreateSelectList<SubdisciplinaForm>("Id", "Nombre"),
+            "Seleccione ...")%>
+        <span class="cvu"></span>
+        <%=Html.ValidationMessage("SubdisciplinaId")%>
+    </p> 
 <% } else { %>
+    <p>
+        <label>&Aacute;rea</label>
+        <span class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
+    </p>
+    <p>
+        <label>Disciplina</label>
+        <span class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaNombre)%>&nbsp;</span>
+    </p>
     <p>
         <label>Subdisciplina</label>
         <span class="valor"><%= Html.Encode(Model.SubdisciplinaNombre)%>&nbsp;</span>

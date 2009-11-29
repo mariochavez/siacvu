@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -28,20 +29,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly ICatalogoService catalogoService;
         protected readonly IInstitucionMapper institucionMapper;
         protected readonly ISedeMapper sedeMapper;
+        protected readonly IDisciplinaMapper disciplinaMapper;
+        protected readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService) :this(usuarioService, searchService, catalogoService, null, null)
+                              ICatalogoService catalogoService) : this(usuarioService, searchService, catalogoService, null, null, null, null)
         {
         }
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper,
+                              IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper)
         {
             this.usuarioService = usuarioService;
             this.searchService = searchService;
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;
             this.sedeMapper = sedeMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -54,6 +72,60 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public virtual ActionResult Search(int searchId)
         {
             return RedirectToEdit(searchId);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int select)
+        {
+            if (disciplinaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }.ToArray()
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int select)
+        {
+            if (subdisciplinaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
+        }
+
+        protected DisciplinaForm[] GetDisciplinas(int id)
+        {
+            return id == 0
+                       ? new DisciplinaForm[] {}
+                       : disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id));
+
+        }
+
+        protected SubdisciplinaForm[] GetSubdisciplinas(int id)
+        {
+            return id == 0
+                       ? new SubdisciplinaForm[] { }
+                       : subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id));
         }
 
         [Authorize]

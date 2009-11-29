@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -26,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProyectoNombre { get; set; }
 
         public int SubdisciplinaId { get; set; }
+        public int SubdisciplinaDisciplinaId { get; set; }
         public string SubdisciplinaNombre { get; set; }
 
         public int RevistaPublicacionId { get; set; }
@@ -66,5 +69,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] TiposArticulos { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

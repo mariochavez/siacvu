@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -23,11 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper,
@@ -43,10 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper,
                                   ISubdisciplinaMapper subdisciplinaMapper,
-                                  IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IProyectoMapper proyectoMapper,
-                                  IProyectoService proyectoService
-            ) : base(usuarioService, searchService, catalogoService)
+                                  IRevistaPublicacionMapper revistaPublicacionMapper
+            ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.catalogoService = catalogoService;
@@ -58,11 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.customCollection = customCollection;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -215,24 +206,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            };
 
             return Rjs("ChangeRevista", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-            {
-                SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                SubdisciplinaId = subdisciplinaForm.Id
-            };
-
-            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -406,6 +379,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
@@ -413,6 +391,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private ArticuloForm SetupShowForm(ArticuloForm form)

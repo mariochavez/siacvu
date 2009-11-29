@@ -78,7 +78,7 @@
 	                <span class="cvu"></span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.Form.SubdisciplinaId, SubdisciplinaNombre = Model.Form.SubdisciplinaNombre, ModelId = Model.Form.Id, IsShowForm = false }); %>
+                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 
                 <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos, ModelId = Model.Form.Id }); %>

@@ -112,6 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Subdisciplina[] GetAllSubdisciplinas();
         Subdisciplina[] GetActiveSubdisciplinas();
         void SaveSubdisciplina(Subdisciplina subdisciplina);
+        Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id);
 
         //Linea Tematica
         LineaTematica GetLineaTematicaById(int id);

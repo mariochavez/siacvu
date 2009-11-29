@@ -722,6 +722,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subdisciplinaRepository.SaveOrUpdate(subdisciplina);
         }
 
+        public Subdisciplina[] GetSubdisciplinasByDisciplinaId(int id)
+        {
+            return ((List<Subdisciplina>)FilterCatalogOptions<Subdisciplina>(x => x.Nombre, id, "Disciplina")).ToArray();
+        }
+
         public LineaTematica GetLineaTematicaById(int id)
         {
             return lineaTematicaRepository.Get(id);

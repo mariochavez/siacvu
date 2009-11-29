@@ -48,5 +48,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RevistaLabel { get; set; }
 
         public string DireccionRegionalNombre { get; set; }
+
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }
