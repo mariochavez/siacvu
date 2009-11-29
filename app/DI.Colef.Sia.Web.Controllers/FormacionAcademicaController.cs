@@ -21,13 +21,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly INivelEstudioMapper nivelEstudioMapper;
         readonly IPaisMapper paisMapper;
         readonly INivelMapper nivelMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IEstatusFormacionAcademicaMapper estatusFormacionAcademicaMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly IAreaMapper areaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly IAreaMapper areaMapper;
 
         public FormacionAcademicaController(IFormacionAcademicaService formacionAcademicaService,
                                             IFormacionAcademicaMapper formacionAcademicaMapper,
@@ -42,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             ISearchService searchService, IOrganizacionMapper organizacionMapper, 
                                             ISectorMapper sectorMapper,IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper,
                                             IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
             this.nivelMapper = nivelMapper;
@@ -52,12 +50,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.areaMapper = areaMapper;
             this.institucionMapper = institucionMapper;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
@@ -233,24 +229,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeNivel", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
-        }
-
         FormacionAcademicaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -273,6 +251,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             else
                 form.EstadosPaises = estadoPaisMapper.Map(catalogoService.GetEstadoPaisesByPaisId(form.PaisId));
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
 
             return form;
         }
@@ -283,6 +265,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["Estatus"] = form.EstatusId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private FormacionAcademicaForm SetupShowForm(FormacionAcademicaForm form)

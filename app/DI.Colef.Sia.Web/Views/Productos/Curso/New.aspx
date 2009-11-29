@@ -40,7 +40,7 @@
                 <% Html.RenderPartial("_DatosCurso", Model.Form); %>
             
                 <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Form.Nivel2Id , Nivel2Nombre = Model.Form.Nivel2Nombre, ModelId = Model.Form.Id, IsShowForm = false}); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.Form.SubdisciplinaId, SubdisciplinaNombre = Model.Form.SubdisciplinaNombre, ModelId = Model.Form.Id, IsShowForm = false}); %>
+                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
             
                 <h4>Complementaria CVU</h4>    
                 <p>

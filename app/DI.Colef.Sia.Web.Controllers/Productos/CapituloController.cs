@@ -22,10 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly ICustomCollection customCollection;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IEditorialCapituloMapper editorialCapituloMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -37,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
                                   IEditorialCapituloMapper editorialCapituloMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.capituloService = capituloService;
             this.capituloMapper = capituloMapper;
@@ -49,8 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.customCollection = customCollection;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.editorialCapituloMapper = editorialCapituloMapper;
         }
 
@@ -189,24 +185,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Capitulo>(x => x.NombreCapitulo, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -600,6 +578,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.TiposLibro = customCollection.TipoLibroCustomCollection();
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
@@ -608,6 +591,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoCapitulo"] = form.TipoCapitulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["TipoLibro"] = form.TipoLibro;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         static CapituloForm SetupShowForm(CapituloForm form)

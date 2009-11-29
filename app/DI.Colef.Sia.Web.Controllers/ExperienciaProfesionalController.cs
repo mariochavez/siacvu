@@ -18,13 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly INivelMapper nivelMapper;
         readonly IPaisMapper paisMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IClaseMapper claseMapper;
         readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly IAreaMapper areaMapper;
         readonly IRamaMapper ramaMapper;
+        readonly IAreaMapper areaMapper;
 
         public ExperienciaProfesionalController(IExperienciaProfesionalService experienciaProfesionalService,
                                                 IExperienciaProfesionalMapper experienciaProfesionalMapper,
@@ -35,21 +33,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                 ISubdisciplinaMapper subdisciplinaMapper, 
                                                 IClaseMapper claseMapper,
                                                 ISearchService searchService, IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
-                                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IRamaMapper ramaMapper
-            ): base(usuarioService, searchService, catalogoService)
+                                                IDisciplinaMapper disciplinaMapper, IRamaMapper ramaMapper, IAreaMapper areaMapper
+            ): base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
             this.experienciaProfesionalService = experienciaProfesionalService;
             this.experienciaProfesionalMapper = experienciaProfesionalMapper;
             this.nivelMapper = nivelMapper;
             this.paisMapper = paisMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.claseMapper = claseMapper;
             this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.areaMapper = areaMapper;
             this.ramaMapper = ramaMapper;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
@@ -190,24 +186,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeClase(int select)
         {
             var claseForm = claseMapper.Map(catalogoService.GetClaseById(select));
@@ -236,12 +214,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
         private void FormSetCombos(ExperienciaProfesionalForm form)
         {
             ViewData["Pais"] = form.PaisId;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private ExperienciaProfesionalForm SetupShowForm(ExperienciaProfesionalForm form)

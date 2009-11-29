@@ -16,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
         readonly IVinculacionAPyDMapper vinculacionApyDMapper;
@@ -26,9 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisPosgradoService tesisPosgradoService;
         readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly IAreaMapper areaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly IAreaMapper areaMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
@@ -42,14 +40,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
             this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
             this.nivelMapper = nivelMapper;
             this.customCollection = customCollection;
@@ -57,9 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tesisPosgradoService = tesisPosgradoService;
             this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.areaMapper = areaMapper;
             this.institucionMapper = institucionMapper;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
@@ -218,24 +214,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("ChangeNivel", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
-        }
-
         TesisDirigidaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -252,6 +230,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
             form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
@@ -262,6 +245,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["VinculacionAPyD"] = form.VinculacionAPyDId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)

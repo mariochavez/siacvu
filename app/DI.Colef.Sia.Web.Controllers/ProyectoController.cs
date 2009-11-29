@@ -39,9 +39,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IOrganizacionMapper organizacionMapper;
         readonly INivelMapper nivelMapper;
         readonly IDepartamentoMapper departamentoMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInvestigadorService investigadorService;
         readonly ICoordinacionMapper coordinacionMapper;
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
@@ -52,6 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IClaseMapper claseMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
+        readonly IAreaMapper areaMapper;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
@@ -63,13 +61,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IProductoAcademicoMapper productoAcademicoMapper, 
                                   IActividadPrevistaMapper actividadPrevistaMapper, IUSEGMapper uSEGMapper, IInstitucionMapper institucionMapper, 
                                   INivelEstudioMapper nivelEstudioMapper, ISectorMapper sectorMapper, IOrganizacionMapper organizacionMapper, 
-                                  INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper, 
+                                  INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IDisciplinaMapper disciplinaMapper, 
                                   ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
                                   ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper,
                                   IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper,
                                   IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
-                                  IAreaTematicaMapper areaTematicaMapper)
-            : base(usuarioService, searchService, catalogoService)
+                                  IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
         
             this.catalogoService = catalogoService;
@@ -98,9 +96,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.organizacionMapper = organizacionMapper;
             this.nivelMapper = nivelMapper;
             this.departamentoMapper = departamentoMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.investigadorService = investigadorService;
             this.coordinacionMapper = coordinacionMapper;
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
@@ -110,6 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.ramaMapper = ramaMapper;
             this.claseMapper = claseMapper;
             this.areaTematicaMapper = areaTematicaMapper;
+            this.areaMapper = areaMapper;
         }
 
         [Authorize]
@@ -295,24 +291,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            };
 
             return Rjs("ChangeNivel", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -540,6 +518,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
@@ -557,6 +540,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["ActividadPrevista"] = form.ActividadPrevistaId;
             ViewData["TipoEstudiante"] = form.TipoEstudiante;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private ProyectoForm SetupShowForm(ProyectoForm form)

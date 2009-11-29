@@ -128,5 +128,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ActividadPrevistaForm[] ActividadesPrevistas { get; set; }
         public CustomSelectForm[] TiposEstudiantes { get; set; }
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }

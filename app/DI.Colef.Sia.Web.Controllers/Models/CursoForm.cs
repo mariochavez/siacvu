@@ -55,5 +55,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DiplomadoForm[] Diplomados { get; set; }
         public CustomSelectForm[] TiposCursos { get; set; }
         public CursoInvestigadorForm[] CursosInvestigadores { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
     }
 }
