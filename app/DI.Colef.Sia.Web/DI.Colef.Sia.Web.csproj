@@ -645,7 +645,7 @@
     <Content Include="Views\Shared\AddAutorInterno.js.ascx" />
     <Content Include="Views\Shared\AddEditorial.js.ascx" />
     <Content Include="Views\Shared\ChangeNivel.js.ascx" />
-    <Content Include="Views\Shared\ChangeSubdisciplina.js.ascx" />
+    <Content Include="Views\Shared\ChangeArea.js.ascx" />
     <Content Include="Views\Shared\ChangeClase.js.ascx" />
     <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
     <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
@@ -653,6 +653,7 @@
     <Content Include="Views\Shared\ChangeInstitucionShort.js.ascx" />
     <Content Include="Views\Shared\_ShowEstadoProducto.ascx" />
     <Content Include="Views\Shared\_ShowPalabrasClave.ascx" />
+    <Content Include="Views\Shared\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Shared\_ShowInstitucionShort.ascx" />
     <Content Include="Views\Shared\DeleteEditorial.js.ascx" />
     <Content Include="Views\Shared\NewEditorial.js.ascx" />
