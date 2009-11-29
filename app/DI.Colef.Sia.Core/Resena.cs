@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ResenaValidator]
-    public class Resena : Entity, IBaseEntity
+    public class Resena : Entity, IBaseEntity, IAutor, ICoautor, IEditorial
     {
         const int tipoProducto = 12; // 12 Representa Resena
 
@@ -134,6 +134,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Pais Pais { get; set; }
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+
+        public virtual Editorial Editorial { get; set; }
         
         public virtual int Volumen { get; set; }
 

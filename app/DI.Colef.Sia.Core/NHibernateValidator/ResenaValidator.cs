@@ -31,8 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             }
 
-            if (resena.TipoResena != null)
-                isValid &= ValidateTipoResena(resena, constraintValidatorContext);
+            //if (resena.TipoResena != null)
+            //    isValid &= ValidateTipoResena(resena, constraintValidatorContext);
             
             return isValid;
         }

@@ -18,13 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorService investigadorService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
+        readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAutorInternoResenaMapper autorInternoResenaMapper;
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
@@ -33,37 +31,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ResenaController(IResenaService resenaService,
                                 IResenaMapper resenaMapper,
                                 IAutorInternoResenaMapper autorInternoResenaMapper,
+                                IAreaMapper areaMapper,
+                                IDisciplinaMapper disciplinaMapper,
+                                ISubdisciplinaMapper subdisciplinaMapper,
                                 IAutorExternoResenaMapper autorExternoResenaMapper,
                                 IEditorialResenaMapper editorialResenaMapper,
                                 ICatalogoService catalogoService,
                                 IAreaTematicaMapper areaTematicaMapper,
                                 IUsuarioService usuarioService,
                                 ICustomCollection customCollection,
-                                IInvestigadorExternoMapper investigadorExternoMapper,
-                                IInvestigadorMapper investigadorMapper,
                                 IPaisMapper paisMapper,
-                                IInvestigadorService investigadorService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper,
                                 ISearchService searchService,
                                 IRevistaPublicacionMapper revistaPublicacionMapper,
-                                ILineaTematicaMapper lineaTematicaMapper,
-                                IInstitucionMapper institucionMapper,
-                                ISedeMapper sedeMapper)
-            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
+                                ILineaTematicaMapper lineaTematicaMapper
+            ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.areaTematicaMapper = areaTematicaMapper;
+            this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.customCollection = customCollection;
-            this.investigadorExternoMapper = investigadorExternoMapper;
-            this.investigadorMapper = investigadorMapper;
             this.paisMapper = paisMapper;
             this.autorInternoResenaMapper = autorInternoResenaMapper;
             this.autorExternoResenaMapper = autorExternoResenaMapper;
             this.editorialResenaMapper = editorialResenaMapper;
-            this.investigadorService = investigadorService;
             this.coautorExternoResenaMapper = coautorExternoResenaMapper;
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
@@ -214,33 +208,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var revistaForm = revistaPublicacionMapper.Map(catalogoService.GetRevistaPublicacionById(select));
 
             var form = new ShowFieldsForm
-                           {
-                               RevistaPublicacionId = revistaForm.Id,
-                               RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
-                               RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
-                               RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
-                               RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
-                           };
+            {
+                RevistaPublicacionId = revistaForm.Id,
+
+                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
+                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
+                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
+                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
+                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
+            };
 
             return Rjs("ChangeRevista", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeAreaTematica(int select)
-        {
-            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            var lineaTematicaForm =
-                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-                               AreaTematicaId = areaTematicaForm.Id
-                           };
-
-            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -614,6 +592,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
+            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+
             return form;
         }
 
@@ -622,6 +605,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoResena"] = form.TipoResena;
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["Pais"] = form.PaisId;
+
+            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
+            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
+            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         static ResenaForm SetupShowForm(ResenaForm form)
@@ -637,8 +625,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
+                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
+                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
 
                                       IsShowForm = true,
                                       RevistaLabel = "Revista en que se publica"

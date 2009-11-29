@@ -627,12 +627,9 @@
     <Content Include="Views\Productos\OrganoInterno\_DatosOrganoInterno.ascx" />
     <Content Include="Views\Productos\Reporte\_ShowReporteTecnico.ascx" />
     <Content Include="Views\Productos\Reporte\_ShowDocumentoTrabajo.ascx" />
-    <Content Include="Views\Productos\Resena\AddAutor.js.ascx" />
-    <Content Include="Views\Productos\Resena\DeleteAutor.js.ascx" />
-    <Content Include="Views\Productos\Resena\NewAutor.js.ascx" />
-    <Content Include="Views\Productos\Resena\_EditAutor.ascx" />
-    <Content Include="Views\Productos\Resena\_NewAutor.ascx" />
-    <Content Include="Views\Productos\Resena\_ShowAutor.ascx" />
+    <Content Include="Views\Productos\Resena\_ObraResenada.ascx" />
+    <Content Include="Views\Productos\Resena\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Resena\_ShowObraResenada.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisExterna.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisInterna.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
@@ -764,7 +761,7 @@
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
     <Content Include="Views\Productos\Resena\Show.aspx" />
-    <Content Include="Views\Productos\Resena\_DatosResena.ascx" />
+    <Content Include="Views\Productos\Resena\_EstatusPublicacion.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />

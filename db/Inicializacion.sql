@@ -3242,9 +3242,6 @@ insert into NivelEstudios values('Posdoctorado', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Especialidad', GETDATE(), GETDATE(), 1, 1, 1)
 insert into NivelEstudios values('Diplomado', GETDATE(), GETDATE(), 1, 1, 1)
 
-insert into TipoResenas values('Nota crítica', GETDATE(), GETDATE(), 1, 1, 1)
-insert into TipoResenas values('Reseña bibliográfica', GETDATE(), GETDATE(), 1, 1, 1)
-
 insert into TipoApoyos values('Formacion académica', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoApoyos values('Proyecto científico', GETDATE(), GETDATE(), 1, 1, 1)
 insert into TipoApoyos values('Desarrollo tecnológico', GETDATE(), GETDATE(), 1, 1, 1)

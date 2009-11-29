@@ -463,6 +463,14 @@ alter table EditorialLibro  drop constraint FKE032A8F64DBE1A6B
 alter table EditorialLibro  drop constraint FKE032A8F6586827F8
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5A61D6AC4DBE1A6B]') AND parent_object_id = OBJECT_ID('EditorialResena'))
+alter table EditorialResena  drop constraint FK5A61D6AC4DBE1A6B
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5A61D6ACFF48CC4D]') AND parent_object_id = OBJECT_ID('EditorialResena'))
+alter table EditorialResena  drop constraint FK5A61D6ACFF48CC4D
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0196A829E09]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE0196A829E09
 
@@ -663,6 +671,14 @@ alter table AutorInternoCapitulo  drop constraint FK9CC896BE751FC11F
 alter table AutorInternoCapitulo  drop constraint FK9CC896BEA1B3F60D
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9466F96C751FC11F]') AND parent_object_id = OBJECT_ID('AutorInternoResena'))
+alter table AutorInternoResena  drop constraint FK9466F96C751FC11F
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9466F96CFF48CC4D]') AND parent_object_id = OBJECT_ID('AutorInternoResena'))
+alter table AutorInternoResena  drop constraint FK9466F96CFF48CC4D
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F38FDBB774]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
 alter table AutorExternoProductos  drop constraint FKA32D18F38FDBB774
 
@@ -685,6 +701,14 @@ alter table AutorExternoCapitulo  drop constraint FK9642E24AC6FC9223
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9642E24AA1B3F60D]') AND parent_object_id = OBJECT_ID('AutorExternoCapitulo'))
 alter table AutorExternoCapitulo  drop constraint FK9642E24AA1B3F60D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBDA4E728C6FC9223]') AND parent_object_id = OBJECT_ID('AutorExternoResena'))
+alter table AutorExternoResena  drop constraint FKBDA4E728C6FC9223
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBDA4E728FF48CC4D]') AND parent_object_id = OBJECT_ID('AutorExternoResena'))
+alter table AutorExternoResena  drop constraint FKBDA4E728FF48CC4D
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE85102A57]') AND parent_object_id = OBJECT_ID('Paises'))
@@ -1483,14 +1507,6 @@ alter table ActividadPrevistas  drop constraint FKBA04838785102A57
 alter table ActividadPrevistas  drop constraint FKBA04838774E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8FC8D11E85102A57]') AND parent_object_id = OBJECT_ID('TipoResenas'))
-alter table TipoResenas  drop constraint FK8FC8D11E85102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8FC8D11E74E8BAB7]') AND parent_object_id = OBJECT_ID('TipoResenas'))
-alter table TipoResenas  drop constraint FK8FC8D11E74E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F85102A57]') AND parent_object_id = OBJECT_ID('Roles'))
 alter table Roles  drop constraint FK1A2E670F85102A57
 
@@ -1561,22 +1577,6 @@ alter table EstatusProyectos  drop constraint FKDE910ADD85102A57
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDE910ADD74E8BAB7]') AND parent_object_id = OBJECT_ID('EstatusProyectos'))
 alter table EstatusProyectos  drop constraint FKDE910ADD74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4DBBE718336201B]') AND parent_object_id = OBJECT_ID('AutorResenas'))
-alter table AutorResenas  drop constraint FK4DBBE718336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4DBBE7185102A57]') AND parent_object_id = OBJECT_ID('AutorResenas'))
-alter table AutorResenas  drop constraint FK4DBBE7185102A57
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4DBBE7174E8BAB7]') AND parent_object_id = OBJECT_ID('AutorResenas'))
-alter table AutorResenas  drop constraint FK4DBBE7174E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4DBBE71FF48CC4D]') AND parent_object_id = OBJECT_ID('AutorResenas'))
-alter table AutorResenas  drop constraint FK4DBBE71FF48CC4D
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
@@ -1655,16 +1655,12 @@ alter table ResponsableExternos  drop constraint FK371BC04385102A57
 alter table ResponsableExternos  drop constraint FK371BC04374E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE623CD531E8]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE623CD531E8
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE628A77AB9C
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6264F7D1CD]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6264F7D1CD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62E30B9132]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE62E30B9132
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62F4FE4035]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62F4FE4035
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627A8488F7]') AND parent_object_id = OBJECT_ID('Resenas'))
@@ -1675,12 +1671,8 @@ alter table Resenas  drop constraint FKF708AE627A8488F7
 alter table Resenas  drop constraint FKF708AE622AF31B56
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE628A77AB9C
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626425E2FD]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE626425E2FD
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62E30B9132]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62E30B9132
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE626A829E09]') AND parent_object_id = OBJECT_ID('Resenas'))
@@ -2279,6 +2271,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EditorialLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialLibro
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialResena
+
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaInstitucionExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaInstitucionExternas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
@@ -2301,9 +2295,13 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoCapitulo
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoResena
+
     if exists (select * from dbo.sysobjects where id = object_id(N'AutorExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorExternoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AutorExternoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorExternoCapitulo
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'AutorExternoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorExternoResena
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Paises') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Paises
 
@@ -2431,8 +2429,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ActividadPrevistas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ActividadPrevistas
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'TipoResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoResenas
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
@@ -2440,8 +2436,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Participaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Participaciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstatusProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusProyectos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'AutorResenas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorResenas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
@@ -2966,6 +2960,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (EditorialProducto)
     )
 
+    create table EditorialResena (
+        EditorialProducto INT not null,
+       ResenaFk INT null,
+       primary key (EditorialProducto)
+    )
+
     create table EstanciaInstitucionExternas (
         Id INT IDENTITY NOT NULL,
        DepartamentoDestino NVARCHAR(255) null,
@@ -3119,6 +3119,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (AutorInternoProducto)
     )
 
+    create table AutorInternoResena (
+        AutorInternoProducto INT not null,
+       ResenaFk INT null,
+       primary key (AutorInternoProducto)
+    )
+
     create table AutorExternoProductos (
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
@@ -3135,6 +3141,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table AutorExternoCapitulo (
         AutorExternoProducto INT not null,
        CapituloFk INT null,
+       primary key (AutorExternoProducto)
+    )
+
+    create table AutorExternoResena (
+        AutorExternoProducto INT not null,
+       ResenaFk INT null,
        primary key (AutorExternoProducto)
     )
 
@@ -3940,17 +3952,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table TipoResenas (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     create table Roles (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -4006,18 +4007,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Activo BIT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table AutorResenas (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       ResenaFk INT null,
        primary key (Id)
     )
 
@@ -4100,31 +4089,28 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table Resenas (
         Id INT IDENTITY NOT NULL,
        NombreProducto NVARCHAR(255) null,
-       PosicionAutor INT null,
-       TituloLibro NVARCHAR(255) null,
-       FechaEdicion DATETIME null,
+       TipoResena INT null,
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
+       PosicionAutor INT null,
        EstadoProducto INT null,
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
+       TituloLibro NVARCHAR(255) null,
        Volumen INT null,
        Numero INT null,
        PaginaInicial INT null,
        PaginaFinal INT null,
-       ResenaTraducida BIT null,
        Puntuacion INT null,
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       TipoResenaFk INT null,
-       InstitucionFk INT null,
-       EditorialFk INT null,
+       AreaTematicaFk INT null,
+       SubdisciplinaFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
-       AreaTematicaFk INT null,
-       IdiomaFk INT null,
+       EditorialFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -5122,6 +5108,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (LibroFk) 
         references Libros
 
+    alter table EditorialResena 
+        add constraint FK5A61D6AC4DBE1A6B 
+        foreign key (EditorialProducto) 
+        references EditorialProductos
+
+    alter table EditorialResena 
+        add constraint FK5A61D6ACFF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
+
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE0196A829E09 
         foreign key (UsuarioFk) 
@@ -5372,6 +5368,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (CapituloFk) 
         references Capitulos
 
+    alter table AutorInternoResena 
+        add constraint FK9466F96C751FC11F 
+        foreign key (AutorInternoProducto) 
+        references AutorInternoProductos
+
+    alter table AutorInternoResena 
+        add constraint FK9466F96CFF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
+
     alter table AutorExternoProductos 
         add constraint FKA32D18F38FDBB774 
         foreign key (InvestigadorExternoFk) 
@@ -5401,6 +5407,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK9642E24AA1B3F60D 
         foreign key (CapituloFk) 
         references Capitulos
+
+    alter table AutorExternoResena 
+        add constraint FKBDA4E728C6FC9223 
+        foreign key (AutorExternoProducto) 
+        references AutorExternoProductos
+
+    alter table AutorExternoResena 
+        add constraint FKBDA4E728FF48CC4D 
+        foreign key (ResenaFk) 
+        references Resenas
 
     alter table Paises 
         add constraint FKFF6108EE85102A57 
@@ -6397,16 +6413,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table TipoResenas 
-        add constraint FK8FC8D11E85102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table TipoResenas 
-        add constraint FK8FC8D11E74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
     alter table Roles 
         add constraint FK1A2E670F85102A57 
         foreign key (CreadorPorFk) 
@@ -6496,26 +6502,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKDE910ADD74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
-    alter table AutorResenas 
-        add constraint FK4DBBE718336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table AutorResenas 
-        add constraint FK4DBBE7185102A57 
-        foreign key (CreadorPorFk) 
-        references Usuarios
-
-    alter table AutorResenas 
-        add constraint FK4DBBE7174E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table AutorResenas 
-        add constraint FK4DBBE71FF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
 
     alter table TipoProyectos 
         add constraint FK1E50E26A85102A57 
@@ -6613,19 +6599,14 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references Usuarios
 
     alter table Resenas 
-        add constraint FKF708AE623CD531E8 
-        foreign key (TipoResenaFk) 
-        references TipoResenas
+        add constraint FKF708AE628A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
 
     alter table Resenas 
-        add constraint FKF708AE6264F7D1CD 
-        foreign key (InstitucionFk) 
-        references Instituciones
-
-    alter table Resenas 
-        add constraint FKF708AE62E30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
+        add constraint FKF708AE62F4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
 
     alter table Resenas 
         add constraint FKF708AE627A8488F7 
@@ -6638,14 +6619,9 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references RevistaPublicaciones
 
     alter table Resenas 
-        add constraint FKF708AE628A77AB9C 
-        foreign key (AreaTematicaFk) 
-        references AreaTematicas
-
-    alter table Resenas 
-        add constraint FKF708AE626425E2FD 
-        foreign key (IdiomaFk) 
-        references Idiomas
+        add constraint FKF708AE62E30B9132 
+        foreign key (EditorialFk) 
+        references Editoriales
 
     alter table Resenas 
         add constraint FKF708AE626A829E09 
