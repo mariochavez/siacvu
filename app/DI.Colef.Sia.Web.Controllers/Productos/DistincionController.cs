@@ -20,16 +20,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
         readonly ITipoDistincionMapper tipoDistincionMapper;
-        readonly IInstitucionMapper institucionMapper;
-
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
                                     ICatalogoService catalogoService, IUsuarioService usuarioService,
                                     ITipoDistincionMapper tipoDistincionMapper,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
-                                    IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+                                    IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.catalogoService = catalogoService;
             this.distincionService = distincionService;
@@ -38,7 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -162,25 +159,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Distincion>(x => x.Titulo, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         DistincionForm SetupNewForm()

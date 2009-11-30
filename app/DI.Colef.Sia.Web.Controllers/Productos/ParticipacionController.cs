@@ -21,10 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IPaisMapper paisMapper;
         readonly IParticipacionMapper participacionMapper;
         readonly IParticipacionService participacionService;
-        readonly IProyectoMapper proyectoMapper;
         readonly ITipoPresentacionMapper tipoPresentacionMapper;
-        readonly IProyectoService proyectoService;
-        readonly IInstitucionMapper institucionMapper;
 
         public ParticipacionController(IParticipacionService participacionService,
                                        IParticipacionMapper participacionMapper,
@@ -33,12 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        IInvestigadorMapper investigadorMapper,
                                        IOtraParticipacionMapper otraParticipacionMapper,
                                        ITipoPresentacionMapper tipoPresentacionMapper,
-                                       IProyectoMapper proyectoMapper,
                                        IPaisMapper paisMapper,
                                        IInvestigadorService investigadorService,
                                        IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
-                                       IProyectoService proyectoService, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+                                       IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.catalogoService = catalogoService;
             this.participacionService = participacionService;
@@ -46,12 +42,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorMapper = investigadorMapper;
             this.otraParticipacionMapper = otraParticipacionMapper;
             this.tipoPresentacionMapper = tipoPresentacionMapper;
-            this.proyectoMapper = proyectoMapper;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
             this.investigadorService = investigadorService;
-            this.proyectoService = proyectoService;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -187,25 +180,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Participacion>(x => x.Titulo, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         ParticipacionForm SetupNewForm()

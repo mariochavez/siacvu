@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
         readonly ISectorMapper sectorMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IAreaMapper areaMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
@@ -38,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
@@ -50,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tesisPosgradoMapper = tesisPosgradoMapper;
             this.tesisPosgradoService = tesisPosgradoService;
             this.sectorMapper = sectorMapper;
-            this.institucionMapper = institucionMapper;
             this.areaMapper = areaMapper;
         }
 
@@ -172,25 +170,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<TesisDirigida>(x => x.Titulo, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         TesisDirigidaForm SetupNewForm()

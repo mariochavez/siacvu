@@ -16,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IInstitucionMapper institucionMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
@@ -25,14 +24,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             INivelMapper nivelMapper,
                                             ISearchService searchService, ISectorMapper sectorMapper,
                                             IOrganizacionMapper organizacionMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, organizacionMapper, nivelMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.estanciaInstitucionExternaService = estanciaInstitucionExternaService;
             this.estanciaInstitucionExternaMapper = estanciaInstitucionExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
             this.sectorMapper = sectorMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -154,25 +152,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = searchService.SearchMovilidadAcademica(q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         EstanciaInstitucionExternaForm SetupNewForm()

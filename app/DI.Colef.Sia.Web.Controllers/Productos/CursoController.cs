@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoInvestigadorService cursoInvestigadorService;
         readonly ICursoInvestigadorMapper cursoInvestigadorMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IAreaMapper areaMapper;
 
         public CursoController(ICursoService cursoService,
@@ -39,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ICursoInvestigadorService cursoInvestigadorService, ICursoInvestigadorMapper cursoInvestigadorMapper,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper, IDisciplinaMapper disciplinaMapper,
                                IInstitucionMapper institucionMapper, IAreaMapper areaMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.diplomadoMapper = diplomadoMapper;
@@ -51,7 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.cursoInvestigadorMapper = cursoInvestigadorMapper;
             this.cursoInvestigadorService = cursoInvestigadorService;
             this.sectorMapper = sectorMapper;
-            this.institucionMapper = institucionMapper;
             this.areaMapper = areaMapper;
         }
 
@@ -175,25 +173,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Curso>(x => x.Nombre, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         CursoForm SetupNewForm()

@@ -22,7 +22,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IEstatusFormacionAcademicaMapper estatusFormacionAcademicaMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IAreaMapper areaMapper;
 
         public FormacionAcademicaController(IFormacionAcademicaService formacionAcademicaService,
@@ -38,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             ISearchService searchService, IOrganizacionMapper organizacionMapper, 
                                             ISectorMapper sectorMapper,IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper,
                                             IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.estatusFormacionAcademicaMapper = estatusFormacionAcademicaMapper;
@@ -48,7 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
             this.sectorMapper = sectorMapper;
-            this.institucionMapper = institucionMapper;
             this.areaMapper = areaMapper;
         }
 
@@ -189,25 +187,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = searchService.Search<FormacionAcademica>(x => x.TituloGrado, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         FormacionAcademicaForm SetupNewForm()

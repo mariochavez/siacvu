@@ -69,9 +69,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                      ICatalogoService catalogoService, IInstitucionMapper institucionMapper, IOrganizacionMapper organizacionMapper,
+                      INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, null, null, null, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
                               ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
                               IOrganizacionMapper organizacionMapper, INivelMapper nivelMapper) :
             this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                             ICatalogoService catalogoService, IInstitucionMapper institucionMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                             IOrganizacionMapper organizacionMapper, INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, null, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, null, null)
         {
         }
 
@@ -282,14 +296,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
             var form = new ShowFieldsForm
-            {
-                InstitucionId = institucionForm.Id,
+                           {
+                               InstitucionId = institucionForm.Id,
 
-                InstitucionCiudad = institucionForm.Ciudad,
-                InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                InstitucionPaisNombre = institucionForm.PaisNombre,
-                InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-            };
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
 
             return Rjs("ChangeInstitucion", form);
         }
