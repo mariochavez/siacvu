@@ -32,5 +32,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
     }
 }

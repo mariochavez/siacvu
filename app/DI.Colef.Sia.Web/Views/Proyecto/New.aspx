@@ -71,9 +71,9 @@
                 <h4>Participaci&oacute;n de estudiantes</h4>
                 <% Html.RenderPartial("_ParticipacionEstudianteProyecto", Model.Form); %>
 
-                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Form.Nivel2Id , Nivel2Nombre = Model.Form.Nivel2Nombre, ModelId = Model.Form.Id, IsShowForm = false}); %>
+                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { ClaseId = Model.Form.ClaseId, ClaseNombre = Model.Form.ClaseNombre, ModelId = Model.Form.Id, IsShowForm = false}); %>
+                <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.Form.SectoresEconomicos, Ramas = Model.Form.Ramas, Clases = Model.Form.Clases, IsShowForm = false }); %>
                                 
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar")%>

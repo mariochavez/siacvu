@@ -919,6 +919,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             revistaPublicacionRepository.SaveOrUpdate(revistaPublicacion);
         }
 
+        public Nivel[] GetNivelesByOrganizacionId(int id)
+        {
+            return ((List<Nivel>)FilterCatalogOptions<Nivel>(x => x.Nombre, id, "Organizacion")).ToArray();
+        }
+
         public ProgramaEstudio GetProgramaEstudioById(int id)
         {
             return programaEstudioRepository.Get(id);
@@ -1642,6 +1647,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             subprogramaConacyt.ModificadoEl = DateTime.Now;
 
             subprogramaConacytRepository.SaveOrUpdate(subprogramaConacyt);
+        }
+
+        public Clase[] GetClasesByRamaId(int id)
+        {
+            return ((List<Clase>)FilterCatalogOptions<Clase>(x => x.Nombre, id, "Rama")).ToArray();
         }
 
         public Rama GetRamaById(int id)

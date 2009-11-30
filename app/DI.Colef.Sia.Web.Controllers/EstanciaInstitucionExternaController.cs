@@ -15,28 +15,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
-        readonly INivelMapper nivelMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly IInstitucionMapper institucionMapper;
 
         public EstanciaInstitucionExternaController(IEstanciaInstitucionExternaService estanciaInstitucionExternaService,
                                             IEstanciaInstitucionExternaMapper estanciaInstitucionExternaMapper,
                                             ICatalogoService catalogoService, IUsuarioService usuarioService, 
                                             ITipoEstanciaMapper tipoEstanciaMapper, 
-                                            IConvenioMapper convenioMapper,
                                             INivelMapper nivelMapper,
                                             ISearchService searchService, ISectorMapper sectorMapper,
                                             IOrganizacionMapper organizacionMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.estanciaInstitucionExternaService = estanciaInstitucionExternaService;
             this.estanciaInstitucionExternaMapper = estanciaInstitucionExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
-            this.nivelMapper = nivelMapper;
             this.sectorMapper = sectorMapper;
-            this.organizacionMapper = organizacionMapper;
             this.institucionMapper = institucionMapper;
         }
 
@@ -119,9 +114,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(movilidadAcademica, form, Title.New, "EstanciaInstitucionExterna"))
             {
-                var movilidadAcademicaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
+                var estanciaInstitucionExternaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
 
-                ((GenericViewData<EstanciaInstitucionExternaForm>)ViewData.Model).Form = SetupNewForm(movilidadAcademicaForm);
+                ((GenericViewData<EstanciaInstitucionExternaForm>)ViewData.Model).Form = SetupNewForm(estanciaInstitucionExternaForm);
+                FormSetCombos(estanciaInstitucionExternaForm);
                 return ViewNew();
             }
 
@@ -140,10 +136,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(movilidadAcademica, form, Title.Edit))
             {
-                var movilidadAcademicaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
+                var estanciaInstitucionExternaForm = estanciaInstitucionExternaMapper.Map(movilidadAcademica);
 
-                ((GenericViewData<EstanciaInstitucionExternaForm>)ViewData.Model).Form = SetupNewForm(movilidadAcademicaForm);
-                FormSetCombos(movilidadAcademicaForm);
+                ((GenericViewData<EstanciaInstitucionExternaForm>)ViewData.Model).Form = SetupNewForm(estanciaInstitucionExternaForm);
+                FormSetCombos(estanciaInstitucionExternaForm);
                 return ViewEdit();
             }
 
@@ -179,24 +175,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeInstitucion", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
         EstanciaInstitucionExternaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -209,12 +187,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
 
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
+            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+
             return form;
         }
 
         private void FormSetCombos(EstanciaInstitucionExternaForm form)
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
+
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
+            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private EstanciaInstitucionExternaForm SetupShowForm(EstanciaInstitucionExternaForm form)

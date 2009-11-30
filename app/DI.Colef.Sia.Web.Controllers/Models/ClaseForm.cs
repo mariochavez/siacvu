@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ClaseForm
@@ -15,5 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string RamaNombre { get; set; }
 
         public string RamaSectorNombre { get; set; }
+
+        public int RamaSectorId { get; set; }
     }
 }

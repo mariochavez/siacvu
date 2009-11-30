@@ -156,6 +156,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var libroForm = libroMapper.Map(libro);
 
                 ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
+                FormSetCombos(libroForm);
                 return ViewNew();
             }
 

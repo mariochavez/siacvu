@@ -163,6 +163,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var resenaForm = resenaMapper.Map(resena);
 
                 ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
+                FormSetCombos(resenaForm);
                 return ViewNew();
             }
 

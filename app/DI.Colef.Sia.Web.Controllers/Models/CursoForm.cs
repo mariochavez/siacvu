@@ -58,5 +58,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
     }
 }

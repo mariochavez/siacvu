@@ -20,7 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string ClaseNombre { get; set; }
         public string ClaseRamaNombre { get; set; }
-        public string ClaseRamaSectorEconomicoNombre { get; set; }
+        public string ClaseRamaSectorNombre { get; set; }
 
         public string Nivel2Nombre { get; set; }
         public string Nivel2OrganizacionNombre { get; set; }
@@ -62,5 +62,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AreaForm[] Areas { get; set; }
         public DisciplinaForm[] Disciplinas { get; set; }
         public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
+        public SectorForm[] SectoresEconomicos { get; set; }
+        public RamaForm[] Ramas { get; set; }
+        public ClaseForm[] Clases { get; set; }
     }
 }

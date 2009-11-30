@@ -19,11 +19,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
         readonly IVinculacionAPyDMapper vinculacionApyDMapper;
-        readonly INivelMapper nivelMapper;
         readonly ICustomCollection customCollection;
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
         readonly IInstitucionMapper institucionMapper;
         readonly IAreaMapper areaMapper;
@@ -40,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
@@ -48,11 +46,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
-            this.nivelMapper = nivelMapper;
             this.customCollection = customCollection;
             this.tesisPosgradoMapper = tesisPosgradoMapper;
             this.tesisPosgradoService = tesisPosgradoService;
-            this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
             this.institucionMapper = institucionMapper;
             this.areaMapper = areaMapper;
@@ -139,6 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var tesisForm = tesisDirigidaMapper.Map(tesisDirigida);
 
                 ((GenericViewData<TesisDirigidaForm>)ViewData.Model).Form = SetupNewForm(tesisForm);
+                FormSetCombos(tesisForm);
                 return ViewNew();
             }
 
@@ -196,24 +193,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("ChangeInstitucion", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
         TesisDirigidaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -235,6 +214,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
             form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
 
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
+            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+
             return form;
         }
 
@@ -250,6 +234,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
             ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
+            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)

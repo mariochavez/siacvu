@@ -36,8 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInstitucionMapper institucionMapper;
         readonly INivelEstudioMapper nivelEstudioMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IOrganizacionMapper organizacionMapper;
-        readonly INivelMapper nivelMapper;
         readonly IDepartamentoMapper departamentoMapper;
         readonly IInvestigadorService investigadorService;
         readonly ICoordinacionMapper coordinacionMapper;
@@ -45,8 +43,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IEstatusProyectoMapper estatusProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IRamaMapper ramaMapper;
-        readonly IClaseMapper claseMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaMapper areaMapper;
@@ -67,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper,
                                   IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
                                   IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
         
             this.catalogoService = catalogoService;
@@ -93,8 +89,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.institucionMapper = institucionMapper;
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.sectorMapper = sectorMapper;
-            this.organizacionMapper = organizacionMapper;
-            this.nivelMapper = nivelMapper;
             this.departamentoMapper = departamentoMapper;
             this.investigadorService = investigadorService;
             this.coordinacionMapper = coordinacionMapper;
@@ -102,8 +96,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.estatusProyectoMapper = estatusProyectoMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
-            this.ramaMapper = ramaMapper;
-            this.claseMapper = claseMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.areaMapper = areaMapper;
         }
@@ -217,7 +209,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(proyecto, form, Title.New, "Proyecto"))
             {
-                ((GenericViewData<ProyectoForm>) ViewData.Model).Form = SetupNewForm();
+                var proyectoForm = proyectoMapper.Map(proyecto);
+
+                ((GenericViewData<ProyectoForm>)ViewData.Model).Form = SetupNewForm(proyectoForm);
+                FormSetCombos(proyectoForm);
                 return ViewNew();
             }
 
@@ -273,42 +268,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            };
 
             return Rjs("ChangeAreaTematica", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeClase(int select)
-        {
-            var claseForm = claseMapper.Map(catalogoService.GetClaseById(select));
-            var ramaForm = ramaMapper.Map(catalogoService.GetRamaById(claseForm.RamaId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(ramaForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               ClaseRamaNombre = ramaForm.Nombre,
-                               ClaseRamaSectorEconomicoNombre = sectorForm.Nombre,
-                               ClaseId = claseForm.Id
-                           };
-
-            return Rjs("ChangeClase", form);
         }
 
         [Authorize]
@@ -523,6 +482,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
             form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
 
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
+            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+
+            form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
+            var clase = claseMapper.Map(catalogoService.GetClaseById(form.ClaseId));
+            form.Ramas = GetRamas(clase.RamaSectorId);
+            form.Clases = GetClases(clase.RamaId);
+
             return form;
         }
 
@@ -545,6 +514,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
             ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
+            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+
+            var clase = claseMapper.Map(catalogoService.GetClaseById(form.ClaseId));
+            ViewData["SectorEconomicoId"] = clase.RamaSectorId;
+            ViewData["RamaId"] = clase.RamaId;
+            ViewData["ClaseId"] = form.ClaseId;
         }
 
         private ProyectoForm SetupShowForm(ProyectoForm form)
@@ -563,7 +542,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
                                       ClaseNombre = form.Clase.Nombre,
                                       ClaseRamaNombre = form.Clase.RamaNombre,
-                                      ClaseRamaSectorEconomicoNombre = form.Clase.RamaSectorNombre,
+                                      ClaseRamaSectorNombre = form.Clase.RamaSectorNombre,
 
                                       IsShowForm = true
                                   };

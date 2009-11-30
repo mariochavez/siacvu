@@ -149,6 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var capituloForm = capituloMapper.Map(capitulo);
 
                 ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
+                FormSetCombos(capituloForm);
                 return ViewNew();
             }
 

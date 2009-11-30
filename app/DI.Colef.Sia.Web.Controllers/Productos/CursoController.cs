@@ -18,13 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoMapper cursoMapper;
         readonly ICursoService cursoService;
         readonly INivelEstudioMapper nivelEstudioMapper;
-        readonly INivelMapper nivelMapper;
         readonly IPaisMapper paisMapper;
         readonly IDiplomadoMapper diplomadoMapper;
         readonly ICustomCollection customCollection;
         readonly ICursoInvestigadorService cursoInvestigadorService;
         readonly ICursoInvestigadorMapper cursoInvestigadorMapper;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
         readonly IInstitucionMapper institucionMapper;
         readonly IAreaMapper areaMapper;
@@ -41,19 +39,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ICursoInvestigadorService cursoInvestigadorService, ICursoInvestigadorMapper cursoInvestigadorMapper,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper, IDisciplinaMapper disciplinaMapper,
                                IInstitucionMapper institucionMapper, IAreaMapper areaMapper)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.diplomadoMapper = diplomadoMapper;
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.cursoService = cursoService;
             this.cursoMapper = cursoMapper;
-            this.nivelMapper = nivelMapper;
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
             this.cursoInvestigadorMapper = cursoInvestigadorMapper;
             this.cursoInvestigadorService = cursoInvestigadorService;
-            this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
             this.institucionMapper = institucionMapper;
             this.areaMapper = areaMapper;
@@ -183,24 +179,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeInstitucion(int select)
         {
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
@@ -239,6 +217,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
             form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
 
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
+            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+
             return form;
         }
 
@@ -254,6 +237,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
             ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
+            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
+            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private CursoForm SetupShowForm(CursoForm form)

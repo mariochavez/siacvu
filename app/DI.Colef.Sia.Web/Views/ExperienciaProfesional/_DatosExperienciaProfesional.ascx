@@ -35,9 +35,9 @@
     <%=Html.ValidationMessage("Pais") %>
 </p>
 
-<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Nivel2Id , Nivel2Nombre = Model.Nivel2Nombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>
 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>
-<% Html.RenderPartial("_ShowClase", new ShowFieldsForm { ClaseId = Model.ClaseId, ClaseNombre = Model.ClaseNombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.SectoresEconomicos, Ramas = Model.Ramas, Clases = Model.Clases, IsShowForm = false }); %>
 
 <p>
     <label>L&iacute;nea de investigaci&oacute;n 1</label>
