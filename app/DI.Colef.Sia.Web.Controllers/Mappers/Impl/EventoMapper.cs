@@ -40,6 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.ObjetivoEvento = message.ObjetivoEvento;
+            model.PosicionAutor = message.PosicionAutor;
 
             model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
 

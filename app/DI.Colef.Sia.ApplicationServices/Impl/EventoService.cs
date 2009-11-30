@@ -36,9 +36,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(evento.Id == 0)
             {
+                evento.Puntuacion = 0;
                 evento.Activo = true;
                 evento.CreadorEl = DateTime.Now;
             }
+
+            evento.PosicionAutor = 1;
             evento.ModificadoEl = DateTime.Now;
             
             eventoRepository.SaveOrUpdate(evento);

@@ -49,13 +49,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.PosicionAutor = message.PosicionAutor;
             model.TipoProducto = message.TipoProducto;
             model.Edicion = message.Edicion;
             model.EstadoProducto = message.EstadoProducto;
             model.Reimpresion = message.Reimpresion;
             model.FormatoPublicacion = message.FormatoPublicacion;
             model.ContenidoLibro = message.ContenidoLibro;
+            model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();

@@ -52,9 +52,9 @@
 	            </p>
                 <p>
 	                <label>Posici&oacute;n del autor</label>
-                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
+	                <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+	                <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
 	                <span class="cvu"></span>
-	                <%=Html.ValidationMessage("PosicionAutor")%>
                 </p>
 				
 				<h4>Estatus de la publicaci&oacute;n</h4>

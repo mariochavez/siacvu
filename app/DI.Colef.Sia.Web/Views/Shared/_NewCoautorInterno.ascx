@@ -9,7 +9,4 @@
     <%=Html.Hidden("CoautorInterno.InvestigadorId", 0, new { rel = "#CoautorInterno_Nombre" })%>
 </p>
 
-<p>
-    <label>Posici&oacute;n coautor interno</label>
-    <%=Html.TextBox("CoautorInterno.Posicion", 2, new { @class = "input100", maxlength = 3 })%>
-</p>
+<p><%=Html.Hidden("CoautorInterno.Posicion", 2) %></p>

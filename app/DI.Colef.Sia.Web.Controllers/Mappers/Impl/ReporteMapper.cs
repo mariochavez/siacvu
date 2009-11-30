@@ -38,10 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.PosicionAutor = message.PosicionAutor;
             model.TieneProyecto = message.TieneProyecto;
             model.TipoReporte = message.TipoReporte;
             model.Numero = message.Numero;
+            model.PosicionAutor = message.PosicionAutor;
             
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();

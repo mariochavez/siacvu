@@ -117,7 +117,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoCapitulo> ArchivoCapitulos { get; private set; }
 
-        [Min(1)]
         public virtual int PosicionAutor { get; set; }
 
         public virtual bool TieneProyecto { get; set; }

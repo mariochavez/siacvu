@@ -79,8 +79,15 @@
 	                <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id } ); %>
 	                <p>
 	                    <label>Total de autores</label>
-	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
+	                    <span class="cvu"></span>
 	                </p>
+                    <p>
+	                    <label>Posici&oacute;n del autor</label>
+	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+	                    <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
+	                    <span class="cvu"></span>
+                    </p>
                 </div>
                 
 				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>

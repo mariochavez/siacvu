@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.CreadorEl = DateTime.Now;
             }
 
+            libro.PosicionAutor = 1;
             libro.ModificadoEl = DateTime.Now;
             
             libroRepository.SaveOrUpdate(libro);
