@@ -27,6 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAreaMapper areaMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
         public LibroController(ILibroService libroService,
                                ICustomCollection customCollection, ILibroMapper libroMapper,
@@ -41,7 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEditorialLibroMapper editorialLibroMapper,
                                ILineaTematicaMapper lineaTematicaMapper, 
                                IDisciplinaMapper disciplinaMapper,
-                               ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper)
+                               ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper,
+                               IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
@@ -56,6 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.editorialLibroMapper = editorialLibroMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
+            this.investigadorExternoMapper = investigadorExternoMapper;
         }
 
         [Authorize]
@@ -236,7 +239,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new CoautorForm {Controller = "Libro", IdName = "LibroId"};
+            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId", InvestigadorExterno = new InvestigadorExternoForm() };
 
             if (libro != null)
                 form.Id = libro.Id;
@@ -250,6 +253,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int libroId)
         {
+            var investigadorExternoForm = new InvestigadorExternoForm
+                                              {
+                                                  Nombre = form.InvestigadorExternoNombre,
+                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                              };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "CoautorExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
             var coautorExternoLibro = coautorExternoLibroMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoLibro.ValidationResults(), false, "CoautorExterno", String.Empty);

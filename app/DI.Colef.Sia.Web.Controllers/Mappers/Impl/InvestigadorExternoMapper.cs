@@ -18,8 +18,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(InvestigadorExternoForm message, InvestigadorExterno model)
         {
             model.Nombre = message.Nombre;
-            model.Email = message.Email;
-            model.Puesto = message.Puesto;
+            model.ApellidoPaterno = message.ApellidoPaterno;
+            model.ApellidoMaterno = message.ApellidoMaterno;
         }
     }
 }

@@ -24,5 +24,4 @@ $('#autorexternoForm').html(html);
 $('#autorexternoNew').hide();
 $('#autorexternoForm').show();
 DateTimePicker.setup();
-AutoComplete.config($('#AutorExterno_Nombre'));
 AutoComplete.config($('#AutorExterno_Institucion'));

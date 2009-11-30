@@ -34,7 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  ICatalogoService catalogoService,
                                  IUsuarioService usuarioService,
                                  IProyectoMapper proyectoMapper,
-                                 IInvestigadorExternoMapper investigadorExternoMapper,
                                  IInvestigadorMapper investigadorMapper,
                                  IInvestigadorService investigadorService,
                                  ICoautorExternoReporteMapper coautorExternoReporteMapper,
@@ -44,7 +43,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IProyectoService proyectoService,
                                  IAreaTematicaMapper areaTematicaMapper,
                                  ILineaTematicaMapper lineaTematicaMapper, 
-                                 IInstitucionMapper institucionMapper)
+                                 IInstitucionMapper institucionMapper,
+                                 IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -299,7 +299,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var reporte = reporteService.GetReporteById(id);
-            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId" };
+            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId", InvestigadorExterno = new InvestigadorExternoForm() };
 
             if (reporte != null)
                 form.Id = reporte.Id;
@@ -313,6 +313,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int reporteId)
         {
+            var investigadorExternoForm = new InvestigadorExternoForm
+                                              {
+                                                  Nombre = form.InvestigadorExternoNombre,
+                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                              };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "CoautorExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
             var coautorExternoReporte = coautorExternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoReporte.ValidationResults(), false, "CoautorExterno", String.Empty);

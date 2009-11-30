@@ -1,23 +1,19 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-	[HasUniqueDomainSignature]
     public class InvestigadorExterno : Entity, IBaseEntity
     {
-		[NotNullNotEmpty]
-        [Length(40)]
-        [DomainSignature]
+        [NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
 
-		[Length(40)]
-		public virtual string Email { get; set; }
+        [NotNullNotEmpty]
+        public virtual string ApellidoPaterno { get; set; }
 
-		[Length(40)]
-		public virtual string Puesto { get; set; }
+        [NotNullNotEmpty]
+        public virtual string ApellidoMaterno { get; set; }
 
         public virtual Usuario CreadorPor { get; set; }
 

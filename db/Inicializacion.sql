@@ -1019,6 +1019,7 @@ insert into FormaParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1
 insert into TipoParticipantes values('Persona física',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipantes values('Investigador',GETDATE(), GETDATE(), 1, 1, 1);
 
+/*
 insert into InvestigadorExternos values('Acevedo Gladys', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Aceves Calderón Patricia', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Adolfo Sánchez Rebolledo', null, null, GETDATE(), GETDATE(), 1, 1, 1)
@@ -1771,6 +1772,7 @@ insert into InvestigadorExternos values('ZEPEDA EDUARDO', null, null, GETDATE(),
 insert into InvestigadorExternos values('Ziccardi Alicia', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Zuniga Gil Clemente', null, null, GETDATE(), GETDATE(), 1, 1, 1)
 insert into InvestigadorExternos values('Zúñiga González Víctor', null, null, GETDATE(), GETDATE(), 1, 1, 1)
+*/
 
 insert into Idiomas values('Albanés', GETDATE(), GETDATE(), 1, 1, 1)
 insert into Idiomas values('Alemán', GETDATE(), GETDATE(), 1, 1, 1)
