@@ -443,6 +443,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
+                                      EstadoProducto = form.EstadoProducto,
+                                      FechaAceptacion = form.FechaAceptacion,
+                                      FechaPublicacion = form.FechaPublicacion,
+
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
+
                                       IsShowForm = true,
                                       //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"

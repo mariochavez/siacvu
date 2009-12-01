@@ -575,7 +575,7 @@
     <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
-    <Content Include="Views\Productos\Capitulo\_EstatusPublicacion.ascx" />
+    <Content Include="Views\Productos\Articulo\_DatosPublicacion.ascx" />
     <Content Include="Views\Productos\Curso\_ShowCursoExterno.ascx" />
     <Content Include="Views\Productos\Curso\_ShowCursoInvestigador.ascx" />
     <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
@@ -601,12 +601,11 @@
     <Content Include="Views\Productos\Libro\AddEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\_NewEvento.ascx" />
     <Content Include="Views\Productos\Libro\NewEvento.js.ascx" />
-    <Content Include="Views\Productos\Libro\_DatosLibro2.ascx" />
     <Content Include="Views\Productos\Libro\Edit.aspx" />
     <Content Include="Views\Productos\Libro\Index.aspx" />
     <Content Include="Views\Productos\Libro\New.aspx" />
     <Content Include="Views\Productos\Libro\Show.aspx" />
-    <Content Include="Views\Productos\Libro\_DatosLibro1.ascx" />
+    <Content Include="Views\Productos\Libro\_DatosPublicacion.ascx" />
     <Content Include="Views\Productos\Libro\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Edit.aspx" />
     <Content Include="Views\EstanciaInstitucionExterna\Index.aspx" />
@@ -675,7 +674,6 @@
     <Content Include="Views\Productos\Articulo\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Articulo\Index.aspx" />
     <Content Include="Views\Productos\Articulo\New.aspx" />
-    <Content Include="Views\Productos\Articulo\_DatosArticulo.ascx" />
     <Content Include="Views\Productos\Capitulo\Edit.aspx" />
     <Content Include="Views\Productos\Capitulo\Index.aspx" />
     <Content Include="Views\Productos\Capitulo\New.aspx" />
@@ -746,13 +744,12 @@
     <Content Include="Views\Productos\Reporte\Index.aspx" />
     <Content Include="Views\Productos\Reporte\New.aspx" />
     <Content Include="Views\Productos\Reporte\Show.aspx" />
-    <Content Include="Views\Productos\Reporte\_DatosReporte.ascx" />
+    <Content Include="Views\Productos\Reporte\_DatosPublicacion.ascx" />
     <Content Include="Views\Productos\Reporte\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Resena\Edit.aspx" />
     <Content Include="Views\Productos\Resena\Index.aspx" />
     <Content Include="Views\Productos\Resena\New.aspx" />
     <Content Include="Views\Productos\Resena\Show.aspx" />
-    <Content Include="Views\Productos\Resena\_EstatusPublicacion.ascx" />
     <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />

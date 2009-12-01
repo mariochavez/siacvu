@@ -67,18 +67,8 @@
                     <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
                 <% } %>
                 
-                <p>
-	                <label>Palabra clave 1</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 2</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 3</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
-                </p>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>&Aacute;mbito</label>
                     <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
@@ -103,6 +93,10 @@
                     <p>
 	                    <label>Total de autores</label>
 	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
+	                </p>
+	                <p>
+	                    <label>Posici&oacute;n del autor</label>
+	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
 	                </p>
 	            <% } %>
 	            

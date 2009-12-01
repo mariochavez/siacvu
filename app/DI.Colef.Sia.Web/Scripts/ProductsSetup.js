@@ -10,8 +10,8 @@
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.estatuspublicado_field']],
-                ['Aceptado', ['#estatusaceptado_field']]
+                ['Publicado', ['.EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
             ]
         );
 
@@ -139,7 +139,7 @@ function participacionMedioSetup() {
 function reporteSetup() {    
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['#EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado']],
                 ['Aceptado', ['#EstatusAceptado']]
             ]
         );

@@ -216,6 +216,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
+
                                       IsShowForm = true
                                   };
 

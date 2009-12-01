@@ -8,7 +8,7 @@
         <% for(int i = 0; i < Model.CoautoresExternos.Length; i++) { %>
 	        <div class="sublista" id="coautorexterno_<%=Html.Encode(Model.CoautoresExternos[i].InvestigadorExternoId) %>">
 	            <h6>
-	                <%=Html.Encode(Model.CoautoresExternos[i].InvestigadorExternoNombre)%>
+	                <%=Html.Encode(Model.CoautoresExternos[i].NombreCompleto)%>
 	                <span>
                         Instituci&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
                     </span>

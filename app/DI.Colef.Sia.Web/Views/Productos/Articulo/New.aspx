@@ -39,46 +39,7 @@
 	            <%=Html.Hidden("Id", Model.Form.Id) %>
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
-                <p>
-                    <label>Nombre del art&iacute;culo</label>
-                    <%=Html.TextBox("Titulo", Model.Form.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-                    <span class="cvu"></span>
-                    <%=Html.ValidationMessage("Titulo")%>
-                </p>
-                <p>
-                    <label>Tipo de art&iacute;culo</label>
-                    <%=Html.DropDownList("TipoArticulo", Model.Form.TiposArticulos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                                        "Seleccione ...", new { @class = "tipo requerido" })%>
-                    <span class="cvu"></span>
-                    <%=Html.ValidationMessage("TipoArticulo") %>
-                </p>
-                <p>
-                    <label></label>
-                    <%= Html.CheckBox("TieneProyecto", Model.Form.TieneProyecto)%> ¿Existe proyecto de investigaci&oacute;n de referencia?
-                </p>
-                <div id="tieneproyecto_field">
-                    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.Form.ProyectoId, ProyectoNombre = Model.Form.ProyectoNombre, IsShowForm = false }); %>
-                </div>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.Form.AreaTematicaId, AreaTematicaNombre = Model.Form.AreaTematicaNombre, ModelId = Model.Form.Id, IsShowForm = false }); %>
-                
-                <p>
-	                <label>Palabra clave 1</label>
-	                <%=Html.TextBox("PalabraClave1", Model.Form.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
-	                <span class="cvu"></span>
-                </p>
-                <p>
-	                <label>Palabra clave 2</label>
-	                <%=Html.TextBox("PalabraClave2", Model.Form.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
-	                <span class="cvu"></span>
-                </p>
-                <p>
-	                <label>Palabra clave 3</label>
-                    <%=Html.TextBox("PalabraClave3", Model.Form.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
-	                <span class="cvu"></span>
-                </p>
-                
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
+                <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 
                 <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos, ModelId = Model.Form.Id }); %>
@@ -88,8 +49,15 @@
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
 	                <span class="cvu"></span>
 	            </p>
+                <p>
+	                <label>Posici&oacute;n del autor</label>
+	                <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+	                <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
+	                <span class="cvu"></span>
+                </p>
 	            
-	            <% Html.RenderPartial("_DatosArticulo", Model.Form); %>
+	            <h4>Estatus de la pulicaci&oacute;n</h4>
+	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
                 
                 <div class="EstatusPublicado">
 	                <h4>Referencia bibliogr&aacute;fica</h4>
