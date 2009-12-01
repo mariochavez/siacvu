@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ResenaValidator]
-    public class Resena : Entity, IBaseEntity
+    public class Resena : Entity, IBaseEntity, IAutor, ICoautor, IEditorial
     {
         const int tipoProducto = 12; // 12 Representa Resena
 
@@ -17,8 +17,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
             CoautorInternoResenas = new List<CoautorInternoResena>();
-            AutorResenas = new List<AutorResena>();
             ArchivoResenas = new List<ArchivoResena>();
+            AutorInternoResenas = new List<AutorInternoResena>();
+            AutorExternoResenas = new List<AutorExternoResena>();
+            EditorialResenas = new List<EditorialResena>();
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -33,15 +35,32 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoResenas.Add((CoautorInternoResena)coautorInterno);
         }
 
-        public virtual void AddAutor(AutorResena autorResena)
+        public virtual void AddAutorInterno(AutorInternoProducto autorInterno)
         {
-            AutorResenas.Add(autorResena);
+            autorInterno.TipoProducto = tipoProducto;
+            AutorInternoResenas.Add((AutorInternoResena)autorInterno);
+        }
+        public virtual void AddAutorExterno(AutorExternoProducto autorExterno)
+        {
+            autorExterno.TipoProducto = tipoProducto;
+            AutorExternoResenas.Add((AutorExternoResena)autorExterno);
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoResenas.Add((ArchivoResena)archivo);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialResenas.Add((EditorialResena)editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialResenas.Remove((EditorialResena)editorial);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -54,46 +73,26 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoResenas.Remove((CoautorExternoResena)coautorExterno);
         }
 
-        public virtual void DeleteAutor(AutorResena autorResena)
-        {
-            AutorResenas.Remove(autorResena);
-        }
-
         public virtual void DeleteArchivo(Archivo archivo)
         {
             ArchivoResenas.Remove((ArchivoResena) archivo);
         }
 
-        [Valid]
-        public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
+        public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
+        {
+            AutorInternoResenas.Remove((AutorInternoResena)coautorInterno);
+        }
+
+        public virtual void DeleteAutorExterno(AutorExternoProducto coautorExterno)
+        {
+            AutorExternoResenas.Remove((AutorExternoResena)coautorExterno);
+        }
 
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string NombreProducto { get; set; }
 
-        public virtual TipoResena TipoResena { get; set; }
-
-        public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
-
-        public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
-
-        [Min(1)]
-        public virtual int PosicionAutor { get; set; }
-
-        public virtual string TituloLibro { get; set; }
-
-        [Valid]
-        public virtual IList<AutorResena> AutorResenas { get; private set; }
-
-        public virtual DateTime FechaEdicion { get; set; }
-
-        public virtual Institucion Institucion { get; set; }
-        
-        public virtual Editorial Editorial { get; set; }
-
-        public virtual Pais Pais { get; set; }
-
-        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+        public virtual int TipoResena { get; set; }
 
         public virtual AreaTematica AreaTematica { get; set; }
 
@@ -103,11 +102,43 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
+
+        public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
+
+        public virtual int PosicionAutor { get; set; }
+
         public virtual int EstadoProducto { get; set; }
 
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
+
+        [Valid]
+        public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
+
+        public virtual string TituloLibro { get; set; }
+
+        [Valid]
+        public virtual IList<AutorInternoResena> AutorInternoResenas { get; private set; }
+
+        [Valid]
+        public virtual IList<AutorExternoResena> AutorExternoResenas { get; private set; }
+
+        [Valid]
+        public virtual IList<EditorialResena> EditorialResenas { get; private set; }
+        
+        public virtual Pais Pais { get; set; }
+
+        public virtual RevistaPublicacion RevistaPublicacion { get; set; }
+
+        public virtual Editorial Editorial { get; set; }
         
         public virtual int Volumen { get; set; }
 
@@ -116,10 +147,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int PaginaInicial { get; set; }
 
         public virtual int PaginaFinal { get; set; }
-
-        public virtual bool ResenaTraducida { get; set; }
-
-        public virtual Idioma Idioma { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

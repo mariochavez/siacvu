@@ -16,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IInstitucionMapper institucionMapper;
 
         public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
                                                   IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper,
@@ -24,15 +23,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                   IGradoAcademicoMapper gradoAcademicoMapper,
                                                   IUsuarioService usuarioService,
                                                   ISearchService searchService, ITipoEstanciaMapper tipoEstanciaMapper, 
-                                                  IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+                                                  IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.catalogoService = catalogoService;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.estanciaAcademicaExternaService = estanciaAcademicaExternaService;
             this.estanciaAcademicaExternaMapper = estanciaAcademicaExternaMapper;
             this.tipoEstanciaMapper = tipoEstanciaMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -155,25 +153,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = searchService.Search<EstanciaAcademicaExterna>(x => x.Institucion.Nombre, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         EstanciaAcademicaExternaForm SetupNewForm()

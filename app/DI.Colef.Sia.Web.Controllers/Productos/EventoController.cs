@@ -38,13 +38,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
-                                IInvestigadorExternoMapper investigadorExternoMapper,
                                 IInvestigadorMapper investigadorMapper,
                                 ITipoFinanciamientoMapper tipoFinanciamientoMapper,
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
-                                ISearchService searchService, IInstitucionEventoMapper institucionEventoMapper)
+                                ISearchService searchService, IInstitucionEventoMapper institucionEventoMapper,
+                                IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -91,6 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -99,6 +100,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            CoautorInternoEvento coautorInternoEvento;
+            int posicionAutor;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var evento = eventoService.GetEventoById(id);
@@ -118,6 +121,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm(eventoForm);
 
             FormSetCombos(data.Form);
+
+            if (coautorExists != 0)
+            {
+                coautorInternoEvento =
+                    evento.CoautorInternoEventos.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = coautorInternoEvento.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -276,7 +292,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var evento = eventoService.GetEventoById(id);
-            var form = new CoautorForm { Controller = "Evento", IdName = "EventoId" };
+            var form = new CoautorForm { Controller = "Evento", IdName = "EventoId", InvestigadorExterno = new InvestigadorExternoForm() };
 
             if (evento != null)
                 form.Id = evento.Id;
@@ -290,6 +306,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int eventoId)
         {
+            var investigadorExternoForm = new InvestigadorExternoForm
+                                              {
+                                                  Nombre = form.InvestigadorExternoNombre,
+                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                              };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "CoautorExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
             var coautorExternoEvento = coautorExternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoEvento.ValidationResults(), false, "CoautorExterno", String.Empty);

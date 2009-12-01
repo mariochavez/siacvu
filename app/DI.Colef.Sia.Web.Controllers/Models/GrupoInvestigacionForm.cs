@@ -19,11 +19,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-		public int Nivel2Id { get; set; }
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
+        public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }
-        public NivelForm Nivel2 { get; set; }
+
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
     }
 }

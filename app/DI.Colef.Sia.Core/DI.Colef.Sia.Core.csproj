@@ -86,7 +86,6 @@
     <Compile Include="Area.cs" />
     <Compile Include="AreaTematica.cs" />
     <Compile Include="Articulo.cs" />
-    <Compile Include="AutorResena.cs" />
     <Compile Include="Capitulo.cs" />
     <Compile Include="CargoInvestigador.cs" />
     <Compile Include="Categoria.cs" />
@@ -237,7 +236,6 @@
     <Compile Include="TipoParticipante.cs" />
     <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
-    <Compile Include="TipoResena.cs" />
     <Compile Include="USEG.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="VinculacionAPyD.cs" />

@@ -19,10 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IPaisMapper paisMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
-        readonly IInstitucionMapper institucionMapper;
+        //readonly IInstitucionMapper institucionMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,
                                                IParticipacionAcademiaMapper participacionAcademiaMapper,
@@ -32,9 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                IPaisMapper paisMapper,
                                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                                IEditorialMapper editorialMapper,
-                                               ICustomCollection customCollection, IInstitucionMapper institucionMapper,
-                                               IProyectoMapper proyectoMapper, IProyectoService proyectoService
-            ) : base(usuarioService, searchService, catalogoService)
+                                               ICustomCollection customCollection, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper
+            ) : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.catalogoService = catalogoService;
             this.editorialMapper = editorialMapper;
@@ -43,9 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.paisMapper = paisMapper;
             this.customCollection = customCollection;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.institucionMapper = institucionMapper;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
         }
 
         [Authorize]
@@ -187,25 +181,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             };
 
             return Rjs("ChangeRevista", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
         }
 
         ParticipacionAcademiaForm SetupNewForm()

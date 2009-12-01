@@ -9,7 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Investigador Investigador { get; set; }
 
-        //[Min(1)]
         public virtual int Posicion { get; set; }
 
         public virtual int TipoProducto { get; set; }
@@ -28,5 +27,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     public class AutorInternoCapitulo : AutorInternoProducto
     {
         
+    }
+
+    public class AutorInternoResena : AutorInternoProducto
+    {
+
     }
 }

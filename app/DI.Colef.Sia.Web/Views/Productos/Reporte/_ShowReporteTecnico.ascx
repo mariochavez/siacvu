@@ -13,7 +13,3 @@
     <label>No. de p&aacute;ginas</label>
     <span class="valor"><%= Html.Encode(Model.NoPaginas)%>&nbsp;</span>
 </p>
-<p>
-    <label>Fecha de edici&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.FechaEdicion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
-</p>

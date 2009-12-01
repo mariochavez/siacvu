@@ -25,7 +25,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NivelEstudioId { get; set; }
         public string NivelEstudioNombre { get; set; }
 
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
         public int Pais { get; set; }
@@ -36,16 +41,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int DiplomadoId { get; set; }
         public string DiplomadoNombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
+
         public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public int CursoInvestigadorId { get; set; }
         public string CursoInvestigadorNombre { get; set; }
 
         /*Show*/
         public CursoInvestigadorForm CursoInvestigador { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
-        public NivelForm Nivel2 { get; set; }
         public ShowFieldsForm ShowFields { get; set; }
         public InstitucionForm Institucion { get; set; }
 
@@ -55,5 +63,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public DiplomadoForm[] Diplomados { get; set; }
         public CustomSelectForm[] TiposCursos { get; set; }
         public CursoInvestigadorForm[] CursosInvestigadores { get; set; }
+        public AreaForm[] Areas { get; set; }
+        public DisciplinaForm[] Disciplinas { get; set; }
+        public SubdisciplinaForm[] Subdisciplinas { get; set; }
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
     }
 }

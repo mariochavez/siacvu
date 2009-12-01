@@ -2,11 +2,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Autor externo</label>
-    <%=Html.TextBox("AutorExterno.Nombre", "",
-                new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "InvestigadorExterno"), maxlength = 100 })%>
-    <%=Html.Hidden("AutorExterno.InvestigadorExternoId", 0, new { rel = "#AutorExterno_Nombre" })%>
-    <%=Html.ValidationMessage("AutorExterno.InvestigadorExternoId")%>
+    <label>Nombre</label>
+    <%=Html.TextBox("AutorExterno.InvestigadorExternoNombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("AutorExterno.Nombre")%>
+</p>
+<p>
+    <label>Apellido paterno</label>
+    <%=Html.TextBox("AutorExterno.InvestigadorExternoApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("AutorExterno.ApellidoPaterno")%>
+</p>
+<p>
+    <label>Apellido materno</label>
+    <%=Html.TextBox("AutorExterno.InvestigadorExternoApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("AutorExterno.ApellidoMaterno")%>
 </p>
 <p>
     <label>Instituci&oacute;n</label>

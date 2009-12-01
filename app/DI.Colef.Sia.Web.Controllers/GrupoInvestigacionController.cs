@@ -16,8 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IGrupoInvestigacionMapper grupoInvestigacionMapper;
         readonly ICatalogoService catalogoService;
         readonly ISectorMapper sectorMapper;
-        readonly IOrganizacionMapper organizacionMapper;
-        readonly INivelMapper nivelMapper;
     
         public GrupoInvestigacionController(IGrupoInvestigacionService grupoInvestigacionService, 
 			                                IGrupoInvestigacionMapper grupoInvestigacionMapper, 
@@ -26,14 +24,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                             IOrganizacionMapper organizacionMapper,
                                             ISearchService searchService,
                                             INivelMapper nivelMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, organizacionMapper, nivelMapper)
         {
 			this.catalogoService = catalogoService;
             this.grupoInvestigacionService = grupoInvestigacionService;
             this.grupoInvestigacionMapper = grupoInvestigacionMapper;
             this.sectorMapper = sectorMapper;
-            this.organizacionMapper = organizacionMapper;
-            this.nivelMapper = nivelMapper;
         }
 
         [Authorize]
@@ -58,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult New()
         {			
 			var data = CreateViewDataWithTitle(Title.New);
-            data.Form = new GrupoInvestigacionForm();
+            data.Form = SetupNewForm();
 
             return View(data);
         }
@@ -77,7 +73,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (grupoInvestigacion.Usuario.Id != CurrentUser().Id)
                 return RedirectToIndex("no lo puede modificar", true);
 
-            data.Form = grupoInvestigacionMapper.Map(grupoInvestigacion);
+            var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
+            data.Form = SetupNewForm(grupoInvestigacionForm);
+
+            FormSetCombos(data.Form);
             
 			ViewData.Model = data;
             return View();
@@ -105,9 +104,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Create(GrupoInvestigacionForm form)
         {
             var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser());
-            
+
             if (!IsValidateModel(grupoInvestigacion, form, Title.New, "GrupoInvestigacion"))
+            {
+                var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
+
+                ((GenericViewData<GrupoInvestigacionForm>)ViewData.Model).Form = SetupNewForm(grupoInvestigacionForm);
+                FormSetCombos(grupoInvestigacionForm);
                 return ViewNew();
+            }
 
             grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
 
@@ -121,10 +126,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Update(GrupoInvestigacionForm form)
         {
             var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser());
-            
+
             if (!IsValidateModel(grupoInvestigacion, form, Title.Edit))
+            {
+                var grupoInvestigacionForm = grupoInvestigacionMapper.Map(grupoInvestigacion);
+
+                ((GenericViewData<GrupoInvestigacionForm>)ViewData.Model).Form = SetupNewForm(grupoInvestigacionForm);
+                FormSetCombos(grupoInvestigacionForm);
                 return ViewEdit();
-            
+            }
+
             grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
             return RedirectToIndex(String.Format("Grupo de Investigación {0} ha sido modificado", grupoInvestigacion.NombreGrupoInvestigacion));
         }
@@ -137,22 +148,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
+        GrupoInvestigacionForm SetupNewForm()
         {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
+            return SetupNewForm(null);
+        }
 
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
+        GrupoInvestigacionForm SetupNewForm(GrupoInvestigacionForm form)
+        {
+            form = form ?? new GrupoInvestigacionForm();
 
-            return Rjs("ChangeNivel", form);
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+            form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+
+            return form;
+        }
+
+        void FormSetCombos(GrupoInvestigacionForm form)
+        {
+            ViewData["SectorId"] = form.SectorId;
+            ViewData["OrganizacionId"] = form.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
@@ -161,9 +177,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      Nivel2Nombre = form.Nivel2.Nombre,
-                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre,
 
                                       IsShowForm = true
                                   };

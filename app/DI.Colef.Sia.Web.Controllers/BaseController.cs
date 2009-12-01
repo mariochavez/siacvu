@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -28,20 +29,89 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly ICatalogoService catalogoService;
         protected readonly IInstitucionMapper institucionMapper;
         protected readonly ISedeMapper sedeMapper;
+        protected readonly IDisciplinaMapper disciplinaMapper;
+        protected readonly ISubdisciplinaMapper subdisciplinaMapper;
+        protected readonly IOrganizacionMapper organizacionMapper;
+        protected readonly INivelMapper nivelMapper;
+        protected readonly IRamaMapper ramaMapper;
+        protected readonly IClaseMapper claseMapper;
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService) :this(usuarioService, searchService, catalogoService, null, null)
+                              ICatalogoService catalogoService) : 
+            this(usuarioService, searchService, catalogoService, null, null, null, null, null, null, null, null)
         {
         }
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper, null, null, null, null, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper, null, null, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                             ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                              IRamaMapper ramaMapper, IClaseMapper claseMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper, null, null, ramaMapper, claseMapper)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IOrganizacionMapper organizacionMapper,
+                              INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, null, null, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                      ICatalogoService catalogoService, IInstitucionMapper institucionMapper, IOrganizacionMapper organizacionMapper,
+                      INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, null, null, null, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                              IOrganizacionMapper organizacionMapper, INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                             ICatalogoService catalogoService, IInstitucionMapper institucionMapper, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                             IOrganizacionMapper organizacionMapper, INivelMapper nivelMapper) :
+            this(usuarioService, searchService, catalogoService, institucionMapper, null, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, null, null)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                             ICatalogoService catalogoService, IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
+                             IOrganizacionMapper organizacionMapper, INivelMapper nivelMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper) :
+            this(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
+        {
+        }
+
+        public BaseController(IUsuarioService usuarioService, ISearchService searchService,
+                              ICatalogoService catalogoService, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper,
+                              IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper, IOrganizacionMapper organizacionMapper,
+                              INivelMapper nivelMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper)
         {
             this.usuarioService = usuarioService;
             this.searchService = searchService;
             this.catalogoService = catalogoService;
             this.institucionMapper = institucionMapper;
             this.sedeMapper = sedeMapper;
+            this.disciplinaMapper = disciplinaMapper;
+            this.subdisciplinaMapper = subdisciplinaMapper;
+            this.organizacionMapper = organizacionMapper;
+            this.nivelMapper = nivelMapper;
+            this.ramaMapper = ramaMapper;
+            this.claseMapper = claseMapper;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -58,6 +128,166 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeArea(int select)
+        {
+            if (disciplinaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<DisciplinaForm> { new DisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Disciplinas = list.ToArray(),
+                               Subdisciplinas = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } }.ToArray()
+                           };
+
+            return Rjs("ChangeArea", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeDisciplina(int select)
+        {
+            if (subdisciplinaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<SubdisciplinaForm> { new SubdisciplinaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Subdisciplinas = list.ToArray()
+                           };
+
+            return Rjs("ChangeDisciplina", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSector(int select)
+        {
+            if (organizacionMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<OrganizacionForm> { new OrganizacionForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Organizaciones = list.ToArray(),
+                               Niveles = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } }.ToArray()
+                           };
+
+            return Rjs("ChangeSector", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeOrganizacion(int select)
+        {
+            if (nivelMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<NivelForm> { new NivelForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Niveles = list.ToArray()
+                           };
+
+            return Rjs("ChangeOrganizacion", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeSectorEconomico(int select)
+        {
+            if (ramaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<RamaForm> { new RamaForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(ramaMapper.Map(catalogoService.GetRamasBySectorId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Ramas = list.ToArray(),
+                               Clases = new List<ClaseForm> { new ClaseForm { Id = 0, Nombre = "Seleccione ..." } }.ToArray()
+                           };
+
+            return Rjs("ChangeSectorEconomico", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeRama(int select)
+        {
+            if (ramaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<ClaseForm> { new ClaseForm { Id = 0, Nombre = "Seleccione ..." } };
+
+            list.AddRange(claseMapper.Map(catalogoService.GetClasesByRamaId(select)));
+
+            var form = new ShowFieldsForm
+                           {
+                               Clases = list.ToArray()
+                           };
+
+            return Rjs("ChangeRama", form);
+        }
+
+        protected DisciplinaForm[] GetDisciplinasByAreaId(int id)
+        {
+            return id == 0
+                       ? new DisciplinaForm[] {}
+                       : disciplinaMapper.Map(catalogoService.GetDisciplinasByAreaId(id));
+
+        }
+
+        protected SubdisciplinaForm[] GetSubdisciplinasByDisciplinaId(int id)
+        {
+            return id == 0
+                       ? new SubdisciplinaForm[] { }
+                       : subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id));
+        }
+
+        protected OrganizacionForm[] GetOrganizacionesBySectorId(int id)
+        {
+            return id == 0
+                      ? new OrganizacionForm[] { }
+                      : organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(id));
+        }
+
+        protected NivelForm[] GetNivelesByOrganizacionId(int id)
+        {
+            return id == 0
+                      ? new NivelForm[] { }
+                      : nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(id));
+        }
+
+        protected RamaForm[] GetRamasBySectorEconomicoId(int id)
+        {
+            return id == 0
+                      ? new RamaForm[] { }
+                      : ramaMapper.Map(catalogoService.GetRamasBySectorId(id));
+        }
+
+        protected ClaseForm[] GetClasesByRamaId(int id)
+        {
+            return id == 0
+                      ? new ClaseForm[] { }
+                      : claseMapper.Map(catalogoService.GetClasesByRamaId(id));
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeInstitucion(int select)
         {
             if (institucionMapper == null)
@@ -66,14 +296,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
             var form = new ShowFieldsForm
-            {
-                InstitucionId = institucionForm.Id,
+                           {
+                               InstitucionId = institucionForm.Id,
 
-                InstitucionCiudad = institucionForm.Ciudad,
-                InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                InstitucionPaisNombre = institucionForm.PaisNombre,
-                InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-            };
+                               InstitucionCiudad = institucionForm.Ciudad,
+                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
+                               InstitucionPaisNombre = institucionForm.PaisNombre,
+                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                           };
 
             return Rjs("ChangeInstitucion", form);
         }

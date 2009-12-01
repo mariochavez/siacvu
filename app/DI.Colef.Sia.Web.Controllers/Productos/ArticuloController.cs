@@ -23,11 +23,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IProyectoMapper proyectoMapper;
-        readonly IProyectoService proyectoService;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper,
@@ -44,9 +41,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IDisciplinaMapper disciplinaMapper,
                                   ISubdisciplinaMapper subdisciplinaMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IProyectoMapper proyectoMapper,
-                                  IProyectoService proyectoService
-            ) : base(usuarioService, searchService, catalogoService)
+                                  IInvestigadorExternoMapper investigadorExternoMapper
+            ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.catalogoService = catalogoService;
@@ -58,11 +54,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.customCollection = customCollection;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.proyectoMapper = proyectoMapper;
-            this.proyectoService = proyectoService;
+            this.investigadorExternoMapper = investigadorExternoMapper;
         }
 
         [Authorize]
@@ -100,6 +93,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            CoautorInternoArticulo coautorInternoArticulo;
+            int posicionAutor;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var articulo = articuloService.GetArticuloById(id);
@@ -119,6 +114,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm(articuloForm);
 
             FormSetCombos(data.Form);
+
+            if (coautorExists != 0)
+            {
+                coautorInternoArticulo =
+                    articulo.CoautorInternoArticulos.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = coautorInternoArticulo.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -159,6 +167,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var articuloForm = articuloMapper.Map(articulo);
 
                 ((GenericViewData<ArticuloForm>) ViewData.Model).Form = SetupNewForm(articuloForm);
+                FormSetCombos(articuloForm);
                 return ViewNew();
             }
 
@@ -215,24 +224,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            };
 
             return Rjs("ChangeRevista", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-            {
-                SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                SubdisciplinaId = subdisciplinaForm.Id
-            };
-
-            return Rjs("ChangeSubdisciplina", form);
         }
 
         [Authorize]
@@ -327,7 +318,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId" };
+            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId", InvestigadorExterno = new InvestigadorExternoForm()};
 
             if (articulo != null)
                 form.Id = articulo.Id;
@@ -341,6 +332,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int articuloId)
         {
+            var investigadorExternoForm = new InvestigadorExternoForm
+                                              {
+                                                  Nombre = form.InvestigadorExternoNombre,
+                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                              };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "CoautorExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), false, "CoautorExterno", String.Empty);
@@ -406,6 +420,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
             return form;
         }
 
@@ -413,6 +431,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
         private ArticuloForm SetupShowForm(ArticuloForm form)
@@ -428,9 +450,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
 
                                       ProyectoNombre = form.Proyecto.Nombre,
 

@@ -1,4 +1,6 @@
-﻿namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
+﻿using System;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorForm
     {
@@ -11,5 +13,7 @@
         public int ModelId { get; set; }
         public int InvestigadorExternoId { get; set; }
         public int InvestigadorId { get; set; }
+
+        public InvestigadorExternoForm InvestigadorExterno { get; set; }
     }
 }

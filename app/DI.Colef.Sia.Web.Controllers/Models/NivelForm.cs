@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class NivelForm
@@ -17,5 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string OrganizacionSectorNombre { get; set; }
 
         public string CodigoConacyt { get; set; }
+
+        public int OrganizacionSectorId { get; set; }
     }
 }

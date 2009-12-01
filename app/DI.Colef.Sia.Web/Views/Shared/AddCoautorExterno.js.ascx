@@ -9,7 +9,7 @@ var html = '
     <div class="sublista" id="coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>">
         <h6>
             <a href="<%=Url.Action("deletecoautorexterno", null, new{ id = Model.ParentId, investigadorExternoId = Model.InvestigadorExternoId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-            <%=Html.Encode(Model.InvestigadorExternoNombre)%>
+            <%=Html.Encode(Model.NombreCompleto)%>
             <%=Html.Hidden("CoautorExterno['  + counter + '].InvestigadorExternoId", Model.InvestigadorExternoId)%>
             <span>
                 Instituci&oacute;n <%=Html.Encode(Model.InstitucionNombre)%>

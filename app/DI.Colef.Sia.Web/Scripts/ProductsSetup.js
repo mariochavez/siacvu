@@ -168,7 +168,6 @@ function reporteSetup() {
 function resenaSetup() {
     $('#TipoResena').dynamicui(
             [
-                ['*', ['#tipoPublicacion_field']],
                 ['Reseña bibliográfica', ['#resenaBibliografica_field']]
             ]
         );
@@ -183,14 +182,6 @@ function resenaSetup() {
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
-
-    $('#ResenaTraducida').dynamicui(
-        [
-            ['1', ['#idioma_field']]
-        ]
-    );
-
-    $('#ResenaTraducida')[0].dynamic.setup();
 }
 
 function proyectoSetup() {

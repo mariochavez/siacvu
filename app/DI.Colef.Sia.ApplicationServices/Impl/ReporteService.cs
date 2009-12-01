@@ -40,6 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 reporte.Activo = true;
                 reporte.CreadorEl = DateTime.Now;
             }
+
+            reporte.PosicionAutor = 1;
             reporte.ModificadoEl = DateTime.Now;
             
             reporteRepository.SaveOrUpdate(reporte);

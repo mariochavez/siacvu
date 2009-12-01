@@ -16,19 +16,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
         readonly IVinculacionAPyDMapper vinculacionApyDMapper;
-        readonly INivelMapper nivelMapper;
         readonly ICustomCollection customCollection;
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IAreaMapper areaMapper;
-        readonly IInstitucionMapper institucionMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
@@ -42,24 +37,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService)
+            : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
             this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.formaParticipacionMapper = formaParticipacionMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
-            this.nivelMapper = nivelMapper;
             this.customCollection = customCollection;
             this.tesisPosgradoMapper = tesisPosgradoMapper;
             this.tesisPosgradoService = tesisPosgradoService;
-            this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.areaMapper = areaMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -143,6 +133,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var tesisForm = tesisDirigidaMapper.Map(tesisDirigida);
 
                 ((GenericViewData<TesisDirigidaForm>)ViewData.Model).Form = SetupNewForm(tesisForm);
+                FormSetCombos(tesisForm);
                 return ViewNew();
             }
 
@@ -181,61 +172,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content(data);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
-        {
-            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
-
-            var form = new ShowFieldsForm
-                           {
-                               InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
-                           };
-
-            return Rjs("ChangeInstitucion", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
-        }
-
         TesisDirigidaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -252,6 +188,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
             form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+            form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+
             return form;
         }
 
@@ -262,6 +206,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["VinculacionAPyD"] = form.VinculacionAPyDId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["SectorId"] = form.SectorId;
+            ViewData["OrganizacionId"] = form.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
         private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)
@@ -276,13 +228,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
 
-                                      Nivel2Nombre = form.Nivel2.Nombre,
-                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre,
 
                                       IsShowForm = true,
                                       InstitucionLabel = "Institución"

@@ -120,12 +120,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         //Seccion Opcionales CVU
         //Estructura Funcional
+        public virtual Sector Sector { get; set; }
+
+        public virtual Organizacion Organizacion { get; set; }
+
         public virtual Nivel Nivel2 { get; set; }
 
         //Area Conocimiento
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
         public virtual Subdisciplina Subdisciplina { get; set; }
 
         //Actividad Economica
+        public virtual Sector SectorEconomico { get; set; }
+
+        public virtual Rama Rama { get; set; }
+
         public virtual Clase Clase { get; set; }
 
         [NotNull]

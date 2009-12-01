@@ -36,19 +36,9 @@
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
                 <h4>Datos de la publicaci&oacute;n</h4>
-                <p>
-                    <label>Nombre de la publicaci&oacute;n</label>
-                    <%=Html.TextArea("NombreProducto", Model.Form.NombreProducto, 3, 35, new { @class = "input420-bold-requerido", maxlength = 200 })%>
-                    <%=Html.ValidationMessage("NombreProducto")%>
-                </p>                
-                <p>
-                    <label>Tipo de publicaci&oacute;n</label>
-                    <%=Html.DropDownList("TipoResena", Model.Form.TiposResenas.CreateSelectList<TipoResenaForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
-                    <%=Html.ValidationMessage("TipoResena")%>
-                </p>
+                <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 
-                <h4>Coautores<span class="cvu"></span></h4>
+                <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 			    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoResenas, ModelId = Model.Form.Id } ); %>
                 <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, ModelId = Model.Form.Id } ); %>
                 
@@ -59,25 +49,20 @@
                 </p>
                 <p>
 	                <label>Posici&oacute;n del autor</label>
-                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
+	                <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+	                <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
 	                <span class="cvu"></span>
-	                <%=Html.ValidationMessage("PosicionAutor")%>
                 </p>
+                
+                <h4>Estatus de la publicaci&oacute;n</h4>
+                <% Html.RenderPartial("_EstatusPublicacion", Model.Form); %>
                 
                 <div id="resenaBibliografica_field">
                     <h4>Referencia de la obra reseñada</h4>
-                    <p>
-	                    <label>Nombre del libro</label>
-                        <%=Html.TextBox("TituloLibro", Model.Form.TituloLibro, new { @class = "input420-requerido", maxlength = 100 })%>
-                        <span class="cvu"></span>
-	                    <%=Html.ValidationMessage("TituloLibro")%>
-                    </p>
-                    
-                    <% Html.RenderPartial("_EditAutor", Model.Form); %>
-                    <% Html.RenderPartial("_DatosResena", Model.Form); %>
+                    <% Html.RenderPartial("_ObraResenada", Model.Form); %>
                 </div>
                 
-                <div id="tipoPublicacion_field">
+                <div class="EstatusPublicado">
                     <h4>Referencia bibliogr&aacute;fica</h4>
 				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 				</div>

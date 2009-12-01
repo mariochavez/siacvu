@@ -19,7 +19,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoEstanciaId { get; set; }
         public string TipoEstanciaNombre { get; set; }
 
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
         
         public int InstitucionId { get; set; }
@@ -27,10 +32,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
-        public NivelForm Nivel2 { get; set; }
         public InstitucionForm Institucion { get; set; }
 
         /* Catalogos */
         public TipoEstanciaForm[] TiposEstancias { get; set; }
+        public SectorForm[] Sectores { get; set; }
+        public OrganizacionForm[] Organizaciones { get; set; }
+        public NivelForm[] Niveles { get; set; }
     }
 }

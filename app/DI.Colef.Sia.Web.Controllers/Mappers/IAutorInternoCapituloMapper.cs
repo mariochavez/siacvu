@@ -5,5 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IAutorInternoCapituloMapper : IMapper<AutorInternoCapitulo, AutorInternoProductoForm>
     {
+
     }
 }

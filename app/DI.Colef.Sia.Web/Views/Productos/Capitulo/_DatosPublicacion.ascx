@@ -21,16 +21,5 @@
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
 
-<%--<p id="idioma_field">
-    <label>Idioma al que se tradujo</label>
-    <%=Html.DropDownList("Idioma", Model.Form.Idiomas.CreateSelectList<IdiomaForm>("Id", "Nombre"),
-                "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Idioma") %>
-</p> --%>
-
-<div>
-    <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>  
-</div>
-<div>
-    <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { SubdisciplinaId = Model.SubdisciplinaId, SubdisciplinaNombre = Model.SubdisciplinaNombre, IsShowForm = false }); %>  
-</div>
+<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, IsShowForm = false}); %>  
+<% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>

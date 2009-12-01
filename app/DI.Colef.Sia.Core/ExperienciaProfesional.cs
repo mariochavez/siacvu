@@ -12,6 +12,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         public virtual string Entidad { get; set; }
 
+        public virtual Sector Sector { get; set; }
+
+        public virtual Organizacion Organizacion { get; set; }
+
         public virtual Nivel Nivel2 { get; set; }
 
         [NotNullNotEmpty]
@@ -24,7 +28,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Pais Pais { get; set; }
 
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
         public virtual Subdisciplina Subdisciplina { get; set; }
+
+        public virtual Sector SectorEconomico { get; set; }
+
+        public virtual Rama Rama { get; set; }
 
         public virtual Clase Clase { get; set; }
 

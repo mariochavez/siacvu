@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 
-<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Nivel2Id = Model.Nivel2Id , Nivel2Nombre = Model.Nivel2Nombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>
 
 <p>
     <label>L&iacute;der</label>

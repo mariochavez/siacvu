@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Puntuacion = 0;
             }
 
+            articulo.PosicionAutor = 1;
             articulo.ModificadoEl = DateTime.Now;
 
             articuloRepository.SaveOrUpdate(articulo);

@@ -117,7 +117,6 @@
     <Compile Include="Catalogos\TipoApoyoController.cs" />
     <Compile Include="Catalogos\TipoEstanciaController.cs" />
     <Compile Include="Catalogos\TipoProyectoController.cs" />
-    <Compile Include="Catalogos\TipoResenaController.cs" />
     <Compile Include="Catalogos\USEGController.cs" />
     <Compile Include="Catalogos\VinculacionAPyDController.cs" />
     <Compile Include="Collections\ICustomCollection.cs" />
@@ -125,15 +124,20 @@
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\IAreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\IAutorExternoResenaMapper.cs" />
+    <Compile Include="Mappers\IAutorInternoResenaMapper.cs" />
     <Compile Include="Mappers\ICursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\IEditorialCapituloMapper.cs" />
+    <Compile Include="Mappers\IEditorialResenaMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
+    <Compile Include="Mappers\Impl\AutorExternoResenaMapper.cs" />
+    <Compile Include="Mappers\Impl\AutorInternoResenaMapper.cs" />
     <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />
+    <Compile Include="Mappers\Impl\EditorialResenaMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
-    <Compile Include="Mappers\IAutorResenaMapper.cs" />
     <Compile Include="Mappers\IConsejoComisionMapper.cs" />
     <Compile Include="Mappers\IDiplomadoMapper.cs" />
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
@@ -141,7 +145,6 @@
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
-    <Compile Include="Mappers\Impl\AutorResenaMapper.cs" />
     <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
     <Compile Include="Mappers\Impl\DiplomadoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
@@ -161,7 +164,6 @@
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
-    <Compile Include="Models\AutorResenaForm.cs" />
     <Compile Include="Models\ConsejoComisionForm.cs" />
     <Compile Include="Models\DireccionRegionalForm.cs" />
     <Compile Include="Models\InstitucionEventoForm.cs" />
@@ -225,7 +227,6 @@
     <Compile Include="Mappers\Impl\ResponsableInternoProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\SubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\Impl\TipoApoyoMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoResenaMapper.cs" />
     <Compile Include="Mappers\IParticipacionAcademiaMapper.cs" />
     <Compile Include="Mappers\IParticipanteExternoProyectoMapper.cs" />
     <Compile Include="Mappers\IParticipanteInternoProyectoMapper.cs" />
@@ -240,7 +241,6 @@
     <Compile Include="Mappers\IProductoAcademicoMapper.cs" />
     <Compile Include="Mappers\ISubprogramaConacytMapper.cs" />
     <Compile Include="Mappers\ITipoApoyoMapper.cs" />
-    <Compile Include="Mappers\ITipoResenaMapper.cs" />
     <Compile Include="Mappers\IUSEGMapper.cs" />
     <Compile Include="Models\ActividadPrevistaForm.cs" />
     <Compile Include="Models\ApoyoConacytForm.cs" />
@@ -267,7 +267,6 @@
     <Compile Include="Models\ProductoAcademicoForm.cs" />
     <Compile Include="Models\SubprogramaConacytForm.cs" />
     <Compile Include="Models\TipoApoyoForm.cs" />
-    <Compile Include="Models\TipoResenaForm.cs" />
     <Compile Include="Models\USEGForm.cs" />
     <Compile Include="ParticipacionAcademiaController.cs" />
     <Compile Include="Productos\LibroController.cs" />

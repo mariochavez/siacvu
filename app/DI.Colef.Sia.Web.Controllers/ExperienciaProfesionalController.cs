@@ -16,15 +16,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IExperienciaProfesionalService experienciaProfesionalService;
         readonly IExperienciaProfesionalMapper experienciaProfesionalMapper;
         readonly ICatalogoService catalogoService;
-        readonly INivelMapper nivelMapper;
         readonly IPaisMapper paisMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
-        readonly IClaseMapper claseMapper;
-        readonly IOrganizacionMapper organizacionMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
         readonly IAreaMapper areaMapper;
-        readonly IRamaMapper ramaMapper;
 
         public ExperienciaProfesionalController(IExperienciaProfesionalService experienciaProfesionalService,
                                                 IExperienciaProfesionalMapper experienciaProfesionalMapper,
@@ -35,21 +29,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                 ISubdisciplinaMapper subdisciplinaMapper, 
                                                 IClaseMapper claseMapper,
                                                 ISearchService searchService, IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
-                                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IRamaMapper ramaMapper
-            ): base(usuarioService, searchService, catalogoService)
+                                                IDisciplinaMapper disciplinaMapper, IRamaMapper ramaMapper, IAreaMapper areaMapper
+            ): base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
             this.catalogoService = catalogoService;
             this.experienciaProfesionalService = experienciaProfesionalService;
             this.experienciaProfesionalMapper = experienciaProfesionalMapper;
-            this.nivelMapper = nivelMapper;
             this.paisMapper = paisMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
-            this.claseMapper = claseMapper;
-            this.organizacionMapper = organizacionMapper;
             this.sectorMapper = sectorMapper;
-            this.disciplinaMapper = disciplinaMapper;
             this.areaMapper = areaMapper;
-            this.ramaMapper = ramaMapper;
         }
 
         [Authorize]
@@ -131,7 +119,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (!IsValidateModel(experienciaProfesional, form, Title.New, "ExperienciaProfesional"))
             {
-                ((GenericViewData<ExperienciaProfesionalForm>)ViewData.Model).Form = SetupNewForm();
+                var experienciaProfesionalForm = experienciaProfesionalMapper.Map(experienciaProfesional);
+
+                ((GenericViewData<ExperienciaProfesionalForm>)ViewData.Model).Form = SetupNewForm(experienciaProfesionalForm);
+                FormSetCombos(experienciaProfesionalForm);
                 return ViewNew();
             }
 
@@ -170,60 +161,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeNivel(int select)
-        {
-            var nivelForm = nivelMapper.Map(catalogoService.GetNivelById(select));
-            var organizacionForm = organizacionMapper.Map(catalogoService.GetOrganizacionById(nivelForm.OrganizacionId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(organizacionForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               Nivel2OrganizacionNombre = organizacionForm.Nombre,
-                               Nivel2OrganizacionSectorNombre = sectorForm.Nombre,
-                               Nivel2Id = nivelForm.Id
-                           };
-
-            return Rjs("ChangeNivel", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeSubdisciplina(int select)
-        {
-            var subdisciplinaForm = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(select));
-            var disciplinaForm = disciplinaMapper.Map(catalogoService.GetDisciplinaById(subdisciplinaForm.DisciplinaId));
-            var areaForm = areaMapper.Map(catalogoService.GetAreaById(disciplinaForm.AreaId));
-
-            var form = new ShowFieldsForm
-                           {
-                               SubdisciplinaDisciplinaNombre = disciplinaForm.Nombre,
-                               SubdisciplinaDisciplinaAreaNombre = areaForm.Nombre,
-                               SubdisciplinaId = subdisciplinaForm.Id
-                           };
-
-            return Rjs("ChangeSubdisciplina", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeClase(int select)
-        {
-            var claseForm = claseMapper.Map(catalogoService.GetClaseById(select));
-            var ramaForm = ramaMapper.Map(catalogoService.GetRamaById(claseForm.RamaId));
-            var sectorForm = sectorMapper.Map(catalogoService.GetSectorById(ramaForm.SectorId));
-
-            var form = new ShowFieldsForm
-                           {
-                               ClaseRamaNombre = ramaForm.Nombre,
-                               ClaseRamaSectorEconomicoNombre = sectorForm.Nombre,
-                               ClaseId = claseForm.Id
-                           };
-
-            return Rjs("ChangeClase", form);
-        }
-
         ExperienciaProfesionalForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -236,12 +173,36 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
 
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
+            form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
+            form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+            form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+
+            form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
+            form.Ramas = GetRamasBySectorEconomicoId(form.SectorEconomicoId);
+            form.Clases = GetClasesByRamaId(form.RamaId);
+
             return form;
         }
 
         private void FormSetCombos(ExperienciaProfesionalForm form)
         {
             ViewData["Pais"] = form.PaisId;
+
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
+            ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["SectorId"] = form.SectorId;
+            ViewData["OrganizacionId"] = form.OrganizacionId;
+            ViewData["Nivel2Id"] = form.Nivel2Id;
+
+            ViewData["SectorEconomicoId"] = form.SectorEconomicoId;
+            ViewData["RamaId"] = form.RamaId;
+            ViewData["ClaseId"] = form.ClaseId;
         }
 
         private ExperienciaProfesionalForm SetupShowForm(ExperienciaProfesionalForm form)
@@ -250,17 +211,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
 
-                                      Nivel2Nombre = form.Nivel2.Nombre,
-                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre,
 
-                                      ClaseNombre = form.Clase.Nombre,
-                                      ClaseRamaNombre = form.Clase.RamaNombre,
-                                      ClaseRamaSectorEconomicoNombre = form.Clase.RamaSectorNombre,
+                                      ClaseNombre = form.ClaseNombre,
+                                      RamaNombre = form.RamaNombre,
+                                      SectorEconomicoNombre = form.SectorEconomicoNombre,
 
                                       IsShowForm = true
                                   };

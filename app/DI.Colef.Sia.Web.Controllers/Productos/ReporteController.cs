@@ -27,22 +27,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
         readonly IInstitucionMapper institucionMapper;
 
-        public ReporteController(IReporteService reporteService, IReporteMapper reporteMapper,
+        public ReporteController(IReporteService reporteService,
+                                 IReporteMapper reporteMapper,
                                  ICatalogoService catalogoService,
                                  IUsuarioService usuarioService,
                                  IProyectoMapper proyectoMapper,
-                                 IInvestigadorExternoMapper investigadorExternoMapper,
-                                 IInvestigadorMapper investigadorMapper, IInvestigadorService investigadorService,
-                                 ICoautorExternoReporteMapper coautorExternoReporteMapper, ICustomCollection customCollection,
-                                 ICoautorInternoReporteMapper coautorInternoReporteMapper, ISearchService searchService,
-                                 IProyectoService proyectoService, IAreaTematicaMapper areaTematicaMapper, ILineaTematicaMapper lineaTematicaMapper, 
-                                 IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
-                                 ISubdisciplinaMapper subdisciplinaMapper, IInstitucionMapper institucionMapper)
+                                 IInvestigadorMapper investigadorMapper,
+                                 IInvestigadorService investigadorService,
+                                 ICoautorExternoReporteMapper coautorExternoReporteMapper,
+                                 ICustomCollection customCollection,
+                                 ICoautorInternoReporteMapper coautorInternoReporteMapper,
+                                 ISearchService searchService,
+                                 IProyectoService proyectoService,
+                                 IAreaTematicaMapper areaTematicaMapper,
+                                 ILineaTematicaMapper lineaTematicaMapper, 
+                                 IInstitucionMapper institucionMapper,
+                                 IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -58,9 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.proyectoService = proyectoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
             this.institucionMapper = institucionMapper;
         }
 
@@ -99,6 +98,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            CoautorInternoReporte coautorInternoReporte;
+            int posicionAutor;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var reporte = reporteService.GetReporteById(id);
@@ -118,6 +119,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm(reporteForm);
 
             FormSetCombos(data.Form);
+
+            if (coautorExists != 0)
+            {
+                coautorInternoReporte =
+                    reporte.CoautorInternoReportes.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = coautorInternoReporte.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -194,21 +208,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeInstitucion(int select)
+        public ActionResult ChangeInstitucionShort(int select)
         {
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
             var form = new ShowFieldsForm
                            {
                                InstitucionId = institucionForm.Id,
-
-                               InstitucionCiudad = institucionForm.Ciudad,
-                               InstitucionEstadoPaisNombre = institucionForm.EstadoPaisNombre,
-                               InstitucionPaisNombre = institucionForm.PaisNombre,
-                               InstitucionTipoInstitucionNombre = institucionForm.TipoInstitucion
+                               InstitucionPaisNombre = institucionForm.PaisNombre
                            };
 
-            return Rjs("ChangeInstitucion", form);
+            return Rjs("ChangeInstitucionShort", form);
         }
 
         [Authorize]
@@ -304,7 +314,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var reporte = reporteService.GetReporteById(id);
-            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId" };
+            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId", InvestigadorExterno = new InvestigadorExternoForm() };
 
             if (reporte != null)
                 form.Id = reporte.Id;
@@ -318,6 +328,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int reporteId)
         {
+            var investigadorExternoForm = new InvestigadorExternoForm
+                                              {
+                                                  Nombre = form.InvestigadorExternoNombre,
+                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                              };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "CoautorExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
             var coautorExternoReporte = coautorExternoReporteMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoReporte.ValidationResults(), false, "CoautorExterno", String.Empty);
@@ -405,15 +438,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ShowFields = new ShowFieldsForm
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       IsShowForm = true,
+                                      //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"
                                   };
 
