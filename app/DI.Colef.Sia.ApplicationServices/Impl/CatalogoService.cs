@@ -35,7 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
         readonly IRepository<EstatusProyecto> estatusProyectoRepository;
         readonly IRepository<FondoConacyt> fondoConacytRepository;
-        readonly IRepository<FormaParticipacion> formaParticipacionRepository;
         readonly IRepository<Genero> generoRepository;
         readonly IRepository<GradoAcademico> gradoAcademicoRepository;
         readonly IRepository<IdentificadorLibro> identificadorLibroRepository;
@@ -102,7 +101,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<Subdisciplina> subdisciplinaRepository,
                                IRepository<LineaTematica> lineaTematicaRepository,
                                IRepository<CoautorExterno> coautorExternoRepository,
-                               IRepository<FormaParticipacion> formaParticipacionRepository,
                                IRepository<ResponsableExterno> responsableExternoRepository,
                                IRepository<TipoParticipacion> tipoParticipacionRepository,
                                IRepository<Nivel> nivelRepository,
@@ -171,7 +169,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.subdisciplinaRepository = subdisciplinaRepository;
             this.lineaTematicaRepository = lineaTematicaRepository;
             this.coautorExternoRepository = coautorExternoRepository;
-            this.formaParticipacionRepository = formaParticipacionRepository;
             this.responsableExternoRepository = responsableExternoRepository;
             this.tipoParticipacionRepository = tipoParticipacionRepository;
             this.revistaPublicacionRepository = revistaPublicacionRepository;
@@ -775,33 +772,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             coautorExterno.ModificadoEl = DateTime.Now;
 
             coautorExternoRepository.SaveOrUpdate(coautorExterno);
-        }
-
-        public FormaParticipacion GetFormaParticipacionById(int id)
-        {
-            return formaParticipacionRepository.Get(id);
-        }
-
-        public FormaParticipacion[] GetAllFormaParticipaciones()
-        {
-            return ((List<FormaParticipacion>) OrderCatalog<FormaParticipacion>(x => x.Nombre)).ToArray();
-        }
-
-        public FormaParticipacion[] GetActiveFormaParticipaciones()
-        {
-            return ((List<FormaParticipacion>) OrderCatalog<FormaParticipacion>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveFormaParticipacion(FormaParticipacion formaParticipacion)
-        {
-            if (formaParticipacion.Id == 0)
-            {
-                formaParticipacion.Activo = true;
-                formaParticipacion.CreadorEl = DateTime.Now;
-            }
-            formaParticipacion.ModificadoEl = DateTime.Now;
-
-            formaParticipacionRepository.SaveOrUpdate(formaParticipacion);
         }
 
         public ResponsableExterno GetResponsableExternoById(int id)

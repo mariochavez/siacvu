@@ -427,9 +427,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<TesisDirigida, TesisDirigidaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaGrado,
+                           o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.GradoAcademico,
-                           o => o.Ignore())
-                .ForMember(d => d.FormaParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.VinculacionAPyD,
                            o => o.Ignore());
@@ -440,11 +440,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.GradoAcademico,
                            o => o.Ignore())
-                .ForMember(d => d.FormaParticipacion,
-                           o => o.Ignore())
                 .ForMember(d => d.VinculacionAPyD,
-                           o => o.Ignore())
-                .ForMember(d => d.ProgramaEstudio,
                            o => o.Ignore());
         }
 
@@ -693,9 +689,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<CoautorExterno, CoautorExternoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<FormaParticipacion, FormaParticipacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<ResponsableExterno, ResponsableExternoForm>()

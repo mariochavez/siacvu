@@ -58,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual VinculacionAPyD VinculacionAPyD { get; set; }
 
-        public virtual FormaParticipacion FormaParticipacion { get; set; }
+        public virtual int FormaParticipacion { get; set; }
 
         public virtual string NombreAlumno { get; set; }
 

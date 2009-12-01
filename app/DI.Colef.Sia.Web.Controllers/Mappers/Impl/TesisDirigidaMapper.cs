@@ -29,12 +29,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Titulo = message.Titulo;
             model.NombreAlumno = message.NombreAlumno;
             model.TipoTesis = message.TipoTesis;
+            model.FormaParticipacion = message.FormaParticipacion;
 
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
+
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.TesisPosgrado = tesisPosgradoService.GetTesisPosgradoById(message.TesisPosgradoId);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
-            model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.VinculacionAPyD = catalogoService.GetVinculacionAPyDById(message.VinculacionAPyD);
 

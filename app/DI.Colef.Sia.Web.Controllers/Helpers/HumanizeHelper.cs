@@ -104,6 +104,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreEdicion;
         }
 
+        public static string FormaParticipacion(int formaParticipacion)
+        {
+            string nombreFormaParticipacion;
+
+            switch (formaParticipacion)
+            {
+                case 1:
+                    nombreFormaParticipacion = "Director";
+                    break;
+                case 2:
+                    nombreFormaParticipacion = "Co-director";
+                    break;
+                case 3:
+                    nombreFormaParticipacion = "Lector o sinodal";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreFormaParticipacion;
+        }
+
         public static string Reimpresion(int reimpresion)
         {
             string nombreReimpresion;

@@ -126,12 +126,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         CoautorExterno[] GetActiveCoautorExternos();
         void SaveCoautorExterno(CoautorExterno coautorExterno);
 
-        //Forma de participacion
-        FormaParticipacion GetFormaParticipacionById(int id);
-        FormaParticipacion[] GetAllFormaParticipaciones();
-        FormaParticipacion[] GetActiveFormaParticipaciones();
-        void SaveFormaParticipacion(FormaParticipacion formaParticipacion);
-
         //Responsable Externo del Libro
         ResponsableExterno GetResponsableExternoById(int id);
         ResponsableExterno[] GetAllResponsableExternos();

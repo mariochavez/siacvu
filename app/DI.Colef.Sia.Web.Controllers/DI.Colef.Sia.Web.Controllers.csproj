@@ -300,7 +300,6 @@
     <Compile Include="Catalogos\DependenciaController.cs" />
     <Compile Include="Catalogos\DisciplinaController.cs" />
     <Compile Include="Catalogos\EstadoController.cs" />
-    <Compile Include="Catalogos\FormaParticipacionController.cs" />
     <Compile Include="Catalogos\GradoAcademicoController.cs" />
     <Compile Include="Catalogos\IdiomaController.cs" />
     <Compile Include="Catalogos\IndiceController.cs" />
@@ -381,7 +380,6 @@
     <Compile Include="Mappers\IEstadoInvestigadorMapper.cs" />
     <Compile Include="Mappers\IDisciplinaMapper.cs" />
     <Compile Include="Mappers\IEstadoMapper.cs" />
-    <Compile Include="Mappers\IFormaParticipacionMapper.cs" />
     <Compile Include="Mappers\IGradoAcademicoMapper.cs" />
     <Compile Include="Mappers\IIdiomaMapper.cs" />
     <Compile Include="Mappers\IIndiceMapper.cs" />
@@ -417,7 +415,6 @@
     <Compile Include="Mappers\Impl\GradoAcademicoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\DisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\EstadoMapper.cs" />
-    <Compile Include="Mappers\Impl\FormaParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\GradoAcademicoMapper.cs" />
     <Compile Include="Mappers\Impl\IdiomaMapper.cs" />
     <Compile Include="Mappers\Impl\IndiceMapper.cs" />
@@ -519,7 +516,6 @@
     <Compile Include="Models\FormacionAcademicaForm.cs" />
     <Compile Include="Models\GeneroForm.cs" />
     <Compile Include="Models\GradoAcademicoInvestigadorForm.cs" />
-    <Compile Include="Models\FormaParticipacionForm.cs" />
     <Compile Include="Models\GradoAcademicoForm.cs" />
     <Compile Include="Models\IdiomaForm.cs" />
     <Compile Include="Models\IndiceForm.cs" />

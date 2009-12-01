@@ -3,6 +3,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+    <label>Nombre del alumno(autor)</label>
+    <span class="valor"><%= Html.Encode(Model.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
+</p>
+<p>
     <label>T&iacute;tulo de la tesis</label>
     <span class="valor"><%= Html.Encode(Model.TesisPosgrado.Titulo) %>&nbsp;</span>
 </p>
@@ -12,11 +16,7 @@
 </p>
 <p>
     <label>Forma de participaci&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.TesisPosgrado.FormaParticipacionNombre) %>&nbsp;</span>
-</p>
-<p>
-    <label>Nombre del alumno(autor)</label>
-    <span class="valor"><%= Html.Encode(Model.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
+    <span class="valor"><%= HumanizeHelper.FormaParticipacion(Model.TesisPosgrado.FormaParticipacion) %>&nbsp;</span>
 </p>
 <p>
     <label>Programa de estudio</label>
@@ -30,3 +30,9 @@
     <label>Fecha de obtenci&oacute;n del grado</label>
     <span class="valor"><%= Html.Encode(Model.TesisPosgrado.FechaGrado) %>&nbsp;</span>
 </p>
+
+<% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
+
+<% Html.RenderPartial("_Show2doNivel", Model.ShowFields); %>
+
+<% Html.RenderPartial("_ShowSubdisciplina", Model.ShowFields); %>

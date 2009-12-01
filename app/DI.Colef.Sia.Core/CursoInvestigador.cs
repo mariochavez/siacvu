@@ -21,7 +21,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual NivelEstudio NivelEstudio { get; set; }
 
+        public virtual Sector Sector { get; set; }
+
+        public virtual Organizacion Organizacion { get; set; }
+
         public virtual Nivel Nivel2 { get; set; }
+
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
     }

@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class TesisDirigidaController : BaseController<TesisDirigida, TesisDirigidaForm>
     {
         readonly ICatalogoService catalogoService;
-        readonly IFormaParticipacionMapper formaParticipacionMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
@@ -29,7 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisDirigidaMapper tesisDirigidaMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
-                               IFormaParticipacionMapper formaParticipacionMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
                                ISearchService searchService,
                                IVinculacionAPyDMapper vinculacionApyDMapper,
@@ -43,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tesisDirigidaService = tesisDirigidaService;
             this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
-            this.formaParticipacionMapper = formaParticipacionMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
             this.customCollection = customCollection;
             this.tesisPosgradoMapper = tesisPosgradoMapper;
@@ -166,6 +163,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucionShort(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                InstitucionId = institucionForm.Id,
+                InstitucionPaisNombre = institucionForm.PaisNombre
+            };
+
+            return Rjs("ChangeInstitucionShort", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<TesisDirigida>(x => x.Titulo, q);
@@ -183,7 +195,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             //Lista de Catalogos Pendientes
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
-            form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
+            form.FormasParticipaciones = customCollection.FormaParticipacionCustomCollection();
             form.TiposTesis = customCollection.TipoTesisCustomCollection();
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
             form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
@@ -205,7 +217,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoTesis"] = form.TipoTesis;
             ViewData["VinculacionAPyD"] = form.VinculacionAPyDId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
-            ViewData["FormaParticipacion"] = form.FormaParticipacionId;
+            ViewData["FormaParticipacion"] = form.FormaParticipacion;
 
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
@@ -223,10 +235,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.ShowFields = new ShowFieldsForm
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,

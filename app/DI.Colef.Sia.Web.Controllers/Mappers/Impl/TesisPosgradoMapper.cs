@@ -28,9 +28,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
 
             model.VinculacionAPyD = catalogoService.GetVinculacionAPyDById(message.VinculacionAPyD);
-            model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
+            model.FormaParticipacion = message.FormaParticipacion;
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
-            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudio);
+            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+
+            model.Sector = catalogoService.GetSectorById(message.SectorId);
+            model.Organizacion = catalogoService.GetOrganizacionById(message.OrganizacionId);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
     }
 }

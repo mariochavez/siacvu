@@ -43,10 +43,21 @@
                     <%=Html.ValidationMessage("TipoTesis")%>
                 </p>
                 
-                <% Html.RenderPartial("_DatosTesis", Model.Form); %>
+                <div id="AlumnoInterno">
+                    <h4>Participaci&oacute;n en tesis de El Colef</h4>
+                    <p>
+                        <label>T&iacute;tulo de la tesis</label>
+                        <%=Html.DropDownList("TesisPosgradoId", Model.Form.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "Titulo"),
+                            "Seleccione ...", new { @class = "requerido" })%>
+                        <%=Html.ValidationMessage("TesisPosgrado")%>
+                    </p>
+                </div>
+                
+                <div id="AlumnoExterno">
+                    <h4>Datos de la tesis presentada</h4>
+                    <% Html.RenderPartial("_DatosTesis", Model.Form); %>
+                </div>
 
-                <% Html.RenderPartial("_DatosOpcionales", Model.Form); %>
-        				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar")%>
                 </p>

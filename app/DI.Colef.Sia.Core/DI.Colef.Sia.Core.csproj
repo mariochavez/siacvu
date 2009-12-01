@@ -127,7 +127,6 @@
     <Compile Include="Firma.cs" />
     <Compile Include="FondoConacyt.cs" />
     <Compile Include="FormacionAcademica.cs" />
-    <Compile Include="FormaParticipacion.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="GradoAcademicoInvestigador.cs" />
     <Compile Include="GradoAcademico.cs" />

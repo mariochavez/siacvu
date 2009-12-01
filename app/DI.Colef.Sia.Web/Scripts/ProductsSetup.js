@@ -60,8 +60,8 @@ function dictamenSetup() {
 function tesisSetup() {
     $('#TipoTesis').dynamicui(
             [
-                ['Tesis de El Colef', ['.AlumnoInterno']],
-                ['Tesis externas', ['.AlumnoExterno']]
+                ['Tesis de El Colef', ['#AlumnoInterno']],
+                ['Tesis externas', ['#AlumnoExterno']]
             ]
         );
 

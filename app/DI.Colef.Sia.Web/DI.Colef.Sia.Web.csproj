@@ -338,11 +338,6 @@
     <Content Include="Views\Catalogos\FondoConacyt\Index.aspx" />
     <Content Include="Views\Catalogos\FondoConacyt\New.aspx" />
     <Content Include="Views\Catalogos\FondoConacyt\_Form.ascx" />
-    <Content Include="Views\Catalogos\FormaParticipacion\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\FormaParticipacion\Edit.aspx" />
-    <Content Include="Views\Catalogos\FormaParticipacion\Index.aspx" />
-    <Content Include="Views\Catalogos\FormaParticipacion\New.aspx" />
-    <Content Include="Views\Catalogos\FormaParticipacion\_Form.ascx" />
     <Content Include="Views\Catalogos\Genero\Activate.js.ascx" />
     <Content Include="Views\Catalogos\Genero\Edit.aspx" />
     <Content Include="Views\Catalogos\Genero\Index.aspx" />
@@ -788,7 +783,6 @@
     <Content Include="Views\Productos\TesisDirigida\Edit.aspx" />
     <Content Include="Views\Productos\TesisDirigida\Index.aspx" />
     <Content Include="Views\Productos\TesisDirigida\New.aspx" />
-    <Content Include="Views\Productos\TesisDirigida\_DatosOpcionales.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_DatosTesis.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteExterno.js.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteInterno.js.ascx" />

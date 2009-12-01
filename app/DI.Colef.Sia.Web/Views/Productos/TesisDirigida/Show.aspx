@@ -39,7 +39,7 @@
                 <h4>Datos del investigador</h4>
 	            <p>
                     <label>Departamento</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoInvestigadorNombre)%>&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Sede</label>
@@ -47,19 +47,19 @@
                 </p>
                 <h4>Datos de la tesis</h4>
                 <p>
-                    <label>Tipo de Alumno</label>
-                    <span class="valor"><%= HumanizeHelper.TipoAlumnoCurso(Model.Form.TipoEstudiante) %>&nbsp;</span>                    
+                    <label>Tipo de tesis</label>
+                    <span class="valor"><%= HumanizeHelper.TipoTesis(Model.Form.TipoTesis)%>&nbsp;</span>                    
                 </p>
-                <% if(Model.Form.TipoEstudiante == 1){ %>
+                
+                <% if (Model.Form.TipoTesis == 1){ %>
+                    <h4>Participaci&oacute;n en tesis de El Colef</h4>
                     <% Html.RenderPartial("_ShowTesisInterna", Model.Form);%>
                 <% } %>
-                <% if(Model.Form.TipoEstudiante == 2){ %>
+                
+                <% if(Model.Form.TipoTesis == 2){ %>
+                    <h4>Datos de la tesis presentada</h4>
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form);%>
                 <% } %>
-                
-                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                
-                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar") %>
