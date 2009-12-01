@@ -49,38 +49,18 @@
                 <h4>Datos del curso</h4>
                 <p>
                     <label>Tipo de curso</label>
-                    <span class="valor"><%= HumanizeHelper.TipoAlumnoCurso(Model.Form.TipoCurso) %>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.TipoCurso(Model.Form.TipoCurso) %>&nbsp;</span>
                 </p>
                 
                 <% if(Model.Form.TipoCurso == 1){ %>
-                    <p>
-                        <label></label>
-                        <span class="valor">Es diplomado? <%= HumanizeHelper.Boolean(Model.Form.EsDiplomado)%>&nbsp;</span>
-                    </p>
-                    <%if(Model.Form.EsDiplomado){ %>
-                        <p>
-                            <label>Nombre del diplomado</label>
-                            <span class="valor"><%= Html.Encode(Model.Form.NombreDiplomado) %>&nbsp;</span>
-                        </p>
-                        <% Html.RenderPartial("_ShowCursoExternoDiplomado", Model.Form); %>
-                    <% } else { %>
-                        <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
-                    <% } %>
+                    <h4>Cursos en El Colef</h4>
+                    <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
                 <% } %>
+                
                 <% if(Model.Form.TipoCurso == 2){ %>
+                    <h4>Cursos en instituciones externas</h4>
                     <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
-                    <% Html.RenderPartial("_ShowCursoExternoDiplomado", Model.Form); %>
                 <% } %>
-                
-                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                
-                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                
-                <h4>Complementaria CVU</h4>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>

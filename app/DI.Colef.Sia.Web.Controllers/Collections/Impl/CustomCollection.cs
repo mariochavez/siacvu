@@ -133,12 +133,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
-        public CustomSelectForm[] TipoAlumnoCursoCustomCollection()
+        public CustomSelectForm[] TipoTesisCustomCollection()
         {
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = "Interno"},
-                           new CustomSelectForm {Id = 2, Nombre = "Externo"}
+                           new CustomSelectForm {Id = 1, Nombre = "Tesis de El Colef"},
+                           new CustomSelectForm {Id = 2, Nombre = "Tesis externas"}
+                       };
+        }
+
+        public CustomSelectForm[] TipoCursoCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Cursos en El Colef"},
+                           new CustomSelectForm {Id = 2, Nombre = "Cursos externos"}
                        };
         }
 

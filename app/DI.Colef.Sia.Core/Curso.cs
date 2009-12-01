@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [CursoValidator]
-    //[HasUniqueDomainSignature]
     public class Curso : Entity, IBaseEntity
     {
         const int tipoProducto = 3; // 3 Representa Curso
@@ -49,17 +47,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoCurso { get; set; }
 
-        public virtual bool EsDiplomado { get; set; }
-
-        public virtual string NombreDiplomado { get; set; }
-
-        public virtual Diplomado Diplomado { get; set; }
-
         public virtual NivelEstudio NivelEstudio { get; set; }
 
         public virtual ProgramaEstudio ProgramaEstudio { get; set; }
 
-        //[DomainSignature]
         public virtual string Nombre { get; set; }
 
         public virtual CursoInvestigador CursoInvestigador { get; set; }
@@ -73,8 +64,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int NumeroHoras { get; set; }
 
         public virtual Nivel Nivel2 { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
 

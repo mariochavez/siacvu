@@ -16,5 +16,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
+
+        public int NivelEstudio { get; set; }
+        public int NivelEstudioId { get; set; }
+        public string NivelEstudioNombre { get; set; }
+
+        public int Nivel2Id { get; set; }
+        public string Nivel2Nombre { get; set; }
+
+        public int SubdisciplinaId { get; set; }
+        public string SubdisciplinaNombre { get; set; }
     }
 }

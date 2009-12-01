@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -18,8 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoMapper cursoMapper;
         readonly ICursoService cursoService;
         readonly INivelEstudioMapper nivelEstudioMapper;
-        readonly IPaisMapper paisMapper;
-        readonly IDiplomadoMapper diplomadoMapper;
         readonly ICustomCollection customCollection;
         readonly ICursoInvestigadorService cursoInvestigadorService;
         readonly ICursoInvestigadorMapper cursoInvestigadorMapper;
@@ -28,11 +24,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
-                               IDiplomadoMapper diplomadoMapper,
                                ICatalogoService catalogoService, IUsuarioService usuarioService,
                                INivelMapper nivelMapper,
                                INivelEstudioMapper nivelEstudioMapper,
-                               IPaisMapper paisMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
                                ISearchService searchService, ICustomCollection customCollection,
                                ICursoInvestigadorService cursoInvestigadorService, ICursoInvestigadorMapper cursoInvestigadorMapper,
@@ -41,11 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
-            this.diplomadoMapper = diplomadoMapper;
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.cursoService = cursoService;
             this.cursoMapper = cursoMapper;
-            this.paisMapper = paisMapper;
             this.customCollection = customCollection;
             this.cursoInvestigadorMapper = cursoInvestigadorMapper;
             this.cursoInvestigadorService = cursoInvestigadorService;
@@ -79,7 +71,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -169,6 +160,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeInstitucionShort(int select)
+        {
+            var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
+
+            var form = new ShowFieldsForm
+            {
+                InstitucionId = institucionForm.Id,
+                InstitucionPaisNombre = institucionForm.PaisNombre
+            };
+
+            return Rjs("ChangeInstitucionShort", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
             var data = searchService.Search<Curso>(x => x.Nombre, q);
@@ -184,11 +190,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CursoForm();
 
-            form.TiposCursos = customCollection.TipoAlumnoCursoCustomCollection();
+            form.TiposCursos = customCollection.TipoCursoCustomCollection();
 
             form.NivelEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.Diplomados = diplomadoMapper.Map(catalogoService.GetActiveDiplomados());
             form.CursosInvestigadores = cursoInvestigadorMapper.Map(cursoInvestigadorService.GetAllCursosInvestigador());
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
@@ -208,8 +212,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoCurso"] = form.TipoCurso;
             ViewData["NivelEstudio"] = form.NivelEstudioId;
-            ViewData["Pais"] = form.PaisId;
-            ViewData["Diplomado"] = form.DiplomadoId;
             ViewData["CursoInvestigadorId"] = form.CursoInvestigadorId;
 
             var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
@@ -238,10 +240,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
 
                                       InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
                                       IsShowForm = true,
                                       InstitucionLabel = "Institución"

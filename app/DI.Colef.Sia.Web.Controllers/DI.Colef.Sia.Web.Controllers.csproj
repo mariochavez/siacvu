@@ -101,7 +101,6 @@
     <Compile Include="Catalogos\ConsejoComisionController.cs" />
     <Compile Include="Catalogos\ConvenioController.cs" />
     <Compile Include="Catalogos\CoordinacionController.cs" />
-    <Compile Include="Catalogos\DiplomadoController.cs" />
     <Compile Include="Catalogos\DirigidoAController.cs" />
     <Compile Include="Catalogos\EditorialController.cs" />
     <Compile Include="Catalogos\EstatusFormacionAcademicaController.cs" />
@@ -139,14 +138,12 @@
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IConsejoComisionMapper.cs" />
-    <Compile Include="Mappers\IDiplomadoMapper.cs" />
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
     <Compile Include="Mappers\IEditorialLibroMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
     <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
-    <Compile Include="Mappers\Impl\DiplomadoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
     <Compile Include="Mappers\Impl\InstitucionEventoMapper.cs" />
@@ -169,7 +166,6 @@
     <Compile Include="Models\InstitucionEventoForm.cs" />
     <Compile Include="Models\OrganoInternoForm.cs" />
     <Compile Include="Models\ShowFieldsForm.cs" />
-    <Compile Include="Models\DiplomadoForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />
     <Compile Include="Models\AutorForm.cs" />
     <Compile Include="Models\CoautorExternoProductoForm.cs" />

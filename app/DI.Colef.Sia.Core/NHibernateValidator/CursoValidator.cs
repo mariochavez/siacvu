@@ -58,26 +58,26 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 if (curso.TipoCurso == 1)
                 {
-                    if (curso.EsDiplomado)
-                    {
-                        if (curso.NombreDiplomado == "")
-                        {
-                            constraintValidatorContext.AddInvalid(
-                                "no debe ser nulo, vacío o cero|NombreDiplomado", "NombreDiplomado");
-                            isValid = false;
-                        }
+                    //if (curso.EsDiplomado)
+                    //{
+                    //    if (curso.NombreDiplomado == "")
+                    //    {
+                    //        constraintValidatorContext.AddInvalid(
+                    //            "no debe ser nulo, vacío o cero|NombreDiplomado", "NombreDiplomado");
+                    //        isValid = false;
+                    //    }
 
-                        isValid &= ValidateTipoCursoDiplomado(curso, constraintValidatorContext);
-                    }
-                    else
-                    {
-                        if (curso.CursoInvestigador == null)
-                        {
-                            constraintValidatorContext.AddInvalid(
-                                "seleccione el nombre del curso|CursoInvestigador", "CursoInvestigador");
-                            isValid = false;
-                        }
-                    }
+                    //    isValid &= ValidateTipoCursoDiplomado(curso, constraintValidatorContext);
+                    //}
+                    //else
+                    //{
+                    //    if (curso.CursoInvestigador == null)
+                    //    {
+                    //        constraintValidatorContext.AddInvalid(
+                    //            "seleccione el nombre del curso|CursoInvestigador", "CursoInvestigador");
+                    //        isValid = false;
+                    //    }
+                    //}
                 }
                 if (curso.TipoCurso == 2)
                 {

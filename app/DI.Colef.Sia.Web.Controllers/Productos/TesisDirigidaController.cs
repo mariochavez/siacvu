@@ -184,7 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //Lista de Catalogos Pendientes
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
             form.FormasParticipaciones = formaParticipacionMapper.Map(catalogoService.GetActiveFormaParticipaciones());
-            form.TiposEstudiantes = customCollection.TipoAlumnoCursoCustomCollection();
+            form.TiposTesis = customCollection.TipoTesisCustomCollection();
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
             form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
 
@@ -204,7 +204,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         void FormSetCombos(TesisDirigidaForm form)
         {
             ViewData["TesisPosgradoId"] = form.TesisPosgradoId;
-            ViewData["TipoEstudiante"] = form.TipoEstudiante;
+            ViewData["TipoTesis"] = form.TipoTesis;
             ViewData["VinculacionAPyD"] = form.VinculacionAPyDId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;

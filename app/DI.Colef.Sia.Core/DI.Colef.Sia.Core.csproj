@@ -112,7 +112,6 @@
     <Compile Include="Departamento.cs" />
     <Compile Include="Dependencia.cs" />
     <Compile Include="Dictamen.cs" />
-    <Compile Include="Diplomado.cs" />
     <Compile Include="DireccionRegional.cs" />
     <Compile Include="DirigidoA.cs" />
     <Compile Include="Disciplina.cs" />

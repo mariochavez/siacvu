@@ -58,14 +58,14 @@ function dictamenSetup() {
 }
 
 function tesisSetup() {
-    $('#TipoEstudiante').dynamicui(
+    $('#TipoTesis').dynamicui(
             [
-                ['Interno', ['.AlumnoInterno']],
-                ['Externo', ['.AlumnoExterno']]
+                ['Tesis de El Colef', ['.AlumnoInterno']],
+                ['Tesis externas', ['.AlumnoExterno']]
             ]
         );
 
-    $('#TipoEstudiante')[0].dynamic.setup();
+    $('#TipoTesis')[0].dynamic.setup();
 }
 
 function distincionSetup() {
@@ -233,21 +233,12 @@ function organoInternoSetup() {
 function cursoSetup() {    
     $('#TipoCurso').dynamicui(
             [
-                ['Interno', ['.cursointerno_field', '#cursointernodiplomado_field']],
-                ['Externo', ['.cursoexterno_field', '.cursoexternodiplomado_field']]
+                ['Cursos en El Colef', ['#cursointerno_field']],
+                ['Cursos externos', ['#cursoexterno_field']]
             ]
         );
 
     $('#TipoCurso')[0].dynamic.setup();
-
-    $('#EsDiplomado').dynamicui(
-            [
-                ['1', ['.diplomado_field', '.cursoexternodiplomado_field']],
-                ['0', ['#cursointernodiplomado_field']]
-            ]
-        );
-
-    $('#EsDiplomado')[0].dynamic.setup();
 }
 
 function eventoSetup() {

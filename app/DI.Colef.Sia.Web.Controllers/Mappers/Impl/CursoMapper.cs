@@ -28,8 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NumeroHoras = message.NumeroHoras;
             model.Nombre = message.Nombre;
             model.TipoCurso = message.TipoCurso;
-            model.EsDiplomado = message.EsDiplomado;
-            model.NombreDiplomado = message.NombreDiplomado;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
@@ -40,8 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
 
             model.CursoInvestigador = cursoInvestigadorService.GetCursoInvestigadorById(message.CursoInvestigadorId);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.Diplomado = catalogoService.GetDiplomadoById(message.Diplomado);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }

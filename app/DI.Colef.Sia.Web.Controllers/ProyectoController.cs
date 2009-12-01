@@ -472,7 +472,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Usegs = uSEGMapper.Map(catalogoService.GetActiveUSEGs());
             form.ProductosAcademicos = productoAcademicoMapper.Map(catalogoService.GetActiveProductoAcademicos());
             form.ActividadesPrevistas = actividadPrevistaMapper.Map(catalogoService.GetActiveActividadPrevistas());
-            form.TiposEstudiantes = customCollection.TipoAlumnoCursoCustomCollection();
+            form.TiposEstudiantes = customCollection.TipoCursoCustomCollection();
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
 
             form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());

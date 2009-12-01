@@ -28,8 +28,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.Titulo = message.Titulo;
             model.NombreAlumno = message.NombreAlumno;
-            model.TipoEstudiante = message.TipoEstudiante;
+            model.TipoTesis = message.TipoTesis;
 
+            model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
+            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.TesisPosgrado = tesisPosgradoService.GetTesisPosgradoById(message.TesisPosgradoId);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.FormaParticipacion = catalogoService.GetFormaParticipacionById(message.FormaParticipacion);
@@ -49,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Usuario = usuario;
                 model.CreadorPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
-                model.DepartamentoInvestigador = GetLatest(investigador.CargosInvestigador).Departamento;
+                model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
             }
 
             model.ModificadoPor = usuario;
