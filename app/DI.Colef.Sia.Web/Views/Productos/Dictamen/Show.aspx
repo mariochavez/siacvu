@@ -63,7 +63,7 @@
                     	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 	<% } %>
                 <% } %>
-                <% if (Model.Form.TipoDictamenNombre.Contains("Capítulo") || Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
+                <% if (Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
                     <p>
 	                    <label>Editorial</label>
 	                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>

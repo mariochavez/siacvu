@@ -42,8 +42,6 @@
                     <%=Html.DropDownList("TipoCurso", Model.Form.TiposCursos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
                     <%=Html.ValidationMessage("TipoCurso")%>
-                    
-                    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = 274, InstitucionNombre = Model.Form.CursoInvestigador.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
                 </p>
                 
                 <div id="cursointerno_field">

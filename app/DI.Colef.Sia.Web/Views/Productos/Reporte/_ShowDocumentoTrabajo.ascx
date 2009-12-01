@@ -2,6 +2,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
+    <label>Instituci&oacute;n donde se publica</label>
+    <span class="valor"><%= Html.Encode(Model.InstitucionNombre)%>&nbsp;</span>
+</p>
+<p>
     <label>Serie/N&uacute;mero</label>
     <span class="valor"><%= Html.Encode(Model.Numero)%>&nbsp;</span>
 </p>

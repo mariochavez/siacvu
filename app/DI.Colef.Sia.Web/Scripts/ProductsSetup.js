@@ -50,7 +50,7 @@ function dictamenSetup() {
             [
                 ['Artículo', ['#articulo_field']],
                 ['Proyecto de investigación CONACyT', ['#proyecto_field']],
-                [['Capítulo en libro', 'Libro'], ['#capituloLibro_field']]
+                [['Libro'], ['#libro_field']]
             ]
         );
 

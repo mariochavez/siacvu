@@ -8,12 +8,14 @@
 <div class="tieneproyecto_field">
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
-<div class="ReporteTecnico">
-    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Instancia a la que se presenta el reporte", IsShowForm = false }); %>
-</div>
-<div class="DocumentoTrabajo">
-    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución donde se publica", IsShowForm = false }); %>
-</div>
+<p class="ReporteDocumento">
+    <label class="ReporteTecnico">Instancia a la que se presenta el reporte</label>
+    <label class="DocumentoTrabajo">Instituci&oacute;n donde se publica</label>
+    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
+            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
+    <%=Html.ValidationMessage("InstitucionNombre")%>
+</p>
 <p class="DocumentoTrabajo">
 	<label>Serie/N&uacute;mero</label>
 	<%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>

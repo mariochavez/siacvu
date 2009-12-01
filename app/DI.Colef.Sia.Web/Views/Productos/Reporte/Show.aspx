@@ -58,11 +58,7 @@
                     <span class="valor"><%= HumanizeHelper.TipoReporte(Model.Form.TipoReporte)%>&nbsp;</span>
                 </p>
                 
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</span>
-                </p>    
-                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>    
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <h4>Coautores de la publicaci&oacute;n</h4>
@@ -83,21 +79,9 @@
                 
                 <% if (Model.Form.TipoReporte == 1){ %>
                     <h4>Contenido del documento de trabajo</h4>
-                    <% Html.RenderPartial("_ShowInstitucionShort", Model.Form.ShowFields); %>
                     <% Html.RenderPartial("_ShowDocumentoTrabajo", Model.Form); %>
                 <% } if (Model.Form.TipoReporte == 2){%>
                     <h4>Contenido del reporte t&eacute;cnico</h4>
-                    <% Html.RenderPartial("_ShowInstitucionShort", Model.Form.ShowFields); %>
-                    <p>
-                        <label></label>
-                        ¿Existe proyecto de investigaci&oacute;n de referencia?
-                        <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
-                    </p>
-                    
-                    <% if (Model.Form.TieneProyecto) { %>
-                        <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
-                    <% } %>
-                        
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
                 <% } %>  
                 

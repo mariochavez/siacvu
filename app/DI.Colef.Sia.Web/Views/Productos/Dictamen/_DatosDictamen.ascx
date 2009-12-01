@@ -22,7 +22,7 @@
 <div id="articulo_field">
     <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
 </div>
-<p id="capituloLibro_field" class="noeffect">
+<p id="libro_field" class="noeffect">
 	<label>Editorial</label>
 	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
         "Seleccione ...", new { @class = "requerido" })%>

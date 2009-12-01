@@ -98,8 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var distincion = distincionService.GetDistincionById(id);
 
-            var distincionForm = distincionMapper.Map(distincion);
-            data.Form = SetupShowForm(distincionForm);
+            data.Form = distincionMapper.Map(distincion);
 
             ViewData.Model = data;
             return View();
@@ -191,25 +190,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["Pais"] = form.PaisId;
             ViewData["EstadoPais"] = form.EstadoPaisId;
-        }
-
-        private DistincionForm SetupShowForm(DistincionForm form)
-        {
-            form = form ?? new DistincionForm();
-
-            form.ShowFields = new ShowFieldsForm
-                                  {
-                                      InstitucionNombre = form.Institucion.Nombre,
-                                      InstitucionCiudad = form.Institucion.Ciudad,
-                                      InstitucionEstadoPaisNombre = form.Institucion.EstadoPaisNombre,
-                                      InstitucionPaisNombre = form.Institucion.PaisNombre,
-                                      InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
-
-                                      IsShowForm = true,
-                                      InstitucionLabel = "Institución otorgante"
-                                  };
-
-            return form;
         }
     }
 }

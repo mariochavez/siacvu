@@ -92,6 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionAutor = 1;
+            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
 
             return View(data);
         }

@@ -62,9 +62,10 @@
                     <span class="valor"><%= Html.Encode(Model.Form.FechaOtorgamiento)%>&nbsp;</span>
                     <span>Formato (dd/mm/yyyy)</span>
                 </p>
-                
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
-                
+                <p>
+                    <label>Instituci&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.InstitucionNombre)%>&nbsp;</span>
+                </p>
                 <p>
                     <label>&Aacute;mbito</label>
                     <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>

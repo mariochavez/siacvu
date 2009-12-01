@@ -487,7 +487,6 @@ insert into OtraParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1,
 insert into OtraParticipaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
 
 insert into TipoDictamenes values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoDictamenes values('Capítulo en libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Proyecto de investigación CONACyT',GETDATE(), GETDATE(), 1, 1, 1);
 
