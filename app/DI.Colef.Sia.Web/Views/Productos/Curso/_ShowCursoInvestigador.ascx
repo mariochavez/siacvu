@@ -10,18 +10,25 @@
     <span class="valor"><%= Html.Encode(Model.CursoInvestigador.ProgramaEstudioNombre) %>&nbsp;</span>
 </p>
 <p>
-    <label>Instituci&oacute;n</label>
-    <span class="valor"><%= Html.Encode(Model.CursoInvestigador.InstitucionNombre) %>&nbsp;</span>
+    <label>Nivel de estudios</label>
+    <span class="valor"><%= Html.Encode(Model.CursoInvestigador.NivelEstudioNombre)%>&nbsp;</span>
 </p>
+
+<% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
+
 <p>
-    <label>Fecha inicial</label>
+    <label>Fecha de inicio</label>
     <span class="valor"><%= Html.Encode(Model.CursoInvestigador.FechaInicial) %>&nbsp;</span>
 </p>
 <p>
-    <label>Fecha final</label>
+    <label>Fecha de fin</label>
     <span class="valor"><%= Html.Encode(Model.CursoInvestigador.FechaFinal) %>&nbsp;</span>
 </p>
 <p>
     <label>N&uacute;mero de horas</label>
     <span class="valor"><%= Html.Encode(Model.CursoInvestigador.NumeroHoras) %>&nbsp;</span>
 </p>
+
+<% Html.RenderPartial("_Show2doNivel", Model.ShowFields); %>
+
+<% Html.RenderPartial("_ShowSubdisciplina", Model.ShowFields); %>

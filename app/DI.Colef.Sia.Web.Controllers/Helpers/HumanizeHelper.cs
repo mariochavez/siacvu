@@ -173,23 +173,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreNivelIdioma;
         }
 
-        public static string TipoAlumnoCurso(int tipoAlumnoCurso)
+        public static string TipoTesis(int tipoTesis)
         {
-            string nombreTipoAlumnoCurso;
+            string nombreTipoTesis;
 
-            switch (tipoAlumnoCurso)
+            switch (tipoTesis)
             {
                 case 1:
-                    nombreTipoAlumnoCurso = "Interno";
+                    nombreTipoTesis = "Tesis de El Colef";
                     break;
                 case 2:
-                    nombreTipoAlumnoCurso = "Externo";
+                    nombreTipoTesis = "Tesis externas";
                     break;
                 default:
                     return "";
             }
 
-            return nombreTipoAlumnoCurso;
+            return nombreTipoTesis;
+        }
+
+        public static string TipoCurso(int tipoCurso)
+        {
+            string nombreTipoCurso;
+
+            switch (tipoCurso)
+            {
+                case 1:
+                    nombreTipoCurso = "Cursos en El Colef";
+                    break;
+                case 2:
+                    nombreTipoCurso = "Cursos externos";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoCurso;
         }
 
         public static string Periodo(int periodo)

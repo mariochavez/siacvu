@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             //isValid &= ValidateFechas(tesisDirigida, constraintValidatorContext);
 
-            isValid &= ValidateTipoAlumno(tesisDirigida, constraintValidatorContext);
+            //isValid &= ValidateTipoAlumno(tesisDirigida, constraintValidatorContext);
             
             return isValid;
         }
@@ -52,13 +52,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
-            if (tesisDirigida.TipoEstudiante == 0)
+            if (tesisDirigida.TipoTesis == 0)
             {
                 constraintValidatorContext.AddInvalid(
                     "seleccione el tipo de alumno|TipoEstudiante", "TipoEstudiante");
                 isValid = false;
             }
-            else if (tesisDirigida.TipoEstudiante == 2)
+            else if (tesisDirigida.TipoTesis == 2)
             {
                 if (tesisDirigida.Titulo == "")
                 {

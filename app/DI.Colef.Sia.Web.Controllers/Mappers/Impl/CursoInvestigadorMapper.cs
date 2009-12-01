@@ -31,6 +31,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
+
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
     }
 }

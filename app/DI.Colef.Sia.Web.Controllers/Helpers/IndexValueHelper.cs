@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
@@ -13,8 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 indexValue = curso.Nombre;
             if(curso.CursoInvestigadorNombre != "")
                 indexValue = curso.CursoInvestigadorNombre;
-            if (curso.TipoCurso == 1 && curso.EsDiplomado)
-                indexValue = curso.NombreDiplomado;
 
             return indexValue;
         }

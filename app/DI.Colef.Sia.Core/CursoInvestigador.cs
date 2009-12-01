@@ -18,5 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaFinal { get; set; }
 
         public virtual int NumeroHoras { get; set; }
+
+        public virtual NivelEstudio NivelEstudio { get; set; }
+
+        public virtual Nivel Nivel2 { get; set; }
+
+        public virtual Subdisciplina Subdisciplina { get; set; }
     }
 }

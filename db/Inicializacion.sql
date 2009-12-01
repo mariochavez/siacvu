@@ -152,10 +152,10 @@ GO
 --InstitucionFk 14 => UABC Mexicali
 CREATE VIEW CursoInvestigadores AS
 SELECT		2 AS Id, 'Teoría económica y regional' AS Nombre, 'Aguilar Benítez Ismael' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
-			'Feb  27 2009 12:00AM' AS FechaFinal, 60 AS NumeroHoras, 47 AS ProgramaEstudioFk, 14 AS InstitucionFk
+			'Feb  27 2009 12:00AM' AS FechaFinal, 60 AS NumeroHoras, 47 AS ProgramaEstudioFk, 274 AS InstitucionFk, 1 AS NivelEstudioFk, 298 AS Nivel2Fk, 9 AS SubdisciplinaFk
 UNION
 SELECT		1 AS Id, 'Teorías del desarrollo' AS Nombre, 'Martínez Pellégrini Sárah Eva' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
-			'Feb  27 2009 12:00AM' AS FechaFinal, 30 AS NumeroHoras, 47 AS ProgramaEstudioFk, 14 AS InstitucionFk
+			'Feb  27 2009 12:00AM' AS FechaFinal, 30 AS NumeroHoras, 47 AS ProgramaEstudioFk, 274 AS InstitucionFk, 1 AS NivelEstudioFk, 298 AS Nivel2Fk, 9 AS SubdisciplinaFk
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)
@@ -863,7 +863,7 @@ insert into Instituciones values('HEWLETT FOUNDATION',null,null,null,null,null,n
 insert into Instituciones values('USC',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('AIDS RESEARCH PROGRAM',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('USAID',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
-insert into Instituciones values('El Colef',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
+insert into Instituciones values('El Colef',null,null,null,null,null,null,1,'Tijuana',GETDATE(), GETDATE(),1,1,2,null,null, 1, 1);
 insert into Instituciones values('Comisión de Cooperación Ecologica',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('The Border Studies Program',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
 insert into Instituciones values('Secretaría de Energía de la Federación',null,null,null,null,null,null,0,null,GETDATE(), GETDATE(),1,null,null,null,null, 1, 1);
@@ -3296,11 +3296,6 @@ insert into VinculacionAPyDes values('Tesis orientada al desarrollo socioeconómi
 insert into Editoriales values('Editorial 1',GETDATE(), GETDATE(), 1, 1, 12, 1, 1)
 insert into Editoriales values('Editorial 2',GETDATE(), GETDATE(), 1, 2, 13, 1, 1)
 insert into Editoriales values('Editorial 3',GETDATE(), GETDATE(), 1, 3, 14, 1, 1)
-
---Valores de prueba
-insert into Diplomados values('Diplomado 1',GETDATE(), GETDATE(), 1, 1, 1)
-insert into Diplomados values('Diplomado 2',GETDATE(), GETDATE(), 1, 1, 1)
-insert into Diplomados values('Diplomado 3',GETDATE(), GETDATE(), 1, 1, 1)
 
 insert into DireccionRegionales values('Dirección General Regional Noreste',GETDATE(), GETDATE(), 1, 1, 1)
 insert into DireccionRegionales values('Dirección Regional Noroeste',GETDATE(), GETDATE(), 1, 1, 1)

@@ -37,10 +37,10 @@
                 
                 <h4>Participaci&oacute;n en tesis</h4>
                 <p>
-                    <label>Tipo de alumno</label>
-                    <%=Html.DropDownList("TipoEstudiante", Model.Form.TiposEstudiantes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                                "Seleccione ...", new { @class = "requerido" })%>
-                    <%=Html.ValidationMessage("TipoEstudiante")%>
+                    <label>Tipo de tesis</label>
+                    <%=Html.DropDownList("TipoTesis", Model.Form.TiposTesis.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("TipoTesis")%>
                 </p>
                 
                 <% Html.RenderPartial("_DatosTesis", Model.Form); %>

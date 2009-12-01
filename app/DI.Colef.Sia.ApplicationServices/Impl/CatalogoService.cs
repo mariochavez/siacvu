@@ -26,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<Coordinacion> coordinacionRepository;
         readonly IRepository<Departamento> departamentoRepository;
         readonly IRepository<Dependencia> dependenciaRepository;
-        readonly IRepository<Diplomado> diplomadoRepository;
         readonly IRepository<DireccionRegional> direccionRegionalRepository;
         readonly IRepository<DirigidoA> dirigidoARepository;
         readonly IRepository<Disciplina> disciplinaRepository;
@@ -106,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<FormaParticipacion> formaParticipacionRepository,
                                IRepository<ResponsableExterno> responsableExternoRepository,
                                IRepository<TipoParticipacion> tipoParticipacionRepository,
-                               IRepository<Nivel> nivelRepository, IRepository<Diplomado> diplomadoRepository,
+                               IRepository<Nivel> nivelRepository,
                                IRepository<Sector> sectorRepository,
                                IRepository<AreaInvestigacion> areaInvestigacionRepository,
                                IRepository<ProgramaEstudio> programaEstudioRepository,
@@ -198,7 +197,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.tipoPresentacionRepository = tipoPresentacionRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
-            this.diplomadoRepository = diplomadoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
             this.tipoApoyoRepository = tipoApoyoRepository;
             this.subprogramaConacytRepository = subprogramaConacytRepository;
@@ -2092,33 +2090,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             vinculacionAPyD.ModificadoEl = DateTime.Now;
 
             vinculacionAPyDRepository.SaveOrUpdate(vinculacionAPyD);
-        }
-
-        public Diplomado GetDiplomadoById(int id)
-        {
-            return diplomadoRepository.Get(id);
-        }
-
-        public Diplomado[] GetAllDiplomados()
-        {
-            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Nombre)).ToArray();
-        }
-
-        public Diplomado[] GetActiveDiplomados()
-        {
-            return ((List<Diplomado>) OrderCatalog<Diplomado>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveDiplomado(Diplomado diplomado)
-        {
-            if (diplomado.Id == 0)
-            {
-                diplomado.Activo = true;
-                diplomado.CreadorEl = DateTime.Now;
-            }
-            diplomado.ModificadoEl = DateTime.Now;
-
-            diplomadoRepository.SaveOrUpdate(diplomado);
         }
 
         public DireccionRegional GetDireccionRegionalById(int id)

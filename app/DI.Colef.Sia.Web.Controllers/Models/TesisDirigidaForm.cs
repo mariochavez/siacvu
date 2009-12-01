@@ -7,10 +7,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
         public string NombreAlumno { get; set; }
-        public string DepartamentoInvestigadorNombre { get; set; }
+        public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
+        public string FechaGrado { get; set; }
 
-        public int TipoEstudiante { get; set; }
+        public int TipoTesis { get; set; }
 
         public int VinculacionAPyD { get; set; }
         public int VinculacionAPyDId { get; set; }
@@ -43,6 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DisciplinaNombre { get; set; }
         public string AreaNombre { get; set; }
 
+        public int ProgramaEstudioId { get; set; }
+        public string ProgramaEstudioNombre { get; set; }
+
         public int TesisPosgradoId { get; set; }
 
         /*Show*/
@@ -53,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Catalogos */
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public FormaParticipacionForm[] FormasParticipaciones { get; set; }
-        public CustomSelectForm[] TiposEstudiantes { get; set; }
+        public CustomSelectForm[] TiposTesis { get; set; }
         public VinculacionAPyDForm[] VinculacionesAPyDs { get; set; }
         public TesisPosgradoForm[] TesisPosgrados { get; set; }
         public AreaForm[] Areas { get; set; }

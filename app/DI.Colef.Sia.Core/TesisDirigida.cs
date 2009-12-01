@@ -46,11 +46,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaTesisDirigida> FirmaTesisDirigidas { get; private set; }
 
-        public virtual int TipoEstudiante { get; set; }
+        public virtual int TipoTesis { get; set; }
 
         public virtual TesisPosgrado TesisPosgrado { get; set; }
 
 		public virtual string Titulo { get; set; }
+
+        public virtual ProgramaEstudio ProgramaEstudio { get; set; }
+
+        public virtual DateTime FechaGrado { get; set; }
 
         public virtual VinculacionAPyD VinculacionAPyD { get; set; }
 
@@ -79,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
-        public virtual Departamento DepartamentoInvestigador { get; set; }
+        public virtual Departamento Departamento { get; set; }
 
         public virtual Sede Sede { get; set; }
 

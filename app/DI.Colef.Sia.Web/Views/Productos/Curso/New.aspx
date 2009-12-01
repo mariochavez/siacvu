@@ -36,20 +36,31 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <h4>Datos del curso</h4>                
-                <% Html.RenderPartial("_DatosCurso", Model.Form); %>
-            
-                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
-            
-                <h4>Complementaria CVU</h4>    
+                <h4>Datos del curso</h4>
                 <p>
-	                <label>Pa&iacute;s</label>
-	                <%=Html.DropDownList("Pais", Model.Form.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-		                "Seleccione ...")%>
-	                <span class="cvu"></span>
+                    <label>Tipo de curso</label>
+                    <%=Html.DropDownList("TipoCurso", Model.Form.TiposCursos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+                        "Seleccione ...", new { @class = "requerido" })%>
+                    <%=Html.ValidationMessage("TipoCurso")%>
+                    
+                    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = 274, InstitucionNombre = Model.Form.CursoInvestigador.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
                 </p>
-        				
+                
+                <div id="cursointerno_field">
+                    <h4>Cursos en El Colef</h4>
+                    <p>
+	                    <label>Nombre del curso</label>
+	                    <%=Html.DropDownList("CursoInvestigadorId", Model.Form.CursosInvestigadores.CreateSelectList<CursoInvestigadorForm>("Id", "Nombre"),
+                            "Seleccione ...", new { @class = "requerido" })%>
+	                    <%=Html.ValidationMessage("CursoInvestigador")%>
+                    </p>
+                </div>
+                
+                <div id="cursoexterno_field">
+                    <h4>Cursos en instituciones externas</h4>
+                    <% Html.RenderPartial("_DatosCursoExterno", Model.Form); %>
+                </div>
+                
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar")%>
                 </p>
