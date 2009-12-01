@@ -25,8 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(SNIInvestigadorForm message, SNIInvestigador model)
         {
-            model.Fecha = message.Fecha.FromShortDateToDateTime();
-            model.ExpedienteSNI = message.ExpedienteSNI;
+            model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
+            model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             model.SNI = catalogoService.GetSNIById(message.SNI);
 
             if (model.IsTransient())

@@ -6,7 +6,7 @@
 	<% foreach(var categoria in Model.CategoriasInvestigador) { %>
         <div id="estado_<%=Html.Encode(categoria.Id) %>" class="sublista">
             <h6><a href="<%=Url.Action("DeleteCategoria", null, new{id = categoria.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-    	    <%=Html.Encode(categoria.CategoriaNombre)%> <span><%=Html.Encode(categoria.Fecha)%></span></h6>
+    	    <%=Html.Encode(categoria.CategoriaNombre)%> periodo <span><%=Html.Encode(categoria.FechaInicial)%> o <%=Html.Encode(categoria.FechaFinal)%></span></h6>
         </div><!--end estadolista-->
     <% } %>
     

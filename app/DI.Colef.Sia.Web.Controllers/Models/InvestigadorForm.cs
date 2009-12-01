@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class InvestigadorForm
@@ -84,5 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ArchivoForm[] ArchivosInvestigador { get; set; }
         public ArchivoForm ArchivoInvestigador { get; set; }
         public TipoArchivoForm[] TipoArchivos { get; set; }
+
+        public string ExpedienteSNI { get; set; }
     }
 }

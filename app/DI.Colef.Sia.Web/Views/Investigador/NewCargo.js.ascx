@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <% using (Html.BeginForm("AddCargo", "Investigador", FormMethod.Post, new { id = "cargoform" })) { %>
+    <% using (Html.BeginForm("AddCargo", "Investigador", FormMethod.Post, new { id = "cargoform", style = "margin: 0px;" })) { %>
     <%=Html.Hidden("InvestigadorId", Model.Id) %>
     <% Html.RenderPartial("_NewCargo"); %>
     <div class="minilistaboton">
@@ -21,3 +21,4 @@ $('#cargoForm').html(html);
 $('#cargoNew').hide();
 $('#cargoForm').show();
 DateTimePicker.setup();
+Cascade.setup();

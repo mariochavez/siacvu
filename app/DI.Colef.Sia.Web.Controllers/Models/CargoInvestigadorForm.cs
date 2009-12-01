@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public int Sede { get; set; }
 
+        public string SedeDireccionGeneralNombre { get; set; }
+
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
     }

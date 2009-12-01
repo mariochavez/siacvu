@@ -73,6 +73,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(20)]
         public virtual string ClaveCVU { get; set; }
 
+        [Length(40)]
+        public virtual string ExpedienteSNI { get; set; }
+
         [NotNull]
         public virtual AreaTematica AreaTematica { get; set; }
 

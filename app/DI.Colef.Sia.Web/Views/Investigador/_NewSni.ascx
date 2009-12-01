@@ -10,13 +10,10 @@
 </p>
 <p>
     <label>Periodo</label>
-    <%=Html.TextBox("SNIInvestigador.Fecha", Model.SNIInvestigador.Fecha, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
+    <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.SNIInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
+    <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.SNIInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span> 
-    <%=Html.ValidationMessage("SNIInvestigador.Fecha")%>
-</p>
-<p>
-    <label>Expediente SNI</label>
-    <%=Html.TextBox("SNIInvestigador.ExpedienteSNI", Model.SNIInvestigador.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
-    <span class="cvu"></span> 
+    <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
+    <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
 </p>

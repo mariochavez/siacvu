@@ -58,22 +58,12 @@
 		            <%=Html.ValidationMessage("FechaContrato")%>
 	            </p>
 	            
-	            <h4>Grado Acad&eacute;mico</h4>
+	            <h4>Grado Acad&eacute;mico del Investigador</h4>
 			    <% Html.RenderPartial("_EditGrado", Model.Form); %>
 	            
 	            <h4>Perfil ac&aacute;demico del investigador</h4> 		        
-                <p>
-                    <label>Expediente producci&oacute;n</label>
-                    <%=Html.TextBox("ExpedienteProduccion", Model.Form.ExpedienteProduccion, new { @class = "input250", maxlength = 40 })%>
-                </p> 
-                <p>
-                    <label>Expediente acad&eacute;mico</label>
-                    <%=Html.TextBox("ExpedienteAcademico", Model.Form.ExpedienteAcademico, new { @class = "input250", maxlength = 40 })%>
-                </p>                         
-                <p>
-                    <label>Clave CVU</label>
-                    <%=Html.TextBox("ClaveCVU", Model.Form.ClaveCVU, new { @class = "input250", maxlength = 40 })%>
-                </p>
+                <% Html.RenderPartial("_PerfilAcademico", Model.Form); %>
+                
 		        <h4>Estatus del Investigador</h4>
 			    <% Html.RenderPartial("_EditEstado", Model.Form); %>
 		        
@@ -84,6 +74,11 @@
 			    <% Html.RenderPartial("_EditCategoria", Model.Form); %>
 		        
 		        <h4>Sistema nacional de investigadores</h4>
+		        <p>
+                    <label>Expediente SNI</label>
+                    <%=Html.TextBox("ExpedienteSNI", Model.Form.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
+                    <span class="cvu"></span> 
+                </p>
 			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
 
                 <p class="submit">

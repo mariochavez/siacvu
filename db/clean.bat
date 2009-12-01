@@ -1,3 +1,3 @@
-set IR_CMD="%MERLIN_ROOT%\bin\Debug\ir.exe"
+set IR_CMD="C:\ironruby\bin\ir.exe"
 
 %IR_CMD% clean_schema.rb

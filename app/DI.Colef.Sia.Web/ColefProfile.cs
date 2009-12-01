@@ -120,7 +120,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<SNIInvestigador, SNIInvestigadorForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.Fecha,
+                .ForMember(d => d.FechaInicial,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.SNI,
                            o => o.Ignore());

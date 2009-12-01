@@ -78,6 +78,11 @@
                     <% Html.RenderPartial("_NewCategoria", Model.Form); %>
                     
                     <h4>Sistema nacional de investigadores</h4>
+                    <p>
+                        <label>Expediente SNI</label>
+                        <%=Html.TextBox("ExpedienteSNI", Model.Form.ExpedienteSNI, new { @class = "input250", maxlength = 40 })%>
+                        <span class="cvu"></span> 
+                    </p>
                     <% Html.RenderPartial("_NewSni", Model.Form); %>
                     
                     <h4>Archivos</h4>

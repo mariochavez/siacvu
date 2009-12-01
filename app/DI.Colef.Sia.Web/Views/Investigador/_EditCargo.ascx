@@ -6,8 +6,8 @@
 	<% foreach(var cargo in Model.CargosInvestigador) { %>
         <div id="estado_<%=Html.Encode(cargo.Id) %>" class="sublista">
             <h6><a href="<%=Url.Action("DeleteCargo", null, new{id = cargo.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-    	    <%=Html.Encode(cargo.CargoNombre)%> <span><%=Html.Encode(cargo.PuestoNombre)%>, <%=Html.Encode(cargo.SedeNombre) %></span></h6>
-    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.DireccionRegionalNombre) %></span>
+    	    <%=Html.Encode(cargo.PuestoNombre)%> <span><%=Html.Encode(cargo.SedeNombre) %></span></h6>
+    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.SedeDireccionGeneralNombre) %></span>
         </div><!--end estadolista-->
     <% } %>
     

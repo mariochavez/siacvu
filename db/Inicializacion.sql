@@ -3319,7 +3319,7 @@ insert into Sedes values('Mexicali',GETDATE(), GETDATE(), 1, 2, 1, 1);
 insert into Sedes values('Nogales',GETDATE(), GETDATE(), 1, 2, 1, 1);
 insert into Sedes values('Tijuana',GETDATE(), GETDATE(), 1, 3, 1, 1);
 
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1, 1)
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Expediente SNI', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 2, 1, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,1)
 INSERT CargoInvestigadores VALUES('Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1,1,1)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,1)
@@ -3327,14 +3327,14 @@ INSERT GradoAcademicoInvestigadores VALUES('Jan  5 2009 12:00AM','Migracion en l
 INSERT SNIInvestigadores VALUES('Feb  2 2009 12:00AM','Feb  2 2010 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,2,1,1,1)
 
 --Investigador de prueba
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 4, 1, 1, 1)
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Expediente SNI', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 4, 1, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,2)
 INSERT CargoInvestigadores VALUES('Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1,1,2)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,2)
 INSERT GradoAcademicoInvestigadores VALUES('Jan  5 2009 12:00AM','Migracion en la frontera norte de Mexico', GETDATE(),GETDATE(),1,1,1,1,1,2)
 INSERT SNIInvestigadores VALUES('Feb  2 2009 12:00AM','Feb  2 2010 12:00AM','Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,2,1,1,2)
 
-INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 3, 1, 1, 1)
+INSERT Investigadores VALUES('Dec 15 2008 12:00AM', 'Dec 14 2008 12:00AM', 'Produccion','Academico','CVU', 'Expediente SNI', 'Area 1', 'Area 2', 'Area 3', 'Aug 18 2009  9:23AM', 'Aug 18 2009  9:23AM', 1, 3, 1, 1, 1)
 INSERT EstadoInvestigadores VALUES('Jan  5 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,3)
 INSERT CargoInvestigadores VALUES('Aug 18 2009  9:23AM','Aug 18 2009  9:23AM',1,1,1,1,1,1,3)
 INSERT CategoriaInvestigadores VALUES('Feb  2 2009 12:00AM','Aug 18 2009  9:23AM',GETDATE(), GETDATE(),1,1,1,1,3)

@@ -8,11 +8,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [SNIInvestigadorValidator]
     public class SNIInvestigador : Entity, IBaseEntity
     {
-        [NotEmptyDate]
-        public virtual DateTime Fecha { get; set; }
+        public virtual DateTime FechaInicial { get; set; }
 
-        [Length(40)]
-        public virtual string ExpedienteSNI { get; set; }
+        public virtual DateTime FechaFinal { get; set; }
 
         [NotNull]
         public virtual SNI SNI { get; set; }

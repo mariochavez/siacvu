@@ -4,7 +4,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <% using (Html.BeginForm("AddSni", "Investigador", FormMethod.Post, new { id = "sniform" })) { %>
+    <% using (Html.BeginForm("AddSni", "Investigador", FormMethod.Post, new { id = "sniform", style = "margin: 0px;" })) { %>
     <%=Html.Hidden("InvestigadorId", Model.Id) %>
     <% Html.RenderPartial("_NewSni"); %>
     <div class="minilistaboton">
