@@ -51,8 +51,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)

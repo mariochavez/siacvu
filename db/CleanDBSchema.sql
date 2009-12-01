@@ -205,8 +205,28 @@ alter table FormacionAcademicas  drop constraint FK824D8BEAC541BC16
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA3E082BED]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA3E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAEC222BA6]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEAEC222BA6
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEAC8628149]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
 alter table FormacionAcademicas  drop constraint FK824D8BEAC8628149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA295BC133]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEABC063744]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEABC063744
 
 
 
@@ -425,6 +445,16 @@ alter table Libros  drop constraint FK439120E78A77AB9C
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7295BC133]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7BC063744]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7BC063744
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7F4FE4035]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E7F4FE4035
 
@@ -482,6 +512,16 @@ alter table InstitucionEventos  drop constraint FKCE705D5D3BA127C1
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D096A829E09]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
 alter table GrupoInvestigaciones  drop constraint FK742C6D096A829E09
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D093E082BED]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
+alter table GrupoInvestigaciones  drop constraint FK742C6D093E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D09EC222BA6]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
+alter table GrupoInvestigaciones  drop constraint FK742C6D09EC222BA6
 
 
 
@@ -557,6 +597,16 @@ alter table TipoParticipaciones  drop constraint FK20CDD2C574E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE628A77AB9C]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE628A77AB9C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62295BC133]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62BC063744]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62BC063744
 
 
 
@@ -705,13 +755,43 @@ alter table Proyectos  drop constraint FK8BA36D779CF67963
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D773E082BED]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D773E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77EC222BA6]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77EC222BA6
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77C8628149]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D77C8628149
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77295BC133]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77BC063744]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77BC063744
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77F4FE4035]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D77F4FE4035
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77D1F1E09F]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77D1F1E09F
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77AA0C7213]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77AA0C7213
 
 
 
@@ -1105,6 +1185,16 @@ alter table Instituciones  drop constraint FK7E69627C74E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC3E082BED]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC3E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCEC222BA6]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCEC222BA6
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCC8628149]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CCC8628149
 
@@ -1115,8 +1205,28 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC7A8488F7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC295BC133]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCBC063744]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCBC063744
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCF4FE4035]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CCF4FE4035
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCD1F1E09F]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCD1F1E09F
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CCAA0C7213]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CCAA0C7213
 
 
 
@@ -1455,8 +1565,28 @@ alter table TesisDirigidas  drop constraint FKEF4DD31164F7D1CD
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3113E082BED]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD3113E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311EC222BA6]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311EC222BA6
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311C8628149]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
 alter table TesisDirigidas  drop constraint FKEF4DD311C8628149
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311295BC133]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311BC063744]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311BC063744
 
 
 
@@ -1555,6 +1685,16 @@ alter table Cursos  drop constraint FK8E38D63E64F7D1CD
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E3E082BED]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E3E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EEC222BA6]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EEC222BA6
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EC8628149]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63EC8628149
 
@@ -1562,6 +1702,16 @@ alter table Cursos  drop constraint FK8E38D63EC8628149
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E7A8488F7]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63E7A8488F7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E295BC133]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EBC063744]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EBC063744
 
 
 
@@ -1697,6 +1847,16 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE0197A8C3DE5
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01964F7D1CD]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE01964F7D1CD
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0193E082BED]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE0193E082BED
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE019EC222BA6]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE019EC222BA6
 
 
 
@@ -1887,6 +2047,16 @@ alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD8A77AB9C]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD8A77AB9C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD295BC133]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADBC063744]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEADBC063744
 
 
 
@@ -2187,6 +2357,16 @@ alter table Articulos  drop constraint FK3EB394D770EA6C9E
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D78A77AB9C]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D78A77AB9C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7295BC133]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7295BC133
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7BC063744]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7BC063744
 
 
 
@@ -3209,7 +3389,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        PaisFk INT null,
        EstadoPaisFk INT null,
        EstatusFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        UsuarioFk INT null,
        CreadorPorFk INT null,
@@ -3388,6 +3572,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        EventoFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        RevistaPublicacionFk INT null,
        UsuarioFk INT null,
@@ -3427,6 +3613,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
@@ -3506,6 +3694,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        AreaTematicaFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
@@ -3585,8 +3775,14 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ProductoAcademicoFk INT null,
        ActividadPrevistaFk INT null,
        GradoAcademicoFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       SectorEconomicoFk INT null,
+       RamaFk INT null,
        ClaseFk INT null,
        UsuarioFk INT null,
        CreadorPorFk INT null,
@@ -3865,9 +4061,15 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadorEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
        PaisFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       SectorEconomicoFk INT null,
+       RamaFk INT null,
        ClaseFk INT null,
        UsuarioFk INT null,
        CreadorPorFk INT null,
@@ -4115,7 +4317,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        FormaParticipacionFk INT null,
        GradoAcademicoFk INT null,
        InstitucionFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        UsuarioFk INT null,
        DepartamentoInvestigadorFk INT null,
@@ -4190,8 +4396,12 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ProgramaEstudioFk INT null,
        CursoInvestigadorFk INT null,
        InstitucionFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
        PaisFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -4276,6 +4486,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        SedeFk INT null,
        TipoEstanciaFk INT null,
        InstitucionFk INT null,
+       SectorFk INT null,
+       OrganizacionFk INT null,
        Nivel2Fk INT null,
        CreadorPorFk INT null,
        ModificadoPorFk INT null,
@@ -4417,6 +4629,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        Activo BIT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        EditorialFk INT null,
        UsuarioFk INT null,
@@ -4632,6 +4846,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        Activo BIT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
+       AreaFk INT null,
+       DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        RevistaPublicacionFk INT null,
        DepartamentoFk INT null,
@@ -5154,9 +5370,29 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references EstatusFormacionAcademicas
 
     alter table FormacionAcademicas 
+        add constraint FK824D8BEA3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table FormacionAcademicas 
         add constraint FK824D8BEAC8628149 
         foreign key (Nivel2Fk) 
         references Niveles
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEABC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table FormacionAcademicas 
         add constraint FK824D8BEAF4FE4035 
@@ -5244,6 +5480,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references AreaTematicas
 
     alter table Libros 
+        add constraint FK439120E7295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Libros 
+        add constraint FK439120E7BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Libros 
         add constraint FK439120E7F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
@@ -5274,6 +5520,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Eventos
 
     alter table GrupoInvestigaciones 
+        add constraint FK742C6D093E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table GrupoInvestigaciones 
+        add constraint FK742C6D09EC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table GrupoInvestigaciones 
         add constraint FK742C6D09C8628149 
         foreign key (Nivel2Fk) 
         references Niveles
@@ -5292,6 +5548,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKF708AE628A77AB9C 
         foreign key (AreaTematicaFk) 
         references AreaTematicas
+
+    alter table Resenas 
+        add constraint FKF708AE62295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Resenas 
+        add constraint FKF708AE62BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table Resenas 
         add constraint FKF708AE62F4FE4035 
@@ -5409,14 +5675,44 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references GradoAcademicos
 
     alter table Proyectos 
+        add constraint FK8BA36D773E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table Proyectos 
+        add constraint FK8BA36D77EC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table Proyectos 
         add constraint FK8BA36D77C8628149 
         foreign key (Nivel2Fk) 
         references Niveles
 
     alter table Proyectos 
+        add constraint FK8BA36D77295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Proyectos 
+        add constraint FK8BA36D77BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table Proyectos 
         add constraint FK8BA36D77F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table Proyectos 
+        add constraint FK8BA36D77D1F1E09F 
+        foreign key (SectorEconomicoFk) 
+        references Sectores
+
+    alter table Proyectos 
+        add constraint FK8BA36D77AA0C7213 
+        foreign key (RamaFk) 
+        references Ramas
 
     alter table Proyectos 
         add constraint FK8BA36D7744A2723A 
@@ -5584,6 +5880,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Sectores
 
     alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table ExperienciaProfesionales 
         add constraint FK4F93B3CCC8628149 
         foreign key (Nivel2Fk) 
         references Niveles
@@ -5594,9 +5900,29 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Paises
 
     alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CC295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCBC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table ExperienciaProfesionales 
         add constraint FK4F93B3CCF4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCD1F1E09F 
+        foreign key (SectorEconomicoFk) 
+        references Sectores
+
+    alter table ExperienciaProfesionales 
+        add constraint FK4F93B3CCAA0C7213 
+        foreign key (RamaFk) 
+        references Ramas
 
     alter table ExperienciaProfesionales 
         add constraint FK4F93B3CC44A2723A 
@@ -5729,9 +6055,29 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Instituciones
 
     alter table TesisDirigidas 
+        add constraint FKEF4DD3113E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311EC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table TesisDirigidas 
         add constraint FKEF4DD311C8628149 
         foreign key (Nivel2Fk) 
         references Niveles
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table TesisDirigidas 
         add constraint FKEF4DD311F4FE4035 
@@ -5769,6 +6115,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Instituciones
 
     alter table Cursos 
+        add constraint FK8E38D63E3E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table Cursos 
+        add constraint FK8E38D63EEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table Cursos 
         add constraint FK8E38D63EC8628149 
         foreign key (Nivel2Fk) 
         references Niveles
@@ -5777,6 +6133,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK8E38D63E7A8488F7 
         foreign key (PaisFk) 
         references Paises
+
+    alter table Cursos 
+        add constraint FK8E38D63E295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Cursos 
+        add constraint FK8E38D63EBC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table Cursos 
         add constraint FK8E38D63EF4FE4035 
@@ -5847,6 +6213,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKA2BE01964F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
+
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE0193E082BED 
+        foreign key (SectorFk) 
+        references Sectores
+
+    alter table EstanciaInstitucionExternas 
+        add constraint FKA2BE019EC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
 
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE019C8628149 
@@ -5992,6 +6368,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK3165FEAD8A77AB9C 
         foreign key (AreaTematicaFk) 
         references AreaTematicas
+
+    alter table Capitulos 
+        add constraint FK3165FEAD295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Capitulos 
+        add constraint FK3165FEADBC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table Capitulos 
         add constraint FK3165FEADF4FE4035 
@@ -6177,6 +6563,16 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK3EB394D78A77AB9C 
         foreign key (AreaTematicaFk) 
         references AreaTematicas
+
+    alter table Articulos 
+        add constraint FK3EB394D7295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table Articulos 
+        add constraint FK3EB394D7BC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
 
     alter table Articulos 
         add constraint FK3EB394D7F4FE4035 

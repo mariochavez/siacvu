@@ -167,9 +167,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
 
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
-            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
-            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+            form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+            form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
             return form;
         }
@@ -178,9 +177,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
 
-            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
-            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
-            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["SectorId"] = form.SectorId;
+            ViewData["OrganizacionId"] = form.OrganizacionId;
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
@@ -196,9 +194,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       InstitucionCiudad = form.Institucion.Ciudad,
                                       InstitucionNombre = form.Institucion.Nombre,
 
-                                      Nivel2Nombre = form.Nivel2.Nombre,
-                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre,
 
                                       IsShowForm = true,
                                       InstitucionLabel = "Institución de destino"

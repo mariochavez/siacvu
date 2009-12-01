@@ -62,8 +62,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Evento = eventoService.GetEventoById(message.EventoId);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)

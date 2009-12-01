@@ -56,8 +56,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
 
             if (message.EstadoProducto != 0)
                 model.EstadoProducto = message.EstadoProducto;

@@ -27,11 +27,11 @@
 <% } else { %>
     <p>
         <label>&Aacute;rea</label>
-        <span class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaAreaNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.AreaNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>Disciplina</label>
-        <span class="valor"><%= Html.Encode(Model.SubdisciplinaDisciplinaNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.DisciplinaNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>Subdisciplina</label>

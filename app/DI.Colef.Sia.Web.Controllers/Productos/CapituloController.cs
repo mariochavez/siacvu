@@ -643,9 +643,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposLibro = customCollection.TipoLibroCustomCollection();
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
-            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             return form;
         }
@@ -656,9 +655,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["TipoLibro"] = form.TipoLibro;
 
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
-            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
@@ -671,9 +669,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
+
                                       ProyectoNombre = form.Proyecto.Nombre,
 
                                       IsShowForm = true

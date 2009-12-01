@@ -125,6 +125,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual AreaTematica AreaTematica { get; set; }
 
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
         public virtual Subdisciplina Subdisciplina { get; set; }
 
         public virtual int EstadoProducto { get; set; }

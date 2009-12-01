@@ -17,13 +17,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
 
         //Espacio para Agregar Mapeos
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
-        public string SubdisciplinaNombre { get; set; }
 
+        public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
+
+        public int SectorEconomicoId { get; set; }
+        public int RamaId { get; set; }
         public int ClaseId { get; set; }
+
+        public string SectorEconomicoNombre { get; set; }
+        public string RamaNombre { get; set; }
         public string ClaseNombre { get; set; }
 
         public int Pais { get; set; }
@@ -32,9 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
-        public NivelForm Nivel2 { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
-        public ClaseForm Clase { get; set; }
 
         /* Catalogos */
         public PaisForm[] Paises { get; set; }

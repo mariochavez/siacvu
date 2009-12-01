@@ -27,11 +27,11 @@
 <% } else { %>
     <p>
         <label>Sector</label>
-        <span class="valor"><%= Html.Encode(Model.Nivel2OrganizacionSectorNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.SectorNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>Organizaci&oacute;n</label>
-        <span class="valor"><%= Html.Encode(Model.Nivel2OrganizacionNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.OrganizacionNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>2do. Nivel</label>
