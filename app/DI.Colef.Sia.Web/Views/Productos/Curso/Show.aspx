@@ -54,6 +54,10 @@
                 
                 <% if(Model.Form.TipoCurso == 1){ %>
                     <h4>Cursos en El Colef</h4>
+                    <p>
+                        <label>Nombre del curso</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.CursoInvestigador.Nombre) %>&nbsp;</span>
+                    </p>
                     <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
                 <% } %>
                 

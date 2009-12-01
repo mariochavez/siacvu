@@ -576,6 +576,7 @@
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
     <Content Include="Views\Productos\Articulo\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeCursoInvestigador.js.ascx" />
     <Content Include="Views\Productos\Curso\_ShowCursoExterno.ascx" />
     <Content Include="Views\Productos\Curso\_ShowCursoInvestigador.ascx" />
     <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
@@ -682,7 +683,6 @@
     <Content Include="Views\Productos\Curso\Edit.aspx" />
     <Content Include="Views\Productos\Curso\Index.aspx" />
     <Content Include="Views\Productos\Curso\New.aspx" />
-    <Content Include="Views\Productos\Curso\_DatosCursoExterno.ascx" />
     <Content Include="Views\Productos\Dictamen\Edit.aspx" />
     <Content Include="Views\Productos\Dictamen\Index.aspx" />
     <Content Include="Views\Productos\Dictamen\New.aspx" />

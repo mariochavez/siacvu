@@ -41,8 +41,6 @@
                     <%=Html.DropDownList("TipoCurso", Model.Form.TiposCursos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "requerido" })%>
                     <%=Html.ValidationMessage("TipoCurso")%>
-                    
-                    <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = 274, InstitucionNombre = Model.Form.CursoInvestigador.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
                 </p>
                 
                 <div id="cursointerno_field">
@@ -57,7 +55,7 @@
                 
                 <div id="cursoexterno_field">
                     <h4>Cursos en instituciones externas</h4>
-                    <% Html.RenderPartial("_DatosCursoExterno", Model.Form); %>
+                    <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
                 </div>
 
                 <p class="submit">

@@ -49,14 +49,15 @@
                     <p>
 	                    <label>Nombre del curso</label>
 	                    <%=Html.DropDownList("CursoInvestigadorId", Model.Form.CursosInvestigadores.CreateSelectList<CursoInvestigadorForm>("Id", "Nombre"),
-                            "Seleccione ...", new { @class = "requerido" })%>
+                            "Seleccione ...", new { @class = "requerido", rel = Url.Action("ChangeCursoInvestigador") })%>
 	                    <%=Html.ValidationMessage("CursoInvestigador")%>
+	                    <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
                     </p>
                 </div>
                 
                 <div id="cursoexterno_field">
                     <h4>Cursos en instituciones externas</h4>
-                    <% Html.RenderPartial("_DatosCursoExterno", Model.Form); %>
+                    <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
                 </div>
                 
                 <p class="submit">

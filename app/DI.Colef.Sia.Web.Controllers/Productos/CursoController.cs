@@ -109,6 +109,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var cursoForm = cursoMapper.Map(curso);
 
             data.Form = SetupShowForm(cursoForm);
+            data.Form.IsShowForm = true;
 
             ViewData.Model = data;
             return View();
@@ -171,6 +172,32 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             };
 
             return Rjs("ChangeInstitucionShort", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeCursoInvestigador(int select)
+        {
+            var cursoInvestigadorForm = cursoInvestigadorMapper.Map(cursoInvestigadorService.GetCursoInvestigadorById(select));
+
+            var form = new CursoInvestigadorForm()
+            {
+                Id = cursoInvestigadorForm.Id,
+                ProgramaEstudioNombre = cursoInvestigadorForm.ProgramaEstudioNombre,
+                NivelEstudioNombre = cursoInvestigadorForm.NivelEstudioNombre,
+                InstitucionNombre = cursoInvestigadorForm.InstitucionNombre,
+                FechaInicial = cursoInvestigadorForm.FechaInicial,
+                FechaFinal = cursoInvestigadorForm.FechaFinal,
+                NumeroHoras = cursoInvestigadorForm.NumeroHoras,
+                SectorNombre = cursoInvestigadorForm.SectorNombre,
+                OrganizacionNombre = cursoInvestigadorForm.OrganizacionNombre,
+                Nivel2Nombre = cursoInvestigadorForm.Nivel2Nombre,
+                AreaNombre = cursoInvestigadorForm.AreaNombre,
+                DisciplinaNombre = cursoInvestigadorForm.DisciplinaNombre,
+                SubdisciplinaNombre = cursoInvestigadorForm.SubdisciplinaNombre
+            };
+
+            return Rjs("ChangeCursoInvestigador", form);
         }
 
         [Authorize]

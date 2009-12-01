@@ -42,6 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int CursoInvestigadorId { get; set; }
         public string CursoInvestigadorNombre { get; set; }
 
+        public bool IsShowForm { get; set; }
+
         /*Show*/
         public CursoInvestigadorForm CursoInvestigador { get; set; }
         public ShowFieldsForm ShowFields { get; set; }
