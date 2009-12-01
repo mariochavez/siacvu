@@ -243,7 +243,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeRama", form);
         }
 
-        protected DisciplinaForm[] GetDisciplinas(int id)
+        protected DisciplinaForm[] GetDisciplinasByAreaId(int id)
         {
             return id == 0
                        ? new DisciplinaForm[] {}
@@ -251,35 +251,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         }
 
-        protected SubdisciplinaForm[] GetSubdisciplinas(int id)
+        protected SubdisciplinaForm[] GetSubdisciplinasByDisciplinaId(int id)
         {
             return id == 0
                        ? new SubdisciplinaForm[] { }
                        : subdisciplinaMapper.Map(catalogoService.GetSubdisciplinasByDisciplinaId(id));
         }
 
-        protected OrganizacionForm[] GetOrganizaciones(int id)
+        protected OrganizacionForm[] GetOrganizacionesBySectorId(int id)
         {
             return id == 0
                       ? new OrganizacionForm[] { }
                       : organizacionMapper.Map(catalogoService.GetOrganizacionesBySectorId(id));
         }
 
-        protected NivelForm[] GetNiveles(int id)
+        protected NivelForm[] GetNivelesByOrganizacionId(int id)
         {
             return id == 0
                       ? new NivelForm[] { }
                       : nivelMapper.Map(catalogoService.GetNivelesByOrganizacionId(id));
         }
 
-        protected RamaForm[] GetRamas(int id)
+        protected RamaForm[] GetRamasBySectorEconomicoId(int id)
         {
             return id == 0
                       ? new RamaForm[] { }
                       : ramaMapper.Map(catalogoService.GetRamasBySectorId(id));
         }
 
-        protected ClaseForm[] GetClases(int id)
+        protected ClaseForm[] GetClasesByRamaId(int id)
         {
             return id == 0
                       ? new ClaseForm[] { }

@@ -44,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 capitulo.CreadorEl = DateTime.Now;
             }
 
+            capitulo.PosicionAutor = 1;
             capitulo.ModificadoEl = DateTime.Now;
             
             capituloRepository.SaveOrUpdate(capitulo);

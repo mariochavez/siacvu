@@ -27,11 +27,11 @@
 <% } else { %>
     <p>
         <label>Sector econ&oacute;mico</label>
-        <span class="valor"><%= Html.Encode(Model.ClaseRamaSectorNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.SectorEconomicoNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>Rama</label>
-        <span class="valor"><%= Html.Encode(Model.ClaseRamaNombre)%>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.RamaNombre)%>&nbsp;</span>
     </p>
     <p>
         <label>Clase</label>

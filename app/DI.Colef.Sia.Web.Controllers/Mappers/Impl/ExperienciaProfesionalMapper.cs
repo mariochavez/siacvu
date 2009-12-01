@@ -34,10 +34,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.LineaInvestigacion3 = message.LineaInvestigacion3;
             model.PrincipalesLogros = message.PrincipalesLogros;
 
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
             model.Pais = catalogoService.GetPaisById(message.Pais);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+
+            model.SectorEconomico = catalogoService.GetSectorById(message.SectorEconomicoId);
+            model.Rama = catalogoService.GetRamaById(message.RamaId);
             model.Clase = catalogoService.GetClaseById(message.ClaseId);
+
+            model.Sector = catalogoService.GetSectorById(message.SectorId);
+            model.Organizacion = catalogoService.GetOrganizacionById(message.OrganizacionId);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public ExperienciaProfesional Map(ExperienciaProfesionalForm message, Usuario usuario)

@@ -98,6 +98,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            CoautorInternoLibro coautorInternoLibro;
+            int posicionAutor;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var libro = libroService.GetLibroById(id);
@@ -117,6 +119,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm(libroForm);
 
             FormSetCombos(data.Form);
+
+            if (coautorExists != 0)
+            {
+                coautorInternoLibro =
+                    libro.CoautorInternoLibros.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = coautorInternoLibro.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -528,9 +543,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
-            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             return form;
         }
@@ -544,9 +558,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["ContenidoLibro"] = form.ContenidoLibro;
             ViewData["Reimpresion"] = form.Reimpresion;
 
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
-            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
@@ -567,9 +580,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
                                       ProyectoNombre = form.Proyecto.Nombre,
 
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
 
                                       IsShowForm = true,
                                       RevistaLabel = "Nombre de la revista"

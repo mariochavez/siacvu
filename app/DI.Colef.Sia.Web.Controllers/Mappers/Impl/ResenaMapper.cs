@@ -40,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ResenaForm message, Resena model)
         {
             model.Numero = message.Numero;
-            model.PosicionAutor = message.PosicionAutor;
             model.NombreProducto = message.NombreProducto;
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
@@ -50,14 +49,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.Volumen = message.Volumen;
             model.TipoResena = message.TipoResena;
+            model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
 
             if (message.EstadoProducto != 0)
                 model.EstadoProducto = message.EstadoProducto;

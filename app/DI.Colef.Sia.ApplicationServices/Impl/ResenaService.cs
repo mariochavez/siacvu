@@ -40,6 +40,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 resena.Activo = true;
                 resena.CreadorEl = DateTime.Now;
             }
+
+            resena.PosicionAutor = 1;
             resena.ModificadoEl = DateTime.Now;
             
             resenaRepository.SaveOrUpdate(resena);

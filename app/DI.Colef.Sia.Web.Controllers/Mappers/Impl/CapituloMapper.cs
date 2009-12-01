@@ -45,12 +45,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreLibro = message.NombreLibro;
             model.NoPaginas = message.NoPaginas;
             model.NoCitas = message.NoCitas;
-            model.PosicionAutor = message.PosicionAutor;
             model.AutorLibro = message.AutorLibro;
             model.Resumen = message.Resumen;
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
             model.TipoLibro = message.TipoLibro;
+            model.PosicionAutor = message.PosicionAutor;
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -59,6 +59,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 

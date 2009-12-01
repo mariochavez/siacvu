@@ -2,10 +2,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Posici&oacute;n del autor</label>
-    <%=Html.TextBox("PosicionAutor", Model.PosicionAutor, new { @class = "input100", maxlength = 3 })%>
-	<span class="cvu"></span>
-	<%=Html.ValidationMessage("PosicionAutor")%>
+    <label>Posici&oacute;n del autor</label>
+    <span class="valor"><%=Html.Encode(Model.PosicionAutor) %></span>
+    <%=Html.Hidden("PosicionAutor", Model.PosicionAutor) %>
+    <span class="cvu"></span>
 </p>
 
 <h4>Estatus de la publicaci&oacute;n</h4>

@@ -15,16 +15,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string AreaTematicaLineaTematicaNombre { get; set; }
 
         public string SubdisciplinaNombre { get; set; }
-        public string SubdisciplinaDisciplinaNombre { get; set; }
-        public string SubdisciplinaDisciplinaAreaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public string ClaseNombre { get; set; }
-        public string ClaseRamaNombre { get; set; }
-        public string ClaseRamaSectorNombre { get; set; }
+        public string RamaNombre { get; set; }
+        public string SectorEconomicoNombre { get; set; }
 
         public string Nivel2Nombre { get; set; }
-        public string Nivel2OrganizacionNombre { get; set; }
-        public string Nivel2OrganizacionSectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
+        public string SectorNombre { get; set; }
 
         public string InstitucionNombre { get; set; }
         public bool InstitucionTipoInstitucionNombre { get; set; }

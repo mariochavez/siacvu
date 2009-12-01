@@ -49,21 +49,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
-            model.PosicionAutor = message.PosicionAutor;
             model.TipoProducto = message.TipoProducto;
             model.Edicion = message.Edicion;
             model.EstadoProducto = message.EstadoProducto;
             model.Reimpresion = message.Reimpresion;
             model.FormatoPublicacion = message.FormatoPublicacion;
             model.ContenidoLibro = message.ContenidoLibro;
+            model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
             model.Evento = eventoService.GetEventoById(message.EventoId);
+
+            model.Area = catalogoService.GetAreaById(message.AreaId);
+            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)

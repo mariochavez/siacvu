@@ -23,19 +23,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NivelEstudioId { get; set; }
         public string NivelEstudioNombre { get; set; }
 
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
+
         public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public int CursoInvestigadorId { get; set; }
         public string CursoInvestigadorNombre { get; set; }
 
         /*Show*/
         public CursoInvestigadorForm CursoInvestigador { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
-        public NivelForm Nivel2 { get; set; }
         public ShowFieldsForm ShowFields { get; set; }
         public InstitucionForm Institucion { get; set; }
 

@@ -24,9 +24,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
-        public int SubdisciplinaDisciplinaId { get; set; }
+
         public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public int TipoResena { get; set; }
         public int EstadoProducto { get; set; }
@@ -64,7 +68,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
 
         /* Catalogos */
         public CustomSelectForm[] TiposResenas { get; set; }

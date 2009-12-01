@@ -113,11 +113,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
+        public virtual int PosicionAutor { get; set; }
+
         public virtual DateTime FechaEvento { get; set; }
 
         public virtual string Lugar { get; set; }
 
         public virtual Pais Pais { get; set; }
+
+        public virtual int Puntuacion { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

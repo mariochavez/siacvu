@@ -26,8 +26,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
+
         public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
@@ -66,7 +71,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
         public ProyectoForm Proyecto { get; set; }
 
 		/* Catalogos */

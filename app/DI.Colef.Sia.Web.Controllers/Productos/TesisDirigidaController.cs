@@ -189,14 +189,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            form.Disciplinas = GetDisciplinas(subdisciplina.DisciplinaAreaId);
-            form.Subdisciplinas = GetSubdisciplinas(subdisciplina.DisciplinaId);
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
-            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
-            form.Organizaciones = GetOrganizaciones(nivel2.OrganizacionSectorId);
-            form.Niveles = GetNiveles(nivel2.OrganizacionId);
+            form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+            form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
             return form;
         }
@@ -209,14 +207,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
             ViewData["FormaParticipacion"] = form.FormaParticipacionId;
 
-            var subdisciplina = subdisciplinaMapper.Map(catalogoService.GetSubdisciplinaById(form.SubdisciplinaId));
-            ViewData["AreaId"] = subdisciplina.DisciplinaAreaId;
-            ViewData["DisciplinaId"] = subdisciplina.DisciplinaId;
+            ViewData["AreaId"] = form.AreaId;
+            ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
 
-            var nivel2 = nivelMapper.Map(catalogoService.GetNivelById(form.Nivel2Id));
-            ViewData["SectorId"] = nivel2.OrganizacionSectorId;
-            ViewData["OrganizacionId"] = nivel2.OrganizacionId;
+            ViewData["SectorId"] = form.SectorId;
+            ViewData["OrganizacionId"] = form.OrganizacionId;
             ViewData["Nivel2Id"] = form.Nivel2Id;
         }
 
@@ -232,13 +228,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
                                       InstitucionTipoInstitucionNombre = form.Institucion.TipoInstitucion,
 
-                                      SubdisciplinaNombre = form.Subdisciplina.Nombre,
-                                      SubdisciplinaDisciplinaNombre = form.Subdisciplina.DisciplinaNombre,
-                                      SubdisciplinaDisciplinaAreaNombre = form.Subdisciplina.DisciplinaAreaNombre,
+                                      SubdisciplinaNombre = form.SubdisciplinaNombre,
+                                      DisciplinaNombre = form.DisciplinaNombre,
+                                      AreaNombre = form.AreaNombre,
 
-                                      Nivel2Nombre = form.Nivel2.Nombre,
-                                      Nivel2OrganizacionNombre = form.Nivel2.OrganizacionNombre,
-                                      Nivel2OrganizacionSectorNombre = form.Nivel2.OrganizacionSectorNombre,
+                                      Nivel2Nombre = form.Nivel2Nombre,
+                                      OrganizacionNombre = form.OrganizacionNombre,
+                                      SectorNombre = form.SectorNombre,
 
                                       IsShowForm = true,
                                       InstitucionLabel = "Institución"

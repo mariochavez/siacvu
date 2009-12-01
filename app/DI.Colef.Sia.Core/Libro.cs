@@ -102,6 +102,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
+        public virtual Area Area { get; set; }
+
+        public virtual Disciplina Disciplina { get; set; }
+
         public virtual Subdisciplina Subdisciplina { get; set; }
 
         [Valid]
@@ -116,7 +120,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaLibro> FirmaLibros { get; private set; }
 
-        [Min(1)]
 	    public virtual int PosicionAutor { get; set; }
 
         public virtual int EstadoProducto { get; set; }

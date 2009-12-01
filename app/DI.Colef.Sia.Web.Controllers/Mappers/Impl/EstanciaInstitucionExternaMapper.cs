@@ -31,8 +31,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
-            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+
+            model.Sector = catalogoService.GetSectorById(message.SectorId);
+            model.Organizacion = catalogoService.GetOrganizacionById(message.OrganizacionId);
+            model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
         }
 
         public EstanciaInstitucionExterna Map(EstanciaInstitucionExternaForm message, Usuario usuario, Investigador investigador)

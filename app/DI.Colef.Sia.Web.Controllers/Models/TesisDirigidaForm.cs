@@ -28,11 +28,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
+        public int SectorId { get; set; }
+        public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
+
+        public string SectorNombre { get; set; }
+        public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
+        public int AreaId { get; set; }
+        public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }
+
         public string SubdisciplinaNombre { get; set; }
+        public string DisciplinaNombre { get; set; }
+        public string AreaNombre { get; set; }
 
         public int ProgramaEstudioId { get; set; }
         public string ProgramaEstudioNombre { get; set; }
@@ -40,8 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TesisPosgradoId { get; set; }
 
         /*Show*/
-        public NivelForm Nivel2 { get; set; }
-        public SubdisciplinaForm Subdisciplina { get; set; }
         public TesisPosgradoForm TesisPosgrado { get; set; }
         public ShowFieldsForm ShowFields { get; set; }
         public InstitucionForm Institucion { get; set; }
