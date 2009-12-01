@@ -55,14 +55,13 @@
 					<table border="0" cellpadding="0" cellspacing="0">
 						<thead>
 							<tr>
-								<th>&nbsp;</th>
+								<th>Otras Actividades</th>
 								<th>Producci&oacute;n Acad&eacute;mica</th>
 								<th>Docencia</th>
 								<th>Movilidad Acad&eacute;mica</th>
 								<th>Eventos Acad&eacute;micos</th>
 								<th>Vinculaci&oacute;n y Difusi&oacute;n</th>
 								<th>Participaci&oacute;n en Organos</th>
-								<th>Otras Actividades</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -74,7 +73,6 @@
 								<td><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Participaci&oacute;n y organizaci&oacute;n de eventos")%></td>
 								<td><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></td>
 								<td><%=Html.ActionLinkForAreas<OrganoInternoController>(x => x.Index(), "Internos")%></td>
-								<td>Consultorias</td>
 							</tr>
 							<tr>
 								<td><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones acad&eacute;micas") %></td>
@@ -84,12 +82,10 @@
 								<td><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Otras participaciones") %></td>
 								<td><%=Html.ActionLinkForAreas<GrupoInvestigacionController>(x => x.Index(), "Grupos de investigaci&oacute;n") %></td>
 								<td><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Externos")%></td>
-								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td><%=Html.ActionLinkForAreas<ProyectoController>(x => x.Index(), "Proyectos") %></td>
 								<td><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></td>
-								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
@@ -103,7 +99,6 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
@@ -112,8 +107,7 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>								
+								<td>&nbsp;</td>							
 							</tr>											
 						</tbody>
 					</table>	

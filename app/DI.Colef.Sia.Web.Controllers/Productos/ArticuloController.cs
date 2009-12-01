@@ -15,7 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {   
         readonly IArticuloMapper articuloMapper;
         readonly IArticuloService articuloService;
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
@@ -45,7 +44,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
-            this.catalogoService = catalogoService;
             this.articuloService = articuloService;
             this.articuloMapper = articuloMapper;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
@@ -236,7 +234,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = new ShowFieldsForm
                            {
                                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-
                                AreaTematicaId = areaTematicaForm.Id
                            };
 
@@ -437,7 +434,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
         }
 
-        private ArticuloForm SetupShowForm(ArticuloForm form)
+        private static ArticuloForm SetupShowForm(ArticuloForm form)
         {
             form = form ?? new ArticuloForm();
 
