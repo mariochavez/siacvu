@@ -38,7 +38,7 @@
             <%=Html.Hidden("Id", Model.Form.Id) %>
 
             <h4>Datos de la publicaci&oacute;n</h4>
-            <% Html.RenderPartial("_DatosLibro1", Model.Form); %>
+            <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
             
             <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
@@ -48,8 +48,15 @@
                 <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
                 <span class="cvu"></span>          
             </p>
+            <p>
+                <label>Posici&oacute;n del autor</label>
+                <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+                <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
+                <span class="cvu"></span>
+            </p>
             
-            <% Html.RenderPartial("_DatosLibro2", Model.Form); %>
+            <h4>Estatus de la publicaci&oacute;n</h4>
+            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
             
             <div class="estatuspublicado_field">
                 <h4>Referencia bibliogr&aacute;fica</h4>

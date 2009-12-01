@@ -63,18 +63,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</span>
                 </p>    
                 
-                <p>
-                    <label>Palabra clave 1</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 2</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 3</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
-                </p>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <h4>Coautores de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
@@ -90,23 +79,7 @@
                 </p>
                 
                 <h4>Estatus de la publicaci&oacute;n</h4>        
-                <p>
-                    <label>Estado actual</label>
-                    <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
-                </p>
-                <% if (Model.Form.EstadoProducto == 1) { %>
-                    <p>
-                        <label>A&ntilde;o de aceptaci&oacute;n</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;</span>
-                        <span>Formato (yyyy)</span>
-                    </p>
-                <% } if (Model.Form.EstadoProducto == 2){ %>
-                    <p>
-                        <label>A&ntilde;o de publicaci&oacute;n</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;</span>
-                        <span>Formato (yyyy)</span>
-                    </p>
-                <% } %>
+                <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
                 <% if (Model.Form.TipoReporte == 1){ %>
                     <h4>Contenido del documento de trabajo</h4>

@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ILineaTematicaMapper lineaTematicaMapper, 
                                IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper,
-                               IInvestigadorExternoMapper investigadorExternoMapper)
+                               IInvestigadorExternoMapper investigadorExternoMapper, IAreaTematicaMapper areaTematicaMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
@@ -59,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
         }
 
         [Authorize]
@@ -583,6 +584,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
+
+                                      EstadoProducto = form.EstadoProducto,
+                                      FechaAceptacion = form.FechaAceptacion,
+                                      FechaPublicacion = form.FechaPublicacion,
+
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
 
                                       IsShowForm = true,
                                       RevistaLabel = "Nombre de la revista"

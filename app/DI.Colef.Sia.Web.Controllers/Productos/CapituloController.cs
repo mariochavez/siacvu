@@ -675,6 +675,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
                                       ProyectoNombre = form.Proyecto.Nombre,
 
+                                      EstadoProducto = form.EstadoProducto,
+                                      FechaAceptacion = form.FechaAceptacion,
+                                      FechaPublicacion = form.FechaPublicacion,
+
                                       IsShowForm = true
                                   };
 

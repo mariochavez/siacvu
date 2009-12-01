@@ -19,20 +19,6 @@
     <%=Html.Hidden("AreaTematicaId", Model.AreaTematicaId, new { rel = "#AreaTematicaNombre" })%>
     <%=Html.ValidationMessage("AreaTematicaNombre")%>
 </p>
-<p>
-    <label>Palabra clave 1</label>
-    <%=Html.TextBox("PalabraClave1", Model.PalabraClave1, new { @class = "input250", maxlength = 50 })%>
-    <span class="cvu"></span>
-</p>
-<p>
-    <label>Palabra clave 2</label>
-    <%=Html.TextBox("PalabraClave2", Model.PalabraClave2, new { @class = "input250", maxlength = 50 })%>
-    <span class="cvu"></span>
-</p>
-<p>
-    <label>Palabra clave 3</label>
-    <%=Html.TextBox("PalabraClave3", Model.PalabraClave3, new { @class = "input250", maxlength = 50 })%>
-    <span class="cvu"></span>
-</p>
 
+<% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>

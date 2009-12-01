@@ -146,7 +146,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var evento = eventoService.GetEventoById(id);
-            data.Form = eventoMapper.Map(evento);
+            var eventoForm = eventoMapper.Map(evento);
+
+            data.Form = SetupShowForm(eventoForm);
 
             ViewData.Model = data;
             return View();
@@ -479,6 +481,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["Pais"] = form.PaisId;
+        }
+
+        private EventoForm SetupShowForm(EventoForm form)
+        {
+            form = form ?? new EventoForm();
+
+            form.ShowFields = new ShowFieldsForm
+                                  {
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
+
+                                      IsShowForm = true,
+                                  };
+
+            return form;
         }
     }
 }

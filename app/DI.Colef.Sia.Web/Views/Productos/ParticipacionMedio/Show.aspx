@@ -61,18 +61,8 @@
                     <% } %>
                     <span class="valor"><%= Html.Encode(Model.Form.Titulo) %>&nbsp;</span>
                 </p>
-                <p>
-	                <label>Palabra clave 1</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Palabra clave 2</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
-                </p>
-                <p>
-	                <label>Palabra clave 3</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
-                </p>
+                
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 

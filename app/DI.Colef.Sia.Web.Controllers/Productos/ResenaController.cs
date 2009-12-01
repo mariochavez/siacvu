@@ -692,6 +692,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
 
+                                      EstadoProducto = form.EstadoProducto,
+                                      FechaAceptacion = form.FechaAceptacion,
+                                      FechaPublicacion = form.FechaPublicacion,
+
+                                      PalabraClave1 = form.PalabraClave1,
+                                      PalabraClave2 = form.PalabraClave2,
+                                      PalabraClave3 = form.PalabraClave3,
+
                                       IsShowForm = true,
                                       RevistaLabel = "Revista en que se publica"
                                   };

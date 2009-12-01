@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.Pais, constraintValidatorContext); */
             }
 
-            if (reporte.TipoReporte != null)
+            if (reporte.TipoReporte != 0)
                 isValid &= ValidateTipoReporte(reporte, constraintValidatorContext);
 
             if(reporte.EstadoProducto != 0)

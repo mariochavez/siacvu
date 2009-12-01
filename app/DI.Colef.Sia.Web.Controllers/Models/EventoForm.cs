@@ -54,6 +54,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
         public InstitucionEventoForm InstitucionEvento { get; set; }
 
+        /*Show*/
+        public ShowFieldsForm ShowFields { get; set; }
+
         /* Catalogos */
         public AmbitoForm[] Ambitos { get; set; }
         public PaisForm[] Paises { get; set; }

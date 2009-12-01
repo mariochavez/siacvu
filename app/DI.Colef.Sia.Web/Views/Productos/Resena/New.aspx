@@ -55,7 +55,7 @@
                 </p>
                 
                 <h4>Estatus de la publicaci&oacute;n</h4>
-                <% Html.RenderPartial("_EstatusPublicacion", Model.Form); %>
+                <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
                 
                 <div id="resenaBibliografica_field">
                     <h4>Referencia de la obra reseñada</h4>
