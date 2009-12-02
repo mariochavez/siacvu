@@ -49,7 +49,7 @@
                     <p>
 	                    <label>Nombre del curso</label>
 	                    <%=Html.DropDownList("CursoInvestigadorId", Model.Form.CursosInvestigadores.CreateSelectList<CursoInvestigadorForm>("Id", "Nombre"),
-                            "Seleccione ...", new { @class = "requerido", rel = Url.Action("ChangeCursoInvestigador") })%>
+                            "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeCursoInvestigador") })%>
 	                    <%=Html.ValidationMessage("CursoInvestigador")%>
 	                    <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
                     </p>

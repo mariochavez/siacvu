@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CursoInvestigadorForm
@@ -16,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
+        public string InstitucionPaisNombre { get; set; }
 
         public int NivelEstudio { get; set; }
         public int NivelEstudioId { get; set; }
