@@ -55,7 +55,7 @@
                 
                 <div id="AlumnoExterno">
                     <h4>Datos de la tesis presentada</h4>
-                    <% Html.RenderPartial("_DatosTesis", Model.Form); %>
+                    <% Html.RenderPartial("_ShowTesisExterna", Model.Form); %>
                 </div>
         				
                 <p class="submit">

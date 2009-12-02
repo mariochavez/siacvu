@@ -619,6 +619,7 @@
     <Content Include="Views\Productos\Resena\_ObraResenada.ascx" />
     <Content Include="Views\Productos\Resena\_DatosPublicacion.ascx" />
     <Content Include="Views\Productos\Resena\_ShowObraResenada.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeTesisPosgrado.js.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisExterna.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisInterna.ascx" />
     <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
@@ -780,7 +781,6 @@
     <Content Include="Views\Productos\TesisDirigida\Edit.aspx" />
     <Content Include="Views\Productos\TesisDirigida\Index.aspx" />
     <Content Include="Views\Productos\TesisDirigida\New.aspx" />
-    <Content Include="Views\Productos\TesisDirigida\_DatosTesis.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteExterno.js.ascx" />
     <Content Include="Views\Proyecto\AddParticipanteInterno.js.ascx" />
     <Content Include="Views\Proyecto\AddResponsableInterno.js.ascx" />

@@ -111,6 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
 
+            data.Form.IsShowForm = true;
             data.Form = SetupShowForm(tesisDirigidaForm);
 
             ViewData.Model = data;
@@ -174,6 +175,33 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             };
 
             return Rjs("ChangeInstitucionShort", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeTesisPosgrado(int select)
+        {
+            var tesisPosgradoForm = tesisPosgradoMapper.Map(tesisPosgradoService.GetTesisPosgradoById(select));
+
+            var form = new TesisPosgradoForm()
+            {
+                Id = tesisPosgradoForm.Id,
+                ProgramaEstudioNombre = tesisPosgradoForm.ProgramaEstudioNombre,
+                VinculacionAPyDNombre = tesisPosgradoForm.VinculacionAPyDNombre,
+                InstitucionNombre = tesisPosgradoForm.InstitucionNombre,
+                FormaParticipacion = tesisPosgradoForm.FormaParticipacion,
+                NombreAlumno = tesisPosgradoForm.NombreAlumno,
+                GradoAcademicoNombre = tesisPosgradoForm.GradoAcademicoNombre,
+                FechaGrado = tesisPosgradoForm.FechaGrado,
+                SectorNombre = tesisPosgradoForm.SectorNombre,
+                OrganizacionNombre = tesisPosgradoForm.OrganizacionNombre,
+                Nivel2Nombre = tesisPosgradoForm.Nivel2Nombre,
+                AreaNombre = tesisPosgradoForm.AreaNombre,
+                DisciplinaNombre = tesisPosgradoForm.DisciplinaNombre,
+                SubdisciplinaNombre = tesisPosgradoForm.SubdisciplinaNombre
+            };
+
+            return Rjs("ChangeTesisPosgrado", form);
         }
 
         [Authorize]
