@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisPosgradoService tesisPosgradoService;
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
+        readonly IInstitucionMapper institucionMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
@@ -35,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ITesisPosgradoMapper tesisPosgradoMapper, ITesisPosgradoService tesisPosgradoService,
                                IOrganizacionMapper organizacionMapper, ISectorMapper sectorMapper,
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
-            : base(usuarioService, searchService, catalogoService, institucionMapper, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
+            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
             this.catalogoService = catalogoService;
             this.tesisDirigidaService = tesisDirigidaService;
@@ -47,6 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tesisPosgradoService = tesisPosgradoService;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
+            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -111,7 +113,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
 
-            data.Form.IsShowForm = true;
             data.Form = SetupShowForm(tesisDirigidaForm);
 
             ViewData.Model = data;
@@ -169,10 +170,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var institucionForm = institucionMapper.Map(catalogoService.GetInstitucionById(select));
 
             var form = new ShowFieldsForm
-            {
-                InstitucionId = institucionForm.Id,
-                InstitucionPaisNombre = institucionForm.PaisNombre
-            };
+                           {
+                               InstitucionId = institucionForm.Id,
+                               InstitucionPaisNombre = institucionForm.PaisNombre
+                           };
 
             return Rjs("ChangeInstitucionShort", form);
         }
@@ -183,25 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var tesisPosgradoForm = tesisPosgradoMapper.Map(tesisPosgradoService.GetTesisPosgradoById(select));
 
-            var form = new TesisPosgradoForm()
-            {
-                Id = tesisPosgradoForm.Id,
-                ProgramaEstudioNombre = tesisPosgradoForm.ProgramaEstudioNombre,
-                VinculacionAPyDNombre = tesisPosgradoForm.VinculacionAPyDNombre,
-                InstitucionNombre = tesisPosgradoForm.InstitucionNombre,
-                FormaParticipacion = tesisPosgradoForm.FormaParticipacion,
-                NombreAlumno = tesisPosgradoForm.NombreAlumno,
-                GradoAcademicoNombre = tesisPosgradoForm.GradoAcademicoNombre,
-                FechaGrado = tesisPosgradoForm.FechaGrado,
-                SectorNombre = tesisPosgradoForm.SectorNombre,
-                OrganizacionNombre = tesisPosgradoForm.OrganizacionNombre,
-                Nivel2Nombre = tesisPosgradoForm.Nivel2Nombre,
-                AreaNombre = tesisPosgradoForm.AreaNombre,
-                DisciplinaNombre = tesisPosgradoForm.DisciplinaNombre,
-                SubdisciplinaNombre = tesisPosgradoForm.SubdisciplinaNombre
-            };
-
-            return Rjs("ChangeTesisPosgrado", form);
+            return Rjs("ChangeTesisPosgrado", tesisPosgradoForm);
         }
 
         [Authorize]
@@ -219,7 +202,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         TesisDirigidaForm SetupNewForm(TesisDirigidaForm form)
         {
-            form = form ?? new TesisDirigidaForm();
+            form = form ?? new TesisDirigidaForm
+                               {
+                                   TesisPosgrado = new TesisPosgradoForm()
+                               };
 
             //Lista de Catalogos Pendientes
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
@@ -235,6 +221,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
             form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+
+            if (form.TesisPosgradoId != 0)
+                form.TesisPosgrado =
+                    tesisPosgradoMapper.Map(tesisPosgradoService.GetTesisPosgradoById(form.TesisPosgradoId));
+
+            form.IsShowForm = false;
 
             return form;
         }
@@ -259,6 +251,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private TesisDirigidaForm SetupShowForm(TesisDirigidaForm form)
         {
             form = form ?? new TesisDirigidaForm();
+
+            form.IsShowForm = true;
 
             form.ShowFields = new ShowFieldsForm
                                   {

@@ -48,8 +48,9 @@
                     <p>
                         <label>T&iacute;tulo de la tesis</label>
                         <%=Html.DropDownList("TesisPosgradoId", Model.Form.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "Titulo"),
-                            "Seleccione ...", new { @class = "requerido" })%>
+                            "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeTesisPosgrado") })%>
                         <%=Html.ValidationMessage("TesisPosgrado")%>
+                        <% Html.RenderPartial("_ShowTesisInterna", Model.Form); %>
                     </p>
                 </div>
                 

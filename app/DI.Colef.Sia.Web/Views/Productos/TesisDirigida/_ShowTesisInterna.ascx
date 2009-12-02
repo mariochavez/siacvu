@@ -30,7 +30,39 @@
     <label>Fecha de obtenci&oacute;n del grado</label>
     <span id="span_fechagrado" class="valor"><%= Html.Encode(Model.TesisPosgrado.FechaGrado) %>&nbsp;</span>
 </p>
+<p>
+    <label>Instituci&oacute;n</label>
+    <span id="span_instituciontesis" class="valor"><%= Html.Encode(Model.TesisPosgrado.InstitucionNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>Pa&iacute;s</label>
+    <span id="span_paistesis" class="valor"><%= Html.Encode(Model.TesisPosgrado.InstitucionPaisNombre)%>&nbsp;</span>
+</p>
 
-<% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
-<% Html.RenderPartial("_Show2doNivel", Model.ShowFields); %>
-<% Html.RenderPartial("_ShowSubdisciplina", Model.ShowFields); %>
+<h4>Estructura funcional</h4>
+<p>
+    <label>Sector</label>
+    <span id="span_sector" class="valor"><%= Html.Encode(Model.TesisPosgrado.SectorNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>Organizaci&oacute;n</label>
+    <span id="span_organizacion" class="valor"><%= Html.Encode(Model.TesisPosgrado.OrganizacionNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>2do. Nivel</label>
+    <span id="span_2donivel" class="valor"><%= Html.Encode(Model.TesisPosgrado.Nivel2Nombre)%>&nbsp;</span>
+</p>
+
+<h4>&Aacute;rea del conocimiento</h4>
+<p>
+    <label>&Aacute;rea</label>
+    <span id="span_area" class="valor"><%= Html.Encode(Model.TesisPosgrado.AreaNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>Disciplina</label>
+    <span id="span_disciplina" class="valor"><%= Html.Encode(Model.TesisPosgrado.DisciplinaNombre)%>&nbsp;</span>
+</p>
+<p>
+    <label>Subdisciplina</label>
+    <span id="span_subdisciplina" class="valor"><%= Html.Encode(Model.TesisPosgrado.SubdisciplinaNombre)%>&nbsp;</span>
+</p>
