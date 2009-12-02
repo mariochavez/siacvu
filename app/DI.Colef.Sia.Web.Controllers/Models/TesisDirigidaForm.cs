@@ -45,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ProgramaEstudioNombre { get; set; }
 
         public int TesisPosgradoId { get; set; }
+        public bool IsShowForm { get; set; }
 
         /*Show*/
         public TesisPosgradoForm TesisPosgrado { get; set; }
