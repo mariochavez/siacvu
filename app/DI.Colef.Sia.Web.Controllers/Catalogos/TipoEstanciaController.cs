@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoEstancia = tipoEstanciaMapper.Map(form);
 
-            tipoEstancia.CreadorPor = CurrentUser();
+            tipoEstancia.CreadoPor = CurrentUser();
             tipoEstancia.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoEstancia, form, Title.New))

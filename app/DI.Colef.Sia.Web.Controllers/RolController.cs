@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var rol = rolMapper.Map(form);
 
-            rol.CreadorPor = CurrentUser();
+            rol.CreadoPor = CurrentUser();
             rol.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(rol, form, Title.New))

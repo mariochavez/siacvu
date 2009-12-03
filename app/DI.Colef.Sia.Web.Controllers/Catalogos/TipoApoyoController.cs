@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var tipoApoyo = tipoApoyoMapper.Map(form);
             
-            tipoApoyo.CreadorPor = CurrentUser();
+            tipoApoyo.CreadoPor = CurrentUser();
             tipoApoyo.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoApoyo, form, Title.New))

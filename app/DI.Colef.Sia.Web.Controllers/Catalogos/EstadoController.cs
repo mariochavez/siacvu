@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var estado = estadoMapper.Map(form);
 
-            estado.CreadorPor = CurrentUser();
+            estado.CreadoPor = CurrentUser();
             estado.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(estado, form, Title.New))

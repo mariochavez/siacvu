@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var areaTematica = areaTematicaMapper.Map(form);
             
-            areaTematica.CreadorPor = CurrentUser();
+            areaTematica.CreadoPor = CurrentUser();
             areaTematica.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(areaTematica, form, Title.New, "AreaTematica"))

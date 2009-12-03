@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var lineaInvestigacion = lineaInvestigacionMapper.Map(form);
 
-            lineaInvestigacion.CreadorPor = CurrentUser();
+            lineaInvestigacion.CreadoPor = CurrentUser();
             lineaInvestigacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(lineaInvestigacion, form, Title.New))

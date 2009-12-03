@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {        
             var productoAcademico = productoAcademicoMapper.Map(form);
             
-            productoAcademico.CreadorPor = CurrentUser();
+            productoAcademico.CreadoPor = CurrentUser();
             productoAcademico.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(productoAcademico, form, Title.New))

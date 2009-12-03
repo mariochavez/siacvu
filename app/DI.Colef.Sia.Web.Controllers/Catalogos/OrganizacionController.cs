@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var organizacion = organizacionMapper.Map(form);
 
-            organizacion.CreadorPor = CurrentUser();
+            organizacion.CreadoPor = CurrentUser();
             organizacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(organizacion, form, Title.New, "Organizacion"))

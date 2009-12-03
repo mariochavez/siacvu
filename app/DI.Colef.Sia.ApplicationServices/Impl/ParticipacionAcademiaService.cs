@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(participacionAcademia.Id == 0)
             {
                 participacionAcademia.Activo = true;
-                participacionAcademia.CreadorEl = DateTime.Now;
+                participacionAcademia.CreadoEl = DateTime.Now;
             }
             participacionAcademia.ModificadoEl = DateTime.Now;
             

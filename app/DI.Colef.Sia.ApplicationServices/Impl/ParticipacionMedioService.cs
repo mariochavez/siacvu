@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 participacionMedio.Puntuacion = 0;
                 participacionMedio.Activo = true;
-                participacionMedio.CreadorEl = DateTime.Now;
+                participacionMedio.CreadoEl = DateTime.Now;
             }
             participacionMedio.ModificadoEl = DateTime.Now;
             

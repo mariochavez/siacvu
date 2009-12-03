@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var indice = indiceMapper.Map(form);
 
-            indice.CreadorPor = CurrentUser();
+            indice.CreadoPor = CurrentUser();
             indice.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(indice, form, Title.New))

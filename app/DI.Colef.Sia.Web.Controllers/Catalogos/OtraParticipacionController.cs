@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var otraParticipacion = otraParticipacionMapper.Map(form);
             
-            otraParticipacion.CreadorPor = CurrentUser();
+            otraParticipacion.CreadoPor = CurrentUser();
             otraParticipacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(otraParticipacion, form, Title.New))

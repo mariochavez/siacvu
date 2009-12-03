@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoParticipante = tipoParticipanteMapper.Map(form);
 
-            tipoParticipante.CreadorPor = CurrentUser();
+            tipoParticipante.CreadoPor = CurrentUser();
             tipoParticipante.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoParticipante, form, Title.New))

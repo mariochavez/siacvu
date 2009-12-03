@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var sede = sedeMapper.Map(form);
 
-            sede.CreadorPor = CurrentUser();
+            sede.CreadoPor = CurrentUser();
             sede.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sede, form, Title.New))

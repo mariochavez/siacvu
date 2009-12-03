@@ -251,7 +251,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capituloId != 0)
             {
-                coautorInternoCapitulo.CreadorPor = CurrentUser();
+                coautorInternoCapitulo.CreadoPor = CurrentUser();
                 coautorInternoCapitulo.ModificadoPor = CurrentUser();
 
                 var capitulo = capituloService.GetCapituloById(capituloId);
@@ -328,7 +328,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -346,7 +346,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capituloId != 0)
             {
-                coautorExternoCapitulo.CreadorPor = CurrentUser();
+                coautorExternoCapitulo.CreadoPor = CurrentUser();
                 coautorExternoCapitulo.ModificadoPor = CurrentUser();
 
                 var capitulo = capituloService.GetCapituloById(capituloId);
@@ -419,7 +419,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capituloId != 0)
             {
-                autorInternoCapitulo.CreadorPor = CurrentUser();
+                autorInternoCapitulo.CreadoPor = CurrentUser();
                 autorInternoCapitulo.ModificadoPor = CurrentUser();
 
                 var capitulo = capituloService.GetCapituloById(capituloId);
@@ -496,7 +496,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -514,7 +514,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capituloId != 0)
             {
-                autorExternoCapitulo.CreadorPor = CurrentUser();
+                autorExternoCapitulo.CreadoPor = CurrentUser();
                 autorExternoCapitulo.ModificadoPor = CurrentUser();
 
                 var capitulo = capituloService.GetCapituloById(capituloId);
@@ -586,7 +586,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (capituloId != 0)
             {
-                editorialCapitulo.CreadorPor = CurrentUser();
+                editorialCapitulo.CreadoPor = CurrentUser();
                 editorialCapitulo.ModificadoPor = CurrentUser();
 
                 var capitulo = capituloService.GetCapituloById(capituloId);

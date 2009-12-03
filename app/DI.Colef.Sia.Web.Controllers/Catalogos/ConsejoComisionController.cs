@@ -79,7 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var consejoComision = consejoComisionMapper.Map(form);
             
-            consejoComision.CreadorPor = CurrentUser();
+            consejoComision.CreadoPor = CurrentUser();
             consejoComision.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(consejoComision, form, Title.New))

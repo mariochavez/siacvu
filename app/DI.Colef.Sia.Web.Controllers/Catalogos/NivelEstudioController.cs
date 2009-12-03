@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var nivelEstudio = nivelEstudioMapper.Map(form);
             
-            nivelEstudio.CreadorPor = CurrentUser();
+            nivelEstudio.CreadoPor = CurrentUser();
             nivelEstudio.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(nivelEstudio, form, Title.New))

@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var nivel = nivelMapper.Map(form);
 
-            nivel.CreadorPor = CurrentUser();
+            nivel.CreadoPor = CurrentUser();
             nivel.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(nivel, form, Title.New, "Nivel"))

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
@@ -43,5 +44,51 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             return productoList.ToArray();
         }
+
+        public ProductoDTO[] GetProductosBandeja(Usuario usuario, DateTime fechaInicial)
+        {
+            IMultiCriteria queries = Session.CreateMultiCriteria()
+                .Add(
+                Session.CreateCriteria(typeof (Articulo))
+                    .AddOrder(Order.Desc("CreadoEl"))
+                    .CreateAlias("Usuario", "u")
+                    .CreateAlias("CoautorInternoArticulos", "co")
+                    .CreateAlias("co.Investigador", "i")
+                    .CreateAlias("i.Usuario", "iu")
+                    .SetProjection(Projections.ProjectionList()
+                                       .Add(Projections.Property("Id"), "Id")
+                                       .Add(Projections.Property("Titulo"), "Nombre")
+                                       .Add(Projections.Constant(1), "TipoProducto"))
+                    .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)))
+                    .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)))
+                ).Add(Session.CreateCriteria(typeof (Libro))
+                          .AddOrder(Order.Desc("CreadoEl"))
+                          .CreateAlias("Usuario", "u")
+                          .CreateAlias("CoautorInternoLibros", "co")
+                          .CreateAlias("co.Investigador", "i")
+                          .CreateAlias("i.Usuario", "iu")
+                          .SetProjection(Projections.ProjectionList()
+                                             .Add(Projections.Property("Id"), "Id")
+                                             .Add(Projections.Property("Nombre"), "Nombre")
+                                             .Add(Projections.Constant(2), "TipoProducto"))
+                          .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)))
+                          .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)))
+                );
+
+            var resultado = new ArrayList();
+            foreach (var producto in queries.List())
+            {
+                resultado.AddRange((ICollection) producto);
+            }
+
+            return (ProductoDTO[]) resultado.ToArray(typeof (ProductoDTO));
+        }
+    }
+
+    public class ProductoDTO
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public int TipoProducto { get; set; }
     }
 }

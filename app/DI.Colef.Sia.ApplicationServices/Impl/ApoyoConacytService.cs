@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(apoyoConacyt.Id == 0)
             {
                 apoyoConacyt.Activo = true;
-                apoyoConacyt.CreadorEl = DateTime.Now;
+                apoyoConacyt.CreadoEl = DateTime.Now;
             }
             apoyoConacyt.ModificadoEl = DateTime.Now;
             

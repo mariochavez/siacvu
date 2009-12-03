@@ -267,7 +267,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            coautorInternoResena.CreadorPor = CurrentUser();
+            coautorInternoResena.CreadoPor = CurrentUser();
             coautorInternoResena.ModificadoPor = CurrentUser();
 
             if (resenaId != 0)
@@ -345,7 +345,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -363,7 +363,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resenaId != 0)
             {
-                coautorExternoResena.CreadorPor = CurrentUser();
+                coautorExternoResena.CreadoPor = CurrentUser();
                 coautorExternoResena.ModificadoPor = CurrentUser();
 
                 var resena = resenaService.GetResenaById(resenaId);
@@ -435,7 +435,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resenaId != 0)
             {
-                autorInternoResena.CreadorPor = CurrentUser();
+                autorInternoResena.CreadoPor = CurrentUser();
                 autorInternoResena.ModificadoPor = CurrentUser();
 
                 var resena = resenaService.GetResenaById(resenaId);
@@ -512,7 +512,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -530,7 +530,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resenaId != 0)
             {
-                autorExternoResena.CreadorPor = CurrentUser();
+                autorExternoResena.CreadoPor = CurrentUser();
                 autorExternoResena.ModificadoPor = CurrentUser();
 
                 var resena = resenaService.GetResenaById(resenaId);
@@ -602,7 +602,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (resenaId != 0)
             {
-                editorialResena.CreadorPor = CurrentUser();
+                editorialResena.CreadoPor = CurrentUser();
                 editorialResena.ModificadoPor = CurrentUser();
 
                 var resena = resenaService.GetResenaById(resenaId);

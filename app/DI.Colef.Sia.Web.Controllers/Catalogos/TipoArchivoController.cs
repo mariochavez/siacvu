@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var tipoArchivo = tipoArchivoMapper.Map(form);
             
-            tipoArchivo.CreadorPor = CurrentUser();
+            tipoArchivo.CreadoPor = CurrentUser();
             tipoArchivo.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoArchivo, form, Title.New))

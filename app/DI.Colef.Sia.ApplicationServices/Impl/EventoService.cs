@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 evento.Puntuacion = 0;
                 evento.Activo = true;
-                evento.CreadorEl = DateTime.Now;
+                evento.CreadoEl = DateTime.Now;
             }
 
             evento.PosicionAutor = 1;

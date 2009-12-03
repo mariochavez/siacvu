@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 curso.Puntuacion = 0;
                 curso.Activo = true;
-                curso.CreadorEl = DateTime.Now;
+                curso.CreadoEl = DateTime.Now;
             }
             curso.ModificadoEl = DateTime.Now;
             

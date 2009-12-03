@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var dirigidoA = dirigidoAMapper.Map(form);
             
-            dirigidoA.CreadorPor = CurrentUser();
+            dirigidoA.CreadoPor = CurrentUser();
             dirigidoA.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(dirigidoA, form, Title.New))

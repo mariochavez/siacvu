@@ -112,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            rolUsuario.CreadorPor = CurrentUser();
+            rolUsuario.CreadoPor = CurrentUser();
             rolUsuario.ModificadoPor = CurrentUser();
 
             var usuario = usuarioService.GetUsuarioById(usuarioId);

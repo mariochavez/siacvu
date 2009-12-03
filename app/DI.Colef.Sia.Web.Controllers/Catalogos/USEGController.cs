@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {        
             var uSEG = uSEGMapper.Map(form);
             
-            uSEG.CreadorPor = CurrentUser();
+            uSEG.CreadoPor = CurrentUser();
             uSEG.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(uSEG, form, Title.New))

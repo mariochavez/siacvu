@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 tesisDirigida.Puntuacion = 0;
                 tesisDirigida.Activo = true;
-                tesisDirigida.CreadorEl = DateTime.Now;
+                tesisDirigida.CreadoEl = DateTime.Now;
             }
             tesisDirigida.ModificadoEl = DateTime.Now;
             

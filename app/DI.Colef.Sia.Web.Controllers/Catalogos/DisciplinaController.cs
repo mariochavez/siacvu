@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var disciplina = disciplinaMapper.Map(form);
 
-            disciplina.CreadorPor = CurrentUser();
+            disciplina.CreadoPor = CurrentUser();
             disciplina.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(disciplina, form, Title.New, "Disciplina"))

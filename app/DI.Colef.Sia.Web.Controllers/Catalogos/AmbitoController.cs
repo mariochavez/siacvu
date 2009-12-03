@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var ambito = ambitoMapper.Map(form);
 
-            ambito.CreadorPor = CurrentUser();
+            ambito.CreadoPor = CurrentUser();
             ambito.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(ambito, form, Title.New))

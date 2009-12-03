@@ -167,8 +167,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                               {
                                   Activo = true,
                                   Contenido = file.ContentType,
-                                  CreadorEl = DateTime.Now,
-                                  CreadorPor = CurrentUser(),
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
                                   ModificadoEl = DateTime.Now,
                                   ModificadoPor = CurrentUser(),
                                   Nombre = file.FileName,
@@ -310,7 +310,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            estadoInvestigador.CreadorPor = CurrentUser();
+            estadoInvestigador.CreadoPor = CurrentUser();
             estadoInvestigador.ModificadoPor = CurrentUser();
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
@@ -351,7 +351,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            gradoAcademicoInvestigador.CreadorPor = CurrentUser();
+            gradoAcademicoInvestigador.CreadoPor = CurrentUser();
             gradoAcademicoInvestigador.ModificadoPor = CurrentUser();
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
@@ -392,7 +392,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            categoriaInvestigador.CreadorPor = CurrentUser();
+            categoriaInvestigador.CreadoPor = CurrentUser();
             categoriaInvestigador.ModificadoPor = CurrentUser();
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
@@ -434,7 +434,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            cargoInvestigador.CreadorPor = CurrentUser();
+            cargoInvestigador.CreadoPor = CurrentUser();
             cargoInvestigador.ModificadoPor = CurrentUser();
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
@@ -474,7 +474,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            sniInvestigador.CreadorPor = CurrentUser();
+            sniInvestigador.CreadoPor = CurrentUser();
             sniInvestigador.ModificadoPor = CurrentUser();
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);

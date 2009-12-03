@@ -91,7 +91,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Usuario = usuario;
-                model.CreadorPor = usuario;
+                model.CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;
@@ -112,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                     participanteExternoProyectoMapper.Map(new ParticipanteExternoProyectoForm
                                                               {InvestigadorExternoId = int.Parse(participanteId)});
 
-                participante.CreadorPor = usuario;
+                participante.CreadoPor = usuario;
                 participante.ModificadoPor = usuario;
 
                 model.AddParticipanteExterno(participante);
@@ -124,7 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                     participanteInternoProyectoMapper.Map(new ParticipanteInternoProyectoForm
                                                               {InvestigadorId = int.Parse(participanteId)});
 
-                participante.CreadorPor = usuario;
+                participante.CreadoPor = usuario;
                 participante.ModificadoPor = usuario;
 
                 model.AddParticipanteInterno(participante);
@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                     responsableInternoProyectoMapper.Map(new ResponsableInternoProyectoForm
                                                              {InvestigadorId = int.Parse(responsableId)});
 
-                responsable.CreadorPor = usuario;
+                responsable.CreadoPor = usuario;
                 responsable.ModificadoPor = usuario;
 
                 model.AddResponsableInterno(responsable);
@@ -151,7 +151,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                                                                           Monto = long.Parse(montoRecursoFinanciero[i]),
                                                                           Recurso = recursoRecursoFinanciero[i]
                                                                       });
-                recurso.CreadorPor = usuario;
+                recurso.CreadoPor = usuario;
                 recurso.ModificadoPor = usuario;
 
                 model.AddRecursoFinanciero(recurso);

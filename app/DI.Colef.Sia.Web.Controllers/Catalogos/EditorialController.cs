@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var editorial = editorialMapper.Map(form);
             
-            editorial.CreadorPor = CurrentUser();
+            editorial.CreadoPor = CurrentUser();
             editorial.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(editorial, form, Title.New))

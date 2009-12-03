@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 participacion.Puntuacion = 0;
                 participacion.Activo = true;
-                participacion.CreadorEl = DateTime.Now;
+                participacion.CreadoEl = DateTime.Now;
             }
             participacion.ModificadoEl = DateTime.Now;
             

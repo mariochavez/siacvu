@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoDictamen = tipoDictamenMapper.Map(form);
 
-            tipoDictamen.CreadorPor = CurrentUser();
+            tipoDictamen.CreadoPor = CurrentUser();
             tipoDictamen.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoDictamen, form, Title.New))

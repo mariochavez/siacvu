@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
             var areaInvestigacion = areaInvestigacionMapper.Map(form);
             
-            areaInvestigacion.CreadorPor = CurrentUser();
+            areaInvestigacion.CreadoPor = CurrentUser();
             areaInvestigacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(areaInvestigacion, form, Title.New))

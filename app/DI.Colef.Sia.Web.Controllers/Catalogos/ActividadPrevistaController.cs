@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var actividadPrevista = actividadPrevistaMapper.Map(form);
             
-            actividadPrevista.CreadorPor = CurrentUser();
+            actividadPrevista.CreadoPor = CurrentUser();
             actividadPrevista.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(actividadPrevista, form, Title.New))

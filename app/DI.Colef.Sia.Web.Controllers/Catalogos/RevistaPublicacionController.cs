@@ -98,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var revistaPublicacion = revistaPublicacionMapper.Map(form);
 
-            revistaPublicacion.CreadorPor = CurrentUser();
+            revistaPublicacion.CreadoPor = CurrentUser();
             revistaPublicacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(revistaPublicacion, form, Title.New))

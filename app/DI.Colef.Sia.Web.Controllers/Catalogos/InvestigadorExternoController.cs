@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var investigadorExterno = investigadorExternoMapper.Map(form);
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(investigadorExterno, form, Title.New))

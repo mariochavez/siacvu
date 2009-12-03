@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Usuario = usuario;
-                model.CreadorPor = usuario;
+                model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
             }
@@ -94,7 +94,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var coautor =
                     coautorExternoResenaMapper.Map(coautorExterno);
 
-                coautor.CreadorPor = usuario;
+                coautor.CreadoPor = usuario;
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorExterno(coautor);
@@ -105,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var coautor =
                     coautorInternoResenaMapper.Map(coautorInterno);
 
-                coautor.CreadorPor = usuario;
+                coautor.CreadoPor = usuario;
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorInterno(coautor);
@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 var autor = autorExternoResenaMapper.Map(autorExterno);
 
-                autor.CreadorPor = usuario;
+                autor.CreadoPor = usuario;
                 autor.ModificadoPor = usuario;
 
                 model.AddAutorExterno(autor);
@@ -125,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 var autor = autorInternoResenaMapper.Map(autorInterno);
 
-                autor.CreadorPor = usuario;
+                autor.CreadoPor = usuario;
                 autor.ModificadoPor = usuario;
 
                 model.AddAutorInterno(autor);
@@ -135,7 +135,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 var editorialProducto = editorialResenaMapper.Map(editorial);
 
-                editorialProducto.CreadorPor = usuario;
+                editorialProducto.CreadoPor = usuario;
                 editorialProducto.ModificadoPor = usuario;
 
                 model.AddEditorial(editorialProducto);

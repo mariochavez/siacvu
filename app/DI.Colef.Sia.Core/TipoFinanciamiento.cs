@@ -13,9 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(40)]
 		public virtual string Nombre { get; set; }
 
-		public virtual Usuario CreadorPor { get; set; }
+		public virtual Usuario CreadoPor { get; set; }
 
-		public virtual DateTime CreadorEl { get; set; }
+		public virtual DateTime CreadoEl { get; set; }
 
 		public virtual Usuario ModificadoPor { get; set; }
 

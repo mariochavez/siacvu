@@ -31,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Activo = true;
-                model.CreadorEl = DateTime.Now;
+                model.CreadoEl = DateTime.Now;
             }
             model.ModificadoEl = DateTime.Now;
         }

@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 capitulo.Puntuacion = 0;
                 capitulo.Activo = true;
-                capitulo.CreadorEl = DateTime.Now;
+                capitulo.CreadoEl = DateTime.Now;
             }
 
             capitulo.PosicionAutor = 1;

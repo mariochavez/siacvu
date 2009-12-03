@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (articulo.IsTransient())
             {
                 articulo.Activo = true;
-                articulo.CreadorEl = DateTime.Now;
+                articulo.CreadoEl = DateTime.Now;
                 articulo.Puntuacion = 0;
             }
 

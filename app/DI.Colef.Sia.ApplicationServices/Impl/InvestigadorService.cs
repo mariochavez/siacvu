@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (investigador.IsTransient())
             {
                 investigador.Activo = true;
-                investigador.CreadorEl = DateTime.Now;
+                investigador.CreadoEl = DateTime.Now;
             }
             investigador.ModificadoEl = DateTime.Now;
 

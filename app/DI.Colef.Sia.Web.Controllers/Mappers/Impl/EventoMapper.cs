@@ -57,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Usuario = usuario;
-                model.CreadorPor = usuario;
+                model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
             }
@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var coautor =
                     coautorExternoEventoMapper.Map(coautorExterno);
 
-                coautor.CreadorPor = usuario;
+                coautor.CreadoPor = usuario;
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorExterno(coautor);
@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var coautor =
                     coautorInternoEventoMapper.Map(coautorInterno);
 
-                coautor.CreadorPor = usuario;
+                coautor.CreadoPor = usuario;
                 coautor.ModificadoPor = usuario;
 
                 model.AddCoautorInterno(coautor);
@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var institucionEvento =
                     institucionEventoMapper.Map(institucion);
 
-                institucionEvento.CreadorPor = usuario;
+                institucionEvento.CreadoPor = usuario;
                 institucionEvento.ModificadoPor = usuario;
 
                 model.AddInstitucion(institucionEvento);

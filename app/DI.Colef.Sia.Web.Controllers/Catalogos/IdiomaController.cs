@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var idioma = idiomaMapper.Map(form);
 
-            idioma.CreadorPor = CurrentUser();
+            idioma.CreadoPor = CurrentUser();
             idioma.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(idioma, form, Title.New))

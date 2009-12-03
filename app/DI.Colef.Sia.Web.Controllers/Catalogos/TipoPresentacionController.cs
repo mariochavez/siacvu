@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoPresentacion = tipoPresentacionMapper.Map(form);
 
-            tipoPresentacion.CreadorPor = CurrentUser();
+            tipoPresentacion.CreadoPor = CurrentUser();
             tipoPresentacion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoPresentacion, form, Title.New))

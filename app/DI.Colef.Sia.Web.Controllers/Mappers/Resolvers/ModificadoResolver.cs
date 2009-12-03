@@ -8,7 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers.Resolvers
     {
         protected override string ResolveCore(IBaseEntity source)
         {
-            var date = source.CreadorEl > source.ModificadoEl ? source.CreadorEl : source.ModificadoEl;
+            var date = source.CreadoEl > source.ModificadoEl ? source.CreadoEl : source.ModificadoEl;
             return date <= DateTime.Parse("1910-01-01") ? String.Empty : (date).ToString("dd MMM, yyyy");
         }
     }

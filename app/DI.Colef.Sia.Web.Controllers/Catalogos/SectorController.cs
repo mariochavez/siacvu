@@ -72,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var sector = sectorMapper.Map(form);
 
-            sector.CreadorPor = CurrentUser();
+            sector.CreadoPor = CurrentUser();
             sector.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sector, form, Title.New))

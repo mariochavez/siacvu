@@ -75,7 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var subdisciplina = subdisciplinaMapper.Map(form);
 
-            subdisciplina.CreadorPor = CurrentUser();
+            subdisciplina.CreadoPor = CurrentUser();
             subdisciplina.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(subdisciplina, form, Title.New, "Subdisciplina"))

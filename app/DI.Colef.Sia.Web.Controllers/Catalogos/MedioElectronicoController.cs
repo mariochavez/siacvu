@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var medioElectronico = medioElectronicoMapper.Map(form);
             
-            medioElectronico.CreadorPor = CurrentUser();
+            medioElectronico.CreadoPor = CurrentUser();
             medioElectronico.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(medioElectronico, form, Title.New))

@@ -14,3 +14,5 @@ sqlcmd -S (local) -d siacvu -E -i CatalogosConacyt9.sql
 sqlcmd -S (local) -d siacvu -E -i CatalogosConacyt10.sql
 sqlcmd -S (local) -d siacvu -E -i CatalogosConacyt11.sql
 sqlcmd -S (local) -d siacvu -E -i CatalogosConacyt12.sql
+
+sqlcmd -S (local) -d siacvu -E -i PublicacionesSetup.sql

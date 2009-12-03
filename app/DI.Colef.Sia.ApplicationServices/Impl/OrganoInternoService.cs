@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(organoInterno.Id == 0)
             {
                 organoInterno.Activo = true;
-                organoInterno.CreadorEl = DateTime.Now;
+                organoInterno.CreadoEl = DateTime.Now;
             }
             organoInterno.ModificadoEl = DateTime.Now;
             

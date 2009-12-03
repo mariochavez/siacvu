@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 resena.Puntuacion = 0;
                 resena.Activo = true;
-                resena.CreadorEl = DateTime.Now;
+                resena.CreadoEl = DateTime.Now;
             }
 
             resena.PosicionAutor = 1;

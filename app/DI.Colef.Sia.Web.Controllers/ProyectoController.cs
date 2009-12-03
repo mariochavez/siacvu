@@ -300,7 +300,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            responsableInternoProyecto.CreadorPor = CurrentUser();
+            responsableInternoProyecto.CreadoPor = CurrentUser();
             responsableInternoProyecto.ModificadoPor = CurrentUser();
 
             if (proyectoId != 0)
@@ -344,7 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            participanteInternoProyecto.CreadorPor = CurrentUser();
+            participanteInternoProyecto.CreadoPor = CurrentUser();
             participanteInternoProyecto.ModificadoPor = CurrentUser();
 
             if (proyectoId != 0)
@@ -388,7 +388,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            participanteExternoProyecto.CreadorPor = CurrentUser();
+            participanteExternoProyecto.CreadoPor = CurrentUser();
             participanteExternoProyecto.ModificadoPor = CurrentUser();
 
             if (proyectoId != 0)
@@ -433,7 +433,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            recursoFinancieroProyecto.CreadorPor = CurrentUser();
+            recursoFinancieroProyecto.CreadoPor = CurrentUser();
             recursoFinancieroProyecto.ModificadoPor = CurrentUser();
 
             if (proyectoId != 0)
