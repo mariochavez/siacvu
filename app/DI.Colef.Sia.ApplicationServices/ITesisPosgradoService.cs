@@ -6,5 +6,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         TesisPosgrado GetTesisPosgradoById(int id);
         TesisPosgrado[] GetAllTesisPosgrados();
+
+        TesisPosgrado[] FindUnsedTesisInvestigador(Investigador investigador);
     }
 }

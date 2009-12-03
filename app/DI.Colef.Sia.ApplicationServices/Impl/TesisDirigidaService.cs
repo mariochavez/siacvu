@@ -9,12 +9,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class TesisDirigidaService : ITesisDirigidaService
     {
         readonly IRepository<TesisDirigida> tesisDirigidaRepository;
-        readonly ITesisPosgradoQuerying tesisPosgradoQuerying;
 
-        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository, ITesisPosgradoQuerying tesisPosgradoQuerying)
+        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository)
         {
             this.tesisDirigidaRepository = tesisDirigidaRepository;
-            this.tesisPosgradoQuerying = tesisPosgradoQuerying;
         }
 
         public TesisDirigida GetTesisDirigidaById(int id)
@@ -48,11 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	    public TesisDirigida[] GetAllTesisDirigidas(Usuario usuario)
 	    {
             return ((List<TesisDirigida>)tesisDirigidaRepository.FindAll(new Dictionary<string, object> { { "Usuario", usuario } })).ToArray();
-	    }
-
-	    public TesisPosgrado[] FindActiveTesisPosgrados()
-	    {
-            return tesisPosgradoQuerying.FindActiveTesisPosgrados();
 	    }
     }
 }

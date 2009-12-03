@@ -6,5 +6,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         CursoInvestigador GetCursoInvestigadorById(int id);
         CursoInvestigador[] GetAllCursosInvestigador();
+        CursoInvestigador[] FindUnsedCursosInvestigador(Investigador investigador);
     }
 }
