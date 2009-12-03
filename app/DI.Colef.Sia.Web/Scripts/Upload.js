@@ -97,3 +97,53 @@ function startUpload() {
 function error(event, queueID, fileObj, errorObj) {
     alert('Error');
 }
+
+var Upload = {
+    fileData: null,
+    queue: null,
+    queues: 0,
+    currentQueue: 0,
+    onSelect: function(event, queueID, fileObj) {
+        Upload.fileData = fileObj;
+        Upload.queue = queueID;
+    },
+    onSelectOnce: function(event, data) {
+        if (Upload.fileData == null)
+            return;
+
+        var display = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem').parent().attr('rel');
+        $(display).html(Upload.fileData.name + '<span>(' + Upload.fileData.size + ')</span>');
+    },
+    onProgress: function(event, queueID, fileObj, data) {
+        $('.status_message').html('Subiendo ' + fileObj.name + '...');
+        var stepSize = 200 / fileObj.size;
+        var step = (stepSize * data.allBytesLoaded) * 2;
+
+        $('.progress').attr('style', 'width: ' + step + 'px;');
+
+        return false;
+    },
+    onCompleteAll: function(event, data) {
+        $('.progress').attr('style', 'width: 0px;');
+        alert(Upload.currentQueue);
+    },
+    startUpload: function() {
+        $('.progress_container').show();
+        Upload.queues = $('.fileUpload').lenght;
+
+        $('.fileUpload').each(function() {
+            $(this).uploadifySettings(
+                'scriptData',
+                {
+                    '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(),
+                    'investigadorId': $('#Id').val()
+                });
+            $(this).uploadifyUpload();
+            Upload.currentQueue++;
+        });
+
+    },
+    error: function(event, queueID, fileObj, errorObj) {
+        alert('Error');
+    }
+}

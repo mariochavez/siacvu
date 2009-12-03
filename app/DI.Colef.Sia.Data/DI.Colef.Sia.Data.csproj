@@ -97,6 +97,7 @@
     <Compile Include="NHibernateMaps\Alteration\AutorExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\AutorInternoAlteration.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
+    <Compile Include="NHibernateMaps\Conventions\ByteArrayConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyToManyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\PrimaryKeyConvention.cs" />

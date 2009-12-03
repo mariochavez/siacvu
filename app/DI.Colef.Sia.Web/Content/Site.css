@@ -903,14 +903,35 @@ a.minilistacancelar {
 ----------------------------------------------------------*/
 .ajax-loading
 {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 5000;
+    padding: 5px 5px 5px 30px;
+    margin: 0 0 0 -37px;
+    width: 150px;
+    height: 18px;
     background: url(./images/ajax-loader.gif) no-repeat;
-    min-width: 16px;
-    min-height: 16px;
+    background-position: 2px 2px;
+    background-color: #252525;
+    color: #FFFFFF;
+    font-weight: bold;
     display: inline-block;
     vertical-align: middle;
-    margin: 2px;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari */
 }
 
+#loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+    background-color: red;
+    font-size: 150%;
+    color: white;
+    padding: 2px;
+}
 
 /* Uploadify */
 div.progress_container {

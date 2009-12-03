@@ -43,6 +43,18 @@ namespace :build do
     
     copy("db/CleanDBSchema.sql", props[:archive])
     copy("db/inicializacion.sql", props[:archive])
+    copy("db/CatalogosConacyt1.sql", props[:archive])
+    copy("db/CatalogosConacyt2.sql", props[:archive])
+    copy("db/CatalogosConacyt3.sql", props[:archive])
+    copy("db/CatalogosConacyt4.sql", props[:archive])
+    copy("db/CatalogosConacyt5.sql", props[:archive])
+    copy("db/CatalogosConacyt6.sql", props[:archive])
+    copy("db/CatalogosConacyt7.sql", props[:archive])
+    copy("db/CatalogosConacyt8.sql", props[:archive])
+    copy("db/CatalogosConacyt9.sql", props[:archive])
+    copy("db/CatalogosConacyt10.sql", props[:archive])
+    copy("db/CatalogosConacyt11.sql", props[:archive])
+    copy("db/CatalogosConacyt12.sql", props[:archive])
     
   end
  

@@ -75,8 +75,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Usuario,
                            o => o.Ignore())
                 .ForMember(d => d.Nombre,
-                           o => o.Ignore())
-                .ForMember(d => d.AreaTematica,
                            o => o.Ignore());
 
             Mapper.CreateMap<EstadoInvestigador, EstadoInvestigadorForm>()

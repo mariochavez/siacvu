@@ -189,8 +189,8 @@ var AutoComplete = {
         var value = inputBox.val();
         inputBox.autocomplete(url,
             {
-                minChars: 5,
-                delay: 400,
+                minChars: 3,
+                delay: 300,
                 matchSubset: 1,
                 matchContains: 1,
                 cacheLength: 10,

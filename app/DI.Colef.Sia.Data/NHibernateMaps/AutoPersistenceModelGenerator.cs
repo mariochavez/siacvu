@@ -60,6 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps
                     c.Add<HasManyConvention>();
                     c.Add<TableNameConvention>();
                     c.Add<HasManyToManyConvention>();
+                    c.Add<ByteArrayConvention>();
                 };
         }
 

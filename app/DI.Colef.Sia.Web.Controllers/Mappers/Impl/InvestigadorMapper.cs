@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.ModificadoPor = usuario;
 
-            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematica);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.AreaTematica1 = message.AreaTematica1;
             model.AreaTematica2 = message.AreaTematica2;
             model.AreaTematica3 = message.AreaTematica3;

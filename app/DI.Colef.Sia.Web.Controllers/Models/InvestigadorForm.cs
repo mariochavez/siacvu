@@ -12,7 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ExpedienteAcademico { get; set; }
         public string ClaveCVU { get; set; }
 
-        public int AreaTematica { get; set; }
+        public int AreaTematicaId { get; set; }
         public string AreaTematicaLineaTematicaNombre { get; set; }
 
         public string AreaTematica1 { get; set; }

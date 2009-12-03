@@ -29,3 +29,11 @@
     <label>Pa&iacute;s</label>
     <span id="span_pais" class="valor"><%= Html.Encode(Model.GradoAcademicoInvestigador.InstitucionPaisNombre)%>&nbsp;</span>
 </p>
+<p>
+    <label>Documento probatorio</label>
+    <span id="span_gradoacademico_documento" class="valor">&nbsp;</span><br />
+</p>
+<div style="padding: 0 0 10px 20px">
+    <input type="file" name="GradoAcademicoInvestigador_DocumentoProbatorio" id="GradoAcademicoInvestigador_DocumentoProbatorio" class="fileUpload"/>
+</div>
+<div id="GradoAcademico_FileQueue" style="display:none;" rel="#span_gradoacademico_documento"></div>

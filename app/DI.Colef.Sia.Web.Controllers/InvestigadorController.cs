@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICategoriaInvestigadorMapper categoriaInvestigadorMapper;
         readonly ICategoriaMapper categoriaMapper;
         readonly IDepartamentoMapper departamentoMapper;
-        readonly IDireccionRegionalMapper direccionRegionalMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IEstadoInvestigadorMapper estadoInvestigadorMapper;
         readonly IEstadoMapper estadoMapper;
@@ -41,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ICargoInvestigadorMapper cargoInvestigadorMapper,
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       IPuestoMapper puestoMapper,
-                                      IDireccionRegionalMapper direccionRegionalMapper, ISearchService searchService,
+                                      ISearchService searchService,
             IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
@@ -59,7 +58,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.cargoInvestigadorMapper = cargoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
             this.puestoMapper = puestoMapper;
-            this.direccionRegionalMapper = direccionRegionalMapper;
             this.areaTematicaMapper = areaTematicaMapper;
         }
 
@@ -277,7 +275,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var form = new ShowFieldsForm
             {
                 AreaTematicaId = areaTematicaForm.Id,
-                AreaTematicaNombre = areaTematicaForm.LineaTematicaNombre
+                AreaTematicaLineaTematicaNombre = areaTematicaForm.LineaTematicaNombre
             };
 
             return Rjs("ChangeAreaTematica", form);

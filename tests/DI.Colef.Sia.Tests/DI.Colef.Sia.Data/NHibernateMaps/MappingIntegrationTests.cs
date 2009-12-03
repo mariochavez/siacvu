@@ -30,7 +30,7 @@ namespace Tests.DI.Colef.Sia.Data.NHibernateMaps
 
             string[] mappingAssemblies = RepositoryTestsHelper.GetMappingAssemblies();
             NHibernateSession.Init(new SimpleSessionStorage(factoryKey), mappingAssemblies,
-                new AutoPersistenceModelGenerator().Generate(), LIVE_DB_CONFIG_PATH);
+                new AutoPersistenceModelGenerator().Generate(), LIVE_DB_CONFIG_PATH, LIVE_VAL_CONFIG_PATH);
         }
 
         [Test]

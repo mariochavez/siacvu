@@ -12,4 +12,4 @@ $('select').removeClass('input-validation-error');
 
 $('#id').val('<%=Model %>');
 
-startUpload();
+Upload.startUpload();

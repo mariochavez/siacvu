@@ -106,7 +106,7 @@
         investigadorSetup();
 
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
-        
+
         $("#uploadify").uploadify({
             'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
             'script': '<%=Url.Action("AddFile") %>',
@@ -122,6 +122,23 @@
             'onSelectOnce': selectOnce,
             'onError': error,
             'scriptData': { token: auth }
+        });
+
+        $('#GradoAcademicoInvestigador_DocumentoProbatorio').uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': '<%=Url.Action("AddFile") %>',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': '<%=Url.Action("AddFile") %>',
+            'queueID': 'GradoAcademico_FileQueue',
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onComplete': Upload.onComplete,
+            'onError': error,
+            'scriptData': { token: auth, tipoArchivo: 1 }
         });
     });
 </script>

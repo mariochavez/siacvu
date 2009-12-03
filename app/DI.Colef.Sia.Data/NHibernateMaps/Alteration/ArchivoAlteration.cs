@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Alteration
         public void Alter(AutoPersistenceModel model)
         {
             model.ForTypesThatDeriveFrom<Archivo>(
-                    map => map.DiscriminateSubClassesOnColumn("TipoProducto", 1));
+                map => map.DiscriminateSubClassesOnColumn("TipoProducto", 1));
         }
     }
 }
