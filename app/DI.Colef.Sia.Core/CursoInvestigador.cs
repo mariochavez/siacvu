@@ -5,6 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class CursoInvestigador : Entity
     {
+        public virtual Investigador Investigador { get; set; }
+
         public virtual string Nombre { get; set; }
 
         public virtual string NombreInvestigador { get; set; }

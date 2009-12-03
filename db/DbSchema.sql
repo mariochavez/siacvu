@@ -719,6 +719,10 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01985102A57
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6598336201B]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE6598336201B
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6595ECF193D]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
 alter table CursoInvestigadores  drop constraint FKD4AFE6595ECF193D
 
@@ -1073,6 +1077,10 @@ alter table CoautorExternoResena  drop constraint FKD1565D8899085EFD
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1565D88FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResena'))
 alter table CoautorExternoResena  drop constraint FKD1565D88FF48CC4D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B3288336201B]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B3288336201B
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B32884B302FF]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
@@ -3325,6 +3333,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        NumeroHoras INT null,
+       InvestigadorFk INT null,
        ProgramaEstudioFk INT null,
        InstitucionFk INT null,
        NivelEstudioFk INT null,
@@ -3618,6 +3627,7 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        FormaParticipacion INT null,
        NombreAlumno NVARCHAR(255) null,
        FechaGrado DATETIME null,
+       InvestigadorFk INT null,
        VinculacionAPyDFk INT null,
        ProgramaEstudioFk INT null,
        GradoAcademicoFk INT null,
@@ -5626,6 +5636,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table CursoInvestigadores 
+        add constraint FKD4AFE6598336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
+
+    alter table CursoInvestigadores 
         add constraint FKD4AFE6595ECF193D 
         foreign key (ProgramaEstudioFk) 
         references ProgramaEstudios
@@ -6069,6 +6084,11 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         add constraint FKD1565D88FF48CC4D 
         foreign key (ResenaFk) 
         references Resenas
+
+    alter table TesisPosgrados 
+        add constraint FKD989B3288336201B 
+        foreign key (InvestigadorFk) 
+        references Investigadores
 
     alter table TesisPosgrados 
         add constraint FKD989B32884B302FF 

@@ -143,12 +143,12 @@ CREATE VIEW TesisPosgrados AS
 SELECT		2 AS Id, 'Tesis Posgrado 2' AS Titulo, 'Natalia Zamudio Santos' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,  
 			1 AS VinculacionApyDFk, 1 AS FormaParticipacion, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk, 274 AS InstitucionFk,
 			1 AS NivelEstudioFk, 17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk,
-			9 AS SubdisciplinaFk
+			9 AS SubdisciplinaFk, 2 AS InvestigadorFk
 UNION
 SELECT		1 AS Id, 'Tesis Posgrado 1' AS Titulo, 'Alejandro Valdéz Ruíz' AS NombreAlumno, 'Feb  2 2009 12:00AM' AS FechaGrado,
 			1 AS VinculacionApyDFk, 1 AS FormaParticipacion, 47 AS ProgramaEstudioFk, 1 AS GradoAcademicoFk, 274 AS InstitucionFk,
 			1 AS NivelEstudioFk, 17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk,
-			9 AS SubdisciplinaFk
+			9 AS SubdisciplinaFk, 1 AS InvestigadorFk
 GO
 
 --Valores de prueba para la vista de CursosInvestigadores
@@ -157,11 +157,13 @@ GO
 CREATE VIEW CursoInvestigadores AS
 SELECT		2 AS Id, 'Teoría económica y regional' AS Nombre, 'Aguilar Benítez Ismael' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
 			'Feb  27 2009 12:00AM' AS FechaFinal, 60 AS NumeroHoras, 47 AS ProgramaEstudioFk, 274 AS InstitucionFk, 1 AS NivelEstudioFk,
-			17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk, 9 AS SubdisciplinaFk
+			17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk, 9 AS SubdisciplinaFk,
+			2 AS InvestigadorFk
 UNION
 SELECT		1 AS Id, 'Teorías del desarrollo' AS Nombre, 'Martínez Pellégrini Sárah Eva' AS NombreInvestigador, 'Feb  2 2009 12:00AM' AS FechaInicial,
 			'Feb  27 2009 12:00AM' AS FechaFinal, 30 AS NumeroHoras, 47 AS ProgramaEstudioFk, 274 AS InstitucionFk, 1 AS NivelEstudioFk,
-			17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk, 9 AS SubdisciplinaFk
+			17 AS SectorFk, 108 AS OrganizacionFk , 298 AS Nivel2Fk,1 AS AreaFk, 2 AS DisciplinaFk, 9 AS SubdisciplinaFk,
+			1 AS InvestigadorFk
 GO
 
 INSERT Roles VALUES('Administradores', GETDATE(), GETDATE(), 1, 1, 1)

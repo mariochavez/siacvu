@@ -900,6 +900,11 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6598336201B]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
+alter table CursoInvestigadores  drop constraint FKD4AFE6598336201B
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AFE6595ECF193D]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
 alter table CursoInvestigadores  drop constraint FKD4AFE6595ECF193D
 
@@ -1342,6 +1347,11 @@ alter table CoautorExternoResena  drop constraint FKD1565D8899085EFD
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD1565D88FF48CC4D]') AND parent_object_id = OBJECT_ID('CoautorExternoResena'))
 alter table CoautorExternoResena  drop constraint FKD1565D88FF48CC4D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD989B3288336201B]') AND parent_object_id = OBJECT_ID('TesisPosgrados'))
+alter table TesisPosgrados  drop constraint FKD989B3288336201B
 
 
 

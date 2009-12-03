@@ -212,7 +212,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.FormasParticipaciones = customCollection.FormaParticipacionCustomCollection();
             form.TiposTesis = customCollection.TipoTesisCustomCollection();
             form.VinculacionesAPyDs = vinculacionApyDMapper.Map(catalogoService.GetActiveVinculacionAPyDs());
-            form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.GetAllTesisPosgrados());
+            form.TesisPosgrados = tesisPosgradoMapper.Map(tesisPosgradoService.FindUnsedTesisInvestigador(CurrentInvestigador()));
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);

@@ -17,18 +17,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
         }
 
-        public TesisPosgrado[] FindActiveTesisPosgrados()
+        public TesisPosgrado[] FindUnsedTesisInvestigador(Investigador investigador)
         {
-            //var investigadores = DetachedCriteria.For(typeof (TesisDirigida))
-            //    .CreateAlias("TesisPosgrado", "a")
-            //    .SetProjection(Projections.ProjectionList()
-            //                       .Add(Projections.Property("a.Id"), "AlumnoId"));
+            var tesis = DetachedCriteria.For(typeof(TesisDirigida))
+               .CreateAlias("TesisPosgrado", "tp")
+               .SetProjection(Projections.ProjectionList()
+                                  .Add(Projections.Property("tp.Id"), "TesisPosgradoId"));
 
-            var tesisPosgrados = Session.CreateCriteria(typeof(TesisPosgrado))
-                .AddOrder(Order.Asc("Titulo"))
+            var tesisPosgrado = Session.CreateCriteria(typeof(TesisPosgrado))
+                .Add(Expression.Eq("Investigador", investigador))
+                .Add(Subqueries.PropertyNotIn("Id", tesis))
                 .List<TesisPosgrado>();
 
-            return ((List<TesisPosgrado>) tesisPosgrados).ToArray();
+            return ((List<TesisPosgrado>) tesisPosgrado).ToArray();
         }
     }
 }

@@ -5,6 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class TesisPosgrado : Entity
     {
+        public virtual Investigador Investigador { get; set; }
+
         public virtual string Titulo { get; set; }
 
         public virtual VinculacionAPyD VinculacionAPyD { get; set; }
