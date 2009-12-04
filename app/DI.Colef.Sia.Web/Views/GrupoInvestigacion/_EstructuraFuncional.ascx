@@ -1,60 +1,39 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<GrupoInvestigacionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-
-<% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>
-
 <p>
-    <label>L&iacute;der</label>
-    <%= Html.CheckBox("Lider", Model.Lider) %>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Lider")%>
-</p>
-<p>
-    <label>Nombre</label>
-    <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input250", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Nombre")%>
-</p>
-<p>
-    <label>Miembros</label>
-    <%=Html.TextBox("Miembros", Model.Miembros, new { @class = "input250", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("Miembros")%>
-</p>
-<p>
-    <label>Impacto</label>
-    <%=Html.TextBox("Impacto", Model.Impacto, new { @class = "input250", maxlength = 100 })%>
+    <label>Impacto / Productividad</label>
+    <%=Html.TextArea("Impacto", Model.Impacto, 4, 35, new { @class = "input420", maxlength = 300 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Impacto")%>
 </p>
 <p>
-    <label>Vinculaci&oacute;n del sector productivo</label>
-    <%=Html.TextBox("VinculacionSectorProductivo", Model.VinculacionSectorProductivo, new { @class = "input250", maxlength = 100 })%>
+    <label>Vinculaci&oacute;n con el Sector Productivo</label>
+    <%=Html.TextArea("VinculacionSectorProductivo", Model.VinculacionSectorProductivo, 4, 35, new { @class = "input420", maxlength = 300 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("VinculacionSectorProductivo")%>
 </p>
 <p>
-    <label>Vinculaci&oacute;n del sector social</label>
-    <%=Html.TextBox("VinculacionSectorSocial", Model.VinculacionSectorSocial, new { @class = "input250", maxlength = 100 })%>
+    <label>Vinculaci&oacute;n con el Sector Social</label>
+    <%=Html.TextArea("VinculacionSectorSocial", Model.VinculacionSectorSocial, 4, 35, new { @class = "input420", maxlength = 300 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("VinculacionSectorSocial")%>
 </p>
 <p>
     <label>Colaboraci&oacute;n</label>
-    <%=Html.TextBox("Colaboracion", Model.Colaboracion, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextArea("Colaboracion", Model.Colaboracion, 4, 35, new { @class = "input420", maxlength = 300 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Colaboracion")%>
 </p>
 <p>
     <label>Administraci&oacute;n</label>
-    <%=Html.TextBox("Administracion", Model.Administracion, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextArea("Administracion", Model.Administracion, 4, 35, new { @class = "input420", maxlength = 300 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Administracion")%>
 </p>
 <p>
     <label>Programa registrado</label>
-    <%=Html.TextBox("ProgramaRegistrado", Model.ProgramaRegistrado, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("ProgramaRegistrado", Model.ProgramaRegistrado, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("ProgramaRegistrado")%>
 </p>

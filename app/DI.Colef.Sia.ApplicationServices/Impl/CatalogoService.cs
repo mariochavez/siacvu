@@ -51,7 +51,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<NivelEstudio> nivelEstudioRepository;
         readonly IRepository<Nivel> nivelRepository;
         readonly IRepository<Organizacion> organizacionRepository;
-        readonly IRepository<OtraParticipacion> otraParticipacionRepository;
         readonly IRepository<Pais> paisRepository;
         readonly IRepository<ProductoAcademico> productoAcademicoRepository;
         readonly IRepository<ProductoDerivado> productoDerivadoRepository;
@@ -76,7 +75,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<TipoOrgano> tipoOrganoRepository;
         readonly IRepository<TipoParticipacion> tipoParticipacionRepository;
         readonly IRepository<TipoParticipante> tipoParticipanteRepository;
-        readonly IRepository<TipoPresentacion> tipoPresentacionRepository;
         readonly IRepository<TipoProyecto> tipoProyectoRepository;
         readonly IRepository<USEG> uSEGRepository;
         readonly IRepository<VinculacionAPyD> vinculacionAPyDRepository;
@@ -114,13 +112,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<TipoEstancia> tipoEstanciaRepository,
                                IRepository<MedioElectronico> medioElectronicoRepository,
                                IRepository<MedioImpreso> medioImpresoRepository,
-                               IRepository<OtraParticipacion> otraParticipacionRepository,
                                IRepository<TipoDictamen> tipoDictamenRepository,
                                IRepository<TipoDistincion> tipoDistincionRepository,
                                IRepository<TipoEvento> tipoEventoRepository,
                                IRepository<TipoFinanciamiento> tipoFinanciamientoRepository,
                                IRepository<TipoOrgano> tipoOrganoRepository,
-                               IRepository<TipoPresentacion> tipoPresentacionRepository,
                                IRepository<NivelEstudio> nivelEstudioRepository,
                                IRepository<ProductoDerivado> productoDerivadoRepository,
                                IRepository<TipoApoyo> tipoApoyoRepository,
@@ -185,13 +181,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.generoRepository = generoRepository;
             this.medioElectronicoRepository = medioElectronicoRepository;
             this.medioImpresoRepository = medioImpresoRepository;
-            this.otraParticipacionRepository = otraParticipacionRepository;
             this.tipoDictamenRepository = tipoDictamenRepository;
             this.tipoDistincionRepository = tipoDistincionRepository;
             this.tipoEventoRepository = tipoEventoRepository;
             this.tipoFinanciamientoRepository = tipoFinanciamientoRepository;
             this.tipoOrganoRepository = tipoOrganoRepository;
-            this.tipoPresentacionRepository = tipoPresentacionRepository;
             this.nivelEstudioRepository = nivelEstudioRepository;
             this.tipoProyectoRepository = tipoProyectoRepository;
             this.productoDerivadoRepository = productoDerivadoRepository;
@@ -1207,33 +1201,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             medioImpresoRepository.SaveOrUpdate(medioImpreso);
         }
 
-        public OtraParticipacion GetOtraParticipacionById(int id)
-        {
-            return otraParticipacionRepository.Get(id);
-        }
-
-        public OtraParticipacion[] GetAllOtraParticipaciones()
-        {
-            return ((List<OtraParticipacion>) OrderCatalog<OtraParticipacion>(x => x.Nombre)).ToArray();
-        }
-
-        public OtraParticipacion[] GetActiveOtraParticipaciones()
-        {
-            return ((List<OtraParticipacion>) OrderCatalog<OtraParticipacion>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveOtraParticipacion(OtraParticipacion otraParticipacion)
-        {
-            if (otraParticipacion.Id == 0)
-            {
-                otraParticipacion.Activo = true;
-                otraParticipacion.CreadorEl = DateTime.Now;
-            }
-            otraParticipacion.ModificadoEl = DateTime.Now;
-
-            otraParticipacionRepository.SaveOrUpdate(otraParticipacion);
-        }
-
         public TipoDictamen GetTipoDictamenById(int id)
         {
             return tipoDictamenRepository.Get(id);
@@ -1367,33 +1334,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tipoOrgano.ModificadoEl = DateTime.Now;
 
             tipoOrganoRepository.SaveOrUpdate(tipoOrgano);
-        }
-
-        public TipoPresentacion GetTipoPresentacionById(int id)
-        {
-            return tipoPresentacionRepository.Get(id);
-        }
-
-        public TipoPresentacion[] GetAllTipoPresentaciones()
-        {
-            return ((List<TipoPresentacion>) OrderCatalog<TipoPresentacion>(x => x.Nombre)).ToArray();
-        }
-
-        public TipoPresentacion[] GetActiveTipoPresentaciones()
-        {
-            return ((List<TipoPresentacion>) OrderCatalog<TipoPresentacion>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveTipoPresentacion(TipoPresentacion tipoPresentacion)
-        {
-            if (tipoPresentacion.Id == 0)
-            {
-                tipoPresentacion.Activo = true;
-                tipoPresentacion.CreadorEl = DateTime.Now;
-            }
-            tipoPresentacion.ModificadoEl = DateTime.Now;
-
-            tipoPresentacionRepository.SaveOrUpdate(tipoPresentacion);
         }
 
         public NivelEstudio GetNivelEstudioById(int id)
