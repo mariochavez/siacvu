@@ -45,43 +45,47 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return productoList.ToArray();
         }
 
-        public ProductoDTO[] GetProductosBandeja(Usuario usuario, DateTime fechaInicial)
+        public ProductoDTO[] GetProductosBandeja(Usuario usuario)
         {
-            IMultiCriteria queries = Session.CreateMultiCriteria()
-                .Add(
-                Session.CreateCriteria(typeof (Articulo))
-                    .AddOrder(Order.Desc("CreadoEl"))
-                    .CreateAlias("Usuario", "u")
-                    .CreateAlias("CoautorInternoArticulos", "co")
-                    .CreateAlias("co.Investigador", "i")
-                    .CreateAlias("i.Usuario", "iu")
-                    .SetProjection(Projections.ProjectionList()
-                                       .Add(Projections.Property("Id"), "Id")
-                                       .Add(Projections.Property("Titulo"), "Nombre")
-                                       .Add(Projections.Constant(1), "TipoProducto"))
-                    .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)))
-                    .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)))
-                ).Add(Session.CreateCriteria(typeof (Libro))
-                          .AddOrder(Order.Desc("CreadoEl"))
-                          .CreateAlias("Usuario", "u")
-                          .CreateAlias("CoautorInternoLibros", "co")
-                          .CreateAlias("co.Investigador", "i")
-                          .CreateAlias("i.Usuario", "iu")
-                          .SetProjection(Projections.ProjectionList()
-                                             .Add(Projections.Property("Id"), "Id")
-                                             .Add(Projections.Property("Nombre"), "Nombre")
-                                             .Add(Projections.Constant(2), "TipoProducto"))
-                          .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)))
-                          .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)))
-                );
+            var bandejaTrabajo = new object[4];
+
+            IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
+                .Add(BuildCreteria<Articulo>(usuario.Id, "CoautorInternoArticulos", "Titulo", 1))
+                .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2))
+                .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7));
+
+
+            IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
+                            .Add(BuildCreteria<Articulo>(usuario.Id, "CoautorInternoArticulos", "Titulo", 1))
+                            .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2))
+                            .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7));
+
+
 
             var resultado = new ArrayList();
-            foreach (var producto in queries.List())
+            foreach (var producto in produccionAcademica.List())
             {
                 resultado.AddRange((ICollection) producto);
             }
 
             return (ProductoDTO[]) resultado.ToArray(typeof (ProductoDTO));
+        }
+
+        private ICriteria BuildCreteria<T>(int usuarioId, string tableName, string propertyName, int productType)
+        {
+            return Session.CreateCriteria(typeof (T))
+                .AddOrder(Order.Desc("CreadoEl"))
+                .CreateAlias("Usuario", "u")
+                .CreateAlias(tableName, "co")
+                .CreateAlias("co.Investigador", "i")
+                .CreateAlias("i.Usuario", "iu")
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("Id"), "Id")
+                                   .Add(Projections.Property(propertyName), "Nombre")
+                                   .Add(Projections.Constant(productType), "TipoProducto")
+                                   .Add(Projections.Property("CreadoEl"), "CreadoEl"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)))
+                .Add(Expression.Or(Expression.Eq("u.Id", usuarioId), Expression.Eq("iu.Id", usuarioId)));
         }
     }
 
@@ -90,5 +94,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int TipoProducto { get; set; }
+        public DateTime CreadoEl { get; set; }
     }
 }

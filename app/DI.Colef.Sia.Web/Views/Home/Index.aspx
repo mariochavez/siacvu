@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<HomeForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
@@ -36,6 +38,39 @@
 <div id="textos">
 				
     <% Html.RenderPartial("_Message"); %>
+    <div id="lista">
+        <h4>Producci&oacute;n acad&eacute;mica</h4>
+        
+		<% if (Model.Form.ProduccionAcademica == null || Model.Form.ProduccionAcademica.Length == 0){ %>
+			<div class="elementolista">
+				<div class="elementodescripcion">
+					<h5><span>No hay productos registrados</span></h5>
+				</div><!--end elementodescripcion-->
+
+			</div><!--end elementolista-->
+		<% } else { %>
+            <% foreach (var produccionAcademica in Model.Form.ProduccionAcademica) { %>
+                <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.Id) %>">
+	                <div class="elementodescripcion">
+	                    <h5><span><%=Html.Encode(produccionAcademica.Nombre)%></span></h5>
+	                    <h6>
+	                        <%=HumanizeHelper.GetNombreProducto(produccionAcademica.TipoProducto)%>
+	                        Creado el <%=HumanizeHelper.FormatDate(produccionAcademica.CreadoEl)%>
+	                    </h6>
+	                </div><!--end elementodescripcion-->
+
+					<div class="elementobotones">
+						<p>
+							<span><%=Html.ActionLink("Editar", "Edit", new { id = produccionAcademica.Id, tipoProducto = produccionAcademica.TipoProducto })%></span>
+	                        <span><%=Html.ActionLink("Ver", "Show", new { id = produccionAcademica.Id })%></span>
+	                   	</p>
+					</div><!--end elementobotones-->
+                		
+                </div><!--end elementolista-->
+            <% } %>
+        <% } %>
+    
+    </div><!--end lista-->
     
 </div><!--end textos-->
 					    

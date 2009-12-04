@@ -537,7 +537,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new LibroForm();
             form.Ediciones = customCollection.EdicionCustomCollection();
-            form.TiposProductos = customCollection.TipoProductoCustomCollection(3);
+            form.TiposProductos = customCollection.TipoProductoCustomCollection(7);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.FormatosPublicaciones = customCollection.FormatoPublicacionCustomCollection();
             form.ContenidosLibros = customCollection.ContenidoLibroCustomCollection();

@@ -12,7 +12,7 @@
 	<%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("Titulo")%>
 </p>
-<div id="PresentacionLibro_div">
+<div>
     <p>
 	    <label>Tipo de presentaci&oacute;n</label>
 	    <%=Html.DropDownList("TipoPresentacion", Model.TiposPresentaciones.CreateSelectList<TipoPresentacionForm>("Id", "Nombre"),
@@ -26,7 +26,7 @@
 	    <%=Html.ValidationMessage("Autor")%>
     </p>
 </div>
-<div id="Platicas">
+<div>
     <% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución organizadora", IsShowForm = false }); %>
 </div>
 <p>
@@ -35,7 +35,7 @@
     <span>(Formato dd/mm/yyyy)</span>
     <%=Html.ValidationMessage("FechaPresentacion")%>
 </p>
-<div id="PresentacionInvestigacion">
+<div>
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
 <p>
