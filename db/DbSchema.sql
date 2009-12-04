@@ -915,6 +915,38 @@ alter table TesisPosgrados  drop constraint FKD989B328BC063744
 alter table TesisPosgrados  drop constraint FKD989B328F4FE4035
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6425E2FD]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC6425E2FD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC8A77AB9C]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC8A77AB9C
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC2AF31B56]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC2AF31B56
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6A829E09]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC6A829E09
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC7D866EAB]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC7D866EAB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC3E391E13]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC3E391E13
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC62D605DB]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC62D605DB
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC74E8BAB7]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB63156A829E09]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
 alter table EstanciaAcademicaExternas  drop constraint FK43CB63156A829E09
 
@@ -2363,38 +2395,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B62D605DB
 alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6425E2FD]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC6425E2FD
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC8A77AB9C]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC8A77AB9C
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC2AF31B56]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC2AF31B56
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6A829E09]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC6A829E09
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC7D866EAB]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC7D866EAB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC3E391E13]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC3E391E13
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC62D605DB]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC62D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC74E8BAB7]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
-
-
     if exists (select * from dbo.sysobjects where id = object_id(N'OrganoExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table OrganoExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'LineaTematicas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table LineaTematicas
@@ -2528,6 +2528,8 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Capitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Capitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TesisPosgrados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisPosgrados
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ObraTraducidas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ObraTraducidas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
 
@@ -2726,8 +2728,6 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Eventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Eventos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ObraTraducidas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ObraTraducidas
 
     create table OrganoExternos (
         Id INT IDENTITY NOT NULL,
@@ -3483,6 +3483,49 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       primary key (Id)
+    )
+
+    create table ObraTraducidas (
+        Id INT IDENTITY NOT NULL,
+       Nombre NVARCHAR(255) null,
+       NombreTraductor NVARCHAR(255) null,
+       ApellidoPaterno NVARCHAR(255) null,
+       ApellidoMaterno NVARCHAR(255) null,
+       NombreObraTraducida NVARCHAR(255) null,
+       TipoObraTraducida INT null,
+       PalabraClave1 NVARCHAR(255) null,
+       PalabraClave2 NVARCHAR(255) null,
+       PalabraClave3 NVARCHAR(255) null,
+       EstadoProducto INT null,
+       FechaAceptacion DATETIME null,
+       FechaPublicacion DATETIME null,
+       Volumen INT null,
+       Numero INT null,
+       PaginaInicial INT null,
+       PaginaFinal INT null,
+       NombreLibro NVARCHAR(255) null,
+       TipoLibro INT null,
+       Resumen NVARCHAR(255) null,
+       NoPaginas INT null,
+       NoCitas INT null,
+       ISBN NVARCHAR(255) null,
+       Edicion INT null,
+       Reimpresion INT null,
+       Tiraje INT null,
+       Puntuacion INT null,
+       PosicionAutor INT null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       IdiomaFk INT null,
+       AreaTematicaFk INT null,
+       RevistaPublicacionFk INT null,
+       UsuarioFk INT null,
+       DepartamentoFk INT null,
+       SedeFk INT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
        primary key (Id)
     )
 
@@ -4782,48 +4825,6 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
        primary key (Id)
     )
 
-    create table ObraTraducidas (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       NombreTraductor NVARCHAR(255) null,
-       ApellidoPaterno NVARCHAR(255) null,
-       ApellidoMaterno NVARCHAR(255) null,
-       NombreObraTraducida NVARCHAR(255) null,
-       TipoObraTraducida INT null,
-       PalabraClave1 NVARCHAR(255) null,
-       PalabraClave2 NVARCHAR(255) null,
-       PalabraClave3 NVARCHAR(255) null,
-       EstadoProducto INT null,
-       FechaAceptacion DATETIME null,
-       FechaPublicacion DATETIME null,
-       Volumen INT null,
-       Numero INT null,
-       PaginaInicial INT null,
-       PaginaFinal INT null,
-       NombreLibro NVARCHAR(255) null,
-       TipoLibro INT null,
-       Resumen NVARCHAR(255) null,
-       NoPaginas NVARCHAR(255) null,
-       NoCitas NVARCHAR(255) null,
-       ISBN NVARCHAR(255) null,
-       Reimpresion INT null,
-       Tiraje INT null,
-       Puntuacion INT null,
-       PosicionAutor INT null,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       IdiomaFk INT null,
-       AreaTematicaFk INT null,
-       RevistaPublicacionFk INT null,
-       UsuarioFk INT null,
-       DepartamentoFk INT null,
-       SedeFk INT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     alter table OrganoExternos 
         add constraint FK55BF0AAE6A829E09 
         foreign key (UsuarioFk) 
@@ -5968,6 +5969,46 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
         add constraint FKD989B328F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC6425E2FD 
+        foreign key (IdiomaFk) 
+        references Idiomas
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC8A77AB9C 
+        foreign key (AreaTematicaFk) 
+        references AreaTematicas
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC2AF31B56 
+        foreign key (RevistaPublicacionFk) 
+        references RevistaPublicaciones
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC6A829E09 
+        foreign key (UsuarioFk) 
+        references Usuarios
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC7D866EAB 
+        foreign key (DepartamentoFk) 
+        references Departamentos
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC3E391E13 
+        foreign key (SedeFk) 
+        references Sedes
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC62D605DB 
+        foreign key (CreadoPorFk) 
+        references Usuarios
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC74E8BAB7 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
 
     alter table EstanciaAcademicaExternas 
         add constraint FK43CB63156A829E09 
@@ -7776,45 +7817,5 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
 
     alter table Dependencias 
         add constraint FK4ECBCD2B74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC6425E2FD 
-        foreign key (IdiomaFk) 
-        references Idiomas
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC8A77AB9C 
-        foreign key (AreaTematicaFk) 
-        references AreaTematicas
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC2AF31B56 
-        foreign key (RevistaPublicacionFk) 
-        references RevistaPublicaciones
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC6A829E09 
-        foreign key (UsuarioFk) 
-        references Usuarios
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC7D866EAB 
-        foreign key (DepartamentoFk) 
-        references Departamentos
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC3E391E13 
-        foreign key (SedeFk) 
-        references Sedes
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC62D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table ObraTraducidas 
-        add constraint FK1A338EFC74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios

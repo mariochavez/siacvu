@@ -570,6 +570,9 @@
     <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowLibro.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowCapitulo.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowArticulo.ascx" />
     <Content Include="Views\Productos\ObraTraducida\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\ObraTraducida\Edit.aspx" />
     <Content Include="Views\Productos\ObraTraducida\Index.aspx" />

@@ -50,31 +50,36 @@
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del cap&iacute;tulo</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</span>
+                    <label>Nombre original de la obra</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Tipo de cap&iacute;tulo</label>
-                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoCapitulo, 2)%>&nbsp;</span>
+                    <label>Idioma al que se tradujo</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.IdiomaNombre) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label></label>
-                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                    <label>Nombre del traductor (co-traductor)</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreCompleto) %>&nbsp;</span>
                 </p>
-                <% if (Model.Form.TieneProyecto) { %>      
-	                <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                <p>
+                    <label>Nombre de la obra en el idioma traducido</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NombreObraTraducida) %>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Tipo de publicaci&oacute;n</label>
+                    <span class="valor"><%= HumanizeHelper.TipoObraTraducida(Model.Form.TipoObraTraducida) %>&nbsp;</span>
+                </p>
+                
+                <% if (Model.Form.AreaTematicaId != 0) { %>
+                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 <% } %>
                 
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
     <!-- Coautores de la publicacion -->            
 	            <h4>Coautores de la publicaci&oacute;n</h4>
-	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
-				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
+	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoObraTraducidas, ModelId = Model.Form.Id } ); %>
+				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, ModelId = Model.Form.Id }); %>
 	            <p>
 	                <label>Total de autores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
@@ -89,45 +94,23 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->
-                <% if (Model.Form.EstadoProducto == 2){ %>
-                <h4>Referencia bibliogr&aacute;fica</h4>
-                <p>
-                    <label>Nombre del libro</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</span>
-                </p>
+                <% if (Model.Form.TipoObraTraducida == 1){ %>
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+                    <% Html.RenderPartial("_ShowArticulo", Model.Form); %>
+                <% } %>
                 
-                <h4>Autor(es) del libro</h4>
-	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
-				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
-				
-				<p>
-				    <label>Tipo de libro</label>
-                    <span class="valor"><%= HumanizeHelper.TipoLibro(Model.Form.TipoLibro)%>&nbsp;</span>
-				</p>
-				
-				<% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
-				
-                <p>
-                    <label>Resumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</span>
-                </p>
+                <% if (Model.Form.TipoObraTraducida == 2){ %>
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+                    <% Html.RenderPartial("_ShowLibro", Model.Form); %>
+                <% } %>
                 
-                <p>
-                    <label>Volumen</label>
-                    <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>N&uacute;mero de p&aacute;ginas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
-                </p>    
-                <p>
-                    <label>N&uacute;mero de citas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
-                </p>
-                <% } %>      
+                <% if (Model.Form.TipoObraTraducida == 3){ %>
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+                    <% Html.RenderPartial("_ShowCapitulo", Model.Form); %>
+                <% } %>
                 
                 <p class="submit">
-                    <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
+                    <%=Html.ActionLink<ObraTraducidaController>(x => x.Index(), "Regresar") %>
                 </p>
             </div><!--end campos-->
         </div><!--end lista-->

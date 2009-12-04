@@ -36,6 +36,29 @@ function grupoInvestigacionSetup() {
     $('#Lider')[0].dynamic.setup();
 }
 
+function obraTraducidaSetup() {
+    $('#TipoObraTraducida').dynamicui(
+        [
+            ['*', ['#TipoObraTraducida_fields', '.ArticuloCapituloLibro_fields']],
+            [['Libro', 'Capítulo en libro'], ['.CapituloLibro_fields']],
+            ['Artículo en revista', ['.Articulo_fields']],
+            ['Libro', ['.Libro_fields']],
+            ['Capítulo en libro', ['.Capitulo_fields']]
+        ]
+    );
+
+    $('#TipoObraTraducida')[0].dynamic.setup();
+
+    $('#EstadoProducto').dynamicui(
+            [
+                ['Publicado', ['.EstatusPublicado']],
+                ['Aceptado', ['#EstatusAceptado']]
+            ]
+        );
+
+    $('#EstadoProducto')[0].dynamic.setup();
+}
+
 function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [

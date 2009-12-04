@@ -164,11 +164,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Resumen { get; set; }
 
-		public virtual string NoPaginas { get; set; }
+        public virtual int NoPaginas { get; set; }
 
-		public virtual string NoCitas { get; set; }
+        public virtual int NoCitas { get; set; }
 
 		public virtual string ISBN { get; set; }
+
+        public virtual int Edicion { get; set; }
 
 		public virtual int Reimpresion { get; set; }
 

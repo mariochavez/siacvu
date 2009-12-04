@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateCursosMaps();
             CreateTesisMaps();
             CreateDictamenMaps();
+            CreateObraTraducidaMaps();
             CreateParticipacionMedioMaps();
             CreateDistincionMaps();
             CreateOrganosExternosMaps();
@@ -125,6 +126,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
 
             Mapper.CreateMap<Archivo, ArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        private void CreateObraTraducidaMaps()
+        {
+            Mapper.CreateMap<ObraTraducida, ObraTraducidaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoObraTraducida, CoautorInternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<CoautorExternoObraTraducida, CoautorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AutorInternoObraTraducida, AutorInternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AutorExternoObraTraducida, AutorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<EditorialObraTraducida, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

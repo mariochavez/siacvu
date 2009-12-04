@@ -4,29 +4,9 @@
 <div class="Articulo_fields"> 
     <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
 </div>
-<p class="ArticuloCapituloLibro_fields">
-    <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("Volumen")%>
-</p>
-<p class="Articulo_fields">
-    <label>N&uacute;mero</label>
-    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("Numero")%>
-</p>
-<p class="Articulo_fields">
-    <label>De la p&aacute;gina</label>
-    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("PaginaInicial")%>
-</p>
-<p class="Articulo_fields">
-    <label>A la p&aacute;gina</label>
-    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("PaginaFinal")%>
-</p>
 <p class="Capitulo_fields">
     <label>Nombre del libro</label>
-    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
 <div class="Capitulo_fields">
@@ -37,7 +17,7 @@
 <p class="Capitulo_fields">
     <label>Tipo de libro</label>
     <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 <div class="CapituloLibro_fields">
@@ -45,32 +25,58 @@
 </div>
 <p class="Capitulo_fields">
     <label>Resumen</label>
-    <%=Html.TextBox("Resumen", Model.Resumen, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextArea("Resumen", Model.Resumen, 4, 35, new { @class = "input420-requerido", maxlength = 300 })%>
     <%=Html.ValidationMessage("Resumen")%>
-</p>
-<p class="CapituloLibro_fields">
-    <label>No. de p&aacute;ginas</label>
-    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("NoPaginas")%>
-</p>
-<p class="Capitulo_fields">
-    <label>No. de citas</label>
-    <%=Html.TextBox("NoCitas", Model.NoCitas, new { @class = "input250", maxlength = 4 })%>
-    <%=Html.ValidationMessage("NoCitas")%>
 </p>
 <p class="Libro_fields">
     <label>ISBN</label>
-    <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input250", maxlength = 100 })%>
+    <%=Html.TextBox("ISBN", Model.ISBN, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("ISBN")%>
+</p>
+<p class="Libro_fields">
+    <label>Edici&oacute;n</label>
+    <%=Html.DropDownList("Edicion", Model.Ediciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <%=Html.ValidationMessage("Edicion")%>
 </p>
 <p class="Libro_fields">
     <label>Reimpresi&oacute;n</label>
     <%=Html.DropDownList("Reimpresion", Model.Reimpresiones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Reimpresion")%>
+</p>
+<p class="ArticuloCapituloLibro_fields">
+    <label>Volumen</label>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("Volumen")%>
+</p>
+<p class="Articulo_fields">
+    <label>N&uacute;mero</label>
+    <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("Numero")%>
+</p>
+<p class="Articulo_fields">
+    <label>De la p&aacute;gina</label>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("PaginaInicial")%>
+</p>
+<p class="Articulo_fields">
+    <label>A la p&aacute;gina</label>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("PaginaFinal")%>
+</p>
+<p class="CapituloLibro_fields">
+    <label>N&uacute;mero de p&aacute;ginas</label>
+    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("NoPaginas")%>
+</p>
+<p class="Capitulo_fields">
+    <label>N&uacute;mero de citas</label>
+    <%=Html.TextBox("NoCitas", Model.NoCitas, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.ValidationMessage("NoCitas")%>
 </p>
 <p class="Libro_fields">
     <label>Tiraje</label>
-    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input250", maxlength = 4 })%>
+    <%=Html.TextBox("Tiraje", Model.Tiraje, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("Tiraje")%>
 </p>

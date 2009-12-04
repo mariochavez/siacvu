@@ -93,6 +93,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionAutor = 1;
+            ViewData["Idioma"] = (from e in data.Form.Idiomas where e.Nombre == "Español" select e.Id).FirstOrDefault();
+            ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
             return View(data);
         }
@@ -674,6 +676,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             form.TiposLibro = customCollection.TipoLibroCustomCollection();
             form.Reimpresiones = customCollection.ReimpresionCustomCollection();
+            form.Ediciones = customCollection.EdicionCustomCollection();
             form.Idiomas = idiomaMapper.Map(catalogoService.GetActiveIdiomas());
 			
             return form;
@@ -685,6 +688,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["EstadoProducto"] = form.EstadoProducto;
             ViewData["TipoLibro"] = form.TipoLibro;
             ViewData["Reimpresion"] = form.Reimpresion;
+            ViewData["Edicion"] = form.Edicion;
 
             ViewData["Idioma"] = form.IdiomaId;
         }

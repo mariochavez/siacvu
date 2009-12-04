@@ -63,9 +63,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreProducto;
         }
 
-        private static string TipoObraTraducida(int tipoObraTraducida)
+        public static string TipoObraTraducida(int tipoObraTraducida)
         {
-            var nombreTipoObraTraducida = "";
+            string nombreTipoObraTraducida = "";
 
             switch (tipoObraTraducida)
             {
@@ -166,31 +166,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return nombreReimpresion;
-        }
-
-        public static string Volumen(int volumen)
-        {
-            string nombreVolumen;
-
-            switch (volumen)
-            {
-                case 1:
-                    nombreVolumen = "I";
-                    break;
-                case 2:
-                    nombreVolumen = "II";
-                    break;
-                case 3:
-                    nombreVolumen = "III";
-                    break;
-                case 4:
-                    nombreVolumen = "IV";
-                    break;
-                default:
-                    return "";
-            }
-
-            return nombreVolumen;
         }
 
         public static string NivelIdioma(int nivelIdioma)

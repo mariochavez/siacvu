@@ -16,18 +16,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string FechaAceptacion { get; set; }
 		public string FechaPublicacion { get; set; }
 		public int Volumen { get; set; }
+        public int Edicion { get; set; }
 		public int Numero { get; set; }
 		public int PaginaInicial { get; set; }
 		public int PaginaFinal { get; set; }
 		public string NombreLibro { get; set; }
 		public int TipoLibro { get; set; }
 		public string Resumen { get; set; }
-		public string NoPaginas { get; set; }
-		public string NoCitas { get; set; }
+        public int NoPaginas { get; set; }
+        public int NoCitas { get; set; }
 		public string ISBN { get; set; }
 		public int Reimpresion { get; set; }
         public int PosicionAutor { get; set; }
 		public int Tiraje { get; set; }
+        public string DepartamentoNombre { get; set; }
+        public string SedeNombre { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
@@ -47,6 +50,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             {
                 return (CoautorExternoObraTraducidas == null ? 0 : CoautorExternoObraTraducidas.Length) +
                     (CoautorInternoObraTraducidas == null ? 0 : CoautorInternoObraTraducidas.Length) + 1;
+            }
+        }
+
+        public string NombreCompleto
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", NombreTraductor, ApellidoPaterno, ApellidoMaterno);
             }
         }
 
@@ -74,5 +85,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CustomSelectForm[] TiposLibro { get; set; }
 		public IdiomaForm[] Idiomas { get; set; }
         public CustomSelectForm[] Reimpresiones { get; set; }
+        public CustomSelectForm[] Ediciones { get; set; }
     }
 }

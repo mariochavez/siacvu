@@ -63,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.EstadoProducto = message.EstadoProducto;
             model.PosicionAutor = message.PosicionAutor;
+            model.Edicion = message.Edicion;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();

@@ -14,7 +14,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo obra traducida dentro del sistema.
+	        Favor de llenar los siguientes campos para dar de alta una nueva obra traducida dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>
@@ -59,10 +59,10 @@
 				<h4>Estatus de la publicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
 	            
-	            <div id="tipoObraTraducida_fields">
-	                <h4>Referencia bibliogr&aacute;fica</h4>
-				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                </div>
+	            <div id="TipoObraTraducida_fields">
+                    <h4>Referencia bibliogr&aacute;fica</h4>
+			        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			    </div>
 		
 	            <p class="submit">
 	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ObraTraducidaController>(x => x.Index(), "Regresar") %>
@@ -75,6 +75,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        obraTraducidaSetup();
     });
 </script>
 </asp:Content>
