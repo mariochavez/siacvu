@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var puesto = puestoMapper.Map(form);
 
-            puesto.CreadorPor = CurrentUser();
+            puesto.CreadoPor = CurrentUser();
             puesto.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(puesto, form, Title.New))

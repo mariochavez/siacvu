@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 reporte.Puntuacion = 0;
                 reporte.Activo = true;
-                reporte.CreadorEl = DateTime.Now;
+                reporte.CreadoEl = DateTime.Now;
             }
 
             reporte.PosicionAutor = 1;

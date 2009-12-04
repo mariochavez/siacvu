@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var departamento = departamentoMapper.Map(form);
 
-            departamento.CreadorPor = CurrentUser();
+            departamento.CreadoPor = CurrentUser();
             departamento.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(departamento, form, Title.New))

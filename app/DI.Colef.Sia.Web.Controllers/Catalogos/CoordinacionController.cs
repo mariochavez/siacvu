@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
             var coordinacion = coordinacionMapper.Map(form);
             
-            coordinacion.CreadorPor = CurrentUser();
+            coordinacion.CreadoPor = CurrentUser();
             coordinacion.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(coordinacion, form, Title.New))

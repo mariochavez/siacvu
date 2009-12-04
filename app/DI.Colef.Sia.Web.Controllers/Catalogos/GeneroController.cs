@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var genero = generoMapper.Map(form);
 
-            genero.CreadorPor = CurrentUser();
+            genero.CreadoPor = CurrentUser();
             genero.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(genero, form, Title.New))

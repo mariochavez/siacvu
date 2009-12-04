@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(grupoInvestigacion.Id == 0)
             {
                 grupoInvestigacion.Activo = true;
-                grupoInvestigacion.CreadorEl = DateTime.Now;
+                grupoInvestigacion.CreadoEl = DateTime.Now;
             }
 
             grupoInvestigacion.ModificadoEl = DateTime.Now;

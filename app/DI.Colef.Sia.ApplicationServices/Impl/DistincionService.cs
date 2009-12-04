@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(distincion.Id == 0)
             {
                 distincion.Activo = true;
-                distincion.CreadorEl = DateTime.Now;
+                distincion.CreadoEl = DateTime.Now;
             }
             distincion.ModificadoEl = DateTime.Now;
             

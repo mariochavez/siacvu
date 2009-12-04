@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(experienciaProfesional.Id == 0)
             {
                 experienciaProfesional.Activo = true;
-                experienciaProfesional.CreadorEl = DateTime.Now;
+                experienciaProfesional.CreadoEl = DateTime.Now;
             }
             experienciaProfesional.ModificadoEl = DateTime.Now;
             

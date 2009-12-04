@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var impactoPoliticaPublica = impactoPoliticaPublicaMapper.Map(form);
             
-            impactoPoliticaPublica.CreadorPor = CurrentUser();
+            impactoPoliticaPublica.CreadoPor = CurrentUser();
             impactoPoliticaPublica.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(impactoPoliticaPublica, form, Title.New))

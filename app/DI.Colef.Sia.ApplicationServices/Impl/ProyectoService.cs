@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(proyecto.Id == 0)
             {
                 proyecto.Activo = true;
-                proyecto.CreadorEl = DateTime.Now;
+                proyecto.CreadoEl = DateTime.Now;
             }
             proyecto.ModificadoEl = DateTime.Now;
             

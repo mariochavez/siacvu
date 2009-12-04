@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var productoDerivado = productoDerivadoMapper.Map(form);
             
-            productoDerivado.CreadorPor = CurrentUser();
+            productoDerivado.CreadoPor = CurrentUser();
             productoDerivado.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(productoDerivado, form, Title.New))

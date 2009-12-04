@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var area = areaMapper.Map(form);
 
-            area.CreadorPor = CurrentUser();
+            area.CreadoPor = CurrentUser();
             area.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(area, form, Title.New))

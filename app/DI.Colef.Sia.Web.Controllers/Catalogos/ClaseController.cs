@@ -75,7 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var clase = claseMapper.Map(form);
             
-            clase.CreadorPor = CurrentUser();
+            clase.CreadoPor = CurrentUser();
             clase.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(clase, form, Title.New, "Clase"))

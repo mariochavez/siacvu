@@ -13,9 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get; set; }
 
-        public virtual Usuario CreadorPor { get; set; }
+        public virtual Usuario CreadoPor { get; set; }
 
-        public virtual DateTime CreadorEl { get; set; }
+        public virtual DateTime CreadoEl { get; set; }
 
         public virtual Usuario ModificadoPor { get; set; }
 

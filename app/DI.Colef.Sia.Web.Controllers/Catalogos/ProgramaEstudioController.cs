@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var programaEstudio = programaEstudioMapper.Map(form);
             
-            programaEstudio.CreadorPor = CurrentUser();
+            programaEstudio.CreadoPor = CurrentUser();
             programaEstudio.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(programaEstudio, form, Title.New))

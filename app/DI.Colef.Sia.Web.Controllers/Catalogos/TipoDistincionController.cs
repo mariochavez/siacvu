@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoDistincion = tipoDistincionMapper.Map(form);
 
-            tipoDistincion.CreadorPor = CurrentUser();
+            tipoDistincion.CreadoPor = CurrentUser();
             tipoDistincion.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoDistincion, form, Title.New))

@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.IsTransient())
             {
                 model.Usuario = usuario;
-                model.CreadorPor = usuario;
+                model.CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;

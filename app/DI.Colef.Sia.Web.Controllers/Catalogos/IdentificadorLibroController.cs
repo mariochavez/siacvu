@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var identificadorLibro = identificadorLibroMapper.Map(form);
 
-            identificadorLibro.CreadorPor = CurrentUser();
+            identificadorLibro.CreadoPor = CurrentUser();
             identificadorLibro.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(identificadorLibro, form, Title.New))

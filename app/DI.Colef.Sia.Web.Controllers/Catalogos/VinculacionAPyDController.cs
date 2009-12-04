@@ -61,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         
             var vinculacionAPyD = vinculacionAPyDMapper.Map(form);
             
-            vinculacionAPyD.CreadorPor = CurrentUser();
+            vinculacionAPyD.CreadoPor = CurrentUser();
             vinculacionAPyD.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(vinculacionAPyD, form, Title.New))

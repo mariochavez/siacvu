@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var subprogramaConacyt = subprogramaConacytMapper.Map(form);
             
-            subprogramaConacyt.CreadorPor = CurrentUser();
+            subprogramaConacyt.CreadoPor = CurrentUser();
             subprogramaConacyt.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(subprogramaConacyt, form, Title.New))

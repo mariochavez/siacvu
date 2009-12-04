@@ -284,7 +284,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -302,7 +302,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (libroId != 0)
             {
-                coautorExternoLibro.CreadorPor = CurrentUser();
+                coautorExternoLibro.CreadoPor = CurrentUser();
                 coautorExternoLibro.ModificadoPor = CurrentUser();
 
                 var libro = libroService.GetLibroById(libroId);
@@ -372,7 +372,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            coautorInternoLibro.CreadorPor = CurrentUser();
+            coautorInternoLibro.CreadoPor = CurrentUser();
             coautorInternoLibro.ModificadoPor = CurrentUser();
 
             if (libroId != 0)
@@ -446,7 +446,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (libroId != 0)
             {
-                editorialLibro.CreadorPor = CurrentUser();
+                editorialLibro.CreadoPor = CurrentUser();
                 editorialLibro.ModificadoPor = CurrentUser();
 
                 var libro = libroService.GetLibroById(libroId);
@@ -517,7 +517,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            evento.CreadorPor = CurrentUser();
+            evento.CreadoPor = CurrentUser();
             evento.ModificadoPor = CurrentUser();
             evento.Activo = true;
 

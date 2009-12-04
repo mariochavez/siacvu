@@ -105,9 +105,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CategoriaInvestigador> CategoriasInvestigador { get; private set; }
 
-        public virtual Usuario CreadorPor { get; set; }
+        public virtual Usuario CreadoPor { get; set; }
 
-        public virtual DateTime CreadorEl { get; set; }
+        public virtual DateTime CreadoEl { get; set; }
 
         public virtual Usuario ModificadoPor { get; set; }
 

@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoFinanciamiento = tipoFinanciamientoMapper.Map(form);
 
-            tipoFinanciamiento.CreadorPor = CurrentUser();
+            tipoFinanciamiento.CreadoPor = CurrentUser();
             tipoFinanciamiento.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoFinanciamiento, form, Title.New))

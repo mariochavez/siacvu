@@ -249,7 +249,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (eventoId != 0)
             {
-                coautorInternoEvento.CreadorPor = CurrentUser();
+                coautorInternoEvento.CreadoPor = CurrentUser();
                 coautorInternoEvento.ModificadoPor = CurrentUser();
 
                 var evento = eventoService.GetEventoById(eventoId);
@@ -324,7 +324,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -342,7 +342,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (eventoId != 0)
             {
-                coautorExternoEvento.CreadorPor = CurrentUser();
+                coautorExternoEvento.CreadoPor = CurrentUser();
                 coautorExternoEvento.ModificadoPor = CurrentUser();
 
                 var evento = eventoService.GetEventoById(eventoId);
@@ -413,7 +413,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (eventoId != 0)
             {
-                institucionEvento.CreadorPor = CurrentUser();
+                institucionEvento.CreadoPor = CurrentUser();
                 institucionEvento.ModificadoPor = CurrentUser();
 
                 var evento = eventoService.GetEventoById(eventoId);

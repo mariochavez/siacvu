@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 dictamen.Puntuacion = 0;
                 dictamen.Activo = true;
-                dictamen.CreadorEl = DateTime.Now;
+                dictamen.CreadoEl = DateTime.Now;
             }
             dictamen.ModificadoEl = DateTime.Now;
             

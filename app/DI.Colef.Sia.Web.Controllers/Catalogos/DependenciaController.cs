@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var dependencia = dependenciaMapper.Map(form);
 
-            dependencia.CreadorPor = CurrentUser();
+            dependencia.CreadoPor = CurrentUser();
             dependencia.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(dependencia, form, Title.New))

@@ -40,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 libro.Puntuacion = 0;
                 libro.Activo = true;
-                libro.CreadorEl = DateTime.Now;
+                libro.CreadoEl = DateTime.Now;
             }
 
             libro.PosicionAutor = 1;

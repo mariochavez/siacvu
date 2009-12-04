@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var convenio = convenioMapper.Map(form);
 
-            convenio.CreadorPor = CurrentUser();
+            convenio.CreadoPor = CurrentUser();
             convenio.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(convenio, form, Title.New))

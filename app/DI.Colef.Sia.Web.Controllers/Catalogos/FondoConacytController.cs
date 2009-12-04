@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
             var fondoConacyt = fondoConacytMapper.Map(form);
             
-            fondoConacyt.CreadorPor = CurrentUser();
+            fondoConacyt.CreadoPor = CurrentUser();
             fondoConacyt.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(fondoConacyt, form, Title.New))

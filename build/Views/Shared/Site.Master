@@ -1,0 +1,151 @@
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Master Language="C#" AutoEventWireup="true" 
+    Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head id="Header" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="<%= ResolveUrl("~") %>Content/Site.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<%= ResolveUrl("~") %>Content/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="<%= ResolveUrl("~") %>Content/jquery.autocomplete.css" rel="stylesheet" type="text/css" media="screen"/>
+    
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery-1.3.2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery-ui-1.7.2.custom.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery-ajaxloading.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery.clearfield.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery.autocomplete.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery.dynamicui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/swfobjects.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery.uploadify.v2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/Upload.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/Application.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/ProductsSetup.js" type="text/javascript" charset="utf-8"></script>
+
+    <% // At bottom to facilitate other JS files to be loaded before page-by-page JS is loaded %>
+    <asp:ContentPlaceHolder ID="HeadContentPlaceHolder" runat="server">
+        <title>Colegio de la Frontera Norte</title>
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+<div id="Pagina">
+	<div id="cabecera">
+		<div id="titulo">
+			<h1><img alt="Colegio de la Frontera Norte" src="<%=ResolveUrl("~/Content/Images/colef-logo.gif") %>" /></h1>
+		</div><!--end titulo-->
+		
+		<%Html.RenderPartial("_UserInfo"); %>		
+			
+	</div><!--end cabecera-->	
+	
+	<div id="seccion">
+		<div id="tituloseccion">
+		    <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
+		</div><!--end tituloseccion-->
+		
+		<div id="menu">
+			<ul>
+				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Inicio") %></li>
+				<li><a title="Investigacion" href="#" class="menu-pop" id="menu-investigacion" rel="#investigacion">Investigaci&oacute;n</a></li>
+				<div id="investigacion" class="investigacion">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Otras Actividades</th>
+								<th>Producci&oacute;n Acad&eacute;mica</th>
+								<th>Docencia</th>
+								<th>Movilidad Acad&eacute;mica</th>
+								<th>Eventos Acad&eacute;micos</th>
+								<th>Vinculaci&oacute;n y Difusi&oacute;n</th>
+								<th>Participaci&oacute;n en Organos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<DictamenController>(x => x.Index(), "Dict&aacute;menes") %></td>
+								<td><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos") %></td>
+								<td><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos") %></td>
+								<td><%=Html.ActionLinkForAreas<EstanciaInstitucionExternaController>(x => x.Index(), "Estancias en instituciones externas")%></td>
+								<td><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Participaci&oacute;n y organizaci&oacute;n de eventos")%></td>
+								<td><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Participaciones en medios") %></td>
+								<td><%=Html.ActionLinkForAreas<OrganoInternoController>(x => x.Index(), "Internos")%></td>
+							</tr>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones acad&eacute;micas") %></td>
+								<td><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos") %></td>
+								<td><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas") %></td>
+								<td><%=Html.ActionLinkForAreas<EstanciaAcademicaExternaController>(x => x.Index(), "Estancias acad&eacute;micas externas")%></td>
+								<td><%=Html.ActionLinkForAreas<ParticipacionController>(x => x.Index(), "Otras participaciones") %></td>
+								<td><%=Html.ActionLinkForAreas<GrupoInvestigacionController>(x => x.Index(), "Grupos de investigaci&oacute;n") %></td>
+								<td><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Externos")%></td>
+							</tr>
+							<tr>
+								<td><%=Html.ActionLinkForAreas<ProyectoController>(x => x.Index(), "Proyectos") %></td>
+								<td><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros") %></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan="2"><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Reportes t&eacute;cnicos")%></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as") %></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>							
+							</tr>											
+						</tbody>
+					</table>	
+				</div>
+				<% if(Page.User.IsInRole("Dgaa")) { %>
+				    <li><%=Html.ActionLinkForAreas<InvestigadorController>(x => x.Index(), "Investigadores") %></li>
+				<% } %>		
+			</ul>
+		</div><!--end menu-->	
+			
+	</div><!--end seccion-->
+
+	<div id="cuerpo">
+	
+	    <asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />	
+		
+		<div id="contenido">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
+            			
+            <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
+		</div><!--end contenido-->			
+		
+		<div id="pie">
+			<div id="copy">
+				<p>&copy; 2009 Colegio de la Frontera Norte</p>
+			</div><!--end copy-->
+			
+			<div id="powered">
+				<p></p>	
+			</div><!--end powered-->	
+			
+		</div><!--end pie-->	
+		
+	</div><!--end cuerpo-->	
+	
+	
+
+</div><!--end Pagina-->
+
+</body>
+</html>

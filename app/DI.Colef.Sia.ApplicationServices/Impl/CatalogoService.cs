@@ -233,7 +233,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (departamento.Id == 0)
             {
                 departamento.Activo = true;
-                departamento.CreadorEl = DateTime.Now;
+                departamento.CreadoEl = DateTime.Now;
             }
             departamento.ModificadoEl = DateTime.Now;
 
@@ -260,7 +260,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (puesto.Id == 0)
             {
                 puesto.Activo = true;
-                puesto.CreadorEl = DateTime.Now;
+                puesto.CreadoEl = DateTime.Now;
             }
             puesto.ModificadoEl = DateTime.Now;
 
@@ -287,7 +287,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (sede.Id == 0)
             {
                 sede.Activo = true;
-                sede.CreadorEl = DateTime.Now;
+                sede.CreadoEl = DateTime.Now;
             }
             sede.ModificadoEl = DateTime.Now;
 
@@ -314,7 +314,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (categoria.Id == 0)
             {
                 categoria.Activo = true;
-                categoria.CreadorEl = DateTime.Now;
+                categoria.CreadoEl = DateTime.Now;
             }
             categoria.ModificadoEl = DateTime.Now;
 
@@ -341,7 +341,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (gradoAcademico.Id == 0)
             {
                 gradoAcademico.Activo = true;
-                gradoAcademico.CreadorEl = DateTime.Now;
+                gradoAcademico.CreadoEl = DateTime.Now;
             }
             gradoAcademico.ModificadoEl = DateTime.Now;
 
@@ -368,7 +368,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (sni.Id == 0)
             {
                 sni.Activo = true;
-                sni.CreadorEl = DateTime.Now;
+                sni.CreadoEl = DateTime.Now;
             }
             sni.ModificadoEl = DateTime.Now;
 
@@ -395,7 +395,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (estado.Id == 0)
             {
                 estado.Activo = true;
-                estado.CreadorEl = DateTime.Now;
+                estado.CreadoEl = DateTime.Now;
             }
             estado.ModificadoEl = DateTime.Now;
 
@@ -422,7 +422,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (idioma.Id == 0)
             {
                 idioma.Activo = true;
-                idioma.CreadorEl = DateTime.Now;
+                idioma.CreadoEl = DateTime.Now;
             }
             idioma.ModificadoEl = DateTime.Now;
 
@@ -449,7 +449,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (pais.Id == 0)
             {
                 pais.Activo = true;
-                pais.CreadorEl = DateTime.Now;
+                pais.CreadoEl = DateTime.Now;
             }
             pais.ModificadoEl = DateTime.Now;
 
@@ -476,7 +476,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (institucion.Id == 0)
             {
                 institucion.Activo = true;
-                institucion.CreadorEl = DateTime.Now;
+                institucion.CreadoEl = DateTime.Now;
             }
             institucion.ModificadoEl = DateTime.Now;
 
@@ -508,7 +508,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (indice.Id == 0)
             {
                 indice.Activo = true;
-                indice.CreadorEl = DateTime.Now;
+                indice.CreadoEl = DateTime.Now;
             }
             indice.ModificadoEl = DateTime.Now;
 
@@ -535,7 +535,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (investigadorExterno.Id == 0)
             {
                 investigadorExterno.Activo = true;
-                investigadorExterno.CreadorEl = DateTime.Now;
+                investigadorExterno.CreadoEl = DateTime.Now;
             }
             investigadorExterno.ModificadoEl = DateTime.Now;
 
@@ -562,7 +562,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoParticipante.Id == 0)
             {
                 tipoParticipante.Activo = true;
-                tipoParticipante.CreadorEl = DateTime.Now;
+                tipoParticipante.CreadoEl = DateTime.Now;
             }
             tipoParticipante.ModificadoEl = DateTime.Now;
 
@@ -589,7 +589,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (lineaInvestigacion.Id == 0)
             {
                 lineaInvestigacion.Activo = true;
-                lineaInvestigacion.CreadorEl = DateTime.Now;
+                lineaInvestigacion.CreadoEl = DateTime.Now;
             }
             lineaInvestigacion.ModificadoEl = DateTime.Now;
 
@@ -616,7 +616,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoActividad.Id == 0)
             {
                 tipoActividad.Activo = true;
-                tipoActividad.CreadorEl = DateTime.Now;
+                tipoActividad.CreadoEl = DateTime.Now;
             }
             tipoActividad.ModificadoEl = DateTime.Now;
 
@@ -643,7 +643,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (area.Id == 0)
             {
                 area.Activo = true;
-                area.CreadorEl = DateTime.Now;
+                area.CreadoEl = DateTime.Now;
             }
             area.ModificadoEl = DateTime.Now;
 
@@ -670,7 +670,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (disciplina.Id == 0)
             {
                 disciplina.Activo = true;
-                disciplina.CreadorEl = DateTime.Now;
+                disciplina.CreadoEl = DateTime.Now;
             }
             disciplina.ModificadoEl = DateTime.Now;
 
@@ -702,7 +702,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (subdisciplina.Id == 0)
             {
                 subdisciplina.Activo = true;
-                subdisciplina.CreadorEl = DateTime.Now;
+                subdisciplina.CreadoEl = DateTime.Now;
             }
             subdisciplina.ModificadoEl = DateTime.Now;
 
@@ -734,7 +734,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (lineaTematica.Id == 0)
             {
                 lineaTematica.Activo = true;
-                lineaTematica.CreadorEl = DateTime.Now;
+                lineaTematica.CreadoEl = DateTime.Now;
             }
             lineaTematica.ModificadoEl = DateTime.Now;
 
@@ -761,7 +761,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (coautorExterno.Id == 0)
             {
                 coautorExterno.Activo = true;
-                coautorExterno.CreadorEl = DateTime.Now;
+                coautorExterno.CreadoEl = DateTime.Now;
             }
             coautorExterno.ModificadoEl = DateTime.Now;
 
@@ -788,7 +788,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (responsableExterno.Id == 0)
             {
                 responsableExterno.Activo = true;
-                responsableExterno.CreadorEl = DateTime.Now;
+                responsableExterno.CreadoEl = DateTime.Now;
             }
             responsableExterno.ModificadoEl = DateTime.Now;
 
@@ -815,7 +815,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoParticipacion.Id == 0)
             {
                 tipoParticipacion.Activo = true;
-                tipoParticipacion.CreadorEl = DateTime.Now;
+                tipoParticipacion.CreadoEl = DateTime.Now;
             }
             tipoParticipacion.ModificadoEl = DateTime.Now;
 
@@ -872,7 +872,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (revistaPublicacion.Id == 0)
             {
                 revistaPublicacion.Activo = true;
-                revistaPublicacion.CreadorEl = DateTime.Now;
+                revistaPublicacion.CreadoEl = DateTime.Now;
                 revistaPublicacion.Puntuacion = 0;
             }
 
@@ -906,7 +906,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (programaEstudio.Id == 0)
             {
                 programaEstudio.Activo = true;
-                programaEstudio.CreadorEl = DateTime.Now;
+                programaEstudio.CreadoEl = DateTime.Now;
             }
             programaEstudio.ModificadoEl = DateTime.Now;
 
@@ -938,7 +938,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (sector.Id == 0)
             {
                 sector.Activo = true;
-                sector.CreadorEl = DateTime.Now;
+                sector.CreadoEl = DateTime.Now;
             }
             sector.ModificadoEl = DateTime.Now;
 
@@ -995,7 +995,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (nivel.Id == 0)
             {
                 nivel.Activo = true;
-                nivel.CreadorEl = DateTime.Now;
+                nivel.CreadoEl = DateTime.Now;
             }
             nivel.ModificadoEl = DateTime.Now;
 
@@ -1022,7 +1022,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (organizacion.Id == 0)
             {
                 organizacion.Activo = true;
-                organizacion.CreadorEl = DateTime.Now;
+                organizacion.CreadoEl = DateTime.Now;
             }
             organizacion.ModificadoEl = DateTime.Now;
 
@@ -1054,7 +1054,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (dependencia.Id == 0)
             {
                 dependencia.Activo = true;
-                dependencia.CreadorEl = DateTime.Now;
+                dependencia.CreadoEl = DateTime.Now;
             }
             dependencia.ModificadoEl = DateTime.Now;
 
@@ -1081,7 +1081,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (ambito.Id == 0)
             {
                 ambito.Activo = true;
-                ambito.CreadorEl = DateTime.Now;
+                ambito.CreadoEl = DateTime.Now;
             }
             ambito.ModificadoEl = DateTime.Now;
 
@@ -1108,7 +1108,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (estadoPais.Id == 0)
             {
                 estadoPais.Activo = true;
-                estadoPais.CreadorEl = DateTime.Now;
+                estadoPais.CreadoEl = DateTime.Now;
             }
             estadoPais.ModificadoEl = DateTime.Now;
 
@@ -1140,7 +1140,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (genero.Id == 0)
             {
                 genero.Activo = true;
-                genero.CreadorEl = DateTime.Now;
+                genero.CreadoEl = DateTime.Now;
             }
             genero.ModificadoEl = DateTime.Now;
 
@@ -1167,7 +1167,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (medioElectronico.Id == 0)
             {
                 medioElectronico.Activo = true;
-                medioElectronico.CreadorEl = DateTime.Now;
+                medioElectronico.CreadoEl = DateTime.Now;
             }
             medioElectronico.ModificadoEl = DateTime.Now;
 
@@ -1194,7 +1194,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (medioImpreso.Id == 0)
             {
                 medioImpreso.Activo = true;
-                medioImpreso.CreadorEl = DateTime.Now;
+                medioImpreso.CreadoEl = DateTime.Now;
             }
             medioImpreso.ModificadoEl = DateTime.Now;
 
@@ -1221,7 +1221,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoDictamen.Id == 0)
             {
                 tipoDictamen.Activo = true;
-                tipoDictamen.CreadorEl = DateTime.Now;
+                tipoDictamen.CreadoEl = DateTime.Now;
             }
             tipoDictamen.ModificadoEl = DateTime.Now;
 
@@ -1248,7 +1248,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoDistincion.Id == 0)
             {
                 tipoDistincion.Activo = true;
-                tipoDistincion.CreadorEl = DateTime.Now;
+                tipoDistincion.CreadoEl = DateTime.Now;
             }
             tipoDistincion.ModificadoEl = DateTime.Now;
 
@@ -1275,7 +1275,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoEvento.Id == 0)
             {
                 tipoEvento.Activo = true;
-                tipoEvento.CreadorEl = DateTime.Now;
+                tipoEvento.CreadoEl = DateTime.Now;
             }
             tipoEvento.ModificadoEl = DateTime.Now;
 
@@ -1302,7 +1302,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoFinanciamiento.Id == 0)
             {
                 tipoFinanciamiento.Activo = true;
-                tipoFinanciamiento.CreadorEl = DateTime.Now;
+                tipoFinanciamiento.CreadoEl = DateTime.Now;
             }
             tipoFinanciamiento.ModificadoEl = DateTime.Now;
 
@@ -1329,7 +1329,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoOrgano.Id == 0)
             {
                 tipoOrgano.Activo = true;
-                tipoOrgano.CreadorEl = DateTime.Now;
+                tipoOrgano.CreadoEl = DateTime.Now;
             }
             tipoOrgano.ModificadoEl = DateTime.Now;
 
@@ -1356,7 +1356,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (nivelEstudio.Id == 0)
             {
                 nivelEstudio.Activo = true;
-                nivelEstudio.CreadorEl = DateTime.Now;
+                nivelEstudio.CreadoEl = DateTime.Now;
             }
             nivelEstudio.ModificadoEl = DateTime.Now;
 
@@ -1383,7 +1383,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoProyecto.Id == 0)
             {
                 tipoProyecto.Activo = true;
-                tipoProyecto.CreadorEl = DateTime.Now;
+                tipoProyecto.CreadoEl = DateTime.Now;
             }
             tipoProyecto.ModificadoEl = DateTime.Now;
 
@@ -1410,7 +1410,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoEstancia.Id == 0)
             {
                 tipoEstancia.Activo = true;
-                tipoEstancia.CreadorEl = DateTime.Now;
+                tipoEstancia.CreadoEl = DateTime.Now;
             }
             tipoEstancia.ModificadoEl = DateTime.Now;
 
@@ -1437,7 +1437,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (convenio.Id == 0)
             {
                 convenio.Activo = true;
-                convenio.CreadorEl = DateTime.Now;
+                convenio.CreadoEl = DateTime.Now;
             }
             convenio.ModificadoEl = DateTime.Now;
 
@@ -1464,7 +1464,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (identificadorLibro.Id == 0)
             {
                 identificadorLibro.Activo = true;
-                identificadorLibro.CreadorEl = DateTime.Now;
+                identificadorLibro.CreadoEl = DateTime.Now;
             }
             identificadorLibro.ModificadoEl = DateTime.Now;
 
@@ -1491,7 +1491,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (productoDerivado.Id == 0)
             {
                 productoDerivado.Activo = true;
-                productoDerivado.CreadorEl = DateTime.Now;
+                productoDerivado.CreadoEl = DateTime.Now;
             }
             productoDerivado.ModificadoEl = DateTime.Now;
 
@@ -1523,7 +1523,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoApoyo.Id == 0)
             {
                 tipoApoyo.Activo = true;
-                tipoApoyo.CreadorEl = DateTime.Now;
+                tipoApoyo.CreadoEl = DateTime.Now;
             }
             tipoApoyo.ModificadoEl = DateTime.Now;
 
@@ -1550,7 +1550,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (subprogramaConacyt.Id == 0)
             {
                 subprogramaConacyt.Activo = true;
-                subprogramaConacyt.CreadorEl = DateTime.Now;
+                subprogramaConacyt.CreadoEl = DateTime.Now;
             }
             subprogramaConacyt.ModificadoEl = DateTime.Now;
 
@@ -1582,7 +1582,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (rama.Id == 0)
             {
                 rama.Activo = true;
-                rama.CreadorEl = DateTime.Now;
+                rama.CreadoEl = DateTime.Now;
             }
             rama.ModificadoEl = DateTime.Now;
 
@@ -1609,7 +1609,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (clase.Id == 0)
             {
                 clase.Activo = true;
-                clase.CreadorEl = DateTime.Now;
+                clase.CreadoEl = DateTime.Now;
             }
             clase.ModificadoEl = DateTime.Now;
 
@@ -1636,7 +1636,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (impactoPoliticaPublica.Id == 0)
             {
                 impactoPoliticaPublica.Activo = true;
-                impactoPoliticaPublica.CreadorEl = DateTime.Now;
+                impactoPoliticaPublica.CreadoEl = DateTime.Now;
             }
             impactoPoliticaPublica.ModificadoEl = DateTime.Now;
 
@@ -1663,7 +1663,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (moneda.Id == 0)
             {
                 moneda.Activo = true;
-                moneda.CreadorEl = DateTime.Now;
+                moneda.CreadoEl = DateTime.Now;
             }
             moneda.ModificadoEl = DateTime.Now;
 
@@ -1690,7 +1690,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (productoAcademico.Id == 0)
             {
                 productoAcademico.Activo = true;
-                productoAcademico.CreadorEl = DateTime.Now;
+                productoAcademico.CreadoEl = DateTime.Now;
             }
             productoAcademico.ModificadoEl = DateTime.Now;
 
@@ -1717,7 +1717,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (uSEG.Id == 0)
             {
                 uSEG.Activo = true;
-                uSEG.CreadorEl = DateTime.Now;
+                uSEG.CreadoEl = DateTime.Now;
             }
             uSEG.ModificadoEl = DateTime.Now;
 
@@ -1744,7 +1744,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (actividadPrevista.Id == 0)
             {
                 actividadPrevista.Activo = true;
-                actividadPrevista.CreadorEl = DateTime.Now;
+                actividadPrevista.CreadoEl = DateTime.Now;
             }
             actividadPrevista.ModificadoEl = DateTime.Now;
 
@@ -1771,7 +1771,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (coordinacion.Id == 0)
             {
                 coordinacion.Activo = true;
-                coordinacion.CreadorEl = DateTime.Now;
+                coordinacion.CreadoEl = DateTime.Now;
             }
             coordinacion.ModificadoEl = DateTime.Now;
 
@@ -1800,7 +1800,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (estatusFormacionAcademica.Id == 0)
             {
                 estatusFormacionAcademica.Activo = true;
-                estatusFormacionAcademica.CreadorEl = DateTime.Now;
+                estatusFormacionAcademica.CreadoEl = DateTime.Now;
             }
             estatusFormacionAcademica.ModificadoEl = DateTime.Now;
 
@@ -1827,7 +1827,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (dirigidoA.Id == 0)
             {
                 dirigidoA.Activo = true;
-                dirigidoA.CreadorEl = DateTime.Now;
+                dirigidoA.CreadoEl = DateTime.Now;
             }
             dirigidoA.ModificadoEl = DateTime.Now;
 
@@ -1854,7 +1854,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (estatusProyecto.Id == 0)
             {
                 estatusProyecto.Activo = true;
-                estatusProyecto.CreadorEl = DateTime.Now;
+                estatusProyecto.CreadoEl = DateTime.Now;
             }
             estatusProyecto.ModificadoEl = DateTime.Now;
 
@@ -1881,7 +1881,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (fondoConacyt.Id == 0)
             {
                 fondoConacyt.Activo = true;
-                fondoConacyt.CreadorEl = DateTime.Now;
+                fondoConacyt.CreadoEl = DateTime.Now;
             }
             fondoConacyt.ModificadoEl = DateTime.Now;
 
@@ -1908,7 +1908,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (areaTematica.Id == 0)
             {
                 areaTematica.Activo = true;
-                areaTematica.CreadorEl = DateTime.Now;
+                areaTematica.CreadoEl = DateTime.Now;
             }
             areaTematica.ModificadoEl = DateTime.Now;
 
@@ -1941,7 +1941,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (tipoArchivo.Id == 0)
             {
                 tipoArchivo.Activo = true;
-                tipoArchivo.CreadorEl = DateTime.Now;
+                tipoArchivo.CreadoEl = DateTime.Now;
             }
             tipoArchivo.ModificadoEl = DateTime.Now;
 
@@ -1968,7 +1968,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (editorial.Id == 0)
             {
                 editorial.Activo = true;
-                editorial.CreadorEl = DateTime.Now;
+                editorial.CreadoEl = DateTime.Now;
             }
             editorial.ModificadoEl = DateTime.Now;
 
@@ -1995,7 +1995,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (vinculacionAPyD.Id == 0)
             {
                 vinculacionAPyD.Activo = true;
-                vinculacionAPyD.CreadorEl = DateTime.Now;
+                vinculacionAPyD.CreadoEl = DateTime.Now;
             }
             vinculacionAPyD.ModificadoEl = DateTime.Now;
 
@@ -2022,7 +2022,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (direccionRegional.Id == 0)
             {
                 direccionRegional.Activo = true;
-                direccionRegional.CreadorEl = DateTime.Now;
+                direccionRegional.CreadoEl = DateTime.Now;
             }
             direccionRegional.ModificadoEl = DateTime.Now;
 
@@ -2049,7 +2049,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (consejoComision.Id == 0)
             {
                 consejoComision.Activo = true;
-                consejoComision.CreadorEl = DateTime.Now;
+                consejoComision.CreadoEl = DateTime.Now;
             }
             consejoComision.ModificadoEl = DateTime.Now;
 
@@ -2076,7 +2076,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (areaInvestigacion.Id == 0)
             {
                 areaInvestigacion.Activo = true;
-                areaInvestigacion.CreadorEl = DateTime.Now;
+                areaInvestigacion.CreadoEl = DateTime.Now;
             }
             areaInvestigacion.ModificadoEl = DateTime.Now;
 

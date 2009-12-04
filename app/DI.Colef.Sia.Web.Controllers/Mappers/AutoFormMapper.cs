@@ -19,7 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         public T GetLatest<T>(IList<T> objects) where T: IBaseEntity
         {
             var entity = (from o in objects
-                          orderby o.CreadorEl descending
+                          orderby o.CreadoEl descending
                           select o).FirstOrDefault();
 
             return entity;

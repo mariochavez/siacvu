@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {        
             var moneda = monedaMapper.Map(form);
             
-            moneda.CreadorPor = CurrentUser();
+            moneda.CreadoPor = CurrentUser();
             moneda.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(moneda, form, Title.New))

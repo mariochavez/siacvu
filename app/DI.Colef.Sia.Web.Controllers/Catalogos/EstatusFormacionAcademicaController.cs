@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var estatusFormacionAcademica = estatusFormacionAcademicaMapper.Map(form);
             
-            estatusFormacionAcademica.CreadorPor = CurrentUser();
+            estatusFormacionAcademica.CreadoPor = CurrentUser();
             estatusFormacionAcademica.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(estatusFormacionAcademica, form, Title.New))

@@ -269,7 +269,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articuloId != 0)
             {
-                coautorInternoArticulo.CreadorPor = CurrentUser();
+                coautorInternoArticulo.CreadoPor = CurrentUser();
                 coautorInternoArticulo.ModificadoPor = CurrentUser();
 
                 var articulo = articuloService.GetArticuloById(articuloId);
@@ -344,7 +344,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -362,7 +362,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articuloId != 0)
             {
-                coautorExternoArticulo.CreadorPor = CurrentUser();
+                coautorExternoArticulo.CreadoPor = CurrentUser();
                 coautorExternoArticulo.ModificadoPor = CurrentUser();
 
                 var articulo = articuloService.GetArticuloById(articuloId);

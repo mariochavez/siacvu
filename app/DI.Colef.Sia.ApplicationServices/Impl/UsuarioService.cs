@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(rol.Id == 0)
             {
                 rol.Activo = true;
-                rol.CreadorEl = DateTime.Now;
+                rol.CreadoEl = DateTime.Now;
             }
             rol.ModificadoEl = DateTime.Now;
 

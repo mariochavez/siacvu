@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var categoria = categoriaMapper.Map(form);
 
-            categoria.CreadorPor = CurrentUser();
+            categoria.CreadoPor = CurrentUser();
             categoria.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(categoria, form, Title.New))

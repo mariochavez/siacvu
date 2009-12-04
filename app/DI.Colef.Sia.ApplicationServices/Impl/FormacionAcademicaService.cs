@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(formacionAcademica.Id == 0)
             {
                 formacionAcademica.Activo = true;
-                formacionAcademica.CreadorEl = DateTime.Now;
+                formacionAcademica.CreadoEl = DateTime.Now;
             }
             formacionAcademica.ModificadoEl = DateTime.Now;
             

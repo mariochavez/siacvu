@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoOrgano = tipoOrganoMapper.Map(form);
 
-            tipoOrgano.CreadorPor = CurrentUser();
+            tipoOrgano.CreadoPor = CurrentUser();
             tipoOrgano.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoOrgano, form, Title.New))

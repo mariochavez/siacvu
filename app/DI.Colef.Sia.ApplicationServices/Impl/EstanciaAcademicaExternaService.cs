@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(estanciaAcademicaExterna.Id == 0)
             {
                 estanciaAcademicaExterna.Activo = true;
-                estanciaAcademicaExterna.CreadorEl = DateTime.Now;
+                estanciaAcademicaExterna.CreadoEl = DateTime.Now;
             }
             estanciaAcademicaExterna.ModificadoEl = DateTime.Now;
             

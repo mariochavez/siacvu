@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var medioImpreso = medioImpresoMapper.Map(form);
             
-            medioImpreso.CreadorPor = CurrentUser();
+            medioImpreso.CreadoPor = CurrentUser();
             medioImpreso.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(medioImpreso, form, Title.New))

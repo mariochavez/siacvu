@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoProyecto = tipoProyectoMapper.Map(form);
 
-            tipoProyecto.CreadorPor = CurrentUser();
+            tipoProyecto.CreadoPor = CurrentUser();
             tipoProyecto.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(tipoProyecto, form, Title.New))

@@ -35,8 +35,8 @@ alter table OrganoExternos  drop constraint FK55BF0AAE7A8488F7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE85102A57]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
-alter table OrganoExternos  drop constraint FK55BF0AAE85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE62D605DB]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE62D605DB
 
 
 
@@ -45,8 +45,8 @@ alter table OrganoExternos  drop constraint FK55BF0AAE74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7004441E85102A57]') AND parent_object_id = OBJECT_ID('LineaTematicas'))
-alter table LineaTematicas  drop constraint FK7004441E85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7004441E62D605DB]') AND parent_object_id = OBJECT_ID('LineaTematicas'))
+alter table LineaTematicas  drop constraint FK7004441E62D605DB
 
 
 
@@ -55,8 +55,8 @@ alter table LineaTematicas  drop constraint FK7004441E74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067785102A57]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
-alter table IdentificadorLibros  drop constraint FK7A9B067785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7A9B067762D605DB]') AND parent_object_id = OBJECT_ID('IdentificadorLibros'))
+alter table IdentificadorLibros  drop constraint FK7A9B067762D605DB
 
 
 
@@ -70,8 +70,8 @@ alter table CategoriaInvestigadores  drop constraint FK21100647CC4BEB17
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064785102A57]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK2110064785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064762D605DB]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
+alter table CategoriaInvestigadores  drop constraint FK2110064762D605DB
 
 
 
@@ -85,8 +85,8 @@ alter table CategoriaInvestigadores  drop constraint FK211006478336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425185102A57]') AND parent_object_id = OBJECT_ID('TipoActividades'))
-alter table TipoActividades  drop constraint FKF88C425185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF88C425162D605DB]') AND parent_object_id = OBJECT_ID('TipoActividades'))
+alter table TipoActividades  drop constraint FKF88C425162D605DB
 
 
 
@@ -95,8 +95,8 @@ alter table TipoActividades  drop constraint FKF88C425174E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259085102A57]') AND parent_object_id = OBJECT_ID('Puestos'))
-alter table Puestos  drop constraint FK45EB259085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK45EB259062D605DB]') AND parent_object_id = OBJECT_ID('Puestos'))
+alter table Puestos  drop constraint FK45EB259062D605DB
 
 
 
@@ -105,8 +105,8 @@ alter table Puestos  drop constraint FK45EB259074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB85102A57]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
-alter table DireccionRegionales  drop constraint FKB8FBCFAB85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB8FBCFAB62D605DB]') AND parent_object_id = OBJECT_ID('DireccionRegionales'))
+alter table DireccionRegionales  drop constraint FKB8FBCFAB62D605DB
 
 
 
@@ -115,8 +115,8 @@ alter table DireccionRegionales  drop constraint FKB8FBCFAB74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D85102A57]') AND parent_object_id = OBJECT_ID('Convenios'))
-alter table Convenios  drop constraint FKF35B3A2D85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF35B3A2D62D605DB]') AND parent_object_id = OBJECT_ID('Convenios'))
+alter table Convenios  drop constraint FKF35B3A2D62D605DB
 
 
 
@@ -130,8 +130,8 @@ alter table AreaTematicas  drop constraint FK33E5D7A51EDC2D3B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK33E5D7A585102A57]') AND parent_object_id = OBJECT_ID('AreaTematicas'))
-alter table AreaTematicas  drop constraint FK33E5D7A585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK33E5D7A562D605DB]') AND parent_object_id = OBJECT_ID('AreaTematicas'))
+alter table AreaTematicas  drop constraint FK33E5D7A562D605DB
 
 
 
@@ -140,8 +140,8 @@ alter table AreaTematicas  drop constraint FK33E5D7A574E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463785102A57]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
-alter table TipoFinanciamientos  drop constraint FK2D5E463785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2D5E463762D605DB]') AND parent_object_id = OBJECT_ID('TipoFinanciamientos'))
+alter table TipoFinanciamientos  drop constraint FK2D5E463762D605DB
 
 
 
@@ -150,8 +150,8 @@ alter table TipoFinanciamientos  drop constraint FK2D5E463774E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716385102A57]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
-alter table TipoDictamenes  drop constraint FK8937716385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8937716362D605DB]') AND parent_object_id = OBJECT_ID('TipoDictamenes'))
+alter table TipoDictamenes  drop constraint FK8937716362D605DB
 
 
 
@@ -165,8 +165,8 @@ alter table Subdisciplinas  drop constraint FKB62F52ADBC063744
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB62F52AD85102A57]') AND parent_object_id = OBJECT_ID('Subdisciplinas'))
-alter table Subdisciplinas  drop constraint FKB62F52AD85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB62F52AD62D605DB]') AND parent_object_id = OBJECT_ID('Subdisciplinas'))
+alter table Subdisciplinas  drop constraint FKB62F52AD62D605DB
 
 
 
@@ -180,8 +180,8 @@ alter table SNIInvestigadores  drop constraint FK6A7A949C1B8E1D4A
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C85102A57]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
-alter table SNIInvestigadores  drop constraint FK6A7A949C85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C62D605DB]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
+alter table SNIInvestigadores  drop constraint FK6A7A949C62D605DB
 
 
 
@@ -195,8 +195,8 @@ alter table SNIInvestigadores  drop constraint FK6A7A949C8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948085102A57]') AND parent_object_id = OBJECT_ID('Sectores'))
-alter table Sectores  drop constraint FK57A9948085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK57A9948062D605DB]') AND parent_object_id = OBJECT_ID('Sectores'))
+alter table Sectores  drop constraint FK57A9948062D605DB
 
 
 
@@ -205,8 +205,8 @@ alter table Sectores  drop constraint FK57A9948074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2185102A57]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
-alter table MedioElectronicos  drop constraint FKC3FA1F2185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC3FA1F2162D605DB]') AND parent_object_id = OBJECT_ID('MedioElectronicos'))
+alter table MedioElectronicos  drop constraint FKC3FA1F2162D605DB
 
 
 
@@ -215,8 +215,8 @@ alter table MedioElectronicos  drop constraint FKC3FA1F2174E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC50D919985102A57]') AND parent_object_id = OBJECT_ID('Indices'))
-alter table Indices  drop constraint FKC50D919985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC50D919962D605DB]') AND parent_object_id = OBJECT_ID('Indices'))
+alter table Indices  drop constraint FKC50D919962D605DB
 
 
 
@@ -230,8 +230,8 @@ alter table Disciplinas  drop constraint FK6CD232B3295BC133
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CD232B385102A57]') AND parent_object_id = OBJECT_ID('Disciplinas'))
-alter table Disciplinas  drop constraint FK6CD232B385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CD232B362D605DB]') AND parent_object_id = OBJECT_ID('Disciplinas'))
+alter table Disciplinas  drop constraint FK6CD232B362D605DB
 
 
 
@@ -255,8 +255,8 @@ alter table ApoyoConacyts  drop constraint FK9114F616A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F6185102A57]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
-alter table ApoyoConacyts  drop constraint FK9114F6185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9114F6162D605DB]') AND parent_object_id = OBJECT_ID('ApoyoConacyts'))
+alter table ApoyoConacyts  drop constraint FK9114F6162D605DB
 
 
 
@@ -265,8 +265,8 @@ alter table ApoyoConacyts  drop constraint FK9114F6174E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79885102A57]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
-alter table TipoDistinciones  drop constraint FK6F92D79885102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79862D605DB]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
+alter table TipoDistinciones  drop constraint FK6F92D79862D605DB
 
 
 
@@ -285,8 +285,8 @@ alter table RecursoFinancieroProyectos  drop constraint FKC15ABC196D764BC1
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1985102A57]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
-alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC15ABC1962D605DB]') AND parent_object_id = OBJECT_ID('RecursoFinancieroProyectos'))
+alter table RecursoFinancieroProyectos  drop constraint FKC15ABC1962D605DB
 
 
 
@@ -320,8 +320,8 @@ alter table OrganoInternos  drop constraint FKECD0AAEA9E4F194A
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA85102A57]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
-alter table OrganoInternos  drop constraint FKECD0AAEA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA62D605DB]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEA62D605DB
 
 
 
@@ -330,8 +330,8 @@ alter table OrganoInternos  drop constraint FKECD0AAEA74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4C871ABE85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicos'))
-alter table GradoAcademicos  drop constraint FK4C871ABE85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4C871ABE62D605DB]') AND parent_object_id = OBJECT_ID('GradoAcademicos'))
+alter table GradoAcademicos  drop constraint FK4C871ABE62D605DB
 
 
 
@@ -340,8 +340,8 @@ alter table GradoAcademicos  drop constraint FK4C871ABE74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549585102A57]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
-alter table EstatusFormacionAcademicas  drop constraint FK8773549585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8773549562D605DB]') AND parent_object_id = OBJECT_ID('EstatusFormacionAcademicas'))
+alter table EstatusFormacionAcademicas  drop constraint FK8773549562D605DB
 
 
 
@@ -360,8 +360,8 @@ alter table Editoriales  drop constraint FKFB29159064F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB29159085102A57]') AND parent_object_id = OBJECT_ID('Editoriales'))
-alter table Editoriales  drop constraint FKFB29159085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB29159062D605DB]') AND parent_object_id = OBJECT_ID('Editoriales'))
+alter table Editoriales  drop constraint FKFB29159062D605DB
 
 
 
@@ -375,8 +375,8 @@ alter table Archivos  drop constraint FKD4AF217E59EC5B70
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E85102A57]') AND parent_object_id = OBJECT_ID('Archivos'))
-alter table Archivos  drop constraint FKD4AF217E85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E62D605DB]') AND parent_object_id = OBJECT_ID('Archivos'))
+alter table Archivos  drop constraint FKD4AF217E62D605DB
 
 
 
@@ -535,8 +535,8 @@ alter table EditorialProductos  drop constraint FK92545087E30B9132
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508785102A57]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
-alter table EditorialProductos  drop constraint FK9254508785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9254508762D605DB]') AND parent_object_id = OBJECT_ID('EditorialProductos'))
+alter table EditorialProductos  drop constraint FK9254508762D605DB
 
 
 
@@ -615,8 +615,8 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE019C8628149
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01985102A57]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
-alter table EstanciaInstitucionExternas  drop constraint FKA2BE01985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE01962D605DB]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
+alter table EstanciaInstitucionExternas  drop constraint FKA2BE01962D605DB
 
 
 
@@ -625,8 +625,8 @@ alter table EstanciaInstitucionExternas  drop constraint FKA2BE01974E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C85102A57]') AND parent_object_id = OBJECT_ID('Idiomas'))
-alter table Idiomas  drop constraint FKB635BD3C85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB635BD3C62D605DB]') AND parent_object_id = OBJECT_ID('Idiomas'))
+alter table Idiomas  drop constraint FKB635BD3C62D605DB
 
 
 
@@ -635,8 +635,8 @@ alter table Idiomas  drop constraint FKB635BD3C74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8085102A57]') AND parent_object_id = OBJECT_ID('Generos'))
-alter table Generos  drop constraint FK34B67F8085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34B67F8062D605DB]') AND parent_object_id = OBJECT_ID('Generos'))
+alter table Generos  drop constraint FK34B67F8062D605DB
 
 
 
@@ -645,8 +645,8 @@ alter table Generos  drop constraint FK34B67F8074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4D7DCA9385102A57]') AND parent_object_id = OBJECT_ID('FondoConacyts'))
-alter table FondoConacyts  drop constraint FK4D7DCA9385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4D7DCA9362D605DB]') AND parent_object_id = OBJECT_ID('FondoConacyts'))
+alter table FondoConacyts  drop constraint FK4D7DCA9362D605DB
 
 
 
@@ -690,8 +690,8 @@ alter table Dictamenes  drop constraint FKE29ADD7BF1AEE935
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B85102A57]') AND parent_object_id = OBJECT_ID('Dictamenes'))
-alter table Dictamenes  drop constraint FKE29ADD7B85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B62D605DB]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7B62D605DB
 
 
 
@@ -715,8 +715,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D3E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D85102A57]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
-alter table CargoInvestigadores  drop constraint FKC1D5F88D85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D62D605DB]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
+alter table CargoInvestigadores  drop constraint FKC1D5F88D62D605DB
 
 
 
@@ -730,8 +730,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC85102A57]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
-alter table VinculacionAPyDes  drop constraint FK9D4AA1BC85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC62D605DB]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
+alter table VinculacionAPyDes  drop constraint FK9D4AA1BC62D605DB
 
 
 
@@ -810,8 +810,8 @@ alter table TesisDirigidas  drop constraint FKEF4DD3113E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31185102A57]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
-alter table TesisDirigidas  drop constraint FKEF4DD31185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD31162D605DB]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD31162D605DB
 
 
 
@@ -825,8 +825,8 @@ alter table AutorInternoProductos  drop constraint FK140229918336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1402299185102A57]') AND parent_object_id = OBJECT_ID('AutorInternoProductos'))
-alter table AutorInternoProductos  drop constraint FK1402299185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1402299162D605DB]') AND parent_object_id = OBJECT_ID('AutorInternoProductos'))
+alter table AutorInternoProductos  drop constraint FK1402299162D605DB
 
 
 
@@ -865,8 +865,8 @@ alter table AutorExternoProductos  drop constraint FKA32D18F364F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F385102A57]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
-alter table AutorExternoProductos  drop constraint FKA32D18F385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA32D18F362D605DB]') AND parent_object_id = OBJECT_ID('AutorExternoProductos'))
+alter table AutorExternoProductos  drop constraint FKA32D18F362D605DB
 
 
 
@@ -895,8 +895,8 @@ alter table AutorExternoResena  drop constraint FKBDA4E728FF48CC4D
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE85102A57]') AND parent_object_id = OBJECT_ID('Paises'))
-alter table Paises  drop constraint FKFF6108EE85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFF6108EE62D605DB]') AND parent_object_id = OBJECT_ID('Paises'))
+alter table Paises  drop constraint FKFF6108EE62D605DB
 
 
 
@@ -910,8 +910,8 @@ alter table Organizaciones  drop constraint FK66FEAE593E082BED
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5985102A57]') AND parent_object_id = OBJECT_ID('Organizaciones'))
-alter table Organizaciones  drop constraint FK66FEAE5985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK66FEAE5962D605DB]') AND parent_object_id = OBJECT_ID('Organizaciones'))
+alter table Organizaciones  drop constraint FK66FEAE5962D605DB
 
 
 
@@ -985,8 +985,8 @@ alter table Cursos  drop constraint FK8E38D63E3E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E85102A57]') AND parent_object_id = OBJECT_ID('Cursos'))
-alter table Cursos  drop constraint FK8E38D63E85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E62D605DB]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63E62D605DB
 
 
 
@@ -1040,8 +1040,8 @@ alter table Capitulos  drop constraint FK3165FEAD3E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD85102A57]') AND parent_object_id = OBJECT_ID('Capitulos'))
-alter table Capitulos  drop constraint FK3165FEAD85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD62D605DB]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD62D605DB
 
 
 
@@ -1125,8 +1125,8 @@ alter table EstanciaAcademicaExternas  drop constraint FK43CB631564F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB631585102A57]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
-alter table EstanciaAcademicaExternas  drop constraint FK43CB631585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB631562D605DB]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
+alter table EstanciaAcademicaExternas  drop constraint FK43CB631562D605DB
 
 
 
@@ -1135,8 +1135,8 @@ alter table EstanciaAcademicaExternas  drop constraint FK43CB631574E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE685102A57]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
-alter table AreaInvestigaciones  drop constraint FKC1B18FE685102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1B18FE662D605DB]') AND parent_object_id = OBJECT_ID('AreaInvestigaciones'))
+alter table AreaInvestigaciones  drop constraint FKC1B18FE662D605DB
 
 
 
@@ -1145,8 +1145,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC30604C885102A57]') AND parent_object_id = OBJECT_ID('SubprogramaConacyts'))
-alter table SubprogramaConacyts  drop constraint FKC30604C885102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC30604C862D605DB]') AND parent_object_id = OBJECT_ID('SubprogramaConacyts'))
+alter table SubprogramaConacyts  drop constraint FKC30604C862D605DB
 
 
 
@@ -1170,8 +1170,8 @@ alter table Firmas  drop constraint FK1BC2D59F470C9E1E
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F85102A57]') AND parent_object_id = OBJECT_ID('Firmas'))
-alter table Firmas  drop constraint FK1BC2D59F85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BC2D59F62D605DB]') AND parent_object_id = OBJECT_ID('Firmas'))
+alter table Firmas  drop constraint FK1BC2D59F62D605DB
 
 
 
@@ -1310,8 +1310,8 @@ alter table EstadoPaises  drop constraint FKD3B80B527A8488F7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3B80B5285102A57]') AND parent_object_id = OBJECT_ID('EstadoPaises'))
-alter table EstadoPaises  drop constraint FKD3B80B5285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3B80B5262D605DB]') AND parent_object_id = OBJECT_ID('EstadoPaises'))
+alter table EstadoPaises  drop constraint FKD3B80B5262D605DB
 
 
 
@@ -1320,8 +1320,8 @@ alter table EstadoPaises  drop constraint FKD3B80B5274E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE112A3FE85102A57]') AND parent_object_id = OBJECT_ID('Estados'))
-alter table Estados  drop constraint FKE112A3FE85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE112A3FE62D605DB]') AND parent_object_id = OBJECT_ID('Estados'))
+alter table Estados  drop constraint FKE112A3FE62D605DB
 
 
 
@@ -1370,8 +1370,8 @@ alter table Distinciones  drop constraint FKEF821EEC3E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC85102A57]') AND parent_object_id = OBJECT_ID('Distinciones'))
-alter table Distinciones  drop constraint FKEF821EEC85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC62D605DB]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC62D605DB
 
 
 
@@ -1380,8 +1380,8 @@ alter table Distinciones  drop constraint FKEF821EEC74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE85C13AA85102A57]') AND parent_object_id = OBJECT_ID('ProductoAcademicos'))
-alter table ProductoAcademicos  drop constraint FKE85C13AA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE85C13AA62D605DB]') AND parent_object_id = OBJECT_ID('ProductoAcademicos'))
+alter table ProductoAcademicos  drop constraint FKE85C13AA62D605DB
 
 
 
@@ -1395,8 +1395,8 @@ alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E85102A57]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
-alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E62D605DB]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
+alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E62D605DB
 
 
 
@@ -1415,8 +1415,8 @@ alter table ParticipanteExternoProyectos  drop constraint FK93973E778FDBB774
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E7785102A57]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
-alter table ParticipanteExternoProyectos  drop constraint FK93973E7785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E7762D605DB]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
+alter table ParticipanteExternoProyectos  drop constraint FK93973E7762D605DB
 
 
 
@@ -1475,8 +1475,8 @@ alter table Articulos  drop constraint FK3EB394D76A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D785102A57]') AND parent_object_id = OBJECT_ID('Articulos'))
-alter table Articulos  drop constraint FK3EB394D785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D762D605DB]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D762D605DB
 
 
 
@@ -1520,8 +1520,8 @@ alter table ParticipacionMedios  drop constraint FK6CE1FC417B40DE3F
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4185102A57]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
-alter table ParticipacionMedios  drop constraint FK6CE1FC4185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC4162D605DB]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC4162D605DB
 
 
 
@@ -1535,8 +1535,8 @@ alter table InstitucionEventos  drop constraint FKCE705D5D64F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D85102A57]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
-alter table InstitucionEventos  drop constraint FKCE705D5D85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE705D5D62D605DB]') AND parent_object_id = OBJECT_ID('InstitucionEventos'))
+alter table InstitucionEventos  drop constraint FKCE705D5D62D605DB
 
 
 
@@ -1605,8 +1605,8 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC6A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC85102A57]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
-alter table ExperienciaProfesionales  drop constraint FK4F93B3CC85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4F93B3CC62D605DB]') AND parent_object_id = OBJECT_ID('ExperienciaProfesionales'))
+alter table ExperienciaProfesionales  drop constraint FK4F93B3CC62D605DB
 
 
 
@@ -1615,8 +1615,8 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA85102A57]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
-alter table Coordinaciones  drop constraint FKE2EBCFEA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE2EBCFEA62D605DB]') AND parent_object_id = OBJECT_ID('Coordinaciones'))
+alter table Coordinaciones  drop constraint FKE2EBCFEA62D605DB
 
 
 
@@ -1625,8 +1625,8 @@ alter table Coordinaciones  drop constraint FKE2EBCFEA74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AD9767285102A57]') AND parent_object_id = OBJECT_ID('Categorias'))
-alter table Categorias  drop constraint FK9AD9767285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9AD9767262D605DB]') AND parent_object_id = OBJECT_ID('Categorias'))
+alter table Categorias  drop constraint FK9AD9767262D605DB
 
 
 
@@ -1635,8 +1635,8 @@ alter table Categorias  drop constraint FK9AD9767274E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1527E7985102A57]') AND parent_object_id = OBJECT_ID('Areas'))
-alter table Areas  drop constraint FK1527E7985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1527E7962D605DB]') AND parent_object_id = OBJECT_ID('Areas'))
+alter table Areas  drop constraint FK1527E7962D605DB
 
 
 
@@ -1645,8 +1645,8 @@ alter table Areas  drop constraint FK1527E7974E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK20CDD2C585102A57]') AND parent_object_id = OBJECT_ID('TipoParticipaciones'))
-alter table TipoParticipaciones  drop constraint FK20CDD2C585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK20CDD2C562D605DB]') AND parent_object_id = OBJECT_ID('TipoParticipaciones'))
+alter table TipoParticipaciones  drop constraint FK20CDD2C562D605DB
 
 
 
@@ -1665,8 +1665,8 @@ alter table Investigadores  drop constraint FKE67B58B98A77AB9C
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B985102A57]') AND parent_object_id = OBJECT_ID('Investigadores'))
-alter table Investigadores  drop constraint FKE67B58B985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE67B58B962D605DB]') AND parent_object_id = OBJECT_ID('Investigadores'))
+alter table Investigadores  drop constraint FKE67B58B962D605DB
 
 
 
@@ -1680,8 +1680,8 @@ alter table Clases  drop constraint FK14DFAB5DAA0C7213
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14DFAB5D85102A57]') AND parent_object_id = OBJECT_ID('Clases'))
-alter table Clases  drop constraint FK14DFAB5D85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK14DFAB5D62D605DB]') AND parent_object_id = OBJECT_ID('Clases'))
+alter table Clases  drop constraint FK14DFAB5D62D605DB
 
 
 
@@ -1740,8 +1740,8 @@ alter table CursoInvestigadores  drop constraint FKD4AFE659F4FE4035
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27DF9BD685102A57]') AND parent_object_id = OBJECT_ID('TipoParticipantes'))
-alter table TipoParticipantes  drop constraint FK27DF9BD685102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK27DF9BD662D605DB]') AND parent_object_id = OBJECT_ID('TipoParticipantes'))
+alter table TipoParticipantes  drop constraint FK27DF9BD662D605DB
 
 
 
@@ -1750,8 +1750,8 @@ alter table TipoParticipantes  drop constraint FK27DF9BD674E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34FE812085102A57]') AND parent_object_id = OBJECT_ID('Monedas'))
-alter table Monedas  drop constraint FK34FE812085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK34FE812062D605DB]') AND parent_object_id = OBJECT_ID('Monedas'))
+alter table Monedas  drop constraint FK34FE812062D605DB
 
 
 
@@ -1760,8 +1760,8 @@ alter table Monedas  drop constraint FK34FE812074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC9393CDB85102A57]') AND parent_object_id = OBJECT_ID('ImpactoPoliticaPublicas'))
-alter table ImpactoPoliticaPublicas  drop constraint FKC9393CDB85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC9393CDB62D605DB]') AND parent_object_id = OBJECT_ID('ImpactoPoliticaPublicas'))
+alter table ImpactoPoliticaPublicas  drop constraint FKC9393CDB62D605DB
 
 
 
@@ -1770,8 +1770,8 @@ alter table ImpactoPoliticaPublicas  drop constraint FKC9393CDB74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFFA20BAC85102A57]') AND parent_object_id = OBJECT_ID('CoautorExternos'))
-alter table CoautorExternos  drop constraint FKFFA20BAC85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFFA20BAC62D605DB]') AND parent_object_id = OBJECT_ID('CoautorExternos'))
+alter table CoautorExternos  drop constraint FKFFA20BAC62D605DB
 
 
 
@@ -1790,8 +1790,8 @@ alter table UsuarioRol  drop constraint FKD884456A6A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616285102A57]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
-alter table TipoEstancias  drop constraint FK53E7616285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK53E7616262D605DB]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
+alter table TipoEstancias  drop constraint FK53E7616262D605DB
 
 
 
@@ -1800,8 +1800,8 @@ alter table TipoEstancias  drop constraint FK53E7616274E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKAE84C80485102A57]') AND parent_object_id = OBJECT_ID('TipoApoyos'))
-alter table TipoApoyos  drop constraint FKAE84C80485102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKAE84C80462D605DB]') AND parent_object_id = OBJECT_ID('TipoApoyos'))
+alter table TipoApoyos  drop constraint FKAE84C80462D605DB
 
 
 
@@ -1840,8 +1840,8 @@ alter table Reportes  drop constraint FK26728BE13E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE185102A57]') AND parent_object_id = OBJECT_ID('Reportes'))
-alter table Reportes  drop constraint FK26728BE185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE162D605DB]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE162D605DB
 
 
 
@@ -1855,8 +1855,8 @@ alter table Ramas  drop constraint FKEA27DBAA3E082BED
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA27DBAA85102A57]') AND parent_object_id = OBJECT_ID('Ramas'))
-alter table Ramas  drop constraint FKEA27DBAA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEA27DBAA62D605DB]') AND parent_object_id = OBJECT_ID('Ramas'))
+alter table Ramas  drop constraint FKEA27DBAA62D605DB
 
 
 
@@ -1865,8 +1865,8 @@ alter table Ramas  drop constraint FKEA27DBAA74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF062672785102A57]') AND parent_object_id = OBJECT_ID('LineaInvestigaciones'))
-alter table LineaInvestigaciones  drop constraint FKF062672785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF062672762D605DB]') AND parent_object_id = OBJECT_ID('LineaInvestigaciones'))
+alter table LineaInvestigaciones  drop constraint FKF062672762D605DB
 
 
 
@@ -1880,8 +1880,8 @@ alter table EstadoInvestigadores  drop constraint FK667DBFD9C6BB3B45
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD985102A57]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
-alter table EstadoInvestigadores  drop constraint FK667DBFD985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD962D605DB]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
+alter table EstadoInvestigadores  drop constraint FK667DBFD962D605DB
 
 
 
@@ -1895,8 +1895,8 @@ alter table EstadoInvestigadores  drop constraint FK667DBFD98336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDF172AB885102A57]') AND parent_object_id = OBJECT_ID('Departamentos'))
-alter table Departamentos  drop constraint FKDF172AB885102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDF172AB862D605DB]') AND parent_object_id = OBJECT_ID('Departamentos'))
+alter table Departamentos  drop constraint FKDF172AB862D605DB
 
 
 
@@ -1905,8 +1905,8 @@ alter table Departamentos  drop constraint FKDF172AB874E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C085102A57]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
-alter table TipoArchivos  drop constraint FKDDAB43C085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDDAB43C062D605DB]') AND parent_object_id = OBJECT_ID('TipoArchivos'))
+alter table TipoArchivos  drop constraint FKDDAB43C062D605DB
 
 
 
@@ -1920,8 +1920,8 @@ alter table Sedes  drop constraint FK2EA40B08FE7BABE
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B0885102A57]') AND parent_object_id = OBJECT_ID('Sedes'))
-alter table Sedes  drop constraint FK2EA40B0885102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2EA40B0862D605DB]') AND parent_object_id = OBJECT_ID('Sedes'))
+alter table Sedes  drop constraint FK2EA40B0862D605DB
 
 
 
@@ -1930,8 +1930,8 @@ alter table Sedes  drop constraint FK2EA40B0874E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D78AB6085102A57]') AND parent_object_id = OBJECT_ID('MedioImpresos'))
-alter table MedioImpresos  drop constraint FK3D78AB6085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D78AB6062D605DB]') AND parent_object_id = OBJECT_ID('MedioImpresos'))
+alter table MedioImpresos  drop constraint FK3D78AB6062D605DB
 
 
 
@@ -1950,8 +1950,8 @@ alter table IdiomasInvestigadores  drop constraint FK5BD7F0296A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F02985102A57]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
-alter table IdiomasInvestigadores  drop constraint FK5BD7F02985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK5BD7F02962D605DB]') AND parent_object_id = OBJECT_ID('IdiomasInvestigadores'))
+alter table IdiomasInvestigadores  drop constraint FK5BD7F02962D605DB
 
 
 
@@ -1960,8 +1960,8 @@ alter table IdiomasInvestigadores  drop constraint FK5BD7F02974E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6708195585102A57]') AND parent_object_id = OBJECT_ID('DirigidoAs'))
-alter table DirigidoAs  drop constraint FK6708195585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6708195562D605DB]') AND parent_object_id = OBJECT_ID('DirigidoAs'))
+alter table DirigidoAs  drop constraint FK6708195562D605DB
 
 
 
@@ -1970,8 +1970,8 @@ alter table DirigidoAs  drop constraint FK6708195574E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB1E3720485102A57]') AND parent_object_id = OBJECT_ID('ConsejoComisiones'))
-alter table ConsejoComisiones  drop constraint FKB1E3720485102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB1E3720462D605DB]') AND parent_object_id = OBJECT_ID('ConsejoComisiones'))
+alter table ConsejoComisiones  drop constraint FKB1E3720462D605DB
 
 
 
@@ -1980,8 +1980,8 @@ alter table ConsejoComisiones  drop constraint FKB1E3720474E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B085102A57]') AND parent_object_id = OBJECT_ID('Ambitos'))
-alter table Ambitos  drop constraint FKB422A0B085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B062D605DB]') AND parent_object_id = OBJECT_ID('Ambitos'))
+alter table Ambitos  drop constraint FKB422A0B062D605DB
 
 
 
@@ -1990,8 +1990,8 @@ alter table Ambitos  drop constraint FKB422A0B074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBA04838785102A57]') AND parent_object_id = OBJECT_ID('ActividadPrevistas'))
-alter table ActividadPrevistas  drop constraint FKBA04838785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKBA04838762D605DB]') AND parent_object_id = OBJECT_ID('ActividadPrevistas'))
+alter table ActividadPrevistas  drop constraint FKBA04838762D605DB
 
 
 
@@ -2000,8 +2000,8 @@ alter table ActividadPrevistas  drop constraint FKBA04838774E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F85102A57]') AND parent_object_id = OBJECT_ID('Roles'))
-alter table Roles  drop constraint FK1A2E670F85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A2E670F62D605DB]') AND parent_object_id = OBJECT_ID('Roles'))
+alter table Roles  drop constraint FK1A2E670F62D605DB
 
 
 
@@ -2010,8 +2010,8 @@ alter table Roles  drop constraint FK1A2E670F74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869085102A57]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
-alter table ProgramaEstudios  drop constraint FK51F4869085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK51F4869062D605DB]') AND parent_object_id = OBJECT_ID('ProgramaEstudios'))
+alter table ProgramaEstudios  drop constraint FK51F4869062D605DB
 
 
 
@@ -2020,8 +2020,8 @@ alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDE910ADD85102A57]') AND parent_object_id = OBJECT_ID('EstatusProyectos'))
-alter table EstatusProyectos  drop constraint FKDE910ADD85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDE910ADD62D605DB]') AND parent_object_id = OBJECT_ID('EstatusProyectos'))
+alter table EstatusProyectos  drop constraint FKDE910ADD62D605DB
 
 
 
@@ -2030,8 +2030,8 @@ alter table EstatusProyectos  drop constraint FKDE910ADD74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A85102A57]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
-alter table TipoProyectos  drop constraint FK1E50E26A85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A62D605DB]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
+alter table TipoProyectos  drop constraint FK1E50E26A62D605DB
 
 
 
@@ -2040,8 +2040,8 @@ alter table TipoProyectos  drop constraint FK1E50E26A74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF16DB6DA85102A57]') AND parent_object_id = OBJECT_ID('SNIs'))
-alter table SNIs  drop constraint FKF16DB6DA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF16DB6DA62D605DB]') AND parent_object_id = OBJECT_ID('SNIs'))
+alter table SNIs  drop constraint FKF16DB6DA62D605DB
 
 
 
@@ -2085,8 +2085,8 @@ alter table RevistaPublicaciones  drop constraint FK40B482937E0A1BF3
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829385102A57]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
-alter table RevistaPublicaciones  drop constraint FK40B4829385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829362D605DB]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
+alter table RevistaPublicaciones  drop constraint FK40B4829362D605DB
 
 
 
@@ -2100,8 +2100,8 @@ alter table ResponsableInternoProyectos  drop constraint FK1BD3EE078336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BD3EE0785102A57]') AND parent_object_id = OBJECT_ID('ResponsableInternoProyectos'))
-alter table ResponsableInternoProyectos  drop constraint FK1BD3EE0785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1BD3EE0762D605DB]') AND parent_object_id = OBJECT_ID('ResponsableInternoProyectos'))
+alter table ResponsableInternoProyectos  drop constraint FK1BD3EE0762D605DB
 
 
 
@@ -2115,8 +2115,8 @@ alter table ResponsableInternoProyectos  drop constraint FK1BD3EE0770EA6C9E
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK371BC04385102A57]') AND parent_object_id = OBJECT_ID('ResponsableExternos'))
-alter table ResponsableExternos  drop constraint FK371BC04385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK371BC04362D605DB]') AND parent_object_id = OBJECT_ID('ResponsableExternos'))
+alter table ResponsableExternos  drop constraint FK371BC04362D605DB
 
 
 
@@ -2175,8 +2175,8 @@ alter table Resenas  drop constraint FKF708AE623E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6285102A57]') AND parent_object_id = OBJECT_ID('Resenas'))
-alter table Resenas  drop constraint FKF708AE6285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6262D605DB]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6262D605DB
 
 
 
@@ -2190,8 +2190,8 @@ alter table Niveles  drop constraint FKCE3ED3F7EC222BA6
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3ED3F785102A57]') AND parent_object_id = OBJECT_ID('Niveles'))
-alter table Niveles  drop constraint FKCE3ED3F785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3ED3F762D605DB]') AND parent_object_id = OBJECT_ID('Niveles'))
+alter table Niveles  drop constraint FKCE3ED3F762D605DB
 
 
 
@@ -2210,8 +2210,8 @@ alter table GradoAcademicoInvestigadores  drop constraint FK265240DD64F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD85102A57]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
-alter table GradoAcademicoInvestigadores  drop constraint FK265240DD85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD62D605DB]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
+alter table GradoAcademicoInvestigadores  drop constraint FK265240DD62D605DB
 
 
 
@@ -2290,8 +2290,8 @@ alter table FormacionAcademicas  drop constraint FK824D8BEA6A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA85102A57]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
-alter table FormacionAcademicas  drop constraint FK824D8BEA85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824D8BEA62D605DB]') AND parent_object_id = OBJECT_ID('FormacionAcademicas'))
+alter table FormacionAcademicas  drop constraint FK824D8BEA62D605DB
 
 
 
@@ -2305,8 +2305,8 @@ alter table CoautorInternoProductos  drop constraint FKCAE46D9C8336201B
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C85102A57]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
-alter table CoautorInternoProductos  drop constraint FKCAE46D9C85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCAE46D9C62D605DB]') AND parent_object_id = OBJECT_ID('CoautorInternoProductos'))
+alter table CoautorInternoProductos  drop constraint FKCAE46D9C62D605DB
 
 
 
@@ -2385,8 +2385,8 @@ alter table CoautorExternoProductos  drop constraint FK15D3B7B264F7D1CD
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B285102A57]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
-alter table CoautorExternoProductos  drop constraint FK15D3B7B285102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK15D3B7B262D605DB]') AND parent_object_id = OBJECT_ID('CoautorExternoProductos'))
+alter table CoautorExternoProductos  drop constraint FK15D3B7B262D605DB
 
 
 
@@ -2455,8 +2455,28 @@ alter table CoautorExternoResena  drop constraint FKD1565D88FF48CC4D
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8A4EC8585102A57]') AND parent_object_id = OBJECT_ID('USEGs'))
-alter table USEGs  drop constraint FKD8A4EC8585102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD8FDBB774]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
+alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD8FDBB774
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD62D605DB]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
+alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD62D605DB
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD74E8BAB7]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
+alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD74E8BAB7
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD68E3AA1]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
+alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA1
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8A4EC8562D605DB]') AND parent_object_id = OBJECT_ID('USEGs'))
+alter table USEGs  drop constraint FKD8A4EC8562D605DB
 
 
 
@@ -2465,8 +2485,8 @@ alter table USEGs  drop constraint FKD8A4EC8574E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B85102A57]') AND parent_object_id = OBJECT_ID('TipoEventos'))
-alter table TipoEventos  drop constraint FK952D666B85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK952D666B62D605DB]') AND parent_object_id = OBJECT_ID('TipoEventos'))
+alter table TipoEventos  drop constraint FK952D666B62D605DB
 
 
 
@@ -2585,8 +2605,8 @@ alter table Proyectos  drop constraint FK8BA36D776A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D7785102A57]') AND parent_object_id = OBJECT_ID('Proyectos'))
-alter table Proyectos  drop constraint FK8BA36D7785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D7762D605DB]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D7762D605DB
 
 
 
@@ -2595,8 +2615,8 @@ alter table Proyectos  drop constraint FK8BA36D7774E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B985102A57]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
-alter table NivelEstudios  drop constraint FKD8EB52B985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD8EB52B962D605DB]') AND parent_object_id = OBJECT_ID('NivelEstudios'))
+alter table NivelEstudios  drop constraint FKD8EB52B962D605DB
 
 
 
@@ -2605,8 +2625,8 @@ alter table NivelEstudios  drop constraint FKD8EB52B974E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968885102A57]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
-alter table InvestigadorExternos  drop constraint FK2FE0968885102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2FE0968862D605DB]') AND parent_object_id = OBJECT_ID('InvestigadorExternos'))
+alter table InvestigadorExternos  drop constraint FK2FE0968862D605DB
 
 
 
@@ -2665,8 +2685,8 @@ alter table Libros  drop constraint FK439120E73E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E785102A57]') AND parent_object_id = OBJECT_ID('Libros'))
-alter table Libros  drop constraint FK439120E785102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E762D605DB]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E762D605DB
 
 
 
@@ -2675,8 +2695,8 @@ alter table Libros  drop constraint FK439120E774E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3185102A57]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
-alter table TipoOrganos  drop constraint FK75A1DA3185102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75A1DA3162D605DB]') AND parent_object_id = OBJECT_ID('TipoOrganos'))
+alter table TipoOrganos  drop constraint FK75A1DA3162D605DB
 
 
 
@@ -2685,8 +2705,8 @@ alter table TipoOrganos  drop constraint FK75A1DA3174E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK913A1E0A85102A57]') AND parent_object_id = OBJECT_ID('ProductoDerivados'))
-alter table ProductoDerivados  drop constraint FK913A1E0A85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK913A1E0A62D605DB]') AND parent_object_id = OBJECT_ID('ProductoDerivados'))
+alter table ProductoDerivados  drop constraint FK913A1E0A62D605DB
 
 
 
@@ -2740,8 +2760,8 @@ alter table ParticipacionAcademias  drop constraint FK23DC16D03E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK23DC16D085102A57]') AND parent_object_id = OBJECT_ID('ParticipacionAcademias'))
-alter table ParticipacionAcademias  drop constraint FK23DC16D085102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK23DC16D062D605DB]') AND parent_object_id = OBJECT_ID('ParticipacionAcademias'))
+alter table ParticipacionAcademias  drop constraint FK23DC16D062D605DB
 
 
 
@@ -2770,8 +2790,8 @@ alter table Instituciones  drop constraint FK7E69627C3E082BED
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C85102A57]') AND parent_object_id = OBJECT_ID('Instituciones'))
-alter table Instituciones  drop constraint FK7E69627C85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK7E69627C62D605DB]') AND parent_object_id = OBJECT_ID('Instituciones'))
+alter table Instituciones  drop constraint FK7E69627C62D605DB
 
 
 
@@ -2800,8 +2820,8 @@ alter table GrupoInvestigaciones  drop constraint FK742C6D09C8628149
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D0985102A57]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
-alter table GrupoInvestigaciones  drop constraint FK742C6D0985102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK742C6D0962D605DB]') AND parent_object_id = OBJECT_ID('GrupoInvestigaciones'))
+alter table GrupoInvestigaciones  drop constraint FK742C6D0962D605DB
 
 
 
@@ -2845,8 +2865,8 @@ alter table Eventos  drop constraint FK9DD523433E391E13
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234385102A57]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD5234385102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234362D605DB]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD5234362D605DB
 
 
 
@@ -2855,33 +2875,13 @@ alter table Eventos  drop constraint FK9DD5234374E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B85102A57]') AND parent_object_id = OBJECT_ID('Dependencias'))
-alter table Dependencias  drop constraint FK4ECBCD2B85102A57
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B62D605DB]') AND parent_object_id = OBJECT_ID('Dependencias'))
+alter table Dependencias  drop constraint FK4ECBCD2B62D605DB
 
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4ECBCD2B74E8BAB7]') AND parent_object_id = OBJECT_ID('Dependencias'))
 alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD8FDBB774]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
-alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD8FDBB774
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD85102A57]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
-alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD85102A57
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD74E8BAB7]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
-alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD74E8BAB7
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC62ED5DD68E3AA1]') AND parent_object_id = OBJECT_ID('MiembroExternoGrupoInvestigaciones'))
-alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA1
 
 
 
@@ -3175,6 +3175,8 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
 
     if exists (select * from dbo.sysobjects where id = object_id(N'CoautorExternoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CoautorExternoResena
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'MiembroExternoGrupoInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MiembroExternoGrupoInvestigaciones
+
     if exists (select * from dbo.sysobjects where id = object_id(N'USEGs') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table USEGs
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEventos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEventos
@@ -3201,8 +3203,6 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Dependencias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Dependencias
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'MiembroExternoGrupoInvestigaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table MiembroExternoGrupoInvestigaciones
-
     create table OrganoExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -3211,7 +3211,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaFinal DATETIME null,
        Siglas NVARCHAR(255) null,
        Ciudad NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
@@ -3221,7 +3221,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        SectorFk INT null,
        AmbitoFk INT null,
        PaisFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3229,10 +3229,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table LineaTematicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3240,10 +3240,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table IdentificadorLibros (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3252,11 +3252,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        CategoriaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
@@ -3265,10 +3265,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoActividades (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3276,10 +3276,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Puestos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3287,10 +3287,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table DireccionRegionales (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3298,10 +3298,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Convenios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3309,11 +3309,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table AreaTematicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        LineaTematicaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3321,10 +3321,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoFinanciamientos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3332,10 +3332,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoDictamenes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3344,11 +3344,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        DisciplinaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3357,11 +3357,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        SNIFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
@@ -3372,10 +3372,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
        TipoSector INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3383,10 +3383,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table MedioElectronicos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3395,10 +3395,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        Detalle NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3407,11 +3407,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        AreaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3424,13 +3424,13 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        PalabraClave1 NVARCHAR(255) null,
        PalabraClave2 NVARCHAR(255) null,
        PalabraClave3 NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoApoyoFk INT null,
        SubprogramaConacytFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3438,10 +3438,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoDistinciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3450,12 +3450,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Recurso NVARCHAR(255) null,
        Monto BIGINT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InstitucionFk INT null,
        MonedaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        ProyectoFk INT null,
        primary key (Id)
@@ -3466,14 +3466,14 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        Periodo INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
        ConsejoComisionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3481,10 +3481,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table GradoAcademicos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3492,10 +3492,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table EstatusFormacionAcademicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3503,12 +3503,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Editoriales (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        PaisFk INT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3520,11 +3520,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Datos image null,
        Contenido NVARCHAR(255) null,
        Tamano INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoArchivoFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3621,11 +3621,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table EditorialProductos (
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        EditorialFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3655,7 +3655,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaFinal DATETIME null,
        Actividades NVARCHAR(255) null,
        Logros NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
@@ -3666,7 +3666,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        SectorFk INT null,
        OrganizacionFk INT null,
        Nivel2Fk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3674,10 +3674,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Idiomas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3685,10 +3685,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Generos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3696,10 +3696,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table FondoConacyts (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3709,7 +3709,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Nombre NVARCHAR(255) null,
        FechaDictamen DATETIME null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
@@ -3719,20 +3719,20 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        EditorialFk INT null,
        FondoConacytFk INT null,
        TipoDictamenFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
 
     create table CargoInvestigadores (
         Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        PuestoFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
@@ -3741,10 +3741,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table VinculacionAPyDes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3757,7 +3757,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FormaParticipacion INT null,
        NombreAlumno NVARCHAR(255) null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TesisPosgradoFk INT null,
@@ -3774,7 +3774,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3783,11 +3783,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
        Posicion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3807,12 +3807,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table AutorExternoProductos (
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorExternoFk INT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3832,10 +3832,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Paises (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3844,11 +3844,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        SectorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3861,7 +3861,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaFinal DATETIME null,
        NumeroHoras INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        NivelEstudioFk INT null,
@@ -3877,7 +3877,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3899,7 +3899,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        NoPaginas INT null,
        NoCitas INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        ProyectoFk INT null,
@@ -3911,7 +3911,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3923,14 +3923,14 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaFinal DATETIME null,
        Actividades NVARCHAR(255) null,
        Logros NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
        GradoAcademicoFk INT null,
        TipoEstanciaFk INT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3938,10 +3938,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table AreaInvestigaciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3949,10 +3949,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table SubprogramaConacyts (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -3966,13 +3966,13 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Aceptacion2 INT null,
        Firma3 DATETIME null,
        Aceptacion3 INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        Usuario1Fk INT null,
        Usuario2Fk INT null,
        Usuario3Fk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4061,11 +4061,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table EstadoPaises (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        PaisFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4073,10 +4073,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Estados (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4087,7 +4087,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Descripcion NVARCHAR(255) null,
        FechaOtorgamiento DATETIME null,
        Municipio NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoDistincionFk INT null,
@@ -4098,7 +4098,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4106,21 +4106,21 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ProductoAcademicos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
 
     create table ParticipanteInternoProyectos (
         Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        ProyectoFk INT null,
        primary key (Id)
@@ -4128,11 +4128,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
 
     create table ParticipanteExternoProyectos (
         Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        ProyectoFk INT null,
        primary key (Id)
@@ -4155,7 +4155,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        PaginaInicial INT null,
        PaginaFinal INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        ProyectoFk INT null,
@@ -4167,7 +4167,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        DepartamentoFk INT null,
        SedeFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4182,7 +4182,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        LugarPresentacion NVARCHAR(255) null,
        FechaPresentacion DATETIME null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
@@ -4192,18 +4192,18 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        AreaTematicaFk INT null,
        AmbitoFk INT null,
        DirigidoAFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
 
     create table InstitucionEventos (
         Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        EventoFk INT null,
        primary key (Id)
@@ -4219,7 +4219,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        LineaInvestigacion2 NVARCHAR(255) null,
        LineaInvestigacion3 NVARCHAR(255) null,
        PrincipalesLogros NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        SectorFk INT null,
@@ -4233,7 +4233,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        RamaFk INT null,
        ClaseFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4241,10 +4241,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Coordinaciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4252,10 +4252,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Categorias (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4264,10 +4264,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4276,10 +4276,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        Tipo INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4295,12 +4295,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        AreaTematica1 NVARCHAR(255) null,
        AreaTematica2 NVARCHAR(255) null,
        AreaTematica3 NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
        AreaTematicaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4309,11 +4309,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        RamaFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4321,10 +4321,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoParticipantes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4332,10 +4332,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Monedas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4343,10 +4343,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ImpactoPoliticaPublicas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4354,10 +4354,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table CoautorExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4370,10 +4370,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoEstancias (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4381,10 +4381,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoApoyos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4406,7 +4406,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Objetivo NVARCHAR(255) null,
        NoPaginas INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        ProyectoFk INT null,
@@ -4415,7 +4415,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4424,11 +4424,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        SectorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4436,10 +4436,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table LineaInvestigaciones (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4448,11 +4448,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        EstadoFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
@@ -4461,10 +4461,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Departamentos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4472,10 +4472,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoArchivos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4483,11 +4483,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Sedes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        DireccionRegionalFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4495,10 +4495,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table MedioImpresos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4514,12 +4514,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaEvaluacion DATETIME null,
        NombreDocumentoProbatorio NVARCHAR(255) null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        IdiomaFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4527,10 +4527,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table DirigidoAs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4540,10 +4540,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Nombre NVARCHAR(255) null,
        Duracion INT null,
        Reeleccion BIT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4551,10 +4551,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Ambitos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4562,10 +4562,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ActividadPrevistas (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4573,10 +4573,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Roles (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4584,10 +4584,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ProgramaEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4595,10 +4595,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table EstatusProyectos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4606,10 +4606,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoProyectos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4617,10 +4617,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table SNIs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4641,7 +4641,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FormatoRevista INT null,
        Periodicidad INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InstitucionFk INT null,
@@ -4651,18 +4651,18 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Indice2Fk INT null,
        Indice3Fk INT null,
        Indice4Fk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
 
     create table ResponsableInternoProyectos (
         Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        ProyectoFk INT null,
        primary key (Id)
@@ -4671,10 +4671,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ResponsableExternos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4696,7 +4696,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        PaginaInicial INT null,
        PaginaFinal INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        AreaTematicaFk INT null,
@@ -4709,7 +4709,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4718,11 +4718,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        OrganizacionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4731,12 +4731,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        Fecha DATETIME null,
        Programa NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        GradoAcademicoFk INT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        InvestigadorFk INT null,
        primary key (Id)
@@ -4749,7 +4749,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaObtencion DATETIME null,
        TituloTesis NVARCHAR(255) null,
        Ciudad NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        NivelEstudioFk INT null,
@@ -4765,7 +4765,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4774,11 +4774,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
        Posicion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4822,12 +4822,12 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table CoautorExternoProductos (
         Id INT IDENTITY NOT NULL,
        TipoProducto INT not null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        InvestigadorExternoFk INT null,
        InstitucionFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4868,13 +4868,25 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        primary key (CoautorExternoProducto)
     )
 
+    create table MiembroExternoGrupoInvestigaciones (
+        Id INT IDENTITY NOT NULL,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
+       InvestigadorExternoFk INT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       GrupoInvestigacionFk INT null,
+       primary key (Id)
+    )
+
     create table USEGs (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4882,10 +4894,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoEventos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4911,7 +4923,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        ParticipaEstudiante BIT null,
        NombreEstudiante NVARCHAR(255) null,
        TipoEstudiante INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoProyectoFk INT null,
@@ -4936,7 +4948,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        RamaFk INT null,
        ClaseFk INT null,
        UsuarioFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4944,10 +4956,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table NivelEstudios (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4957,10 +4969,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Nombre NVARCHAR(255) null,
        ApellidoPaterno NVARCHAR(255) null,
        ApellidoMaterno NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -4987,7 +4999,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Tiraje INT null,
        Numero INT null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        EventoFk INT null,
@@ -5000,7 +5012,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5008,10 +5020,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table TipoOrganos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5019,10 +5031,10 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table ProductoDerivados (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5035,7 +5047,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaAceptacion DATETIME null,
        FechaPublicacion DATETIME null,
        FechaEdicion DATETIME null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        RevistaPublicacionFk INT null,
@@ -5047,7 +5059,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5063,14 +5075,14 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        Telefono NVARCHAR(255) null,
        TipoInstitucion BIT null,
        Ciudad NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        PaisFk INT null,
        EstadoPaisFk INT null,
        AmbitoFk INT null,
        SectorFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5080,22 +5092,20 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        NombreGrupoInvestigacion NVARCHAR(255) null,
        FechaCreacion DATETIME null,
        Lider BIT null,
-       Nombre NVARCHAR(255) null,
-       Miembros NVARCHAR(255) null,
        Impacto NVARCHAR(255) null,
        VinculacionSectorProductivo NVARCHAR(255) null,
        VinculacionSectorSocial NVARCHAR(255) null,
        Colaboracion NVARCHAR(255) null,
        Administracion NVARCHAR(255) null,
        ProgramaRegistrado NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
        SectorFk INT null,
        OrganizacionFk INT null,
        Nivel2Fk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5113,7 +5123,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        FechaEvento DATETIME null,
        Lugar NVARCHAR(255) null,
        Puntuacion INT null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoEventoFk INT null,
@@ -5123,7 +5133,7 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
     )
@@ -5131,23 +5141,11 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
     create table Dependencias (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
-       CreadorEl DATETIME null,
+       CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       CreadorPorFk INT null,
+       CreadoPorFk INT null,
        ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table MiembroExternoGrupoInvestigaciones (
-        Id INT IDENTITY NOT NULL,
-       CreadorEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadorPorFk INT null,
-       ModificadoPorFk INT null,
-       GrupoInvestigacionFk INT null,
        primary key (Id)
     )
 
@@ -6451,6 +6449,16 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         foreign key (ResenaFk) 
         references Resenas
 
+    alter table MiembroExternoGrupoInvestigaciones 
+        add constraint FKC62ED5DD8FDBB774 
+        foreign key (InvestigadorExternoFk) 
+        references InvestigadorExternos
+
+    alter table MiembroExternoGrupoInvestigaciones 
+        add constraint FKC62ED5DD68E3AA1 
+        foreign key (GrupoInvestigacionFk) 
+        references GrupoInvestigaciones
+
     alter table Proyectos 
         add constraint FK8BA36D77B2AE3011 
         foreign key (TipoProyectoFk) 
@@ -6705,14 +6713,4 @@ alter table MiembroExternoGrupoInvestigaciones  drop constraint FKC62ED5DD68E3AA
         add constraint FK9DD523433E391E13 
         foreign key (SedeFk) 
         references Sedes
-
-    alter table MiembroExternoGrupoInvestigaciones 
-        add constraint FKC62ED5DD8FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table MiembroExternoGrupoInvestigaciones 
-        add constraint FKC62ED5DD68E3AA1 
-        foreign key (GrupoInvestigacionFk) 
-        references GrupoInvestigaciones
 

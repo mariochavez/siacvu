@@ -71,12 +71,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             if (model.IsTransient())
             {
-                model.CreadorPor = usuario;
-                model.CargosInvestigador[0].CreadorPor = usuario;
-                model.CategoriasInvestigador[0].CreadorPor = usuario;
-                model.EstadosInvestigador[0].CreadorPor = usuario;
-                model.GradosAcademicosInvestigador[0].CreadorPor = usuario;
-                model.SNIsInvestigador[0].CreadorPor = usuario;
+                model.CreadoPor = usuario;
+                model.CargosInvestigador[0].CreadoPor = usuario;
+                model.CategoriasInvestigador[0].CreadoPor = usuario;
+                model.EstadosInvestigador[0].CreadoPor = usuario;
+                model.GradosAcademicosInvestigador[0].CreadoPor = usuario;
+                model.SNIsInvestigador[0].CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;

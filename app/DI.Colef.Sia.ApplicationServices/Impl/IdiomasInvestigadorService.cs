@@ -34,7 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if(idiomasInvestigador.Id == 0)
             {
                 idiomasInvestigador.Activo = true;
-                idiomasInvestigador.CreadorEl = DateTime.Now;
+                idiomasInvestigador.CreadoEl = DateTime.Now;
             }
             idiomasInvestigador.ModificadoEl = DateTime.Now;
             

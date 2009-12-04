@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var coautorExterno = coautorExternoMapper.Map(form);
 
-            coautorExterno.CreadorPor = CurrentUser();
+            coautorExterno.CreadoPor = CurrentUser();
             coautorExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(coautorExterno, form, Title.New))

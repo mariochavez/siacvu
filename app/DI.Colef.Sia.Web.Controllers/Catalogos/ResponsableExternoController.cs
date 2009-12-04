@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var responsableExterno = responsableExternoMapper.Map(form);
 
-            responsableExterno.CreadorPor = CurrentUser();
+            responsableExterno.CreadoPor = CurrentUser();
             responsableExterno.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(responsableExterno, form, Title.New))

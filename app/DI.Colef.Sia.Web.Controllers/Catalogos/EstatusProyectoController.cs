@@ -66,7 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         
             var estatusProyecto = estatusProyectoMapper.Map(form);
             
-            estatusProyecto.CreadorPor = CurrentUser();
+            estatusProyecto.CreadoPor = CurrentUser();
             estatusProyecto.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(estatusProyecto, form, Title.New))

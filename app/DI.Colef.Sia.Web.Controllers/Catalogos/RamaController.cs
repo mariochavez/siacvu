@@ -73,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var rama = ramaMapper.Map(form);
             
-            rama.CreadorPor = CurrentUser();
+            rama.CreadoPor = CurrentUser();
             rama.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(rama, form, Title.New, "Rama"))

@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var tipoEvento = tipoEventoMapper.Map(form);
             
-            tipoEvento.CreadorPor = CurrentUser();
+            tipoEvento.CreadoPor = CurrentUser();
             tipoEvento.ModificadoPor = CurrentUser();
 
             if(!IsValidateModel(tipoEvento, form, Title.New))

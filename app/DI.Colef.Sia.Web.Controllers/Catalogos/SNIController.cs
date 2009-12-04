@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var sni = sniMapper.Map(form);
 
-            sni.CreadorPor = CurrentUser();
+            sni.CreadoPor = CurrentUser();
             sni.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(sni, form, Title.New))

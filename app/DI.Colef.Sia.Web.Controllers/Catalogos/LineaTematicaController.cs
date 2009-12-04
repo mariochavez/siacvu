@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var lineaTematica = lineaTematicaMapper.Map(form);
 
-            lineaTematica.CreadorPor = CurrentUser();
+            lineaTematica.CreadoPor = CurrentUser();
             lineaTematica.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(lineaTematica, form, Title.New))

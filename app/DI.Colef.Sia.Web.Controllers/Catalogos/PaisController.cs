@@ -65,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         {
             var pais = paisMapper.Map(form);
 
-            pais.CreadorPor = CurrentUser();
+            pais.CreadoPor = CurrentUser();
             pais.ModificadoPor = CurrentUser();
 
             if (!IsValidateModel(pais, form, Title.New))
