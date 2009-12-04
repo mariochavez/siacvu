@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 var miembro =
                     miembroExternoGrupoInvestigacionMapper.Map(miembroExterno);
 
-                miembro.CreadorPor = usuario;
+                miembro.CreadoPor = usuario;
                 miembro.ModificadoPor = usuario;
 
                 model.AddMiembroExterno(miembro);

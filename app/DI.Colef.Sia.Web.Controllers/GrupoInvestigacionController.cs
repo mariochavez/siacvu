@@ -193,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            investigadorExterno.CreadorPor = CurrentUser();
+            investigadorExterno.CreadoPor = CurrentUser();
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
@@ -211,7 +211,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (grupoInvestigacionId != 0)
             {
-                miembroExternoGrupoInvestigacion.CreadorPor = CurrentUser();
+                miembroExternoGrupoInvestigacion.CreadoPor = CurrentUser();
                 miembroExternoGrupoInvestigacion.ModificadoPor = CurrentUser();
 
                 var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(grupoInvestigacionId);
