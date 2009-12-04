@@ -9,14 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     public class ArticuloService : IArticuloService
     {
         readonly IRepository<Articulo> articuloRepository;
-        readonly IRepository<Idioma> idiomaRepository;
         readonly IProductoQuerying productoQuerying;
 
-        public ArticuloService(IRepository<Articulo> articuloRepository, IRepository<Idioma> idiomaRepository, 
+        public ArticuloService(IRepository<Articulo> articuloRepository,
                                IProductoQuerying productoQuerying)
         {
             this.articuloRepository = articuloRepository;
-            this.idiomaRepository = idiomaRepository;
             this.productoQuerying = productoQuerying;
         }
 

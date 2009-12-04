@@ -53,4 +53,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         
     }
+
+    public class CoautorInternoObraTraducida : CoautorInternoProducto
+    {
+
+    }
 }

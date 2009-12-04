@@ -1,6 +1,14 @@
-11:05:10 AM	Started adding generated files
-11:05:10 AM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\MiembroExternoGrupoInvestigacion.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
-11:05:10 AM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\MiembroExternoGrupoInvestigacionForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-11:05:10 AM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IMiembroExternoGrupoInvestigacionMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-11:05:10 AM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\MiembroExternoGrupoInvestigacionMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
-11:05:10 AM	Finished adding generated files
+6:51:54 PM	Started adding generated files
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\ObraTraducida.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\IObraTraducidaService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\Impl\ObraTraducidaService.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Models\ObraTraducidaForm.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\IObraTraducidaMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+6:51:54 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\Mappers\Impl\ObraTraducidaMapper.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+6:51:55 PM	Added file ObraTraducidaController.cs to project C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+6:51:55 PM	Added directory C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\ObraTraducida\
+6:51:55 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\ObraTraducida\Index.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+6:51:55 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\ObraTraducida\Activate.js.ascx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+6:51:55 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\ObraTraducida\New.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+6:51:55 PM	Added file C:\Proyectos\DI.Colef.Sia\app\DI.Colef.Sia.Web\Views\ObraTraducida\Edit.aspx to project ..\..\app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+6:51:55 PM	Finished adding generated files

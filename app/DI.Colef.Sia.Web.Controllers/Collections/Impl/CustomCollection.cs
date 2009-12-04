@@ -81,6 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] TipoObraTraducidaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Artículo"},
+                           new CustomSelectForm {Id = 2, Nombre = "Libro"},
+                           new CustomSelectForm {Id = 3, Nombre = "Capítulo en libro"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";

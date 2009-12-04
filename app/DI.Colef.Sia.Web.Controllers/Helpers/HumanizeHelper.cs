@@ -61,6 +61,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreProducto;
         }
 
+        private static string TipoObraTraducida(int tipoObraTraducida)
+        {
+            var nombreTipoObraTraducida = "";
+
+            switch (tipoObraTraducida)
+            {
+                case 1:
+                    nombreTipoObraTraducida = "Artículo en revista";
+                    break;
+                case 2:
+                    nombreTipoObraTraducida = "Libro";
+                    break;
+                case 3:
+                    nombreTipoObraTraducida = "Capítulo en libro";
+                    break;
+            }
+
+            return nombreTipoObraTraducida;
+        }
+
         public static string EstadoProducto(int estadoProducto)
         {
             string nombreEstadoProducto;

@@ -23,7 +23,7 @@
 //(Name, 3) Formas con ILists
 
 EntityScaffoldingDetails entityScaffoldingDetails =
-	new EntityScaffoldingDetails("MiembroExternoGrupoInvestigacion", 2);
+	new EntityScaffoldingDetails("ObraTraducida", 3);
 
 /*
  * Property names should be PascalCase.
@@ -31,101 +31,113 @@ EntityScaffoldingDetails entityScaffoldingDetails =
  */ 
  
 //EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
-//);
-
 entityScaffoldingDetails.EntityProperties.Add(
-	new EntityProperty("InvestigadorExterno","InvestigadorExterno", "InvestigadorExterno")
+	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
 );
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("LineasInvestigacion","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Idioma","Idioma", "Idioma")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaInicial","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreTraductor","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaFinal","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ApellidoPaterno","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Actividades","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ApellidoMaterno","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Logros","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreObraTraducida","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Pais","Pais", "Pais")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoObraTraducida","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Institucion","Institucion", "Institucion")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("AreaTematica","AreaTematica", "AreaTematica")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Firma1","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave1","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Aceptacion1","int", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave2","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Usuario1","Usuario", "Usuario")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave3","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Firma2","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("EstadoProducto","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Aceptacion2","int", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaAceptacion","DateTime", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Usuario2","Usuario", "Usuario")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaPublicacion","DateTime", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Firma3","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("RevistaPublicacion","RevistaPublicacion", "RevistaPublicacion")
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Aceptacion3","int", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Volumen","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Usuario3","Usuario", "Usuario")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Numero","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Editorial","string", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PaginaInicial","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("EstadoProducto","EstadoProducto", "EstadoProducto")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PaginaFinal","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaAceptacion","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreLibro","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("PeriodoReferencia","PeriodoReferencia", "PeriodoReferencia")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoLibro","int", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("Proyecto","Proyecto", "Proyecto")
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Resumen","string", null)
+);
 
-//entityScaffoldingDetails.EntityProperties.Add(
-//	new EntityProperty("FechaEdicion","DateTime", null)
-//);
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NoPaginas","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NoCitas","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ISBN","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Reimpresion","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Tiraje","int", null)
+);
 
 //entityScaffoldingDetails.EntityProperties.Add(
 //	new EntityProperty("LineaTematica","LineaTematica", "LineaTematica")

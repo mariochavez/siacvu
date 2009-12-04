@@ -9,14 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class CapituloService : ICapituloService
     {
         readonly IRepository<Capitulo> capituloRepository;
-        readonly IRepository<Idioma> idiomaRepository;
         readonly IProductoQuerying productoQuerying;
 
-        public CapituloService(IRepository<Capitulo> capituloRepository, IRepository<Idioma> idiomaRepository,
+        public CapituloService(IRepository<Capitulo> capituloRepository,
                                IProductoQuerying productoQuerying)
         {
             this.capituloRepository = capituloRepository;
-            this.idiomaRepository = idiomaRepository;
             this.productoQuerying = productoQuerying;
         }
 

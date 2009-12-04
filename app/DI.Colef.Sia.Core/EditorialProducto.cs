@@ -36,4 +36,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class EditorialObraTraducida : EditorialProducto
+    {
+
+    }
 }

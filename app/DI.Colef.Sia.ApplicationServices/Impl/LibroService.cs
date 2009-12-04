@@ -9,13 +9,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class LibroService : ILibroService
     {
         readonly IRepository<Libro> libroRepository;
-        readonly IRepository<Idioma> idiomaRepository;
         readonly IProductoQuerying productoQuerying;
 
-        public LibroService(IRepository<Libro> libroRepository, IRepository<Idioma> idiomaRepository, IProductoQuerying productoQuerying)
+        public LibroService(IRepository<Libro> libroRepository, IProductoQuerying productoQuerying)
         {
             this.libroRepository = libroRepository;
-            this.idiomaRepository = idiomaRepository;
             this.productoQuerying = productoQuerying;
         }
 

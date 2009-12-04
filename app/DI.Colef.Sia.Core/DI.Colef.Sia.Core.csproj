@@ -82,6 +82,7 @@
     <Compile Include="IEditorial.cs" />
     <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoInternoValidator.cs" />
+    <Compile Include="ObraTraducida.cs" />
     <Compile Include="TesisPosgrado.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
