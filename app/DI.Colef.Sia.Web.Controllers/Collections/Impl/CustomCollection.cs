@@ -106,7 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                 case 2:
                     nombreProducto = "Capítulo ";
                     break;
-                case 3:
+                case 7:
                     nombreProducto = "Libro ";
                     break;
             }

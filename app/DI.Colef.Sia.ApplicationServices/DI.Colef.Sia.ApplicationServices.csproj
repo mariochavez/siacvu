@@ -64,6 +64,8 @@
     <Compile Include="Impl\EstanciaAcademicaExternaService.cs" />
     <Compile Include="Impl\ObraTraducidaService.cs" />
     <Compile Include="IObraTraducidaService.cs" />
+    <Compile Include="Impl\ProductoService.cs" />
+    <Compile Include="IProductoService.cs" />
     <Compile Include="ITesisPosgradoService.cs" />
     <Compile Include="IArchivoService.cs" />
     <Compile Include="IFirmaService.cs" />
