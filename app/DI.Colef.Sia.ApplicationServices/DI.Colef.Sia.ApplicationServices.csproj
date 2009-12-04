@@ -106,7 +106,6 @@
     <Compile Include="Impl\OrganoInternoService.cs" />
     <Compile Include="Impl\ParticipacionAcademiaService.cs" />
     <Compile Include="Impl\ParticipacionMedioService.cs" />
-    <Compile Include="Impl\ParticipacionService.cs" />
     <Compile Include="Impl\ProyectoService.cs" />
     <Compile Include="Impl\ReporteService.cs" />
     <Compile Include="Impl\ResenaService.cs" />
@@ -115,7 +114,6 @@
     <Compile Include="IOrganoInternoService.cs" />
     <Compile Include="IParticipacionAcademiaService.cs" />
     <Compile Include="IParticipacionMedioService.cs" />
-    <Compile Include="IParticipacionService.cs" />
     <Compile Include="IProyectoService.cs" />
     <Compile Include="IReporteService.cs" />
     <Compile Include="ISearchService.cs" />

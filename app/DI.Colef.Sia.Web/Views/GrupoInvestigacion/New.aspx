@@ -40,8 +40,39 @@
             <%=Html.AntiForgeryToken() %>
             <%=Html.Hidden("Id", Model.Form.Id) %>
             
-            <% Html.RenderPartial("_DatosGrupoInvestigacion", Model.Form); %>
-
+            <p>
+                <label>Nombre del grupo de investigaci&oacute;n</label>
+                <%=Html.TextBox("NombreGrupoInvestigacion", Model.Form.NombreGrupoInvestigacion, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+                <span class="cvu"></span>
+                <%=Html.ValidationMessage("NombreGrupoInvestigacion")%>
+            </p>
+            <p>
+                <label>Fecha de creaci&oacute;n</label>
+                <%=Html.TextBox("FechaCreacion", Model.Form.FechaCreacion, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+                <span class="cvu"></span>
+                <span>(Formato dd/mm/yyyy)</span>
+                <%=Html.ValidationMessage("FechaCreacion")%>
+            </p>
+            
+            <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
+            
+            <h4>&nbsp;</h4>
+            <p>
+                <label>¿Es Usted el l&iacute;der?</label>
+                <%= Html.CheckBox("Lider", Model.Form.Lider) %>
+                <span class="cvu"></span>
+                <%=Html.ValidationMessage("Lider")%>
+            </p>
+            <p id="siLider">
+                <label>Nombre</label>
+                <span class="valor"><%= Html.Encode(Model.Form.Nombre)%></span>
+                <span class="cvu"></span>
+            </p>
+            
+            <h4>Miembros</h4>
+            <% Html.RenderPartial("_EditMiembroExterno", Model.Form); %>
+            
+            <h4>&nbsp;</h4>
             <% Html.RenderPartial("_EstructuraFuncional", Model.Form); %>
             
             <p class="submit">
@@ -54,6 +85,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         setupDocument();
+        grupoInvestigacionSetup();
     });
 </script>
 </asp:Content>

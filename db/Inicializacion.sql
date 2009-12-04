@@ -477,17 +477,6 @@ insert into TipoOrganos values('Comisiones',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Comités (Sub-Comités)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Grupos de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPresentaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Presentación de resultados de investigación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Pláticas',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into OtraParticipaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into TipoDictamenes values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Proyecto de investigación CONACyT',GETDATE(), GETDATE(), 1, 1, 1);

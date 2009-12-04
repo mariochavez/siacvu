@@ -1,4 +1,4 @@
-using System;
+using DecisionesInteligentes.Colef.Sia.Core;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
@@ -8,8 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string NombreGrupoInvestigacion { get; set; }
 		public string FechaCreacion { get; set; }
         public bool Lider { get; set; }
-        public string Nombre { get; set; }
-        public string Miembros { get; set; }
         public string Impacto { get; set; }
         public string VinculacionSectorProductivo { get; set; }
         public string VinculacionSectorSocial { get; set; }
@@ -19,6 +17,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
+        public Investigador Investigador { get; set; }
+
+        public string Nombre
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", Investigador.Usuario.Nombre,
+                                     Investigador.Usuario.ApellidoPaterno, Investigador.Usuario.ApellidoMaterno);
+            }
+        }
+
         public int SectorId { get; set; }
         public int OrganizacionId { get; set; }
         public int Nivel2Id { get; set; }
@@ -26,6 +35,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SectorNombre { get; set; }
         public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
+
+        public MiembroExternoGrupoInvestigacionForm[] MiembroExternoGrupoInvestigaciones { get; set; }
+
+        /* New */
+        public MiembroExternoGrupoInvestigacionForm[] MiembroExternoGrupoInvestigacion { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }

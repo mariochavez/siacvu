@@ -129,6 +129,7 @@
     <Compile Include="Mappers\IEditorialCapituloMapper.cs" />
     <Compile Include="Mappers\IEditorialResenaMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
+    <Compile Include="Mappers\IMiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AutorExternoResenaMapper.cs" />
     <Compile Include="Mappers\Impl\AutorInternoResenaMapper.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialResenaMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
+    <Compile Include="Mappers\Impl\MiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IConsejoComisionMapper.cs" />
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EditorialProductoForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
+    <Compile Include="Models\MiembroExternoGrupoInvestigacionForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\ConsejoComisionForm.cs" />
@@ -429,9 +432,7 @@
     <Compile Include="Mappers\Impl\NivelMapper.cs" />
     <Compile Include="Mappers\Impl\OrganizacionMapper.cs" />
     <Compile Include="Mappers\Impl\OrganoExternoMapper.cs" />
-    <Compile Include="Mappers\Impl\OtraParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\PaisMapper.cs" />
-    <Compile Include="Mappers\Impl\ParticipacionMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipacionMedioMapper.cs" />
     <Compile Include="Mappers\Impl\ProgramaEstudioMapper.cs" />
     <Compile Include="Mappers\Impl\PuestoMapper.cs" />
@@ -451,7 +452,6 @@
     <Compile Include="Mappers\Impl\TipoEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\Impl\TipoOrganoMapper.cs" />
-    <Compile Include="Mappers\Impl\TipoPresentacionMapper.cs" />
     <Compile Include="Mappers\Impl\UsuarioMapper.cs" />
     <Compile Include="Mappers\Impl\SubdisciplinaMapper.cs" />
     <Compile Include="Mappers\Impl\TipoActividadMapper.cs" />
@@ -461,9 +461,7 @@
     <Compile Include="Mappers\INivelMapper.cs" />
     <Compile Include="Mappers\IOrganizacionMapper.cs" />
     <Compile Include="Mappers\IOrganoExternoMapper.cs" />
-    <Compile Include="Mappers\IOtraParticipacionMapper.cs" />
     <Compile Include="Mappers\IPaisMapper.cs" />
-    <Compile Include="Mappers\IParticipacionMapper.cs" />
     <Compile Include="Mappers\IParticipacionMedioMapper.cs" />
     <Compile Include="Mappers\IProgramaEstudioMapper.cs" />
     <Compile Include="Mappers\IPuestoMapper.cs" />
@@ -486,7 +484,6 @@
     <Compile Include="Mappers\ITipoEventoMapper.cs" />
     <Compile Include="Mappers\ITipoFinanciamientoMapper.cs" />
     <Compile Include="Mappers\ITipoOrganoMapper.cs" />
-    <Compile Include="Mappers\ITipoPresentacionMapper.cs" />
     <Compile Include="Mappers\IUsuarioMapper.cs" />
     <Compile Include="Mappers\Resolvers\ModificadoResolver.cs" />
     <Compile Include="Mappers\ISubdisciplinaMapper.cs" />
@@ -530,9 +527,7 @@
     <Compile Include="Models\NivelForm.cs" />
     <Compile Include="Models\OrganizacionForm.cs" />
     <Compile Include="Models\OrganoExternoForm.cs" />
-    <Compile Include="Models\OtraParticipacionForm.cs" />
     <Compile Include="Models\PaisForm.cs" />
-    <Compile Include="Models\ParticipacionForm.cs" />
     <Compile Include="Models\ParticipacionMedioForm.cs" />
     <Compile Include="Models\ProgramaEstudioForm.cs" />
     <Compile Include="Models\PuestoForm.cs" />
@@ -551,15 +546,12 @@
     <Compile Include="Models\TipoEventoForm.cs" />
     <Compile Include="Models\TipoFinanciamientoForm.cs" />
     <Compile Include="Models\TipoOrganoForm.cs" />
-    <Compile Include="Models\TipoPresentacionForm.cs" />
     <Compile Include="Models\UsuarioForm.cs" />
     <Compile Include="Models\SubdisciplinaForm.cs" />
     <Compile Include="Models\TipoActividadForm.cs" />
     <Compile Include="Models\TipoParticipacionForm.cs" />
     <Compile Include="Models\TipoParticipanteForm.cs" />
-    <Compile Include="Catalogos\OtraParticipacionController.cs" />
     <Compile Include="Productos\OrganoExternoController.cs" />
-    <Compile Include="Productos\ParticipacionController.cs" />
     <Compile Include="Productos\ParticipacionMedioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Catalogos\PuestoController.cs" />
@@ -577,7 +569,6 @@
     <Compile Include="Catalogos\TipoEventoController.cs" />
     <Compile Include="Catalogos\TipoFinanciamientoController.cs" />
     <Compile Include="Catalogos\TipoOrganoController.cs" />
-    <Compile Include="Catalogos\TipoPresentacionController.cs" />
     <Compile Include="Security\AuthenticationModule.cs" />
     <Compile Include="Security\IFormsAuthentication.cs" />
     <Compile Include="Security\Impl\FormsAuthentication.cs" />

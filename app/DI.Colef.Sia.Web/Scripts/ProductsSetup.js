@@ -26,6 +26,16 @@
     $('#TieneProyecto')[0].dynamic.setup();
 }
 
+function grupoInvestigacionSetup() {
+    $('#Lider').dynamicui(
+        [
+            ['1', ['#siLider']]
+        ]
+    );
+
+    $('#Lider')[0].dynamic.setup();
+}
+
 function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [

@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!grupoInvestigacion.IsTransient())
             {
-                isValid &= !ValidateIsNullOrEmpty<GrupoInvestigacion>(grupoInvestigacion, x => x.FechaCreacion, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<GrupoInvestigacion>(grupoInvestigacion, x => x.FechaCreacion, constraintValidatorContext);
             }
 
             isValid &= ValidateFechas(grupoInvestigacion, constraintValidatorContext);

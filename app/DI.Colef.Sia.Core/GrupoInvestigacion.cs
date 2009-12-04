@@ -11,12 +11,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [GrupoInvestigacionValidator]
     public class GrupoInvestigacion : Entity, IBaseEntity
     {
+        public GrupoInvestigacion()
+        {
+            MiembroExternoGrupoInvestigaciones = new List<MiembroExternoGrupoInvestigacion>();
+        }
+
+        public virtual void AddMiembroExterno(MiembroExternoGrupoInvestigacion miembroExternoGrupoInvestigacion)
+        {
+            MiembroExternoGrupoInvestigaciones.Add(miembroExternoGrupoInvestigacion);
+        }
+
+        public virtual void DeleteMiembroExterno(MiembroExternoGrupoInvestigacion miembroExternoGrupoInvestigacion)
+        {
+            MiembroExternoGrupoInvestigaciones.Remove(miembroExternoGrupoInvestigacion);
+        }
+
         [NotNull]
 		public virtual Usuario Usuario { get; set; }
 		
 		[NotNullNotEmpty]
         [DomainSignature]
 		public virtual string NombreGrupoInvestigacion { get; set; }
+
+        [Valid]
+        public virtual IList<MiembroExternoGrupoInvestigacion> MiembroExternoGrupoInvestigaciones { get; private set; }
 
 		public virtual DateTime FechaCreacion { get; set; }
 
@@ -27,10 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual Nivel Nivel2 { get; set; }
 
 		public virtual bool Lider { get; set; }
-
-		public virtual string Nombre { get; set; }
-
-		public virtual string Miembros { get; set; }
 
 		public virtual string Impacto { get; set; }
 

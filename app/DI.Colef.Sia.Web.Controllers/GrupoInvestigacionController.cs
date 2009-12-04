@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -16,17 +18,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IGrupoInvestigacionMapper grupoInvestigacionMapper;
         readonly ICatalogoService catalogoService;
         readonly ISectorMapper sectorMapper;
+        readonly IMiembroExternoGrupoInvestigacionMapper miembroExternoGrupoInvestigacionMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
     
         public GrupoInvestigacionController(IGrupoInvestigacionService grupoInvestigacionService, 
 			                                IGrupoInvestigacionMapper grupoInvestigacionMapper, 
 			                                ICatalogoService catalogoService, IUsuarioService usuarioService,
                                             ISectorMapper sectorMapper,
+                                            IInvestigadorExternoMapper investigadorExternoMapper,
+                                            IMiembroExternoGrupoInvestigacionMapper miembroExternoGrupoInvestigacionMapper,
                                             IOrganizacionMapper organizacionMapper,
                                             ISearchService searchService,
                                             INivelMapper nivelMapper)
             : base(usuarioService, searchService, catalogoService, organizacionMapper, nivelMapper)
         {
 			this.catalogoService = catalogoService;
+            this.investigadorExternoMapper = investigadorExternoMapper;
+            this.miembroExternoGrupoInvestigacionMapper = miembroExternoGrupoInvestigacionMapper;
             this.grupoInvestigacionService = grupoInvestigacionService;
             this.grupoInvestigacionMapper = grupoInvestigacionMapper;
             this.sectorMapper = sectorMapper;
@@ -101,9 +109,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(GrupoInvestigacionForm form)
+        public ActionResult Create([Bind(Prefix = "MiembroExterno")] MiembroExternoGrupoInvestigacionForm[] miembroExterno,
+            GrupoInvestigacionForm form)
         {
-            var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser());
+            miembroExterno = miembroExterno ?? new MiembroExternoGrupoInvestigacionForm[] { };
+
+            var grupoInvestigacion = grupoInvestigacionMapper.Map(form, CurrentUser(), miembroExterno);
 
             if (!IsValidateModel(grupoInvestigacion, form, Title.New, "GrupoInvestigacion"))
             {
@@ -148,6 +159,100 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content(data);
         }
 
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewMiembroExterno(int id)
+        {
+            var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
+            var form = new MiembroExternoGrupoInvestigacionForm{InvestigadorExterno = new InvestigadorExternoForm()};
+
+            if (grupoInvestigacion != null)
+                form.Id = grupoInvestigacion.Id;
+
+            return Rjs("NewMiembroExterno", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddMiembroExterno([Bind(Prefix = "MiembroExterno")] MiembroExternoGrupoInvestigacionForm form,
+                                              int grupoInvestigacionId)
+        {
+            var investigadorExternoForm = new InvestigadorExternoForm
+            {
+                Nombre = form.InvestigadorExternoNombre,
+                ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
+                ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+            };
+
+            var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
+
+            ModelState.AddModelErrors(investigadorExterno.ValidationResults(), false, "MiembroExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            investigadorExterno.CreadoPor = CurrentUser();
+            investigadorExterno.ModificadoPor = CurrentUser();
+
+            catalogoService.SaveInvestigadorExterno(investigadorExterno);
+
+            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
+
+            form.InvestigadorExternoId = investigadorExternoForm.Id;
+            var miembroExternoGrupoInvestigacion = miembroExternoGrupoInvestigacionMapper.Map(form);
+
+            ModelState.AddModelErrors(miembroExternoGrupoInvestigacion.ValidationResults(), false, "MiembroExterno", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (grupoInvestigacionId != 0)
+            {
+                miembroExternoGrupoInvestigacion.CreadoPor = CurrentUser();
+                miembroExternoGrupoInvestigacion.ModificadoPor = CurrentUser();
+
+                var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(grupoInvestigacionId);
+
+                var alreadyHasIt =
+                    grupoInvestigacion.MiembroExternoGrupoInvestigaciones.Where(
+                        x => x.InvestigadorExterno.Id == miembroExternoGrupoInvestigacion.InvestigadorExterno.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    grupoInvestigacion.AddMiembroExterno(miembroExternoGrupoInvestigacion);
+                    grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
+                }
+            }
+
+            var miembroExternoGrupoInvestigacionForm = miembroExternoGrupoInvestigacionMapper.Map(miembroExternoGrupoInvestigacion);
+            miembroExternoGrupoInvestigacionForm.ParentId = grupoInvestigacionId;
+
+            return Rjs("AddMiembroExterno", miembroExternoGrupoInvestigacionForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteMiembroExterno(int id, int investigadorExternoId)
+        {
+            var grupoInvestigacion = grupoInvestigacionService.GetGrupoInvestigacionById(id);
+
+            if (grupoInvestigacion != null)
+            {
+                var miembro = grupoInvestigacion.MiembroExternoGrupoInvestigaciones.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                grupoInvestigacion.DeleteMiembroExterno(miembro);
+
+                grupoInvestigacionService.SaveGrupoInvestigacion(grupoInvestigacion);
+            }
+
+            var form = new MiembroExternoGrupoInvestigacionForm{InvestigadorExternoId = investigadorExternoId};
+
+            return Rjs("DeleteMiembroExterno", form);
+        }
+
         GrupoInvestigacionForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -160,6 +265,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
             form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+            form.Investigador = CurrentInvestigador();
 
             return form;
         }
@@ -174,7 +280,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private GrupoInvestigacionForm SetupShowForm(GrupoInvestigacionForm form)
         {
             form = form ?? new GrupoInvestigacionForm();
-
+            form.Investigador = CurrentInvestigador();
             form.ShowFields = new ShowFieldsForm
                                   {
                                       Nivel2Nombre = form.Nivel2Nombre,

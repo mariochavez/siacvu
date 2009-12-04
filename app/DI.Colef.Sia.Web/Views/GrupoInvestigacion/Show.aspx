@@ -39,37 +39,42 @@
             <div id="campos">
                 <p>
                     <label>Nombre del grupo de investigaci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreGrupoInvestigacion)%>&nbsp;</span>
+                    <span class="valor"><%=Html.Encode(Model.Form.NombreGrupoInvestigacion)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de creaci&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+                <%
+                    Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields);%>
                 
+                <h4>&nbsp;</h4>
                 <p>
                     <label>L&iacute;der</label>
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Lider)%>&nbsp;</span>
+                    <span class="valor"><%=HumanizeHelper.Boolean(Model.Form.Lider)%>&nbsp;</span>
                 </p>
+                <% if (Model.Form.Lider) { %>
+                    <p>
+                        <label>Nombre</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Nombre)%></span>
+                    </p>
+                <% } %>
+                
+                <h4>Miembros</h4>
+                <% Html.RenderPartial("_ShowMiembroExterno", new GrupoInvestigacionForm {MiembroExternoGrupoInvestigaciones = Model.Form.MiembroExternoGrupoInvestigaciones, Id = Model.Form.Id});%>
+                
+                <h4>&nbsp;</h4>
                 <p>
-                    <label>Nombre</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Miembros</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Miembros)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Impacto</label>
+                    <label>Impacto / Productividad</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Impacto)%>&nbsp;</span>
                 </p>
                 <p>
-	                <label>Vinculaci&oacute;n del sector productivo</label>
+	                <label>Vinculaci&oacute;n con el Sector Productivo</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.VinculacionSectorProductivo)%>&nbsp;</span>
                 </p>
                 <p>
-	                <label>Vinculaci&oacute;n del sector social</label>
+	                <label>Vinculaci&oacute;n con el Sector Social</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.VinculacionSectorSocial)%>&nbsp;</span>
                 </p>
                 <p>

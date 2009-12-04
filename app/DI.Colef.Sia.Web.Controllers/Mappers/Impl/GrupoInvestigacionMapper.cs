@@ -1,4 +1,3 @@
-using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -10,11 +9,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class GrupoInvestigacionMapper : AutoFormMapper<GrupoInvestigacion, GrupoInvestigacionForm>, IGrupoInvestigacionMapper
     {
 		readonly ICatalogoService catalogoService;
+        readonly IMiembroExternoGrupoInvestigacionMapper miembroExternoGrupoInvestigacionMapper;
 
-		public GrupoInvestigacionMapper(IRepository<GrupoInvestigacion> repository, ICatalogoService catalogoService)
-            : base(repository)
+		public GrupoInvestigacionMapper(IRepository<GrupoInvestigacion> repository,
+            IMiembroExternoGrupoInvestigacionMapper miembroExternoGrupoInvestigacionMapper,
+            ICatalogoService catalogoService
+            ) : base(repository)
         {
 			this.catalogoService = catalogoService;
+            this.miembroExternoGrupoInvestigacionMapper = miembroExternoGrupoInvestigacionMapper;
         }		
 		
         protected override int GetIdFromMessage(GrupoInvestigacionForm message)
@@ -26,8 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
 			model.NombreGrupoInvestigacion = message.NombreGrupoInvestigacion;
             model.Lider = message.Lider;
-            model.Nombre = message.Nombre;
-            model.Miembros = message.Miembros;
             model.Impacto = message.Impacto;
             model.VinculacionSectorProductivo = message.VinculacionSectorProductivo;
             model.VinculacionSectorSocial = message.VinculacionSectorSocial;
@@ -53,6 +54,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public GrupoInvestigacion Map(GrupoInvestigacionForm message, Usuario usuario, MiembroExternoGrupoInvestigacionForm[] miembrosExternos)
+        {
+            var model = Map(message, usuario);
+
+            foreach (var miembroExterno in miembrosExternos)
+            {
+                var miembro =
+                    miembroExternoGrupoInvestigacionMapper.Map(miembroExterno);
+
+                miembro.CreadoPor = usuario;
+                miembro.ModificadoPor = usuario;
+
+                model.AddMiembroExterno(miembro);
+            }
 
             return model;
         }

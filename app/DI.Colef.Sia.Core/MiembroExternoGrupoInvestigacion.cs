@@ -1,17 +1,11 @@
 using System;
-using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-	[HasUniqueDomainSignature]
-    public class TipoPresentacion : Entity, IBaseEntity
+    public class MiembroExternoGrupoInvestigacion : Entity, IBaseEntity
     {
-		[DomainSignature]
-		[NotNullNotEmpty]
-        [Length(40)]
-		public virtual string Nombre { get; set; }
+		public virtual InvestigadorExterno InvestigadorExterno { get; set; }
 
 		public virtual Usuario CreadoPor { get; set; }
 
