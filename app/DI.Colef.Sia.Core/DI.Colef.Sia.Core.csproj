@@ -80,6 +80,7 @@
     <Compile Include="EditorialProducto.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
     <Compile Include="IEditorial.cs" />
+    <Compile Include="NHibernateValidator\ObraTraducidaValidator.cs" />
     <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoInternoValidator.cs" />
     <Compile Include="ObraTraducida.cs" />
