@@ -22,7 +22,7 @@ namespace Tests.DI.Colef.Sia.Data
                 pi.SetValue(usuario, 3, null);
 
                 productoQuerying = new ProductoQuerying();
-                productosDto = productoQuerying.GetProductosBandeja(usuario, DateTime.Now);
+                productosDto = productoQuerying.GetProductosBandeja(usuario);
             };
 
         It should_found_3_products = () =>

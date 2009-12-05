@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateCursosMaps();
             CreateTesisMaps();
             CreateDictamenMaps();
-            CreateParticipacionMaps();
+            CreateObraTraducidaMaps();
             CreateParticipacionMedioMaps();
             CreateDistincionMaps();
             CreateOrganosExternosMaps();
@@ -126,6 +126,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
 
             Mapper.CreateMap<Archivo, ArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        private void CreateObraTraducidaMaps()
+        {
+            Mapper.CreateMap<ObraTraducida, ObraTraducidaForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.Idioma,
+                           o => o.Ignore());
+
+            Mapper.CreateMap<CoautorInternoObraTraducida, CoautorInternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<CoautorExternoObraTraducida, CoautorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AutorInternoObraTraducida, AutorInternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<AutorExternoObraTraducida, AutorExternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<EditorialObraTraducida, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
@@ -521,29 +554,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FondoConacyt,
                            o => o.Ignore())
-                .ForMember(d => d.Editorial,
-                           o => o.Ignore())
                 .ForMember(d => d.TipoDictamen,
                            o => o.Ignore());
-        }
 
-        void CreateParticipacionMaps()
-        {
-            Mapper.CreateMap<Participacion, ParticipacionForm>()
+            Mapper.CreateMap<EditorialDictamen, EditorialProductoForm>()
                 .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaPresentacion,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.Autor,
-                           o => o.Ignore())
-                .ForMember(d => d.OtraParticipacion,
-                           o => o.Ignore())
-                .ForMember(d => d.TipoPresentacion,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
-                           o => o.Ignore())
-                .ForMember(d => d.EstadoPais,
-                           o => o.Ignore());
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateLibrosMaps()
@@ -593,6 +609,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.ResolveUsing<ModificadoResolver>())
                 .ForMember(d => d.FechaCreacion,
                            o => o.AddFormatter<StandardDateFormatter>());
+
+            Mapper.CreateMap<MiembroExternoGrupoInvestigacion, MiembroExternoGrupoInvestigacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateCatalogosMaps()
@@ -754,12 +774,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoOrgano, TipoOrganoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<OtraParticipacion, OtraParticipacionForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<TipoPresentacion, TipoPresentacionForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<TipoDictamen, TipoDictamenForm>()

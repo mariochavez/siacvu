@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
     public class HumanizeHelper
@@ -20,8 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string TipoProducto(int tipoProducto, int producto)
         {
             string nombreTipoProducto;
-            var lowerUpperS = producto == 0 ? "S" : "s";
-            var lowerUpperC = producto == 0 ? "C" : "c";
+            var lowerUpperS = producto == 0 ? " S" : " s";
+            var lowerUpperC = producto == 0 ? " C" : " c";
 
             switch (tipoProducto)
             {
@@ -38,7 +40,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreTipoProducto;
         }
 
-        private static string GetNombreProducto(int tipoProducto)
+        public static string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";
 
@@ -48,17 +50,37 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreProducto = "";
                     break;
                 case 1:
-                    nombreProducto = "Artículo ";
+                    nombreProducto = "Artículo";
                     break;
                 case 2:
-                    nombreProducto = "Capítulo ";
+                    nombreProducto = "Capítulo";
                     break;
-                case 3:
-                    nombreProducto = "Libro ";
+                case 7:
+                    nombreProducto = "Libro";
                     break;
             }
 
             return nombreProducto;
+        }
+
+        public static string TipoObraTraducida(int tipoObraTraducida)
+        {
+            string nombreTipoObraTraducida = "";
+
+            switch (tipoObraTraducida)
+            {
+                case 1:
+                    nombreTipoObraTraducida = "Artículo en revista";
+                    break;
+                case 2:
+                    nombreTipoObraTraducida = "Libro";
+                    break;
+                case 3:
+                    nombreTipoObraTraducida = "Capítulo en libro";
+                    break;
+            }
+
+            return nombreTipoObraTraducida;
         }
 
         public static string EstadoProducto(int estadoProducto)
@@ -144,31 +166,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return nombreReimpresion;
-        }
-
-        public static string Volumen(int volumen)
-        {
-            string nombreVolumen;
-
-            switch (volumen)
-            {
-                case 1:
-                    nombreVolumen = "I";
-                    break;
-                case 2:
-                    nombreVolumen = "II";
-                    break;
-                case 3:
-                    nombreVolumen = "III";
-                    break;
-                case 4:
-                    nombreVolumen = "IV";
-                    break;
-                default:
-                    return "";
-            }
-
-            return nombreVolumen;
         }
 
         public static string NivelIdioma(int nivelIdioma)
@@ -460,6 +457,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return nombreTipoResena;
+        }
+
+        public static string FormatDate(DateTime creadoEl)
+        {
+            return creadoEl <= DateTime.Parse("1910-01-01") ? String.Empty : (creadoEl).ToString("dd MMM, yyyy");
         }
     }
 }

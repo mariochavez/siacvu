@@ -74,13 +74,16 @@
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="DataInterfaces\ICursoInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\CursoInvestigadorQuerying.cs" />
+    <Compile Include="MiembroExternoGrupoInvestigacion.cs" />
     <Compile Include="NHibernateValidator\CategoriaInvestigadorValidator.cs" />
     <Compile Include="CursoInvestigador.cs" />
     <Compile Include="EditorialProducto.cs" />
     <Compile Include="EstanciaAcademicaExterna.cs" />
     <Compile Include="IEditorial.cs" />
+    <Compile Include="NHibernateValidator\ObraTraducidaValidator.cs" />
     <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoInternoValidator.cs" />
+    <Compile Include="ObraTraducida.cs" />
     <Compile Include="TesisPosgrado.cs" />
     <Compile Include="Ambito.cs" />
     <Compile Include="ApoyoConacyt.cs" />
@@ -165,7 +168,6 @@
     <Compile Include="NHibernateValidator\LibroValidator.cs" />
     <Compile Include="NHibernateValidator\EstanciaInstitucionExternaValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionAcademiaValidator.cs" />
-    <Compile Include="NHibernateValidator\ParticipacionValidator.cs" />
     <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
     <Compile Include="NHibernateValidator\ParticipacionMedioValidator.cs" />
     <Compile Include="NHibernateValidator\ProyectoValidator.cs" />
@@ -189,9 +191,7 @@
     <Compile Include="Organizacion.cs" />
     <Compile Include="OrganoExterno.cs" />
     <Compile Include="OrganoInterno.cs" />
-    <Compile Include="OtraParticipacion.cs" />
     <Compile Include="Pais.cs" />
-    <Compile Include="Participacion.cs" />
     <Compile Include="ParticipacionAcademia.cs" />
     <Compile Include="ParticipacionMedio.cs" />
     <Compile Include="ParticipanteExternoProyecto.cs" />
@@ -234,7 +234,6 @@
     <Compile Include="TipoOrgano.cs" />
     <Compile Include="TipoParticipacion.cs" />
     <Compile Include="TipoParticipante.cs" />
-    <Compile Include="TipoPresentacion.cs" />
     <Compile Include="TipoProyecto.cs" />
     <Compile Include="USEG.cs" />
     <Compile Include="Usuario.cs" />

@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -16,26 +18,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDictamenService dictamenService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
-        readonly IEditorialMapper editorialMapper;
+        readonly IEditorialDictamenMapper editorialDictamenMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public DictamenController(IDictamenService dictamenService,
                                   IDictamenMapper dictamenMapper,
                                   ICatalogoService catalogoService,
                                   IUsuarioService usuarioService,
+                                  IEditorialDictamenMapper editorialDictamenMapper,
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   IFondoConacytMapper fondoConacytMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IEditorialMapper editorialMapper,
                                   ISearchService searchService)
             : base(usuarioService, searchService, catalogoService)
         {
+            this.editorialDictamenMapper = editorialDictamenMapper;
             this.catalogoService = catalogoService;
             this.dictamenService = dictamenService;
             this.dictamenMapper = dictamenMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
-            this.editorialMapper = editorialMapper;
             this.tipoDictamenMapper = tipoDictamenMapper;
         }
 
@@ -112,9 +114,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(DictamenForm form)
+        public ActionResult Create([Bind(Prefix = "Editorial")] EditorialProductoForm[] editorial,
+                                    DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            editorial = editorial ?? new EditorialProductoForm[] { };
+
+            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), editorial);
 
             if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
             {
@@ -149,6 +154,77 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             dictamenService.SaveDictamen(dictamen);
 
             return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewEditorial(int id)
+        {
+            var dictamen = dictamenService.GetDictamenById(id);
+
+            var form = new EditorialForm { Controller = "Dictamen", IdName = "DictamenId" };
+
+            if (dictamen != null)
+                form.Id = dictamen.Id;
+
+            return Rjs("NewEditorial", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int dictamenId)
+        {
+            var editorialDictamen = editorialDictamenMapper.Map(form);
+
+            ModelState.AddModelErrors(editorialDictamen.ValidationResults(), false, "Editorial", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (dictamenId != 0)
+            {
+                editorialDictamen.CreadoPor = CurrentUser();
+                editorialDictamen.ModificadoPor = CurrentUser();
+
+                var dictamen = dictamenService.GetDictamenById(dictamenId);
+
+                var alreadyHasIt =
+                    dictamen.EditorialDictamenes.Where(
+                        x => x.Editorial.Id == editorialDictamen.Editorial.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    dictamen.AddEditorial(editorialDictamen);
+                    dictamenService.SaveDictamen(dictamen);
+                }
+            }
+
+            var editorialDictamenForm = editorialDictamenMapper.Map(editorialDictamen);
+            editorialDictamenForm.ParentId = dictamenId;
+
+            return Rjs("AddEditorial", editorialDictamenForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteEditorial(int id, int editorialId)
+        {
+            var dictamen = dictamenService.GetDictamenById(id);
+
+            if (dictamen != null)
+            {
+                var editorial = dictamen.EditorialDictamenes.Where(x => x.Editorial.Id == editorialId).First();
+                dictamen.DeleteEditorial(editorial);
+
+                dictamenService.SaveDictamen(dictamen);
+            }
+
+            var form = new EditorialForm { ModelId = id, EditorialId = editorialId };
+
+            return Rjs("DeleteEditorial", form);
         }
 
         [Authorize]
@@ -190,7 +266,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.TiposDictamenes = tipoDictamenMapper.Map(catalogoService.GetActiveTipoDictamenes());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
-            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             
             return form;
         }
@@ -199,7 +274,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoDictamen"] = form.TipoDictamenId;
             ViewData["FondoConacyt"] = form.FondoConacytId;
-            ViewData["Editorial"] = form.EditorialId;
         }
 
         private DictamenForm SetupShowForm(DictamenForm form)

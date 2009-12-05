@@ -58,7 +58,7 @@
                 </p>
                 <p>
                     <label>Tipo de producto</label>
-                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoProducto, 3)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoProducto, 7)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Contenido del libro</label>
@@ -142,7 +142,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
                     </p>
                     <p>
-                        <label>No. de p&aacute;ginas</label>
+                        <label>N&uacute;mero de p&aacute;ginas</label>
                         <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
                     </p>
                     <p>

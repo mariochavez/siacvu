@@ -114,7 +114,7 @@
                 
                 <p>
                     <label>Volumen</label>
-                    <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>N&uacute;mero de p&aacute;ginas</label>

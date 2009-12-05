@@ -213,12 +213,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         MedioImpreso[] GetActiveMedioImpresos();
         void SaveMedioImpreso(MedioImpreso medioImpreso);
 
-        //Otras Participaciones
-        OtraParticipacion GetOtraParticipacionById(int id);
-        OtraParticipacion[] GetAllOtraParticipaciones();
-        OtraParticipacion[] GetActiveOtraParticipaciones();
-        void SaveOtraParticipacion(OtraParticipacion otraParticipacion);
-
         //Tipo Dictamen
         TipoDictamen GetTipoDictamenById(int id);
         TipoDictamen[] GetAllTipoDictamenes();
@@ -248,12 +242,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoOrgano[] GetAllTipoOrganos();
         TipoOrgano[] GetActiveTipoOrganos();
         void SaveTipoOrgano(TipoOrgano tipoOrgano);
-
-        //Tipo Presentacion
-        TipoPresentacion GetTipoPresentacionById(int id);
-        TipoPresentacion[] GetAllTipoPresentaciones();
-        TipoPresentacion[] GetActiveTipoPresentaciones();
-        void SaveTipoPresentacion(TipoPresentacion tipoPresentacion);
 
         //Nivel de Estudios
         NivelEstudio GetNivelEstudioById(int id);

@@ -477,17 +477,6 @@ insert into TipoOrganos values('Comisiones',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Comités (Sub-Comités)',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoOrganos values('Grupos de trabajo',GETDATE(), GETDATE(), 1, 1, 1);
 
-insert into TipoPresentaciones values('Presentación de libro',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Presentación de resultados de investigación',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Pláticas',GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoPresentaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
-
-insert into OtraParticipaciones values('Moderador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Comentarista',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Autor',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Coordinador',GETDATE(), GETDATE(), 1, 1, 1);
-insert into OtraParticipaciones values('Otra',GETDATE(), GETDATE(), 1, 1, 1);
-
 insert into TipoDictamenes values('Artículo',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Libro',GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoDictamenes values('Proyecto de investigación CONACyT',GETDATE(), GETDATE(), 1, 1, 1);
@@ -2716,7 +2705,7 @@ insert into RevistaPublicaciones values('ADDICTIVE BEHAVIORS', null, '0306-4603'
 insert into RevistaPublicaciones values('ADHESIVES AGE', null, '0001-821X', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('ADMINISTRATION +ACY- SOCIETY', null, '0095-3997', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('ADMINISTRATION AND POLICY IN MENTAL HEALTH', null, '0894-587X', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
-insert into RevistaPublicaciones values('ADMINISTRATION IN SOCIAL WORK', null, '0364-3107', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
+--insert into RevistaPublicaciones values('ADMINISTRATION IN SOCIAL WORK', null, '0364-3107', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('ADMINISTRATIVE LAW REVIEW', null, '0001-8368', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('ADMINISTRATIVE SCIENCE QUARTERLY', null, '0001-8392', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)
 insert into RevistaPublicaciones values('ADOLESCENCE', null, '0001-8449', null, null, null, null, null, 1, null, null, null, 0, 0, GETDATE(), GETDATE(), 1, null, null, null, null, null, null, null, 1, 1)

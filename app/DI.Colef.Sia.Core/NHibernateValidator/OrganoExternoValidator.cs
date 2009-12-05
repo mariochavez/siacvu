@@ -61,20 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (organoExterno.FechaInicial > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaInicial", "FechaInicial");
-                isValid = false;
-            }
-
-            if (organoExterno.FechaFinal > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaFinal", "FechaFinal");
-                isValid = false;
-            }
-
             if (organoExterno.FechaInicial > DateTime.Parse("1910-01-01") || organoExterno.FechaFinal > DateTime.Parse("1910-01-01"))
             {
 

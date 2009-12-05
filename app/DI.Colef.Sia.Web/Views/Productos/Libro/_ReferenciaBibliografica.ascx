@@ -31,7 +31,7 @@
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
-    <label>No. de p&aacute;ginas</label>
+    <label>N&uacute;mero de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4})%>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

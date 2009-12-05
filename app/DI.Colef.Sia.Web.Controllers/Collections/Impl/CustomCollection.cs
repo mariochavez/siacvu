@@ -81,6 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] TipoObraTraducidaCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Artículo en revista"},
+                           new CustomSelectForm {Id = 2, Nombre = "Libro"},
+                           new CustomSelectForm {Id = 3, Nombre = "Capítulo en libro"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";
@@ -96,7 +106,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                 case 2:
                     nombreProducto = "Capítulo ";
                     break;
-                case 3:
+                case 7:
                     nombreProducto = "Libro ";
                     break;
             }
