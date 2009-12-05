@@ -43,17 +43,3 @@
     <label>2do. Nivel</label>
     <span id="span_2donivel" class="valor"><%= Html.Encode(Model.CursoInvestigador.Nivel2Nombre)%>&nbsp;</span>
 </p>
-
-<h4>&Aacute;rea del conocimiento</h4>
-<p>
-    <label>&Aacute;rea</label>
-    <span id="span_area" class="valor"><%= Html.Encode(Model.CursoInvestigador.AreaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Disciplina</label>
-    <span id="span_disciplina" class="valor"><%= Html.Encode(Model.CursoInvestigador.DisciplinaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Subdisciplina</label>
-    <span id="span_subdisciplina" class="valor"><%= Html.Encode(Model.CursoInvestigador.SubdisciplinaNombre)%>&nbsp;</span>
-</p>

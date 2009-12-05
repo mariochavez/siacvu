@@ -223,8 +223,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore())
                 .ForMember(d => d.Convenio,
                            o => o.Ignore())
-                .ForMember(d => d.EstatusProyecto,
-                           o => o.Ignore())
                 .ForMember(d => d.FondoConacyt,
                            o => o.Ignore())
                 .ForMember(d => d.LineaTematica,
@@ -314,6 +312,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.FechaFinal,
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
+                           o => o.Ignore())
+                .ForMember(d => d.Departamento,
+                           o => o.Ignore())
+                .ForMember(d => d.Sede,
                            o => o.Ignore())
                 .ForMember(d => d.GradoAcademico,
                            o => o.Ignore());
@@ -846,9 +848,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<DirigidoA, DirigidoAForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<EstatusProyecto, EstatusProyectoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<FondoConacyt, FondoConacytForm>()

@@ -34,6 +34,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
+            model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
+            model.Sede = catalogoService.GetSedeById(message.Sede);
         }
 
         public EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario, Investigador investigador)

@@ -53,7 +53,16 @@
                 
                 <% if (Model.Form.TipoTesis == 1){ %>
                     <h4>Participaci&oacute;n en tesis de El Colef</h4>
+                    <p>
+                        <label>Nombre del alumno(autor)</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
+                    </p>
+                    
                     <% Html.RenderPartial("_ShowTesisInterna", Model.Form);%>
+                    
+                    <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                    <% } %>
                 <% } %>
                 
                 <% if(Model.Form.TipoTesis == 2){ %>

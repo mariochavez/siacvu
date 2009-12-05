@@ -12,14 +12,14 @@ namespace Tests.DI.Colef.Sia.Data
     public class when_bandeja_investigador_is_loaded : ConnectionSetup
     {
         static IProductoQuerying productoQuerying;
-        static ProductoDTO[] productosDto;
+        static object[] productosDto;
 
         Because of = () =>
             {
                 Usuario usuario = MockRepository.GenerateStub<Usuario>();
                 Type userType = typeof(Usuario);
                 PropertyInfo pi = userType.GetProperty("Id");
-                pi.SetValue(usuario, 3, null);
+                pi.SetValue(usuario, 2, null);
 
                 productoQuerying = new ProductoQuerying();
                 productosDto = productoQuerying.GetProductosBandeja(usuario);

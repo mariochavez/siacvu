@@ -40,35 +40,16 @@
     <% Html.RenderPartial("_Message"); %>
     <div id="lista">
         <h4>Producci&oacute;n acad&eacute;mica</h4>
+        <% Html.RenderPartial("_ProduccionAcademica", Model.Form); %>
         
-		<% if (Model.Form.ProduccionAcademica == null || Model.Form.ProduccionAcademica.Length == 0){ %>
-			<div class="elementolista">
-				<div class="elementodescripcion">
-					<h5><span>No hay productos registrados</span></h5>
-				</div><!--end elementodescripcion-->
-
-			</div><!--end elementolista-->
-		<% } else { %>
-            <% foreach (var produccionAcademica in Model.Form.ProduccionAcademica) { %>
-                <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.Id) %>">
-	                <div class="elementodescripcion">
-	                    <h5><span><%=Html.Encode(produccionAcademica.Nombre)%></span></h5>
-	                    <h6>
-	                        <%=HumanizeHelper.GetNombreProducto(produccionAcademica.TipoProducto)%>
-	                        Creado el <%=HumanizeHelper.FormatDate(produccionAcademica.CreadoEl)%>
-	                    </h6>
-	                </div><!--end elementodescripcion-->
-
-					<div class="elementobotones">
-						<p>
-							<span><%=Html.ActionLink("Editar", "Edit", new { id = produccionAcademica.Id, tipoProducto = produccionAcademica.TipoProducto })%></span>
-	                        <span><%=Html.ActionLink("Ver", "Show", new { id = produccionAcademica.Id })%></span>
-	                   	</p>
-					</div><!--end elementobotones-->
-                		
-                </div><!--end elementolista-->
-            <% } %>
-        <% } %>
+        <h4>Proyectos de investigaci&oacute;n</h4>
+        <% Html.RenderPartial("_ProyectosInvestigacion", Model.Form); %>
+        
+        <h4>Formaci&oacute;n de recursos humanos</h4>
+        <% Html.RenderPartial("_RecursosHumanos", Model.Form); %>
+        
+        <h4>Actividades de vinculaci&oacute;n y difusi&oacute;n</h4>
+        <% Html.RenderPartial("_VinculacionDifusion", Model.Form); %>
     
     </div><!--end lista-->
     

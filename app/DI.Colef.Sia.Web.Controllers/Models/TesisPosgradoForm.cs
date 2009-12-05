@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class TesisPosgradoForm
@@ -32,12 +30,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string OrganizacionNombre { get; set; }
         public string Nivel2Nombre { get; set; }
 
-        public int AreaId { get; set; }
-        public int DisciplinaId { get; set; }
-        public int SubdisciplinaId { get; set; }
+        //public int AreaId { get; set; }
+        //public int DisciplinaId { get; set; }
+        //public int SubdisciplinaId { get; set; }
 
-        public string SubdisciplinaNombre { get; set; }
-        public string DisciplinaNombre { get; set; }
-        public string AreaNombre { get; set; }
+        //public string SubdisciplinaNombre { get; set; }
+        //public string DisciplinaNombre { get; set; }
+        //public string AreaNombre { get; set; }
     }
 }

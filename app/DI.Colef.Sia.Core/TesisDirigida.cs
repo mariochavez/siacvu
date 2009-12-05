@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Titulo { get; set; }
 
-        public virtual ProgramaEstudio ProgramaEstudio { get; set; }
+        public virtual string ProgramaEstudio { get; set; }
 
         public virtual DateTime FechaGrado { get; set; }
 

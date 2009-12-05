@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Estado Producto - Aceptado
-            if (reporte.EstadoProducto == 1)
+            if (reporte.EstadoProducto == 2)
             {
                 if (reporte.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Estado Producto - Publicado
-            if (reporte.EstadoProducto == 2)
+            if (reporte.EstadoProducto == 3)
             {
                 if (reporte.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {

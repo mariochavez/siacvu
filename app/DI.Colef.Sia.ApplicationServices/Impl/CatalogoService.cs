@@ -33,7 +33,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<EstadoPais> estadoPaisRepository;
         readonly IRepository<Estado> estadoRepository;
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
-        readonly IRepository<EstatusProyecto> estatusProyectoRepository;
         readonly IRepository<FondoConacyt> fondoConacytRepository;
         readonly IRepository<Genero> generoRepository;
         readonly IRepository<GradoAcademico> gradoAcademicoRepository;
@@ -128,7 +127,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<ActividadPrevista> actividadPrevistaRepository,
                                IRepository<Clase> claseRepository,
                                IRepository<Coordinacion> coordinacionRepository,
-                               IRepository<EstatusProyecto> estatusProyectoRepository,
                                IRepository<FondoConacyt> fondoConacytRepository,
                                IRepository<AreaTematica> areaTematicaRepository,
                                IRepository<TipoArchivo> tipoArchivoRepository,
@@ -194,7 +192,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.ramaRepository = ramaRepository;
             this.claseRepository = claseRepository;
             this.coordinacionRepository = coordinacionRepository;
-            this.estatusProyectoRepository = estatusProyectoRepository;
             this.fondoConacytRepository = fondoConacytRepository;
             this.areaTematicaRepository = areaTematicaRepository;
             this.tipoArchivoRepository = tipoArchivoRepository;
@@ -1832,33 +1829,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             dirigidoA.ModificadoEl = DateTime.Now;
 
             dirigidoARepository.SaveOrUpdate(dirigidoA);
-        }
-
-        public EstatusProyecto GetEstatusProyectoById(int id)
-        {
-            return estatusProyectoRepository.Get(id);
-        }
-
-        public EstatusProyecto[] GetAllEstatusProyectos()
-        {
-            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Nombre)).ToArray();
-        }
-
-        public EstatusProyecto[] GetActiveEstatusProyectos()
-        {
-            return ((List<EstatusProyecto>) OrderCatalog<EstatusProyecto>(x => x.Nombre, true)).ToArray();
-        }
-
-        public void SaveEstatusProyecto(EstatusProyecto estatusProyecto)
-        {
-            if (estatusProyecto.Id == 0)
-            {
-                estatusProyecto.Activo = true;
-                estatusProyecto.CreadoEl = DateTime.Now;
-            }
-            estatusProyecto.ModificadoEl = DateTime.Now;
-
-            estatusProyectoRepository.SaveOrUpdate(estatusProyecto);
         }
 
         public FondoConacyt GetFondoConacytById(int id)

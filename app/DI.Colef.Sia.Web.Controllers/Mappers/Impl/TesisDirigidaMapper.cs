@@ -30,10 +30,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreAlumno = message.NombreAlumno;
             model.TipoTesis = message.TipoTesis;
             model.FormaParticipacion = message.FormaParticipacion;
+            model.ProgramaEstudio = message.ProgramaEstudio;
 
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
 
-            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.TesisPosgrado = tesisPosgradoService.GetTesisPosgradoById(message.TesisPosgradoId);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);

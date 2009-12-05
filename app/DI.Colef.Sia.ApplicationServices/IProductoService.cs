@@ -5,6 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
     public interface IProductoService
     {
-        ProductoDTO[] GetProductosBandeja(Usuario usuario);
+        object[] GetProductosBandeja(Usuario usuario);
     }
 }

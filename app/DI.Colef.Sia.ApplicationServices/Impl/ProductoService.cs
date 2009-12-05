@@ -13,7 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.productoQuerying = productoQuerying;
         }
 
-        public ProductoDTO[] GetProductosBandeja(Usuario usuario)
+        public object[] GetProductosBandeja(Usuario usuario)
         {
             return productoQuerying.GetProductosBandeja(usuario);
         }

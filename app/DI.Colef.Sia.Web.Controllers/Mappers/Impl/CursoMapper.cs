@@ -28,13 +28,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NumeroHoras = message.NumeroHoras;
             model.Nombre = message.Nombre;
             model.TipoCurso = message.TipoCurso;
+            model.ProgramaEstudio = message.ProgramaEstudio;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
             
-            model.ProgramaEstudio = catalogoService.GetProgramaEstudioById(message.ProgramaEstudioId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-
             model.NivelEstudio = catalogoService.GetNivelEstudioById(message.NivelEstudio);
             model.CursoInvestigador = cursoInvestigadorService.GetCursoInvestigadorById(message.CursoInvestigadorId);
             model.Sector = catalogoService.GetSectorById(message.SectorId);

@@ -104,7 +104,6 @@
     <Compile Include="Catalogos\DirigidoAController.cs" />
     <Compile Include="Catalogos\EditorialController.cs" />
     <Compile Include="Catalogos\EstatusFormacionAcademicaController.cs" />
-    <Compile Include="Catalogos\EstatusProyectoController.cs" />
     <Compile Include="Catalogos\FondoConacytController.cs" />
     <Compile Include="Catalogos\IdentificadorLibroController.cs" />
     <Compile Include="Catalogos\ImpactoPoliticaPublicaController.cs" />
@@ -214,7 +213,6 @@
     <Compile Include="Mappers\ICoordinacionMapper.cs" />
     <Compile Include="Mappers\IDirigidoAMapper.cs" />
     <Compile Include="Mappers\IEstatusFormacionAcademicaMapper.cs" />
-    <Compile Include="Mappers\IEstatusProyectoMapper.cs" />
     <Compile Include="Mappers\IFondoConacytMapper.cs" />
     <Compile Include="Mappers\IGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\IIdiomasInvestigadorMapper.cs" />
@@ -226,7 +224,6 @@
     <Compile Include="Mappers\Impl\CoordinacionMapper.cs" />
     <Compile Include="Mappers\Impl\DirigidoAMapper.cs" />
     <Compile Include="Mappers\Impl\EstatusFormacionAcademicaMapper.cs" />
-    <Compile Include="Mappers\Impl\EstatusProyectoMapper.cs" />
     <Compile Include="Mappers\Impl\FondoConacytMapper.cs" />
     <Compile Include="Mappers\Impl\GrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\IExperienciaProfesionalMapper.cs" />
@@ -264,7 +261,6 @@
     <Compile Include="Models\CoordinacionForm.cs" />
     <Compile Include="Models\DirigidoAForm.cs" />
     <Compile Include="Models\EstatusFormacionAcademicaForm.cs" />
-    <Compile Include="Models\EstatusProyectoForm.cs" />
     <Compile Include="Models\FondoConacytForm.cs" />
     <Compile Include="Models\GrupoInvestigacionForm.cs" />
     <Compile Include="Models\ExperienciaProfesionalForm.cs" />

@@ -23,9 +23,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
+        public string DepartamentoNombre { get; set; }
+        public int Departamento { get; set; }
+        public int DepartamentoId { get; set; }
+
+        public string SedeDireccionGeneralNombre { get; set; }
+
+        public string SedeNombre { get; set; }
+        public int SedeId { get; set; }
+        public int Sede { get; set; }
+
         /* Catalogos */
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public TipoEstanciaForm[] TiposEstancias { get; set; }
+        public DepartamentoForm[] Departamentos { get; set; }
+        public SedeForm[] Sedes { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
