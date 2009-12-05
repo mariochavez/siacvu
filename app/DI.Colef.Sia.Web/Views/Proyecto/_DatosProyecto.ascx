@@ -34,9 +34,9 @@
 </p>
 <p>
     <label>Estatus del proyecto</label>
-    <%=Html.DropDownList("EstatusProyecto", Model.EstatusProyectos.CreateSelectList<EstatusProyectoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("EstadoProyecto", Model.EstatusProyectos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                 "Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("EstatusProyecto")%>
+    <%=Html.ValidationMessage("EstadoProyecto")%>
 </p>
 <p>
     <label>Fecha de conclusi&oacute;n</label>

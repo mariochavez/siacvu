@@ -85,7 +85,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Estado Producto - Aceptado
-            if (resena.EstadoProducto == 1)
+            if (resena.EstadoProducto == 2)
             {
                 if (resena.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
@@ -104,7 +104,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Estado Producto - Publicado
-            if (resena.EstadoProducto == 2)
+            if (resena.EstadoProducto == 3)
             {
                 if (resena.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {

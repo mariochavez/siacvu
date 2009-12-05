@@ -26,13 +26,13 @@
         <label>Estatus de la publicaci&oacute;n</label>
         <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.EstadoProducto)%>&nbsp;</span>
     </p>
-    <% if (Model.EstadoProducto == 1) { %>
+    <% if (Model.EstadoProducto == 2) { %>
         <p>
             <label>A&ntilde;o de aceptaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaAceptacion)%>&nbsp;</span>
             <span>Formato (yyyy)</span>
         </p>
-    <% } if (Model.EstadoProducto == 2){ %>
+    <% } if (Model.EstadoProducto == 3){ %>
         <p>
             <label>A&ntilde;o de publicaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaPublicacion)%>&nbsp;</span>

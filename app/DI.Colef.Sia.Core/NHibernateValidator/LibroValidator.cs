@@ -96,7 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Estado Producto - Aceptado
-            if (libro.EstadoProducto == 1)
+            if (libro.EstadoProducto == 2)
             {
                 if (libro.FechaAceptacion <= DateTime.Parse("1910-01-01"))
                 {
@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Estado Producto - Publicado
-            if (libro.EstadoProducto == 2)
+            if (libro.EstadoProducto == 3)
             {
                 if (libro.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {

@@ -63,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaProrroga { get; set; }
 
-        public virtual EstatusProyecto EstatusProyecto { get; set; }
+        public virtual int EstadoProyecto { get; set; }
 
         public virtual DateTime FechaConclusion { get; set; }
 

@@ -36,9 +36,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ConvenioId { get; set; }
         public string ConvenioNombre { get; set; }
 
-        public int EstatusProyecto { get; set; }
-        public int EstatusProyectoId { get; set; }
-        public string EstatusProyectoNombre { get; set; }
+        public int EstadoProyecto { get; set; }
+        //public int EstatusProyectoId { get; set; }
+        //public string EstatusProyectoNombre { get; set; }
 
         public int SectorFinanciamiento { get; set; }
         public int SectorFinanciamientoId { get; set; }
@@ -130,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public MonedaForm[] Monedas { get; set; }
         public InstitucionForm[] Instituciones { get; set; }
         public ConvenioForm[] Convenios { get; set; }
-        public EstatusProyectoForm[] EstatusProyectos { get; set; }
+        public CustomSelectForm[] EstatusProyectos { get; set; }
         public SectorForm[] SectoresFinanciamientos { get; set; }
         public FondoConacytForm[] FondosConacyt { get; set; }
         public LineaTematicaForm[] LineasTematicas { get; set; }

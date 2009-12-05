@@ -55,8 +55,35 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 case 2:
                     nombreProducto = "Capítulo";
                     break;
+                case 3:
+                    nombreProducto = "Curso";
+                    break;
+                case 4:
+                    nombreProducto = "Dictamen";
+                    break;
+                case 6:
+                    nombreProducto = "Evento";
+                    break;
                 case 7:
                     nombreProducto = "Libro";
+                    break;
+                case 8:
+                    nombreProducto = "Órgano externo";
+                    break;
+                case 10:
+                    nombreProducto = "Participación en medio";
+                    break;
+                case 11:
+                    nombreProducto = "Reporte";
+                    break;
+                case 12:
+                    nombreProducto = "Reseña";
+                    break;
+                case 13:
+                    nombreProducto = "Tesis dirigida";
+                    break;
+                case 14:
+                    nombreProducto = "Proyecto";
                     break;
             }
 
@@ -70,9 +97,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (estadoProducto)
             {
                 case 1:
-                    nombreEstadoProducto = "Aceptado";
+                    nombreEstadoProducto = "En dictamen";
                     break;
                 case 2:
+                    nombreEstadoProducto = "Aceptado";
+                    break;
+                case 3:
                     nombreEstadoProducto = "Publicado";
                     break;
                 default:
@@ -467,6 +497,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         public static string FormatDate(DateTime creadoEl)
         {
             return creadoEl <= DateTime.Parse("1910-01-01") ? String.Empty : (creadoEl).ToString("dd MMM, yyyy");
+        }
+
+        public static string EstadoProyecto(int estadoProyecto)
+        {
+            var estado = "";
+
+            switch (estadoProyecto)
+            {
+                case 1:
+                    estado = "Vigente";
+                    break;
+                case 2:
+                    estado = "Terminado";
+                    break;
+                case 3:
+                    estado = "Cancelado";
+                    break;
+            }
+
+            return estado;
         }
     }
 }

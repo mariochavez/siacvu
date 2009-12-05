@@ -81,6 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] EstadoProyectoCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Vigente"},
+                           new CustomSelectForm {Id = 2, Nombre = "Terminado"},
+                           new CustomSelectForm {Id = 3, Nombre = "Cancelado"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";
@@ -108,8 +118,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
         {
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = "Aceptado"},
-                           new CustomSelectForm {Id = 2, Nombre = "Publicado"}
+                           new CustomSelectForm {Id = 1, Nombre = "En dictamen"},
+                           new CustomSelectForm {Id = 2, Nombre = "Aceptado"},
+                           new CustomSelectForm {Id = 3, Nombre = "Publicado"}
                        };
         }
 

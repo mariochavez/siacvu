@@ -62,13 +62,13 @@
                     <label>Estado actual</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
-                <% if (Model.Form.EstadoProducto == 1) { %>
+                <% if (Model.Form.EstadoProducto == 2) { %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaAceptacion)%>&nbsp;
                         </span><span>Formato (dd/mm/yyyy)</span>
                     </p>
-                <% } if (Model.Form.EstadoProducto == 2){ %>
+                <% } if (Model.Form.EstadoProducto == 3){ %>
                     <p>
                         <label>Fecha de publicaci&oacute;n</label>
                         <span class="valor"><%= Html.Encode(Model.Form.FechaPublicacion)%>&nbsp;
