@@ -34,4 +34,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class AutorExternoObraTraducida : AutorExternoProducto
+    {
+
+    }
 }

@@ -142,7 +142,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
                     </p>
                     <p>
-                        <label>No. de p&aacute;ginas</label>
+                        <label>N&uacute;mero de p&aacute;ginas</label>
                         <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
                     </p>
                     <p>

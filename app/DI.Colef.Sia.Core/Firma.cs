@@ -105,4 +105,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class FirmaObraTraducida : Firma
+    {
+
+    }
 }

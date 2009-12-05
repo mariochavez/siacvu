@@ -104,4 +104,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         
     }
+
+    public class ArchivoObraTraducida : Archivo
+    {
+
+    }
 }

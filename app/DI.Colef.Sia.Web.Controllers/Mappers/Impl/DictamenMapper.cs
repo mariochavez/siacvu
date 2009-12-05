@@ -9,13 +9,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class DictamenMapper : AutoFormMapper<Dictamen, DictamenForm>, IDictamenMapper
     {
 		readonly ICatalogoService catalogoService;
+        readonly IEditorialDictamenMapper editorialDictamenMapper;
 
-		public DictamenMapper(IRepository<Dictamen> repository
-		, ICatalogoService catalogoService
+		public DictamenMapper(IRepository<Dictamen> repository,
+		    ICatalogoService catalogoService,
+            IEditorialDictamenMapper editorialDictamenMapper
 		) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
+            this.editorialDictamenMapper = editorialDictamenMapper;
         }		
 		
         protected override int GetIdFromMessage(DictamenForm message)
@@ -31,7 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
-            model.Editorial = catalogoService.GetEditorialById(message.Editorial);
         }
 
         public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador)
@@ -47,6 +49,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
 
             model.ModificadoPor = usuario;
+
+            return model;
+        }
+
+        public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador, EditorialProductoForm[] editoriales)
+        {
+            var model = Map(message, usuario, investigador);
+
+            foreach (var editorial in editoriales)
+            {
+                var editorialProducto = editorialDictamenMapper.Map(editorial);
+
+                editorialProducto.CreadoPor = usuario;
+                editorialProducto.ModificadoPor = usuario;
+
+                model.AddEditorial(editorialProducto);
+            }
 
             return model;
         }

@@ -59,18 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     }
                 }
 
-                //Tipo Dictamen - Capitulo en libro y Libro
-                if (lowerCaseName.Contains("libro"))
-                {
-                    if (dictamen.Editorial == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "seleccione la editorial|Editorial", "Editorial");
-
-                        isValid = false;
-                    }
-                }
-
                 //Tipo Dictamen - Proyecto de investigacion CONACyT
                 if (lowerCaseName.Contains("proyecto"))
                 {
