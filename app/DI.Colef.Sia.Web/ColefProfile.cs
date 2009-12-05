@@ -315,6 +315,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.TipoEstancia,
                            o => o.Ignore())
+                .ForMember(d => d.Departamento,
+                           o => o.Ignore())
+                .ForMember(d => d.Sede,
+                           o => o.Ignore())
                 .ForMember(d => d.GradoAcademico,
                            o => o.Ignore());
         }

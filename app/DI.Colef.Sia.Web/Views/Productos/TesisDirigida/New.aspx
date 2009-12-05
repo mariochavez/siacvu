@@ -46,11 +46,12 @@
                 <div id="AlumnoInterno">
                     <h4>Participaci&oacute;n en tesis de El Colef</h4>
                     <p>
-                        <label>T&iacute;tulo de la tesis</label>
-                        <%=Html.DropDownList("TesisPosgradoId", Model.Form.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "Titulo"),
+                        <label>Nombre del alumno(autor)</label>
+                        <%=Html.DropDownList("TesisPosgradoId", Model.Form.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "NombreAlumno"),
                             "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeTesisPosgrado") })%>
                         <%=Html.ValidationMessage("TesisPosgrado")%>
                         <% Html.RenderPartial("_ShowTesisInterna", Model.Form); %>
+                        <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                     </p>
                 </div>
                 

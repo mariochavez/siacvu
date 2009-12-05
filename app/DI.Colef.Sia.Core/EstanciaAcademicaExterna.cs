@@ -27,6 +27,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual string Logros { get; set; }
 
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
+
 		public virtual Usuario CreadoPor { get; set; }
 
 		public virtual DateTime CreadoEl { get; set; }

@@ -5,12 +5,12 @@
 <% if(!Model.IsShowForm){ %>
     <p>
         <label>Nombre del alumno (autor)</label>
-        <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input420", maxlength = 100 })%>
+        <%=Html.TextBox("NombreAlumno", Model.NombreAlumno, new { @class = "input420-bold-requerido", maxlength = 100 })%>
         <%=Html.ValidationMessage("NombreAlumno")%>
     </p>
     <p>
         <label>T&iacute;tulo de la tesis</label>
-	    <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-bold-requerido", maxlength = 100 })%>
+	    <%=Html.TextBox("Titulo", Model.Titulo, new { @class = "input420-requerido", maxlength = 100 })%>
 	    <%=Html.ValidationMessage("Titulo")%>
     </p>
     <p>
@@ -27,11 +27,9 @@
     </p>
     <p>
 	    <label>Programa de estudios</label>
-	    <%=Html.TextBox("ProgramaEstudioNombre", Model.ProgramaEstudioNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100 })%>
-        <%=Html.Hidden("ProgramaEstudioId", Model.ProgramaEstudioId, new { rel = "#ProgramaEstudioNombre" })%>
+	    <%=Html.TextBox("ProgramaEstudio", Model.ProgramaEstudio, new { @class = "input420-requerido", maxlength = 100 })%>
         <span class="cvu"></span>
-        <%=Html.ValidationMessage("ProgramaEstudioNombre")%>
+        <%=Html.ValidationMessage("ProgramaEstudio")%>
     </p>
     <p>
         <label>Grado acad&eacute;mico obtenido/por obtener</label>
@@ -69,6 +67,10 @@
     <p>
         <label>Forma de participaci&oacute;n</label>
         <span class="valor"><%= HumanizeHelper.FormaParticipacion(Model.FormaParticipacion) %>&nbsp;</span>
+    </p>
+    <p>
+        <label>Programa de estudios</label>
+        <span class="valor"><%= Html.Encode(Model.ProgramaEstudio) %>&nbsp;</span>
     </p>
     <p>
         <label>Grado acad&eacute;mico obtenido/por obtener</label>

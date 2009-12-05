@@ -3,10 +3,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Nombre del alumno(autor)</label>
-    <span id="span_nombrealumno" class="valor"><%= Html.Encode(Model.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
-</p>
-<p>
     <label>T&iacute;tulo de la tesis</label>
     <span id="span_titulotesis" class="valor"><%= Html.Encode(Model.TesisPosgrado.Titulo) %>&nbsp;</span>
 </p>
@@ -51,18 +47,4 @@
 <p>
     <label>2do. Nivel</label>
     <span id="span_2donivel" class="valor"><%= Html.Encode(Model.TesisPosgrado.Nivel2Nombre)%>&nbsp;</span>
-</p>
-
-<h4>&Aacute;rea del conocimiento</h4>
-<p>
-    <label>&Aacute;rea</label>
-    <span id="span_area" class="valor"><%= Html.Encode(Model.TesisPosgrado.AreaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Disciplina</label>
-    <span id="span_disciplina" class="valor"><%= Html.Encode(Model.TesisPosgrado.DisciplinaNombre)%>&nbsp;</span>
-</p>
-<p>
-    <label>Subdisciplina</label>
-    <span id="span_subdisciplina" class="valor"><%= Html.Encode(Model.TesisPosgrado.SubdisciplinaNombre)%>&nbsp;</span>
 </p>

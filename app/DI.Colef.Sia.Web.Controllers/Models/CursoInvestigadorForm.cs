@@ -5,10 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string NombreInvestigador { get; set; }
-
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
-
         public int NumeroHoras { get; set; }
 
         public int ProgramaEstudioId { get; set; }

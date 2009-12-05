@@ -16,17 +16,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
+        readonly ISedeMapper sedeMapper;
+        readonly IDepartamentoMapper departamentoMapper;
 
         public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
                                                   IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper,
                                                   ICatalogoService catalogoService,
                                                   IGradoAcademicoMapper gradoAcademicoMapper,
                                                   IUsuarioService usuarioService,
+                                                  IDepartamentoMapper departamentoMapper,
                                                   ISearchService searchService, ITipoEstanciaMapper tipoEstanciaMapper, 
                                                   IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.catalogoService = catalogoService;
+            this.sedeMapper = sedeMapper;
+            this.departamentoMapper = departamentoMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.estanciaAcademicaExternaService = estanciaAcademicaExternaService;
             this.estanciaAcademicaExternaMapper = estanciaAcademicaExternaMapper;
@@ -167,6 +172,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.TiposEstancias = tipoEstanciaMapper.Map(catalogoService.GetActiveTipoEstancias());
             form.GradosAcademicos = gradoAcademicoMapper.Map(catalogoService.GetActiveGrados());
+            form.Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos());
+            form.Sedes = sedeMapper.Map(catalogoService.GetActiveSedes());
 
             return form;
         }
@@ -175,6 +182,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoEstancia"] = form.TipoEstanciaId;
             ViewData["GradoAcademico"] = form.GradoAcademicoId;
+            ViewData["Departamento"] = form.DepartamentoId;
+            ViewData["Sede"] = form.SedeId;
         }
 
         private EstanciaAcademicaExternaForm SetupShowForm(EstanciaAcademicaExternaForm form)

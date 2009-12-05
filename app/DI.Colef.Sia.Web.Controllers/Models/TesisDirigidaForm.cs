@@ -11,6 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public string FechaGrado { get; set; }
         public int FormaParticipacion { get; set; }
+        public string ProgramaEstudio { get; set; }
 
         public int TipoTesis { get; set; }
 
@@ -40,9 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaNombre { get; set; }
         public string DisciplinaNombre { get; set; }
         public string AreaNombre { get; set; }
-
-        public int ProgramaEstudioId { get; set; }
-        public string ProgramaEstudioNombre { get; set; }
 
         public int TesisPosgradoId { get; set; }
         public bool IsShowForm { get; set; }

@@ -22,6 +22,24 @@
 	<%=Html.ValidationMessage("LineasInvestigacion")%>
 </p>
 <p>
+    <label>Departamento de adscripci&oacute;n</label>
+    <%=Html.DropDownList("Departamento", Model.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido" })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Departamento")%>
+</p>
+<p>
+    <label>Sede</label>
+    <%=Html.DropDownList("Sede", Model.Sedes.CreateSelectList<SedeForm>("Id", "Nombre"),
+        "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeSede") })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("Sede")%>
+</p>
+<p>
+    <label>Adscripci&oacute;n regional:</label>
+    <span id="span_direccionregional" class="valor">&nbsp;</span>
+</p>
+<p>
 	<label>Fecha de inicio</label>
 	<%=Html.TextBox("FechaInicial", Model.FechaInicial, new { @class="datetime input100", maxlength = 10 })%>
 	<span>(Formato dd/mm/yyyy)</span>
