@@ -37,9 +37,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Organizacion = catalogoService.GetOrganizacionById(message.OrganizacionId);
             model.Nivel2 = catalogoService.GetNivelById(message.Nivel2Id);
 
-            model.Area = catalogoService.GetAreaById(message.AreaId);
-            model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
-            model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
+            //model.Area = catalogoService.GetAreaById(message.AreaId);
+            //model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
+            //model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
     }
 }

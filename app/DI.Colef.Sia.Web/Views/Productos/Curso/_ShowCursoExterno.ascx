@@ -10,11 +10,9 @@
 </p>
 <p>
     <label>Programa de estudios</label>
-    <%=Html.TextBox("ProgramaEstudioNombre", Model.ProgramaEstudioNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "ProgramaEstudio"), maxlength = 100})%>
-    <%=Html.Hidden("ProgramaEstudioId", Model.ProgramaEstudioId, new {rel = "#ProgramaEstudioNombre"})%>
+    <%=Html.TextBox("ProgramaEstudio", Model.ProgramaEstudio, new { @class = "input420-requerido", maxlength = 100 })%>
     <span class="cvu"></span>
-    <%=Html.ValidationMessage("ProgramaEstudioNombre")%>
+    <%=Html.ValidationMessage("ProgramaEstudio")%>
 </p>
 <p>
     <label>Nivel de estudios</label>
@@ -57,7 +55,7 @@
     </p>
     <p>
         <label>Programa de estudios</label>
-        <span class="valor"><%= Html.Encode(Model.ProgramaEstudioNombre) %>&nbsp;</span>
+        <span class="valor"><%= Html.Encode(Model.ProgramaEstudio) %>&nbsp;</span>
     </p>
     <p>
         <label>Nivel de estudios</label>

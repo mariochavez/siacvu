@@ -53,6 +53,18 @@
                     <span class="valor"><%= Html.Encode(Model.Form.LineasInvestigacion)%>&nbsp;</span>
                 </p>
                 <p>
+                    <label>Departamento de adscripci&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Sede</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Adscripci&oacute;n regional:</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeDireccionGeneralNombre)%>&nbsp;</span>
+                </p>
+                <p>
                     <label>Fecha de inicio</label>
                     <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
                     <span>Formato (dd/mm/yyyy)</span>

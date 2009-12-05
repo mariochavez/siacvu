@@ -9,9 +9,6 @@
     $('#span_numerohoras').html('<%=Html.Encode(Model.NumeroHoras)%>&nbsp;');
     $('#span_institucioncurso').html('<%=Html.Encode(Model.InstitucionNombre)%>&nbsp;');
     $('#span_paiscurso').html('<%=Html.Encode(Model.InstitucionPaisNombre)%>&nbsp;');
-    $('#span_area').html('<%=Html.Encode(Model.AreaNombre)%>&nbsp;');
-    $('#span_disciplina').html('<%=Html.Encode(Model.DisciplinaNombre)%>&nbsp;');
-    $('#span_subdisciplina').html('<%=Html.Encode(Model.SubdisciplinaNombre)%>&nbsp;');
     $('#span_sector').html('<%=Html.Encode(Model.SectorNombre)%>&nbsp;');
     $('#span_organizacion').html('<%=Html.Encode(Model.OrganizacionNombre)%>&nbsp;');
     $('#span_2donivel').html('<%=Html.Encode(Model.Nivel2Nombre)%>&nbsp;');
@@ -23,9 +20,6 @@
     $('#span_numerohoras').html('&nbsp;');
     $('#span_institucioncurso').html('&nbsp;');
     $('#span_paiscurso').html('&nbsp;');
-    $('#span_area').html('&nbsp;');
-    $('#span_disciplina').html('&nbsp;');
-    $('#span_subdisciplina').html('&nbsp;');
     $('#span_sector').html('&nbsp;');
     $('#span_organizacion').html('&nbsp;');
     $('#span_2donivel').html('&nbsp;');

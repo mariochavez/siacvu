@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;

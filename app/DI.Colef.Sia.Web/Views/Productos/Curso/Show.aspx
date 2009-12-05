@@ -59,6 +59,10 @@
                         <span class="valor"><%= Html.Encode(Model.Form.CursoInvestigador.Nombre) %>&nbsp;</span>
                     </p>
                     <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
+                    
+                    <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                    <% } %>
                 <% } %>
                 
                 <% if(Model.Form.TipoCurso == 2){ %>

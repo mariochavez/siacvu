@@ -52,6 +52,7 @@
                             "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeCursoInvestigador") })%>
 	                    <%=Html.ValidationMessage("CursoInvestigador")%>
 	                    <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
+	                    <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                     </p>
                 </div>
                 
