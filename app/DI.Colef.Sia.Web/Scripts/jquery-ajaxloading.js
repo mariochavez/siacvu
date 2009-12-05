@@ -2,10 +2,10 @@
     function Loading() {
         var self = this
 
-        this.html = function() {
+        this.html = function(message) {
             var html = '';
             html += '<div class="ajax-loading">'
-            html += ' Trabajando ...';
+            html += message;
             html += '</div>';
             return html;
         }
@@ -18,10 +18,11 @@
         });
     }
 
-    $.fn.showLoading = function() {
+    $.fn.showLoading = function(message) {
+        if (message === undefined) message = 'Trabajando ...';
         return this.each(function() {
             //$(this).removeLoading().parent().after(new Loading().html());
-            $('#Pagina').after(new Loading().html());
+            $('#Pagina').after(new Loading().html(message));
         });
     }
 })(jQuery);

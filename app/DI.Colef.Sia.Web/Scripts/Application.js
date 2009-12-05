@@ -454,22 +454,26 @@ RemoteFormV2 = {
         var url = $(this).attr('action');
         var data = $(this).serialize();
 
-        $('p.submit').hide();
-        $('p.waiting').show();
+        $('p.submit').slideUp();
+        //$('p.waiting').show();
+        $('p.submit').showLoading('Guardando ...');
         $.ajax({
             url: url,
             data: data,
             type: method,
             dataType: 'script',
             success: function(msg) {
-                if ($('span.field-validation-error').length > 0)
-                    $('p.submit').show();
-                $('p.waiting').hide();
+                if ($('span.field-validation-error').length > 0) {
+                    $('p.submit').removeLoading();
+                    $('p.submit').slideDown();
+                    //$('p.waiting').hide();
+                }
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert(textStatus);
-                $('p.submit').show();
-                $('p.waiting').hide();
+                $('p.submit').removeLoading();
+                $('p.submit').slideDown();
+                //$('p.waiting').hide();
             }
         });
 

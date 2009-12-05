@@ -935,7 +935,7 @@ a.minilistacancelar {
 
 /* Uploadify */
 div.progress_container {
-  padding-bottom: 10px;
+  padding: 10px 0 10px 130px;
   display: none;
 }
 div.status_message {

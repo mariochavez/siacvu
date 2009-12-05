@@ -102,7 +102,6 @@ var Upload = {
     fileData: null,
     queue: null,
     queues: 0,
-    currentQueue: 0,
     onSelect: function(event, queueID, fileObj) {
         Upload.fileData = fileObj;
         Upload.queue = queueID;
@@ -123,27 +122,62 @@ var Upload = {
 
         return false;
     },
-    onCompleteAll: function(event, data) {
+    onAllComplete: function(event, data) {
         $('.progress').attr('style', 'width: 0px;');
-        alert(Upload.currentQueue);
+        Upload.continueUpload();
     },
     startUpload: function() {
-        $('.progress_container').show();
-        Upload.queues = $('.fileUpload').lenght;
+        Upload.queues = $('.fileUpload').length;
 
-        $('.fileUpload').each(function() {
-            $(this).uploadifySettings(
+        Upload.upload();
+    },
+    continueUpload: function() {
+        Upload.queues--;
+
+        Upload.upload();
+    },
+    upload: function() {
+        if (Upload.queues == 0) {
+            Upload.finished();
+            return;
+        }
+
+        var uploadify = Upload.fetchObject($('.fileUpload'), [Upload.queues - 1]);
+
+        if (uploadify == null) {
+            Upload.finished();
+            return;
+        }
+
+        if (uploadify.uploadifySettings('queueSize') > 0) {
+            uploadify.uploadifySettings(
                 'scriptData',
                 {
                     '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(),
                     'investigadorId': $('#Id').val()
                 });
-            $(this).uploadifyUpload();
-            Upload.currentQueue++;
-        });
 
+            $('.progress_container').show();
+            uploadify.uploadifyUpload();
+        }
+        else
+            Upload.continueUpload();
+    },
+    finished: function() {
+        $('.progress').attr('style', 'width: 0px;');
+        $('.progress_container').hide();
+        window.location.href = $('#regresar').attr('href');
+    },
+    fetchObject: function(object, position) {
+        var counter = 0;
+
+        if (position > object.length)
+            return null;
+
+        return object.eq(position);
     },
     error: function(event, queueID, fileObj, errorObj) {
-        alert('Error');
+        alert('Ocurrio un error al subir archivos adjuntos, es posible que no se hayan grabado.');
+        window.location.href = $('#regresar').attr('href');
     }
 }

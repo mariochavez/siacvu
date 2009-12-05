@@ -19,3 +19,11 @@
     <%=Html.ValidationMessage("EstadoInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("EstadoInvestigador.FechaFinal")%>
 </p>
+<p>
+    <label>Documento probatorio</label>
+    <span id="span_estado_documento" class="valor">&nbsp;</span><br />
+</p>
+<div style="padding: 0 0 10px 20px">
+    <input type="file" name="EstadoInvestigador_DocumentoProbatorio" id="EstadoInvestigador_DocumentoProbatorio" class="fileUpload"/>
+</div>
+<div id="Estado_FileQueue" style="display:none;" rel="#span_estado_documento"></div>
