@@ -122,6 +122,7 @@
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
+    <Compile Include="Mappers\IEditorialDictamenMapper.cs" />
     <Compile Include="Mappers\IEditorialObraTraducidaMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoObraTraducidaMapper.cs" />
     <Compile Include="Mappers\ICoautorExternoObraTraducidaMapper.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Mappers\Impl\AutorInternoObraTraducidaMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorExternoObraTraducidaMapper.cs" />
     <Compile Include="Mappers\Impl\CoautorInternoObraTraducidaMapper.cs" />
+    <Compile Include="Mappers\Impl\EditorialDictamenMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialObraTraducidaMapper.cs" />
     <Compile Include="Mappers\Impl\CursoInvestigadorMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />

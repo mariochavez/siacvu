@@ -554,10 +554,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.AddFormatter<StandardDateFormatter>())
                 .ForMember(d => d.FondoConacyt,
                            o => o.Ignore())
-                .ForMember(d => d.Editorial,
-                           o => o.Ignore())
                 .ForMember(d => d.TipoDictamen,
                            o => o.Ignore());
+
+            Mapper.CreateMap<EditorialDictamen, EditorialProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateLibrosMaps()

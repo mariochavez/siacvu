@@ -64,14 +64,7 @@
                 	<% } %>
                 <% } %>
                 <% if (Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
-                    <p>
-	                    <label>Editorial</label>
-	                    <span class="valor"><%= Html.Encode(Model.Form.EditorialNombre)%>&nbsp;</span>
-                    </p>
-                    <p>
-	                    <label>Instituci&oacute;n de la editorial</label>
-	                    <span class="valor"><%= Html.Encode(Model.Form.EditorialInstitucionNombre)%>&nbsp;</span>
-                    </p>
+                    <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialDictamenes, ModelId = Model.Form.Id }); %>
                 <% } %>
                 <% if(Model.Form.TipoDictamenNombre.Contains("Proyecto")){ %>
                     <p>

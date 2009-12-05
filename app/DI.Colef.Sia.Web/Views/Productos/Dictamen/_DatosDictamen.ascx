@@ -22,12 +22,9 @@
 <div id="articulo_field">
     <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
 </div>
-<p id="libro_field" class="noeffect">
-	<label>Editorial</label>
-	<%=Html.DropDownList("Editorial", Model.Editoriales.CreateSelectList<EditorialForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
-	<%=Html.ValidationMessage("Editorial")%>
-</p>
+<div id="libro_field">
+	<% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialDictamenes, ModelId = Model.Id } ); %>
+</div>
 <p id="proyecto_field">
 	<label>Tipo de proyecto</label>
 	<%=Html.DropDownList("FondoConacyt", Model.FondosConacyt.CreateSelectList<FondoConacytForm>("Id", "Nombre"),

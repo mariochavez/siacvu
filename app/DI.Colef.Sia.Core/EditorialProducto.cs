@@ -41,4 +41,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
+
+    public class EditorialDictamen : EditorialProducto
+    {
+
+    }
 }

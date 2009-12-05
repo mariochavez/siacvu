@@ -7,7 +7,7 @@ using SharpArch.Core.DomainModel;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [DictamenValidator]
-    public class Dictamen : Entity, IBaseEntity
+    public class Dictamen : Entity, IBaseEntity, IEditorial
     {
         const int tipoProducto = 4; // 4 Representa Dictamen
 
@@ -15,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             ArchivoDictamenes = new List<ArchivoDictamen>();
             FirmaDictamenes = new List<FirmaDictamen>();
+            EditorialDictamenes = new List<EditorialDictamen>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
@@ -27,6 +28,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             firma.TipoProducto = tipoProducto;
             FirmaDictamenes.Add((FirmaDictamen)firma);
+        }
+
+        public virtual void AddEditorial(EditorialProducto editorial)
+        {
+            editorial.TipoProducto = tipoProducto;
+            EditorialDictamenes.Add((EditorialDictamen)editorial);
+        }
+
+        public virtual void DeleteEditorial(EditorialProducto editorial)
+        {
+            EditorialDictamenes.Remove((EditorialDictamen)editorial);
         }
 
         public virtual void DeleteFirma(Firma firma)
@@ -45,6 +57,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaDictamen> FirmaDictamenes { get; private set; }
 
+        [Valid]
+        public virtual IList<EditorialDictamen> EditorialDictamenes { get; private set; }
+
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
@@ -58,8 +73,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaDictamen { get; set; }
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
-
-        public virtual Editorial Editorial { get; set; }
 
         public virtual FondoConacyt FondoConacyt { get; set; }
 

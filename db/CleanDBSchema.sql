@@ -595,6 +595,16 @@ alter table EditorialObraTraducida  drop constraint FKFAC4CE5DF7D09D3A
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK44CF0E944DBE1A6B]') AND parent_object_id = OBJECT_ID('EditorialDictamen'))
+alter table EditorialDictamen  drop constraint FK44CF0E944DBE1A6B
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK44CF0E94CB0D698F]') AND parent_object_id = OBJECT_ID('EditorialDictamen'))
+alter table EditorialDictamen  drop constraint FK44CF0E94CB0D698F
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA2BE0196A829E09]') AND parent_object_id = OBJECT_ID('EstanciaInstitucionExternas'))
 alter table EstanciaInstitucionExternas  drop constraint FKA2BE0196A829E09
 
@@ -692,11 +702,6 @@ alter table Dictamenes  drop constraint FKE29ADD7B3E391E13
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B2AF31B56]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7B2AF31B56
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BE30B9132]') AND parent_object_id = OBJECT_ID('Dictamenes'))
-alter table Dictamenes  drop constraint FKE29ADD7BE30B9132
 
 
 
@@ -3087,6 +3092,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EditorialObraTraducida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialObraTraducida
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'EditorialDictamen') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EditorialDictamen
+
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaInstitucionExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaInstitucionExternas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
@@ -3786,6 +3793,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (EditorialProducto)
     )
 
+    create table EditorialDictamen (
+        EditorialProducto INT not null,
+       DictamenFk INT null,
+       primary key (EditorialProducto)
+    )
+
     create table EstanciaInstitucionExternas (
         Id INT IDENTITY NOT NULL,
        DepartamentoDestino NVARCHAR(255) null,
@@ -3854,7 +3867,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        DepartamentoFk INT null,
        SedeFk INT null,
        RevistaPublicacionFk INT null,
-       EditorialFk INT null,
        FondoConacytFk INT null,
        TipoDictamenFk INT null,
        CreadoPorFk INT null,
@@ -5680,6 +5692,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ObraTraducidaFk) 
         references ObraTraducidas
 
+    alter table EditorialDictamen 
+        add constraint FK44CF0E944DBE1A6B 
+        foreign key (EditorialProducto) 
+        references EditorialProductos
+
+    alter table EditorialDictamen 
+        add constraint FK44CF0E94CB0D698F 
+        foreign key (DictamenFk) 
+        references Dictamenes
+
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE0197D866EAB 
         foreign key (DepartamentoFk) 
@@ -5729,11 +5751,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKE29ADD7B2AF31B56 
         foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
-
-    alter table Dictamenes 
-        add constraint FKE29ADD7BE30B9132 
-        foreign key (EditorialFk) 
-        references Editoriales
 
     alter table Dictamenes 
         add constraint FKE29ADD7BE758F5B4 
