@@ -40,7 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInvestigadorService investigadorService;
         readonly ICoordinacionMapper coordinacionMapper;
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
-        readonly IEstatusProyectoMapper estatusProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
@@ -60,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   INivelMapper nivelMapper, IDepartamentoMapper departamentoMapper, IDisciplinaMapper disciplinaMapper, 
                                   ISubdisciplinaMapper subdisciplinaMapper, ISearchService searchService, IInvestigadorService investigadorService,
                                   ICoordinacionMapper coordinacionMapper, IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper,
-                                  IEstatusProyectoMapper estatusProyectoMapper, IFondoConacytMapper fondoConacytMapper,
+                                  IFondoConacytMapper fondoConacytMapper,
                                   IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
                                   IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
@@ -93,7 +92,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.investigadorService = investigadorService;
             this.coordinacionMapper = coordinacionMapper;
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
-            this.estatusProyectoMapper = estatusProyectoMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
@@ -465,7 +463,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //Lista de Catalogos Pendientes
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
             form.Convenios = convenioMapper.Map(catalogoService.GetActiveConvenios());
-            form.EstatusProyectos = estatusProyectoMapper.Map(catalogoService.GetActiveEstatusProyectos());
+            form.EstatusProyectos = customCollection.EstadoProyectoCustomCollection();
             form.SectoresFinanciamientos = sectorMapper.Map(catalogoService.GetActiveSectoresFinanciamientos());
             form.FondosConacyt = fondoConacytMapper.Map(catalogoService.GetActiveFondoConacyts());
             form.ImpactosPoliticasPublicas = impactoPoliticaPublicaMapper.Map(catalogoService.GetActiveImpactoPoliticaPublicas());
@@ -496,7 +494,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["TipoProyecto"] = form.TipoProyectoId;
             ViewData["Convenio"] = form.ConvenioId;
-            ViewData["EstatusProyecto"] = form.EstatusProyectoId;
+            ViewData["EstadoProyecto"] = form.EstadoProyecto;
             ViewData["SectorFinanciamiento"] = form.SectorFinanciamientoId;
             ViewData["FondoConacyt"] = form.FondoConacytId;
             ViewData["LineaTematica"] = form.LineaTematicaId;

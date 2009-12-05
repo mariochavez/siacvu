@@ -126,7 +126,6 @@
     <Compile Include="EstadoInvestigador.cs" />
     <Compile Include="EstadoPais.cs" />
     <Compile Include="EstatusFormacionAcademica.cs" />
-    <Compile Include="EstatusProyecto.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="ExperienciaProfesional.cs" />
     <Compile Include="Firma.cs" />

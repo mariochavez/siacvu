@@ -328,11 +328,6 @@
     <Content Include="Views\Catalogos\EstatusFormacionAcademica\Index.aspx" />
     <Content Include="Views\Catalogos\EstatusFormacionAcademica\New.aspx" />
     <Content Include="Views\Catalogos\EstatusFormacionAcademica\_Form.ascx" />
-    <Content Include="Views\Catalogos\EstatusProyecto\Activate.js.ascx" />
-    <Content Include="Views\Catalogos\EstatusProyecto\Edit.aspx" />
-    <Content Include="Views\Catalogos\EstatusProyecto\Index.aspx" />
-    <Content Include="Views\Catalogos\EstatusProyecto\New.aspx" />
-    <Content Include="Views\Catalogos\EstatusProyecto\_Form.ascx" />
     <Content Include="Views\Catalogos\FondoConacyt\Activate.js.ascx" />
     <Content Include="Views\Catalogos\FondoConacyt\Edit.aspx" />
     <Content Include="Views\Catalogos\FondoConacyt\Index.aspx" />
@@ -554,6 +549,10 @@
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\GrupoInvestigacion\_NewMiembroExterno.ascx" />
     <Content Include="Views\GrupoInvestigacion\_ShowMiembroExterno.ascx" />
+    <Content Include="Views\Home\_VinculacionDifusion.ascx" />
+    <Content Include="Views\Home\_ProyectosInvestigacion.ascx" />
+    <Content Include="Views\Home\_RecursosHumanos.ascx" />
+    <Content Include="Views\Home\_ProduccionAcademica.ascx" />
     <Content Include="Views\IdiomasInvestigador\Edit.aspx" />
     <Content Include="Views\IdiomasInvestigador\Index.aspx" />
     <Content Include="Views\IdiomasInvestigador\New.aspx" />
@@ -848,7 +847,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4775</DevelopmentServerPort>
+          <DevelopmentServerPort>4891</DevelopmentServerPort>
           <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

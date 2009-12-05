@@ -49,6 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.RequiereServicioUSEG = message.RequiereServicioUSEG;
             model.ParticipaEstudiante = message.ParticipaEstudiante;
             model.NombreEstudiante = message.NombreEstudiante;
+            model.EstadoProyecto = message.EstadoProyecto;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
@@ -58,7 +59,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.TipoProyecto = catalogoService.GetTipoProyectoById(message.TipoProyecto);
             model.Convenio = catalogoService.GetConvenioById(message.Convenio);
-            model.EstatusProyecto = catalogoService.GetEstatusProyectoById(message.EstatusProyecto);
             model.SectorFinanciamiento = catalogoService.GetSectorById(message.SectorFinanciamiento);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.LineaTematica = catalogoService.GetLineaTematicaById(message.LineaTematica);

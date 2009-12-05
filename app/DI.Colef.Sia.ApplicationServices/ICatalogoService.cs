@@ -353,12 +353,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         DirigidoA[] GetActiveDirigidoAs();
         void SaveDirigidoA(DirigidoA dirigidoA);
 
-        //Estatus Proyecto
-        EstatusProyecto GetEstatusProyectoById(int id);
-        EstatusProyecto[] GetAllEstatusProyectos();
-        EstatusProyecto[] GetActiveEstatusProyectos();
-        void SaveEstatusProyecto(EstatusProyecto estatusProyecto);
-
         //Fondo CONACyT
         FondoConacyt GetFondoConacytById(int id);
         FondoConacyt[] GetAllFondoConacyts();

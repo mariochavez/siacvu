@@ -28,13 +28,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!proyecto.IsTransient())
             {
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.TipoProyecto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaInicial, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaFinal, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaProrroga, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaConclusion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaEntregaProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.EstatusProyecto, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.TipoProyecto, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaInicial, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaFinal, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaProrroga, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaConclusion, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.FechaEntregaProducto, constraintValidatorContext);
+                //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.EstadoProyecto, constraintValidatorContext);
             }
 
             isValid &= ValidateFechaInicialFinal(proyecto, constraintValidatorContext);

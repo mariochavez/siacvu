@@ -2100,16 +2100,6 @@ alter table ProgramaEstudios  drop constraint FK51F4869074E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDE910ADD62D605DB]') AND parent_object_id = OBJECT_ID('EstatusProyectos'))
-alter table EstatusProyectos  drop constraint FKDE910ADD62D605DB
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKDE910ADD74E8BAB7]') AND parent_object_id = OBJECT_ID('EstatusProyectos'))
-alter table EstatusProyectos  drop constraint FKDE910ADD74E8BAB7
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1E50E26A62D605DB]') AND parent_object_id = OBJECT_ID('TipoProyectos'))
 alter table TipoProyectos  drop constraint FK1E50E26A62D605DB
 
@@ -2602,11 +2592,6 @@ alter table Proyectos  drop constraint FK8BA36D77B2AE3011
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77201EE7BB]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D77201EE7BB
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77B44F9F1]') AND parent_object_id = OBJECT_ID('Proyectos'))
-alter table Proyectos  drop constraint FK8BA36D77B44F9F1
 
 
 
@@ -3240,8 +3225,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Roles') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Roles
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ProgramaEstudios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ProgramaEstudios
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'EstatusProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstatusProyectos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoProyectos
 
@@ -4790,17 +4773,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table EstatusProyectos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(255) null,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
     create table TipoProyectos (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(255) null,
@@ -5119,6 +5091,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
        FechaProrroga DATETIME null,
+       EstadoProyecto INT null,
        FechaConclusion DATETIME null,
        ConRecursos BIT null,
        ObjetivoGeneral NVARCHAR(255) null,
@@ -5138,7 +5111,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Activo BIT null,
        TipoProyectoFk INT null,
        ConvenioFk INT null,
-       EstatusProyectoFk INT null,
        SectorFinanciamientoFk INT null,
        FondoConacytFk INT null,
        LineaTematicaFk INT null,
@@ -6778,11 +6750,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK8BA36D77201EE7BB 
         foreign key (ConvenioFk) 
         references Convenios
-
-    alter table Proyectos 
-        add constraint FK8BA36D77B44F9F1 
-        foreign key (EstatusProyectoFk) 
-        references EstatusProyectos
 
     alter table Proyectos 
         add constraint FK8BA36D7760BA4690 
