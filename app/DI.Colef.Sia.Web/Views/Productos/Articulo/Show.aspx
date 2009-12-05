@@ -94,7 +94,7 @@
                 <h4>Estatus de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
-                <% if (Model.Form.EstadoProducto == 2){ %>
+                <% if (Model.Form.EstadoProducto == 3){ %>
                     
                     <h4>Referencia bibliogr&aacute;fica</h4>
                     <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
