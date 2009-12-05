@@ -30,8 +30,8 @@
 
 			<div class="elementobotones">
 				<p>
-					<span><%=Html.ActionLink<HomeController>(x => x.Edit(produccionAcademica.Id, produccionAcademica.TipoProducto), "Editar")%></span>
-                    <span><%=Html.ActionLink<HomeController>(x => x.Show(produccionAcademica.Id, produccionAcademica.TipoProducto), "Ver")%></span>
+					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                    <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                	</p>
 			</div><!--end elementobotones-->
         		

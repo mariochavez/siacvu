@@ -134,10 +134,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Property("CreadoEl"), "CreadoEl");
 
             if (esProduccionAcademica)
-                projection.Add(Projections.Property("EstadoProducto"), "EstatusProducto");
+            {
+                projection
+                    .Add(Projections.Property("EstadoProducto"), "EstatusProducto")
+                    .Add(Projections.GroupProperty(propertyName), "Nombre")
+                    .Add(Projections.GroupProperty("Id"), "Id")
+                    .Add(Projections.GroupProperty("CreadoEl"), "CreadoEl")
+                    .Add(Projections.GroupProperty("EstadoProducto"), "EstatusProducto");
+            }
 
-            if(tieneRevista)
-                projection.Add(Projections.Property("RevistaPublicacion"), "RevistaPublicacion");
+            if (tieneRevista)
+            {
+                projection
+                    .Add(Projections.Property("RevistaPublicacion"), "RevistaPublicacion")
+                    .Add(Projections.GroupProperty("RevistaPublicacion"), "RevistaPublicacion");
+            }
 
             if (productType == 3 || productType == 13)
                 projection.Add(Projections.Property("Institucion"), "Institucion");
@@ -159,8 +170,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             var criteria = Session.CreateCriteria(typeof (T))
                 .CreateAlias("Usuario", "u")
-                .AddOrder(Order.Desc("CreadoEl"))
                 .SetProjection(projection)
+                .AddOrder(Order.Desc("CreadoEl"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)));
 
             if (coautorTableName != "")

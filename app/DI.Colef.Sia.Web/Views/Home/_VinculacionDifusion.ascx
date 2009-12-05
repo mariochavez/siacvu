@@ -36,8 +36,8 @@
 
 			<div class="elementobotones">
 				<p>
-					<span><%=Html.ActionLink<HomeController>(x => x.Edit(vinculacion.Id, vinculacion.TipoProducto), "Editar")%></span>
-                    <span><%=Html.ActionLink<HomeController>(x => x.Show(vinculacion.Id, vinculacion.TipoProducto), "Ver")%></span>
+					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", vinculacion.Id, vinculacion.TipoProducto)%></span>
+                    <span><%=Html.CustomActionLink("Home", "Show", "Ver", vinculacion.Id, vinculacion.TipoProducto)%></span>
                	</p>
 			</div><!--end elementobotones-->
         		
