@@ -134,6 +134,7 @@
     <Compile Include="Mappers\IEditorialCapituloMapper.cs" />
     <Compile Include="Mappers\IEditorialResenaMapper.cs" />
     <Compile Include="Mappers\IEstanciaAcademicaExternaMapper.cs" />
+    <Compile Include="Mappers\IInstitucionReporteMapper.cs" />
     <Compile Include="Mappers\IMiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AreaInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\AutorExternoResenaMapper.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Mappers\Impl\EditorialCapituloMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialResenaMapper.cs" />
     <Compile Include="Mappers\Impl\EstanciaAcademicaExternaMapper.cs" />
+    <Compile Include="Mappers\Impl\InstitucionReporteMapper.cs" />
     <Compile Include="Mappers\Impl\MiembroExternoGrupoInvestigacionMapper.cs" />
     <Compile Include="Mappers\Impl\ObraTraducidaMapper.cs" />
     <Compile Include="Mappers\IObraTraducidaMapper.cs" />
@@ -174,13 +176,13 @@
     <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EditorialProductoForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />
+    <Compile Include="Models\InstitucionProductoForm.cs" />
     <Compile Include="Models\MiembroExternoGrupoInvestigacionForm.cs" />
     <Compile Include="Models\ObraTraducidaForm.cs" />
     <Compile Include="Models\TesisPosgradoForm.cs" />
     <Compile Include="Models\ArchivoForm.cs" />
     <Compile Include="Models\ConsejoComisionForm.cs" />
     <Compile Include="Models\DireccionRegionalForm.cs" />
-    <Compile Include="Models\InstitucionEventoForm.cs" />
     <Compile Include="Models\OrganoInternoForm.cs" />
     <Compile Include="Models\ShowFieldsForm.cs" />
     <Compile Include="Models\EditorialForm.cs" />

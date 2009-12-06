@@ -2,10 +2,9 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<p>
-    <label>Instancia a la que se presenta el reporte</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionNombre)%>&nbsp;</span>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", new InstitucionForm { Instituciones = Model.InstitucionReportes, ModelId = Model.Id }); %>
+
 <p>
     <label></label>
     ¿Existe proyecto de investigaci&oacute;n de referencia?

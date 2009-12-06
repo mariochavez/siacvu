@@ -69,7 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
-            InstitucionEventoForm[] instituciones)
+            InstitucionProductoForm[] instituciones)
         {
             var model = Map(message, usuario, investigador);
 

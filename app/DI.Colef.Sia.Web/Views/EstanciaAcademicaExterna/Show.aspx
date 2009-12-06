@@ -46,7 +46,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
                 </p>
                 <h4>Datos de la estancia acad&eacute;mica externa</h4>                
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowInstitucionLong", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>L&iacute;neas de investigaci&oacute;n</label>

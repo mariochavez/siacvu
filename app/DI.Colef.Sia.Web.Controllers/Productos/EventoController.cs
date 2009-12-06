@@ -161,12 +161,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
-                                   [Bind(Prefix = "InstitucionEvento")] InstitucionEventoForm[] institucion,
+                                   [Bind(Prefix = "Institucion")] InstitucionProductoForm[] institucion,
                                    EventoForm form)
         {
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
-            institucion = institucion ?? new InstitucionEventoForm[] { };
+            institucion = institucion ?? new InstitucionProductoForm[] { };
 
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, institucion);
@@ -389,7 +389,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewInstitucion(int id)
         {
             var evento = eventoService.GetEventoById(id);
-            var form = new EventoForm();
+
+            var form = new InstitucionForm { Controller = "Evento", IdName = "EventoId" };
 
             if (evento != null)
                 form.Id = evento.Id;
@@ -400,12 +401,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddInstitucion([Bind(Prefix = "InstitucionEvento")] InstitucionEventoForm form,
+        public ActionResult AddInstitucion([Bind(Prefix = "Institucion")] InstitucionProductoForm form,
                                               int eventoId)
         {
             var institucionEvento = institucionEventoMapper.Map(form);
 
-            ModelState.AddModelErrors(institucionEvento.ValidationResults(), false, "InstitucionEvento", String.Empty);
+            ModelState.AddModelErrors(institucionEvento.ValidationResults(), false, "Institucion", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -449,7 +450,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 eventoService.SaveEvento(evento);
             }
 
-            var form = new InstitucionEventoForm {InstitucionId = institucionId};
+            var form = new InstitucionForm {ModelId = id, InstitucionId = institucionId};
 
             return Rjs("DeleteInstitucion", form);
         }

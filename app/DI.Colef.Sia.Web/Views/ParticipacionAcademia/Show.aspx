@@ -48,7 +48,7 @@
                         <span class="valor"><%=Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowInstitucionLong", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Editorial</label>

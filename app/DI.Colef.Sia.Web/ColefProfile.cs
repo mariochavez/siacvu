@@ -388,6 +388,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<CoautorExternoReporte, CoautorExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<InstitucionReporte, InstitucionProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateEventosMaps()
@@ -414,7 +418,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<InstitucionEvento, InstitucionEventoForm>()
+            Mapper.CreateMap<InstitucionEvento, InstitucionProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
