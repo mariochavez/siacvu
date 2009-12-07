@@ -9,10 +9,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Nombre { get; set; }
 
-        public virtual TipoArchivo TipoArchivo { get; set; }
-
         public virtual int TipoProducto { get; set; }
 
+        [NotNull]
         public virtual byte[] Datos { get; set; }
 
         public virtual string Contenido { get; set; }
@@ -100,13 +99,28 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
-    public class ArchivoInvestigador : Archivo
-    {
-        
-    }
-
     public class ArchivoObraTraducida : Archivo
     {
 
+    }
+
+    public class ArchivoGradoAcademico : Archivo
+    {
+    }
+
+    public class ArchivoEstado : Archivo
+    {
+    }
+
+    public class ArchivoCargo : Archivo
+    {
+    }
+
+    public class ArchivoCategoria : Archivo
+    {
+    }
+
+    public class ArchivoSni : Archivo
+    {
     }
 }

@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly IPuestoMapper puestoMapper;
+        readonly IArchivoService archivoService;
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ISNIMapper sniMapper;
         readonly IUsuarioMapper usuarioMapper;
@@ -40,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ICargoInvestigadorMapper cargoInvestigadorMapper,
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       IPuestoMapper puestoMapper,
-                                      ISearchService searchService,
+                                      ISearchService searchService, IArchivoService archivoService,
             IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
@@ -58,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.cargoInvestigadorMapper = cargoInvestigadorMapper;
             this.sniInvestigadorMapper = sniInvestigadorMapper;
             this.puestoMapper = puestoMapper;
+            this.archivoService = archivoService;
             this.areaTematicaMapper = areaTematicaMapper;
         }
 
@@ -163,26 +165,67 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var investigador = investigadorService.GetInvestigadorById(1);
 
             var file = Request.Files["fileData"];
-            var archivo = new ArchivoInvestigador
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength,
-                                  TipoProducto = 1
-                              };
+
+            Archivo archivo = null;
+            if (form["TipoArchivo"] == "1")
+                archivo = new ArchivoGradoAcademico();
+            else if (form["TipoArchivo"] == "2")
+                archivo = new ArchivoEstado();
+            else if (form["TipoArchivo"] == "3")
+                archivo = new ArchivoCargo();
+            else if (form["TipoArchivo"] == "4")
+                archivo = new ArchivoCategoria();
+            else if (form["TipoArchivo"] == "5")
+                archivo = new ArchivoSni();
+
+
+            archivo.Activo = true;
+            archivo.Contenido = file.ContentType;
+            archivo.CreadoEl = DateTime.Now;
+            archivo.CreadoPor = CurrentUser();
+            archivo.ModificadoEl = DateTime.Now;
+            archivo.ModificadoPor = CurrentUser();
+            archivo.Nombre = file.FileName;
+            archivo.Tamano = file.ContentLength;
+
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);
             archivo.Datos = datos;
 
-            investigador.AddArchivo(archivo);
+            if (form["TipoArchivo"] == "1")
+            {
+                var comprobante = (ArchivoGradoAcademico) archivo;
+                archivoService.SaveGradoAcademico(comprobante);
+                investigador.GradosAcademicosInvestigador[0].Comprobante = comprobante;
+            }
+            else if (form["TipoArchivo"] == "2")
+            {
+                var comprobante = (ArchivoEstado)archivo;
+                archivoService.SaveEstado(comprobante);
+                investigador.EstadosInvestigador[0].Comprobante = (ArchivoEstado) archivo;
+            }
+            else if (form["TipoArchivo"] == "3")
+            {
+                var comprobante = (ArchivoCargo)archivo;
+                archivoService.SaveCargo(comprobante);
+                investigador.CargosInvestigador[0].Comprobante = (ArchivoCargo)archivo;
+            }
+            else if (form["TipoArchivo"] == "4")
+            {
+                var comprobante = (ArchivoCategoria)archivo;
+                archivoService.SaveCategoria(comprobante);
+                investigador.CategoriasInvestigador[0].Comprobante = (ArchivoCategoria)archivo;
+            }
+            else if (form["TipoArchivo"] == "5")
+            {
+                var comprobante = (ArchivoSni)archivo;
+                archivoService.SaveSni(comprobante);
+                investigador.SNIsInvestigador[0].Comprobante = (ArchivoSni)archivo;
+            }
+
             investigadorService.SaveInvestigador(investigador);
 
-            return Content("Hi");
+            return Content("Uploaded");
         }
 
         //[Authorize(Roles = "Dgaa")]

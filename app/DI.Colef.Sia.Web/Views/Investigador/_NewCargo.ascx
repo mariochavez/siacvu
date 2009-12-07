@@ -26,3 +26,11 @@
     <label>Direcci&oacute;n regional:</label>
     <span id="span_direccionregional" class="valor">&nbsp;</span>
 </p>
+<p>
+    <label>Documento probatorio</label>
+    <span id="span_cargo_documento" class="valor">&nbsp;</span><br />
+</p>
+<div style="padding: 0 0 10px 20px">
+    <input type="file" name="CargoInvestigador_DocumentoProbatorio" id="CargoInvestigador_DocumentoProbatorio" class="fileUpload"/>
+</div>
+<div id="Cargo_FileQueue" style="display:none;" rel="#span_cargo_documento"></div>

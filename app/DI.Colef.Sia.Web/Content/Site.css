@@ -108,8 +108,8 @@
 
 .investigacion, .catalogos {
   display:none;
-  width:850px;
-  height: 340px;
+  width: 840px;
+  height: 370px;
   top: 60px;
   right: 10px;
   background-color: #252525;
@@ -463,7 +463,7 @@ a.editabusqueda {
 	font-size: 8pt;
 	color: #999;
 }
-
+/*
 .ajax-loading, .no-ajax-loading {
 	float: left;
 	margin: 26px 5px 0 0;
@@ -474,7 +474,7 @@ a.editabusqueda {
 .ajax-loading {
 	background: transparent url(./Images/ajax-loader.gif) 0 0 no-repeat;
 }
-
+*/
 .elementobotones {
 	float: left;
 	margin: 6px 0 0 0;
@@ -912,14 +912,17 @@ a.minilistacancelar {
     width: 150px;
     height: 18px;
     background: url(./images/ajax-loader.gif) no-repeat;
-    background-position: 2px 2px;
+    background-position: 8px 8px;
     background-color: #252525;
     color: #FFFFFF;
     font-weight: bold;
     display: inline-block;
     vertical-align: middle;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari */
+    -moz-border-radius-bottomleft:5px;
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border: solid 1px #FFFFFF;
 }
 
 #loading{

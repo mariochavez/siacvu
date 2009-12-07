@@ -24,5 +24,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        [Valid]
+        public virtual ArchivoCargo Comprobante { get; set; }
     }
 }

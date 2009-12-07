@@ -144,6 +144,57 @@
             'onError': error,
             'scriptData': { token: auth, tipoArchivo: 2 }
         });
+
+        $('#CargoInvestigador_DocumentoProbatorio').uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': '<%=Url.Action("AddFile") %>',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': '<%=Url.Action("AddFile") %>',
+            'queueID': 'Cargo_FileQueue',
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onAllComplete': Upload.onAllComplete,
+            'onError': error,
+            'scriptData': { token: auth, tipoArchivo: 3 }
+        });
+
+        $('#CategoriaInvestigador_DocumentoProbatorio').uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': '<%=Url.Action("AddFile") %>',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': '<%=Url.Action("AddFile") %>',
+            'queueID': 'Categoria_FileQueue',
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onAllComplete': Upload.onAllComplete,
+            'onError': error,
+            'scriptData': { token: auth, tipoArchivo: 4 }
+        });
+
+        $('#SniInvestigador_DocumentoProbatorio').uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': '<%=Url.Action("AddFile") %>',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': '<%=Url.Action("AddFile") %>',
+            'queueID': 'Sni_FileQueue',
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onAllComplete': Upload.onAllComplete,
+            'onError': error,
+            'scriptData': { token: auth, tipoArchivo: 5 }
+        });
     });
 </script>
 </asp:Content>

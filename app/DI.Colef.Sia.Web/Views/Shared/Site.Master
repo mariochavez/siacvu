@@ -111,8 +111,7 @@
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
-								<td><%=Html.ActionLinkForAreas<ObraTraducidaController>(x => x.Index(), "Obras traducidas") %></td>
-								<td>&nbsp;</td>
+								<td colspan="2"><%=Html.ActionLinkForAreas<ObraTraducidaController>(x => x.Index(), "Obras traducidas") %></td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>

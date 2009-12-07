@@ -17,3 +17,11 @@
     <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("SNIInvestigador.FechaFinal")%>
 </p>
+<p>
+    <label>Documento probatorio</label>
+    <span id="span_sni_documento" class="valor">&nbsp;</span><br />
+</p>
+<div style="padding: 0 0 10px 20px">
+    <input type="file" name="SniInvestigador_DocumentoProbatorio" id="SniInvestigador_DocumentoProbatorio" class="fileUpload"/>
+</div>
+<div id="Sni_FileQueue" style="display:none;" rel="#span_sni_documento"></div>

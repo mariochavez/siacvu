@@ -146,6 +146,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI.Colef.Sia.Data\ArchivoServiceTests.cs" />
     <Compile Include="DI.Colef.Sia.Data\ConnectionSetup.cs" />
     <Compile Include="DI.Colef.Sia.Data\ProductoQueryingTests.cs" />
     <Compile Include="DI.Colef.Sia.Data\SearchTests.cs" />

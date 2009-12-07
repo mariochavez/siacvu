@@ -17,3 +17,11 @@
     <%=Html.ValidationMessage("CategoriaInvestigador.FechaInicial")%>
     <%=Html.ValidationMessage("CategoriaInvestigador.FechaFinal")%>
 </p>
+<p>
+    <label>Documento probatorio</label>
+    <span id="span_categoria_documento" class="valor">&nbsp;</span><br />
+</p>
+<div style="padding: 0 0 10px 20px">
+    <input type="file" name="CategoriaInvestigador_DocumentoProbatorio" id="CategoriaInvestigador_DocumentoProbatorio" class="fileUpload"/>
+</div>
+<div id="Categoria_FileQueue" style="display:none;" rel="#span_categoria_documento"></div>

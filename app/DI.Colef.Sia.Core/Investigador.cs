@@ -8,8 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class Investigador : Entity, IBaseEntity
     {
-        const int tipoProducto = 50; // 50 Representa investigador
-
         public Investigador()
         {
             EstadosInvestigador = new List<EstadoInvestigador>();
@@ -17,23 +15,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CargosInvestigador = new List<CargoInvestigador>();
             SNIsInvestigador = new List<SNIInvestigador>();
             CategoriasInvestigador = new List<CategoriaInvestigador>();
-            ArchivosInvestigador = new List<ArchivoInvestigador>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivosInvestigador.Add((ArchivoInvestigador)archivo);
         }
 
         public virtual void AddEstado(EstadoInvestigador estadoInvestigador)
         {
             EstadosInvestigador.Add(estadoInvestigador);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivosInvestigador.Remove((ArchivoInvestigador)archivo);
         }
 
         public virtual void AddGrado(GradoAcademicoInvestigador gradoAcademicoInvestigador)
@@ -114,8 +100,5 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
-
-        [Valid]
-        public virtual IList<ArchivoInvestigador> ArchivosInvestigador { get; private set; }
     }
 }

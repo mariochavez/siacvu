@@ -1,8 +1,9 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyCompany("Desiciones Inteligentes. Mario A Chavez")]
-[assembly: AssemblyCopyright("Copyright © Mario A Chavez 2009")]
+[assembly: AssemblyCompany("Desiciones Inteligentes. Mario A. Chávez")]
+[assembly: AssemblyCopyright("Copyright © Mario A. Chávez 2009")]
+//[assembly: AssemblyProduct("Sistema de información académica")]
 [assembly: AssemblyConfiguration("debug")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

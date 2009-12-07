@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions
         public void Apply(IManyToOnePart manyToOnePart)
         {
             manyToOnePart.ColumnName(manyToOnePart.Property.Name + "Fk");
+            manyToOnePart.Cascade.SaveUpdate();
         }
     }
 }
