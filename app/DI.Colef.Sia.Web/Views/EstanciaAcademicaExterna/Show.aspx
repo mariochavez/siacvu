@@ -62,7 +62,7 @@
                 </p>
                 <p>
                     <label>Adscripci&oacute;n regional:</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.SedeDireccionGeneralNombre)%>&nbsp;</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.SedeDireccionRegionalNombre)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Fecha de inicio</label>

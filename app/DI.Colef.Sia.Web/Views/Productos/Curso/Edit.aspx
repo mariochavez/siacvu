@@ -45,11 +45,8 @@
                 
                 <div id="cursointerno_field">
                     <h4>Cursos en El Colef</h4>
-                    <p>
-                        <label>Nombre del curso</label>
 	                    <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
 	                    <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
-                    </p>
                 </div>
                 
                 <div id="cursoexterno_field">

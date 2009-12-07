@@ -25,6 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Usuario Usuario3 { get; set; }
 
+	    public virtual string Descripcion { get; set; }
+
 		public virtual Usuario CreadoPor { get; set; }
 
 		public virtual DateTime CreadoEl { get; set; }
@@ -36,10 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual bool Activo { get; set; }
     }
 
-    public class FirmaArticulo : Firma
-    {
+    //public class FirmaArticulo : Firma
+    //{
 
-    }
+    //}
 
     public class FirmaCapitulo : Firma
     {

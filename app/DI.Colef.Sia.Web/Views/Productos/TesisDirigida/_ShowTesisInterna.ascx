@@ -2,6 +2,20 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<% if(Model.Id == 0){ %>
+    <p>
+        <label>Nombre del alumno(autor)</label>
+        <%=Html.DropDownList("TesisPosgradoId", Model.TesisPosgrados.CreateSelectList<TesisPosgradoForm>("Id", "NombreAlumno"),
+            "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeTesisPosgrado") })%>
+        <%=Html.ValidationMessage("TesisPosgrado")%>
+    </p>
+<% } else { %>
+    <p>
+        <label>Nombre del alumno(autor)</label>
+        <span id="span_nombrealumno" class="valor"><%= Html.Encode(Model.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
+    </p>
+<% } %>
+
 <p>
     <label>T&iacute;tulo de la tesis</label>
     <span id="span_titulotesis" class="valor"><%= Html.Encode(Model.TesisPosgrado.Titulo) %>&nbsp;</span>

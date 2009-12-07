@@ -1880,16 +1880,6 @@ alter table Firmas  drop constraint FK1BC2D59F74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK405349573F1A7365]') AND parent_object_id = OBJECT_ID('FirmaArticulo'))
-alter table FirmaArticulo  drop constraint FK405349573F1A7365
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40534957FCE29076]') AND parent_object_id = OBJECT_ID('FirmaArticulo'))
-alter table FirmaArticulo  drop constraint FK40534957FCE29076
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF59E3DA23F1A7365]') AND parent_object_id = OBJECT_ID('FirmaCapitulo'))
 alter table FirmaCapitulo  drop constraint FKF59E3DA23F1A7365
 
@@ -2372,6 +2362,11 @@ alter table Articulos  drop constraint FK3EB394D7BC063744
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7F4FE4035]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D7F4FE4035
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D7CB4F3F6C]') AND parent_object_id = OBJECT_ID('Articulos'))
+alter table Articulos  drop constraint FK3EB394D7CB4F3F6C
 
 
 
@@ -3150,8 +3145,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Idiomas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Idiomas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Firmas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Firmas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaArticulo
 
     if exists (select * from dbo.sysobjects where id = object_id(N'FirmaCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaCapitulo
 
@@ -4573,6 +4566,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        Aceptacion2 INT null,
        Firma3 DATETIME null,
        Aceptacion3 INT null,
+       Descripcion NVARCHAR(255) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -4582,12 +4576,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
-    )
-
-    create table FirmaArticulo (
-        Firma INT not null,
-       ArticuloFk INT null,
-       primary key (Firma)
     )
 
     create table FirmaCapitulo (
@@ -4918,6 +4906,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       FirmaFk INT null,
        RevistaPublicacionFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -6327,16 +6316,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (Nivel2Fk) 
         references Niveles
 
-    alter table FirmaArticulo 
-        add constraint FK405349573F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaArticulo 
-        add constraint FK40534957FCE29076 
-        foreign key (ArticuloFk) 
-        references Articulos
-
     alter table FirmaCapitulo 
         add constraint FKF59E3DA23F1A7365 
         foreign key (Firma) 
@@ -6686,6 +6665,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK3EB394D7F4FE4035 
         foreign key (SubdisciplinaFk) 
         references Subdisciplinas
+
+    alter table Articulos 
+        add constraint FK3EB394D7CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table Articulos 
         add constraint FK3EB394D72AF31B56 

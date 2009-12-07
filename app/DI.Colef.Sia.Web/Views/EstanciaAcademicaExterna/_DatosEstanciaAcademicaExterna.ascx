@@ -37,7 +37,7 @@
 </p>
 <p>
     <label>Adscripci&oacute;n regional:</label>
-    <span id="span_direccionregional" class="valor">&nbsp;</span>
+    <span id="span_direccionregional" class="valor"><%=Html.Encode(Model.SedeDireccionRegionalNombre)%>&nbsp;</span>
 </p>
 <p>
 	<label>Fecha de inicio</label>
