@@ -45,7 +45,7 @@
                 <% } %>
                 <p>
                     <label>Volumen</label>
-                        <span class="valor"><%= HumanizeHelper.Volumen(Model.Form.Volumen)%>&nbsp;</span>
+                        <span class="valor"><%=Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
                 </p>
                 
                 <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>

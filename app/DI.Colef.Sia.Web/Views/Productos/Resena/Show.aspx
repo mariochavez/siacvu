@@ -87,7 +87,7 @@
                     <% Html.RenderPartial("_ShowObraResenada", Model.Form); %>
                 <% } %>
                 
-                <% if (Model.Form.EstadoProducto == 2) { %>
+                <% if (Model.Form.EstadoProducto == 3) { %>
                     <h4>Referencia bibliogr&aacute;fica</h4>
                     
                     <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>

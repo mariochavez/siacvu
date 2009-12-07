@@ -89,7 +89,7 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->
-                <% if (Model.Form.EstadoProducto == 2){ %>
+                <% if (Model.Form.EstadoProducto == 3){ %>
                 <h4>Referencia bibliogr&aacute;fica</h4>
                 <p>
                     <label>Nombre del libro</label>
