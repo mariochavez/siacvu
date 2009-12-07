@@ -4,10 +4,13 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class InstitucionEvento : Entity, IBaseEntity
+    public class InstitucionProducto : Entity, IBaseEntity
     {
+
         [NotNull]
         public virtual Institucion Institucion { get; set; }
+
+        public virtual int TipoProducto { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }
 
@@ -18,5 +21,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+    }
+
+    public class InstitucionReporte : InstitucionProducto
+    {
+
+    }
+
+    public class InstitucionEvento :InstitucionProducto
+    {
+        
     }
 }

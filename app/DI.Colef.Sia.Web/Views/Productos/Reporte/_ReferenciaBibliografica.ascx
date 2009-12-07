@@ -8,14 +8,9 @@
 <div class="tieneproyecto_field">
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
 </div>
-<p class="ReporteDocumento">
-    <label class="ReporteTecnico">Instancia a la que se presenta el reporte</label>
-    <label class="DocumentoTrabajo">Instituci&oacute;n donde se publica</label>
-    <%=Html.TextBox("InstitucionNombre", Model.InstitucionNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
-    <%=Html.Hidden("InstitucionId", Model.InstitucionId, new { rel = "#InstitucionNombre" })%>
-    <%=Html.ValidationMessage("InstitucionNombre")%>
-</p>
+<div class="ReporteDocumento">
+    <% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.InstitucionReportes, ModelId = Model.Id } ); %>
+</div>
 <p class="DocumentoTrabajo">
 	<label>Serie/N&uacute;mero</label>
 	<%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>

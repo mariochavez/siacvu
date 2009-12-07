@@ -12,16 +12,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
         readonly IProyectoService proyectoService;
+        readonly IInstitucionReporteMapper institucionReporteMapper;
 
         public ReporteMapper(IRepository<Reporte> repository, ICatalogoService catalogoService,
                              ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper,
-                             IProyectoService proyectoService)
+                             IProyectoService proyectoService, IInstitucionReporteMapper institucionReporteMapper)
             : base(repository)
         {
             this.catalogoService = catalogoService;
             this.coautorExternoReporteMapper = coautorExternoReporteMapper;
             this.coautorInternoReporteMapper = coautorInternoReporteMapper;
             this.proyectoService = proyectoService;
+            this.institucionReporteMapper = institucionReporteMapper;
         }
 
         protected override int GetIdFromMessage(ReporteForm message)
@@ -70,36 +72,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador,
-            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos)
+            CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
+            InstitucionProductoForm[] instituciones)
         {
             var model = Map(message, usuario, investigador);
 
-            if (coautoresExternos != null)
+            foreach (var coautorExterno in coautoresExternos)
             {
-                foreach (var coautorExterno in coautoresExternos)
-                {
-                    var coautor =
-                        coautorExternoReporteMapper.Map(coautorExterno);
+                var coautor =
+                    coautorExternoReporteMapper.Map(coautorExterno);
 
-                    coautor.CreadoPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadoPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorExterno(coautor);
-                }
+                model.AddCoautorExterno(coautor);
             }
 
-            if (coautoresInternos != null)
+            foreach (var coautorInterno in coautoresInternos)
             {
-                foreach (var coautorInterno in coautoresInternos)
-                {
-                    var coautor =
-                        coautorInternoReporteMapper.Map(coautorInterno);
+                var coautor =
+                    coautorInternoReporteMapper.Map(coautorInterno);
 
-                    coautor.CreadoPor = usuario;
-                    coautor.ModificadoPor = usuario;
+                coautor.CreadoPor = usuario;
+                coautor.ModificadoPor = usuario;
 
-                    model.AddCoautorInterno(coautor);
-                }
+                model.AddCoautorInterno(coautor);
+            }
+
+            foreach (var institucion in instituciones)
+            {
+                var institucionReporte =
+                    institucionReporteMapper.Map(institucion);
+
+                institucionReporte.CreadoPor = usuario;
+                institucionReporte.ModificadoPor = usuario;
+
+                model.AddInstitucion(institucionReporte);
             }
 
             return model;

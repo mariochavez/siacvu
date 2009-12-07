@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [EventoValidator]
-    public class Evento : Entity, IBaseEntity
+    public class Evento : Entity, IBaseEntity, IInstitucion
     {
         const int tipoProducto = 6; // 6 Representa Evento
 
@@ -46,14 +46,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             FirmaEventos.Add((FirmaEvento)firma);
         }
 
-        public virtual void AddInstitucion(InstitucionEvento institucion)
+        public virtual void AddInstitucion(InstitucionProducto institucion)
         {
-            InstitucionEventos.Add(institucion);
+            institucion.TipoProducto = tipoProducto;
+            InstitucionEventos.Add((InstitucionEvento) institucion);
         }
 
-        public virtual void DeleteInstitucion(InstitucionEvento institucion)
+        public virtual void DeleteInstitucion(InstitucionProducto institucion)
         {
-            InstitucionEventos.Remove(institucion);
+            InstitucionEventos.Remove((InstitucionEvento) institucion);
         }
 
         public virtual void DeleteFirma(Firma firma)

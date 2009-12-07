@@ -15,7 +15,7 @@
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 
-<% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+<% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
 
 <p>
     <label>Editorial</label>

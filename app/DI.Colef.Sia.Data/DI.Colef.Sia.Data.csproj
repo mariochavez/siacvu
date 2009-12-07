@@ -100,6 +100,7 @@
     <Compile Include="NHibernateMaps\Alteration\FirmaAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\AutorExternoAlteration.cs" />
     <Compile Include="NHibernateMaps\Alteration\AutorInternoAlteration.cs" />
+    <Compile Include="NHibernateMaps\Alteration\InstitucionAlteration.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="NHibernateMaps\Conventions\ByteArrayConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyConvention.cs" />

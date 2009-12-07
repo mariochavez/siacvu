@@ -32,6 +32,7 @@
 				<p>
 					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                     <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                    <%--<span><%=Html.CustomActionLink("Home", "Signature", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>--%>
                	</p>
 			</div><!--end elementobotones-->
         		

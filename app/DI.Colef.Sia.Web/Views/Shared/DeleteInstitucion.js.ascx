@@ -1,10 +1,10 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InstitucionEventoForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<InstitucionForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <div id="institucioneventoEmptyListForm" class="sublista sublista-dos">
+    <div id="institucionEmptyListForm" class="sublista sublista-dos">
         <h6>
             <span>No hay instituciones registradas</span>
         </h6>
@@ -13,8 +13,8 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-$('#institucionevento_<%=Html.Encode(Model.InstitucionId) %>').remove();
+$('#institucion_<%=Html.Encode(Model.InstitucionId) %>').remove();
 
-deleteElement(html, '#institucioneventoList div[id^=institucionevento_]', '#institucioneventoList');
+deleteElement(html, '#institucionList div[id^=institucion_]', '#institucionList');
 
 setupSublistRows();

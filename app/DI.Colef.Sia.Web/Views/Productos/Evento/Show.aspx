@@ -64,7 +64,7 @@
                 </p>
                 
                 <% if (Model.Form.TipoEventoNombre.Contains("Evento Estratégico (El Colef)")){ %>
-                    <% Html.RenderPartial("_ShowInstitucion", Model.Form); %>
+                    <% Html.RenderPartial("_ShowInstitucion", new InstitucionForm { Instituciones = Model.Form.InstitucionEventos, ModelId = Model.Form.Id }); %>
                 <% } %>
                 
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>

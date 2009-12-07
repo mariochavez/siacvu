@@ -6,13 +6,12 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class InstitucionEventoMapper : AutoFormMapper<InstitucionEvento, InstitucionProductoForm>, IInstitucionEventoMapper
+    public class InstitucionReporteMapper: AutoFormMapper<InstitucionReporte, InstitucionProductoForm>, IInstitucionReporteMapper
     {
 		readonly ICatalogoService catalogoService;
 
-        public InstitucionEventoMapper(IRepository<InstitucionEvento> repository,
-            ICatalogoService catalogoService)
-			: base(repository)
+        public InstitucionReporteMapper(IRepository<InstitucionReporte> repository, ICatalogoService catalogoService)
+            : base(repository)
         {
             this.catalogoService = catalogoService;
         }
@@ -22,7 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
-        protected override void MapToModel(InstitucionProductoForm message, InstitucionEvento model)
+        protected override void MapToModel(InstitucionProductoForm message, InstitucionReporte model)
         {
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 			
@@ -31,8 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.Activo = true;
                 model.CreadoEl = DateTime.Now;
             }
-
             model.ModificadoEl = DateTime.Now;
         }
-}
+    }
 }

@@ -10,12 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Articulo> articuloRepository;
         readonly IProductoQuerying productoQuerying;
+        readonly IFirmaService firmaservice;
 
         public ArticuloService(IRepository<Articulo> articuloRepository,
-                               IProductoQuerying productoQuerying)
+                               IProductoQuerying productoQuerying, IFirmaService firmaservice)
         {
             this.articuloRepository = articuloRepository;
             this.productoQuerying = productoQuerying;
+            this.firmaservice = firmaservice;
         }
 
         public Articulo GetArticuloById(int id)
@@ -40,6 +42,23 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Activo = true;
                 articulo.CreadoEl = DateTime.Now;
                 articulo.Puntuacion = 0;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0, 
+                                    Aceptacion2 = 0, 
+                                    Aceptacion3 = 0, 
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = 1,
+                                    CreadoPor = articulo.Usuario,
+                                    ModificadoPor = articulo.Usuario
+                                };
+
+                firmaservice.SaveFirma(firma);
+
+                articulo.Firma = firma;
             }
 
             articulo.PosicionAutor = 1;

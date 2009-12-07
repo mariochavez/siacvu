@@ -596,13 +596,7 @@
     <Content Include="Views\Productos\Curso\Show.aspx" />
     <Content Include="Views\Productos\Dictamen\Show.aspx" />
     <Content Include="Views\Productos\Distincion\Show.aspx" />
-    <Content Include="Views\Productos\Evento\AddInstitucion.js.ascx" />
-    <Content Include="Views\Productos\Evento\_ShowInstitucion.ascx" />
-    <Content Include="Views\Productos\Evento\DeleteInstitucion.js.ascx" />
-    <Content Include="Views\Productos\Evento\NewInstitucion.js.ascx" />
     <Content Include="Views\Productos\Evento\Show.aspx" />
-    <Content Include="Views\Productos\Evento\_EditInstitucion.ascx" />
-    <Content Include="Views\Productos\Evento\_NewInstitucion.ascx" />
     <Content Include="Views\Productos\Libro\AddEvento.js.ascx" />
     <Content Include="Views\Productos\Libro\_NewEvento.ascx" />
     <Content Include="Views\Productos\Libro\NewEvento.js.ascx" />
@@ -630,6 +624,7 @@
     <Content Include="Views\Shared\AddAutorExterno.js.ascx" />
     <Content Include="Views\Shared\AddAutorInterno.js.ascx" />
     <Content Include="Views\Shared\AddEditorial.js.ascx" />
+    <Content Include="Views\Shared\AddInstitucion.js.ascx" />
     <Content Include="Views\Shared\ChangeOrganizacion.js.ascx" />
     <Content Include="Views\Shared\ChangeArea.js.ascx" />
     <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
@@ -639,7 +634,12 @@
     <Content Include="Views\Shared\ChangeSector.js.ascx" />
     <Content Include="Views\Shared\ChangeSectorEconomico.js.ascx" />
     <Content Include="Views\Shared\ChangeRama.js.ascx" />
+    <Content Include="Views\Shared\DeleteInstitucion.js.ascx" />
+    <Content Include="Views\Shared\NewInstitucion.js.ascx" />
+    <Content Include="Views\Shared\_EditInstitucion.ascx" />
+    <Content Include="Views\Shared\_NewInstitucion.ascx" />
     <Content Include="Views\Shared\_ShowEstadoProducto.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucion.ascx" />
     <Content Include="Views\Shared\_ShowPalabrasClave.ascx" />
     <Content Include="Views\Shared\ChangeDisciplina.js.ascx" />
     <Content Include="Views\Shared\_ShowInstitucionShort.ascx" />
@@ -649,7 +649,7 @@
     <Content Include="Views\Shared\_NewEditorial.ascx" />
     <Content Include="Views\Shared\_ShowClase.ascx" />
     <Content Include="Views\Shared\_ShowEditorial.ascx" />
-    <Content Include="Views\Shared\_ShowInstitucion.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucionLong.ascx" />
     <Content Include="Views\Shared\_Show2doNivel.ascx" />
     <Content Include="Views\Shared\_ShowSubdisciplina.ascx" />
     <Content Include="Views\Shared\_ShowAreaTematica.ascx" />
@@ -847,7 +847,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4891</DevelopmentServerPort>
+          <DevelopmentServerPort>3756</DevelopmentServerPort>
           <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

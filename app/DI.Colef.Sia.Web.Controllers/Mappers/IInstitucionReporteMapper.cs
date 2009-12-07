@@ -3,8 +3,8 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public interface IInstitucionEventoMapper : IMapper<InstitucionEvento, InstitucionProductoForm>
+    public interface IInstitucionReporteMapper : IMapper<InstitucionReporte, InstitucionProductoForm>
     {
-
+        
     }
 }

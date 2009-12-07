@@ -96,7 +96,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var vinculacionResultado = new ArrayList();
             foreach (var producto in vinculacionDifusion.List())
             {
-                vinculacionResultado.AddRange((ICollection) producto);
+                vinculacionResultado.AddRange((ICollection)producto);
             }
 
             bandejaTrabajo[0] = produccionAcademicaResultado;
@@ -195,6 +195,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 criteria.Add(Subqueries.PropertyIn(tipoPublicacion, cursosTesis));
             }
 
+            //Filtrar todos los productos que mientras Aceptacion2 no tenga valor de 2
+            //Unicamente probado en articulos
+            if (productType == 1)
+            {
+                var firma = DetachedCriteria.For(typeof (Firma))
+                    .SetProjection(Projections.ProjectionList()
+                                       .Add(Projections.Property("Aceptacion2"), "Aceptacion2"))
+                    .Add(Expression.Eq("Aceptacion2", 2));
+
+                criteria.Add(Subqueries.PropertyNotIn("Firma", firma));
+            }
+
             return criteria;
         }
     }
@@ -213,5 +225,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public TipoOrgano TipoOrgano { get; set; }
         public TipoEvento TipoEvento { get; set; }
         public TipoParticipacion TipoParticipacion { get; set; }
+        public int Aceptacion2 { get; set; }
     }
 }

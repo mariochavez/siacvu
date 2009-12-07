@@ -74,6 +74,8 @@
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="DataInterfaces\ICursoInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\CursoInvestigadorQuerying.cs" />
+    <Compile Include="IInstitucion.cs" />
+    <Compile Include="InstitucionProducto.cs" />
     <Compile Include="MiembroExternoGrupoInvestigacion.cs" />
     <Compile Include="NHibernateValidator\CategoriaInvestigadorValidator.cs" />
     <Compile Include="CursoInvestigador.cs" />
@@ -143,7 +145,6 @@
     <Compile Include="ImpactoPoliticaPublica.cs" />
     <Compile Include="Indice.cs" />
     <Compile Include="Institucion.cs" />
-    <Compile Include="InstitucionEvento.cs" />
     <Compile Include="Investigador.cs" />
     <Compile Include="IAutor.cs" />
     <Compile Include="Libro.cs" />

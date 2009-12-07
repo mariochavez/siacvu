@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly IInstitucionReporteMapper institucionReporteMapper;
 
         public ReporteController(IReporteService reporteService,
                                  IReporteMapper reporteMapper,
@@ -44,7 +45,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IAreaTematicaMapper areaTematicaMapper,
                                  ILineaTematicaMapper lineaTematicaMapper, 
                                  IInstitucionMapper institucionMapper,
-                                 IInvestigadorExternoMapper investigadorExternoMapper)
+                                 IInvestigadorExternoMapper investigadorExternoMapper,
+                                 IInstitucionReporteMapper institucionReporteMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -61,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.institucionMapper = institucionMapper;
+            this.institucionReporteMapper = institucionReporteMapper;
         }
 
         [Authorize]
@@ -157,11 +160,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
-                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno, 
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+                                   [Bind(Prefix = "Institucion")] InstitucionProductoForm[] institucion,
                                    ReporteForm form)
         {
+            coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
+            coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
+            institucion = institucion ?? new InstitucionProductoForm[] { };
+
             var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                                            coautorExterno, coautorInterno);
+                                            coautorExterno, coautorInterno, institucion);
 
             if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
             {
@@ -401,6 +409,77 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
 
             return Rjs("DeleteCoautorExterno", form);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewInstitucion(int id)
+        {
+            var reporte = reporteService.GetReporteById(id);
+
+            var form = new InstitucionForm { Controller = "Reporte", IdName = "ReporteId" };
+
+            if (reporte != null)
+                form.Id = reporte.Id;
+
+            return Rjs("NewInstitucion", form);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddInstitucion([Bind(Prefix = "Institucion")] InstitucionProductoForm form, int reporteId)
+        {
+            var institucionReporte = institucionReporteMapper.Map(form);
+
+            ModelState.AddModelErrors(institucionReporte.ValidationResults(), false, "Institucion", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (reporteId != 0)
+            {
+                institucionReporte.CreadoPor = CurrentUser();
+                institucionReporte.ModificadoPor = CurrentUser();
+
+                var reporte = reporteService.GetReporteById(reporteId);
+
+                var alreadyHasIt =
+                    reporte.InstitucionReportes.Where(
+                        x => x.Institucion.Id == institucionReporte.Institucion.Id).Count();
+
+                if (alreadyHasIt == 0)
+                {
+                    reporte.AddInstitucion(institucionReporte);
+                    reporteService.SaveReporte(reporte);
+                }
+            }
+
+            var institucionReporteForm = institucionReporteMapper.Map(institucionReporte);
+            institucionReporteForm.ParentId = reporteId;
+
+            return Rjs("AddInstitucion", institucionReporteForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteInstitucion(int id, int institucionId)
+        {
+            var reporte = reporteService.GetReporteById(id);
+
+            if (reporte != null)
+            {
+                var institucion = reporte.InstitucionReportes.Where(x => x.Institucion.Id == institucionId).First();
+                reporte.DeleteInstitucion(institucion);
+
+                reporteService.SaveReporte(reporte);
+            }
+
+            var form = new InstitucionForm {ModelId = id, InstitucionId = institucionId};
+
+            return Rjs("DeleteInstitucion", form);
         }
 
         ReporteForm SetupNewForm()

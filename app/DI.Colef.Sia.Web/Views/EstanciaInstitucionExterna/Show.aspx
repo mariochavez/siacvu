@@ -51,7 +51,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowInstitucion", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowInstitucionLong", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Departamento de destino</label>

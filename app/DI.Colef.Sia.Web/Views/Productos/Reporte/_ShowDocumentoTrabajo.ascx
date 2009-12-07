@@ -1,10 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ReporteForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<p>
-    <label>Instituci&oacute;n donde se publica</label>
-    <span class="valor"><%= Html.Encode(Model.InstitucionNombre)%>&nbsp;</span>
-</p>
+
+<% Html.RenderPartial("_ShowInstitucion", new InstitucionForm { Instituciones = Model.InstitucionReportes, ModelId = Model.Id }); %>
+
 <p>
     <label>Serie/N&uacute;mero</label>
     <span class="valor"><%= Html.Encode(Model.Numero)%>&nbsp;</span>

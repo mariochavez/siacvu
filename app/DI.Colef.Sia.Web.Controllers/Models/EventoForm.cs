@@ -47,12 +47,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public CoautorExternoProductoForm[] CoautorExternoEventos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoEventos { get; set; }
-        public InstitucionEventoForm[] InstitucionEventos { get; set; }
+        public InstitucionProductoForm[] InstitucionEventos { get; set; }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
-        public InstitucionEventoForm InstitucionEvento { get; set; }
+        public InstitucionProductoForm InstitucionProducto { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }

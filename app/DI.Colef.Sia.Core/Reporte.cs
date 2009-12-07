@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ReporteValidator]
-    public class Reporte : Entity, IBaseEntity, ICoautor
+    public class Reporte : Entity, IBaseEntity, ICoautor, IInstitucion
     {
         const int tipoProducto = 11; // 11 Representa Reporte
 
@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoReportes = new List<CoautorExternoReporte>();
             CoautorInternoReportes = new List<CoautorInternoReporte>();
             ArchivoReportes = new List<ArchivoReporte>();
+            InstitucionReportes = new List<InstitucionReporte>();
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -36,6 +37,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoReportes.Add((ArchivoReporte)archivo);
+        }
+
+        public virtual void AddInstitucion(InstitucionProducto institucion)
+        {
+            institucion.TipoProducto = tipoProducto;
+            InstitucionReportes.Add((InstitucionReporte) institucion);
+        }
+
+        public virtual void DeleteInstitucion(InstitucionProducto institucion)
+        {
+            InstitucionReportes.Remove((InstitucionReporte)institucion);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -67,6 +79,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<CoautorInternoReporte> CoautorInternoReportes { get; private set; }
+
+        [Valid]
+        public virtual IList<InstitucionReporte> InstitucionReportes { get; private set; }
 
         public virtual int PosicionAutor { get; set; }
 

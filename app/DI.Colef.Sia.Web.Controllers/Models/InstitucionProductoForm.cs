@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class InstitucionEventoForm
+    public class InstitucionProductoForm
     {
         public int Id { get; set; }
         public bool Activo { get; set; }

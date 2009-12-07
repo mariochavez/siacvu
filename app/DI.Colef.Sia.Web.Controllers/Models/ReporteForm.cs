@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ReporteForm
@@ -46,9 +48,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         /* New */
         public CoautorExternoProductoForm[] CoautorExternoReportes { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoReportes { get; set; }
+        public InstitucionProductoForm[] InstitucionReportes { get; set; }
 
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }
+        public InstitucionProductoForm InstitucionProducto { get; set; }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }

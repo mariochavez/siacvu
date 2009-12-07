@@ -61,7 +61,7 @@
                 </p>
                 
                 <div class="TipoEvento_field">
-                    <% Html.RenderPartial("_EditInstitucion", Model.Form); %>
+                    <% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.Form.InstitucionEventos, ModelId = Model.Form.Id } ); %>
                 </div>
                 
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>

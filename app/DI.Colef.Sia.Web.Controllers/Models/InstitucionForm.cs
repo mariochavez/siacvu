@@ -36,5 +36,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public EstadoPaisForm[] EstadosPaises { get; set; }
         public AmbitoForm[] Ambitos { get; set; }
         public SectorForm[] Sectores { get; set; }
+
+        /*Fields for has many*/
+        public string Controller { get; set; }
+        public string IdName { get; set; }
+
+        public InstitucionProductoForm[] Instituciones { get; set; }
+        public int ModelId { get; set; }
+        public int InstitucionId { get; set; }
     }
 }

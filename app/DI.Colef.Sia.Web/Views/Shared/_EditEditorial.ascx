@@ -9,7 +9,7 @@
         <% for (int i = 0; i < Model.Editoriales.Length; i++){ %>
 	        <div class="sublista" id="editorial_<%=Html.Encode(Model.Editoriales[i].EditorialId) %>">
 	            <h6>
-	            	<a href="<%=Url.Action("DeleteEditorial", null, new{ id = Model.Id, editorialId = Model.Editoriales[i].EditorialId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	            	<a href="<%=Url.Action("DeleteEditorial", null, new{ id = Model.ModelId, editorialId = Model.Editoriales[i].EditorialId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.Editoriales[i].EditorialNombre)%>
 	                <%=Html.Hidden("Editorial[" + i + "].EditorialId", Model.Editoriales[i].EditorialId)%>
 	            </h6>

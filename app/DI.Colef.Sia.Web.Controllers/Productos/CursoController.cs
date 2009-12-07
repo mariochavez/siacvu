@@ -208,10 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.TiposCursos = customCollection.TipoCursoCustomCollection();
 
             form.NivelEstudios = nivelEstudioMapper.Map(catalogoService.GetActiveNivelEstudios());
-            if(form.CursoInvestigadorNombre != "")
-                form.CursosInvestigadores = cursoInvestigadorMapper.Map(cursoInvestigadorService.FindUnsedCursosInvestigador(CurrentInvestigador()));
-            else
-                form.CursosInvestigadores = cursoInvestigadorMapper.Map(cursoInvestigadorService.GetAllCursosInvestigador());
+            form.CursosInvestigadores = cursoInvestigadorMapper.Map(cursoInvestigadorService.FindUnsedCursosInvestigador(CurrentInvestigador()));
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);

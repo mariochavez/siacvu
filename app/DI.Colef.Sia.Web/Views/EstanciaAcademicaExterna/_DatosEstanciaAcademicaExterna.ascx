@@ -14,7 +14,7 @@
     <%=Html.ValidationMessage("TipoEstancia") %>
 </p>
 
-<% Html.RenderPartial("_ShowInstitucion", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución de procedencia", IsShowForm = false }); %>
+<% Html.RenderPartial("_ShowInstitucionLong", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución de procedencia", IsShowForm = false }); %>
 
 <p>
 	<label>L&iacute;neas de investigaci&oacute;n</label>
@@ -37,7 +37,7 @@
 </p>
 <p>
     <label>Adscripci&oacute;n regional:</label>
-    <span id="span_direccionregional" class="valor">&nbsp;</span>
+    <span id="span_direccionregional" class="valor"><%=Html.Encode(Model.SedeDireccionRegionalNombre)%>&nbsp;</span>
 </p>
 <p>
 	<label>Fecha de inicio</label>

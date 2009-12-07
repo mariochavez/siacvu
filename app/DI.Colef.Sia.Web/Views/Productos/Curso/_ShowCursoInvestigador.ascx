@@ -1,6 +1,20 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CursoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<% if(Model.Id == 0){ %>
+    <p>
+        <label>Nombre del curso</label>
+        <%=Html.DropDownList("CursoInvestigadorId", Model.CursosInvestigadores.CreateSelectList<CursoInvestigadorForm>("Id", "Nombre"),
+            "Seleccione ...", new { @class = "requerido cascade", rel = Url.Action("ChangeCursoInvestigador") })%>
+        <%=Html.ValidationMessage("CursoInvestigador")%>
+    </p>
+<% } else { %>
+	<p>
+	    <label>Nombre del curso</label>
+        <span id="span_nombrecurso" class="valor"><%= Html.Encode(Model.CursoInvestigador.Nombre) %>&nbsp;</span>
+	</p> 
+<% } %>
+	                   
 <p>
     <label>Programa de estudio</label>
     <span id="span_programaestudio" class="valor"><%= Html.Encode(Model.CursoInvestigador.ProgramaEstudioNombre) %>&nbsp;</span>
