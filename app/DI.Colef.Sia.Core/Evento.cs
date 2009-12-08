@@ -15,11 +15,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public Evento()
         {
+            SesionesEventos = new List<SesionEvento>();
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             ArchivoEventos = new List<ArchivoEvento>();
             FirmaEventos = new List<FirmaEvento>();
             InstitucionEventos = new List<InstitucionEvento>();
+        }
+
+        public virtual void AddSesion(SesionEvento sesionEvento)
+        {
+            SesionesEventos.Add(sesionEvento);
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -83,13 +89,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<FirmaEvento> FirmaEventos { get; private set; }
 
+        [Valid]
+        public virtual IList<SesionEvento> SesionesEventos { get; private set; }
+
         [NotNullNotEmpty]
         [DomainSignature]
         public virtual string Nombre { get; set; }
 
         public virtual TipoEvento TipoEvento { get; set; }
 
+        public virtual AreaTematica AreaTematica { get; set; }
+
         public virtual string ObjetivoEvento { get; set; }
+
+        public virtual int FinanciamientoInterno { get; set; }
+
+        public virtual int FinanciamientoExterno { get; set; }
+
+        public virtual int SesionesTrabajo { get; set; }
 
         public virtual TipoParticipacion TipoParticipacion { get; set; }
 
@@ -102,8 +119,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-        public virtual Ambito Ambito { get; set; }
-
         public virtual bool Invitacion { get; set; }
 
         public virtual string TituloTrabajo { get; set; }
@@ -115,10 +130,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
         public virtual int PosicionAutor { get; set; }
-
-        public virtual DateTime FechaEvento { get; set; }
-
-        public virtual string Lugar { get; set; }
 
         public virtual Pais Pais { get; set; }
 

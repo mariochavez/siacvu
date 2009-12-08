@@ -8,6 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         Evento Map(EventoForm message, Usuario usuario, Investigador investigador);
         Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
                    CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
-                   InstitucionProductoForm[] instituciones);
+                   InstitucionProductoForm[] instituciones, SesionEventoForm[] sesiones);
     }
 }

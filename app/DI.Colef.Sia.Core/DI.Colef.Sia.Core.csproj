@@ -72,6 +72,11 @@
   <ItemGroup>
     <Compile Include="ActividadPrevista.cs" />
     <Compile Include="AreaInvestigacion.cs" />
+    <Compile Include="IParticipante.cs" />
+    <Compile Include="ParticipanteExterno.cs" />
+    <Compile Include="ParticipanteExternoProducto.cs" />
+    <Compile Include="ParticipanteInternoProducto.cs" />
+    <Compile Include="SesionEvento.cs" />
     <Compile Include="DataInterfaces\ICursoInvestigadorQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\CursoInvestigadorQuerying.cs" />
     <Compile Include="IInstitucion.cs" />

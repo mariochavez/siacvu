@@ -90,7 +90,8 @@
                     </p>
                 </div>
                 
-				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>
+                <h4>Sesion(es) del evento estrategico</h4>
+                    <% Html.RenderPartial("_EditSesion", Model.Form); %>
         				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar")%>

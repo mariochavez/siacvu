@@ -35,35 +35,6 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <p>
-                    <label>Nombre del evento</label>
-	                <%=Html.TextBox("Nombre", Model.Form.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
-	                <span class="cvu"></span>
-	                <%=Html.ValidationMessage("Nombre")%>
-                </p>
-                <p>
-                    <label>Tipo de evento</label>
-	                <%=Html.DropDownList("TipoEvento", Model.Form.TiposEventos.CreateSelectList<TipoEventoForm>("Id", "Nombre"),
-                                "Seleccione ...", new { @class = "requerido" })%>
-	                <%=Html.ValidationMessage("TipoEvento") %>
-                </p>
-                <p class="TipoEvento_field">
-                    <label>Objetivo del evento</label>
-	                <%=Html.TextArea("ObjetivoEvento", Model.Form.ObjetivoEvento, 5, 35, new { @class = "input420-requerido", maxlength = 100 })%>
-	                <%=Html.ValidationMessage("ObjetivoEvento")%>
-                </p>                
-                <p>
-                    <label>Tipo de participaci&oacute;n</label>
-                    <%=Html.DropDownList("TipoParticipacion", Model.Form.TiposParticipaciones.CreateSelectList<TipoParticipacionForm>("Id", "Nombre"),
-                                "Seleccione ...", new { @class = "requerido" })%>
-                    <span class="cvu"></span>
-                    <%=Html.ValidationMessage("TipoParticipacion")%>
-                </p>
-                
-                <div class="TipoEvento_field">
-                    <% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.Form.InstitucionEventos, ModelId = Model.Form.Id } ); %>
-                </div>
-                
                 <% Html.RenderPartial("_DatosEvento", Model.Form); %>
                 
                 <div id="TipoParticipacion_fields">
@@ -90,7 +61,8 @@
                     </p>
                 </div>
                 
-				<% Html.RenderPartial("_DatosReferencia", Model.Form); %>
+				<h4>Sesion(es) del evento estrategico</h4>
+                    <% Html.RenderPartial("_NewSesion", Model.Form); %>
         				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar")%>

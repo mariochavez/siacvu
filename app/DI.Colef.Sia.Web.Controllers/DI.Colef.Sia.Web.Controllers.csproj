@@ -121,6 +121,12 @@
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
+    <Compile Include="Mappers\Impl\SesionEventoMapper.cs" />
+    <Compile Include="Mappers\ISesionEventoMapper.cs" />
+    <Compile Include="Mappers\Impl\ParticipanteExternoEventoMapper.cs" />
+    <Compile Include="Mappers\Impl\ParticipanteInternoEventoMapper.cs" />
+    <Compile Include="Mappers\IParticipanteExternoEventoMapper.cs" />
+    <Compile Include="Mappers\IParticipanteInternoEventoMapper.cs" />
     <Compile Include="Mappers\IEditorialDictamenMapper.cs" />
     <Compile Include="Mappers\IEditorialObraTraducidaMapper.cs" />
     <Compile Include="Mappers\ICoautorInternoObraTraducidaMapper.cs" />
@@ -173,6 +179,11 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
+    <Compile Include="Models\SesionEventoForm.cs" />
+    <Compile Include="Models\ParticipanteExternoForm.cs" />
+    <Compile Include="Models\ParticipanteExternoProductoForm.cs" />
+    <Compile Include="Models\ParticipanteForm.cs" />
+    <Compile Include="Models\ParticipanteInternoProductoForm.cs" />
     <Compile Include="Models\CursoInvestigadorForm.cs" />
     <Compile Include="Models\EditorialProductoForm.cs" />
     <Compile Include="Models\EstanciaAcademicaExternaForm.cs" />

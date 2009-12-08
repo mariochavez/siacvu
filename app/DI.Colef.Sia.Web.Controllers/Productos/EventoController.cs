@@ -16,6 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAmbitoMapper ambitoMapper;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
+        readonly ISesionEventoMapper sesionEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
@@ -24,6 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorService investigadorService;
         readonly ITipoEventoMapper tipoEventoMapper;
         readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
@@ -34,8 +37,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ICatalogoService catalogoService,
                                 IDirigidoAMapper dirigidoAMapper,
                                 IEstadoPaisMapper estadoPaisMapper,
+                                ILineaTematicaMapper lineaTematicaMapper,
                                 IPaisMapper paisMapper,
-                                IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
+                                IAreaTematicaMapper areaTematicaMapper,
+                                ISesionEventoMapper sesionEventoMapper,
+                                IUsuarioService usuarioService,
+                                IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
                                 IInvestigadorMapper investigadorMapper,
@@ -43,11 +50,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
-                                ISearchService searchService, IInstitucionEventoMapper institucionEventoMapper,
+                                ISearchService searchService,
+                                IInstitucionEventoMapper institucionEventoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
+            this.sesionEventoMapper = sesionEventoMapper;
             this.estadoPaisMapper = estadoPaisMapper;
             this.paisMapper = paisMapper;
             this.investigadorService = investigadorService;
@@ -162,14 +173,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    [Bind(Prefix = "Institucion")] InstitucionProductoForm[] institucion,
+                                   [Bind(Prefix = "SesionEvento")] SesionEventoForm[] sesion,
                                    EventoForm form)
         {
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
             institucion = institucion ?? new InstitucionProductoForm[] { };
+            sesion = sesion ?? new SesionEventoForm[] { };
 
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                                          coautorExterno, coautorInterno, institucion);
+                                          coautorExterno, coautorInterno, institucion, sesion);
 
             if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
                 evento.Pais = GetDefaultPais();
@@ -218,6 +231,63 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Evento>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var form = new ShowFieldsForm
+            {
+                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+                AreaTematicaId = areaTematicaForm.Id
+            };
+
+            return Rjs("ChangeAreaTematica", form);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewSesion(int id)
+        {
+            var evento = eventoService.GetEventoById(id);
+            var form = new EventoForm
+            {
+                Id = evento.Id,
+                SesionEvento = new SesionEventoForm(),
+                Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos())
+            };
+
+            return Rjs("NewSesion", form);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddSesion([Bind(Prefix = "SesionEvento")] SesionEventoForm form,
+                                      int eventoId)
+        {
+            var sesionEvento = sesionEventoMapper.Map(form);
+
+            ModelState.AddModelErrors(sesionEvento.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            sesionEvento.CreadoPor = CurrentUser();
+            sesionEvento.ModificadoPor = CurrentUser();
+
+            var evento = eventoService.GetEventoById(eventoId);
+            evento.AddSesion(sesionEvento);
+            eventoService.SaveEvento(evento);
+
+            var sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
+
+            return Rjs("AddSesion", sesionEventoForm);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -466,6 +536,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.CoautorExternoProducto = new CoautorExternoProductoForm();
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
+            form.SesionEvento = new SesionEventoForm();
 
             //Lista de Catalogos Pendientes
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
@@ -494,6 +565,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       IsShowForm = true,
                                   };

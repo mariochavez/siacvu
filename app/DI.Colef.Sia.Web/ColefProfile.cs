@@ -399,10 +399,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Evento, EventoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.FechaEvento,
-                           o => o.AddFormatter<StandardDateFormatter>())
-                .ForMember(d => d.Ambito,
-                           o => o.Ignore())
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
@@ -421,6 +417,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<InstitucionEvento, InstitucionProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<SesionEvento, SesionEventoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaEvento,
+                           o => o.AddFormatter<StandardDateFormatter>())
+                .ForMember(d => d.Ambito,
+                           o => o.Ignore());
         }
 
         private void CreateOrganosExternosMaps()
