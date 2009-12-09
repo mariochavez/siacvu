@@ -3,6 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+
 var html = '
     <div id="responsableEmptyListForm" class="sublista sublista-dos">
         <h6>
