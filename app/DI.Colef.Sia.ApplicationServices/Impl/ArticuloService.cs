@@ -44,17 +44,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Puntuacion = 0;
 
                 var firma = new Firma
-                                {
-                                    Aceptacion1 = 0, 
-                                    Aceptacion2 = 0, 
-                                    Aceptacion3 = 0, 
-                                    Firma1 = DateTime.Now,
-                                    Firma2 = DateTime.Now,
-                                    Firma3 = DateTime.Now,
-                                    TipoProducto = articulo.TipoProducto,
-                                    CreadoPor = articulo.Usuario,
-                                    ModificadoPor = articulo.Usuario
-                                };
+                {
+                    Aceptacion1 = 0,
+                    Aceptacion2 = 0,
+                    Aceptacion3 = 0,
+                    Firma1 = DateTime.Now,
+                    Firma2 = DateTime.Now,
+                    Firma3 = DateTime.Now,
+                    TipoProducto = articulo.TipoProducto,
+                    CreadoPor = articulo.Usuario,
+                    ModificadoPor = articulo.Usuario
+                };
 
                 firmaservice.SaveFirma(firma);
 

@@ -197,15 +197,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             //Filtrar todos los productos que mientras Aceptacion2 no tenga valor de 2
             //Unicamente probado en articulos
-            if (productType == 1)
-            {
+            //if (productType == 1)
+            //{
                 var firma = DetachedCriteria.For(typeof (Firma))
                     .SetProjection(Projections.ProjectionList()
                                        .Add(Projections.Property("Aceptacion2"), "Aceptacion2"))
                     .Add(Expression.Eq("Aceptacion2", 2));
 
                 criteria.Add(Subqueries.PropertyNotIn("Firma", firma));
-            }
+            //}
 
             return criteria;
         }

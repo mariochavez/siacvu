@@ -10,11 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Libro> libroRepository;
         readonly IProductoQuerying productoQuerying;
+        readonly IFirmaService firmaservice;
 
-        public LibroService(IRepository<Libro> libroRepository, IProductoQuerying productoQuerying)
+        public LibroService(IRepository<Libro> libroRepository, IProductoQuerying productoQuerying,
+            IFirmaService firmaservice)
         {
             this.libroRepository = libroRepository;
             this.productoQuerying = productoQuerying;
+            this.firmaservice = firmaservice;
         }
 
         public Libro GetLibroById(int id)
@@ -39,6 +42,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.Puntuacion = 0;
                 libro.Activo = true;
                 libro.CreadoEl = DateTime.Now;
+                var firma = new Firma
+                {
+                    Aceptacion1 = 0,
+                    Aceptacion2 = 0,
+                    Aceptacion3 = 0,
+                    Firma1 = DateTime.Now,
+                    Firma2 = DateTime.Now,
+                    Firma3 = DateTime.Now,
+                    TipoProducto = libro.TipoProductoLibro,
+                    CreadoPor = libro.Usuario,
+                    ModificadoPor = libro.Usuario
+                };
+
+                firmaservice.SaveFirma(firma);
+
+                libro.Firma = firma;
             }
 
             libro.PosicionAutor = 1;
