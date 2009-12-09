@@ -391,8 +391,8 @@ alter table EstadoInvestigadores  drop constraint FK667DBFD962D605DB
 alter table EstadoInvestigadores  drop constraint FK667DBFD974E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD956214CA5]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
-alter table EstadoInvestigadores  drop constraint FK667DBFD956214CA5
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD918F6ABF3]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
+alter table EstadoInvestigadores  drop constraint FK667DBFD918F6ABF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD98336201B]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
@@ -843,8 +843,8 @@ alter table SNIInvestigadores  drop constraint FK6A7A949C62D605DB
 alter table SNIInvestigadores  drop constraint FK6A7A949C74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C1B385763]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
-alter table SNIInvestigadores  drop constraint FK6A7A949C1B385763
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C18F6ABF3]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
+alter table SNIInvestigadores  drop constraint FK6A7A949C18F6ABF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C8336201B]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
@@ -1335,8 +1335,8 @@ alter table CategoriaInvestigadores  drop constraint FK2110064762D605DB
 alter table CategoriaInvestigadores  drop constraint FK2110064774E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064714721FFA]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
-alter table CategoriaInvestigadores  drop constraint FK2110064714721FFA
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064718F6ABF3]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
+alter table CategoriaInvestigadores  drop constraint FK2110064718F6ABF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK211006478336201B]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
@@ -1919,26 +1919,6 @@ alter table ArchivoObraTraducida  drop constraint FK64C5808682C3B7BC
 alter table ArchivoObraTraducida  drop constraint FK64C58086F7D09D3A
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB35B2AD782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoGradoAcademico'))
-alter table ArchivoGradoAcademico  drop constraint FKB35B2AD782C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4E770BC82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoEstado'))
-alter table ArchivoEstado  drop constraint FK4E770BC82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK137F4D9B82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCargo'))
-alter table ArchivoCargo  drop constraint FK137F4D9B82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1EA0DC7D82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCategoria'))
-alter table ArchivoCategoria  drop constraint FK1EA0DC7D82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8736805682C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoSni'))
-alter table ArchivoSni  drop constraint FK8736805682C3B7BC
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB63156A829E09]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
 alter table EstanciaAcademicaExternas  drop constraint FK43CB63156A829E09
 
@@ -2031,8 +2011,8 @@ alter table GradoAcademicoInvestigadores  drop constraint FK265240DD62D605DB
 alter table GradoAcademicoInvestigadores  drop constraint FK265240DD74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD37E460A9]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
-alter table GradoAcademicoInvestigadores  drop constraint FK265240DD37E460A9
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD18F6ABF3]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
+alter table GradoAcademicoInvestigadores  drop constraint FK265240DD18F6ABF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD8336201B]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
@@ -2403,8 +2383,8 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D62D605DB
 alter table CargoInvestigadores  drop constraint FKC1D5F88D74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88DA9E87E3F]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
-alter table CargoInvestigadores  drop constraint FKC1D5F88DA9E87E3F
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D18F6ABF3]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
+alter table CargoInvestigadores  drop constraint FKC1D5F88D18F6ABF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D8336201B]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
@@ -2688,16 +2668,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoTesisDirigida
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoObraTraducida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoObraTraducida
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoGradoAcademico') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoGradoAcademico
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoEstado') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoEstado
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoCargo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoCargo
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoCategoria') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoCategoria
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoSni') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoSni
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
 
@@ -4486,31 +4456,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
        primary key (Archivo)
     )
 
-    create table ArchivoGradoAcademico (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoEstado (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoCargo (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoCategoria (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoSni (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
     create table EstanciaAcademicaExternas (
         Id INT IDENTITY NOT NULL,
        LineasInvestigacion NVARCHAR(255) null,
@@ -5366,9 +5311,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table EstadoInvestigadores 
-        add constraint FK667DBFD956214CA5 
+        add constraint FK667DBFD918F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoEstado
+        references Archivos
 
     alter table EstadoInvestigadores 
         add constraint FK667DBFD98336201B 
@@ -5931,9 +5876,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table SNIInvestigadores 
-        add constraint FK6A7A949C1B385763 
+        add constraint FK6A7A949C18F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoSni
+        references Archivos
 
     alter table SNIInvestigadores 
         add constraint FK6A7A949C8336201B 
@@ -6546,9 +6491,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table CategoriaInvestigadores 
-        add constraint FK2110064714721FFA 
+        add constraint FK2110064718F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoCategoria
+        references Archivos
 
     alter table CategoriaInvestigadores 
         add constraint FK211006478336201B 
@@ -7275,31 +7220,6 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         foreign key (ObraTraducidaFk) 
         references ObraTraducidas
 
-    alter table ArchivoGradoAcademico 
-        add constraint FKB35B2AD782C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoEstado 
-        add constraint FK4E770BC82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoCargo 
-        add constraint FK137F4D9B82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoCategoria 
-        add constraint FK1EA0DC7D82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoSni 
-        add constraint FK8736805682C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
     alter table EstanciaAcademicaExternas 
         add constraint FK43CB63156A829E09 
         foreign key (UsuarioFk) 
@@ -7416,9 +7336,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table GradoAcademicoInvestigadores 
-        add constraint FK265240DD37E460A9 
+        add constraint FK265240DD18F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoGradoAcademico
+        references Archivos
 
     alter table GradoAcademicoInvestigadores 
         add constraint FK265240DD8336201B 
@@ -7881,9 +7801,9 @@ alter table CargoInvestigadores  drop constraint FKC1D5F88D8336201B
         references Usuarios
 
     alter table CargoInvestigadores 
-        add constraint FKC1D5F88DA9E87E3F 
+        add constraint FKC1D5F88D18F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoCargo
+        references Archivos
 
     alter table CargoInvestigadores 
         add constraint FKC1D5F88D8336201B 

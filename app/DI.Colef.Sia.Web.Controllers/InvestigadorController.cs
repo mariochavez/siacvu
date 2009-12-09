@@ -152,7 +152,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 
-            ViewData["Rollback"] = true;
             return Rjs("Create", investigador.Id);
         }
 
@@ -162,65 +161,55 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult AddFile(FormCollection form)
         {
             var id = Convert.ToInt32(form["Id"]);
-            var investigador = investigadorService.GetInvestigadorById(1);
+            var investigador = investigadorService.GetInvestigadorById(id);
 
             var file = Request.Files["fileData"];
 
-            Archivo archivo = null;
-            if (form["TipoArchivo"] == "1")
-                archivo = new ArchivoGradoAcademico();
-            else if (form["TipoArchivo"] == "2")
-                archivo = new ArchivoEstado();
-            else if (form["TipoArchivo"] == "3")
-                archivo = new ArchivoCargo();
-            else if (form["TipoArchivo"] == "4")
-                archivo = new ArchivoCategoria();
-            else if (form["TipoArchivo"] == "5")
-                archivo = new ArchivoSni();
-
-
-            archivo.Activo = true;
-            archivo.Contenido = file.ContentType;
-            archivo.CreadoEl = DateTime.Now;
-            archivo.CreadoPor = CurrentUser();
-            archivo.ModificadoEl = DateTime.Now;
-            archivo.ModificadoPor = CurrentUser();
-            archivo.Nombre = file.FileName;
-            archivo.Tamano = file.ContentLength;
+            var archivo = new Archivo
+                                  {
+                                      Activo = true,
+                                      Contenido = file.ContentType,
+                                      CreadoEl = DateTime.Now,
+                                      CreadoPor = CurrentUser(),
+                                      ModificadoEl = DateTime.Now,
+                                      ModificadoPor = CurrentUser(),
+                                      Nombre = file.FileName,
+                                      Tamano = file.ContentLength
+                                  };
 
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);
             archivo.Datos = datos;
 
-            if (form["TipoArchivo"] == "1")
+            if (form["TipoArchivo"] == "GradoAcademicoInvestigador")
             {
-                var comprobante = (ArchivoGradoAcademico) archivo;
-                archivoService.SaveGradoAcademico(comprobante);
-                investigador.GradosAcademicosInvestigador[0].Comprobante = comprobante;
+                archivo.TipoProducto = investigador.GradosAcademicosInvestigador[0].TipoProducto;
+                archivoService.Save(archivo);
+                investigador.GradosAcademicosInvestigador[0].Comprobante = archivo;
             }
-            else if (form["TipoArchivo"] == "2")
+            else if (form["TipoArchivo"] == "EstadoInvestigador")
             {
-                var comprobante = (ArchivoEstado)archivo;
-                archivoService.SaveEstado(comprobante);
-                investigador.EstadosInvestigador[0].Comprobante = (ArchivoEstado) archivo;
+                archivo.TipoProducto = investigador.EstadosInvestigador[0].TipoProducto;
+                archivoService.Save(archivo);
+                investigador.EstadosInvestigador[0].Comprobante = archivo;
             }
-            else if (form["TipoArchivo"] == "3")
+            else if (form["TipoArchivo"] == "CargoInvestigador")
             {
-                var comprobante = (ArchivoCargo)archivo;
-                archivoService.SaveCargo(comprobante);
-                investigador.CargosInvestigador[0].Comprobante = (ArchivoCargo)archivo;
+                archivo.TipoProducto = investigador.CargosInvestigador[0].TipoProducto;
+                archivoService.Save(archivo);
+                investigador.CargosInvestigador[0].Comprobante = archivo;
             }
-            else if (form["TipoArchivo"] == "4")
+            else if (form["TipoArchivo"] == "CategoriaInvestigador")
             {
-                var comprobante = (ArchivoCategoria)archivo;
-                archivoService.SaveCategoria(comprobante);
-                investigador.CategoriasInvestigador[0].Comprobante = (ArchivoCategoria)archivo;
+                archivo.TipoProducto = investigador.CategoriasInvestigador[0].TipoProducto;
+                archivoService.Save(archivo);
+                investigador.CategoriasInvestigador[0].Comprobante = archivo;
             }
-            else if (form["TipoArchivo"] == "5")
+            else if (form["TipoArchivo"] == "SniInvestigador")
             {
-                var comprobante = (ArchivoSni)archivo;
-                archivoService.SaveSni(comprobante);
-                investigador.SNIsInvestigador[0].Comprobante = (ArchivoSni)archivo;
+                archivo.TipoProducto = investigador.SNIsInvestigador[0].TipoProducto;
+                archivoService.Save(archivo);
+                investigador.SNIsInvestigador[0].Comprobante = archivo;
             }
 
             investigadorService.SaveInvestigador(investigador);

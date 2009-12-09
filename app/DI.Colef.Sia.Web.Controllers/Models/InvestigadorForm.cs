@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
@@ -58,7 +59,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public EstadoInvestigadorForm[] EstadosInvestigador { get; set; }
+        EstadoInvestigadorForm[] estadosInvestigador;
+        public EstadoInvestigadorForm[] EstadosInvestigador
+        {
+            get
+            {
+                if (estadosInvestigador == null)
+                    return null;
+
+                var result = from estado in estadosInvestigador
+                             orderby estado.FechaInicial descending
+                             select estado;
+
+                return result.ToArray();
+            }
+            set { estadosInvestigador = value; }
+        }
         public GradoAcademicoInvestigadorForm[] GradosAcademicosInvestigador { get; set; }
         public CategoriaInvestigadorForm[] CategoriasInvestigador { get; set; }
         public CargoInvestigadorForm[] CargosInvestigador { get; set; }

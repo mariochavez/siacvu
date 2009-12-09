@@ -8,8 +8,8 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions
         public bool Accept(IProperty property)
         {
             return property.Property.Name.Contains("Resumen") || property.Property.Name.Contains("Descripcion") || 
-                property.Property.Name.Contains("Titulo") || 
-                property.Property.Name.Contains("Nombre") || property.PropertyType == typeof(byte[]);
+                property.Property.Name.Contains("Titulo") || property.Property.Name.Contains("Nombre") || 
+                property.PropertyType == typeof(byte[]);
         }
 
         public void Apply(IProperty property)

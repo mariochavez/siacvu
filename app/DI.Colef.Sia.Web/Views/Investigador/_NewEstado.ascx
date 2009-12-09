@@ -8,11 +8,11 @@
     <span class="cvu"></span>    
     <%=Html.ValidationMessage("EstadoInvestigador.Estado")%>
 </p>
-<p>                        
+<p id="EstadoPeriodos_Fields">                        
     <label>Fecha</label>
     <%=Html.TextBox("EstadoInvestigador.FechaInicial", Model.EstadoInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%>
-    <span class="noeffect EstadoFechaFinal_Field"> a </span>
-    <%=Html.TextBox("EstadoInvestigador.FechaFinal", Model.EstadoInvestigador.FechaFinal, new { @class = "datetime input100-requerido EstadoFechaFinal_Field", maxlength = 10 })%>
+    <span id="EstadoFechaFinal_Field" class="noeffect"> a 
+    <%=Html.TextBox("EstadoInvestigador.FechaFinal", Model.EstadoInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%></span>
     
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span>
