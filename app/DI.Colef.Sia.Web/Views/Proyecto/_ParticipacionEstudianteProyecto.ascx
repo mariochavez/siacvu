@@ -6,21 +6,3 @@
     <%=Html.CheckBox("ParticipaEstudiante", Model.ParticipaEstudiante)%>
     <%=Html.ValidationMessage("ParticipaEstudiante")%>
 </p>
-<p class="ParticipaEstudiante">
-    <label>Nombre del estudiante</label>
-    <%=Html.TextBox("NombreEstudiante", Model.NombreEstudiante, new { @class = "input250", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("NombreEstudiante")%>
-</p>
-<p class="ParticipaEstudiante">
-    <label>Tipo de estudiante</label>
-    <%=Html.DropDownList("TipoEstudiante", Model.TiposEstudiantes.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                "Seleccione ...")%>
-    <%=Html.ValidationMessage("TipoEstudiante")%>
-</p>
-<p class="ParticipaEstudiante">
-    <label>Grado acad&eacute;mico</label>
-    <%=Html.DropDownList("GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),
-                "Seleccione ...")%>
-    <%=Html.ValidationMessage("GradoAcademico")%>
-</p>

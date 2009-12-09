@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
         readonly ITipoEventoMapper tipoEventoMapper;
-        readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
@@ -39,7 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
                                 IInvestigadorMapper investigadorMapper,
-                                ITipoFinanciamientoMapper tipoFinanciamientoMapper,
                                 IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
@@ -59,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.investigadorMapper = investigadorMapper;
-            this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
             this.institucionEventoMapper = institucionEventoMapper;

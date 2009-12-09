@@ -34,46 +34,20 @@
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <p>
-                    <label>Nombre</label>
-                    <%=Html.TextBox("Nombre", Model.Form.Nombre, new { @class="input420-bold-requerido", maxlength = 100 })%>
-                    <%=Html.ValidationMessage("Nombre")%>
-                </p>
-                <p>
-                    <label>Tipo de proyecto</label>
-                    <%=Html.DropDownList("TipoProyecto", Model.Form.TiposProyectos.CreateSelectList<TipoProyectoForm>("Id", "Nombre"),
-		                        "Seleccione ...", new {@class="requerido"})%>
-		            <span class="cvu"></span>
-                    <%=Html.ValidationMessage("TipoProyecto") %>
-                </p>
+                <h4>Informaci&oacute;n general del proyecto</h4>
+                <% Html.RenderPartial("_InformacionGeneral", Model.Form); %>
                 
-                <h4>Responsables<span class="cvu"></span></h4>
-	            <% Html.RenderPartial("_EditResponsableInterno", Model.Form); %>
-	            
-                <h4>Participantes<span class="cvu"></span></h4>
-	            <% Html.RenderPartial("_EditParticipanteInterno", Model.Form); %>
-				<% Html.RenderPartial("_EditParticipanteExterno", Model.Form); %>
-	            
-	            <% Html.RenderPartial("_DatosProyecto", Model.Form); %>
-				
-				<h4>Financiamiento del proyecto</h4>
-				<% Html.RenderPartial("_FinanciamientoProyecto", Model.Form); %>
-				
-				<h4>Recursos Financieros</h4>
-	            <% Html.RenderPartial("_EditRecursoFinanciero", Model.Form); %>
-	            
-	            <h4>Tem&aacute;tica del proyecto</h4>
-	            <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
-	            
-	            <h4>Productos acad&eacute;micos contemplados</h4>
-                <% Html.RenderPartial("_ProductoAcademicoProyecto", Model.Form); %>
+                <h4>Investigadores participantes</h4>
+                <% Html.RenderPartial("_EditResponsable", Model.Form); %>
                 
-                <h4>Participaci&oacute;n de estudiantes</h4>
-                <% Html.RenderPartial("_ParticipacionEstudianteProyecto", Model.Form); %>
-
-                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.Form.SectoresEconomicos, Ramas = Model.Form.Ramas, Clases = Model.Form.Clases, IsShowForm = false }); %>
+                <h4>Calendario del proyecto</h4>
+                <% Html.RenderPartial("_CalendarioProyecto", Model.Form); %>
+                
+                <h4>Fuentes de financiamiento</h4>
+                <% Html.RenderPartial("_FuenteFinanciamiento", Model.Form); %>
+                
+                <h4>Recursos financieros</h4>
+                <% Html.RenderPartial("_EditRecursoFinanciero", Model.Form); %>
                                 
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar")%>

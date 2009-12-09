@@ -76,12 +76,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         InvestigadorExterno[] GetActiveInvestigadorExternos();
         void SaveInvestigadorExterno(InvestigadorExterno investigadorExterno);
 
-        //Tipo Participante
-        TipoParticipante GetTipoParticipanteById(int id);
-        TipoParticipante[] GetAllTipoParticipantes();
-        TipoParticipante[] GetActiveParticipantes();
-        void SaveTipoParticipante(TipoParticipante tipoParticipante);
-
         //Linea Investigacion
         LineaInvestigacion GetLineaInvestigacionById(int id);
         LineaInvestigacion[] GetAllLineaInvestigaciones();
@@ -119,18 +113,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         LineaTematica[] GetAllLineaTematicas();
         LineaTematica[] GetActiveLineaTematicas();
         void SaveLineaTematica(LineaTematica lineaTematica);
-
-        //Coautor Externo
-        CoautorExterno GetCoautorExternoById(int id);
-        CoautorExterno[] GetAllCoautorExternos();
-        CoautorExterno[] GetActiveCoautorExternos();
-        void SaveCoautorExterno(CoautorExterno coautorExterno);
-
-        //Responsable Externo del Libro
-        ResponsableExterno GetResponsableExternoById(int id);
-        ResponsableExterno[] GetAllResponsableExternos();
-        ResponsableExterno[] GetActiveResponsableExternos();
-        void SaveResponsableExterno(ResponsableExterno responsableExterno);
 
         //Tipo de Participacion
         TipoParticipacion GetTipoParticipacionById(int id);
@@ -195,12 +177,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         void SaveEstadoPais(EstadoPais estadoPais);
         EstadoPais[] GetEstadoPaisesByPaisId(int id);
 
-        //Genero
-        Genero GetGeneroById(int id);
-        Genero[] GetAllGeneros();
-        Genero[] GetActiveGeneros();
-        void SaveGenero(Genero genero);
-
         //Medio Electronico
         MedioElectronico GetMedioElectronicoById(int id);
         MedioElectronico[] GetAllMedioElectronicos();
@@ -231,12 +207,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoEvento[] GetActiveTipoEventos();
         void SaveTipoEvento(TipoEvento tipoEvento);
 
-        //Tipo Financiamiento
-        TipoFinanciamiento GetTipoFinanciamientoById(int id);
-        TipoFinanciamiento[] GetAllTipoFinanciamientos();
-        TipoFinanciamiento[] GetActiveTipoFinanciamientos();
-        void SaveTipoFinanciamiento(TipoFinanciamiento tipoFinanciamiento);
-
         //Tipo Organo
         TipoOrgano GetTipoOrganoById(int id);
         TipoOrgano[] GetAllTipoOrganos();
@@ -260,24 +230,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         TipoEstancia[] GetAllTipoEstancias();
         TipoEstancia[] GetActiveTipoEstancias();
         void SaveTipoEstancia(TipoEstancia tipoEstancia);
-
-        //Idenificador del Libro
-        IdentificadorLibro GetIdentificadorLibroById(int id);
-        IdentificadorLibro[] GetAllIdentificadorLibros();
-        IdentificadorLibro[] GetActiveIdentificadorLibros();
-        void SaveIdentificadorLibro(IdentificadorLibro identificadorLibro);
-
-        //Convenio
-        Convenio GetConvenioById(int id);
-        Convenio[] GetAllConvenios();
-        Convenio[] GetActiveConvenios();
-        void SaveConvenio(Convenio convenio);
-
-        //Producto Derivado
-        ProductoDerivado GetProductoDerivadoById(int id);
-        ProductoDerivado[] GetAllProductoDerivados();
-        ProductoDerivado[] GetActiveProductoDerivados();
-        void SaveProductoDerivado(ProductoDerivado productoDerivado);
 
         //Clase
         Clase GetClaseById(int id);
@@ -305,41 +257,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         SubprogramaConacyt[] GetActiveSubprogramasConacyt();
         void SaveSubprogramaConacyt(SubprogramaConacyt subprogramaConacyt);
 
-        //Impacto Politica Publica
-        ImpactoPoliticaPublica GetImpactoPoliticaPublicaById(int id);
-        ImpactoPoliticaPublica[] GetAllImpactoPoliticaPublicas();
-        ImpactoPoliticaPublica[] GetActiveImpactoPoliticaPublicas();
-        void SaveImpactoPoliticaPublica(ImpactoPoliticaPublica impactoPoliticaPublica);
-
         //Moneda
         Moneda GetMonedaById(int id);
         Moneda[] GetAllMonedas();
         Moneda[] GetActiveMonedas();
         void SaveMoneda(Moneda moneda);
-
-        //Producto academico
-        ProductoAcademico GetProductoAcademicoById(int id);
-        ProductoAcademico[] GetAllProductoAcademicos();
-        ProductoAcademico[] GetActiveProductoAcademicos();
-        void SaveProductoAcademico(ProductoAcademico productoAcademico);
-
-        //USEG
-        USEG GetUSEGById(int id);
-        USEG[] GetAllUSEGs();
-        USEG[] GetActiveUSEGs();
-        void SaveUSEG(USEG uSEG);
-
-        //Actividad Prevista
-        ActividadPrevista GetActividadPrevistaById(int id);
-        ActividadPrevista[] GetAllActividadPrevistas();
-        ActividadPrevista[] GetActiveActividadPrevistas();
-        void SaveActividadPrevista(ActividadPrevista actividadPrevista);
-
-        //Coordinacion
-        Coordinacion GetCoordinacionById(int id);
-        Coordinacion[] GetAllCoordinacions();
-        Coordinacion[] GetActiveCoordinacions();
-        void SaveCoordinacion(Coordinacion coordinacion);
         
         //Estatus de Formacion Academica
         EstatusFormacionAcademica GetEstatusFormacionAcademicaById(int id);

@@ -4,16 +4,16 @@ using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class RecursoFinancieroProyecto : Entity, IBaseEntity
+    public class EstudianteProyecto : Entity, IBaseEntity
     {
-        [NotNull]
-        public virtual Institucion Institucion { get; set; }
+        [NotNullNotEmpty]
+        public virtual string NombreEstudiante { get; set; }
 
         //[NotNullNotEmpty]
-        public virtual long Monto { get; set; }
+        public virtual int TipoEstudiante { get; set; } //Catalogo fijo TipoEstudiante
 
         [NotNull]
-        public virtual Moneda Moneda { get; set; }
+        public virtual GradoAcademico GradoAcademico { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }
 

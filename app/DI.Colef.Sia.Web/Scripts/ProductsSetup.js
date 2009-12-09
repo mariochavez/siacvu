@@ -218,29 +218,37 @@ function resenaSetup() {
 }
 
 function proyectoSetup() {
-    $('#RequiereServicioUSEG').dynamicui(
+    $('#EstadoProyecto').dynamicui(
+            [
+                ['Terminado', ['#EstadoTerminado']]
+            ]
+        );
+
+    $('#EstadoProyecto')[0].dynamic.setup();
+
+    $('#ConRecursos').dynamicui(
         [
-            ['1', ['.RequiereUSEG']]
+            ['1', ['#ProyectoConRecursos']]
         ]
     );
 
-    $('#RequiereServicioUSEG')[0].dynamic.setup();
-
-    $('#ParticipaEstudiante').dynamicui(
-        [
-            ['1', ['.ParticipaEstudiante']]
-        ]
-    );
-
-    $('#ParticipaEstudiante')[0].dynamic.setup();
+    $('#ConRecursos')[0].dynamic.setup();
 
     $('#ConConvenio').dynamicui(
         [
-            ['1', ['.NombreConvenio']]
+            ['1', ['.Convenio_Fields']]
         ]
     );
 
     $('#ConConvenio')[0].dynamic.setup();
+
+    $('#SectorFinanciamiento').dynamicui(
+            [
+                ['Fondos CONACyT', ['#SectorFinanciamiento_Field']]
+            ]
+        );
+
+    $('#SectorFinanciamiento')[0].dynamic.setup();
 }
 
 function investigadorSetup() {

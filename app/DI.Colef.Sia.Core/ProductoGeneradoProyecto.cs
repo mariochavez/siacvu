@@ -1,19 +1,15 @@
 using System;
-using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    public class RecursoFinancieroProyecto : Entity, IBaseEntity
+    public class ProductoGeneradoProyecto : Entity, IBaseEntity
     {
-        [NotNull]
-        public virtual Institucion Institucion { get; set; }
+        public virtual int ProductoGenerado { get; set; } //Catalogo Fijo
 
-        //[NotNullNotEmpty]
-        public virtual long Monto { get; set; }
+        public virtual DateTime FechaEntrega { get; set; }
 
-        [NotNull]
-        public virtual Moneda Moneda { get; set; }
+        //Adjunte documento falta
 
         public virtual Usuario CreadoPor { get; set; }
 

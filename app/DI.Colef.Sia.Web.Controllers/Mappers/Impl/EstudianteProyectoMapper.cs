@@ -6,27 +6,27 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class RecursoFinancieroProyectoMapper : AutoFormMapper<RecursoFinancieroProyecto, RecursoFinancieroProyectoForm>, IRecursoFinancieroProyectoMapper
+    public class EstudianteProyectoMapper: AutoFormMapper<EstudianteProyecto, EstudianteProyectoForm>, IEstudianteProyectoMapper
     {
         readonly ICatalogoService catalogoService;
 
-        public RecursoFinancieroProyectoMapper(IRepository<RecursoFinancieroProyecto> repository, ICatalogoService catalogoService)
+        public EstudianteProyectoMapper(IRepository<EstudianteProyecto> repository, ICatalogoService catalogoService)
             : base(repository)
         {
             this.catalogoService = catalogoService;
         }
 
-        protected override int GetIdFromMessage(RecursoFinancieroProyectoForm message)
+        protected override int GetIdFromMessage(EstudianteProyectoForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(RecursoFinancieroProyectoForm message, RecursoFinancieroProyecto model)
+        protected override void MapToModel(EstudianteProyectoForm message, EstudianteProyecto model)
         {
-            model.Monto = message.Monto;
+            model.NombreEstudiante = message.NombreEstudiante;
 
-            model.Moneda = catalogoService.GetMonedaById(message.Moneda);
-            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.TipoEstudiante = message.TipoEstudiante;
+            model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
 
             if (model.IsTransient())
             {
