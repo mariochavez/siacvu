@@ -106,12 +106,18 @@ var Upload = {
         Upload.fileData = fileObj;
         Upload.queue = queueID;
     },
+    onCancel: function(event, queueID, fileObj, data) {
+        var display = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem').parent().attr('rel');
+        $(display).html('&nbsp;');
+    },
     onSelectOnce: function(event, data) {
         if (Upload.fileData == null)
             return;
 
         var display = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem').parent().attr('rel');
         $(display).html(Upload.fileData.name + '<span>(' + Upload.fileData.size + ')</span>');
+        var remove = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem > div.cancel > a');
+        $(display + ' > span').append(remove);
     },
     onProgress: function(event, queueID, fileObj, data) {
         $('.status_message').html('Subiendo ' + fileObj.name + '...');
@@ -154,7 +160,8 @@ var Upload = {
                 'scriptData',
                 {
                     '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(),
-                    'investigadorId': $('#Id').val()
+                    'Id': $('#Id').val(),
+                    'tipoArchivo': $(uploadify).attr('id').split('_')[0]
                 });
 
             $('.progress_container').show();

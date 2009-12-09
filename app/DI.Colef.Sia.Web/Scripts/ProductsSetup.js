@@ -254,11 +254,21 @@ function proyectoSetup() {
 function investigadorSetup() {
     $('#EstadoInvestigador_Estado').dynamicui(
             [
-                [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['.EstadoFechaFinal_Field']]
+                [['Activo', 'Baja', 'Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoPeriodos_Fields']],
+                [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoFechaFinal_Field']]
             ]
         );
 
     $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+
+    $('#SNIInvestigador_SNI').dynamicui(
+            [
+                [['Emerito', 'Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniPeriodos_Fields']],
+                [['Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniFechaFinal_Field']]
+            ]
+        );
+
+    $('#SNIInvestigador_SNI')[0].dynamic.setup();
 }
 
 function organoInternoSetup() {

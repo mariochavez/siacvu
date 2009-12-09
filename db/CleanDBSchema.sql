@@ -460,8 +460,13 @@ alter table Ambitos  drop constraint FKB422A0B062D605DB
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB422A0B074E8BAB7]') AND parent_object_id = OBJECT_ID('Ambitos'))
 alter table Ambitos  drop constraint FKB422A0B074E8BAB7
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK667DBFD918F6ABF3]') AND parent_object_id = OBJECT_ID('EstadoInvestigadores'))
+alter table EstadoInvestigadores  drop constraint FK667DBFD918F6ABF3
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
 
 
@@ -995,8 +1000,8 @@ alter table SNIInvestigadores  drop constraint FK6A7A949C74E8BAB7
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C1B385763]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
-alter table SNIInvestigadores  drop constraint FK6A7A949C1B385763
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6A7A949C18F6ABF3]') AND parent_object_id = OBJECT_ID('SNIInvestigadores'))
+alter table SNIInvestigadores  drop constraint FK6A7A949C18F6ABF3
 
 
 
@@ -1610,8 +1615,13 @@ alter table ObraTraducidas  drop constraint FK1A338EFC3E391E13
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC62D605DB]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
 alter table ObraTraducidas  drop constraint FK1A338EFC62D605DB
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2110064718F6ABF3]') AND parent_object_id = OBJECT_ID('CategoriaInvestigadores'))
+alter table CategoriaInvestigadores  drop constraint FK2110064718F6ABF3
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
 
 
@@ -2160,6 +2170,7 @@ alter table ArchivoObraTraducida  drop constraint FK64C58086F7D09D3A
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB35B2AD782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoGradoAcademico'))
 alter table ArchivoGradoAcademico  drop constraint FKB35B2AD782C3B7BC
 
@@ -2187,6 +2198,10 @@ alter table ArchivoSni  drop constraint FK8736805682C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79862D605DB]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
 alter table TipoDistinciones  drop constraint FK6F92D79862D605DB
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB63156A829E09]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
+alter table EstanciaAcademicaExternas  drop constraint FK43CB63156A829E09
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
 
 
@@ -2300,8 +2315,13 @@ alter table EstudianteProyectos  drop constraint FK235213B874E8BAB7
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK235213B870EA6C9E]') AND parent_object_id = OBJECT_ID('EstudianteProyectos'))
 alter table EstudianteProyectos  drop constraint FK235213B870EA6C9E
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK265240DD18F6ABF3]') AND parent_object_id = OBJECT_ID('GradoAcademicoInvestigadores'))
+alter table GradoAcademicoInvestigadores  drop constraint FK265240DD18F6ABF3
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
 
 
@@ -2760,8 +2780,13 @@ alter table InstitucionEvento  drop constraint FKCE3D5D5D6A3282B3
 
 
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKCE3D5D5D3BA127C1]') AND parent_object_id = OBJECT_ID('InstitucionEvento'))
 alter table InstitucionEvento  drop constraint FKCE3D5D5D3BA127C1
+=======
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC1D5F88D18F6ABF3]') AND parent_object_id = OBJECT_ID('CargoInvestigadores'))
+alter table CargoInvestigadores  drop constraint FKC1D5F88D18F6ABF3
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
 
 
@@ -3119,6 +3144,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoObraTraducida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoObraTraducida
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoGradoAcademico') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoGradoAcademico
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoEstado') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoEstado
@@ -3130,6 +3156,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoSni') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoSni
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoDistinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDistinciones
+=======
+    if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoApoyos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoApoyos
 
@@ -4603,6 +4632,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        primary key (Archivo)
     )
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     create table ArchivoGradoAcademico (
         Archivo INT not null,
        primary key (Archivo)
@@ -4629,6 +4659,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     )
 
     create table TipoDistinciones (
+=======
+    create table EstanciaAcademicaExternas (
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(250) null,
        CreadoEl DATETIME null,
@@ -5406,10 +5439,17 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (SectorFk) 
         references Sectores
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table GrupoInvestigaciones 
         add constraint FK742C6D09EC222BA6 
         foreign key (OrganizacionFk) 
         references Organizaciones
+=======
+    alter table EstadoInvestigadores 
+        add constraint FK667DBFD918F6ABF3 
+        foreign key (ComprobanteFk) 
+        references Archivos
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
     alter table GrupoInvestigaciones 
         add constraint FK742C6D09C8628149 
@@ -5707,9 +5747,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references SNIs
 
     alter table SNIInvestigadores 
-        add constraint FK6A7A949C1B385763 
+        add constraint FK6A7A949C18F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoSni
+        references Archivos
 
     alter table SNIInvestigadores 
         add constraint FK6A7A949C8336201B 
@@ -6081,10 +6121,47 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (SectorFk) 
         references Sectores
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE0197D866EAB 
         foreign key (DepartamentoFk) 
         references Departamentos
+=======
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAEC222BA6 
+        foreign key (OrganizacionFk) 
+        references Organizaciones
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAC8628149 
+        foreign key (Nivel2Fk) 
+        references Niveles
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEA295BC133 
+        foreign key (AreaFk) 
+        references Areas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEABC063744 
+        foreign key (DisciplinaFk) 
+        references Disciplinas
+
+    alter table FormacionAcademicas 
+        add constraint FK824D8BEAF4FE4035 
+        foreign key (SubdisciplinaFk) 
+        references Subdisciplinas
+
+    alter table CategoriaInvestigadores 
+        add constraint FK21100647CC4BEB17 
+        foreign key (CategoriaFk) 
+        references Categorias
+
+    alter table CategoriaInvestigadores 
+        add constraint FK2110064718F6ABF3 
+        foreign key (ComprobanteFk) 
+        references Archivos
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
     alter table EstanciaInstitucionExternas 
         add constraint FKA2BE0193E391E13 
@@ -6426,6 +6503,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (ObraTraducidaFk) 
         references ObraTraducidas
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table ArchivoGradoAcademico 
         add constraint FKB35B2AD782C3B7BC 
         foreign key (Archivo) 
@@ -6498,6 +6576,10 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     alter table EstudianteProyectos 
         add constraint FK235213B89CF67963 
+=======
+    alter table EstanciaAcademicaExternas 
+        add constraint FK43CB63159CF67963 
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
         foreign key (GradoAcademicoFk) 
         references GradoAcademicos
 
@@ -6686,10 +6768,17 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (CoautorExternoProducto) 
         references CoautorExternoProductos
 
+<<<<<<< HEAD:db/CleanDBSchema.sql
     alter table CoautorExternoLibro 
         add constraint FKDF4ABCE0586827F8 
         foreign key (LibroFk) 
         references Libros
+=======
+    alter table GradoAcademicoInvestigadores 
+        add constraint FK265240DD18F6ABF3 
+        foreign key (ComprobanteFk) 
+        references Archivos
+>>>>>>> 821bebd4ca3bf6879089aa2237d748369d7c3535:db/CleanDBSchema.sql
 
     alter table CoautorExternoReporte 
         add constraint FK79AE39C199085EFD 
@@ -6852,9 +6941,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Sedes
 
     alter table CargoInvestigadores 
-        add constraint FKC1D5F88DA9E87E3F 
+        add constraint FKC1D5F88D18F6ABF3 
         foreign key (ComprobanteFk) 
-        references ArchivoCargo
+        references Archivos
 
     alter table CargoInvestigadores 
         add constraint FKC1D5F88D8336201B 

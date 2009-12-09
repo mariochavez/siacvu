@@ -21,7 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
             var sniInvestigador = value as SNIInvestigador;
-            if (sniInvestigador != null)
+            if (sniInvestigador != null && sniInvestigador.SNI.Nombre != "No Pertenece")
             {
                 if (sniInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
                 {
@@ -31,21 +31,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (sniInvestigador.FechaFinal <= DateTime.Parse("1910-01-01"))
+                if (sniInvestigador.SNI != null && (sniInvestigador.SNI.Nombre != "Emerito"))
                 {
-                    constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
-                        "fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
-                    isValid = false;
-                }
-                else if (sniInvestigador.FechaInicial >= sniInvestigador.FechaFinal)
-                {
-                    constraintValidatorContext.DisableDefaultError();
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
-                        "fecha inicial debe ser menor a fecha final|FechaInicial", x => x.FechaInicial);
-                    constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
-                        "fecha final debe ser mayor a fecha inicial|FechaFinal", x => x.FechaFinal);
-                    isValid = false;
+                    if (sniInvestigador.FechaFinal <= DateTime.Parse("1910-01-01"))
+                    {
+                        constraintValidatorContext.DisableDefaultError();
+                        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
+                            "fecha final inválida o nula|FechaFinal", x => x.FechaFinal);
+                        isValid = false;
+                    }
+                    else if (sniInvestigador.FechaInicial >= sniInvestigador.FechaFinal)
+                    {
+                        constraintValidatorContext.DisableDefaultError();
+                        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
+                            "fecha inicial debe ser menor a fecha final|FechaInicial", x => x.FechaInicial);
+                        constraintValidatorContext.AddInvalid<SNIInvestigador, DateTime>(
+                            "fecha final debe ser mayor a fecha inicial|FechaFinal", x => x.FechaFinal);
+                        isValid = false;
+                    }
                 }
             }
 

@@ -124,8 +124,9 @@
             'onSelectOnce': Upload.onSelectOnce,
             'onProgress': Upload.onProgress,
             'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
             'onError': error,
-            'scriptData': { token: auth, tipoArchivo: 1 }
+            'scriptData': { token: auth }
         });
 
         $('#EstadoInvestigador_DocumentoProbatorio').uploadify({
@@ -141,8 +142,9 @@
             'onSelectOnce': Upload.onSelectOnce,
             'onProgress': Upload.onProgress,
             'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
             'onError': error,
-            'scriptData': { token: auth, tipoArchivo: 2 }
+            'scriptData': { token: auth }
         });
 
         $('#CargoInvestigador_DocumentoProbatorio').uploadify({
@@ -158,8 +160,9 @@
             'onSelectOnce': Upload.onSelectOnce,
             'onProgress': Upload.onProgress,
             'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
             'onError': error,
-            'scriptData': { token: auth, tipoArchivo: 3 }
+            'scriptData': { token: auth }
         });
 
         $('#CategoriaInvestigador_DocumentoProbatorio').uploadify({
@@ -175,8 +178,9 @@
             'onSelectOnce': Upload.onSelectOnce,
             'onProgress': Upload.onProgress,
             'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
             'onError': error,
-            'scriptData': { token: auth, tipoArchivo: 4 }
+            'scriptData': { token: auth }
         });
 
         $('#SniInvestigador_DocumentoProbatorio').uploadify({
@@ -192,8 +196,9 @@
             'onSelectOnce': Upload.onSelectOnce,
             'onProgress': Upload.onProgress,
             'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
             'onError': error,
-            'scriptData': { token: auth, tipoArchivo: 5 }
+            'scriptData': { token: auth }
         });
     });
 </script>

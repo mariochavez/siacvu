@@ -104,23 +104,23 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
-    public class ArchivoGradoAcademico : Archivo
-    {
-    }
+    //public class ArchivoGradoAcademico : Archivo
+    //{
+    //}
 
-    public class ArchivoEstado : Archivo
-    {
-    }
+    //public class ArchivoEstado : Archivo
+    //{
+    //}
 
-    public class ArchivoCargo : Archivo
-    {
-    }
+    //public class ArchivoCargo : Archivo
+    //{
+    //}
 
-    public class ArchivoCategoria : Archivo
-    {
-    }
+    //public class ArchivoCategoria : Archivo
+    //{
+    //}
 
-    public class ArchivoSni : Archivo
-    {
-    }
+    //public class ArchivoSni : Archivo
+    //{
+    //}
 }

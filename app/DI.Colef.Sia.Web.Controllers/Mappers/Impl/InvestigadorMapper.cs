@@ -77,6 +77,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.EstadosInvestigador[0].CreadoPor = usuario;
                 model.GradosAcademicosInvestigador[0].CreadoPor = usuario;
                 model.SNIsInvestigador[0].CreadoPor = usuario;
+
+                model.CargosInvestigador[0].ModificadoPor = usuario;
+                model.CategoriasInvestigador[0].ModificadoPor = usuario;
+                model.EstadosInvestigador[0].ModificadoPor = usuario;
+                model.GradosAcademicosInvestigador[0].ModificadoPor = usuario;
+                model.SNIsInvestigador[0].ModificadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;
