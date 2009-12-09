@@ -22,8 +22,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEventoService eventoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
+<<<<<<< HEAD
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
+=======
+>>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IPaisMapper paisMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
@@ -38,6 +41,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
+<<<<<<< HEAD
+=======
+                                IInvestigadorMapper investigadorMapper,
+                                IInvestigadorService investigadorService,
+>>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
                                 ISearchService searchService,
@@ -56,6 +64,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.tipoEventoMapper = tipoEventoMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+<<<<<<< HEAD
+=======
+            this.investigadorMapper = investigadorMapper;
+>>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
             this.institucionEventoMapper = institucionEventoMapper;
