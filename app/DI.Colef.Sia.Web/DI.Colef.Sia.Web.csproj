@@ -571,6 +571,7 @@
     <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
     <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
     <Content Include="Views\Productos\Evento\AddSesion.js.ascx" />
+    <Content Include="Views\Productos\Evento\DeleteSesion.js.ascx" />
     <Content Include="Views\Productos\Evento\_TematicaFinanciamiento.ascx" />
     <Content Include="Views\Productos\Evento\NewSesion.js.ascx" />
     <Content Include="Views\Productos\Evento\_EditSesion.ascx" />

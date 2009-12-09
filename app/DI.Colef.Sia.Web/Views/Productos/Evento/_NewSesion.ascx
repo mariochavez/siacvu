@@ -8,7 +8,7 @@
 </p>
 <p>
     <label>Objetivo de la sesi&oacute;n</label>
-    <%=Html.TextBox("SesionEvento.ObjetivoSesion", Model.SesionEvento.ObjetivoSesion, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.TextArea("SesionEvento.ObjetivoSesion", Model.SesionEvento.ObjetivoSesion, 3, 35, new { @class = "input420-requerido", maxlength = 300 })%>
 	<%=Html.ValidationMessage("SesionEvento.ObjetivoSesion")%>
 </p>
 <p>
@@ -27,4 +27,17 @@
     <label>Lugar (Ciudad/Estado)</label>
     <%=Html.TextBox("SesionEvento.Lugar", Model.SesionEvento.Lugar, new { @class = "input420-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("SesionEvento.Lugar")%>
+</p>
+
+<h4>Participantes y logros de la sesi&oacute;n</h4>
+
+<p>
+    <label>Principales logros de la sesi&oacute;n</label>
+    <%=Html.TextArea("SesionEvento.Logros", Model.SesionEvento.Logros, 3, 35, new { @class = "input420-requerido", maxlength = 300 })%>
+	<%=Html.ValidationMessage("SesionEvento.Logros")%>
+</p>
+<p>
+    <label>N&uacute;mero de participantes</label>
+    <span id="totalparticipantes" class="valor"><%=Html.Encode(Model.SesionEvento.TotalParticipantes)%></span>
+    <span class="cvu"></span>	          
 </p>

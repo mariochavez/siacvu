@@ -34,6 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Lugar = message.Lugar;
             model.NombreSesion = message.NombreSesion;
             model.ObjetivoSesion = message.ObjetivoSesion;
+            model.Logros = message.Logros;
             model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
             model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
 
@@ -45,48 +46,48 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.ModificadoEl = DateTime.Now;
         }
 
-        public SesionEvento Map(SesionEventoForm message, Usuario usuario, Investigador investigador)
-        {
-            var model = Map(message);
+        //public SesionEvento Map(SesionEventoForm message, Usuario usuario, Investigador investigador)
+        //{
+        //    var model = Map(message);
 
-            if (model.IsTransient())
-            {
-                model.CreadoPor = usuario;
-            }
+        //    if (model.IsTransient())
+        //    {
+        //        model.CreadoPor = usuario;
+        //    }
 
-            model.ModificadoPor = usuario;
+        //    model.ModificadoPor = usuario;
 
-            return model;
-        }
+        //    return model;
+        //}
 
-        public SesionEvento Map(SesionEventoForm message, Usuario usuario, Investigador investigador,
-            ParticipanteExternoProductoForm[] participantesExternos, ParticipanteInternoProductoForm[] participantesInternos)
-        {
-            var model = Map(message, usuario, investigador);
+        //public SesionEvento Map(SesionEventoForm message, Usuario usuario, Investigador investigador,
+        //    ParticipanteExternoProductoForm[] participantesExternos, ParticipanteInternoProductoForm[] participantesInternos)
+        //{
+        //    var model = Map(message, usuario, investigador);
 
-            foreach (var participanteExterno in participantesExternos)
-            {
-                var participante =
-                    participanteExternoEventoMapper.Map(participanteExterno);
+        //    foreach (var participanteExterno in participantesExternos)
+        //    {
+        //        var participante =
+        //            participanteExternoEventoMapper.Map(participanteExterno);
 
-                participante.CreadoPor = usuario;
-                participante.ModificadoPor = usuario;
+        //        participante.CreadoPor = usuario;
+        //        participante.ModificadoPor = usuario;
 
-                model.AddParticipanteExterno(participante);
-            }
+        //        model.AddParticipanteExterno(participante);
+        //    }
 
-            foreach (var participanteInterno in participantesInternos)
-            {
-                var participante =
-                    participanteInternoEventoMapper.Map(participanteInterno);
+        //    foreach (var participanteInterno in participantesInternos)
+        //    {
+        //        var participante =
+        //            participanteInternoEventoMapper.Map(participanteInterno);
 
-                participante.CreadoPor = usuario;
-                participante.ModificadoPor = usuario;
+        //        participante.CreadoPor = usuario;
+        //        participante.ModificadoPor = usuario;
 
-                model.AddParticipanteInterno(participante);
-            }
+        //        model.AddParticipanteInterno(participante);
+        //    }
 
-            return model;
-        }
+        //    return model;
+        //}
     }
 }

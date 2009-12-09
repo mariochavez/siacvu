@@ -47,6 +47,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Lugar { get; set; }
 
+        public virtual string Logros { get; set; }
+
         [Valid]
         public virtual IList<ParticipanteExternoEvento> ParticipanteExternoEventos { get; private set; }
 

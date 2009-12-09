@@ -63,6 +63,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             InstitucionEventos.Remove((InstitucionEvento) institucion);
         }
 
+        public virtual void DeleteSesion(SesionEvento sesionEvento)
+        {
+            SesionesEventos.Remove(sesionEvento);
+        }
+
         public virtual void DeleteFirma(Firma firma)
         {
             FirmaEventos.Remove((FirmaEvento)firma);

@@ -6,7 +6,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Nombre { get; set; }
         public string TituloTrabajo { get; set; }
         public bool Invitacion { get; set; }
-        public string Lugar { get; set; }
         public string FechaEvento { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
@@ -20,10 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FinanciamientoInterno { get; set; }
         public int FinanciamientoExterno { get; set; }
         public int SesionesTrabajo { get; set; }
-
-        public int Ambito { get; set; }
-        public int AmbitoId { get; set; }
-        public string AmbitoNombre { get; set; }
 
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }

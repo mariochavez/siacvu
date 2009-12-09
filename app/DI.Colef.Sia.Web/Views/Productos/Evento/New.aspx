@@ -35,7 +35,16 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
-                <% Html.RenderPartial("_DatosEvento", Model.Form); %>
+                <h4>Eventos acad&eacute;micos</h4>
+                    <% Html.RenderPartial("_DatosEvento", Model.Form); %>
+                
+                <div id="OrganizadorColef_fields">
+                    <h4>Tem&aacute;tica y financiamiento del evento</h4>
+                        <% Html.RenderPartial("_TematicaFinanciamiento", Model.Form); %>
+                    
+                    <h4>Sesion(es) del evento estrat&eacute;gico</h4>
+                        <% Html.RenderPartial("_EditSesion", Model.Form); %>
+                </div>
                 
                 <div id="TipoParticipacion_fields">
                     <p>
@@ -60,9 +69,6 @@
 	                    <span class="cvu"></span>
                     </p>
                 </div>
-                
-				<h4>Sesion(es) del evento estrategico</h4>
-                    <% Html.RenderPartial("_NewSesion", Model.Form); %>
         				
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar")%>

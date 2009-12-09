@@ -28,10 +28,12 @@
 
 <% Html.RenderPartial("_EditInstitucion", new InstitucionForm { Instituciones = Model.InstitucionEventos, ModelId = Model.Id } ); %>
 
-<% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
+<div id="NoOrganizadorColef_fields">
+    <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
 
-<p>
-    <label>Con invitaci&oacute;n</label>
-    <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
-    <%=Html.ValidationMessage("Invitacion")%>
-</p>
+    <p>
+        <label>Con invitaci&oacute;n</label>
+        <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
+        <%=Html.ValidationMessage("Invitacion")%>
+    </p>
+</div>

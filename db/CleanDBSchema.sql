@@ -5437,6 +5437,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        ObjetivoSesion NVARCHAR(255) null,
        FechaEvento DATETIME null,
        Lugar NVARCHAR(255) null,
+       Logros NVARCHAR(255) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,

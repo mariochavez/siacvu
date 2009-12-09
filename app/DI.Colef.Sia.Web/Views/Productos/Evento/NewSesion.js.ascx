@@ -10,7 +10,7 @@ var html = '
     <div class="minilistaboton">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar Sesión", new { rel = "#sesionform", @class = "remote", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar sesión", new { rel = "#sesionform", @class = "remote", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="sesion">Cancelar</a>
         </p>
     </div>
