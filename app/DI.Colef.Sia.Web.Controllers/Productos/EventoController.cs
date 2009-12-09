@@ -25,8 +25,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
+=======
+>>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
 =======
 >>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
 =======
@@ -75,6 +78,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorMapper = investigadorMapper;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
+=======
 >>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
 =======
 >>>>>>> 8e05959aaa279ca15f1faef92bb47ad2b1d919eb
