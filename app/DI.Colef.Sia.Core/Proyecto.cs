@@ -11,17 +11,58 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ProyectoValidator]
     public class Proyecto : Entity, IBaseEntity
     {
+        const int tipoProducto = 14; //14 representa proyectos
+
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public Proyecto()
         {
-            ResponsableInternoProyectos = new List<ResponsableInternoProyecto>();
+            ResponsableProyectos = new List<ResponsableProyecto>();
             ParticipanteInternoProyectos = new List<ParticipanteInternoProyecto>();
             ParticipanteExternoProyectos = new List<ParticipanteExternoProyecto>();
             RecursoFinancieroProyectos = new List<RecursoFinancieroProyecto>();
+            EstudianteProyectos = new List<EstudianteProyecto>();
+            ProductoGeneradoProyectos = new List<ProductoGeneradoProyecto>();
         }
 
-        public virtual void AddResponsableInterno(ResponsableInternoProyecto responsableInternoProyecto)
+        public virtual void AddResponsable(ResponsableProyecto responsableProyecto)
         {
-            ResponsableInternoProyectos.Add(responsableInternoProyecto);
+            ResponsableProyectos.Add(responsableProyecto);
+        }
+
+        public virtual void DeleteResponsable(ResponsableProyecto responsableProyecto)
+        {
+            ResponsableProyectos.Remove(responsableProyecto);
+        }
+
+        public virtual void AddRecursoFinanciero(RecursoFinancieroProyecto recursoFinancieroProyecto)
+        {
+            RecursoFinancieroProyectos.Add(recursoFinancieroProyecto);
+        }
+
+        public virtual void DeleteRecursoFinanciero(RecursoFinancieroProyecto recursoFinancieroProyecto)
+        {
+            RecursoFinancieroProyectos.Remove(recursoFinancieroProyecto);
+        }
+
+        public virtual void AddEstudiante(EstudianteProyecto estudianteProyecto)
+        {
+            EstudianteProyectos.Add(estudianteProyecto);
+        }
+
+        public virtual void DeleteEstudiante(EstudianteProyecto estudianteProyecto)
+        {
+            EstudianteProyectos.Remove(estudianteProyecto);
+        }
+
+        public virtual void AddProducto(ProductoGeneradoProyecto productoGenerado)
+        {
+            ProductoGeneradoProyectos.Add(productoGenerado);
+        }
+
+        public virtual void DeleteProducto(ProductoGeneradoProyecto productoGenerado)
+        {
+            ProductoGeneradoProyectos.Remove(productoGenerado);
         }
 
         public virtual void AddParticipanteInterno(ParticipanteInternoProyecto participanteInternoProyecto)
@@ -34,97 +75,56 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ParticipanteExternoProyectos.Add(participanteExternoProyecto);
         }
 
-        public virtual void AddRecursoFinanciero(RecursoFinancieroProyecto recursoFinancieroProyecto)
-        {
-            RecursoFinancieroProyectos.Add(recursoFinancieroProyecto);
-        }
-
-        ///A PARTIR DE AQUI EMPIEZA LA FORMA DE PROYECTOS COMO ESTA EN EL ZIP
         //Seccion Informacion General
-        public virtual TipoProyecto TipoProyecto { get; set; }
-
         [NotNullNotEmpty]
         [DomainSignature]
         public virtual string Nombre { get; set; }
 
-        public virtual IList<ResponsableInternoProyecto> ResponsableInternoProyectos { get; private set; }
+        public virtual TipoProyecto TipoProyecto { get; set; }
+
+        //Seccion Investigadores participantes
+        public virtual IList<ResponsableProyecto> ResponsableProyectos { get; private set; }
 
         public virtual IList<ParticipanteInternoProyecto> ParticipanteInternoProyectos { get; private set; }
 
         public virtual IList<ParticipanteExternoProyecto> ParticipanteExternoProyectos { get; private set; }
 
-        public virtual bool ConConvenio { get; set; }
-
-        public virtual Convenio Convenio { get; set; }
-
+        //Seccion Calendario del proyecto
         public virtual DateTime FechaInicial { get; set; }
 
         public virtual DateTime FechaFinal { get; set; }
 
         public virtual DateTime FechaProrroga { get; set; }
 
-        public virtual int EstadoProyecto { get; set; }
+        public virtual int EstadoProyecto { get; set; } //Catalogo Fijo
 
         public virtual DateTime FechaConclusion { get; set; }
 
+        //Seccion fuentes del financiamiento del proyecto
         public virtual bool ConRecursos { get; set; }
 
-        //Seccion Financiamiento del Proyecto
+        public virtual bool ConConvenio { get; set; }
+
+        public virtual Convenio Convenio { get; set; } //Nota es una vista
+
         public virtual Sector SectorFinanciamiento { get; set; }
 
         public virtual FondoConacyt FondoConacyt { get; set; }
 
+        //Seccion Recursos Financieros
+
         public virtual IList<RecursoFinancieroProyecto> RecursoFinancieroProyectos { get; private set; }
 
-        //Seccion Tematica del Proyecto
+        //Seccion Tematica del proyecto
         public virtual string ObjetivoGeneral { get; set; }
-
-        public virtual string PalabraClave1 { get; set; }
-
-        public virtual string PalabraClave2 { get; set; }
-
-        public virtual string PalabraClave3 { get; set; }
-
-        public virtual LineaTematica LineaTematica { get; set; }
 
         public virtual AreaTematica AreaTematica { get; set; }
 
-        public virtual ImpactoPoliticaPublica ImpactoPoliticaPublica { get; set; }
+        public virtual int ImpactoPoliticaPublica { get; set; } // Catalogo Fijo
 
-        public virtual string ImpactoAcademicoEsperado { get; set; }
+        public virtual VinculacionAPyD VinculacionAPyD { get; set; } //Catalogo fijo y hacer modicacion en tesis
 
-        public virtual string UsuariosPotenciales { get; set; }
-
-        public virtual string PosiblesBeneficiarios { get; set; }
-
-        public virtual bool RequiereServicioUSEG { get; set; }
-
-        public virtual USEG USEG { get; set; }
-
-        //Seccion Productos Academicos contemplados
-        public virtual ProductoAcademico ProductoAcademico { get; set; }
-
-        public virtual ActividadPrevista ActividadPrevista { get; set; }
-
-        public virtual DateTime FechaEntregaProducto { get; set; }
-
-        //Seccion Participacion de Estudiantes
-
-        public virtual bool ParticipaEstudiante { get; set; }
-
-        public virtual string NombreEstudiante { get; set; }
-
-        public virtual int TipoEstudiante { get; set; }
-
-        public virtual GradoAcademico GradoAcademico { get; set; }
-
-        //Seccion Opcionales CVU
-        //Estructura Funcional
-        public virtual Sector Sector { get; set; }
-
-        public virtual Organizacion Organizacion { get; set; }
-
-        public virtual Nivel Nivel2 { get; set; }
+        public virtual string ResumenProyecto { get; set; }
 
         //Area Conocimiento
         public virtual Area Area { get; set; }
@@ -133,12 +133,36 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Subdisciplina Subdisciplina { get; set; }
 
+        //Seccion Productos academicos contemplados
+        public virtual string Actividades { get; set; }
+
+        public virtual string ProductoAcademicoEsperado { get; set; }
+        
+        //Seccion participacion de estudiantes/becarios
+        public virtual bool ParticipaEstudiante { get; set; }
+
+        public virtual IList<EstudianteProyecto> EstudianteProyectos { get; private set; }
+
+        //Estructura Funcional
+        public virtual Sector Sector { get; set; }
+
+        public virtual Organizacion Organizacion { get; set; }
+
+        public virtual Nivel Nivel2 { get; set; }
+
         //Actividad Economica
         public virtual Sector SectorEconomico { get; set; }
 
         public virtual Rama Rama { get; set; }
 
         public virtual Clase Clase { get; set; }
+
+        //Seccion Productos generados del proyecto
+        public virtual IList<ProductoGeneradoProyecto> ProductoGeneradoProyectos { get; private set; }
+
+        public virtual Departamento Departamento { get; set; }
+
+        public virtual Sede Sede { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

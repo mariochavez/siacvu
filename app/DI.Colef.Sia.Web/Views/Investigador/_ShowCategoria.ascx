@@ -5,7 +5,7 @@
 	<h5>Categor&iacute;a</h5>
 	<% foreach(var categoria in Model.CategoriasInvestigador) { %>
         <div id="estado_<%=Html.Encode(categoria.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(categoria.CategoriaNombre)%> <span><%=Html.Encode(categoria.Fecha)%></span></h6>
+    	    <h6><%=Html.Encode(categoria.CategoriaNombre)%> <span><%=Html.Encode(categoria.FechaInicial)%> a <%=Html.Encode(categoria.FechaFinal)%></span></h6>
         </div><!--end estadolista-->
     <% } %>
 </div><!--end minilista-->

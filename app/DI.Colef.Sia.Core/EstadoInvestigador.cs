@@ -26,6 +26,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
 
         [Valid]
-        public virtual ArchivoEstado Comprobante { get; set; }
+        public virtual Archivo Comprobante { get; set; }
+
+        public virtual int TipoProducto { get { return 51; } }
     }
 }

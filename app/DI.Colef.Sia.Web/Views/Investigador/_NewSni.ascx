@@ -8,10 +8,10 @@
     <span class="cvu"></span> 
     <%=Html.ValidationMessage("SNIInvestigador.SNI")%>
 </p>
-<p>
+<p id="SniPeriodos_Fields">
     <label>Periodo</label>
-    <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.SNIInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%> a 
-    <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.SNIInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+    <%=Html.TextBox("SNIInvestigador.FechaInicial", Model.SNIInvestigador.FechaInicial, new { @class = "datetime input100-requerido", maxlength = 10 })%><span id="SniFechaFinal_Field" class="noeffect"> a 
+    <%=Html.TextBox("SNIInvestigador.FechaFinal", Model.SNIInvestigador.FechaFinal, new { @class = "datetime input100-requerido", maxlength = 10 })%></span>
     <span>(Formato dd/mm/yyyy)</span>
     <span class="cvu"></span> 
     <%=Html.ValidationMessage("SNIInvestigador.FechaInicial")%>

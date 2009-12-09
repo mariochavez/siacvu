@@ -80,6 +80,10 @@
 			    <% Html.RenderPartial("_ShowCategoria", Model.Form); %>
 		        
 		        <h4>Sistema nacional de investigadores (SNI)</h4>
+		        <p>
+                    <label>Expediente</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteSNI)%></span>
+                </p>
 			    <% Html.RenderPartial("_ShowSni", Model.Form); %>                                  
 
                 <p class="submit">

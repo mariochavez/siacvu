@@ -17,15 +17,12 @@ namespace Tests.DI.Colef.Sia.Data
 
         Because of = () =>
             {
-                archivoService = new ArchivoService(new Repository<ArchivoEstado>(),
-                                                    new Repository<ArchivoGradoAcademico>(),
-                                                    new Repository<ArchivoCargo>(), new Repository<ArchivoCategoria>(),
-                                                    new Repository<ArchivoSni>());
+                archivoService = new ArchivoService(new Repository<Archivo>());
 
                 investigadorService = new InvestigadorService(new Repository<Investigador>(), new UsuarioQuerying(), new InvestigadorQuerying());
                 
                 investigador = investigadorService.GetInvestigadorById(1);
-                ArchivoGradoAcademico archivo = new ArchivoGradoAcademico
+                Archivo archivo = new Archivo
                                                     {
                                                         Nombre = "Mi archivo",
                                                         Activo = true,
@@ -35,7 +32,7 @@ namespace Tests.DI.Colef.Sia.Data
                                                         Contenido = "text"
                                                     };
 
-                archivoService.SaveGradoAcademico(archivo);
+                archivoService.Save(archivo);
                 var grado = investigador.GradosAcademicosInvestigador[0];
                 grado.Comprobante = archivo;
 
@@ -51,7 +48,7 @@ namespace Tests.DI.Colef.Sia.Data
             {
                 investigador = investigadorService.GetInvestigadorById(1);
                 investigador.GradosAcademicosInvestigador[0].Comprobante.ShouldNotBeNull();
-                investigador.GradosAcademicosInvestigador[0].Comprobante.ShouldBeOfType(typeof(ArchivoGradoAcademico));
+                investigador.GradosAcademicosInvestigador[0].Comprobante.ShouldBeOfType(typeof(Archivo));
             };
     }
 }

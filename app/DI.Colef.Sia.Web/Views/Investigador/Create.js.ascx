@@ -3,13 +3,13 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+$('#Id').val('<%=Model %>');
+
 $('#mensaje-error').removeClass('mensaje-error');
 $('#mensaje-error').text('');
 
 $('span.field-validation-error').remove();
 $('input').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
-
-$('#id').val('<%=Model %>');
 
 Upload.startUpload();

@@ -206,39 +206,57 @@ function resenaSetup() {
 }
 
 function proyectoSetup() {
-    $('#RequiereServicioUSEG').dynamicui(
+    $('#EstadoProyecto').dynamicui(
+            [
+                ['Terminado', ['#EstadoTerminado']]
+            ]
+        );
+
+    $('#EstadoProyecto')[0].dynamic.setup();
+
+    $('#ConRecursos').dynamicui(
         [
-            ['1', ['.RequiereUSEG']]
+            ['1', ['#ProyectoConRecursos']]
         ]
     );
 
-    $('#RequiereServicioUSEG')[0].dynamic.setup();
-
-    $('#ParticipaEstudiante').dynamicui(
-        [
-            ['1', ['.ParticipaEstudiante']]
-        ]
-    );
-
-    $('#ParticipaEstudiante')[0].dynamic.setup();
+    $('#ConRecursos')[0].dynamic.setup();
 
     $('#ConConvenio').dynamicui(
         [
-            ['1', ['.NombreConvenio']]
+            ['1', ['.Convenio_Fields']]
         ]
     );
 
     $('#ConConvenio')[0].dynamic.setup();
+
+    $('#SectorFinanciamiento').dynamicui(
+            [
+                ['Fondos CONACyT', ['#SectorFinanciamiento_Field']]
+            ]
+        );
+
+    $('#SectorFinanciamiento')[0].dynamic.setup();
 }
 
 function investigadorSetup() {
     $('#EstadoInvestigador_Estado').dynamicui(
             [
-                [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['.EstadoFechaFinal_Field']]
+                [['Activo', 'Baja', 'Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoPeriodos_Fields']],
+                [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoFechaFinal_Field']]
             ]
         );
 
     $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+
+    $('#SNIInvestigador_SNI').dynamicui(
+            [
+                [['Emerito', 'Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniPeriodos_Fields']],
+                [['Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniFechaFinal_Field']]
+            ]
+        );
+
+    $('#SNIInvestigador_SNI')[0].dynamic.setup();
 }
 
 function organoInternoSetup() {

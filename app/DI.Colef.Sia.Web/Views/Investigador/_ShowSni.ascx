@@ -5,8 +5,7 @@
 	<h5>SNI</h5>
 	<% foreach(var sni in Model.SNIsInvestigador) { %>
         <div id="estado_<%=Html.Encode(sni.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(sni.SNINombre)%> <span>De <%=Html.Encode(sni.Fecha) %> </span></h6>
-    	    <span>Expediente <%=Html.Encode(sni.ExpedienteSNI) %></span>
+    	    <h6><%=Html.Encode(sni.SNINombre)%> <%if(sni.SNINombre != "No pertence") { %> <span><%=Html.Encode(sni.FechaInicial) %> <% if(sni.SNINombre != "Emerito") { %> a <%=Html.Encode(sni.FechaFinal) %><% } %></span> <% } %></h6>
         </div><!--end estadolista-->
     <% } %>
 </div><!--end minilista-->

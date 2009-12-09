@@ -11,6 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 1; // 1 Representa Articulo
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public Articulo()
         {
             CoautorExternoArticulos = new List<CoautorExternoArticulo>();

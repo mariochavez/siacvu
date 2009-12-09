@@ -51,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                     Firma1 = DateTime.Now,
                                     Firma2 = DateTime.Now,
                                     Firma3 = DateTime.Now,
-                                    TipoProducto = 1,
+                                    TipoProducto = articulo.TipoProducto,
                                     CreadoPor = articulo.Usuario,
                                     ModificadoPor = articulo.Usuario
                                 };

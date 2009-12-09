@@ -47,8 +47,8 @@
                 <h4>Responsables</h4>
                 <div class="minilista" id="responsableinternoList">
                     <h5>Responsable Interno</h5>                    
-                    <% if (Model.Form.ResponsableInternoProyectos != null && Model.Form.ResponsableInternoProyectos.Length > 0) { %>
-                        <% foreach(var responsableInterno in Model.Form.ResponsableInternoProyectos) { %>
+                    <% if (Model.Form.ResponsableProyectos != null && Model.Form.ResponsableProyectos.Length > 0) { %>
+                        <% foreach(var responsableInterno in Model.Form.ResponsableProyectos) { %>
 	                        <div class="sublista" id="responsableinterno_<%=Html.Encode(responsableInterno.InvestigadorId) %>">
 	                            <h6>
 	                                <%=Html.Encode(responsableInterno.NombreResponsable)%>

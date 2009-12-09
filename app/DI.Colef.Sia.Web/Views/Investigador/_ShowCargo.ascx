@@ -5,8 +5,8 @@
 	<h5>Cargo</h5>
 	<% foreach(var cargo in Model.CargosInvestigador) { %>
         <div id="estado_<%=Html.Encode(cargo.Id) %>" class="sublista">
-    	    <h6><%=Html.Encode(cargo.CargoNombre)%> <span><%=Html.Encode(cargo.PuestoNombre)%>, <%=Html.Encode(cargo.SedeNombre) %></span></h6>
-    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.DireccionRegionalNombre) %></span>
+    	    <h6><%=Html.Encode(cargo.PuestoNombre)%> <span><%=Html.Encode(cargo.SedeNombre) %></span></h6>
+    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.SedeDireccionGeneralNombre) %></span>
         </div><!--end estadolista-->
     <% } %>      
 </div><!--end minilista-->
