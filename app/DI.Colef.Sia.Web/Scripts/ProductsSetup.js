@@ -205,15 +205,17 @@ function resenaSetup() {
     $('#EstadoProducto')[0].dynamic.setup();
 }
 
-function proyectoSetup() {
-    $('#EstadoProyecto').dynamicui(
+function proyectoSetup(role) {
+    if (role == "DGAA") {
+        $('#EstadoProyecto').dynamicui(
             [
                 ['Terminado', ['#EstadoTerminado']]
             ]
         );
 
-    $('#EstadoProyecto')[0].dynamic.setup();
-
+        $('#EstadoProyecto')[0].dynamic.setup();
+    }
+    
     $('#ConRecursos').dynamicui(
         [
             ['1', ['#ProyectoConRecursos']]

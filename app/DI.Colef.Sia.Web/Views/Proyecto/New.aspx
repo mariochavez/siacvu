@@ -68,8 +68,10 @@
                     <% Html.RenderPartial("_EditParticipaEstudiante", Model.Form); %>
                 </div>
                 
-                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
-                <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.Form.SectoresEconomicos, Ramas = Model.Form.Ramas, Clases = Model.Form.Clases, IsShowForm = false }); %>
+                <% if(Page.User.IsInRole("DGAA")){ %>
+                    <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
+                    <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.Form.SectoresEconomicos, Ramas = Model.Form.Ramas, Clases = Model.Form.Clases, IsShowForm = false }); %>
+                <% } %>
                 
                 <h4>Productos generados del proyecto</h4>
                 <% Html.RenderPartial("_EditProductoGenerado", Model.Form); %>
@@ -85,7 +87,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             setupDocument();
-            proyectoSetup();
+            proyectoSetup('<%=Html.Encode(Model.Form.UserRole) %>');
         });
     </script>
 

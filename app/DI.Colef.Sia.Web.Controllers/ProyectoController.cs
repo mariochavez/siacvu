@@ -114,11 +114,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            ViewData["SectorId"] = (from s in data.Form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
-            ViewData["OrganizacionId"] = (from o in data.Form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
-            ViewData["SectorEconomicoId"] = (from se in data.Form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
-            ViewData["RamaId"] = (from r in data.Form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
-            ViewData["ClaseId"] = (from c in data.Form.Clases where c.Nombre == "Servicios de investigacion y desarrollo en ciencias sociales y humanidades prestados por el sector publi" select c.Id).FirstOrDefault();
+
+            if (User.IsInRole("DGAA"))
+            {
+                ViewData["SectorId"] = (from s in data.Form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
+                ViewData["OrganizacionId"] = (from o in data.Form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
+                ViewData["SectorEconomicoId"] = (from se in data.Form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
+                ViewData["RamaId"] = (from r in data.Form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
+                ViewData["ClaseId"] = (from c in data.Form.Clases where c.Nombre == "Servicios de investigacion y desarrollo en ciencias sociales y humanidades prestados por el sector publi" select c.Id).FirstOrDefault();
+            }
 
             return View(data);
         }
@@ -379,7 +383,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteRecursoFinanciero(int id, int institucionId, int monto, int tipoMoneda)
+        public ActionResult DeleteRecursoFinanciero(int id, int institucionId, decimal monto, int tipoMoneda)
         {
             var proyecto = proyectoService.GetProyectoById(id);
 
@@ -715,6 +719,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.ResponsableProyecto = new ResponsableProyectoForm();
             form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
 
+            form.UserRole = User.IsInRole("Investigadores") ? "Investigador" : "DGAA";
+
             //Lista de Catalogos
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
             form.EstatusProyectos = customCollection.EstadoProyectoCustomCollection();
@@ -730,27 +736,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
 
-            if (form.Id == 0)
+            if (User.IsInRole("DGAA"))
             {
-                var sectorId = (from s in form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
-                form.Organizaciones = GetOrganizacionesBySectorId(sectorId);
+                if (form.Id == 0)
+                {
+                    var sectorId = (from s in form.Sectores where s.Nombre == "INSTITUCIONES DEL SECTOR ENTIDADES PARAESTATALES" select s.Id).FirstOrDefault();
+                    form.Organizaciones = GetOrganizacionesBySectorId(sectorId);
 
-                var organizacionId = (from o in form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
-                form.Niveles = GetNivelesByOrganizacionId(organizacionId);
+                    var organizacionId = (from o in form.Organizaciones where o.Nombre == "EL COLEGIO DE LA FRONTERA NORTE, A. C." select o.Id).FirstOrDefault();
+                    form.Niveles = GetNivelesByOrganizacionId(organizacionId);
 
-                var sectorEconomicoId = (from se in form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
-                form.Ramas = GetRamasBySectorEconomicoId(sectorEconomicoId);
+                    var sectorEconomicoId = (from se in form.SectoresEconomicos where se.Nombre == "Servicios profesionales cientificos y tecnicos" select se.Id).FirstOrDefault();
+                    form.Ramas = GetRamasBySectorEconomicoId(sectorEconomicoId);
 
-                var ramaId = (from r in form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
-                form.Clases = GetClasesByRamaId(ramaId);
-            }
-            else
-            {
-                form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
-                form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
+                    var ramaId = (from r in form.Ramas where r.Nombre == "Servicios de investigacion cientifica y desarrollo" select r.Id).FirstOrDefault();
+                    form.Clases = GetClasesByRamaId(ramaId);
+                }
+                else
+                {
+                    form.Organizaciones = GetOrganizacionesBySectorId(form.SectorId);
+                    form.Niveles = GetNivelesByOrganizacionId(form.OrganizacionId);
 
-                form.Ramas = GetRamasBySectorEconomicoId(form.SectorEconomicoId);
-                form.Clases = GetClasesByRamaId(form.RamaId);
+                    form.Ramas = GetRamasBySectorEconomicoId(form.SectorEconomicoId);
+                    form.Clases = GetClasesByRamaId(form.RamaId);
+                }
             }
 
             return form;
@@ -770,13 +779,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
 
-            ViewData["SectorId"] = form.SectorId;
-            ViewData["OrganizacionId"] = form.OrganizacionId;
-            ViewData["Nivel2Id"] = form.Nivel2Id;
+            if (User.IsInRole("DGAA"))
+            {
+                ViewData["SectorId"] = form.SectorId;
+                ViewData["OrganizacionId"] = form.OrganizacionId;
+                ViewData["Nivel2Id"] = form.Nivel2Id;
 
-            ViewData["SectorEconomicoId"] = form.SectorEconomicoId;
-            ViewData["RamaId"] = form.RamaId;
-            ViewData["ClaseId"] = form.ClaseId;
+                ViewData["SectorEconomicoId"] = form.SectorEconomicoId;
+                ViewData["RamaId"] = form.RamaId;
+                ViewData["ClaseId"] = form.ClaseId;
+            }
         }
 
         private ProyectoForm SetupShowForm(ProyectoForm form)

@@ -3,17 +3,17 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Nombre</label>
-    <%=Html.TextBox("CoautorExterno.InvestigadorExternoNombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.TextBox("CoautorExterno.Nombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("CoautorExterno.Nombre")%>
 </p>
 <p>
     <label>Apellido paterno</label>
-    <%=Html.TextBox("CoautorExterno.InvestigadorExternoApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.TextBox("CoautorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("CoautorExterno.ApellidoPaterno")%>
 </p>
 <p>
     <label>Apellido materno</label>
-    <%=Html.TextBox("CoautorExterno.InvestigadorExternoApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.TextBox("CoautorExterno.ApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("CoautorExterno.ApellidoMaterno")%>
 </p>
 <p>

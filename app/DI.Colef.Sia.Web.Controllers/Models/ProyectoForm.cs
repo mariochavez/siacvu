@@ -146,11 +146,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ParticipanteExternoProductoForm[] ParticipanteExternoProyectos { get; set; }
         public ParticipanteExternoProductoForm ParticipanteExternoProducto { get; set; }
 
-        public long TotalPesos
+        public decimal TotalPesos
         {
             get
             {
-                var pesos = new long();
+                var pesos = new decimal();
                 if (RecursoFinancieroProyectos != null)
                 {
                     foreach (var recursoFinancieroProyecto in RecursoFinancieroProyectos)
@@ -168,11 +168,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public long TotalDolares
+        public decimal TotalDolares
         {
             get
             {
-                var dolares = new long();
+                var dolares = new decimal();
                 if (RecursoFinancieroProyectos != null)
                 {
                     foreach (var recursoFinancieroProyecto in RecursoFinancieroProyectos)
@@ -189,5 +189,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                 return dolares;
             }
         }
+
+        public string UserRole { get; set; }
     }
 }

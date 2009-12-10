@@ -37,12 +37,12 @@ if($('#recursofinanciero_<%=Html.Encode(Model.InstitucionId) %>').length == 0)
     $('#recursofinanciero_' + <%=Html.Encode(Model.InstitucionId)%> + ':first').fadeIn('slow');
     
     if(<%=Html.Encode(Model.MonedaId)%> == 1){
-        var pesos =  parseInt($('#totalpesos').text()) + parseInt(<%=Html.Encode(Model.Monto)%>);
-        $('#totalpesos').text(pesos);
+        var pesos =  parseFloat($('#totalpesos').text()) + parseFloat(<%=Html.Encode(Model.Monto)%>);
+        $('#totalpesos').text(Math.round(pesos*100)/100);
     }
     if(<%=Html.Encode(Model.MonedaId)%> == 2){
-        var dolares =  parseInt($('#totaldolares').text()) + parseInt(<%=Html.Encode(Model.Monto)%>);
-        $('#totaldolares').text(dolares);
+        var dolares =  parseFloat($('#totaldolares').text()) + parseFloat(<%=Html.Encode(Model.Monto)%>);
+        $('#totaldolares').text(Math.round(dolares*100)/100);
     }
 }
 

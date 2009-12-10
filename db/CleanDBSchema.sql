@@ -3334,7 +3334,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table RecursoFinancieroProyectos (
         Id INT IDENTITY NOT NULL,
-       Monto BIGINT null,
+       Monto DECIMAL(19,5) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
