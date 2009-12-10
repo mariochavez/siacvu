@@ -2,25 +2,41 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="sesionList" class="minilista">
-	<h5>Sesion(es) del evento estrat&eacute;gico</h5>
 	<% if (Model.SesionEventos != null && Model.SesionEventos.Length > 0) { %>
         <% for (int i = 0; i < Model.SesionEventos.Length; i++){ %>
 	        <div class="sublista" id="estado_<%=Html.Encode(Model.SesionEventos[i].NombreSesion.Replace(" ", "_")) %>">
-	            <h6>
-	                <a href="<%=Url.Action("DeleteSesion", null, new{id = Model.Id, nombreSesion = Model.SesionEventos[i].NombreSesion.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-	                <%=Html.Encode(Model.SesionEventos[i].NombreSesion)%>
-	                <%=Html.Hidden("Sesion[" + i + "].NombreSesion", Model.SesionEventos[i].NombreSesion)%>
-	                <span>
-	                    Objetivo <%=Html.Encode(Model.SesionEventos[i].ObjetivoSesion)%>
-	                    <%=Html.Hidden("Sesion[" + i + "].ObjetivoSesion", Model.SesionEventos[i].ObjetivoSesion)%>
-	                    &Aacute;mbito <%=Html.Encode(Model.SesionEventos[i].AmbitoNombre)%>
-	                    <%=Html.Hidden("Sesion[" + i + "].Ambito", Model.SesionEventos[i].AmbitoId)%>
-	                    Fecha <%=Html.Encode(Model.SesionEventos[i].FechaEvento)%>
-	                    <%=Html.Hidden("Sesion[" + i + "].FechaEvento", Model.SesionEventos[i].FechaEvento)%>
-	                    Lugar <%=Html.Encode(Model.SesionEventos[i].Lugar)%>
-	                    <%=Html.Hidden("Sesion[" + i + "].Lugar", Model.SesionEventos[i].Lugar)%>
-	                </span>
-	            </h6>
+	            <h5>Sesi&oacute;n <%= i + 1 %></h5>
+	            <p>
+                    <label>Nombre de la sesi&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].NombreSesion)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Objetivo de la sesi&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].ObjetivoSesion)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>&Aacute;mbito</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].AmbitoNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Fecha del evento</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].FechaEvento)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Lugar (Ciudad/Estado)</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].Lugar)%>&nbsp;</span>
+                </p>
+
+                <h4>Participantes y logros de la sesi&oacute;n</h4>
+
+                <p>
+                    <label>Principales logros de la sesi&oacute;n</label>
+                    <span class="valor"><%= Html.Encode(Model.SesionEventos[i].Logros)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>&nbsp;</label>
+                    <span class="valor">&nbsp;</span>
+                </p>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>
