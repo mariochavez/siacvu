@@ -33,10 +33,7 @@
                     <label>Principales logros de la sesi&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.SesionEventos[i].Logros)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>&nbsp;</label>
-                    <span class="valor">&nbsp;</span>
-                </p>
+                <p></p>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>
