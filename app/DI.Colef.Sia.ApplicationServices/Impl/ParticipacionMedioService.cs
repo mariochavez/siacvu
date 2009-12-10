@@ -8,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ParticipacionMedioService : IParticipacionMedioService
     {
         readonly IRepository<ParticipacionMedio> participacionMedioRepository;
+	    readonly IFirmaService firmaService;
 
-        public ParticipacionMedioService(IRepository<ParticipacionMedio> participacionMedioRepository)
+        public ParticipacionMedioService(IRepository<ParticipacionMedio> participacionMedioRepository, IFirmaService firmaService)
         {
             this.participacionMedioRepository = participacionMedioRepository;
+            this.firmaService = firmaService;
         }
 
         public ParticipacionMedio GetParticipacionMedioById(int id)
@@ -31,11 +33,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveParticipacionMedio(ParticipacionMedio participacionMedio)
         {
-            if(participacionMedio.Id == 0)
+            if(participacionMedio.IsTransient())
             {
                 participacionMedio.Puntuacion = 0;
                 participacionMedio.Activo = true;
                 participacionMedio.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = participacionMedio.TipoProducto,
+                                    CreadoPor = participacionMedio.Usuario,
+                                    ModificadoPor = participacionMedio.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                participacionMedio.Firma = firma;
             }
             participacionMedio.ModificadoEl = DateTime.Now;
             

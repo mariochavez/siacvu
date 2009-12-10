@@ -16,24 +16,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public OrganoInterno()
 		{
             ArchivoOrganoInternos = new List<ArchivoOrganoInterno>();
-            FirmaOrganoInternos = new List<FirmaOrganoInterno>();
 		}
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoOrganoInternos.Add((ArchivoOrganoInterno)archivo);
-        }
-
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaOrganoInternos.Add((FirmaOrganoInterno)firma);
-        }
-
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaOrganoInternos.Remove((FirmaOrganoInterno)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -43,9 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoOrganoInterno> ArchivoOrganoInternos { get; private set; }
-
-        [Valid]
-        public virtual IList<FirmaOrganoInterno> FirmaOrganoInternos { get; private set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

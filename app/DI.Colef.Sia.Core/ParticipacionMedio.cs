@@ -13,27 +13,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 10; // 10 Representa Participacion en Medios
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public ParticipacionMedio()
         {
             ArchivoParticipacionMedios = new List<ArchivoParticipacionMedio>();
-            FirmaParticipacionMedios = new List<FirmaParticipacionMedio>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoParticipacionMedios.Add((ArchivoParticipacionMedio) archivo);
-        }
-
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaParticipacionMedios.Add((FirmaParticipacionMedio)firma);
-        }
-
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaParticipacionMedios.Remove((FirmaParticipacionMedio)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -44,8 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoParticipacionMedio> ArchivoParticipacionMedios { get; private set; }
 
-        [Valid]
-        public virtual IList<FirmaParticipacionMedio> FirmaParticipacionMedios { get; private set; }
+        public virtual Firma Firma { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

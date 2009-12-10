@@ -16,24 +16,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public Distincion()
         {
             ArchivoDistinciones = new List<ArchivoDistincion>();
-            FirmaDistinciones = new List<FirmaDistincion>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoDistinciones.Add((ArchivoDistincion) archivo);
-        }
-
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaDistinciones.Add((FirmaDistincion)firma);
-        }
-
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaDistinciones.Remove((FirmaDistincion)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -43,9 +31,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoDistincion> ArchivoDistinciones { get; private set; }
-
-        [Valid]
-        public virtual IList<FirmaDistincion> FirmaDistinciones { get; private set; }
 
         public virtual TipoDistincion TipoDistincion { get; set; }
 

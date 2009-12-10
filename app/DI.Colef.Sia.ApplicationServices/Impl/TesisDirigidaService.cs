@@ -9,10 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class TesisDirigidaService : ITesisDirigidaService
     {
         readonly IRepository<TesisDirigida> tesisDirigidaRepository;
+	    readonly IFirmaService firmaService;
 
-        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository)
+        public TesisDirigidaService(IRepository<TesisDirigida> tesisDirigidaRepository, IFirmaService firmaService)
         {
             this.tesisDirigidaRepository = tesisDirigidaRepository;
+            this.firmaService = firmaService;
         }
 
         public TesisDirigida GetTesisDirigidaById(int id)
@@ -32,11 +34,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveTesisDirigida(TesisDirigida tesisDirigida)
         {
-            if(tesisDirigida.Id == 0)
+            if(tesisDirigida.IsTransient())
             {
                 tesisDirigida.Puntuacion = 0;
                 tesisDirigida.Activo = true;
                 tesisDirigida.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = tesisDirigida.TipoProducto,
+                                    CreadoPor = tesisDirigida.Usuario,
+                                    ModificadoPor = tesisDirigida.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                tesisDirigida.Firma = firma;
             }
             tesisDirigida.ModificadoEl = DateTime.Now;
             

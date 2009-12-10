@@ -10,11 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Resena> resenaRepository;
         readonly IProductoQuerying productoQuerying;
+	    readonly IFirmaService firmaService;
 
-        public ResenaService(IRepository<Resena> resenaRepository, IProductoQuerying productoQuerying)
+        public ResenaService(IRepository<Resena> resenaRepository, IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.resenaRepository = resenaRepository;
             this.productoQuerying = productoQuerying;
+            this.firmaService = firmaService;
         }
 
         public Resena GetResenaById(int id)
@@ -34,11 +36,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveResena(Resena resena)
         {
-            if(resena.Id == 0)
+            if(resena.IsTransient())
             {
                 resena.Puntuacion = 0;
                 resena.Activo = true;
                 resena.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = resena.TipoProducto,
+                                    CreadoPor = resena.Usuario,
+                                    ModificadoPor = resena.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                resena.Firma = firma;
             }
 
             resena.PosicionAutor = 1;

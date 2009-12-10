@@ -8,10 +8,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class CursoService : ICursoService
     {
         readonly IRepository<Curso> cursoRepository;
+	    readonly IFirmaService firmaService;
 
-        public CursoService(IRepository<Curso> cursoRepository)
+        public CursoService(IRepository<Curso> cursoRepository, IFirmaService firmaService)
         {
             this.cursoRepository = cursoRepository;
+            this.firmaService = firmaService;
         }
 
         public Curso GetCursoById(int id)
@@ -31,11 +33,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveCurso(Curso curso)
         {
-            if(curso.Id == 0)
+            if(curso.IsTransient())
             {
                 curso.Puntuacion = 0;
                 curso.Activo = true;
                 curso.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = curso.TipoProducto,
+                                    CreadoPor = curso.Usuario,
+                                    ModificadoPor = curso.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                curso.Firma = firma;
             }
             curso.ModificadoEl = DateTime.Now;
             

@@ -13,13 +13,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 7; // 7 Representa Libro
 
+        public virtual int TipoProductoLibro { get { return tipoProducto; } }
+
 		public Libro()
 		{
 			CoautorExternoLibros = new List<CoautorExternoLibro>();
             CoautorInternoLibros = new List<CoautorInternoLibro>();
             EditorialLibros = new List<EditorialLibro>();
             ArchivoLibros = new List<ArchivoLibro>();
-            FirmaLibros = new List<FirmaLibro>();
 		}
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -40,12 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoLibros.Add((ArchivoLibro)archivo);
         }
 
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaLibros.Add((FirmaLibro)firma);
-        }
-
         public virtual void AddEditorial(EditorialProducto editorial)
         {
 
@@ -56,11 +51,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 	    public virtual void DeleteEditorial(EditorialProducto editorial)
         {
             EditorialLibros.Remove((EditorialLibro) editorial);
-        }
-
-	    public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaLibros.Remove((FirmaLibro)firma);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -117,8 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoLibro> ArchivoLibros { get; private set; }
 
-        [Valid]
-        public virtual IList<FirmaLibro> FirmaLibros { get; private set; }
+	    public virtual Firma Firma { get; set; }
 
 	    public virtual int PosicionAutor { get; set; }
 

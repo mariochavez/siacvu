@@ -303,6 +303,10 @@ alter table Libros  drop constraint FK439120E7BC063744
 alter table Libros  drop constraint FK439120E7F4FE4035
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7CB4F3F6C]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E7CB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E72AF31B56]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E72AF31B56
 
@@ -403,6 +407,10 @@ alter table Resenas  drop constraint FKF708AE62BC063744
 alter table Resenas  drop constraint FKF708AE62F4FE4035
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62CB4F3F6C]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62CB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627A8488F7]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE627A8488F7
 
@@ -433,6 +441,10 @@ alter table Resenas  drop constraint FKF708AE6262D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6274E8BAB7]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE6274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE1CB4F3F6C]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE1CB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE170EA6C9E]') AND parent_object_id = OBJECT_ID('Reportes'))
@@ -469,6 +481,10 @@ alter table Reportes  drop constraint FK26728BE174E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77B2AE3011]') AND parent_object_id = OBJECT_ID('Proyectos'))
 alter table Proyectos  drop constraint FK8BA36D77B2AE3011
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77CB4F3F6C]') AND parent_object_id = OBJECT_ID('Proyectos'))
+alter table Proyectos  drop constraint FK8BA36D77CB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8BA36D77201EE7BB]') AND parent_object_id = OBJECT_ID('Proyectos'))
@@ -609,6 +625,10 @@ alter table SesionEventos  drop constraint FK6942327574E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK694232753BA127C1]') AND parent_object_id = OBJECT_ID('SesionEventos'))
 alter table SesionEventos  drop constraint FK694232753BA127C1
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAECB4F3F6C]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAECB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE6A829E09]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
@@ -931,6 +951,10 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC62D605DB
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343CB4F3F6C]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD52343CB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD5234342002BEE]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD5234342002BEE
 
@@ -1103,6 +1127,10 @@ alter table OrganoInternos  drop constraint FKECD0AAEA62D605DB
 alter table OrganoInternos  drop constraint FKECD0AAEA74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BCB4F3F6C]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7BCB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7B6A829E09]') AND parent_object_id = OBJECT_ID('Dictamenes'))
 alter table Dictamenes  drop constraint FKE29ADD7B6A829E09
 
@@ -1157,6 +1185,10 @@ alter table VinculacionAPyDes  drop constraint FK9D4AA1BC62D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC74E8BAB7]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
 alter table VinculacionAPyDes  drop constraint FK9D4AA1BC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311CB4F3F6C]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD311CB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3116C7A4C4B]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
@@ -1243,6 +1275,10 @@ alter table FondoConacyts  drop constraint FK4D7DCA9362D605DB
 alter table FondoConacyts  drop constraint FK4D7DCA9374E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63ECB4F3F6C]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63ECB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63E2BAFDC96]') AND parent_object_id = OBJECT_ID('Cursos'))
 alter table Cursos  drop constraint FK8E38D63E2BAFDC96
 
@@ -1307,6 +1343,10 @@ alter table Categorias  drop constraint FK9AD9767262D605DB
 alter table Categorias  drop constraint FK9AD9767274E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFCCB4F3F6C]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFCCB4F3F6C
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6425E2FD]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
 alter table ObraTraducidas  drop constraint FK1A338EFC6425E2FD
 
@@ -1337,6 +1377,10 @@ alter table ObraTraducidas  drop constraint FK1A338EFC62D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC74E8BAB7]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
 alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC41CB4F3F6C]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
+alter table ParticipacionMedios  drop constraint FK6CE1FC41CB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6CE1FC416A829E09]') AND parent_object_id = OBJECT_ID('ParticipacionMedios'))
@@ -1463,104 +1507,8 @@ alter table Firmas  drop constraint FK1BC2D59F62D605DB
 alter table Firmas  drop constraint FK1BC2D59F74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF59E3DA23F1A7365]') AND parent_object_id = OBJECT_ID('FirmaCapitulo'))
-alter table FirmaCapitulo  drop constraint FKF59E3DA23F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF59E3DA2A1B3F60D]') AND parent_object_id = OBJECT_ID('FirmaCapitulo'))
-alter table FirmaCapitulo  drop constraint FKF59E3DA2A1B3F60D
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK16F729E63F1A7365]') AND parent_object_id = OBJECT_ID('FirmaCurso'))
-alter table FirmaCurso  drop constraint FK16F729E63F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK16F729E62E9FF2CA]') AND parent_object_id = OBJECT_ID('FirmaCurso'))
-alter table FirmaCurso  drop constraint FK16F729E62E9FF2CA
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7AADAD43F1A7365]') AND parent_object_id = OBJECT_ID('FirmaDictamen'))
-alter table FirmaDictamen  drop constraint FKD7AADAD43F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7AADAD4CB0D698F]') AND parent_object_id = OBJECT_ID('FirmaDictamen'))
-alter table FirmaDictamen  drop constraint FKD7AADAD4CB0D698F
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC6956ED73F1A7365]') AND parent_object_id = OBJECT_ID('FirmaDistincion'))
-alter table FirmaDistincion  drop constraint FKC6956ED73F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC6956ED7A563B165]') AND parent_object_id = OBJECT_ID('FirmaDistincion'))
-alter table FirmaDistincion  drop constraint FKC6956ED7A563B165
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824DB263F1A7365]') AND parent_object_id = OBJECT_ID('FirmaEvento'))
-alter table FirmaEvento  drop constraint FK824DB263F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK824DB263BA127C1]') AND parent_object_id = OBJECT_ID('FirmaEvento'))
-alter table FirmaEvento  drop constraint FK824DB263BA127C1
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2B94EADB3F1A7365]') AND parent_object_id = OBJECT_ID('FirmaLibro'))
-alter table FirmaLibro  drop constraint FK2B94EADB3F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2B94EADB586827F8]') AND parent_object_id = OBJECT_ID('FirmaLibro'))
-alter table FirmaLibro  drop constraint FK2B94EADB586827F8
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75DD91C93F1A7365]') AND parent_object_id = OBJECT_ID('FirmaOrganoExterno'))
-alter table FirmaOrganoExterno  drop constraint FK75DD91C93F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK75DD91C920ACA338]') AND parent_object_id = OBJECT_ID('FirmaOrganoExterno'))
-alter table FirmaOrganoExterno  drop constraint FK75DD91C920ACA338
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE798E7F3F1A7365]') AND parent_object_id = OBJECT_ID('FirmaOrganoInterno'))
-alter table FirmaOrganoInterno  drop constraint FKE798E7F3F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE798E7FB291B950]') AND parent_object_id = OBJECT_ID('FirmaOrganoInterno'))
-alter table FirmaOrganoInterno  drop constraint FKE798E7FB291B950
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3D78735E3F1A7365]') AND parent_object_id = OBJECT_ID('FirmaParticipacion'))
-alter table FirmaParticipacion  drop constraint FK3D78735E3F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK508A03633F1A7365]') AND parent_object_id = OBJECT_ID('FirmaParticipacionMedio'))
-alter table FirmaParticipacionMedio  drop constraint FK508A03633F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK508A0363D6AE79E4]') AND parent_object_id = OBJECT_ID('FirmaParticipacionMedio'))
-alter table FirmaParticipacionMedio  drop constraint FK508A0363D6AE79E4
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK98E883173F1A7365]') AND parent_object_id = OBJECT_ID('FirmaReporte'))
-alter table FirmaReporte  drop constraint FK98E883173F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK928880683F1A7365]') AND parent_object_id = OBJECT_ID('FirmaResena'))
-alter table FirmaResena  drop constraint FK928880683F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE834EF293F1A7365]') AND parent_object_id = OBJECT_ID('FirmaTesisDirigida'))
-alter table FirmaTesisDirigida  drop constraint FKE834EF293F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE834EF29954C47FF]') AND parent_object_id = OBJECT_ID('FirmaTesisDirigida'))
-alter table FirmaTesisDirigida  drop constraint FKE834EF29954C47FF
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK28E9AEC63F1A7365]') AND parent_object_id = OBJECT_ID('FirmaObraTraducida'))
-alter table FirmaObraTraducida  drop constraint FK28E9AEC63F1A7365
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK28E9AEC6F7D09D3A]') AND parent_object_id = OBJECT_ID('FirmaObraTraducida'))
-alter table FirmaObraTraducida  drop constraint FK28E9AEC6F7D09D3A
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADCB4F3F6C]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEADCB4F3F6C
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
@@ -2505,34 +2453,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Firmas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Firmas
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaCapitulo
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaCurso') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaCurso
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaDictamen') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaDictamen
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaDistincion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaDistincion
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaEvento
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaLibro
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaOrganoExterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaOrganoExterno
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaOrganoInterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaOrganoInterno
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaParticipacion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaParticipacion
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaParticipacionMedio') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaParticipacionMedio
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaReporte') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaReporte
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaResena
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaTesisDirigida
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'FirmaObraTraducida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table FirmaObraTraducida
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Capitulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Capitulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TesisPosgrados') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TesisPosgrados
@@ -2952,6 +2872,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       FirmaFk INT null,
        RevistaPublicacionFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -3074,6 +2995,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        AreaFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
+       FirmaFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
        EditorialFk INT null,
@@ -3105,6 +3027,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        ProyectoFk INT null,
        InstitucionFk INT null,
        AreaTematicaFk INT null,
@@ -3136,6 +3059,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        TipoProyectoFk INT null,
+       FirmaFk INT null,
        ConvenioFk INT null,
        SectorFinanciamientoFk INT null,
        FondoConacytFk INT null,
@@ -3217,6 +3141,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -3471,6 +3396,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        TipoEventoFk INT null,
        AreaTematicaFk INT null,
        TipoParticipacionFk INT null,
@@ -3627,6 +3553,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -3673,6 +3600,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        TesisPosgradoFk INT null,
        VinculacionAPyDFk INT null,
        GradoAcademicoFk INT null,
@@ -3739,6 +3667,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        NivelEstudioFk INT null,
        CursoInvestigadorFk INT null,
        InstitucionFk INT null,
@@ -3799,6 +3728,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        IdiomaFk INT null,
        AreaTematicaFk INT null,
        RevistaPublicacionFk INT null,
@@ -3823,6 +3753,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -3895,7 +3826,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table Firmas (
         Id INT IDENTITY NOT NULL,
-       TipoProducto INT not null,
+       TipoProducto INT null,
        Firma1 DATETIME null,
        Aceptacion1 INT null,
        Firma2 DATETIME null,
@@ -3912,87 +3843,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
-    )
-
-    create table FirmaCapitulo (
-        Firma INT not null,
-       CapituloFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaCurso (
-        Firma INT not null,
-       CursoFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaDictamen (
-        Firma INT not null,
-       DictamenFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaDistincion (
-        Firma INT not null,
-       DistincionFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaEvento (
-        Firma INT not null,
-       EventoFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaLibro (
-        Firma INT not null,
-       LibroFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaOrganoExterno (
-        Firma INT not null,
-       OrganoExternoFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaOrganoInterno (
-        Firma INT not null,
-       OrganoInternoFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaParticipacion (
-        Firma INT not null,
-       primary key (Firma)
-    )
-
-    create table FirmaParticipacionMedio (
-        Firma INT not null,
-       ParticipacionMedioFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaReporte (
-        Firma INT not null,
-       primary key (Firma)
-    )
-
-    create table FirmaResena (
-        Firma INT not null,
-       primary key (Firma)
-    )
-
-    create table FirmaTesisDirigida (
-        Firma INT not null,
-       TesisDirigidaFk INT null,
-       primary key (Firma)
-    )
-
-    create table FirmaObraTraducida (
-        Firma INT not null,
-       ObraTraducidaFk INT null,
-       primary key (Firma)
     )
 
     create table Capitulos (
@@ -4015,6 +3865,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       FirmaFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
        AreaFk INT null,
@@ -5075,6 +4926,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Subdisciplinas
 
     alter table Libros 
+        add constraint FK439120E7CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table Libros 
         add constraint FK439120E72AF31B56 
         foreign key (RevistaPublicacionFk) 
         references RevistaPublicaciones
@@ -5200,6 +5056,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Subdisciplinas
 
     alter table Resenas 
+        add constraint FKF708AE62CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table Resenas 
         add constraint FKF708AE627A8488F7 
         foreign key (PaisFk) 
         references Paises
@@ -5238,6 +5099,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKF708AE6274E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Reportes 
+        add constraint FK26728BE1CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table Reportes 
         add constraint FK26728BE170EA6C9E 
@@ -5283,6 +5149,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK8BA36D77B2AE3011 
         foreign key (TipoProyectoFk) 
         references TipoProyectos
+
+    alter table Proyectos 
+        add constraint FK8BA36D77CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table Proyectos 
         add constraint FK8BA36D77201EE7BB 
@@ -5458,6 +5329,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK694232753BA127C1 
         foreign key (EventoFk) 
         references Eventos
+
+    alter table OrganoExternos 
+        add constraint FK55BF0AAECB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table OrganoExternos 
         add constraint FK55BF0AAE6A829E09 
@@ -5860,6 +5736,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table Eventos 
+        add constraint FK9DD52343CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table Eventos 
         add constraint FK9DD5234342002BEE 
         foreign key (TipoEventoFk) 
         references TipoEventos
@@ -6075,6 +5956,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table Dictamenes 
+        add constraint FKE29ADD7BCB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table Dictamenes 
         add constraint FKE29ADD7B6A829E09 
         foreign key (UsuarioFk) 
         references Usuarios
@@ -6143,6 +6029,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK9D4AA1BC74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD311CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table TesisDirigidas 
         add constraint FKEF4DD3116C7A4C4B 
@@ -6250,6 +6141,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table Cursos 
+        add constraint FK8E38D63ECB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table Cursos 
         add constraint FK8E38D63E2BAFDC96 
         foreign key (NivelEstudioFk) 
         references NivelEstudios
@@ -6330,6 +6226,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table ObraTraducidas 
+        add constraint FK1A338EFCCB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
+
+    alter table ObraTraducidas 
         add constraint FK1A338EFC6425E2FD 
         foreign key (IdiomaFk) 
         references Idiomas
@@ -6368,6 +6269,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK1A338EFC74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table ParticipacionMedios 
+        add constraint FK6CE1FC41CB4F3F6C 
+        foreign key (FirmaFk) 
+        references Firmas
 
     alter table ParticipacionMedios 
         add constraint FK6CE1FC416A829E09 
@@ -6524,130 +6430,10 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table FirmaCapitulo 
-        add constraint FKF59E3DA23F1A7365 
-        foreign key (Firma) 
+    alter table Capitulos 
+        add constraint FK3165FEADCB4F3F6C 
+        foreign key (FirmaFk) 
         references Firmas
-
-    alter table FirmaCapitulo 
-        add constraint FKF59E3DA2A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
-
-    alter table FirmaCurso 
-        add constraint FK16F729E63F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaCurso 
-        add constraint FK16F729E62E9FF2CA 
-        foreign key (CursoFk) 
-        references Cursos
-
-    alter table FirmaDictamen 
-        add constraint FKD7AADAD43F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaDictamen 
-        add constraint FKD7AADAD4CB0D698F 
-        foreign key (DictamenFk) 
-        references Dictamenes
-
-    alter table FirmaDistincion 
-        add constraint FKC6956ED73F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaDistincion 
-        add constraint FKC6956ED7A563B165 
-        foreign key (DistincionFk) 
-        references Distinciones
-
-    alter table FirmaEvento 
-        add constraint FK824DB263F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaEvento 
-        add constraint FK824DB263BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
-
-    alter table FirmaLibro 
-        add constraint FK2B94EADB3F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaLibro 
-        add constraint FK2B94EADB586827F8 
-        foreign key (LibroFk) 
-        references Libros
-
-    alter table FirmaOrganoExterno 
-        add constraint FK75DD91C93F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaOrganoExterno 
-        add constraint FK75DD91C920ACA338 
-        foreign key (OrganoExternoFk) 
-        references OrganoExternos
-
-    alter table FirmaOrganoInterno 
-        add constraint FKE798E7F3F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaOrganoInterno 
-        add constraint FKE798E7FB291B950 
-        foreign key (OrganoInternoFk) 
-        references OrganoInternos
-
-    alter table FirmaParticipacion 
-        add constraint FK3D78735E3F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaParticipacionMedio 
-        add constraint FK508A03633F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaParticipacionMedio 
-        add constraint FK508A0363D6AE79E4 
-        foreign key (ParticipacionMedioFk) 
-        references ParticipacionMedios
-
-    alter table FirmaReporte 
-        add constraint FK98E883173F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaResena 
-        add constraint FK928880683F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaTesisDirigida 
-        add constraint FKE834EF293F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaTesisDirigida 
-        add constraint FKE834EF29954C47FF 
-        foreign key (TesisDirigidaFk) 
-        references TesisDirigidas
-
-    alter table FirmaObraTraducida 
-        add constraint FK28E9AEC63F1A7365 
-        foreign key (Firma) 
-        references Firmas
-
-    alter table FirmaObraTraducida 
-        add constraint FK28E9AEC6F7D09D3A 
-        foreign key (ObraTraducidaFk) 
-        references ObraTraducidas
 
     alter table Capitulos 
         add constraint FK3165FEAD70EA6C9E 

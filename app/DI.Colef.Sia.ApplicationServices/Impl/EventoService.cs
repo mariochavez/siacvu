@@ -10,11 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Evento> eventoRepository;
         readonly IProductoQuerying productoQuerying;
+	    readonly IFirmaService firmaService;
 
-        public EventoService(IRepository<Evento> eventoRepository, IProductoQuerying productoQuerying)
+        public EventoService(IRepository<Evento> eventoRepository, IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.eventoRepository = eventoRepository;
             this.productoQuerying = productoQuerying;
+            this.firmaService = firmaService;
         }
 
         public Evento GetEventoById(int id)
@@ -34,11 +36,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveEvento(Evento evento)
         {
-            if(evento.Id == 0)
+            if(evento.IsTransient())
             {
                 evento.Puntuacion = 0;
                 evento.Activo = true;
                 evento.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = evento.TipoProducto,
+                                    CreadoPor = evento.Usuario,
+                                    ModificadoPor = evento.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                evento.Firma = firma;
             }
 
             evento.PosicionAutor = 1;

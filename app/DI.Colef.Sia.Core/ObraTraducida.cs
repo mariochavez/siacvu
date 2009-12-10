@@ -13,13 +13,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 20; // 20 Representa Obra Traducida
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
 		public ObraTraducida()
 		{
             CoautorExternoObraTraducidas = new List<CoautorExternoObraTraducida>();
             CoautorInternoObraTraducidas = new List<CoautorInternoObraTraducida>();
             AutorInternoObraTraducidas = new List<AutorInternoObraTraducida>();
             AutorExternoObraTraducidas = new List<AutorExternoObraTraducida>();
-            FirmaObraTraducidas = new List<FirmaObraTraducida>();
             ArchivoObraTraducidas = new List<ArchivoObraTraducida>();
             EditorialObraTraducidas = new List<EditorialObraTraducida>();
 		}
@@ -46,12 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorExternoObraTraducidas.Add((AutorExternoObraTraducida)autorExterno);
         }
 
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaObraTraducidas.Add((FirmaObraTraducida)firma);
-        }
-
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
@@ -72,11 +67,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteArchivo(Archivo archivo)
         {
             ArchivoObraTraducidas.Remove((ArchivoObraTraducida)archivo);
-        }
-
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaObraTraducidas.Remove((FirmaObraTraducida)firma);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -105,8 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoObraTraducida> CoautorInternoObraTraducidas { get; private set; }
 
-        [Valid]
-        public virtual IList<FirmaObraTraducida> FirmaObraTraducidas { get; private set; }
+        public virtual Firma Firma { get; set; }
 
         [Valid]
         public virtual IList<ArchivoObraTraducida> ArchivoObraTraducidas { get; private set; }
