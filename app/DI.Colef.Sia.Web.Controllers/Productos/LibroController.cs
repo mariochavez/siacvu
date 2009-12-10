@@ -521,7 +521,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             evento.ModificadoPor = CurrentUser();
             evento.Activo = true;
 
-            eventoService.SaveEvento(evento);
+            eventoService.SaveEvento(evento, false);
 
             var eventoForm = eventoMapper.Map(evento);
 

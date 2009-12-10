@@ -7,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Evento GetEventoById(int id);
         Evento[] GetAllEventos();
         Evento[] GetActiveEventos();
-        void SaveEvento(Evento evento);
+        void SaveEvento(Evento evento, bool useCommit);
 	    Evento[] GetAllEventos(Usuario usuario);
     }
 }

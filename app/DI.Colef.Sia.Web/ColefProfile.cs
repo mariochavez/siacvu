@@ -406,8 +406,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.TipoParticipacion,
                            o => o.Ignore())
                 .ForMember(d => d.TipoEvento,
-                           o => o.Ignore())
-                .ForMember(d => d.Pais,
                            o => o.Ignore());
 
             Mapper.CreateMap<CoautorInternoEvento, CoautorInternoProductoForm>()

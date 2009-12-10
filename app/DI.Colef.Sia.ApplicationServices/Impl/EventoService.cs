@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
+using NHibernate;
 using SharpArch.Core.PersistenceSupport;
+using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -20,6 +22,15 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.firmaservice = firmaservice;
         }
 
+        protected virtual ISession Session
+        {
+            get
+            {
+                string factoryKey = SessionFactoryAttribute.GetKeyFrom(this);
+                return NHibernateSession.CurrentFor(factoryKey);
+            }
+        }
+
         public Evento GetEventoById(int id)
         {
             return eventoRepository.Get(id);
@@ -35,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<Evento>)eventoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
-        public void SaveEvento(Evento evento)
+        public void SaveEvento(Evento evento, bool useCommit)
         {
             if(evento.Id == 0)
             {
@@ -63,8 +74,18 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
             evento.PosicionAutor = 1;
             evento.ModificadoEl = DateTime.Now;
-            
-            eventoRepository.SaveOrUpdate(evento);
+
+            if (useCommit)
+            {
+                using (ITransaction t = Session.BeginTransaction())
+                {
+                    Session.SaveOrUpdate(evento);
+                    t.Commit();
+                }
+            }
+
+            else
+                eventoRepository.SaveOrUpdate(evento);
         }
 
 	    public Evento[] GetAllEventos(Usuario usuario)
