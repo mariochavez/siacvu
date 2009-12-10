@@ -42,22 +42,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 organoExterno.Activo = true;
                 organoExterno.CreadoEl = DateTime.Now;
 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = organoExterno.TipoProducto,
-                    CreadoPor = organoExterno.Usuario,
-                    ModificadoPor = organoExterno.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = organoExterno.TipoProducto,
+                //    CreadoPor = organoExterno.Usuario,
+                //    ModificadoPor = organoExterno.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                organoExterno.Firma = firma;
+                //organoExterno.Firma = firma;
             }
             organoExterno.ModificadoEl = DateTime.Now;
             

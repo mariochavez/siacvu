@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 tesisDirigida.Activo = true;
                 tesisDirigida.CreadoEl = DateTime.Now;
 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = tesisDirigida.TipoProducto,
-                    CreadoPor = tesisDirigida.Usuario,
-                    ModificadoPor = tesisDirigida.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = tesisDirigida.TipoProducto,
+                //    CreadoPor = tesisDirigida.Usuario,
+                //    ModificadoPor = tesisDirigida.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                tesisDirigida.Firma = firma;
+                //tesisDirigida.Firma = firma;
             }
             tesisDirigida.ModificadoEl = DateTime.Now;
             

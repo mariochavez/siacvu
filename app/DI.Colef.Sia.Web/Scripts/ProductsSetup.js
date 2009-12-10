@@ -289,13 +289,6 @@ function eventoSetup() {
 
     $('#TipoParticipacion')[0].dynamic.setup();
 
-//    $('#Ambito').dynamicui(
-//            [
-//                [['Internacional', 'Binacional'], ['#Ambito_field']]
-//            ]
-//        );
-
-    //    $('#Ambito')[0].dynamic.setup();
     CheckOptions.setup();
 }
 

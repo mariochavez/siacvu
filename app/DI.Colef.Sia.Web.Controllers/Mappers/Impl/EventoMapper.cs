@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
-                model.SesionesEventos[0].CreadoPor = usuario;
+                //model.SesionesEventos[0].CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;

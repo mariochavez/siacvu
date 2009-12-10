@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 dictamen.Activo = true;
                 dictamen.CreadoEl = DateTime.Now;
 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = dictamen.TipoProducto,
-                    CreadoPor = dictamen.Usuario,
-                    ModificadoPor = dictamen.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = dictamen.TipoProducto,
+                //    CreadoPor = dictamen.Usuario,
+                //    ModificadoPor = dictamen.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                dictamen.Firma = firma;
+                //dictamen.Firma = firma;
             }
             dictamen.ModificadoEl = DateTime.Now;
             

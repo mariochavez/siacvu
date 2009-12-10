@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 obraTraducida.Activo = true;
                 obraTraducida.CreadoEl = DateTime.Now;
 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = obraTraducida.TipoProducto,
-                    CreadoPor = obraTraducida.Usuario,
-                    ModificadoPor = obraTraducida.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = obraTraducida.TipoProducto,
+                //    CreadoPor = obraTraducida.Usuario,
+                //    ModificadoPor = obraTraducida.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                obraTraducida.Firma = firma;
+                //obraTraducida.Firma = firma;
             }
 
             obraTraducida.PosicionAutor = 1;

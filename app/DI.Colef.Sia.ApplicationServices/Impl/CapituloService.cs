@@ -42,22 +42,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 capitulo.Puntuacion = 0;
                 capitulo.Activo = true;
                 capitulo.CreadoEl = DateTime.Now;
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = capitulo.TipoProducto,
-                    CreadoPor = capitulo.Usuario,
-                    ModificadoPor = capitulo.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = capitulo.TipoProducto,
+                //    CreadoPor = capitulo.Usuario,
+                //    ModificadoPor = capitulo.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                capitulo.Firma = firma;
+                //capitulo.Firma = firma;
             }
 
             capitulo.PosicionAutor = 1;

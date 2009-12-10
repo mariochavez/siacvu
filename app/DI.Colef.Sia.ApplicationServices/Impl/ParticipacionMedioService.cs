@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 participacionMedio.Activo = true;
                 participacionMedio.CreadoEl = DateTime.Now;
 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = participacionMedio.TipoProducto,
-                    CreadoPor = participacionMedio.Usuario,
-                    ModificadoPor = participacionMedio.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = participacionMedio.TipoProducto,
+                //    CreadoPor = participacionMedio.Usuario,
+                //    ModificadoPor = participacionMedio.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                participacionMedio.Firma = firma;
+                //participacionMedio.Firma = firma;
             }
             participacionMedio.ModificadoEl = DateTime.Now;
             

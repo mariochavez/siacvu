@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 curso.Activo = true;
                 curso.CreadoEl = DateTime.Now;
                 
-                var firma = new Firma
-                {
-                    Aceptacion1 = 0,
-                    Aceptacion2 = 0,
-                    Aceptacion3 = 0,
-                    Firma1 = DateTime.Now,
-                    Firma2 = DateTime.Now,
-                    Firma3 = DateTime.Now,
-                    TipoProducto = curso.TipoProducto,
-                    CreadoPor = curso.Usuario,
-                    ModificadoPor = curso.Usuario
-                };
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = curso.TipoProducto,
+                //    CreadoPor = curso.Usuario,
+                //    ModificadoPor = curso.Usuario
+                //};
 
-                firmaservice.SaveFirma(firma);
+                //firmaservice.SaveFirma(firma);
 
-                curso.Firma = firma;
+                //curso.Firma = firma;
             }
             curso.ModificadoEl = DateTime.Now;
             
