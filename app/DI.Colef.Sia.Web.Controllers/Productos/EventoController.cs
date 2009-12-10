@@ -38,8 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
-                                IInvestigadorMapper investigadorMapper,
-                                IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
                                 ISearchService searchService,
@@ -171,9 +169,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, institucion, sesion);
 
-            //if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
-            //    evento.Pais = GetDefaultPais();
-
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
                 var eventoForm = eventoMapper.Map(evento);
@@ -194,9 +189,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Update(EventoForm form)
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
-
-            //if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
-            //    evento.Pais = GetDefaultPais();
 
             if (!IsValidateModel(evento, form, Title.Edit))
             {
@@ -550,7 +542,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.SesionEvento = new SesionEventoForm();
 
             //Lista de Catalogos Pendientes
-            //form.SesionEventos = sesionEventoMapper.Map(form.SesionEventos);
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionEventos());
             form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());

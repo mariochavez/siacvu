@@ -70,6 +70,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoReporte> ArchivoReportes { get; private set; }
 
+        public virtual Firma Firma { get; set; }
+
         [DomainSignature]
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
@@ -84,8 +86,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<InstitucionReporte> InstitucionReportes { get; private set; }
-
-        public virtual Firma Firma { get; set; }
 
         public virtual int PosicionAutor { get; set; }
 
