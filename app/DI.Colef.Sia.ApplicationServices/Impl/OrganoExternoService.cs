@@ -9,15 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class OrganoExternoService : IOrganoExternoService
     {
         readonly IRepository<OrganoExterno> organoExternoRepository;
-        readonly IProductoQuerying productoQuerying;
-        readonly IFirmaService firmaservice;
+	    readonly IFirmaService firmaService;
 
-        public OrganoExternoService(IRepository<OrganoExterno> organoExternoRepository,
-            IProductoQuerying productoQuerying, IFirmaService firmaservice)
+        public OrganoExternoService(IRepository<OrganoExterno> organoExternoRepository, IFirmaService firmaService)
         {
             this.organoExternoRepository = organoExternoRepository;
-            this.productoQuerying = productoQuerying;
-            this.firmaservice = firmaservice;
+            this.firmaService = firmaService;
         }
 
         public OrganoExterno GetOrganoExternoById(int id)
@@ -37,27 +34,27 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveOrganoExterno(OrganoExterno organoExterno)
         {
-            if(organoExterno.Id == 0)
+            if (organoExterno.IsTransient())
             {
                 organoExterno.Activo = true;
                 organoExterno.CreadoEl = DateTime.Now;
 
-                //var firma = new Firma
-                //{
-                //    Aceptacion1 = 0,
-                //    Aceptacion2 = 0,
-                //    Aceptacion3 = 0,
-                //    Firma1 = DateTime.Now,
-                //    Firma2 = DateTime.Now,
-                //    Firma3 = DateTime.Now,
-                //    TipoProducto = organoExterno.TipoProducto,
-                //    CreadoPor = organoExterno.Usuario,
-                //    ModificadoPor = organoExterno.Usuario
-                //};
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = organoExterno.TipoProducto,
+                                    CreadoPor = organoExterno.Usuario,
+                                    ModificadoPor = organoExterno.Usuario
+                                };
 
-                //firmaservice.SaveFirma(firma);
+                firmaService.SaveFirma(firma);
 
-                //organoExterno.Firma = firma;
+                organoExterno.Firma = firma;
             }
             organoExterno.ModificadoEl = DateTime.Now;
             

@@ -50,7 +50,7 @@
 		        </p>
 	            <p>
 		            <label>Fecha de contrato</label>
-		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %></span>
+		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %>&nbsp;</span>
 		            <span>(Formato dd/mm/yyyy)</span>
 	            </p>
 	            
@@ -60,15 +60,15 @@
 	            <h4>Perfil ac&aacute;demico del investigador</h4> 		        
                 <p>
                     <label>Expediente producci&oacute;n</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteProduccion)%></span>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteProduccion)%>&nbsp;</span>
                 </p> 
                 <p>
                     <label>Expediente acad&eacute;mico</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteAcademico)%></span>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteAcademico)%>&nbsp;</span>
                 </p>                         
                 <p>
                     <label>Clave CVU</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%></span>
+                    <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%>&nbsp;</span>
                 </p>
 		        <h4>Estatus</h4>
 			    <% Html.RenderPartial("_ShowEstado", Model.Form); %>
@@ -82,7 +82,7 @@
 		        <h4>Sistema nacional de investigadores (SNI)</h4>
 		        <p>
                     <label>Expediente</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteSNI)%></span>
+                    <span class="valor"><%=Html.Encode(Model.Form.ExpedienteSNI)%>&nbsp;</span>
                 </p>
 			    <% Html.RenderPartial("_ShowSni", Model.Form); %>                                  
 

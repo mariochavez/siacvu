@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoLibro> ArchivoLibros { get; private set; }
 
-        public virtual Firma Firma { get; set; }
+	    public virtual Firma Firma { get; set; }
 
 	    public virtual int PosicionAutor { get; set; }
 

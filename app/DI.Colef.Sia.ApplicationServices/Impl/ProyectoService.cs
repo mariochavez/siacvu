@@ -10,10 +10,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ProyectoService : IProyectoService
     {
         readonly IRepository<Proyecto> proyectoRepository;
+	    readonly IFirmaService firmaService;
 
-        public ProyectoService(IRepository<Proyecto> proyectoRepository)
+        public ProyectoService(IRepository<Proyecto> proyectoRepository, IFirmaService firmaService)
         {
             this.proyectoRepository = proyectoRepository;
+            this.firmaService = firmaService;
         }
 
         protected virtual ISession Session
@@ -42,11 +44,29 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveProyecto(Proyecto proyecto, bool useCommit)
         {
-            if(proyecto.Id == 0)
+            if (proyecto.IsTransient())
             {
                 proyecto.Activo = true;
                 proyecto.CreadoEl = DateTime.Now;
+
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = proyecto.TipoProducto,
+                                    CreadoPor = proyecto.Usuario,
+                                    ModificadoPor = proyecto.Usuario
+                                };
+
+                firmaService.SaveFirma(firma);
+
+                proyecto.Firma = firma;
             }
+
             proyecto.ModificadoEl = DateTime.Now;
 
             if (useCommit)

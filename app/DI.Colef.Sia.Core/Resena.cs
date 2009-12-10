@@ -114,6 +114,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
 
+        public virtual Firma Firma { get; set; }
+
         public virtual int PosicionAutor { get; set; }
 
         public virtual int EstadoProducto { get; set; }
@@ -124,8 +126,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
-
-        public virtual Firma Firma { get; set; }
 
         public virtual string TituloLibro { get; set; }
 

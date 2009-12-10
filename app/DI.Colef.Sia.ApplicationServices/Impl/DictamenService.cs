@@ -9,15 +9,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class DictamenService : IDictamenService
     {
         readonly IRepository<Dictamen> dictamenRepository;
-        readonly IProductoQuerying productoQuerying;
-        readonly IFirmaService firmaservice;
+	    readonly IFirmaService firmaService;
 
-        public DictamenService(IRepository<Dictamen> dictamenRepository,
-            IProductoQuerying productoQuerying, IFirmaService firmaservice)
+        public DictamenService(IRepository<Dictamen> dictamenRepository, IFirmaService firmaService)
         {
             this.dictamenRepository = dictamenRepository;
-            this.productoQuerying = productoQuerying;
-            this.firmaservice = firmaservice;
+            this.firmaService = firmaService;
         }
 
         public Dictamen GetDictamenById(int id)
@@ -37,28 +34,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveDictamen(Dictamen dictamen)
         {
-            if(dictamen.Id == 0)
+            if(dictamen.IsTransient())
             {
                 dictamen.Puntuacion = 0;
                 dictamen.Activo = true;
                 dictamen.CreadoEl = DateTime.Now;
 
-                //var firma = new Firma
-                //{
-                //    Aceptacion1 = 0,
-                //    Aceptacion2 = 0,
-                //    Aceptacion3 = 0,
-                //    Firma1 = DateTime.Now,
-                //    Firma2 = DateTime.Now,
-                //    Firma3 = DateTime.Now,
-                //    TipoProducto = dictamen.TipoProducto,
-                //    CreadoPor = dictamen.Usuario,
-                //    ModificadoPor = dictamen.Usuario
-                //};
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = dictamen.TipoProducto,
+                                    CreadoPor = dictamen.Usuario,
+                                    ModificadoPor = dictamen.Usuario
+                                };
 
-                //firmaservice.SaveFirma(firma);
+                firmaService.SaveFirma(firma);
 
-                //dictamen.Firma = firma;
+                dictamen.Firma = firma;
             }
             dictamen.ModificadoEl = DateTime.Now;
             

@@ -12,14 +12,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Evento> eventoRepository;
         readonly IProductoQuerying productoQuerying;
-        readonly IFirmaService firmaservice;
+	    readonly IFirmaService firmaService;
 
-        public EventoService(IRepository<Evento> eventoRepository, IProductoQuerying productoQuerying,
-            IFirmaService firmaservice)
+        public EventoService(IRepository<Evento> eventoRepository, IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.eventoRepository = eventoRepository;
             this.productoQuerying = productoQuerying;
-            this.firmaservice = firmaservice;
+            this.firmaService = firmaService;
         }
 
         protected virtual ISession Session
@@ -48,28 +47,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveEvento(Evento evento, bool useCommit)
         {
-            if(evento.Id == 0)
+            if(evento.IsTransient())
             {
                 evento.Puntuacion = 0;
                 evento.Activo = true;
                 evento.CreadoEl = DateTime.Now;
 
-                //var firma = new Firma
-                //{
-                //    Aceptacion1 = 0,
-                //    Aceptacion2 = 0,
-                //    Aceptacion3 = 0,
-                //    Firma1 = DateTime.Now,
-                //    Firma2 = DateTime.Now,
-                //    Firma3 = DateTime.Now,
-                //    TipoProducto = evento.TipoProducto,
-                //    CreadoPor = evento.Usuario,
-                //    ModificadoPor = evento.Usuario
-                //};
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = evento.TipoProducto,
+                                    CreadoPor = evento.Usuario,
+                                    ModificadoPor = evento.Usuario
+                                };
 
-                //firmaservice.SaveFirma(firma);
+                firmaService.SaveFirma(firma);
 
-                //evento.Firma = firma;
+                evento.Firma = firma;
             }
 
             evento.PosicionAutor = 1;

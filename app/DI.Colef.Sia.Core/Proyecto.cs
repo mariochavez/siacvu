@@ -67,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddParticipanteInterno(ParticipanteInternoProducto participanteInterno)
         {
-            participanteInterno.TipoProducto = TipoProducto;
+            participanteInterno.TipoProducto = tipoProducto;
             ParticipanteInternoProyectos.Add((ParticipanteInternoProyecto) participanteInterno);
         }
 
@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddParticipanteExterno(ParticipanteExternoProducto participanteExterno)
         {
-            participanteExterno.TipoProducto = TipoProducto;
+            participanteExterno.TipoProducto = tipoProducto;
             ParticipanteExternoProyectos.Add((ParticipanteExternoProyecto) participanteExterno);
         }
 
@@ -100,6 +100,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<ParticipanteInternoProyecto> ParticipanteInternoProyectos { get; private set; }
 
         public virtual IList<ParticipanteExternoProyecto> ParticipanteExternoProyectos { get; private set; }
+
+        public virtual Firma Firma { get; set; }
 
         //Seccion Calendario del proyecto
         public virtual DateTime FechaInicial { get; set; }

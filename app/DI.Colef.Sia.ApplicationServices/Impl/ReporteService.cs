@@ -10,14 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Reporte> reporteRepository;
         readonly IProductoQuerying productoQuerying;
-        readonly IFirmaService firmaservice;
+	    readonly IFirmaService firmaService;
 
-        public ReporteService(IRepository<Reporte> reporteRepository, IProductoQuerying productoQuerying,
-            IFirmaService firmaservice)
+        public ReporteService(IRepository<Reporte> reporteRepository, IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.reporteRepository = reporteRepository;
             this.productoQuerying = productoQuerying;
-            this.firmaservice = firmaservice;
+            this.firmaService = firmaService;
         }
 
         public Reporte GetReporteById(int id)
@@ -37,27 +36,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveReporte(Reporte reporte)
         {
-            if(reporte.Id == 0)
+            if (reporte.IsTransient())
             {
                 reporte.Puntuacion = 0;
                 reporte.Activo = true;
                 reporte.CreadoEl = DateTime.Now;
-                //var firma = new Firma
-                //{
-                //    Aceptacion1 = 0,
-                //    Aceptacion2 = 0,
-                //    Aceptacion3 = 0,
-                //    Firma1 = DateTime.Now,
-                //    Firma2 = DateTime.Now,
-                //    Firma3 = DateTime.Now,
-                //    TipoProducto = reporte.TipoProducto,
-                //    CreadoPor = reporte.Usuario,
-                //    ModificadoPor = reporte.Usuario
-                //};
 
-                //firmaservice.SaveFirma(firma);
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = reporte.TipoProducto,
+                                    CreadoPor = reporte.Usuario,
+                                    ModificadoPor = reporte.Usuario
+                                };
 
-                //reporte.Firma = firma;
+                firmaService.SaveFirma(firma);
+
+                reporte.Firma = firma;
             }
 
             reporte.PosicionAutor = 1;

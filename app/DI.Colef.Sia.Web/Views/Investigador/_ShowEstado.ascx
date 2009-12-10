@@ -6,7 +6,7 @@
 	<% foreach(var estado in Model.EstadosInvestigador) { %>
         <div id="estado_<%=Html.Encode(estado.Id) %>" class="sublista">
     	    <h6><%=Html.Encode(estado.EstadoNombre) %>
-    	    <span><%=Html.Encode(estado.FechaInicial)%> <%if (estado.EstadoNombre != "Activo" || estado.EstadoNombre != "Baja") { %> a <%=Html.Encode(estado.FechaFinal)%><% } %></span></h6>
+    	    <span><%=Html.Encode(estado.FechaInicial)%> <%if (estado.EstadoNombre != "Activo" && estado.EstadoNombre != "Baja") { %> a <%=Html.Encode(estado.FechaFinal)%><% } %></span></h6>
         </div><!--end estadolista-->
     <% } %>    
 </div><!--end minilista-->

@@ -101,14 +101,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoCapitulo> CoautorInternoCapitulos { get; private set; }
 
+        public virtual Firma Firma { get; set; }
+
         [Valid]
         public virtual IList<ArchivoCapitulo> ArchivoCapitulos { get; private set; }
 
         public virtual int PosicionAutor { get; set; }
 
         public virtual bool TieneProyecto { get; set; }
-
-        public virtual Firma Firma { get; set; }
 
         public virtual Proyecto Proyecto { get; set; }
 

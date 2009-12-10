@@ -85,6 +85,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 case 14:
                     nombreProducto = "Proyecto";
                     break;
+                case 20:
+                    nombreProducto = "Obra traducida";
+                    break;
             }
 
             return nombreProducto;

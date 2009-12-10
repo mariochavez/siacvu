@@ -56,7 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2, true))
                 .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7, true))
                 .Add(BuildCreteria<Reporte>(usuario.Id, "CoautorInternoReportes", "Titulo", 11, true))
-                .Add(BuildCreteria<Resena>(usuario.Id, "CoautorInternoResenas", "NombreProducto", 12, true, true));
+                .Add(BuildCreteria<Resena>(usuario.Id, "CoautorInternoResenas", "NombreProducto", 12, true, true))
+                .Add(BuildCreteria<ObraTraducida>(usuario.Id, "CoautorInternoObraTraducidas", "Nombre", 20, true));
 
             //Proyectos
             IMultiCriteria proyectos = Session.CreateMultiCriteria()
@@ -195,17 +196,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 criteria.Add(Subqueries.PropertyIn(tipoPublicacion, cursosTesis));
             }
 
-            //Filtrar todos los productos que mientras Aceptacion2 no tenga valor de 2
-            //Unicamente probado en articulos
-            if (productType == 1)
-            {
-                var firma = DetachedCriteria.For(typeof (Firma))
-                    .SetProjection(Projections.ProjectionList()
-                                       .Add(Projections.Property("Aceptacion2"), "Aceptacion2"))
-                    .Add(Expression.Eq("Aceptacion2", 2));
+            var firma = DetachedCriteria.For(typeof (Firma))
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("Aceptacion2"), "Aceptacion2"))
+                .Add(Expression.Eq("Aceptacion2", 2));
 
-                criteria.Add(Subqueries.PropertyNotIn("Firma", firma));
-            }
+            criteria.Add(Subqueries.PropertyNotIn("Firma", firma));
 
             return criteria;
         }
