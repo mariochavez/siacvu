@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class RecursoFinancieroProyectoForm
@@ -15,5 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int MonedaId { get; set; }
         public string MonedaNombre { get; set; }
 
+        public int ParentId { get; set; }
     }
 }

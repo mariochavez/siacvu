@@ -115,6 +115,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] TipoEstudianteCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Estudiantes de El Colef"},
+                           new CustomSelectForm {Id = 2, Nombre = "Estudiantes externos"}
+                       };
+        }
+
+        public CustomSelectForm[] ProductoGeneradoCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "Base de datos"},
+                           new CustomSelectForm {Id = 2, Nombre = "Informe técnico"},
+                           new CustomSelectForm {Id = 3, Nombre = "Reporte final"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";

@@ -11,8 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     {
         readonly ICatalogoService catalogoService;
         readonly IResponsableProyectoMapper responsableProyectoMapper;
-        //readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
-        //readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
+        readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
+        readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
         readonly IEstudianteProyectoMapper estudianteProyectoMapper;
         readonly IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper;
@@ -29,9 +29,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             this.catalogoService = catalogoService;
             this.responsableProyectoMapper = responsableProyectoMapper;
-            //this.participanteInternoProyectoMapper = participanteInternoProyectoMapper;
-            //this.participanteExternoProyectoMapper = participanteExternoProyectoMapper;
+            this.participanteInternoProyectoMapper = participanteInternoProyectoMapper;
+            this.participanteExternoProyectoMapper = participanteExternoProyectoMapper;
+            this.estudianteProyectoMapper = estudianteProyectoMapper;
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
+            this.productoGeneradoProyectoMapper = productoGeneradoProyectoMapper;
             this.convenioService = convenioService;
         }
 
@@ -99,6 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         }
 
         public Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador, ResponsableProyectoForm[] responsables,
+            ParticipanteInternoProductoForm[] participantesInternos, ParticipanteExternoProductoForm[] participantesExternos, 
             RecursoFinancieroProyectoForm[] recursos, EstudianteProyectoForm[] estudiantes, ProductoGeneradoProyectoForm[] productos)
         {
             var model = Map(message, usuario, investigador);
@@ -112,6 +115,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 responsable.ModificadoPor = usuario;
 
                 model.AddResponsable(responsable);
+            }
+
+            foreach (var participanteProyecto in participantesInternos)
+            {
+                var participante =
+                    participanteInternoProyectoMapper.Map(participanteProyecto);
+
+                participante.CreadoPor = usuario;
+                participante.ModificadoPor = usuario;
+
+                model.AddParticipanteInterno(participante);
+            }
+
+            foreach (var participanteProyecto in participantesExternos)
+            {
+                var participante =
+                    participanteExternoProyectoMapper.Map(participanteProyecto);
+
+                participante.CreadoPor = usuario;
+                participante.ModificadoPor = usuario;
+
+                model.AddParticipanteExterno(participante);
             }
 
             foreach (var recursoProyecto in recursos)

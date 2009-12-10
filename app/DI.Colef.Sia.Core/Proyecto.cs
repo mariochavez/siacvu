@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
     [ProyectoValidator]
-    public class Proyecto : Entity, IBaseEntity
+    public class Proyecto : Entity, IBaseEntity, IParticipante
     {
         const int tipoProducto = 14; //14 representa proyectos
 
@@ -65,14 +65,26 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ProductoGeneradoProyectos.Remove(productoGenerado);
         }
 
-        public virtual void AddParticipanteInterno(ParticipanteInternoProyecto participanteInternoProyecto)
+        public virtual void AddParticipanteInterno(ParticipanteInternoProducto participanteInterno)
         {
-            ParticipanteInternoProyectos.Add(participanteInternoProyecto);
+            participanteInterno.TipoProducto = TipoProducto;
+            ParticipanteInternoProyectos.Add((ParticipanteInternoProyecto) participanteInterno);
         }
 
-        public virtual void AddParticipanteExterno(ParticipanteExternoProyecto participanteExternoProyecto)
+        public virtual void DeleteParticipanteInterno(ParticipanteInternoProducto participanteInterno)
         {
-            ParticipanteExternoProyectos.Add(participanteExternoProyecto);
+            ParticipanteInternoProyectos.Remove((ParticipanteInternoProyecto) participanteInterno);
+        }
+
+        public virtual void AddParticipanteExterno(ParticipanteExternoProducto participanteExterno)
+        {
+            participanteExterno.TipoProducto = TipoProducto;
+            ParticipanteExternoProyectos.Add((ParticipanteExternoProyecto) participanteExterno);
+        }
+
+        public virtual void DeleteParticipanteExterno(ParticipanteExternoProducto participanteExterno)
+        {
+            ParticipanteExternoProyectos.Remove((ParticipanteExternoProyecto)participanteExterno);
         }
 
         //Seccion Informacion General

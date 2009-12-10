@@ -228,11 +228,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.VinculacionAPyD,
                            o => o.Ignore());
 
-            Mapper.CreateMap<ParticipanteInternoProyecto, ParticipanteInternoProyectoForm>()
+            Mapper.CreateMap<ParticipanteInternoProyecto, ParticipanteInternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<ParticipanteExternoProyecto, ParticipanteExternoProyectoForm>()
+            Mapper.CreateMap<ParticipanteExternoProyecto, ParticipanteExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 

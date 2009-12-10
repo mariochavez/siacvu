@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(ProductoGeneradoProyectoForm message, ProductoGeneradoProyecto model)
         {
             model.ProductoGenerado = message.ProductoGenerado;
-            model.FechaEntrega = message.FechaEntrega.FromShortDateToDateTime();
+            model.FechaEntrega = message.FechaEntrega.Replace("_","/").FromShortDateToDateTime();
 
             if (model.IsTransient())
             {

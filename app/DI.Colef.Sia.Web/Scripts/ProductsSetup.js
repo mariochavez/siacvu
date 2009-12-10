@@ -237,6 +237,14 @@ function proyectoSetup() {
         );
 
     $('#SectorFinanciamiento')[0].dynamic.setup();
+
+    $('#ParticipaEstudiante').dynamicui(
+        [
+            ['1', ['#ParticipaEstudiante_Fields']]
+        ]
+    );
+
+    $('#ParticipaEstudiante')[0].dynamic.setup();
 }
 
 function investigadorSetup() {

@@ -134,15 +134,60 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         //Seccion Productos generados del proyecto
         public ProductoGeneradoProyectoForm[] ProductoGeneradoProyectos { get; set; }
         public ProductoGeneradoProyectoForm ProductoGeneradoProyecto { get; set; }
+        public CustomSelectForm[] ProductosGenerados { get; set; }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }
         public AreaTematicaForm AreaTematica { get; set; }
 
-        public ParticipanteInternoProyectoForm[] ParticipanteInternoProyectos { get; set; }
-        public ParticipanteInternoProyectoForm ParticipanteInternoProyecto { get; set; }
+        public ParticipanteInternoProductoForm[] ParticipanteInternoProyectos { get; set; }
+        public ParticipanteInternoProductoForm ParticipanteInternoProducto { get; set; }
 
-        public ParticipanteExternoProyectoForm[] ParticipanteExternoProyectos { get; set; }
-        public ParticipanteExternoProyectoForm ParticipanteExternoProyecto { get; set; }
+        public ParticipanteExternoProductoForm[] ParticipanteExternoProyectos { get; set; }
+        public ParticipanteExternoProductoForm ParticipanteExternoProducto { get; set; }
+
+        public long TotalPesos
+        {
+            get
+            {
+                var pesos = new long();
+                if (RecursoFinancieroProyectos != null)
+                {
+                    foreach (var recursoFinancieroProyecto in RecursoFinancieroProyectos)
+                    {
+                        if (recursoFinancieroProyecto.MonedaId == 1)
+                        {
+                            pesos += recursoFinancieroProyecto.Monto;
+                        }
+                    }
+                }
+                else
+                    pesos = 0;
+
+                return pesos;
+            }
+        }
+
+        public long TotalDolares
+        {
+            get
+            {
+                var dolares = new long();
+                if (RecursoFinancieroProyectos != null)
+                {
+                    foreach (var recursoFinancieroProyecto in RecursoFinancieroProyectos)
+                    {
+                        if (recursoFinancieroProyecto.MonedaId == 2)
+                        {
+                            dolares += recursoFinancieroProyecto.Monto;
+                        }
+                    }
+                }
+                else
+                    dolares = 0;
+
+                return dolares;
+            }
+        }
     }
 }
