@@ -16,50 +16,46 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAmbitoMapper ambitoMapper;
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
+        readonly ISesionEventoMapper sesionEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IInvestigadorMapper investigadorMapper;
-        readonly IInvestigadorService investigadorService;
         readonly ITipoEventoMapper tipoEventoMapper;
-        readonly ITipoFinanciamientoMapper tipoFinanciamientoMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
-        readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
-        readonly IDirigidoAMapper dirigidoAMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
-                                IDirigidoAMapper dirigidoAMapper,
-                                IEstadoPaisMapper estadoPaisMapper,
+                                ILineaTematicaMapper lineaTematicaMapper,
                                 IPaisMapper paisMapper,
-                                IUsuarioService usuarioService, IAmbitoMapper ambitoMapper,
+                                IAreaTematicaMapper areaTematicaMapper,
+                                ISesionEventoMapper sesionEventoMapper,
+                                IUsuarioService usuarioService,
+                                IAmbitoMapper ambitoMapper,
                                 ITipoEventoMapper tipoEventoMapper,
                                 ITipoParticipacionMapper tipoParticipacionMapper,
-                                IInvestigadorMapper investigadorMapper,
-                                ITipoFinanciamientoMapper tipoFinanciamientoMapper,
-                                IInvestigadorService investigadorService,
                                 ICoautorExternoEventoMapper coautorExternoEventoMapper,
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
-                                ISearchService searchService, IInstitucionEventoMapper institucionEventoMapper,
+                                ISearchService searchService,
+                                IInstitucionEventoMapper institucionEventoMapper,
                                 IInvestigadorExternoMapper investigadorExternoMapper)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
-            this.estadoPaisMapper = estadoPaisMapper;
+            this.lineaTematicaMapper = lineaTematicaMapper;
+            this.areaTematicaMapper = areaTematicaMapper;
+            this.sesionEventoMapper = sesionEventoMapper;
             this.paisMapper = paisMapper;
-            this.investigadorService = investigadorService;
             this.eventoService = eventoService;
             this.eventoMapper = eventoMapper;
             this.ambitoMapper = ambitoMapper;
-            this.dirigidoAMapper = dirigidoAMapper;
             this.tipoEventoMapper = tipoEventoMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
-            this.investigadorMapper = investigadorMapper;
-            this.tipoFinanciamientoMapper = tipoFinanciamientoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
             this.institucionEventoMapper = institucionEventoMapper;
@@ -162,17 +158,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
                                    [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    [Bind(Prefix = "Institucion")] InstitucionProductoForm[] institucion,
+                                   [Bind(Prefix = "SesionEvento")] SesionEventoForm[] sesion,
                                    EventoForm form)
         {
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] { };
             coautorInterno = coautorInterno ?? new CoautorInternoProductoForm[] { };
             institucion = institucion ?? new InstitucionProductoForm[] { };
+            sesion = sesion ?? new SesionEventoForm[] { };
 
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
-                                          coautorExterno, coautorInterno, institucion);
-
-            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
-                evento.Pais = GetDefaultPais();
+                                          coautorExterno, coautorInterno, institucion, sesion);
 
             if (!IsValidateModel(evento, form, Title.New, "Evento"))
             {
@@ -195,9 +190,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsInternacionalOrBinacional(eventoMapper.Map(evento).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
-                evento.Pais = GetDefaultPais();
-
             if (!IsValidateModel(evento, form, Title.Edit))
             {
                 var eventoForm = eventoMapper.Map(evento);
@@ -218,6 +210,87 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<Evento>(x => x.Nombre, q);
             return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var form = new ShowFieldsForm
+            {
+                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+                AreaTematicaId = areaTematicaForm.Id
+            };
+
+            return Rjs("ChangeAreaTematica", form);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewSesion(int id)
+        {
+            var evento = eventoService.GetEventoById(id);
+            var form = new EventoForm();
+
+            if (evento != null)
+                form.Id = evento.Id;
+
+            form.SesionEvento = new SesionEventoForm();
+            form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
+            
+            return Rjs("NewSesion", form);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddSesion([Bind(Prefix = "SesionEvento")] SesionEventoForm form,
+                                      int eventoId)
+        {
+            var sesionEvento = sesionEventoMapper.Map(form);
+
+            ModelState.AddModelErrors(sesionEvento.ValidationResults(), true, String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            if (eventoId != 0)
+            {
+                sesionEvento.CreadoPor = CurrentUser();
+                sesionEvento.ModificadoPor = CurrentUser();
+
+                var evento = eventoService.GetEventoById(eventoId);
+
+                evento.AddSesion(sesionEvento);
+                eventoService.SaveEvento(evento);
+            }
+
+            var sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
+
+            return Rjs("AddSesion", sesionEventoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "Investigadores")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteSesion(int id, int sesionId)
+        {
+            var evento = eventoService.GetEventoById(id);
+
+            if (evento != null)
+            {
+                var sesion = evento.SesionesEventos.Where(x => x.Id == sesionId).First();
+                evento.DeleteSesion(sesion);
+
+                eventoService.SaveEvento(evento);
+            }
+
+            var form = new SesionEventoForm { ModelId = id, SesionId =  sesionId};
+            return Rjs("DeleteSesion", form);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -466,6 +539,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.CoautorExternoProducto = new CoautorExternoProductoForm();
             form.CoautorInternoProducto = new CoautorInternoProductoForm();
+            form.SesionEvento = new SesionEventoForm();
 
             //Lista de Catalogos Pendientes
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
@@ -479,7 +553,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         void FormSetCombos(EventoForm form)
         {
-            ViewData["Ambito"] = form.AmbitoId;
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
             ViewData["Pais"] = form.PaisId;
@@ -494,6 +567,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
+
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       IsShowForm = true,
                                   };

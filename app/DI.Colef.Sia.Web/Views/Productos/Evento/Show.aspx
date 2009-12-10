@@ -45,38 +45,55 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                <h4>Datos del evento</h4>
+                <h4>Eventos acad&eacute;micos</h4>
                 <p>
                     <label>Nombre del evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Tipo de evento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEventoNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Objetivo del evento</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ObjetivoEvento)%>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoParticipacionNombre)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.TipoEventoNombre.Contains("Evento Estratégico (El Colef)")){ %>
-                    <% Html.RenderPartial("_ShowInstitucion", new InstitucionForm { Instituciones = Model.Form.InstitucionEventos, ModelId = Model.Form.Id }); %>
+                <% Html.RenderPartial("_ShowInstitucion", new InstitucionForm { Instituciones = Model.Form.InstitucionEventos, ModelId = Model.Form.Id }); %>
+                
+                <% if (Model.Form.TipoEventoNombre.Contains("Evento Estratégico (El Colef)") && Model.Form.TipoParticipacionNombre.Contains("Organizador")){ %>
+                    <h4>Tem&aacute;tica y financiamiento del evento</h4>
+                    <p>
+                        <label>Objetivo del evento</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.ObjetivoEvento)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Financiamiento interno</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FinanciamientoInterno)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Financiamiento externo</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FinanciamientoExterno)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Sesiones de trabajo programadas</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.SesionesTrabajo)%>&nbsp;</span>
+                    </p>
+                    
+                    <h4>Sesion(es) del evento estrat&eacute;gico</h4>
+                    <% Html.RenderPartial("_ShowSesion", Model.Form); %>
+                    
+                <% } else {%>
+                    <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                    
+                    <p>
+                        <label>Con invitaci&oacute;n</label>
+                        <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Invitacion)%>&nbsp;</span>
+                    </p>
                 <% } %>
-                
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
-                <p>
-                    <label>&Aacute;mbito</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AmbitoNombre)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Con invitaci&oacute;n</label>
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.Invitacion)%>&nbsp;</span>
-                </p>
                 
                 <% if (Model.Form.TipoParticipacionNombre.Contains("Conferencista magistral") || Model.Form.TipoParticipacionNombre.Contains("Ponente")){ %>
                     <p>
@@ -99,23 +116,6 @@
 	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
 	                </p>
 	            <% } %>
-	            
-                <p>
-                    <label>Fecha del evento</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaEvento)%>&nbsp;</span>
-                    <span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <p>
-                    <label>Lugar(Ciudad/Estado)</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Lugar)%>&nbsp;</span>
-                </p>
-                
-                <% if(Model.Form.AmbitoNombre.Contains("Binacional") || Model.Form.AmbitoNombre.Contains("Internacional")){ %>
-                    <p>
-                        <label>Pa&iacute;s</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                    </p>
-                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar") %>

@@ -143,18 +143,6 @@ function articuloSetup() {
     $('#TieneProyecto')[0].dynamic.setup();
 }
 
-function participacionSetup() {
-    $('#OtraParticipacion').dynamicui(
-            [
-                ['Platicas', ['#Platicas']],
-                ['Presentacion de resultados de investigacion', ['#PresentacionInvestigacion']],
-                ['Presentacion de libro', ['#PresentacionLibro_div']]
-            ]
-        );
-
-    $('#OtraParticipacion')[0].dynamic.setup();
-}
-
 function participacionMedioSetup() {
 
     $('#TipoParticipacion').dynamicui(
@@ -218,29 +206,45 @@ function resenaSetup() {
 }
 
 function proyectoSetup() {
-    $('#RequiereServicioUSEG').dynamicui(
+    $('#EstadoProyecto').dynamicui(
+            [
+                ['Terminado', ['#EstadoTerminado']]
+            ]
+        );
+
+    $('#EstadoProyecto')[0].dynamic.setup();
+
+    $('#ConRecursos').dynamicui(
         [
-            ['1', ['.RequiereUSEG']]
+            ['1', ['#ProyectoConRecursos']]
         ]
     );
 
-    $('#RequiereServicioUSEG')[0].dynamic.setup();
-
-    $('#ParticipaEstudiante').dynamicui(
-        [
-            ['1', ['.ParticipaEstudiante']]
-        ]
-    );
-
-    $('#ParticipaEstudiante')[0].dynamic.setup();
+    $('#ConRecursos')[0].dynamic.setup();
 
     $('#ConConvenio').dynamicui(
         [
-            ['1', ['.NombreConvenio']]
+            ['1', ['.Convenio_Fields']]
         ]
     );
 
     $('#ConConvenio')[0].dynamic.setup();
+
+    $('#SectorFinanciamiento').dynamicui(
+            [
+                ['Fondos CONACyT', ['#SectorFinanciamiento_Field']]
+            ]
+        );
+
+    $('#SectorFinanciamiento')[0].dynamic.setup();
+
+    $('#ParticipaEstudiante').dynamicui(
+        [
+            ['1', ['#ParticipaEstudiante_Fields']]
+        ]
+    );
+
+    $('#ParticipaEstudiante')[0].dynamic.setup();
 }
 
 function investigadorSetup() {
@@ -285,14 +289,6 @@ function cursoSetup() {
 }
 
 function eventoSetup() {
-    $('#TipoEvento').dynamicui(
-            [
-                ['Evento Estratégico (El Colef)', ['.TipoEvento_field']]
-            ]
-        );
-
-    $('#TipoEvento')[0].dynamic.setup();
-
     $('#TipoParticipacion').dynamicui(
             [
                 [['Conferencista magistral', 'Ponente'], ['#TipoParticipacion_fields']]
@@ -301,11 +297,34 @@ function eventoSetup() {
 
     $('#TipoParticipacion')[0].dynamic.setup();
 
-    $('#Ambito').dynamicui(
-            [
-                [['Internacional', 'Binacional'], ['#Ambito_field']]
-            ]
-        );
-
-    $('#Ambito')[0].dynamic.setup();
+    CheckOptions.setup();
 }
+
+var CheckOptions = {
+    setup: function() {
+        $('#forma').unload(CheckOptions.verifyOptions());
+        $('#TipoEvento').change(CheckOptions.verifyOptions);
+        $('#TipoParticipacion').change(CheckOptions.verifyOptions);
+    },
+    verifyOptions: function() {
+        var comboText1 = $('#TipoEvento :selected').text();
+        var comboText2 = $('#TipoParticipacion :selected').text();
+
+        if (comboText1 == "Evento Estratégico (El Colef)" && comboText2 == "Organizador") {
+            $('#OrganizadorColef_fields').slideDown('fast', function() {
+                $('#OrganizadorColef_fields').fadeIn('fast');
+            });
+            $('#NoOrganizadorColef_fields').slideUp('fast', function() {
+                $('#NoOrganizadorColef_fields').fadeOut('fast');
+            });
+        }
+        else {
+            $('#OrganizadorColef_fields').slideUp('fast', function() {
+                $('#OrganizadorColef_fields').fadeOut('fast');
+            });
+            $('#NoOrganizadorColef_fields').slideDown('fast', function() {
+                $('#NoOrganizadorColef_fields').fadeIn('fast');
+            });
+        }
+    }
+};

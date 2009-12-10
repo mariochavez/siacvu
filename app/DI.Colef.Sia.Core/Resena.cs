@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 12; // 12 Representa Resena
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public Resena()
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
@@ -122,6 +124,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
+
+        public virtual Firma Firma { get; set; }
 
         public virtual string TituloLibro { get; set; }
 

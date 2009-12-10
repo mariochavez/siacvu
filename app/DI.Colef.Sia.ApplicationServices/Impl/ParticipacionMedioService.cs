@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,10 +9,15 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ParticipacionMedioService : IParticipacionMedioService
     {
         readonly IRepository<ParticipacionMedio> participacionMedioRepository;
+        readonly IProductoQuerying productoQuerying;
+        readonly IFirmaService firmaservice;
 
-        public ParticipacionMedioService(IRepository<ParticipacionMedio> participacionMedioRepository)
+        public ParticipacionMedioService(IRepository<ParticipacionMedio> participacionMedioRepository,
+            IProductoQuerying productoQuerying, IFirmaService firmaservice)
         {
             this.participacionMedioRepository = participacionMedioRepository;
+            this.productoQuerying = productoQuerying;
+            this.firmaservice = firmaservice;
         }
 
         public ParticipacionMedio GetParticipacionMedioById(int id)
@@ -36,6 +42,23 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 participacionMedio.Puntuacion = 0;
                 participacionMedio.Activo = true;
                 participacionMedio.CreadoEl = DateTime.Now;
+
+                //var firma = new Firma
+                //{
+                //    Aceptacion1 = 0,
+                //    Aceptacion2 = 0,
+                //    Aceptacion3 = 0,
+                //    Firma1 = DateTime.Now,
+                //    Firma2 = DateTime.Now,
+                //    Firma3 = DateTime.Now,
+                //    TipoProducto = participacionMedio.TipoProducto,
+                //    CreadoPor = participacionMedio.Usuario,
+                //    ModificadoPor = participacionMedio.Usuario
+                //};
+
+                //firmaservice.SaveFirma(firma);
+
+                //participacionMedio.Firma = firma;
             }
             participacionMedio.ModificadoEl = DateTime.Now;
             

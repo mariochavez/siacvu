@@ -23,11 +23,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         protected override void MapToModel(RecursoFinancieroProyectoForm message, RecursoFinancieroProyecto model)
         {
-            model.Recurso = message.Recurso;
             model.Monto = message.Monto;
 
             model.Moneda = catalogoService.GetMonedaById(message.Moneda);
-            model.Institucion = catalogoService.GetInstitucionById(message.Institucion);
+            model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
 
             if (model.IsTransient())
             {

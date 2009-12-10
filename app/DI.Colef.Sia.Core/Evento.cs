@@ -13,13 +13,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 6; // 6 Representa Evento
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public Evento()
         {
+            SesionesEventos = new List<SesionEvento>();
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             ArchivoEventos = new List<ArchivoEvento>();
-            FirmaEventos = new List<FirmaEvento>();
             InstitucionEventos = new List<InstitucionEvento>();
+        }
+
+        public virtual void AddSesion(SesionEvento sesionEvento)
+        {
+            SesionesEventos.Add(sesionEvento);
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -40,12 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ArchivoEventos.Add((ArchivoEvento)archivo);
         }
 
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaEventos.Add((FirmaEvento)firma);
-        }
-
         public virtual void AddInstitucion(InstitucionProducto institucion)
         {
             institucion.TipoProducto = tipoProducto;
@@ -57,9 +58,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             InstitucionEventos.Remove((InstitucionEvento) institucion);
         }
 
-        public virtual void DeleteFirma(Firma firma)
+        public virtual void DeleteSesion(SesionEvento sesionEvento)
         {
-            FirmaEventos.Remove((FirmaEvento)firma);
+            SesionesEventos.Remove(sesionEvento);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -80,8 +81,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoEvento> ArchivoEventos { get; private set; }
 
+        public virtual Firma Firma { get; set; }
+
         [Valid]
-        public virtual IList<FirmaEvento> FirmaEventos { get; private set; }
+        public virtual IList<SesionEvento> SesionesEventos { get; private set; }
 
         [NotNullNotEmpty]
         [DomainSignature]
@@ -89,7 +92,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual TipoEvento TipoEvento { get; set; }
 
+        public virtual AreaTematica AreaTematica { get; set; }
+
         public virtual string ObjetivoEvento { get; set; }
+
+        public virtual int FinanciamientoInterno { get; set; }
+
+        public virtual int FinanciamientoExterno { get; set; }
+
+        public virtual int SesionesTrabajo { get; set; }
 
         public virtual TipoParticipacion TipoParticipacion { get; set; }
 
@@ -102,8 +113,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string PalabraClave3 { get; set; }
 
-        public virtual Ambito Ambito { get; set; }
-
         public virtual bool Invitacion { get; set; }
 
         public virtual string TituloTrabajo { get; set; }
@@ -115,10 +124,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
         public virtual int PosicionAutor { get; set; }
-
-        public virtual DateTime FechaEvento { get; set; }
-
-        public virtual string Lugar { get; set; }
 
         public virtual Pais Pais { get; set; }
 

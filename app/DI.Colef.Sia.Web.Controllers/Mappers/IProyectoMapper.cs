@@ -6,11 +6,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
     public interface IProyectoMapper : IMapper<Proyecto, ProyectoForm>
     {
-        Proyecto Map(ProyectoForm message, Usuario usuario);
+        Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador);
 
-        Proyecto Map(ProyectoForm message, Usuario usuario, string[] participantesExternos,
-                     string[] participantesInternos, string[] responsablesInternos,
-                     string[] institucionRecursoFinanciero, string[] monedaRecursoFinanciero, string[] montoRecursoFinanciero,
-                     string[] recursoRecursoFinanciero);
+        Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador,
+                     ResponsableProyectoForm[] responsables,
+                     ParticipanteInternoProductoForm[] participantesInternos,
+                     ParticipanteExternoProductoForm[] participantesExternos,
+                     RecursoFinancieroProyectoForm[] recursos,
+                     EstudianteProyectoForm[] estudiantes,
+                     ProductoGeneradoProyectoForm[] productos);
     }
 }

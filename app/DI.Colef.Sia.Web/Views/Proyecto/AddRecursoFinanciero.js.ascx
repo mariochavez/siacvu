@@ -3,27 +3,47 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+var counter = $('#recursofinancieroList div[id^=recursofinanciero_]').length;
+
 var html = '
-    <div class="sublista" id="recursofinanciero_<%=Html.Encode(Model.Id) %>">
+    <div class="sublista" id="recursofinanciero_<%=Html.Encode(Model.InstitucionId) %>">
         <h6>
-            <%=Html.Encode(Model.InstitucionNombre) %>
-            <span><%=Html.Encode(Model.Recurso) %></span>
-            <span><%=Html.Encode(Model.Monto) %></span>
-            <span><%=Html.Encode(Model.MonedaNombre) %></span>
+            <a href="<%=Url.Action("DeleteRecursoFinanciero", null, new{ id = Model.ParentId, institucionId = Model.InstitucionId, monto = Model.Monto, tipoMoneda = Model.MonedaId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <%=Html.Encode(Model.InstitucionNombre)%>
+            <%=Html.Hidden("RecursoFinanciero['  + counter + '].InstitucionId", Model.InstitucionId)%>
+            <span>
+                Monto <%=Html.Encode(Model.Monto)%>
+                <%=Html.Hidden("RecursoFinanciero['  + counter + '].Monto", Model.Monto)%>
+                Moneda <%=Html.Encode(Model.MonedaNombre)%>
+                <%=Html.Hidden("RecursoFinanciero['  + counter + '].Moneda", Model.MonedaId)%>
+            </span>
         </h6>
 	</div><!--end sublista-->
 ';
 
-$('#message').html('');
-$('#message').removeClass('errormessage');
+$('#mensaje-error').html('');
+$('#mensaje-error').removeClass('mensaje-error');
 
-$('#recursofinanciero_form').hide();
-$('#recursofinanciero_new').show();
-$('#recursofinanciero_form').html('');
-$('#recursofinancieroEmptyList_form').html('');
-$('#recursofinancieroList div:first').before(html);
+$('#recursofinancieroForm').hide();
+$('#recursofinancieroNew').show();
+$('#recursofinancieroForm').html('');
 
-$('#recursofinanciero_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
-$('#recursofinanciero_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+if($('#recursofinanciero_<%=Html.Encode(Model.InstitucionId) %>').length == 0)
+{
+    $('#recursofinancieroEmptyListForm').html('');
+    $('#recursofinancieroList div:first').before(html);
+
+    $('#recursofinanciero_' + <%=Html.Encode(Model.InstitucionId)%> + ':first').hide();
+    $('#recursofinanciero_' + <%=Html.Encode(Model.InstitucionId)%> + ':first').fadeIn('slow');
+    
+    if(<%=Html.Encode(Model.MonedaId)%> == 1){
+        var pesos =  parseInt($('#totalpesos').text()) + parseInt(<%=Html.Encode(Model.Monto)%>);
+        $('#totalpesos').text(pesos);
+    }
+    if(<%=Html.Encode(Model.MonedaId)%> == 2){
+        var dolares =  parseInt($('#totaldolares').text()) + parseInt(<%=Html.Encode(Model.Monto)%>);
+        $('#totaldolares').text(dolares);
+    }
+}
 
 setupSublistRows();

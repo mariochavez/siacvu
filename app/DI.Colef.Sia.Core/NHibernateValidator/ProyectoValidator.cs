@@ -37,9 +37,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 //isValid &= !ValidateIsNullOrEmpty<Proyecto>(proyecto, x => x.EstadoProyecto, constraintValidatorContext);
             }
 
-            isValid &= ValidateFechaInicialFinal(proyecto, constraintValidatorContext);
-            isValid &= ValidateFechas(proyecto, constraintValidatorContext);
-            isValid &= ValidateChecks(proyecto, constraintValidatorContext);
+            //isValid &= ValidateFechaInicialFinal(proyecto, constraintValidatorContext);
+            //isValid &= ValidateFechas(proyecto, constraintValidatorContext);
+            //isValid &= ValidateChecks(proyecto, constraintValidatorContext);
 
             return isValid;
         }
@@ -54,40 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 {
                     constraintValidatorContext.AddInvalid(
                         "seleccione el nombre del convenio|Convenio", "Convenio");
-                    isValid = false;
-                }
-            }
-
-            if (proyecto.RequiereServicioUSEG)
-            {
-                if (proyecto.USEG == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el servicio USEG|USEG", "USEG");
-                    isValid = false;
-                }
-            }
-
-            if (proyecto.ParticipaEstudiante)
-            {
-                if (proyecto.NombreEstudiante == "")
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío o cero|NombreEstudiante", "NombreEstudiante");
-                    isValid = false;
-                }
-
-                if (proyecto.TipoEstudiante == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el tipo de estudiante|TipoEstudiante", "TipoEstudiante");
-                    isValid = false;
-                }
-
-                if (proyecto.GradoAcademico == null)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "seleccione el grado académico|GradoAcademico", "GradoAcademico");
                     isValid = false;
                 }
             }
@@ -159,12 +125,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 isValid = false;
             }
 
-            if (proyecto.FechaEntregaProducto == DateTime.Parse("1900-01-01"))
-            {
-                constraintValidatorContext.AddInvalid(
-                    "formato de fecha no válido|FechaEdicion", "FechaEdicion");
-                isValid = false;
-            }
 
             if (proyecto.FechaProrroga == DateTime.Parse("1900-01-01"))
             {
@@ -177,13 +137,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             {
                 constraintValidatorContext.AddInvalid(
                     "el año no puede estar en el futuro|FechaAceptacion", "FechaAceptacion");
-                isValid = false;
-            }
-
-            if (proyecto.FechaEntregaProducto > DateTime.Now)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "el año no puede estar en el futuro|FechaEdicion", "FechaEdicion");
                 isValid = false;
             }
 

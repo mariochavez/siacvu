@@ -2,28 +2,19 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-    <label>Instituci&oacute;n</label>
-
-	<%=Html.DropDownList("RecursoFinancieroProyecto.IntitucionId", Model.Instituciones.CreateSelectList<InstitucionForm>("Id", "Nombre"),
-            "Seleccione ...", new { rel = "#recursofinanciero", @class = "requerido" })%>
-	<%=Html.ValidationMessage("RecursoFinancieroProyecto.InstitucionId") %>
-</p>
-<p>
-    <label>Recurso</label>
-
-	<%=Html.TextBox("RecursoFinancieroProyecto.Recurso", Model.RecursoFinancieroProyecto.Recurso, new { rel = "#recursofinanciero", @class = "input250-requerido" })%>
-	<%=Html.ValidationMessage("RecursoFinancieroProyecto.Recurso")%>
+    <label>Instituci&oacute;n financiadora</label>
+    <%=Html.TextBox("RecursoFinanciero.Institucion", "",
+            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+    <%=Html.Hidden("RecursoFinanciero.InstitucionId", 0, new { rel = "#RecursoFinanciero_Institucion" })%>
 </p>
 <p>
     <label>Monto</label>
-
-	<%=Html.TextBox("RecursoFinancieroProyecto.Monto", Model.RecursoFinancieroProyecto.Monto, new { rel = "#recursofinanciero", @class = "input250-requerido" })%>
-	<%=Html.ValidationMessage("RecursoFinancieroProyecto.Monto")%>
+	<%=Html.TextBox("RecursoFinanciero.Monto", 0, new { @class = "input250-requerido" })%>
+	<%=Html.ValidationMessage("RecursoFinanciero.Monto")%>
 </p>
 <p>
     <label>Moneda</label>
-
-	<%=Html.DropDownList("RecursoFinancieroProyecto.MonedaId", Model.Monedas.CreateSelectList<MonedaForm>("Id", "Nombre"),
-                    "Seleccione ...", new { rel = "#recursofinanciero", @class = "requerido" })%>
-	<%=Html.ValidationMessage("RecursoFinancieroProyecto.MonedaId")%>
+	<%=Html.DropDownList("RecursoFinanciero.Moneda", Model.Monedas.CreateSelectList<MonedaForm>("Id", "Nombre"),
+                    "Seleccione ...", new { @class = "requerido" })%>
+	<%=Html.ValidationMessage("RecursoFinanciero.Moneda")%>
 </p>

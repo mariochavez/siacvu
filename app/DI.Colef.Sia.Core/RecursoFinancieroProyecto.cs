@@ -6,12 +6,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 {
     public class RecursoFinancieroProyecto : Entity, IBaseEntity
     {
+        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        public virtual string Recurso { get; set; }
-
+        //[NotNullNotEmpty]
         public virtual long Monto { get; set; }
 
+        [NotNull]
         public virtual Moneda Moneda { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }

@@ -11,10 +11,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 4; // 4 Representa Dictamen
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public Dictamen()
         {
             ArchivoDictamenes = new List<ArchivoDictamen>();
-            FirmaDictamenes = new List<FirmaDictamen>();
             EditorialDictamenes = new List<EditorialDictamen>();
         }
 
@@ -22,12 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoDictamenes.Add((ArchivoDictamen) archivo);
-        }
-
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaDictamenes.Add((FirmaDictamen)firma);
         }
 
         public virtual void AddEditorial(EditorialProducto editorial)
@@ -41,11 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             EditorialDictamenes.Remove((EditorialDictamen)editorial);
         }
 
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaDictamenes.Remove((FirmaDictamen)firma);
-        }
-
         public virtual void DeleteArchivo(Archivo archivo)
         {
             ArchivoDictamenes.Remove((ArchivoDictamen) archivo);
@@ -54,8 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoDictamen> ArchivoDictamenes { get; private set; }
 
-        [Valid]
-        public virtual IList<FirmaDictamen> FirmaDictamenes { get; private set; }
+        public virtual Firma Firma { get; set; }
 
         [Valid]
         public virtual IList<EditorialDictamen> EditorialDictamenes { get; private set; }

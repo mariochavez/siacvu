@@ -13,27 +13,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 8; // 8 Representa Organo Externo
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         public OrganoExterno()
         {
             ArchivoOrganoExternos = new List<ArchivoOrganoExterno>();
-            FirmaOrganoExternos = new List<FirmaOrganoExterno>();
         }
 
         public virtual void AddArchivo(Archivo archivo)
         {
             archivo.TipoProducto = tipoProducto;
             ArchivoOrganoExternos.Add((ArchivoOrganoExterno) archivo);
-        }
-
-        public virtual void AddFirma(Firma firma)
-        {
-            firma.TipoProducto = tipoProducto;
-            FirmaOrganoExternos.Add((FirmaOrganoExterno)firma);
-        }
-
-        public virtual void DeleteFirma(Firma firma)
-        {
-            FirmaOrganoExternos.Remove((FirmaOrganoExterno)firma);
         }
 
         public virtual void DeleteArchivo(Archivo archivo)
@@ -44,8 +34,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ArchivoOrganoExterno> ArchivoOrganoExternos { get; private set; }
 
-        [Valid]
-        public virtual IList<FirmaOrganoExterno> FirmaOrganoExternos { get; private set; }
+        public virtual Firma Firma { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

@@ -9,17 +9,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class EventoMapper : AutoFormMapper<Evento, EventoForm>, IEventoMapper
     {
         readonly ICatalogoService catalogoService;
+        readonly ISesionEventoMapper sesionEventoMapper;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
 
         public EventoMapper(IRepository<Evento> repository, ICatalogoService catalogoService,
             ICoautorExternoEventoMapper coautorExternoEventoMapper,
-            ICoautorInternoEventoMapper coautorInternoEventoMapper, IInstitucionEventoMapper institucionEventoMapper
+            ISesionEventoMapper sesionEventoMapper,
+            ICoautorInternoEventoMapper coautorInternoEventoMapper,
+            IInstitucionEventoMapper institucionEventoMapper
         )
             : base(repository)
         {
             this.catalogoService = catalogoService;
+            this.sesionEventoMapper = sesionEventoMapper;
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
             this.institucionEventoMapper = institucionEventoMapper;
@@ -35,19 +39,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.TituloTrabajo = message.TituloTrabajo;
             model.Invitacion = message.Invitacion;
-            model.Lugar = message.Lugar;
             model.PalabraClave1 = message.PalabraClave1;
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.ObjetivoEvento = message.ObjetivoEvento;
             model.PosicionAutor = message.PosicionAutor;
+            model.FinanciamientoInterno = message.FinanciamientoInterno;
+            model.FinanciamientoExterno = message.FinanciamientoExterno;
+            model.SesionesTrabajo = message.SesionesTrabajo;
 
-            model.FechaEvento = message.FechaEvento.FromShortDateToDateTime();
-
-            model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
+            model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
             model.Pais = catalogoService.GetPaisById(message.Pais);
+
+            if (message.SesionEvento != null)
+                model.AddSesion(sesionEventoMapper.Map(message.SesionEvento));
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
@@ -60,6 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+                //model.SesionesEventos[0].CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;
@@ -69,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador,
             CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos, 
-            InstitucionProductoForm[] instituciones)
+            InstitucionProductoForm[] instituciones, SesionEventoForm[] sesiones)
         {
             var model = Map(message, usuario, investigador);
 
@@ -104,6 +112,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 institucionEvento.ModificadoPor = usuario;
 
                 model.AddInstitucion(institucionEvento);
+            }
+
+            foreach (var sesion in sesiones)
+            {
+                var sesionEvento =
+                    sesionEventoMapper.Map(sesion);
+
+                sesionEvento.CreadoPor = usuario;
+                sesionEvento.ModificadoPor = usuario;
+
+                model.AddSesion(sesionEvento);
             }
 
             return model;
