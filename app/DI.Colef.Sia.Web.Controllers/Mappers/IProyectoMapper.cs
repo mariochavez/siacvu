@@ -9,7 +9,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador);
 
         Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador,
-                     ResponsableProyectoForm[] responsables, RecursoFinancieroProyectoForm[] recursos,
+                     ResponsableProyectoForm[] responsables,
+                     ParticipanteInternoProductoForm[] participantesInternos,
+                     ParticipanteExternoProductoForm[] participantesExternos,
+                     RecursoFinancieroProyectoForm[] recursos,
                      EstudianteProyectoForm[] estudiantes,
                      ProductoGeneradoProyectoForm[] productos);
     }

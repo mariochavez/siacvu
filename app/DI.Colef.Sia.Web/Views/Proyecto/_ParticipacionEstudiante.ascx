@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
-    <label>Participa estudiante</label>
-    <%=Html.CheckBox("ParticipaEstudiante", Model.ParticipaEstudiante)%>
+    <label></label>
+    ¿Participan estudiantes? <%=Html.CheckBox("ParticipaEstudiante", Model.ParticipaEstudiante)%>
     <%=Html.ValidationMessage("ParticipaEstudiante")%>
 </p>

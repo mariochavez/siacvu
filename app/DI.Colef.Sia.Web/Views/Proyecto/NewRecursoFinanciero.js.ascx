@@ -6,14 +6,8 @@
 var cssclass = 'remote';
 var rel = '#recursofinancieroform';
 
-<% if(Model.Id == 0) { %>
-    cssclass = 'local';
-    rel = '#RecursoFinancieroProyecto.IntitucionId,#RecursoFinancieroProyecto.MonedaId,#RecursoFinancieroProyecto.Recurso,#RecursoFinancieroProyecto.Monto';
-<% } %>
-
 var html = '
-    <% using (Html.BeginForm("AddRecursoFinanciero", "Proyecto", FormMethod.Post, new { id = "recursofinancieroform" }))
-       { %>
+    <% using (Html.BeginForm("AddRecursoFinanciero", "Proyecto", FormMethod.Post, new { id = "recursofinancieroform" })){ %>
     <%=Html.Hidden("ProyectoId", Model.Id)%>
     <% Html.RenderPartial("_NewRecursoFinanciero"); %>
     <div class="minilistaboton">
@@ -26,7 +20,8 @@ var html = '
     <% } %>
 ';
 
-$('#recursofinanciero_form').html(html);
-$('#recursofinanciero_new').hide();
-$('#recursofinanciero_form').show();
+$('#recursofinancieroForm').html(html);
+$('#recursofinancieroNew').hide();
+$('#recursofinancieroForm').show();
 DateTimePicker.setup();
+AutoComplete.config($('#RecursoFinanciero_Institucion'));

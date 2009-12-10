@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EstudianteProyectoForm
@@ -13,5 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int GradoAcademico { get; set; }
         public int GradoAcademicoId { get; set; }
         public string GradoAcademicoNombre { get; set; }
+
+        public int ParentId { get; set; }
     }
 }

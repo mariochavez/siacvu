@@ -513,5 +513,42 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return estado;
         }
+
+        public static string TipoEstudiante(int estudiante)
+        {
+            var tipoEstudiante = "";
+
+            switch (estudiante)
+            {
+                case 1:
+                    tipoEstudiante = "Estudiantes de El Colef";
+                    break;
+                case 2:
+                    tipoEstudiante = "Estudiantes externos";
+                    break;
+            }
+
+            return tipoEstudiante;
+        }
+
+        public static string ProductoGenerado(int producto)
+        {
+            var productoGenerado = "";
+
+            switch (producto)
+            {
+                case 1:
+                    productoGenerado = "Base de datos";
+                    break;
+                case 2:
+                    productoGenerado = "Informe técnico";
+                    break;
+                case 3:
+                    productoGenerado = "Reporte final";
+                    break;
+            }
+
+            return productoGenerado;
+        }
     }
 }

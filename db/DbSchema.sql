@@ -1067,38 +1067,6 @@ alter table Distinciones  drop constraint FKEF821EEC62D605DB
 alter table Distinciones  drop constraint FKEF821EEC74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E8336201B]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
-alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E8336201B
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E62D605DB]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
-alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E62D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E74E8BAB7]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
-alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC97F2E1E70EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyectos'))
-alter table ParticipanteInternoProyectos  drop constraint FKC97F2E1E70EA6C9E
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E778FDBB774]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
-alter table ParticipanteExternoProyectos  drop constraint FK93973E778FDBB774
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E7762D605DB]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
-alter table ParticipanteExternoProyectos  drop constraint FK93973E7762D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E7774E8BAB7]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
-alter table ParticipanteExternoProyectos  drop constraint FK93973E7774E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK93973E7770EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyectos'))
-alter table ParticipanteExternoProyectos  drop constraint FK93973E7770EA6C9E
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3EB394D770EA6C9E]') AND parent_object_id = OBJECT_ID('Articulos'))
 alter table Articulos  drop constraint FK3EB394D770EA6C9E
 
@@ -1255,14 +1223,6 @@ alter table Areas  drop constraint FK1527E7962D605DB
 alter table Areas  drop constraint FK1527E7974E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF64763D962D605DB]') AND parent_object_id = OBJECT_ID('ParticipanteExternos'))
-alter table ParticipanteExternos  drop constraint FKF64763D962D605DB
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF64763D974E8BAB7]') AND parent_object_id = OBJECT_ID('ParticipanteExternos'))
-alter table ParticipanteExternos  drop constraint FKF64763D974E8BAB7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK20CDD2C562D605DB]') AND parent_object_id = OBJECT_ID('TipoParticipaciones'))
 alter table TipoParticipaciones  drop constraint FK20CDD2C562D605DB
 
@@ -1411,6 +1371,14 @@ alter table ParticipanteInternoEvento  drop constraint FK27FD9C3763A0A2A3
 alter table ParticipanteInternoEvento  drop constraint FK27FD9C37EAA1B3DF
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK610A2E1E63A0A2A3]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyecto'))
+alter table ParticipanteInternoProyecto  drop constraint FK610A2E1E63A0A2A3
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK610A2E1E70EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipanteInternoProyecto'))
+alter table ParticipanteInternoProyecto  drop constraint FK610A2E1E70EA6C9E
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKB9FA41368FDBB774]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProductos'))
 alter table ParticipanteExternoProductos  drop constraint FKB9FA41368FDBB774
 
@@ -1433,6 +1401,14 @@ alter table ParticipanteExternoEvento  drop constraint FKF489ABC8FB7AC05C
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF489ABC8EAA1B3DF]') AND parent_object_id = OBJECT_ID('ParticipanteExternoEvento'))
 alter table ParticipanteExternoEvento  drop constraint FKF489ABC8EAA1B3DF
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2B223E77FB7AC05C]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyecto'))
+alter table ParticipanteExternoProyecto  drop constraint FK2B223E77FB7AC05C
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK2B223E7770EA6C9E]') AND parent_object_id = OBJECT_ID('ParticipanteExternoProyecto'))
+alter table ParticipanteExternoProyecto  drop constraint FK2B223E7770EA6C9E
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD884456A72C4C6B8]') AND parent_object_id = OBJECT_ID('UsuarioRol'))
@@ -2461,10 +2437,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Distinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Distinciones
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteInternoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteInternoProyectos
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteExternoProyectos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteExternoProyectos
-
     if exists (select * from dbo.sysobjects where id = object_id(N'Articulos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Articulos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ParticipacionMedios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipacionMedios
@@ -2474,8 +2446,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'Categorias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Categorias
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Areas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Areas
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteExternos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteExternos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoParticipaciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoParticipaciones
 
@@ -2499,9 +2469,13 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteInternoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteInternoEvento
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteInternoProyecto') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteInternoProyecto
+
     if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteExternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteExternoProductos
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteExternoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteExternoEvento
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'ParticipanteExternoProyecto') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ParticipanteExternoProyecto
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Usuarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Usuarios
 
@@ -3503,30 +3477,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (Id)
     )
 
-    create table ParticipanteInternoProyectos (
-        Id INT IDENTITY NOT NULL,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorFk INT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       ProyectoFk INT null,
-       primary key (Id)
-    )
-
-    create table ParticipanteExternoProyectos (
-        Id INT IDENTITY NOT NULL,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       InvestigadorExternoFk INT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       ProyectoFk INT null,
-       primary key (Id)
-    )
-
     create table Articulos (
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(250) null,
@@ -3632,17 +3582,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(250) null,
        CodigoConacyt NVARCHAR(255) null,
-       CreadoEl DATETIME null,
-       ModificadoEl DATETIME null,
-       Activo BIT null,
-       CreadoPorFk INT null,
-       ModificadoPorFk INT null,
-       primary key (Id)
-    )
-
-    create table ParticipanteExternos (
-        Id INT IDENTITY NOT NULL,
-       Nombre NVARCHAR(250) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3768,8 +3707,8 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table ParticipanteInternoProductos (
         Id INT IDENTITY NOT NULL,
+       TipoProducto INT not null,
        Posicion INT null,
-       TipoProducto INT null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3785,9 +3724,15 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        primary key (ParticipanteInternoProducto)
     )
 
+    create table ParticipanteInternoProyecto (
+        ParticipanteInternoProducto INT not null,
+       ProyectoFk INT null,
+       primary key (ParticipanteInternoProducto)
+    )
+
     create table ParticipanteExternoProductos (
         Id INT IDENTITY NOT NULL,
-       TipoProducto INT null,
+       TipoProducto INT not null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
@@ -3801,6 +3746,12 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table ParticipanteExternoEvento (
         ParticipanteExternoProducto INT not null,
        SesionEventoFk INT null,
+       primary key (ParticipanteExternoProducto)
+    )
+
+    create table ParticipanteExternoProyecto (
+        ParticipanteExternoProducto INT not null,
+       ProyectoFk INT null,
        primary key (ParticipanteExternoProducto)
     )
 
@@ -5924,46 +5875,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E8336201B 
-        foreign key (InvestigadorFk) 
-        references Investigadores
-
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E62D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E74E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table ParticipanteInternoProyectos 
-        add constraint FKC97F2E1E70EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E778FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E7762D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E7774E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
-    alter table ParticipanteExternoProyectos 
-        add constraint FK93973E7770EA6C9E 
-        foreign key (ProyectoFk) 
-        references Proyectos
-
     alter table Articulos 
         add constraint FK3EB394D770EA6C9E 
         foreign key (ProyectoFk) 
@@ -6159,16 +6070,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table ParticipanteExternos 
-        add constraint FKF64763D962D605DB 
-        foreign key (CreadoPorFk) 
-        references Usuarios
-
-    alter table ParticipanteExternos 
-        add constraint FKF64763D974E8BAB7 
-        foreign key (ModificadoPorFk) 
-        references Usuarios
-
     alter table TipoParticipaciones 
         add constraint FK20CDD2C562D605DB 
         foreign key (CreadoPorFk) 
@@ -6354,6 +6255,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (SesionEventoFk) 
         references SesionEventos
 
+    alter table ParticipanteInternoProyecto 
+        add constraint FK610A2E1E63A0A2A3 
+        foreign key (ParticipanteInternoProducto) 
+        references ParticipanteInternoProductos
+
+    alter table ParticipanteInternoProyecto 
+        add constraint FK610A2E1E70EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
+
     alter table ParticipanteExternoProductos 
         add constraint FKB9FA41368FDBB774 
         foreign key (InvestigadorExternoFk) 
@@ -6383,6 +6294,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FKF489ABC8EAA1B3DF 
         foreign key (SesionEventoFk) 
         references SesionEventos
+
+    alter table ParticipanteExternoProyecto 
+        add constraint FK2B223E77FB7AC05C 
+        foreign key (ParticipanteExternoProducto) 
+        references ParticipanteExternoProductos
+
+    alter table ParticipanteExternoProyecto 
+        add constraint FK2B223E7770EA6C9E 
+        foreign key (ProyectoFk) 
+        references Proyectos
 
     alter table UsuarioRol 
         add constraint FKD884456A72C4C6B8 

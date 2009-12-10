@@ -2,20 +2,20 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="recursofinancieroList">
-    <h5>Recurso Financiero</h5>
+    <h5>Recurso financiero</h5>
 
     <% if (Model.RecursoFinancieroProyectos != null && Model.RecursoFinancieroProyectos.Length > 0){ %>
-        <% for (int i = 0; i < Model.ResponsableProyectos.Length; i++){ %>
-	        <div class="sublista" id="reponsable_<%=Html.Encode(Model.RecursoFinancieroProyectos[i].InstitucionId) %>">
+        <% for (int i = 0; i < Model.RecursoFinancieroProyectos.Length; i++){ %>
+	        <div class="sublista" id="recursofinanciero_<%=Html.Encode(Model.RecursoFinancieroProyectos[i].InstitucionId) %>">
 	            <h6>
-	                <a href="<%=Url.Action("DeleteRecursoFinanciero", null, new{id = Model.Id, institucionId = Model.RecursoFinancieroProyectos[i].InstitucionId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	                <a href="<%=Url.Action("DeleteRecursoFinanciero", null, new{id = Model.Id, institucionId = Model.RecursoFinancieroProyectos[i].InstitucionId, monto = Model.RecursoFinancieroProyectos[i].Monto, tipoMoneda = Model.RecursoFinancieroProyectos[i].MonedaId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.RecursoFinancieroProyectos[i].InstitucionNombre)%>
 	                <%=Html.Hidden("RecursoFinanciero[" + i + "].InstitucionId", Model.RecursoFinancieroProyectos[i].InstitucionId)%>
 	                <span>
-	                    <%=Html.Encode(Model.RecursoFinancieroProyectos[i].Monto)%>
+	                    Monto <%=Html.Encode(Model.RecursoFinancieroProyectos[i].Monto)%>
 	                    <%=Html.Hidden("RecursoFinanciero[" + i + "].Monto", Model.RecursoFinancieroProyectos[i].Monto)%>    
-	                    <%=Html.Encode(Model.RecursoFinancieroProyectos[i].MonedaNombre)%>
-	                    <%=Html.Hidden("RecursoFinanciero[" + i + "].Moneda", Model.RecursoFinancieroProyectos[i].Moneda)%>
+	                    Moneda <%=Html.Encode(Model.RecursoFinancieroProyectos[i].MonedaNombre)%>
+	                    <%=Html.Hidden("RecursoFinanciero[" + i + "].Moneda", Model.RecursoFinancieroProyectos[i].MonedaId)%>
 	                </span>
 	            </h6>
 			</div><!--end sublista-->

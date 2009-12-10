@@ -112,6 +112,7 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Helpers\IdValueHelper.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\Impl\SesionEventoMapper.cs" />
     <Compile Include="Mappers\ISesionEventoMapper.cs" />
@@ -176,7 +177,6 @@
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
     <Compile Include="Models\SesionEventoForm.cs" />
-    <Compile Include="Models\ParticipanteExternoForm.cs" />
     <Compile Include="Models\ParticipanteExternoProductoForm.cs" />
     <Compile Include="Models\ParticipanteForm.cs" />
     <Compile Include="Models\ParticipanteInternoProductoForm.cs" />
@@ -266,8 +266,6 @@
     <Compile Include="Models\HomeForm.cs" />
     <Compile Include="Models\IdiomasInvestigadorForm.cs" />
     <Compile Include="Models\ParticipacionAcademiaForm.cs" />
-    <Compile Include="Models\ParticipanteExternoProyectoForm.cs" />
-    <Compile Include="Models\ParticipanteInternoProyectoForm.cs" />
     <Compile Include="Models\ProyectoForm.cs" />
     <Compile Include="Models\RamaForm.cs" />
     <Compile Include="Models\RecursoFinancieroProyectoForm.cs" />

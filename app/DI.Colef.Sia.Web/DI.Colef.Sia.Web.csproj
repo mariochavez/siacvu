@@ -583,6 +583,18 @@
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisExterna.ascx" />
     <Content Include="Views\Productos\TesisDirigida\_ShowTesisInterna.ascx" />
     <Content Include="Views\Proyecto\ChangeConvenio.js.ascx" />
+    <Content Include="Views\Proyecto\AddEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\AddProducto.js.ascx" />
+    <Content Include="Views\Proyecto\DeleteProducto.js.ascx" />
+    <Content Include="Views\Proyecto\_NewProducto.ascx" />
+    <Content Include="Views\Proyecto\NewProducto.js.ascx" />
+    <Content Include="Views\Proyecto\_EditProductoGenerado.ascx" />
+    <Content Include="Views\Proyecto\DeleteEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\_NewEstudiante.ascx" />
+    <Content Include="Views\Proyecto\NewEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\_EditParticipaEstudiante.ascx" />
+    <Content Include="Views\Proyecto\_ProductoAcademicoContemplado.ascx" />
+    <Content Include="Views\Proyecto\DeleteRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\_CalendarioProyecto.ascx" />
     <Content Include="Views\Proyecto\DeleteResponsable.js.ascx" />
     <Content Include="Views\Proyecto\_InformacionGeneral.ascx" />
@@ -730,7 +742,7 @@
     <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
     <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
     <Content Include="Views\Proyecto\Show.aspx" />
-    <Content Include="Views\Proyecto\_ParticipacionEstudianteProyecto.ascx" />
+    <Content Include="Views\Proyecto\_ParticipacionEstudiante.ascx" />
     <Content Include="Views\Proyecto\_TematicaProyecto.ascx" />
     <Content Include="Views\Proyecto\_FuenteFinanciamiento.ascx" />
     <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />

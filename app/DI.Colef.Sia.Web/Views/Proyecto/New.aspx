@@ -39,6 +39,8 @@
                 
                 <h4>Investigadores participantes</h4>
                 <% Html.RenderPartial("_EditResponsable", Model.Form); %>
+                <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id }); %>
+	            <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id }); %>
                 
                 <h4>Calendario del proyecto</h4>
                 <% Html.RenderPartial("_CalendarioProyecto", Model.Form); %>
@@ -48,6 +50,29 @@
                 
                 <h4>Recursos financieros</h4>
                 <% Html.RenderPartial("_EditRecursoFinanciero", Model.Form); %>
+                <p>
+                    <label></label>
+                    Total pesos: <span id="totalpesos" class="valor"><%=Html.Encode(Model.Form.TotalPesos) %></span>
+                    Total d&oacute;lares: <span id="totaldolares" class="valor"><%=Html.Encode(Model.Form.TotalDolares) %></span>
+                </p>
+                
+                <h4>Tem&aacute;tica del proyecto</h4>
+                <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
+                
+                <h4>Productos acad&eacute;micos contemplados</h4>
+                <% Html.RenderPartial("_ProductoAcademicoContemplado", Model.Form); %>
+                
+                <h4>Participaci&oacute;n de estudiantes/becarios</h4>
+                <% Html.RenderPartial("_ParticipacionEstudiante", Model.Form); %>
+                <div id="ParticipaEstudiante_Fields">
+                    <% Html.RenderPartial("_EditParticipaEstudiante", Model.Form); %>
+                </div>
+                
+                <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Form.Sectores, Organizaciones = Model.Form.Organizaciones, Niveles = Model.Form.Niveles, IsShowForm = false }); %>
+                <% Html.RenderPartial("_ShowClase", new ShowFieldsForm { SectoresEconomicos = Model.Form.SectoresEconomicos, Ramas = Model.Form.Ramas, Clases = Model.Form.Clases, IsShowForm = false }); %>
+                
+                <h4>Productos generados del proyecto</h4>
+                <% Html.RenderPartial("_EditProductoGenerado", Model.Form); %>
                                 
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar")%>
