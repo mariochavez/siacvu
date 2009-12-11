@@ -12,6 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
+        private Usuario usuarioEvento = null;
 
         public EventoMapper(IRepository<Evento> repository, ICatalogoService catalogoService,
             ICoautorExternoEventoMapper coautorExternoEventoMapper,
@@ -42,10 +43,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.ObjetivoEvento = message.ObjetivoEvento;
-            model.PosicionAutor = message.PosicionAutor;
             model.FinanciamientoInterno = message.FinanciamientoInterno;
             model.FinanciamientoExterno = message.FinanciamientoExterno;
             model.SesionesTrabajo = message.SesionesTrabajo;
+
+            if (model.Usuario == null || model.Usuario == usuarioEvento)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
@@ -54,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioEvento = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -62,6 +66,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoEventos)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

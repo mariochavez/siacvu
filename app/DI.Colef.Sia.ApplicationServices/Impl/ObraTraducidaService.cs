@@ -61,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 obraTraducida.Firma = firma;
             }
 
-            obraTraducida.PosicionAutor = 1;
             obraTraducida.ModificadoEl = DateTime.Now;
             
             obraTraducidaRepository.SaveOrUpdate(obraTraducida);

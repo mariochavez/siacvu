@@ -60,7 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 libro.Firma = firma;
             }
 
-            libro.PosicionAutor = 1;
             libro.ModificadoEl = DateTime.Now;
             
             libroRepository.SaveOrUpdate(libro);

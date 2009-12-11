@@ -15,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IProyectoService proyectoService;
         readonly IEditorialCapituloMapper editorialCapituloMapper;
+        private Usuario usuarioCapitulo = null;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		                      ICatalogoService catalogoService,
@@ -50,7 +51,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.Volumen = message.Volumen;
             model.TipoLibro = message.TipoLibro;
-            model.PosicionAutor = message.PosicionAutor;
+
+            if (model.Usuario == null || model.Usuario == usuarioCapitulo)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -67,6 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Capitulo Map(CapituloForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioCapitulo = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -75,6 +79,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoCapitulos)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

@@ -12,6 +12,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly IProyectoService proyectoService;
+        private Usuario usuarioArticulo = null;
 
         public ArticuloMapper(IRepository<Articulo> repository,
                               ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
@@ -44,7 +45,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
             model.TipoArticulo = message.TipoArticulo;
-            model.PosicionAutor = message.PosicionAutor;
+
+            if (model.Usuario == null || model.Usuario == usuarioArticulo)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -60,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Articulo Map(ArticuloForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioArticulo = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -68,6 +72,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if(model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoArticulos)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

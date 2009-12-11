@@ -60,7 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 reporte.Firma = firma;
             }
 
-            reporte.PosicionAutor = 1;
             reporte.ModificadoEl = DateTime.Now;
             
             reporteRepository.SaveOrUpdate(reporte);

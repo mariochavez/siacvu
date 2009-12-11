@@ -60,7 +60,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 resena.Firma = firma;
             }
 
-            resena.PosicionAutor = 1;
             resena.ModificadoEl = DateTime.Now;
             
             resenaRepository.SaveOrUpdate(resena);

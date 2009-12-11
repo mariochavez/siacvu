@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IProyectoService proyectoService;
         readonly IEditorialLibroMapper editorialLibroMapper;
+        private Usuario usuarioLibro = null;
 		
         public LibroMapper(IRepository<Libro> repository,
 		    ICatalogoService catalogoService,
@@ -55,7 +56,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Reimpresion = message.Reimpresion;
             model.FormatoPublicacion = message.FormatoPublicacion;
             model.ContenidoLibro = message.ContenidoLibro;
-            model.PosicionAutor = message.PosicionAutor;
+
+            if (model.Usuario == null || model.Usuario == usuarioLibro)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
@@ -71,6 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioLibro = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -79,6 +83,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoLibros)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

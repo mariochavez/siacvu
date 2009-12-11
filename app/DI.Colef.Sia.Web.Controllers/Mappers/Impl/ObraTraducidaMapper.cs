@@ -15,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper;
         readonly IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper;
         readonly IEditorialObraTraducidaMapper editorialObraTraducidaMapper;
+        private Usuario usuarioObraTraducida = null;
 
 		public ObraTraducidaMapper(IRepository<ObraTraducida> repository,
             ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper,
@@ -62,8 +63,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave2 = message.PalabraClave2;
             model.PalabraClave3 = message.PalabraClave3;
             model.EstadoProducto = message.EstadoProducto;
-            model.PosicionAutor = message.PosicionAutor;
             model.Edicion = message.Edicion;
+
+            if (model.Usuario == null || model.Usuario == usuarioObraTraducida)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
@@ -76,6 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public ObraTraducida Map(ObraTraducidaForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioObraTraducida = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -84,6 +88,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoObraTraducidas)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

@@ -13,6 +13,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
         readonly IProyectoService proyectoService;
         readonly IInstitucionReporteMapper institucionReporteMapper;
+        private Usuario usuarioReporte = null;
 
         public ReporteMapper(IRepository<Reporte> repository, ICatalogoService catalogoService,
                              ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper,
@@ -43,7 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.TipoReporte = message.TipoReporte;
             model.Numero = message.Numero;
-            model.PosicionAutor = message.PosicionAutor;
+
+            if (model.Usuario == null || model.Usuario == usuarioReporte)
+                model.PosicionAutor = message.PosicionAutor;
             
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
@@ -56,6 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioReporte = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -64,6 +68,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoReportes)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

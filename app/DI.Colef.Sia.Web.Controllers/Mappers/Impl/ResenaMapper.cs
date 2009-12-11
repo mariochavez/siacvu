@@ -14,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorInternoResenaMapper autorInternoResenaMapper;
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
         readonly IEditorialResenaMapper editorialResenaMapper;
+        private Usuario usuarioResena = null;
         
         public ResenaMapper(IRepository<Resena> repository,
                             ICatalogoService catalogoService, 
@@ -49,7 +50,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.Volumen = message.Volumen;
             model.TipoResena = message.TipoResena;
-            model.PosicionAutor = message.PosicionAutor;
+
+            if (model.Usuario == null || model.Usuario == usuarioResena)
+                model.PosicionAutor = message.PosicionAutor;
 
             model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
@@ -68,6 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioResena = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -76,6 +80,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoResenas)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;
