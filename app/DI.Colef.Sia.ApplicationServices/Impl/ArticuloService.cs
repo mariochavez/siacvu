@@ -10,14 +10,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IRepository<Articulo> articuloRepository;
         readonly IProductoQuerying productoQuerying;
-        readonly IFirmaService firmaservice;
+        readonly IFirmaService firmaService;
 
         public ArticuloService(IRepository<Articulo> articuloRepository,
-                               IProductoQuerying productoQuerying, IFirmaService firmaservice)
+                               IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.articuloRepository = articuloRepository;
             this.productoQuerying = productoQuerying;
-            this.firmaservice = firmaservice;
+            this.firmaService = firmaService;
         }
 
         public Articulo GetArticuloById(int id)
@@ -43,22 +43,22 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.CreadoEl = DateTime.Now;
                 articulo.Puntuacion = 0;
 
-                //var firma = new Firma
-                //{
-                //    Aceptacion1 = 0,
-                //    Aceptacion2 = 0,
-                //    Aceptacion3 = 0,
-                //    Firma1 = DateTime.Now,
-                //    Firma2 = DateTime.Now,
-                //    Firma3 = DateTime.Now,
-                //    TipoProducto = articulo.TipoProducto,
-                //    CreadoPor = articulo.Usuario,
-                //    ModificadoPor = articulo.Usuario
-                //};
+                var firma = new Firma
+                                {
+                                    Aceptacion1 = 0,
+                                    Aceptacion2 = 0,
+                                    Aceptacion3 = 0,
+                                    Firma1 = DateTime.Now,
+                                    Firma2 = DateTime.Now,
+                                    Firma3 = DateTime.Now,
+                                    TipoProducto = articulo.TipoProducto,
+                                    CreadoPor = articulo.Usuario,
+                                    ModificadoPor = articulo.Usuario
+                                };
 
-                //firmaservice.SaveFirma(firma);
+                firmaService.SaveFirma(firma);
 
-                //articulo.Firma = firma;
+                articulo.Firma = firma;
             }
 
             articulo.PosicionAutor = 1;

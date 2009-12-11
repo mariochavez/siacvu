@@ -23,10 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
 
-        public int Pais { get; set; }
-        public int PaisId { get; set; }
-        public string PaisNombre { get; set; }
-
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
         public string TipoEventoNombre { get; set; }
@@ -61,7 +57,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public AmbitoForm[] Ambitos { get; set; }
-        public PaisForm[] Paises { get; set; }
         public TipoEventoForm[] TiposEventos { get; set; }
         public TipoParticipacionForm[] TiposParticipaciones { get; set; }
     }

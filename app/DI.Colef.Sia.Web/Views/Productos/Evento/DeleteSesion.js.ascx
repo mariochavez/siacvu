@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EventoForm>" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<SesionEventoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -13,7 +13,7 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-$('#sesion_<%=Html.Encode(Model.SesionEvento.Id) %>').remove();
+$('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_")) %>').remove();
 
 deleteElement(html, '#sesionList div[id^=sesion_]', '#sesionList');
 

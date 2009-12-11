@@ -349,6 +349,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
+            form.InvestigadorExternoId = investigadorExterno.Id;
             var coautorExternoArticulo = coautorExternoArticuloMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoArticulo.ValidationResults(), false, "CoautorExterno", String.Empty);

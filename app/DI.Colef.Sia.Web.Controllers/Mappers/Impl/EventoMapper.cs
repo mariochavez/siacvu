@@ -1,7 +1,6 @@
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
@@ -51,10 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoParticipacion = catalogoService.GetTipoParticipacionById(message.TipoParticipacion);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
-
-            if (message.SesionEvento != null)
-                model.AddSesion(sesionEventoMapper.Map(message.SesionEvento));
         }
 
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
@@ -67,7 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
-                //model.SesionesEventos[0].CreadoPor = usuario;
             }
 
             model.ModificadoPor = usuario;

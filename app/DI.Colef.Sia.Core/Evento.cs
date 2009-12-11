@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public Evento()
         {
-            SesionesEventos = new List<SesionEvento>();
+            SesionEventos = new List<SesionEvento>();
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             ArchivoEventos = new List<ArchivoEvento>();
@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void AddSesion(SesionEvento sesionEvento)
         {
-            SesionesEventos.Add(sesionEvento);
+            SesionEventos.Add(sesionEvento);
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual void DeleteSesion(SesionEvento sesionEvento)
         {
-            SesionesEventos.Remove(sesionEvento);
+            SesionEventos.Remove(sesionEvento);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -84,7 +84,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Firma Firma { get; set; }
 
         [Valid]
-        public virtual IList<SesionEvento> SesionesEventos { get; private set; }
+        public virtual IList<SesionEvento> SesionEventos { get; private set; }
 
         [NotNullNotEmpty]
         [DomainSignature]
@@ -124,8 +124,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
         public virtual int PosicionAutor { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

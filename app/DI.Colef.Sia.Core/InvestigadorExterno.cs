@@ -9,10 +9,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
 		public virtual string Nombre { get; set; }
 
-        [NotNullNotEmpty]
         public virtual string ApellidoPaterno { get; set; }
 
-        [NotNullNotEmpty]
         public virtual string ApellidoMaterno { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }

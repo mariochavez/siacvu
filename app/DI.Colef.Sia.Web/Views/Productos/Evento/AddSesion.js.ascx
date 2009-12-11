@@ -1,26 +1,44 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<SesionEventoForm>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+var counter = $('#sesionList div[id^=sesion_]').length;
+
 var html = '
-    <div id="sesion_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><a href="<%=Url.Action("DeleteSesion", null, new{id = Model.ModelId, sesionId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-        <%=Html.Encode(Model.NombreSesion)%> <span><%=Html.Encode(Model.ObjetivoSesion)%></span></h6>
-        <span><%=Html.Encode(Model.AmbitoNombre)%>, <%=Html.Encode(Model.FechaEvento)%>, <%=Html.Encode(Model.Lugar) %></span>
-    </div><!--end estadolista-->
+    <div class="sublista" id="sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_")) %>">
+        <h6>
+            <a href="<%=Url.Action("DeleteSesion", null, new{ id = Model.ParentId, nombreSesion = Model.NombreSesion.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <%=Html.Encode(Model.NombreSesion)%>
+            <%=Html.Hidden("Sesion['  + counter + '].NombreSesion", Model.NombreSesion)%>
+            <span>
+                Objetivo <%=Html.Encode(Model.ObjetivoSesion)%>
+                <%=Html.Hidden("Sesion['  + counter + '].ObjetivoSesion", Model.ObjetivoSesion)%>
+                &Aacute;mbito <%=Html.Encode(Model.AmbitoNombre)%>
+                <%=Html.Hidden("Sesion['  + counter + '].Ambito", Model.AmbitoId)%>
+                Fecha <%=Html.Encode(Model.FechaEvento)%>
+                <%=Html.Hidden("Sesion['  + counter + '].FechaEvento", Model.FechaEvento)%>
+                Lugar <%=Html.Encode(Model.Lugar)%>
+                <%=Html.Hidden("Sesion['  + counter + '].Lugar", Model.Lugar)%>
+            </span>
+        </h6>
+	</div><!--end sublista-->
 ';
 
-$('#message').html('');
-$('#message').removeClass('errormessage');
+$('#mensaje-error').html('');
+$('#mensaje-error').removeClass('mensaje-error');
 
 $('#sesionForm').hide();
 $('#sesionNew').show();
 $('#sesionForm').html('');
-$('#sesionEmptyListForm').html('');
-$('#sesionList div:first').before(html);
 
-$('#sesion_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
-$('#sesion_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+if($('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>').length == 0){
+    $('#sesionEmptyListForm').html('');
+    $('#sesionList div:first').before(html);
+    
+    $('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>:first').hide();
+    $('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>:first').fadeIn('slow');
+}
 
 setupSublistRows();

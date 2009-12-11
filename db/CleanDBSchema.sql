@@ -1210,11 +1210,6 @@ alter table Eventos  drop constraint FK9DD523432261429F
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523437A8488F7]') AND parent_object_id = OBJECT_ID('Eventos'))
-alter table Eventos  drop constraint FK9DD523437A8488F7
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523436A829E09]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD523436A829E09
 
@@ -3930,7 +3925,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        TipoEventoFk INT null,
        AreaTematicaFk INT null,
        TipoParticipacionFk INT null,
-       PaisFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -5762,11 +5756,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK9DD523432261429F 
         foreign key (TipoParticipacionFk) 
         references TipoParticipaciones
-
-    alter table Eventos 
-        add constraint FK9DD523437A8488F7 
-        foreign key (PaisFk) 
-        references Paises
 
     alter table Eventos 
         add constraint FK9DD523437D866EAB 
