@@ -564,9 +564,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var investigadorExternoForm = new InvestigadorExternoForm
                                               {
-                                                  Nombre = form.InvestigadorExternoNombre,
-                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
-                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                                  Nombre = form.Nombre,
+                                                  ApellidoPaterno = form.ApellidoPaterno,
+                                                  ApellidoMaterno = form.ApellidoMaterno
                                               };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
@@ -581,9 +581,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             investigadorExterno.ModificadoPor = CurrentUser();
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
-            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
-
-            form.InvestigadorExternoId = investigadorExternoForm.Id;
+            
+            form.InvestigadorExternoId = investigadorExterno.Id;
             var participanteExternoProyecto = participanteExternoProyectoMapper.Map(form);
 
             ModelState.AddModelErrors(participanteExternoProyecto.ValidationResults(), true, String.Empty);

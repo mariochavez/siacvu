@@ -332,9 +332,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var investigadorExternoForm = new InvestigadorExternoForm
                                               {
-                                                  Nombre = form.InvestigadorExternoNombre,
-                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
-                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                                  Nombre = form.Nombre,
+                                                  ApellidoPaterno = form.ApellidoPaterno,
+                                                  ApellidoMaterno = form.ApellidoMaterno
                                               };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
@@ -350,9 +350,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
-
-            form.InvestigadorExternoId = investigadorExternoForm.Id;
+            form.InvestigadorExternoId = investigadorExterno.Id;
             var coautorExternoResena = coautorExternoResenaMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoResena.ValidationResults(), false, "CoautorExterno", String.Empty);
@@ -499,9 +497,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var investigadorExternoForm = new InvestigadorExternoForm
             {
-                Nombre = form.InvestigadorExternoNombre,
-                ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
-                ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                Nombre = form.Nombre,
+                ApellidoPaterno = form.ApellidoPaterno,
+                ApellidoMaterno = form.ApellidoMaterno
             };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
@@ -517,9 +515,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
-
-            form.InvestigadorExternoId = investigadorExternoForm.Id;
+            form.InvestigadorExternoId = investigadorExterno.Id;
             var autorExternoResena = autorExternoResenaMapper.Map(form);
 
             ModelState.AddModelErrors(autorExternoResena.ValidationResults(), false, "AutorExterno", String.Empty);
