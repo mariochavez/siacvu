@@ -51,18 +51,16 @@
 	            </p>
                 <p>
 	                <label>Posici&oacute;n del autor</label>
-	                <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
-	                <%=Html.Hidden("PosicionAutor", Model.Form.PosicionAutor) %>
-	                <span class="cvu"></span>
+                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
+                    <span class="cvu"></span>
+	                <%=Html.ValidationMessage("PosicionAutor")%>
                 </p>
 	            
 	            <h4>Estatus de la pulicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
                 
-                <div class="EstatusPublicado">
-	                <h4>Referencia bibliogr&aacute;fica</h4>
-	                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-				</div>
+                <h4>Referencia bibliogr&aacute;fica</h4>
+                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 				
 				<h4>Documentos de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivoArticulos, ModelId = Model.Form.Id }); %>

@@ -1,15 +1,16 @@
 using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [EstudianteProyectoValidator]
     public class EstudianteProyecto : Entity, IBaseEntity
     {
         [NotNullNotEmpty]
         public virtual string NombreEstudiante { get; set; }
 
-        //[NotNullNotEmpty]
         public virtual int TipoEstudiante { get; set; } //Catalogo fijo TipoEstudiante
 
         [NotNull]

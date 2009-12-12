@@ -15,13 +15,11 @@
 <p>
     <label>Tipo de libro</label>
     <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-                        "Seleccione ...", new { @class = "requerido" })%>
+        "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 
-
 <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
-
 
 <p>
     <label>Resumen</label>
@@ -30,7 +28,7 @@
 </p>
 <p>
     <label>Volumen</label>
-    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("Volumen", Model.Volumen, new { @class = "input100", maxlength = 4 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Volumen")%>
 </p>

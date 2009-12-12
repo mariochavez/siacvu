@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddResponsable", "Proyecto", FormMethod.Post, new { id = "responsableform" })){ %>
     <%=Html.Hidden("ProyectoId", Model.Id)%>
     <% Html.RenderPartial("_NewResponsable"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar responsable", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

@@ -136,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Editorial Editorial { get; set; }
 
-        public virtual int Volumen { get; set; }
+        public virtual string Volumen { get; set; }
 
         public virtual int NoPaginas { get; set; }
 

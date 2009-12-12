@@ -121,7 +121,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (resena.Volumen == 0)
+                if (resena.Volumen == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "seleccione el volumen|Volumen", "Volumen");
@@ -129,10 +129,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (resena.Numero <= 0)
+                if (resena.Numero == "")
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser menor o igual a cero|Numero", "Numero");
+                        "no debe ser nulo, vacío o cero|Numero", "Numero");
 
                     isValid = false;
                 }

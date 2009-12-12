@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddParticipanteExterno", Model.Controller, FormMethod.Post, new { id = "participanteexternoform" })){ %>
     <%=Html.Hidden(Model.IdName, Model.Id)%>
     <% Html.RenderPartial("_NewParticipanteExterno"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar participante externo", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

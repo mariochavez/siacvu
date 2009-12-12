@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -13,6 +14,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
         readonly IProyectoService proyectoService;
         readonly IInstitucionReporteMapper institucionReporteMapper;
+        private Usuario usuarioReporte = null;
 
         public ReporteMapper(IRepository<Reporte> repository, ICatalogoService catalogoService,
                              ICoautorExternoReporteMapper coautorExternoReporteMapper, ICoautorInternoReporteMapper coautorInternoReporteMapper,
@@ -43,10 +45,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.TipoReporte = message.TipoReporte;
             model.Numero = message.Numero;
-            model.PosicionAutor = message.PosicionAutor;
-            
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+
+            if (model.Usuario == null || model.Usuario == usuarioReporte)
+                model.PosicionAutor = message.PosicionAutor;
+
+            if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+                model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            if (message.FechaPublicacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+            {
+                if (message.FechaAceptacion.FromYearDateToDateTime() == DateTime.Parse("1910-01-01"))
+                    model.FechaAceptacion = message.FechaPublicacion.FromYearDateToDateTime();
+
+                model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+            }
 
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
@@ -56,6 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioReporte = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -64,6 +76,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var coautor in model.CoautorInternoReportes)
+                {
+                    if (coautor.Investigador == investigador)
+                        coautor.Posicion = message.PosicionAutor;
+                }
             }
 
             model.ModificadoPor = usuario;

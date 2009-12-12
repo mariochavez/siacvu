@@ -11,6 +11,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string InvestigadorExternoApellidoPaterno { get; set; }
         public string InvestigadorExternoApellidoMaterno { get; set; }
 
+        public string Nombre { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 

@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual int Volumen { get; set; }
+        public virtual string Volumen { get; set; }
 
         public virtual Institucion Institucion { get; set; }
 

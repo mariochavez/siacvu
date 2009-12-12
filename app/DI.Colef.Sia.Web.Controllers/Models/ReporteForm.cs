@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ReporteForm
@@ -18,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
         public int PosicionAutor { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public string FechaPublicacion { get; set; }
         public bool TieneProyecto { get; set; }
         public int TipoReporte { get; set; }

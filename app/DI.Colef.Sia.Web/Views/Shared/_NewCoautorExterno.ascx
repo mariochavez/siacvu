@@ -8,12 +8,12 @@
 </p>
 <p>
     <label>Apellido paterno</label>
-    <%=Html.TextBox("CoautorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.TextBox("CoautorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250", maxlength = 40 })%>
     <%=Html.ValidationMessage("CoautorExterno.ApellidoPaterno")%>
 </p>
 <p>
     <label>Apellido materno</label>
-    <%=Html.TextBox("CoautorExterno.ApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.TextBox("CoautorExterno.ApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250", maxlength = 40 })%>
     <%=Html.ValidationMessage("CoautorExterno.ApellidoMaterno")%>
 </p>
 <p>

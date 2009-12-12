@@ -235,7 +235,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (evento != null)
                 form.Id = evento.Id;
 
-            //form.SesionEvento = new SesionEventoForm();
+            form.SesionEvento = new SesionEventoForm();
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             
             return Rjs("NewSesion", form);
@@ -388,9 +388,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var investigadorExternoForm = new InvestigadorExternoForm
                                               {
-                                                  Nombre = form.InvestigadorExternoNombre,
-                                                  ApellidoPaterno = form.InvestigadorExternoApellidoPaterno,
-                                                  ApellidoMaterno = form.InvestigadorExternoApellidoMaterno
+                                                  Nombre = form.Nombre,
+                                                  ApellidoPaterno = form.ApellidoPaterno,
+                                                  ApellidoMaterno = form.ApellidoMaterno
                                               };
 
             var investigadorExterno = investigadorExternoMapper.Map(investigadorExternoForm);
@@ -406,9 +406,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             catalogoService.SaveInvestigadorExterno(investigadorExterno);
 
-            investigadorExternoForm = investigadorExternoMapper.Map(investigadorExterno);
-
-            form.InvestigadorExternoId = investigadorExternoForm.Id;
+            form.InvestigadorExternoId = investigadorExterno.Id;
             var coautorExternoEvento = coautorExternoEventoMapper.Map(form);
 
             ModelState.AddModelErrors(coautorExternoEvento.ValidationResults(), false, "CoautorExterno", String.Empty);

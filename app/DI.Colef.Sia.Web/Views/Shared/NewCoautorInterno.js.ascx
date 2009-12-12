@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddCoautorInterno", Model.Controller, FormMethod.Post, new { id = "coautorinternoform" })){ %>
     <%=Html.Hidden(Model.IdName, Model.Id)%>
     <% Html.RenderPartial("_NewCoautorInterno"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar coautor interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

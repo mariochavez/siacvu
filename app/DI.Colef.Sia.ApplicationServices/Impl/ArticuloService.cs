@@ -61,7 +61,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 articulo.Firma = firma;
             }
 
-            articulo.PosicionAutor = 1;
             articulo.ModificadoEl = DateTime.Now;
 
             articuloRepository.SaveOrUpdate(articulo);

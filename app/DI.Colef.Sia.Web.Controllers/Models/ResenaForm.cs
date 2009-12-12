@@ -3,7 +3,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     public class ResenaForm
     {
         public int Id { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public int PosicionAutor { get; set; }
         public string NombreProducto { get; set; }
         public int PaginaInicial { get; set; }
@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaPublicacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        public int Volumen { get; set; }
+        public string Volumen { get; set; }
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }

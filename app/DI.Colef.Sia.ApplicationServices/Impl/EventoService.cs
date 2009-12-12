@@ -71,7 +71,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                 evento.Firma = firma;
             }
 
-            evento.PosicionAutor = 1;
             evento.ModificadoEl = DateTime.Now;
 
             if (useCommit)

@@ -62,7 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.Volumen == 0)
+                if (obraTraducida.Volumen == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Volumen", "Volumen");
@@ -70,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.Numero == 0)
+                if (obraTraducida.Numero == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo, vacío o cero|Numero", "Numero");
@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.Volumen == 0)
+                if (obraTraducida.Volumen == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Volumen", "Volumen");
@@ -140,7 +140,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (obraTraducida.TipoObraTraducida == 3)
             {
-                if (obraTraducida.Volumen == 0)
+                if (obraTraducida.Volumen == "")
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Volumen", "Volumen");
