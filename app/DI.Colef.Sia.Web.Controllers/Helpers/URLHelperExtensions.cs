@@ -14,7 +14,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string CustomActionLink(this HtmlHelper helper, string controller, string action, string linkText, int id, int tipoProducto)
         {
-            return String.Format("<a href=\"/sia/" + controller + "/" + id + "/" + action + "?tipoProducto=" + tipoProducto + "\">" + linkText + "</a>");
+            return CustomActionLink(helper, controller, action, linkText, id, tipoProducto, null);
+        }
+
+        public static string CustomActionLink(this HtmlHelper helper, string controller, string action, string linkText, int id, int tipoProducto, object htmlAttributes)
+        {
+            // Instantiate a UrlHelper   
+            var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);
+
+            // Create tag builder  
+            var builder = new TagBuilder("a");
+            var url = "/sia/" + controller + "/" + id + "/" + action + "?tipoProducto=" + tipoProducto;
+
+            // Add attributes  
+            builder.MergeAttribute("href", urlHelper.Content(url));
+            builder.SetInnerText(linkText);
+            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+
+            // Render tag  
+            return builder.ToString();
         }
     }
 }

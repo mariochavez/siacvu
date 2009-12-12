@@ -31,8 +31,8 @@
 			<div class="elementobotones">
 				<p>
 					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+					<span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, new { @class = "remote put" })%></span>
                     <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
-                    <%--<span><%=Html.CustomActionLink("Home", "Signature", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>--%>
                	</p>
 			</div><!--end elementobotones-->
         		

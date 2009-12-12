@@ -5,21 +5,26 @@ using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         readonly IUsuarioService usuarioService;
         readonly IProductoService productoService;
+        readonly IArticuloService articuloService;
+        readonly IArticuloMapper articuloMapper;
 
-        public HomeController(IUsuarioService usuarioService, IProductoService productoService)
+        public HomeController(IUsuarioService usuarioService, IProductoService productoService, IArticuloService articuloService, IArticuloMapper articuloMapper)
         {
             this.usuarioService = usuarioService;
             this.productoService = productoService;
+            this.articuloService = articuloService;
+            this.articuloMapper = articuloMapper;
         }
 
         [Authorize]
@@ -77,6 +82,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Show(int id, int tipoProducto)
         {
             return RedirectToProducto(id, tipoProducto, "Show");
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Sign(int id, int tipoProducto)
+        {
+            var articulo = articuloService.GetArticuloById(id);
+            articulo.Firma.Aceptacion1 = 1;
+            articulo.Firma.Firma1 = DateTime.Now;
+            articulo.ModificadoPor = CurrentUser();
+            articuloService.SaveArticulo(articulo);
+
+            var form = articuloMapper.Map(articulo);
+
+            return Rjs(form);
         }
 
         protected ActionResult RedirectToProducto(int id, int tipoProducto, string action)

@@ -22,7 +22,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         Show
     }
 
-    public class BaseController<TModel, TForm> : Controller where TModel : Entity
+    public class BaseController : Controller
+    {
+        protected ContentResult Rjs(string viewName, ViewDataDictionary viewdata)
+        {
+            var output = this.RenderPartialToString(viewName, viewdata);
+            output = output.Replace("\n", " ");
+            output = output.Replace("\r", " ");
+
+            output = "try { " + output + " } catch(e) { alert(e); }";
+            return Content(output);
+        }
+
+        protected ContentResult Rjs(string viewName, object model)
+        {
+            ViewData.Model = model;
+            return Rjs(viewName, ViewData);
+        }
+
+        protected ContentResult Rjs(string viewName)
+        {
+            return Rjs(viewName, ViewData);
+        }
+
+        protected ContentResult Rjs(object model)
+        {
+            var viewName = ControllerContext.RouteData.Values["action"].ToString();
+            ViewData.Model = model;
+            return Rjs(viewName, ViewData);
+        }
+    }
+
+    public class BaseController<TModel, TForm> : BaseController where TModel : Entity
     {
         protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
@@ -480,34 +511,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected void SetError(string message)
         {
             ViewData["error"] = message;
-        }
-
-        protected ContentResult Rjs(string viewName, ViewDataDictionary viewdata)
-        {
-            var output = this.RenderPartialToString(viewName, viewdata);
-            output = output.Replace("\n", " ");
-            output = output.Replace("\r", " ");
-
-            output = "try { " + output + " } catch(e) { alert(e); }";
-            return Content(output);
-        }
-
-        protected ContentResult Rjs(string viewName, object model)
-        {
-            ViewData.Model = model;
-            return Rjs(viewName, ViewData);
-        }
-
-        protected ContentResult Rjs(string viewName)
-        {
-            return Rjs(viewName, ViewData);
-        }
-
-        protected ContentResult Rjs(object model)
-        {
-            var viewName = ControllerContext.RouteData.Values["action"].ToString();
-            ViewData.Model = model;
-            return Rjs(viewName, ViewData);
         }
     }
 }

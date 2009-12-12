@@ -55,9 +55,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             {
                 if (message.FechaAceptacion.FromYearDateToDateTime() == DateTime.Parse("1910-01-01"))
                     model.FechaAceptacion = message.FechaPublicacion.FromYearDateToDateTime();
-
-                model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
             }
+
+            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
             model.EstadoProducto = message.EstadoProducto;
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
