@@ -14,7 +14,7 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-$('#recursofinanciero_<%=Html.Encode(Model.InstitucionId) %>').remove();
+$('#recursofinanciero_<%=Html.Encode(Model.Id) %>').remove();
 
 deleteElement(html, '#recursofinancieroList div[id^=recursofinanciero_]', '#recursofinancieroList');
 

@@ -9,7 +9,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        //[NotNullNotEmpty]
+        [Min(1)]
         public virtual decimal Monto { get; set; }
 
         [NotNull]

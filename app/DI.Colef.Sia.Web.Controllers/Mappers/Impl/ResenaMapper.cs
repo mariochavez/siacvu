@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -54,8 +55,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.Usuario == null || model.Usuario == usuarioResena)
                 model.PosicionAutor = message.PosicionAutor;
 
-            model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+            if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+                model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+            if (message.FechaPublicacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+            {
+                if (message.FechaAceptacion.FromYearDateToDateTime() == DateTime.Parse("1910-01-01"))
+                    model.FechaAceptacion = message.FechaPublicacion.FromYearDateToDateTime();
+
+                model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+            }
 
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);

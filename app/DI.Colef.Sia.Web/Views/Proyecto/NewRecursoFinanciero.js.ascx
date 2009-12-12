@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddRecursoFinanciero", "Proyecto", FormMethod.Post, new { id = "recursofinancieroform" })){ %>
     <%=Html.Hidden("ProyectoId", Model.Id)%>
     <% Html.RenderPartial("_NewRecursoFinanciero"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar recurso financiero", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddProducto", "Proyecto", FormMethod.Post, new { id = "productogeneradoform" })){ %>
     <%=Html.Hidden("ProyectoId", Model.Id)%>
     <% Html.RenderPartial("_NewProducto"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar producto generado", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

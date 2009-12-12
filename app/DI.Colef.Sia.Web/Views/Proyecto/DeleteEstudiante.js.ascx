@@ -14,7 +14,7 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-$('#participaestudiante_<%=Html.Encode(Model.NombreEstudiante.Replace(" ", "_")) %>').remove();
+$('#participaestudiante_<%=Html.Encode(Model.Id)%>').remove();
 
 deleteElement(html, '#participaestudianteList div[id^=participaestudiante_]', '#participaestudianteList');
 

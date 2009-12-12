@@ -6,13 +6,13 @@
 
     <% if (Model.RecursoFinancieroProyectos != null && Model.RecursoFinancieroProyectos.Length > 0){ %>
         <% for (int i = 0; i < Model.RecursoFinancieroProyectos.Length; i++){ %>
-	        <div class="sublista" id="recursofinanciero_<%=Html.Encode(Model.RecursoFinancieroProyectos[i].InstitucionId) %>">
+	        <div class="sublista" id="recursofinanciero_<%=Html.Encode(Model.RecursoFinancieroProyectos[i].Id) %>">
 	            <h6>
-	                <a href="<%=Url.Action("DeleteRecursoFinanciero", null, new{id = Model.Id, institucionId = Model.RecursoFinancieroProyectos[i].InstitucionId, monto = Model.RecursoFinancieroProyectos[i].Monto, tipoMoneda = Model.RecursoFinancieroProyectos[i].MonedaId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	                <a href="<%=Url.Action("DeleteRecursoFinanciero", null, new{id = Model.Id, recursoId = Model.RecursoFinancieroProyectos[i].Id, monto = Model.RecursoFinancieroProyectos[i].Monto, tipoMoneda = Model.RecursoFinancieroProyectos[i].MonedaId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.RecursoFinancieroProyectos[i].InstitucionNombre)%>
 	                <%=Html.Hidden("RecursoFinanciero[" + i + "].InstitucionId", Model.RecursoFinancieroProyectos[i].InstitucionId)%>
 	                <span>
-	                    Monto <%=Html.Encode(Model.RecursoFinancieroProyectos[i].Monto)%>
+	                    Monto <%=Html.Encode(Math.Round(Model.RecursoFinancieroProyectos[i].Monto, 2))%>
 	                    <%=Html.Hidden("RecursoFinanciero[" + i + "].Monto", Model.RecursoFinancieroProyectos[i].Monto)%>    
 	                    Moneda <%=Html.Encode(Model.RecursoFinancieroProyectos[i].MonedaNombre)%>
 	                    <%=Html.Hidden("RecursoFinanciero[" + i + "].Moneda", Model.RecursoFinancieroProyectos[i].MonedaId)%>
