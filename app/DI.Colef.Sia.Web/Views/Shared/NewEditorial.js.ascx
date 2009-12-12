@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddEditorial", Model.Controller, FormMethod.Post, new { id = "editorialform" })){ %>
     <%=Html.Hidden(Model.IdName, Model.Id)%>
     <% Html.RenderPartial("_NewEditorial"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar editorial", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

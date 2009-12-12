@@ -7,9 +7,9 @@
 var counter = $('#participaestudianteList div[id^=participaestudiante_]').length;
 
 var html = '
-    <div class="sublista" id="participaestudiante_<%=Html.Encode(Model.NombreEstudiante.Replace(" ", "_")) %>">
+    <div class="sublista" id="participaestudiante_<%=Html.Encode(Model.Id) %>">
         <h6>
-            <a href="<%=Url.Action("DeleteEstudiante", null, new{ id = Model.ParentId, nombreEstudiante = Model.NombreEstudiante.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <a href="<%=Url.Action("DeleteEstudiante", null, new{ id = Model.ParentId, estudianteId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreEstudiante)%>
             <%=Html.Hidden("Estudiante['  + counter + '].NombreEstudiante", Model.NombreEstudiante)%>
             <span>
@@ -29,12 +29,10 @@ $('#participaestudianteForm').hide();
 $('#participaestudianteNew').show();
 $('#participaestudianteForm').html('');
 
-if($('#participaestudiante_<%=Html.Encode(Model.NombreEstudiante.Replace(" ", "_"))%>').length == 0){
-    $('#participaestudianteEmptyListForm').html('');
-    $('#participaestudianteList div:first').before(html);
-    
-    $('#participaestudiante_<%=Html.Encode(Model.NombreEstudiante.Replace(" ", "_"))%>:first').hide();
-    $('#participaestudiante_<%=Html.Encode(Model.NombreEstudiante.Replace(" ", "_"))%>:first').fadeIn('slow');
-}
+$('#participaestudianteEmptyListForm').html('');
+$('#participaestudianteList div:first').before(html);
+
+$('#participaestudiante_<%=Html.Encode(Model.Id)%>:first').hide();
+$('#participaestudiante_<%=Html.Encode(Model.Id)%>:first').fadeIn('slow');
 
 setupSublistRows();

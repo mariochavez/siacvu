@@ -6,4 +6,5 @@
     <%=Html.TextBox("ParticipanteInterno.Nombre", "",
         new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Investigador"), maxlength = 100 })%>
     <%=Html.Hidden("ParticipanteInterno.InvestigadorId", 0, new { rel = "#ParticipanteInterno_Nombre" })%>
+    <%=Html.ValidationMessage("ParticipanteInterno.Nombre")%>
 </p>

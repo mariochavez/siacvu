@@ -7,9 +7,9 @@
 
     <% if (Model.EstudianteProyectos != null && Model.EstudianteProyectos.Length > 0){ %>
         <% for (int i = 0; i < Model.EstudianteProyectos.Length; i++){ %>
-	        <div class="sublista" id="participaestudiante_<%=Html.Encode(Model.EstudianteProyectos[i].NombreEstudiante.Replace(" ", "_")) %>">
+	        <div class="sublista" id="participaestudiante_<%=Html.Encode(Model.EstudianteProyectos[i].Id) %>">
 	            <h6>
-	                <a href="<%=Url.Action("DeleteEstudiante", null, new{id = Model.Id, nombreEstudiante = Model.EstudianteProyectos[i].NombreEstudiante.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	                <a href="<%=Url.Action("DeleteEstudiante", null, new{id = Model.Id, estudianteId = Model.EstudianteProyectos[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.EstudianteProyectos[i].NombreEstudiante)%>
 	                <%=Html.Hidden("Estudiante[" + i + "].NombreEstudiante", Model.EstudianteProyectos[i].NombreEstudiante)%>
 	                <span>

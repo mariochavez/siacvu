@@ -348,9 +348,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddRecursoFinanciero([Bind(Prefix = "RecursoFinanciero")] RecursoFinancieroProyectoForm form, int proyectoId)
         {
+            Proyecto proyecto;
+            RecursoFinancieroProyectoForm recursoFinancieroProyectoForm;
             var recursoFinancieroProyecto = recursoFinancieroProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(recursoFinancieroProyecto.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(recursoFinancieroProyecto.ValidationResults(), false, "RecursoFinanciero", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -361,20 +363,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 recursoFinancieroProyecto.CreadoPor = CurrentUser();
                 recursoFinancieroProyecto.ModificadoPor = CurrentUser();
 
-                var proyecto = proyectoService.GetProyectoById(proyectoId);
-                var alreadyHasIt =
-                    proyecto.RecursoFinancieroProyectos.Where(
-                        x => x.Institucion.Id == recursoFinancieroProyecto.Institucion.Id).Count();
+                proyecto = proyectoService.GetProyectoById(proyectoId);
 
+                proyecto.AddRecursoFinanciero(recursoFinancieroProyecto);
+                proyectoService.SaveProyecto(proyecto, true);
 
-                if (alreadyHasIt == 0)
-                {
-                    proyecto.AddRecursoFinanciero(recursoFinancieroProyecto);
-                    proyectoService.SaveProyecto(proyecto, false);
-                }
+                recursoFinancieroProyectoForm = recursoFinancieroProyectoMapper.Map(recursoFinancieroProyecto);
             }
-
-            var recursoFinancieroProyectoForm = recursoFinancieroProyectoMapper.Map(recursoFinancieroProyecto);
+            else
+            {
+                recursoFinancieroProyectoForm = recursoFinancieroProyectoMapper.Map(recursoFinancieroProyecto);
+                var buffer = Guid.NewGuid().ToByteArray();
+                recursoFinancieroProyectoForm.Id = BitConverter.ToInt32(buffer, 0);
+            }
             recursoFinancieroProyectoForm.ParentId = proyectoId;
 
             return Rjs("AddRecursoFinanciero", recursoFinancieroProyectoForm);
@@ -383,19 +384,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteRecursoFinanciero(int id, int institucionId, decimal monto, int tipoMoneda)
+        public ActionResult DeleteRecursoFinanciero(int id, int recursoId, decimal monto, int tipoMoneda)
         {
             var proyecto = proyectoService.GetProyectoById(id);
 
             if (proyecto != null)
             {
-                var recurso = proyecto.RecursoFinancieroProyectos.Where(x => x.Institucion.Id == institucionId).First();
+                var recurso = proyecto.RecursoFinancieroProyectos.Where(x => x.Id == recursoId).First();
                 proyecto.DeleteRecursoFinanciero(recurso);
 
                 proyectoService.SaveProyecto(proyecto, false);
             }
 
-            var form = new RecursoFinancieroProyectoForm {InstitucionId = institucionId, Monto = monto, MonedaId = tipoMoneda};
+            var form = new RecursoFinancieroProyectoForm {Id = recursoId, Monto = monto, MonedaId = tipoMoneda};
 
             return Rjs("DeleteRecursoFinanciero", form);
         }
@@ -421,9 +422,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEstudiante([Bind(Prefix = "Estudiante")] EstudianteProyectoForm form, int proyectoId)
         {
+            Proyecto proyecto;
+            EstudianteProyectoForm estudianteProyectoForm;
             var estudianteProyecto = estudianteProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(estudianteProyecto.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(estudianteProyecto.ValidationResults(), false, "Estudiante", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -434,20 +437,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 estudianteProyecto.CreadoPor = CurrentUser();
                 estudianteProyecto.ModificadoPor = CurrentUser();
 
-                var proyecto = proyectoService.GetProyectoById(proyectoId);
-                var alreadyHasIt =
-                    proyecto.EstudianteProyectos.Where(
-                        x => x.NombreEstudiante == estudianteProyecto.NombreEstudiante).Count();
+                proyecto = proyectoService.GetProyectoById(proyectoId);
 
-
-                if (alreadyHasIt == 0)
-                {
-                    proyecto.AddEstudiante(estudianteProyecto);
-                    proyectoService.SaveProyecto(proyecto, false);
-                }
+                proyecto.AddEstudiante(estudianteProyecto);
+                proyectoService.SaveProyecto(proyecto, true);
+                estudianteProyectoForm = estudianteProyectoMapper.Map(estudianteProyecto);
+            }
+            else
+            {
+                estudianteProyectoForm = estudianteProyectoMapper.Map(estudianteProyecto);
+                var buffer = Guid.NewGuid().ToByteArray();
+                estudianteProyectoForm.Id = BitConverter.ToInt32(buffer, 0);
             }
 
-            var estudianteProyectoForm = estudianteProyectoMapper.Map(estudianteProyecto);
             estudianteProyectoForm.ParentId = proyectoId;
 
             return Rjs("AddEstudiante", estudianteProyectoForm);
@@ -456,19 +458,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEstudiante(int id, string nombreEstudiante)
+        public ActionResult DeleteEstudiante(int id, int estudianteId)
         {
             var proyecto = proyectoService.GetProyectoById(id);
 
             if (proyecto != null)
             {
-                var estudiante = proyecto.EstudianteProyectos.Where(x => x.NombreEstudiante == nombreEstudiante.Replace("_", " ")).First();
+                var estudiante = proyecto.EstudianteProyectos.Where(x => x.Id == estudianteId).First();
                 proyecto.DeleteEstudiante(estudiante);
 
                 proyectoService.SaveProyecto(proyecto, false);
             }
 
-            var form = new EstudianteProyectoForm {NombreEstudiante = nombreEstudiante};
+            var form = new EstudianteProyectoForm { Id = estudianteId };
 
             return Rjs("DeleteEstudiante", form);
         }
@@ -654,9 +656,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddProducto([Bind(Prefix = "ProductoGenerado")] ProductoGeneradoProyectoForm form, int proyectoId)
         {
+            Proyecto proyecto;
+            ProductoGeneradoProyectoForm productoGeneradoProyectoForm;
             var productoGeneradoProyecto = productoGeneradoProyectoMapper.Map(form);
 
-            ModelState.AddModelErrors(productoGeneradoProyecto.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(productoGeneradoProyecto.ValidationResults(), false, "ProductoGenerado", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -667,16 +671,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 productoGeneradoProyecto.CreadoPor = CurrentUser();
                 productoGeneradoProyecto.ModificadoPor = CurrentUser();
 
-                var proyecto = proyectoService.GetProyectoById(proyectoId);
+                proyecto = proyectoService.GetProyectoById(proyectoId);
 
                 proyecto.AddProducto(productoGeneradoProyecto);
                 proyectoService.SaveProyecto(proyecto, true);
+
+                productoGeneradoProyectoForm = productoGeneradoProyectoMapper.Map(productoGeneradoProyecto);
             }
-
-            var productoGeneradoProyectoForm = productoGeneradoProyectoMapper.Map(productoGeneradoProyecto);
-
-            if (proyectoId == 0)
+            else
             {
+                productoGeneradoProyectoForm = productoGeneradoProyectoMapper.Map(productoGeneradoProyecto);
                 var buffer = Guid.NewGuid().ToByteArray();
                 productoGeneradoProyectoForm.Id = BitConverter.ToInt32(buffer, 0);
             }

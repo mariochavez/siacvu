@@ -52,8 +52,8 @@
                 <% Html.RenderPartial("_EditRecursoFinanciero", Model.Form); %>
                 <p>
                     <label></label>
-                    Total pesos: <span id="totalpesos" class="valor"><%=Html.Encode(Model.Form.TotalPesos) %></span>
-                    Total d&oacute;lares: <span id="totaldolares" class="valor"><%=Html.Encode(Model.Form.TotalDolares) %></span>
+                    Total pesos: <span id="totalpesos" class="valor"><%=Html.Encode(Math.Round(Model.Form.TotalPesos, 2)) %></span>
+                    Total d&oacute;lares: <span id="totaldolares" class="valor"><%=Html.Encode(Math.Round(Model.Form.TotalDolares, 2)) %></span>
                 </p>
                 
                 <h4>Tem&aacute;tica del proyecto</h4>
