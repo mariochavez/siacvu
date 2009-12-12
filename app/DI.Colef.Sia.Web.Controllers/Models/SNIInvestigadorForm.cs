@@ -1,4 +1,6 @@
-﻿namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
+﻿using System;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class SNIInvestigadorForm
     {
@@ -12,5 +14,9 @@
 
         public string FechaInicial { get; set; }
         public string FechaFinal { get; set; }
+
+        public string ComprobanteNombre { get; set; }
+
+        public int ComprobanteId { get; set; }
     }
 }

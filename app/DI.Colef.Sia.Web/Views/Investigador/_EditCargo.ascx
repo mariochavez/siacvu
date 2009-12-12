@@ -7,7 +7,7 @@
         <div id="estado_<%=Html.Encode(cargo.Id) %>" class="sublista">
             <h6><a href="<%=Url.Action("DeleteCargo", null, new{id = cargo.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
     	    <%=Html.Encode(cargo.PuestoNombre)%> <span><%=Html.Encode(cargo.SedeNombre) %></span></h6>
-    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.SedeDireccionGeneralNombre) %></span>
+    	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.SedeDireccionRegionalNombre) %></span>
         </div><!--end estadolista-->
     <% } %>
     

@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivoController.cs" />
     <Compile Include="Attributes\CustomTransaction.cs" />
     <Compile Include="ApoyoConacytController.cs" />
     <Compile Include="Catalogos\AmbitoController.cs" />

@@ -16,5 +16,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             archivoRepository.SaveOrUpdate(archivo);
         }
+
+        public Archivo GetArchivoById(int id)
+        {
+            return archivoRepository.Get(id);
+        }
     }
 }

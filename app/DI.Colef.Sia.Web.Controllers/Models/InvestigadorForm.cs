@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
@@ -14,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ClaveCVU { get; set; }
 
         public int AreaTematicaId { get; set; }
+        public string AreaTematicaNombre { get; set; }
         public string AreaTematicaLineaTematicaNombre { get; set; }
 
         public string AreaTematica1 { get; set; }
@@ -68,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                     return null;
 
                 var result = from estado in estadosInvestigador
-                             orderby estado.FechaInicial descending
+                             orderby estado.FechaInicial.FromShortDateToDateTime() descending
                              select estado;
 
                 return result.ToArray();

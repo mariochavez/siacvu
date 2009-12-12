@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EstadoInvestigadorForm
@@ -10,5 +12,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+
+        public string ComprobanteNombre { get; set; }
+
+        public int ComprobanteId { get; set; }
     }
 }

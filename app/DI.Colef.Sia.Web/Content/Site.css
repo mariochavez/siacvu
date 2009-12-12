@@ -724,6 +724,16 @@ a.editabusqueda {
     
 }
 
+.sublista h6 a, .sublista-dos h6 a {
+    color: #BA5C2B;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.sublista h6 a:hover, .sublista-dos h6 a.selected {
+	color: #555;
+}
+
 .sublista-dos {
 	background: transparent url(./Images/caja-busqueda-bg.gif) 0 0 repeat-x;
 }

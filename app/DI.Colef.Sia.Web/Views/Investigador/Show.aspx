@@ -49,15 +49,35 @@
 			        <span>(Formato dd/mm/yyyy)</span>
 		        </p>
 	            <p>
-		            <label>Fecha de contrato</label>
+		            <label>Fecha de contrato indeterminado</label>
 		            <span class="valor"><%=Html.Encode(Model.Form.FechaContrato) %>&nbsp;</span>
 		            <span>(Formato dd/mm/yyyy)</span>
 	            </p>
 	            
-	            <h4>Grados</h4>
+	            <h4>Grado Acad&eacute;mico del Investigador</h4>
 			    <% Html.RenderPartial("_ShowGrado", Model.Form); %>
 	            
-	            <h4>Perfil ac&aacute;demico del investigador</h4> 		        
+	            <h4>Perfil ac&aacute;demico del investigador</h4>
+	            <p>
+                    <label>L&iacute;nea tem&aacute;tica Institucional</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AreaTematicaLineaTematicaNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica Institucional</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AreaTematicaNombre)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Area tem&aacute;tica 1</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AreaTematica1)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Area tem&aacute;tica 2</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AreaTematica2)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Area tem&aacute;tica 3</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.AreaTematica3)%>&nbsp;</span>
+                </p>
                 <p>
                     <label>Expediente producci&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.ExpedienteProduccion)%>&nbsp;</span>
@@ -67,21 +87,25 @@
                     <span class="valor"><%=Html.Encode(Model.Form.ExpedienteAcademico)%>&nbsp;</span>
                 </p>                         
                 <p>
+                    <label>Clave de CVU-CONACyT</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%>&nbsp;</span>
+                </p>
+                <p>
                     <label>Clave CVU</label>
                     <span class="valor"><%=Html.Encode(Model.Form.ClaveCVU)%>&nbsp;</span>
                 </p>
-		        <h4>Estatus</h4>
+		        <h4>Estatus del Investigador</h4>
 			    <% Html.RenderPartial("_ShowEstado", Model.Form); %>
 		        
-		        <h4>Cargos</h4>
+		        <h4>Adscripci&oacute;n en El Colef</h4>
 			    <% Html.RenderPartial("_ShowCargo", Model.Form); %>
 			    
-		        <h4>Categor&iacute;as</h4>
+		        <h4>Categor&iacute;a del investigador</h4>
 			    <% Html.RenderPartial("_ShowCategoria", Model.Form); %>
 		        
 		        <h4>Sistema nacional de investigadores (SNI)</h4>
 		        <p>
-                    <label>Expediente</label>
+                    <label>Expediente SNI</label>
                     <span class="valor"><%=Html.Encode(Model.Form.ExpedienteSNI)%>&nbsp;</span>
                 </p>
 			    <% Html.RenderPartial("_ShowSni", Model.Form); %>                                  
