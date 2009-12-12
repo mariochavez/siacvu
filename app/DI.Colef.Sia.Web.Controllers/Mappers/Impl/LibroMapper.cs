@@ -61,13 +61,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.Usuario == null || model.Usuario == usuarioLibro)
                 model.PosicionAutor = message.PosicionAutor;
 
-            if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
-                model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
-            if (message.FechaPublicacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+            if (message.EstadoProducto != 0)
             {
-                if (message.FechaAceptacion.FromYearDateToDateTime() == DateTime.Parse("1910-01-01"))
-                    model.FechaAceptacion = message.FechaPublicacion.FromYearDateToDateTime();
+                if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+                    model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
+                if (message.FechaPublicacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
+                {
+                    if (message.FechaAceptacion.FromYearDateToDateTime() == DateTime.Parse("1910-01-01"))
+                        model.FechaAceptacion = message.FechaPublicacion.FromYearDateToDateTime();
+                }
             }
+            else
+                model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
