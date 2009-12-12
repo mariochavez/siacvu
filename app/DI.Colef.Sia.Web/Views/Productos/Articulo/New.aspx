@@ -59,10 +59,8 @@
 	            <h4>Estatus de la pulicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
                 
-                <div class="EstatusPublicado">
-	                <h4>Referencia bibliogr&aacute;fica</h4>
-	                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-				</div>
+                <h4>Referencia bibliogr&aacute;fica</h4>
+                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 				
 				<h4>Documentos de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivoArticulos, ModelId = Model.Form.Id }); %>

@@ -28,12 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!articulo.IsTransient())
             {
-                /*
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.TipoArticulo, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.EstadoProducto, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Articulo>(articulo, x => x.RevistaPublicacion, "RevistaPublicacionTitulo",
-                                                           constraintValidatorContext);
-                 */
+                
             }
 
             isValid &= TieneProyecto(articulo, constraintValidatorContext);
@@ -68,40 +63,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
 
+            if (articulo.RevistaPublicacion == null)
+            {
+                constraintValidatorContext.AddInvalid(
+                    "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
+
+                isValid = false;
+            }
+
             if (articulo.EstadoProducto == 3)
             {
-                if (articulo.PaginaInicial > articulo.PaginaFinal)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "página inicial debe ser menor a la final|PaginaInicial", "PaginaInicial");
-                    constraintValidatorContext.AddInvalid(
-                        "página final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
-                    isValid = false;
-                }
-
-                if (articulo.PaginaInicial == 0 && articulo.PaginaFinal == 0)
-                {
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
-                    isValid =  false;
-                }
-
-                if (articulo.Volumen == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|Volumen", "Volumen");
-
-                    isValid = false;
-                }
-
-                if (articulo.Numero == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo, vacío o cero|Numero", "Numero");
-
-                    isValid = false;
-                }
-
                 if (articulo.FechaPublicacion <= DateTime.Parse("1910-01-01"))
                 {
                     constraintValidatorContext.AddInvalid(

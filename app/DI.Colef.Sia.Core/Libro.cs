@@ -126,13 +126,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Reimpresion { get; set; }
 
-        public virtual int Volumen { get; set; }
+        public virtual string Volumen { get; set; }
 
         public virtual int NoPaginas { get; set; }
 
         public virtual int Tiraje { get; set; }
         
-        public virtual int Numero { get; set; }
+        public virtual string Numero { get; set; }
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 

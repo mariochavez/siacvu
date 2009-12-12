@@ -111,7 +111,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Descripcion { get; set; }
 
-        public virtual int Numero { get; set; }
+        public virtual string Numero { get; set; }
 
         public virtual string Objetivo { get; set; }
 

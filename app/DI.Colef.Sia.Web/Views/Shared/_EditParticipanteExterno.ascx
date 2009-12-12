@@ -11,10 +11,12 @@
 	                <a href="<%=Url.Action("DeleteParticipanteExterno", null, new{ id = Model.ModelId, investigadorExternoId = Model.ParticipantesExternos[i].InvestigadorExternoId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.ParticipantesExternos[i].NombreCompleto)%>
 	                <%=Html.Hidden("ParticipanteExterno[" + i + "].InvestigadorExternoId", Model.ParticipantesExternos[i].InvestigadorExternoId)%>
-	                <span>
-                        Instituci&oacute;n <%=Html.Encode(Model.ParticipantesExternos[i].InstitucionNombre)%>
-                        <%=Html.Hidden("ParticipanteExterno[" + i + "].InstitucionId", Model.ParticipantesExternos[i].InstitucionId)%>
-                    </span>
+	                <% if (Model.ParticipantesExternos[i].InstitucionId != 0) {%>
+	                    <span>
+                            Instituci&oacute;n <%=Html.Encode(Model.ParticipantesExternos[i].InstitucionNombre)%>
+                            <%=Html.Hidden("ParticipanteExterno[" + i + "].InstitucionId", Model.ParticipantesExternos[i].InstitucionId)%>
+                        </span>
+                    <% } %>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

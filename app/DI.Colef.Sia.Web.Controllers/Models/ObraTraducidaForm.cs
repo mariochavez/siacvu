@@ -15,9 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int EstadoProducto { get; set; }
 		public string FechaAceptacion { get; set; }
 		public string FechaPublicacion { get; set; }
-		public int Volumen { get; set; }
+		public string Volumen { get; set; }
         public int Edicion { get; set; }
-		public int Numero { get; set; }
+        public string Numero { get; set; }
 		public int PaginaInicial { get; set; }
 		public int PaginaFinal { get; set; }
 		public string NombreLibro { get; set; }

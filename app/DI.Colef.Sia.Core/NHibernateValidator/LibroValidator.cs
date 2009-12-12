@@ -76,10 +76,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (libro.Numero <= 0)
+                if (libro.Numero == "")
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no puede ser menor o igual a cero|Numero", "Numero");
+                        "no debe ser nulo, vacío o cero|Numero", "Numero");
 
                     isValid = false;
                 }

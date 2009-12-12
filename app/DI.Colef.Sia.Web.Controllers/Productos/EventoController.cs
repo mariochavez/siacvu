@@ -235,7 +235,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (evento != null)
                 form.Id = evento.Id;
 
-            //form.SesionEvento = new SesionEventoForm();
+            form.SesionEvento = new SesionEventoForm();
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             
             return Rjs("NewSesion", form);

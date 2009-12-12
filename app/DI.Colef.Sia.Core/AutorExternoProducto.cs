@@ -9,7 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual InvestigadorExterno InvestigadorExterno { get; set; }
 
-        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
         public virtual int TipoProducto { get; set; }

@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class LibroForm
@@ -9,7 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string ISBN { get; set; }
         public string FechaAceptacion { get; set; }
         public string FechaPublicacion { get; set; }
-        public int Volumen { get; set; }
+        public string Volumen { get; set; }
         public int ContenidoLibro { get; set; }
         public int FormatoPublicacion { get; set; }
         public string PalabraClave1 { get; set; }
@@ -21,7 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
 
         public int NoPaginas { get; set; }
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         public int Tiraje { get; set; }
 
         public bool Activo { get; set; }

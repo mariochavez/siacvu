@@ -97,9 +97,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
-        public virtual int Volumen { get; set; }
+        public virtual string Volumen { get; set; }
 
-        public virtual int Numero { get; set; }
+        public virtual string Numero { get; set; }
 
         public virtual int PaginaInicial { get; set; }
 

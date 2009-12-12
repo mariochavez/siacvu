@@ -5,7 +5,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public string NombreProducto { get; set; }
         public string Revista { get; set; }
-        public int Volumen { get; set; }
+        public string Volumen { get; set; }
         public int EstadoProducto { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
