@@ -16,15 +16,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IUsuarioService usuarioService;
         readonly IProductoService productoService;
-        readonly IArticuloService articuloService;
-        readonly IArticuloMapper articuloMapper;
 
-        public HomeController(IUsuarioService usuarioService, IProductoService productoService, IArticuloService articuloService, IArticuloMapper articuloMapper)
+        public HomeController(IUsuarioService usuarioService, IProductoService productoService)
         {
             this.usuarioService = usuarioService;
             this.productoService = productoService;
-            this.articuloService = articuloService;
-            this.articuloMapper = articuloMapper;
         }
 
         [Authorize]
@@ -33,28 +29,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var produccionAcademica = new List<ProductoDTO>();
             var formacionRecursosHumanos = new List<ProductoDTO>();
             var proyectos = new List<ProductoDTO>();
-            var vinculacion = new List<ProductoDTO>();
+            var vinculaciones = new List<ProductoDTO>();
 
             var productos = productoService.GetProductosBandeja(CurrentUser());
 
             foreach (var producto in (IEnumerable)productos[0])
             {
-                produccionAcademica.Add(producto as ProductoDTO);
+                var productoAcademico = producto as ProductoDTO;
+                var buffer = Guid.NewGuid().ToByteArray();
+                productoAcademico.GuidNumber = BitConverter.ToInt32(buffer, 0);
+                produccionAcademica.Add(productoAcademico);
             }
 
             foreach (var producto in (IEnumerable)productos[1])
             {
-                formacionRecursosHumanos.Add(producto as ProductoDTO);
+                var recursoAcademico = producto as ProductoDTO;
+                var buffer = Guid.NewGuid().ToByteArray();
+                recursoAcademico.GuidNumber = BitConverter.ToInt32(buffer, 0);
+                formacionRecursosHumanos.Add(recursoAcademico);
             }
 
             foreach (var producto in (IEnumerable)productos[2])
             {
-                proyectos.Add(producto as ProductoDTO);
+                var proyecto = producto as ProductoDTO;
+                var buffer = Guid.NewGuid().ToByteArray();
+                proyecto.GuidNumber = BitConverter.ToInt32(buffer, 0);
+                proyectos.Add(proyecto);
             }
 
             foreach (var producto in (IEnumerable)productos[3])
             {
-                vinculacion.Add(producto as ProductoDTO);
+                var vinculacion = producto as ProductoDTO;
+                var buffer = Guid.NewGuid().ToByteArray();
+                vinculacion.GuidNumber = BitConverter.ToInt32(buffer, 0);
+                vinculaciones.Add(vinculacion);
             }
 
             var data = new GenericViewData<HomeForm>
@@ -65,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                               ProduccionAcademica = produccionAcademica.ToArray(),
                                               FormacionRecursosHumanos = formacionRecursosHumanos.ToArray(),
                                               Proyectos = proyectos.ToArray(),
-                                              Vinculacion = vinculacion.ToArray()
+                                              Vinculacion = vinculaciones.ToArray()
                                           }
                            };
 
@@ -87,17 +95,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "Investigadores")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Sign(int id, int tipoProducto)
+        public ActionResult Sign(int id, int tipoProducto, int guidNumber)
         {
-            var articulo = articuloService.GetArticuloById(id);
-            articulo.Firma.Aceptacion1 = 1;
-            articulo.Firma.Firma1 = DateTime.Now;
-            articulo.ModificadoPor = CurrentUser();
-            articuloService.SaveArticulo(articulo);
+            var producto = productoService.SignAndGetNombreProducto(id, tipoProducto, CurrentUser());
 
-            var form = articuloMapper.Map(articulo);
+            var data = new HomeForm
+                           {
+                               NombreProducto = producto,
+                               IdProducto = id,
+                               TipoProducto = tipoProducto,
+                               GuidNumber = guidNumber
+                           };
 
-            return Rjs(form);
+            return Rjs(data);
         }
 
         protected ActionResult RedirectToProducto(int id, int tipoProducto, string action)

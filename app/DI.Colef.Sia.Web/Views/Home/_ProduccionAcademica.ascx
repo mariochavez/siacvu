@@ -13,7 +13,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var produccionAcademica in Model.ProduccionAcademica) { %>
-        <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.Id) %>">
+        <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.GuidNumber)%><%=Html.Encode(produccionAcademica.Id)%><%=Html.Encode(produccionAcademica.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(produccionAcademica.Nombre)%></span></h5>
                 <h6>
@@ -25,14 +25,22 @@
                     <% if (produccionAcademica.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.EstatusProducto)%>
                     <% } %>
+                    <% if(produccionAcademica.Firma.Aceptacion2 == 2){ %>
+                        Rechazado Motivo: <%=Html.Encode(produccionAcademica.Firma.Descripcion) %>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 
 			<div class="elementobotones">
 				<p>
-					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
-					<span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, new { @class = "remote put" })%></span>
-                    <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+			        <% if(produccionAcademica.Firma.Aceptacion2 != 1 && produccionAcademica.Firma.Aceptacion1 == 0){ %>
+				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, produccionAcademica.GuidNumber, new { @class = "remote put" })%></span>
+                        <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                    <% } %>
+                    <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
+                        <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                    <% } %>
                	</p>
 			</div><!--end elementobotones-->
         		

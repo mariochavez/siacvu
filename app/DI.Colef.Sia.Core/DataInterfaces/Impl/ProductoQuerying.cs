@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
+using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
@@ -132,6 +133,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Property("Id"), "Id")
                 .Add(Projections.Property(propertyName), "Nombre")
                 .Add(Projections.Constant(productType), "TipoProducto")
+                .Add(Projections.Property("Firma"), "Firma")
                 .Add(Projections.Property("CreadoEl"), "CreadoEl");
 
             if (esProduccionAcademica)
@@ -141,7 +143,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                     .Add(Projections.GroupProperty(propertyName), "Nombre")
                     .Add(Projections.GroupProperty("Id"), "Id")
                     .Add(Projections.GroupProperty("CreadoEl"), "CreadoEl")
-                    .Add(Projections.GroupProperty("EstadoProducto"), "EstatusProducto");
+                    .Add(Projections.GroupProperty("EstadoProducto"), "EstatusProducto")
+                    .Add(Projections.GroupProperty("Firma"), "Firma");
             }
 
             if (tieneRevista)
@@ -199,7 +202,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var firma = DetachedCriteria.For(typeof (Firma))
                 .SetProjection(Projections.ProjectionList()
                                    .Add(Projections.Property("Aceptacion2"), "Aceptacion2"))
-                .Add(Expression.Eq("Aceptacion2", 2));
+                .Add(Expression.Eq("Aceptacion2", 1));
 
             criteria.Add(Subqueries.PropertyNotIn("Firma", firma));
 
@@ -221,6 +224,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public TipoOrgano TipoOrgano { get; set; }
         public TipoEvento TipoEvento { get; set; }
         public TipoParticipacion TipoParticipacion { get; set; }
+        public Firma Firma { get; set; }
         public int Aceptacion2 { get; set; }
+        public int GuidNumber { get; set; }
     }
 }
