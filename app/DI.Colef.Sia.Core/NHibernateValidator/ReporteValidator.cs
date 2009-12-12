@@ -27,12 +27,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var reporte = value as Reporte;
 
             if (!reporte.IsTransient())
-            {/*
-                isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.TipoReporte, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.FechaAceptacion, constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.LineaTematica, "LineaTematicaNombre",
-                                                            constraintValidatorContext);
-                isValid &= !ValidateIsNullOrEmpty<Reporte>(reporte, x => x.Pais, constraintValidatorContext); */
+            {
+
             }
 
             if (reporte.TipoReporte != 0)
@@ -108,48 +104,48 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                         isValid = false;
                     }
                 }
-                else
-                {
-                    if (reporte.Institucion == null)
-                    {
-                        constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|InstitucionNombre",
-                                                              "InstitucionNombre");
+                //else
+                //{
+                    //if (reporte.Institucion == null)
+                    //{
+                    //    constraintValidatorContext.AddInvalid("no puede ser nulo, vacío o cero|InstitucionNombre",
+                    //                                          "InstitucionNombre");
 
-                        isValid = false;
-                    }
-                    if (reporte.AreaTematica == null)
-                    {
-                        constraintValidatorContext.AddInvalid("seleccione el área temática|AreaTematicaId",
-                                                              "AreaTematicaId");
+                    //    isValid = false;
+                    //}
+                    //if (reporte.AreaTematica == null)
+                    //{
+                    //    constraintValidatorContext.AddInvalid("seleccione el área temática|AreaTematicaId",
+                    //                                          "AreaTematicaId");
 
-                        isValid = false;
-                    }
-                }
+                    //    isValid = false;
+                    //}
+                //}
             }
 
-            if (reporte.Descripcion == "")
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no debe ser nulo o vacío|Descripcion", "Descripcion");
+            //if (reporte.Descripcion == "")
+            //{
+            //    constraintValidatorContext.AddInvalid(
+            //        "no debe ser nulo o vacío|Descripcion", "Descripcion");
 
-                isValid = false;
-            }
+            //    isValid = false;
+            //}
 
-            if (reporte.Objetivo == "")
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no debe ser nulo o vacío|Objetivo", "Objetivo");
+            //if (reporte.Objetivo == "")
+            //{
+            //    constraintValidatorContext.AddInvalid(
+            //        "no debe ser nulo o vacío|Objetivo", "Objetivo");
 
-                isValid = false;
-            }
+            //    isValid = false;
+            //}
 
-            if (reporte.NoPaginas <= 0)
-            {
-                constraintValidatorContext.AddInvalid(
-                    "no puede ser menor o igual a cero|NoPaginas", "NoPaginas");
+            //if (reporte.NoPaginas <= 0)
+            //{
+            //    constraintValidatorContext.AddInvalid(
+            //        "no puede ser menor o igual a cero|NoPaginas", "NoPaginas");
 
-                isValid = false;
-            }
+            //    isValid = false;
+            //}
 
             if (!isValid)
                 constraintValidatorContext.DisableDefaultError();

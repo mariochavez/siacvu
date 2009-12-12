@@ -58,11 +58,8 @@
             <h4>Estatus de la publicaci&oacute;n</h4>
             <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
             
-            <div class="estatuspublicado_field">
-                <h4>Referencia bibliogr&aacute;fica</h4>
-                
-                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-			</div>
+            <h4>Referencia bibliogr&aacute;fica</h4>
+            <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>

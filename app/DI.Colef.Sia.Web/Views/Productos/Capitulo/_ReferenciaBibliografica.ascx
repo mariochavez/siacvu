@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <p>
     <label>Nombre del libro</label>
-    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreLibro")%>
 </p>
@@ -15,7 +15,7 @@
 <p>
     <label>Tipo de libro</label>
     <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido" })%>
+        "Seleccione ...")%>
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 
@@ -23,7 +23,7 @@
 
 <p>
     <label>Resumen</label>
-    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420-requerido", maxlength = 500 })%>
+    <%=Html.TextArea("Resumen", Model.Resumen, 3, 35, new { @class = "input420", maxlength = 500 })%>
     <span class="cvu"></span>
 </p>
 <p>
@@ -34,13 +34,13 @@
 </p>
 <p>
     <label>No. de p&aacute;ginas</label>
-    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100", maxlength = 4 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>
 <p>
     <label>No. de citas</label>
-    <%=Html.TextBox("NoCitas", Model.NoCitas, new { @class = "input100-requerido", maxlength = 4 })%>
+    <%=Html.TextBox("NoCitas", Model.NoCitas, new { @class = "input100", maxlength = 4 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoCitas")%>
 </p>
