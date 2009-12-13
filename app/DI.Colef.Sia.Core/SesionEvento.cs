@@ -37,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             ParticipanteExternoEventos.Remove((ParticipanteExternoEvento) participanteExterno);
         }
 
+        [NotNullNotEmpty]
         public virtual string NombreSesion { get; set; }
 
         public virtual string ObjetivoSesion { get; set; }

@@ -13,7 +13,7 @@ var html = '
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
-$('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_")) %>').remove();
+$('#sesion_<%=Html.Encode(Model.Id)%>').remove();
 
 deleteElement(html, '#sesionList div[id^=sesion_]', '#sesionList');
 

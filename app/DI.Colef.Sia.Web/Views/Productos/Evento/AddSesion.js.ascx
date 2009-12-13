@@ -7,9 +7,9 @@
 var counter = $('#sesionList div[id^=sesion_]').length;
 
 var html = '
-    <div class="sublista" id="sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_")) %>">
+    <div class="sublista" id="sesion_<%=Html.Encode(Model.Id) %>">
         <h6>
-            <a href="<%=Url.Action("DeleteSesion", null, new{ id = Model.ParentId, nombreSesion = Model.NombreSesion.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <a href="<%=Url.Action("DeleteSesion", null, new{ id = Model.ParentId, sesionId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreSesion)%>
             <%=Html.Hidden("Sesion['  + counter + '].NombreSesion", Model.NombreSesion)%>
             <span>
@@ -33,12 +33,10 @@ $('#sesionForm').hide();
 $('#sesionNew').show();
 $('#sesionForm').html('');
 
-if($('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>').length == 0){
-    $('#sesionEmptyListForm').html('');
-    $('#sesionList div:first').before(html);
-    
-    $('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>:first').hide();
-    $('#sesion_<%=Html.Encode(Model.NombreSesion.Replace(" ", "_"))%>:first').fadeIn('slow');
-}
+$('#sesionEmptyListForm').html('');
+$('#sesionList div:first').before(html);
+
+$('#sesion_<%=Html.Encode(Model.Id)%>:first').hide();
+$('#sesion_<%=Html.Encode(Model.Id)%>:first').fadeIn('slow');
 
 setupSublistRows();
