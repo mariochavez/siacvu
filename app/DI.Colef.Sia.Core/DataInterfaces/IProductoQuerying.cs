@@ -6,5 +6,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
     {
         T[] GetProductosByUsuario<T>(Usuario usuario, string coautorTableName);
         object[] GetProductosBandeja(Usuario usuario);
+        object[] GetProductosBandeja(bool isDgaa);
     }
 }

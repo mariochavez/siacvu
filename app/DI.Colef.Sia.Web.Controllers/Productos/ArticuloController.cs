@@ -97,8 +97,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (articulo.Firma.Aceptacion1 == 1)
+                return RedirectHomeToIndex("El artículo ha sido enviado a firma");
 
             var coautorExists =
                    articulo.CoautorInternoArticulos.Where(
