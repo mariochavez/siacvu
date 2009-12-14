@@ -283,12 +283,12 @@ alter table EstatusFormacionAcademicas  drop constraint FK8773549562D605DB
 alter table EstatusFormacionAcademicas  drop constraint FK8773549574E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB2915907A8488F7]') AND parent_object_id = OBJECT_ID('Editoriales'))
-alter table Editoriales  drop constraint FKFB2915907A8488F7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB29159064F7D1CD]') AND parent_object_id = OBJECT_ID('Editoriales'))
 alter table Editoriales  drop constraint FKFB29159064F7D1CD
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB2915907A8488F7]') AND parent_object_id = OBJECT_ID('Editoriales'))
+alter table Editoriales  drop constraint FKFB2915907A8488F7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKFB29159062D605DB]') AND parent_object_id = OBJECT_ID('Editoriales'))
@@ -1639,10 +1639,6 @@ alter table RevistaPublicaciones  drop constraint FK40B4829364F7D1CD
 alter table RevistaPublicaciones  drop constraint FK40B48293842F4EA5
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B482937A8488F7]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
-alter table RevistaPublicaciones  drop constraint FK40B482937A8488F7
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829341CFD2F4]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
 alter table RevistaPublicaciones  drop constraint FK40B4829341CFD2F4
 
@@ -1653,10 +1649,6 @@ alter table RevistaPublicaciones  drop constraint FK40B48293B9B574C5
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829361CF922]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
 alter table RevistaPublicaciones  drop constraint FK40B4829361CF922
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B482937E0A1BF3]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
-alter table RevistaPublicaciones  drop constraint FK40B482937E0A1BF3
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK40B4829362D605DB]') AND parent_object_id = OBJECT_ID('RevistaPublicaciones'))
@@ -2878,11 +2870,16 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     create table Editoriales (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(250) null,
+       TipoEditorial INT null,
+       Contacto NVARCHAR(255) null,
+       Email NVARCHAR(255) null,
+       PaginaWeb NVARCHAR(255) null,
+       Telefono NVARCHAR(255) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
-       PaisFk INT null,
        InstitucionFk INT null,
+       PaisFk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4040,7 +4037,9 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         Id INT IDENTITY NOT NULL,
        Titulo NVARCHAR(250) null,
        DepartamentoAcademico NVARCHAR(255) null,
+       FactorImpacto NVARCHAR(255) null,
        Issn NVARCHAR(255) null,
+       Issne NVARCHAR(255) null,
        Contacto NVARCHAR(255) null,
        Email NVARCHAR(255) null,
        PaginaWeb NVARCHAR(255) null,
@@ -4048,7 +4047,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        TipoRevista INT null,
        ClasificacionSieva INT null,
        DescripcionRevista NVARCHAR(400) null,
-       FactorImpacto NVARCHAR(255) null,
        FormatoRevista INT null,
        Periodicidad INT null,
        Puntuacion INT null,
@@ -4057,11 +4055,9 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        Activo BIT null,
        InstitucionFk INT null,
        AreaInvestigacionFk INT null,
-       PaisFk INT null,
        Indice1Fk INT null,
        Indice2Fk INT null,
        Indice3Fk INT null,
-       Indice4Fk INT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -4896,14 +4892,14 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references Usuarios
 
     alter table Editoriales 
-        add constraint FKFB2915907A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table Editoriales 
         add constraint FKFB29159064F7D1CD 
         foreign key (InstitucionFk) 
         references Instituciones
+
+    alter table Editoriales 
+        add constraint FKFB2915907A8488F7 
+        foreign key (PaisFk) 
+        references Paises
 
     alter table Editoriales 
         add constraint FKFB29159062D605DB 
@@ -6591,11 +6587,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         references AreaInvestigaciones
 
     alter table RevistaPublicaciones 
-        add constraint FK40B482937A8488F7 
-        foreign key (PaisFk) 
-        references Paises
-
-    alter table RevistaPublicaciones 
         add constraint FK40B4829341CFD2F4 
         foreign key (Indice1Fk) 
         references Indices
@@ -6608,11 +6599,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
     alter table RevistaPublicaciones 
         add constraint FK40B4829361CF922 
         foreign key (Indice3Fk) 
-        references Indices
-
-    alter table RevistaPublicaciones 
-        add constraint FK40B482937E0A1BF3 
-        foreign key (Indice4Fk) 
         references Indices
 
     alter table RevistaPublicaciones 

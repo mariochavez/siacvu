@@ -55,17 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var tesisDirigidas = new TesisDirigida[] { };
-
-            if (User.IsInRole("Investigadores"))
-                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
-
-            data.List = tesisDirigidaMapper.Map(tesisDirigidas);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -81,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -89,10 +79,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            if (tesisDirigida == null)
-                return RedirectToIndex("no ha sido encontrado", true);
-            if (tesisDirigida.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            if (tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("La tesis dirigida {0} esta en firma y no puede ser editada", tesisDirigida.Titulo));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 1) ||
+                    (tesisDirigida.Firma.Aceptacion1 == 0 && tesisDirigida.Firma.Aceptacion2 == 0) ||
+                    (tesisDirigida.Firma.Aceptacion1 == 0 && tesisDirigida.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "La tesis dirigida {0} ya fue aceptada o no ha sido enviada a firma",
+                                                tesisDirigida.Titulo));
+            }
+
+            if (User.IsInRole("Investigadores"))
+            {
+                if (tesisDirigida.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
 
@@ -138,7 +144,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            return RedirectToHomeIndex(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
         }
 
         [CustomTransaction]
@@ -160,7 +166,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToIndex(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            return RedirectToHomeIndex(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
         }
 
         [Authorize]

@@ -70,17 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var reportes = new Reporte[] { };
-
-            if (User.IsInRole("Investigadores"))
-                reportes = reporteService.GetAllReportes(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                reportes = reporteService.GetAllReportes();
-
-            data.List = reporteMapper.Map(reportes);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -129,7 +119,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
                 if (reporte.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                    return RedirectToIndex("no lo puede modificar", true);
+                    return RedirectToHomeIndex("no lo puede modificar");
             }
 
             var reporteForm = reporteMapper.Map(reporte);
@@ -196,7 +186,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             reporteService.SaveReporte(reporte);
 
-            return RedirectToIndex(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
+            return RedirectToHomeIndex(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
         }
 
         [CustomTransaction]
@@ -218,7 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             reporteService.SaveReporte(reporte);
 
-            return RedirectToIndex(String.Format("Reporte {0} ha sido modificado", reporte.Titulo));
+            return RedirectToHomeIndex(String.Format("Reporte {0} ha sido modificado", reporte.Titulo));
         }
 
         [Authorize]

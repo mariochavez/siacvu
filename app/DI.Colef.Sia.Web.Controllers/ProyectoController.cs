@@ -100,12 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-
-            var proyectos = proyectoService.GetAllProyectos();
-            data.List = proyectoMapper.Map(proyectos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize]
@@ -127,7 +122,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View(data);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -135,10 +130,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var proyecto = proyectoService.GetProyectoById(id);
 
-            //if (proyecto == null)
-            //    return RedirectToIndex("no ha sido encontrado", true);
-            //if (proyecto.Usuario.Id != CurrentUser().Id)
-            //    return RedirectToIndex("no lo puede modificar", true);
+            if (proyecto.Firma.Aceptacion1 == 1 && proyecto.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El proyecto {0} esta en firma y no puede ser editado", proyecto.Nombre));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((proyecto.Firma.Aceptacion1 == 1 && proyecto.Firma.Aceptacion2 == 1) ||
+                    (proyecto.Firma.Aceptacion1 == 0 && proyecto.Firma.Aceptacion2 == 0) ||
+                    (proyecto.Firma.Aceptacion1 == 0 && proyecto.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El proyecto {0} ya fue aceptado o no ha sido enviado a firma",
+                                                proyecto.Nombre));
+            }
+
+            if (User.IsInRole("Investigadores"))
+            {
+                if (proyecto.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var proyectoForm = proyectoMapper.Map(proyecto);
 
@@ -199,7 +210,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             proyectoService.SaveProyecto(proyecto, false);
 
-            return RedirectToIndex(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
+            return RedirectToHomeIndex(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
         }
 
         [CustomTransaction]
@@ -221,7 +232,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             proyectoService.SaveProyecto(proyecto, false);
 
-            return RedirectToIndex(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
+            return RedirectToHomeIndex(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
         }
         
         [Authorize]

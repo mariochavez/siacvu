@@ -56,17 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var capitulos = new Capitulo[] {};
-
-            if (User.IsInRole("Investigadores"))
-                capitulos = capituloService.GetAllCapitulos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                capitulos = capituloService.GetAllCapitulos();
-
-            data.List = capituloMapper.Map(capitulos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -115,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
                 if (capitulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                    return RedirectToIndex("no lo puede modificar", true);
+                    return RedirectToHomeIndex("no lo puede modificar");
             }
 
             var capituloForm = capituloMapper.Map(capitulo);
@@ -187,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             capituloService.SaveCapitulo(capitulo);
 
-            return RedirectToIndex(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
+            return RedirectToHomeIndex(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
         }
 
         [CustomTransaction]
@@ -209,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             capituloService.SaveCapitulo(capitulo);
 
-            return RedirectToIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
+            return RedirectToHomeIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
         }
 
         [Authorize]

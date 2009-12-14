@@ -45,17 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var dictamens = new Dictamen[] { };
-
-            if (User.IsInRole("Investigadores"))
-                dictamens = dictamenService.GetAllDictamenes(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                dictamens = dictamenService.GetAllDictamenes();
-
-            data.List = dictamenMapper.Map(dictamens);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -71,7 +61,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -79,11 +69,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var dictamen = dictamenService.GetDictamenById(id);
 
-            if (dictamen == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (dictamen.Firma.Aceptacion1 == 1 && dictamen.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El dictamen {0} esta en firma y no puede ser editado", dictamen.Nombre));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((dictamen.Firma.Aceptacion1 == 1 && dictamen.Firma.Aceptacion2 == 1) ||
+                    (dictamen.Firma.Aceptacion1 == 0 && dictamen.Firma.Aceptacion2 == 0) ||
+                    (dictamen.Firma.Aceptacion1 == 0 && dictamen.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El dictamen {0} ya fue aceptado o no ha sido enviado a firma",
+                                                dictamen.Nombre));
+            }
 
-            if (dictamen.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            if (User.IsInRole("Investigadores"))
+            {
+                if (dictamen.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var dictamenForm = dictamenMapper.Map(dictamen);
 
@@ -131,7 +136,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
+            return RedirectToHomeIndex(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
         }
 
         [CustomTransaction]
@@ -153,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             dictamenService.SaveDictamen(dictamen);
 
-            return RedirectToIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
+            return RedirectToHomeIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -246,7 +251,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 RevistaPublicacionId = revistaForm.Id,
 
                 RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
                 RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                 RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
                 RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
@@ -284,7 +288,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                 RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
                 RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                 RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                 RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,

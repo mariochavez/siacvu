@@ -174,7 +174,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 RevistaPublicacionId = revistaForm.Id,
 
                 RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
                 RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                 RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
                 RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
@@ -215,7 +214,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   {
                                       RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,

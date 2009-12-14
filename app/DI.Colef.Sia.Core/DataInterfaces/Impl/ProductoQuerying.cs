@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
-using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces

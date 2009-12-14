@@ -43,17 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var organoExternos = new OrganoExterno[] { };
-
-            if (User.IsInRole("Investigadores"))
-                organoExternos = organoExternoService.GetAllOrganoExternos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                organoExternos = organoExternoService.GetAllOrganoExternos();
-
-            data.List = organoExternoMapper.Map(organoExternos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -69,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -77,11 +67,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var organoExterno = organoExternoService.GetOrganoExternoById(id);
 
-            if (organoExterno == null)
-                return RedirectToIndex("no ha sido encontrado", true);
-            if (organoExterno.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            if (organoExterno.Firma.Aceptacion1 == 1 && organoExterno.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El órgano externo {0} esta en firma y no puede ser editado", organoExterno.Nombre));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((organoExterno.Firma.Aceptacion1 == 1 && organoExterno.Firma.Aceptacion2 == 1) ||
+                    (organoExterno.Firma.Aceptacion1 == 0 && organoExterno.Firma.Aceptacion2 == 0) ||
+                    (organoExterno.Firma.Aceptacion1 == 0 && organoExterno.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El órgano externo {0} ya fue aceptado o no ha sido enviado a firma",
+                                                organoExterno.Nombre));
+            }
 
+            if (User.IsInRole("Investigadores"))
+            {
+                if (organoExterno.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
             var organoExternoForm = organoExternoMapper.Map(organoExterno);
 
             data.Form = SetupNewForm(organoExternoForm);
@@ -120,7 +125,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 
-            return RedirectToIndex(String.Format("Órgano externo {0} ha sido creado", organoExterno.Nombre));
+            return RedirectToHomeIndex(String.Format("Órgano externo {0} ha sido creado", organoExterno.Nombre));
         }
 
         [CustomTransaction]
@@ -141,7 +146,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 
-            return RedirectToIndex(String.Format("Órgano externo {0} ha sido modificado", organoExterno.Nombre));
+            return RedirectToHomeIndex(String.Format("Órgano externo {0} ha sido modificado", organoExterno.Nombre));
         }
 
         [Authorize]
