@@ -8,7 +8,7 @@
         <div id="estado_<%=Html.Encode(categoria.Id) %>" class="sublista">
     	    <h6><%=Html.Encode(categoria.CategoriaNombre)%> <span><%=Html.Encode(categoria.FechaInicial)%> a <%=Html.Encode(categoria.FechaFinal)%></span>
     	    <%if (!String.IsNullOrEmpty(categoria.ComprobanteNombre)){ %> 
-    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(categoria.ComprobanteId), Html.Encode(categoria.ComprobanteNombre), new { target = "_blank" })%> <% } %></h6>
+    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(categoria.ComprobanteId), categoria.ComprobanteNombre, new { target = "_blank" })%> <% } %></h6>
         </div><!--end estadolista-->
     <% } %>
 </div><!--end minilista-->

@@ -22,3 +22,11 @@ $('#cargoNew').hide();
 $('#cargoForm').show();
 DateTimePicker.setup();
 Cascade.setup();
+
+var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+var action = '<%=Url.Action("AddFile") %>';
+
+UploadFile.setup('#CargoInvestigador_DocumentoProbatorio', 'Cargo_FileQueue',
+            uploader, cancelImg, action, auth);

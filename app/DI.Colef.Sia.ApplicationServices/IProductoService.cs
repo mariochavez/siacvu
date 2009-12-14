@@ -7,5 +7,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         object[] GetProductosBandeja(Usuario usuario);
         string SignAndGetNombreProducto(int id, int tipoProducto, Usuario usuario);
+        object[] GetProductosBandeja(bool isDgaa);
     }
 }

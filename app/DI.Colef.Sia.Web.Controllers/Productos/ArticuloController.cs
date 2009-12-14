@@ -87,25 +87,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoArticulo coautorInternoArticulo;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
+                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 0) ||
+                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
+                                                articulo.Titulo));
+            }
 
-            var coautorExists =
-                   articulo.CoautorInternoArticulos.Where(
-                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    articulo.CoautorInternoArticulos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (articulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (articulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToIndex("no lo puede modificar", false);
+            }
 
             var articuloForm = articuloMapper.Map(articulo);
 

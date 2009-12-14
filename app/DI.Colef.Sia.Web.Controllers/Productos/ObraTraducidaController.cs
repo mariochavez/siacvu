@@ -99,25 +99,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoObraTraducida coautorInternoObraTraducida;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
 
-            if (obraTraducida == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (obraTraducida.Firma.Aceptacion1 == 1 && obraTraducida.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("La obra traducida {0} esta en firma y no puede ser editada", obraTraducida.Nombre));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((obraTraducida.Firma.Aceptacion1 == 1 && obraTraducida.Firma.Aceptacion2 == 1) ||
+                    (obraTraducida.Firma.Aceptacion1 == 0 && obraTraducida.Firma.Aceptacion2 == 0) ||
+                    (obraTraducida.Firma.Aceptacion1 == 0 && obraTraducida.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "La obra traducida {0} ya fue aceptada o no ha sido enviada a firma",
+                                                obraTraducida.Nombre));
+            }
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    obraTraducida.CoautorInternoObraTraducidas.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            var coautorExists =
-                obraTraducida.CoautorInternoObraTraducidas.Where(
-                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
-
-            if (obraTraducida.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (obraTraducida.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToIndex("no lo puede modificar", true);
+            }
 
             var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
 

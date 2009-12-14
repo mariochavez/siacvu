@@ -615,6 +615,7 @@
     <Content Include="Views\Shared\ChangeRama.js.ascx" />
     <Content Include="Views\Shared\AddParticipanteExterno.js.ascx" />
     <Content Include="Views\Shared\AddParticipanteInterno.js.ascx" />
+    <Content Include="Views\Shared\_ProgressBar.ascx" />
     <Content Include="Views\Shared\DeleteParticipanteExterno.js.ascx" />
     <Content Include="Views\Shared\DeleteParticipanteInterno.js.ascx" />
     <Content Include="Views\Shared\NewParticipanteExterno.js.ascx" />

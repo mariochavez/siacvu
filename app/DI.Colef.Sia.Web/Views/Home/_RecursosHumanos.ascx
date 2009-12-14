@@ -13,7 +13,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var recursoHumano in Model.FormacionRecursosHumanos){ %>
-        <div class="elementolista" id="accion_<%=Html.Encode(recursoHumano.Id) %>">
+        <div class="elementolista" id="accion_<%=Html.Encode(recursoHumano.GuidNumber)%><%=Html.Encode(recursoHumano.Id)%><%=Html.Encode(recursoHumano.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(recursoHumano.Nombre)%></span></h5>
                 <h6>
@@ -22,13 +22,29 @@
                     <% if (recursoHumano.Institucion != null){ %>
                         Instituci&oacute;n: <%=Html.Encode(recursoHumano.Institucion.Nombre)%>
                     <% } %>
+                    <% if (recursoHumano.Firma.Aceptacion2 == 2){ %>
+                        Rechazado Motivo: <%=Html.Encode(recursoHumano.Firma.Descripcion)%>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 
 			<div class="elementobotones">
 				<p>
-					<span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
-                    <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
+			        <% if (recursoHumano.Firma.Aceptacion2 != 1 && recursoHumano.Firma.Aceptacion1 == 0){ %>
+				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
+				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", recursoHumano.Id, recursoHumano.TipoProducto, recursoHumano.GuidNumber, new { @class = "remote put" })%></span>
+                        <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
+                    <% } %>
+                    <%if(Page.User.IsInRole("Investigadores")){ %>
+                        <% if (recursoHumano.Firma.Aceptacion1 == 1){ %>
+                            <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
+                        <% } %>
+                    <% } %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        <% if (recursoHumano.Firma.Aceptacion1 == 1){ %>
+                            <span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
+                        <% } %>                    
+                    <% } %>
                	</p>
 			</div><!--end elementobotones-->
         		

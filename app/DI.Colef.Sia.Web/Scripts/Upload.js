@@ -184,7 +184,7 @@ var Upload = {
         return object.eq(position);
     },
     error: function(event, queueID, fileObj, errorObj) {
-        alert('Ocurrio un error al subir archivos adjuntos, es posible que no se hayan grabado.');
+        alert('Ocurrió un error al subir archivos adjuntos, es posible que no se hayan grabado.');
         window.location.href = $('#regresar').attr('href');
     }
 }
