@@ -21,3 +21,13 @@ $('#sniForm').html(html);
 $('#sniNew').hide();
 $('#sniForm').show();
 DateTimePicker.setup();
+
+investigadorSetup();
+
+var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+var action = '<%=Url.Action("AddFile") %>';
+
+UploadFile.setup('#SniInvestigador_DocumentoProbatorio', 'Sni_FileQueue',
+            uploader, cancelImg, action, auth);

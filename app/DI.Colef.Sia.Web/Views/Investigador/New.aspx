@@ -85,12 +85,7 @@
                     </p>
                     <% Html.RenderPartial("_NewSni", Model.Form); %>
                     
-                    <div class="progress_container">
-	                    <div class="status_message"></div>
-	                    <div class="progress_bar">
-		                    <div class="progress" style="width: 0px;"></div>
-	                    </div>
-                    </div>
+                    <% Html.RenderPartial("_ProgressBar"); %>
                                      
                     <p class="submit">
                         <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar", new{id="regresar"})%>
@@ -110,96 +105,20 @@
         investigadorSetup();
 
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
-
-        $('#GradoAcademicoInvestigador_DocumentoProbatorio').uploadify({
-            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': '<%=Url.Action("AddFile") %>',
-            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': '<%=Url.Action("AddFile") %>',
-            'queueID': 'GradoAcademico_FileQueue',
-            'auto': false,
-            'multi': false,
-            'buttonText': 'Adjuntar',
-            'onSelect': Upload.onSelect,
-            'onSelectOnce': Upload.onSelectOnce,
-            'onProgress': Upload.onProgress,
-            'onAllComplete': Upload.onAllComplete,
-            'onCancel': Upload.onCancel,
-            'onError': error,
-            'scriptData': { token: auth }
-        });
-
-        $('#EstadoInvestigador_DocumentoProbatorio').uploadify({
-            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': '<%=Url.Action("AddFile") %>',
-            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': '<%=Url.Action("AddFile") %>',
-            'queueID': 'Estado_FileQueue',
-            'auto': false,
-            'multi': false,
-            'buttonText': 'Adjuntar',
-            'onSelect': Upload.onSelect,
-            'onSelectOnce': Upload.onSelectOnce,
-            'onProgress': Upload.onProgress,
-            'onAllComplete': Upload.onAllComplete,
-            'onCancel': Upload.onCancel,
-            'onError': error,
-            'scriptData': { token: auth }
-        });
-
-        $('#CargoInvestigador_DocumentoProbatorio').uploadify({
-            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': '<%=Url.Action("AddFile") %>',
-            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': '<%=Url.Action("AddFile") %>',
-            'queueID': 'Cargo_FileQueue',
-            'auto': false,
-            'multi': false,
-            'buttonText': 'Adjuntar',
-            'onSelect': Upload.onSelect,
-            'onSelectOnce': Upload.onSelectOnce,
-            'onProgress': Upload.onProgress,
-            'onAllComplete': Upload.onAllComplete,
-            'onCancel': Upload.onCancel,
-            'onError': error,
-            'scriptData': { token: auth }
-        });
-
-        $('#CategoriaInvestigador_DocumentoProbatorio').uploadify({
-            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': '<%=Url.Action("AddFile") %>',
-            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': '<%=Url.Action("AddFile") %>',
-            'queueID': 'Categoria_FileQueue',
-            'auto': false,
-            'multi': false,
-            'buttonText': 'Adjuntar',
-            'onSelect': Upload.onSelect,
-            'onSelectOnce': Upload.onSelectOnce,
-            'onProgress': Upload.onProgress,
-            'onAllComplete': Upload.onAllComplete,
-            'onCancel': Upload.onCancel,
-            'onError': error,
-            'scriptData': { token: auth }
-        });
-
-        $('#SniInvestigador_DocumentoProbatorio').uploadify({
-            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
-            'script': '<%=Url.Action("AddFile") %>',
-            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
-            'folder': '<%=Url.Action("AddFile") %>',
-            'queueID': 'Sni_FileQueue',
-            'auto': false,
-            'multi': false,
-            'buttonText': 'Adjuntar',
-            'onSelect': Upload.onSelect,
-            'onSelectOnce': Upload.onSelectOnce,
-            'onProgress': Upload.onProgress,
-            'onAllComplete': Upload.onAllComplete,
-            'onCancel': Upload.onCancel,
-            'onError': error,
-            'scriptData': { token: auth }
-        });
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+        
+        UploadFile.setup('#GradoAcademicoInvestigador_DocumentoProbatorio', 'GradoAcademico_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#EstadoInvestigador_DocumentoProbatorio', 'Estado_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#CargoInvestigador_DocumentoProbatorio', 'Cargo_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#CategoriaInvestigador_DocumentoProbatorio', 'Categoria_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#SniInvestigador_DocumentoProbatorio', 'Sni_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>

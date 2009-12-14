@@ -250,23 +250,28 @@ function proyectoSetup(role) {
 }
 
 function investigadorSetup() {
-    $('#EstadoInvestigador_Estado').dynamicui(
+
+    if ($('#EstadoInvestigador_Estado').length > 0) {
+        $('#EstadoInvestigador_Estado').dynamicui(
             [
                 [['Activo', 'Baja', 'Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoPeriodos_Fields']],
                 [['Licencia c/ sueldo', 'Licencia s/ sueldo', 'Sabático', 'Superación académica'], ['#EstadoFechaFinal_Field']]
             ]
         );
 
-    $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+        $('#EstadoInvestigador_Estado')[0].dynamic.setup();
+    }
 
-    $('#SNIInvestigador_SNI').dynamicui(
+    if ($('#SNIInvestigador_SNI').length > 0) {
+        $('#SNIInvestigador_SNI').dynamicui(
             [
                 [['Emerito', 'Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniPeriodos_Fields']],
                 [['Candidato', 'Nivel 1', 'Nivel 2', 'Nivel 3'], ['#SniFechaFinal_Field']]
             ]
         );
 
-    $('#SNIInvestigador_SNI')[0].dynamic.setup();
+        $('#SNIInvestigador_SNI')[0].dynamic.setup();
+    }
 }
 
 function organoInternoSetup() {
@@ -330,3 +335,25 @@ var CheckOptions = {
         }
     }
 };
+
+var UploadFile = {
+    setup: function(fileUpload, queue, uploader, cancelImg, action, auth) {
+        $(fileUpload).uploadify({
+            'uploader': uploader,
+            'script': action,
+            'cancelImg': cancelImg,
+            'folder': action,
+            'queueID': queue,
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
+            'onError': error,
+            'scriptData': { token: auth }
+        });
+    }
+}

@@ -7,7 +7,7 @@
 	<% foreach(var cargo in Model.CargosInvestigador) { %>
         <div id="estado_<%=Html.Encode(cargo.Id) %>" class="sublista">
     	    <h6><%=Html.Encode(cargo.PuestoNombre)%> <span><%=Html.Encode(cargo.SedeNombre) %></span><%if(!String.IsNullOrEmpty(cargo.ComprobanteNombre)) { %> 
-    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(cargo.ComprobanteId), Html.Encode(cargo.ComprobanteNombre), new {target="_blank"})%> <% } %></h6>
+    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(cargo.ComprobanteId), cargo.ComprobanteNombre, new {target="_blank"})%> <% } %></h6>
     	    <span><%=Html.Encode(cargo.DepartamentoNombre) %>, <%=Html.Encode(cargo.SedeDireccionRegionalNombre)%></span>
         </div><!--end estadolista-->
     <% } %>      

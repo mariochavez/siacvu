@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
@@ -94,9 +93,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
             set { gradosAcademicosInvestigador = value; }
         }
-        public CategoriaInvestigadorForm[] CategoriasInvestigador { get; set; }
-        public CargoInvestigadorForm[] CargosInvestigador { get; set; }
-        public SNIInvestigadorForm[] SNIsInvestigador { get; set; }
+
+        CategoriaInvestigadorForm[] categoriasInvestigador;
+        public CategoriaInvestigadorForm[] CategoriasInvestigador
+        {
+            get
+            {
+                if (categoriasInvestigador == null)
+                    return null;
+
+                var result = from categoria in categoriasInvestigador
+                             orderby categoria.FechaInicial.FromShortDateToDateTime() descending
+                             select categoria;
+
+                return result.ToArray();
+            }
+            set { categoriasInvestigador = value; }
+        }
+
+        CargoInvestigadorForm[] cargosInvestigador;
+        public CargoInvestigadorForm[] CargosInvestigador
+        {
+            get
+            {
+                if (cargosInvestigador == null)
+                    return null;
+
+                var result = from cargo in cargosInvestigador
+                             orderby cargo.Modificacion.FromShortDateToDateTime() descending
+                             select cargo;
+
+                return result.ToArray();
+            }
+            set { cargosInvestigador = value; }
+        }
+
+        SNIInvestigadorForm[] snisInvestigador;
+        public SNIInvestigadorForm[] SNIsInvestigador
+        {
+            get
+            {
+                if (snisInvestigador == null)
+                    return null;
+
+                var result = from sni in snisInvestigador
+                             orderby sni.FechaInicial.FromShortDateToDateTime() descending
+                             select sni;
+
+                return result.ToArray();
+            }
+            set { snisInvestigador = value; }
+        }
 
         /* New */
         public EstadoInvestigadorForm EstadoInvestigador { get; set; }

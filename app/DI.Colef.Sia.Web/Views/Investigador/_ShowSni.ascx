@@ -8,7 +8,7 @@
         <div id="estado_<%=Html.Encode(sni.Id) %>" class="sublista">
     	    <h6><%=Html.Encode(sni.SNINombre)%> <%if(sni.SNINombre != "No pertence") { %> <span><%=Html.Encode(sni.FechaInicial) %> <% if(sni.SNINombre != "Emerito") { %> a <%=Html.Encode(sni.FechaFinal) %><% } %></span> <% } %>
     	    <%if(!String.IsNullOrEmpty(sni.ComprobanteNombre)) { %> 
-    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(sni.ComprobanteId), Html.Encode(sni.ComprobanteNombre), new {target="_blank"})%> <% } %></h6>
+    	    Comprobante: <%=Html.ActionLink<ArchivoController>(x => x.Show(sni.ComprobanteId), sni.ComprobanteNombre, new {target="_blank"})%> <% } %></h6>
         </div><!--end estadolista-->
     <% } %>
 </div><!--end minilista-->
