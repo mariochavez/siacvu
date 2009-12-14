@@ -97,25 +97,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoReporte coautorInternoReporte;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var reporte = reporteService.GetReporteById(id);
 
-            if (reporte == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (reporte.Firma.Aceptacion1 == 1 && reporte.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El reporte técnico {0} esta en firma y no puede ser editado", reporte.Titulo));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((reporte.Firma.Aceptacion1 == 1 && reporte.Firma.Aceptacion2 == 1) ||
+                    (reporte.Firma.Aceptacion1 == 0 && reporte.Firma.Aceptacion2 == 0) ||
+                    (reporte.Firma.Aceptacion1 == 0 && reporte.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El reporte técnico {0} ya fue aceptado o no ha sido enviado a firma",
+                                                reporte.Titulo));
+            }
 
-            var coautorExists =
-                   reporte.CoautorInternoReportes.Where(
-                       x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    reporte.CoautorInternoReportes.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (reporte.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (reporte.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToIndex("no lo puede modificar", true);
+            }
 
             var reporteForm = reporteMapper.Map(reporte);
 

@@ -99,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
 
             if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectHomeToIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
+                return RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
             if (User.IsInRole("DGAA"))
             {
                 if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
@@ -107,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
                    )
                     return
-                        RedirectHomeToIndex(String.Format(
+                        RedirectToHomeIndex(String.Format(
                                                 "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
                                                 articulo.Titulo));
             }

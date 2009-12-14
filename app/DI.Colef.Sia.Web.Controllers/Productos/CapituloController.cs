@@ -83,25 +83,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoCapitulo coautorInternoCapitulo;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var capitulo = capituloService.GetCapituloById(id);
 
-            if (capitulo == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (capitulo.Firma.Aceptacion1 == 1 && capitulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El capítulo {0} esta en firma y no puede ser editado", capitulo.NombreCapitulo));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((capitulo.Firma.Aceptacion1 == 1 && capitulo.Firma.Aceptacion2 == 1) ||
+                    (capitulo.Firma.Aceptacion1 == 0 && capitulo.Firma.Aceptacion2 == 0) ||
+                    (capitulo.Firma.Aceptacion1 == 0 && capitulo.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El capítulo {0} ya fue aceptado o no ha sido enviado a firma",
+                                                capitulo.NombreCapitulo));
+            }
 
-            var coautorExists =
-                capitulo.CoautorInternoCapitulos.Where(
-                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    capitulo.CoautorInternoCapitulos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (capitulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (capitulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToIndex("no lo puede modificar", true);
+            }
 
             var capituloForm = capituloMapper.Map(capitulo);
 
@@ -133,9 +148,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.Show);
 
             var capitulo = capituloService.GetCapituloById(id);
-            var articuloForm = capituloMapper.Map(capitulo);
+            var capituloForm = capituloMapper.Map(capitulo);
 
-            data.Form = SetupShowForm(articuloForm);
+            data.Form = SetupShowForm(capituloForm);
 
             ViewData.Model = data;
             return View();

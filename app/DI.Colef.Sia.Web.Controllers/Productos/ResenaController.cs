@@ -98,25 +98,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoResena coautorInternoResena;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var resena = resenaService.GetResenaById(id);
 
-            if (resena == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (resena.Firma.Aceptacion1 == 1 && resena.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("La reseña {0} esta en firma y no puede ser editada", resena.NombreProducto));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((resena.Firma.Aceptacion1 == 1 && resena.Firma.Aceptacion2 == 1) ||
+                    (resena.Firma.Aceptacion1 == 0 && resena.Firma.Aceptacion2 == 0) ||
+                    (resena.Firma.Aceptacion1 == 0 && resena.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "La reseña {0} ya fue aceptada o no ha sido enviada a firma",
+                                                resena.NombreProducto));
+            }
 
-            var coautorExists =
-                resena.CoautorInternoResenas.Where(
-                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    resena.CoautorInternoResenas.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (resena.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (resena.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToIndex("no lo puede modificar", true);
+            }
 
             var resenaForm = resenaMapper.Map(resena);
 
