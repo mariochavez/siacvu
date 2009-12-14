@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Investigador[] GetAllInvestigadores();
         Investigador[] GetActiveInvestigadores();
         void SaveInvestigador(Investigador investigador);
+        void SaveInvestigador(Investigador investigador, bool commit);
 
         // Querying
         Usuario[] FindUsuariosToBeInvestigador();

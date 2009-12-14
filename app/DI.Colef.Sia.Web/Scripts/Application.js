@@ -423,6 +423,9 @@ var RemoteLink = {
             method = "put";
         } else if ($(this).hasClass('delete')) {
             method = "delete";
+            if (!confirm('¿Esta seguro de que desea eliminar este elemento?')) {
+                return false;
+            }
         } else if ($(this).hasClass('get')) {
             method = "get";
         }
@@ -443,7 +446,7 @@ var RemoteLink = {
                 alert(textStatus);
             }
         });
-        
+
         return false;
     }
 };

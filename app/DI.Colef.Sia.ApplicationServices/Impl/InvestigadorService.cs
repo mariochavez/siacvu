@@ -37,6 +37,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveInvestigador(Investigador investigador)
         {
+            SaveInvestigador(investigador, false);
+        }
+
+        public void SaveInvestigador(Investigador investigador, bool commit)
+        {
             if (investigador.IsTransient())
             {
                 investigador.Activo = true;
@@ -45,6 +50,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             investigador.ModificadoEl = DateTime.Now;
 
             investigadorRepository.SaveOrUpdate(investigador);
+
+            if(commit)
+                investigadorRepository.DbContext.CommitChanges();
         }
 
         public Usuario[] FindUsuariosToBeInvestigador()

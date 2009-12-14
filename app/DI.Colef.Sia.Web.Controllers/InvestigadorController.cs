@@ -96,6 +96,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return RedirectToIndex("no ha sido encontrado", true);
 
             data.Form = investigadorMapper.Map(investigador);
+            data.Form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
+            ViewData["AreaTematicaId"] = data.Form.AreaTematicaId;
 
             ViewData.Model = data;
             return View();
@@ -329,7 +331,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEstado([Bind(Prefix = "EstadoInvestigador")] EstadoInvestigadorForm form,
                                       int investigadorId)
@@ -347,7 +349,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
             investigador.AddEstado(estadoInvestigador);
-            investigadorService.SaveInvestigador(investigador);
+            investigadorService.SaveInvestigador(investigador, true);
 
             var estadoInvestigadorForm = estadoInvestigadorMapper.Map(estadoInvestigador);
 
@@ -370,7 +372,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddGrado([Bind(Prefix = "GradoAcademicoInvestigador")] GradoAcademicoInvestigadorForm form,
                                      int investigadorId)
@@ -388,7 +390,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
             investigador.AddGrado(gradoAcademicoInvestigador);
-            investigadorService.SaveInvestigador(investigador);
+            investigadorService.SaveInvestigador(investigador, true);
 
             var gradoAcademicoInvestigadorForm = gradoAcademicoInvestigadorMapper.Map(gradoAcademicoInvestigador);
 
@@ -411,7 +413,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCategoria([Bind(Prefix = "CategoriaInvestigador")] CategoriaInvestigadorForm form,
                                          int investigadorId)
@@ -429,7 +431,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
             investigador.AddCategoria(categoriaInvestigador);
-            investigadorService.SaveInvestigador(investigador);
+            investigadorService.SaveInvestigador(investigador, true);
 
             var categoriaInvestigadorForm = categoriaInvestigadorMapper.Map(categoriaInvestigador);
 
@@ -454,7 +456,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCargo([Bind(Prefix = "CargoInvestigador")] CargoInvestigadorForm form, int investigadorId)
         {
@@ -471,7 +473,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
             investigador.AddCargo(cargoInvestigador);
-            investigadorService.SaveInvestigador(investigador);
+            investigadorService.SaveInvestigador(investigador, true);
 
             var cargoInvestigadorForm = cargoInvestigadorMapper.Map(cargoInvestigador);
 
