@@ -370,7 +370,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddGrado([Bind(Prefix = "GradoAcademicoInvestigador")] GradoAcademicoInvestigadorForm form,
                                      int investigadorId)
@@ -388,7 +388,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var investigador = investigadorService.GetInvestigadorById(investigadorId);
             investigador.AddGrado(gradoAcademicoInvestigador);
-            investigadorService.SaveInvestigador(investigador);
+            investigadorService.SaveInvestigador(investigador, true);
 
             var gradoAcademicoInvestigadorForm = gradoAcademicoInvestigadorMapper.Map(gradoAcademicoInvestigador);
 

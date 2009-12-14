@@ -77,7 +77,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
             set { estadosInvestigador = value; }
         }
-        public GradoAcademicoInvestigadorForm[] GradosAcademicosInvestigador { get; set; }
+
+        GradoAcademicoInvestigadorForm[] gradosAcademicosInvestigador;
+        public GradoAcademicoInvestigadorForm[] GradosAcademicosInvestigador
+        {
+            get
+            {
+                if (gradosAcademicosInvestigador == null)
+                    return null;
+
+                var result = from gradoAcademico in gradosAcademicosInvestigador
+                             orderby gradoAcademico.Fecha.FromShortDateToDateTime() descending
+                             select gradoAcademico;
+
+                return result.ToArray();
+            }
+            set { gradosAcademicosInvestigador = value; }
+        }
         public CategoriaInvestigadorForm[] CategoriasInvestigador { get; set; }
         public CargoInvestigadorForm[] CargosInvestigador { get; set; }
         public SNIInvestigadorForm[] SNIsInvestigador { get; set; }

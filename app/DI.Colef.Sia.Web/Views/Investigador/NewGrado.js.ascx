@@ -23,3 +23,23 @@ $('#gradoForm').show();
 
 AutoComplete.manualSetup('GradoAcademicoInvestigador_InstitucionNombre');
 DateTimePicker.setup();
+
+var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+
+$('#GradoAcademicoInvestigador_DocumentoProbatorio').uploadify({
+            'uploader': '<%=ResolveUrl("~/Scripts/uploadify.swf") %>',
+            'script': '<%=Url.Action("AddFile") %>',
+            'cancelImg': '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>',
+            'folder': '<%=Url.Action("AddFile") %>',
+            'queueID': 'GradoAcademico_FileQueue',
+            'auto': false,
+            'multi': false,
+            'buttonText': 'Adjuntar',
+            'onSelect': Upload.onSelect,
+            'onSelectOnce': Upload.onSelectOnce,
+            'onProgress': Upload.onProgress,
+            'onAllComplete': Upload.onAllComplete,
+            'onCancel': Upload.onCancel,
+            'onError': error,
+            'scriptData': { token: auth }
+        });

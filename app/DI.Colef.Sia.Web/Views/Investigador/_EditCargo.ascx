@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="cargoList" class="minilista">
-	<h5>Cargo</h5>
+	<h5>Adscripci&oacute;n</h5>
 	<% foreach(var cargo in Model.CargosInvestigador) { %>
         <div id="estado_<%=Html.Encode(cargo.Id) %>" class="sublista">
             <h6><a href="<%=Url.Action("DeleteCargo", null, new{id = cargo.Id, investigadorId = Model.Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
