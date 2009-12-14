@@ -3,7 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
     <label>Nombre del libro</label>
-    <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.TextBox("TituloLibro", Model.TituloLibro, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("TituloLibro")%>
 </p>
@@ -17,6 +17,6 @@
 <p>
     <label>Pa&iacute;s</label>
     <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-        "Seleccione ...", new { @class = "requerido"})%>
+        "Seleccione ...")%>
     <%=Html.ValidationMessage("Pais") %>
 </p>

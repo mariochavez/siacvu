@@ -10,7 +10,7 @@ var html = '
     <% using (Html.BeginForm("AddSesion", "Evento", FormMethod.Post, new { id = "sesionform" })){ %>
     <%=Html.Hidden("EventoId", Model.Id)%>
     <% Html.RenderPartial("_NewSesion"); %>
-    <div class="minilistaboton">
+    <div class="minilistaboton" id="submit">
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar sesión", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>

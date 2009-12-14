@@ -4,11 +4,12 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div id="sesionList" class="minilista">
 	<h5>Sesi&oacute;n del evento estrat&eacute;gico</h5>
+	
 	<% if (Model.SesionEventos != null && Model.SesionEventos.Length > 0) { %>
         <% for (int i = 0; i < Model.SesionEventos.Length; i++){ %>
-	        <div class="sublista" id="sesion_<%=Html.Encode(Model.SesionEventos[i].NombreSesion.Replace(" ", "_")) %>">
+	        <div class="sublista" id="sesion_<%=Html.Encode(Model.SesionEventos[i].Id) %>">
 	            <h6>
-	                <a href="<%=Url.Action("DeleteSesion", null, new{id = Model.Id, nombreSesion = Model.SesionEventos[i].NombreSesion.Replace(" ", "_")}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	                <a href="<%=Url.Action("DeleteSesion", null, new{id = Model.Id, sesionId = Model.SesionEventos[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.SesionEventos[i].NombreSesion)%>
 	                <%=Html.Hidden("Sesion[" + i + "].NombreSesion", Model.SesionEventos[i].NombreSesion)%>
 	                <span>

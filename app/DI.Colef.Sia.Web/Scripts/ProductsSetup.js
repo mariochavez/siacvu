@@ -62,7 +62,7 @@ function obraTraducidaSetup() {
 function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado', '#publicado_fields']],
+                ['Publicado', ['.EstatusPublicado']],
                 ['Aceptado', ['#EstatusAceptado']]
             ]
         );

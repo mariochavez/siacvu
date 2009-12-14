@@ -62,10 +62,8 @@
                     <% Html.RenderPartial("_ObraResenada", Model.Form); %>
                 </div>
                 
-                <div class="EstatusPublicado">
-                    <h4>Referencia bibliogr&aacute;fica</h4>
-				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-				</div>
+                <h4>Referencia bibliogr&aacute;fica</h4>
+			    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
         		
                 <p class="submit">
                     <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar")%>

@@ -13,7 +13,7 @@
 </div>
 <p class="DocumentoTrabajo">
 	<label>Serie/N&uacute;mero</label>
-	<%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
+	<%=Html.TextBox("Numero", Model.Numero, new { @class = "input100", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("Numero")%>
 </p>
@@ -33,7 +33,7 @@
 </p>
 <p class="ReporteDocumento">
 	<label>No. de p&aacute;ginas</label>
-	<%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4, size = 14 })%>
+	<%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>
 </p>

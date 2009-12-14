@@ -246,9 +246,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddSesion([Bind(Prefix = "Sesion")] SesionEventoForm form, int eventoId)
         {
+            Evento evento;
+            SesionEventoForm sesionEventoForm;
             var sesionEvento = sesionEventoMapper.Map(form);
 
-            ModelState.AddModelErrors(sesionEvento.ValidationResults(), true, String.Empty);
+            ModelState.AddModelErrors(sesionEvento.ValidationResults(), false, "Sesion", String.Empty);
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
@@ -259,20 +261,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 sesionEvento.CreadoPor = CurrentUser();
                 sesionEvento.ModificadoPor = CurrentUser();
 
-                var evento = eventoService.GetEventoById(eventoId);
+                evento = eventoService.GetEventoById(eventoId);
 
-                var alreadyHasIt =
-                    evento.SesionEventos.Where(
-                        x => x.NombreSesion == sesionEvento.NombreSesion).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    evento.AddSesion(sesionEvento);
-                    eventoService.SaveEvento(evento, false);
-                }
+                evento.AddSesion(sesionEvento);
+                eventoService.SaveEvento(evento, false);
+                sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
             }
 
-            var sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
+            else
+            {
+                sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
+                var buffer = Guid.NewGuid().ToByteArray();
+                sesionEventoForm.Id = BitConverter.ToInt32(buffer, 0);
+            }
+
             sesionEventoForm.ParentId = eventoId;
 
             return Rjs("AddSesion", sesionEventoForm);
@@ -281,19 +283,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteSesion(int id, string nombreSesion)
+        public ActionResult DeleteSesion(int id, int sesionId)
         {
             var evento = eventoService.GetEventoById(id);
 
             if (evento != null)
             {
-                var sesion = evento.SesionEventos.Where(x => x.NombreSesion == nombreSesion.Replace("_", " ")).First();
+                var sesion = evento.SesionEventos.Where(x => x.Id == sesionId).First();
                 evento.DeleteSesion(sesion);
 
                 eventoService.SaveEvento(evento, false);
             }
 
-            var form = new SesionEventoForm { NombreSesion = nombreSesion };
+            var form = new SesionEventoForm { Id = sesionId };
             return Rjs("DeleteSesion", form);
         }
 
