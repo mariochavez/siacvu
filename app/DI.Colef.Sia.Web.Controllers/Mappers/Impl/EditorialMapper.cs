@@ -24,6 +24,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override void MapToModel(EditorialForm message, Editorial model)
         {
 			model.Nombre = message.Nombre;
+            model.Contacto = message.Contacto;
+            model.Email = message.Email;
+            model.TipoEditorial = message.TipoEditorial;
+            model.Telefono = message.Telefono;
+            model.PaginaWeb = message.PaginaWeb;
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
         }

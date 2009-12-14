@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -15,13 +16,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         readonly ICatalogoService catalogoService;
         readonly IEditorialMapper editorialMapper;
         readonly IPaisMapper paisMapper;
+        readonly ICustomCollection customCollection;
     
         public EditorialController(IUsuarioService usuarioService, ICatalogoService catalogoService, 
                                    IEditorialMapper editorialMapper, ISearchService searchService,
+                                   ICustomCollection customCollection,
                                    IPaisMapper paisMapper)
             : base (usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.customCollection = customCollection;
             this.paisMapper = paisMapper;
             this.editorialMapper = editorialMapper;
         }
@@ -161,6 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             form = form ?? new EditorialForm();
             
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+            form.TipoEditoriales = customCollection.TipoEditorialCustomCollection();
 
             return form;
         }
