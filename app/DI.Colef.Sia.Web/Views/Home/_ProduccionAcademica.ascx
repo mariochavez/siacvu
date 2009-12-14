@@ -38,8 +38,15 @@
 				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, produccionAcademica.GuidNumber, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                     <% } %>
-                    <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
-                        <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                    <%if(Page.User.IsInRole("Investigadores")){ %>
+                        <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
+                            <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                        <% } %>
+                    <% } %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
+                            <span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
+                        <% } %>                    
                     <% } %>
                	</p>
 			</div><!--end elementobotones-->

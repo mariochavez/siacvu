@@ -387,6 +387,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return esInternacional;
         }
 
+        protected RedirectToRouteResult RedirectHomeToIndex(string message)
+        {
+            SetMessage(message);
+            return RedirectToAction("Index", "Home");
+        }
+
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(message);

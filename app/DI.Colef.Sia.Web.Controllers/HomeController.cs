@@ -30,8 +30,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var formacionRecursosHumanos = new List<ProductoDTO>();
             var proyectos = new List<ProductoDTO>();
             var vinculaciones = new List<ProductoDTO>();
+            object[] productos = new[]
+                                     {
+                                         new ArrayList(),
+                                         new ArrayList(),
+                                         new ArrayList(),
+                                         new ArrayList()
+                                     };
 
-            var productos = productoService.GetProductosBandeja(CurrentUser());
+            if (User.IsInRole("Investigadores"))
+               productos = productoService.GetProductosBandeja(CurrentUser());
+            if(User.IsInRole("DGAA"))
+               productos = productoService.GetProductosBandeja(true);
 
             foreach (var producto in (IEnumerable)productos[0])
             {
