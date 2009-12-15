@@ -12,4 +12,8 @@ $('span.field-validation-error').remove();
 $('input').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
 
-Upload.startUpload();
+if($('.fileUpload').length > 0) {
+    Upload.startUpload();
+} else {
+    window.location.href = $('#regresar').attr('href');
+}

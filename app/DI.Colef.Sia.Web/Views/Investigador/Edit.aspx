@@ -32,7 +32,7 @@
         <% Html.RenderPartial("_Message"); %>
 	    <div id="forma">
 	    
-            <% using (Html.BeginForm("Update", "Investigador")) { %>
+            <% using (Html.BeginForm("Update", "Investigador", FormMethod.Post, new{ @class = "remote"})) { %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
@@ -53,7 +53,7 @@
 		        </p>
 	            <p>
 		            <label>Fecha de contrato indeterminado</label>
-		            <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100-requerido", maxlength = 10 })%>
+		            <%=Html.TextBox("FechaContrato", Model.Form.FechaContrato, new { @class = "datetime input100", maxlength = 10 })%>
 		            <span>(Formato dd/mm/yyyy)</span>
 		            <%=Html.ValidationMessage("FechaContrato")%>
 	            </p>
@@ -82,7 +82,7 @@
 			    <% Html.RenderPartial("_EditSni", Model.Form); %>                                  
 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
                             
             <% } %>

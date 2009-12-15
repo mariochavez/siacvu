@@ -171,8 +171,10 @@ var Upload = {
             Upload.continueUpload();
     },
     finished: function() {
-        $('.progress').attr('style', 'width: 0px;');
-        $('.progress_container').hide();
+        if ($('.progress').length > 0) {
+            $('.progress').attr('style', 'width: 0px;');
+            $('.progress_container').hide();
+        }
         window.location.href = $('#regresar').attr('href');
     },
     fetchObject: function(object, position) {

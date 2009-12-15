@@ -90,9 +90,6 @@
                     <p class="submit">
                         <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar", new{id="regresar"})%>
                     </p>
-                    <p class="waiting">
-                        <img src='<%=ResolveUrl("~/Content/Images/ajax-loader.gif") %>' /> <span>Guardando informaci&oacute;n ...</span>
-                    </p>
             <% } %>
 	    </div><!--end forma-->	
     		

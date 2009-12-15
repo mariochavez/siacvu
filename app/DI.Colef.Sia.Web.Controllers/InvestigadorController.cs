@@ -154,7 +154,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 
-            return Rjs("Create", investigador.Id);
+            return Rjs("Save", investigador.Id);
         }
 
         [CookieLessAuthorize(Roles = "Dgaa")]
@@ -242,7 +242,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         //}
 
         [Authorize(Roles = "Dgaa")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(InvestigadorForm form)
@@ -255,12 +255,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
             }
 
-            investigadorService.SaveInvestigador(investigador);
-            SetMessage(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+            investigadorService.SaveInvestigador(investigador, true);
+            SetMessage(String.Format("{0} {1} {2} ha sido actualizado", investigador.Usuario.Nombre,
                                      investigador.Usuario.ApellidoPaterno,
                                      investigador.Usuario.ApellidoMaterno));
 
-            return Rjs("Create", investigador.Id);
+            return Rjs("Save", investigador.Id);
         }
 
         //[Authorize(Roles = "Dgaa")]
