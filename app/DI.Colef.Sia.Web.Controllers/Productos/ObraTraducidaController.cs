@@ -69,18 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-			var data = CreateViewDataWithTitle(Title.Index);
-			
-			var obraTraducidas = new ObraTraducida[] { };
-           
-            if (User.IsInRole("Investigadores"))
-                obraTraducidas = obraTraducidaService.GetAllObraTraducidas(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                obraTraducidas = obraTraducidaService.GetAllObraTraducidas();
-            
-            data.List = obraTraducidaMapper.Map(obraTraducidas);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -99,25 +88,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoObraTraducida coautorInternoObraTraducida;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
 
-            if (obraTraducida == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (obraTraducida.Firma.Aceptacion1 == 1 && obraTraducida.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("La obra traducida {0} esta en firma y no puede ser editada", obraTraducida.Nombre));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((obraTraducida.Firma.Aceptacion1 == 1 && obraTraducida.Firma.Aceptacion2 == 1) ||
+                    (obraTraducida.Firma.Aceptacion1 == 0 && obraTraducida.Firma.Aceptacion2 == 0) ||
+                    (obraTraducida.Firma.Aceptacion1 == 0 && obraTraducida.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "La obra traducida {0} ya fue aceptada o no ha sido enviada a firma",
+                                                obraTraducida.Nombre));
+            }
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    obraTraducida.CoautorInternoObraTraducidas.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            var coautorExists =
-                obraTraducida.CoautorInternoObraTraducidas.Where(
-                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
-
-            if (obraTraducida.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (obraTraducida.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
 
@@ -188,7 +191,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             obraTraducidaService.SaveObraTraducida(obraTraducida);
 
-            return RedirectToIndex(String.Format("Obra traducida {0} ha sido creada", obraTraducida.Nombre));
+            return RedirectToHomeIndex(String.Format("Obra traducida {0} ha sido creada", obraTraducida.Nombre));
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -210,7 +213,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             
             obraTraducidaService.SaveObraTraducida(obraTraducida);
 
-            return RedirectToIndex(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
+            return RedirectToHomeIndex(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
         }
 
         [Authorize]
@@ -248,7 +251,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 RevistaPublicacionId = revistaForm.Id,
                 RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
                 RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                 RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
                 RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
@@ -704,7 +706,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
                 RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                 RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
                 RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                 RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                 RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,

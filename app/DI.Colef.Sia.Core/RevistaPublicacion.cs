@@ -7,7 +7,7 @@ using SharpArch.Core.NHibernateValidator;
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
     [HasUniqueDomainSignature]
-    //[RevistaPublicacionValidator]
+    [RevistaPublicacionValidator]
     public class RevistaPublicacion : Entity, IBaseEntity
     {
         [DomainSignature]
@@ -15,11 +15,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
+        [NotNull]
         public virtual Institucion Institucion { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string DepartamentoAcademico { get; set; }
 
+        [NotNullNotEmpty]
+        public virtual string FactorImpacto { get; set; }
+        
         public virtual string Issn { get; set; }
+
+        public virtual string Issne { get; set; }
 
         public virtual string Contacto { get; set; }
 
@@ -35,23 +42,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string DescripcionRevista { get; set; }
 
-        public virtual string FactorImpacto { get; set; }
-
         public virtual int FormatoRevista { get; set; }
         
         public virtual int Periodicidad { get; set; }
 
         public virtual AreaInvestigacion AreaInvestigacion { get; set; }
 
-        public virtual Pais Pais { get; set; }
-
         public virtual Indice Indice1 { get; set; }
 
         public virtual Indice Indice2 { get; set; }
 
         public virtual Indice Indice3 { get; set; }
-
-        public virtual Indice Indice4 { get; set; }
 
         public virtual int Puntuacion { get; set; }
 

@@ -23,9 +23,19 @@
     <%=Html.ValidationMessage("DepartamentoAcademico")%>
 </p>
 <p>
+    <label>Factor de impacto</label>
+    <%=Html.TextBox("FactorImpacto", Model.FactorImpacto, new { @class = "input420-requerido", maxlength = 100 })%>
+    <%=Html.ValidationMessage("FactorImpacto")%>
+</p>
+<p>
     <label>ISSN</label>
     <%=Html.TextBox("Issn", Model.Issn, new { @class = "input420-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("Issn")%>
+</p>
+<p>
+    <label>ISSN_E</label>
+    <%=Html.TextBox("Issne", Model.Issne, new { @class = "input420-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("Issne")%>
 </p>
 <p>
     <label>Contacto de la revista</label>
@@ -66,11 +76,6 @@
     <%=Html.ValidationMessage("DescripcionRevista")%>
 </p>
 <p>
-    <label>Factor de impacto</label>
-    <%=Html.TextBox("FactorImpacto", Model.FactorImpacto, new { @class = "input420-requerido", maxlength = 100 })%>
-    <%=Html.ValidationMessage("FactorImpacto")%>
-</p>
-<p>
     <label>Formato de la revista</label>
     <%=Html.DropDownList("FormatoRevista", Model.FormatoRevistas.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
@@ -87,12 +92,6 @@
     <%=Html.DropDownList("AreaInvestigacion", Model.AreasInvestigacion.CreateSelectList<AreaInvestigacionForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("AreaInvestigacion") %>
-</p>
-<p>
-    <label>Pa&iacute;s</label>
-    <%=Html.DropDownList("Pais", Model.Paises.CreateSelectList<PaisForm>("Id", "Nombre"),
-		"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Pais") %>
 </p>
 <h4>&Iacute;ndices a los que pertenece la revista</h4>
 <p>
@@ -112,10 +111,4 @@
     <%=Html.DropDownList("Indice3", Model.Indices3.CreateSelectList<IndiceForm>("Id", "Nombre"),
 		"Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("Indice3")%>
-</p>
-<p>
-    <label>&Iacute;ndice 4</label>
-    <%=Html.DropDownList("Indice4", Model.Indices4.CreateSelectList<IndiceForm>("Id", "Nombre"),
-		"Seleccione ...", new { @class = "requerido" })%>
-    <%=Html.ValidationMessage("Indice4")%>
 </p>

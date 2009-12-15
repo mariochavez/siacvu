@@ -157,6 +157,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return nombreEdicion;
         }
 
+        public static string TipoEditorial(int tipoEditorial)
+        {
+            string nombreTipoEditorial;
+
+            switch (tipoEditorial)
+            {
+                case 1:
+                    nombreTipoEditorial = "RCCI";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreTipoEditorial;
+        }
+
         public static string FormaParticipacion(int formaParticipacion)
         {
             string nombreFormaParticipacion;

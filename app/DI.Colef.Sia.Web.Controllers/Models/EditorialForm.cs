@@ -7,6 +7,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
+        public string Contacto { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
+        public string PaginaWeb { get; set; }
+        public int TipoEditorial { get; set; }
+
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
@@ -16,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         //Catalogos
         public PaisForm[] Paises { get; set; }
+        public CustomSelectForm[] TipoEditoriales { get; set; }
 
         /*Fields for has many*/
         public string Controller { get; set; }

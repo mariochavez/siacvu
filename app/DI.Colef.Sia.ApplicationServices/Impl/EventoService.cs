@@ -21,15 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.firmaService = firmaService;
         }
 
-        protected virtual ISession Session
-        {
-            get
-            {
-                string factoryKey = SessionFactoryAttribute.GetKeyFrom(this);
-                return NHibernateSession.CurrentFor(factoryKey);
-            }
-        }
-
         public Evento GetEventoById(int id)
         {
             return eventoRepository.Get(id);
@@ -72,18 +63,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             }
 
             evento.ModificadoEl = DateTime.Now;
+            eventoRepository.SaveOrUpdate(evento);
 
             if (useCommit)
-            {
-                using (ITransaction t = Session.BeginTransaction())
-                {
-                    Session.SaveOrUpdate(evento);
-                    t.Commit();
-                }
-            }
-
-            else
-                eventoRepository.SaveOrUpdate(evento);
+                eventoRepository.DbContext.CommitChanges();
         }
 
 	    public Evento[] GetAllEventos(Usuario usuario)

@@ -52,17 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var participacionMedios = new ParticipacionMedio[] { };
-
-            if (User.IsInRole("Investigadores"))
-                participacionMedios = participacionMedioService.GetAllParticipacionMedios(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                participacionMedios = participacionMedioService.GetAllParticipacionMedios();
-
-            data.List = participacionMedioMapper.Map(participacionMedios);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -78,18 +68,34 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-            if (participacionMedio == null)
-                return RedirectToIndex("no ha sido encontrado", true);
 
-            if (participacionMedio.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            if (participacionMedio.Firma.Aceptacion1 == 1 && participacionMedio.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("La participación en medio {0} esta en firma y no puede ser editada", participacionMedio.Titulo));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((participacionMedio.Firma.Aceptacion1 == 1 && participacionMedio.Firma.Aceptacion2 == 1) ||
+                    (participacionMedio.Firma.Aceptacion1 == 0 && participacionMedio.Firma.Aceptacion2 == 0) ||
+                    (participacionMedio.Firma.Aceptacion1 == 0 && participacionMedio.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "La participación en medio {0} ya fue aceptada o no ha sido enviada a firma",
+                                                participacionMedio.Titulo));
+            }
+
+            if (User.IsInRole("Investigadores"))
+            {
+                if (participacionMedio.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
 
@@ -134,7 +140,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Titulo));
+            return RedirectToHomeIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Titulo));
         }
 
         [CustomTransaction]
@@ -156,7 +162,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Titulo));
+            return RedirectToHomeIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Titulo));
         }
 
         [Authorize]

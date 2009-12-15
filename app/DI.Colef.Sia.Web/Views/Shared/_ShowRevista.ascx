@@ -21,10 +21,6 @@
     <span id="span_institucionrevista" class="valor"><%=Html.Encode(Model.RevistaPublicacionInstitucionNombre)%>&nbsp;</span>
 </p>
 <p>
-    <label>Pa&iacute;s</label>
-    <span id="span_paisrevista" class="valor"><%=Html.Encode(Model.RevistaPublicacionPaisNombre)%>&nbsp;</span>
-</p>
-<p>
     <label>&Iacute;ndice 1</label>
     <span id="span_indice1revista" class="valor"><%=Html.Encode(Model.RevistaPublicacionIndice1Nombre)%>&nbsp;</span>
 </p>

@@ -18,15 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.firmaService = firmaService;
         }
 
-        protected virtual ISession Session
-        {
-            get
-            {
-                string factoryKey = SessionFactoryAttribute.GetKeyFrom(this);
-                return NHibernateSession.CurrentFor(factoryKey);
-            }
-        }
-
         public Proyecto GetProyectoById(int id)
         {
             return proyectoRepository.Get(id);
@@ -68,17 +59,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             }
 
             proyecto.ModificadoEl = DateTime.Now;
+            
+            proyectoRepository.SaveOrUpdate(proyecto);
 
             if (useCommit)
-            {
-                using (ITransaction t = Session.BeginTransaction())
-                {
-                    Session.SaveOrUpdate(proyecto);
-                    t.Commit();
-                }
-            }
-            else
-                proyectoRepository.SaveOrUpdate(proyecto);
+                proyectoRepository.DbContext.CommitChanges();
         }
     }
 }

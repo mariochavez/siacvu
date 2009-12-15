@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Titulo = message.Titulo;
             model.DepartamentoAcademico = message.DepartamentoAcademico;
             model.Issn = message.Issn;
+            model.Issne = message.Issne;
             model.Contacto = message.Contacto;
             model.Email = message.Email;
             model.PaginaWeb = message.PaginaWeb;
@@ -40,8 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Indice1 = catalogoService.GetIndiceById(message.Indice1);
             model.Indice2 = catalogoService.GetIndiceById(message.Indice2);
             model.Indice3 = catalogoService.GetIndiceById(message.Indice3);
-            model.Indice4 = catalogoService.GetIndiceById(message.Indice4);
-            model.Pais = catalogoService.GetPaisById(message.Pais);
             model.AreaInvestigacion = catalogoService.GetAreaInvestigacionById(message.AreaInvestigacion);
         }
     }

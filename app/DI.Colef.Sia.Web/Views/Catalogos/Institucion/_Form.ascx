@@ -11,18 +11,18 @@
     <span>(Debe de ser un nombre &uacute;nico)</span>
     <%=Html.ValidationMessage("Nombre") %>
 </p>
-<p>
+<%--<p>
     <label>Agrupar instituci&oacute;n</label>
     <%=Html.TextBox("AgrupaInstitucion", Model.AgrupaInstitucion, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("AgrupaInstitucion")%>
-</p>
+</p>--%>
 <p>
-    <label>Siglas de la instituci&oacute;n</label>
+    <label>Siglas</label>
     <%=Html.TextBox("Siglas", Model.Siglas, new { @class = "input420-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Siglas")%>
 </p>
 <p>
-    <label>Sede</label>
+    <label>Sede/Depto. de la instituci&oacute;n</label>
     <%=Html.TextBox("Sede", Model.Sede, new { @class = "input420-requerido", maxlength = 100 })%>    
     <%=Html.ValidationMessage("Sede")%>
 </p>

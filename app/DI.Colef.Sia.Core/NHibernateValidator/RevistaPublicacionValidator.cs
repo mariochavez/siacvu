@@ -28,7 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             isValid &= !ValidateIsNullOrEmpty<RevistaPublicacion>(revistaPublicacion, x => x.Institucion, "InstitucionNombre",
                                             constraintValidatorContext);
-            isValid &= !ValidateIsNullOrEmpty<RevistaPublicacion>(revistaPublicacion, x => x.Pais, constraintValidatorContext);
 
             return isValid;
         }

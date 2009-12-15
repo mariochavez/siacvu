@@ -134,6 +134,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
                        };
         }
 
+        public CustomSelectForm[] TipoEditorialCustomCollection()
+        {
+            return new[]
+                       {
+                           new CustomSelectForm {Id = 1, Nombre = "RCCI"}
+                       };
+        }
+
         private string GetNombreProducto(int tipoProducto)
         {
             var nombreProducto = "";

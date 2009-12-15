@@ -62,17 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var eventos = new Evento[] { };
-
-            if (User.IsInRole("Investigadores"))
-                eventos = eventoService.GetAllEventos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                eventos = eventoService.GetAllEventos();
-
-            data.List = eventoMapper.Map(eventos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -89,25 +79,41 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoEvento coautorInternoEvento;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var evento = eventoService.GetEventoById(id);
 
-            if (evento == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (evento.Firma.Aceptacion1 == 1 && evento.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El evento {0} esta en firma y no puede ser editado", evento.Nombre));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((evento.Firma.Aceptacion1 == 1 && evento.Firma.Aceptacion2 == 1) ||
+                    (evento.Firma.Aceptacion1 == 0 && evento.Firma.Aceptacion2 == 0) ||
+                    (evento.Firma.Aceptacion1 == 0 && evento.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El evento {0} ya fue aceptado o no ha sido enviado a firma",
+                                                evento.Nombre));
+            }
 
-            var coautorExists =
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
                     evento.CoautorInternoEventos.Where(
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (evento.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (evento.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var eventoForm = eventoMapper.Map(evento);
 
@@ -176,7 +182,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             eventoService.SaveEvento(evento, false);
 
-            return RedirectToIndex(String.Format("Evento {0} ha sido creado", evento.Nombre));
+            return RedirectToHomeIndex(String.Format("Evento {0} ha sido creado", evento.Nombre));
         }
 
         [CustomTransaction]
@@ -198,7 +204,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             eventoService.SaveEvento(evento, false);
 
-            return RedirectToIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
+            return RedirectToHomeIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
         }
 
         [Authorize]

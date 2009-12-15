@@ -60,17 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var articulos = new Articulo[] {};
-
-            if (User.IsInRole("Investigadores"))
-                articulos = articuloService.GetAllArticulos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                articulos = articuloService.GetAllArticulos();
-
-            data.List = articuloMapper.Map(articulos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -99,7 +89,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
 
             if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectHomeToIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
+                return RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
+            
             if (User.IsInRole("DGAA"))
             {
                 if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
@@ -107,7 +98,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
                    )
                     return
-                        RedirectHomeToIndex(String.Format(
+                        RedirectToHomeIndex(String.Format(
                                                 "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
                                                 articulo.Titulo));
             }
@@ -119,7 +110,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
                 if (articulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                    return RedirectToIndex("no lo puede modificar", false);
+                    return RedirectToHomeIndex("no lo puede modificar");
             }
 
             var articuloForm = articuloMapper.Map(articulo);
@@ -186,7 +177,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             articuloService.SaveArticulo(articulo);
 
-            return RedirectToIndex(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
+            return RedirectToHomeIndex(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
         }
 
         [CustomTransaction]
@@ -208,7 +199,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             articuloService.SaveArticulo(articulo);
 
-            return RedirectToIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
+            return RedirectToHomeIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
         }
 
         [Authorize]
@@ -230,7 +221,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                RevistaPublicacionId = revistaForm.Id,
 
                                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
                                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
                                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
@@ -455,7 +445,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,

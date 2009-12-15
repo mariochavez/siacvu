@@ -51,17 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var cursos = new Curso[] { };
-
-            if (User.IsInRole("Investigadores"))
-                cursos = cursoService.GetAllCursos(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                cursos = cursoService.GetAllCursos();
-
-            data.List = cursoMapper.Map(cursos);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -77,7 +67,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -85,11 +75,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var curso = cursoService.GetCursoById(id);
 
-            if (curso == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (curso.Firma.Aceptacion1 == 1 && curso.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El curso {0} esta en firma y no puede ser editado", curso.Nombre));
+            
+            if (User.IsInRole("DGAA"))
+            {
+                if ((curso.Firma.Aceptacion1 == 1 && curso.Firma.Aceptacion2 == 1) ||
+                    (curso.Firma.Aceptacion1 == 0 && curso.Firma.Aceptacion2 == 0) ||
+                    (curso.Firma.Aceptacion1 == 0 && curso.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El curso {0} ya fue aceptado o no ha sido enviado a firma",
+                                                curso.Nombre));
+            }
 
-            if (curso.Usuario.Id != CurrentUser().Id)
-                return RedirectToIndex("no lo puede modificar", true);
+            if (User.IsInRole("Investigadores"))
+            {
+                if (curso.Usuario.Id != CurrentUser().Id)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var cursoForm = cursoMapper.Map(curso);
 
@@ -136,7 +141,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
+            return RedirectToHomeIndex(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
         }
 
         [CustomTransaction]
@@ -158,7 +163,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             cursoService.SaveCurso(curso);
 
-            return RedirectToIndex(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
+            return RedirectToHomeIndex(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
         }
 
         [Authorize]

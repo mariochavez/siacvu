@@ -13,9 +13,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Length(50)]
 		public virtual string Nombre { get; set; }
 
-		public virtual Pais Pais { get; set; }
-
 		public virtual Institucion Institucion { get; set; }
+
+        public virtual int TipoEditorial { get; set; }
+
+        public virtual Pais Pais { get; set; }
+
+        public virtual string Contacto { get; set; }
+
+        public virtual string Email { get; set; }
+
+        public virtual string PaginaWeb { get; set; }
+
+        public virtual string Telefono { get; set; }
 
 		public virtual Usuario CreadoPor { get; set; }
 

@@ -66,17 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var libros = new Libro[] {};
-
-            if (User.IsInRole("Investigadores"))
-                libros = libroService.GetAllLibros(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                libros = libroService.GetAllLibros();
-
-            data.List = libroMapper.Map(libros);
-
-            return View(data);
+            return RedirectToHomeIndex();
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -95,25 +85,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "Investigadores, DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
             CoautorInternoLibro coautorInternoLibro;
             int posicionAutor;
+            var coautorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var libro = libroService.GetLibroById(id);
 
-            if (libro == null)
-                return RedirectToIndex("no ha sido encontrado", true);
+            if (libro.Firma.Aceptacion1 == 1 && libro.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                return RedirectToHomeIndex(String.Format("El libro {0} esta en firma y no puede ser editado", libro.Nombre));
+            if (User.IsInRole("DGAA"))
+            {
+                if ((libro.Firma.Aceptacion1 == 1 && libro.Firma.Aceptacion2 == 1) ||
+                    (libro.Firma.Aceptacion1 == 0 && libro.Firma.Aceptacion2 == 0) ||
+                    (libro.Firma.Aceptacion1 == 0 && libro.Firma.Aceptacion2 == 2)
+                   )
+                    return
+                        RedirectToHomeIndex(String.Format(
+                                                "El libro {0} ya fue aceptado o no ha sido enviado a firma",
+                                                libro.Nombre));
+            }
 
-            var coautorExists =
-                libro.CoautorInternoLibros.Where(
-                    x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+            if (User.IsInRole("Investigadores"))
+            {
+                coautorExists =
+                    libro.CoautorInternoLibros.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
-            if (libro.Usuario.Id != CurrentUser().Id && coautorExists == 0)
-                return RedirectToIndex("no lo puede modificar", true);
+                if (libro.Usuario.Id != CurrentUser().Id && coautorExists == 0)
+                    return RedirectToHomeIndex("no lo puede modificar");
+            }
 
             var libroForm = libroMapper.Map(libro);
 
@@ -181,7 +186,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
+            return RedirectToHomeIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
         }
 
         [CustomTransaction]
@@ -203,7 +208,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             libroService.SaveLibro(libro);
 
-            return RedirectToIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
+            return RedirectToHomeIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
         }
 
         [Authorize]
@@ -224,7 +229,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            {
                                RevistaPublicacionId = revistaForm.Id,
                                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
-                               RevistaPublicacionPaisNombre = revistaForm.PaisNombre,
                                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
                                RevistaPublicacionIndice3Nombre = revistaForm.Indice3Nombre
@@ -570,7 +574,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                                       RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,
-                                      RevistaPublicacionPaisNombre = form.RevistaPublicacion.PaisNombre,
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
