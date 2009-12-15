@@ -248,16 +248,38 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Update(InvestigadorForm form)
         {
             var investigador = investigadorMapper.Map(form, CurrentUser());
+            ModelState.AddModelErrors(investigador.ValidationResults(), true, "Investigador");
 
-            if (!IsValidateModel(investigador, form, Title.Edit))
-                return ViewEdit();
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
 
             investigadorService.SaveInvestigador(investigador);
+            SetMessage(String.Format("{0} {1} {2} ha sido creado", investigador.Usuario.Nombre,
+                                     investigador.Usuario.ApellidoPaterno,
+                                     investigador.Usuario.ApellidoMaterno));
 
-            return RedirectToIndex(String.Format("{0} {1} {2} ha sido actualizado", investigador.Usuario.Nombre,
-                                                 investigador.Usuario.ApellidoPaterno,
-                                                 investigador.Usuario.ApellidoMaterno));
+            return Rjs("Create", investigador.Id);
         }
+
+        //[Authorize(Roles = "Dgaa")]
+        //[CustomTransaction]
+        //[ValidateAntiForgeryToken]
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult Update(InvestigadorForm form)
+        //{
+        //    var investigador = investigadorMapper.Map(form, CurrentUser());
+
+        //    if (!IsValidateModel(investigador, form, Title.Edit))
+        //        return ViewEdit();
+
+        //    investigadorService.SaveInvestigador(investigador);
+
+        //    return RedirectToIndex(String.Format("{0} {1} {2} ha sido actualizado", investigador.Usuario.Nombre,
+        //                                         investigador.Usuario.ApellidoPaterno,
+        //                                         investigador.Usuario.ApellidoMaterno));
+        //}
 
         [Authorize(Roles = "Dgaa")]
         [CustomTransaction]
