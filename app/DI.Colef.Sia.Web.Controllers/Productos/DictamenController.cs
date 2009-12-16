@@ -6,6 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -133,13 +134,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-            //if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
-            //{
-            //    var dictamenForm = dictamenMapper.Map(dictamen);
-
-            //    ((GenericViewData<DictamenForm>)ViewData.Model).Form = SetupNewForm(dictamenForm);
-            //    return ViewNew();
-            //}
 
             dictamenService.SaveDictamen(dictamen);
             SetMessage(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
@@ -159,19 +153,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-            //if (!IsValidateModel(dictamen, form, Title.Edit))
-            //{
-            //    var dictamenForm = dictamenMapper.Map(dictamen);
-
-            //    ((GenericViewData<DictamenForm>) ViewData.Model).Form = SetupNewForm(dictamenForm);
-            //    FormSetCombos(dictamenForm);
-            //    return ViewEdit();
-            //}
 
             dictamenService.SaveDictamen(dictamen, true);
             SetMessage(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
 
             return Rjs("Save", dictamen.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var dictamen = dictamenService.GetDictamenById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteDictamen")
+            {
+                archivo.TipoProducto = dictamen.TipoProducto;
+                archivoService.Save(archivo);
+                dictamen.ComprobanteDictamen = archivo;
+            }
+
+            dictamenService.SaveDictamen(dictamen);
+
+            return Content("Uploaded");
         }
 
         [Authorize(Roles = "Investigadores")]

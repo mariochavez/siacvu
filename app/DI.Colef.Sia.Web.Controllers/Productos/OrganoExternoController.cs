@@ -3,8 +3,10 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -120,18 +122,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(organoExterno, form, Title.New, "OrganoExterno"))
+            ModelState.AddModelErrors(organoExterno.ValidationResults(), true, "OrganoExterno");
+            if (!ModelState.IsValid)
             {
-                ((GenericViewData<OrganoExternoForm>) ViewData.Model).Form = SetupNewForm();
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
             organoExternoService.SaveOrganoExterno(organoExterno);
+            SetMessage(String.Format("Órgano externo {0} ha sido creado", organoExterno.Nombre));
 
-            return RedirectToHomeIndex(String.Format("Órgano externo {0} ha sido creado", organoExterno.Nombre));
+            return Rjs("Save", organoExterno.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -139,17 +142,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(organoExterno, form, Title.Edit))
+            ModelState.AddModelErrors(organoExterno.ValidationResults(), true, "OrganoExterno");
+            if (!ModelState.IsValid)
             {
-                var organoExternoForm = organoExternoMapper.Map(organoExterno);
-                ((GenericViewData<OrganoExternoForm>) ViewData.Model).Form = SetupNewForm(organoExternoForm);
-                FormSetCombos(organoExternoForm);
-                return ViewEdit();
+                return Rjs("ModelError");
+            }
+            
+            organoExternoService.SaveOrganoExterno(organoExterno, true);
+            SetMessage(String.Format("Órgano externo {0} ha sido modificado", organoExterno.Nombre));
+
+            return Rjs("Save", organoExterno.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var organoExterno = organoExternoService.GetOrganoExternoById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteOrganoExterno")
+            {
+                archivo.TipoProducto = organoExterno.TipoProducto;
+                archivoService.Save(archivo);
+                organoExterno.ComprobanteOrganoExterno = archivo;
             }
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 
-            return RedirectToHomeIndex(String.Format("Órgano externo {0} ha sido modificado", organoExterno.Nombre));
+            return Content("Uploaded");
         }
 
         [Authorize]

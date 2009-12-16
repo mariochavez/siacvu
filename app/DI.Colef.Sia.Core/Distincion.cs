@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 5; // 5 Representa Distincion
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         [Valid]
         public virtual Archivo ComprobanteDistincion { get; set; }
 

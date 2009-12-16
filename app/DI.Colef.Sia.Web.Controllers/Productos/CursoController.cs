@@ -6,6 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -139,14 +140,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            //if (!IsValidateModel(curso, form, Title.New, "Curso"))
-            //{
-            //    var cursoForm = cursoMapper.Map(curso);
-
-            //    ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
-            //    FormSetCombos(cursoForm);
-            //    return ViewNew();
-            //}
             cursoService.SaveCurso(curso);
             SetMessage(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
 
@@ -162,22 +155,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
             ModelState.AddModelErrors(curso.ValidationResults(), true, "Curso");
+            
             if (!ModelState.IsValid)
             {
                 return Rjs("ModelError");
             }
-            //if (!IsValidateModel(curso, form, Title.Edit))
-            //{
-            //    var cursoForm = cursoMapper.Map(curso);
 
-            //    ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm(cursoForm);
-            //    FormSetCombos(cursoForm);
-            //    return ViewEdit();
-            //}
             cursoService.SaveCurso(curso, true);
             SetMessage(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
 
             return Rjs("Save", curso.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var curso = cursoService.GetCursoById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteCurso")
+            {
+                archivo.TipoProducto = curso.TipoProducto;
+                archivoService.Save(archivo);
+                curso.ComprobanteCurso = archivo;
+            }
+
+            cursoService.SaveCurso(curso);
+
+            return Content("Uploaded");
         }
 
         [Authorize]

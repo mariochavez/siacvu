@@ -6,6 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -173,22 +174,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, institucion, sesion);
-
-            if (!IsValidateModel(evento, form, Title.New, "Evento"))
+            ModelState.AddModelErrors(evento.ValidationResults(), true, "Evento");
+            if (!ModelState.IsValid)
             {
-                var eventoForm = eventoMapper.Map(evento);
-
-                ((GenericViewData<EventoForm>)ViewData.Model).Form = SetupNewForm(eventoForm);
-                FormSetCombos(eventoForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
-            eventoService.SaveEvento(evento, false);
+            eventoService.SaveEvento(evento);
+            SetMessage(String.Format("Evento {0} ha sido creado", evento.Nombre));
 
-            return RedirectToHomeIndex(String.Format("Evento {0} ha sido creado", evento.Nombre));
+            return Rjs("Save", evento.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -196,18 +194,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var evento = eventoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(evento, form, Title.Edit))
+            ModelState.AddModelErrors(evento.ValidationResults(), true, "Evento");
+            if (!ModelState.IsValid)
             {
-                var eventoForm = eventoMapper.Map(evento);
+                return Rjs("ModelError");
+            }
+            
+            eventoService.SaveEvento(evento, true);
+            SetMessage(String.Format("Evento {0} ha sido modificado", evento.Nombre));
 
-                ((GenericViewData<EventoForm>) ViewData.Model).Form = SetupNewForm(eventoForm);
-                FormSetCombos(eventoForm);
-                return ViewEdit();
+            return Rjs("Save", evento.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var evento = eventoService.GetEventoById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteEvento")
+            {
+                archivo.TipoProducto = evento.TipoProducto;
+                archivoService.Save(archivo);
+                evento.ComprobanteEvento = archivo;
             }
 
-            eventoService.SaveEvento(evento, false);
+            eventoService.SaveEvento(evento);
 
-            return RedirectToHomeIndex(String.Format("Evento {0} ha sido modificado", evento.Nombre));
+            return Content("Uploaded");
         }
 
         [Authorize]
@@ -273,7 +307,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 evento = eventoService.GetEventoById(eventoId);
 
                 evento.AddSesion(sesionEvento);
-                eventoService.SaveEvento(evento, false);
+                eventoService.SaveEvento(evento);
                 sesionEventoForm = sesionEventoMapper.Map(sesionEvento);
             }
 
@@ -301,7 +335,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var sesion = evento.SesionEventos.Where(x => x.Id == sesionId).First();
                 evento.DeleteSesion(sesion);
 
-                eventoService.SaveEvento(evento, false);
+                eventoService.SaveEvento(evento);
             }
 
             var form = new SesionEventoForm { Id = sesionId };
@@ -348,7 +382,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 if (alreadyHasIt == 0)
                 {
                     evento.AddCoautorInterno(coautorInternoEvento);
-                    eventoService.SaveEvento(evento, false);
+                    eventoService.SaveEvento(evento);
                 }
             }
 
@@ -370,7 +404,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var coautor = evento.CoautorInternoEventos.Where(x => x.Investigador.Id == investigadorId).First();
                 evento.DeleteCoautorInterno(coautor);
 
-                eventoService.SaveEvento(evento, false);
+                eventoService.SaveEvento(evento);
             }
 
             var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
@@ -440,7 +474,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 if (alreadyHasIt == 0)
                 {
                     evento.AddCoautorExterno(coautorExternoEvento);
-                    eventoService.SaveEvento(evento, false);
+                    eventoService.SaveEvento(evento);
                 }
             }
 
@@ -462,7 +496,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var coautor = evento.CoautorExternoEventos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
                 evento.DeleteCoautorExterno(coautor);
 
-                eventoService.SaveEvento(evento, false);
+                eventoService.SaveEvento(evento);
             }
 
             var form = new CoautorForm { ModelId = id, InvestigadorExternoId = investigadorExternoId };
@@ -511,7 +545,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 if (alreadyHasIt == 0)
                 {
                     evento.AddInstitucion(institucionEvento);
-                    eventoService.SaveEvento(evento, false);
+                    eventoService.SaveEvento(evento);
                 }
             }
 
@@ -533,7 +567,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 var institucion = evento.InstitucionEventos.Where(x => x.Institucion.Id == institucionId).First();
                 evento.DeleteInstitucion(institucion);
 
-                eventoService.SaveEvento(evento, false);
+                eventoService.SaveEvento(evento);
             }
 
             var form = new InstitucionForm {ModelId = id, InstitucionId = institucionId};

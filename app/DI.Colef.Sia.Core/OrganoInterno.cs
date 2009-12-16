@@ -13,6 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 14; // 14 Representa Organo Interno
 
+        public virtual int TipoProducto { get { return tipoProducto; } }
+
         [Valid]
         public virtual Archivo ComprobanteOrganoInterno { get; set; }
 
