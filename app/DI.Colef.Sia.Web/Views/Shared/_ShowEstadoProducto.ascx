@@ -31,6 +31,8 @@
 	            <% }else{ %>
 	                &nbsp;
 	            <% } %>
+            <% } else { %>
+                &nbsp;
             <% } %>
         </span><br />
     </p>
@@ -48,6 +50,8 @@
 	            <% }else{ %>
 	                &nbsp;
 	            <% } %>
+            <% } else { %>
+                &nbsp;
             <% } %>
         </span><br />
     </p>

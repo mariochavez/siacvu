@@ -190,15 +190,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            //if (!IsValidateModel(obraTraducida, form, Title.New, "ObraTraducida"))
-            //{
-            //    var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
-
-            //    ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
-            //    FormSetCombos(obraTraducidaForm);
-            //    return ViewNew();
-            //}
-
             obraTraducidaService.SaveObraTraducida(obraTraducida);
             SetMessage(String.Format("Obra traducida {0} ha sido creada", obraTraducida.Nombre));
 
@@ -206,7 +197,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [Authorize(Roles = "Investigadores")]
-        //[CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ObraTraducidaForm form)
@@ -218,15 +208,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-
-            //if (!IsValidateModel(obraTraducida, form, Title.Edit))
-            //{
-            //    var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
-
-            //    ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
-            //    FormSetCombos(obraTraducidaForm);
-            //    return ViewEdit();
-            //}
             
             obraTraducidaService.SaveObraTraducida(obraTraducida, true);
             SetMessage(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
@@ -245,16 +226,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var file = Request.Files["fileData"];
 
             var archivo = new Archivo
-            {
-                Activo = true,
-                Contenido = file.ContentType,
-                CreadoEl = DateTime.Now,
-                CreadoPor = CurrentUser(),
-                ModificadoEl = DateTime.Now,
-                ModificadoPor = CurrentUser(),
-                Nombre = file.FileName,
-                Tamano = file.ContentLength
-            };
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength
+                              };
 
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);
@@ -272,7 +253,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 archivoService.Save(archivo);
                 obraTraducida.ComprobantePublicado = archivo;
             }
-            else if (form["TipoArchivo"] == "ComprobanteobraTraducida")
+            else if (form["TipoArchivo"] == "ComprobanteObraTraducida")
             {
                 archivo.TipoProducto = obraTraducida.TipoProducto;
                 archivoService.Save(archivo);

@@ -175,22 +175,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 return Rjs("ModelError");
             }
 
-            //if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
-            //{
-            //    var capituloForm = capituloMapper.Map(capitulo);
-
-            //    ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
-            //    FormSetCombos(capituloForm);
-            //    return ViewNew();
-            //}
-
             capituloService.SaveCapitulo(capitulo);
             SetMessage(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
 
             return Rjs("Save", capitulo.Id);
         }
 
-        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -203,15 +193,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             {
                 return Rjs("ModelError");
             }
-
-            //if (!IsValidateModel(capitulo, form, Title.Edit))
-            //{
-            //    var capituloForm = capituloMapper.Map(capitulo);
-
-            //    ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
-            //    FormSetCombos(capituloForm);
-            //    return ViewEdit();
-            //}
 
             capituloService.SaveCapitulo(capitulo, true);
             SetMessage(String.Format ("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
@@ -230,16 +211,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var file = Request.Files["fileData"];
 
             var archivo = new Archivo
-            {
-                Activo = true,
-                Contenido = file.ContentType,
-                CreadoEl = DateTime.Now,
-                CreadoPor = CurrentUser(),
-                ModificadoEl = DateTime.Now,
-                ModificadoPor = CurrentUser(),
-                Nombre = file.FileName,
-                Tamano = file.ContentLength
-            };
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength
+                              };
 
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);
