@@ -147,13 +147,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             //    FormSetCombos(cursoForm);
             //    return ViewNew();
             //}
-
             cursoService.SaveCurso(curso);
+            SetMessage(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
 
-            return RedirectToHomeIndex(String.Format("Curso {0} ha sido creado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
+            return Rjs("Save", curso.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -161,18 +161,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(curso, form, Title.Edit))
+            ModelState.AddModelErrors(curso.ValidationResults(), true, "Curso");
+            if (!ModelState.IsValid)
             {
-                var cursoForm = cursoMapper.Map(curso);
-
-                ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm(cursoForm);
-                FormSetCombos(cursoForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
+            //if (!IsValidateModel(curso, form, Title.Edit))
+            //{
+            //    var cursoForm = cursoMapper.Map(curso);
 
-            cursoService.SaveCurso(curso);
+            //    ((GenericViewData<CursoForm>) ViewData.Model).Form = SetupNewForm(cursoForm);
+            //    FormSetCombos(cursoForm);
+            //    return ViewEdit();
+            //}
+            cursoService.SaveCurso(curso, true);
+            SetMessage(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
 
-            return RedirectToHomeIndex(String.Format("Curso {0} ha sido modificado", IndexValueHelper.GetCursoIndexStringValue(cursoMapper.Map(curso))));
+            return Rjs("Save", curso.Id);
         }
 
         [Authorize]

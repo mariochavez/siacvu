@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -118,20 +119,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
                 distincion.Pais = GetDefaultPais();
 
-            if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
+            ModelState.AddModelErrors(distincion.ValidationResults(), true, "Distincion");
+            if (!ModelState.IsValid)
             {
-                var distincionForm = distincionMapper.Map(distincion);
-
-                ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm(distincionForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
+            //if (!IsValidateModel(distincion, form, Title.New, "Distincion"))
+            //{
+            //    var distincionForm = distincionMapper.Map(distincion);
+
+            //    ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm(distincionForm);
+            //    return ViewNew();
+            //}
 
             distincionService.SaveDistincion(distincion);
+            SetMessage(String.Format("Distinción {0} ha sido creada", distincion.Titulo));
 
-            return RedirectToIndex(String.Format("Distinción {0} ha sido creada", distincion.Titulo));
+            return Rjs("Save", distincion.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -142,17 +149,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (!IsInternacionalOrBinacional(distincionMapper.Map(distincion).AmbitoNombre, new[] { "Internacional", "Binacional", "" }))
                 distincion.Pais = GetDefaultPais();
 
-            if (!IsValidateModel(distincion, form, Title.Edit))
+            ModelState.AddModelErrors(distincion.ValidationResults(), true, "Distincion");
+            if (!ModelState.IsValid)
             {
-                var distincionForm = distincionMapper.Map(distincion);
-                ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm(distincionForm);
-                FormSetCombos(distincionForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
 
-            distincionService.SaveDistincion(distincion);
+            //if (!IsValidateModel(distincion, form, Title.Edit))
+            //{
+            //    var distincionForm = distincionMapper.Map(distincion);
+            //    ((GenericViewData<DistincionForm>) ViewData.Model).Form = SetupNewForm(distincionForm);
+            //    FormSetCombos(distincionForm);
+            //    return ViewEdit();
+            //}
 
-            return RedirectToIndex(String.Format("Distinción {0} ha sido modificada", distincion.Titulo));
+            distincionService.SaveDistincion(distincion, true);
+            SetMessage(String.Format("Distinción {0} ha sido modificada", distincion.Titulo));
+
+            return Rjs("Save", distincion.Id);
         }
 
         [Authorize]

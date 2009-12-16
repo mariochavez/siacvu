@@ -128,40 +128,50 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             editorial = editorial ?? new EditorialProductoForm[] { };
 
             var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador(), editorial);
-
-            if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
+            ModelState.AddModelErrors(dictamen.ValidationResults(), true, "Dictamen");
+            if (!ModelState.IsValid)
             {
-                var dictamenForm = dictamenMapper.Map(dictamen);
-
-                ((GenericViewData<DictamenForm>)ViewData.Model).Form = SetupNewForm(dictamenForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
+            //if (!IsValidateModel(dictamen, form, Title.New, "Dictamen"))
+            //{
+            //    var dictamenForm = dictamenMapper.Map(dictamen);
+
+            //    ((GenericViewData<DictamenForm>)ViewData.Model).Form = SetupNewForm(dictamenForm);
+            //    return ViewNew();
+            //}
 
             dictamenService.SaveDictamen(dictamen);
+            SetMessage(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
 
-            return RedirectToHomeIndex(String.Format("Dictamen {0} ha sido creado", dictamen.Nombre));
+            return Rjs("Save", dictamen.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
             var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
-
-            if (!IsValidateModel(dictamen, form, Title.Edit))
+            ModelState.AddModelErrors(dictamen.ValidationResults(), true, "Dictamen");
+            if (!ModelState.IsValid)
             {
-                var dictamenForm = dictamenMapper.Map(dictamen);
-
-                ((GenericViewData<DictamenForm>) ViewData.Model).Form = SetupNewForm(dictamenForm);
-                FormSetCombos(dictamenForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
+            //if (!IsValidateModel(dictamen, form, Title.Edit))
+            //{
+            //    var dictamenForm = dictamenMapper.Map(dictamen);
 
-            dictamenService.SaveDictamen(dictamen);
+            //    ((GenericViewData<DictamenForm>) ViewData.Model).Form = SetupNewForm(dictamenForm);
+            //    FormSetCombos(dictamenForm);
+            //    return ViewEdit();
+            //}
 
-            return RedirectToHomeIndex(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
+            dictamenService.SaveDictamen(dictamen, true);
+            SetMessage(String.Format("Dictamen {0} ha sido modificado", dictamen.Nombre));
+
+            return Rjs("Save", dictamen.Id);
         }
 
         [Authorize(Roles = "Investigadores")]
