@@ -400,11 +400,6 @@ alter table ArchivoCapitulo  drop constraint FK6F93781982C3B7BC
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F937819A1B3F60D]') AND parent_object_id = OBJECT_ID('ArchivoCapitulo'))
-alter table ArchivoCapitulo  drop constraint FK6F937819A1B3F60D
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK73A5D66B82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCurso'))
 alter table ArchivoCurso  drop constraint FK73A5D66B82C3B7BC
 
@@ -1032,6 +1027,11 @@ alter table Cursos  drop constraint FK8E38D63E74E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEADCB4F3F6C]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEADCB4F3F6C
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD18F6ABF3]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD18F6ABF3
 
 
 
@@ -3470,7 +3470,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
 
     create table ArchivoCapitulo (
         Archivo INT not null,
-       CapituloFk INT null,
        primary key (Archivo)
     )
 
@@ -3852,6 +3851,7 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        FirmaFk INT null,
+       ComprobanteFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
        AreaFk INT null,
@@ -5191,11 +5191,6 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         foreign key (Archivo) 
         references Archivos
 
-    alter table ArchivoCapitulo 
-        add constraint FK6F937819A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
-
     alter table ArchivoCurso 
         add constraint FK73A5D66B82C3B7BC 
         foreign key (Archivo) 
@@ -5665,6 +5660,11 @@ alter table Dependencias  drop constraint FK4ECBCD2B74E8BAB7
         add constraint FK3165FEADCB4F3F6C 
         foreign key (FirmaFk) 
         references Firmas
+
+    alter table Capitulos 
+        add constraint FK3165FEAD18F6ABF3 
+        foreign key (ComprobanteFk) 
+        references Archivos
 
     alter table Capitulos 
         add constraint FK3165FEAD70EA6C9E 

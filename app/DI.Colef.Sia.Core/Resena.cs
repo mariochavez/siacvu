@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoResenas = new List<CoautorExternoResena>();
             CoautorInternoResenas = new List<CoautorInternoResena>();
-            ArchivoResenas = new List<ArchivoResena>();
             AutorInternoResenas = new List<AutorInternoResena>();
             AutorExternoResenas = new List<AutorExternoResena>();
             EditorialResenas = new List<EditorialResena>();
@@ -48,12 +47,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorExternoResenas.Add((AutorExternoResena)autorExterno);
         }
 
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoResenas.Add((ArchivoResena)archivo);
-        }
-
         public virtual void AddEditorial(EditorialProducto editorial)
         {
             editorial.TipoProducto = tipoProducto;
@@ -73,11 +66,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
         {
             CoautorExternoResenas.Remove((CoautorExternoResena)coautorExterno);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoResenas.Remove((ArchivoResena) archivo);
         }
 
         public virtual void DeleteAutorInterno(AutorInternoProducto coautorInterno)
@@ -116,6 +104,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Firma Firma { get; set; }
 
+        [Valid]
+        public virtual Archivo ComprobanteAceptado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobantePublicado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteResena { get; set; }
+
         public virtual int PosicionAutor { get; set; }
 
         public virtual int EstadoProducto { get; set; }
@@ -123,9 +120,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaAceptacion { get; set; }
 
         public virtual DateTime FechaPublicacion { get; set; }
-
-        [Valid]
-        public virtual IList<ArchivoResena> ArchivoResenas { get; private set; }
 
         public virtual string TituloLibro { get; set; }
 

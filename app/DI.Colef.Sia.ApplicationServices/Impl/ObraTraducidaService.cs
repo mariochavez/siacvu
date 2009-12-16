@@ -37,6 +37,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveObraTraducida(ObraTraducida obraTraducida)
         {
+            SaveObraTraducida(obraTraducida, false);
+        }
+
+        public void SaveObraTraducida(ObraTraducida obraTraducida, bool commit)
+        {
             if(obraTraducida.IsTransient())
             {
                 obraTraducida.Puntuacion = 0;
@@ -64,6 +69,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             obraTraducida.ModificadoEl = DateTime.Now;
             
             obraTraducidaRepository.SaveOrUpdate(obraTraducida);
+
+            if (commit)
+                obraTraducidaRepository.DbContext.CommitChanges();
         }
 
         public ObraTraducida[] GetAllObraTraducidas(Usuario usuario)

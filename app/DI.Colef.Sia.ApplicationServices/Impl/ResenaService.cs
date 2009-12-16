@@ -36,6 +36,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveResena(Resena resena)
         {
+            SaveResena(resena, false);
+        }
+
+        public void SaveResena(Resena resena, bool commit)
+        {
             if(resena.IsTransient())
             {
                 resena.Puntuacion = 0;
@@ -63,6 +68,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             resena.ModificadoEl = DateTime.Now;
             
             resenaRepository.SaveOrUpdate(resena);
+            
+            if (commit)
+                resenaRepository.DbContext.CommitChanges();
         }
 
 	    public Resena[] GetAllResenas(Usuario usuario)

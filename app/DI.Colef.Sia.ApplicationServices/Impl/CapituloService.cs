@@ -37,6 +37,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveCapitulo(Capitulo capitulo)
         {
+            SaveCapitulo(capitulo, false);
+        }
+
+        public void SaveCapitulo(Capitulo capitulo, bool commit)
+        {
             if (capitulo.IsTransient())
             {
                 capitulo.Puntuacion = 0;
@@ -64,6 +69,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             capitulo.ModificadoEl = DateTime.Now;
             
             capituloRepository.SaveOrUpdate(capitulo);
+
+            if (commit)
+                capituloRepository.DbContext.CommitChanges();
         }
 
 	    public Capitulo[] GetAllCapitulos(Usuario usuario)

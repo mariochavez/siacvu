@@ -34,11 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
-    public class ArchivoCapitulo : Archivo
-    {
-
-    }
-
     public class ArchivoCurso : Archivo
     {
 
@@ -55,11 +50,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     }
 
     public class ArchivoEvento : Archivo
-    {
-
-    }
-
-    public class ArchivoLibro : Archivo
     {
 
     }
@@ -84,22 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
-    public class ArchivoReporte : Archivo
-    {
-
-    }
-
-    public class ArchivoResena : Archivo
-    {
-
-    }
-
     public class ArchivoTesisDirigida : Archivo
-    {
-
-    }
-
-    public class ArchivoObraTraducida : Archivo
     {
 
     }

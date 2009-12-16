@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ObraTraducida[] GetAllObraTraducidas();
         ObraTraducida[] GetActiveObraTraducidas();
         void SaveObraTraducida(ObraTraducida obraTraducida);
+        void SaveObraTraducida(ObraTraducida obraTraducida, bool commit);
         ObraTraducida[] GetAllObraTraducidas(Usuario usuario);
     }
 }

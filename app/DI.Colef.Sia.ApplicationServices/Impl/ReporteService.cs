@@ -36,6 +36,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveReporte(Reporte reporte)
         {
+            SaveReporte(reporte, false);
+        }
+
+	    public void SaveReporte(Reporte reporte, bool commit)
+        {
             if (reporte.IsTransient())
             {
                 reporte.Puntuacion = 0;
@@ -63,6 +68,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             reporte.ModificadoEl = DateTime.Now;
             
             reporteRepository.SaveOrUpdate(reporte);
+
+            if (commit)
+                reporteRepository.DbContext.CommitChanges();
         }
 
 	    public Reporte[] GetAllReportes(Usuario usuario)

@@ -20,7 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 			CoautorExternoLibros = new List<CoautorExternoLibro>();
             CoautorInternoLibros = new List<CoautorInternoLibro>();
             EditorialLibros = new List<EditorialLibro>();
-            ArchivoLibros = new List<ArchivoLibro>();
 		}
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -33,12 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             coautorInterno.TipoProducto = tipoProducto;
             CoautorInternoLibros.Add((CoautorInternoLibro)coautorInterno);
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoLibros.Add((ArchivoLibro)archivo);
         }
 
         public virtual void AddEditorial(EditorialProducto editorial)
@@ -61,11 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteCoautorExterno(CoautorExternoProducto coautorExterno)
         {
             CoautorExternoLibros.Remove((CoautorExternoLibro)coautorExterno);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoLibros.Remove((ArchivoLibro)archivo);
         }
 
         [DomainSignature]
@@ -94,6 +82,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Area Area { get; set; }
 
+        [Valid]
+        public virtual Archivo ComprobanteAceptado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobantePublicado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteLibro { get; set; }
+
         public virtual Disciplina Disciplina { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
@@ -103,9 +100,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
-
-        [Valid]
-        public virtual IList<ArchivoLibro> ArchivoLibros { get; private set; }
 
 	    public virtual Firma Firma { get; set; }
 

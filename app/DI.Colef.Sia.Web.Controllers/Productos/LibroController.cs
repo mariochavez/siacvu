@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -19,6 +20,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
+        readonly IArchivoService archivoService;
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaTematicaMapper areaTematicaMapper;
@@ -30,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
         public LibroController(ILibroService libroService,
+                               IArchivoService archivoService,
                                ICustomCollection customCollection, ILibroMapper libroMapper,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService,
@@ -47,6 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
+            this.archivoService = archivoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
             this.libroService = libroService;
@@ -174,22 +178,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                         coautorExterno, coautorInterno, editorial);
-
-            if (!IsValidateModel(libro, form, Title.New, "Libro"))
+            ModelState.AddModelErrors(libro.ValidationResults(), true, "Libro");
+            if (!ModelState.IsValid)
             {
-                var libroForm = libroMapper.Map(libro);
-
-                ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
-                FormSetCombos(libroForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
-            libroService.SaveLibro(libro);
+            //if (!IsValidateModel(libro, form, Title.New, "Libro"))
+            //{
+            //    var libroForm = libroMapper.Map(libro);
 
-            return RedirectToHomeIndex(String.Format("Libro {0} ha sido creado", libro.Nombre));
+            //    ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
+            //    FormSetCombos(libroForm);
+            //    return ViewNew();
+            //}
+
+            libroService.SaveLibro(libro);
+            SetMessage(String.Format("Libro {0} ha sido creado", libro.Nombre));
+
+            return Rjs("Save", libro.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -197,18 +207,75 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(libro, form, Title.Edit))
+            ModelState.AddModelErrors(libro.ValidationResults(), true, "Libro");
+            if (!ModelState.IsValid)
             {
-                var libroForm = libroMapper.Map(libro);
+                return Rjs("ModelError");
+            }
 
-                ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
-                FormSetCombos(libroForm);
-                return ViewEdit();
+            //if (!IsValidateModel(libro, form, Title.Edit))
+            //{
+            //    var libroForm = libroMapper.Map(libro);
+
+            //    ((GenericViewData<LibroForm>) ViewData.Model).Form = SetupNewForm(libroForm);
+            //    FormSetCombos(libroForm);
+            //    return ViewEdit();
+            //}
+
+            libroService.SaveLibro(libro, true);
+            SetMessage(String.Format("Libro {0} ha sido modificado", libro.Nombre));
+
+            return Rjs("Save", libro.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var libro = libroService.GetLibroById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = libro.TipoProducto;
+                archivoService.Save(archivo);
+                libro.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = libro.TipoProducto;
+                archivoService.Save(archivo);
+                libro.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "ComprobanteLibro")
+            {
+                archivo.TipoProducto = libro.TipoProducto;
+                archivoService.Save(archivo);
+                libro.ComprobanteLibro = archivo;
             }
 
             libroService.SaveLibro(libro);
 
-            return RedirectToHomeIndex(String.Format("Libro {0} ha sido modificado", libro.Nombre));
+            return Content("Uploaded");
         }
 
         [Authorize]

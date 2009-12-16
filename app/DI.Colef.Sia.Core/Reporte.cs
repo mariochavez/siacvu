@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoReportes = new List<CoautorExternoReporte>();
             CoautorInternoReportes = new List<CoautorInternoReporte>();
-            ArchivoReportes = new List<ArchivoReporte>();
             InstitucionReportes = new List<InstitucionReporte>();
         }
 
@@ -33,12 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             coautorInterno.TipoProducto = tipoProducto;
             CoautorInternoReportes.Add((CoautorInternoReporte) coautorInterno);
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoReportes.Add((ArchivoReporte)archivo);
         }
 
         public virtual void AddInstitucion(InstitucionProducto institucion)
@@ -62,15 +55,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoReportes.Remove((CoautorExternoReporte) coautorExterno);
         }
 
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoReportes.Remove((ArchivoReporte) archivo);
-        }
+        public virtual Firma Firma { get; set; }
 
         [Valid]
-        public virtual IList<ArchivoReporte> ArchivoReportes { get; private set; }
+        public virtual Archivo ComprobanteAceptado { get; set; }
 
-        public virtual Firma Firma { get; set; }
+        [Valid]
+        public virtual Archivo ComprobantePublicado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteReporte { get; set; }
 
         [DomainSignature]
         [NotNullNotEmpty]
