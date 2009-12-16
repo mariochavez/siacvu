@@ -6,6 +6,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -135,41 +136,73 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(TesisDirigidaForm form)
         {
             var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
-
-            if (!IsValidateModel(tesisDirigida, form, Title.New, "TesisDirigida"))
+            ModelState.AddModelErrors(tesisDirigida.ValidationResults(), true, "TesisDirigida");
+            if (!ModelState.IsValid)
             {
-                var tesisForm = tesisDirigidaMapper.Map(tesisDirigida);
-
-                ((GenericViewData<TesisDirigidaForm>)ViewData.Model).Form = SetupNewForm(tesisForm);
-                FormSetCombos(tesisForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
-
+            
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
+            SetMessage(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
 
-            return RedirectToHomeIndex(String.Format("Tesis dirigida {0} ha sido creada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            return Rjs("Save", tesisDirigida.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
         {
             var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
-
-            if (!IsValidateModel(tesisDirigida, form, Title.Edit))
+            ModelState.AddModelErrors(tesisDirigida.ValidationResults(), true, "TesisDirigida");
+            if (!ModelState.IsValid)
             {
-                var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);
+                return Rjs("ModelError");
+            }
+            
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida, true);
+            SetMessage(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
 
-                ((GenericViewData<TesisDirigidaForm>) ViewData.Model).Form = SetupNewForm(tesisDirigidaForm);
-                FormSetCombos(tesisDirigidaForm);
-                return ViewEdit();
+            return Rjs("Save", tesisDirigida.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteTesisDirigida")
+            {
+                archivo.TipoProducto = tesisDirigida.TipoProducto;
+                archivoService.Save(archivo);
+                tesisDirigida.ComprobanteTesisDirigida = archivo;
             }
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
-            return RedirectToHomeIndex(String.Format("Tesis dirigida {0} ha sido modificada", IndexValueHelper.GetTesisIndexStringValue(tesisDirigidaMapper.Map(tesisDirigida))));
+            return Content("Uploaded");
         }
 
         [Authorize]

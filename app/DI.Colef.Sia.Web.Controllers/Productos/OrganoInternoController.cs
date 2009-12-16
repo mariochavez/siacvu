@@ -4,8 +4,10 @@ using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -113,38 +115,74 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Create(OrganoInternoForm form)
         {
             var organoInterno = organoInternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
-            if (!IsValidateModel(organoInterno, form, Title.New, "OrganoInterno"))
+
+            ModelState.AddModelErrors(organoInterno.ValidationResults(), true, "OrganoInterno");
+            if (!ModelState.IsValid)
             {
-                ((GenericViewData<OrganoInternoForm>)ViewData.Model).Form = SetupNewForm();
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
             organoInternoService.SaveOrganoInterno(organoInterno);
+            SetMessage(String.Format("Órgano interno {0} ha sido creado", organoInterno.ConsejoComision.Nombre));
 
-            return RedirectToIndex(String.Format("Órgano interno {0} ha sido creado", organoInterno.ConsejoComision.Nombre));
+            return Rjs("Save", organoInterno.Id);
         }
 
         [Authorize(Roles = "Investigadores")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoInternoForm form)
         {
             var organoInterno = organoInternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
-            if (!IsValidateModel(organoInterno, form, Title.Edit))
+            ModelState.AddModelErrors(organoInterno.ValidationResults(), true, "OrganoInterno");
+            if (!ModelState.IsValid)
             {
-                var organoInternoForm = organoInternoMapper.Map(organoInterno);
-
-                ((GenericViewData<OrganoInternoForm>)ViewData.Model).Form = SetupNewForm(organoInternoForm);
-                FormSetCombos(organoInternoForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
             
+            organoInternoService.SaveOrganoInterno(organoInterno, true);
+            SetMessage(String.Format("Órgano interno {0} ha sido modificado", organoInterno.ConsejoComision.Nombre));
+
+            return Rjs("Save", organoInterno.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var organoInterno = organoInternoService.GetOrganoInternoById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteOrganoInterno")
+            {
+                archivo.TipoProducto = organoInterno.TipoProducto;
+                archivoService.Save(archivo);
+                organoInterno.ComprobanteOrganoInterno = archivo;
+            }
+
             organoInternoService.SaveOrganoInterno(organoInterno);
 
-            return RedirectToIndex(String.Format("Órgano interno {0} ha sido modificado", organoInterno.ConsejoComision.Nombre));
+            return Content("Uploaded");
         }
 
         [Authorize]
