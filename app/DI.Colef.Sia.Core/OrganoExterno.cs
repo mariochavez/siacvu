@@ -15,24 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        public OrganoExterno()
-        {
-            ArchivoOrganoExternos = new List<ArchivoOrganoExterno>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoOrganoExternos.Add((ArchivoOrganoExterno) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoOrganoExternos.Remove((ArchivoOrganoExterno) archivo);
-        }
-
         [Valid]
-        public virtual IList<ArchivoOrganoExterno> ArchivoOrganoExternos { get; private set; }
+        public virtual Archivo ComprobanteOrganoExterno { get; set; }
 
         public virtual Firma Firma { get; set; }
 

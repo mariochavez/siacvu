@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -13,24 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        public TesisDirigida()
-        {
-            ArchivoTesisDirigidas = new List<ArchivoTesisDirigida>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoTesisDirigidas.Add((ArchivoTesisDirigida) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoTesisDirigidas.Remove((ArchivoTesisDirigida) archivo);
-        }
-
         [Valid]
-        public virtual IList<ArchivoTesisDirigida> ArchivoTesisDirigidas { get; private set; }
+        public virtual Archivo ComprobanteTesisDirigida { get; set; }
 
         public virtual Firma Firma { get; set; }
 

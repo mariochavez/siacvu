@@ -16,6 +16,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public string Ciudad { get; set; }
 
+        public int ComprobanteOrganoExternoId { get; set; }
+        public string ComprobanteOrganoExternoNombre { get; set; }
+
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }

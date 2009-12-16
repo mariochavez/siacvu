@@ -13,24 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 14; // 14 Representa Organo Interno
 
-		public OrganoInterno()
-		{
-            ArchivoOrganoInternos = new List<ArchivoOrganoInterno>();
-		}
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoOrganoInternos.Add((ArchivoOrganoInterno)archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoOrganoInternos.Remove((ArchivoOrganoInterno)archivo);
-        }
-
         [Valid]
-        public virtual IList<ArchivoOrganoInterno> ArchivoOrganoInternos { get; private set; }
+        public virtual Archivo ComprobanteOrganoInterno { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

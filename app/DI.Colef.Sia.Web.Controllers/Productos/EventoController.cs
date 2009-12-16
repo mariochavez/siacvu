@@ -23,6 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
@@ -30,6 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
                                 ILineaTematicaMapper lineaTematicaMapper,
+                                IArchivoService archivoService,
                                 IAreaTematicaMapper areaTematicaMapper,
                                 ISesionEventoMapper sesionEventoMapper,
                                 IUsuarioService usuarioService,
@@ -49,6 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.sesionEventoMapper = sesionEventoMapper;
             this.eventoService = eventoService;
             this.eventoMapper = eventoMapper;
+            this.archivoService = archivoService;
             this.ambitoMapper = ambitoMapper;
             this.tipoEventoMapper = tipoEventoMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;

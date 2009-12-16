@@ -22,9 +22,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
         readonly IInstitucionMapper institucionMapper;
+        readonly IArchivoService archivoService;
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
+                               IArchivoService archivoService,
                                ICatalogoService catalogoService, IUsuarioService usuarioService,
                                INivelMapper nivelMapper,
                                INivelEstudioMapper nivelEstudioMapper,
@@ -44,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.cursoInvestigadorService = cursoInvestigadorService;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
+            this.archivoService = archivoService;
             this.institucionMapper = institucionMapper;
         }
 
@@ -130,14 +133,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(curso, form, Title.New, "Curso"))
+            ModelState.AddModelErrors(curso.ValidationResults(), true, "Curso");
+            if (!ModelState.IsValid)
             {
-                var cursoForm = cursoMapper.Map(curso);
-
-                ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
-                FormSetCombos(cursoForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
+
+            //if (!IsValidateModel(curso, form, Title.New, "Curso"))
+            //{
+            //    var cursoForm = cursoMapper.Map(curso);
+
+            //    ((GenericViewData<CursoForm>)ViewData.Model).Form = SetupNewForm(cursoForm);
+            //    FormSetCombos(cursoForm);
+            //    return ViewNew();
+            //}
 
             cursoService.SaveCurso(curso);
 

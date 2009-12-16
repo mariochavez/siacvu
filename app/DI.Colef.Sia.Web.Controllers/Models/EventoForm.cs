@@ -20,6 +20,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FinanciamientoExterno { get; set; }
         public int SesionesTrabajo { get; set; }
 
+        public int ComprobanteEventoId { get; set; }
+        public string ComprobanteEventoNombre { get; set; }
+
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
 

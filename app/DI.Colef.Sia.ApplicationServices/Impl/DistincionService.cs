@@ -31,6 +31,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveDistincion(Distincion distincion)
         {
+            SaveDistincion(distincion, false);
+        }
+
+        public void SaveDistincion(Distincion distincion, bool commit)
+        {
             if(distincion.Id == 0)
             {
                 distincion.Activo = true;
@@ -39,6 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             distincion.ModificadoEl = DateTime.Now;
             
             distincionRepository.SaveOrUpdate(distincion);
+            
+            if (commit)
+                distincionRepository.DbContext.CommitChanges();
         }
 
 	    public Distincion[] GetAllDistinciones(Usuario usuario)

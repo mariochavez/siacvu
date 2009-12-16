@@ -34,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveDictamen(Dictamen dictamen)
         {
+            SaveDictamen(dictamen, false);
+        }
+
+        public void SaveDictamen(Dictamen dictamen, bool commit)
+        {
             if(dictamen.IsTransient())
             {
                 dictamen.Puntuacion = 0;
@@ -60,6 +65,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             dictamen.ModificadoEl = DateTime.Now;
             
             dictamenRepository.SaveOrUpdate(dictamen);
+
+            if (commit)
+                dictamenRepository.DbContext.CommitChanges();
         }
 
 	    public Dictamen[] GetAllDictamenes(Usuario usuario)

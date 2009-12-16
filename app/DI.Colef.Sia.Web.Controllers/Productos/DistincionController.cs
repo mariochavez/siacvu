@@ -20,10 +20,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEstadoPaisMapper estadoPaisMapper;
         readonly IPaisMapper paisMapper;
         readonly ITipoDistincionMapper tipoDistincionMapper;
+        readonly IArchivoService archivoService;
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
                                     ICatalogoService catalogoService, IUsuarioService usuarioService,
                                     ITipoDistincionMapper tipoDistincionMapper,
+                                    IArchivoService archivoService,
                                     IAmbitoMapper ambitoMapper, IPaisMapper paisMapper,
                                     IEstadoPaisMapper estadoPaisMapper, ISearchService searchService,
                                     IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
@@ -34,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.distincionMapper = distincionMapper;
             this.tipoDistincionMapper = tipoDistincionMapper;
             this.ambitoMapper = ambitoMapper;
+            this.archivoService = archivoService;
             this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
         }

@@ -22,11 +22,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
         readonly ISectorMapper sectorMapper;
+        readonly IArchivoService archivoService;
         readonly IAreaMapper areaMapper;
         readonly IInstitucionMapper institucionMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
+                               IArchivoService archivoService,
                                ICatalogoService catalogoService,
                                IUsuarioService usuarioService, IGradoAcademicoMapper gradoAcademicoMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, 
@@ -44,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
             this.customCollection = customCollection;
+            this.archivoService = archivoService;
             this.tesisPosgradoMapper = tesisPosgradoMapper;
             this.tesisPosgradoService = tesisPosgradoService;
             this.sectorMapper = sectorMapper;

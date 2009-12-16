@@ -13,24 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        public Curso()
-        {
-            ArchivoCursos = new List<ArchivoCurso>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoCursos.Add((ArchivoCurso) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoCursos.Remove((ArchivoCurso) archivo);
-        }
-
         [Valid]
-        public virtual IList<ArchivoCurso> ArchivoCursos { get; private set; }
+        public virtual Archivo ComprobanteCurso { get; set; }
 
         public virtual Firma Firma { get; set; }
 

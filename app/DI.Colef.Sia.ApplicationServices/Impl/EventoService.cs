@@ -36,7 +36,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<Evento>)eventoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
-        public void SaveEvento(Evento evento, bool useCommit)
+        public void SaveEvento(Evento evento)
+        {
+            SaveEvento(evento, false);
+        }
+
+        public void SaveEvento(Evento evento, bool commit)
         {
             if(evento.IsTransient())
             {
@@ -65,7 +70,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             evento.ModificadoEl = DateTime.Now;
             eventoRepository.SaveOrUpdate(evento);
 
-            if (useCommit)
+            if (commit)
                 eventoRepository.DbContext.CommitChanges();
         }
 

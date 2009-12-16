@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         OrganoExterno[] GetAllOrganoExternos();
         OrganoExterno[] GetActiveOrganoExternos();
         void SaveOrganoExterno(OrganoExterno organoExterno);
+        void SaveOrganoExterno(OrganoExterno organoExterno, bool commit);
 	    OrganoExterno[] GetAllOrganoExternos(Usuario usuario);
     }
 }
