@@ -59,15 +59,15 @@
                     </p>
                     
                     <% Html.RenderPartial("_ShowTesisInterna", Model.Form);%>
-                    
-                    <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                    <% } %>
                 <% } %>
                 
                 <% if(Model.Form.TipoTesis == 2){ %>
                     <h4>Datos de la tesis presentada</h4>
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form);%>
+                <% } %>
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+            	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
                 
                 <p class="submit">

@@ -48,7 +48,6 @@
 
     <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
     <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>
-    <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>
 
 <% } else { %>
 
@@ -83,5 +82,4 @@
 
     <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
     <% Html.RenderPartial("_Show2doNivel", Model.ShowFields); %>
-    <% Html.RenderPartial("_ShowSubdisciplina", Model.ShowFields); %>
 <% } %>

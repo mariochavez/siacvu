@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<EventoForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -31,7 +32,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Update", "Evento")){ %>
+            <% using (Html.BeginForm("Update", "Evento", FormMethod.Post, new { @class = "remote" })){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
@@ -69,9 +70,26 @@
 	                    <%=Html.ValidationMessage("PosicionAutor")%>
                     </p>
                 </div>
+                
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteEventoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteEventoId), Model.Form.ComprobanteEventoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteEvento_DocumentoProbatorio" id="ComprobanteEvento_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+                
+                <% Html.RenderPartial("_ProgressBar"); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EventoController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -82,6 +100,14 @@
     $(document).ready(function() {
         setupDocument();
         eventoSetup();
+
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+
+        UploadFile.setup('#ComprobanteEvento_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>

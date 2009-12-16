@@ -238,19 +238,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form["TipoArchivo"] == "Aceptado")
             {
-                archivo.TipoProducto = libro.TipoProducto;
+                archivo.TipoProducto = libro.TipoProductoLibro;
                 archivoService.Save(archivo);
                 libro.ComprobanteAceptado = archivo;
             }
             else if (form["TipoArchivo"] == "Publicado")
             {
-                archivo.TipoProducto = libro.TipoProducto;
+                archivo.TipoProducto = libro.TipoProductoLibro;
                 archivoService.Save(archivo);
                 libro.ComprobantePublicado = archivo;
             }
             else if (form["TipoArchivo"] == "ComprobanteLibro")
             {
-                archivo.TipoProducto = libro.TipoProducto;
+                archivo.TipoProducto = libro.TipoProductoLibro;
                 archivoService.Save(archivo);
                 libro.ComprobanteLibro = archivo;
             }

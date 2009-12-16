@@ -23,7 +23,7 @@
 	<div id="participanteinternoNew" class="minilistaboton">
 		<p>
 			<span>
-	    		<%=Html.ActionLink("+ Nuevo participante interno", "NewParticipanteInterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
+	    		<%=Html.ActionLink("+ Agregar participante interno", "NewParticipanteInterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

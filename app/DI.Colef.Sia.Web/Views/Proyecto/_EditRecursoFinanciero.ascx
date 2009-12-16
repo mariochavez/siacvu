@@ -29,7 +29,7 @@
 	<div id="recursofinancieroNew" class="minilistaboton">
 		<p>
 			<span>
-		    	<%=Html.ActionLink("+ Nuevo recurso financiero", "NewRecursoFinanciero", new { Id = Model.Id }, new { @class = "remote get" })%>
+		    	<%=Html.ActionLink("+ Agregar recurso financiero", "NewRecursoFinanciero", new { Id = Model.Id }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

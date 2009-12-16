@@ -11,7 +11,7 @@
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 
@@ -52,7 +52,7 @@ function obraTraducidaSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 
@@ -63,7 +63,7 @@ function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 
@@ -161,7 +161,7 @@ function reporteSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 
@@ -198,7 +198,7 @@ function resenaSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 

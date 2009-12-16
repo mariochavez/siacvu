@@ -55,15 +55,15 @@
                 <% if(Model.Form.TipoCurso == 1){ %>
                     <h4>Cursos en El Colef</h4>
                     <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
-                    
-                    <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                    <% } %>
                 <% } %>
                 
                 <% if(Model.Form.TipoCurso == 2){ %>
                     <h4>Cursos en instituciones externas</h4>
                     <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
+                <% } %>
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+            	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
                 
                 <p class="submit">

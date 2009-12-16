@@ -32,7 +32,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Create", "Curso")) { %>			
+            <% using (Html.BeginForm("Create", "Curso", FormMethod.Post, new { @class = "remote" })){ %>			
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -47,7 +47,6 @@
                 <div id="cursointerno_field">
                     <h4>Cursos en El Colef</h4>
                     <% Html.RenderPartial("_ShowCursoInvestigador", Model.Form); %>
-                    <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 </div>
                 
                 <div id="cursoexterno_field">
@@ -55,8 +54,21 @@
                     <% Html.RenderPartial("_ShowCursoExterno", Model.Form); %>
                 </div>
                 
+                <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
+                
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteCurso_DocumentoProbatorio" id="ComprobanteCurso_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+				
+				<% Html.RenderPartial("_ProgressBar"); %>
+                
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -67,6 +79,14 @@
     $(document).ready(function() {
         setupDocument();
         cursoSetup();
+
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+
+        UploadFile.setup('#ComprobanteCurso_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>
