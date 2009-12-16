@@ -655,6 +655,10 @@ alter table SesionEventos  drop constraint FK6942327574E8BAB7
 alter table SesionEventos  drop constraint FK694232753BA127C1
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAE1EB9AA73]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
+alter table OrganoExternos  drop constraint FK55BF0AAE1EB9AA73
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK55BF0AAECB4F3F6C]') AND parent_object_id = OBJECT_ID('OrganoExternos'))
 alter table OrganoExternos  drop constraint FK55BF0AAECB4F3F6C
 
@@ -753,6 +757,10 @@ alter table EstadoPaises  drop constraint FKD3B80B5262D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3B80B5274E8BAB7]') AND parent_object_id = OBJECT_ID('EstadoPaises'))
 alter table EstadoPaises  drop constraint FKD3B80B5274E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EEC3C17FBA1]') AND parent_object_id = OBJECT_ID('Distinciones'))
+alter table Distinciones  drop constraint FKEF821EEC3C17FBA1
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF821EECB2CAFCD8]') AND parent_object_id = OBJECT_ID('Distinciones'))
@@ -979,6 +987,10 @@ alter table ExperienciaProfesionales  drop constraint FK4F93B3CC62D605DB
 alter table ExperienciaProfesionales  drop constraint FK4F93B3CC74E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD523438CD46009]') AND parent_object_id = OBJECT_ID('Eventos'))
+alter table Eventos  drop constraint FK9DD523438CD46009
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9DD52343CB4F3F6C]') AND parent_object_id = OBJECT_ID('Eventos'))
 alter table Eventos  drop constraint FK9DD52343CB4F3F6C
 
@@ -1127,6 +1139,10 @@ alter table Puestos  drop constraint FK45EB259062D605DB
 alter table Puestos  drop constraint FK45EB259074E8BAB7
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEAC8FBD054]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
+alter table OrganoInternos  drop constraint FKECD0AAEAC8FBD054
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA6A829E09]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
 alter table OrganoInternos  drop constraint FKECD0AAEA6A829E09
 
@@ -1149,6 +1165,10 @@ alter table OrganoInternos  drop constraint FKECD0AAEA62D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKECD0AAEA74E8BAB7]') AND parent_object_id = OBJECT_ID('OrganoInternos'))
 alter table OrganoInternos  drop constraint FKECD0AAEA74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BA60085D7]') AND parent_object_id = OBJECT_ID('Dictamenes'))
+alter table Dictamenes  drop constraint FKE29ADD7BA60085D7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE29ADD7BCB4F3F6C]') AND parent_object_id = OBJECT_ID('Dictamenes'))
@@ -1209,6 +1229,10 @@ alter table VinculacionAPyDes  drop constraint FK9D4AA1BC62D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK9D4AA1BC74E8BAB7]') AND parent_object_id = OBJECT_ID('VinculacionAPyDes'))
 alter table VinculacionAPyDes  drop constraint FK9D4AA1BC74E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD3112A1709F5]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
+alter table TesisDirigidas  drop constraint FKEF4DD3112A1709F5
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEF4DD311CB4F3F6C]') AND parent_object_id = OBJECT_ID('TesisDirigidas'))
@@ -1297,6 +1321,10 @@ alter table FondoConacyts  drop constraint FK4D7DCA9362D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4D7DCA9374E8BAB7]') AND parent_object_id = OBJECT_ID('FondoConacyts'))
 alter table FondoConacyts  drop constraint FK4D7DCA9374E8BAB7
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63EC2E9C987]') AND parent_object_id = OBJECT_ID('Cursos'))
+alter table Cursos  drop constraint FK8E38D63EC2E9C987
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8E38D63ECB4F3F6C]') AND parent_object_id = OBJECT_ID('Cursos'))
@@ -1649,74 +1677,6 @@ alter table Archivos  drop constraint FKD4AF217E62D605DB
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD4AF217E74E8BAB7]') AND parent_object_id = OBJECT_ID('Archivos'))
 alter table Archivos  drop constraint FKD4AF217E74E8BAB7
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK73A5D66B82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCurso'))
-alter table ArchivoCurso  drop constraint FK73A5D66B82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK73A5D66B2E9FF2CA]') AND parent_object_id = OBJECT_ID('ArchivoCurso'))
-alter table ArchivoCurso  drop constraint FK73A5D66B2E9FF2CA
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7DDAA1C82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoDictamen'))
-alter table ArchivoDictamen  drop constraint FKD7DDAA1C82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD7DDAA1CCB0D698F]') AND parent_object_id = OBJECT_ID('ArchivoDictamen'))
-alter table ArchivoDictamen  drop constraint FKD7DDAA1CCB0D698F
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEC582C7282C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoDistincion'))
-alter table ArchivoDistincion  drop constraint FKEC582C7282C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKEC582C72A563B165]') AND parent_object_id = OBJECT_ID('ArchivoDistincion'))
-alter table ArchivoDistincion  drop constraint FKEC582C72A563B165
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK94C557A482C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoEvento'))
-alter table ArchivoEvento  drop constraint FK94C557A482C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK94C557A43BA127C1]') AND parent_object_id = OBJECT_ID('ArchivoEvento'))
-alter table ArchivoEvento  drop constraint FK94C557A43BA127C1
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3CF46F8382C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoOrganoExterno'))
-alter table ArchivoOrganoExterno  drop constraint FK3CF46F8382C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3CF46F8320ACA338]') AND parent_object_id = OBJECT_ID('ArchivoOrganoExterno'))
-alter table ArchivoOrganoExterno  drop constraint FK3CF46F8320ACA338
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8C70CE9182C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoOrganoInterno'))
-alter table ArchivoOrganoInterno  drop constraint FK8C70CE9182C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK8C70CE91B291B950]') AND parent_object_id = OBJECT_ID('ArchivoOrganoInterno'))
-alter table ArchivoOrganoInterno  drop constraint FK8C70CE91B291B950
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4232889782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoParticipacion'))
-alter table ArchivoParticipacion  drop constraint FK4232889782C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD42B3782C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoParticipacionMedio'))
-alter table ArchivoParticipacionMedio  drop constraint FKD42B3782C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD42B37D6AE79E4]') AND parent_object_id = OBJECT_ID('ArchivoParticipacionMedio'))
-alter table ArchivoParticipacionMedio  drop constraint FKD42B37D6AE79E4
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6EC3CA8882C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoTesisDirigida'))
-alter table ArchivoTesisDirigida  drop constraint FK6EC3CA8882C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6EC3CA88954C47FF]') AND parent_object_id = OBJECT_ID('ArchivoTesisDirigida'))
-alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79862D605DB]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
@@ -2473,24 +2433,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoCurso') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoCurso
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoDictamen') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoDictamen
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoDistincion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoDistincion
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoEvento
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoExterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoExterno
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoInterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoInterno
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacion
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacionMedio') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacionMedio
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoTesisDirigida
-
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoDistinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDistinciones
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoApoyos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoApoyos
@@ -3149,6 +3091,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteOrganoExternoFk INT null,
        FirmaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -3228,6 +3171,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteDistincionFk INT null,
        TipoDistincionFk INT null,
        InstitucionFk INT null,
        AmbitoFk INT null,
@@ -3409,6 +3353,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteEventoFk INT null,
        FirmaFk INT null,
        TipoEventoFk INT null,
        AreaTematicaFk INT null,
@@ -3548,6 +3493,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteOrganoInternoFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
@@ -3565,6 +3511,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteDictamenFk INT null,
        FirmaFk INT null,
        UsuarioFk INT null,
        DepartamentoFk INT null,
@@ -3612,6 +3559,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteTesisDirigidaFk INT null,
        FirmaFk INT null,
        TesisPosgradoFk INT null,
        VinculacionAPyDFk INT null,
@@ -3679,6 +3627,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
+       ComprobanteCursoFk INT null,
        FirmaFk INT null,
        NivelEstudioFk INT null,
        CursoInvestigadorFk INT null,
@@ -3939,59 +3888,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
-    )
-
-    create table ArchivoCurso (
-        Archivo INT not null,
-       CursoFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoDictamen (
-        Archivo INT not null,
-       DictamenFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoDistincion (
-        Archivo INT not null,
-       DistincionFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoEvento (
-        Archivo INT not null,
-       EventoFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoOrganoExterno (
-        Archivo INT not null,
-       OrganoExternoFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoOrganoInterno (
-        Archivo INT not null,
-       OrganoInternoFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoParticipacion (
-        Archivo INT not null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoParticipacionMedio (
-        Archivo INT not null,
-       ParticipacionMedioFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoTesisDirigida (
-        Archivo INT not null,
-       TesisDirigidaFk INT null,
-       primary key (Archivo)
     )
 
     create table TipoDistinciones (
@@ -5351,6 +5247,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Eventos
 
     alter table OrganoExternos 
+        add constraint FK55BF0AAE1EB9AA73 
+        foreign key (ComprobanteOrganoExternoFk) 
+        references Archivos
+
+    alter table OrganoExternos 
         add constraint FK55BF0AAECB4F3F6C 
         foreign key (FirmaFk) 
         references Firmas
@@ -5474,6 +5375,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKD3B80B5274E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Distinciones 
+        add constraint FKEF821EEC3C17FBA1 
+        foreign key (ComprobanteDistincionFk) 
+        references Archivos
 
     alter table Distinciones 
         add constraint FKEF821EECB2CAFCD8 
@@ -5756,6 +5662,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table Eventos 
+        add constraint FK9DD523438CD46009 
+        foreign key (ComprobanteEventoFk) 
+        references Archivos
+
+    alter table Eventos 
         add constraint FK9DD52343CB4F3F6C 
         foreign key (FirmaFk) 
         references Firmas
@@ -5941,6 +5852,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Usuarios
 
     alter table OrganoInternos 
+        add constraint FKECD0AAEAC8FBD054 
+        foreign key (ComprobanteOrganoInternoFk) 
+        references Archivos
+
+    alter table OrganoInternos 
         add constraint FKECD0AAEA6A829E09 
         foreign key (UsuarioFk) 
         references Usuarios
@@ -5969,6 +5885,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKECD0AAEA74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Dictamenes 
+        add constraint FKE29ADD7BA60085D7 
+        foreign key (ComprobanteDictamenFk) 
+        references Archivos
 
     alter table Dictamenes 
         add constraint FKE29ADD7BCB4F3F6C 
@@ -6044,6 +5965,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK9D4AA1BC74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table TesisDirigidas 
+        add constraint FKEF4DD3112A1709F5 
+        foreign key (ComprobanteTesisDirigidaFk) 
+        references Archivos
 
     alter table TesisDirigidas 
         add constraint FKEF4DD311CB4F3F6C 
@@ -6154,6 +6080,11 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK4D7DCA9374E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table Cursos 
+        add constraint FK8E38D63EC2E9C987 
+        foreign key (ComprobanteCursoFk) 
+        references Archivos
 
     alter table Cursos 
         add constraint FK8E38D63ECB4F3F6C 
@@ -6594,91 +6525,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FKD4AF217E74E8BAB7 
         foreign key (ModificadoPorFk) 
         references Usuarios
-
-    alter table ArchivoCurso 
-        add constraint FK73A5D66B82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoCurso 
-        add constraint FK73A5D66B2E9FF2CA 
-        foreign key (CursoFk) 
-        references Cursos
-
-    alter table ArchivoDictamen 
-        add constraint FKD7DDAA1C82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoDictamen 
-        add constraint FKD7DDAA1CCB0D698F 
-        foreign key (DictamenFk) 
-        references Dictamenes
-
-    alter table ArchivoDistincion 
-        add constraint FKEC582C7282C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoDistincion 
-        add constraint FKEC582C72A563B165 
-        foreign key (DistincionFk) 
-        references Distinciones
-
-    alter table ArchivoEvento 
-        add constraint FK94C557A482C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoEvento 
-        add constraint FK94C557A43BA127C1 
-        foreign key (EventoFk) 
-        references Eventos
-
-    alter table ArchivoOrganoExterno 
-        add constraint FK3CF46F8382C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoOrganoExterno 
-        add constraint FK3CF46F8320ACA338 
-        foreign key (OrganoExternoFk) 
-        references OrganoExternos
-
-    alter table ArchivoOrganoInterno 
-        add constraint FK8C70CE9182C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoOrganoInterno 
-        add constraint FK8C70CE91B291B950 
-        foreign key (OrganoInternoFk) 
-        references OrganoInternos
-
-    alter table ArchivoParticipacion 
-        add constraint FK4232889782C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoParticipacionMedio 
-        add constraint FKD42B3782C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoParticipacionMedio 
-        add constraint FKD42B37D6AE79E4 
-        foreign key (ParticipacionMedioFk) 
-        references ParticipacionMedios
-
-    alter table ArchivoTesisDirigida 
-        add constraint FK6EC3CA8882C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoTesisDirigida 
-        add constraint FK6EC3CA88954C47FF 
-        foreign key (TesisDirigidaFk) 
-        references TesisDirigidas
 
     alter table TipoDistinciones 
         add constraint FK6F92D79862D605DB 
