@@ -29,11 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
     }
 
-    public class ArchivoArticulo : Archivo
-    {
-
-    }
-
     public class ArchivoCapitulo : Archivo
     {
 
@@ -103,24 +98,4 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
 
     }
-
-    //public class ArchivoGradoAcademico : Archivo
-    //{
-    //}
-
-    //public class ArchivoEstado : Archivo
-    //{
-    //}
-
-    //public class ArchivoCargo : Archivo
-    //{
-    //}
-
-    //public class ArchivoCategoria : Archivo
-    //{
-    //}
-
-    //public class ArchivoSni : Archivo
-    //{
-    //}
 }

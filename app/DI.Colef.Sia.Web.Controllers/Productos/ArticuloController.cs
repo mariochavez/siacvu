@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -24,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IArchivoService archivoService;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper,
@@ -40,7 +42,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IDisciplinaMapper disciplinaMapper,
                                   ISubdisciplinaMapper subdisciplinaMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IInvestigadorExternoMapper investigadorExternoMapper
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IArchivoService archivoService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -54,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+            this.archivoService = archivoService;
         }
 
         [Authorize]
@@ -152,6 +156,56 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var articulo = articuloService.GetArticuloById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength
+                              };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = articulo.TipoProducto;
+                archivoService.Save(archivo);
+                articulo.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = articulo.TipoProducto;
+                archivoService.Save(archivo);
+                articulo.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "ComprobanteArticulo")
+            {
+                archivo.TipoProducto = articulo.TipoProducto;
+                archivoService.Save(archivo);
+                articulo.ComprobanteArticulo = archivo;
+            }
+
+            articuloService.SaveArticulo(articulo);
+
+            return Content("Uploaded");
+        }
+
         [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
@@ -166,21 +220,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                               coautorExterno, coautorInterno);
 
-            if (!IsValidateModel(articulo, form, Title.New, "Articulo"))
-            {
-                var articuloForm = articuloMapper.Map(articulo);
+            ModelState.AddModelErrors(articulo.ValidationResults(), true, "Articulo");
 
-                ((GenericViewData<ArticuloForm>) ViewData.Model).Form = SetupNewForm(articuloForm);
-                FormSetCombos(articuloForm);
-                return ViewNew();
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
             }
 
             articuloService.SaveArticulo(articulo);
+            SetMessage(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
 
-            return RedirectToHomeIndex(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
+            return Rjs("Save", articulo.Id);
         }
 
-        [CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -188,18 +240,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(articulo, form, Title.Edit))
-            {
-                var articuloForm = articuloMapper.Map(articulo);
+            ModelState.AddModelErrors(articulo.ValidationResults(), true, "Articulo");
 
-                ((GenericViewData<ArticuloForm>) ViewData.Model).Form = SetupNewForm(articuloForm);
-                FormSetCombos(articuloForm);
-                return ViewEdit();
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
             }
 
-            articuloService.SaveArticulo(articulo);
+            articuloService.SaveArticulo(articulo, true);
+            SetMessage(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
 
-            return RedirectToHomeIndex(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
+            return Rjs("Save", articulo.Id);
         }
 
         [Authorize]

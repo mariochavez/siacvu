@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ArticuloForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -36,7 +37,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-	        <% using (Html.BeginForm("Update", "Articulo")) { %>
+	        <% using (Html.BeginForm("Update", "Articulo", FormMethod.Post, new { @class = "remote" })){ %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>	            
 	            
@@ -59,16 +60,34 @@
                 </p>
 	            
 	            <h4>Estatus de la pulicaci&oacute;n</h4>
-	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
+	            <% Html.RenderPartial("_ShowEstadoProducto", 
+                    new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
+                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
+                        ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre,
+                        ComprobantePublicadoId = Model.Form.ComprobantePublicadoId, ComprobantePublicadoNombre = Model.Form.ComprobantePublicadoNombre}); %>
                 
                 <h4>Referencia bibliogr&aacute;fica</h4>
                 <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 				
-				<h4>Documentos de la publicaci&oacute;n</h4>
-				<% Html.RenderPartial("_EditArchivo", new ArchivoForm { Archivos = Model.Form.ArchivoArticulos, ModelId = Model.Form.Id }); %>
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteArticuloNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteArticuloId), Model.Form.ComprobanteArticuloNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteArticulo_DocumentoProbatorio" id="ComprobanteArticulo_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+                
+                <% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->
@@ -80,6 +99,18 @@
         setupDocument();
 
         articuloSetup();
+
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+
+        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#Publicado_DocumentoProbatorio', 'Publicado_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#ComprobanteArticulo_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 

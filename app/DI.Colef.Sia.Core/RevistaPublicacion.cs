@@ -15,13 +15,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNullNotEmpty]
         public virtual string Titulo { get; set; }
 
-        [NotNull]
+        //[NotNull]
         public virtual Institucion Institucion { get; set; }
 
-        [NotNullNotEmpty]
         public virtual string DepartamentoAcademico { get; set; }
 
-        [NotNullNotEmpty]
         public virtual string FactorImpacto { get; set; }
         
         public virtual string Issn { get; set; }

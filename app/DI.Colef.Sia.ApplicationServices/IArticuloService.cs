@@ -9,5 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Articulo[] GetActiveArticulos();
         void SaveArticulo(Articulo articulo);
         Articulo[] GetAllArticulos(Usuario usuario);
+        void SaveArticulo(Articulo articulo, bool useCommit);
     }
 }

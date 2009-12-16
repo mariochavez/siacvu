@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
@@ -65,5 +67,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public SectorForm[] SectoresEconomicos { get; set; }
         public RamaForm[] Ramas { get; set; }
         public ClaseForm[] Clases { get; set; }
+
+        public int ComprobanteAceptadoId { get; set; }
+        public string ComprobanteAceptadoNombre { get; set; }
+        public int ComprobantePublicadoId { get; set; }
+        public string ComprobantePublicadoNombre { get; set; }
     }
 }

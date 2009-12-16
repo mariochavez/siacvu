@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
 
             //Tipo Publicacion - Memoria de evento
-            if (libro.FormatoPublicacion == 2)
+            if (libro.ContenidoLibro == 2)
             {
                 if (libro.Evento == null)
                 {
@@ -59,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             }
 
             //Tipo Publicacion - Numero especial de revista
-            if (libro.FormatoPublicacion == 3)
+            if (libro.ContenidoLibro == 3)
             {
                 if (libro.RevistaPublicacion == null)
                 {
