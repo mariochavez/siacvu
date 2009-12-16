@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -18,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IObraTraducidaMapper obraTraducidaMapper;
         readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
+        readonly IArchivoService archivoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper;
@@ -35,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			                        ICatalogoService catalogoService,
                                     IUsuarioService usuarioService,
                                     ISearchService searchService,
+                                    IArchivoService archivoService,
 			                        IIdiomaMapper idiomaMapper,
                                     IAreaTematicaMapper areaTematicaMapper,
                                     IRevistaPublicacionMapper revistaPublicacionMapper,
@@ -49,6 +52,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ) : base(usuarioService, searchService, catalogoService)
         {
 			this.catalogoService = catalogoService;
+            this.archivoService = archivoService;
             this.obraTraducidaService = obraTraducidaService;
             this.obraTraducidaMapper = obraTraducidaMapper;
 			this.idiomaMapper = idiomaMapper;
@@ -179,41 +183,105 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var obraTraducida = obraTraducidaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                               coautorExterno, coautorInterno, autorExterno, autorInterno, editorial);
-            
-            if (!IsValidateModel(obraTraducida, form, Title.New, "ObraTraducida"))
-            {
-                var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
 
-                ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
-                FormSetCombos(obraTraducidaForm);
-                return ViewNew();
+            ModelState.AddModelErrors(obraTraducida.ValidationResults(), true, "ObraTraducida");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
             }
 
-            obraTraducidaService.SaveObraTraducida(obraTraducida);
+            //if (!IsValidateModel(obraTraducida, form, Title.New, "ObraTraducida"))
+            //{
+            //    var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
 
-            return RedirectToHomeIndex(String.Format("Obra traducida {0} ha sido creada", obraTraducida.Nombre));
+            //    ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
+            //    FormSetCombos(obraTraducidaForm);
+            //    return ViewNew();
+            //}
+
+            obraTraducidaService.SaveObraTraducida(obraTraducida);
+            SetMessage(String.Format("Obra traducida {0} ha sido creada", obraTraducida.Nombre));
+
+            return Rjs("Save", obraTraducida.Id);
         }
 
         [Authorize(Roles = "Investigadores")]
-        [CustomTransaction]
+        //[CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ObraTraducidaForm form)
         {
             var obraTraducida = obraTraducidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            
-            if (!IsValidateModel(obraTraducida, form, Title.Edit))
-            {
-                var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
 
-                ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
-                FormSetCombos(obraTraducidaForm);
-                return ViewEdit();
+            ModelState.AddModelErrors(obraTraducida.ValidationResults(), true, "ObraTraducida");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
             }
+
+            //if (!IsValidateModel(obraTraducida, form, Title.Edit))
+            //{
+            //    var obraTraducidaForm = obraTraducidaMapper.Map(obraTraducida);
+
+            //    ((GenericViewData<ObraTraducidaForm>)ViewData.Model).Form = SetupNewForm(obraTraducidaForm);
+            //    FormSetCombos(obraTraducidaForm);
+            //    return ViewEdit();
+            //}
             
+            obraTraducidaService.SaveObraTraducida(obraTraducida, true);
+            SetMessage(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
+
+            return Rjs("Save", obraTraducida.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = obraTraducida.TipoProducto;
+                archivoService.Save(archivo);
+                obraTraducida.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = obraTraducida.TipoProducto;
+                archivoService.Save(archivo);
+                obraTraducida.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "ComprobanteobraTraducida")
+            {
+                archivo.TipoProducto = obraTraducida.TipoProducto;
+                archivoService.Save(archivo);
+                obraTraducida.ComprobanteObraTraducida = archivo;
+            }
+
             obraTraducidaService.SaveObraTraducida(obraTraducida);
 
-            return RedirectToHomeIndex(String.Format("Obra traducida {0} ha sido modificada", obraTraducida.Nombre));
+            return Content("Uploaded");
         }
 
         [Authorize]

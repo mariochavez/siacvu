@@ -92,7 +92,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Archivo ComprobantePublicado { get; set; }
 
         [Valid]
-        public virtual Archivo ComprobanteReporte { get; set; }
+        public virtual Archivo ComprobanteObraTraducida { get; set; }
 
         [Valid]
         public virtual IList<AutorInternoObraTraducida> AutorInternoObraTraducidas { get; private set; }

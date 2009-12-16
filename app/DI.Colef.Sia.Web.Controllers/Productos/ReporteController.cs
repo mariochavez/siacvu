@@ -265,7 +265,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 archivoService.Save(archivo);
                 reporte.ComprobantePublicado = archivo;
             }
-            else if (form["TipoArchivo"] == "Comprobantereporte")
+            else if (form["TipoArchivo"] == "ComprobanteReporte")
             {
                 archivo.TipoProducto = reporte.TipoProducto;
                 archivoService.Save(archivo);

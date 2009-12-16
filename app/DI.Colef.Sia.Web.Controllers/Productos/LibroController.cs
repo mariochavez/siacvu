@@ -178,6 +178,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                         coautorExterno, coautorInterno, editorial);
+            
             ModelState.AddModelErrors(libro.ValidationResults(), true, "Libro");
             if (!ModelState.IsValid)
             {

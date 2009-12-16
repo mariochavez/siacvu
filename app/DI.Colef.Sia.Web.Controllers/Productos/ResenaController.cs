@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -18,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
+        readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IPaisMapper paisMapper;
         readonly IResenaMapper resenaMapper;
@@ -42,6 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IUsuarioService usuarioService,
                                 ICustomCollection customCollection,
                                 IPaisMapper paisMapper,
+                                IArchivoService archivoService,
                                 ICoautorExternoResenaMapper coautorExternoResenaMapper,
                                 ICoautorInternoResenaMapper coautorInternoResenaMapper,
                                 ISearchService searchService,
@@ -51,6 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.areaTematicaMapper = areaTematicaMapper;
+            this.archivoService = archivoService;
             this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.resenaService = resenaService;
@@ -181,21 +185,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                           coautorExterno, coautorInterno, autorExterno, autorInterno, editorial);
 
-            if (!IsValidateModel(resena, form, Title.New, "Resena"))
+            ModelState.AddModelErrors(resena.ValidationResults(), true, "Resena");
+            if (!ModelState.IsValid)
             {
-                var resenaForm = resenaMapper.Map(resena);
-
-                ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
-                FormSetCombos(resenaForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
+            //if (!IsValidateModel(resena, form, Title.New, "Resena"))
+            //{
+            //    var resenaForm = resenaMapper.Map(resena);
+
+            //    ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
+            //    FormSetCombos(resenaForm);
+            //    return ViewNew();
+            //}
 
             resenaService.SaveResena(resena);
+            SetMessage(String.Format("Reseña {0} ha sido creada", resena.NombreProducto));
 
-            return RedirectToHomeIndex(String.Format("Reseña {0} ha sido creada", resena.NombreProducto));
+            return Rjs("Save", resena.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -203,18 +213,75 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var resena = resenaMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(resena, form, Title.Edit))
+            ModelState.AddModelErrors(resena.ValidationResults(), true, "Resena");
+            if (!ModelState.IsValid)
             {
-                var resenaForm = resenaMapper.Map(resena);
+                return Rjs("ModelError");
+            }
 
-                ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
-                FormSetCombos(resenaForm);
-                return ViewEdit();
+            //if (!IsValidateModel(resena, form, Title.Edit))
+            //{
+            //    var resenaForm = resenaMapper.Map(resena);
+
+            //    ((GenericViewData<ResenaForm>) ViewData.Model).Form = SetupNewForm(resenaForm);
+            //    FormSetCombos(resenaForm);
+            //    return ViewEdit();
+            //}
+
+            resenaService.SaveResena(resena, true);
+            SetMessage(String.Format("Reseña {0} ha sido modificada", resena.NombreProducto));
+
+            return Rjs("Save", resena.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var resena = resenaService.GetResenaById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = resena.TipoProducto;
+                archivoService.Save(archivo);
+                resena.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = resena.TipoProducto;
+                archivoService.Save(archivo);
+                resena.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "ComprobanteResena")
+            {
+                archivo.TipoProducto = resena.TipoProducto;
+                archivoService.Save(archivo);
+                resena.ComprobanteResena = archivo;
             }
 
             resenaService.SaveResena(resena);
 
-            return RedirectToHomeIndex(String.Format("Reseña {0} ha sido modificada", resena.NombreProducto));
+            return Content("Uploaded");
         }
 
         [Authorize]
