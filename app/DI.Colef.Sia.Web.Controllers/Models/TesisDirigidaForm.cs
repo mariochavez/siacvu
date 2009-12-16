@@ -15,6 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int TipoTesis { get; set; }
 
+        public int ComprobanteTesisDirigidaId { get; set; }
+        public string ComprobanteTesisDirigidaNombre { get; set; }
+
         public int VinculacionAPyD { get; set; }
         public int VinculacionAPyDId { get; set; }
         public string VinculacionAPyDNombre { get; set; }

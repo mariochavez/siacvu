@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         OrganoInterno[] GetAllOrganoInternos();
         OrganoInterno[] GetActiveOrganoInternos();
         void SaveOrganoInterno(OrganoInterno organoInterno);
+        void SaveOrganoInterno(OrganoInterno organoInterno, bool commit);
         OrganoInterno[] GetAllOrganoInternos(Usuario usuario);
     }
 }

@@ -20,10 +20,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IEditorialDictamenMapper editorialDictamenMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IArchivoService archivoService;
 
         public DictamenController(IDictamenService dictamenService,
                                   IDictamenMapper dictamenMapper,
                                   ICatalogoService catalogoService,
+                                  IArchivoService archivoService,
                                   IUsuarioService usuarioService,
                                   IEditorialDictamenMapper editorialDictamenMapper,
                                   ITipoDictamenMapper tipoDictamenMapper,
@@ -35,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.editorialDictamenMapper = editorialDictamenMapper;
             this.catalogoService = catalogoService;
             this.dictamenService = dictamenService;
+            this.archivoService = archivoService;
             this.dictamenMapper = dictamenMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;

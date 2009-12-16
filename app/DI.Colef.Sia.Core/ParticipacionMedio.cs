@@ -15,25 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        public ParticipacionMedio()
-        {
-            ArchivoParticipacionMedios = new List<ArchivoParticipacionMedio>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoParticipacionMedios.Add((ArchivoParticipacionMedio) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoParticipacionMedios.Remove((ArchivoParticipacionMedio) archivo);
-        }
-
-        [Valid]
-        public virtual IList<ArchivoParticipacionMedio> ArchivoParticipacionMedios { get; private set; }
-
         public virtual Firma Firma { get; set; }
 
         [NotNull]

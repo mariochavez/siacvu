@@ -31,6 +31,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveOrganoInterno(OrganoInterno organoInterno)
         {
+            SaveOrganoInterno(organoInterno, false);
+        }
+
+        public void SaveOrganoInterno(OrganoInterno organoInterno, bool commit)
+        {
             if(organoInterno.Id == 0)
             {
                 organoInterno.Activo = true;
@@ -39,6 +44,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             organoInterno.ModificadoEl = DateTime.Now;
             
             organoInternoRepository.SaveOrUpdate(organoInterno);
+
+            if (commit)
+                organoInternoRepository.DbContext.CommitChanges();
         }
 
         public OrganoInterno[] GetAllOrganoInternos(Usuario usuario)

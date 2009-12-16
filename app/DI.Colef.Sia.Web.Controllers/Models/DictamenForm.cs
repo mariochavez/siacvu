@@ -14,6 +14,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoDictamenId { get; set; }
         public string TipoDictamenNombre { get; set; }
 
+        public int ComprobanteDictamenId { get; set; }
+        public string ComprobanteDictamenNombre { get; set; }
+
         public int FondoConacyt { get; set; }
         public int FondoConacytId { get; set; }
         public string FondoConacytNombre { get; set; }

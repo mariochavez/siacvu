@@ -34,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveOrganoExterno(OrganoExterno organoExterno)
         {
+            SaveOrganoExterno(organoExterno, false);
+        }
+
+        public void SaveOrganoExterno(OrganoExterno organoExterno, bool commit)
+        {
             if (organoExterno.IsTransient())
             {
                 organoExterno.Activo = true;
@@ -59,6 +64,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             organoExterno.ModificadoEl = DateTime.Now;
             
             organoExternoRepository.SaveOrUpdate(organoExterno);
+
+            if (commit)
+                organoExternoRepository.DbContext.CommitChanges();
         }
 
 	    public OrganoExterno[] GetAllOrganoExternos(Usuario usuario)

@@ -13,24 +13,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 5; // 5 Representa Distincion
 
-        public Distincion()
-        {
-            ArchivoDistinciones = new List<ArchivoDistincion>();
-        }
-
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoDistinciones.Add((ArchivoDistincion) archivo);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoDistinciones.Remove((ArchivoDistincion) archivo);
-        }
-
         [Valid]
-        public virtual IList<ArchivoDistincion> ArchivoDistinciones { get; private set; }
+        public virtual Archivo ComprobanteDistincion { get; set; }
 
         public virtual TipoDistincion TipoDistincion { get; set; }
 

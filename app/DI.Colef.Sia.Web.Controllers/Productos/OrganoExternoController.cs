@@ -17,11 +17,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IOrganoExternoMapper organoExternoMapper;
         readonly IOrganoExternoService organoExternoService;
         readonly ISectorMapper sectorMapper;
+        readonly IArchivoService archivoService;
         readonly ITipoOrganoMapper tipoOrganoMapper;
         readonly IPaisMapper paisMapper;
         
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
+                                       IArchivoService archivoService,
                                        ICatalogoService catalogoService,
                                        IUsuarioService usuarioService,
                                        ITipoOrganoMapper tipoOrganoMapper,
@@ -35,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.organoExternoMapper = organoExternoMapper;
             this.tipoOrganoMapper = tipoOrganoMapper;
             this.sectorMapper = sectorMapper;
+            this.archivoService = archivoService;
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
         }

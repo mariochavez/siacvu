@@ -18,9 +18,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly IConsejoComisionMapper consejoComisionMapper;
         readonly ICustomCollection customCollection;
+        readonly IArchivoService archivoService;
     
         public OrganoInternoController(IOrganoInternoService organoInternoService, 
-			IOrganoInternoMapper organoInternoMapper, 
+			IOrganoInternoMapper organoInternoMapper,
+            IArchivoService archivoService,
 			ICatalogoService catalogoService,
             ICustomCollection customCollection,
             IUsuarioService usuarioService,
@@ -30,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
 			this.catalogoService = catalogoService;
             this.customCollection = customCollection;
+            this.archivoService = archivoService;
             this.organoInternoService = organoInternoService;
             this.organoInternoMapper = organoInternoMapper;
 			this.consejoComisionMapper = consejoComisionMapper;

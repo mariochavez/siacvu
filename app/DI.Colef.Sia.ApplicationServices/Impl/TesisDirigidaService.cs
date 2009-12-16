@@ -34,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveTesisDirigida(TesisDirigida tesisDirigida)
         {
+            SaveTesisDirigida(tesisDirigida, false);
+        }
+
+        public void SaveTesisDirigida(TesisDirigida tesisDirigida, bool commit)
+        {
             if(tesisDirigida.IsTransient())
             {
                 tesisDirigida.Puntuacion = 0;
@@ -60,6 +65,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             tesisDirigida.ModificadoEl = DateTime.Now;
             
             tesisDirigidaRepository.SaveOrUpdate(tesisDirigida);
+
+            if (commit)
+                tesisDirigidaRepository.DbContext.CommitChanges();
         }
 
 	    public TesisDirigida[] GetAllTesisDirigidas(Usuario usuario)

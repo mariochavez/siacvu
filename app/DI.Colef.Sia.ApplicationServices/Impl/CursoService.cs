@@ -34,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveCurso(Curso curso)
         {
+            SaveCurso(curso, false);
+        }
+
+        public void SaveCurso(Curso curso, bool commit)
+        {
             if(curso.IsTransient())
             {
                 curso.Puntuacion = 0;
@@ -60,6 +65,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             curso.ModificadoEl = DateTime.Now;
             
             cursoRepository.SaveOrUpdate(curso);
+            
+            if (commit)
+                cursoRepository.DbContext.CommitChanges();
         }
 
 	    public Curso[] GetAllCursos(Usuario usuario)
