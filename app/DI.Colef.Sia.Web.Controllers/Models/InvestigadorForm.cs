@@ -51,6 +51,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public string NombreCompleto
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", UsuarioNombre, UsuarioApellidoPaterno, UsuarioApellidoMaterno);
+            }
+        }
+
         public string NombreCoautor
         {
             get
