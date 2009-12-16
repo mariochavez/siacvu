@@ -28,7 +28,7 @@
 	<div id="productogeneradoNew" class="minilistaboton">
 		<p>
 			<span>
-		    	<%=Html.ActionLink("+ Nuevo producto generado", "NewProducto", new { Id = Model.Id }, new { @class = "remote get" })%>
+		    	<%=Html.ActionLink("+ Agregar producto generado", "NewProducto", new { Id = Model.Id }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

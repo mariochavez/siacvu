@@ -74,7 +74,7 @@
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#ComprobanteOrganInterno_DocumentoProbatorio', 'Comprobante_FileQueue',
+        UploadFile.setup('#ComprobanteOrganoInterno_DocumentoProbatorio', 'Comprobante_FileQueue',
             uploader, cancelImg, action, auth);
     });
 </script>

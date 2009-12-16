@@ -32,7 +32,7 @@
     <% } %>
     
     <div id="sesionNew" class="minilistaboton">
-		<p><span><%=Html.ActionLink("+ Nueva Sesion", "NewSesion", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
+		<p><span><%=Html.ActionLink("+ Agregar Sesion", "NewSesion", new { Id = Model.Id }, new { @class = "remote get" })%></span></p>
 	</div><!--end minilistaboton-->	
           
 </div><!--end minilista-->
