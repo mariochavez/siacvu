@@ -37,6 +37,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveArticulo(Articulo articulo)
         {
+            SaveArticulo(articulo, false);
+        }
+
+        public void SaveArticulo(Articulo articulo, bool useCommit)
+        {
             if (articulo.IsTransient())
             {
                 articulo.Activo = true;
@@ -64,6 +69,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             articulo.ModificadoEl = DateTime.Now;
 
             articuloRepository.SaveOrUpdate(articulo);
+
+            if (useCommit)
+                articuloRepository.DbContext.CommitChanges();
         }
 
         public Articulo[] GetAllArticulos(Usuario usuario)

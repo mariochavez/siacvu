@@ -516,7 +516,7 @@
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
     <Content Include="Views\Investigador\ChangeSede.js.ascx" />
-    <Content Include="Views\Investigador\Save.js.ascx" />
+    <Content Include="Views\Shared\Save.js.ascx" />
     <Content Include="Views\Investigador\_ShowSni.ascx" />
     <Content Include="Views\Investigador\_ShowCategoria.ascx" />
     <Content Include="Views\Investigador\_ShowCargo.ascx" />

@@ -128,7 +128,7 @@ function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado']]
             ]
         );
 
