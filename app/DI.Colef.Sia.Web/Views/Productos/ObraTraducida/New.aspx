@@ -34,7 +34,7 @@
 	    <% Html.RenderPartial("_Message"); %>
 	    
 	    <div id="forma">
-			<% using (Html.BeginForm("Create", "ObraTraducida")) { %>
+			<% using (Html.BeginForm("Create", "ObraTraducida", FormMethod.Post, new { @class = "remote" })){ %>
 				<%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
@@ -57,15 +57,30 @@
                 </p>
 				
 				<h4>Estatus de la publicaci&oacute;n</h4>
-	            <% Html.RenderPartial("_ShowEstadoProducto", new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false }); %>
+	            <% Html.RenderPartial("_ShowEstadoProducto", 
+                    new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
+                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
+                        ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre,
+                        ComprobantePublicadoId = Model.Form.ComprobantePublicadoId, ComprobantePublicadoNombre = Model.Form.ComprobantePublicadoNombre}); %>
 	            
 	            <div id="TipoObraTraducida_fields">
                     <h4>Referencia bibliogr&aacute;fica</h4>
 			        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 			    </div>
+			    
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteObraTraducida_DocumentoProbatorio" id="ComprobanteObraTraducida_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+				
+				<% Html.RenderPartial("_ProgressBar"); %>
 		
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ObraTraducidaController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<ObraTraducidaController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->
@@ -76,6 +91,18 @@
     $(document).ready(function() {
         setupDocument();
         obraTraducidaSetup();
+
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+
+        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#Publicado_DocumentoProbatorio', 'Publicado_FileQueue',
+            uploader, cancelImg, action, auth);
+        UploadFile.setup('#ComprobanteObraTraducida_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>

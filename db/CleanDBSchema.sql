@@ -1725,8 +1725,8 @@ alter table ObraTraducidas  drop constraint FK1A338EFC25204D14
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC885B06C7]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
-alter table ObraTraducidas  drop constraint FK1A338EFC885B06C7
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC23D61D6C]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC23D61D6C
 
 
 
@@ -2147,11 +2147,6 @@ alter table ArchivoTesisDirigida  drop constraint FK6EC3CA8882C3B7BC
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6EC3CA88954C47FF]') AND parent_object_id = OBJECT_ID('ArchivoTesisDirigida'))
 alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
-
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK64C5808682C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoObraTraducida'))
-alter table ArchivoObraTraducida  drop constraint FK64C5808682C3B7BC
 
 
 
@@ -3073,8 +3068,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacionMedio') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacionMedio
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoTesisDirigida
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoObraTraducida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoObraTraducida
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoDistinciones') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoDistinciones
 
@@ -4273,7 +4266,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        FirmaFk INT null,
        ComprobanteAceptadoFk INT null,
        ComprobantePublicadoFk INT null,
-       ComprobanteReporteFk INT null,
+       ComprobanteObraTraducidaFk INT null,
        IdiomaFk INT null,
        AreaTematicaFk INT null,
        RevistaPublicacionFk INT null,
@@ -4504,11 +4497,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table ArchivoTesisDirigida (
         Archivo INT not null,
        TesisDirigidaFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoObraTraducida (
-        Archivo INT not null,
        primary key (Archivo)
     )
 
@@ -6044,8 +6032,8 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Archivos
 
     alter table ObraTraducidas 
-        add constraint FK1A338EFC885B06C7 
-        foreign key (ComprobanteReporteFk) 
+        add constraint FK1A338EFC23D61D6C 
+        foreign key (ComprobanteObraTraducidaFk) 
         references Archivos
 
     alter table ObraTraducidas 
@@ -6292,11 +6280,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK6EC3CA88954C47FF 
         foreign key (TesisDirigidaFk) 
         references TesisDirigidas
-
-    alter table ArchivoObraTraducida 
-        add constraint FK64C5808682C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
 
     alter table Articulos 
         add constraint FK3EB394D770EA6C9E 
