@@ -186,7 +186,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", evento.Id);
         }
 
-        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -217,16 +216,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var file = Request.Files["fileData"];
 
             var archivo = new Archivo
-            {
-                Activo = true,
-                Contenido = file.ContentType,
-                CreadoEl = DateTime.Now,
-                CreadoPor = CurrentUser(),
-                ModificadoEl = DateTime.Now,
-                ModificadoPor = CurrentUser(),
-                Nombre = file.FileName,
-                Tamano = file.ContentLength
-            };
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength
+                              };
 
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);

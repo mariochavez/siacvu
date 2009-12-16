@@ -31,14 +31,25 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 		
-            <% using (Html.BeginForm("Create", "OrganoExterno")) { %>
+            <% using (Html.BeginForm("Create", "OrganoExterno", FormMethod.Post, new { @class = "remote" })){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
                 <% Html.RenderPartial("_DatosOrganoExterno", Model.Form); %>
+                
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteOrganoExterno_DocumentoProbatorio" id="ComprobanteOrganoExterno_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+				
+				<% Html.RenderPartial("_ProgressBar"); %>
 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<OrganoExternoController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<OrganoExternoController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -47,7 +58,15 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
-        setupDocument();
+    setupDocument();
+
+    var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+    var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+    var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+    var action = '<%=Url.Action("AddFile") %>';
+
+    UploadFile.setup('#ComprobanteOrganoExterno_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>

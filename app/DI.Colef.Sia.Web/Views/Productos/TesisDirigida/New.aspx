@@ -31,7 +31,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Create", "TesisDirigida")) { %>
+            <% using (Html.BeginForm("Create", "TesisDirigida", FormMethod.Post, new { @class = "remote" })){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -53,9 +53,20 @@
                     <h4>Datos de la tesis presentada</h4>
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form); %>
                 </div>
+                
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteTesisDirigida_DocumentoProbatorio" id="ComprobanteTesisDirigida_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+				
+				<% Html.RenderPartial("_ProgressBar"); %>
 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -66,6 +77,14 @@
     $(document).ready(function() {
         setupDocument();
         tesisSetup();
+
+        var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+        var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+        var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var action = '<%=Url.Action("AddFile") %>';
+
+        UploadFile.setup('#ComprobanteTesisDirigida_DocumentoProbatorio', 'Comprobante_FileQueue',
+            uploader, cancelImg, action, auth);
     });
 </script>
 </asp:Content>
