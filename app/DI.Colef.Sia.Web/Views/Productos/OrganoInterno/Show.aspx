@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<OrganoInternoForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
@@ -67,6 +68,16 @@
                         <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>
                     </p>
                 <% } %>
+                <p>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteOrganoInternoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteOrganoInternoId), Model.Form.ComprobanteOrganoInternoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<OrganoInternoController>(x => x.Index(), "Regresar") %>

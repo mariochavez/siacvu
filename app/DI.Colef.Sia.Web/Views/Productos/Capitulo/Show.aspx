@@ -125,6 +125,16 @@
                     <label>N&uacute;mero de citas</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
                 </p>
+                <p>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCapituloNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCapituloId), Model.Form.ComprobanteCapituloNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
                 <% } %>
                 
                 <p class="submit">

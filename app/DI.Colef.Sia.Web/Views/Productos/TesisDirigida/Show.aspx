@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<TesisDirigidaForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
@@ -53,11 +54,6 @@
                 
                 <% if (Model.Form.TipoTesis == 1){ %>
                     <h4>Participaci&oacute;n en tesis de El Colef</h4>
-                    <p>
-                        <label>Nombre del alumno(autor)</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.TesisPosgrado.NombreAlumno) %>&nbsp;</span>
-                    </p>
-                    
                     <% Html.RenderPartial("_ShowTesisInterna", Model.Form);%>
                 <% } %>
                 
@@ -69,6 +65,17 @@
                 <% if (Model.Form.SubdisciplinaId != 0) { %>
             	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
+                
+                <p>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTesisDirigidaNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTesisDirigidaId), Model.Form.ComprobanteTesisDirigidaNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
                 
                 <p class="submit">
                     <%=Html.ActionLink<TesisDirigidaController>(x => x.Index(), "Regresar") %>
