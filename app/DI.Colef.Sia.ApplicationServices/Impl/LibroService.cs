@@ -36,6 +36,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveLibro(Libro libro)
         {
+            SaveLibro(libro, false);
+        }
+
+        public void SaveLibro(Libro libro, bool commit)
+        {
             if(libro.IsTransient())
             {
                 libro.Puntuacion = 0;
@@ -63,6 +68,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             libro.ModificadoEl = DateTime.Now;
             
             libroRepository.SaveOrUpdate(libro);
+
+            if (commit)
+                libroRepository.DbContext.CommitChanges();
         }
 
 	    public Libro[] GetAllLibros(Usuario usuario)

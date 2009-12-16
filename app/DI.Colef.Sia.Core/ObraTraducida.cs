@@ -21,7 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorInternoObraTraducidas = new List<CoautorInternoObraTraducida>();
             AutorInternoObraTraducidas = new List<AutorInternoObraTraducida>();
             AutorExternoObraTraducidas = new List<AutorExternoObraTraducida>();
-            ArchivoObraTraducidas = new List<ArchivoObraTraducida>();
             EditorialObraTraducidas = new List<EditorialObraTraducida>();
 		}
 
@@ -47,12 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorExternoObraTraducidas.Add((AutorExternoObraTraducida)autorExterno);
         }
 
-        public virtual void AddArchivo(Archivo archivo)
-        {
-            archivo.TipoProducto = tipoProducto;
-            ArchivoObraTraducidas.Add((ArchivoObraTraducida)archivo);
-        }
-
         public virtual void AddEditorial(EditorialProducto editorial)
         {
             editorial.TipoProducto = tipoProducto;
@@ -62,11 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual void DeleteEditorial(EditorialProducto editorial)
         {
             EditorialObraTraducidas.Remove((EditorialObraTraducida)editorial);
-        }
-
-        public virtual void DeleteArchivo(Archivo archivo)
-        {
-            ArchivoObraTraducidas.Remove((ArchivoObraTraducida)archivo);
         }
 
         public virtual void DeleteCoautorInterno(CoautorInternoProducto coautorInterno)
@@ -98,7 +86,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Firma Firma { get; set; }
 
         [Valid]
-        public virtual IList<ArchivoObraTraducida> ArchivoObraTraducidas { get; private set; }
+        public virtual Archivo ComprobanteAceptado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobantePublicado { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteReporte { get; set; }
 
         [Valid]
         public virtual IList<AutorInternoObraTraducida> AutorInternoObraTraducidas { get; private set; }

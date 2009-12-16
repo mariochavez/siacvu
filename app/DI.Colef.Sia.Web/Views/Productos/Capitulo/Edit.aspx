@@ -34,7 +34,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-	        <% using (Html.BeginForm("Update", "Capitulo")){ %>
+	        <% using (Html.BeginForm("Update", "Capitulo", FormMethod.Post, new{ @class = "remote"})) { %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>        
 
@@ -62,9 +62,11 @@
 	            
 	            <h4>Referencia bibliogr&aacute;fica</h4>
 			    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			    
+			    <% Html.RenderPartial("_ProgressBar"); %>
             
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar", new{id="regresar"})%>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

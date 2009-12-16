@@ -34,6 +34,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
 
+        public int ComprobanteAceptadoId { get; set; }
+        public string ComprobanteAceptadoNombre { get; set; }
+
+        public int ComprobantePublicadoId { get; set; }
+        public string ComprobantePublicadoNombre { get; set; }
+
+        public int ComprobanteObraTraducidaId { get; set; }
+        public string ComprobanteObraTraducidaNombre { get; set; }
+
         public string AreaTematicaNombre { get; set; }
         public int AreaTematicaId { get; set; }
 

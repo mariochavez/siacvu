@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Resena[] GetAllResenas();
         Resena[] GetActiveResenas();
         void SaveResena(Resena resena);
+        void SaveResena(Resena resena, bool commit);
 	    Resena[] GetAllResenas(Usuario usuario);
     }
 }

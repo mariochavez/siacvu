@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Reporte[] GetAllReportes();
         Reporte[] GetActiveReportes();
         void SaveReporte(Reporte reporte);
+        void SaveReporte(Reporte reporte, bool commit);
 	    Reporte[] GetAllReportes(Usuario usuario);
     }
 }

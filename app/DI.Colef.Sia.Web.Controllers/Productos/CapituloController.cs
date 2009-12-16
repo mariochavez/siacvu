@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -24,10 +25,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IEditorialCapituloMapper editorialCapituloMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
+                                  IArchivoService archivoService,
                                   ICoautorExternoCapituloMapper coautorExternoCapituloMapper,
                                   ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                                   IAutorExternoCapituloMapper autorExternoCapituloMapper,
@@ -39,6 +42,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.capituloService = capituloService;
+            this.archivoService = archivoService;
             this.capituloMapper = capituloMapper;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
@@ -165,22 +169,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                               coautorExterno, coautorInterno, autorExterno, autorInterno, editorial);
-
-            if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
+            ModelState.AddModelErrors(capitulo.ValidationResults(), true, "Capitulo");
+            if (!ModelState.IsValid)
             {
-                var capituloForm = capituloMapper.Map(capitulo);
-
-                ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
-                FormSetCombos(capituloForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
-            capituloService.SaveCapitulo(capitulo);
+            //if (!IsValidateModel(capitulo, form, Title.New, "Capitulo"))
+            //{
+            //    var capituloForm = capituloMapper.Map(capitulo);
 
-            return RedirectToHomeIndex(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
+            //    ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
+            //    FormSetCombos(capituloForm);
+            //    return ViewNew();
+            //}
+
+            capituloService.SaveCapitulo(capitulo);
+            SetMessage(String.Format("Capítulo {0} ha sido creado", capitulo.NombreCapitulo));
+
+            return Rjs("Save", capitulo.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -188,18 +198,75 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var capitulo = capituloMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(capitulo, form, Title.Edit))
+            ModelState.AddModelErrors(capitulo.ValidationResults(), true, "Capitulo");
+            if (!ModelState.IsValid)
             {
-                var capituloForm = capituloMapper.Map(capitulo);
+                return Rjs("ModelError");
+            }
 
-                ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
-                FormSetCombos(capituloForm);
-                return ViewEdit();
+            //if (!IsValidateModel(capitulo, form, Title.Edit))
+            //{
+            //    var capituloForm = capituloMapper.Map(capitulo);
+
+            //    ((GenericViewData<CapituloForm>) ViewData.Model).Form = SetupNewForm(capituloForm);
+            //    FormSetCombos(capituloForm);
+            //    return ViewEdit();
+            //}
+
+            capituloService.SaveCapitulo(capitulo, true);
+            SetMessage(String.Format ("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
+
+            return Rjs("Save", capitulo.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = capitulo.TipoProducto;
+                archivoService.Save(archivo);
+                capitulo.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = capitulo.TipoProducto;
+                archivoService.Save(archivo);
+                capitulo.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "ComprobanteCapitulo")
+            {
+                archivo.TipoProducto = capitulo.TipoProducto;
+                archivoService.Save(archivo);
+                capitulo.ComprobanteCapitulo = archivo;
             }
 
             capituloService.SaveCapitulo(capitulo);
 
-            return RedirectToHomeIndex(String.Format("Capítulo {0} ha sido modificado", capitulo.NombreCapitulo));
+            return Content("Uploaded");
         }
 
         [Authorize]

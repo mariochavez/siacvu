@@ -81,6 +81,8 @@
 			
 			<% Html.RenderPartial("_ProgressBar"); %>
 			
+			<% Html.RenderPartial("_ProgressBar"); %>
+			
             <p class="submit">
                 <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar", new { id = "regresar" }) %>
             </p>

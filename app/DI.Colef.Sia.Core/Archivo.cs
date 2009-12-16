@@ -29,11 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
     }
 
-    public class ArchivoCapitulo : Archivo
-    {
-
-    }
-
     public class ArchivoCurso : Archivo
     {
 
@@ -54,11 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
     }
 
-    public class ArchivoLibro : Archivo
-    {
-
-    }
-
     public class ArchivoOrganoExterno : Archivo
     {
 
@@ -75,16 +65,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     }
 
     public class ArchivoParticipacionMedio : Archivo
-    {
-
-    }
-
-    public class ArchivoReporte : Archivo
-    {
-
-    }
-
-    public class ArchivoResena : Archivo
     {
 
     }

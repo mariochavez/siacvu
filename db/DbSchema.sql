@@ -287,6 +287,18 @@ alter table Libros  drop constraint FK439120E78A77AB9C
 alter table Libros  drop constraint FK439120E7295BC133
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E74C8A2228]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E74C8A2228
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E725204D14]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E725204D14
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E71F304754]') AND parent_object_id = OBJECT_ID('Libros'))
+alter table Libros  drop constraint FK439120E71F304754
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK439120E7BC063744]') AND parent_object_id = OBJECT_ID('Libros'))
 alter table Libros  drop constraint FK439120E7BC063744
 
@@ -403,6 +415,18 @@ alter table Resenas  drop constraint FKF708AE62F4FE4035
 alter table Resenas  drop constraint FKF708AE62CB4F3F6C
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE624C8A2228]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE624C8A2228
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE6225204D14]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE6225204D14
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE62B29B90A1]') AND parent_object_id = OBJECT_ID('Resenas'))
+alter table Resenas  drop constraint FKF708AE62B29B90A1
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF708AE627A8488F7]') AND parent_object_id = OBJECT_ID('Resenas'))
 alter table Resenas  drop constraint FKF708AE627A8488F7
 
@@ -437,6 +461,18 @@ alter table Resenas  drop constraint FKF708AE6274E8BAB7
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE1CB4F3F6C]') AND parent_object_id = OBJECT_ID('Reportes'))
 alter table Reportes  drop constraint FK26728BE1CB4F3F6C
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE14C8A2228]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE14C8A2228
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE125204D14]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE125204D14
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE1885B06C7]') AND parent_object_id = OBJECT_ID('Reportes'))
+alter table Reportes  drop constraint FK26728BE1885B06C7
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK26728BE170EA6C9E]') AND parent_object_id = OBJECT_ID('Reportes'))
@@ -1335,6 +1371,18 @@ alter table Categorias  drop constraint FK9AD9767274E8BAB7
 alter table ObraTraducidas  drop constraint FK1A338EFCCB4F3F6C
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC4C8A2228]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC4C8A2228
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC25204D14]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC25204D14
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC885B06C7]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
+alter table ObraTraducidas  drop constraint FK1A338EFC885B06C7
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK1A338EFC6425E2FD]') AND parent_object_id = OBJECT_ID('ObraTraducidas'))
 alter table ObraTraducidas  drop constraint FK1A338EFC6425E2FD
 
@@ -1499,6 +1547,18 @@ alter table Firmas  drop constraint FK1BC2D59F74E8BAB7
 alter table Capitulos  drop constraint FK3165FEADCB4F3F6C
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD4C8A2228]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD4C8A2228
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD25204D14]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD25204D14
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD8A2373AB]') AND parent_object_id = OBJECT_ID('Capitulos'))
+alter table Capitulos  drop constraint FK3165FEAD8A2373AB
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3165FEAD70EA6C9E]') AND parent_object_id = OBJECT_ID('Capitulos'))
 alter table Capitulos  drop constraint FK3165FEAD70EA6C9E
 
@@ -1591,14 +1651,6 @@ alter table Archivos  drop constraint FKD4AF217E62D605DB
 alter table Archivos  drop constraint FKD4AF217E74E8BAB7
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F93781982C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCapitulo'))
-alter table ArchivoCapitulo  drop constraint FK6F93781982C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F937819A1B3F60D]') AND parent_object_id = OBJECT_ID('ArchivoCapitulo'))
-alter table ArchivoCapitulo  drop constraint FK6F937819A1B3F60D
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK73A5D66B82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoCurso'))
 alter table ArchivoCurso  drop constraint FK73A5D66B82C3B7BC
 
@@ -1631,14 +1683,6 @@ alter table ArchivoEvento  drop constraint FK94C557A482C3B7BC
 alter table ArchivoEvento  drop constraint FK94C557A43BA127C1
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA3244AFA82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoLibro'))
-alter table ArchivoLibro  drop constraint FKA3244AFA82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKA3244AFA586827F8]') AND parent_object_id = OBJECT_ID('ArchivoLibro'))
-alter table ArchivoLibro  drop constraint FKA3244AFA586827F8
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK3CF46F8382C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoOrganoExterno'))
 alter table ArchivoOrganoExterno  drop constraint FK3CF46F8382C3B7BC
 
@@ -1667,22 +1711,6 @@ alter table ArchivoParticipacionMedio  drop constraint FKD42B3782C3B7BC
 alter table ArchivoParticipacionMedio  drop constraint FKD42B37D6AE79E4
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4682E10D82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoReporte'))
-alter table ArchivoReporte  drop constraint FK4682E10D82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK4682E10D13FE2142]') AND parent_object_id = OBJECT_ID('ArchivoReporte'))
-alter table ArchivoReporte  drop constraint FK4682E10D13FE2142
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE95B9CBC82C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoResena'))
-alter table ArchivoResena  drop constraint FKE95B9CBC82C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKE95B9CBCFF48CC4D]') AND parent_object_id = OBJECT_ID('ArchivoResena'))
-alter table ArchivoResena  drop constraint FKE95B9CBCFF48CC4D
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6EC3CA8882C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoTesisDirigida'))
 alter table ArchivoTesisDirigida  drop constraint FK6EC3CA8882C3B7BC
 
@@ -1693,10 +1721,6 @@ alter table ArchivoTesisDirigida  drop constraint FK6EC3CA88954C47FF
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK64C5808682C3B7BC]') AND parent_object_id = OBJECT_ID('ArchivoObraTraducida'))
 alter table ArchivoObraTraducida  drop constraint FK64C5808682C3B7BC
-
-
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK64C58086F7D09D3A]') AND parent_object_id = OBJECT_ID('ArchivoObraTraducida'))
-alter table ArchivoObraTraducida  drop constraint FK64C58086F7D09D3A
 
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK6F92D79862D605DB]') AND parent_object_id = OBJECT_ID('TipoDistinciones'))
@@ -2453,8 +2477,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoCapitulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoCapitulo
-
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoCurso') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoCurso
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoDictamen') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoDictamen
@@ -2463,8 +2485,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoEvento') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoEvento
 
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoLibro') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoLibro
-
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoExterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoExterno
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoOrganoInterno') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoOrganoInterno
@@ -2472,10 +2492,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacion') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacion
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoParticipacionMedio') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoParticipacionMedio
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoReporte') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoReporte
-
-    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoResena') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoResena
 
     if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoTesisDirigida') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoTesisDirigida
 
@@ -2859,6 +2875,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ProyectoFk INT null,
        AreaTematicaFk INT null,
        AreaFk INT null,
+       ComprobanteAceptadoFk INT null,
+       ComprobantePublicadoFk INT null,
+       ComprobanteLibroFk INT null,
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        FirmaFk INT null,
@@ -2985,6 +3004,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        DisciplinaFk INT null,
        SubdisciplinaFk INT null,
        FirmaFk INT null,
+       ComprobanteAceptadoFk INT null,
+       ComprobantePublicadoFk INT null,
+       ComprobanteResenaFk INT null,
        PaisFk INT null,
        RevistaPublicacionFk INT null,
        EditorialFk INT null,
@@ -3017,6 +3039,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        FirmaFk INT null,
+       ComprobanteAceptadoFk INT null,
+       ComprobantePublicadoFk INT null,
+       ComprobanteReporteFk INT null,
        ProyectoFk INT null,
        InstitucionFk INT null,
        AreaTematicaFk INT null,
@@ -3722,6 +3747,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        FirmaFk INT null,
+       ComprobanteAceptadoFk INT null,
+       ComprobantePublicadoFk INT null,
+       ComprobanteReporteFk INT null,
        IdiomaFk INT null,
        AreaTematicaFk INT null,
        RevistaPublicacionFk INT null,
@@ -3859,6 +3887,9 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        FirmaFk INT null,
+       ComprobanteAceptadoFk INT null,
+       ComprobantePublicadoFk INT null,
+       ComprobanteCapituloFk INT null,
        ProyectoFk INT null,
        AreaTematicaFk INT null,
        AreaFk INT null,
@@ -3916,12 +3947,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        primary key (Id)
     )
 
-    create table ArchivoCapitulo (
-        Archivo INT not null,
-       CapituloFk INT null,
-       primary key (Archivo)
-    )
-
     create table ArchivoCurso (
         Archivo INT not null,
        CursoFk INT null,
@@ -3943,12 +3968,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
     create table ArchivoEvento (
         Archivo INT not null,
        EventoFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoLibro (
-        Archivo INT not null,
-       LibroFk INT null,
        primary key (Archivo)
     )
 
@@ -3975,18 +3994,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        primary key (Archivo)
     )
 
-    create table ArchivoReporte (
-        Archivo INT not null,
-       ReporteFk INT null,
-       primary key (Archivo)
-    )
-
-    create table ArchivoResena (
-        Archivo INT not null,
-       ResenaFk INT null,
-       primary key (Archivo)
-    )
-
     create table ArchivoTesisDirigida (
         Archivo INT not null,
        TesisDirigidaFk INT null,
@@ -3995,7 +4002,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table ArchivoObraTraducida (
         Archivo INT not null,
-       ObraTraducidaFk INT null,
        primary key (Archivo)
     )
 
@@ -4896,6 +4902,21 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Areas
 
     alter table Libros 
+        add constraint FK439120E74C8A2228 
+        foreign key (ComprobanteAceptadoFk) 
+        references Archivos
+
+    alter table Libros 
+        add constraint FK439120E725204D14 
+        foreign key (ComprobantePublicadoFk) 
+        references Archivos
+
+    alter table Libros 
+        add constraint FK439120E71F304754 
+        foreign key (ComprobanteLibroFk) 
+        references Archivos
+
+    alter table Libros 
         add constraint FK439120E7BC063744 
         foreign key (DisciplinaFk) 
         references Disciplinas
@@ -5041,6 +5062,21 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Firmas
 
     alter table Resenas 
+        add constraint FKF708AE624C8A2228 
+        foreign key (ComprobanteAceptadoFk) 
+        references Archivos
+
+    alter table Resenas 
+        add constraint FKF708AE6225204D14 
+        foreign key (ComprobantePublicadoFk) 
+        references Archivos
+
+    alter table Resenas 
+        add constraint FKF708AE62B29B90A1 
+        foreign key (ComprobanteResenaFk) 
+        references Archivos
+
+    alter table Resenas 
         add constraint FKF708AE627A8488F7 
         foreign key (PaisFk) 
         references Paises
@@ -5084,6 +5120,21 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK26728BE1CB4F3F6C 
         foreign key (FirmaFk) 
         references Firmas
+
+    alter table Reportes 
+        add constraint FK26728BE14C8A2228 
+        foreign key (ComprobanteAceptadoFk) 
+        references Archivos
+
+    alter table Reportes 
+        add constraint FK26728BE125204D14 
+        foreign key (ComprobantePublicadoFk) 
+        references Archivos
+
+    alter table Reportes 
+        add constraint FK26728BE1885B06C7 
+        foreign key (ComprobanteReporteFk) 
+        references Archivos
 
     alter table Reportes 
         add constraint FK26728BE170EA6C9E 
@@ -6206,6 +6257,21 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Firmas
 
     alter table ObraTraducidas 
+        add constraint FK1A338EFC4C8A2228 
+        foreign key (ComprobanteAceptadoFk) 
+        references Archivos
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC25204D14 
+        foreign key (ComprobantePublicadoFk) 
+        references Archivos
+
+    alter table ObraTraducidas 
+        add constraint FK1A338EFC885B06C7 
+        foreign key (ComprobanteReporteFk) 
+        references Archivos
+
+    alter table ObraTraducidas 
         add constraint FK1A338EFC6425E2FD 
         foreign key (IdiomaFk) 
         references Idiomas
@@ -6411,6 +6477,21 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         references Firmas
 
     alter table Capitulos 
+        add constraint FK3165FEAD4C8A2228 
+        foreign key (ComprobanteAceptadoFk) 
+        references Archivos
+
+    alter table Capitulos 
+        add constraint FK3165FEAD25204D14 
+        foreign key (ComprobantePublicadoFk) 
+        references Archivos
+
+    alter table Capitulos 
+        add constraint FK3165FEAD8A2373AB 
+        foreign key (ComprobanteCapituloFk) 
+        references Archivos
+
+    alter table Capitulos 
         add constraint FK3165FEAD70EA6C9E 
         foreign key (ProyectoFk) 
         references Proyectos
@@ -6525,16 +6606,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (ModificadoPorFk) 
         references Usuarios
 
-    alter table ArchivoCapitulo 
-        add constraint FK6F93781982C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoCapitulo 
-        add constraint FK6F937819A1B3F60D 
-        foreign key (CapituloFk) 
-        references Capitulos
-
     alter table ArchivoCurso 
         add constraint FK73A5D66B82C3B7BC 
         foreign key (Archivo) 
@@ -6575,16 +6646,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (EventoFk) 
         references Eventos
 
-    alter table ArchivoLibro 
-        add constraint FKA3244AFA82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoLibro 
-        add constraint FKA3244AFA586827F8 
-        foreign key (LibroFk) 
-        references Libros
-
     alter table ArchivoOrganoExterno 
         add constraint FK3CF46F8382C3B7BC 
         foreign key (Archivo) 
@@ -6620,26 +6681,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         foreign key (ParticipacionMedioFk) 
         references ParticipacionMedios
 
-    alter table ArchivoReporte 
-        add constraint FK4682E10D82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoReporte 
-        add constraint FK4682E10D13FE2142 
-        foreign key (ReporteFk) 
-        references Reportes
-
-    alter table ArchivoResena 
-        add constraint FKE95B9CBC82C3B7BC 
-        foreign key (Archivo) 
-        references Archivos
-
-    alter table ArchivoResena 
-        add constraint FKE95B9CBCFF48CC4D 
-        foreign key (ResenaFk) 
-        references Resenas
-
     alter table ArchivoTesisDirigida 
         add constraint FK6EC3CA8882C3B7BC 
         foreign key (Archivo) 
@@ -6654,11 +6695,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK64C5808682C3B7BC 
         foreign key (Archivo) 
         references Archivos
-
-    alter table ArchivoObraTraducida 
-        add constraint FK64C58086F7D09D3A 
-        foreign key (ObraTraducidaFk) 
-        references ObraTraducidas
 
     alter table TipoDistinciones 
         add constraint FK6F92D79862D605DB 

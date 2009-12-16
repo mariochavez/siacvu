@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
@@ -17,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICatalogoService catalogoService;
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
+        readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
@@ -41,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  ICustomCollection customCollection,
                                  ICoautorInternoReporteMapper coautorInternoReporteMapper,
                                  ISearchService searchService,
+                                 IArchivoService archivoService,
                                  IProyectoService proyectoService,
                                  IAreaTematicaMapper areaTematicaMapper,
                                  ILineaTematicaMapper lineaTematicaMapper, 
@@ -50,6 +53,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
+            this.archivoService = archivoService;
             this.customCollection = customCollection;
             this.reporteService = reporteService;
             this.reporteMapper = reporteMapper;
@@ -175,40 +179,102 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador(),
                                             coautorExterno, coautorInterno, institucion);
-
-            if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
+            ModelState.AddModelErrors(reporte.ValidationResults(), true, "Reporte");
+            if (!ModelState.IsValid)
             {
-                var reporteForm = reporteMapper.Map(reporte);
-
-                ((GenericViewData<ReporteForm>)ViewData.Model).Form = SetupNewForm(reporteForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
-            reporteService.SaveReporte(reporte);
+            //if (!IsValidateModel(reporte, form, Title.New, "Reporte"))
+            //{
+            //    var reporteForm = reporteMapper.Map(reporte);
 
-            return RedirectToHomeIndex(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
+            //    ((GenericViewData<ReporteForm>)ViewData.Model).Form = SetupNewForm(reporteForm);
+            //    return ViewNew();
+            //}
+
+            reporteService.SaveReporte(reporte);
+            SetMessage(String.Format("Reporte {0} ha sido creado", reporte.Titulo));
+
+            return Rjs("Save", reporte.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ReporteForm form)
         {
             var reporte = reporteMapper.Map(form, CurrentUser(), CurrentInvestigador());
-
-            if (!IsValidateModel(reporte, form, Title.Edit))
+            ModelState.AddModelErrors(reporte.ValidationResults(), true, "Reporte");
+            if (!ModelState.IsValid)
             {
-                var reporteForm = reporteMapper.Map(reporte);
+                return Rjs("ModelError");
+            }
 
-                ((GenericViewData<ReporteForm>) ViewData.Model).Form = SetupNewForm(reporteForm);
-                FormSetCombos(reporteForm);
-                return ViewEdit();
+            //if (!IsValidateModel(reporte, form, Title.Edit))
+            //{
+            //    var reporteForm = reporteMapper.Map(reporte);
+
+            //    ((GenericViewData<ReporteForm>) ViewData.Model).Form = SetupNewForm(reporteForm);
+            //    FormSetCombos(reporteForm);
+            //    return ViewEdit();
+            //}
+
+            reporteService.SaveReporte(reporte, true);
+            SetMessage(String.Format("Reporte {0} ha sido modificado", reporte.Titulo));
+
+            return Rjs("Save", reporte.Id);
+        }
+
+        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var reporte = reporteService.GetReporteById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "Aceptado")
+            {
+                archivo.TipoProducto = reporte.TipoProducto;
+                archivoService.Save(archivo);
+                reporte.ComprobanteAceptado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Publicado")
+            {
+                archivo.TipoProducto = reporte.TipoProducto;
+                archivoService.Save(archivo);
+                reporte.ComprobantePublicado = archivo;
+            }
+            else if (form["TipoArchivo"] == "Comprobantereporte")
+            {
+                archivo.TipoProducto = reporte.TipoProducto;
+                archivoService.Save(archivo);
+                reporte.ComprobanteReporte = archivo;
             }
 
             reporteService.SaveReporte(reporte);
 
-            return RedirectToHomeIndex(String.Format("Reporte {0} ha sido modificado", reporte.Titulo));
+            return Content("Uploaded");
         }
 
         [Authorize]
