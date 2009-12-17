@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(libro.IsTransient())
             {
-                libro.Puntuacion = 0;
+                libro.Puntuacion = 0.0m;
                 libro.Activo = true;
                 libro.CreadoEl = DateTime.Now;
 

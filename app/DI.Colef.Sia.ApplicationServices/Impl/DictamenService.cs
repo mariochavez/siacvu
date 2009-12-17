@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(dictamen.IsTransient())
             {
-                dictamen.Puntuacion = 0;
+                dictamen.Puntuacion = 0.0m;
                 dictamen.Activo = true;
                 dictamen.CreadoEl = DateTime.Now;
 

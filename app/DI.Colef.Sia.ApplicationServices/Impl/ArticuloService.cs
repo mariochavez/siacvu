@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 articulo.Activo = true;
                 articulo.CreadoEl = DateTime.Now;
-                articulo.Puntuacion = 0;
+                articulo.Puntuacion = 0.0m;
 
                 var firma = new Firma
                                 {

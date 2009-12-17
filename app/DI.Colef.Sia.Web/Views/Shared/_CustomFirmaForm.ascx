@@ -8,7 +8,7 @@
     <p>Para confirmar que el contenido del producto es v&aacute;lido, indique la puntuaci&oacute;n y presione el 
     bot&oacute;n con la leyenda <strong>Validar</strong></p>
     <p>
-        <%=Html.TextBox("PuntuacionSieva", 0, new { @class = "input250-requerido" })%>
+        <%=Html.TextBox("PuntuacionSieva", 0.00, new { @class = "input100-requerido" })%>
     </p>
     <div class="minilistaboton">
         <p><span><%=Html.ActionLink("Validar", "DgaaValidateProduct", null, new { @class = "remoteform", rel = "#firmaform" })%></span></p>

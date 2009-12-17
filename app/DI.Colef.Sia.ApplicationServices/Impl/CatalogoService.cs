@@ -752,7 +752,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 revistaPublicacion.Activo = true;
                 revistaPublicacion.CreadoEl = DateTime.Now;
-                revistaPublicacion.Puntuacion = 0;
+                revistaPublicacion.Puntuacion = 0.0m;
             }
 
             revistaPublicacion.ModificadoEl = DateTime.Now;

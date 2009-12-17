@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if (reporte.IsTransient())
             {
-                reporte.Puntuacion = 0;
+                reporte.Puntuacion = 0.0m;
                 reporte.Activo = true;
                 reporte.CreadoEl = DateTime.Now;
 

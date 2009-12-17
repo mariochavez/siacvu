@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaPresentacion { get; set; }
         
-        public virtual int Puntuacion { get; set; }
+        public virtual decimal Puntuacion { get; set; }
         
         public virtual Usuario CreadoPor { get; set; }
 

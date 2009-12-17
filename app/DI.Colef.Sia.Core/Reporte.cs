@@ -112,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int NoPaginas { get; set; }
 
-        public virtual int Puntuacion { get; set; }
+        public virtual decimal Puntuacion { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

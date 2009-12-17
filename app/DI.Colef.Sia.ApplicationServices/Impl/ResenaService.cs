@@ -43,7 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(resena.IsTransient())
             {
-                resena.Puntuacion = 0;
+                resena.Puntuacion = 0.0m;
                 resena.Activo = true;
                 resena.CreadoEl = DateTime.Now;
 

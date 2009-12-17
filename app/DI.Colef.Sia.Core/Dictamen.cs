@@ -54,7 +54,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual FondoConacyt FondoConacyt { get; set; }
 
-        public virtual int Puntuacion { get; set; }
+        public virtual decimal Puntuacion { get; set; }
 
         public virtual TipoDictamen TipoDictamen { get; set; }
 

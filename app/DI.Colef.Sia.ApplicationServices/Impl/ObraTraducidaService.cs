@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(obraTraducida.IsTransient())
             {
-                obraTraducida.Puntuacion = 0;
+                obraTraducida.Puntuacion = 0.0m;
                 obraTraducida.Activo = true;
                 obraTraducida.CreadoEl = DateTime.Now;
 

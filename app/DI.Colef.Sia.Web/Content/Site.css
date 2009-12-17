@@ -481,7 +481,7 @@ a.editabusqueda {
 }
 
 .elementobotones span {
-	margin: 0 0 0 5px;
+	margin: 0 0 0 1px;
 	padding: 5px 9px 5px 10px;
 	font-size: 10pt;
 	font-weight: bold;
@@ -686,8 +686,24 @@ a.editabusqueda {
     font-weight:bold;
 }
 
-#forma span.field-validation-error, #firmaform span.field-validation-error {
-	margin: 0 0 0 160px;
+#forma span.valor a{
+    color: #BA5C2B;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+#forma span.valor a:hover, #forma span.valor a.selected {
+	color: #555;
+}
+
+#forma span.field-validation-error {
+	margin: 0 0 0 168px;
+	color: #FF0000;
+	display: block;
+}
+
+#firmaform span.field-validation-error {
+	margin: 0 0 0 10px;
 	color: #FF0000;
 	display: block;
 }

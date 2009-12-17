@@ -45,7 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(evento.IsTransient())
             {
-                evento.Puntuacion = 0;
+                evento.Puntuacion = 0.0m;
                 evento.Activo = true;
                 evento.CreadoEl = DateTime.Now;
 

@@ -146,7 +146,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<EditorialCapitulo> EditorialCapitulos { get; private set; }
 
-        public virtual int Puntuacion { get; set; }
+        public virtual decimal Puntuacion { get; set; }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }

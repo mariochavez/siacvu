@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual Usuario Usuario3 { get; set; }
 
-        public virtual int PuntuacionSieva { get; set; }
+        public virtual decimal PuntuacionSieva { get; set; }
 
 	    public virtual string Descripcion { get; set; }
 

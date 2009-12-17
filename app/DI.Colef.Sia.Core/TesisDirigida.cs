@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Institucion Institucion { get; set; }
 
-        public virtual int Puntuacion { get; set; }
+        public virtual decimal Puntuacion { get; set; }
 
         public virtual Sector Sector { get; set; }
 

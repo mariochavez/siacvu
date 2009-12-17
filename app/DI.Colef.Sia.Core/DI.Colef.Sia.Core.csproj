@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -238,6 +238,7 @@
     <EmbeddedResource Include="NHibernateValidator\SpanishValidatorMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SpanishValidatorMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

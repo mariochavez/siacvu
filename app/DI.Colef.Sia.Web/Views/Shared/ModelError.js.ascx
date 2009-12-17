@@ -8,6 +8,7 @@ $('#mensaje-error').text('');
 
 $('span.field-validation-error').remove();
 $('input').removeClass('input-validation-error');
+$('textarea').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
         
 <% foreach (var key in ViewData.ModelState.Keys) { %>

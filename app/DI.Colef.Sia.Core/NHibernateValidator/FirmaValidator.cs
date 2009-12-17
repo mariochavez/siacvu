@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                         if (firma.PuntuacionSieva == 0)
                         {
                             constraintValidatorContext.DisableDefaultError();
-                            constraintValidatorContext.AddInvalid<Firma, int>(
+                            constraintValidatorContext.AddInvalid<Firma, decimal>(
                                 "no debe ser vacío|PuntuacionSieva", x => x.PuntuacionSieva);
                             isValid = false;
                         }

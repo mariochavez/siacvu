@@ -44,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if (capitulo.IsTransient())
             {
-                capitulo.Puntuacion = 0;
+                capitulo.Puntuacion = 0.0m;
                 capitulo.Activo = true;
                 capitulo.CreadoEl = DateTime.Now;
 

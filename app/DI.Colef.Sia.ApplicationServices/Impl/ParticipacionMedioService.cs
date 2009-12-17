@@ -41,7 +41,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(participacionMedio.IsTransient())
             {
-                participacionMedio.Puntuacion = 0;
+                participacionMedio.Puntuacion = 0.0m;
                 participacionMedio.Activo = true;
                 participacionMedio.CreadoEl = DateTime.Now;
 
