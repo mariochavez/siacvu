@@ -1,0 +1,156 @@
+﻿<#@ import namespace="System.Collections" #>
+<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
+
+<#+
+public class NewMapperImplementationTemplate : BaseTemplate
+{
+	public NewMapperImplementationTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System;
+using DecisionesInteligentes.Colef.Sia.ApplicationServices;
+using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Extensions;
+using SharpArch.Core.PersistenceSupport;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
+{
+    public class <#= EntityScaffoldingDetails.EntityName #>Mapper : AutoFormMapper<<#= EntityScaffoldingDetails.EntityName #>, <#= EntityScaffoldingDetails.EntityName #>Form>, I<#= EntityScaffoldingDetails.EntityName #>Mapper
+    {
+		<#+ if(EntityScaffoldingDetails.ScaffoldType == 2) { #>
+		readonly ICatalogoService catalogoService;
+		
+		public <#= EntityScaffoldingDetails.EntityName #>Mapper(IRepository<<#= EntityScaffoldingDetails.EntityName #>> repository,	ICatalogoService catalogoService) 
+			: base(repository)
+        {
+			this.catalogoService = catalogoService;
+        }
+		<#+ } else { 
+			if(EntityScaffoldingDetails.HasAnyCatalogNames){
+				WriteLine("readonly ICatalogoService catalogoService;");
+			}
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+				if(property.TypeName.Contains("IList")){
+					SpanishInflector spanishInflector = new SpanishInflector();
+					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+					WriteLine("readonly I" + typeName + "Mapper " + spanishInflector.Camelize(typeName) + "Mapper;");
+				}
+			}
+		#>
+		public <#= EntityScaffoldingDetails.EntityName #>Mapper(IRepository<<#= EntityScaffoldingDetails.EntityName #>> repository
+		
+		<#+ 
+			if(EntityScaffoldingDetails.HasAnyCatalogNames){
+				WriteLine(", ICatalogoService catalogoService");
+			}
+			foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+				if(property.TypeName.Contains("IList")){
+					SpanishInflector spanishInflector = new SpanishInflector();
+					string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+					WriteLine(", I" + typeName + "Mapper " + spanishInflector.Camelize(typeName) + "Mapper");
+				}
+			}
+		#>
+		) 
+			: base(repository)
+        {
+			<#+ 
+				if(EntityScaffoldingDetails.HasAnyCatalogNames){
+					WriteLine("this.catalogoService = catalogoService;");
+				}
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.TypeName.Contains("IList")){
+						SpanishInflector spanishInflector = new SpanishInflector();
+						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+						WriteLine("this." + spanishInflector.Camelize(typeName) + "Mapper = " + spanishInflector.Camelize(typeName) + "Mapper;");
+					}
+				}
+			#>
+        }		
+		<#+ } #>
+
+        protected override int GetIdFromMessage(<#= EntityScaffoldingDetails.EntityName #>Form message)
+        {
+            return message.Id;
+        }
+
+        protected override void MapToModel(<#= EntityScaffoldingDetails.EntityName #>Form message, <#= EntityScaffoldingDetails.EntityName #> model)
+        {
+			<#+ if(EntityScaffoldingDetails.ScaffoldType == 2) {#>
+			<#+
+			PushIndent("\t\t");
+			
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.TypeName == "DateTime"){
+						WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ".FromShortDateToDateTime();");
+						continue;
+					}
+					
+					if(property.TypeName == property.PropertyName){
+						WriteLine("model." + property.PropertyName + " = catalogoService.Get" + property.PropertyName + "ById(message." + property.PropertyName + ");");
+						continue;
+					}
+					
+					if(property.TypeName.Contains("IList"))
+						continue;
+					
+					WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ";");
+				}
+            
+			PopIndent();
+			#>
+			
+			if (model.IsTransient())
+            {
+                model.Activo = true;
+                model.CreadorEl = DateTime.Now;
+            }
+            model.ModificadoEl = DateTime.Now;
+            <#+ } else { 
+			PushIndent("\t\t");
+			
+				foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+					if(property.TypeName == "int" || property.TypeName == "string" || property.TypeName == "bool"){
+						WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ";");
+					}
+					
+					if(property.TypeName == "DateTime"){
+						WriteLine("model." + property.PropertyName + " = message." + property.PropertyName + ".FromShortDateToDateTime();");
+						continue;
+					}
+					
+					if(property.TypeName.Contains("IList")){
+						SpanishInflector spanishInflector = new SpanishInflector();
+						string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+						string camelizeTypeName = spanishInflector.Camelize(typeName);
+						string titleize = spanishInflector.Titleize(typeName);
+						string[] addName = titleize.Split(' ');
+						
+						WriteLine("if(message." + typeName + " != null)");
+							WriteLine("model.Add" + addName[0] + "(" + camelizeTypeName + "Mapper.Map(message." + typeName + "));" );
+					}
+					
+					if(property.TypeName == property.PropertyName){
+						SpanishInflector spanishInflector = new SpanishInflector();
+						string catalog = property.CatalogName;
+						string camelize = spanishInflector.Camelize(catalog);
+						
+						WriteLine("model." + catalog + " = " + "catalogoService.Get" + catalog + "ById(message." + catalog + ");" );						
+					}
+				}
+            
+			PopIndent();
+				}
+            #>
+        }
+    }
+}
+<#+
+	}
+}
+#>

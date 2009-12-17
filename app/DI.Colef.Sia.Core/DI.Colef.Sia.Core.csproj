@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DecisionesInteligentes.Colef.Sia.Core</RootNamespace>
+    <AssemblyName>DecisionesInteligentes.Colef.Sia.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Core.NHibernateValidator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Core.NHibernateValidator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaInvestigacion.cs" />
+    <Compile Include="IParticipante.cs" />
+    <Compile Include="NHibernateValidator\FirmaValidator.cs" />
+    <Compile Include="NHibernateValidator\EstudianteProyectoValidator.cs" />
+    <Compile Include="NHibernateValidator\ProductoGeneradoProyectoValidator.cs" />
+    <Compile Include="ParticipanteExternoProducto.cs" />
+    <Compile Include="ParticipanteInternoProducto.cs" />
+    <Compile Include="SesionEvento.cs" />
+    <Compile Include="DataInterfaces\ICursoInvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\CursoInvestigadorQuerying.cs" />
+    <Compile Include="EstudianteProyecto.cs" />
+    <Compile Include="IInstitucion.cs" />
+    <Compile Include="InstitucionProducto.cs" />
+    <Compile Include="MiembroExternoGrupoInvestigacion.cs" />
+    <Compile Include="NHibernateValidator\CategoriaInvestigadorValidator.cs" />
+    <Compile Include="CursoInvestigador.cs" />
+    <Compile Include="EditorialProducto.cs" />
+    <Compile Include="EstanciaAcademicaExterna.cs" />
+    <Compile Include="IEditorial.cs" />
+    <Compile Include="NHibernateValidator\ObraTraducidaValidator.cs" />
+    <Compile Include="NHibernateValidator\EstanciaAcademicaExternaValidator.cs" />
+    <Compile Include="NHibernateValidator\OrganoInternoValidator.cs" />
+    <Compile Include="ObraTraducida.cs" />
+    <Compile Include="ProductoGeneradoProyecto.cs" />
+    <Compile Include="TesisPosgrado.cs" />
+    <Compile Include="Ambito.cs" />
+    <Compile Include="ApoyoConacyt.cs" />
+    <Compile Include="Archivo.cs" />
+    <Compile Include="Area.cs" />
+    <Compile Include="AreaTematica.cs" />
+    <Compile Include="Articulo.cs" />
+    <Compile Include="Capitulo.cs" />
+    <Compile Include="CargoInvestigador.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="CategoriaInvestigador.cs" />
+    <Compile Include="Clase.cs" />
+    <Compile Include="CoautorExternoProducto.cs" />
+    <Compile Include="CoautorInternoProducto.cs" />
+    <Compile Include="ConsejoComision.cs" />
+    <Compile Include="Convenio.cs" />
+    <Compile Include="Curso.cs" />
+    <Compile Include="DataInterfaces\ITesisPosgradoQuerying.cs" />
+    <Compile Include="DataInterfaces\IInvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\TesisPosgradoQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\InvestigadorQuerying.cs" />
+    <Compile Include="DataInterfaces\IProductoQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\ProductoQuerying.cs" />
+    <Compile Include="DataInterfaces\ISearchQuerying.cs" />
+    <Compile Include="DataInterfaces\IUsuarioQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\UsuarioQuerying.cs" />
+    <Compile Include="DataInterfaces\ReflectionHelper.cs" />
+    <Compile Include="DataInterfaces\Impl\SearchQuerying.cs" />
+    <Compile Include="Departamento.cs" />
+    <Compile Include="Dependencia.cs" />
+    <Compile Include="Dictamen.cs" />
+    <Compile Include="DireccionRegional.cs" />
+    <Compile Include="DirigidoA.cs" />
+    <Compile Include="Disciplina.cs" />
+    <Compile Include="Distincion.cs" />
+    <Compile Include="Editorial.cs" />
+    <Compile Include="Estado.cs" />
+    <Compile Include="EstadoInvestigador.cs" />
+    <Compile Include="EstadoPais.cs" />
+    <Compile Include="EstatusFormacionAcademica.cs" />
+    <Compile Include="Evento.cs" />
+    <Compile Include="ExperienciaProfesional.cs" />
+    <Compile Include="Firma.cs" />
+    <Compile Include="FondoConacyt.cs" />
+    <Compile Include="FormacionAcademica.cs" />
+    <Compile Include="GradoAcademicoInvestigador.cs" />
+    <Compile Include="GradoAcademico.cs" />
+    <Compile Include="GrupoInvestigacion.cs" />
+    <Compile Include="IBaseEntity.cs" />
+    <Compile Include="ICoautor.cs" />
+    <Compile Include="Idioma.cs" />
+    <Compile Include="IdiomasInvestigador.cs" />
+    <Compile Include="Indice.cs" />
+    <Compile Include="Institucion.cs" />
+    <Compile Include="Investigador.cs" />
+    <Compile Include="IAutor.cs" />
+    <Compile Include="Libro.cs" />
+    <Compile Include="MedioElectronico.cs" />
+    <Compile Include="MedioImpreso.cs" />
+    <Compile Include="Moneda.cs" />
+    <Compile Include="EstanciaInstitucionExterna.cs" />
+    <Compile Include="NHibernateValidator\ApoyoConacytValidator.cs" />
+    <Compile Include="NHibernateValidator\ArticuloValidator.cs" />
+    <Compile Include="NHibernateValidator\BaseValidatorAttribute.cs" />
+    <Compile Include="NHibernateValidator\CapituloValidator.cs" />
+    <Compile Include="NHibernateValidator\EstadoInvestigadorValidator.cs" />
+    <Compile Include="NHibernateValidator\FormacionAcademicaValidator.cs" />
+    <Compile Include="NHibernateValidator\CursoValidator.cs" />
+    <Compile Include="NHibernateValidator\DictamenValidator.cs" />
+    <Compile Include="NHibernateValidator\DistincionValidator.cs" />
+    <Compile Include="NHibernateValidator\EventoValidator.cs" />
+    <Compile Include="NHibernateValidator\ExperienciaProfesionalValidator.cs" />
+    <Compile Include="NHibernateValidator\GrupoInvestigacionValidator.cs" />
+    <Compile Include="NHibernateValidator\IdiomasInvestigadorValidator.cs" />
+    <Compile Include="NHibernateValidator\LibroValidator.cs" />
+    <Compile Include="NHibernateValidator\EstanciaInstitucionExternaValidator.cs" />
+    <Compile Include="NHibernateValidator\ParticipacionAcademiaValidator.cs" />
+    <Compile Include="NHibernateValidator\OrganoExternoValidator.cs" />
+    <Compile Include="NHibernateValidator\ParticipacionMedioValidator.cs" />
+    <Compile Include="NHibernateValidator\ProyectoValidator.cs" />
+    <Compile Include="NHibernateValidator\ReporteValidator.cs" />
+    <Compile Include="NHibernateValidator\ResenaValidator.cs" />
+    <Compile Include="NHibernateValidator\RevistaPublicacionValidator.cs" />
+    <Compile Include="NHibernateValidator\TesisDirigidaValidator.cs" />
+    <Compile Include="NHibernateValidator\NotEmptyDate.cs" />
+    <Compile Include="NHibernateValidator\SNIInvestigadorValidator.cs" />
+    <Compile Include="InvestigadorExterno.cs" />
+    <Compile Include="LineaInvestigacion.cs" />
+    <Compile Include="LineaTematica.cs" />
+    <Compile Include="NHibernateValidator\SpanishMessageInterpolator.cs" />
+    <Compile Include="NHibernateValidator\SpanishValidatorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpanishValidatorMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Nivel.cs" />
+    <Compile Include="NivelEstudio.cs" />
+    <Compile Include="Organizacion.cs" />
+    <Compile Include="OrganoExterno.cs" />
+    <Compile Include="OrganoInterno.cs" />
+    <Compile Include="Pais.cs" />
+    <Compile Include="ParticipacionAcademia.cs" />
+    <Compile Include="ParticipacionMedio.cs" />
+    <Compile Include="ProgramaEstudio.cs" />
+    <Compile Include="Proyecto.cs" />
+    <Compile Include="Puesto.cs" />
+    <Compile Include="Rama.cs" />
+    <Compile Include="RecursoFinancieroProyecto.cs" />
+    <Compile Include="Reporte.cs" />
+    <Compile Include="Resena.cs" />
+    <Compile Include="AutorExternoProducto.cs" />
+    <Compile Include="AutorInternoProducto.cs" />
+    <Compile Include="ResponsableProyecto.cs" />
+    <Compile Include="RevistaPublicacion.cs" />
+    <Compile Include="Rol.cs" />
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search.cs" />
+    <Compile Include="Sector.cs" />
+    <Compile Include="Sede.cs" />
+    <Compile Include="SNI.cs" />
+    <Compile Include="SNIInvestigador.cs" />
+    <Compile Include="Subdisciplina.cs" />
+    <Compile Include="SubprogramaConacyt.cs" />
+    <Compile Include="TesisDirigida.cs" />
+    <Compile Include="TipoActividad.cs" />
+    <Compile Include="TipoApoyo.cs" />
+    <Compile Include="TipoArchivo.cs" />
+    <Compile Include="TipoDictamen.cs" />
+    <Compile Include="TipoDistincion.cs" />
+    <Compile Include="TipoEstancia.cs" />
+    <Compile Include="TipoEvento.cs" />
+    <Compile Include="TipoOrgano.cs" />
+    <Compile Include="TipoParticipacion.cs" />
+    <Compile Include="TipoProyecto.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="VinculacionAPyD.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NHibernateValidator\SpanishValidatorMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpanishValidatorMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+      -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:4775/sia/Home" />
+<title>Investigador nuevo estatus</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Investigador nuevo estatus</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/sia/Investigador/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>Usuario</td>
+	<td>label=Barajas Escamilla Maria del Rocio</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>direccion</td>
+	<td>Conocida</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaIngreso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaIngreso</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaContrato</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaContrato</td>
+	<td>2/12/1985</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>EstadoInvestigador_Estado</td>
+	<td>label=Activo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaInicial</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>EstadoInvestigador_FechaInicial</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[30]/span[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[31]/span[5]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>EstadoInvestigador_Estado</td>
+	<td>label=Licencia c/ sueldo</td>
+</tr>
+<tr>
+	<td>verifyVisible</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>EstadoInvestigador_Estado</td>
+	<td>label=Baja</td>
+</tr>
+<tr>
+	<td>verifyNotVisible</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>EstadoInvestigador_Estado</td>
+	<td>label=Licencia s/ sueldo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='forma']/form/p[30]/span[4]</td>
+	<td>Fecha inicial debe ser menor a fecha final</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='forma']/form/p[30]/span[5]</td>
+	<td>Fecha final debe ser mayor a fecha inicial</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='forma']/form/p[30]/span[4]</td>
+	<td>Fecha final inválida o nula</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>EstadoInvestigador_FechaFinal</td>
+	<td>2/11/2009</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[31]/span[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[31]/span[5]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

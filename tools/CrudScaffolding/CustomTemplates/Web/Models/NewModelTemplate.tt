@@ -1,0 +1,99 @@
+﻿<#@ import namespace="System.Collections" #>
+<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
+
+<#+
+public class NewModelTemplate : BaseTemplate
+{
+	public NewModelTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
+{
+    public class <#= EntityScaffoldingDetails.EntityName #>Form
+    {
+		<#+
+		PushIndent("\t\t");
+		
+		WriteLine("public int Id { get; set; }");
+
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			if(property.TypeName.Contains("IList"))
+				continue;
+		
+			if(property.TypeName == "DateTime"){
+				WriteLine("public string " + property.PropertyName + " { get; set; }");
+				continue;
+			}
+			
+			if(property.TypeName == property.PropertyName){
+				WriteLine("public int " + property.PropertyName + " { get; set; }");
+				WriteLine("public int " + property.PropertyName + "Id { get; set; }");
+				continue;
+			}
+			
+			WriteLine("public " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+		}
+		
+		WriteLine("public bool Activo { get; set; }");
+		WriteLine("public string Modificacion { get; set; }");
+
+		PopIndent();
+		#>
+		
+		//Espacio para Agregar Mapeos
+		
+		
+		<#+ if(EntityScaffoldingDetails.ScaffoldType == 3){
+		#>
+		
+		/* New */
+		<#+
+		PushIndent("\t\t");
+		
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			if(property.TypeName.Contains("IList")){
+				string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+				WriteLine("public " + typeName + "Form[] " + property.PropertyName + " { get; set; }");
+				WriteLine("public " + typeName + "Form " + typeName + " { get; set; }");
+			}
+		}
+		
+		PopIndent();	
+		#>
+		
+		/* Catalogos */
+		<#+
+		PushIndent("\t\t");
+		
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			if(property.CatalogName != null){
+				SpanishInflector spanishInflector = new SpanishInflector();
+				string catalogName = property.CatalogName;
+				string titleize = spanishInflector.Titleize(catalogName);				
+				string[] addName = titleize.Split(' ');
+				
+				catalogName = "";
+				foreach(string name in addName){
+					catalogName += spanishInflector.Pluralize(name);
+				}
+				
+				WriteLine("public " + property.CatalogName + "Form[] " + catalogName + " { get; set; }");
+			}
+		}
+		
+		PopIndent();	
+		#>	
+		
+		<#+}#>
+    }
+}
+<#+
+	}
+}
+#>

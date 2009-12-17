@@ -1,0 +1,58 @@
+﻿<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
+
+<#+
+public class AddTemplate : BaseTemplate
+{
+	public AddTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+<#+ 		
+foreach(EntityProperty property in EntityScaffoldingDetails.EntityProperties){
+	if(property.TypeName.Contains("IList")){
+		SpanishInflector spanishInflector = new SpanishInflector();	
+		string typeName = property.TypeName.Remove(property.TypeName.Length - 1).Substring(6);
+		string catalogName = property.CatalogName;
+		string catalogTitleize = spanishInflector.Titleize(catalogName);
+		string[] addName = catalogTitleize.Split(' ');
+		
+		string camelizeCatalogName = "";
+		foreach(string name in addName){
+			camelizeCatalogName += spanishInflector.Camelize(name);
+		}
+  #>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<<#= typeName #>Form>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+
+var html = '
+    <tr id="<#= camelizeCatalogName #>_<%=Html.Encode(Model.Id) %>">
+        <td class="subform">
+            <%=Html.Encode(Model.InvestigadorExternoNombre) %>
+        </td>
+    </tr>
+';
+
+$('#message').html('');
+$('#message').removeClass('errormessage');
+
+$('#<#= camelizeCatalogName #>_form').hide();
+$('#<#= camelizeCatalogName #>_new').show();
+$('#<#= camelizeCatalogName #>_form').html('');
+$('#<#= camelizeCatalogName #>EmptyList_form').html('');
+$('#<#= camelizeCatalogName #>List tr:first').after(html);
+
+$('#<#= camelizeCatalogName #>_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
+$('#<#= camelizeCatalogName #>_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+<#+ 
+	}
+} 
+#>
+<#+
+	}
+}
+#>

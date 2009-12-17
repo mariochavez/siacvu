@@ -1,0 +1,45 @@
+11:12:15 AM	MoveCommonAssemblyInfoToRoot: Moving CommonAssemblyInfo.cs from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\SolutionItemsContainer\CommonAssemblyInfo.cs to root at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\CommonAssemblyInfo.cs
+11:12:15 AM	MoveSolutionItemsToLib: Moving solution items from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\SolutionItemsContainer\Solution Items to lib at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\lib
+11:12:16 AM	MoveSolutionItemsToToolsLib: Moving tools solution items from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\ToolsSolutionItemsContainer\Solution Items to tools lib at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\tools\lib
+11:12:17 AM	MoveProjectTo: Removing DI.Colef.Sia.Core from solution
+11:12:18 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+11:12:18 AM	MoveProjectTo: Moving DI.Colef.Sia.Core from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Core to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Core
+11:12:18 AM	MoveProjectTo: Adding DI.Colef.Sia.Core to solution
+11:12:20 AM	CaptureProjectGuidOf: Does C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj exist? True
+11:12:20 AM	CaptureProjectGuidOf: About to open C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj
+11:12:20 AM	CaptureProjectGuidOf: Captured the GUID {87437EED-5DE9-4952-A1F6-3EC39DAA2D44} for DI.Colef.Sia.Core
+11:12:20 AM	MoveProjectTo: Removing DI.Colef.Sia.ApplicationServices from solution
+11:12:21 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+11:12:21 AM	MoveProjectTo: Moving DI.Colef.Sia.ApplicationServices from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.ApplicationServices to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices
+11:12:21 AM	MoveProjectTo: Adding DI.Colef.Sia.ApplicationServices to solution
+11:12:22 AM	CaptureProjectGuidOf: Does C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj exist? True
+11:12:22 AM	CaptureProjectGuidOf: About to open C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj
+11:12:22 AM	CaptureProjectGuidOf: Captured the GUID {5BDDAAED-A05C-4559-8A2E-09D65CFEC740} for DI.Colef.Sia.ApplicationServices
+11:12:24 AM	MoveProjectTo: Removing DI.Colef.Sia.Data from solution
+11:12:25 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj
+11:12:25 AM	MoveProjectTo: Moving DI.Colef.Sia.Data from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Data to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Data
+11:12:25 AM	MoveProjectTo: Adding DI.Colef.Sia.Data to solution
+11:12:26 AM	CaptureProjectGuidOf: Does C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj exist? True
+11:12:26 AM	CaptureProjectGuidOf: About to open C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj
+11:12:26 AM	CaptureProjectGuidOf: Captured the GUID {214434BA-B62E-4E97-A500-9175A5FB176E} for DI.Colef.Sia.Data
+11:12:29 AM	MoveProjectTo: Removing DI.Colef.Sia.Web.Controllers from solution
+11:12:30 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+11:12:30 AM	MoveProjectTo: Moving DI.Colef.Sia.Web.Controllers from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Web.Controllers to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers
+11:12:30 AM	MoveProjectTo: Adding DI.Colef.Sia.Web.Controllers to solution
+11:12:31 AM	CaptureProjectGuidOf: Does C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj exist? True
+11:12:31 AM	CaptureProjectGuidOf: About to open C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj
+11:12:31 AM	CaptureProjectGuidOf: Captured the GUID {E6BCD573-53C5-4F55-B920-0E68E3F91B5F} for DI.Colef.Sia.Web.Controllers
+11:12:36 AM	MoveProjectTo: Removing DI.Colef.Sia.Tests from solution
+11:12:37 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj
+11:12:37 AM	MoveProjectTo: Moving DI.Colef.Sia.Tests from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Tests to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\tests\DI.Colef.Sia.Tests
+11:12:37 AM	MoveProjectTo: Adding DI.Colef.Sia.Tests to solution
+11:12:44 AM	MoveProjectTo: Removing DI.Colef.Sia.Web from solution
+11:12:45 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj
+11:12:45 AM	MoveProjectTo: Moving DI.Colef.Sia.Web from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\DI.Colef.Sia.Web to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\app\DI.Colef.Sia.Web
+11:12:45 AM	MoveProjectTo: Adding DI.Colef.Sia.Web to solution
+11:12:48 AM	MoveProjectTo: Removing CrudScaffolding from solution
+11:12:49 AM	PerformManualProjectReplacementsTo: Going to PerformManualProjectReplacementsTo on C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\CrudScaffolding\CrudScaffolding.csproj
+11:12:49 AM	MoveProjectTo: Moving CrudScaffolding from C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\CrudScaffolding to target location at C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\tools\CrudScaffolding
+11:12:49 AM	MoveProjectTo: Adding CrudScaffolding to solution folder C:\Net\Projects\DI.Colef.Sia\DI.Colef.Sia\tools\CrudScaffolding
+11:12:49 AM	ExcludeProjectFromBuildProcess: Setting build to false for project DI.Colef.Sia\tools\CrudScaffolding\CrudScaffolding.csproj within the Debug configuration
+11:12:49 AM	ExcludeProjectFromBuildProcess: Setting build to false for project DI.Colef.Sia\tools\CrudScaffolding\CrudScaffolding.csproj within the Release configuration

@@ -1,0 +1,14 @@
+*.bak
+*.*scc
+*.user
+*.suo
+*.webinfo
+bin/
+obj/
+*.resharper
+.svn
+_ReSharper*/
+Logs/
+*.log
+build/
+build.zip

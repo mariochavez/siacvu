@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>Investigador nuevo cargo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Investigador nuevo cargo</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/sia/Investigador/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>Usuario</td>
+	<td>label=Barajas Escamilla Maria del Rocio</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>direccion</td>
+	<td>Conocida</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaIngreso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaIngreso</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaContrato</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaContrato</td>
+	<td>2/12/1985</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Cargo</td>
+	<td>label=Investigador</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Puesto</td>
+	<td>label=Puesto 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Departamento</td>
+	<td>label=Departamento de estudios sociales</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_DireccionRegional</td>
+	<td>label=Dirección 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[31]/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[32]/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[33]/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>//div[@id='forma']/form/p[34]/span</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<#@ template language="C#" hostspecific="True" debug="True" #>
+<#@ import namespace="System.Collections.Specialized" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="./CustomTemplates/ScaffoldingGenerator.tt" #>
+<#@ include file="EntityScaffoldingDetails.tt" #>
+
+<#
+///////////////////////////////////////////////////
+// Set your domain object details below and simply uncomment the last line (".Run()") and save this file to auto-generate the scaffolding
+
+/*
+ * Domain name should be PascalCaseSingular with no spaces.
+ * You may qualify the domain object with a namespace; a folder structure reflecting the namespace structure will be created (or verified).
+ * A log of created artifacts may be found in /DI.Colef.Sia/logs/CrudScaffolding.log
+ * Examples:  ("Usuario"), ("Admin.Usuario")
+ *			  (entityName), ("FolderName.entityName") 
+ */
+ 
+//EntityScaffoldingDetails(Entidad, scaffoldType)
+//(FolderName.EntityName, 1) Catalogo
+//(Name, 2) Objeto con Form y Mappers con referencia a catalogo
+//(Name, 3) Formas con ILists
+
+EntityScaffoldingDetails entityScaffoldingDetails =
+	new EntityScaffoldingDetails("ObraTraducida", 3);
+
+/*
+ * Property names should be PascalCase.
+ * Do not include a property for Id as it will be included automatically.
+ */ 
+ 
+//EntityProperty(propertyName, typeName, defaultValueForTests, propertyAttributes, isPartOfDomainSignature)
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Nombre","string", null, "[NotNullNotEmpty]", true)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Idioma","Idioma", "Idioma")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreTraductor","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ApellidoPaterno","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ApellidoMaterno","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreObraTraducida","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoObraTraducida","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("AreaTematica","AreaTematica", "AreaTematica")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave1","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave2","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PalabraClave3","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("EstadoProducto","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaAceptacion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("FechaPublicacion","DateTime", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("RevistaPublicacion","RevistaPublicacion", "RevistaPublicacion")
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Volumen","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Numero","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PaginaInicial","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("PaginaFinal","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NombreLibro","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("TipoLibro","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Resumen","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NoPaginas","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("NoCitas","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("ISBN","string", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Reimpresion","int", null)
+);
+
+entityScaffoldingDetails.EntityProperties.Add(
+	new EntityProperty("Tiraje","int", null)
+);
+
+//entityScaffoldingDetails.EntityProperties.Add(
+//	new EntityProperty("LineaTematica","LineaTematica", "LineaTematica")
+//);
+///////////////////////////////////////////////////
+
+// The first parameter should reflect the root directory of your solution
+ScaffoldingGenerator generator = new ScaffoldingGenerator(
+	@"C:\Proyectos\DI.Colef.Sia\", "DI.Colef.Sia", entityScaffoldingDetails); 
+
+// Uncomment this line when you're ready for the scaffolding generator to fire...be sure to recomment after it completes to avoid accidental generating!
+//generator.Run();
+#>

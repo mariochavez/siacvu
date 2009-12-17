@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>Investigador nuevo completo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Investigador nuevo completo</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/sia/Investigador/New</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>Usuario</td>
+	<td>label=Chavez Cardenas Mario</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaIngreso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaIngreso</td>
+	<td>2/9/1985</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>FechaContrato</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>FechaContrato</td>
+	<td>15/3/1986</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>GradoAcademicoInvestigador_GradoAcademico</td>
+	<td>label=Licenciatura</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>GradoAcademicoInvestigador_Fecha</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>GradoAcademicoInvestigador_Fecha</td>
+	<td>20/5/1985</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>GradoAcademicoInvestigador_Programa</td>
+	<td>Estudios sociales</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>GradoAcademicoInvestigador_InstitucionNombre</td>
+	<td>UABC MEXICALI</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>GradoAcademicoInvestigador_InstitucionId</td>
+	<td>14</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>LineaTematica</td>
+	<td>label=ECONOMIA Y SOCIEDAD</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>AreaTematica1</td>
+	<td>Tema 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>AreaTematica2</td>
+	<td>Tema 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>AreaTematica3</td>
+	<td>Tema 3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ExpedienteProduccion</td>
+	<td>Expediente prod</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ExpedienteAcademico</td>
+	<td>Expediente aca</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ClaveCVU</td>
+	<td>89-09</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>EstadoInvestigador_Estado</td>
+	<td>label=Activo</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaInicial</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>EstadoInvestigador_FechaInicial</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>EstadoInvestigador_FechaInicial</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Cargo</td>
+	<td>label=Investigador</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Puesto</td>
+	<td>label=Puesto 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_Departamento</td>
+	<td>label=Departamento de estudios culturales</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CargoInvestigador_DireccionRegional</td>
+	<td>label=Dirección 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>CategoriaInvestigador_Categoria</td>
+	<td>label=Asociado A</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>CategoriaInvestigador_Fecha</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>CategoriaInvestigador_Fecha</td>
+	<td>2/11/1985</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>SNIInvestigador_SNI</td>
+	<td>label=Nivel 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>SNIInvestigador_SNI</td>
+	<td>label=Candidato</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>SNIInvestigador_Fecha</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SNIInvestigador_Fecha</td>
+	<td>16/3/1986</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>SNIInvestigador_ExpedienteSNI</td>
+	<td>SNI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>Guardar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='mensaje-error']/p</td>
+	<td>Mario Chavez Cardenas ha sido creado</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

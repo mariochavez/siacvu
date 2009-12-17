@@ -1,0 +1,37 @@
+﻿<#@ import namespace="System.Collections" #>
+
+<#+
+public class ModelTemplate : BaseTemplate
+{
+	public ModelTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+using System;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
+{
+    public class <#= EntityScaffoldingDetails.EntityName #>Form
+    {		
+		<#+
+		PushIndent("\t\t");
+		
+		WriteLine("public int Id { get; set; }");
+
+		foreach (EntityProperty property in EntityScaffoldingDetails.EntityProperties) {
+			WriteLine("public " + property.TypeName + " " + property.PropertyName + " { get; set; }");
+		}
+		
+		WriteLine("public bool Activo { get; set; }");
+		WriteLine("public string Modificacion { get; set; }");
+
+		PopIndent();
+		#>
+    }
+}
+<#+
+	}
+}
+#>

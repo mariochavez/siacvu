@@ -1,0 +1,359 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_SolutionProjectConfiguration>Debug|Any CPU</_SolutionProjectConfiguration>
+    <_SolutionProjectToolsVersion>3.5</_SolutionProjectToolsVersion>
+    <_SolutionProjectCacheVersion>3.5</_SolutionProjectCacheVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <_SolutionProjectProjects Include="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" />
+    <_SolutionProjectProjects Include="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" />
+    <_SolutionProjectProjects Include="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" />
+    <_SolutionProjectProjects Include="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" />
+    <_SolutionProjectProjects Include="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" />
+    <_SolutionProjectProjects Include="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" />
+    <_SolutionProjectProjects Include="tools\CrudScaffolding\CrudScaffolding.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+    <BuildLevel0 Include="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel0>
+    <BuildLevel1 Include="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel1>
+    <BuildLevel1 Include="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel1>
+    <BuildLevel2 Include="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel2>
+    <BuildLevel3 Include="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel3>
+    <BuildLevel3 Include="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel3>
+    <SkipLevel0 Include="CrudScaffolding" />
+  </ItemGroup>
+  <ItemGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+    <BuildLevel0 Include="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel0>
+    <BuildLevel1 Include="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel1>
+    <BuildLevel1 Include="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel1>
+    <BuildLevel2 Include="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel2>
+    <BuildLevel3 Include="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel3>
+    <BuildLevel3 Include="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </BuildLevel3>
+    <SkipLevel0 Include="CrudScaffolding" />
+  </ItemGroup>
+  <UsingTask TaskName="Microsoft.Build.Tasks.CreateTemporaryVCProject" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <UsingTask TaskName="Microsoft.Build.Tasks.ResolveVCProjectOutput" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == '' ">
+    <Platform>Any CPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(AspNetConfiguration)' == '') ">
+    <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SolutionDir>C:\Net\Projects\DecisionesInteligentes.Colef.Sia\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>DI.Colef.Sia.sln</SolutionFileName>
+    <SolutionName>DI.Colef.Sia</SolutionName>
+    <SolutionPath>C:\Net\Projects\DecisionesInteligentes.Colef.Sia\DI.Colef.Sia.sln</SolutionPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' != '2.0'">v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{214434BA-B62E-4E97-A500-9175A5FB176E}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{B27B2464-6690-425C-ACC8-3413A0814198}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{65EE3A62-516D-40A1-985E-78FFF826DCE0}">Debug|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{8C8F6DEA-B6AA-48F9-A304-616BE41C9439}">Debug|AnyCPU</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{5BDDAAED-A05C-4559-8A2E-09D65CFEC740}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{214434BA-B62E-4E97-A500-9175A5FB176E}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{B27B2464-6690-425C-ACC8-3413A0814198}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{65EE3A62-516D-40A1-985E-78FFF826DCE0}">Release|AnyCPU</ProjectConfiguration>
+        <ProjectConfiguration Project="{8C8F6DEA-B6AA-48F9-A304-616BE41C9439}">Release|AnyCPU</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" />
+    <Warning Text="The specified solution configuration &quot;$(Configuration)|$(Platform)&quot; is invalid. Please specify a valid solution configuration using the Configuration and Platform properties (e.g. MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) or leave those properties blank to use the default solution configuration." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" />
+    <Message Text="Building solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="'$(CurrentSolutionConfigurationContents)' != ''" />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Text="The tools version &quot;$(MSBuildToolsVersion)&quot; of the solution does not support building projects with a different tools version." Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" />
+  </Target>
+  <Target Name="DI_Colef_Sia_Core" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_CoreBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_CoreBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_CoreBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Core:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Core:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_CoreBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_CoreBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_CoreBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Core:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_ApplicationServices" DependsOnTargets="DI_Colef_Sia_Core" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_ApplicationServicesBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_ApplicationServicesBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_ApplicationServicesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_ApplicationServices:Clean" DependsOnTargets="DI_Colef_Sia_Core:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_ApplicationServices:Rebuild" DependsOnTargets="DI_Colef_Sia_Core:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_ApplicationServicesBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_ApplicationServicesBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_ApplicationServicesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_ApplicationServices:Publish" DependsOnTargets="DI_Colef_Sia_Core:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.ApplicationServices\DI.Colef.Sia.ApplicationServices.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Data" DependsOnTargets="DI_Colef_Sia_Core" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_DataBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_DataBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_DataBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Data:Clean" DependsOnTargets="DI_Colef_Sia_Core:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Data:Rebuild" DependsOnTargets="DI_Colef_Sia_Core:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_DataBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_DataBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_DataBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Data:Publish" DependsOnTargets="DI_Colef_Sia_Core:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Web_Controllers" DependsOnTargets="DI_Colef_Sia_Core;DI_Colef_Sia_ApplicationServices" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_Web_ControllersBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_Web_ControllersBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_Web_ControllersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Web_Controllers:Clean" DependsOnTargets="DI_Colef_Sia_Core:Clean;DI_Colef_Sia_ApplicationServices:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Web_Controllers:Rebuild" DependsOnTargets="DI_Colef_Sia_Core:Rebuild;DI_Colef_Sia_ApplicationServices:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_Web_ControllersBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_Web_ControllersBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_Web_ControllersBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Web_Controllers:Publish" DependsOnTargets="DI_Colef_Sia_Core:Publish;DI_Colef_Sia_ApplicationServices:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Tests" DependsOnTargets="DI_Colef_Sia_ApplicationServices;DI_Colef_Sia_Web_Controllers;DI_Colef_Sia_Core;DI_Colef_Sia_Data" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_TestsBuildOutput)">
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_TestsBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Tests:Clean" DependsOnTargets="DI_Colef_Sia_ApplicationServices:Clean;DI_Colef_Sia_Web_Controllers:Clean;DI_Colef_Sia_Core:Clean;DI_Colef_Sia_Data:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Tests:Rebuild" DependsOnTargets="DI_Colef_Sia_ApplicationServices:Rebuild;DI_Colef_Sia_Web_Controllers:Rebuild;DI_Colef_Sia_Core:Rebuild;DI_Colef_Sia_Data:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_TestsBuildOutput)">
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_TestsBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Tests:Publish" DependsOnTargets="DI_Colef_Sia_ApplicationServices:Publish;DI_Colef_Sia_Web_Controllers:Publish;DI_Colef_Sia_Core:Publish;DI_Colef_Sia_Data:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="tests\DI.Colef.Sia.Tests\DI.Colef.Sia.Tests.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Web" DependsOnTargets="DI_Colef_Sia_Core;DI_Colef_Sia_Data;DI_Colef_Sia_Web_Controllers" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_WebBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_WebBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_WebBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Web:Clean" DependsOnTargets="DI_Colef_Sia_Core:Clean;DI_Colef_Sia_Data:Clean;DI_Colef_Sia_Web_Controllers:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Clean" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Clean" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="DI_Colef_Sia_Web:Rebuild" DependsOnTargets="DI_Colef_Sia_Core:Rebuild;DI_Colef_Sia_Data:Rebuild;DI_Colef_Sia_Web_Controllers:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(DI_Colef_Sia_WebBuildOutput)">
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Rebuild" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_WebBuildOutput" />
+    </MSBuild>
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Rebuild" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') ">
+      <Output TaskParameter="TargetOutputs" ItemName="DI_Colef_Sia_WebBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="DI_Colef_Sia_Web:Publish" DependsOnTargets="DI_Colef_Sia_Core:Publish;DI_Colef_Sia_Data:Publish;DI_Colef_Sia_Web_Controllers:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Publish" Properties="Configuration=Debug; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <MSBuild Projects="app\DI.Colef.Sia.Web\DI.Colef.Sia.Web.csproj" Targets="Publish" Properties="Configuration=Release; Platform=AnyCPU; BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="Code Generation\CrudScaffolding" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CrudScaffoldingBuildOutput)">
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Debug|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Release|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="Code Generation\CrudScaffolding:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Debug|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Release|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="Code Generation\CrudScaffolding:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CrudScaffoldingBuildOutput)">
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Debug|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Release|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="Code Generation\CrudScaffolding:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Debug|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Any CPU') " />
+    <Message Text="The project &quot;CrudScaffolding&quot; is not selected for building in solution configuration &quot;Release|Any CPU&quot;." Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Any CPU') " />
+  </Target>
+  <Target Name="Build" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel1.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel1) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel1.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel2.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel2) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel2.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <MSBuild Condition="@(BuildLevel3) != ''" Projects="@(BuildLevel3)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel3.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel3) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel3.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel3) != ''" />
+  </Target>
+  <Target Name="Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel1.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel1) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel1.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel2.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel2) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel2.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <MSBuild Condition="@(BuildLevel3) != ''" Projects="@(BuildLevel3)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel3.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel3) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel3.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel3) != ''" />
+    <Delete Files="DI.Colef.Sia.sln.cache" />
+  </Target>
+  <Target Name="Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel1.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel1) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel1.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel2.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel2) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel2.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <MSBuild Condition="@(BuildLevel3) != ''" Projects="@(BuildLevel3)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="The project &quot;%(SkipLevel3.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel3) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel3.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel3) != ''" />
+  </Target>
+  <Target Name="Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel0.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel0) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel0.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel1.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel1) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel1.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel2.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel2) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel2.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <MSBuild Condition="@(BuildLevel3) != ''" Projects="@(BuildLevel3)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="The project &quot;%(SkipLevel3.Identity)&quot; is not selected for building in solution configuration &quot;$(Configuration)|$(Platform)&quot;." Condition="@(SkipLevel3) != ''" />
+    <Warning Text="The project configuration for project &quot;%(MissingConfigLevel3.Identity)&quot; was not specified in the solution file for the solution configuration &quot;$(Configuration)|$(Platform)&quot;." Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel3) != ''" />
+  </Target>
+</Project>

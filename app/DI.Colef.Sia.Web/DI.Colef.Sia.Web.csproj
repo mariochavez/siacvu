@@ -1,0 +1,832 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65EE3A62-516D-40A1-985E-78FFF826DCE0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DecisionesInteligentes.Colef.Sia.Web</RootNamespace>
+    <AssemblyName>DecisionesInteligentes.Colef.Sia.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.3.1.71, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator.WindsorAdapter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\CommonServiceLocator.WindsorAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.NHibernate.Profiler.Appender, Version=0.9.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\HibernatingRhinos.NHibernate.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib, Version=0.0.1.913, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcContrib.Castle, Version=0.0.1.174, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\MvcContrib.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.0.1001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=1.2.0.1001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Core.NHibernateValidator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Core.NHibernateValidator.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Web.Castle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpArch.Web.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Web.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\System.Web.Routing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="CastleWindsor\ComponentRegistrar.cs" />
+    <Compile Include="ColefProfile.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="NHibernate.config">
+    </Content>
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\DebugFormSubmission.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DI.Colef.Sia.Core\DI.Colef.Sia.Core.csproj">
+      <Project>{87437EED-5DE9-4952-A1F6-3EC39DAA2D44}</Project>
+      <Name>DI.Colef.Sia.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DI.Colef.Sia.Data\DI.Colef.Sia.Data.csproj">
+      <Project>{214434BA-B62E-4E97-A500-9175A5FB176E}</Project>
+      <Name>DI.Colef.Sia.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DI.Colef.Sia.Web.Controllers\DI.Colef.Sia.Web.Controllers.csproj">
+      <Project>{E6BCD573-53C5-4F55-B920-0E68E3F91B5F}</Project>
+      <Name>DI.Colef.Sia.Web.Controllers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\asistente-requerido-icon.gif" />
+    <Content Include="Content\Images\boton-bg.gif" />
+    <Content Include="Content\Images\botonzon-bg.gif" />
+    <Content Include="Content\Images\caja-busqueda-bg.gif" />
+    <Content Include="Content\Images\colef-logo.gif" />
+    <Content Include="Content\Images\contenido-bg.gif" />
+    <Content Include="Content\Images\corner_left.png" />
+    <Content Include="Content\Images\corner_right.png" />
+    <Content Include="Content\Images\dot.gif" />
+    <Content Include="Content\Images\eliminar-icon.png" />
+    <Content Include="Content\Images\medium-brown-button.png" />
+    <Content Include="Content\Images\normal-brown-button.png" />
+    <Content Include="Content\Images\normal-white-button.png" />
+    <Content Include="Content\Images\Pagina-bg.gif" />
+    <Content Include="Content\Images\requerido-icon.gif" />
+    <Content Include="Content\Images\select-requerido-icon.gif" />
+    <Content Include="Content\Images\small-white-button.png" />
+    <Content Include="Content\Images\subcontenido-bg.gif" />
+    <Content Include="Content\Images\upload_progress.gif" />
+    <Content Include="Content\Images\usuario-icon.gif" />
+    <Content Include="Content\jquery.autocomplete.css" />
+    <Content Include="NHvalidator.config" />
+    <Content Include="Scripts\Application.js" />
+    <Content Include="Scripts\jquery-ajaxloading.js" />
+    <Content Include="Scripts\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.clearfield.min.js" />
+    <Content Include="Scripts\jquery.dynamicui.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="Scripts\ProductsSetup.js" />
+    <Content Include="Scripts\swfobjects.js" />
+    <Content Include="Scripts\Upload.js" />
+    <Content Include="Scripts\uploadify.swf" />
+    <Content Include="Views\ApoyoConacyt\Edit.aspx" />
+    <Content Include="Views\ApoyoConacyt\Index.aspx" />
+    <Content Include="Views\ApoyoConacyt\New.aspx" />
+    <Content Include="Views\ApoyoConacyt\Show.aspx" />
+    <Content Include="Views\ApoyoConacyt\_DatosApoyoConacyt.ascx" />
+    <Content Include="Views\Catalogos\Ambito\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Ambito\Edit.aspx" />
+    <Content Include="Views\Catalogos\Ambito\Index.aspx" />
+    <Content Include="Views\Catalogos\Ambito\New.aspx" />
+    <Content Include="Views\Catalogos\Ambito\_Form.ascx" />
+    <Content Include="Views\Catalogos\AreaInvestigacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\AreaInvestigacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\AreaInvestigacion\Index.aspx" />
+    <Content Include="Views\Catalogos\AreaInvestigacion\New.aspx" />
+    <Content Include="Views\Catalogos\AreaInvestigacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\AreaTematica\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\AreaTematica\Edit.aspx" />
+    <Content Include="Views\Catalogos\AreaTematica\Index.aspx" />
+    <Content Include="Views\Catalogos\AreaTematica\New.aspx" />
+    <Content Include="Views\Catalogos\AreaTematica\_Form.ascx" />
+    <Content Include="Views\Catalogos\Area\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Area\Edit.aspx" />
+    <Content Include="Views\Catalogos\Area\Index.aspx" />
+    <Content Include="Views\Catalogos\Area\New.aspx" />
+    <Content Include="Views\Catalogos\Area\_Form.ascx" />
+    <Content Include="Views\Catalogos\Categoria\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Categoria\Edit.aspx" />
+    <Content Include="Views\Catalogos\Categoria\Index.aspx" />
+    <Content Include="Views\Catalogos\Categoria\New.aspx" />
+    <Content Include="Views\Catalogos\Categoria\_Form.ascx" />
+    <Content Include="Views\Catalogos\Clase\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Clase\Edit.aspx" />
+    <Content Include="Views\Catalogos\Clase\Index.aspx" />
+    <Content Include="Views\Catalogos\Clase\New.aspx" />
+    <Content Include="Views\Catalogos\Clase\_Form.ascx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Edit.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\Index.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\New.aspx" />
+    <Content Include="Views\Catalogos\ConsejoComision\_Form.ascx" />
+    <Content Include="Views\Catalogos\Departamento\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Departamento\Edit.aspx" />
+    <Content Include="Views\Catalogos\Departamento\Index.aspx" />
+    <Content Include="Views\Catalogos\Departamento\New.aspx" />
+    <Content Include="Views\Catalogos\Departamento\_Form.ascx" />
+    <Content Include="Views\Catalogos\Dependencia\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Dependencia\Edit.aspx" />
+    <Content Include="Views\Catalogos\Dependencia\Index.aspx" />
+    <Content Include="Views\Catalogos\Dependencia\New.aspx" />
+    <Content Include="Views\Catalogos\Dependencia\_Form.ascx" />
+    <Content Include="Views\Catalogos\DirigidoA\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\DirigidoA\Edit.aspx" />
+    <Content Include="Views\Catalogos\DirigidoA\Index.aspx" />
+    <Content Include="Views\Catalogos\DirigidoA\New.aspx" />
+    <Content Include="Views\Catalogos\DirigidoA\_Form.ascx" />
+    <Content Include="Views\Catalogos\Disciplina\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Disciplina\Edit.aspx" />
+    <Content Include="Views\Catalogos\Disciplina\Index.aspx" />
+    <Content Include="Views\Catalogos\Disciplina\New.aspx" />
+    <Content Include="Views\Catalogos\Disciplina\_Form.ascx" />
+    <Content Include="Views\Catalogos\Editorial\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Editorial\Edit.aspx" />
+    <Content Include="Views\Catalogos\Editorial\Index.aspx" />
+    <Content Include="Views\Catalogos\Editorial\New.aspx" />
+    <Content Include="Views\Catalogos\Editorial\_Form.ascx" />
+    <Content Include="Views\Catalogos\EstadoPais\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\EstadoPais\Edit.aspx" />
+    <Content Include="Views\Catalogos\EstadoPais\Index.aspx" />
+    <Content Include="Views\Catalogos\EstadoPais\New.aspx" />
+    <Content Include="Views\Catalogos\EstadoPais\_Form.ascx" />
+    <Content Include="Views\Catalogos\Estado\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Estado\Edit.aspx" />
+    <Content Include="Views\Catalogos\Estado\Index.aspx" />
+    <Content Include="Views\Catalogos\Estado\New.aspx" />
+    <Content Include="Views\Catalogos\Estado\_Form.ascx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Edit.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\Index.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\New.aspx" />
+    <Content Include="Views\Catalogos\EstatusFormacionAcademica\_Form.ascx" />
+    <Content Include="Views\Catalogos\FondoConacyt\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\FondoConacyt\Edit.aspx" />
+    <Content Include="Views\Catalogos\FondoConacyt\Index.aspx" />
+    <Content Include="Views\Catalogos\FondoConacyt\New.aspx" />
+    <Content Include="Views\Catalogos\FondoConacyt\_Form.ascx" />
+    <Content Include="Views\Catalogos\GradoAcademico\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\GradoAcademico\Edit.aspx" />
+    <Content Include="Views\Catalogos\GradoAcademico\Index.aspx" />
+    <Content Include="Views\Catalogos\GradoAcademico\New.aspx" />
+    <Content Include="Views\Catalogos\GradoAcademico\_Form.ascx" />
+    <Content Include="Views\Catalogos\Idioma\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Idioma\Edit.aspx" />
+    <Content Include="Views\Catalogos\Idioma\Index.aspx" />
+    <Content Include="Views\Catalogos\Idioma\New.aspx" />
+    <Content Include="Views\Catalogos\Idioma\_Form.ascx" />
+    <Content Include="Views\Catalogos\Indice\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Indice\Edit.aspx" />
+    <Content Include="Views\Catalogos\Indice\Index.aspx" />
+    <Content Include="Views\Catalogos\Indice\New.aspx" />
+    <Content Include="Views\Catalogos\Indice\_Form.ascx" />
+    <Content Include="Views\Catalogos\Institucion\ChangePais.js.ascx" />
+    <Content Include="Views\Catalogos\Institucion\Edit.aspx" />
+    <Content Include="Views\Catalogos\Institucion\Index.aspx" />
+    <Content Include="Views\Catalogos\Institucion\New.aspx" />
+    <Content Include="Views\Catalogos\Institucion\Show.aspx" />
+    <Content Include="Views\Catalogos\Institucion\_Form.ascx" />
+    <Content Include="Views\Catalogos\InvestigadorExterno\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\InvestigadorExterno\Edit.aspx" />
+    <Content Include="Views\Catalogos\InvestigadorExterno\Index.aspx" />
+    <Content Include="Views\Catalogos\InvestigadorExterno\New.aspx" />
+    <Content Include="Views\Catalogos\InvestigadorExterno\_Form.ascx" />
+    <Content Include="Views\Catalogos\LineaInvestigacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\LineaInvestigacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\LineaInvestigacion\Index.aspx" />
+    <Content Include="Views\Catalogos\LineaInvestigacion\New.aspx" />
+    <Content Include="Views\Catalogos\LineaInvestigacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\LineaTematica\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\LineaTematica\Edit.aspx" />
+    <Content Include="Views\Catalogos\LineaTematica\Index.aspx" />
+    <Content Include="Views\Catalogos\LineaTematica\New.aspx" />
+    <Content Include="Views\Catalogos\LineaTematica\_Form.ascx" />
+    <Content Include="Views\Catalogos\MedioElectronico\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\MedioElectronico\Edit.aspx" />
+    <Content Include="Views\Catalogos\MedioElectronico\Index.aspx" />
+    <Content Include="Views\Catalogos\MedioElectronico\New.aspx" />
+    <Content Include="Views\Catalogos\MedioElectronico\_Form.ascx" />
+    <Content Include="Views\Catalogos\MedioImpreso\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\MedioImpreso\Edit.aspx" />
+    <Content Include="Views\Catalogos\MedioImpreso\Index.aspx" />
+    <Content Include="Views\Catalogos\MedioImpreso\New.aspx" />
+    <Content Include="Views\Catalogos\MedioImpreso\_Form.ascx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Edit.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\Index.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\New.aspx" />
+    <Content Include="Views\Catalogos\NivelEstudio\_Form.ascx" />
+    <Content Include="Views\Catalogos\Nivel\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Nivel\Edit.aspx" />
+    <Content Include="Views\Catalogos\Nivel\Index.aspx" />
+    <Content Include="Views\Catalogos\Nivel\New.aspx" />
+    <Content Include="Views\Catalogos\Nivel\_Form.ascx" />
+    <Content Include="Views\Catalogos\Organizacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Organizacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\Organizacion\Index.aspx" />
+    <Content Include="Views\Catalogos\Organizacion\New.aspx" />
+    <Content Include="Views\Catalogos\Organizacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\Pais\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Pais\Edit.aspx" />
+    <Content Include="Views\Catalogos\Pais\Index.aspx" />
+    <Content Include="Views\Catalogos\Pais\New.aspx" />
+    <Content Include="Views\Catalogos\Pais\_Form.ascx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Edit.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\Index.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\New.aspx" />
+    <Content Include="Views\Catalogos\ProgramaEstudio\_Form.ascx" />
+    <Content Include="Views\Catalogos\Puesto\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Puesto\Edit.aspx" />
+    <Content Include="Views\Catalogos\Puesto\Index.aspx" />
+    <Content Include="Views\Catalogos\Puesto\New.aspx" />
+    <Content Include="Views\Catalogos\Puesto\_Form.ascx" />
+    <Content Include="Views\Catalogos\Rama\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Rama\Edit.aspx" />
+    <Content Include="Views\Catalogos\Rama\Index.aspx" />
+    <Content Include="Views\Catalogos\Rama\New.aspx" />
+    <Content Include="Views\Catalogos\Rama\_Form.ascx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Index.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\New.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\Show.aspx" />
+    <Content Include="Views\Catalogos\RevistaPublicacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\Sector\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Sector\Edit.aspx" />
+    <Content Include="Views\Catalogos\Sector\Index.aspx" />
+    <Content Include="Views\Catalogos\Sector\New.aspx" />
+    <Content Include="Views\Catalogos\Sector\_Form.ascx" />
+    <Content Include="Views\Catalogos\Sede\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Sede\Edit.aspx" />
+    <Content Include="Views\Catalogos\Sede\Index.aspx" />
+    <Content Include="Views\Catalogos\Sede\New.aspx" />
+    <Content Include="Views\Catalogos\Sede\_Form.ascx" />
+    <Content Include="Views\Catalogos\SNI\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\SNI\Edit.aspx" />
+    <Content Include="Views\Catalogos\SNI\Index.aspx" />
+    <Content Include="Views\Catalogos\SNI\New.aspx" />
+    <Content Include="Views\Catalogos\SNI\_Form.ascx" />
+    <Content Include="Views\Catalogos\Subdisciplina\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Subdisciplina\Edit.aspx" />
+    <Content Include="Views\Catalogos\Subdisciplina\Index.aspx" />
+    <Content Include="Views\Catalogos\Subdisciplina\New.aspx" />
+    <Content Include="Views\Catalogos\Subdisciplina\_Form.ascx" />
+    <Content Include="Views\Catalogos\SubprogramaConacyt\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\SubprogramaConacyt\Edit.aspx" />
+    <Content Include="Views\Catalogos\SubprogramaConacyt\Index.aspx" />
+    <Content Include="Views\Catalogos\SubprogramaConacyt\New.aspx" />
+    <Content Include="Views\Catalogos\SubprogramaConacyt\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoActividad\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoActividad\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoActividad\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoActividad\New.aspx" />
+    <Content Include="Views\Catalogos\TipoActividad\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoApoyo\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoApoyo\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoApoyo\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoApoyo\New.aspx" />
+    <Content Include="Views\Catalogos\TipoApoyo\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoDictamen\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoDictamen\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoDictamen\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoDictamen\New.aspx" />
+    <Content Include="Views\Catalogos\TipoDictamen\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoDistincion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoDistincion\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoDistincion\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoDistincion\New.aspx" />
+    <Content Include="Views\Catalogos\TipoDistincion\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoEstancia\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoEstancia\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoEstancia\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoEstancia\New.aspx" />
+    <Content Include="Views\Catalogos\TipoEstancia\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoEvento\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoEvento\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoEvento\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoEvento\New.aspx" />
+    <Content Include="Views\Catalogos\TipoEvento\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoOrgano\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoOrgano\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoOrgano\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoOrgano\New.aspx" />
+    <Content Include="Views\Catalogos\TipoOrgano\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacion\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoParticipacion\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacion\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacion\New.aspx" />
+    <Content Include="Views\Catalogos\TipoParticipacion\_Form.ascx" />
+    <Content Include="Views\Catalogos\TipoProyecto\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoProyecto\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoProyecto\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoProyecto\New.aspx" />
+    <Content Include="Views\Catalogos\TipoProyecto\_Form.ascx" />
+    <Content Include="Views\Catalogos\VinculacionAPyD\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\VinculacionAPyD\Edit.aspx" />
+    <Content Include="Views\Catalogos\VinculacionAPyD\Index.aspx" />
+    <Content Include="Views\Catalogos\VinculacionAPyD\New.aspx" />
+    <Content Include="Views\Catalogos\VinculacionAPyD\_Form.ascx" />
+    <Content Include="Views\EstanciaAcademicaExterna\ChangeSede.js.ascx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Edit.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Index.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\New.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\Show.aspx" />
+    <Content Include="Views\EstanciaAcademicaExterna\_DatosEstanciaAcademicaExterna.ascx" />
+    <Content Include="Views\ExperienciaProfesional\Show.aspx" />
+    <Content Include="Views\FormacionAcademica\ChangePais.js.ascx" />
+    <Content Include="Views\FormacionAcademica\Show.aspx" />
+    <Content Include="Views\GrupoInvestigacion\AddMiembroExterno.js.ascx" />
+    <Content Include="Views\GrupoInvestigacion\DeleteMiembroExterno.js.ascx" />
+    <Content Include="Views\GrupoInvestigacion\NewMiembroExterno.js.ascx" />
+    <Content Include="Views\GrupoInvestigacion\Show.aspx" />
+    <Content Include="Views\GrupoInvestigacion\_EditMiembroExterno.ascx" />
+    <Content Include="Views\GrupoInvestigacion\_EstructuraFuncional.ascx" />
+    <Content Include="Views\GrupoInvestigacion\Edit.aspx" />
+    <Content Include="Views\GrupoInvestigacion\Index.aspx" />
+    <Content Include="Views\GrupoInvestigacion\New.aspx" />
+    <Content Include="Views\ExperienciaProfesional\Edit.aspx" />
+    <Content Include="Views\ExperienciaProfesional\Index.aspx" />
+    <Content Include="Views\ExperienciaProfesional\New.aspx" />
+    <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
+    <Content Include="Views\GrupoInvestigacion\_NewMiembroExterno.ascx" />
+    <Content Include="Views\GrupoInvestigacion\_ShowMiembroExterno.ascx" />
+    <Content Include="Views\Home\Sign.js.ascx" />
+    <Content Include="Views\Home\_VinculacionDifusion.ascx" />
+    <Content Include="Views\Home\_ProyectosInvestigacion.ascx" />
+    <Content Include="Views\Home\_RecursosHumanos.ascx" />
+    <Content Include="Views\Home\_ProduccionAcademica.ascx" />
+    <Content Include="Views\IdiomasInvestigador\Edit.aspx" />
+    <Content Include="Views\IdiomasInvestigador\Index.aspx" />
+    <Content Include="Views\IdiomasInvestigador\New.aspx" />
+    <Content Include="Views\IdiomasInvestigador\Show.aspx" />
+    <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
+    <Content Include="Views\Investigador\ChangeUser.js.ascx" />
+    <Content Include="Views\Investigador\ChangeSede.js.ascx" />
+    <Content Include="Views\Shared\_CustomFirmaForm.ascx" />
+    <Content Include="Views\Shared\DgaaSign.js.ascx" />
+    <Content Include="Views\Shared\_FirmaForm.ascx" />
+    <Content Include="Views\Investigador\CV.aspx" />
+    <Content Include="Views\Proyecto\_ShowProductoGenerado.ascx" />
+    <Content Include="Views\Proyecto\_ShowParticipaEstudiante.ascx" />
+    <Content Include="Views\Proyecto\_ShowRecursoFinanciero.ascx" />
+    <Content Include="Views\Proyecto\_ShowResponsable.ascx" />
+    <Content Include="Views\Shared\Save.js.ascx" />
+    <Content Include="Views\Investigador\_ShowSni.ascx" />
+    <Content Include="Views\Investigador\_ShowCategoria.ascx" />
+    <Content Include="Views\Investigador\_ShowCargo.ascx" />
+    <Content Include="Views\Investigador\_ShowEstado.ascx" />
+    <Content Include="Views\Investigador\_ShowGrado.ascx" />
+    <Content Include="Views\Investigador\Show.aspx" />
+    <Content Include="Views\Investigador\_PerfilAcademico.ascx" />
+    <Content Include="Views\Investigador\_InformacionPersonal.ascx" />
+    <Content Include="Views\EstanciaInstitucionExterna\Show.aspx" />
+    <Content Include="Views\Productos\Evento\AddSesion.js.ascx" />
+    <Content Include="Views\Productos\Evento\DeleteSesion.js.ascx" />
+    <Content Include="Views\Productos\Evento\_TematicaFinanciamiento.ascx" />
+    <Content Include="Views\Productos\Evento\NewSesion.js.ascx" />
+    <Content Include="Views\Productos\Evento\_EditSesion.ascx" />
+    <Content Include="Views\Productos\Evento\_NewSesion.ascx" />
+    <Content Include="Views\Productos\Evento\_ShowSesion.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowLibro.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowCapitulo.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ShowArticulo.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\Edit.aspx" />
+    <Content Include="Views\Productos\ObraTraducida\Index.aspx" />
+    <Content Include="Views\Productos\ObraTraducida\New.aspx" />
+    <Content Include="Views\Productos\Articulo\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Curso\ChangeCursoInvestigador.js.ascx" />
+    <Content Include="Views\Productos\Curso\_ShowCursoExterno.ascx" />
+    <Content Include="Views\Productos\Curso\_ShowCursoInvestigador.ascx" />
+    <Content Include="Views\Productos\ObraTraducida\Show.aspx" />
+    <Content Include="Views\Productos\ObraTraducida\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\OrganoInterno\Edit.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\Index.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\New.aspx" />
+    <Content Include="Views\ParticipacionAcademia\Edit.aspx" />
+    <Content Include="Views\ParticipacionAcademia\Index.aspx" />
+    <Content Include="Views\ParticipacionAcademia\New.aspx" />
+    <Content Include="Views\ParticipacionAcademia\Show.aspx" />
+    <Content Include="Views\ParticipacionAcademia\_DatosParticipacionAcademia.ascx" />
+    <Content Include="Views\Productos\Articulo\Show.aspx" />
+    <Content Include="Views\Productos\Capitulo\Show.aspx" />
+    <Content Include="Views\Productos\Curso\Show.aspx" />
+    <Content Include="Views\Productos\Dictamen\Show.aspx" />
+    <Content Include="Views\Productos\Distincion\Show.aspx" />
+    <Content Include="Views\Productos\Evento\Show.aspx" />
+    <Content Include="Views\Productos\Libro\AddEvento.js.ascx" />
+    <Content Include="Views\Productos\Libro\_NewEvento.ascx" />
+    <Content Include="Views\Productos\Libro\NewEvento.js.ascx" />
+    <Content Include="Views\Productos\Libro\Edit.aspx" />
+    <Content Include="Views\Productos\Libro\Index.aspx" />
+    <Content Include="Views\Productos\Libro\New.aspx" />
+    <Content Include="Views\Productos\Libro\Show.aspx" />
+    <Content Include="Views\Productos\Libro\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Libro\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\EstanciaInstitucionExterna\Edit.aspx" />
+    <Content Include="Views\EstanciaInstitucionExterna\Index.aspx" />
+    <Content Include="Views\EstanciaInstitucionExterna\New.aspx" />
+    <Content Include="Views\EstanciaInstitucionExterna\_DatosEstanciaInstitucionExterna.ascx" />
+    <Content Include="Views\Productos\OrganoInterno\Show.aspx" />
+    <Content Include="Views\Productos\OrganoInterno\_DatosOrganoInterno.ascx" />
+    <Content Include="Views\Productos\Reporte\_ShowReporteTecnico.ascx" />
+    <Content Include="Views\Productos\Reporte\_ShowDocumentoTrabajo.ascx" />
+    <Content Include="Views\Productos\Resena\_ObraResenada.ascx" />
+    <Content Include="Views\Productos\Resena\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Resena\_ShowObraResenada.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\ChangeTesisPosgrado.js.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\_ShowTesisExterna.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\_ShowTesisInterna.ascx" />
+    <Content Include="Views\Proyecto\ChangeConvenio.js.ascx" />
+    <Content Include="Views\Proyecto\AddEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\AddProducto.js.ascx" />
+    <Content Include="Views\Proyecto\DeleteProducto.js.ascx" />
+    <Content Include="Views\Proyecto\_NewProducto.ascx" />
+    <Content Include="Views\Proyecto\NewProducto.js.ascx" />
+    <Content Include="Views\Proyecto\_EditProductoGenerado.ascx" />
+    <Content Include="Views\Proyecto\DeleteEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\_NewEstudiante.ascx" />
+    <Content Include="Views\Proyecto\NewEstudiante.js.ascx" />
+    <Content Include="Views\Proyecto\_EditParticipaEstudiante.ascx" />
+    <Content Include="Views\Proyecto\_ProductoAcademicoContemplado.ascx" />
+    <Content Include="Views\Proyecto\DeleteRecursoFinanciero.js.ascx" />
+    <Content Include="Views\Proyecto\_CalendarioProyecto.ascx" />
+    <Content Include="Views\Proyecto\DeleteResponsable.js.ascx" />
+    <Content Include="Views\Proyecto\_InformacionGeneral.ascx" />
+    <Content Include="Views\Shared\AddCoautorInterno.js.ascx" />
+    <Content Include="Views\Shared\AddAutorExterno.js.ascx" />
+    <Content Include="Views\Shared\AddAutorInterno.js.ascx" />
+    <Content Include="Views\Shared\AddEditorial.js.ascx" />
+    <Content Include="Views\Shared\AddInstitucion.js.ascx" />
+    <Content Include="Views\Shared\ChangeOrganizacion.js.ascx" />
+    <Content Include="Views\Shared\ChangeArea.js.ascx" />
+    <Content Include="Views\Shared\ChangeAreaTematica.js.ascx" />
+    <Content Include="Views\Shared\ChangeInstitucion.js.ascx" />
+    <Content Include="Views\Shared\ChangeRevista.js.ascx" />
+    <Content Include="Views\Shared\ChangeInstitucionShort.js.ascx" />
+    <Content Include="Views\Shared\ChangeSector.js.ascx" />
+    <Content Include="Views\Shared\ChangeSectorEconomico.js.ascx" />
+    <Content Include="Views\Shared\ChangeRama.js.ascx" />
+    <Content Include="Views\Shared\AddParticipanteExterno.js.ascx" />
+    <Content Include="Views\Shared\AddParticipanteInterno.js.ascx" />
+    <Content Include="Views\Shared\_ProgressBar.ascx" />
+    <Content Include="Views\Shared\DeleteParticipanteExterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteParticipanteInterno.js.ascx" />
+    <Content Include="Views\Shared\NewParticipanteExterno.js.ascx" />
+    <Content Include="Views\Shared\NewParticipanteInterno.js.ascx" />
+    <Content Include="Views\Shared\_NewParticipanteExterno.ascx" />
+    <Content Include="Views\Shared\_NewParticipanteInterno.ascx" />
+    <Content Include="Views\Shared\_ShowParticipanteExterno.ascx" />
+    <Content Include="Views\Shared\_ShowParticipanteInterno.ascx" />
+    <Content Include="Views\Shared\_EditParticipanteExterno.ascx" />
+    <Content Include="Views\Shared\_EditParticipanteInterno.ascx" />
+    <Content Include="Views\Shared\DeleteInstitucion.js.ascx" />
+    <Content Include="Views\Shared\NewInstitucion.js.ascx" />
+    <Content Include="Views\Shared\_EditInstitucion.ascx" />
+    <Content Include="Views\Shared\_NewInstitucion.ascx" />
+    <Content Include="Views\Shared\_ShowEstadoProducto.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucion.ascx" />
+    <Content Include="Views\Shared\_ShowPalabrasClave.ascx" />
+    <Content Include="Views\Shared\ChangeDisciplina.js.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucionShort.ascx" />
+    <Content Include="Views\Shared\DeleteEditorial.js.ascx" />
+    <Content Include="Views\Shared\NewEditorial.js.ascx" />
+    <Content Include="Views\Shared\_EditEditorial.ascx" />
+    <Content Include="Views\Shared\_NewEditorial.ascx" />
+    <Content Include="Views\Shared\_ShowClase.ascx" />
+    <Content Include="Views\Shared\_ShowEditorial.ascx" />
+    <Content Include="Views\Shared\_ShowInstitucionLong.ascx" />
+    <Content Include="Views\Shared\_Show2doNivel.ascx" />
+    <Content Include="Views\Shared\_ShowSubdisciplina.ascx" />
+    <Content Include="Views\Shared\_ShowAreaTematica.ascx" />
+    <Content Include="Views\Shared\_ShowProyecto.ascx" />
+    <Content Include="Views\Shared\_ShowRevista.ascx" />
+    <Content Include="Views\Shared\DeleteAutorInterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteAutorExterno.js.ascx" />
+    <Content Include="Views\Shared\_ShowAutorInterno.ascx" />
+    <Content Include="Views\Shared\_ShowAutorExterno.ascx" />
+    <Content Include="Views\Shared\_NewAutorInterno.ascx" />
+    <Content Include="Views\Shared\_NewAutorExterno.ascx" />
+    <Content Include="Views\Shared\NewAutorInterno.js.ascx" />
+    <Content Include="Views\Shared\NewAutorExterno.js.ascx" />
+    <Content Include="Views\Shared\_EditAutorExterno.ascx" />
+    <Content Include="Views\Shared\_EditAutorInterno.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorExterno.ascx" />
+    <Content Include="Views\Shared\_ShowCoautorInterno.ascx" />
+    <Content Include="Views\Shared\AddCoautorExterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteCoautorExterno.js.ascx" />
+    <Content Include="Views\Shared\DeleteCoautorInterno.js.ascx" />
+    <Content Include="Views\Shared\NewCoautorInterno.js.ascx" />
+    <Content Include="Views\Shared\NewCoautorExterno.js.ascx" />
+    <Content Include="Views\Shared\_EditCoautorInterno.ascx" />
+    <Content Include="Views\Productos\Articulo\Edit.aspx" />
+    <Content Include="Views\Shared\_EditCoautorExterno.ascx" />
+    <Content Include="Views\Shared\_NewCoautorInterno.ascx" />
+    <Content Include="Views\Shared\_NewCoautorExterno.ascx" />
+    <Content Include="Views\Productos\Articulo\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\Articulo\Index.aspx" />
+    <Content Include="Views\Productos\Articulo\New.aspx" />
+    <Content Include="Views\Productos\Capitulo\Edit.aspx" />
+    <Content Include="Views\Productos\Capitulo\Index.aspx" />
+    <Content Include="Views\Productos\Capitulo\New.aspx" />
+    <Content Include="Views\Productos\Capitulo\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Capitulo\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\Curso\Edit.aspx" />
+    <Content Include="Views\Productos\Curso\Index.aspx" />
+    <Content Include="Views\Productos\Curso\New.aspx" />
+    <Content Include="Views\Productos\Dictamen\Edit.aspx" />
+    <Content Include="Views\Productos\Dictamen\Index.aspx" />
+    <Content Include="Views\Productos\Dictamen\New.aspx" />
+    <Content Include="Views\Productos\Dictamen\_DatosDictamen.ascx" />
+    <Content Include="Views\Productos\Distincion\Edit.aspx" />
+    <Content Include="Views\Productos\Distincion\Index.aspx" />
+    <Content Include="Views\Productos\Distincion\New.aspx" />
+    <Content Include="Views\Productos\Distincion\_DatosDistincion.ascx" />
+    <Content Include="Views\Productos\Evento\Edit.aspx" />
+    <Content Include="Views\Productos\Evento\Index.aspx" />
+    <Content Include="Views\Productos\Evento\New.aspx" />
+    <Content Include="Views\Productos\Evento\_DatosEvento.ascx" />
+    <Content Include="Views\FormacionAcademica\Edit.aspx" />
+    <Content Include="Views\FormacionAcademica\Index.aspx" />
+    <Content Include="Views\FormacionAcademica\New.aspx" />
+    <Content Include="Views\FormacionAcademica\_DatosFormacionAcademica.ascx" />
+    <Content Include="Views\Investigador\Activate.js.ascx" />
+    <Content Include="Views\Investigador\AddEstado.js.ascx" />
+    <Content Include="Views\Investigador\AddGrado.js.ascx" />
+    <Content Include="Views\Investigador\AddCategoria.js.ascx" />
+    <Content Include="Views\Investigador\AddCargo.js.ascx" />
+    <Content Include="Views\Investigador\AddSni.js.ascx" />
+    <Content Include="Views\Investigador\NewSni.js.ascx" />
+    <Content Include="Views\Investigador\_EditSni.ascx" />
+    <Content Include="Views\Investigador\NewCargo.js.ascx" />
+    <Content Include="Views\Investigador\_EditCargo.ascx" />
+    <Content Include="Views\Investigador\NewCategoria.js.ascx" />
+    <Content Include="Views\Investigador\_EditCategoria.ascx" />
+    <Content Include="Views\Investigador\NewGrado.js.ascx" />
+    <Content Include="Views\Investigador\_EditGrado.ascx" />
+    <Content Include="Views\Investigador\_EditEstado.ascx" />
+    <Content Include="Views\Investigador\NewEstado.js.ascx" />
+    <Content Include="Views\Investigador\Edit.aspx" />
+    <Content Include="Views\Investigador\_NewCategoria.ascx" />
+    <Content Include="Views\Investigador\_NewCargo.ascx" />
+    <Content Include="Views\Investigador\_NewSni.ascx" />
+    <Content Include="Views\Investigador\_NewGrado.ascx" />
+    <Content Include="Views\Investigador\_NewEstado.ascx" />
+    <Content Include="Views\Investigador\Index.aspx" />
+    <Content Include="Views\Investigador\New.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\Edit.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\Index.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\New.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\Show.aspx" />
+    <Content Include="Views\Productos\OrganoExterno\_DatosOrganoExterno.ascx" />
+    <Content Include="Views\Productos\ParticipacionMedio\Show.aspx" />
+    <Content Include="Views\Productos\ParticipacionMedio\Edit.aspx" />
+    <Content Include="Views\Productos\ParticipacionMedio\Index.aspx" />
+    <Content Include="Views\Productos\ParticipacionMedio\New.aspx" />
+    <Content Include="Views\Productos\ParticipacionMedio\_DatosParticipacionMedio.ascx" />
+    <Content Include="Views\Productos\Reporte\Edit.aspx" />
+    <Content Include="Views\Productos\Reporte\Index.aspx" />
+    <Content Include="Views\Productos\Reporte\New.aspx" />
+    <Content Include="Views\Productos\Reporte\Show.aspx" />
+    <Content Include="Views\Productos\Reporte\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\Reporte\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\Resena\Edit.aspx" />
+    <Content Include="Views\Productos\Resena\Index.aspx" />
+    <Content Include="Views\Productos\Resena\New.aspx" />
+    <Content Include="Views\Productos\Resena\Show.aspx" />
+    <Content Include="Views\Productos\Resena\_ReferenciaBibliografica.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\Show.aspx" />
+    <Content Include="Views\Proyecto\AddRecursoFinanciero.js.ascx" />
+    <Content Include="Views\Proyecto\Show.aspx" />
+    <Content Include="Views\Proyecto\_ParticipacionEstudiante.ascx" />
+    <Content Include="Views\Proyecto\_TematicaProyecto.ascx" />
+    <Content Include="Views\Proyecto\_FuenteFinanciamiento.ascx" />
+    <Content Include="Views\Proyecto\_NewRecursoFinanciero.ascx" />
+    <Content Include="Views\Proyecto\NewRecursoFinanciero.js.ascx" />
+    <Content Include="Views\Proyecto\_EditRecursoFinanciero.ascx" />
+    <Content Include="Views\Proyecto\Edit.aspx" />
+    <Content Include="Views\Rol\New.aspx" />
+    <Content Include="Views\Rol\Edit.aspx" />
+    <Content Include="Views\Rol\Activate.js.ascx" />
+    <Content Include="Views\Rol\Index.aspx" />
+    <Content Include="Views\Rol\_Form.ascx" />
+    <Content Include="Views\Shared\_EditArchivo.ascx" />
+    <Content Include="Views\Shared\_ShowSidebar.ascx" />
+    <Content Include="Views\Shared\_UserInfo.ascx" />
+    <Content Include="Views\Shared\_EditSidebar.ascx" />
+    <Content Include="Views\Shared\_NewSidebar.ascx" />
+    <Content Include="Views\Shared\_ListSidebar.ascx" />
+    <Content Include="Views\Shared\ModelError.js.ascx" />
+    <Content Include="Views\Shared\_Message.ascx" />
+    <Content Include="Views\Shared\_Search.ascx" />
+    <Content Include="Views\Productos\TesisDirigida\Edit.aspx" />
+    <Content Include="Views\Productos\TesisDirigida\Index.aspx" />
+    <Content Include="Views\Productos\TesisDirigida\New.aspx" />
+    <Content Include="Views\Proyecto\AddResponsable.js.ascx" />
+    <Content Include="Views\Proyecto\Index.aspx" />
+    <Content Include="Views\Proyecto\New.aspx" />
+    <Content Include="Views\Proyecto\NewResponsable.js.ascx" />
+    <Content Include="Views\Proyecto\_EditResponsable.ascx" />
+    <Content Include="Views\Proyecto\_NewResponsable.ascx" />
+    <Content Include="Views\Catalogos\Moneda\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\Moneda\Edit.aspx" />
+    <Content Include="Views\Catalogos\Moneda\Index.aspx" />
+    <Content Include="Views\Catalogos\Moneda\New.aspx" />
+    <Content Include="Views\Catalogos\Moneda\_Form.ascx" />
+    <Content Include="Views\Session\Index.aspx" />
+    <Content Include="Views\Shared\Login.Master" />
+    <Content Include="Views\Catalogos\TipoArchivo\Activate.js.ascx" />
+    <Content Include="Views\Catalogos\TipoArchivo\Edit.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\Index.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\New.aspx" />
+    <Content Include="Views\Catalogos\TipoArchivo\_Form.ascx" />
+    <Content Include="Views\Usuario\AddRol.js.ascx" />
+    <Content Include="Views\Usuario\Edit.aspx" />
+    <Content Include="Views\Usuario\Index.aspx" />
+    <Content Include="Views\Usuario\NewRol.js.ascx" />
+    <Content Include="Views\Usuario\Show.aspx" />
+    <Content Include="Views\Usuario\_DatosUsuario.ascx" />
+    <Content Include="Views\Usuario\_EditRol.ascx" />
+    <Content Include="Views\Usuario\_NewRol.ascx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3756</DevelopmentServerPort>
+          <DevelopmentServerVPath>/sia</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

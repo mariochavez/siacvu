@@ -1,0 +1,59 @@
+﻿<#@ assembly name="uNhAddIns.dll" #>
+<#@ import namespace="uNhAddIns.Inflector" #>
+
+<#+
+public class NewjsTemplate : BaseTemplate
+{
+	public NewjsTemplate(string solutionName, EntityScaffoldingDetails entityScaffoldingDetails) 
+		: base(solutionName, entityScaffoldingDetails) { }
+
+	protected override void RenderCore()
+	{
+#>
+<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<<#= EntityScaffoldingDetails.EntityName #>Form>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+
+<#+ 		
+foreach(EntityProperty property in EntityScaffoldingDetails.EntityProperties){
+	if(property.TypeName.Contains("IList")){
+		SpanishInflector spanishInflector = new SpanishInflector();	
+		string entityNamePluralize = spanishInflector.Pluralize(EntityScaffoldingDetails.EntityName);
+		string catalogName = property.CatalogName;
+		string camelCatalogName = spanishInflector.Camelize(catalogName);
+		string catalogTitleize = spanishInflector.Titleize(catalogName);
+		string[] addName = catalogTitleize.Split(' ');
+		
+		string camelizeCatalogName = "";
+		foreach(string name in addName){
+			camelizeCatalogName += spanishInflector.Camelize(name);
+		}
+  #>
+var html = '
+    <% using (Html.BeginForm("Add<#= catalogName #>", "<#= EntityScaffoldingDetails.EntityName #>", FormMethod.Post, new { id = "<#= camelizeCatalogName #>form" })){ %>
+    <%=Html.Hidden("<#= EntityScaffoldingDetails.EntityName #>Id", Model.Id) %>
+    <% Html.RenderPartial("_New<#= catalogName #>"); %>
+    <div class="btn_container_footer">
+        <span class="btn btn_small_brown">
+            <%=Html.SubmitButton("Guardar", "Agregar <#= catalogTitleize #>", new { rel = "#<#= camelizeCatalogName #>form", @class = "remote", @style = "border: 0px none;" })%>
+        </span>
+        <span class="btn btn_small_white">
+	        <a href="#" class="cancel" rel="<#= camelizeCatalogName #>">Cancelar</a>
+        </span>
+    </div>
+    <% } %>
+';
+
+$('#<#= camelizeCatalogName #>_form').html(html);
+$('#<#= camelizeCatalogName #>_new').hide();
+$('#<#= camelizeCatalogName #>_form').show();
+DateTimePicker.setup();
+<#+ 
+	}
+} 
+#>
+<#+
+	}
+}
+#>
