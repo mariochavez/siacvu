@@ -783,6 +783,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
+                                      ModelId = form.Id,
+                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
+                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
+                                      ComprobantePublicadoId = form.ComprobantePublicadoId,
+                                      ComprobantePublicadoNombre = form.ComprobantePublicadoNombre,
 
                                       IsShowForm = true
                                   };

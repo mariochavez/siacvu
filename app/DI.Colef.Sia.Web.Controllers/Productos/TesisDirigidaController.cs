@@ -59,7 +59,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = CreateViewDataWithTitle(Title.Index);
+            var tesisDirigidas = new TesisDirigida[] { };
+
+            if (User.IsInRole("Investigadores"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas(CurrentUser());
+
+            if (User.IsInRole("DGAA"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
+
+            data.List = tesisDirigidaMapper.Map(tesisDirigidas);
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -84,7 +95,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
             if (tesisDirigida.Firma.Aceptacion1 == 1 && tesisDirigida.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("La tesis dirigida {0} esta en firma y no puede ser editada", tesisDirigida.Titulo));
+                return RedirectToIndex(String.Format("La tesis dirigida {0} esta en firma y no puede ser editada", tesisDirigida.Titulo));
             
             if (User.IsInRole("DGAA"))
             {
@@ -93,7 +104,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     (tesisDirigida.Firma.Aceptacion1 == 0 && tesisDirigida.Firma.Aceptacion2 == 2)
                    )
                     return
-                        RedirectToHomeIndex(String.Format(
+                        RedirectToIndex(String.Format(
                                                 "La tesis dirigida {0} ya fue aceptada o no ha sido enviada a firma",
                                                 tesisDirigida.Titulo));
             }
@@ -101,7 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (User.IsInRole("Investigadores"))
             {
                 if (tesisDirigida.Usuario.Id != CurrentUser().Id)
-                    return RedirectToHomeIndex("no lo puede modificar");
+                    return RedirectToIndex("no lo puede modificar");
             }
 
             var tesisDirigidaForm = tesisDirigidaMapper.Map(tesisDirigida);

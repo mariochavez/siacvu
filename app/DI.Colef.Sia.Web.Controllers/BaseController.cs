@@ -19,7 +19,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         New,
         Edit,
         Index,
-        Show
+        Show,
+        CV
     }
 
     public class BaseController : Controller
@@ -508,6 +509,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
                 case Title.Show:
                     message = String.Format("Información de {0}", GetObjectName(false).ToLower());
+                    break;
+
+                case Title.CV:
+                    message = String.Format("Curriculum Vitae");
                     break;
             }
 

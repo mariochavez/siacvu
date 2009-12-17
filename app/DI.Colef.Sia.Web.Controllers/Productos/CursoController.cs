@@ -7,7 +7,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -55,7 +54,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = CreateViewDataWithTitle(Title.Index);
+            var cursos = new Curso[] { };
+
+            if (User.IsInRole("Investigadores"))
+                cursos = cursoService.GetAllCursos(CurrentUser());
+
+            if (User.IsInRole("DGAA"))
+                cursos = cursoService.GetAllCursos();
+
+            data.List = cursoMapper.Map(cursos);
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]
@@ -80,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var curso = cursoService.GetCursoById(id);
 
             if (curso.Firma.Aceptacion1 == 1 && curso.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El curso {0} esta en firma y no puede ser editado", curso.Nombre));
+                return RedirectToIndex(String.Format("El curso {0} esta en firma y no puede ser editado", curso.Nombre));
             
             if (User.IsInRole("DGAA"))
             {
@@ -89,7 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     (curso.Firma.Aceptacion1 == 0 && curso.Firma.Aceptacion2 == 2)
                    )
                     return
-                        RedirectToHomeIndex(String.Format(
+                        RedirectToIndex(String.Format(
                                                 "El curso {0} ya fue aceptado o no ha sido enviado a firma",
                                                 curso.Nombre));
             }
@@ -97,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (User.IsInRole("Investigadores"))
             {
                 if (curso.Usuario.Id != CurrentUser().Id)
-                    return RedirectToHomeIndex("no lo puede modificar");
+                    return RedirectToIndex("no lo puede modificar");
             }
 
             var cursoForm = cursoMapper.Map(curso);

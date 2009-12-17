@@ -2,12 +2,9 @@ using System;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
-using System.Collections.Generic;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-	[HasUniqueDomainSignature]
     [OrganoInternoValidator]
     public class OrganoInterno : Entity, IBaseEntity
     {

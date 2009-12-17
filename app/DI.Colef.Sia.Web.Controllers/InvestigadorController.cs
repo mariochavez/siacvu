@@ -121,6 +121,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult CV(int id)
+        {
+            if (!User.IsInRole("Dgaa") && CurrentUser().Id != id)
+                return NotAuthorized();
+
+            var data = CreateViewDataWithTitle(Title.CV);
+
+            var investigador = investigadorService.GetInvestigadorById(id);
+            data.Form = investigadorMapper.Map(investigador);
+
+            ViewData.Model = data;
+            return View("CV");
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Perfil()
         {
             var investigador = CurrentInvestigador();

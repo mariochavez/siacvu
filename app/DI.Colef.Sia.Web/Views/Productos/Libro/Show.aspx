@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<LibroForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
@@ -148,6 +149,16 @@
                     <p>
                         <label>Tiraje</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>Documento probatorio</label>
+                        <span class="valor">
+                            <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteLibroNombre)) { %> 
+	                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteLibroId), Model.Form.ComprobanteLibroNombre, new { target = "_blank" })%> 
+	                        <% } else { %>
+	                            &nbsp;
+	                        <% } %>
+                        </span><br />
                     </p>
                 <% } %>
                 
