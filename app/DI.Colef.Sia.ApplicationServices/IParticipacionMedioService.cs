@@ -9,5 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ParticipacionMedio[] GetActiveParticipacionMedios();
         void SaveParticipacionMedio(ParticipacionMedio participacionMedio);
 	    ParticipacionMedio[] GetAllParticipacionMedios(Usuario usuario);
+	    void SaveParticipacionMedio(ParticipacionMedio participacionMedio, bool useCommit);
     }
 }

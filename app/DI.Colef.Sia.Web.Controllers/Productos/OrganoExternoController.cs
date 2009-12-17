@@ -134,12 +134,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", organoExterno.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoExternoForm form)
         {
-            var organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var organoExterno = new OrganoExterno();
+
+            if (User.IsInRole("Investigadores"))
+               organoExterno = organoExternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+               organoExterno = organoExternoMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(organoExterno.ValidationResults(), true, "OrganoExterno");
             if (!ModelState.IsValid)
@@ -153,7 +158,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", organoExterno.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -189,6 +194,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             organoExternoService.SaveOrganoExterno(organoExterno);
 
             return Content("Uploaded");
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var organoExterno = organoExternoService.GetOrganoExternoById(firmaForm.ProductoId);
+
+            organoExterno.Firma.Aceptacion2 = 1;
+            organoExterno.Firma.Usuario2 = CurrentUser();
+
+            organoExternoService.SaveOrganoExterno(organoExterno);
+
+            var data = new FirmaForm
+            {
+                TipoProducto = firmaForm.TipoProducto,
+                Aceptacion2 = 1
+            };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var organoExterno = organoExternoService.GetOrganoExternoById(firmaForm.ProductoId);
+            organoExterno.Firma.Aceptacion1 = 0;
+            organoExterno.Firma.Aceptacion2 = 2;
+            organoExterno.Firma.Descripcion = firmaForm.Descripcion;
+            organoExterno.Firma.Usuario1 = CurrentUser();
+            organoExterno.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(organoExterno.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            organoExternoService.SaveOrganoExterno(organoExterno, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
         }
 
         [Authorize]

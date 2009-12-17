@@ -10,5 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         Libro Map(LibroForm message, Usuario usuario, Investigador investigador,
                   CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
                   EditorialProductoForm[] editoriales);
+
+        Libro Map(LibroForm message, Usuario usuario);
     }
 }

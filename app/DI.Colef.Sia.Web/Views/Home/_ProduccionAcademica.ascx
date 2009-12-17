@@ -25,9 +25,6 @@
                     <% if (produccionAcademica.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.EstatusProducto)%>
                     <% } %>
-                    <% if(produccionAcademica.Firma.Aceptacion2 == 2){ %>
-                        Rechazado Motivo: <%=Html.Encode(produccionAcademica.Firma.Descripcion) %>
-                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

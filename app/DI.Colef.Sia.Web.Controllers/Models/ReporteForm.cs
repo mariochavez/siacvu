@@ -31,6 +31,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ComprobanteReporteId { get; set; }
         public string ComprobanteReporteNombre { get; set; }
 
+        public int FirmaAceptacion2 { get; set; }
+        public string FirmaDescripcion { get; set; }
+
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
         public string ProyectoPalabraClave1 { get; set; }

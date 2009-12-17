@@ -70,6 +70,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
         }
 
+        public Reporte Map(ReporteForm message, Usuario usuario)
+        {
+            usuarioReporte = usuario;
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador)
         {
             usuarioReporte = usuario;

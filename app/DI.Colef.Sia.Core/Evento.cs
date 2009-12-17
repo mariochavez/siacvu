@@ -69,6 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Archivo ComprobanteEvento { get; set; }
 
+        [Valid]
         public virtual Firma Firma { get; set; }
 
         [Valid]

@@ -11,5 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                    CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
                      AutorExternoProductoForm[] autoresExternos, AutorInternoProductoForm[] autoresInternos,
                      EditorialProductoForm[] editoriales);
+
+        Resena Map(ResenaForm message, Usuario usuario);
     }
 }

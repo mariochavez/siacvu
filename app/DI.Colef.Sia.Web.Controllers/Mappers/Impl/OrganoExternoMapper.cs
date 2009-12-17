@@ -38,6 +38,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Ciudad = message.Ciudad;
         }
 
+        public OrganoExterno Map(OrganoExternoForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public OrganoExterno Map(OrganoExternoForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);

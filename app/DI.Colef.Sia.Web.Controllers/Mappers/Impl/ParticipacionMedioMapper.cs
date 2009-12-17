@@ -39,6 +39,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.Ambito = catalogoService.GetAmbitoById(message.Ambito);
         }
 
+        public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public ParticipacionMedio Map(ParticipacionMedioForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);

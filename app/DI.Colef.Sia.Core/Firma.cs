@@ -1,8 +1,10 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [FirmaValidator]
 	public class Firma : Entity, IBaseEntity
     {
 		public virtual int TipoProducto { get; set; }

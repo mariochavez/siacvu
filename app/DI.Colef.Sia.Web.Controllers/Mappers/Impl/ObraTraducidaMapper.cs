@@ -89,6 +89,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    
         }
 
+        public ObraTraducida Map(ObraTraducidaForm message, Usuario usuario)
+        {
+            usuarioObraTraducida = usuario;
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public ObraTraducida Map(ObraTraducidaForm message, Usuario usuario, Investigador investigador)
         {
             usuarioObraTraducida = usuario;

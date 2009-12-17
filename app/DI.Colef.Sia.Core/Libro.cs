@@ -101,6 +101,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoLibro> CoautorInternoLibros { get; private set; }
 
+        [Valid]
 	    public virtual Firma Firma { get; set; }
 
 	    public virtual int PosicionAutor { get; set; }

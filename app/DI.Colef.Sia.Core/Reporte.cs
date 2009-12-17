@@ -55,6 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoReportes.Remove((CoautorExternoReporte) coautorExterno);
         }
 
+        [Valid]
         public virtual Firma Firma { get; set; }
 
         [Valid]

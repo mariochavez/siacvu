@@ -22,9 +22,6 @@
                     <% if (recursoHumano.Institucion != null){ %>
                         Instituci&oacute;n: <%=Html.Encode(recursoHumano.Institucion.Nombre)%>
                     <% } %>
-                    <% if (recursoHumano.Firma.Aceptacion2 == 2){ %>
-                        Rechazado Motivo: <%=Html.Encode(recursoHumano.Firma.Descripcion)%>
-                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 
