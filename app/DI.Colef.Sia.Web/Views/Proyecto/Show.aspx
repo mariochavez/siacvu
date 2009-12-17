@@ -36,6 +36,7 @@
     <div id="textos">
         <div id="forma">
             <div id="campos">
+                <h4>Informaci&oacute;n general del proyecto</h4>
                 <p>
                     <label>Nombre</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
@@ -44,179 +45,162 @@
                     <label>Tipo de proyecto</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoProyectoNombre)%>&nbsp;</span>
                 </p>
-                <h4>Responsables</h4>
-                <div class="minilista" id="responsableinternoList">
-                    <h5>Responsable Interno</h5>                    
-                    <% if (Model.Form.ResponsableProyectos != null && Model.Form.ResponsableProyectos.Length > 0) { %>
-                        <% foreach(var responsableInterno in Model.Form.ResponsableProyectos) { %>
-	                        <div class="sublista" id="responsableinterno_<%=Html.Encode(responsableInterno.InvestigadorId) %>">
-	                            <h6>
-	                                <%=Html.Encode(responsableInterno.NombreResponsable)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="responsableinternoEmptyList_form">
-                            <h6><span>No hay responsables internos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                <h4>Participantes</h4>
-                <div class="minilista" id="participanteinternoList">
-                    <h5>Participante Interno</h5>                    
-                    <% if (Model.Form.ParticipanteInternoProyectos != null && Model.Form.ParticipanteInternoProyectos.Length > 0) { %>
-                        <% foreach(var participanteInterno in Model.Form.ParticipanteInternoProyectos) { %>
-	                        <div class="sublista" id="participanteinterno_<%=Html.Encode(participanteInterno.InvestigadorId) %>">
-	                            <h6>
-	                                <%=Html.Encode(participanteInterno.NombreParticipante)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="participanteinternoEmptyList_form">
-                            <h6><span>No hay participantes internos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                <div class="minilista" id="participanteexternoList">
-                    <h5>Participante Externo</h5>
-                    <% if (Model.Form.ParticipanteExternoProyectos != null && Model.Form.ParticipanteExternoProyectos.Length > 0) { %>
-                        <% foreach(var participanteExterno in Model.Form.ParticipanteExternoProyectos) { %>
-	                        <div class="sublista" id="participanteexterno_<%=Html.Encode(participanteExterno.InvestigadorExternoId) %>">
-	                            <h6>
-	                                <%=Html.Encode(participanteExterno.InvestigadorExternoNombre)%>
-	                            </h6>
-			                </div><!--end sublista-->
-                        <% } %>
-                    <% } else { %>
-                        <div class="sublista" id="participanteexternoEmptyList_form">
-                            <h6><span>No hay participantes externos registrados</span></h6>
-		                </div><!--end elementodescripcion-->
-                    <% } %>
-                </div>
-                <p>
-                    <label>Cuenta con convenio</label>
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ConConvenio)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Nombre del convenio</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Convenio)%>&nbsp;</span>
-                </p>
+                
+                <h4>Investigadores participantes</h4>
+                <% Html.RenderPartial("_ShowResponsable", Model.Form);%>
+                <% Html.RenderPartial("_ShowParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id });%>
+	            <% Html.RenderPartial("_ShowParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id });%>
+                
+                <h4>Calendario del proyecto</h4>
                 <p>
                     <label>Fecha inicial</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal) %>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal) %>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha de pr&oacute;rroga</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaProrroga)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaProrroga)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Estatus del proyecto</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.EstatusProyectoNombre)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.EstadoProyecto(Model.Form.EstadoProyecto)%>&nbsp;</span>
                 </p>
+                <%if(Model.Form.EstadoProyecto == 2) { %>
+                    <p>
+                        <label>Fecha de conclusi&oacute;n</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</span>
+                        <span>Formato (dd/mm/yyyy)</span>
+                    </p>
+                <% } %>
                 <p>
-                    <label>Fecha de conclusi&oacute;n</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaConclusion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCalendarioProyectoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCalendarioProyectoId), Model.Form.ComprobanteCalendarioProyectoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
                 </p>
+                
+                <h4>Fuentes de financiamiento</h4>
                 <p>
-                    <label>Proyecto con recursos complementarios</label>
+                    <label></label>
+                    ¿Proyecto con recursos complementarios?
                     <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ConRecursos) %>&nbsp;</span>
-                </p>                
-                <h4>Financiamiento del proyecto</h4>
+                </p>
+                <%if(Model.Form.ConRecursos) { %>
+                    <p>
+                        <label></label>
+                        ¿Cuenta con convenio?
+                        <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ConConvenio) %>&nbsp;</span>
+                    </p>
+                    <%if(Model.Form.ConConvenio) { %>
+                        <p>
+                            <label>Nombre del convenio</label>
+                            <span class="valor"><%= Html.Encode(Model.Form.SectorFinanciamientoNombre)%>&nbsp;</span>
+                        </p>
+                        <p>
+                            <label>Fecha de la firma del contrato</label>
+                            <span id="span_fechafirma" class="valor"><%=Html.Encode(Model.Form.ConvenioFechaFirma)%>&nbsp;</span>
+                        </p>
+                        <p>
+                            <label>Fecha de conclusi&oacute;n</label>
+                            <span id="span_fechaconclusion" class="valor"><%=Html.Encode(Model.Form.ConvenioFechaConclusion)%>&nbsp;</span>
+                        </p>
+                        <p>
+                            <label>Termino referencia</label>
+                            <span id="span_terminoreferencia" class="valor"><%=Html.Encode(Model.Form.ConvenioTerminoReferencia)%>&nbsp;</span>
+                        </p>
+                        <p>
+                            <label>Producto comprometido</label>
+                            <span id="span_productocomprometido" class="valor"><%=Html.Encode(Model.Form.ConvenioProductoComprometido)%>&nbsp;</span>
+                        </p>
+                    <% } %>
+                <% } %>
                 <p>
                     <label>Sector de financiamiento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SectorFinanciamientoNombre)%>&nbsp;</span>
                 </p>
+                <%if(Model.Form.SectorFinanciamientoNombre.Contains("Fondos CONACyT")) { %>
+                    <p>
+                        <label>Fondo del CONACyT</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</span>
+                    </p>
+                <% } %>
+                
+                <h4>Recursos financieros</h4>
+                <% Html.RenderPartial("_ShowRecursoFinanciero", Model.Form); %>
                 <p>
-                    <label>Fondo del CONACyT</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</span>
+                    <label></label>
+                    Total pesos: <span id="totalpesos" class="valor"><%=Html.Encode(Math.Round(Model.Form.TotalPesos, 2)) %></span>
+                    Total d&oacute;lares: <span id="totaldolares" class="valor"><%=Html.Encode(Math.Round(Model.Form.TotalDolares, 2)) %></span>
                 </p>
-                <h4>Recursos Financieros</h4>
                 
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <p>
                     <label>Objetivo general</label>
                     <span class="valor"><%= Html.Encode(Model.Form.ObjetivoGeneral)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Palabra clave 1</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave1)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 2</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave2)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Palabra clave 3</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PalabraClave3)%>&nbsp;</span>
-                </p>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Impacto en la pol&iacute;tica p&uacute;blica</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ImpactoPoliticaPublicaNombre)%>&nbsp;</span>
+                    <span class="valor"><%= HumanizeHelper.ImpactoPoliticaPublica(Model.Form.ImpactoPoliticaPublica)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Impacto acad&eacute;mico esperado</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ImpactoAcademicoEsperado)%>&nbsp;</span>
-                </p>
-                <p>    
-                    <label>Usuarios potenciales</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.UsuariosPotenciales)%>&nbsp;</span>
+                    <label>Vinculaci&oacute;n con la APyD</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.VinculacionAPyDNombre)%>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Posibles beneficiarios</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PosiblesBeneficiarios)%>&nbsp;</span>
+                    <label>Resumen del proyecto</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ResumenProyecto)%>&nbsp;</span>
                 </p>
+                
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                
                 <p>
-                    <label>Requiere servicio de la USEG</label>
-                    <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.RequiereServicioUSEG)%>&nbsp;</span>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTematicaProyectoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTematicaProyectoId), Model.Form.ComprobanteTematicaProyectoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
                 </p>
-                <p>
-                    <label>Servicio USEG</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.USEGNombre)%>&nbsp;</span>
-                </p>
+                
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <p>
-                    <label>Producto acad&eacute;mico</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.ProductoAcademicoNombre)%>&nbsp;</span>
+                    <label>Actividades a realizar</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Actividades)%>&nbsp;</span>
                 </p>
                 <p>
-	                <label>Actividad prevista</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.ActividadPrevistaNombre)%>&nbsp;</span>
+                    <label>Productos acad&eacute;micos esperados</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ProductoAcademicoEsperado)%>&nbsp;</span>
                 </p>
+                
+                <h4>Participaci&oacute;n de estudiantes/becarios</h4>
                 <p>
-	                <label>Fecha de entrega</label>
-	                <span class="valor"><%= Html.Encode(Model.Form.FechaEntregaProducto)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
-                </p>
-                <h4>Participaci&oacute;n de estudiantes</h4>
-                <p>
-	                <label>Participa estudiante</label>
+	                <label></label> ¿Participan estudiantes?
                     <span class="valor"><%= HumanizeHelper.Boolean(Model.Form.ParticipaEstudiante)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Nombre del estudiante</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NombreEstudiante)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Tipo de estudiante</label>
-                    <span class="valor"><%= HumanizeHelper.TipoAlumnoCurso(Model.Form.TipoEstudiante)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>Grado acad&eacute;mico</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.GradoAcademicoNombre)%>&nbsp;</span>
-                </p>
-
+                <%if (Model.Form.ParticipaEstudiante) { %>
+                    <% Html.RenderPartial("_ShowParticipaEstudiante", Model.Form); %>
+                <% } %>
+                
             	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                    
-            	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-            
             	<% Html.RenderPartial("_ShowClase", Model.Form.ShowFields); %>
+            	
+            	<h4>Productos generados del proyecto</h4>
+            	<% Html.RenderPartial("_ShowProductoGenerado", Model.Form); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar") %>

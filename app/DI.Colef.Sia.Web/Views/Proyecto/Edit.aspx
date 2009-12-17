@@ -35,7 +35,7 @@
 
         <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
-            <% using (Html.BeginForm("Update", "Proyecto")){ %>
+            <% using (Html.BeginForm("Update", "Proyecto", FormMethod.Post, new { @class = "remote" })){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -49,6 +49,20 @@
                 
                 <h4>Calendario del proyecto</h4>
                 <% Html.RenderPartial("_CalendarioProyecto", Model.Form); %>
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobantecalendario_documento" class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCalendarioProyectoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCalendarioProyectoId), Model.Form.ComprobanteCalendarioProyectoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteCalendarioProyecto_DocumentoProbatorio" id="ComprobanteCalendarioProyecto_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="ComprobanteCalendario_FileQueue" style="display:none;" rel="#span_comprobantecalendario_documento"></div>
                 
                 <h4>Fuentes de financiamiento</h4>
                 <% Html.RenderPartial("_FuenteFinanciamiento", Model.Form); %>
@@ -63,6 +77,20 @@
                 
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
+                <p>
+                    <label>Documento probatorio</label>
+                    <span id="span_comprobantetematica_documento" class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTematicaProyectoNombre)) { %> 
+    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTematicaProyectoId), Model.Form.ComprobanteTematicaProyectoNombre, new { target = "_blank" })%> 
+    	                <% } else { %>
+    	                    &nbsp;
+    	                <% } %>
+                    </span><br />
+                </p>
+                <div style="padding: 0 0 10px 20px">
+                    <input type="file" name="ComprobanteTematicaProyecto_DocumentoProbatorio" id="ComprobanteTematicaProyecto_DocumentoProbatorio" class="fileUpload"/>
+                </div>
+                <div id="ComprobanteTematica_FileQueue" style="display:none;" rel="#span_comprobantetematica_documento"></div>
                 
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <% Html.RenderPartial("_ProductoAcademicoContemplado", Model.Form); %>
@@ -81,8 +109,10 @@
                 <h4>Productos generados del proyecto</h4>
                 <% Html.RenderPartial("_EditProductoGenerado", Model.Form); %>
                 
+                <% Html.RenderPartial("_ProgressBar"); %>
+                
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ProyectoController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
@@ -93,6 +123,16 @@
         $(document).ready(function() {
             setupDocument();
             proyectoSetup();
+            
+            var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+            var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
+            var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+            var action = '<%=Url.Action("AddFile") %>';
+
+            UploadFile.setup('#ComprobanteCalendarioProyecto_DocumentoProbatorio', 'ComprobanteCalendario_FileQueue',
+            uploader, cancelImg, action, auth);
+            UploadFile.setup('#ComprobanteTematicaProyecto_DocumentoProbatorio', 'ComprobanteTematica_FileQueue',
+            uploader, cancelImg, action, auth);
         });
     </script>
 </asp:Content>

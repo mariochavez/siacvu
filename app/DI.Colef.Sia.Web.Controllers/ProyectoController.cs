@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -8,7 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -44,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IVinculacionAPyDMapper vinculacionAPyDMapper;
         readonly IEstudianteProyectoMapper estudianteProyectoMapper;
         readonly IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper;
+        readonly IArchivoService archivoService;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
@@ -61,11 +61,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                   IGradoAcademicoMapper gradoAcademicoMapper, IRamaMapper ramaMapper, IClaseMapper claseMapper,
                                   IAreaTematicaMapper areaTematicaMapper, IAreaMapper areaMapper, IConvenioService convenioService,
                                   IVinculacionAPyDMapper vinculacionAPyDMapper, IEstudianteProyectoMapper estudianteProyectoMapper,
+                                  IArchivoService archivoService,
                                   IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
         
             this.catalogoService = catalogoService;
+            this.archivoService = archivoService;
             this.customCollection = customCollection;
             this.proyectoService = proyectoService;
             this.proyectoMapper = proyectoMapper;
@@ -198,41 +200,82 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var proyecto = proyectoMapper.Map(form, CurrentUser(), CurrentInvestigador(), responsables,
                                               participantesInternos, participantesExternos,
                                               recursos, estudiantes, productos);
+            ModelState.AddModelErrors(proyecto.ValidationResults(), true, "Proyecto");
 
-            if (!IsValidateModel(proyecto, form, Title.New, "Proyecto"))
+            if (!ModelState.IsValid)
             {
-                var proyectoForm = proyectoMapper.Map(proyecto);
-
-                ((GenericViewData<ProyectoForm>)ViewData.Model).Form = SetupNewForm(proyectoForm);
-                FormSetCombos(proyectoForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
-            proyectoService.SaveProyecto(proyecto, false);
+            proyectoService.SaveProyecto(proyecto);
+            SetMessage(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
 
-            return RedirectToHomeIndex(String.Format("Proyecto {0} ha sido creado", proyecto.Nombre));
+            return Rjs("Save", proyecto.Id);
         }
 
-        [CustomTransaction]
+        //[CustomTransaction]
         [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ProyectoForm form)
         {
             var proyecto = proyectoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            ModelState.AddModelErrors(proyecto.ValidationResults(), true, "Proyecto");
 
-            if (!IsValidateModel(proyecto, form, Title.Edit))
+            if (!ModelState.IsValid)
             {
-                var proyectoForm = proyectoMapper.Map(proyecto);
-
-                ((GenericViewData<ProyectoForm>)ViewData.Model).Form = SetupNewForm(proyectoForm);
-                FormSetCombos(proyectoForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
 
-            proyectoService.SaveProyecto(proyecto, false);
+            proyectoService.SaveProyecto(proyecto, true);
+            SetMessage(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
 
-            return RedirectToHomeIndex(String.Format("Proyecto {0} ha sido modificado", proyecto.Nombre));
+            return Rjs("Save", proyecto.Id);
+        }
+
+        [CookieLessAuthorize]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var proyecto = proyectoService.GetProyectoById(id);
+
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+
+            if (form["TipoArchivo"] == "ComprobanteCalendarioProyecto")
+            {
+                archivo.TipoProducto = proyecto.TipoProducto;
+                archivoService.Save(archivo);
+                proyecto.ComprobanteCalendarioProyecto = archivo;
+            }
+
+            if (form["TipoArchivo"] == "ComprobanteTematicaProyecto")
+            {
+                archivo.TipoProducto = proyecto.TipoProducto;
+                archivoService.Save(archivo);
+                proyecto.ComprobanteTematicaProyecto = archivo;
+            }
+
+            proyectoService.SaveProyecto(proyecto);
+
+            return Content("Uploaded");
         }
         
         [Authorize]
@@ -309,7 +352,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 if (alreadyHasIt == 0)
                 {
                     proyecto.AddResponsable(responsableProyecto);
-                    proyectoService.SaveProyecto(proyecto, false);
+                    proyectoService.SaveProyecto(proyecto);
                 }
             }
 
@@ -331,7 +374,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var responsable = proyecto.ResponsableProyectos.Where(x => x.Investigador.Id == investigadorId).First();
                 proyecto.DeleteResponsable(responsable);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new ResponsableProyectoForm {InvestigadorId = investigadorId};
@@ -404,7 +447,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var recurso = proyecto.RecursoFinancieroProyectos.Where(x => x.Id == recursoId).First();
                 proyecto.DeleteRecursoFinanciero(recurso);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new RecursoFinancieroProyectoForm {Id = recursoId, Monto = monto, MonedaId = tipoMoneda};
@@ -478,7 +521,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var estudiante = proyecto.EstudianteProyectos.Where(x => x.Id == estudianteId).First();
                 proyecto.DeleteEstudiante(estudiante);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new EstudianteProyectoForm { Id = estudianteId };
@@ -526,7 +569,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 if (alreadyHasIt == 0)
                 {
                     proyecto.AddParticipanteInterno(participanteInternoProyecto);
-                    proyectoService.SaveProyecto(proyecto, false);
+                    proyectoService.SaveProyecto(proyecto);
                 }
             }
 
@@ -548,7 +591,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var participante = proyecto.ParticipanteInternoProyectos.Where(x => x.Investigador.Id == investigadorId).First();
                 proyecto.DeleteParticipanteInterno(participante);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new ParticipanteForm {InvestigadorId = investigadorId};
@@ -617,7 +660,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 if (alreadyHasIt == 0)
                 {
                     proyecto.AddParticipanteExterno(participanteExternoProyecto);
-                    proyectoService.SaveProyecto(proyecto, false);
+                    proyectoService.SaveProyecto(proyecto);
                 }
             }
 
@@ -639,7 +682,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var participante = proyecto.ParticipanteExternoProyectos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
                 proyecto.DeleteParticipanteExterno(participante);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new ParticipanteForm { InvestigadorExternoId = investigadorExternoId };
@@ -713,7 +756,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 var producto = proyecto.ProductoGeneradoProyectos.Where(x => x.Id == productoGeneradoId).First();
                 proyecto.DeleteProducto(producto);
 
-                proyectoService.SaveProyecto(proyecto, false);
+                proyectoService.SaveProyecto(proyecto);
             }
 
             var form = new ProductoGeneradoProyectoForm { Id = productoGeneradoId };

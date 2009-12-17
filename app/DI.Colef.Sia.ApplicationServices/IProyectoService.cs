@@ -7,6 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Proyecto GetProyectoById(int id);
         Proyecto[] GetAllProyectos();
         Proyecto[] GetActiveProyectos();
-        void SaveProyecto(Proyecto proyecto, bool useCommit);
+	    void SaveProyecto(Proyecto proyecto);
+        void SaveProyecto(Proyecto proyecto, bool commit);
     }
 }

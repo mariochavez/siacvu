@@ -114,6 +114,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual DateTime FechaConclusion { get; set; }
 
+        [Valid]
+        public virtual Archivo ComprobanteCalendarioProyecto { get; set; }
+
         //Seccion fuentes del financiamiento del proyecto
         public virtual bool ConRecursos { get; set; }
 
@@ -146,6 +149,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Disciplina Disciplina { get; set; }
 
         public virtual Subdisciplina Subdisciplina { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteTematicaProyecto { get; set; }
 
         //Seccion Productos academicos contemplados
         public virtual string Actividades { get; set; }

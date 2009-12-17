@@ -30,6 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CustomSelectForm[] EstatusProyectos { get; set; }
 
         public string FechaConclusion { get; set; }
+        public string ComprobanteCalendarioProyectoNombre { get; set; }
+        public int ComprobanteCalendarioProyectoId { get; set; }
 
         //Seccion fuentes del financiamiento del proyecto
         public bool ConRecursos { get; set; }
@@ -80,6 +82,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public VinculacionAPyDForm[] VinculacionesAPyDs { get; set; }
 
         public string ResumenProyecto { get; set; }
+        public string ComprobanteTematicaProyectoNombre { get; set; }
+        public int ComprobanteTematicaProyectoId { get; set; }
 
         //Area Conocimiento
         public int AreaId { get; set; }

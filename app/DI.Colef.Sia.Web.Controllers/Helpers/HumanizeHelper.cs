@@ -533,6 +533,40 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return estado;
         }
 
+        public static string ImpactoPoliticaPublica(int impactoPoliticaPublica)
+        {
+            string nombreImpactoPoliticaPublica;
+
+            switch (impactoPoliticaPublica)
+            {
+                case 1:
+                    nombreImpactoPoliticaPublica = "Elaboración de diagnóstico";
+                    break;
+                case 2:
+                    nombreImpactoPoliticaPublica = "Elaboración de plan estratégico";
+                    break;
+                case 3:
+                    nombreImpactoPoliticaPublica = "Diseño de programa";
+                    break;
+                case 4:
+                    nombreImpactoPoliticaPublica = "Diseño de estrategias";
+                    break;
+                case 5:
+                    nombreImpactoPoliticaPublica = "Evaluación de política";
+                    break;
+                case 6:
+                    nombreImpactoPoliticaPublica = "Evaluación de impacto";
+                    break;
+                case 7:
+                    nombreImpactoPoliticaPublica = "Otro";
+                    break;
+                default:
+                    return "";
+            }
+
+            return nombreImpactoPoliticaPublica;
+        }
+
         public static string TipoEstudiante(int estudiante)
         {
             var tipoEstudiante = "";

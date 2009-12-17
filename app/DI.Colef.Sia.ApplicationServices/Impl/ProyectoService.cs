@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
-using NHibernate;
 using SharpArch.Core.PersistenceSupport;
-using SharpArch.Data.NHibernate;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
@@ -33,7 +31,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
-        public void SaveProyecto(Proyecto proyecto, bool useCommit)
+        public void SaveProyecto(Proyecto proyecto)
+        {
+            SaveProyecto(proyecto, false);
+        }
+
+        public void SaveProyecto(Proyecto proyecto, bool commit)
         {
             if (proyecto.IsTransient())
             {
@@ -62,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             
             proyectoRepository.SaveOrUpdate(proyecto);
 
-            if (useCommit)
+            if (commit)
                 proyectoRepository.DbContext.CommitChanges();
         }
     }
