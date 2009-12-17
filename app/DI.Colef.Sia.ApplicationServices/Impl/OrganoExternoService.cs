@@ -43,6 +43,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             {
                 organoExterno.Activo = true;
                 organoExterno.CreadoEl = DateTime.Now;
+                organoExterno.Puntos = 0.0m;
 
                 var firma = new Firma
                                 {
