@@ -18,6 +18,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ComprobanteTesisDirigidaId { get; set; }
         public string ComprobanteTesisDirigidaNombre { get; set; }
 
+        public int FirmaAceptacion2 { get; set; }
+        public string FirmaDescripcion { get; set; }
+
         public int VinculacionAPyD { get; set; }
         public int VinculacionAPyDId { get; set; }
         public string VinculacionAPyDNombre { get; set; }

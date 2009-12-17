@@ -23,6 +23,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var firma = value as Firma;
             if (firma != null)
             {
+                if (firma.TipoProducto == 3 || firma.TipoProducto == 13 || firma.TipoProducto == 14)
+                {
+                    if (firma.Aceptacion2 == 1)
+                    {
+                        if (firma.PuntuacionSieva == 0)
+                        {
+                            constraintValidatorContext.DisableDefaultError();
+                            constraintValidatorContext.AddInvalid<Firma, int>(
+                                "no debe ser vacío|PuntuacionSieva", x => x.PuntuacionSieva);
+                            isValid = false;
+                        }
+                    }
+                }
+
                 if (firma.Aceptacion2 == 2 && firma.Descripcion == String.Empty)
                 {
                     constraintValidatorContext.DisableDefaultError();

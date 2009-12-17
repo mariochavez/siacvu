@@ -105,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToHomeIndex();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Investigadores")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
@@ -179,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [CustomTransaction]
-        [Authorize]
+        [Authorize(Roles = "Investigadores")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "Responsable")] ResponsableProyectoForm[] responsables,
@@ -213,13 +213,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("Save", proyecto.Id);
         }
 
-        //[CustomTransaction]
         [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ProyectoForm form)
         {
-            var proyecto = proyectoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var proyecto = new Proyecto();
+
+            if (User.IsInRole("Investigadores"))
+                proyecto = proyectoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                proyecto = proyectoMapper.Map(form, CurrentUser());
+
             ModelState.AddModelErrors(proyecto.ValidationResults(), true, "Proyecto");
 
             if (!ModelState.IsValid)
@@ -244,16 +249,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var file = Request.Files["fileData"];
 
             var archivo = new Archivo
-            {
-                Activo = true,
-                Contenido = file.ContentType,
-                CreadoEl = DateTime.Now,
-                CreadoPor = CurrentUser(),
-                ModificadoEl = DateTime.Now,
-                ModificadoPor = CurrentUser(),
-                Nombre = file.FileName,
-                Tamano = file.ContentLength
-            };
+                              {
+                                  Activo = true,
+                                  Contenido = file.ContentType,
+                                  CreadoEl = DateTime.Now,
+                                  CreadoPor = CurrentUser(),
+                                  ModificadoEl = DateTime.Now,
+                                  ModificadoPor = CurrentUser(),
+                                  Nombre = file.FileName,
+                                  Tamano = file.ContentLength
+                              };
 
             var datos = new byte[file.ContentLength];
             file.InputStream.Read(datos, 0, datos.Length);
@@ -277,7 +282,65 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Content("Uploaded");
         }
-        
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var proyecto = proyectoService.GetProyectoById(firmaForm.ProductoId);
+
+            proyecto.Firma.Aceptacion2 = 1;
+            proyecto.Firma.Usuario2 = CurrentUser();
+            proyecto.Firma.PuntuacionSieva = firmaForm.PuntuacionSieva;
+
+            ModelState.AddModelErrors(proyecto.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            proyecto.Puntuacion = firmaForm.PuntuacionSieva;
+            proyectoService.SaveProyecto(proyecto, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var proyecto = proyectoService.GetProyectoById(firmaForm.ProductoId);
+            proyecto.Firma.Aceptacion1 = 0;
+            proyecto.Firma.Aceptacion2 = 2;
+            proyecto.Firma.Descripcion = firmaForm.Descripcion;
+            proyecto.Firma.Usuario1 = CurrentUser();
+            proyecto.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(proyecto.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            proyectoService.SaveProyecto(proyecto, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)

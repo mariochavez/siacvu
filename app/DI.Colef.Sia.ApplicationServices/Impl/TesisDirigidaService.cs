@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(tesisDirigida.IsTransient())
             {
-                tesisDirigida.Puntuacion = 0;
                 tesisDirigida.Activo = true;
                 tesisDirigida.CreadoEl = DateTime.Now;
 

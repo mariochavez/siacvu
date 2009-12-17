@@ -516,6 +516,7 @@
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
     <Content Include="Views\Investigador\ChangeSede.js.ascx" />
+    <Content Include="Views\Shared\_CustomFirmaForm.ascx" />
     <Content Include="Views\Shared\DgaaSign.js.ascx" />
     <Content Include="Views\Shared\_FirmaForm.ascx" />
     <Content Include="Views\Investigador\CV.aspx" />

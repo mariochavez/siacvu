@@ -16,6 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Archivo ComprobanteCurso { get; set; }
 
+        [Valid]
         public virtual Firma Firma { get; set; }
 
         public virtual int TipoCurso { get; set; }

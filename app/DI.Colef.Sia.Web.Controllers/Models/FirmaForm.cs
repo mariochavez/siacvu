@@ -26,5 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string IdName { get; set; }
         public string Descripcion { get; set; }
         public int ProductoId { get; set; }
+
+        public int PuntuacionSieva { get; set; }
     }
 }

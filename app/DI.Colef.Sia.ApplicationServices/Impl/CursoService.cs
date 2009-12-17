@@ -41,7 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             if(curso.IsTransient())
             {
-                curso.Puntuacion = 0;
                 curso.Activo = true;
                 curso.CreadoEl = DateTime.Now;
 

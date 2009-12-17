@@ -159,12 +159,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", tesisDirigida.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(TesisDirigidaForm form)
         {
-            var tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var tesisDirigida = new TesisDirigida();
+
+            if (User.IsInRole("Investigadores"))
+                tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                tesisDirigida = tesisDirigidaMapper.Map(form, CurrentUser());
+
             ModelState.AddModelErrors(tesisDirigida.ValidationResults(), true, "TesisDirigida");
             if (!ModelState.IsValid)
             {
@@ -177,7 +183,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", tesisDirigida.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -213,6 +219,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 
             return Content("Uploaded");
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(firmaForm.ProductoId);
+
+            tesisDirigida.Firma.Aceptacion2 = 1;
+            tesisDirigida.Firma.Usuario2 = CurrentUser();
+            tesisDirigida.Firma.PuntuacionSieva = firmaForm.PuntuacionSieva;
+
+            ModelState.AddModelErrors(tesisDirigida.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            tesisDirigida.Puntuacion = firmaForm.PuntuacionSieva;
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(firmaForm.ProductoId);
+            tesisDirigida.Firma.Aceptacion1 = 0;
+            tesisDirigida.Firma.Aceptacion2 = 2;
+            tesisDirigida.Firma.Descripcion = firmaForm.Descripcion;
+            tesisDirigida.Firma.Usuario1 = CurrentUser();
+            tesisDirigida.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(tesisDirigida.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            tesisDirigidaService.SaveTesisDirigida(tesisDirigida, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
         }
 
         [Authorize]

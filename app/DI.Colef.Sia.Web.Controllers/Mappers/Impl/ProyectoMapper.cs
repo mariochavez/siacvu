@@ -83,6 +83,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         }
 
+        public Proyecto Map(ProyectoForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);

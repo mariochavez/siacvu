@@ -48,6 +48,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
+        public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public TesisDirigida Map(TesisDirigidaForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);

@@ -15,5 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                      RecursoFinancieroProyectoForm[] recursos,
                      EstudianteProyectoForm[] estudiantes,
                      ProductoGeneradoProyectoForm[] productos);
+
+        Proyecto Map(ProyectoForm message, Usuario usuario);
     }
 }

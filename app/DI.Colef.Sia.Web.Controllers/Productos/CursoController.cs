@@ -156,12 +156,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", curso.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(CursoForm form)
         {
-            var curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var curso = new Curso();
+
+            if (User.IsInRole("Investigadores"))
+                curso = cursoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                curso = cursoMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(curso.ValidationResults(), true, "Curso");
             
@@ -176,7 +181,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", curso.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -212,6 +217,64 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             cursoService.SaveCurso(curso);
 
             return Content("Uploaded");
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var curso = cursoService.GetCursoById(firmaForm.ProductoId);
+
+            curso.Firma.Aceptacion2 = 1;
+            curso.Firma.Usuario2 = CurrentUser();
+            curso.Firma.PuntuacionSieva = firmaForm.PuntuacionSieva;
+
+            ModelState.AddModelErrors(curso.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            curso.Puntuacion = firmaForm.PuntuacionSieva;
+            cursoService.SaveCurso(curso, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 1
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var curso = cursoService.GetCursoById(firmaForm.ProductoId);
+            curso.Firma.Aceptacion1 = 0;
+            curso.Firma.Aceptacion2 = 2;
+            curso.Firma.Descripcion = firmaForm.Descripcion;
+            curso.Firma.Usuario1 = CurrentUser();
+            curso.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(curso.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            cursoService.SaveCurso(curso, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
         }
 
         [Authorize]

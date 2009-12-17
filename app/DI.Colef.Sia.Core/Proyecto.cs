@@ -95,12 +95,16 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual TipoProyecto TipoProyecto { get; set; }
 
         //Seccion Investigadores participantes
+        [Valid]
         public virtual IList<ResponsableProyecto> ResponsableProyectos { get; private set; }
 
+        [Valid]
         public virtual IList<ParticipanteInternoProyecto> ParticipanteInternoProyectos { get; private set; }
 
+        [Valid]
         public virtual IList<ParticipanteExternoProyecto> ParticipanteExternoProyectos { get; private set; }
 
+        [Valid]
         public virtual Firma Firma { get; set; }
 
         //Seccion Calendario del proyecto
@@ -129,7 +133,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual FondoConacyt FondoConacyt { get; set; }
 
         //Seccion Recursos Financieros
-
+        [Valid]
         public virtual IList<RecursoFinancieroProyecto> RecursoFinancieroProyectos { get; private set; }
 
         //Seccion Tematica del proyecto
@@ -161,6 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         //Seccion participacion de estudiantes/becarios
         public virtual bool ParticipaEstudiante { get; set; }
 
+        [Valid]
         public virtual IList<EstudianteProyecto> EstudianteProyectos { get; private set; }
 
         //Estructura Funcional
@@ -178,6 +183,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Clase Clase { get; set; }
 
         //Seccion Productos generados del proyecto
+        [Valid]
         public virtual IList<ProductoGeneradoProyecto> ProductoGeneradoProyectos { get; private set; }
 
         public virtual Departamento Departamento { get; set; }
@@ -196,5 +202,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime ModificadoEl { get; set; }
 
         public virtual bool Activo { get; set; }
+
+        public virtual int Puntuacion { get; set; }
     }
 }
