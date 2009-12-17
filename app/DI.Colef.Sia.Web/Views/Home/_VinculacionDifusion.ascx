@@ -31,9 +31,6 @@
                     <% if (vinculacion.TipoParticipacion != null){ %>
                         Tipo de participaci&oacute;n: <%=Html.Encode(vinculacion.TipoParticipacion.Nombre)%>
                     <% } %>
-                    <% if (vinculacion.Firma.Aceptacion2 == 2){ %>
-                        Rechazado Motivo: <%=Html.Encode(vinculacion.Firma.Descripcion)%>
-                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

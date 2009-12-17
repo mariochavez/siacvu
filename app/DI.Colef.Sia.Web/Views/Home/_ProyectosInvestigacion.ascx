@@ -22,9 +22,6 @@
                     <% if (proyecto.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProyecto(proyecto.EstatusProducto)%>
                     <% } %>
-                    <% if (proyecto.Firma.Aceptacion2 == 2){ %>
-                        Rechazado Motivo: <%=Html.Encode(proyecto.Firma.Descripcion)%>
-                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

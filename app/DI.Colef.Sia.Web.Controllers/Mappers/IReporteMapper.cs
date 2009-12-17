@@ -10,5 +10,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         Reporte Map(ReporteForm message, Usuario usuario, Investigador investigador,
                     CoautorExternoProductoForm[] coautoresExternos, CoautorInternoProductoForm[] coautoresInternos,
                     InstitucionProductoForm[] instituciones);
+
+        Reporte Map(ReporteForm message, Usuario usuario);
     }
 }

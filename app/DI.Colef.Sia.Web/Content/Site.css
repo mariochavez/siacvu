@@ -686,13 +686,13 @@ a.editabusqueda {
     font-weight:bold;
 }
 
-#forma span.field-validation-error {
+#forma span.field-validation-error, #firmaform span.field-validation-error {
 	margin: 0 0 0 160px;
 	color: #FF0000;
 	display: block;
 }
 
-#forma .input-validation-error, #forma select.input-validation-error {
+#forma .input-validation-error, #forma select.input-validation-error, #firmaform .input-validation-error, #firmaform select.input-validation-error {
 	border: 1px solid #FF0000;
 }
 

@@ -141,12 +141,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", dictamen.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(DictamenForm form)
         {
-            var dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var dictamen = new Dictamen();
+
+            if (User.IsInRole("Investigadores"))
+                dictamen = dictamenMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                dictamen = dictamenMapper.Map(form, CurrentUser());
+
             ModelState.AddModelErrors(dictamen.ValidationResults(), true, "Dictamen");
             if (!ModelState.IsValid)
             {
@@ -159,7 +165,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", dictamen.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -197,7 +203,58 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content("Uploaded");
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var dictamen = dictamenService.GetDictamenById(firmaForm.ProductoId);
+
+            dictamen.Firma.Aceptacion2 = 1;
+            dictamen.Firma.Usuario2 = CurrentUser();
+
+            dictamenService.SaveDictamen(dictamen);
+
+            var data = new FirmaForm
+            {
+                TipoProducto = firmaForm.TipoProducto,
+                Aceptacion2 = 1
+            };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var dictamen = dictamenService.GetDictamenById(firmaForm.ProductoId);
+            dictamen.Firma.Aceptacion1 = 0;
+            dictamen.Firma.Aceptacion2 = 2;
+            dictamen.Firma.Descripcion = firmaForm.Descripcion;
+            dictamen.Firma.Usuario1 = CurrentUser();
+            dictamen.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(dictamen.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            dictamenService.SaveDictamen(dictamen, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEditorial(int id)
         {
@@ -212,7 +269,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int dictamenId)
         {
@@ -249,7 +306,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
         public ActionResult DeleteEditorial(int id, int editorialId)
         {

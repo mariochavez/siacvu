@@ -9,6 +9,7 @@ function setupDocument() {
     LocalForm.setup();
     DateTimePicker.setup();
     SubForm.setup();
+    RemoteLinkV2.setup();
 
     $('div.elementodescripcion:odd').addClass('elementolista-dos');
     setupSublistRows();
@@ -405,6 +406,48 @@ var RemoteForm = {
             complete: function(request, settings) {
                 currentLink.removeLoading();
                 $('#submit').slideDown();
+            }
+        });
+
+        return false;
+    }
+};
+
+var RemoteLinkV2 = {
+    setup: function() {
+        $('a.remoteform').live("click", RemoteLinkV2.linkAjax);
+    },
+    linkAjax: function() {
+        var method = "post";
+
+        if ($(this).hasClass('put')) {
+            method = "put";
+        } else if ($(this).hasClass('delete')) {
+            method = "delete";
+            if (!confirm('¿Esta seguro de que desea eliminar este elemento?')) {
+                return false;
+            }
+        } else if ($(this).hasClass('get')) {
+            method = "get";
+        }
+
+        var url = $(this).attr('href');
+        var form = $(this).attr('rel');
+        var data = $(form).serialize();
+        var currentLink = $(this);
+
+        currentLink.showLoading();
+        $.ajax({
+            url: url,
+            data: data,
+            type: method,
+            dataType: 'script',
+            success: function(msg) {
+                currentLink.removeLoading();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                currentLink.removeLoading();
+                alert(textStatus);
             }
         });
 

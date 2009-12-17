@@ -191,12 +191,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", libro.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(LibroForm form)
         {
-            var libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var libro = new Libro();
+
+            if (User.IsInRole("Investigadores"))
+                libro = libroMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                libro = libroMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(libro.ValidationResults(), true, "Libro");
             if (!ModelState.IsValid)
@@ -210,7 +215,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", libro.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -260,6 +265,57 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Content("Uploaded");
         }
 
+        [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var libro = libroService.GetLibroById(firmaForm.ProductoId);
+
+            libro.Firma.Aceptacion2 = 1;
+            libro.Firma.Usuario2 = CurrentUser();
+
+            libroService.SaveLibro(libro);
+
+            var data = new FirmaForm
+            {
+                TipoProducto = firmaForm.TipoProducto,
+                Aceptacion2 = 1
+            };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var libro = libroService.GetLibroById(firmaForm.ProductoId);
+            libro.Firma.Aceptacion1 = 0;
+            libro.Firma.Aceptacion2 = 2;
+            libro.Firma.Descripcion = firmaForm.Descripcion;
+            libro.Firma.Usuario1 = CurrentUser();
+            libro.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(libro.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            libroService.SaveLibro(libro, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -303,7 +359,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("ChangeAreaTematica", form);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorExterno(int id)
         {
@@ -317,7 +373,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorExterno([Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm form,
                                               int libroId)
@@ -376,7 +432,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
         public ActionResult DeleteCoautorExterno(int id, int investigadorExternoId)
         {
@@ -396,7 +452,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", form);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewCoautorInterno(int id)
         {
@@ -410,7 +466,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddCoautorInterno([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm form,
                                               int libroId)
@@ -448,7 +504,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
         public ActionResult DeleteCoautorInterno(int id, int investigadorId)
         {
@@ -468,7 +524,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorInterno", form);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEditorial(int id)
         {
@@ -483,7 +539,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int libroId)
         {
@@ -519,7 +575,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Delete)]
         public ActionResult DeleteEditorial(int id, int editorialId)
         {
@@ -538,7 +594,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteEditorial", form);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEvento(int id)
         {
@@ -556,7 +612,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         }
 
         [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddEvento([Bind(Prefix = "Evento")] EventoForm form, int libroId)
         {

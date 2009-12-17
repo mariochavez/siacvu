@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class FirmaForm
@@ -19,5 +21,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+
+        public string Controller { get; set; }
+        public string IdName { get; set; }
+        public string Descripcion { get; set; }
+        public int ProductoId { get; set; }
     }
 }

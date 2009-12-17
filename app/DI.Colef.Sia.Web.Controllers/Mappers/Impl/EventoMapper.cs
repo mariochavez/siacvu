@@ -55,6 +55,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoEvento = catalogoService.GetTipoEventoById(message.TipoEvento);
         }
 
+        public Evento Map(EventoForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Evento Map(EventoForm message, Usuario usuario, Investigador investigador)
         {
             usuarioEvento = usuario;

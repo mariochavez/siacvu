@@ -82,6 +82,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.EstadoProducto = message.EstadoProducto;
         }
 
+        public Resena Map(ResenaForm message, Usuario usuario)
+        {
+            usuarioResena = usuario;
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Resena Map(ResenaForm message, Usuario usuario, Investigador investigador)
         {
             usuarioResena = usuario;

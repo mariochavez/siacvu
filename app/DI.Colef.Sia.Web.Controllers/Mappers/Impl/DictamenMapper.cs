@@ -36,6 +36,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
         }
 
+        public Dictamen Map(DictamenForm message, Usuario usuario)
+        {
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Dictamen Map(DictamenForm message, Usuario usuario, Investigador investigador)
         {
             var model = Map(message);

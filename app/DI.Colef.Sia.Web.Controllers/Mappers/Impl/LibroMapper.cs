@@ -86,6 +86,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
         }
 
+        public Libro Map(LibroForm message, Usuario usuario)
+        {
+            usuarioLibro = usuario;
+            var model = Map(message);
+
+            model.ModificadoPor = usuario;
+
+            return model;
+        }
+
         public Libro Map(LibroForm message, Usuario usuario, Investigador investigador)
         {
             usuarioLibro = usuario;

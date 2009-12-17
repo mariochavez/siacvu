@@ -34,6 +34,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
         public void SaveParticipacionMedio(ParticipacionMedio participacionMedio)
         {
+            SaveParticipacionMedio(participacionMedio, false);
+        }
+
+        public void SaveParticipacionMedio(ParticipacionMedio participacionMedio, bool useCommit)
+        {
             if(participacionMedio.IsTransient())
             {
                 participacionMedio.Puntuacion = 0;
@@ -60,6 +65,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             participacionMedio.ModificadoEl = DateTime.Now;
             
             participacionMedioRepository.SaveOrUpdate(participacionMedio);
+
+            if(useCommit)
+                participacionMedioRepository.DbContext.CommitChanges();
         }
 
 	    public ParticipacionMedio[] GetAllParticipacionMedios(Usuario usuario)

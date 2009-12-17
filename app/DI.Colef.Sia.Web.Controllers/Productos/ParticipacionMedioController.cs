@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
@@ -130,39 +131,91 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
 
-            if (!IsValidateModel(participacionMedio, form, Title.New, "ParticipacionMedio"))
+            ModelState.AddModelErrors(participacionMedio.ValidationResults(), true, "ParticipacionMedio");
+            if (!ModelState.IsValid)
             {
-                var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
-
-                ((GenericViewData<ParticipacionMedioForm>)ViewData.Model).Form = SetupNewForm(participacionMedioForm);
-                return ViewNew();
+                return Rjs("ModelError");
             }
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
+            SetMessage(String.Format("Participación en medio {0} ha sido creada", participacionMedio.Titulo));
 
-            return RedirectToHomeIndex(String.Format("Participación en Medio {0} ha sido creada", participacionMedio.Titulo));
+            return Rjs("Save", participacionMedio.Id);
         }
 
-        [CustomTransaction]
-        [Authorize(Roles = "Investigadores")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(ParticipacionMedioForm form)
         {
-            var participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var participacionMedio = new ParticipacionMedio();
 
-            if (!IsValidateModel(participacionMedio, form, Title.Edit))
+            if (User.IsInRole("Investigadores"))
+                participacionMedio = participacionMedioMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            if (User.IsInRole("DGAA"))
+                participacionMedio = participacionMedioMapper.Map(form, CurrentUser());
+
+            ModelState.AddModelErrors(participacionMedio.ValidationResults(), true, "ParticipacionMedio");
+            if (!ModelState.IsValid)
             {
-                var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
-
-                ((GenericViewData<ParticipacionMedioForm>) ViewData.Model).Form = SetupNewForm(participacionMedioForm);
-                FormSetCombos(participacionMedioForm);
-                return ViewEdit();
+                return Rjs("ModelError");
             }
+
+            participacionMedioService.SaveParticipacionMedio(participacionMedio, true);
+            SetMessage(String.Format("Participación en medio {0} ha sido modificada", participacionMedio.Titulo));
+
+            return Rjs("Save", participacionMedio.Id);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
+        {
+
+            var participacionMedio = participacionMedioService.GetParticipacionMedioById(firmaForm.ProductoId);
+
+            participacionMedio.Firma.Aceptacion2 = 1;
+            participacionMedio.Firma.Usuario2 = CurrentUser();
 
             participacionMedioService.SaveParticipacionMedio(participacionMedio);
 
-            return RedirectToHomeIndex(String.Format("Participación en Medio {0} ha sido modificada", participacionMedio.Titulo));
+            var data = new FirmaForm
+            {
+                TipoProducto = firmaForm.TipoProducto,
+                Aceptacion2 = 1
+            };
+
+            return Rjs("DgaaSign", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
+        {
+
+            var participacionMedio = participacionMedioService.GetParticipacionMedioById(firmaForm.ProductoId);
+            participacionMedio.Firma.Aceptacion1 = 0;
+            participacionMedio.Firma.Aceptacion2 = 2;
+            participacionMedio.Firma.Descripcion = firmaForm.Descripcion;
+            participacionMedio.Firma.Usuario1 = CurrentUser();
+            participacionMedio.Firma.Usuario2 = CurrentUser();
+
+            ModelState.AddModelErrors(participacionMedio.ValidationResults(), false, "Firma");
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            participacionMedioService.SaveParticipacionMedio(participacionMedio, true);
+
+            var data = new FirmaForm
+                           {
+                               TipoProducto = firmaForm.TipoProducto,
+                               Aceptacion2 = 2
+                           };
+
+            return Rjs("DgaaSign", data);
         }
 
         [Authorize]

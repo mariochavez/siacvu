@@ -15,6 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
+        [Valid]
         public virtual Firma Firma { get; set; }
 
         [NotNull]
