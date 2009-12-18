@@ -4360,6 +4360,7 @@ alter table ObraTraducidas  drop constraint FK1A338EFC74E8BAB7
        FechaFinal DATETIME null,
        Siglas NVARCHAR(255) null,
        Ciudad NVARCHAR(255) null,
+       Puntos DECIMAL(19,5) null,
        CreadoEl DATETIME null,
        ModificadoEl DATETIME null,
        Activo BIT null,
