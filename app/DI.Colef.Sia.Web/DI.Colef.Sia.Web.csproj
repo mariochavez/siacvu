@@ -516,6 +516,9 @@
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
     <Content Include="Views\Investigador\ChangeSede.js.ascx" />
+    <Content Include="Views\Productos\Articulo\_DatosFinal.ascx" />
+    <Content Include="Views\Productos\Capitulo\_DatosFinal.ascx" />
+    <Content Include="Views\Productos\Libro\_DatosFinal.ascx" />
     <Content Include="Views\Shared\_CustomFirmaForm.ascx" />
     <Content Include="Views\Shared\DgaaSign.js.ascx" />
     <Content Include="Views\Shared\_FirmaForm.ascx" />

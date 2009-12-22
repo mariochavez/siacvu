@@ -9,7 +9,7 @@ SET @organoInternoId = 1
 SELECT @consejoComisionId = ConsejoComisionFk 
 FROM OrganoInternos
 WHERE Id = @organoInternoId
-IF @consejoComisionId <> 6
+IF @consejoComisionId <> 0
 	BEGIN	
 		SET @Puntos = 0.15
 	END

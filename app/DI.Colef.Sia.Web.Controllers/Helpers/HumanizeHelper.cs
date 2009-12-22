@@ -28,10 +28,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case 1:
-                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperC + "on arbitraje";
+                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperC + "on arbitraje anónimo";
                     break;
                 case 2:
-                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperS + "in arbitraje";
+                    nombreTipoProducto = GetNombreProducto(producto) + lowerUpperS + "in arbitraje anónimo";
                     break;
                 default:
                     return "";
@@ -427,7 +427,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (formatoPublicacion)
             {
                 case 1:
-                    nombreFormatoPublicacion = "Libro";
+                    nombreFormatoPublicacion = "De autor(es)";
                     break;
                 case 2:
                     nombreFormatoPublicacion = "Coordinación";

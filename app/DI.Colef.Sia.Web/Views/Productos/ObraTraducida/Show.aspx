@@ -71,12 +71,6 @@
                     <span class="valor"><%= HumanizeHelper.TipoObraTraducida(Model.Form.TipoObraTraducida) %>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.AreaTematicaId != 0) { %>
-                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                <% } %>
-                
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
     <!-- Coautores de la publicacion -->            
 	            <h4>Coautores de la publicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoObraTraducidas, ModelId = Model.Form.Id } ); %>
@@ -91,26 +85,22 @@
                 </p>
                 
     <!-- ESTATUS DE LA PUBLICACION -->
-                <h4>Estatus de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->
                 <% if (Model.Form.TipoObraTraducida == 1){ %>
-                    <h4>Referencia bibliogr&aacute;fica</h4>
                     <% Html.RenderPartial("_ShowArticulo", Model.Form); %>
                 <% } %>
                 
                 <% if (Model.Form.TipoObraTraducida == 2){ %>
-                    <h4>Referencia bibliogr&aacute;fica</h4>
                     <% Html.RenderPartial("_ShowLibro", Model.Form); %>
                 <% } %>
                 
                 <% if (Model.Form.TipoObraTraducida == 3){ %>
-                    <h4>Referencia bibliogr&aacute;fica</h4>
                     <% Html.RenderPartial("_ShowCapitulo", Model.Form); %>
                 <% } %>
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteObraTraducidaNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteObraTraducidaId), Model.Form.ComprobanteObraTraducidaNombre, new { target = "_blank" })%> 
@@ -119,6 +109,12 @@
     	                <% } %>
                     </span><br />
                 </p>
+                
+                <% if (Model.Form.AreaTematicaId != 0) { %>
+                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <% } %>
+                
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ObraTraducidaController>(x => x.Index(), "Regresar") %>

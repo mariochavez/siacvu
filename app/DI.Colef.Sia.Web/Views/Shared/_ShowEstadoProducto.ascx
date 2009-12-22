@@ -3,6 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<h4>Estatus de la publicaci&oacute;n</h4>
 <% if(!Model.IsShowForm){ %>
     <p>
         <label>Estatus de la publicaci&oacute;n</label>
@@ -40,26 +41,6 @@
         <input type="file" name="Aceptado_DocumentoProbatorio" id="Aceptado_DocumentoProbatorio" class="fileUpload"/>
     </div>
     <div id="Aceptado_FileQueue" style="display:none;" rel="#span_aceptado_documento"></div>
-
-    <p>
-        <label>Carta de publicaci&oacute;n</label>
-        <span id="span_publicado_documento" class="valor">
-            <% if(Model.ModelId != 0){ %>
-                <%if(!String.IsNullOrEmpty(Model.ComprobantePublicadoNombre)) { %> 
-	                <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobantePublicadoId), Model.ComprobantePublicadoNombre, new { target = "_blank" })%> 
-	            <% }else{ %>
-	                &nbsp;
-	            <% } %>
-            <% } else { %>
-                &nbsp;
-            <% } %>
-        </span><br />
-    </p>
-    <div style="padding: 0 0 10px 20px">
-        <input type="file" name="Publicado_DocumentoProbatorio" id="Publicado_DocumentoProbatorio" class="fileUpload"/>
-    </div>
-    <div id="Publicado_FileQueue" style="display:none;" rel="#span_publicado_documento"></div>
-
 <% } else { %>
     <p>
         <label>Estatus de la publicaci&oacute;n</label>
@@ -91,20 +72,6 @@
             <label>A&ntilde;o de publicaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaPublicacion)%>&nbsp;</span>
             <span>Formato (yyyy)</span>
-        </p>
-        <p>
-            <label>Carta de publicaci&oacute;n</label>
-            <span class="valor">
-                <% if(Model.ModelId != 0){ %>
-                    <%if(!String.IsNullOrEmpty(Model.ComprobantePublicadoNombre)) { %> 
-	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobantePublicadoId), Model.ComprobantePublicadoNombre, new { target = "_blank" })%> 
-	                <% }else{ %>
-	                    &nbsp;
-	                <% } %>
-                <% } else { %>
-                    &nbsp;
-                <% } %>
-            </span><br />
         </p>
     <% } %>
 <% } %>

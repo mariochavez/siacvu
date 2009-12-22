@@ -62,9 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Archivo ComprobanteAceptado { get; set; }
 
         [Valid]
-        public virtual Archivo ComprobantePublicado { get; set; }
-
-        [Valid]
         public virtual Archivo ComprobanteReporte { get; set; }
 
         [DomainSignature]

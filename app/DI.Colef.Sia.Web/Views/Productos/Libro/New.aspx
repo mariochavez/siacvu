@@ -60,24 +60,23 @@
                 <%=Html.ValidationMessage("PosicionAutor")%>
             </p>
             
-            <h4>Estatus de la publicaci&oacute;n</h4>
             <% Html.RenderPartial("_ShowEstadoProducto", 
                 new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                     FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
-                    ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre,
-                    ComprobantePublicadoId = Model.Form.ComprobantePublicadoId, ComprobantePublicadoNombre = Model.Form.ComprobantePublicadoNombre}); %>
+                    ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
             
-            <h4>Referencia bibliogr&aacute;fica</h4>
             <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             
             <p>
-                <label>Documento probatorio</label>
+                <label>Obra publicada</label>
                 <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
             </p>
             <div style="padding: 0 0 10px 20px">
                 <input type="file" name="ComprobanteLibro_DocumentoProbatorio" id="ComprobanteLibro_DocumentoProbatorio" class="fileUpload"/>
             </div>
             <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+			
+			<% Html.RenderPartial("_DatosFinal", Model.Form); %>
 			
 			<% Html.RenderPartial("_ProgressBar"); %>
 			
@@ -101,8 +100,6 @@
         var action = '<%=Url.Action("AddFile") %>';
 
         UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#Publicado_DocumentoProbatorio', 'Publicado_FileQueue',
             uploader, cancelImg, action, auth);
         UploadFile.setup('#ComprobanteLibro_DocumentoProbatorio', 'Comprobante_FileQueue',
             uploader, cancelImg, action, auth);
