@@ -19,6 +19,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 {
     public class MvcApplication : HttpApplication
     {
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            var sessionId = Session.SessionID;
+        }
+
         protected void Application_Start()
         {
             log4net.Config.XmlConfigurator.Configure();
