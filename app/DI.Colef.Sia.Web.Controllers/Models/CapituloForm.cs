@@ -6,7 +6,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string NombreCapitulo { get; set; }
 		public string FechaAceptacion { get; set; }
 		public string NombreLibro { get; set; }
-		public int NoPaginas { get; set; }
+        public int PaginaInicial { get; set; }
+        public int PaginaFinal { get; set; }
         public int NoCitas { get; set; }
 		public string AutorLibro { get; set; }
         public string FechaPublicacion { get; set; }
@@ -21,9 +22,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
-
-        public int ComprobantePublicadoId { get; set; }
-        public string ComprobantePublicadoNombre { get; set; }
 
         public int ComprobanteCapituloId { get; set; }
         public string ComprobanteCapituloNombre { get; set; }

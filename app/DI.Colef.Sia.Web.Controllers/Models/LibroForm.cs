@@ -21,9 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
 
-        public int ComprobantePublicadoId { get; set; }
-        public string ComprobantePublicadoNombre { get; set; }
-
         public int ComprobanteLibroId { get; set; }
         public string ComprobanteLibroNombre { get; set; }
 

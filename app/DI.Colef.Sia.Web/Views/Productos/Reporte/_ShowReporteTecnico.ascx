@@ -24,6 +24,6 @@
     <span class="valor"><%= Html.Encode(Model.Objetivo)%>&nbsp;</span>
 </p>
 <p>
-    <label>No. de p&aacute;ginas</label>
+    <label>N&uacute;mero de p&aacute;ginas</label>
     <span class="valor"><%= Html.Encode(Model.NoPaginas)%>&nbsp;</span>
 </p>

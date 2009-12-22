@@ -32,13 +32,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);
             model.Sede = catalogoService.GetSedeById(message.Sede);
         }
 
-        public EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario, Investigador investigador)
+        public EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario)
         {
             var model = Map(message);
 

@@ -32,7 +32,7 @@
 	<%=Html.ValidationMessage("Objetivo")%>
 </p>
 <p class="ReporteDocumento">
-	<label>No. de p&aacute;ginas</label>
+	<label>N&uacute;mero de p&aacute;ginas</label>
 	<%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NoPaginas")%>

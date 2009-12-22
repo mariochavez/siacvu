@@ -8,7 +8,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -253,12 +252,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 archivoService.Save(archivo);
                 resena.ComprobanteAceptado = archivo;
             }
-            else if (form["TipoArchivo"] == "Publicado")
-            {
-                archivo.TipoProducto = resena.TipoProducto;
-                archivoService.Save(archivo);
-                resena.ComprobantePublicado = archivo;
-            }
             else if (form["TipoArchivo"] == "ComprobanteResena")
             {
                 archivo.TipoProducto = resena.TipoProducto;
@@ -347,6 +340,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             };
 
             return Rjs("ChangeRevista", form);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeAreaTematica(int select)
+        {
+            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+
+            var form = new ShowFieldsForm
+            {
+                AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+                AreaTematicaId = areaTematicaForm.Id
+            };
+
+            return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize]
@@ -792,6 +801,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
 
+                                      AreaTematicaNombre = form.AreaTematica.Nombre,
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
+                                      
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
@@ -802,8 +814,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       ModelId = form.Id,
                                       ComprobanteAceptadoId = form.ComprobanteAceptadoId,
                                       ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
-                                      ComprobantePublicadoId = form.ComprobantePublicadoId,
-                                      ComprobantePublicadoNombre = form.ComprobantePublicadoNombre,
 
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,

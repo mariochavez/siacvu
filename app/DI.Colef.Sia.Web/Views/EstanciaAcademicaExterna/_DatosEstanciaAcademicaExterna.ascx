@@ -1,6 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EstanciaAcademicaExternaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<h4>Investigador externo</h4>
+<p>
+    <label>Nombre</label>
+    <%=Html.TextBox("InvestigadorExterno.Nombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("InvestigadorExterno.Nombre")%>
+</p>
+<p>
+    <label>Apellido paterno</label>
+    <%=Html.TextBox("InvestigadorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250", maxlength = 40 })%>
+    <%=Html.ValidationMessage("InvestigadorExterno.ApellidoPaterno")%>
+</p>
+<p>
+    <label>Apellido materno</label>
+    <%=Html.TextBox("InvestigadorExterno.ApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250", maxlength = 40 })%>
+    <%=Html.ValidationMessage("InvestigadorExterno.ApellidoMaterno")%>
+</p>
 <p>
     <label>Grado acad&eacute;mico</label>
     <%=Html.DropDownList("GradoAcademico", Model.GradosAcademicos.CreateSelectList<GradoAcademicoForm>("Id", "Nombre"),

@@ -40,7 +40,7 @@ GO
 DELETE from Capitulos
 GO
 set identity_insert Capitulos on
-insert Capitulos([Id],[NombreCapitulo],[TipoCapitulo],[PosicionAutor],[TieneProyecto],[EstadoProducto],[FechaAceptacion],[FechaPublicacion],[NombreLibro],[AutorLibro],[TipoLibro],[Resumen],[Volumen],[NoPaginas],[NoCitas],[Puntuacion],[CreadoEl],[ModificadoEl],[Activo],[FirmaFk],[ProyectoFk],[AreaTematicaFk],[AreaFk],[DisciplinaFk],[SubdisciplinaFk],[EditorialFk],[UsuarioFk],[DepartamentoFk],[SedeFk],[CreadoPorFk],[ModificadoPorFk]) values(1,'Automaper en MVC',0,1,0,0,'Jan  1 1910 12:00AM','Jan  1 1910 12:00AM',null,null,0,null,0,0,0,0,'Dec  3 2009  9:50AM','Dec  3 2009  9:50AM',1,2,null,2,null,null,null,null,2,1,1,2,2)
+insert Capitulos([Id],[NombreCapitulo],[TipoCapitulo],[PosicionAutor],[TieneProyecto],[EstadoProducto],[FechaAceptacion],[FechaPublicacion],[NombreLibro],[AutorLibro],[TipoLibro],[Resumen],[Volumen],[PaginaInicial],[PaginaFinal],[NoCitas],[Puntuacion],[CreadoEl],[ModificadoEl],[Activo],[FirmaFk],[ProyectoFk],[AreaTematicaFk],[AreaFk],[DisciplinaFk],[SubdisciplinaFk],[EditorialFk],[UsuarioFk],[DepartamentoFk],[SedeFk],[CreadoPorFk],[ModificadoPorFk]) values(1,'Automaper en MVC',0,1,0,0,'Jan  1 1910 12:00AM','Jan  1 1910 12:00AM',null,null,0,null,0,0,0,0,0,'Dec  3 2009  9:50AM','Dec  3 2009  9:50AM',1,2,null,2,null,null,null,null,2,1,1,2,2)
 set identity_insert Capitulos off
 GO
 update statistics Capitulos

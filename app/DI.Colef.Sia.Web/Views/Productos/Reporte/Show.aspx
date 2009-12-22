@@ -59,9 +59,6 @@
                     <span class="valor"><%= HumanizeHelper.TipoReporte(Model.Form.TipoReporte)%>&nbsp;</span>
                 </p>
                 
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>    
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
                 <h4>Coautores de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id } ); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id } ); %>
@@ -75,7 +72,6 @@
                     <span class="valor"><%= Html.Encode(Model.Form.PosicionAutor) %>&nbsp;</span>
                 </p>
                 
-                <h4>Estatus de la publicaci&oacute;n</h4>        
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
                 <% if (Model.Form.TipoReporte == 1){ %>
@@ -86,7 +82,7 @@
                     <% Html.RenderPartial("_ShowReporteTecnico", Model.Form); %>
                 <% } %>
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteReporteNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteReporteId), Model.Form.ComprobanteReporteNombre, new { target = "_blank" })%> 
@@ -95,6 +91,9 @@
     	                <% } %>
                     </span><br />
                 </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ReporteController>(x => x.Index(), "Regresar") %>

@@ -11,6 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
+        public virtual InvestigadorExterno InvestigadorExterno { get; set; }
+
         public virtual GradoAcademico GradoAcademico { get; set; }
 
         public virtual TipoEstancia TipoEstancia { get; set; }

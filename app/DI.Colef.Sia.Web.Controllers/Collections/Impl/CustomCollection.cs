@@ -17,8 +17,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
 
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = GetNombreProducto(tipoProducto) + lowerUpperC + "on arbitraje"},
-                           new CustomSelectForm {Id = 2, Nombre = GetNombreProducto(tipoProducto) + lowerUpperS + "in arbitraje"}
+                           new CustomSelectForm {Id = 1, Nombre = GetNombreProducto(tipoProducto) + lowerUpperC + "on arbitraje anónimo"},
+                           new CustomSelectForm {Id = 2, Nombre = GetNombreProducto(tipoProducto) + lowerUpperS + "in arbitraje anónimo"}
                        };
         }
 
@@ -35,7 +35,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections.Impl
         {
             return new[]
                        {
-                           new CustomSelectForm {Id = 1, Nombre = "Libro"},
+                           new CustomSelectForm {Id = 1, Nombre = "De autor(es)"},
                            new CustomSelectForm {Id = 2, Nombre = "Coordinación"},
                            new CustomSelectForm {Id = 3, Nombre = "Compilación"}
                        };
