@@ -41,6 +41,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ParseResult(results);
         }
 
+        public string SearchRevistaTipoABC(string value)
+        {
+            var results = searchQuerying.SearchRevistaTipoABC(value);
+            return ParseResult(results);
+        }
+
         public string SearchMovilidadAcademica(string value)
         {
             var results = searchQuerying.SearchMovilidadAcademica(value);

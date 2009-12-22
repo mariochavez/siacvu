@@ -29,6 +29,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Nombre = message.Nombre;
             model.TipoCurso = message.TipoCurso;
             model.ProgramaEstudio = message.ProgramaEstudio;
+            model.TieneConvenio = message.TieneConvenio;
+            model.PertenecePNPC = message.PertenecePNPC;
+            model.EsPrivada = message.EsPrivada;
 
             model.FechaInicial = message.FechaInicial.FromShortDateToDateTime();
             model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();

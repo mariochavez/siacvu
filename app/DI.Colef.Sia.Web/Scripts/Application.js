@@ -479,6 +479,7 @@ var RemoteLink = {
         currentLink.showLoading();
         $.ajax({
             url: url,
+            data: {},
             type: method,
             dataType: 'script',
             success: function(msg) {

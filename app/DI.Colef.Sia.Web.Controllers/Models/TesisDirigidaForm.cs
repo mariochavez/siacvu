@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class TesisDirigidaForm
@@ -12,6 +14,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string FechaGrado { get; set; }
         public int FormaParticipacion { get; set; }
         public string ProgramaEstudio { get; set; }
+        public bool PertenecePNPC { get; set; }
+        public bool TieneConvenio { get; set; }
 
         public int TipoTesis { get; set; }
 

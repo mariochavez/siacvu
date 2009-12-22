@@ -16,6 +16,10 @@
     <%=Html.ValidationMessage("ProgramaEstudio")%>
 </p>
 <p>
+    <label></label>
+    ¿Pertenece al PNPC? <%=Html.CheckBox("PertenecePNPC", Model.PertenecePNPC)%>
+</p>
+<p>
     <label>Nivel de estudios</label>
     <%=Html.DropDownList("NivelEstudio", Model.NivelEstudios.CreateSelectList<NivelEstudioForm>("Id", "Nombre"),
         "Seleccione ...", new {@class = "requerido"})%>
@@ -25,6 +29,14 @@
 
 <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false});%>
 
+<p>
+    <label></label>
+    ¿Es privada? <%=Html.CheckBox("EsPrivada", Model.EsPrivada)%>
+</p>
+<p id="EsPrivada_Field">
+    <label></label>
+    ¿Tiene convenio? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+</p>
 <p>
     <label>Fecha de inicio</label>
     <%=Html.TextBox("FechaInicial", Model.FechaInicial, new {@class = "datetime input100-requerido", maxlength = 10})%>
@@ -57,12 +69,25 @@
         <span class="valor"><%= Html.Encode(Model.ProgramaEstudio) %>&nbsp;</span>
     </p>
     <p>
+        <label></label>
+        <span class="valor">¿Pertenece al PNPC? <%= Html.Encode(Model.PertenecePNPC) %>&nbsp;</span>
+    </p>
+    <p>
         <label>Nivel de estudios</label>
         <span class="valor"><%= Html.Encode(Model.NivelEstudioNombre) %>&nbsp;</span>
     </p>
 
     <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
-
+    <p>
+        <label></label>
+        <span class="valor">¿Es privada? <%= Html.Encode(Model.EsPrivada) %>&nbsp;</span>
+    </p>
+    <%if(Model.EsPrivada){ %>
+        <p>
+            <label></label>
+            <span class="valor">¿Tiene convenio? <%= Html.Encode(Model.TieneConvenio) %>&nbsp;</span>
+        </p>
+    <% } %>
     <p>
         <label>Fecha de inicio</label>
         <span class="valor"><%= Html.Encode(Model.FechaInicial) %>&nbsp;</span>

@@ -26,6 +26,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string ProgramaEstudio { get; set; }
 
+        public virtual bool PertenecePNPC { get; set; }
+
         public virtual DateTime FechaGrado { get; set; }
 
         public virtual VinculacionAPyD VinculacionAPyD { get; set; }
@@ -37,6 +39,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual GradoAcademico GradoAcademico { get; set; }
 
         public virtual Institucion Institucion { get; set; }
+
+        public virtual bool TieneConvenio { get; set; }
 
         public virtual decimal Puntuacion { get; set; }
 

@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CursoForm
@@ -13,6 +15,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
         public string ProgramaEstudio { get; set; }
+        public bool TieneConvenio { get; set; }
+        public bool PertenecePNPC { get; set; }
+        public bool EsPrivada { get; set; }
 
         public int ComprobanteCursoId { get; set; }
         public string ComprobanteCursoNombre { get; set; }

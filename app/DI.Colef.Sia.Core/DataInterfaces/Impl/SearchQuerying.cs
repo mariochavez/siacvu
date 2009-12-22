@@ -122,6 +122,36 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchRevistaTipoABC(string value)
+        {
+            var clasificacionSieva = DetachedCriteria.For(typeof (RevistaPublicacion))
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("ClasificacionSieva"), "ClasificacionSieva"))
+                .Add(Expression.Or(Expression.Eq("ClasificacionSieva", 1),
+                                   Expression.Or(Expression.Eq("ClasificacionSieva", 2),
+                                                 Expression.Eq("ClasificacionSieva", 3))));
+
+            var criteria = DetachedCriteria.For(typeof (RevistaPublicacion))
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("Titulo"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("Titulo"))
+                .Add(Subqueries.PropertyIn("ClasificacionSieva", clasificacionSieva))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (RevistaPublicacionDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<RevistaPublicacionDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search {Id = item.Id, Nombre = item.Nombre});
+            }
+
+            return result.ToArray();
+        }
+
         public Search[] SearchMovilidadAcademica(string value)
         {
             var criteria = DetachedCriteria.For(typeof (EstanciaInstitucionExterna))
@@ -246,6 +276,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         #region Nested type: IdiomaInvestigadorDTO
 
         class IdiomaInvestigadorDTO
+        {
+            public int Id { get; set; }
+            public string Nombre { get; set; }
+        }
+
+        #endregion
+
+
+        #region Nested type: RevistaDTO
+
+        class RevistaPublicacionDTO
         {
             public int Id { get; set; }
             public string Nombre { get; set; }
