@@ -247,12 +247,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 archivoService.Save(archivo);
                 reporte.ComprobanteAceptado = archivo;
             }
-            else if (form["TipoArchivo"] == "Publicado")
-            {
-                archivo.TipoProducto = reporte.TipoProducto;
-                archivoService.Save(archivo);
-                reporte.ComprobantePublicado = archivo;
-            }
             else if (form["TipoArchivo"] == "ComprobanteReporte")
             {
                 archivo.TipoProducto = reporte.TipoProducto;
@@ -636,8 +630,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       ModelId = form.Id,
                                       ComprobanteAceptadoId = form.ComprobanteAceptadoId,
                                       ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
-                                      ComprobantePublicadoId = form.ComprobantePublicadoId,
-                                      ComprobantePublicadoNombre = form.ComprobantePublicadoNombre,
 
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,

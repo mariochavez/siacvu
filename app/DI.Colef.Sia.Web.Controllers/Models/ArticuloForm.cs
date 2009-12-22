@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
@@ -23,8 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
-        public int ComprobantePublicadoId { get; set; }
-        public string ComprobantePublicadoNombre { get; set; }
         public string ComprobanteArticuloNombre { get; set; }
         public int ComprobanteArticuloId { get; set; }
 

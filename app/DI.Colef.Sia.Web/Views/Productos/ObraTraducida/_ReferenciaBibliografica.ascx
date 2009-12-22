@@ -55,17 +55,17 @@
     <%=Html.TextBox("Numero", Model.Numero, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("Numero")%>
 </p>
-<p class="Articulo_fields">
+<p class="ArticuloCapitulo_fields">
     <label>De la p&aacute;gina</label>
     <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("PaginaInicial")%>
 </p>
-<p class="Articulo_fields">
+<p class="ArticuloCapitulo_fields">
     <label>A la p&aacute;gina</label>
     <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
-<p class="CapituloLibro_fields">
+<p class="Libro_fields">
     <label>N&uacute;mero de p&aacute;ginas</label>
     <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100-requerido", maxlength = 4 })%>
     <%=Html.ValidationMessage("NoPaginas")%>

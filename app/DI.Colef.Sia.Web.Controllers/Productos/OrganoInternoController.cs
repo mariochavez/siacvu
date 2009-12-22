@@ -8,7 +8,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -17,6 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
 		readonly IOrganoInternoService organoInternoService;
         readonly IOrganoInternoMapper organoInternoMapper;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IInvestigadorService investigadorService;
         readonly ICatalogoService catalogoService;
         readonly IConsejoComisionMapper consejoComisionMapper;
         readonly ICustomCollection customCollection;
@@ -24,6 +25,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     
         public OrganoInternoController(IOrganoInternoService organoInternoService, 
 			IOrganoInternoMapper organoInternoMapper,
+            IInvestigadorMapper investigadorMapper,
+            IInvestigadorService investigadorService,
             IArchivoService archivoService,
 			ICatalogoService catalogoService,
             ICustomCollection customCollection,
@@ -33,6 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             : base(usuarioService, searchService, catalogoService)
         {
 			this.catalogoService = catalogoService;
+            this.investigadorService = investigadorService;
+            this.investigadorMapper = investigadorMapper;
             this.customCollection = customCollection;
             this.archivoService = archivoService;
             this.organoInternoService = organoInternoService;
@@ -47,9 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			var data = CreateViewDataWithTitle(Title.Index);
             var organoInternos = new OrganoInterno[] { };
 
-            if (User.IsInRole("Investigadores"))
-                organoInternos = organoInternoService.GetAllOrganoInternos(CurrentUser());
-
             if (User.IsInRole("DGAA"))
                 organoInternos = organoInternoService.GetAllOrganoInternos();
 
@@ -58,13 +60,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            if (CurrentInvestigador() == null)
-                return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
-
 			var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Periodo"] = (from p in data.Form.Periodos where p.Nombre == "Primer periodo" select p.Id).FirstOrDefault();
@@ -72,7 +71,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View(data);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "DGAA")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
@@ -108,7 +107,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return View();
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "DGAA")]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -128,7 +127,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", organoInterno.Id);
         }
 
-        [Authorize(Roles = "Investigadores")]
+        [Authorize(Roles = "DGAA")]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoInternoForm form)
@@ -202,6 +201,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			form = form ?? new OrganoInternoForm();
             
 			//Lista de Catalogos Pendientes
+            form.Investigadores = investigadorMapper.Map(investigadorService.GetAllInvestigadores());
             form.Periodos = customCollection.PeriodoCustomCollection();
             form.ConsejosComisiones = consejoComisionMapper.Map(catalogoService.GetActiveConsejoComisions());
 

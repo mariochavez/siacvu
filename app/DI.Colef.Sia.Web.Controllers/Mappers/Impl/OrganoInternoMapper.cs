@@ -9,12 +9,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class OrganoInternoMapper : AutoFormMapper<OrganoInterno, OrganoInternoForm>, IOrganoInternoMapper
     {
 		readonly ICatalogoService catalogoService;
+        readonly IUsuarioService usuarioService;
 
 		public OrganoInternoMapper(IRepository<OrganoInterno> repository,
-            ICatalogoService catalogoService) 
+            ICatalogoService catalogoService,
+            IUsuarioService usuarioService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
+            this.usuarioService = usuarioService;
         }
 		
         protected override int GetIdFromMessage(OrganoInternoForm message)
@@ -30,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 		    
             model.ConsejoComision = catalogoService.GetConsejoComisionById(message.ConsejoComision);
+            model.Usuario = usuarioService.GetUsuarioById(message.Usuario);
         }
 
         public OrganoInterno Map(OrganoInternoForm message, Usuario usuario, Investigador investigador)
@@ -38,7 +42,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             if (model.IsTransient())
             {
-                model.Usuario = usuario;
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;

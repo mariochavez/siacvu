@@ -57,17 +57,6 @@
                     <span class="valor"><%=HumanizeHelper.TipoResena(Model.Form.TipoResena)%>&nbsp;</span>
                 </p>
                 
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre) %>&nbsp;</span>
-                </p>    
-                
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
-                
                 <h4>Coautores de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm {CoautoresInternos = Model.Form.CoautorInternoResenas, ModelId = Model.Form.Id});%>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm {CoautoresExternos = Model.Form.CoautorExternoResenas, ModelId = Model.Form.Id});%>
@@ -80,7 +69,6 @@
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
                 
-                <h4>Estatus de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
                 <% if (Model.Form.TipoResena == 2){ %>
@@ -88,32 +76,27 @@
                     <% Html.RenderPartial("_ShowObraResenada", Model.Form); %>
                 <% } %>
                 
-                <% if (Model.Form.EstadoProducto == 3) { %>
-                    <h4>Referencia bibliogr&aacute;fica</h4>
-                    
-                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                	<% } %>
-                    
-                    <p>
-                        <label>Volumen</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>N&uacute;mero</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>De la p&aacute;gina</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span> 
-                    </p>
-                    <p>    
-                        <label>A la p&aacute;gina</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
-                    </p>
-                <% } %>
+                <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
+                	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+            	<% } %>
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Volumen</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>N&uacute;mero</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>De la p&aacute;gina</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span> 
+                </p>
+                <p>    
+                    <label>A la p&aacute;gina</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
+                </p>
+                <p>
+                    <label>Obra publicada</label>
                     <span class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteResenaNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteResenaId), Model.Form.ComprobanteResenaNombre, new { target = "_blank" })%> 
@@ -122,6 +105,12 @@
     	                <% } %>
                     </span><br />
                 </p>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+                <% } %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar") %>

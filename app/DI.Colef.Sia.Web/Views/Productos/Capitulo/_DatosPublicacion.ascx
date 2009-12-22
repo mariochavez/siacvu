@@ -8,18 +8,20 @@
     <%=Html.ValidationMessage("NombreCapitulo")%>
 </p>
 <p>
-    <label>Tipo de cap&iacute;tulo</label>
+    <label>Nombre del libro</label>
+    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420", maxlength = 100 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("NombreLibro")%>
+</p>
+<p>
+    <label>Tipo de libro</label>
+    <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
+        "Seleccione ...")%>
+    <%=Html.ValidationMessage("TipoLibro")%>
+</p>
+<p>
+    <label>Tipo de producto</label>
     <%=Html.DropDownList("TipoCapitulo", Model.TiposCapitulos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
                         "Seleccione ...", new { @class = "tipo requerido" })%>
     <%=Html.ValidationMessage("TipoCapitulo") %>
 </p>
-<p>
-    <label></label>
-    <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> ¿Existe proyecto de investigaci&oacute;n de referencia?
-</p>
-<div id="tieneproyecto_field">
-    <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
-</div>
-
-<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, IsShowForm = false}); %>  
-<% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Areas, Disciplinas = Model.Disciplinas, Subdisciplinas = Model.Subdisciplinas, IsShowForm = false }); %>

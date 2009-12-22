@@ -27,9 +27,13 @@
     <span class="valor"><%= Html.Encode(Model.Volumen)%>&nbsp;</span>
 </p>
 <p>
-    <label>N&uacute;mero de p&aacute;ginas</label>
-    <span class="valor"><%= Html.Encode(Model.NoPaginas)%>&nbsp;</span>
-</p>    
+    <label>De la p&aacute;gina</label>
+    <span class="valor"><%= Html.Encode(Model.PaginaInicial)%>&nbsp;</span>
+</p>
+<p>    
+    <label>A la p&aacute;gina</label>
+    <span class="valor"><%= Html.Encode(Model.PaginaFinal)%>&nbsp;</span>
+</p>
 <p>
     <label>N&uacute;mero de citas</label>
     <span class="valor"><%= Html.Encode(Model.NoCitas)%>&nbsp;</span>

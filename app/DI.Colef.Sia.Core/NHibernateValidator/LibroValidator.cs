@@ -28,11 +28,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
             if (!libro.IsTransient())
             {
-
+                
             }
 
-            if (libro.FormatoPublicacion != 0)
-                isValid &= ValidateFormatoPublicacion(libro, constraintValidatorContext);
+            if (libro.TipoProducto == 0)
+            {
+                constraintValidatorContext.DisableDefaultError();
+                constraintValidatorContext.AddInvalid<Libro, int>(
+                    "seleccione el tipo de producto|TipoProducto", x => x.TipoProducto);
+                isValid = false;
+            }
+
+            if (libro.FormatoPublicacion == 0)
+            {
+                constraintValidatorContext.DisableDefaultError();
+                constraintValidatorContext.AddInvalid<Libro, int>(
+                    "seleccione el tipo de publicación|FormatoPublicacion", x => x.FormatoPublicacion);
+                isValid = false;
+            }
+
+            if (libro.ContenidoLibro != 0)
+                isValid &= ValidateContenidoLibro(libro, constraintValidatorContext);
 
             if(libro.EstadoProducto != 0)
                 isValid &= ValidateEstadoProducto(libro, constraintValidatorContext);
@@ -42,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             return isValid;
         }
 
-        bool ValidateFormatoPublicacion(Libro libro, IConstraintValidatorContext constraintValidatorContext)
+        bool ValidateContenidoLibro(Libro libro, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
 

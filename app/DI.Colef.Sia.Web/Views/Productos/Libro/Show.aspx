@@ -54,7 +54,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Formato de publicaci&oacute;n</label>
+                    <label>Tipo de publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.FormatoPublicacion(Model.Form.FormatoPublicacion)%>&nbsp;</span>
                 </p>
                 <p>
@@ -84,22 +84,6 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
                     </p>
                 <% } %>
-                <p>
-                    <label></label>
-                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
-                </p>
-                
-                <% if (Model.Form.TieneProyecto) { %>                    
-                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
-                <% } %>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
-                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
                 
     <!--COAUTORES DE LA PUBLICACION-->
                 <h4>Coautores de la publicaci&oacute;n</h4>
@@ -117,13 +101,10 @@
                 </p>
                 
     <!--ESTAUS DE LA PUBLICACION-->            
-                <h4>Estatus de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
                 <% if (Model.Form.EstadoProducto == 3) { %>
                 
-                    <h4>Referencia bibliogr&aacute;fica</h4>
-                    
 				    <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialLibros, ModelId = Model.Form.Id }); %>
 				    
                     <p>
@@ -151,7 +132,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
                     </p>
                     <p>
-                        <label>Documento probatorio</label>
+                        <label>Obra publicada</label>
                         <span class="valor">
                             <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteLibroNombre)) { %> 
 	                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteLibroId), Model.Form.ComprobanteLibroNombre, new { target = "_blank" })%> 
@@ -160,6 +141,22 @@
 	                        <% } %>
                         </span><br />
                     </p>
+                <% } %>
+                <p>
+                    <label></label>
+                    <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
+                </p>
+                
+                <% if (Model.Form.TieneProyecto) { %>                    
+                    <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
+                <% } %>
+                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                
+                <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
+                
+                <% if (Model.Form.SubdisciplinaId != 0) { %>
+                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 <% } %>
                 
                 <p class="submit">

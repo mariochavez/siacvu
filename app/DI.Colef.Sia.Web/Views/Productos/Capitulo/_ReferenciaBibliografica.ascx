@@ -1,23 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<CapituloForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<p>
-    <label>Nombre del libro</label>
-    <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420", maxlength = 100 })%>
-    <span class="cvu"></span>
-    <%=Html.ValidationMessage("NombreLibro")%>
-</p>
-
 <h4>Autor(es) del libro</h4>
 <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoCapitulos, ModelId = Model.Id }); %>
 <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoCapitulos, ModelId = Model.Id } ); %>
-
-<p>
-    <label>Tipo de libro</label>
-    <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
-    <%=Html.ValidationMessage("TipoLibro")%>
-</p>
 
 <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialCapitulos, ModelId = Model.Id } ); %>
 
@@ -33,10 +19,16 @@
     <%=Html.ValidationMessage("Volumen")%>
 </p>
 <p>
-    <label>No. de p&aacute;ginas</label>
-    <%=Html.TextBox("NoPaginas", Model.NoPaginas, new { @class = "input100", maxlength = 4 })%>
+    <label>De la p&aacute;gina</label>
+    <%=Html.TextBox("PaginaInicial", Model.PaginaInicial, new { @class = "input100", maxlength = 4, size = 14 })%>
     <span class="cvu"></span>
-    <%=Html.ValidationMessage("NoPaginas")%>
+    <%=Html.ValidationMessage("PaginaInicial")%>
+</p>
+<p>    
+    <label>A la p&aacute;gina</label>
+    <%=Html.TextBox("PaginaFinal", Model.PaginaFinal, new { @class = "input100", maxlength = 4, size = 14 })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("PaginaFinal")%>
 </p>
 <p>
     <label>No. de citas</label>

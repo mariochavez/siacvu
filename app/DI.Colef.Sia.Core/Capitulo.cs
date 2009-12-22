@@ -96,9 +96,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Archivo ComprobanteAceptado { get; set; }
 
         [Valid]
-        public virtual Archivo ComprobantePublicado { get; set; }
-
-        [Valid]
         public virtual Archivo ComprobanteCapitulo { get; set; }
 
         public virtual int PosicionAutor { get; set; }
@@ -133,7 +130,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string Volumen { get; set; }
 
-        public virtual int NoPaginas { get; set; }
+        public virtual int PaginaInicial { get; set; }
+
+        public virtual int PaginaFinal { get; set; }
 
         public virtual int NoCitas { get; set; }
 

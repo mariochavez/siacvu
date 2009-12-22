@@ -36,7 +36,7 @@
 
         <div id="forma">
             <div id="campos">
-                <h4>Datos del investigador</h4>
+                <h4>Investigador externo</h4>
 	            <p>
                     <label>Grado acad&eacute;mico</label>
                     <span class="valor"><%= Html.Encode(Model.Form.GradoAcademicoNombre)%>&nbsp;</span>

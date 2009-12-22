@@ -253,7 +253,6 @@ insert into ConsejoComisiones values('Comisión Dictaminadora', 2, 1, GETDATE(), 
 insert into ConsejoComisiones values('Comisiones Evaluadoras Departamentales', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
 insert into ConsejoComisiones values('Comisiones Académicas de Programas de Posgrado', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
 insert into ConsejoComisiones values('Consejo Editorial', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
-insert into ConsejoComisiones values('Consejo de Biblioteca', 2, 1, GETDATE(), GETDATE(), 1, 1, 1);
 
 /*
 insert into USEGs values('Cartografía Digital',GETDATE(), GETDATE(), 1, 1, 1);
@@ -515,7 +514,6 @@ insert into TipoParticipaciones values('Ferias Científicas y Tecnológicas', 3, G
 insert into TipoParticipaciones values('Ferias Empresariales', 3, GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Medios Impresos', 3, GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Radio', 3, GETDATE(), GETDATE(), 1, 1, 1);
-insert into TipoParticipaciones values('Revistas de Divulgación', 3, GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Seminarios', 3, GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Simposium', 3, GETDATE(), GETDATE(), 1, 1, 1);
 insert into TipoParticipaciones values('Talleres', 3, GETDATE(), GETDATE(), 1, 1, 1);

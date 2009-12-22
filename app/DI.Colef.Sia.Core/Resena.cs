@@ -109,9 +109,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual Archivo ComprobanteAceptado { get; set; }
 
         [Valid]
-        public virtual Archivo ComprobantePublicado { get; set; }
-
-        [Valid]
         public virtual Archivo ComprobanteResena { get; set; }
 
         public virtual int PosicionAutor { get; set; }

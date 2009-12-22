@@ -121,11 +121,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.NoPaginas == 0)
+                if (obraTraducida.PaginaInicial > obraTraducida.PaginaFinal)
                 {
                     constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|NoPaginas", "NoPaginas");
+                        "página inicial debe ser menor a la final|PaginaInicial", "PaginaInicial");
+                    constraintValidatorContext.AddInvalid(
+                        "página final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
+                    isValid = false;
+                }
 
+                if (obraTraducida.PaginaInicial == 0 && obraTraducida.PaginaFinal == 0)
+                {
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
+                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
                     isValid = false;
                 }
 

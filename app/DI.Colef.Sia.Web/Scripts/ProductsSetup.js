@@ -41,6 +41,7 @@ function obraTraducidaSetup() {
         [
             ['*', ['#TipoObraTraducida_fields', '.ArticuloCapituloLibro_fields']],
             [['Libro', 'Capítulo en libro'], ['.CapituloLibro_fields']],
+            [['Artículo en revista', 'Capítulo en libro'], ['.ArticuloCapitulo_fields']],
             ['Artículo en revista', ['.Articulo_fields']],
             ['Libro', ['.Libro_fields']],
             ['Capítulo en libro', ['.Capitulo_fields']]

@@ -5,6 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IEstanciaAcademicaExternaMapper : IMapper<EstanciaAcademicaExterna, EstanciaAcademicaExternaForm>
     {
-        EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario, Investigador investigador);
+        EstanciaAcademicaExterna Map(EstanciaAcademicaExternaForm message, Usuario usuario);
     }
 }
