@@ -8,7 +8,6 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -26,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IArchivoService archivoService;
-        readonly IFirmaService firmaService;
         readonly IInvestigadorService investigadorService;
 
         public ArticuloController(IArticuloService articuloService,
@@ -35,17 +33,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IUsuarioService usuarioService,
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
-                                  ISearchService searchService,
-                                  ITipoArchivoMapper tipoArchivoMapper,
-                                  IAreaTematicaMapper areaTematicaMapper,
-                                  ICustomCollection customCollection,
-                                  ILineaTematicaMapper lineaTematicaMapper,
-                                  IAreaMapper areaMapper,
-                                  IDisciplinaMapper disciplinaMapper,
-                                  ISubdisciplinaMapper subdisciplinaMapper,
+                                  ISearchService searchService, ITipoArchivoMapper tipoArchivoMapper,
+                                  IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
+                                  ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
+                                  IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
                                   IInvestigadorExternoMapper investigadorExternoMapper,
-                                  IArchivoService archivoService, IFirmaService firmaService,
+                                  IArchivoService archivoService,
                                   IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
@@ -61,7 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.archivoService = archivoService;
-            this.firmaService = firmaService;
             this.investigadorService = investigadorService;
         }
 
@@ -76,9 +69,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            if(CurrentInvestigador() == null)
+            if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
-                
+
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionAutor = 1;
@@ -98,14 +91,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
 
             if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado", articulo.Titulo));
-            
+                return
+                    RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado",
+                                                      articulo.Titulo));
+
             if (User.IsInRole("DGAA"))
             {
                 if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
                     (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 0) ||
                     (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
-                   )
+                    )
                     return
                         RedirectToHomeIndex(String.Format(
                                                 "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
@@ -210,7 +205,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaValidateProduct(FirmaForm firmaForm)
         {
-
             var articulo = articuloService.GetArticuloById(firmaForm.ProductoId);
 
             articulo.Firma.Aceptacion2 = 1;
@@ -231,7 +225,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult DgaaRejectProduct(FirmaForm firmaForm)
         {
-
             var articulo = articuloService.GetArticuloById(firmaForm.ProductoId);
             articulo.Firma.Aceptacion1 = 0;
             articulo.Firma.Aceptacion2 = 2;
@@ -261,7 +254,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create([Bind(Prefix = "CoautorInterno")] CoautorInternoProductoForm[] coautorInterno,
-            [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
+                                   [Bind(Prefix = "CoautorExterno")] CoautorExternoProductoForm[] coautorExterno,
                                    ArticuloForm form)
         {
             coautorExterno = coautorExterno ?? new CoautorExternoProductoForm[] {};
@@ -292,7 +285,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (User.IsInRole("Investigadores"))
                 articulo = articuloMapper.Map(form, CurrentUser(), CurrentInvestigador());
-            if(User.IsInRole("DGAA"))
+            if (User.IsInRole("DGAA"))
                 articulo = articuloMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(articulo.ValidationResults(), true, "Articulo");
@@ -325,7 +318,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var form = new ShowFieldsForm
                            {
                                RevistaPublicacionId = revistaForm.Id,
-
                                RevistaPublicacionInstitucionNombre = revistaForm.InstitucionNombre,
                                RevistaPublicacionIndice1Nombre = revistaForm.Indice1Nombre,
                                RevistaPublicacionIndice2Nombre = revistaForm.Indice2Nombre,
@@ -340,7 +332,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+            var lineaTematicaForm =
+                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
             var form = new ShowFieldsForm
                            {
@@ -423,7 +416,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 articuloService.SaveArticulo(articulo);
             }
 
-            var form = new CoautorForm { ModelId = id, InvestigadorId = investigadorId };
+            var form = new CoautorForm {ModelId = id, InvestigadorId = investigadorId};
 
             return Rjs("DeleteCoautorInterno", form);
         }
@@ -433,7 +426,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult NewCoautorExterno(int id)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new CoautorForm { Controller = "Articulo", IdName = "ArticuloId", InvestigadorExterno = new InvestigadorExternoForm()};
+            var form = new CoautorForm
+                           {
+                               Controller = "Articulo",
+                               IdName = "ArticuloId",
+                               InvestigadorExterno = new InvestigadorExternoForm()
+                           };
 
             if (articulo != null)
                 form.Id = articulo.Id;
@@ -509,7 +507,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (articulo != null)
             {
-                var coautor = articulo.CoautorExternoArticulos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First();
+                var coautor =
+                    articulo.CoautorExternoArticulos.Where(x => x.InvestigadorExterno.Id == investigadorExternoId).First
+                        ();
                 articulo.DeleteCoautorExterno(coautor);
 
                 articuloService.SaveArticulo(articulo);
@@ -520,12 +520,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorExterno", form);
         }
 
-        ArticuloForm SetupNewForm()
+        private ArticuloForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        ArticuloForm SetupNewForm(ArticuloForm form)
+        private ArticuloForm SetupNewForm(ArticuloForm form)
         {
             form = form ?? new ArticuloForm();
 
@@ -540,7 +540,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return form;
         }
 
-        void FormSetCombos(ArticuloForm form)
+        private void FormSetCombos(ArticuloForm form)
         {
             ViewData["TipoArticulo"] = form.TipoArticulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
@@ -561,27 +561,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
-
                                       ProyectoNombre = form.Proyecto.Nombre,
-
                                       AreaTematicaNombre = form.AreaTematica.Nombre,
                                       AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
                                       ComprobanteAceptadoId = form.ComprobanteAceptadoId,
                                       ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
-
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
-
                                       IsShowForm = true,
                                       RevistaLabel = "Nombre de la revista"
                                   };
