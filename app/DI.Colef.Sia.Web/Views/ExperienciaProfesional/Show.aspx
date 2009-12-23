@@ -46,28 +46,22 @@
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Pa&iacute;s</label>
                     <span class="valor"><%= Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.Nivel2Id != 0) { %>
-                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                <% } %>
-                        
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
-                
-                <% if (Model.Form.ClaseId != 0) { %>
-                	<% Html.RenderPartial("_ShowClase", Model.Form.ShowFields); %>
-                <% } %>
+            	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+            	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
+            	<% Html.RenderPartial("_ShowClase", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>L&iacute;nea de investigaci&oacute;n 1</label>

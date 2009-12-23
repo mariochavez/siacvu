@@ -40,9 +40,9 @@
                     <label>Nombre del producto</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreProducto)%>&nbsp;</span>
                 </p>
-                <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                <% } %>
+                
+                <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Volumen</label>
                         <span class="valor"><%=Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
@@ -62,6 +62,7 @@
                     <label>Estado actual</label>
                     <span class="valor"><%= HumanizeHelper.EstadoProducto(Model.Form.EstadoProducto)%>&nbsp;</span>
                 </p>
+                
                 <% if (Model.Form.EstadoProducto == 2) { %>
                     <p>
                         <label>Fecha de aceptaci&oacute;n</label>

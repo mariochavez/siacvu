@@ -59,20 +59,22 @@
 	                <label>Producto dictaminado</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.TipoDictamenNombre)%>&nbsp;</span>
                 </p>
+                
                 <% if (Model.Form.TipoDictamenNombre.Contains("Artículo")){ %>
-                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                	<% } %>
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 <% } %>
+                
                 <% if (Model.Form.TipoDictamenNombre.Contains("Libro")){ %>
                     <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialDictamenes, ModelId = Model.Form.Id }); %>
                 <% } %>
+                
                 <% if(Model.Form.TipoDictamenNombre.Contains("Proyecto")){ %>
                     <p>
 	                    <label>Tipo de proyecto</label>
 	                    <span class="valor"><%= Html.Encode(Model.Form.FondoConacytNombre)%>&nbsp;</span>
                     </p>
                 <% } %>
+                
                 <p>
                     <label>Obra publicada</label>
                     <span class="valor">
