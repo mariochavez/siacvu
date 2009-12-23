@@ -6,13 +6,13 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 {
-    public class ArticuloService : IArticuloService
+    public class ArticuloDifusionService : IArticuloDifusionService
     {
-        readonly IRepository<Articulo> articuloRepository;
+        readonly IRepository<ArticuloDifusion> articuloRepository;
         readonly IProductoQuerying productoQuerying;
         readonly IFirmaService firmaService;
 
-        public ArticuloService(IRepository<Articulo> articuloRepository,
+        public ArticuloDifusionService(IRepository<ArticuloDifusion> articuloRepository,
                                IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.articuloRepository = articuloRepository;
@@ -20,27 +20,27 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.firmaService = firmaService;
         }
 
-        public Articulo GetArticuloById(int id)
+        public ArticuloDifusion GetArticuloById(int id)
         {
             return articuloRepository.Get(id);
         }
 
-        public Articulo[] GetAllArticulos()
+        public ArticuloDifusion[] GetAllArticulos()
         {
-            return ((List<Articulo>)articuloRepository.GetAll()).ToArray();
+            return ((List<ArticuloDifusion>)articuloRepository.GetAll()).ToArray();
         }
 
-        public Articulo[] GetActiveArticulos()
+        public ArticuloDifusion[] GetActiveArticulos()
         {
-            return ((List<Articulo>)articuloRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
+            return ((List<ArticuloDifusion>)articuloRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
-        public void SaveArticulo(Articulo articulo)
+        public void SaveArticulo(ArticuloDifusion articulo)
         {
             SaveArticulo(articulo, false);
         }
 
-        public void SaveArticulo(Articulo articulo, bool useCommit)
+        public void SaveArticulo(ArticuloDifusion articulo, bool useCommit)
         {
             if (articulo.IsTransient())
             {

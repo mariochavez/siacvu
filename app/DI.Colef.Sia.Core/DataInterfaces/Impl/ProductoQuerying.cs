@@ -63,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             //Produccion academica
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
                 .Add(BuildCreteria<Articulo>(usuario.Id, "CoautorInternoArticulos", "Titulo", 1, true, true, isDgaa))
+                .Add(BuildCreteria<ArticuloDifusion>(usuario.Id, "CoautorInternoArticulos", "Titulo", 16, true, true, isDgaa))
                 .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2, true, isDgaa))
                 .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7, true, isDgaa))
                 .Add(BuildCreteria<Reporte>(usuario.Id, "CoautorInternoReportes", "Titulo", 11, true, isDgaa))
@@ -71,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             //Proyectos
             IMultiCriteria proyectos = Session.CreateMultiCriteria()
-                .Add(BuildCreteria<Proyecto>(usuario.Id, "", "Nombre", 14, "EstadoProyecto", isDgaa));
+                .Add(BuildCreteria<Proyecto>(usuario.Id, "", "Nombre", 15, "EstadoProyecto", isDgaa));
 
             //Formacion de recursos humanos
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()

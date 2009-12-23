@@ -58,9 +58,11 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="IArticuloDifusionService.cs" />
     <Compile Include="IConvenioService.cs" />
     <Compile Include="ICursoInvestigador.cs" />
     <Compile Include="IEstanciaAcademicaExternaService.cs" />
+    <Compile Include="Impl\ArticuloDifusionService.cs" />
     <Compile Include="Impl\ConvenioService.cs" />
     <Compile Include="Impl\CursoInvestigadorService.cs" />
     <Compile Include="Impl\EstanciaAcademicaExternaService.cs" />

@@ -32,6 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
         {
             CreateCatalogosMaps();
             CreateArticulosMaps();
+            CreateArticuloDifusionMaps();
             CreateCapitulosMaps();
             CreateCursosMaps();
             CreateTesisMaps();
@@ -126,6 +127,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                            o => o.Ignore());
 
             Mapper.CreateMap<Archivo, ArchivoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        private void CreateArticuloDifusionMaps()
+        {
+            Mapper.CreateMap<ArticuloDifusion, ArticuloDifusionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>())
+                .ForMember(d => d.FechaAceptacion,
+                           o => o.AddFormatter<YearDateFormatter>())
+                .ForMember(d => d.FechaPublicacion,
+                           o => o.AddFormatter<YearDateFormatter>());
+
+            Mapper.CreateMap<CoautorInternoProducto, CoautorInternoProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<CoautorExternoProducto, CoautorExternoProductoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }
