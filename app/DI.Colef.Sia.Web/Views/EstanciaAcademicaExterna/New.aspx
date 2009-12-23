@@ -33,14 +33,14 @@
 	    <% Html.RenderPartial("_Message"); %>
 	    
 	    <div id="forma">
-			<% using (Html.BeginForm("Create", "EstanciaAcademicaExterna")) { %>
+			<% using (Html.BeginForm("Create", "EstanciaAcademicaExterna", FormMethod.Post, new { @class = "remote" })) { %>
 				<%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>			
 				
 				<% Html.RenderPartial("_DatosEstanciaAcademicaExterna", Model.Form); %>
 		
 	            <p class="submit">
-	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Index(), "Regresar") %>
+	                <%=Html.SubmitButton("Guardar", "Guardar Cambios") %> &oacute; <%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
 	            </p>
 	        <% } %>
 	    </div><!--end forma-->

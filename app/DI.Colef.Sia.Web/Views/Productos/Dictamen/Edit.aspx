@@ -49,7 +49,7 @@
                 <% Html.RenderPartial("_DatosDictamen", Model.Form); %>
                 
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span id="span_comprobante_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteDictamenNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteDictamenId), Model.Form.ComprobanteDictamenNombre, new { target = "_blank" })%> 

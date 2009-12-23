@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -9,15 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class OrganoInternoMapper : AutoFormMapper<OrganoInterno, OrganoInternoForm>, IOrganoInternoMapper
     {
 		readonly ICatalogoService catalogoService;
-        readonly IUsuarioService usuarioService;
+        readonly IInvestigadorService investigadorService;
 
-		public OrganoInternoMapper(IRepository<OrganoInterno> repository,
-            ICatalogoService catalogoService,
-            IUsuarioService usuarioService) 
+        public OrganoInternoMapper(IRepository<OrganoInterno> repository, ICatalogoService catalogoService, IInvestigadorService investigadorService) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
-            this.usuarioService = usuarioService;
+            this.investigadorService = investigadorService;
         }
 		
         protected override int GetIdFromMessage(OrganoInternoForm message)
@@ -33,18 +32,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 		    
             model.ConsejoComision = catalogoService.GetConsejoComisionById(message.ConsejoComision);
-            model.Usuario = usuarioService.GetUsuarioById(message.Usuario);
+            model.Investigador = investigadorService.GetInvestigadorById(message.InvestigadorId);
         }
 
-        public OrganoInterno Map(OrganoInternoForm message, Usuario usuario, Investigador investigador)
+        public OrganoInterno Map(OrganoInternoForm message, Usuario usuario)
         {
             var model = Map(message);
 
             if (model.IsTransient())
             {
                 model.CreadoPor = usuario;
-                model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
-                model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+                model.Sede = GetLatest(model.Investigador.CargosInvestigador).Sede;
+                model.Departamento = GetLatest(model.Investigador.CargosInvestigador).Departamento;
+                model.Usuario = usuario;
             }
 
             model.ModificadoPor = usuario;

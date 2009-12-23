@@ -71,7 +71,7 @@
                 </div>
                 
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">

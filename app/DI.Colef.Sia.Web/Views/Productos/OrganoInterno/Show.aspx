@@ -48,6 +48,10 @@
                 </p>
                 <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
+                    <label>Nombre del investigador interno</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.Investigador.NombreCompleto) %></span>
+                </p>
+                <p>
                     <label>Consejo o Comisi&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.ConsejoComisionNombre)%>&nbsp;</span>
                 </p>
@@ -69,7 +73,7 @@
                     </p>
                 <% } %>
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteOrganoInternoNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteOrganoInternoId), Model.Form.ComprobanteOrganoInternoNombre, new { target = "_blank" })%> 

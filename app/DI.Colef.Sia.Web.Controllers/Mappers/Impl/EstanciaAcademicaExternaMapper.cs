@@ -32,7 +32,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 		    model.FechaFinal = message.FechaFinal.FromShortDateToDateTime();
 
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
-            model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
+            model.InvestigadorExterno = message.InvestigadorExterno;
             model.TipoEstancia = catalogoService.GetTipoEstanciaById(message.TipoEstancia);
             model.GradoAcademico = catalogoService.GetGradoAcademicoById(message.GradoAcademico);
             model.Departamento = catalogoService.GetDepartamentoById(message.Departamento);

@@ -11,19 +11,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
 
-        public int Usuario { get; set; }
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string Nombre
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno,
-                                     UsuarioApellidoMaterno, UsuarioNombre);
-            }
-        }
+        public InvestigadorForm Investigador { get; set; }
+        public int InvestigadorId { get; set; }
 
         public int ComprobanteOrganoInternoId { get; set; }
         public string ComprobanteOrganoInternoNombre { get; set; }

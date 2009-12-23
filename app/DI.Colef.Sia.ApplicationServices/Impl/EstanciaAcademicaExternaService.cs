@@ -29,7 +29,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<EstanciaAcademicaExterna>)estanciaAcademicaExternaRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }
 
+
         public void SaveEstanciaAcademicaExterna(EstanciaAcademicaExterna estanciaAcademicaExterna)
+        {
+            SaveEstanciaAcademicaExterna(estanciaAcademicaExterna, false);
+        }
+
+        public void SaveEstanciaAcademicaExterna(EstanciaAcademicaExterna estanciaAcademicaExterna, bool commit)
         {
             if(estanciaAcademicaExterna.Id == 0)
             {
@@ -39,6 +45,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             estanciaAcademicaExterna.ModificadoEl = DateTime.Now;
             
             estanciaAcademicaExternaRepository.SaveOrUpdate(estanciaAcademicaExterna);
+
+            if(commit)
+                estanciaAcademicaExternaRepository.DbContext.CommitChanges();
         }
 
         public EstanciaAcademicaExterna[] GetAllEstanciaAcademicaExternas(Usuario usuario)

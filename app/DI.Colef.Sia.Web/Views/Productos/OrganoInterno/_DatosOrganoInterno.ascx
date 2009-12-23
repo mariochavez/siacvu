@@ -1,13 +1,19 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<OrganoInternoForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<p>
-    <label>Invstigador interno</label>
-    <%=Html.TextBox("AutorInterno.Nombre", "",
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Investigador"), maxlength = 100 })%>
-    <%=Html.Hidden("AutorInterno.InvestigadorId", 0, new { rel = "#AutorInterno_Nombre" })%>
-    <%=Html.ValidationMessage("AutorInterno.Nombre")%>
-</p>
+<% if(Model.Id == 0){ %>
+    <p>
+        <label>Nombre del investigador interno</label>
+        <%=Html.DropDownList("InvestigadorId", Model.Investigadores.CreateSelectList<InvestigadorForm>("Id", "NombreCompleto"),
+            "Seleccione ...", new { @class = "requerido" })%>
+        <%=Html.ValidationMessage("InvestigadorId")%>
+    </p>
+<% } else { %>
+    <p>
+        <label>Nombre del investigador interno</label>
+        <span class="valor"><%=Html.Encode(Model.Investigador.NombreCompleto) %></span>
+    </p>
+<% } %>
 <p>
     <label>Consejo o Comisi&oacute;n</label>
     <%=Html.DropDownList("ConsejoComision", Model.ConsejosComisiones.CreateSelectList<ConsejoComisionForm>("Id", "Nombre"),

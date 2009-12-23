@@ -1,21 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EstanciaAcademicaExternaForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<h4>Investigador externo</h4>
+<h4>Datos de la estancia</h4>
 <p>
-    <label>Nombre</label>
-    <%=Html.TextBox("InvestigadorExterno.Nombre", Model.InvestigadorExterno.Nombre, new { @class = "input250-requerido", maxlength = 40 })%>
-    <%=Html.ValidationMessage("InvestigadorExterno.Nombre")%>
-</p>
-<p>
-    <label>Apellido paterno</label>
-    <%=Html.TextBox("InvestigadorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250", maxlength = 40 })%>
-    <%=Html.ValidationMessage("InvestigadorExterno.ApellidoPaterno")%>
-</p>
-<p>
-    <label>Apellido materno</label>
-    <%=Html.TextBox("InvestigadorExterno.ApellidoMaterno", Model.InvestigadorExterno.ApellidoMaterno, new { @class = "input250", maxlength = 40 })%>
-    <%=Html.ValidationMessage("InvestigadorExterno.ApellidoMaterno")%>
+    <label>Nombre del investigador externo</label>
+    <%=Html.TextBox("InvestigadorExterno", Model.InvestigadorExterno, new { @class = "input420-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("InvestigadorExterno")%>
 </p>
 <p>
     <label>Grado acad&eacute;mico</label>

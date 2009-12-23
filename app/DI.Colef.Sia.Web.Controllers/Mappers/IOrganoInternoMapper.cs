@@ -5,6 +5,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
     public interface IOrganoInternoMapper : IMapper<OrganoInterno, OrganoInternoForm>
     {
-        OrganoInterno Map(OrganoInternoForm message, Usuario usuario, Investigador investigador);
+        OrganoInterno Map(OrganoInternoForm message, Usuario usuario);
     }
 }

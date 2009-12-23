@@ -18,6 +18,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
+        [NotNull]
         public virtual Investigador Investigador { get; set; }
 
         public virtual Departamento Departamento { get; set; }
