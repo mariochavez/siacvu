@@ -12,7 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
     [HandleError]
     public class RevistaPublicacionController : BaseController<RevistaPublicacion, RevistaPublicacionForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaInvestigacionMapper areaInvestigacionMapper;
@@ -27,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
                                         IIndiceMapper indiceMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
             this.customCollection = customCollection;
             this.areaInvestigacionMapper = areaInvestigacionMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
