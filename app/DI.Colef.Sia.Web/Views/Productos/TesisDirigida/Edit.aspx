@@ -67,7 +67,7 @@
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span id="span_comprobante_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTesisDirigidaNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTesisDirigidaId), Model.Form.ComprobanteTesisDirigidaNombre, new { target = "_blank" })%> 

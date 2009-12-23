@@ -13,5 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         string SearchIdiomaInvestigador(string value);
         string SearchInvestigador(string value, Investigador investigador);
         string SearchOrganoInterno(string value);
+        string SearchRevistaTipoABC(string value);
     }
 }

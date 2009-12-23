@@ -2,7 +2,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 
-<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+<%--<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>--%>
+
+<p>
+    <label>Nombre de la revista</label>
+    <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
+        new { @class = "autocomplete buscar-requerido", rel = Url.Action("SearchRevistaTipoABC", "RevistaPublicacion"), maxlength = 100 })%>
+    <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo" })%>
+    <span class="cvu"></span>
+    <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>
+</p>
 
 <p>
     <label>Volumen</label>

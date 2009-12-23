@@ -14,12 +14,6 @@
 	    <%=Html.ValidationMessage("Titulo")%>
     </p>
     <p>
-        <label>Vinculaci&oacute;n con la APyD</label>
-        <%=Html.DropDownList("VinculacionAPyD", Model.VinculacionesAPyDs.CreateSelectList<VinculacionAPyDForm>("Id", "Nombre"),
-            "Seleccione ...")%>
-        <%=Html.ValidationMessage("VinculacionAPyD")%>
-    </p>
-    <p>
         <label>Forma de participaci&oacute;n</label>
         <%=Html.DropDownList("FormaParticipacion", Model.FormasParticipaciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
             "Seleccione ...", new { @class = "requerido" })%>
@@ -30,6 +24,10 @@
 	    <%=Html.TextBox("ProgramaEstudio", Model.ProgramaEstudio, new { @class = "input420-requerido", maxlength = 100 })%>
         <span class="cvu"></span>
         <%=Html.ValidationMessage("ProgramaEstudio")%>
+    </p>
+    <p>
+	    <label></label>
+	    ¿Pertenece al PNPC? <%=Html.CheckBox("PertenecePNPC", Model.PertenecePNPC)%>
     </p>
     <p>
         <label>Grado acad&eacute;mico obtenido/por obtener</label>
@@ -47,6 +45,17 @@
     </p>
 
     <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
+    <p>
+	    <label></label>
+	    ¿Tiene convenio general con El COLEF? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+    </p>
+    <p>
+        <label>Vinculaci&oacute;n con la APyD</label>
+        <%=Html.DropDownList("VinculacionAPyD", Model.VinculacionesAPyDs.CreateSelectList<VinculacionAPyDForm>("Id", "Nombre"),
+            "Seleccione ...")%>
+        <%=Html.ValidationMessage("VinculacionAPyD")%>
+    </p>
+    
     <% Html.RenderPartial("_Show2doNivel", new ShowFieldsForm { Sectores = Model.Sectores, Organizaciones = Model.Organizaciones, Niveles = Model.Niveles, IsShowForm = false }); %>
 
 <% } else { %>
@@ -60,16 +69,16 @@
         <span class="valor"><%= Html.Encode(Model.Titulo) %>&nbsp;</span>
     </p>
     <p>
-        <label>Vinculaci&oacute;n con la APyD</label>
-        <span class="valor"><%= Html.Encode(Model.VinculacionAPyDNombre) %>&nbsp;</span>
-    </p>
-    <p>
         <label>Forma de participaci&oacute;n</label>
         <span class="valor"><%= HumanizeHelper.FormaParticipacion(Model.FormaParticipacion) %>&nbsp;</span>
     </p>
     <p>
         <label>Programa de estudios</label>
         <span class="valor"><%= Html.Encode(Model.ProgramaEstudio) %>&nbsp;</span>
+    </p>
+    <p>
+        <label></label>
+        <span class="valor">¿Pertenece al PNPC? <%= Html.Encode(Model.PertenecePNPC) %>&nbsp;</span>
     </p>
     <p>
         <label>Grado acad&eacute;mico obtenido/por obtener</label>
@@ -81,5 +90,14 @@
     </p>
 
     <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
+    <p>
+        <label></label>
+        <span class="valor">¿Tiene convenio general con El COLEF? <%=Html.Encode(Model.TieneConvenio)%>&nbsp;</span>
+    </p>
+    <p>
+        <label>Vinculaci&oacute;n con la APyD</label>
+        <span class="valor"><%= Html.Encode(Model.VinculacionAPyDNombre) %>&nbsp;</span>
+    </p>
+    
     <% Html.RenderPartial("_Show2doNivel", Model.ShowFields); %>
 <% } %>

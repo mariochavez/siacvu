@@ -294,6 +294,14 @@ function cursoSetup() {
         );
 
     $('#TipoCurso')[0].dynamic.setup();
+
+    $('#EsPrivada').dynamicui(
+            [
+                ['1', ['#EsPrivada_Field']]
+            ]
+        );
+
+    $('#EsPrivada')[0].dynamic.setup();
 }
 
 function eventoSetup() {

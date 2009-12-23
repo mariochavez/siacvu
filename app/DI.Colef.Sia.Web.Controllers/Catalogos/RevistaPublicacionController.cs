@@ -171,6 +171,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Content(data);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public override ActionResult SearchRevistaTipoABC(string q)
+        {
+            var data = searchService.SearchRevistaTipoABC(q);
+            return Content(data);
+        }
+
         RevistaPublicacionForm SetupNewForm()
         {
             return SetupNewForm(null);

@@ -31,6 +31,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TipoTesis = message.TipoTesis;
             model.FormaParticipacion = message.FormaParticipacion;
             model.ProgramaEstudio = message.ProgramaEstudio;
+            model.PertenecePNPC = message.PertenecePNPC;
+            model.TieneConvenio = message.TieneConvenio;
 
             model.FechaGrado = message.FechaGrado.FromShortDateToDateTime();
 

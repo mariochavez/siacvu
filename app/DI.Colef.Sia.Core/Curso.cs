@@ -25,6 +25,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string ProgramaEstudio { get; set; }
 
+        public virtual bool EsPrivada { get; set; }
+
+        public virtual bool TieneConvenio { get; set; }
+
+        public virtual bool PertenecePNPC { get; set; }
+
         public virtual string Nombre { get; set; }
 
         public virtual CursoInvestigador CursoInvestigador { get; set; }
