@@ -44,6 +44,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                
                 <h4>Datos de la participaci&oacute;n en medio</h4>
                 <p>
                     <label>Tipo de participaci&oacute;n</label>
@@ -63,13 +64,8 @@
                 </p>
                 
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 
-                <p>
-                    <label>&Aacute;rea tem&aacute;tica</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.AreaTematicaNombre)%>&nbsp;</span>
-                </p>                
                 <p>
                     <label>Instituci&oacute;n responsable/Nombre del medio</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Institucion)%>&nbsp;</span>

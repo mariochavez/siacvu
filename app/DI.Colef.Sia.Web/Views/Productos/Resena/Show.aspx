@@ -76,9 +76,8 @@
                     <% Html.RenderPartial("_ShowObraResenada", Model.Form); %>
                 <% } %>
                 
-                <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-            	<% } %>
+                <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                
                 <p>
                     <label>Volumen</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
@@ -108,9 +107,7 @@
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<ResenaController>(x => x.Index(), "Regresar") %>

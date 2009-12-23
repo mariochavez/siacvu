@@ -98,10 +98,7 @@
                     <label>&Aacute;rea de investigaci&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.AreaInvestigacionNombre)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>Pa&iacute;s</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.PaisNombre)%>&nbsp;</span>
-                </p>
+                
                 <h4>&Iacute;ndices a los que pertenece la revista</h4>
                 <p>
                     <label>&Iacute;ndice 1</label>
@@ -115,10 +112,7 @@
                     <label>&Iacute;ndice 3</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Indice3Nombre)%>&nbsp;</span>
                 </p>
-                <p>
-                    <label>&Iacute;ndice 4</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.Indice4Nombre)%>&nbsp;</span>
-                </p>
+                
                 <p class="submit">
                     <%= Html.ActionLink<RevistaPublicacionController>(x => x.Index(), "Regresar") %>
                 </p>

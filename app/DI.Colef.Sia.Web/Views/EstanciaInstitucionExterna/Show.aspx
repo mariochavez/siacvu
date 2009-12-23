@@ -45,6 +45,7 @@
                     <label>Sede</label>
                     <span class="valor"><%=Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                
                 <h4>Datos de la estancia en instituciones externas</h4>
             	<p>
                     <label>Tipo de estancia</label>
@@ -58,9 +59,7 @@
                     <span class="valor"><%= Html.Encode(Model.Form.DepartamentoDestino)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.Nivel2Id != 0) { %>
-                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Fecha inicial</label>

@@ -80,13 +80,8 @@
                     <span class="valor"><%= Html.Encode(Model.Form.EstatusNombre)%>&nbsp;</span>
                 </p>
                 
-                <% if (Model.Form.Nivel2Id != 0) { %>
-                	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
-                <% } %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+            	<% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields); %>
+            	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<FormacionAcademicaController>(x => x.Index(), "Regresar") %>

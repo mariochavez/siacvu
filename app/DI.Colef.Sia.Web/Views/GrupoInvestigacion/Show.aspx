@@ -46,8 +46,7 @@
                     <span class="valor"><%=Html.Encode(Model.Form.FechaCreacion)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <%
-                    Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields);%>
+                <% Html.RenderPartial("_Show2doNivel", Model.Form.ShowFields);%>
                 
                 <h4>&nbsp;</h4>
                 <p>
