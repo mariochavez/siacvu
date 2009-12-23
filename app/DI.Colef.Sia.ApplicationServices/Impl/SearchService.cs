@@ -29,9 +29,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ParseResult(results);
         }
 
-        public string SearchInvestigador(string value, Investigador investigador)
+        public string SearchInvestigador(string value, int investigadorId)
         {
-            var results = searchQuerying.SearchInvestigador(value, investigador);
+            var results = searchQuerying.SearchInvestigador(value, investigadorId);
             return ParseResult(results);
         }
 
@@ -44,6 +44,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public string SearchRevistaTipoABC(string value)
         {
             var results = searchQuerying.SearchRevistaTipoABC(value);
+            return ParseResult(results);
+        }
+
+        public string SearchRevistaTipoD(string value)
+        {
+            var results = searchQuerying.SearchRevistaTipoD(value);
             return ParseResult(results);
         }
 

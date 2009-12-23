@@ -30,7 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEditorialObraTraducidaMapper editorialObraTraducidaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        
+        readonly IInvestigadorService investigadorService;
     
         public ObraTraducidaController(IObraTraducidaService obraTraducidaService, 
 			                        IObraTraducidaMapper obraTraducidaMapper,
@@ -48,7 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     ICustomCollection customCollection,
                                     ILineaTematicaMapper lineaTematicaMapper,
                                     IEditorialObraTraducidaMapper editorialObraTraducidaMapper,
-                                    IInvestigadorExternoMapper investigadorExternoMapper
+                                    IInvestigadorExternoMapper investigadorExternoMapper,
+                                    IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService)
         {
 			this.catalogoService = catalogoService;
@@ -67,6 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.editorialObraTraducidaMapper = editorialObraTraducidaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -365,8 +367,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
             var form = new CoautorForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId" };
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (obraTraducida != null)
+            {
                 form.Id = obraTraducida.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(obraTraducida.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

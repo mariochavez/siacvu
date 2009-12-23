@@ -4,7 +4,7 @@
 <p>
     <label>Instituci&oacute;n</label>
 	<%=Html.TextBox("Institucion.Nombre", "",
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("Institucion.InstitucionId", 0, new { rel = "#Institucion_Nombre" })%>
     <%=Html.ValidationMessage("Institucion.Nombre")%>
 </p>

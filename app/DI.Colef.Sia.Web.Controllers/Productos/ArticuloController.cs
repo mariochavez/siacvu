@@ -27,6 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IArchivoService archivoService;
         readonly IFirmaService firmaService;
+        readonly IInvestigadorService investigadorService;
 
         public ArticuloController(IArticuloService articuloService,
                                   IArticuloMapper articuloMapper,
@@ -44,7 +45,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ISubdisciplinaMapper subdisciplinaMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
                                   IInvestigadorExternoMapper investigadorExternoMapper,
-                                  IArchivoService archivoService, IFirmaService firmaService
+                                  IArchivoService archivoService, IFirmaService firmaService,
+                                  IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
@@ -60,6 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.archivoService = archivoService;
             this.firmaService = firmaService;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -355,8 +358,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
             var form = new CoautorForm {Controller = "Articulo", IdName = "ArticuloId"};
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (articulo != null)
+            {
                 form.Id = articulo.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(articulo.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

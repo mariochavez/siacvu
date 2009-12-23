@@ -38,10 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public Search[] SearchInvestigador(string value)
         {
-            return SearchInvestigador(value, null);
+            return SearchInvestigador(value, 0);
         }
 
-        public Search[] SearchInvestigador(string value, Investigador investigador)
+        public Search[] SearchInvestigador(string value, int investigadorId)
         {
             string[] values = value.Split(' ');
 
@@ -88,8 +88,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var result = new List<Search>();
             foreach (var item in list)
             {
-                if (investigador != null)
-                    if (item.Id == investigador.Id)
+                if (investigadorId != 0)
+                    if (item.Id == investigadorId)
                         continue;
 
                 result.Add(new Search {Id = item.Id, Nombre = item.NombreCompleto()});
@@ -130,6 +130,33 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Expression.Or(Expression.Eq("ClasificacionSieva", 1),
                                    Expression.Or(Expression.Eq("ClasificacionSieva", 2),
                                                  Expression.Eq("ClasificacionSieva", 3))));
+
+            var criteria = DetachedCriteria.For(typeof (RevistaPublicacion))
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("Titulo"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("Titulo"))
+                .Add(Subqueries.PropertyIn("ClasificacionSieva", clasificacionSieva))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (RevistaPublicacionDTO)));
+
+            var list = criteria.GetExecutableCriteria(Session).List<RevistaPublicacionDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search {Id = item.Id, Nombre = item.Nombre});
+            }
+
+            return result.ToArray();
+        }
+
+        public Search[] SearchRevistaTipoD(string value)
+        {
+            var clasificacionSieva = DetachedCriteria.For(typeof (RevistaPublicacion))
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("ClasificacionSieva"), "ClasificacionSieva"))
+                .Add(Expression.Eq("ClasificacionSieva", 4));
 
             var criteria = DetachedCriteria.For(typeof (RevistaPublicacion))
                 .SetMaxResults(20)

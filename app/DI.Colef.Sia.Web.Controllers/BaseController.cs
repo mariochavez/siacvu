@@ -152,12 +152,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Content("");
         }
 
-        [AcceptVerbs(HttpVerbs.Get)]
-        public virtual ActionResult SearchRevistaTipoABC(string q)
-        {
-            return Content("");
-        }
-
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Search(int searchId)
         {

@@ -5,7 +5,7 @@
     <p>
         <label><%= Html.Encode(Model.RevistaLabel) %></label>
         <%=Html.TextBox("RevistaPublicacionTitulo", Model.RevistaPublicacionTitulo,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "RevistaPublicacion"), maxlength = 100 }) %>
+            new { @class = "autocomplete buscar-requerido", url = Url.Action(Model.UrlAction, "RevistaPublicacion"), rel = Model.Rel, maxlength = 100 }) %>
         <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo", url = Url.Action("ChangeRevista") })%>
         <span class="cvu"></span>
         <%=Html.ValidationMessage("RevistaPublicacionTitulo")%>

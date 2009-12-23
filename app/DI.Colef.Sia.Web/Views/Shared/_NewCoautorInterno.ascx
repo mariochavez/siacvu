@@ -5,7 +5,7 @@
 <p>
     <label>Coautor interno</label>
     <%=Html.TextBox("CoautorInterno.Nombre", "",
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Investigador"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", url = Url.Action("FilteredInvestigador", "Investigador"), maxlength = 100 })%>
     <%=Html.Hidden("CoautorInterno.InvestigadorId", 0, new { rel = "#CoautorInterno_Nombre" })%>
     <%=Html.ValidationMessage("CoautorInterno.Nombre")%>
     <%=Html.Hidden("CoautorInterno.Posicion", 2) %>

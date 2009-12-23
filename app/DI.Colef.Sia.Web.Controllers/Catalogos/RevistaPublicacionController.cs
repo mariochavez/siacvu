@@ -173,9 +173,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public override ActionResult SearchRevistaTipoABC(string q)
+        public ActionResult SearchFilteredRevista(string q, int extraParam)
         {
-            var data = searchService.SearchRevistaTipoABC(q);
+            var data = String.Empty;
+
+            if (extraParam == 1)
+                data = searchService.SearchRevistaTipoABC(q);
+            if(extraParam == 2)
+                data = searchService.SearchRevistaTipoD(q);
+
             return Content(data);
         }
 

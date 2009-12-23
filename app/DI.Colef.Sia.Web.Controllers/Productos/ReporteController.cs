@@ -357,8 +357,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var reporte = reporteService.GetReporteById(id);
             var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId" };
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (reporte != null)
+            {
                 form.Id = reporte.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(reporte.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

@@ -7,8 +7,9 @@
         Search[] SearchMovilidadAcademica(string value);
         Search[] SearchApoyoConacyt(string value);
         Search[] SearchIdiomaInvestigador(string value);
-        Search[] SearchInvestigador(string value, Investigador investigador);
+        Search[] SearchInvestigador(string value, int investigadorId);
         Search[] SearchOrganoInterno(string value);
         Search[] SearchRevistaTipoABC(string value);
+        Search[] SearchRevistaTipoD(string value);
     }
 }

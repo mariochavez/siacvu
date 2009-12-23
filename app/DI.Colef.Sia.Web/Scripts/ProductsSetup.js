@@ -126,6 +126,17 @@ function participacionAcademiaSetup() {
 }
 
 function articuloSetup() {
+
+    $('#TipoArticulo').change(function() {
+        var comboValue = $(this).val();
+
+        if (comboValue == "")
+            comboValue = 0;
+
+        $('#RevistaPublicacionTitulo')[0].autocompleter.setExtraParams({ extraParam: comboValue });
+        $('#RevistaPublicacionTitulo')[0].autocompleter.flushCache();
+    });
+
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],

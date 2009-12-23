@@ -185,7 +185,12 @@ var AutoComplete = {
         AutoComplete.config(inputBox);
     },
     config: function(inputBox) {
-        var url = inputBox.attr('rel');
+        var url = inputBox.attr('url');
+        var inputId = inputBox.attr('rel');
+        var paramValue = $(inputId).val();
+
+        if (paramValue == "")
+            paramValue = 0;
 
         var value = inputBox.val();
         inputBox.autocomplete(url,
@@ -197,6 +202,7 @@ var AutoComplete = {
                 cacheLength: 10,
                 autoFill: true,
                 selectFirst: true,
+                extraParams: { extraParam: paramValue },
                 mustMatch: 1,
                 onItemSelect: AutoComplete.selectItem,
                 onFindValue: AutoComplete.findValue

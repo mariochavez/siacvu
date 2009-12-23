@@ -28,7 +28,7 @@
 <p class="memoriaevento_field">
     <label>Nombre del evento</label>
     <%=Html.TextBox("EventoNombre", Model.EventoNombre,
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Evento"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Evento"), maxlength = 100 })%>
     <%=Html.Hidden("EventoId", Model.EventoId, new { rel = "#EventoNombre" })%>
     <%=Html.ValidationMessage("EventoNombre")%>
 </p>
@@ -44,7 +44,7 @@
 <div id="eventoForm" class="display:hidden;"></div>
 
 <div class="revista_field">
-    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
 </div>
 <p class="revista_field">
     <label>N&uacute;mero</label>

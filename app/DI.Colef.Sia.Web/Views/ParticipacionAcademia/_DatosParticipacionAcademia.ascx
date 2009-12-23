@@ -6,7 +6,7 @@
 	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NombreProducto")%>
 							
-<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
 
 <p>
     <label>Volumen</label>
@@ -59,7 +59,7 @@
 <p>
     <label>L&iacute;nea tem&aacute;tica</label>
     <%=Html.TextBox("LineaTematicaNombre", Model.LineaTematicaNombre,
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
+            new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "LineaTematica"), maxlength = 100 })%>
     <%=Html.Hidden("LineaTematicaId", Model.LineaTematicaId, new { rel = "#LineaTematicaNombre" })%>
     <%=Html.ValidationMessage("LineaTematicaNombre")%>
 </p>
