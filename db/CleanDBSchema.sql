@@ -1295,11 +1295,6 @@ alter table EstanciaAcademicaExternas  drop constraint FK43CB63156A829E09
 
 
 
-    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB63158FDBB774]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
-alter table EstanciaAcademicaExternas  drop constraint FK43CB63158FDBB774
-
-
-
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK43CB63159CF67963]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
 alter table EstanciaAcademicaExternas  drop constraint FK43CB63159CF67963
 
@@ -3893,6 +3888,7 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
 
     create table EstanciaAcademicaExternas (
         Id INT IDENTITY NOT NULL,
+       InvestigadorExterno NVARCHAR(255) null,
        LineasInvestigacion NVARCHAR(255) null,
        FechaInicial DATETIME null,
        FechaFinal DATETIME null,
@@ -3902,7 +3898,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
        ModificadoEl DATETIME null,
        Activo BIT null,
        UsuarioFk INT null,
-       InvestigadorExternoFk INT null,
        GradoAcademicoFk INT null,
        TipoEstanciaFk INT null,
        InstitucionFk INT null,
@@ -5688,11 +5683,6 @@ alter table AreaInvestigaciones  drop constraint FKC1B18FE674E8BAB7
         add constraint FK9DD523433E391E13 
         foreign key (SedeFk) 
         references Sedes
-
-    alter table EstanciaAcademicaExternas 
-        add constraint FK43CB63158FDBB774 
-        foreign key (InvestigadorExternoFk) 
-        references InvestigadorExternos
 
     alter table EstanciaAcademicaExternas 
         add constraint FK43CB63159CF67963 

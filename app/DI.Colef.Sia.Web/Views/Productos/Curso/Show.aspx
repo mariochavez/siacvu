@@ -68,7 +68,7 @@
                 <% } %>
                 
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCursoNombre)) { %> 
                             <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCursoId), Model.Form.ComprobanteCursoNombre, new { target = "_blank" })%> 

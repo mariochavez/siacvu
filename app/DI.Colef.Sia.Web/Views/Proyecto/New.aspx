@@ -67,7 +67,7 @@
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
                 <p>
-                    <label>Documento probatorio</label>
+                    <label>Obra publicada</label>
                     <span id="span_comprobantetematica_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">

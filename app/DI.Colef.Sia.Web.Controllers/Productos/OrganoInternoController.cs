@@ -102,7 +102,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var organoInterno = organoInternoService.GetOrganoInternoById(id);
             data.Form = organoInternoMapper.Map(organoInterno);
-            
+
             ViewData.Model = data;
             return View();
         }
@@ -113,7 +113,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(OrganoInternoForm form)
         {
-            var organoInterno = organoInternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var organoInterno = organoInternoMapper.Map(form, CurrentUser());
 
             ModelState.AddModelErrors(organoInterno.ValidationResults(), true, "OrganoInterno");
             if (!ModelState.IsValid)
@@ -132,7 +132,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Update(OrganoInternoForm form)
         {
-            var organoInterno = organoInternoMapper.Map(form, CurrentUser(), CurrentInvestigador());
+            var organoInterno = organoInternoMapper.Map(form, CurrentUser());
             ModelState.AddModelErrors(organoInterno.ValidationResults(), true, "OrganoInterno");
             if (!ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("Save", organoInterno.Id);
         }
 
-        [CookieLessAuthorize(Roles = "Investigadores")]
+        [CookieLessAuthorize(Roles = "DGAA")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
@@ -200,6 +200,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
 			form = form ?? new OrganoInternoForm();
             
+            form.Investigador = form.Id != 0 ? form.Investigador : new InvestigadorForm();
 			//Lista de Catalogos Pendientes
             form.Investigadores = investigadorMapper.Map(investigadorService.GetAllInvestigadores());
             form.Periodos = customCollection.PeriodoCustomCollection();
@@ -212,6 +213,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["ConsejoComision"] = form.ConsejoComisionId;
             ViewData["Periodo"] = form.Periodo;
+            ViewData["InvestigadorId"] = form.InvestigadorId;
         }
     }
 }

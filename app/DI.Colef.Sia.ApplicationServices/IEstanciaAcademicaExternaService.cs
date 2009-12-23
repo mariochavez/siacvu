@@ -9,5 +9,6 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         EstanciaAcademicaExterna[] GetActiveEstanciaAcademicaExternas();
         void SaveEstanciaAcademicaExterna(EstanciaAcademicaExterna estanciaAcademicaExterna);
         EstanciaAcademicaExterna[] GetAllEstanciaAcademicaExternas(Usuario usuario);
+	    void SaveEstanciaAcademicaExterna(EstanciaAcademicaExterna estanciaAcademicaExterna, bool commit);
     }
 }
