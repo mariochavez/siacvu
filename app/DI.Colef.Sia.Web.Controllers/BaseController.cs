@@ -470,6 +470,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected string GetObjectName(bool pluralize)
         {
+            return GetObjectName(pluralize, 0);
+        }
+
+
+        protected string GetObjectName(bool pluralize, int titleType)
+        {
             var spanishInflector = new SpanishInflector();
             var objectName = typeof (TModel).Name;
             objectName = spanishInflector.Titleize(objectName);
@@ -486,6 +492,147 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
                 objectName = spanishInflector.Titleize(objectName);
             }
+
+            if (titleType == 1)
+                objectName = GetPluralObjectName(objectName);
+            if (titleType == 2 || titleType == 3 || titleType == 4)
+                objectName = GetSingularObjectName(objectName, titleType);
+
+            return objectName;
+        }
+
+        protected string GetPluralObjectName(string objectName)
+        {
+            switch (objectName)
+            {
+                case "Estancias Instituciones Externas":
+                    objectName = "de estancias en instituciones externas";
+                    break;
+                case "Estancias Academicas Externas":
+                    objectName = "de estancias académicas externas";
+                    break;
+                case "Grupos Investigaciones":
+                    objectName = "de grupos de investigación";
+                    break;
+                case "Organos Internos":
+                    objectName = "de órganos internos";
+                    break;
+                case "Apoyos Conacyts":
+                    objectName = "de apoyos del CONACyT";
+                    break;
+                case "Idiomas Investigadores":
+                    objectName = "de idiomas del investigador";
+                    break;
+                default:
+                    objectName = "de " + objectName;
+                    break;
+            }
+
+            return objectName;
+        }
+
+        protected string GetSingularObjectName(string objectName, int titleType)
+        {
+            string newPrefix;
+            string editShowPrefix;
+
+            switch (objectName)
+            {
+                case "Distincion":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "distinción";
+                    break;
+                case "Articulo":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "artículo en revista de investigación";
+                    break;
+                case "Articulo Difusion":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "artículo en revista de difusión";
+                    break;
+                case "Capitulo":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "capítulo en libro";
+                    break;
+                case "Reporte":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "reporte técnico";
+                    break;
+                case "Resena":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "reseña";
+                    break;
+                case "Obra Traducida":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "obra traducida";
+                    break;
+                case "Tesis Dirigida":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "tesis dirigida";
+                    break;
+                case "Estancia Institucion Externa":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "estancia en institución externa";
+                    break;
+                case "Estancia Academica Externa":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "estancia académica externa";
+                    break;
+                case "Participacion Medio":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "participación en medio";
+                    break;
+                case "Grupo Investigacion":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "grupo de investigación";
+                    break;
+                case "Organo Interno":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "órgano interno";
+                    break;
+                case "Organo Externo":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "órgano externo";
+                    break;
+                case "Formacion Academica":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    objectName = "formación académica";
+                    break;
+                case "Experiencia Profesional":
+                    newPrefix = "nueva ";
+                    editShowPrefix = "de la ";
+                    break;
+                case "Idiomas Investigador":
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "del ";
+                    objectName = "idioma del investigador";
+                    break;
+                default:
+                    newPrefix = "nuevo ";
+                    editShowPrefix = "de ";
+                    break;
+            }
+
+            if (titleType == 2)
+                objectName = newPrefix + objectName;
+            if (titleType == 3 || titleType == 4)
+                objectName = editShowPrefix + objectName;
+
             return objectName;
         }
 
@@ -496,19 +643,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             switch (title)
             {
                 case Title.Index:
-                    message = String.Format("Administración de {0}", GetObjectName(true).ToLower());
+                    message = String.Format("Administración {0}", GetObjectName(true, 1).ToLower());
                     break;
 
                 case Title.New:
-                    message = String.Format("Crear nuevo {0}", GetObjectName(false).ToLower());
+                    message = String.Format("Crear {0}", GetObjectName(false, 2).ToLower());
                     break;
 
                 case Title.Edit:
-                    message = String.Format("Modificación de {0}", GetObjectName(false).ToLower());
+                    message = String.Format("Modificación {0}", GetObjectName(false, 3).ToLower());
                     break;
 
                 case Title.Show:
-                    message = String.Format("Información de {0}", GetObjectName(false).ToLower());
+                    message = String.Format("Información {0}", GetObjectName(false, 4).ToLower());
                     break;
 
                 case Title.CV:
