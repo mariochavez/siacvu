@@ -17,7 +17,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del art&iacute;culo como est&aacute; en el sistema.
+            Aqu&iacute; se muestra la informaci&oacute;n detallada del art&iacute;culo en revistas de investigaci&oacute;n como est&aacute; en el sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

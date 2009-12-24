@@ -271,7 +271,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo);
-            SetMessage(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido creado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }
@@ -296,7 +296,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo, true);
-            SetMessage(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido modificado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }
