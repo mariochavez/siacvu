@@ -9,7 +9,7 @@
     <p>
         <label>&Aacute;rea tem&aacute;tica</label>
         <%=Html.TextBox("AreaTematicaNombre", Model.AreaTematicaNombre,
-                new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "AreaTematica"), maxlength = 100 })%>
+                new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "AreaTematica"), maxlength = 100 })%>
         <%=Html.Hidden("AreaTematicaId", Model.AreaTematicaId, new { rel = "#AreaTematicaNombre", url = Url.Action("ChangeAreaTematica") })%>
         <%=Html.ValidationMessage("AreaTematicaNombre")%>
     </p>

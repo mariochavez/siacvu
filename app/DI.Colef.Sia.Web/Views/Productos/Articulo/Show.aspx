@@ -17,7 +17,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del art&iacute;culo como est&aacute; en el sistema.
+            Aqu&iacute; se muestra la informaci&oacute;n detallada del art&iacute;culo en revistas de investigaci&oacute;n como est&aacute; en el sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
@@ -80,9 +80,8 @@
                 
                 <% if (Model.Form.EstadoProducto == 3){ %>
                     
-                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                        <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                    <% } %>
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
+                        
                     <p>
                         <label>Volumen</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
@@ -121,12 +120,8 @@
                 <% } %>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">                    
                     <%= Html.ActionLink<ArticuloController>(x => x.Index(), "Regresar") %>

@@ -134,10 +134,7 @@
                 <% } %>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>

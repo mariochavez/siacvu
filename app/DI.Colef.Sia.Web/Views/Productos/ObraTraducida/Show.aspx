@@ -110,10 +110,7 @@
                     </span><br />
                 </p>
                 
-                <% if (Model.Form.AreaTematicaId != 0) { %>
-                    <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                <% } %>
-                
+                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <p class="submit">

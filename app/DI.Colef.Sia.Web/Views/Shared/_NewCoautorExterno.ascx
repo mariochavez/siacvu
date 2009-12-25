@@ -19,7 +19,7 @@
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("CoautorExterno.Institucion", "",
-        new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+        new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("CoautorExterno.InstitucionId", 0, new { rel = "#CoautorExterno_Institucion" })%>
     <%=Html.ValidationMessage("CoautorExterno.InstitucionId")%>
 </p>

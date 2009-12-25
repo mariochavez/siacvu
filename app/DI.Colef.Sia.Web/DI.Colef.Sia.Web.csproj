@@ -516,6 +516,12 @@
     <Content Include="Views\IdiomasInvestigador\_DatosIdiomaInvestigador.ascx" />
     <Content Include="Views\Investigador\ChangeUser.js.ascx" />
     <Content Include="Views\Investigador\ChangeSede.js.ascx" />
+    <Content Include="Views\Productos\ArticuloDifusion\Edit.aspx" />
+    <Content Include="Views\Productos\ArticuloDifusion\New.aspx" />
+    <Content Include="Views\Productos\ArticuloDifusion\Show.aspx" />
+    <Content Include="Views\Productos\ArticuloDifusion\_DatosFinal.ascx" />
+    <Content Include="Views\Productos\ArticuloDifusion\_DatosPublicacion.ascx" />
+    <Content Include="Views\Productos\ArticuloDifusion\_ReferenciaBibliografica.ascx" />
     <Content Include="Views\Productos\Articulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Capitulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Libro\_DatosFinal.ascx" />

@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ShowFieldsForm
@@ -68,5 +70,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
+
+        public string UrlAction { get; set; }
+        public string Rel { get; set; }
     }
 }

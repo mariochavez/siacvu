@@ -76,9 +76,7 @@
                     </p>
                 <% } %>
                 <% if (Model.Form.ContenidoLibro == 3){ %>
-                    <% if(Model.Form.RevistaPublicacionTitulo != ""){ %>
-                    	<% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                	<% } %>
+                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                     <p>
                         <label>N&uacute;mero</label>
                         <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
@@ -152,12 +150,8 @@
                 <% } %>
                 
                 <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
-                
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-                	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+                <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<LibroController>(x => x.Index(), "Regresar") %>

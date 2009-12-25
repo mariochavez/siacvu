@@ -115,6 +115,8 @@
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
+    <Compile Include="Mappers\IArticuloDifusionMapper.cs" />
+    <Compile Include="Mappers\Impl\ArticuloDifusionMapper.cs" />
     <Compile Include="Mappers\Impl\SesionEventoMapper.cs" />
     <Compile Include="Mappers\ISesionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\ParticipanteExternoEventoMapper.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Mappers\Resolvers\AceptacionResolver.cs" />
     <Compile Include="Mappers\Resolvers\PublicacionResolver.cs" />
     <Compile Include="Models\AreaInvestigacionForm.cs" />
+    <Compile Include="Models\ArticuloDifusionForm.cs" />
     <Compile Include="Models\SesionEventoForm.cs" />
     <Compile Include="Models\ParticipanteExternoProductoForm.cs" />
     <Compile Include="Models\ParticipanteForm.cs" />
@@ -209,6 +212,7 @@
     <Compile Include="Models\FirmaForm.cs" />
     <Compile Include="Models\CustomSelectForm.cs" />
     <Compile Include="Models\VinculacionAPyDForm.cs" />
+    <Compile Include="Productos\ArticuloDifusionController.cs" />
     <Compile Include="Productos\ObraTraducidaController.cs" />
     <Compile Include="Productos\OrganoInternoController.cs" />
     <Compile Include="Security\CookieLessAuthorizeAttribute.cs" />

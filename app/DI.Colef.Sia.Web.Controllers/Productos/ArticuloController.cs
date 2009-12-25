@@ -12,22 +12,25 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class ArticuloController : BaseController<Articulo, ArticuloForm>
-    {
-        private readonly IArchivoService archivoService;
-        private readonly IAreaMapper areaMapper;
-        private readonly IAreaTematicaMapper areaTematicaMapper;
-        private readonly IArticuloMapper articuloMapper;
-        private readonly IArticuloService articuloService;
-        private readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
-        private readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
-        private readonly ICustomCollection customCollection;
-        private readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        private readonly ILineaTematicaMapper lineaTematicaMapper;
-        private readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        private readonly ITipoArchivoMapper tipoArchivoMapper;
+    {   
+        readonly IArticuloMapper articuloMapper;
+        readonly IArticuloService articuloService;
+        readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
+        readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
+        readonly ITipoArchivoMapper tipoArchivoMapper;
+        readonly IAreaTematicaMapper areaTematicaMapper;
+        readonly ICustomCollection customCollection;
+        readonly ILineaTematicaMapper lineaTematicaMapper;
+        readonly IAreaMapper areaMapper;
+        readonly IRevistaPublicacionMapper revistaPublicacionMapper;
+        readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IArchivoService archivoService;
+        readonly IInvestigadorService investigadorService;
 
-        public ArticuloController(IArticuloService articuloService, IArticuloMapper articuloMapper,
-                                  ICatalogoService catalogoService, IUsuarioService usuarioService,
+        public ArticuloController(IArticuloService articuloService,
+                                  IArticuloMapper articuloMapper,
+                                  ICatalogoService catalogoService,
+                                  IUsuarioService usuarioService,
                                   ICoautorExternoArticuloMapper coautorExternoArticuloMapper,
                                   ICoautorInternoArticuloMapper coautorInternoArticuloMapper,
                                   ISearchService searchService, ITipoArchivoMapper tipoArchivoMapper,
@@ -35,8 +38,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  IInvestigadorExternoMapper investigadorExternoMapper, IArchivoService archivoService)
-            : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
+                                  IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IArchivoService archivoService,
+                                  IInvestigadorService investigadorService
+            ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.articuloService = articuloService;
@@ -50,6 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.archivoService = archivoService;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -265,7 +271,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo);
-            SetMessage(String.Format("Artículo {0} ha sido creado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido creado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }
@@ -290,7 +296,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             articuloService.SaveArticulo(articulo, true);
-            SetMessage(String.Format("Artículo {0} ha sido modificado", articulo.Titulo));
+            SetMessage(String.Format("Artículo en revistas de investigación {0} ha sido modificado", articulo.Titulo));
 
             return Rjs("Save", articulo.Id);
         }
@@ -345,8 +351,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var articulo = articuloService.GetArticuloById(id);
             var form = new CoautorForm {Controller = "Articulo", IdName = "ArticuloId"};
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (articulo != null)
+            {
                 form.Id = articulo.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(articulo.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

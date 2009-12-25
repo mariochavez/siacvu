@@ -4,7 +4,7 @@
 <p>
     <label>Instituci&oacute;n financiadora</label>
     <%=Html.TextBox("RecursoFinanciero.Institucion", "",
-            new { @class = "autocomplete buscar-requerido", rel = Url.Action("Search", "Institucion"), maxlength = 100 })%>
+            new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("RecursoFinanciero.InstitucionId", 0, new { rel = "#RecursoFinanciero_Institucion" })%>
 </p>
 <p>

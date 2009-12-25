@@ -27,6 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorService investigadorService;
 
         public CapituloController(ICapituloService capituloService, ICapituloMapper capituloMapper,
                                   ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -38,7 +39,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper,
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                  IEditorialCapituloMapper editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper)
+                                  IEditorialCapituloMapper editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.capituloService = capituloService;
@@ -54,6 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.editorialCapituloMapper = editorialCapituloMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -332,8 +335,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var capitulo = capituloService.GetCapituloById(id);
             var form = new CoautorForm {Controller = "Capitulo", IdName = "CapituloId"};
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (capitulo != null)
+            {
                 form.Id = capitulo.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(capitulo.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

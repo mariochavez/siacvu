@@ -73,10 +73,5 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (useCommit)
                 articuloRepository.DbContext.CommitChanges();
         }
-
-        public Articulo[] GetAllArticulos(Usuario usuario)
-        {
-            return productoQuerying.GetProductosByUsuario<Articulo>(usuario, "CoautorInternoArticulos");
-        }
     }
 }

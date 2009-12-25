@@ -50,11 +50,13 @@
                 </p>
                 <p>
                     <label>Fecha inicial</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaInicial)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
                     <label>Fecha final</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span><span>Formato (dd/mm/yyyy)</span>
+                    <span class="valor"><%= Html.Encode(Model.Form.FechaFinal)%>&nbsp;</span>
+                    <span>Formato (dd/mm/yyyy)</span>
                 </p>                
                 <p>
 	                <label>Palabra clave 1</label>

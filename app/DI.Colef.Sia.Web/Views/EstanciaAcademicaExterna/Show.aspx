@@ -49,6 +49,7 @@
                     <label>Tipo de estancia</label>
                     <span class="valor"><%= Html.Encode(Model.Form.TipoEstanciaNombre)%>&nbsp;</span>
                 </p>
+                
                 <h4>Datos de la estancia acad&eacute;mica externa</h4>                
                 <% Html.RenderPartial("_ShowInstitucionLong", Model.Form.ShowFields); %>
                 

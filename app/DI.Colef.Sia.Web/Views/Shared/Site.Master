@@ -67,7 +67,7 @@
 						<tbody>
 							<tr>
 								<td><%=Html.ActionLinkForAreas<DictamenController>(x => x.New(), "Dict&aacute;menes") %></td>
-								<td><%=Html.ActionLinkForAreas<ArticuloController>(x => x.New(), "Art&iacute;culos")%></td>
+								<td><%=Html.ActionLinkForAreas<ArticuloController>(x => x.New(), "Art&iacute;culos en revistas de investigaci&oacute;n")%></td>
 								<td><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos")%></td>
 								<td><%=Html.ActionLinkForAreas<EstanciaInstitucionExternaController>(x => x.Index(), "Estancias en instituciones externas")%></td>
 								<td><%=Html.ActionLinkForAreas<EventoController>(x => x.New(), "Participaci&oacute;n y organizaci&oacute;n de eventos")%></td>
@@ -76,7 +76,7 @@
 							</tr>
 							<tr>
 								<td><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones acad&eacute;micas") %></td>
-								<td><%=Html.ActionLinkForAreas<CapituloController>(x => x.New(), "Cap&iacute;tulos en libros")%></td>
+								<td><%=Html.ActionLinkForAreas<ArticuloDifusionController>(x => x.New(), "Art&iacute;culos en revistas de difusi&oacute;n")%></td>
 								<td><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas")%></td>
 								<td><%=Html.ActionLinkForAreas<EstanciaAcademicaExternaController>(x => x.Index(), "Estancias acad&eacute;micas externas")%></td>
 								<td>&nbsp;</td>
@@ -85,7 +85,7 @@
 							</tr>
 							<tr>
 								<td><%=Html.ActionLinkForAreas<ProyectoController>(x => x.New(), "Proyectos")%></td>
-								<td><%=Html.ActionLinkForAreas<LibroController>(x => x.New(), "Libros")%></td>
+								<td><%=Html.ActionLinkForAreas<CapituloController>(x => x.New(), "Cap&iacute;tulos en libros")%></td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
@@ -94,7 +94,7 @@
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
-								<td colspan="2"><%=Html.ActionLinkForAreas<ReporteController>(x => x.New(), "Reportes t&eacute;cnicos")%></td>
+								<td colspan="2"><%=Html.ActionLinkForAreas<LibroController>(x => x.New(), "Libros")%></td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
@@ -102,12 +102,20 @@
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
-								<td><%=Html.ActionLinkForAreas<ResenaController>(x => x.New(), "Rese&ntilde;as")%></td>
+								<td><%=Html.ActionLinkForAreas<ReporteController>(x => x.New(), "Reportes t&eacute;cnicos")%></td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>							
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td colspan="2"><%=Html.ActionLinkForAreas<ResenaController>(x => x.New(), "Rese&ntilde;as")%></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>

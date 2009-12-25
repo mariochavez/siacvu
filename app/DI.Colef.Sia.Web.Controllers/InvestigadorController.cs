@@ -562,12 +562,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            string data;
+            var data = searchService.SearchInvestigador(q);
 
-            if (User.IsInRole("Investigadores"))
-                data = searchService.SearchInvestigador(q, CurrentInvestigador() ?? new Investigador());
-            else
-                data = searchService.SearchInvestigador(q);
+            return Content(data);
+        }
+
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult FilteredInvestigador(string q, int extraParam)
+        {
+            var data = searchService.SearchInvestigador(q, extraParam);
 
             return Content(data);
         }

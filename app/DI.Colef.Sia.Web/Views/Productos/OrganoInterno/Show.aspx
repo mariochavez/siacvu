@@ -46,6 +46,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
+                
                 <h4>Datos del &Oacute;rgano Interno</h4>
                 <p>
                     <label>Nombre del investigador interno</label>
@@ -66,7 +67,7 @@
                     <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 
-                <% if (Model.Form.ConsejoComisionNombre != "Consejo Académico" && Model.Form.ConsejoComisionNombre != ""){ %>
+                <% if (Model.Form.ConsejoComisionNombre != "Consejo Académico"){ %>
                     <p>
                         <label>Periodo</label>
                         <span class="valor"><%= HumanizeHelper.Periodo(Model.Form.Periodo)%>&nbsp;</span>

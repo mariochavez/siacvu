@@ -159,8 +159,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 case 13:
                     route = RedirectToAction(action, "Productos/TesisDirigida", new { id = id });
                     break;
-                case 14:
+                case 15:
                     route = RedirectToAction(action, "Proyecto", new { id = id });
+                    break;
+                case 16:
+                    route = RedirectToAction(action, "Productos/ArticuloDifusion", new { id = id });
                     break;
                 case 20:
                     route = RedirectToAction(action, "Productos/ObraTraducida", new { id = id });

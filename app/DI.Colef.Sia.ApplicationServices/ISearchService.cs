@@ -11,8 +11,9 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         string SearchMovilidadAcademica(string value);
         string SearchApoyoConacyt(string value);
         string SearchIdiomaInvestigador(string value);
-        string SearchInvestigador(string value, Investigador investigador);
+        string SearchInvestigador(string value, int investigadorId);
         string SearchOrganoInterno(string value);
         string SearchRevistaTipoABC(string value);
+        string SearchRevistaTipoD(string value);
     }
 }

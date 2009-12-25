@@ -15,5 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InvestigadorId { get; set; }
 
         public InvestigadorExternoForm InvestigadorExterno { get; set; }
+
+        public int CreadoPorId { get; set; }
+        //public string UrlAction { get; set; }
     }
 }

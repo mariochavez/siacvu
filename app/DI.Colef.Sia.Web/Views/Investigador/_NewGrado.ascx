@@ -21,7 +21,7 @@
 <p>
     <label>Instituci&oacute;n</label>
     <%=Html.TextBox("GradoAcademicoInvestigador.InstitucionNombre", Model.GradoAcademicoInvestigador.InstitucionNombre,
-                new { @class = "autocomplete buscar-requerido", maxlength = 100, rel = Url.Action("Search", "Institucion") })%>
+                new { @class = "autocomplete buscar-requerido", maxlength = 100, url = Url.Action("Search", "Institucion") })%>
     <%=Html.Hidden("GradoAcademicoInvestigador.InstitucionId", Model.GradoAcademicoInvestigador.InstitucionId, new { rel = "#GradoAcademicoInvestigador_InstitucionNombre", url = Url.Action("ChangeInstitucion") })%>
     <%=Html.ValidationMessage("GradoAcademicoInvestigador.Institucion")%>
 </p> 

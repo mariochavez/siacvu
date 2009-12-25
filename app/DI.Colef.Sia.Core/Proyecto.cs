@@ -11,7 +11,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [ProyectoValidator]
     public class Proyecto : Entity, IBaseEntity, IParticipante
     {
-        const int tipoProducto = 14; //14 representa proyectos
+        const int tipoProducto = 15; //15 representa proyectos
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 

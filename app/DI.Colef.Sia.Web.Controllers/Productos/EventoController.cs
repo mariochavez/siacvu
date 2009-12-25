@@ -28,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
+        readonly IInvestigadorService investigadorService;
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
@@ -43,7 +44,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ICoautorInternoEventoMapper coautorInternoEventoMapper,
                                 ISearchService searchService,
                                 IInstitucionEventoMapper institucionEventoMapper,
-                                IInvestigadorExternoMapper investigadorExternoMapper)
+                                IInvestigadorExternoMapper investigadorExternoMapper,
+                                IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService)
         {
             this.catalogoService = catalogoService;
@@ -60,6 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorExternoEventoMapper = coautorExternoEventoMapper;
             this.coautorInternoEventoMapper = coautorInternoEventoMapper;
             this.institucionEventoMapper = institucionEventoMapper;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -404,8 +407,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var evento = eventoService.GetEventoById(id);
             var form = new CoautorForm { Controller = "Evento", IdName = "EventoId" };
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (evento != null)
+            {
                 form.Id = evento.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(evento.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

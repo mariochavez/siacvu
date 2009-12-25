@@ -82,8 +82,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                 case 13:
                     nombreProducto = "Tesis dirigida";
                     break;
-                case 14:
+                case 15:
                     nombreProducto = "Proyecto";
+                    break;
+                case 16:
+                    nombreProducto = "Artículo de difusión";
                     break;
                 case 20:
                     nombreProducto = "Obra traducida";

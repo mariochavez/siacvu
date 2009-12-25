@@ -20,7 +20,7 @@
 	<%=Html.ValidationMessage("TipoDictamen") %>
 </p>
 <div id="articulo_field">
-    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false }); %>
+    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
 </div>
 <div id="libro_field">
 	<% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialDictamenes, ModelId = Model.Id } ); %>

@@ -62,9 +62,7 @@
                     <% Html.RenderPartial("_ShowTesisExterna", Model.Form);%>
                 <% } %>
                 
-                <% if (Model.Form.SubdisciplinaId != 0) { %>
-            	    <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                <% } %>
+            	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p>
                     <label>Obra publicada</label>

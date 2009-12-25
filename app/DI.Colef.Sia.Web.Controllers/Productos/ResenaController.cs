@@ -29,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
         readonly IEditorialResenaMapper editorialResenaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorService investigadorService;
 
         public ResenaController(IResenaService resenaService,
                                 IResenaMapper resenaMapper,
@@ -49,7 +50,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 ISearchService searchService,
                                 IRevistaPublicacionMapper revistaPublicacionMapper,
                                 ILineaTematicaMapper lineaTematicaMapper,
-                                IInvestigadorExternoMapper investigadorExternoMapper
+                                IInvestigadorExternoMapper investigadorExternoMapper,
+                                IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.areaTematicaMapper = areaTematicaMapper;
@@ -67,6 +69,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoResenaMapper = coautorInternoResenaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -365,8 +368,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var resena = resenaService.GetResenaById(id);
             var form = new CoautorForm {Controller = "Resena", IdName = "ResenaId"};
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (resena != null)
+            {
                 form.Id = resena.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(resena.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }

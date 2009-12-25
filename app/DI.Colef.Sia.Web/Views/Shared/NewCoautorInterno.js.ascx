@@ -25,3 +25,4 @@ $('#coautorinternoNew').hide();
 $('#coautorinternoForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorInterno_Nombre'));
+$('#CoautorInterno_Nombre')[0].autocompleter.setExtraParams({ extraParam: <%=Model.CreadoPorId%> });

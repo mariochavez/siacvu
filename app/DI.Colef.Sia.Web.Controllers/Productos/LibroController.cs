@@ -30,6 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAreaMapper areaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
+        readonly IInvestigadorService investigadorService;
 
         public LibroController(ILibroService libroService,
                                IArchivoService archivoService,
@@ -46,7 +47,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                ILineaTematicaMapper lineaTematicaMapper, 
                                IDisciplinaMapper disciplinaMapper,
                                ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper,
-                               IInvestigadorExternoMapper investigadorExternoMapper, IAreaTematicaMapper areaTematicaMapper)
+                               IInvestigadorExternoMapper investigadorExternoMapper, IAreaTematicaMapper areaTematicaMapper,
+                               IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             this.catalogoService = catalogoService;
@@ -64,6 +66,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.areaTematicaMapper = areaTematicaMapper;
+            this.investigadorService = investigadorService;
         }
 
         [Authorize]
@@ -453,8 +456,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var libro = libroService.GetLibroById(id);
             var form = new CoautorForm {Controller = "Libro", IdName = "LibroId"};
 
+            if (User.IsInRole("Investigadores"))
+                form.CreadoPorId = CurrentInvestigador().Id;
+
             if (libro != null)
+            {
                 form.Id = libro.Id;
+                var investigador = investigadorService.GetInvestigadorByUsuario(libro.CreadoPor.UsuarioNombre);
+                form.CreadoPorId = investigador.Id;
+            }
 
             return Rjs("NewCoautorInterno", form);
         }
