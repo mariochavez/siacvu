@@ -52,6 +52,10 @@
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>
+                    <label>Siglas</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Siglas)%>&nbsp;</span>
+                </p>
+                <p>
                     <label>Describa su participaci&oacute;n</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Participacion)%>&nbsp;</span>
                 </p>
@@ -66,8 +70,12 @@
                     <span>Formato (dd/mm/yyyy)</span>
                 </p>
                 <p>
-                    <label>Siglas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Siglas)%>&nbsp;</span>
+                    <label>Ciudad/Estado</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.Ciudad) %>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Pa&iacute;s</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PaisNombre) %>&nbsp;</span>
                 </p>
                 <p>
                     <label>Tipo de &oacute;rgano</label>

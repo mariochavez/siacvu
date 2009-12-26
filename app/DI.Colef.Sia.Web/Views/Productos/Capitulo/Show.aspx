@@ -83,9 +83,7 @@
     <!-- ESTATUS DE LA PUBLICACION -->
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
-    <!-- REFERENCIA BIBLIOGRAFICA -->
-                <% if (Model.Form.EstadoProducto == 3){ %>
-                
+    <!-- REFERENCIA BIBLIOGRAFICA -->                
                 <h4>Autor(es) del libro</h4>
 	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
 				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
@@ -123,7 +121,6 @@
     	                <% } %>
                     </span><br />
                 </p>
-                <% } %>
                 
                 <p>
                     <label></label>

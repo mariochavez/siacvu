@@ -45,7 +45,8 @@
             <% using (Html.BeginForm("Update", "OrganoExterno", FormMethod.Post, new { @class = "remote" })){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
-
+                
+                <h4>Datos del &oacute;rgano externo</h4>
                 <% Html.RenderPartial("_DatosOrganoExterno", Model.Form); %>
                 
                 <p>

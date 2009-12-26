@@ -35,6 +35,7 @@
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
+                <h4>Datos de la distinci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosDistincion", Model.Form); %>
                 
                 <p>

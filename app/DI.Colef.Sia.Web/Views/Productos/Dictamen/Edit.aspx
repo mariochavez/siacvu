@@ -46,6 +46,7 @@
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
 
+                <h4>Datos del dictamen</h4>
                 <% Html.RenderPartial("_DatosDictamen", Model.Form); %>
                 
                 <p>

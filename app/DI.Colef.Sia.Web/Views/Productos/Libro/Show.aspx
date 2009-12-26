@@ -101,45 +101,42 @@
     <!--ESTAUS DE LA PUBLICACION-->            
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
-                <% if (Model.Form.EstadoProducto == 3) { %>
-                
-				    <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialLibros, ModelId = Model.Form.Id }); %>
-				    
-                    <p>
-                        <label>ISBN</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.ISBN)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Edici&oacute;n</label>
-                        <span class="valor"><%= HumanizeHelper.Edicion(Model.Form.Edicion)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Reimpresi&oacute;n</label>
-                        <span class="valor"><%= HumanizeHelper.Reimpresion(Model.Form.Reimpresion)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Volumen</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>N&uacute;mero de p&aacute;ginas</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Tiraje</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Obra publicada</label>
-                        <span class="valor">
-                            <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteLibroNombre)) { %> 
-	                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteLibroId), Model.Form.ComprobanteLibroNombre, new { target = "_blank" })%> 
-	                        <% } else { %>
-	                            &nbsp;
-	                        <% } %>
-                        </span><br />
-                    </p>
-                <% } %>
+			    <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialLibros, ModelId = Model.Form.Id }); %>
+			    
+                <p>
+                    <label>ISBN</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.ISBN)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Edici&oacute;n</label>
+                    <span class="valor"><%= HumanizeHelper.Edicion(Model.Form.Edicion)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Reimpresi&oacute;n</label>
+                    <span class="valor"><%= HumanizeHelper.Reimpresion(Model.Form.Reimpresion)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Volumen</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>N&uacute;mero de p&aacute;ginas</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.NoPaginas)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Tiraje</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Tiraje)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Obra publicada</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteLibroNombre)) { %> 
+                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteLibroId), Model.Form.ComprobanteLibroNombre, new { target = "_blank" })%> 
+                        <% } else { %>
+                            &nbsp;
+                        <% } %>
+                    </span><br />
+                </p>
                 <p>
                     <label></label>
                     <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
