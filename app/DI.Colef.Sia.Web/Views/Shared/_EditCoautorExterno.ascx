@@ -22,14 +22,14 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="coautorexternoEmptyListForm">
-            <h6><span>No hay coautores externos registrados</span></h6>
+            <h6><span>No hay investigadores externos registrados</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 
 	<div id="coautorexternoNew" class="minilistaboton">
 		<p>
 			<span>
-	    		<%=Html.ActionLink("+ Agregar coautor externo", "NewCoautorExterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
+	    		<%=Html.ActionLink("+ Agregar investigador externo", "NewCoautorExterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
 			</span>
 		</p>
 	</div><!--end minilistaboton-->

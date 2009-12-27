@@ -20,6 +20,8 @@ function setupDocument() {
     SearchAutoComplete.setup();
     PopMenu.setup();
     Cascade.setup();
+
+    Coautores.setup();
 };
 
 function setupSublistRows() {
@@ -54,6 +56,35 @@ function deleteElement(html, selectorString, listName) {
         $(listName + ' div:first').before(html);
     }
 }
+
+var Coautores = {
+    setup: function() {
+        var tipoProducto = $('select.coautores');
+        if (tipoProducto.length > 0) {
+            tipoProducto.change(Coautores.changeText);
+            Coautores.setText(tipoProducto.val(), tipoProducto.children().length);
+        }
+    },
+    setText: function(value, children) {
+        if (children > 3) {
+            if (value <= 1)
+                $('#coautores').text('Coautores');
+            else if (value == 2)
+                $('#coautores').text('Coordinadores');
+            else if (value == 3)
+                $('#coautores').text('Compiladores');
+        } else {
+            if (value <= 1)
+                $('#coautores').text('Coordinadores');
+            else if (value == 2)
+                $('#coautores').text('Compiladores');
+        }
+    },
+    changeText: function() {
+        Coautores.setText($(this).val(), $(this).children().length);
+    }
+};
+
 
 var PopMenu = {
     currentPop: null,
@@ -162,7 +193,7 @@ var SubForm = {
 
 var DateTimePicker = {
     setup: function() {
-        $.datepicker.setDefaults($.datepicker.regional['fr']);
+        $.datepicker.setDefaults($.datepicker.regional['es']);
         $.datepicker.setDefaults({
             dateFormat: 'dd/mm/yy',
             changeMonth: true, 

@@ -17,7 +17,7 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="coautorexternoEmptyList_form">
-            <h6><span>No hay coautores externos registrados</span></h6>
+            <h6><span>No hay investigadores externos registrados</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 

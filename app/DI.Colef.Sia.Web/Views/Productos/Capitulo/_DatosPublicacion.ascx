@@ -16,7 +16,7 @@
 <p>
     <label>Tipo de libro</label>
     <%=Html.DropDownList("TipoLibro", Model.TiposLibro.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "coautores" })%>
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 <p>

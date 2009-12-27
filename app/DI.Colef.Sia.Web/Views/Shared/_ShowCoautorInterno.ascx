@@ -17,7 +17,7 @@
         <% } %>
     <% } else { %>
         <div class="sublista" id="coautorinternoEmptyList_form">
-            <h6><span>No hay coautores internos registrados</span></h6>
+            <h6><span>No hay investigadores internos registrados</span></h6>
 		</div><!--end elementodescripcion-->
     <% } %>
 

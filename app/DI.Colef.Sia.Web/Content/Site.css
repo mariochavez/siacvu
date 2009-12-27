@@ -680,6 +680,14 @@ a.editabusqueda {
 	color: #CDCCB2;
 }
 
+#forma span.titulovalor {
+	color:#555555;
+	font-size:12pt;
+	font-weight:bold;
+	letter-spacing:1pt;
+	text-transform:uppercase;
+}
+
 #forma span.valor {
     color:#555555;
     margin: 0 1px;

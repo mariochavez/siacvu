@@ -51,16 +51,16 @@
             <h4>Datos de la publicaci&oacute;n</h4>
             <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
             
-            <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
+            <h4><span id="coautores" class="titulovalor">Coautores</span> de la publicaci&oacute;n<span class="cvu"></span></h4>
 			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
             <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
             <p>
-                <label>Total de autores</label>
+                <label>Total de investigadores</label>
                 <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
                 <span class="cvu"></span>          
             </p>
             <p>
-                <label>Posici&oacute;n del autor</label>
+                <label>Posici&oacute;n del investigador</label>
                 <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
                 <span class="cvu"></span>
                 <%=Html.ValidationMessage("PosicionAutor")%>

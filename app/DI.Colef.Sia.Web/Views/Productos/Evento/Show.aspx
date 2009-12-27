@@ -109,11 +109,11 @@
                                            new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id });%>
                     
                     <p>
-	                    <label>Total de autores</label>
+	                    <label>Total de investigadores</label>
 	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
 	                </p>
 	                <p>
-	                    <label>Posici&oacute;n del autor</label>
+	                    <label>Posici&oacute;n del investigador</label>
 	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
 	                </p>
 	            <% } %>

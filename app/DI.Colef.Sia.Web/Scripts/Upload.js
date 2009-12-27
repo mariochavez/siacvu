@@ -155,7 +155,14 @@ var Upload = {
             return;
         }
 
-        if (uploadify.uploadifySettings('queueSize') > 0) {
+        var queueSize = 0;
+        try {
+            queueSize = uploadify.uploadifySettings('queueSize');
+        } catch (err) {
+            queueSize = 0;
+        };
+
+        if (queueSize > 0) {
             uploadify.uploadifySettings(
                 'scriptData',
                 {

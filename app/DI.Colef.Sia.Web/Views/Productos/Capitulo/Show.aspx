@@ -68,15 +68,15 @@
                 </p>
                 
     <!-- Coautores de la publicacion -->            
-	            <h4>Coordinadores/Compiladores de la publicaci&oacute;n</h4>
+	            <h4><%=Model.Form.TipoCapitulo == 2 ? "Compiladores" : "Coodinadores"%> de la publicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>
-	                <label>Total de autores</label>
+	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
 	            </p>
 	            <p>
-	                <label>Posici&oacute;n del autor</label>
+	                <label>Posici&oacute;n del investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
                 

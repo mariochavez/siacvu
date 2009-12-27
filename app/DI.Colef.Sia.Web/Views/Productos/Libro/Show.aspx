@@ -38,7 +38,11 @@
         <div id="forma">
             <div id="campos">
                 <h4>Datos del investigador</h4>
-	            <p>
+                <p>
+                    <label>Nombre</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
+                </p>
+                <p>
                     <label>Departamento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
                 </p>
@@ -84,17 +88,17 @@
                 <% } %>
                 
     <!--COAUTORES DE LA PUBLICACION-->
-                <h4>Coautores de la publicaci&oacute;n</h4>
+                <h4><%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %> de la publicaci&oacute;n</h4>
 				<% Html.RenderPartial("_ShowCoautorInterno",
                                        new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id });%>
 	            <% Html.RenderPartial("_ShowCoautorExterno",
 				                       new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id});%>
 	            <p>
-	                <label>Total de autores</label>
+	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
 	            </p>
                 <p>
-	                <label>Posici&oacute;n del autor</label>
+	                <label>Posici&oacute;n del investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
                 </p>
                 

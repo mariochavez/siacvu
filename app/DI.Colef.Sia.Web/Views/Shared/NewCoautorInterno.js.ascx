@@ -13,7 +13,7 @@ var html = '
     <div class="minilistaboton" id="submit">
         <p>
             <span>
-                <%=Html.SubmitButton("Guardar", "Agregar coautor interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
+                <%=Html.SubmitButton("Guardar", "Agregar investigador interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
             </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorinterno">Cancelar</a>
         </p>
     </div>

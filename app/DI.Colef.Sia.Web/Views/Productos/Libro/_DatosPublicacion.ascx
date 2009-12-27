@@ -10,13 +10,13 @@
 <p>
     <label>Tipo de publicaci&oacute;n</label>
     <%=Html.DropDownList("FormatoPublicacion", Model.FormatosPublicaciones.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "coautores requerido" })%>
     <%=Html.ValidationMessage("FormatoPublicacion")%>
 </p>
 <p>
     <label>Tipo de producto</label>
     <%=Html.DropDownList("TipoProducto", Model.TiposProductos.CreateSelectList<CustomSelectForm>("Id", "Nombre"),
-        "Seleccione ...")%>
+                "Seleccione ...", new { @class = "requerido" })%>
     <%=Html.ValidationMessage("TipoProducto")%>
 </p>
 <p>

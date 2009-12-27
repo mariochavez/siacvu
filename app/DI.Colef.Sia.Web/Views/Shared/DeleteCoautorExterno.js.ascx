@@ -6,7 +6,7 @@
 var html = '
     <div id="coautorexternoEmptyListForm" class="sublista sublista-dos">
         <h6>
-            <span>No hay coautores externos registrados</span>
+            <span>No hay investogadores externos registrados</span>
         </h6>
     </div>
 ';
