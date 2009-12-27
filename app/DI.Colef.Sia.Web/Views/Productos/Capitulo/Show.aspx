@@ -39,6 +39,10 @@
             <div id="campos">
             
             <h4>Datos del investigador</h4>
+                <p>
+                    <label>Nombre</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %>&nbsp;</span>
+                </p>
 	            <p>
                     <label>Departamento</label>
                     <span class="valor"><%= Html.Encode(Model.Form.DepartamentoNombre)%>&nbsp;</span>
