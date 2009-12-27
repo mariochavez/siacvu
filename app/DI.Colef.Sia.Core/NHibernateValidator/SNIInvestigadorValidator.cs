@@ -21,7 +21,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
         {
             var isValid = true;
             var sniInvestigador = value as SNIInvestigador;
-            if (sniInvestigador != null && sniInvestigador.SNI.Nombre != "No Pertenece")
+            if (sniInvestigador != null && sniInvestigador.SNI != null && sniInvestigador.SNI.Nombre != "No Pertenece")
             {
                 if (sniInvestigador.FechaInicial <= DateTime.Parse("1910-01-01"))
                 {
