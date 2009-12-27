@@ -46,7 +46,7 @@
                     <label>Sede</label>
                     <span class="valor"><%= Html.Encode(Model.Form.SedeNombre)%>&nbsp;</span>
                 </p>
-                <h4>Datos de la tesis</h4>
+                <h4>Participaci&oacute;n en tesis</h4>
                 <p>
                     <label>Tipo de tesis</label>
                     <span class="valor"><%= HumanizeHelper.TipoTesis(Model.Form.TipoTesis)%>&nbsp;</span>                    

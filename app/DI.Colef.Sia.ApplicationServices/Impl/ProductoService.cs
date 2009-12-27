@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         readonly IProductoQuerying productoQuerying;
         readonly IArticuloService articuloService;
+        readonly IArticuloDifusionService articuloDifusionService;
         readonly ICapituloService capituloService;
         readonly ILibroService libroService;
         readonly IReporteService reporteService;
@@ -24,10 +25,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         public ProductoService(IProductoQuerying productoQuerying, IArticuloService articuloService, ICapituloService capituloService,
             ILibroService libroService, IReporteService reporteService, IResenaService resenaService, IObraTraducidaService obraTraducidaService,
             IProyectoService proyectoService, ICursoService cursoService, ITesisDirigidaService tesisDirigidaService, IDictamenService dictamenService,
-            IOrganoExternoService organoExternoService, IEventoService eventoService, IParticipacionMedioService participacionMedioService)
+            IOrganoExternoService organoExternoService, IEventoService eventoService, IParticipacionMedioService participacionMedioService,
+            IArticuloDifusionService articuloDifusionService)
         {
             this.productoQuerying = productoQuerying;
             this.articuloService = articuloService;
+            this.articuloDifusionService = articuloDifusionService;
             this.capituloService = capituloService;
             this.libroService = libroService;
             this.reporteService = reporteService;
@@ -157,7 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                     tesisDirigida.ModificadoPor = usuario;
                     nombreProducto = tesisDirigida.Titulo;
                     break;
-                case 14:
+                case 15:
                     var proyecto = proyectoService.GetProyectoById(id);
                     proyecto.Firma.Aceptacion1 = 1;
                     proyecto.Firma.Firma1 = DateTime.Now;
@@ -165,6 +168,15 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                     proyecto.ModificadoEl = DateTime.Now;
                     proyecto.ModificadoPor = usuario;
                     nombreProducto = proyecto.Nombre;
+                    break;
+                case 16:
+                    var articuloDifusion = articuloDifusionService.GetArticuloById(id);
+                    articuloDifusion.Firma.Aceptacion1 = 1;
+                    articuloDifusion.Firma.Firma1 = DateTime.Now;
+                    articuloDifusion.Firma.Usuario1 = usuario;
+                    articuloDifusion.ModificadoEl = DateTime.Now;
+                    articuloDifusion.ModificadoPor = usuario;
+                    nombreProducto = articuloDifusion.Titulo;
                     break;
                 case 20:
                     var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);

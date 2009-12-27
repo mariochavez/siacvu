@@ -44,7 +44,8 @@
             <% using (Html.BeginForm("Update", "ParticipacionMedio")){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
-
+                
+                <h4>Datos de la participaci&oacute;n en medio</h4>
                 <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
         				
                 <p class="submit">

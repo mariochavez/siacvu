@@ -37,6 +37,7 @@
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
 				
+				<h4>Datos del &oacute;rgano interno</h4>
                 <% Html.RenderPartial("_DatosOrganoInterno", Model.Form); %>
                 
                 <p>

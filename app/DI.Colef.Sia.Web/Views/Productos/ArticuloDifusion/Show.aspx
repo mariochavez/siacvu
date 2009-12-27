@@ -82,37 +82,34 @@
                 
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
-                <% if (Model.Form.EstadoProducto == 3){ %>
+                <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                     
-                    <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                        
-                    <p>
-                        <label>Volumen</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>N&uacute;mero</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>De la p&aacute;gina</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
-                    </p>
-                    <p>    
-                        <label>A la p&aacute;gina</label>
-                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
-                    </p>
-                    <p>
-                        <label>Obra publicada</label>
-                        <span class="valor">
-                            <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteArticuloNombre)) { %> 
-    	                        <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteArticuloId), Model.Form.ComprobanteArticuloNombre, new { target = "_blank" })%> 
-    	                    <% } else { %>
-    	                        &nbsp;
-    	                    <% } %>
-                        </span><br />
-                    </p>
-                <% } %>
+                <p>
+                    <label>Volumen</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>N&uacute;mero</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>De la p&aacute;gina</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
+                </p>
+                <p>    
+                    <label>A la p&aacute;gina</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
+                </p>
+                <p>
+                    <label>Obra publicada</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteArticuloNombre)) { %> 
+	                        <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteArticuloId), Model.Form.ComprobanteArticuloNombre, new { target = "_blank" })%> 
+	                    <% } else { %>
+	                        &nbsp;
+	                    <% } %>
+                    </span><br />
+                </p>
                 
                 <p>
                     <label></label>

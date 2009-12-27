@@ -167,7 +167,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             if (productType == 3 || productType == 13)
                 projection.Add(Projections.Property("Institucion"), "Institucion");
 
-            if (productType == 14)
+            if (productType == 15)
                 projection.Add(Projections.Property(tipoPublicacion), "EstatusProducto");
 
             if(productType == 4)
