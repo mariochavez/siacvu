@@ -51,22 +51,7 @@
             <label>A&ntilde;o de aceptaci&oacute;n</label>
             <span class="valor"><%= Html.Encode(Model.FechaAceptacion)%>&nbsp;</span>
             <span>Formato (yyyy)</span>
-        </p>
-        <p>
-            <label>Carta de aceptaci&oacute;n</label>
-            <span class="valor">
-                <% if(Model.ModelId != 0){ %>
-                    <%if(!String.IsNullOrEmpty(Model.ComprobanteAceptadoNombre)) { %> 
-	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobanteAceptadoId), Model.ComprobanteAceptadoNombre, new { target = "_blank" })%> 
-	                <% }else{ %>
-	                    &nbsp;
-	                <% } %>
-                <% } else { %>
-                    &nbsp;
-                <% } %>
-            </span><br />
-        </p>
-        
+        </p>        
     <% } if (Model.EstadoProducto == 3){ %>
         <p>
             <label>A&ntilde;o de publicaci&oacute;n</label>
@@ -74,4 +59,18 @@
             <span>Formato (yyyy)</span>
         </p>
     <% } %>
+    <p>
+        <label>Carta de aceptaci&oacute;n</label>
+        <span class="valor">
+            <% if(Model.ModelId != 0){ %>
+                <%if(!String.IsNullOrEmpty(Model.ComprobanteAceptadoNombre)) { %> 
+                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobanteAceptadoId), Model.ComprobanteAceptadoNombre, new { target = "_blank" })%> 
+                <% }else{ %>
+                    &nbsp;
+                <% } %>
+            <% } else { %>
+                &nbsp;
+            <% } %>
+        </span><br />
+    </p>
 <% } %>

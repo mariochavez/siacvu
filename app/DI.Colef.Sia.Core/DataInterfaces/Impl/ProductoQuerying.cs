@@ -144,7 +144,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 .Add(Projections.Property(propertyName), "Nombre")
                 .Add(Projections.Constant(productType), "TipoProducto")
                 .Add(Projections.Property("Firma"), "Firma")
-                .Add(Projections.Property("CreadoEl"), "CreadoEl");
+                .Add(Projections.Property("CreadoEl"), "CreadoEl")
+                .Add(Projections.Property("Usuario"), "Usuario");
 
             if (esProduccionAcademica)
             {
@@ -154,7 +155,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                     .Add(Projections.GroupProperty("Id"), "Id")
                     .Add(Projections.GroupProperty("CreadoEl"), "CreadoEl")
                     .Add(Projections.GroupProperty("EstadoProducto"), "EstatusProducto")
-                    .Add(Projections.GroupProperty("Firma"), "Firma");
+                    .Add(Projections.GroupProperty("Firma"), "Firma")
+                    .Add(Projections.GroupProperty("Usuario"), "Usuario");
             }
 
             if (tieneRevista)
@@ -250,8 +252,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public TipoEvento TipoEvento { get; set; }
         public TipoParticipacion TipoParticipacion { get; set; }
         public Firma Firma { get; set; }
+        public Usuario Usuario { get; set; }
         public int Aceptacion2 { get; set; }
         public int Aceptacion1 { get; set; }
         public int GuidNumber { get; set; }
+
+        public string InvestigadorNombre
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", Usuario.ApellidoPaterno, Usuario.ApellidoMaterno, Usuario.Nombre);
+            }
+        }
     }
 }

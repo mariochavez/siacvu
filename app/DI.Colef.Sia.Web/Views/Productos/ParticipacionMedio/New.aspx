@@ -31,7 +31,7 @@
 	    <% Html.RenderPartial("_Message"); %>    
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Create", "ParticipacionMedio")) { %>
+            <% using (Html.BeginForm("Create", "ParticipacionMedio", FormMethod.Post, new {@class = "remote" })) { %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
                 
@@ -39,7 +39,7 @@
                 <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

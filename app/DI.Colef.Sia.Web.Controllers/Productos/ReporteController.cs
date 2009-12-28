@@ -642,6 +642,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
 
+                                      ProyectoNombre = form.ProyectoNombre,
+
                                       IsShowForm = true,
                                       //InstitucionLabel = "Institución donde se publica",
                                       InstitucionLabel = "Instancia a la que se presenta el reporte"
