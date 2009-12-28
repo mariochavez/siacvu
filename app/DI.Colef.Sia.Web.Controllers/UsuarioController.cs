@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -102,33 +103,44 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult AddRol([Bind(Prefix = "Rol")]RolForm form, int usuarioId)
         {
             var rol = usuarioService.GetRolById(form.Id);
-            var rolForm = rolMapper.Map(rol);
-
-            var rolUsuario = rolMapper.Map(rolForm);
-
-            ModelState.AddModelErrors(rolUsuario.ValidationResults(), true, String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            rolUsuario.CreadoPor = CurrentUser();
-            rolUsuario.ModificadoPor = CurrentUser();
 
             var usuario = usuarioService.GetUsuarioById(usuarioId);
-            usuario.AddRole(rolUsuario);
-            usuarioService.SaveUsuario(usuario);
 
-            var rolUsuarioForm = rolMapper.Map(rolUsuario);
+            var alreadyHasIt =
+                    usuario.Roles.Where(
+                        x => x.Id == rol.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                usuario.AddRole(rol);
+                usuarioService.SaveUsuario(usuario);
+            }
+
+            var rolUsuarioForm = rolMapper.Map(rol);
+            rolUsuarioForm.UsuarioId = usuarioId;
 
             return Rjs("AddRol", rolUsuarioForm);
+        }
+
+        [CustomTransaction]
+        [Authorize(Roles = "DGAA")]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteRol(int id, int usuarioId)
+        {
+            var rol = usuarioService.GetRolById(id);
+
+            var usuario = usuarioService.GetUsuarioById(usuarioId);
+            usuario.DeleteRole(rol);
+            usuarioService.SaveUsuario(usuario);
+
+            return Rjs("DeleteRol", id);
         }
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
         {
-            var data = searchService.Search<Usuario>(x => x.UsuarioNombre, q);
+            var data = searchService.SearchUsuario(q);
             return Content(data);
         }
     }

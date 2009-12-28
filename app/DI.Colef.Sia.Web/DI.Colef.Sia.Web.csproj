@@ -805,6 +805,7 @@
     <Content Include="Views\Catalogos\TipoArchivo\New.aspx" />
     <Content Include="Views\Catalogos\TipoArchivo\_Form.ascx" />
     <Content Include="Views\Usuario\AddRol.js.ascx" />
+    <Content Include="Views\Usuario\DeleteRol.js.ascx" />
     <Content Include="Views\Usuario\Edit.aspx" />
     <Content Include="Views\Usuario\Index.aspx" />
     <Content Include="Views\Usuario\NewRol.js.ascx" />

@@ -25,5 +25,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
 
         public virtual IList<Usuario> Usuarios { get; private set; }
+
+        public virtual void AddUsuario(Usuario usuario)
+        {
+            Usuarios.Add(usuario);
+        }
     }
 }
