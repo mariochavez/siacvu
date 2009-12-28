@@ -25,13 +25,14 @@ namespace DecisionesInteligentes.Colef.Sia.Data.NHibernateMaps.Conventions
             {
                 tablename = target.ChildType.Name + target.EntityType.Name;
                 target.Inverse();
+                target.Cascade.None();
             }
             else if (target.EntityType.Name == "Usuario")
             {
                 tablename = target.EntityType.Name + target.ChildType.Name;
+                target.Not.Inverse();
+                target.Cascade.SaveUpdate();
             }
-
-            target.Cascade.None();
 
             return tablename;
         }

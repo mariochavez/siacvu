@@ -5,19 +5,25 @@
 
 var html = '
     <div id="rol_<%=Html.Encode(Model.Id) %>" class="sublista">
-        <h6><%=Html.Encode(Model.Nombre)%></h6>
+        <h6>
+            <a href="<%=Url.Action("deleterol", null, new{id = Model.Id, usuarioId = Model.UsuarioId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+            <%=Html.Encode(Model.Nombre)%></h6>
     </div><!--end estadolista-->
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 
-$('#rol_form').hide();
-$('#rol_new').show();
-$('#rol_form').html('');
-$('#rolList div:first').before(html);
+$('#rolForm').hide();
+$('#rolNew').show();
+$('#rolForm').html('');
 
-$('#rol_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
-$('#rol_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+if($('#rol_<%=Html.Encode(Model.Id) %>').length == 0)
+{
+    $('#rolEmptyListForm').html('');
+    $('#rolList div:first').before(html);
 
+    $('#rol_' + <%=Html.Encode(Model.Id) %> + ':first').hide();
+    $('#rol_' + <%=Html.Encode(Model.Id) %> + ':first').fadeIn('slow');
+}
 setupSublistRows();

@@ -98,6 +98,57 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return result.ToArray();
         }
 
+        public Search[] SearchUsuario(string value)
+        {
+            string[] values = value.Split(' ');
+
+            var criteria = DetachedCriteria.For(typeof(Usuario))
+                .SetMaxResults(20)
+                .SetProjection(Projections.ProjectionList()
+                                   .Add(Projections.Property("ApellidoPaterno"), "ApellidoPaterno")
+                                   .Add(Projections.Property("ApellidoMaterno"), "ApellidoMaterno")
+                                   .Add(Projections.Property("Nombre"), "Nombre")
+                                   .Add(Projections.Property("Id"), "Id")
+                )
+                .AddOrder(Order.Asc("ApellidoPaterno"))
+                .AddOrder(Order.Asc("ApellidoMaterno"))
+                .AddOrder(Order.Asc("Nombre"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(UsuarioDTO)));
+
+            if (values.Length == 1)
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("ApellidoMaterno", values[0] + "%")),
+                                           Expression.Like("Nombre", values[0] + "%")));
+            else if (values.Length == 2)
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("ApellidoMaterno", values[0] + "%")),
+                                           Expression.Like("Nombre", values[1] + "%")));
+            else if (values.Length == 3)
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("ApellidoMaterno", values[1] + "%")),
+                                           Expression.Like("Nombre", values[2] + "%")));
+            else if (values.Length > 3)
+            {
+                var nombre = String.Empty;
+                for (var i = 2; i < values.Length; i++)
+                    nombre += value[i] + " ";
+
+                criteria.Add(Expression.Or(Expression.Or(Expression.Like("ApellidoPaterno", values[0] + "%"),
+                                                         Expression.Like("ApellidoMaterno", values[1] + "%")),
+                                           Expression.Like("Nombre", nombre.Trim() + "%")));
+            }
+
+            var list = criteria.GetExecutableCriteria(Session).List<UsuarioDTO>();
+
+            var result = new List<Search>();
+            foreach (var item in list)
+            {
+                result.Add(new Search { Id = item.Id, Nombre = item.NombreCompleto() });
+            }
+
+            return result.ToArray();
+        }
+
         public Search[] SearchOrganoInterno(string value)
         {
             var criteria = DetachedCriteria.For(typeof(OrganoInterno))
@@ -255,7 +306,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         #region Nested type: InvestigadorDTO
 
-        class InvestigadorDTO
+        class UsuarioDTO
         {
             public int Id { get; set; }
             public string ApellidoPaterno { get; set; }
@@ -265,7 +316,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             public string NombreCompleto()
             {
                 return String.Format("{0} {1} {2}", ApellidoPaterno, ApellidoMaterno, Nombre).Trim();
-            }
+            } 
+        }
+
+        class InvestigadorDTO : UsuarioDTO
+        {
+            
         }
 
         #endregion

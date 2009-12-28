@@ -6,5 +6,7 @@
         public string Nombre { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+
+        public int UsuarioId { get; set; }
     }
 }

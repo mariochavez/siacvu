@@ -8,6 +8,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
     {
         string Search<TEntity>(Expression<Func<TEntity, object>> expression, string value);
         string SearchInvestigador(string value);
+        string SearchUsuario(string value);
         string SearchMovilidadAcademica(string value);
         string SearchApoyoConacyt(string value);
         string SearchIdiomaInvestigador(string value);

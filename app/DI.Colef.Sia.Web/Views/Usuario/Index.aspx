@@ -48,7 +48,7 @@
 			<% foreach (var usuario in Model.List) { %>
 				<div class="elementolista" id="accion_<%=Html.Encode(usuario.Id) %>">
 					<div class="elementodescripcion">
-					    <h5><span><%=Html.Encode(usuario.UsuarioNombre)%></span></h5>
+					    <h5><span><%=Html.Encode(usuario.NombreCompleto)%></span></h5>
 					</div><!--end elementodescripcion-->
 
 					<div class="elementobotones">

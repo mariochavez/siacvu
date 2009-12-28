@@ -17,6 +17,6 @@ var html = '
     <% } %>
 ';
 
-$('#rol_form').html(html);
-$('#rol_new').hide();
-$('#rol_form').show();
+$('#rolForm').html(html);
+$('#rolNew').hide();
+$('#rolForm').show();

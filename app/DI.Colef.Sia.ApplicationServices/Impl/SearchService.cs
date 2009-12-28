@@ -35,6 +35,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ParseResult(results);
         }
 
+        public string SearchUsuario(string value)
+        {
+            var results = searchQuerying.SearchUsuario(value);
+            return ParseResult(results);
+        }
+
         public string SearchOrganoInterno(string value)
         {
             var results = searchQuerying.SearchOrganoInterno(value);

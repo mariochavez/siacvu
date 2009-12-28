@@ -57,5 +57,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             Roles.Add(rol);
         }
+
+        public virtual void DeleteRole(Rol rol)
+        {
+            Roles.Remove(rol);
+        }
     }
 }
