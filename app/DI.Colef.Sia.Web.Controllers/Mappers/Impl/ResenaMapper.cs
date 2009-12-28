@@ -51,11 +51,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PalabraClave3 = message.PalabraClave3;
             model.Volumen = message.Volumen;
             model.TipoResena = message.TipoResena;
+            model.EstadoProducto = message.EstadoProducto;
 
             if (model.Usuario == null || model.Usuario == usuarioResena)
                 model.PosicionAutor = message.PosicionAutor;
 
-            if (message.EstadoProducto != 0)
+            if (message.EstadoProducto != 0 && message.EstadoProducto != 1)
             {
                 if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
                     model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
@@ -77,9 +78,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Area = catalogoService.GetAreaById(message.AreaId);
             model.Disciplina = catalogoService.GetDisciplinaById(message.DisciplinaId);
             model.Subdisciplina = catalogoService.GetSubdisciplinaById(message.SubdisciplinaId);
-
-            if (message.EstadoProducto != 0)
-                model.EstadoProducto = message.EstadoProducto;
         }
 
         public Resena Map(ResenaForm message, Usuario usuario)

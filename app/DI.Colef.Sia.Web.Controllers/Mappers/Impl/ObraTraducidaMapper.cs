@@ -68,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             if (model.Usuario == null || model.Usuario == usuarioObraTraducida)
                 model.PosicionAutor = message.PosicionAutor;
 
-            if (message.EstadoProducto != 0)
+            if (message.EstadoProducto != 0 && message.EstadoProducto != 1)
             {
                 if (message.FechaAceptacion.FromYearDateToDateTime() > DateTime.Parse("1910-01-01"))
                     model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();

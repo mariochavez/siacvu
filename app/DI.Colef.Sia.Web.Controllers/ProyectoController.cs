@@ -929,6 +929,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       RamaNombre = form.RamaNombre,
                                       SectorEconomicoNombre = form.SectorEconomicoNombre,
 
+                                      AreaTematicaLineaTematicaNombre = form.AreaTematicaLineaTematicaNombre,
+                                      AreaTematicaNombre = form.AreaTematicaNombre,
+
                                       IsShowForm = true
                                   };
 

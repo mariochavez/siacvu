@@ -38,6 +38,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AmbitoId { get; set; }
         public string AmbitoNombre { get; set; }
 
+        public string UsuarioNombre { get; set; }
+        public string UsuarioApellidoPaterno { get; set; }
+        public string UsuarioApellidoMaterno { get; set; }
+
+        public string InvestigadorNombre
+        {
+            get
+            {
+                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
+            }
+        }
+
         /* Catalogos */
         public TipoOrganoForm[] TiposOrganos { get; set; }
         public SectorForm[] Sectores { get; set; }

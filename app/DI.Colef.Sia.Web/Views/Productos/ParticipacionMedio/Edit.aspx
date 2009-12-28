@@ -41,15 +41,15 @@
 	    <% Html.RenderPartial("_Message"); %>
 	    <div id="forma">
 
-            <% using (Html.BeginForm("Update", "ParticipacionMedio")){ %>
-		        <%=Html.AntiForgeryToken() %>
-                <%=Html.Hidden("Id", Model.Form.Id) %>
+            <% using (Html.BeginForm("Update", "ParticipacionMedio", FormMethod.Post, new { @class = "remote" })){ %>
+		        <%=Html.AntiForgeryToken()%>
+                <%=Html.Hidden("Id", Model.Form.Id)%>
                 
                 <h4>Datos de la participaci&oacute;n en medio</h4>
                 <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
         				
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios")%> &oacute; <%=Html.ActionLink<ParticipacionMedioController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	
