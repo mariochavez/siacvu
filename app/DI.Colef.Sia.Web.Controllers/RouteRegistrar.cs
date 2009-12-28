@@ -25,6 +25,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
             routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
             routes.MapRoute(null, "Home", new { controller = "Home", action = "Index" });
+            routes.MapRoute(null, "Home/FilterProductsByInvestigador",
+                            new {controller = "Home", action = "FilterProductsByInvestigador"});
+            routes.MapRoute(null, "Home/FilterProductsByDepartamento",
+                            new { controller = "Home", action = "FilterProductsByDepartamento" });
 
             routes.CreateArea("Productos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos",
                               routes.MapRoute(null, "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
@@ -41,7 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             routes.CreateArea("Root", "DecisionesInteligentes.Colef.Sia.Web.Controllers",
                               routes.MapRoute(null, "{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
                               routes.MapRoute(null, "{controller}/{action}", new {controller = "Home", action = "Index"})
-
                 );
         }
     }

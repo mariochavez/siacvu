@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
@@ -15,15 +16,78 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IUsuarioService usuarioService;
         readonly IProductoService productoService;
+        readonly IInvestigadorService investigadorService;
+        readonly ICatalogoService catalogoService;
+        readonly IInvestigadorMapper investigadorMapper;
+        readonly IDepartamentoMapper departamentoMapper;
 
-        public HomeController(IUsuarioService usuarioService, IProductoService productoService)
+        public HomeController(IUsuarioService usuarioService, IProductoService productoService, IInvestigadorService investigadorService,
+            ICatalogoService catalogoService, IInvestigadorMapper investigadorMapper, IDepartamentoMapper departamentoMapper)
         {
             this.usuarioService = usuarioService;
             this.productoService = productoService;
+            this.investigadorService = investigadorService;
+            this.catalogoService = catalogoService;
+            this.investigadorMapper = investigadorMapper;
+            this.departamentoMapper = departamentoMapper;
         }
 
         [Authorize]
         public ActionResult Index()
+        {
+            var data = new GenericViewData<HomeForm>
+                           {
+                               Title = "Sistema de administración académica",
+                               Form = GetProductosBandeja()
+                           };
+
+            return View(data);
+        }
+
+        [Authorize(Roles = "Investigadores")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Put)]
+        public ActionResult Sign(int id, int tipoProducto, int guidNumber)
+        {
+            var producto = productoService.SignAndGetNombreProducto(id, tipoProducto, CurrentUser());
+
+            var data = new HomeForm
+                           {
+                               NombreProducto = producto,
+                               IdProducto = id,
+                               TipoProducto = tipoProducto,
+                               GuidNumber = guidNumber
+                           };
+
+            return Rjs(data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult FilterProductsByInvestigador(int select)
+        {
+            var data = select == 0 ? GetProductosBandeja() : GetProductosBandeja(select, 1);
+
+            return Rjs("FilterProducts", data);
+        }
+
+        [Authorize(Roles = "DGAA")]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult FilterProductsByDepartamento(int select)
+        {
+            var data = select == 0 ? GetProductosBandeja() : GetProductosBandeja(select, 2);
+
+            return Rjs("FilterProducts", data);
+        }
+
+        private HomeForm GetProductosBandeja()
+        {
+            return GetProductosBandeja(0, 0);
+        }
+
+        private HomeForm GetProductosBandeja(int filterId, int filterType)
         {
             var produccionAcademica = new List<ProductoDTO>();
             var formacionRecursosHumanos = new List<ProductoDTO>();
@@ -38,9 +102,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                      };
 
             if (User.IsInRole("Investigadores"))
-               productos = productoService.GetProductosBandeja(CurrentUser());
-            if(User.IsInRole("DGAA"))
-               productos = productoService.GetProductosBandeja(true);
+                productos = productoService.GetProductosBandeja(CurrentUser());
+            if (User.IsInRole("DGAA"))
+            {
+                if (filterId == 0 && filterType == 0)
+                    productos = productoService.GetProductosBandeja(true);
+                if(filterId != 0 && filterType == 1)
+                    productos = productoService.GetProductosBandeja(true, filterId, filterType);
+                if (filterId != 0 && filterType == 2)
+                    productos = productoService.GetProductosBandeja(true, filterId, filterType);
+            }
 
             foreach (var producto in (IEnumerable)productos[0])
             {
@@ -74,19 +145,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 vinculaciones.Add(vinculacion);
             }
 
-            var data = new GenericViewData<HomeForm>
+            var data = new HomeForm
                            {
-                               Title = "Sistema de administración académica",
-                               Form = new HomeForm
-                                          {
-                                              ProduccionAcademica = produccionAcademica.ToArray(),
-                                              FormacionRecursosHumanos = formacionRecursosHumanos.ToArray(),
-                                              Proyectos = proyectos.ToArray(),
-                                              Vinculacion = vinculaciones.ToArray()
-                                          }
+                               ProduccionAcademica = produccionAcademica.ToArray(),
+                               FormacionRecursosHumanos = formacionRecursosHumanos.ToArray(),
+                               Proyectos = proyectos.ToArray(),
+                               Vinculacion = vinculaciones.ToArray(),
+                               Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores()),
+                               Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
+                               FilterType = filterType
                            };
 
-            return View(data);
+            return data;
         }
 
         [Authorize]
@@ -99,24 +169,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public ActionResult Show(int id, int tipoProducto)
         {
             return RedirectToProducto(id, tipoProducto, "Show");
-        }
-
-        [Authorize(Roles = "Investigadores")]
-        [CustomTransaction]
-        [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Sign(int id, int tipoProducto, int guidNumber)
-        {
-            var producto = productoService.SignAndGetNombreProducto(id, tipoProducto, CurrentUser());
-
-            var data = new HomeForm
-                           {
-                               NombreProducto = producto,
-                               IdProducto = id,
-                               TipoProducto = tipoProducto,
-                               GuidNumber = guidNumber
-                           };
-
-            return Rjs(data);
         }
 
         protected ActionResult RedirectToProducto(int id, int tipoProducto, string action)

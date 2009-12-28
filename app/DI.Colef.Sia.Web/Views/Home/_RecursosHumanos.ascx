@@ -22,6 +22,9 @@
                     <% if (recursoHumano.Institucion != null){ %>
                         Instituci&oacute;n: <%=Html.Encode(recursoHumano.Institucion.Nombre)%>
                     <% } %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        Investigador: <%=Html.Encode(recursoHumano.InvestigadorNombre)%>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

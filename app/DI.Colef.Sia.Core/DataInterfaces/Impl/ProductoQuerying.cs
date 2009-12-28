@@ -48,43 +48,48 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public object[] GetProductosBandeja(Usuario usuario)
         {
-            return GetProductosBandeja(usuario, false);
+            return GetProductosBandeja(usuario, false, 0, 0);
         }
 
         public object[] GetProductosBandeja(bool isDgaa)
         {
-            return GetProductosBandeja(new Usuario(), isDgaa);
+            return GetProductosBandeja(new Usuario(), isDgaa, 0, 0);
         }
 
-        public object[] GetProductosBandeja(Usuario usuario, bool isDgaa)
+        public object[] GetProductosBandeja(bool isDgaa, int filterId, int filterType)
+        {
+            return GetProductosBandeja(new Usuario(), isDgaa, filterId, filterType);
+        }
+
+        public object[] GetProductosBandeja(Usuario usuario, bool isDgaa, int filterId, int filterType)
         {
             var bandejaTrabajo = new object[4];
 
             //Produccion academica
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
-                .Add(BuildCreteria<Articulo>(usuario.Id, "CoautorInternoArticulos", "Titulo", 1, true, true, isDgaa))
-                .Add(BuildCreteria<ArticuloDifusion>(usuario.Id, "CoautorInternoArticulos", "Titulo", 16, true, true, isDgaa))
-                .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2, true, isDgaa))
-                .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7, true, isDgaa))
-                .Add(BuildCreteria<Reporte>(usuario.Id, "CoautorInternoReportes", "Titulo", 11, true, isDgaa))
-                .Add(BuildCreteria<Resena>(usuario.Id, "CoautorInternoResenas", "NombreProducto", 12, true, true, isDgaa))
-                .Add(BuildCreteria<ObraTraducida>(usuario.Id, "CoautorInternoObraTraducidas", "Nombre", 20, true, isDgaa));
+                .Add(BuildCreteria<Articulo>(usuario.Id, "CoautorInternoArticulos", "Titulo", 1, true, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<ArticuloDifusion>(usuario.Id, "CoautorInternoArticulos", "Titulo", 16, true, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<Capitulo>(usuario.Id, "CoautorInternoCapitulos", "NombreCapitulo", 2, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<Libro>(usuario.Id, "CoautorInternoLibros", "Nombre", 7, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<Reporte>(usuario.Id, "CoautorInternoReportes", "Titulo", 11, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<Resena>(usuario.Id, "CoautorInternoResenas", "NombreProducto", 12, true, true, isDgaa, filterId, filterType))
+                .Add(BuildCreteria<ObraTraducida>(usuario.Id, "CoautorInternoObraTraducidas", "Nombre", 20, true, isDgaa, filterId, filterType));
 
             //Proyectos
             IMultiCriteria proyectos = Session.CreateMultiCriteria()
-                .Add(BuildCreteria<Proyecto>(usuario.Id, "", "Nombre", 15, "EstadoProyecto", isDgaa));
+                .Add(BuildCreteria<Proyecto>(usuario.Id, "", "Nombre", 15, "EstadoProyecto", isDgaa, filterId, filterType));
 
             //Formacion de recursos humanos
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
-                .Add(BuildCreteria<Curso>(usuario.Id, "", "Nombre", 3, "TipoCurso", isDgaa))
-                .Add(BuildCreteria<TesisDirigida>(usuario.Id, "", "Titulo", 13, "TipoTesis", isDgaa));
+                .Add(BuildCreteria<Curso>(usuario.Id, "", "Nombre", 3, "TipoCurso", isDgaa, filterId, filterType))
+                .Add(BuildCreteria<TesisDirigida>(usuario.Id, "", "Titulo", 13, "TipoTesis", isDgaa, filterId, filterType));
 
             //Actividades de vinculacion y difusion
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
-                .Add(BuildCreteria<Dictamen>(usuario.Id, "", "Nombre", 4, "TipoDictamen", isDgaa))
-                .Add(BuildCreteria<OrganoExterno>(usuario.Id, "", "Nombre", 8, "TipoOrgano", isDgaa))
-                .Add(BuildCreteria<Evento>(usuario.Id, "", "Nombre", 6, "TipoEvento", isDgaa))
-                .Add(BuildCreteria<ParticipacionMedio>(usuario.Id, "", "Titulo", 10, "TipoParticipacion", isDgaa));
+                .Add(BuildCreteria<Dictamen>(usuario.Id, "", "Nombre", 4, "TipoDictamen", isDgaa, filterId, filterType))
+                .Add(BuildCreteria<OrganoExterno>(usuario.Id, "", "Nombre", 8, "TipoOrgano", isDgaa, filterId, filterType))
+                .Add(BuildCreteria<Evento>(usuario.Id, "", "Nombre", 6, "TipoEvento", isDgaa, filterId, filterType))
+                .Add(BuildCreteria<ParticipacionMedio>(usuario.Id, "", "Titulo", 10, "TipoParticipacion", isDgaa, filterId, filterType));
 
 
             var produccionAcademicaResultado = new ArrayList();
@@ -120,24 +125,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         }
 
         //Metodo de retorno para el resto de los productos
-        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool isDgaa)
+        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool isDgaa, int filterId, int filterType)
         {
-            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, tipoPublicacion, false, false, isDgaa);
+            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, tipoPublicacion, false, false, isDgaa, filterId, filterType);
         }
 
         //Metodo de retorno para producccion academica
-        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, bool esProduccionAcademica, bool isDgaa)
+        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, bool esProduccionAcademica, bool isDgaa, int filterId, int filterType)
         {
-            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, "", esProduccionAcademica, false, isDgaa);
+            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, "", esProduccionAcademica, false, isDgaa, filterId, filterType);
         }
 
         //Metodo de retorno para Articulos y Resenas
-        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, bool esProduccionAcademica, bool tieneRevista, bool isDgaa)
+        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, bool esProduccionAcademica, bool tieneRevista, bool isDgaa, int filterId, int filterType)
         {
-            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, "", esProduccionAcademica, tieneRevista, isDgaa);
+            return BuildCreteria<T>(usuarioId, coautorTableName, propertyName, productType, "", esProduccionAcademica, tieneRevista, isDgaa, filterId, filterType);
         }
 
-        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool esProduccionAcademica, bool tieneRevista, bool isDgaa)
+        private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool esProduccionAcademica, bool tieneRevista, bool isDgaa, int filterId, int filterType)
         {
             var projection = Projections.ProjectionList()
                 .Add(Projections.Property("Id"), "Id")
@@ -200,6 +205,18 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 }
                 else
                     criteria.Add(Expression.Eq("u.Id", usuarioId));
+            }
+
+            if(filterType == 1)
+            {
+                criteria.CreateAlias("Usuario", "u")
+                    .Add(Expression.Eq("u.Id", filterId));
+            }
+
+            if (filterType == 2)
+            {
+                criteria.CreateAlias("Departamento", "d")
+                    .Add(Expression.Eq("d.Id", filterId));
             }
 
             criteria.SetProjection(projection)

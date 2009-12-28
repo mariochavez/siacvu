@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<HomeForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
@@ -38,6 +39,22 @@
 <div id="textos">
 				
     <% Html.RenderPartial("_Message"); %>
+    
+    <%if(User.IsInRole("DGAA")){ %>
+        <div id="forma">
+            <p>
+                <label>Filtrar por investigador</label>
+                <%=Html.DropDownList("Investigador", Model.Form.Investigadores.CreateSelectList<InvestigadorForm>("UsuarioId", "Nombre"),
+                    "Seleccione ...", new { @class = "cascade", rel = Url.Action("FilterProductsByInvestigador", "Home") })%>
+            </p>
+            <p>
+                <label>Filtrar por departamento</label>
+                <%=Html.DropDownList("Departamento", Model.Form.Departamentos.CreateSelectList<DepartamentoForm>("Id", "Nombre"),
+                    "Seleccione ...", new { @class = "cascade", rel = Url.Action("FilterProductsByDepartamento", "Home") })%>
+            </p>
+        </div>
+    <% } %>
+    
     <div id="lista">
         <h4>Producci&oacute;n acad&eacute;mica</h4>
         <% Html.RenderPartial("_ProduccionAcademica", Model.Form); %>

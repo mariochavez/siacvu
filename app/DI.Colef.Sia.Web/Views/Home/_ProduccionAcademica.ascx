@@ -25,7 +25,9 @@
                     <% if (produccionAcademica.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.EstatusProducto)%>
                     <% } %>
-                    Investigador: <%=Html.Encode(produccionAcademica.InvestigadorNombre) %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        Investigador: <%=Html.Encode(produccionAcademica.InvestigadorNombre) %>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

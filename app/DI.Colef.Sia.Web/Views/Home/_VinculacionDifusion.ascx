@@ -31,6 +31,9 @@
                     <% if (vinculacion.TipoParticipacion != null){ %>
                         Tipo de participaci&oacute;n: <%=Html.Encode(vinculacion.TipoParticipacion.Nombre)%>
                     <% } %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        Investigador: <%=Html.Encode(vinculacion.InvestigadorNombre)%>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

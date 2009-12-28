@@ -55,6 +55,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return productoQuerying.GetProductosBandeja(isDgaa);
         }
 
+        public object[] GetProductosBandeja(bool isDgaa, int filterId, int filterType)
+        {
+            return productoQuerying.GetProductosBandeja(isDgaa, filterId, filterType);
+        }
+
         public string SignAndGetNombreProducto(int id, int tipoProducto, Usuario usuario)
         {
             var nombreProducto = "";

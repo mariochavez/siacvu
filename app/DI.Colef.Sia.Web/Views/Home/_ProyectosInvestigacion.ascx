@@ -22,6 +22,9 @@
                     <% if (proyecto.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProyecto(proyecto.EstatusProducto)%>
                     <% } %>
+                    <% if(Page.User.IsInRole("DGAA")){ %>
+                        Investigador: <%=Html.Encode(proyecto.InvestigadorNombre)%>
+                    <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
 

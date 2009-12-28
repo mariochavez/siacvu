@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string Modificacion { get; set; }
 
         public int Usuario { get; set; }
+        public int UsuarioId { get; set; }
 
         public string UsuarioNombre { get; set; }
         public string UsuarioApellidoPaterno { get; set; }

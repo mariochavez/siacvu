@@ -1,4 +1,5 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
@@ -20,5 +21,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoProducto { get; set; }
 
         public int GuidNumber { get; set; }
+
+        public InvestigadorForm[] Investigadores { get; set; }
+
+        public DepartamentoForm[] Departamentos { get; set; }
+
+        public int FilterType { get; set; }
     }
 }
