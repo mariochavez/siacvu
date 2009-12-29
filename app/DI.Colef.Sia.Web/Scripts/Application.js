@@ -22,6 +22,40 @@ function setupDocument() {
     Cascade.setup();
 
     Coautores.setup();
+
+    $('.trigger').click(function() {
+        $('#slide').toggle('fast');
+        $(this).toggleClass('active');
+
+        $('.panel div').hide();
+        $('#areas').show();
+
+        return false;
+    });
+    $('.panel a.back').click(function() {
+        $('.panel .current').toggle('fast');
+        $('.panel .current').toggleClass('current');
+        $('#areas').toggle('fast');
+        return false;
+    });
+    $('.panel a').click(function() {
+        var panel = $(this).attr('href');
+
+        if (panel == '#areas')
+            return false;
+
+        if (panel.substring(0, 1) != "#") {
+            $('#slide').toggle('fast');
+            $(this).toggleClass('active');
+
+            return true;
+        }
+
+        $('#areas').toggle('fast');
+        $(panel).toggle('fast');
+        $(panel).toggleClass('current');
+        return false;
+    });
 };
 
 function setupSublistRows() {
@@ -197,7 +231,8 @@ var DateTimePicker = {
         $.datepicker.setDefaults({
             dateFormat: 'dd/mm/yy',
             changeMonth: true, 
-            changeYear: true
+            changeYear: true,
+            minDate: new Date(1930, 1 - 1, 1)
         });
         $('input.datetime').each(function() {
             $(this).datepicker();

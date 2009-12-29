@@ -526,6 +526,7 @@
     <Content Include="Views\Productos\Articulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Capitulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Libro\_DatosFinal.ascx" />
+    <Content Include="Views\Shared\_Menu.ascx" />
     <Content Include="Views\Shared\_CustomFirmaForm.ascx" />
     <Content Include="Views\Shared\DgaaSign.js.ascx" />
     <Content Include="Views\Shared\_FirmaForm.ascx" />
