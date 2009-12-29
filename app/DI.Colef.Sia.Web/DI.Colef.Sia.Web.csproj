@@ -221,10 +221,12 @@
     <Content Include="Content\Images\subcontenido-bg.gif" />
     <Content Include="Content\Images\upload_progress.gif" />
     <Content Include="Content\Images\usuario-icon.gif" />
+    <Content Include="Content\jquery-ui-1.7.2.custom.css" />
     <Content Include="Content\jquery.autocomplete.css" />
     <Content Include="NHvalidator.config" />
     <Content Include="Scripts\Application.js" />
     <Content Include="Scripts\jquery-ajaxloading.js" />
+    <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery.autocomplete.js" />
     <Content Include="Scripts\jquery.clearfield.min.js" />
     <Content Include="Scripts\jquery.dynamicui.js" />

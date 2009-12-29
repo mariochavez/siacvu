@@ -14,6 +14,7 @@
 			    <li><%=Html.ActionLinkForAreas<EventoController>(x => x.New(), "Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos")%></li>
 			    <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.New(), "Difuci&oacute;n del conocimiento")%></li>
 			    <li><a href="#academia">Formaci&oacute;n acad&eacute;mica y trabajo cient&iacute;fico</a></li>
+			    <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.New(), "Distinciones acad&eacute;micas")%></li>
 			<% } %>
 			<li><a href="#organos">Participaci&oacute;n en &oacute;rganos colegiados</a></li>
 			<li><a href="#movilidad">Movilidad acad&eacute;mica</a></li>
