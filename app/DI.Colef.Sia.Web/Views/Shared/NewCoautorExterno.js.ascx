@@ -14,14 +14,14 @@ var html = '
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar investigador externo", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
-            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorexterno">Cancelar</a>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautor">Cancelar</a>
         </p>
     </div>
     <% } %>
 ';
 
-$('#coautorexternoForm').html(html);
-$('#coautorexternoNew').hide();
-$('#coautorexternoForm').show();
+$('#coautorForm').html(html);
+$('#coautorNew').hide();
+$('#coautorForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorExterno_Institucion'));

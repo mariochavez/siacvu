@@ -2,7 +2,6 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="coautorinternoList">
-    <h5>Investigador Interno</h5>
 
     <% if (Model.CoautoresInternos != null && Model.CoautoresInternos.Length > 0) { %>
         <% for(int i = 0; i < Model.CoautoresInternos.Length; i++) { %>
@@ -24,14 +23,4 @@
 		</div><!--end elementodescripcion-->
     <% } %>
 
-	<div id="coautorinternoNew" class="minilistaboton">
-		<p>
-			<span>
-	    		<%=Html.ActionLink("+ Agregar investigador interno", "NewCoautorInterno", new { Id = Model.ModelId }, new { @class = "remote get" })%>
-			</span>
-		</p>
-	</div><!--end minilistaboton-->
-
 </div><!--end minilista-->
-
-<div id="coautorinternoForm" class="display:hidden;"></div>

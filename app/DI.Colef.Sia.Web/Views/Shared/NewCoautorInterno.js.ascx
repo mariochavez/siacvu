@@ -14,15 +14,15 @@ var html = '
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar investigador interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
-            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautorinterno">Cancelar</a>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="coautor">Cancelar</a>
         </p>
     </div>
     <% } %>
 ';
 
-$('#coautorinternoForm').html(html);
-$('#coautorinternoNew').hide();
-$('#coautorinternoForm').show();
+$('#coautorForm').html(html);
+$('#coautorNew').hide();
+$('#coautorForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorInterno_Nombre'));
 $('#CoautorInterno_Nombre')[0].autocompleter.setExtraParams({ extraParam: <%=Model.CreadoPorId%> });
