@@ -22,9 +22,9 @@ var html = '
 $('#mensaje-error').html('');
 $('#mensaje-error').removeClass('mensaje-error');
 
-$('#coautorinternoForm').hide();
-$('#coautorinternoNew').show();
-$('#coautorinternoForm').html('');
+$('#coautorForm').hide();
+$('#coautorNew').show();
+$('#coautorForm').html('');
 
 if($('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
 {

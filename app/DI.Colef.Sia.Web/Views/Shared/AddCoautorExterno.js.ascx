@@ -24,9 +24,9 @@ var html = '
 $('#mensaje-error').html('');
 $('#mensaje-error').removeClass('mensaje-error');
 
-$('#coautorexternoForm').hide();
-$('#coautorexternoNew').show();
-$('#coautorexternoForm').html('');
+$('#coautorForm').hide();
+$('#coautorNew').show();
+$('#coautorForm').html('');
 
 if($('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').length == 0)
 {
