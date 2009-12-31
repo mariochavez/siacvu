@@ -28,6 +28,7 @@
     <p>
 	    <label></label>
 	    ¿Pertenece al PNPC? <%=Html.CheckBox("PertenecePNPC", Model.PertenecePNPC)%>
+	    <br /><label></label><span>(Marque en caso positivo)</span>
     </p>
     <p>
         <label>Grado acad&eacute;mico obtenido/por obtener</label>
@@ -47,7 +48,8 @@
     <% Html.RenderPartial("_ShowInstitucionShort", new ShowFieldsForm { InstitucionId = Model.InstitucionId, InstitucionNombre = Model.InstitucionNombre, InstitucionLabel = "Institución", IsShowForm = false }); %>
     <p>
 	    <label></label>
-	    ¿Tiene convenio general con El COLEF? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+	    ¿Esta instituci&oacute;n tiene convenio general con El Colef? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+	    <br /><label></label><span>(Marque en caso positivo)</span>
     </p>
     <p>
         <label>Vinculaci&oacute;n con la APyD</label>
@@ -92,7 +94,7 @@
     <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
     <p>
         <label></label>
-        <span class="valor">¿Tiene convenio general con El COLEF? <%=Html.Encode(Model.TieneConvenio)%>&nbsp;</span>
+        <span class="valor">¿Esta instituci&oacute;n tiene convenio general con El Colef? <%=Html.Encode(Model.TieneConvenio)%>&nbsp;</span>
     </p>
     <p>
         <label>Vinculaci&oacute;n con la APyD</label>

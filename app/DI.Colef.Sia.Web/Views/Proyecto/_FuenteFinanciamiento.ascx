@@ -4,14 +4,14 @@
 <p>
     <label></label>
     ¿Proyecto con recursos complementarios? <%=Html.CheckBox("ConRecursos", Model.ConRecursos)%>
-    <%=Html.ValidationMessage("ConRecursos")%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 
 <div id="ProyectoConRecursos">
     <p>
         <label></label>
         ¿Cuenta con convenio? <%=Html.CheckBox("ConConvenio", Model.ConConvenio)%>
-        <%=Html.ValidationMessage("ConConvenio")%>
+        <br /><label></label><span>(Marque en caso positivo)</span>
     </p>
     <p class="Convenio_Fields">
         <label>Nombre del convenio</label>

@@ -82,22 +82,24 @@
                 
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
                 
-                <p>
-                    <label>Volumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>N&uacute;mero</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>De la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span> 
-                </p>
-                <p>    
-                    <label>A la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
-                </p>
+                <% if (Model.Form.EstadoProducto == 3){ %> 
+                    <p>
+                        <label>Volumen</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>N&uacute;mero</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>De la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span> 
+                    </p>
+                    <p>    
+                        <label>A la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span> 
+                    </p>
+                <% } %>
                 <p>
                     <label>Obra publicada</label>
                     <span class="valor">

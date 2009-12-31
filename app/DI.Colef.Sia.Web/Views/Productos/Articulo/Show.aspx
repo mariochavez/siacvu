@@ -61,7 +61,7 @@
                     <span class="valor"><%= HumanizeHelper.TipoProducto(Model.Form.TipoArticulo, 1)%>&nbsp;</span>
                 </p>
                 
-                <h4>Coautores de la publicaci&oacute;n</h4>
+                <h4>Coautores del art&iacute;culo</h4>
 				<%
 				    Html.RenderPartial("_ShowCoautorInterno",
 				                       new CoautorForm
@@ -83,23 +83,25 @@
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                     
                 <% Html.RenderPartial("_ShowRevista", Model.Form.ShowFields); %>
-                    
-                <p>
-                    <label>Volumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>N&uacute;mero</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>De la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
-                </p>
-                <p>    
-                    <label>A la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
-                </p>
+                   
+                <% if (Model.Form.EstadoProducto == 3){ %> 
+                    <p>
+                        <label>Volumen</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>N&uacute;mero</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Numero)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>De la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
+                    </p>
+                    <p>    
+                        <label>A la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 <p>
                     <label>Obra publicada</label>
                     <span class="valor">

@@ -72,7 +72,7 @@
                 </p>
                 
     <!-- Coautores de la publicacion -->            
-	            <h4><%=Model.Form.TipoCapitulo == 2 ? "Compiladores" : "Coodinadores"%> de la publicaci&oacute;n</h4>
+	            <h4>Coautores de la publicaci&oacute;n</h4>
 	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>
@@ -94,27 +94,29 @@
 				
 				<% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
 				
-                <p>
-                    <label>Resumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</span>
-                </p>
-                
-                <p>
-                    <label>Volumen</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>De la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>A la p&aacute;gina</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
-                </p>
-                <p>
-                    <label>N&uacute;mero de citas</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
-                </p>
+				<% if (Model.Form.EstadoProducto == 3){ %>
+                    <p>
+                        <label>Resumen</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Resumen)%>&nbsp;</span>
+                    </p>
+                    
+                    <p>
+                        <label>Volumen</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.Volumen)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>De la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaInicial)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>A la p&aacute;gina</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.PaginaFinal)%>&nbsp;</span>
+                    </p>
+                    <p>
+                        <label>N&uacute;mero de citas</label>
+                        <span class="valor"><%= Html.Encode(Model.Form.NoCitas)%>&nbsp;</span>
+                    </p>
+                <% } %>
                 <p>
                     <label>Obra publicada</label>
                     <span class="valor">

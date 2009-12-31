@@ -9,12 +9,12 @@
     <%=Html.ValidationMessage("Nombre") %>
 </p>
 <p>
-    <label>Email</label>
-    <%=Html.TextBox("Email", Model.Email, new { @class = "input250-requerido", maxlength = 40 })%>
-    <%=Html.ValidationMessage("Email")%>
+    <label>Apellido paterno</label>
+    <%=Html.TextBox("ApellidoPaterno", Model.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("ApellidoPaterno")%>
 </p>
 <p>
-    <label>Puesto</label>
-    <%=Html.TextBox("Puesto", Model.Puesto, new { @class = "input250-requerido", maxlength = 40 })%>
-    <%=Html.ValidationMessage("Puesto")%>
+    <label>Apellido paterno</label>
+    <%=Html.TextBox("ApellidoMaterno", Model.ApellidoMaterno, new { @class = "input250-requerido", maxlength = 40 })%>
+    <%=Html.ValidationMessage("ApellidoMaterno")%>
 </p>

@@ -52,7 +52,7 @@
 	            <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
 	            
-	            <h4><span id="coautores" class="titulovalor">Coautores</span> de la publicaci&oacute;n<span class="cvu"></span></h4>
+	            <h4>Coautores de la publicaci&oacute;n<span class="cvu"></span></h4>
 	            <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
 				<% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
 	            <p>
@@ -72,7 +72,15 @@
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                         ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
 	            
-			    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+	            <h4>Autor(es) del libro</h4>
+                <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
+                <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
+
+                <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
+	            
+	            <div class="EstatusPublicado">
+                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
 			    
                 <p>
                     <label>Obra publicada</label>

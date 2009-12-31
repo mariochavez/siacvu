@@ -4,6 +4,7 @@
 <p class="ReporteTecnico">
     <label></label>
     <%= Html.CheckBox("TieneProyecto", Model.TieneProyecto) %> ¿Existe proyecto de investigaci&oacute;n de referencia?
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <div class="tieneproyecto_field">
     <% Html.RenderPartial("_ShowProyecto", new ShowFieldsForm { ProyectoId = Model.ProyectoId, ProyectoNombre = Model.ProyectoNombre, IsShowForm = false}); %>
