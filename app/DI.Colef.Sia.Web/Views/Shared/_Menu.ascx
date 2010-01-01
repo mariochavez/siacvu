@@ -12,7 +12,7 @@
 			    <li><%=Html.ActionLinkForAreas<DictamenController>(x => x.New(), "Dict&aacute;menes") %></li>
 			    <li><a href="#recursoshumano">Formaci&oacute;n de recursos humanos</a></li>
 			    <li><%=Html.ActionLinkForAreas<EventoController>(x => x.New(), "Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos")%></li>
-			    <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.New(), "Difuci&oacute;n del conocimiento")%></li>
+			    <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.New(), "Difusi&oacute;n del conocimiento")%></li>
 			    <li><a href="#academia">Formaci&oacute;n acad&eacute;mica y trabajo cient&iacute;fico</a></li>
 			    <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.New(), "Distinciones acad&eacute;micas")%></li>
 			<% } %>

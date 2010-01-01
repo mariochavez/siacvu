@@ -4,5 +4,5 @@
 <p>
     <label></label>
     ¿Participan estudiantes? <%=Html.CheckBox("ParticipaEstudiante", Model.ParticipaEstudiante)%>
-    <%=Html.ValidationMessage("ParticipaEstudiante")%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>

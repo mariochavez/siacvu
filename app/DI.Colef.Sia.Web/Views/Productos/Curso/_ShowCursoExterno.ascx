@@ -18,6 +18,7 @@
 <p>
     <label></label>
     ¿Pertenece al PNPC? <%=Html.CheckBox("PertenecePNPC", Model.PertenecePNPC)%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <p>
     <label>Nivel de estudios</label>
@@ -31,11 +32,13 @@
 
 <p>
     <label></label>
-    ¿Es privada? <%=Html.CheckBox("EsPrivada", Model.EsPrivada)%>
+    ¿Esta instituci&oacute;n es privada? <%=Html.CheckBox("EsPrivada", Model.EsPrivada)%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <p id="EsPrivada_Field">
     <label></label>
-    ¿Tiene convenio? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+    ¿Esta instituci&oacute;n tiene convenio general con El Colef? <%=Html.CheckBox("TieneConvenio", Model.TieneConvenio)%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <p>
     <label>Fecha de inicio</label>
@@ -80,12 +83,12 @@
     <% Html.RenderPartial("_ShowInstitucionShort", Model.ShowFields); %>
     <p>
         <label></label>
-        <span class="valor">¿Es privada? <%= Html.Encode(Model.EsPrivada) %>&nbsp;</span>
+        <span class="valor">¿Esta instituci&oacute;n es privada? <%= Html.Encode(Model.EsPrivada) %>&nbsp;</span>
     </p>
     <%if(Model.EsPrivada){ %>
         <p>
             <label></label>
-            <span class="valor">¿Tiene convenio? <%= Html.Encode(Model.TieneConvenio) %>&nbsp;</span>
+            <span class="valor">¿Esta instituci&oacute;n tiene convenio general con El Colef? <%= Html.Encode(Model.TieneConvenio) %>&nbsp;</span>
         </p>
     <% } %>
     <p>

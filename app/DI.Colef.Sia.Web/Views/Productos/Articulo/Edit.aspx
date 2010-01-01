@@ -55,11 +55,12 @@
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 
-                <h4>Coautores del <%=HumanizeHelper.GetNombreProducto(1) %><span class="cvu"></span></h4>
+                <h4>Coautores del art&iacute;culo<span class="cvu"></span></h4>
                 <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, EsAlfabeticamente = Model.Form.EsAlfabeticamente}); %>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos }); %>
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautoresInternos = Model.Form.CoautorInternoArticulos }); %>
+
 	            <p>
 	                <label>Due&ntilde;o del producto</label>
 	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
@@ -81,7 +82,11 @@
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                         ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
                 
-                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.Form.RevistaPublicacionId, RevistaPublicacionTitulo = Model.Form.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "SearchFilteredRevista", Rel = "#TipoArticulo" }); %>
+                
+                <div class="EstatusPublicado">
+                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
 				
                 <p>
                     <label>Obra publicada</label>

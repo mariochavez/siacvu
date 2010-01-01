@@ -55,7 +55,7 @@
                 <label>¿Es Usted el l&iacute;der?</label>
                 <%= Html.CheckBox("Lider", Model.Form.Lider) %>
                 <span class="cvu"></span>
-                <%=Html.ValidationMessage("Lider")%>
+                <br /><label></label><span>(Marque en caso positivo)</span>
             </p>
             <p id="siLider">
                 <label>Nombre</label>

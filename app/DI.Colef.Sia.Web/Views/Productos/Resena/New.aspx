@@ -64,7 +64,11 @@
                     <% Html.RenderPartial("_ObraResenada", Model.Form); %>
                 </div>
                 
-			    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.Form.RevistaPublicacionId, RevistaPublicacionTitulo = Model.Form.RevistaPublicacionTitulo, RevistaLabel = "Revista en que se publica", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
+                
+                <div class="EstatusPublicado">
+			        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+			    </div>
 			    
                 <p>
                     <label>Obra publicada</label>

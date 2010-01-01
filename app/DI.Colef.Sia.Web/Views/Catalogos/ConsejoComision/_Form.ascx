@@ -16,5 +16,5 @@
 <p>
     <label>Reelecci&oacute;n</label>
     <%=Html.CheckBox("Reeleccion", Model.Reeleccion)%>
-    <%=Html.ValidationMessage("Reeleccion")%>
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>

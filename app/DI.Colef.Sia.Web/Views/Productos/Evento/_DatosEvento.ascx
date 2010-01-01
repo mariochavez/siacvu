@@ -34,6 +34,6 @@
     <p>
         <label>Con invitaci&oacute;n</label>
         <%= Html.CheckBox("Invitacion", Model.Invitacion) %>
-        <%=Html.ValidationMessage("Invitacion")%>
+        <br /><label></label><span>(Marque en caso positivo)</span>
     </p>
 </div>
