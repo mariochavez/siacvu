@@ -22,7 +22,6 @@ function setupDocument() {
     Cascade.setup();
 
     Coautores.setup();
-    CheckOrdenCoautores.setup();
 
     $('.trigger').click(function() {
         $('#slide').toggle('fast');
@@ -58,6 +57,10 @@ function setupDocument() {
         return false;
     });
 };
+
+function setupOrdenCoautores() {
+    CheckOrdenCoautores.setup();
+}
 
 function setupSublistRows() {
     $('div.sublista:odd').addClass('sublista-dos');
