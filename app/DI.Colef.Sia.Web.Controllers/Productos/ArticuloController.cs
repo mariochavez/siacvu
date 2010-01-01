@@ -346,10 +346,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var articulo = articuloService.GetArticuloById(id);
-            var form = new CoautorForm {Controller = "Articulo", IdName = "ArticuloId"};
+            var form = new CoautorForm
+                           {
+                               Controller = "Articulo", 
+                               IdName = "ArticuloId", 
+                               EsAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -423,14 +428,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var articulo = articuloService.GetArticuloById(id);
             var form = new CoautorForm
                            {
                                Controller = "Articulo",
                                IdName = "ArticuloId",
-                               InvestigadorExterno = new InvestigadorExternoForm()
+                               InvestigadorExterno = new InvestigadorExternoForm(), 
+                               EsAlfabeticamente = esAlfabeticamente
                            };
 
             if (articulo != null)
@@ -528,6 +534,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private ArticuloForm SetupNewForm(ArticuloForm form)
         {
             form = form ?? new ArticuloForm();
+
+            var nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                   CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                   CurrentInvestigador().Usuario.ApellidoMaterno);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
             form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);

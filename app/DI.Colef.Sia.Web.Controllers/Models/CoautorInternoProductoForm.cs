@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorInternoProductoForm
@@ -23,5 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                                      InvestigadorUsuarioApellidoMaterno, InvestigadorUsuarioNombre);
             }
         }
+
+        public bool EsAlfabeticamente { get; set; }
     }
 }

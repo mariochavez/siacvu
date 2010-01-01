@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CoautorExternoProductoForm
@@ -5,6 +7,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Id { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
+        public int Posicion { get; set; }
 
         public int InvestigadorExternoId { get; set; }
         public string InvestigadorExternoNombre { get; set; }
@@ -27,5 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                                      InvestigadorExternoApellidoMaterno);
             }
         }
+
+        public bool EsAlfabeticamente { get; set; }
     }
 }

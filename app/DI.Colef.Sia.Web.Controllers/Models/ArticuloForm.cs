@@ -1,7 +1,11 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
     {
+        public string InvestigadorNombre1 { get; private set; }
+
         public int Id { get; set; }
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
@@ -18,6 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public bool TieneProyecto { get; set; }
         public string Modificacion { get; set; }
+        public bool EsAlfabeticamente { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
@@ -61,6 +66,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get
             {
                 return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
+            }
+            set
+            {
+                InvestigadorNombre1 = value;
             }
         }
 

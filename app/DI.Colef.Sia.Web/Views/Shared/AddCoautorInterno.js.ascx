@@ -11,10 +11,12 @@ var html = '
             <a href="<%=Url.Action("deletecoautorinterno", null, new{id = Model.ParentId, investigadorId = Model.InvestigadorId }) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreCoautor) %>
             <%=Html.Hidden("CoautorInterno[' + counter + '].InvestigadorId", Model.InvestigadorId)%>
-            <span>
-                Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
-                <%=Html.Hidden("CoautorInterno[' + counter + '].Posicion", Model.Posicion)%>
-            </span>
+            <% if(!Model.EsAlfabeticamente){ %>
+                <span>
+                    Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
+                    <%=Html.Hidden("CoautorInterno[' + counter + '].Posicion", Model.Posicion)%>
+                </span>
+            <% } %>
         </h6>
 	</div><!--end sublista-->
 ';
@@ -28,7 +30,7 @@ $('#coautorForm').html('');
 
 if($('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
 {
-    $('#coautorinternoEmptyListForm').html('');
+    $('#coautorEmptyListForm').html('');
     $('#coautorinternoList div:first').before(html);
 
     $('#coautorinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').hide();

@@ -153,6 +153,14 @@ function articuloSetup() {
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#EsAlfabeticamente').dynamicui(
+        [
+            ['0', ['#EsAlfabeticamente_field']]
+        ]
+    );
+
+    $('#EsAlfabeticamente')[0].dynamic.setup();    
 }
 
 function participacionMedioSetup() {

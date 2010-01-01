@@ -11,12 +11,16 @@ var html = '
             <a href="<%=Url.Action("deletecoautorexterno", null, new{ id = Model.ParentId, investigadorExternoId = Model.InvestigadorExternoId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreCompleto)%>
             <%=Html.Hidden("CoautorExterno['  + counter + '].InvestigadorExternoId", Model.InvestigadorExternoId)%>
-            <% if (Model.InstitucionId != 0) {%>
-                <span>
+            <span>
+                <% if (Model.InstitucionId != 0) {%>
                     Instituci&oacute;n <%=Html.Encode(Model.InstitucionNombre)%>
                     <%=Html.Hidden("CoautorExterno[' + counter + '].InstitucionId", Model.InstitucionId)%>
-                </span>
-            <% } %>
+                <% } %>
+                <% if(!Model.EsAlfabeticamente){ %>
+                    Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
+                    <%=Html.Hidden("CoautorExterno[' + counter + '].Posicion", Model.Posicion)%>
+                <% } %>
+            </span>
         </h6>
 	</div><!--end sublista-->
 ';
@@ -30,7 +34,7 @@ $('#coautorForm').html('');
 
 if($('#coautorexterno_<%=Html.Encode(Model.InvestigadorExternoId) %>').length == 0)
 {
-    $('#coautorexternoEmptyListForm').html('');
+    $('#coautorEmptyListForm').html('');
     $('#coautorexternoList div:first').before(html);
 
     $('#coautorexterno_' + <%=Html.Encode(Model.InvestigadorExternoId)%> + ':first').hide();

@@ -73,6 +73,8 @@
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="ArticuloDifusion.cs" />
     <Compile Include="IParticipante.cs" />
+    <Compile Include="NHibernateValidator\CoautorInternoProductoValidator.cs" />
+    <Compile Include="NHibernateValidator\CoautorExternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\FirmaValidator.cs" />
     <Compile Include="NHibernateValidator\EstudianteProyectoValidator.cs" />
     <Compile Include="NHibernateValidator\ProductoGeneradoProyectoValidator.cs" />

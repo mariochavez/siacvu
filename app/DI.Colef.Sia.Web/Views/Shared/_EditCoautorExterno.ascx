@@ -14,15 +14,20 @@
 	                    <span>
                             Instituci&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
                             <%=Html.Hidden("CoautorExterno[" + i + "].InstitucionId", Model.CoautoresExternos[i].InstitucionId)%>
+                            Posici&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
+                            <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>
                         </span>
+                    <% } else { %>
+	                    <span>
+                            Posici&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
+                            <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>
+                        </span>                    
                     <% } %>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>
     <% } else { %>
-        <div class="sublista" id="coautorexternoEmptyListForm">
-            <h6><span>No hay investigadores externos registrados</span></h6>
-		</div><!--end elementodescripcion-->
+        <div></div>
     <% } %>
 	
 </div><!--end minilista-->

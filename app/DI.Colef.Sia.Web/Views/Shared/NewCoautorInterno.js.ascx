@@ -26,3 +26,4 @@ $('#coautorForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorInterno_Nombre'));
 $('#CoautorInterno_Nombre')[0].autocompleter.setExtraParams({ extraParam: <%=Model.CreadoPorId%> });
+$('#CoautorInterno_EsAlfabeticamente').attr('value', $('#EsAlfabeticamente').is(':checked'));

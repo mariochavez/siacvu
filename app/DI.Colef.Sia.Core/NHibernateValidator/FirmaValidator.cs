@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var firma = value as Firma;
             if (firma != null)
             {
-                if (firma.TipoProducto == 3 || firma.TipoProducto == 13 || firma.TipoProducto == 14)
+                if (firma.TipoProducto == 3 || firma.TipoProducto == 13 || firma.TipoProducto == 15)
                 {
                     if (firma.Aceptacion2 == 1)
                     {

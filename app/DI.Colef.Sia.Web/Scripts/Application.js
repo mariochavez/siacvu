@@ -22,6 +22,7 @@ function setupDocument() {
     Cascade.setup();
 
     Coautores.setup();
+    CheckOrdenCoautores.setup();
 
     $('.trigger').click(function() {
         $('#slide').toggle('fast');
@@ -68,11 +69,35 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
-function deleteElement(html, selectorString, listName) {
-    var totalCoautores = $(selectorString).length;
+function deleteElementV2(html, selectorString, emptylistName, totalSuma) {
+    var totalElementos = $(selectorString).length;
     var counter = 0;
 
-    if (totalCoautores != 0) {
+    if (totalElementos != 0) {
+        $(selectorString).each(function() {
+            var thisId = $(this).attr('id');
+
+            $('#' + thisId + " input:hidden").each(function() {
+                var newId = $(this).attr('id').replace(/[0-9]/, counter);
+                var newName = newId.replace('_', '.');
+
+                $(this).attr('id', newId);
+                $(this).attr('name', newName);
+            });
+
+            counter += 1;
+        });
+    }
+    if (totalSuma == 1) {
+        $(emptylistName).html(html);
+    }
+}
+
+function deleteElement(html, selectorString, listName) {
+    var totalElementos = $(selectorString).length;
+    var counter = 0;
+
+    if (totalElementos != 0) {
         $(selectorString).each(function() {
             var thisId = $(this).attr('id');
 
@@ -90,6 +115,25 @@ function deleteElement(html, selectorString, listName) {
         $(listName + ' div:first').before(html);
     }
 }
+
+var CheckOrdenCoautores = {
+    setup: function() {
+        $('#forma').unload(CheckOrdenCoautores.changeParamValue());
+        $('#EsAlfabeticamente').change(CheckOrdenCoautores.changeParamValue);
+    },
+    changeParamValue: function() {
+        var isChecked = $('#EsAlfabeticamente').is(':checked');
+
+        if (isChecked) {
+            $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('False', 'True'));
+            $('#NewCoautorExternoLink').attr('href', $('#NewCoautorExternoLink').attr('href').replace('False', 'True'));
+        }
+        else {
+            $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('True', 'False'));
+            $('#NewCoautorExternoLink').attr('href', $('#NewCoautorExternoLink').attr('href').replace('True', 'False'));
+        }
+    }
+};
 
 var Coautores = {
     setup: function() {
