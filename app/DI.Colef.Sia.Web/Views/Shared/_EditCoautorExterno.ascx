@@ -15,11 +15,11 @@
                             Instituci&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
                             <%=Html.Hidden("CoautorExterno[" + i + "].InstitucionId", Model.CoautoresExternos[i].InstitucionId)%>
                         <% } %>
-                        <% if(!Model.CoautoresExternos[i].EsAlfabeticamente){ %>
+                        <% if(!Model.CoautoresExternos[i].CoautorSeOrdenaAlfabeticamente){ %>
                             Posici&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
                             <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>                 
                         <% } %>
-                        <%=Html.Hidden("CoautorExterno[" + i + "].EsAlfabeticamente", Model.CoautoresExternos[i].EsAlfabeticamente)%>
+                        <%=Html.Hidden("CoautorExterno[" + i + "].CoautorSeOrdenaAlfabeticamente", Model.CoautoresExternos[i].CoautorSeOrdenaAlfabeticamente)%>
                     </span>
 	            </h6>
 			</div><!--end sublista-->

@@ -23,7 +23,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var coautorExternoProducto = value as CoautorExternoProducto;
             if (coautorExternoProducto != null)
             {
-                if (!coautorExternoProducto.EsAlfabeticamente)
+                if (!coautorExternoProducto.CoautorSeOrdenaAlfabeticamente)
                 {
                     if (coautorExternoProducto.Posicion <= 0)
                     {

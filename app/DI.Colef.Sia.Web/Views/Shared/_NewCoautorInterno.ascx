@@ -8,9 +8,9 @@
         new { @class = "autocomplete buscar-requerido", url = Url.Action("FilteredInvestigador", "Investigador"), maxlength = 100 })%>
     <%=Html.Hidden("CoautorInterno.InvestigadorId", 0, new { rel = "#CoautorInterno_Nombre" })%>
     <%=Html.ValidationMessage("CoautorInterno.Nombre")%>
-    <%=Html.Hidden("CoautorInterno.EsAlfabeticamente", Model.EsAlfabeticamente) %>
+    <%=Html.Hidden("CoautorInterno.CoautorSeOrdenaAlfabeticamente", Model.CoautorSeOrdenaAlfabeticamente) %>
 </p>
-<%if(!Model.EsAlfabeticamente){ %>
+<%if(!Model.CoautorSeOrdenaAlfabeticamente){ %>
     <p>
         <label>Posici&oacute;n</label>
         <%=Html.TextBox("CoautorInterno.Posicion", 2, new { @class = "input100-requerido", maxlength = 2 })%>

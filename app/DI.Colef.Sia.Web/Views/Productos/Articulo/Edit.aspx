@@ -56,7 +56,7 @@
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 
                 <h4>Coautores del art&iacute;culo<span class="cvu"></span></h4>
-                <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, EsAlfabeticamente = Model.Form.EsAlfabeticamente}); %>
+                <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente}); %>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos, ModelId = Model.Form.Id }); %>
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, ModelId = Model.Form.Id }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, CoautoresInternos = Model.Form.CoautorInternoArticulos }); %>
@@ -65,7 +65,7 @@
 	                <label>Due&ntilde;o del producto</label>
 	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
 	            </p>
-                <p id="EsAlfabeticamente_field">
+                <p id="CoautorSeOrdenaAlfabeticamente_field">
 	                <label>Posici&oacute;n del investigador</label>
                     <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
                     <span class="cvu"></span>

@@ -17,7 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int Posicion { get; set; }
 
-        public virtual bool EsAlfabeticamente { get; set; }
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }
 

@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public bool TieneProyecto { get; set; }
         public string Modificacion { get; set; }
-        public bool EsAlfabeticamente { get; set; }
+        public bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }

@@ -25,4 +25,4 @@ $('#coautorNew').hide();
 $('#coautorForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#CoautorExterno_Institucion'));
-$('#CoautorExterno_EsAlfabeticamente').attr('value', $('#EsAlfabeticamente').is(':checked'));
+$('#CoautorExterno_CoautorSeOrdenaAlfabeticamente').attr('value', $('#CoautorSeOrdenaAlfabeticamente').is(':checked'));

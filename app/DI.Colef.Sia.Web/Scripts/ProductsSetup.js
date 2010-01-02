@@ -154,13 +154,13 @@ function articuloSetup() {
 
     $('#TieneProyecto')[0].dynamic.setup();
 
-    $('#EsAlfabeticamente').dynamicui(
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
         [
-            ['0', ['#EsAlfabeticamente_field']]
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
         ]
     );
 
-    $('#EsAlfabeticamente')[0].dynamic.setup();    
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();    
 }
 
 function participacionMedioSetup() {

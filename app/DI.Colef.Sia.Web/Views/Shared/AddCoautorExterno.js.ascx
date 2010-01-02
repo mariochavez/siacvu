@@ -16,11 +16,11 @@ var html = '
                     Instituci&oacute;n <%=Html.Encode(Model.InstitucionNombre)%>
                     <%=Html.Hidden("CoautorExterno[' + counter + '].InstitucionId", Model.InstitucionId)%>
                 <% } %>
-                <% if(!Model.EsAlfabeticamente){ %>
+                <% if(!Model.CoautorSeOrdenaAlfabeticamente){ %>
                     Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
                     <%=Html.Hidden("CoautorExterno[' + counter + '].Posicion", Model.Posicion)%>
                 <% } %>
-                <%=Html.Hidden("CoautorExterno[' + counter + '].EsAlfabeticamente", Model.EsAlfabeticamente)%>
+                <%=Html.Hidden("CoautorExterno[' + counter + '].CoautorSeOrdenaAlfabeticamente", Model.CoautorSeOrdenaAlfabeticamente)%>
             </span>
         </h6>
 	</div><!--end sublista-->

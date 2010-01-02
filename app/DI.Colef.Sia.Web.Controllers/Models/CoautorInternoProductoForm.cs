@@ -26,6 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public bool EsAlfabeticamente { get; set; }
+        public bool CoautorSeOrdenaAlfabeticamente { get; set; }
     }
 }

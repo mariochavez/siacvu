@@ -22,9 +22,9 @@
         new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("CoautorExterno.InstitucionId", 0, new { rel = "#CoautorExterno_Institucion" })%>
     <%=Html.ValidationMessage("CoautorExterno.InstitucionId")%>
-    <%=Html.Hidden("CoautorExterno.EsAlfabeticamente", Model.EsAlfabeticamente)%>
+    <%=Html.Hidden("CoautorExterno.CoautorSeOrdenaAlfabeticamente", Model.CoautorSeOrdenaAlfabeticamente)%>
 </p>
-<%if(!Model.EsAlfabeticamente){ %>
+<%if(!Model.CoautorSeOrdenaAlfabeticamente){ %>
     <p>
         <label>Posici&oacute;n</label>
         <%=Html.TextBox("CoautorExterno.Posicion", 2, new { @class = "input100-requerido", maxlength = 2 })%>

@@ -353,7 +353,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            {
                                Controller = "Articulo", 
                                IdName = "ArticuloId", 
-                               EsAlfabeticamente = esAlfabeticamente
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
 
             if (User.IsInRole("Investigadores"))
@@ -436,7 +436,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                Controller = "Articulo",
                                IdName = "ArticuloId",
                                InvestigadorExterno = new InvestigadorExternoForm(), 
-                               EsAlfabeticamente = esAlfabeticamente
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
                            };
 
             if (articulo != null)

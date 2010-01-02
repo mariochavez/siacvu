@@ -122,10 +122,10 @@ function deleteElement(html, selectorString, listName) {
 var CheckOrdenCoautores = {
     setup: function() {
         $('#forma').unload(CheckOrdenCoautores.changeParamValue());
-        $('#EsAlfabeticamente').change(CheckOrdenCoautores.changeParamValue);
+        $('#CoautorSeOrdenaAlfabeticamente').change(CheckOrdenCoautores.changeParamValue);
     },
     changeParamValue: function() {
-        var isChecked = $('#EsAlfabeticamente').is(':checked');
+        var isChecked = $('#CoautorSeOrdenaAlfabeticamente').is(':checked');
 
         if (isChecked) {
             $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('False', 'True'));
