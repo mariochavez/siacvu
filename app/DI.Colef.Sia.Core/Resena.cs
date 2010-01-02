@@ -100,8 +100,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
+        [Valid]
         public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
 
+        [Valid]
         public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }
 
         [Valid]
@@ -113,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Archivo ComprobanteResena { get; set; }
 
-        public virtual int PosicionAutor { get; set; }
+        public virtual int PosicionCoautor { get; set; }
 
         public virtual int EstadoProducto { get; set; }
 
@@ -122,6 +124,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual DateTime FechaPublicacion { get; set; }
 
         public virtual string TituloLibro { get; set; }
+
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
 
         [Valid]
         public virtual IList<AutorInternoResena> AutorInternoResenas { get; private set; }

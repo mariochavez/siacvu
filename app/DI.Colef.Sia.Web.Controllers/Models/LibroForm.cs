@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        public int PosicionAutor { get; set; }
+        public int PosicionCoautor { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }

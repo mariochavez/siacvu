@@ -100,7 +100,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Archivo ComprobanteCapitulo { get; set; }
 
-        public virtual int PosicionAutor { get; set; }
+        public virtual int PosicionCoautor { get; set; }
 
         public virtual bool TieneProyecto { get; set; }
 
@@ -137,6 +137,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int PaginaFinal { get; set; }
 
         public virtual int NoCitas { get; set; }
+
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
 
         [Valid]
         public virtual IList<AutorInternoCapitulo> AutorInternoCapitulos { get; private set; }

@@ -94,6 +94,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Archivo ComprobanteObraTraducida { get; set; }
 
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<AutorInternoObraTraducida> AutorInternoObraTraducidas { get; private set; }
 
@@ -170,7 +172,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Sede Sede { get; set; }
 
-        public virtual int PosicionAutor { get; set; }
+        public virtual int PosicionCoautor { get; set; }
 
 		public virtual Usuario CreadoPor { get; set; }
 

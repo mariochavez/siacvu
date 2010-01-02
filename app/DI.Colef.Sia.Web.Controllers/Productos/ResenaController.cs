@@ -89,7 +89,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.PosicionAutor = 1;
+            data.Form.PosicionCoautor = 1;
 
             return View(data);
         }
@@ -144,9 +144,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 posicionAutor = coautorInternoResena.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionAutor;
+                posicionAutor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionAutor = posicionAutor;
+            data.Form.PosicionCoautor = posicionAutor;
 
             ViewData.Model = data;
             return View();

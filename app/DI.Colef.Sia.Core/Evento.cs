@@ -114,7 +114,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoEvento> CoautorInternoEventos { get; private set; }
 
-        public virtual int PosicionAutor { get; set; }
+        public virtual int PosicionCoautor { get; set; }
 
         public virtual decimal Puntuacion { get; set; }
 

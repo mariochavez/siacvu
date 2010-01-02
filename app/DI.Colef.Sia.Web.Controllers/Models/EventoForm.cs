@@ -15,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
         public string ObjetivoEvento { get; set; }
-        public int PosicionAutor { get; set; }
+        public int PosicionCoautor { get; set; }
         public int FinanciamientoInterno { get; set; }
         public int FinanciamientoExterno { get; set; }
         public int SesionesTrabajo { get; set; }

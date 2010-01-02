@@ -117,8 +117,8 @@
 	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
 	                </p>
 	                <p>
-	                    <label>Posici&oacute;n del investigador</label>
-	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor) %></span>
+	                    <label>Posici&oacute;n del coautor</label>
+	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor) %></span>
 	                </p>
 	            <% } %>
 	            <p>

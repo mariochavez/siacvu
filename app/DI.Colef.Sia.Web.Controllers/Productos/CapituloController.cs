@@ -75,7 +75,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            data.Form.PosicionAutor = 1;
+            data.Form.PosicionCoautor = 1;
 
             return View(data);
         }
@@ -130,9 +130,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 posicionAutor = coautorInternoCapitulo.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionAutor;
+                posicionAutor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionAutor = posicionAutor;
+            data.Form.PosicionCoautor = posicionAutor;
 
             ViewData.Model = data;
             return View();

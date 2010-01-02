@@ -72,8 +72,8 @@
 	            </p>
 	            
 	            <p>
-	                <label>Posici&oacute;n del investigador</label>
-                    <span class="valor"><%= Html.Encode(Model.Form.PosicionAutor) %>&nbsp;</span>
+	                <label>Posici&oacute;n del coautor</label>
+                    <span class="valor"><%= Html.Encode(Model.Form.PosicionCoautor) %>&nbsp;</span>
                 </p>
                 
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>

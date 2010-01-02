@@ -60,7 +60,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioLibro)
-                model.PosicionAutor = message.PosicionAutor;
+                model.PosicionCoautor = message.PosicionCoautor;
 
             if (message.EstadoProducto != 0 && message.EstadoProducto != 1)
             {
@@ -115,7 +115,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 foreach (var coautor in model.CoautorInternoLibros)
                 {
                     if (coautor.Investigador == investigador)
-                        coautor.Posicion = message.PosicionAutor;
+                        coautor.Posicion = message.PosicionCoautor;
                 }
             }
 

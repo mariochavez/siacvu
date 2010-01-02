@@ -1,9 +1,11 @@
 using System;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [AutorExternoProductoValidator]
     public class AutorExternoProducto : Entity, IBaseEntity
     {
         [NotNull]
@@ -14,6 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int TipoProducto { get; set; }
 
         public virtual int Posicion { get; set; }
+
+        public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
 
         public virtual Usuario CreadoPor { get; set; }
 

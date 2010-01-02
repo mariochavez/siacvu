@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NoCitas { get; set; }
 		public string ISBN { get; set; }
 		public int Reimpresion { get; set; }
-        public int PosicionAutor { get; set; }
+        public int PosicionCoautor { get; set; }
 		public int Tiraje { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }

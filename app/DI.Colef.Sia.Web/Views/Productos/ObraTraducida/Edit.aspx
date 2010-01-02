@@ -52,8 +52,8 @@
 
 	            <h4>Coautores de la obra traducida<span class="cvu"></span></h4>
                 <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente}); %>
-				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoObraTraducidas, ModelId = Model.Form.Id }); %>
-	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoObraTraducidas, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, CoautoresInternos = Model.Form.CoautorInternoObraTraducidas }); %>
 
 	            <p>
@@ -61,10 +61,10 @@
 	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
 	            </p>
                 <p id="CoautorSeOrdenaAlfabeticamente_field">
-	                <label>Posici&oacute;n del investigador</label>
-                    <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
+	                <label>Posici&oacute;n del coautor</label>
+                    <%=Html.TextBox("PosicionCoautor", Model.Form.PosicionCoautor, new { @class = "input100-requerido", maxlength = 2 })%>
                     <span class="cvu"></span>
-	                <%=Html.ValidationMessage("PosicionAutor")%>
+	                <%=Html.ValidationMessage("PosicionCoautor")%>
                 </p>
 	            <p>
 	                <label>Total de investigadores</label>

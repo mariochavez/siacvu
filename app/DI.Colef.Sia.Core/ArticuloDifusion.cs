@@ -79,7 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual Firma Firma { get; set; }
 
-        public virtual int PosicionAutor { get; set; }
+        public virtual int PosicionCoautor { get; set; }
 
         public virtual int EstadoProducto { get; set; }
 

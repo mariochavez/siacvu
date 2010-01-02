@@ -85,7 +85,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
-            data.Form.PosicionAutor = 1;
+            data.Form.PosicionCoautor = 1;
 
             ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
@@ -142,9 +142,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 posicionAutor = coautorInternoLibro.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionAutor;
+                posicionAutor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionAutor = posicionAutor;
+            data.Form.PosicionCoautor = posicionAutor;
 
             ViewData.Model = data;
             return View();
