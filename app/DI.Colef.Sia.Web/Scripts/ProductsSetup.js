@@ -24,6 +24,14 @@
     );
 
     $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function grupoInvestigacionSetup() {
@@ -58,6 +66,22 @@ function obraTraducidaSetup() {
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
+
+    $('#AutorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#AutorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#AutorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function capituloSetup() {
@@ -75,8 +99,24 @@ function capituloSetup() {
             ['1', ['#tieneproyecto_field']]
         ]
     );
-    
+
     $('#TieneProyecto')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
+
+    $('#AutorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#AutorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#AutorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function dictamenSetup() {
@@ -160,7 +200,7 @@ function articuloSetup() {
         ]
     );
 
-    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();    
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function participacionMedioSetup() {
@@ -204,6 +244,14 @@ function reporteSetup() {
         );
 
     $('#TipoReporte')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function resenaSetup() {
@@ -223,6 +271,22 @@ function resenaSetup() {
         );
 
     $('#EstadoProducto')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
+
+    $('#AutorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#AutorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#AutorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function proyectoSetup(role) {
@@ -331,6 +395,14 @@ function eventoSetup() {
         );
 
     $('#TipoParticipacion')[0].dynamic.setup();
+
+    $('#CoautorSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#CoautorSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#CoautorSeOrdenaAlfabeticamente')[0].dynamic.setup();
 
     CheckOptions.setup();
 }

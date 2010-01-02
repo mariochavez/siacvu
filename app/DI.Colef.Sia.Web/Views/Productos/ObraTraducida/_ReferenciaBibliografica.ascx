@@ -11,8 +11,25 @@
 </p>
 <div class="Capitulo_fields">
     <h4>Autor(es) del libro</h4>
-    <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoObraTraducidas, ModelId = Model.Id }); %>
-    <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, ModelId = Model.Id } ); %>
+    <% Html.RenderPartial("_AddAutoresButtons", new AutorForm { ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente}); %>
+    <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoObraTraducidas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
+    <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
+    <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutoresInternos = Model.AutorInternoObraTraducidas }); %>
+    <p>
+        <label>Due&ntilde;o del producto</label>
+        <span class="valor"><%=Html.Encode(Model.InvestigadorNombre1) %></span>
+    </p>
+    <p id="AutorSeOrdenaAlfabeticamente_field">
+        <label>Posici&oacute;n del autor</label>
+        <%=Html.TextBox("PosicionAutor", Model.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
+        <span class="cvu"></span>
+        <%=Html.ValidationMessage("PosicionAutor")%>
+    </p>
+    <p>
+        <label>Total de investigadores</label>
+        <span id="totalautores" class="valor"><%=Html.Encode(Model.TotalAutores) %></span>
+        <span class="cvu"></span>
+    </p>
 </div>
 <p class="Capitulo_fields">
     <label>Tipo de libro</label>

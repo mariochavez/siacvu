@@ -13,9 +13,11 @@ $('#message').html('');
 $('#message').removeClass('errormessage');
 $('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').remove();
 
-var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
-$('#totalcoautores').text(autores);
+var coautores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
+$('#totalcoautores').text(coautores);
 
-deleteElementV2(html, '#coautorinternoList div[id^=coautorinterno_]', '#coautorEmptyListForm', autores);
+var coautoresInternos = $('#coautorinternoList div[id^=coautorinterno_]').length;
+
+deleteElementV2(html, '#coautorinternoList div[id^=coautorinterno_]', '#coautorEmptyListForm', coautores, coautoresInternos, '#coautorinternoList');
 
 setupSublistRows();

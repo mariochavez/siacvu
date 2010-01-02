@@ -8,7 +8,7 @@
 </p>
 <p>
     <label>Apellido paterno</label>
-    <%=Html.TextBox("AutorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250", maxlength = 40 })%>
+    <%=Html.TextBox("AutorExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("AutorExterno.ApellidoPaterno")%>
 </p>
 <p>
@@ -22,4 +22,11 @@
         new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("AutorExterno.InstitucionId", 0, new { rel = "#AutorExterno_Institucion" })%>
     <%=Html.ValidationMessage("AutorExterno.InstitucionId")%>
+    <%=Html.Hidden("AutorExterno.AutorSeOrdenaAlfabeticamente", Model.AutorSeOrdenaAlfabeticamente)%>
 </p>
+<%if(!Model.AutorSeOrdenaAlfabeticamente){ %>
+    <p>
+        <label>Posici&oacute;n</label>
+        <%=Html.TextBox("AutorExterno.Posicion", 2, new { @class = "input100-requerido", maxlength = 2 })%>
+    </p>
+<% } %>

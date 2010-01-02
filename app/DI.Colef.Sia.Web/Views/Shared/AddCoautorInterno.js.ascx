@@ -37,8 +37,8 @@ if($('#coautorinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
     $('#coautorinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').hide();
     $('#coautorinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').fadeIn('slow');
 
-    var autores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
-    $('#totalcoautores').text(autores);
+    var coautores = ($('#coautorinternoList div[id^=coautorinterno_]').length) + ($('#coautorexternoList div[id^=coautorexterno_]').length)  + 1;
+    $('#totalcoautores').text(coautores);
 }
 
 setupSublistRows();

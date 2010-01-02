@@ -31,5 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         }
 
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
+
+        public int Posicion { get; set; }
     }
 }

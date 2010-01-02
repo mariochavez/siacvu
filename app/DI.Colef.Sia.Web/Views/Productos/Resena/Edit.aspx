@@ -121,6 +121,7 @@
         setupDocument();
         resenaSetup();
         setupOrdenCoautores();
+        setupOrdenAutores();
 
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';

@@ -62,6 +62,10 @@ function setupOrdenCoautores() {
     CheckOrdenCoautores.setup();
 }
 
+function setupOrdenAutores() {
+    CheckOrdenAutores.setup();
+}
+
 function setupSublistRows() {
     $('div.sublista:odd').addClass('sublista-dos');
     $('div.sublista:even').addClass('sublista');
@@ -72,7 +76,7 @@ function showMessage(message) {
     $('#mensaje-error').html('<p>' + message + '</p>');
 }
 
-function deleteElementV2(html, selectorString, emptylistName, totalSuma) {
+function deleteElementV2(html, selectorString, emptylistName, totalSuma, totalLista, listName) {
     var totalElementos = $(selectorString).length;
     var counter = 0;
 
@@ -90,6 +94,9 @@ function deleteElementV2(html, selectorString, emptylistName, totalSuma) {
 
             counter += 1;
         });
+    }
+    if (totalLista == 0) {
+        $(listName).html('<div></div>');
     }
     if (totalSuma == 1) {
         $(emptylistName).html(html);
@@ -134,6 +141,25 @@ var CheckOrdenCoautores = {
         else {
             $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('True', 'False'));
             $('#NewCoautorExternoLink').attr('href', $('#NewCoautorExternoLink').attr('href').replace('True', 'False'));
+        }
+    }
+};
+
+var CheckOrdenAutores = {
+    setup: function() {
+        $('#forma').unload(CheckOrdenAutores.changeParamValue());
+        $('#AutorSeOrdenaAlfabeticamente').change(CheckOrdenAutores.changeParamValue);
+    },
+    changeParamValue: function() {
+        var isChecked = $('#AutorSeOrdenaAlfabeticamente').is(':checked');
+        
+        if (isChecked) {
+            $('#NewAutorInternoLink').attr('href', $('#NewAutorInternoLink').attr('href').replace('False', 'True'));
+            $('#NewAutorExternoLink').attr('href', $('#NewAutorExternoLink').attr('href').replace('False', 'True'));
+        }
+        else {
+            $('#NewAutorInternoLink').attr('href', $('#NewAutorInternoLink').attr('href').replace('True', 'False'));
+            $('#NewAutorExternoLink').attr('href', $('#NewAutorExternoLink').attr('href').replace('True', 'False'));
         }
     }
 };

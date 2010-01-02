@@ -14,14 +14,15 @@ var html = '
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar autor externo", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
-            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="autorexterno">Cancelar</a>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="autor">Cancelar</a>
         </p>
     </div>
     <% } %>
 ';
 
-$('#autorexternoForm').html(html);
-$('#autorexternoNew').hide();
-$('#autorexternoForm').show();
+$('#autorForm').html(html);
+$('#autorNew').hide();
+$('#autorForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#AutorExterno_Institucion'));
+$('#AutorExterno_AutorSeOrdenaAlfabeticamente').attr('value', $('#AutorSeOrdenaAlfabeticamente').is(':checked'));

@@ -81,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get
             {
                 return (AutorExternoResenas == null ? 0 : AutorExternoResenas.Length) +
-                       (AutorInternoResenas == null ? 0 : AutorInternoResenas.Length);
+                       (AutorInternoResenas == null ? 0 : AutorInternoResenas.Length) + 1;
             }
         }
 

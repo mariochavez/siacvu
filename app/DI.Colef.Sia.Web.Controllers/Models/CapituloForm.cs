@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get
             {
                 return (AutorExternoCapitulos == null ? 0 : AutorExternoCapitulos.Length) +
-                       (AutorInternoCapitulos == null ? 0 : AutorInternoCapitulos.Length);
+                       (AutorInternoCapitulos == null ? 0 : AutorInternoCapitulos.Length) + 1;
             }
         }
 

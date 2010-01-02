@@ -83,7 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             get
             {
                 return (AutorExternoObraTraducidas == null ? 0 : AutorExternoObraTraducidas.Length) +
-                       (AutorInternoObraTraducidas == null ? 0 : AutorInternoObraTraducidas.Length);
+                       (AutorInternoObraTraducidas == null ? 0 : AutorInternoObraTraducidas.Length) + 1;
             }
         }
 

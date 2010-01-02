@@ -4,20 +4,20 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <div id="autorinternoEmptyListForm" class="sublista sublista-dos">
-        <h6>
-            <span>No hay autores internos registrados</span>
-        </h6>
-    </div>
+    <h6>
+        <span>No hay investigadores registrados</span>
+    </h6>
 ';
 
 $('#message').html('');
 $('#message').removeClass('errormessage');
 $('#autorinterno_<%=Html.Encode(Model.InvestigadorId) %>').remove();
 
-deleteElement(html, '#autorinternoList div[id^=autorinterno_]', '#autorinternoList');
+var autores = ($('#autorinternoList div[id^=autorinterno_]').length) + ($('#autorexternoList div[id^=autorexterno_]').length)  + 1;
+$('#totalautores').text(autores);
 
-var editores = ($('#autorinternoList div[id^=autorinterno_]').length) + ($('#autorexternoList div[id^=autorexterno_]').length);
-$('#totaleditores').text(editores);
+var autoresInternos = $('#autorinternoList div[id^=autorinterno_]').length;
+
+deleteElementV2(html, '#autorinternoList div[id^=autorinterno_]', '#autorEmptyListForm', autores, autoresInternos, '#autorinternoList');
 
 setupSublistRows();
