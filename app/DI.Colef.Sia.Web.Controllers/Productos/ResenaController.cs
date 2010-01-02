@@ -90,6 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             data.Form = SetupNewForm();
             ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
             data.Form.PosicionCoautor = 1;
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -99,8 +100,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Edit(int id)
         {
             CoautorInternoResena coautorInternoResena;
-            int posicionAutor;
+            AutorInternoResena autorInternoResena;
+            int posicionCoautor;
             var coautorExists = 0;
+            int posicionAutor;
+            var autorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var resena = resenaService.GetResenaById(id);
@@ -125,6 +129,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     resena.CoautorInternoResenas.Where(
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
+                autorExists =
+                    resena.AutorInternoResenas.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
                 if (resena.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                     return RedirectToHomeIndex("no lo puede modificar");
             }
@@ -141,12 +149,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     resena.CoautorInternoResenas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
                         FirstOrDefault();
 
-                posicionAutor = coautorInternoResena.Posicion;
+                posicionCoautor = coautorInternoResena.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionCoautor;
+                posicionCoautor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionCoautor = posicionAutor;
+            if (autorExists != 0)
+            {
+                autorInternoResena =
+                    resena.AutorInternoResenas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = autorInternoResena.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionCoautor = posicionCoautor;
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -545,10 +565,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorInterno(int id)
+        public ActionResult NewAutorInterno(int id, bool esAlfabeticamente)
         {
             var resena = resenaService.GetResenaById(id);
-            var form = new AutorForm { Controller = "Resena", IdName = "ResenaId" };
+            var form = new AutorForm
+                           {
+                               Controller = "Resena", 
+                               IdName = "ResenaId",
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (resena != null)
                 form.Id = resena.Id;
@@ -616,11 +641,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorExterno(int id)
+        public ActionResult NewAutorExterno(int id, bool esAlfabeticamente)
         {
             var resena = resenaService.GetResenaById(id);
 
-            var form = new AutorForm { Controller = "Resena", IdName = "ResenaId", InvestigadorExterno = new InvestigadorExternoForm()};
+            var form = new AutorForm
+                           {
+                               Controller = "Resena", 
+                               IdName = "ResenaId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (resena != null)
                 form.Id = resena.Id;
@@ -791,8 +822,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form.Id == 0)
             {
-                form.CoautorExternoResenas = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoResenas = new CoautorInternoProductoForm[] { };
+                form.CoautorExternoResenas = new CoautorExternoProductoForm[] {};
+                form.CoautorInternoResenas = new CoautorInternoProductoForm[] {};
+                form.AutorInternoResenas = new AutorInternoProductoForm[] {};
+                form.AutorExternoResenas = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
                     nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,

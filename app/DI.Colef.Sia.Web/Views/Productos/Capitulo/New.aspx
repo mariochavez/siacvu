@@ -58,7 +58,7 @@
                 </p>
 	            <p>
 	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
+	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>
 	                <span class="cvu"></span>
 	            </p>
 				

@@ -76,6 +76,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionCoautor = 1;
+            data.Form.PosicionAutor = 1;
 
             return View(data);
         }
@@ -85,8 +86,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Edit(int id)
         {
             CoautorInternoCapitulo coautorInternoCapitulo;
-            int posicionAutor;
+            AutorInternoCapitulo autorInternoCapitulo;
+            int posicionCoautor;
             var coautorExists = 0;
+            int posicionAutor;
+            var autorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var capitulo = capituloService.GetCapituloById(id);
@@ -111,6 +115,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     capitulo.CoautorInternoCapitulos.Where(
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
+                autorExists =
+                    capitulo.AutorInternoCapitulos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
                 if (capitulo.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                     return RedirectToHomeIndex("no lo puede modificar");
             }
@@ -127,12 +135,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     capitulo.CoautorInternoCapitulos.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
                         FirstOrDefault();
 
-                posicionAutor = coautorInternoCapitulo.Posicion;
+                posicionCoautor = coautorInternoCapitulo.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionCoautor;
+                posicionCoautor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionCoautor = posicionAutor;
+            if (autorExists != 0)
+            {
+                autorInternoCapitulo =
+                    capitulo.AutorInternoCapitulos.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = autorInternoCapitulo.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionCoautor = posicionCoautor;
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -514,10 +534,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorInterno(int id)
+        public ActionResult NewAutorInterno(int id, bool esAlfabeticamente)
         {
             var capitulo = capituloService.GetCapituloById(id);
-            var form = new AutorForm {Controller = "Capitulo", IdName = "CapituloId"};
+            var form = new AutorForm
+                           {
+                               Controller = "Capitulo", 
+                               IdName = "CapituloId",
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
@@ -585,11 +610,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorExterno(int id)
+        public ActionResult NewAutorExterno(int id, bool esAlfabeticamente)
         {
             var capitulo = capituloService.GetCapituloById(id);
 
-            var form = new AutorForm {Controller = "Capitulo", IdName = "CapituloId", InvestigadorExterno = new InvestigadorExternoForm()};
+            var form = new AutorForm
+                           {
+                               Controller = "Capitulo", 
+                               IdName = "CapituloId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
@@ -761,8 +792,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form.Id == 0)
             {
-                form.CoautorExternoCapitulos = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoCapitulos = new CoautorInternoProductoForm[] { };
+                form.CoautorExternoCapitulos = new CoautorExternoProductoForm[] {};
+                form.CoautorInternoCapitulos = new CoautorInternoProductoForm[] {};
+                form.AutorInternoCapitulos = new AutorInternoProductoForm[] {};
+                form.AutorExternoCapitulos = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
                     nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,

@@ -72,7 +72,7 @@
 				                           {CoautoresExternos = Model.Form.CoautorExternoArticulos, ModelId = Model.Form.Id});%>
 	            <p>
 	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores)%></span>	          
+	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          
 	            </p>
 	            
 	            <p>

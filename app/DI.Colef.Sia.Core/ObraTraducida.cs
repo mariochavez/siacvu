@@ -102,6 +102,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<AutorExternoObraTraducida> AutorExternoObraTraducidas { get; private set; }
 
+        public virtual int PosicionAutor { get; set; }
+
         [Valid]
         public virtual IList<EditorialObraTraducida> EditorialObraTraducidas { get; private set; }
 

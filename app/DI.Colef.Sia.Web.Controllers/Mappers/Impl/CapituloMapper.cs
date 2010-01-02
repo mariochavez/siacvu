@@ -54,9 +54,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Volumen = message.Volumen;
             model.TipoLibro = message.TipoLibro;
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
+            model.AutorSeOrdenaAlfabeticamente = message.AutorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioCapitulo)
+            {
                 model.PosicionCoautor = message.PosicionCoautor;
+                model.PosicionAutor = message.PosicionAutor;
+            }
 
             if (message.EstadoProducto != 0 && message.EstadoProducto != 1)
             {
@@ -112,6 +116,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 {
                     if (coautor.Investigador == investigador)
                         coautor.Posicion = message.PosicionCoautor;
+                }
+
+                foreach (var autor in model.AutorInternoCapitulos)
+                {
+                    if (autor.Investigador == investigador)
+                        autor.Posicion = message.PosicionAutor;
                 }
             }
 

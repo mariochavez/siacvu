@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ObraTraducidaForm
@@ -34,6 +36,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
+        public bool AutorSeOrdenaAlfabeticamente { get; set; }
+        public int PosicionAutor { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
@@ -65,12 +69,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             set { InvestigadorNombre1 = value; }
         }
 
-        public int TotalAutores
+        public int TotalCoautores
         {
             get
             {
                 return (CoautorExternoObraTraducidas == null ? 0 : CoautorExternoObraTraducidas.Length) +
                     (CoautorInternoObraTraducidas == null ? 0 : CoautorInternoObraTraducidas.Length) + 1;
+            }
+        }
+
+        public int TotalAutores
+        {
+            get
+            {
+                return (AutorExternoObraTraducidas == null ? 0 : AutorExternoObraTraducidas.Length) +
+                       (AutorInternoObraTraducidas == null ? 0 : AutorInternoObraTraducidas.Length);
             }
         }
 

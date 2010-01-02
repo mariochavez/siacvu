@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ResenaForm
@@ -18,6 +20,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public string Volumen { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
+        public bool AutorSeOrdenaAlfabeticamente { get; set; }
+        public int PosicionAutor { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
@@ -63,12 +67,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             set { InvestigadorNombre1 = value; }
         }
 
-        public int TotalAutores
+        public int TotalCoautores
         {
             get
             {
                 return (CoautorExternoResenas == null ? 0 : CoautorExternoResenas.Length) +
                     (CoautorInternoResenas == null ? 0 : CoautorInternoResenas.Length) + 1;
+            }
+        }
+
+        public int TotalAutores
+        {
+            get
+            {
+                return (AutorExternoResenas == null ? 0 : AutorExternoResenas.Length) +
+                       (AutorInternoResenas == null ? 0 : AutorInternoResenas.Length);
             }
         }
 

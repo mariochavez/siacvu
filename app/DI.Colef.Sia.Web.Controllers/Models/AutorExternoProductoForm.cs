@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class AutorExternoProductoForm
@@ -27,5 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                                      InvestigadorExternoApellidoMaterno);
             }
         }
+
+        public bool AutorSeOrdenaAlfabeticamente { get; set; }
     }
 }

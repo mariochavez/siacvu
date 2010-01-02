@@ -49,7 +49,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             set { InvestigadorNombre1 = value; }
         }
 
-        public int TotalAutores
+        public int TotalCoautores
         {
             get
             {

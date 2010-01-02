@@ -146,6 +146,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<AutorExternoCapitulo> AutorExternoCapitulos { get; private set; }
 
+        public virtual int PosicionAutor { get; set; }
+
         [Valid]
         public virtual IList<EditorialCapitulo> EditorialCapitulos { get; private set; }
 

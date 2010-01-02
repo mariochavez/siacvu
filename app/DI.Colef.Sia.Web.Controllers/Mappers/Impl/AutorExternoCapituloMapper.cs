@@ -25,6 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         {
             model.InvestigadorExterno = catalogoService.GetInvestigadorExternoById(message.InvestigadorExternoId);
             model.Institucion = catalogoService.GetInstitucionById(message.InstitucionId);
+            model.AutorSeOrdenaAlfabeticamente = message.AutorSeOrdenaAlfabeticamente;
 			
 			if (model.IsTransient())
             {

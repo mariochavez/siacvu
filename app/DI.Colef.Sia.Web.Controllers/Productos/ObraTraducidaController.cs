@@ -88,6 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
             data.Form.PosicionCoautor = 1;
+            data.Form.PosicionAutor = 1;
             ViewData["Idioma"] = (from e in data.Form.Idiomas where e.Nombre == "Español" select e.Id).FirstOrDefault();
             ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
@@ -99,8 +100,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult Edit(int id)
         {
             CoautorInternoObraTraducida coautorInternoObraTraducida;
-            int posicionAutor;
+            AutorInternoObraTraducida autorInternoObraTraducida;
+            int posicionCoautor;
             var coautorExists = 0;
+            int posicionAutor;
+            var autorExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
@@ -124,6 +128,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     obraTraducida.CoautorInternoObraTraducidas.Where(
                         x => x.Investigador.Id == CurrentInvestigador().Id).Count();
 
+                autorExists =
+                    obraTraducida.AutorInternoObraTraducidas.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
                 if (obraTraducida.Usuario.Id != CurrentUser().Id && coautorExists == 0)
                     return RedirectToHomeIndex("no lo puede modificar");
             }
@@ -140,12 +148,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     obraTraducida.CoautorInternoObraTraducidas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
                         FirstOrDefault();
 
-                posicionAutor = coautorInternoObraTraducida.Posicion;
+                posicionCoautor = coautorInternoObraTraducida.Posicion;
             }
             else
-                posicionAutor = data.Form.PosicionCoautor;
+                posicionCoautor = data.Form.PosicionCoautor;
 
-            data.Form.PosicionCoautor = posicionAutor;
+            if (autorExists != 0)
+            {
+                autorInternoObraTraducida =
+                    obraTraducida.AutorInternoObraTraducidas.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionAutor = autorInternoObraTraducida.Posicion;
+            }
+            else
+                posicionAutor = data.Form.PosicionAutor;
+
+            data.Form.PosicionCoautor = posicionCoautor;
+            data.Form.PosicionAutor = posicionAutor;
 
             ViewData.Model = data;
             return View();
@@ -546,10 +566,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorInterno(int id)
+        public ActionResult NewAutorInterno(int id, bool esAlfabeticamente)
         {
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
-            var form = new AutorForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId" };
+            var form = new AutorForm
+                           {
+                               Controller = "ObraTraducida", 
+                               IdName = "ObraTraducidaId",
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (obraTraducida != null)
                 form.Id = obraTraducida.Id;
@@ -617,11 +642,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewAutorExterno(int id)
+        public ActionResult NewAutorExterno(int id, bool esAlfabeticamente)
         {
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
 
-            var form = new AutorForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new AutorForm
+                           {
+                               Controller = "ObraTraducida", 
+                               IdName = "ObraTraducidaId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               AutorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (obraTraducida != null)
                 form.Id = obraTraducida.Id;
@@ -792,8 +823,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             if (form.Id == 0)
             {
-                form.CoautorExternoObraTraducidas = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoObraTraducidas = new CoautorInternoProductoForm[] { };
+                form.CoautorExternoObraTraducidas = new CoautorExternoProductoForm[] {};
+                form.CoautorInternoObraTraducidas = new CoautorInternoProductoForm[] {};
+                form.AutorInternoObraTraducidas = new AutorInternoProductoForm[] {};
+                form.AutorExternoObraTraducidas = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
                     nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,

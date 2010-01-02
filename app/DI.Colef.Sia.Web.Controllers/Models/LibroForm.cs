@@ -77,7 +77,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public EventoForm Evento { get; set; }
 
-        public int TotalAutores
+        public int TotalCoautores
         {
             get
             {

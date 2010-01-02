@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CapituloForm
@@ -20,6 +22,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
         public string Volumen { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
+        public int PosicionAutor { get; set; }
+        public bool AutorSeOrdenaAlfabeticamente { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
@@ -59,7 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             set { InvestigadorNombre1 = value; }
         }
 
-        public int TotalAutores
+        public int TotalCoautores
         {
             get
             {
@@ -68,7 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
-        public int TotalEditores
+        public int TotalAutores
         {
             get
             {
