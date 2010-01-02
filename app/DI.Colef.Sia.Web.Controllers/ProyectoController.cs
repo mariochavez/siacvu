@@ -121,6 +121,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 ViewData["ClaseId"] = (from c in data.Form.Clases where c.Nombre == "Servicios de investigacion y desarrollo en ciencias sociales y humanidades prestados por el sector publi" select c.Id).FirstOrDefault();
             }
 
+            data.Form.PosicionParticipante = 1;
+
             return View(data);
         }
 
@@ -128,6 +130,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            ParticipanteInternoProyecto participanteInternoProyecto;
+            int posicionParticipante;
+            var participanteExists = 0;
             var data = CreateViewDataWithTitle(Title.Edit);
 
             var proyecto = proyectoService.GetProyectoById(id);
@@ -149,6 +154,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             if (User.IsInRole("Investigadores"))
             {
+                participanteExists =
+                    proyecto.ParticipanteInternoProyectos.Where(
+                        x => x.Investigador.Id == CurrentInvestigador().Id).Count();
+
                 if (proyecto.Usuario.Id != CurrentUser().Id)
                     return RedirectToHomeIndex("no lo puede modificar");
             }
@@ -158,6 +167,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             data.Form = SetupNewForm(proyectoForm);
 
             FormSetCombos(data.Form);
+
+            if (participanteExists != 0)
+            {
+                participanteInternoProyecto =
+                    proyecto.ParticipanteInternoProyectos.Where(x => x.Investigador.Id == CurrentInvestigador().Id).
+                        FirstOrDefault();
+
+                posicionParticipante = participanteInternoProyecto.Posicion;
+            }
+            else
+                posicionParticipante = data.Form.PosicionParticipante;
+
+            data.Form.PosicionParticipante = posicionParticipante;
 
             ViewData.Model = data;
             return View();
@@ -594,10 +616,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewParticipanteInterno(int id)
+        public ActionResult NewParticipanteInterno(int id , bool esAlfabeticamente)
         {
             var proyecto = proyectoService.GetProyectoById(id);
-            var form = new ParticipanteForm {Controller = "Proyecto", IdName = "ProyectoId"};
+            var form = new ParticipanteForm
+                           {
+                               Controller = "Proyecto", 
+                               IdName = "ProyectoId",
+                               ParticipanteSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (proyecto != null)
                 form.Id = proyecto.Id;
@@ -664,10 +691,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewParticipanteExterno(int id)
+        public ActionResult NewParticipanteExterno(int id, bool esAlfabeticamente)
         {
             var proyecto = proyectoService.GetProyectoById(id);
-            var form = new ParticipanteForm { Controller = "Proyecto", IdName = "ProyectoId", InvestigadorExterno = new InvestigadorExternoForm()};
+            var form = new ParticipanteForm
+                           {
+                               Controller = "Proyecto", 
+                               IdName = "ProyectoId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               ParticipanteSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (proyecto != null)
                 form.Id = proyecto.Id;
@@ -827,14 +860,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("DeleteProducto", form);
         }
 
-        ProyectoForm SetupNewForm()
+        private ProyectoForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        ProyectoForm SetupNewForm(ProyectoForm form)
+        private ProyectoForm SetupNewForm(ProyectoForm form)
         {
             form = form ?? new ProyectoForm();
+            var nombreInvestigador = String.Empty;
+
+            if (form.Id == 0)
+            {
+                form.ParticipanteExternoProyectos = new ParticipanteExternoProductoForm[] { };
+                form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             form.ResponsableProyecto = new ResponsableProyectoForm();
             form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();

@@ -14,14 +14,15 @@ var html = '
         <p>
             <span>
                 <%=Html.SubmitButton("Guardar", "Agregar participante interno", new { rel = "' + rel + '", @class = "' + cssclass + '", @style = "border: 0px none;" })%>
-            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="participanteinterno">Cancelar</a>
+            </span> &oacute; <a href="#" class="cancel minilistacancelar" rel="participante">Cancelar</a>
         </p>
     </div>
     <% } %>
 ';
 
-$('#participanteinternoForm').html(html);
-$('#participanteinternoNew').hide();
-$('#participanteinternoForm').show();
+$('#participanteForm').html(html);
+$('#participanteNew').hide();
+$('#participanteForm').show();
 DateTimePicker.setup();
 AutoComplete.config($('#ParticipanteInterno_Nombre'));
+$('#ParticipanteInterno_ParticipanteSeOrdenaAlfabeticamente').attr('value', $('#ParticipanteSeOrdenaAlfabeticamente').is(':checked'));

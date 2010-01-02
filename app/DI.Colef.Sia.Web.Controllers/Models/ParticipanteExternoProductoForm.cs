@@ -1,3 +1,5 @@
+using System;
+
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ParticipanteExternoProductoForm
@@ -27,5 +29,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                                      InvestigadorExternoApellidoMaterno);
             }
         }
+
+        public bool ParticipanteSeOrdenaAlfabeticamente { get; set; }
+        public int Posicion { get; set; }
     }
 }

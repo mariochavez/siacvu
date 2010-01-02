@@ -22,4 +22,11 @@
             new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Institucion"), maxlength = 100 })%>
     <%=Html.Hidden("ParticipanteExterno.InstitucionId", 0, new { rel = "#ParticipanteExterno_Institucion" })%>
     <%=Html.ValidationMessage("ParticipanteExterno.InstitucionId")%>
+    <%=Html.Hidden("ParticipanteExterno.ParticipanteSeOrdenaAlfabeticamente", Model.ParticipanteSeOrdenaAlfabeticamente)%>
 </p>
+<%if(!Model.ParticipanteSeOrdenaAlfabeticamente){ %>
+    <p>
+        <label>Posici&oacute;n</label>
+        <%=Html.TextBox("ParticipanteExterno.Posicion", 2, new { @class = "input100-requerido", maxlength = 2 })%>
+    </p>
+<% } %>

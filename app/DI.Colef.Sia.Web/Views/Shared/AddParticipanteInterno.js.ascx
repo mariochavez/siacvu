@@ -11,6 +11,13 @@ var html = '
             <a href="<%=Url.Action("DeleteParticipanteInterno", null, new{id = Model.ParentId, investigadorId = Model.InvestigadorId }) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
             <%=Html.Encode(Model.NombreParticipante) %>
             <%=Html.Hidden("ParticipanteInterno[' + counter + '].InvestigadorId", Model.InvestigadorId)%>
+            <% if(!Model.ParticipanteSeOrdenaAlfabeticamente){ %>
+                <span>
+                    Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
+                    <%=Html.Hidden("ParticipanteInterno[' + counter + '].Posicion", Model.Posicion)%>
+                </span>
+            <% } %>
+            <%=Html.Hidden("ParticipanteInterno[' + counter + '].ParticipanteSeOrdenaAlfabeticamente", Model.ParticipanteSeOrdenaAlfabeticamente)%>
         </h6>
 	</div><!--end sublista-->
 ';
@@ -18,20 +25,20 @@ var html = '
 $('#mensaje-error').html('');
 $('#mensaje-error').removeClass('mensaje-error');
 
-$('#participanteinternoForm').hide();
-$('#participanteinternoNew').show();
-$('#participanteinternoForm').html('');
+$('#participanteForm').hide();
+$('#participanteNew').show();
+$('#participanteForm').html('');
 
 if($('#participanteinterno_<%=Html.Encode(Model.InvestigadorId) %>').length == 0)
 {
-    $('#participanteinternoEmptyListForm').html('');
+    $('#participanteEmptyListForm').html('');
     $('#participanteinternoList div:first').before(html);
 
     $('#participanteinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').hide();
     $('#participanteinterno_' + <%=Html.Encode(Model.InvestigadorId)%> + ':first').fadeIn('slow');
 
-    var editores = ($('#participanteinternoList div[id^=participanteinterno_]').length) + ($('#participanteexternoList div[id^=participanteexterno_]').length);
-    $('#totaleditores').text(editores);
+    var participantes = ($('#participanteinternoList div[id^=participanteinterno_]').length) + ($('#participanteexternoList div[id^=participanteexterno_]').length) + 1;
+    $('#totalparticipantes').text(participantes);
 }
 
 setupSublistRows();

@@ -331,6 +331,15 @@ function proyectoSetup(role) {
     );
 
     $('#ParticipaEstudiante')[0].dynamic.setup();
+
+
+    $('#ParticipanteSeOrdenaAlfabeticamente').dynamicui(
+        [
+            ['0', ['#ParticipanteSeOrdenaAlfabeticamente_field']]
+        ]
+    );
+
+    $('#ParticipanteSeOrdenaAlfabeticamente')[0].dynamic.setup();
 }
 
 function investigadorSetup() {

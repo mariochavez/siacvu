@@ -29,9 +29,9 @@
 	<%=Html.ValidationMessage("Sesion.Lugar")%>
 </p>
 
-<h4>Participantes y logros de la sesi&oacute;n</h4>
-    <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.SesionEvento.ParticipanteInternoEventos, ModelId = Model.SesionEvento.Id }); %>
-    <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.SesionEvento.ParticipanteExternoEventos, ModelId = Model.SesionEvento.Id }); %>
+<h4>Logros de la sesi&oacute;n</h4>
+<%--    <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.SesionEvento.ParticipanteInternoEventos, ModelId = Model.SesionEvento.Id }); %>
+    <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.SesionEvento.ParticipanteExternoEventos, ModelId = Model.SesionEvento.Id }); %>--%>
 <p>
     <label>Principales logros de la sesi&oacute;n</label>
     <%=Html.TextArea("Sesion.Logros", Model.SesionEvento.Logros, 3, 35, new { @class = "input420", maxlength = 300 })%>

@@ -98,11 +98,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<ResponsableProyecto> ResponsableProyectos { get; private set; }
 
+        public virtual bool ParticipanteSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<ParticipanteInternoProyecto> ParticipanteInternoProyectos { get; private set; }
 
         [Valid]
         public virtual IList<ParticipanteExternoProyecto> ParticipanteExternoProyectos { get; private set; }
+
+        public virtual int PosicionParticipante { get; set; }
 
         [Valid]
         public virtual Firma Firma { get; set; }

@@ -153,6 +153,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ParticipanteExternoProductoForm[] ParticipanteExternoProyectos { get; set; }
         public ParticipanteExternoProductoForm ParticipanteExternoProducto { get; set; }
 
+        public string UsuarioNombre { get; set; }
+        public string UsuarioApellidoPaterno { get; set; }
+        public string UsuarioApellidoMaterno { get; set; }
+
+        public string InvestigadorNombre1 { get; private set; }
+        public string InvestigadorNombre
+        {
+            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
+            set { InvestigadorNombre1 = value; }
+        }
+
+        public int TotalParticipantes
+        {
+            get
+            {
+                return (ParticipanteExternoProyectos == null ? 0 : ParticipanteExternoProyectos.Length) +
+                    (ParticipanteInternoProyectos == null ? 0 : ParticipanteInternoProyectos.Length) + 1;
+            }
+        }
+
         public decimal TotalPesos
         {
             get
@@ -198,5 +218,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         }
 
         public string UserRole { get; set; }
+        public bool ParticipanteSeOrdenaAlfabeticamente { get; set; }
+        public int PosicionParticipante { get; set; }
     }
 }

@@ -7,4 +7,11 @@
         new { @class = "autocomplete buscar-requerido", url = Url.Action("Search", "Investigador"), maxlength = 100 })%>
     <%=Html.Hidden("ParticipanteInterno.InvestigadorId", 0, new { rel = "#ParticipanteInterno_Nombre" })%>
     <%=Html.ValidationMessage("ParticipanteInterno.Nombre")%>
+    <%=Html.Hidden("ParticipanteInterno.ParticipanteSeOrdenaAlfabeticamente", Model.ParticipanteSeOrdenaAlfabeticamente)%>
 </p>
+<%if(!Model.ParticipanteSeOrdenaAlfabeticamente){ %>
+    <p>
+        <label>Posici&oacute;n</label>
+        <%=Html.TextBox("ParticipanteInterno.Posicion", 2, new { @class = "input100-requerido", maxlength = 2 })%>
+    </p>
+<% } %>

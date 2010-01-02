@@ -66,6 +66,10 @@ function setupOrdenAutores() {
     CheckOrdenAutores.setup();
 }
 
+function setupOrdenParticipantes() {
+    CheckOrdenParticipantes.setup();
+}
+
 function setupSublistRows() {
     $('div.sublista:odd').addClass('sublista-dos');
     $('div.sublista:even').addClass('sublista');
@@ -160,6 +164,25 @@ var CheckOrdenAutores = {
         else {
             $('#NewAutorInternoLink').attr('href', $('#NewAutorInternoLink').attr('href').replace('True', 'False'));
             $('#NewAutorExternoLink').attr('href', $('#NewAutorExternoLink').attr('href').replace('True', 'False'));
+        }
+    }
+};
+
+var CheckOrdenParticipantes = {
+    setup: function() {
+        $('#forma').unload(CheckOrdenParticipantes.changeParamValue());
+        $('#ParticipanteSeOrdenaAlfabeticamente').change(CheckOrdenParticipantes.changeParamValue);
+    },
+    changeParamValue: function() {
+        var isChecked = $('#ParticipanteSeOrdenaAlfabeticamente').is(':checked');
+
+        if (isChecked) {
+            $('#NewParticipanteInternoLink').attr('href', $('#NewParticipanteInternoLink').attr('href').replace('False', 'True'));
+            $('#NewParticipanteExternoLink').attr('href', $('#NewParticipanteExternoLink').attr('href').replace('False', 'True'));
+        }
+        else {
+            $('#NewParticipanteInternoLink').attr('href', $('#NewParticipanteInternoLink').attr('href').replace('True', 'False'));
+            $('#NewParticipanteExternoLink').attr('href', $('#NewParticipanteExternoLink').attr('href').replace('True', 'False'));
         }
     }
 };

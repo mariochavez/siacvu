@@ -17,6 +17,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IEstudianteProyectoMapper estudianteProyectoMapper;
         readonly IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper;
         readonly IConvenioService convenioService;
+        private Usuario usuarioProyecto = null;
 
         public ProyectoMapper(IRepository<Proyecto> repository, ICatalogoService catalogoService,
                               IResponsableProyectoMapper responsableProyectoMapper,
@@ -52,6 +53,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaProrroga = message.FechaProrroga.FromShortDateToDateTime();
             model.EstadoProyecto = message.EstadoProyecto;
             model.FechaConclusion = message.FechaConclusion.FromShortDateToDateTime();
+            model.ParticipanteSeOrdenaAlfabeticamente = message.ParticipanteSeOrdenaAlfabeticamente;
+
+            if (model.Usuario == null || model.Usuario == usuarioProyecto)
+                model.PosicionParticipante = message.PosicionParticipante;
 
             model.ConRecursos = message.ConRecursos;
             model.ConConvenio = message.ConConvenio;
@@ -94,6 +99,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
         public Proyecto Map(ProyectoForm message, Usuario usuario, Investigador investigador)
         {
+            usuarioProyecto = usuario;
             var model = Map(message);
 
             if (model.IsTransient())
@@ -102,6 +108,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.CreadoPor = usuario;
                 model.Sede = GetLatest(investigador.CargosInvestigador).Sede;
                 model.Departamento = GetLatest(investigador.CargosInvestigador).Departamento;
+            }
+
+            if (model.Usuario != investigador.Usuario)
+            {
+                foreach (var participante in model.ParticipanteInternoProyectos)
+                {
+                    if (participante.Investigador == investigador)
+                        participante.Posicion = message.PosicionParticipante;
+                }
             }
 
             model.ModificadoPor = usuario;

@@ -13,5 +13,7 @@
         public int InvestigadorId { get; set; }
 
         public InvestigadorExternoForm InvestigadorExterno { get; set; }
+
+        public bool ParticipanteSeOrdenaAlfabeticamente { get; set; }
     }
 }

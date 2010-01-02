@@ -77,6 +77,8 @@
     <Compile Include="NHibernateValidator\AutorInternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\CoautorInternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\CoautorExternoProductoValidator.cs" />
+    <Compile Include="NHibernateValidator\ParticipanteInternoProductoValidator.cs" />
+    <Compile Include="NHibernateValidator\ParticipanteExternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\FirmaValidator.cs" />
     <Compile Include="NHibernateValidator\EstudianteProyectoValidator.cs" />
     <Compile Include="NHibernateValidator\ProductoGeneradoProyectoValidator.cs" />
