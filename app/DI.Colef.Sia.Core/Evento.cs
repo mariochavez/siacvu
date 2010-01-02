@@ -106,6 +106,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual string TituloTrabajo { get; set; }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoEvento> CoautorExternoEventos { get; private set; }
 

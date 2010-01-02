@@ -46,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FinanciamientoInterno = message.FinanciamientoInterno;
             model.FinanciamientoExterno = message.FinanciamientoExterno;
             model.SesionesTrabajo = message.SesionesTrabajo;
+            model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioEvento)
                 model.PosicionAutor = message.PosicionAutor;

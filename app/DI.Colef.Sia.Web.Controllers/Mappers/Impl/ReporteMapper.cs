@@ -45,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.TieneProyecto = message.TieneProyecto;
             model.TipoReporte = message.TipoReporte;
             model.Numero = message.Numero;
+            model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioReporte)
                 model.PosicionAutor = message.PosicionAutor;

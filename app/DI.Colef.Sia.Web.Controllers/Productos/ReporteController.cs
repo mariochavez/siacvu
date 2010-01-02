@@ -352,10 +352,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var reporte = reporteService.GetReporteById(id);
-            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId" };
+            var form = new CoautorForm
+                           {
+                               Controller = "Reporte", 
+                               IdName = "ReporteId",
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -430,10 +435,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var reporte = reporteService.GetReporteById(id);
-            var form = new CoautorForm { Controller = "Reporte", IdName = "ReporteId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new CoautorForm
+                           {
+                               Controller = "Reporte", 
+                               IdName = "ReporteId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (reporte != null)
                 form.Id = reporte.Id;
@@ -591,17 +602,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteInstitucion", form);
         }
 
-        ReporteForm SetupNewForm()
+        private ReporteForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        ReporteForm SetupNewForm(ReporteForm form)
+        private ReporteForm SetupNewForm(ReporteForm form)
         {
             form = form ?? new ReporteForm();
+            var nombreInvestigador = String.Empty;
 
-            form.CoautorExternoProducto = new CoautorExternoProductoForm();
-            form.CoautorInternoProducto = new CoautorInternoProductoForm();
+            if (form.Id == 0)
+            {
+                form.CoautorExternoReportes = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoReportes = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             //Lista de Catalogos Pendientes
             form.TiposReportes = customCollection.TipoReporteCustomCollection();

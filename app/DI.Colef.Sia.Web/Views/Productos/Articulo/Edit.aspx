@@ -55,7 +55,7 @@
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 
-                <h4>Coautores del art&iacute;culo<span class="cvu"></span></h4>
+                <h4>Coautores del art&iacute;culo de investigaci&oacute;n<span class="cvu"></span></h4>
                 <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente}); %>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos, ModelId = Model.Form.Id }); %>
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoArticulos, ModelId = Model.Form.Id }); %>

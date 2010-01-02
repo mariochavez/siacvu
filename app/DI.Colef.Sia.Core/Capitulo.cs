@@ -83,6 +83,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoCapitulo { get; set; }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoCapitulo> CoautorExternoCapitulos { get; private set; }
 

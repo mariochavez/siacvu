@@ -330,10 +330,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var capitulo = capituloService.GetCapituloById(id);
-            var form = new CoautorForm {Controller = "Capitulo", IdName = "CapituloId"};
+            var form = new CoautorForm
+                           {
+                               Controller = "Capitulo", 
+                               IdName = "CapituloId",
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -409,10 +414,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var capitulo = capituloService.GetCapituloById(id);
-            var form = new CoautorForm { Controller = "Capitulo", IdName = "CapituloId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new CoautorForm
+                           {
+                               Controller = "Capitulo", 
+                               IdName = "CapituloId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (capitulo != null)
                 form.Id = capitulo.Id;
@@ -737,14 +748,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteEditorial", form);
         }
 
-        CapituloForm SetupNewForm()
+        private CapituloForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        CapituloForm SetupNewForm(CapituloForm form)
+        private CapituloForm SetupNewForm(CapituloForm form)
         {
             form = form ?? new CapituloForm();
+
+            var nombreInvestigador = String.Empty;
+
+            if (form.Id == 0)
+            {
+                form.CoautorExternoCapitulos = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoCapitulos = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);

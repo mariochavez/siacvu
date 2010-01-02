@@ -57,6 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Reimpresion = message.Reimpresion;
             model.FormatoPublicacion = message.FormatoPublicacion;
             model.ContenidoLibro = message.ContenidoLibro;
+            model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioLibro)
                 model.PosicionAutor = message.PosicionAutor;

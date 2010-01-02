@@ -19,6 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FinanciamientoInterno { get; set; }
         public int FinanciamientoExterno { get; set; }
         public int SesionesTrabajo { get; set; }
+        public bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
         public int ComprobanteEventoId { get; set; }
         public string ComprobanteEventoNombre { get; set; }
@@ -41,12 +42,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string UsuarioApellidoPaterno { get; set; }
         public string UsuarioApellidoMaterno { get; set; }
 
+        public string InvestigadorNombre1 { get; private set; }
         public string InvestigadorNombre
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
+            set { InvestigadorNombre1 = value; }
         }
 
         public int TotalAutores

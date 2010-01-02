@@ -4,8 +4,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
     {
-        public string InvestigadorNombre1 { get; private set; }
-
         public int Id { get; set; }
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
@@ -56,21 +54,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
 
         public string UsuarioNombre { get; set; }
-
         public string UsuarioApellidoPaterno { get; set; }
-
         public string UsuarioApellidoMaterno { get; set; }
 
+        public string InvestigadorNombre1 { get; private set; }
         public string InvestigadorNombre
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
-            set
-            {
-                InvestigadorNombre1 = value;
-            }
+            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
+            set { InvestigadorNombre1 = value; }
         }
 
         public int TotalAutores

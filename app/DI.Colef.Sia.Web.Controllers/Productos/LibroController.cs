@@ -358,10 +358,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new CoautorForm { Controller = "Libro", IdName = "LibroId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new CoautorForm
+                           {
+                               Controller = "Libro", 
+                               IdName = "LibroId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (libro != null)
                 form.Id = libro.Id;
@@ -451,10 +457,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var libro = libroService.GetLibroById(id);
-            var form = new CoautorForm {Controller = "Libro", IdName = "LibroId"};
+            var form = new CoautorForm
+                           {
+                               Controller = "Libro", 
+                               IdName = "LibroId",
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -639,14 +650,31 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("AddEvento", eventoForm);
         }
 
-        LibroForm SetupNewForm()
+        private LibroForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        LibroForm SetupNewForm(LibroForm form)
+        private LibroForm SetupNewForm(LibroForm form)
         {
             form = form ?? new LibroForm();
+            var nombreInvestigador = String.Empty;
+
+            if (form.Id == 0)
+            {
+                form.CoautorExternoLibros = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoLibros = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
+
             form.Ediciones = customCollection.EdicionCustomCollection();
             form.TiposProductos = customCollection.TipoProductoCustomCollection(7);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();

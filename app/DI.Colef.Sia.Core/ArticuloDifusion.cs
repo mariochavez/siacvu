@@ -62,6 +62,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Subdisciplina Subdisciplina { get; set; }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoArticulo> CoautorExternoArticulos { get; private set; }
 

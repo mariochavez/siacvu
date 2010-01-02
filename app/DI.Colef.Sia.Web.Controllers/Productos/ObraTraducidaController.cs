@@ -362,10 +362,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
-            var form = new CoautorForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId" };
+            var form = new CoautorForm
+                           {
+                               Controller = "ObraTraducida", 
+                               IdName = "ObraTraducidaId",
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -441,10 +446,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
-            var form = new CoautorForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new CoautorForm
+                           {
+                               Controller = "ObraTraducida", 
+                               IdName = "ObraTraducidaId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (obraTraducida != null)
                 form.Id = obraTraducida.Id;
@@ -769,14 +780,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteEditorial", form);
         }
                 
-        ObraTraducidaForm SetupNewForm()
+        private ObraTraducidaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
         
-        ObraTraducidaForm SetupNewForm(ObraTraducidaForm form)
+        private ObraTraducidaForm SetupNewForm(ObraTraducidaForm form)
         {
 			form = form ?? new ObraTraducidaForm();
+            var nombreInvestigador = String.Empty;
+
+            if (form.Id == 0)
+            {
+                form.CoautorExternoObraTraducidas = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoObraTraducidas = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             form.TiposObraTraducidas = customCollection.TipoObraTraducidaCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();

@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             }
             model.ModificadoEl = DateTime.Now;
             model.Posicion = message.Posicion;
+            model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
         }
     }
 }

@@ -33,6 +33,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SedeNombre { get; set; }
 		public bool Activo { get; set; }
 		public string Modificacion { get; set; }
+        public bool CoautorSeOrdenaAlfabeticamente { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }
@@ -57,12 +58,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string UsuarioApellidoPaterno { get; set; }
         public string UsuarioApellidoMaterno { get; set; }
 
+        public string InvestigadorNombre1 { get; private set; }
         public string InvestigadorNombre
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
+            set { InvestigadorNombre1 = value; }
         }
 
         public int TotalAutores

@@ -98,6 +98,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual Subdisciplina Subdisciplina { get; set; }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         public virtual IList<CoautorExternoResena> CoautorExternoResenas { get; private set; }
 
         public virtual IList<CoautorInternoResena> CoautorInternoResenas { get; private set; }

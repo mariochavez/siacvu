@@ -70,6 +70,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoReporte { get; set; }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoReporte> CoautorExternoReportes { get; private set; }
 

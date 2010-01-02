@@ -51,19 +51,26 @@
             <h4>Datos de la publicaci&oacute;n</h4>
             <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
             
-            <h4><span id="coautores" class="titulovalor">Coautores</span> de la publicaci&oacute;n<span class="cvu"></span></h4>
-			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id } ); %>
-            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id } ); %>
+            <h4><span id="coautores" class="titulovalor">Coautores</span> del libro<span class="cvu"></span></h4>
+            <% Html.RenderPartial("_AddCoautoresButtons", new CoautorForm { ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente}); %>
+			<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id }); %>
+            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id }); %>
+            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, CoautoresInternos = Model.Form.CoautorInternoLibros }); %>
+
             <p>
-                <label>Total de investigadores</label>
-                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
-                <span class="cvu"></span>          
+                <label>Due&ntilde;o del producto</label>
+                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
             </p>
-            <p>
+            <p id="CoautorSeOrdenaAlfabeticamente_field">
                 <label>Posici&oacute;n del investigador</label>
                 <%=Html.TextBox("PosicionAutor", Model.Form.PosicionAutor, new { @class = "input100-requerido", maxlength = 2 })%>
                 <span class="cvu"></span>
                 <%=Html.ValidationMessage("PosicionAutor")%>
+            </p>
+            <p>
+                <label>Total de investigadores</label>
+                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>
+                <span class="cvu"></span>
             </p>
             
             <% Html.RenderPartial("_ShowEstadoProducto", 
@@ -109,6 +116,7 @@
         setupDocument();
 
         libroSetup();
+        setupOrdenCoautores();
 
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';

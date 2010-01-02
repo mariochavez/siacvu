@@ -363,10 +363,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorInterno(int id)
+        public ActionResult NewCoautorInterno(int id, bool esAlfabeticamente)
         {
             var resena = resenaService.GetResenaById(id);
-            var form = new CoautorForm {Controller = "Resena", IdName = "ResenaId"};
+            var form = new CoautorForm
+                           {
+                               Controller = "Resena", 
+                               IdName = "ResenaId",
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (User.IsInRole("Investigadores"))
                 form.CreadoPorId = CurrentInvestigador().Id;
@@ -441,10 +446,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewCoautorExterno(int id)
+        public ActionResult NewCoautorExterno(int id, bool esAlfabeticamente)
         {
             var resena = resenaService.GetResenaById(id);
-            var form = new CoautorForm { Controller = "Resena", IdName = "ResenaId", InvestigadorExterno = new InvestigadorExternoForm() };
+            var form = new CoautorForm
+                           {
+                               Controller = "Resena", 
+                               IdName = "ResenaId", 
+                               InvestigadorExterno = new InvestigadorExternoForm(),
+                               CoautorSeOrdenaAlfabeticamente = esAlfabeticamente
+                           };
 
             if (resena != null)
                 form.Id = resena.Id;
@@ -768,14 +779,30 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteEditorial", form);
         }
 
-        ResenaForm SetupNewForm()
+        private ResenaForm SetupNewForm()
         {
             return SetupNewForm(null);
         }
 
-        ResenaForm SetupNewForm(ResenaForm form)
+        private ResenaForm SetupNewForm(ResenaForm form)
         {
             form = form ?? new ResenaForm();
+            var nombreInvestigador = String.Empty;
+
+            if (form.Id == 0)
+            {
+                form.CoautorExternoResenas = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoResenas = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
+
+            form.InvestigadorNombre = nombreInvestigador;
 
             form.TiposResenas = customCollection.TipoResenaCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();

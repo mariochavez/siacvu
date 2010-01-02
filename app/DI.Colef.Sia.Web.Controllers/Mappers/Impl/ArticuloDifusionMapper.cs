@@ -46,6 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.PaginaInicial = message.PaginaInicial;
             model.PaginaFinal = message.PaginaFinal;
             model.TipoArticulo = message.TipoArticulo;
+            model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
 
             if (model.Usuario == null || model.Usuario == usuarioArticulo)
                 model.PosicionAutor = message.PosicionAutor;

@@ -77,6 +77,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorExternoObraTraducidas.Remove((AutorExternoObraTraducida)coautorExterno);
         }
 
+        public virtual bool CoautorSeOrdenaAlfabeticamente { get; set; }
+
         [Valid]
         public virtual IList<CoautorExternoObraTraducida> CoautorExternoObraTraducidas { get; private set; }
 
