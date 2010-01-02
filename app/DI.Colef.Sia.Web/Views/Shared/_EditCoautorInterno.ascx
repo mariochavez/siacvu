@@ -10,10 +10,13 @@
 	                <a href="<%=Url.Action("deletecoautorinterno", null, new{id = Model.ModelId, investigadorId = Model.CoautoresInternos[i].InvestigadorId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.CoautoresInternos[i].NombreCoautor)%>
 	                <%=Html.Hidden("CoautorInterno[" + i + "].InvestigadorId", Model.CoautoresInternos[i].InvestigadorId)%>
-	                <span>
-                        Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
-                        <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>
-                    </span>
+	                <% if(!Model.CoautoresInternos[i].EsAlfabeticamente){ %>
+	                    <span>
+                            Posici&oacute;n <%=Html.Encode(Model.CoautoresInternos[i].Posicion)%>
+                            <%=Html.Hidden("CoautorInterno[" + i + "].Posicion", Model.CoautoresInternos[i].Posicion)%>
+                        </span>
+                    <% } %>
+                    <%=Html.Hidden("CoautorInterno[" + i + "].EsAlfabeticamente", Model.CoautoresInternos[i].EsAlfabeticamente)%>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

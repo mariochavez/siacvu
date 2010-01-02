@@ -5,6 +5,7 @@
 <p>
     <label></label>
     <%= Html.CheckBox("EsAlfabeticamente", Model.EsAlfabeticamente)%> ¿Los coautores se ordenan alfab&eacute;ticamente? 
+    <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <div id="coautorNew" class="minilistaboton">
 	<p>

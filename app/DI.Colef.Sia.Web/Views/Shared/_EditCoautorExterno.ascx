@@ -10,19 +10,17 @@
 	                <a href="<%=Url.Action("deletecoautorexterno", null, new{ id = Model.ModelId, investigadorExternoId = Model.CoautoresExternos[i].InvestigadorExternoId}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
 	                <%=Html.Encode(Model.CoautoresExternos[i].NombreCompleto)%>
 	                <%=Html.Hidden("CoautorExterno[" + i + "].InvestigadorExternoId", Model.CoautoresExternos[i].InvestigadorExternoId)%>
-	                <% if (Model.CoautoresExternos[i].InstitucionId != 0) {%>
-	                    <span>
+	                <span>
+	                    <% if (Model.CoautoresExternos[i].InstitucionId != 0) {%>
                             Instituci&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].InstitucionNombre)%>
                             <%=Html.Hidden("CoautorExterno[" + i + "].InstitucionId", Model.CoautoresExternos[i].InstitucionId)%>
+                        <% } %>
+                        <% if(!Model.CoautoresExternos[i].EsAlfabeticamente){ %>
                             Posici&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
-                            <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>
-                        </span>
-                    <% } else { %>
-	                    <span>
-                            Posici&oacute;n <%=Html.Encode(Model.CoautoresExternos[i].Posicion)%>
-                            <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>
-                        </span>                    
-                    <% } %>
+                            <%=Html.Hidden("CoautorExterno[" + i + "].Posicion", Model.CoautoresExternos[i].Posicion)%>                 
+                        <% } %>
+                        <%=Html.Hidden("CoautorExterno[" + i + "].EsAlfabeticamente", Model.CoautoresExternos[i].EsAlfabeticamente)%>
+                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>

@@ -20,6 +20,7 @@ var html = '
                     Posici&oacute;n <%=Html.Encode(Model.Posicion) %>
                     <%=Html.Hidden("CoautorExterno[' + counter + '].Posicion", Model.Posicion)%>
                 <% } %>
+                <%=Html.Hidden("CoautorExterno[' + counter + '].EsAlfabeticamente", Model.EsAlfabeticamente)%>
             </span>
         </h6>
 	</div><!--end sublista-->

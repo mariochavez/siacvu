@@ -534,10 +534,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private ArticuloForm SetupNewForm(ArticuloForm form)
         {
             form = form ?? new ArticuloForm();
+            var nombreInvestigador = String.Empty;
 
-            var nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
-                                                   CurrentInvestigador().Usuario.ApellidoPaterno,
-                                                   CurrentInvestigador().Usuario.ApellidoMaterno);
+            if (form.Id == 0)
+            {
+                form.CoautorExternoArticulos = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoArticulos = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
+                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
+                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+            }
+            else
+                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
 
             form.InvestigadorNombre = nombreInvestigador;
 

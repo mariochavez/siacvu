@@ -2,8 +2,8 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<% if (Model.CoautoresInternos == null && Model.CoautoresExternos == null) { %>
-    <div class="sublista" id="coautorEmptyListForm">
+<div class="sublista" id="coautorEmptyListForm">
+    <% if (Model.CoautoresInternos.Length == 0 && Model.CoautoresExternos.Length == 0) { %>
         <h6><span>No hay investigadores registrados</span></h6>
-    </div><!--end elementodescripcion-->
-<% } %>
+    <% } %>
+</div><!--end elementodescripcion-->

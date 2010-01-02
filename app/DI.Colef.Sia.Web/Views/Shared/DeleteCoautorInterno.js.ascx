@@ -4,11 +4,9 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 var html = '
-    <div id="coautorEmptyListForm" class="sublista sublista-dos">
-        <h6>
-            <span>No hay investigadores registrados</span>
-        </h6>
-    </div>
+    <h6>
+        <span>No hay investigadores registrados</span>
+    </h6>
 ';
 
 $('#message').html('');

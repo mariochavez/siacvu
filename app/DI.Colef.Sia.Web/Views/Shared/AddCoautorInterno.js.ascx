@@ -17,6 +17,7 @@ var html = '
                     <%=Html.Hidden("CoautorInterno[' + counter + '].Posicion", Model.Posicion)%>
                 </span>
             <% } %>
+            <%=Html.Hidden("CoautorInterno[' + counter + '].EsAlfabeticamente", Model.EsAlfabeticamente)%>
         </h6>
 	</div><!--end sublista-->
 ';
