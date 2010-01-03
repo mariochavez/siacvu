@@ -7,8 +7,21 @@
 </p>
 
 <h4>Autor(es) del libro</h4>
-<% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoResenas, ModelId = Model.Id }); %>
-<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoResenas, ModelId = Model.Id }); %>
+<% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoResenas, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
+<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoResenas, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
+<% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoResenas, AutoresInternos = Model.AutorInternoResenas }); %>
+<p>
+    <label>Due&ntilde;o del producto</label>
+    <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
+</p>
+<p>
+    <label>Total de investigadores</label>
+    <span id="totalautores" class="valor"><%=Html.Encode(Model.TotalAutores) %></span>	          
+</p>
+<p>
+    <label>Posici&oacute;n del autor</label>
+    <span class="valor"><%=Html.Encode(Model.PosicionAutor)%>&nbsp;</span>
+</p>
 
 <% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.EditorialResenas, ModelId = Model.Id }); %>
 

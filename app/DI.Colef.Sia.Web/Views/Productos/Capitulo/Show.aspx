@@ -72,9 +72,14 @@
                 </p>
                 
     <!-- Coautores de la publicacion -->            
-	            <h4>Coautores de la publicaci&oacute;n</h4>
-	            <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, ModelId = Model.Form.Id } ); %>
-				<% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, ModelId = Model.Form.Id }); %>
+	            <h4>Coautores del cap&iacute;tulo</h4>
+				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, CoautoresInternos = Model.Form.CoautorInternoCapitulos }); %>
+                <p>
+                    <label>Due&ntilde;o del producto</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                </p>
 	            <p>
 	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>	          
@@ -89,8 +94,21 @@
                 
     <!-- REFERENCIA BIBLIOGRAFICA -->                
                 <h4>Autor(es) del libro</h4>
-	            <% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, ModelId = Model.Form.Id }); %>
-				<% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, ModelId = Model.Form.Id }); %>
+				<% Html.RenderPartial("_ShowAutorInterno", new AutorForm { AutoresInternos = Model.Form.AutorInternoCapitulos, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutorSeOrdenaAlfabeticamente = Model.Form.AutorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.Form.AutorExternoCapitulos, AutoresInternos = Model.Form.AutorInternoCapitulos }); %>
+                <p>
+                    <label>Due&ntilde;o del producto</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                </p>
+	            <p>
+	                <label>Total de investigadores</label>
+	                <span id="totalautores" class="valor"><%=Html.Encode(Model.Form.TotalAutores) %></span>	          
+	            </p>
+	            <p>
+	                <label>Posici&oacute;n del autor</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionAutor)%>&nbsp;</span>
+                </p>
 				
 				<% Html.RenderPartial("_ShowEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
 				

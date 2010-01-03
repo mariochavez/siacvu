@@ -49,7 +49,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.NombreLibro = message.NombreLibro;
             model.TipoLibro = message.TipoLibro;
             model.Resumen = message.Resumen;
-            model.NoPaginas = message.NoPaginas;
             model.NoCitas = message.NoCitas;
             model.ISBN = message.ISBN;
             model.Reimpresion = message.Reimpresion;
@@ -66,6 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.Edicion = message.Edicion;
             model.CoautorSeOrdenaAlfabeticamente = message.CoautorSeOrdenaAlfabeticamente;
             model.AutorSeOrdenaAlfabeticamente = message.AutorSeOrdenaAlfabeticamente;
+            model.NoPaginas = message.NoPaginas;
 
             if (model.Usuario == null || model.Usuario == usuarioObraTraducida)
             {

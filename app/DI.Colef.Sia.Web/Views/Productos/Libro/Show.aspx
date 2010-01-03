@@ -88,11 +88,14 @@
                 <% } %>
                 
     <!--COAUTORES DE LA PUBLICACION-->
-                <h4><%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %> de la publicaci&oacute;n</h4>
-				<% Html.RenderPartial("_ShowCoautorInterno",
-                                       new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, ModelId = Model.Form.Id });%>
-	            <% Html.RenderPartial("_ShowCoautorExterno",
-				                       new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, ModelId = Model.Form.Id});%>
+                <h4><%=Model.Form.TipoProducto == 2 ? "Coodinadores" : Model.Form.TipoProducto == 3 ? "Compiladores" : "Coautores" %> del libro</h4>
+				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoLibros, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoLibros, CoautoresInternos = Model.Form.CoautorInternoLibros }); %>
+                <p>
+                    <label>Due&ntilde;o del producto</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                </p>
 	            <p>
 	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          

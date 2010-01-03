@@ -151,9 +151,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
 		public virtual int TipoLibro { get; set; }
 
-		public virtual string Resumen { get; set; }
-
         public virtual int NoPaginas { get; set; }
+
+		public virtual string Resumen { get; set; }
 
         public virtual int NoCitas { get; set; }
 

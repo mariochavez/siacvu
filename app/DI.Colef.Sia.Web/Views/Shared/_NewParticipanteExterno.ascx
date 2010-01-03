@@ -8,7 +8,7 @@
 </p>
 <p>
     <label>Apellido paterno</label>
-    <%=Html.TextBox("ParticipanteExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250", maxlength = 40 })%>
+    <%=Html.TextBox("ParticipanteExterno.ApellidoPaterno", Model.InvestigadorExterno.ApellidoPaterno, new { @class = "input250-requerido", maxlength = 40 })%>
     <%=Html.ValidationMessage("ParticipanteExterno.ApellidoPaterno")%>
 </p>
 <p>

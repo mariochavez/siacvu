@@ -61,9 +61,14 @@
                     <span class="valor"><%=HumanizeHelper.TipoResena(Model.Form.TipoResena)%>&nbsp;</span>
                 </p>
                 
-                <h4>Coautores de la publicaci&oacute;n</h4>
-				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm {CoautoresInternos = Model.Form.CoautorInternoResenas, ModelId = Model.Form.Id});%>
-	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm {CoautoresExternos = Model.Form.CoautorExternoResenas, ModelId = Model.Form.Id});%>
+                <h4>Coautores de la rese&ntilde;a</h4>
+				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoResenas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautoresInternos = Model.Form.CoautorInternoResenas }); %>
+                <p>
+                    <label>Due&ntilde;o del producto</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                </p>
 	            <p>
 	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          

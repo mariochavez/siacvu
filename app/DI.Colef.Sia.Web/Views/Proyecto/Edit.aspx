@@ -54,8 +54,25 @@
                 
                 <h4>Investigadores participantes</h4>
                 <% Html.RenderPartial("_EditResponsable", Model.Form); %>
-                <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id }); %>
-	            <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id }); %>
+                <% Html.RenderPartial("_AddParticipantesButtons", new ParticipanteForm { ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente}); %>
+                <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ParticipanteEmptyListMessage", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipantesInternos = Model.Form.ParticipanteInternoProyectos }); %>
+	            <p>
+	                <label>Due&ntilde;o del producto</label>
+	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
+	            </p>
+                <p id="ParticipanteSeOrdenaAlfabeticamente_field">
+	                <label>Posici&oacute;n del participante</label>
+                    <%=Html.TextBox("PosicionParticipante", Model.Form.PosicionParticipante, new { @class = "input100-requerido", maxlength = 2 })%>
+                    <span class="cvu"></span>
+	                <%=Html.ValidationMessage("PosicionParticipante")%>
+                </p>
+	            <p>
+	                <label>Total de investigadores</label>
+	                <span id="totalparticipantes" class="valor"><%=Html.Encode(Model.Form.TotalParticipantes) %></span>
+	                <span class="cvu"></span>
+	            </p>
                 
                 <h4>Calendario del proyecto</h4>
                 <% Html.RenderPartial("_CalendarioProyecto", Model.Form); %>
@@ -132,7 +149,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
             setupDocument();
-            proyectoSetup();
+            proyectoSetup('<%=Html.Encode(Model.Form.UserRole) %>');
+            setupOrdenParticipantes();
             
             var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
             var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';

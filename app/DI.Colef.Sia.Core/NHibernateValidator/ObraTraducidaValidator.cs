@@ -97,6 +97,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
+                if (obraTraducida.NoPaginas <= 0)
+                {
+                    constraintValidatorContext.AddInvalid(
+                           "no debe ser menor o igual a cero|NoPaginas", "NoPaginas");
+
+                    isValid = false;
+                }
+
+
                 if (obraTraducida.Edicion == 0)
                 {
                     constraintValidatorContext.AddInvalid(
@@ -152,14 +161,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo o vacío|Volumen", "Volumen");
-
-                    isValid = false;
-                }
-
-                if (obraTraducida.NoPaginas == 0)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "no debe ser nulo o vacío|NoPaginas", "NoPaginas");
 
                     isValid = false;
                 }

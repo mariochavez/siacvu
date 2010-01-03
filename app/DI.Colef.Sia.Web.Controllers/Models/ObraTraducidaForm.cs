@@ -25,7 +25,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public string NombreLibro { get; set; }
 		public int TipoLibro { get; set; }
 		public string Resumen { get; set; }
-        public int NoPaginas { get; set; }
         public int NoCitas { get; set; }
 		public string ISBN { get; set; }
 		public int Reimpresion { get; set; }
@@ -38,6 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
         public int PosicionAutor { get; set; }
+        public int NoPaginas { get; set; }
 
         public int ComprobanteAceptadoId { get; set; }
         public string ComprobanteAceptadoNombre { get; set; }

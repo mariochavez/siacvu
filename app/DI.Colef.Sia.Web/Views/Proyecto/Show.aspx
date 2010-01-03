@@ -48,8 +48,21 @@
                 
                 <h4>Investigadores participantes</h4>
                 <% Html.RenderPartial("_ShowResponsable", Model.Form);%>
-                <% Html.RenderPartial("_ShowParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id });%>
-	            <% Html.RenderPartial("_ShowParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id });%>
+				<% Html.RenderPartial("_ShowParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ShowParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
+	            <% Html.RenderPartial("_ParticipanteEmptyListMessage", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipantesInternos = Model.Form.ParticipanteInternoProyectos }); %>
+                <p>
+                    <label>Due&ntilde;o del producto</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                </p>
+	            <p>
+	                <label>Total de investigadores</label>
+	                <span id="totalautores" class="valor"><%=Html.Encode(Model.Form.TotalParticipantes) %></span>	          
+	            </p>
+	            <p>
+	                <label>Posici&oacute;n del participante</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionParticipante)%>&nbsp;</span>
+                </p>
                 
                 <h4>Calendario del proyecto</h4>
                 <p>
