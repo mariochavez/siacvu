@@ -39,7 +39,7 @@
                 
                 <h4>Investigadores participantes</h4>
                 <% Html.RenderPartial("_EditResponsable", Model.Form); %>
-                <% Html.RenderPartial("_AddParticipantesButtons", new ParticipanteForm { ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente}); %>
+                <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "ParticipanteSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.ParticipanteSeOrdenaAlfabeticamente, Rel = "NewParticipanteInternoLink, NewParticipanteExternoLink", SubFormName = "participante", UrlActionExterno = "NewParticipanteExterno", UrlActionInterno = "NewParticipanteInterno", Link1Id = "NewParticipanteInternoLink", Link2Id = "NewParticipanteExternoLink", InvestigadorType = "participantes" }); %>
                 <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_EditParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ParticipanteEmptyListMessage", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipantesInternos = Model.Form.ParticipanteInternoProyectos }); %>
@@ -123,7 +123,7 @@
         $(document).ready(function() {
             setupDocument();
             proyectoSetup('<%=Html.Encode(Model.Form.UserRole) %>');
-            setupOrdenParticipantes();
+            setupOrden();
 
             var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
             var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';

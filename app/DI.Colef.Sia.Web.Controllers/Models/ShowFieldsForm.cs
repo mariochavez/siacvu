@@ -73,5 +73,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string UrlAction { get; set; }
         public string Rel { get; set; }
+
+        public CoautorInternoProductoForm[] CoautoresInternos { get; set; }
+        public CoautorExternoProductoForm[] CoautoresExternos { get; set; }
+        public string CheckboxName { get; set; }
+        public bool CheckboxValue { get; set; }
+        public string SubFormName { get; set; }
+        public string UrlActionExterno { get; set; }
+        public string UrlActionInterno { get; set; }
+        public string Link1Id { get; set; }
+        public string Link2Id { get; set; }
+        public string InvestigadorType { get; set; }
     }
 }

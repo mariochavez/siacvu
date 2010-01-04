@@ -529,11 +529,9 @@
     <Content Include="Views\Productos\Capitulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Libro\_DatosFinal.ascx" />
     <Content Include="Views\Shared\_ParticipanteEmptyListMessage.ascx" />
-    <Content Include="Views\Shared\_AddParticipantesButtons.ascx" />
     <Content Include="Views\Shared\_AutorEmptyListMessage.ascx" />
-    <Content Include="Views\Shared\_AddAutoresButtons.ascx" />
     <Content Include="Views\Shared\_CoautorEmptyListMessage.ascx" />
-    <Content Include="Views\Shared\_AddCoautoresButtons.ascx" />
+    <Content Include="Views\Shared\_AddButtons.ascx" />
     <Content Include="Views\Shared\_Menu.ascx" />
     <Content Include="Views\Shared\_CustomFirmaForm.ascx" />
     <Content Include="Views\Shared\DgaaSign.js.ascx" />

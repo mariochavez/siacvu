@@ -58,16 +58,8 @@ function setupDocument() {
     });
 };
 
-function setupOrdenCoautores() {
-    CheckOrdenCoautores.setup();
-}
-
-function setupOrdenAutores() {
-    CheckOrdenAutores.setup();
-}
-
-function setupOrdenParticipantes() {
-    CheckOrdenParticipantes.setup();
+function setupOrden() {
+    CheckOrden.setup();
 }
 
 function setupSublistRows() {
@@ -130,60 +122,27 @@ function deleteElement(html, selectorString, listName) {
     }
 }
 
-var CheckOrdenCoautores = {
+var CheckOrden = {
     setup: function() {
-        $('#forma').unload(CheckOrdenCoautores.changeParamValue());
-        $('#CoautorSeOrdenaAlfabeticamente').change(CheckOrdenCoautores.changeParamValue);
+        CheckOrden.setParamValue($('.order').attr('id'));
+        $('.order').change(CheckOrden.changeParamValue);
     },
-    changeParamValue: function() {
-        var isChecked = $('#CoautorSeOrdenaAlfabeticamente').is(':checked');
+    setParamValue: function(checkBoxId) {
+        checkBoxId = '#' + checkBoxId;
+        var linkNames = $(checkBoxId).attr('rel').split(',');
+        var checkboxIsChecked = $(checkBoxId).is(':checked');
 
-        if (isChecked) {
-            $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('False', 'True'));
-            $('#NewCoautorExternoLink').attr('href', $('#NewCoautorExternoLink').attr('href').replace('False', 'True'));
+        if (checkboxIsChecked) {
+            $('#' + $.trim(linkNames[0])).attr('href', $('#' + $.trim(linkNames[0])).attr('href').replace('False', 'True'));
+            $('#' + $.trim(linkNames[1])).attr('href', $('#' + $.trim(linkNames[1])).attr('href').replace('False', 'True'));
         }
         else {
-            $('#NewCoautorInternoLink').attr('href', $('#NewCoautorInternoLink').attr('href').replace('True', 'False'));
-            $('#NewCoautorExternoLink').attr('href', $('#NewCoautorExternoLink').attr('href').replace('True', 'False'));
+            $('#' + $.trim(linkNames[0])).attr('href', $('#' + $.trim(linkNames[0])).attr('href').replace('True', 'False'));
+            $('#' + $.trim(linkNames[1])).attr('href', $('#' + $.trim(linkNames[1])).attr('href').replace('True', 'False'));
         }
-    }
-};
-
-var CheckOrdenAutores = {
-    setup: function() {
-        $('#forma').unload(CheckOrdenAutores.changeParamValue());
-        $('#AutorSeOrdenaAlfabeticamente').change(CheckOrdenAutores.changeParamValue);
     },
     changeParamValue: function() {
-        var isChecked = $('#AutorSeOrdenaAlfabeticamente').is(':checked');
-        
-        if (isChecked) {
-            $('#NewAutorInternoLink').attr('href', $('#NewAutorInternoLink').attr('href').replace('False', 'True'));
-            $('#NewAutorExternoLink').attr('href', $('#NewAutorExternoLink').attr('href').replace('False', 'True'));
-        }
-        else {
-            $('#NewAutorInternoLink').attr('href', $('#NewAutorInternoLink').attr('href').replace('True', 'False'));
-            $('#NewAutorExternoLink').attr('href', $('#NewAutorExternoLink').attr('href').replace('True', 'False'));
-        }
-    }
-};
-
-var CheckOrdenParticipantes = {
-    setup: function() {
-        $('#forma').unload(CheckOrdenParticipantes.changeParamValue());
-        $('#ParticipanteSeOrdenaAlfabeticamente').change(CheckOrdenParticipantes.changeParamValue);
-    },
-    changeParamValue: function() {
-        var isChecked = $('#ParticipanteSeOrdenaAlfabeticamente').is(':checked');
-
-        if (isChecked) {
-            $('#NewParticipanteInternoLink').attr('href', $('#NewParticipanteInternoLink').attr('href').replace('False', 'True'));
-            $('#NewParticipanteExternoLink').attr('href', $('#NewParticipanteExternoLink').attr('href').replace('False', 'True'));
-        }
-        else {
-            $('#NewParticipanteInternoLink').attr('href', $('#NewParticipanteInternoLink').attr('href').replace('True', 'False'));
-            $('#NewParticipanteExternoLink').attr('href', $('#NewParticipanteExternoLink').attr('href').replace('True', 'False'));
-        }
+        CheckOrden.setParamValue($(this).attr('id'));
     }
 };
 
