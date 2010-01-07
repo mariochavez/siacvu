@@ -9,12 +9,12 @@
 </p>
 
 <h4>Autor(es) del libro</h4>
-<% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Id, CheckboxName = "AutorSeOrdenaAlfabeticamente", CheckboxValue = Model.CoautorSeOrdenaAlfabeticamente, Rel = "NewAutorInternoLink, NewAutorExternoLink", SubFormName = "autor", UrlActionExterno = "NewAutorExterno", UrlActionInterno = "NewAutorInterno", Link1Id = "NewAutorInternoLink", Link2Id = "NewAutorExternoLink", InvestigadorType = "autores" }); %>
+<% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Id, CheckboxName = "AutorSeOrdenaAlfabeticamente", CheckboxValue = Model.CoautorSeOrdenaAlfabeticamente, Rel = "NewAutorInternoLink, NewAutorExternoLink", SubFormName = "autor", UrlActionExterno = "NewAutorExterno", UrlActionInterno = "NewAutorInterno", Link1Id = "NewAutorInternoLink", Link2Id = "NewAutorExternoLink" }); %>
 <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoResenas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoResenas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoResenas, AutoresInternos = Model.AutorInternoResenas }); %>
 <p>
-    <label>Due&ntilde;o del producto</label>
+    <label>Investigador</label>
     <span class="valor"><%=Html.Encode(Model.InvestigadorNombre1) %></span>
 </p>
 <p id="AutorSeOrdenaAlfabeticamente_field">

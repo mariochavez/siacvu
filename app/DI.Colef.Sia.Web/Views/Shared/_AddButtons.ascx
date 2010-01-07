@@ -4,7 +4,7 @@
 
 <p>
     <label></label>
-    <%= Html.CheckBox(Model.CheckboxName, Model.CheckboxValue, new { @class = "order", rel = Model.Rel })%> ¿Los <%=Html.Encode(Model.InvestigadorType) %> se ordenan alfab&eacute;ticamente? 
+    <%= Html.CheckBox(Model.CheckboxName, Model.CheckboxValue, new { @class = "order", rel = Model.Rel })%> ¿Los investigadores se ordenan alfab&eacute;ticamente? 
     <br /><label></label><span>(Marque en caso positivo)</span>
 </p>
 <div id="<%=Html.Encode(Model.SubFormName)%>New" class="minilistaboton">

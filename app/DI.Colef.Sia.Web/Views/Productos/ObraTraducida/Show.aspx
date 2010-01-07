@@ -81,7 +81,7 @@
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, CoautoresInternos = Model.Form.CoautorInternoObraTraducidas }); %>
                 <p>
-                    <label>Due&ntilde;o del producto</label>
+                    <label>Investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
                 </p>
 	            <p>

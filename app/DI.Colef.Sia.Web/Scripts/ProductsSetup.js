@@ -11,7 +11,7 @@
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -61,7 +61,7 @@ function obraTraducidaSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -88,7 +88,7 @@ function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -158,7 +158,7 @@ function participacionAcademiaSetup() {
 	$('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['#EstatusPublicado']],
-                ['Aceptado', ['#EstatusAceptado']]
+                ['Aceptado', ['#EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -180,7 +180,7 @@ function articuloSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -221,7 +221,7 @@ function reporteSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 
@@ -266,7 +266,7 @@ function resenaSetup() {
     $('#EstadoProducto').dynamicui(
             [
                 ['Publicado', ['.EstatusPublicado']],
-                ['Aceptado', ['.EstatusAceptado']]
+                ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
 

@@ -12,7 +12,7 @@
 <% Html.RenderPartial("_ShowAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutoresInternos = Model.AutorInternoObraTraducidas }); %>
 <p>
-    <label>Due&ntilde;o del producto</label>
+    <label>Investigador</label>
     <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
 </p>
 <p>
