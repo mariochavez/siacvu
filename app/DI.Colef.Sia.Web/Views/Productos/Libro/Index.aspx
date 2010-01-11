@@ -11,14 +11,16 @@
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo libro</h3>
+        <h3>Libros</h3>
         <p>
-            Puede agregar un nuevo libro dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo libro</strong>.
+            Si usted es Investigador, puede agregar un nuevo libro dentro de la lista de administraci&oacute;n presionando
+            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
+		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">
-            <span><%=Html.ActionLink<LibroController>(x => x.New(), "+ Nuevo libro")%></span>
+            <span><%=Html.ActionLink<LibroController>(x => x.New(), "+ Nuevo")%></span>
         </div>
+        <% } %>
     </div><!--end subcontenido-->
 </asp:Content>
 

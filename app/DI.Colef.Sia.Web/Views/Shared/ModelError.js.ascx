@@ -32,3 +32,4 @@ $('select').removeClass('input-validation-error');
 $('#mensaje-error').addClass('mensaje-error');
 $('#mensaje-error').text('Se han generado ' + $('span.field-validation-error').length + ' error(es) al realizar la operacion, por favor corrijalos.');
 
+window.scrollTo(0,0);

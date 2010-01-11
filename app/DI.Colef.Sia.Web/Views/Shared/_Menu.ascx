@@ -28,7 +28,7 @@
 	<div id="cientifica" style="display: none;">
 		<h3>Producci&oacute;n acad&eacute;mica</h3>
 		<ul>
-			<li><%=Html.ActionLinkForAreas<LibroController>(x => x.New(), "Libros")%></li>
+			<li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros")%></li>
 			<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.New(), "Cap&iacute;tulos en libros")%></li>
 			<li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.New(), "Art&iacute;culos en revistas de investigaci&oacute;n")%></li>
 			<li><%=Html.ActionLinkForAreas<ArticuloDifusionController>(x => x.New(), "Art&iacute;culos en revistas de difusi&oacute;n")%></li>
