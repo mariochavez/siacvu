@@ -1,6 +1,3 @@
-using System;
-using DecisionesInteligentes.Colef.Sia.Core;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EstanciaAcademicaExternaForm
@@ -31,6 +28,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public int Departamento { get; set; }
         public int DepartamentoId { get; set; }
+
+        public int ComprobanteEstanciaId { get; set; }
+        public string ComprobanteEstanciaNombre { get; set; }
 
         public string SedeDireccionRegionalNombre { get; set; }
 

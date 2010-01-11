@@ -87,7 +87,18 @@
                     <label>Principales logros</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Logros)%>&nbsp;</span>
                 </p>
-                
+
+                <p>
+                    <label>Documento probatorio</label>
+                    <span class="valor">
+                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteEstanciaNombre)) { %> 
+                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteEstanciaId), Model.Form.ComprobanteEstanciaNombre, new { target = "_blank" })%> 
+                        <% } else { %>
+                            &nbsp;
+                        <% } %>
+                    </span><br />
+                </p>
+                                
                 <p class="submit">
                     <%=Html.ActionLink<EstanciaAcademicaExternaController>(x => x.Index(), "Regresar") %>
                 </p>

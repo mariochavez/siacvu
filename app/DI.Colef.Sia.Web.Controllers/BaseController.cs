@@ -675,5 +675,27 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             ViewData["error"] = message;
         }
+
+        protected Archivo MapArchivo()
+        {
+            var file = Request.Files["fileData"];
+
+            var archivo = new Archivo
+            {
+                Activo = true,
+                Contenido = file.ContentType,
+                CreadoEl = DateTime.Now,
+                CreadoPor = CurrentUser(),
+                ModificadoEl = DateTime.Now,
+                ModificadoPor = CurrentUser(),
+                Nombre = file.FileName,
+                Tamano = file.ContentLength
+            };
+
+            var datos = new byte[file.ContentLength];
+            file.InputStream.Read(datos, 0, datos.Length);
+            archivo.Datos = datos;
+            return archivo;
+        }
     }
 }

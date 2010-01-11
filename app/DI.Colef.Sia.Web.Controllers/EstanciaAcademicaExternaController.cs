@@ -5,7 +5,7 @@ using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -13,15 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     public class EstanciaAcademicaExternaController : BaseController<EstanciaAcademicaExterna, EstanciaAcademicaExternaForm>
     {
 		readonly IEstanciaAcademicaExternaService estanciaAcademicaExternaService;
+        readonly IArchivoService archivoService;
         readonly IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper;
         readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly ISedeMapper sedeMapper;
         readonly IDepartamentoMapper departamentoMapper;
-        readonly IInvestigadorExternoMapper investigadorExternoMapper;
 
         public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
+                                                  IArchivoService archivoService,
                                                   IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper,
                                                   ICatalogoService catalogoService,
                                                   IInvestigadorExternoMapper investigadorExternoMapper,
@@ -32,8 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                   IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
+            this.archivoService = archivoService;
             this.catalogoService = catalogoService;
-            this.investigadorExternoMapper = investigadorExternoMapper;
             this.sedeMapper = sedeMapper;
             this.departamentoMapper = departamentoMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
@@ -149,7 +150,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             return Rjs("Save", estanciaAcademicaExterna.Id);
         }
-        
+
+        [CookieLessAuthorize]
+        [CustomTransaction]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddFile(FormCollection form)
+        {
+            var id = Convert.ToInt32(form["Id"]);
+            var estanciaAcademicaExterna = estanciaAcademicaExternaService.GetEstanciaAcademicaExternaById(id);
+
+            Archivo archivo = MapArchivo();
+
+            archivo.TipoProducto = estanciaAcademicaExterna.TipoProductoLibro;
+            archivoService.Save(archivo);
+            estanciaAcademicaExterna.ComprobanteEstancia = archivo;
+
+            estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna);
+
+            return Content("Uploaded");
+        }
+
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)

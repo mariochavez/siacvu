@@ -8,6 +8,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     [EstanciaAcademicaExternaValidator]
     public class EstanciaAcademicaExterna : Entity, IBaseEntity
     {
+        const int tipoProducto = 80; // 80 Representa Libro
+
+        public virtual int TipoProductoLibro { get { return tipoProducto; } }
+
         [NotNull]
         public virtual Usuario Usuario { get; set; }
 
@@ -29,6 +33,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string Actividades { get; set; }
 
 		public virtual string Logros { get; set; }
+
+        [Valid]
+        public virtual Archivo ComprobanteEstancia { get; set; }
 
         public virtual Departamento Departamento { get; set; }
 
