@@ -30,7 +30,10 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Pendiente.</p>
+            <p>La bandeja muestra los productos agrupados por categor&iacute;a, productos que estan en proceso de verificaci&oacute;n y firma por parte de la DGAA.</p>
+            <p>El bot&oacute;n de <b>Editar</b> a la derecha del producto, permite ver la informaci&oacute;n del mismo, adem&aacute;s de permitir el realizarle cambios.</p>
+            <p>El bot&oacute;n de <b>Firmar</b> a la derecha del producto, debe ser utilizado cuando el producto ya contiene toda la informaci&oacute;n necesaria y por lo tanto est&aacute; listo para enviar a firma.</p>
+            <p>El bot&oacute;n de <b>Editar</b> a la derecha del producto, muestra la informaci&oacute;n del producto de manera que solo se pueda consultar, pero no hacer cambios.</p>
         </div><!--end asistente-->
     </div><!--end barra-->
 </asp:Content>
