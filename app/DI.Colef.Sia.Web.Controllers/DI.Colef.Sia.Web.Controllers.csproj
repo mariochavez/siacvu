@@ -113,6 +113,7 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
     <Compile Include="Mappers\IArticuloDifusionMapper.cs" />

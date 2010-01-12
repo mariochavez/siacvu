@@ -30,7 +30,7 @@
 		<ul>
 			<li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros")%></li>
 			<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.New(), "Cap&iacute;tulos en libros")%></li>
-			<li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.New(), "Art&iacute;culos en revistas de investigaci&oacute;n")%></li>
+			<li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos en revistas de investigaci&oacute;n")%></li>
 			<li><%=Html.ActionLinkForAreas<ArticuloDifusionController>(x => x.New(), "Art&iacute;culos en revistas de difusi&oacute;n")%></li>
 			<li><%=Html.ActionLinkForAreas<ResenaController>(x => x.New(), "Rese&ntilde;as-Notas cr&iacute;ticas")%></li>
 			<li><%=Html.ActionLinkForAreas<ReporteController>(x => x.New(), "Reportes t&eacute;cnicos-Documentos de trabajo")%></li>

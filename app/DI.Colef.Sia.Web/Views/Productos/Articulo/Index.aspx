@@ -3,22 +3,23 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
-<%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>Administraci&oacute;n de <%=Html.Encode(Model.GetObjectIndexTitle())%></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo art&iacute;culo</h3>
+        <h3>Agregar <%=Html.Encode(Model.GetObjectNew())%></h3>
         <p>
-            Puede agregar un nuevo art&iacute;culo dentro de la lista de administraci&oacute;n de
-            productos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo art&iacute;culo</strong>.
+            Si usted es Investigador, puede agregar <%=Html.Encode(Model.GetObjectNew())%>, presionando en el bot&oacute;n de t&iacute;tulo <strong><%=Html.Encode(Model.GetObjectNameNewButton())%></strong>.
 		</p>
+		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), "+ Nuevo artículo")%></span>
+            <span><%=Html.ActionLink<ArticuloController>(x => x.New(), Model.GetObjectNameNewButton())%></span>
         </div>
+        <% } %>
     </div>
 </asp:Content>
 
@@ -26,7 +27,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de secci&oacute;n</h3>
-            <p>Lista de art&iacute;culos registrados en el sistema.</p>
+            <p>Lista de <%=Html.Encode(Model.GetPluralObjectName())%> registrados en el sistema.</p>
             <% Html.RenderPartial("_ListSidebar"); %>
         </div><!--end asistente-->
     </div><!--end barra-->
@@ -39,7 +40,7 @@
 	<% Html.RenderPartial("_Search"); %>
 	
 	<div id="lista">
-		<h4>Art&iacute;culos</h4>
+		<h4><%=Html.Encode(Model.GetPluralObjectName())%></h4>
             
 		<% if (Model.List == null || Model.List.Length == 0) { %>
 			<div class="elementolista">

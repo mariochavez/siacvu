@@ -62,7 +62,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = CreateViewDataWithTitle(Title.Index);
+            var articulos = articuloService.GetAllArticulos();
+
+            data.List = articuloMapper.Map(articulos);
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]

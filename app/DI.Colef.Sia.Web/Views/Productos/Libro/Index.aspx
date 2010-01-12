@@ -13,8 +13,8 @@
     <div id="subcontenido">
         <h3>Libros</h3>
         <p>
-            Si usted es Investigador, puede agregar un nuevo libro dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
+            Si usted es Investigador, puede agregar un nuevo libro, presionando
+            en el bot&oacute;n de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
 		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">
