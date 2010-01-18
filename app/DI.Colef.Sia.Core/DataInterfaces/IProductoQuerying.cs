@@ -5,8 +5,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
     public interface IProductoQuerying
     {
         T[] GetProductosByUsuario<T>(Usuario usuario, string coautorTableName);
-        object[] GetProductosBandeja(Usuario usuario);
-        object[] GetProductosBandeja(bool isDgaa);
-        object[] GetProductosBandeja(bool isDgaa, int filterId, int filterType);
+        object[] GetBandejaProductos(Usuario usuario);
+        object[] GetBandejaProductos(bool isDgaa);
+        object[] GetBandejaProductos(bool isDgaa, int filterId, int filterType);
     }
 }

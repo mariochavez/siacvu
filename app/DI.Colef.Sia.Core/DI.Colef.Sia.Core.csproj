@@ -64,6 +64,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -72,6 +75,7 @@
   <ItemGroup>
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="ArticuloDifusion.cs" />
+    <Compile Include="EntityHelper.cs" />
     <Compile Include="IParticipante.cs" />
     <Compile Include="NHibernateValidator\AutorExternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\AutorInternoProductoValidator.cs" />

@@ -134,6 +134,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI.Colef.Sia.Core\TestEntityHelper.cs" />
     <Compile Include="DI.Colef.Sia.Data\ArchivoServiceTests.cs" />
     <Compile Include="DI.Colef.Sia.Data\ConnectionSetup.cs" />
     <Compile Include="DI.Colef.Sia.Data\ProductoQueryingTests.cs" />
@@ -175,9 +176,6 @@
     <Content Include="Hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DI.Colef.Sia.Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

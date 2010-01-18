@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
+using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate;
+using Expression = NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 {
@@ -46,17 +51,54 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return productoList.ToArray();
         }
 
-        public object[] GetProductosBandeja(Usuario usuario)
+        public object[] GetBandejaProductos(Usuario usuario)
         {
-            return GetProductosBandeja(usuario, false, 0, 0);
+            var bandejaTrabajo = new object[4];
+            IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
+                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo));
+
+            IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
+                .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso));
+
+            IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
+                .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen));
+
+            var produccionAcademicaResultado = new ArrayList();
+            foreach (var producto in produccionAcademica.List())
+            {
+                produccionAcademicaResultado.AddRange((ICollection)producto);
+            }
+
+            var formacionRecursosHumanosResultado = new ArrayList();
+            foreach (var producto in formacionRecursosHumanos.List())
+            {
+                formacionRecursosHumanosResultado.AddRange((ICollection)producto);
+            }
+
+            var vinculacionDifusionResultado = new ArrayList();
+            foreach (var producto in vinculacionDifusion.List())
+            {
+                vinculacionDifusionResultado.AddRange((ICollection)producto);
+            }
+
+            bandejaTrabajo[0] = produccionAcademicaResultado;
+            bandejaTrabajo[1] = formacionRecursosHumanosResultado;
+            bandejaTrabajo[2] = vinculacionDifusionResultado;
+
+            return bandejaTrabajo;
         }
 
-        public object[] GetProductosBandeja(bool isDgaa)
+        //public object[] GetBandejaProductos(Usuario usuario)
+        //{
+        //    return GetProductosBandeja(usuario, false, 0, 0);
+        //}
+
+        public object[] GetBandejaProductos(bool isDgaa)
         {
             return GetProductosBandeja(new Usuario(), isDgaa, 0, 0);
         }
 
-        public object[] GetProductosBandeja(bool isDgaa, int filterId, int filterType)
+        public object[] GetBandejaProductos(bool isDgaa, int filterId, int filterType)
         {
             return GetProductosBandeja(new Usuario(), isDgaa, filterId, filterType);
         }
@@ -124,6 +166,119 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return bandejaTrabajo;
         }
 
+        ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName,
+            Expression<Func<T, object>> productType)
+        {
+            var projection = Projections.ProjectionList()
+                .Add(Projections.Property("Id"), "Id")
+                .Add(Projections.Property(GetPropertyName(productName)), "Nombre")
+                .Add(Projections.Constant((int) EntityHelper.GetTipoProducto<T>()), "TipoProducto")
+                .Add(Projections.Property("CreadoEl"), "CreadoEl")
+
+                .Add(Projections.Property("u.Nombre"), "UsuarioNombre")
+                .Add(Projections.Property("u.ApellidoPaterno"), "UsuarioApellidoPaterno")
+                .Add(Projections.Property("u.ApellidoMaterno"), "UsuarioApellidoMaterno")
+
+                .Add(Projections.Property("f.Aceptacion1"), "FirmaAceptacion1")
+                .Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
+
+            var estadoTable = EntityHelper.GetEstadoTable<T>();
+            if(!String.IsNullOrEmpty(estadoTable))
+                projection.Add(Projections.Property(estadoTable), "Estatus");
+
+            var tipoTable = String.Empty;
+            if (productType != null)
+            {
+                if (GetPropertyType(productType) == typeof (int))
+                    projection.Add(Projections.Property(GetPropertyName(productType)), "Tipo");
+                else if (GetPropertyType(productType).BaseType == typeof(Entity))
+                {
+                    tipoTable = GetPropertyName(productType);
+                    projection.Add(Projections.Property("t.Nombre"), "TipoNombre");
+                }
+            }
+
+            var criteria = Session.CreateCriteria(typeof (T))
+                .CreateAlias("Usuario", "u")
+                .CreateAlias("Firma", "f");
+
+            if (!String.IsNullOrEmpty(tipoTable))
+                criteria.CreateAlias(tipoTable, "t");
+
+            var isInvestigador = (from role in usuario.Roles
+                          where role.Nombre == "Investigador"
+                          select role).FirstOrDefault() != null;
+
+            var revistaTable = EntityHelper.GetRevistaTable<T>();
+            if (!String.IsNullOrEmpty(revistaTable))
+            {
+                criteria
+                    .CreateAlias(revistaTable, "r", JoinType.LeftOuterJoin);
+
+                projection.Add(Projections.Property("r.Titulo"), "RevistaNombre");
+            }
+
+            var institucionTable = EntityHelper.GetInstitucionTable<T>();
+            if (!String.IsNullOrEmpty(institucionTable))
+            {
+                criteria
+                    .CreateAlias(institucionTable, "ins", JoinType.LeftOuterJoin);
+
+                projection.Add(Projections.Property("ins.Nombre"), "InstitucionNombre");
+            }
+
+            if(isInvestigador)
+            {
+                var coautorTable = EntityHelper.GetCoautorTable<T>();
+                if (!String.IsNullOrEmpty(coautorTable))
+                {
+                    criteria
+                        .CreateAlias(coautorTable, "co", JoinType.LeftOuterJoin)
+                        .CreateAlias("co.Investigador", "i", JoinType.LeftOuterJoin)
+                        .CreateAlias("i.Usuario", "iu", JoinType.LeftOuterJoin)
+                        .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)));
+                }
+                else
+                    criteria.Add(Expression.Eq("u.Id", usuario.Id));
+            }
+
+            //if (EntityHelper.GetTipoProducto<T>() == TipoProductoEnum.Curso || EntityHelper.GetTipoProducto<T>() == TipoProductoEnum.TesisDirigida)
+            //    criteria.Add(Expression.Eq("Tipo", 2));
+
+            criteria.SetProjection(Projections.Distinct(projection))
+                .AddOrder(Order.Desc("CreadoEl"))
+                .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof (ProductoDTO)));
+
+            return criteria;
+        }
+
+        string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression)
+        {
+            return GetPropertyInfo(expression).Member.Name;
+        }
+
+        Type GetPropertyType<TEntity>(Expression<Func<TEntity, object>> expression)
+        {
+            return GetPropertyInfo(expression).Type;
+        }
+
+        MemberExpression GetPropertyInfo<TEntity>(Expression<Func<TEntity, object>> expression)
+        {
+            var memberExpression = expression.Body as MemberExpression;
+
+            if (memberExpression == null)
+            {
+                UnaryExpression unaryExpression = expression.Body as UnaryExpression;
+                if (unaryExpression != null && unaryExpression.NodeType == ExpressionType.Convert)
+                    memberExpression = unaryExpression.Operand as MemberExpression;
+            }
+
+            if (memberExpression == null && memberExpression.Member.MemberType != MemberTypes.Property)
+                throw new InvalidOperationException("Not a member access.");
+
+            return memberExpression;
+        }
+
         //Metodo de retorno para el resto de los productos
         private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool isDgaa, int filterId, int filterType)
         {
@@ -144,6 +299,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         private ICriteria BuildCreteria<T>(int usuarioId, string coautorTableName, string propertyName, int productType, string tipoPublicacion, bool esProduccionAcademica, bool tieneRevista, bool isDgaa, int filterId, int filterType)
         {
+
             var projection = Projections.ProjectionList()
                 .Add(Projections.Property("Id"), "Id")
                 .Add(Projections.Property(propertyName), "Nombre")
@@ -274,11 +430,24 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public int Aceptacion1 { get; set; }
         public int GuidNumber { get; set; }
 
+        public int Estatus { get; set; }
+        public string RevistaNombre { get; set; }
+        public string InstitucionNombre { get; set; }
+        public int Tipo { get; set; }
+        public string TipoNombre { get; set; }
+
+        public string UsuarioApellidoMaterno { get; set; }
+        public string UsuarioApellidoPaterno { get; set; }
+        public string UsuarioNombre { get; set; }
+
+        public int FirmaAceptacion1 { get; set; }
+        public int FirmaAceptacion2 { get; set; }
+
         public string InvestigadorNombre
         {
             get
             {
-                return string.Format("{0} {1} {2}", Usuario.ApellidoPaterno, Usuario.ApellidoMaterno, Usuario.Nombre);
+                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
             }
         }
     }
