@@ -8,11 +8,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         Articulo = 1,
         Curso = 3,
+        Dictamen = 4,
         Evento = 6,
         Libro = 7,
         OrganoExterno = 8,
+        ParticipacionMedio = 10,
         Resena = 12,
         TesisDirigida = 13,
+        Proyecto = 15,
         ArticuloDifusion = 16
     }
 
@@ -42,6 +45,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
                     
                 case "TesisDirigida" :
                     return TipoProductoEnum.TesisDirigida;
+
+                case "Proyecto" :
+                    return TipoProductoEnum.Proyecto;
 
                 case "ArticuloDifusion":
                     return TipoProductoEnum.ArticuloDifusion;

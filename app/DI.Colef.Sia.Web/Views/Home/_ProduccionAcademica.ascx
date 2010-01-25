@@ -19,8 +19,8 @@
                 <h6>
                     <%=HumanizeHelper.GetNombreProducto(produccionAcademica.TipoProducto)%>
                     Registrado el: <%=HumanizeHelper.FormatDate(produccionAcademica.CreadoEl)%>
-                    <% if(produccionAcademica.RevistaPublicacion != null){ %>
-                        Revista: <%=Html.Encode(produccionAcademica.RevistaPublicacion.Titulo)%>
+                    <% if(!String.IsNullOrEmpty(produccionAcademica.RevistaNombre)){ %>
+                        Revista: <%=Html.Encode(produccionAcademica.RevistaNombre)%>
                     <% } %>
                     <% if (produccionAcademica.EstatusProducto != 0){ %>
                         Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.EstatusProducto)%>
@@ -33,18 +33,18 @@
 
 			<div class="elementobotones">
 				<p>
-			        <% if(produccionAcademica.Firma.Aceptacion2 != 1 && produccionAcademica.Firma.Aceptacion1 == 0){ %>
+			        <% if(produccionAcademica.FirmaAceptacion2 != 1 && produccionAcademica.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
 				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, produccionAcademica.GuidNumber, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>
-                        <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
+                        <% if(produccionAcademica.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                         <% } %>
                     <% } %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
-                        <% if(produccionAcademica.Firma.Aceptacion1 == 1){ %>
+                        <% if(produccionAcademica.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                         <% } %>                    
                     <% } %>

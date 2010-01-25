@@ -160,6 +160,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
 
         [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id, int tipoProducto)
         {
             return RedirectToProducto(id, tipoProducto, "Edit");

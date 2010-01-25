@@ -24,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             routes.MapRoute(null, "Logout", new { controller = "Session", action = "Destroy" });
             routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
             routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
-            routes.MapRoute(null, "Home", new { controller = "Home", action = "Index" });
+            //routes.MapRoute(null, "Home", new { controller = "Home", action = "Index" });
             routes.MapRoute(null, "Home/FilterProductsByInvestigador",
                             new {controller = "Home", action = "FilterProductsByInvestigador"});
             routes.MapRoute(null, "Home/FilterProductsByDepartamento",

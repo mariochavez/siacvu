@@ -60,6 +60,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso));
 
+            IMultiCriteria proyectos = Session.CreateMultiCriteria()
+                .Add(BuildCriteria<Proyecto>(usuario, x => x.Nombre, x => x.TipoProyecto));
+
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen));
 
@@ -75,6 +78,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 formacionRecursosHumanosResultado.AddRange((ICollection)producto);
             }
 
+            var proyectosResultado = new ArrayList();
+            foreach (var producto in proyectos.List())
+            {
+                proyectosResultado.AddRange((ICollection)producto);
+            }
+
             var vinculacionDifusionResultado = new ArrayList();
             foreach (var producto in vinculacionDifusion.List())
             {
@@ -83,7 +92,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             bandejaTrabajo[0] = produccionAcademicaResultado;
             bandejaTrabajo[1] = formacionRecursosHumanosResultado;
-            bandejaTrabajo[2] = vinculacionDifusionResultado;
+            bandejaTrabajo[2] = proyectosResultado;
+            bandejaTrabajo[3] = vinculacionDifusionResultado;
 
             return bandejaTrabajo;
         }
@@ -418,14 +428,14 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public DateTime CreadoEl { get; set; }
         public int TipoPublicacion { get; set; }
         public int EstatusProducto { get; set; }
-        public RevistaPublicacion RevistaPublicacion { get; set; }
-        public Institucion Institucion { get; set; }
-        public TipoDictamen TipoDictamen { get; set; }
-        public TipoOrgano TipoOrgano { get; set; }
-        public TipoEvento TipoEvento { get; set; }
-        public TipoParticipacion TipoParticipacion { get; set; }
-        public Firma Firma { get; set; }
-        public Usuario Usuario { get; set; }
+        //public RevistaPublicacion RevistaPublicacion { get; set; }
+        //public Institucion Institucion { get; set; }
+        //public TipoDictamen TipoDictamen { get; set; }
+        //public TipoOrgano TipoOrgano { get; set; }
+        //public TipoEvento TipoEvento { get; set; }
+        //public TipoParticipacion TipoParticipacion { get; set; }
+        //public Firma Firma { get; set; }
+        //public Usuario Usuario { get; set; }
         public int Aceptacion2 { get; set; }
         public int Aceptacion1 { get; set; }
         public int GuidNumber { get; set; }
@@ -449,6 +459,11 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             {
                 return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
             }
+        }
+
+        public string FechaCreacion
+        {
+            get { return CreadoEl.ToString("dd MMM, yyyy"); }
         }
     }
 }

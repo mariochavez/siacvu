@@ -3,6 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <% if (Model.Vinculacion == null || Model.Vinculacion.Length == 0){ %>
 	<div class="elementolista">
@@ -19,19 +20,15 @@
                 <h6>
                     <%=HumanizeHelper.GetNombreProducto(vinculacion.TipoProducto)%>
                     Registrado el: <%=HumanizeHelper.FormatDate(vinculacion.CreadoEl)%>
-                    <% if (vinculacion.TipoDictamen != null){ %>
-                        Producto dictaminado: <%=Html.Encode(vinculacion.TipoDictamen.Nombre)%>
-                    <% } %>
-                    <% if (vinculacion.TipoOrgano != null){ %>
-                        Tipo de &oacute;rgano: <%=Html.Encode(vinculacion.TipoOrgano.Nombre)%>
-                    <% } %>
-                    <% if (vinculacion.TipoEvento != null){ %>
-                        Tipo de evento: <%=Html.Encode(vinculacion.TipoEvento.Nombre)%>
-                    <% } %>
-                    <% if (vinculacion.TipoParticipacion != null){ %>
-                        Tipo de participaci&oacute;n: <%=Html.Encode(vinculacion.TipoParticipacion.Nombre)%>
-                    <% } %>
-                    <% if(Page.User.IsInRole("DGAA")){ %>
+                    <% if (vinculacion.TipoProducto == (int)TipoProductoEnum.Dictamen ){ %>
+                        Producto dictaminado: <%=Html.Encode(vinculacion.TipoNombre)%>
+                    <% } else if (vinculacion.TipoProducto == (int)TipoProductoEnum.OrganoExterno){ %>
+                        Tipo de &oacute;rgano: <%=Html.Encode(vinculacion.TipoNombre)%>
+                    <% } else if (vinculacion.TipoProducto == (int)TipoProductoEnum.Evento ){ %>
+                        Tipo de evento: <%=Html.Encode(vinculacion.TipoNombre)%>
+                    <% } else if (vinculacion.TipoProducto == (int)TipoProductoEnum.ParticipacionMedio ){ %>
+                        Tipo de participaci&oacute;n: <%=Html.Encode(vinculacion.TipoNombre)%>
+                    <% } else if(Page.User.IsInRole("DGAA")){ %>
                         Investigador: <%=Html.Encode(vinculacion.InvestigadorNombre)%>
                     <% } %>
                 </h6>
@@ -39,18 +36,18 @@
 
 			<div class="elementobotones">
 				<p>
-			        <% if (vinculacion.Firma.Aceptacion2 != 1 && vinculacion.Firma.Aceptacion1 == 0){ %>
+			        <% if (vinculacion.FirmaAceptacion2 != 1 && vinculacion.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", vinculacion.Id, vinculacion.TipoProducto)%></span>
 				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", vinculacion.Id, vinculacion.TipoProducto, vinculacion.GuidNumber, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", vinculacion.Id, vinculacion.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>
-                        <% if (vinculacion.Firma.Aceptacion1 == 1){ %>
+                        <% if (vinculacion.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Show", "Ver", vinculacion.Id, vinculacion.TipoProducto)%></span>
                         <% } %>
                     <% } %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
-                        <% if (vinculacion.Firma.Aceptacion1 == 1){ %>
+                        <% if (vinculacion.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Edit", "Editar", vinculacion.Id, vinculacion.TipoProducto)%></span>
                         <% } %>                    
                     <% } %>

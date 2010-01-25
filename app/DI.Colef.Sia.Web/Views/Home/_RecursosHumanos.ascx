@@ -19,8 +19,8 @@
                 <h6>
                     <%=HumanizeHelper.GetNombreProducto(recursoHumano.TipoProducto)%>
                     Registrado el: <%=HumanizeHelper.FormatDate(recursoHumano.CreadoEl)%>
-                    <% if (recursoHumano.Institucion != null){ %>
-                        Instituci&oacute;n: <%=Html.Encode(recursoHumano.Institucion.Nombre)%>
+                    <% if (!String.IsNullOrEmpty(recursoHumano.InstitucionNombre)){ %>
+                        Instituci&oacute;n: <%=Html.Encode(recursoHumano.InstitucionNombre)%>
                     <% } %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
                         Investigador: <%=Html.Encode(recursoHumano.InvestigadorNombre)%>
@@ -30,18 +30,18 @@
 
 			<div class="elementobotones">
 				<p>
-			        <% if (recursoHumano.Firma.Aceptacion2 != 1 && recursoHumano.Firma.Aceptacion1 == 0){ %>
+			        <% if (recursoHumano.FirmaAceptacion2 != 1 && recursoHumano.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
 				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", recursoHumano.Id, recursoHumano.TipoProducto, recursoHumano.GuidNumber, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>
-                        <% if (recursoHumano.Firma.Aceptacion1 == 1){ %>
+                        <% if (recursoHumano.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
                         <% } %>
                     <% } %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
-                        <% if (recursoHumano.Firma.Aceptacion1 == 1){ %>
+                        <% if (recursoHumano.FirmaAceptacion1 == 1){ %>
                             <span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
                         <% } %>                    
                     <% } %>
