@@ -116,6 +116,7 @@
     <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />
+    <Compile Include="Helpers\ProductoHelper.cs" />
     <Compile Include="Mappers\IArticuloDifusionMapper.cs" />
     <Compile Include="Mappers\Impl\ArticuloDifusionMapper.cs" />
     <Compile Include="Mappers\Impl\SesionEventoMapper.cs" />

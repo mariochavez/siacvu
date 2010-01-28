@@ -13,7 +13,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var produccionAcademica in Model.ProduccionAcademica) { %>
-        <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.GuidNumber)%><%=Html.Encode(produccionAcademica.Id)%><%=Html.Encode(produccionAcademica.TipoProducto)%>">
+        <div class="elementolista" id="accion_<%=Html.Encode(produccionAcademica.Id)%>_<%=Html.Encode(produccionAcademica.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(produccionAcademica.Nombre)%></span></h5>
                 <h6>
@@ -22,11 +22,11 @@
                     <% if(!String.IsNullOrEmpty(produccionAcademica.RevistaNombre)){ %>
                         Revista: <%=Html.Encode(produccionAcademica.RevistaNombre)%>
                     <% } %>
-                    <% if (produccionAcademica.EstatusProducto != 0){ %>
-                        Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.EstatusProducto)%>
+                    <% if (produccionAcademica.Estatus != 0){ %>
+                        Estatus: <%=HumanizeHelper.EstadoProducto(produccionAcademica.Estatus)%>
                     <% } %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
-                        Investigador: <%=Html.Encode(produccionAcademica.InvestigadorNombre) %>
+                         <%=Html.Encode(produccionAcademica.InvestigadorNombre) %>
                     <% } %>
                 </h6>
             </div><!--end elementodescripcion-->
@@ -35,7 +35,7 @@
 				<p>
 			        <% if(produccionAcademica.FirmaAceptacion2 != 1 && produccionAcademica.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
-				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, produccionAcademica.GuidNumber, new { @class = "remote put" })%></span>
+				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", produccionAcademica.Id, produccionAcademica.TipoProducto, 1, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", produccionAcademica.Id, produccionAcademica.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>

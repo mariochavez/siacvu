@@ -7,16 +7,19 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     public enum TipoProductoEnum
     {
         Articulo = 1,
+        Capitulo = 2,
         Curso = 3,
         Dictamen = 4,
         Evento = 6,
         Libro = 7,
         OrganoExterno = 8,
         ParticipacionMedio = 10,
+        Reporte = 11,
         Resena = 12,
         TesisDirigida = 13,
         Proyecto = 15,
-        ArticuloDifusion = 16
+        ArticuloDifusion = 16,
+        ObraTraducida = 20
     }
 
     public class EntityHelper
@@ -27,9 +30,15 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             {
                 case "Articulo" :
                     return TipoProductoEnum.Articulo;
+
+                case "Capitulo":
+                    return TipoProductoEnum.Capitulo;
                 
                 case "Curso":
                     return TipoProductoEnum.Curso;
+
+                case "Dictamen":
+                    return TipoProductoEnum.Dictamen;
 
                 case "Evento":
                     return TipoProductoEnum.Evento;
@@ -39,6 +48,12 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
                 case "OrganoExterno":
                     return TipoProductoEnum.OrganoExterno;
+
+                case "ParticipacionMedio":
+                    return TipoProductoEnum.ParticipacionMedio;
+
+                case "Reporte":
+                    return TipoProductoEnum.Reporte;
 
                 case "Resena":
                     return TipoProductoEnum.Resena;
@@ -51,6 +66,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
                 case "ArticuloDifusion":
                     return TipoProductoEnum.ArticuloDifusion;
+
+                case "ObraTraducida":
+                    return TipoProductoEnum.ObraTraducida;
             }
 
             return 0;
@@ -111,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             var tableName = String.Empty;
             var propertiesInfo = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (var propertyInfo in
-                propertiesInfo.Where(propertyInfo => propertyInfo.Name.StartsWith(reference)))
+                propertiesInfo.Where(propertyInfo => propertyInfo.Name.StartsWith(reference) && !propertyInfo.PropertyType.IsInterface))
             {
                 tableName = propertyInfo.Name;
                 break;

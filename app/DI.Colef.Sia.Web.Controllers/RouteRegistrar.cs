@@ -22,30 +22,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             routes.MapRoute(null, "Login", new { controller = "Session", action = "Index" });
             routes.MapRoute(null, "Logout", new { controller = "Session", action = "Destroy" });
-            routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
-            routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
+            //routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
+            //routes.MapRoute(null, "Session/Create", new { controller = "Session", action = "Create" });
             //routes.MapRoute(null, "Home", new { controller = "Home", action = "Index" });
-            routes.MapRoute(null, "Home/FilterProductsByInvestigador",
-                            new {controller = "Home", action = "FilterProductsByInvestigador"});
-            routes.MapRoute(null, "Home/FilterProductsByDepartamento",
-                            new { controller = "Home", action = "FilterProductsByDepartamento" });
+            //routes.MapRoute(null, "Home/FilterProductsByInvestigador",
+            //                new {controller = "Home", action = "FilterProductsByInvestigador"});
+            //routes.MapRoute(null, "Home/FilterProductsByDepartamento",
+            //                new { controller = "Home", action = "FilterProductsByDepartamento" });
 
             routes.CreateArea("Productos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos",
-                              routes.MapRoute(null, "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
-                              routes.MapRoute(null, "Productos/{controller}/{action}", new {action = "Index"})
+                              routes.MapRoute(null, "Productos/{controller}/{action}", new {action = "Index"}),
+                              routes.MapRoute(null, "Productos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"})
                 );
 
             routes.CreateArea("Catalogos", "DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos",
-                              routes.MapRoute(null, "Catalogos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
-                              routes.MapRoute(null, "Catalogos/{controller}/{action}", new {action = "Index"})
-
+                              routes.MapRoute(null, "Catalogos/{controller}/{action}", new {action = "Index"}),
+                              routes.MapRoute(null, "Catalogos/{controller}/{id}/{action}", null, new {id = @"\d{1,6}"})
                 );
-
+            
             // Routing config for the root area
             routes.CreateArea("Root", "DecisionesInteligentes.Colef.Sia.Web.Controllers",
-                              routes.MapRoute(null, "{controller}/{id}/{action}", null, new {id = @"\d{1,6}"}),
-                              routes.MapRoute(null, "{controller}/{action}", new {controller = "Home", action = "Index"})
+                              routes.MapRoute(null, "{controller}/{action}", new {controller = "Home", action = "Index"}),
+                              routes.MapRoute(null, "{controller}/{id}/{action}", null, new {id = @"\d{1,6}"})
+
                 );
+
+            routes.MapRoute(
+                null,
+                "{controller}/{id}/{action}",
+                new { action = "Index", id = "" }, new { id = @"\d{1,6}" }
+                );
+
+            routes.MapRoute(
+                "Default",
+                "{controller}/{action}",
+                new { action = "Index" }
+                );
+
+            routes.MapRoute(
+              "Root",
+              "",
+              new { controller = "Home", action = "Index", id = "" }
+            );
+
         }
     }
 }

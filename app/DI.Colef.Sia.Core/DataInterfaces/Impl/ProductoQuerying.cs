@@ -55,7 +55,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         {
             var bandejaTrabajo = new object[4];
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo));
+                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo))
+                .Add(BuildCriteria<Libro>(usuario, x => x.Nombre, x => x.ContenidoLibro))
+                .Add(BuildCriteria<Capitulo>(usuario, x => x.NombreCapitulo, x => x.TipoCapitulo))
+                .Add(BuildCriteria<ArticuloDifusion>(usuario, x => x.Titulo, x => x.TipoArticulo))
+                .Add(BuildCriteria<Reporte>(usuario, x => x.Titulo, x => x.TipoReporte))
+                .Add(BuildCriteria<Resena>(usuario, x => x.NombreProducto, x => x.TipoResena))
+                .Add(BuildCriteria<ObraTraducida>(usuario, x => x.Nombre, x => x.TipoObraTraducida));
 
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso));
@@ -66,34 +72,34 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen));
 
-            var produccionAcademicaResultado = new ArrayList();
-            foreach (var producto in produccionAcademica.List())
+            var produccionAcademicaResultado = new List<ProductoDTO>();
+            foreach (ArrayList producto in produccionAcademica.List())
             {
-                produccionAcademicaResultado.AddRange((ICollection)producto);
+                produccionAcademicaResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
             }
 
-            var formacionRecursosHumanosResultado = new ArrayList();
-            foreach (var producto in formacionRecursosHumanos.List())
+            var formacionRecursosHumanosResultado = new List<ProductoDTO>();
+            foreach (ArrayList producto in formacionRecursosHumanos.List())
             {
-                formacionRecursosHumanosResultado.AddRange((ICollection)producto);
+                formacionRecursosHumanosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
             }
 
-            var proyectosResultado = new ArrayList();
-            foreach (var producto in proyectos.List())
+            var proyectosResultado = new List<ProductoDTO>();
+            foreach (ArrayList producto in proyectos.List())
             {
-                proyectosResultado.AddRange((ICollection)producto);
+                proyectosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
             }
 
-            var vinculacionDifusionResultado = new ArrayList();
-            foreach (var producto in vinculacionDifusion.List())
+            var vinculacionDifusionResultado = new List<ProductoDTO>();
+            foreach (ArrayList producto in vinculacionDifusion.List())
             {
-                vinculacionDifusionResultado.AddRange((ICollection)producto);
+                vinculacionDifusionResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
             }
 
-            bandejaTrabajo[0] = produccionAcademicaResultado;
-            bandejaTrabajo[1] = formacionRecursosHumanosResultado;
-            bandejaTrabajo[2] = proyectosResultado;
-            bandejaTrabajo[3] = vinculacionDifusionResultado;
+            bandejaTrabajo[0] = produccionAcademicaResultado.ToArray();
+            bandejaTrabajo[1] = formacionRecursosHumanosResultado.ToArray();
+            bandejaTrabajo[2] = proyectosResultado.ToArray();
+            bandejaTrabajo[3] = vinculacionDifusionResultado.ToArray();
 
             return bandejaTrabajo;
         }
@@ -417,53 +423,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             }
 
             return criteria;
-        }
-    }
-
-    public class ProductoDTO
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int TipoProducto { get; set; }
-        public DateTime CreadoEl { get; set; }
-        public int TipoPublicacion { get; set; }
-        public int EstatusProducto { get; set; }
-        //public RevistaPublicacion RevistaPublicacion { get; set; }
-        //public Institucion Institucion { get; set; }
-        //public TipoDictamen TipoDictamen { get; set; }
-        //public TipoOrgano TipoOrgano { get; set; }
-        //public TipoEvento TipoEvento { get; set; }
-        //public TipoParticipacion TipoParticipacion { get; set; }
-        //public Firma Firma { get; set; }
-        //public Usuario Usuario { get; set; }
-        public int Aceptacion2 { get; set; }
-        public int Aceptacion1 { get; set; }
-        public int GuidNumber { get; set; }
-
-        public int Estatus { get; set; }
-        public string RevistaNombre { get; set; }
-        public string InstitucionNombre { get; set; }
-        public int Tipo { get; set; }
-        public string TipoNombre { get; set; }
-
-        public string UsuarioApellidoMaterno { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioNombre { get; set; }
-
-        public int FirmaAceptacion1 { get; set; }
-        public int FirmaAceptacion2 { get; set; }
-
-        public string InvestigadorNombre
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
-        }
-
-        public string FechaCreacion
-        {
-            get { return CreadoEl.ToString("dd MMM, yyyy"); }
         }
     }
 }

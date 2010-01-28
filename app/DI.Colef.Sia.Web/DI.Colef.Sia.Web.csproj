@@ -95,6 +95,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\NHibernate.Validator.dll</HintPath>
     </Reference>
+    <Reference Include="RouteDebug, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\RouteDebug.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SharpArch.Core.dll</HintPath>
@@ -506,6 +510,7 @@
     <Content Include="Views\ExperienciaProfesional\_DatosExperienciaProfesional.ascx" />
     <Content Include="Views\GrupoInvestigacion\_NewMiembroExterno.ascx" />
     <Content Include="Views\GrupoInvestigacion\_ShowMiembroExterno.ascx" />
+    <Content Include="Views\Home\_Productos.ascx" />
     <Content Include="Views\Home\FilterProducts.js.ascx" />
     <Content Include="Views\Home\Sign.js.ascx" />
     <Content Include="Views\Home\_VinculacionDifusion.ascx" />

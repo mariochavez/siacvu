@@ -534,14 +534,14 @@ a.editabusqueda {
 
 
 .elementolista {
-	height: 67px;
+	height: 120px;
 	overflow: hidden;
 	margin: 0 20px;
 	border-bottom: 1px solid #EFF1E7;
 }
 
 .elementolista-dos {
-	height: 67px;
+	height: 120px; /* 67 */
 	overflow: hidden;
 	margin: 0 20px;
 	background: transparent url(./Images/caja-busqueda-bg.gif) 0 0 repeat-x;
@@ -550,7 +550,7 @@ a.editabusqueda {
 
 .elementodescripcion {
 	float: left;
-	width: 425px;
+	width: 465px;
 	margin: 0 20px 0 0;
 }
 

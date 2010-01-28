@@ -3,6 +3,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">

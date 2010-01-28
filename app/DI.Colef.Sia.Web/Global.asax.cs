@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             InitializeServiceLocator();
 
             RouteRegistrar.RegisterRoutesTo(RouteTable.Routes);
+            //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
 
             AutoMapperConfiguration.Configure();
         }

@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="ArticuloDifusion.cs" />
+    <Compile Include="DataInterfaces\Impl\ProductoDTO.cs" />
     <Compile Include="EntityHelper.cs" />
     <Compile Include="IParticipante.cs" />
     <Compile Include="NHibernateValidator\AutorExternoProductoValidator.cs" />

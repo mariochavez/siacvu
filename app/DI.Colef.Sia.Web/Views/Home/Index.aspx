@@ -60,16 +60,16 @@
     
     <div id="lista">
         <h4>Producci&oacute;n acad&eacute;mica</h4>
-        <% Html.RenderPartial("_ProduccionAcademica", Model.Form); %>
+        <% Html.RenderPartial("_Productos", Model.Form.ProduccionAcademica); %>
         
         <h4>Proyectos de investigaci&oacute;n</h4>
-        <% Html.RenderPartial("_ProyectosInvestigacion", Model.Form); %>
+        <% Html.RenderPartial("_Productos", Model.Form.Proyectos); %>
         
         <h4>Formaci&oacute;n de recursos humanos</h4>
-        <% Html.RenderPartial("_RecursosHumanos", Model.Form); %>
+        <% Html.RenderPartial("_Productos", Model.Form.FormacionRecursosHumanos); %>
         
         <h4>Actividades de vinculaci&oacute;n y difusi&oacute;n</h4>
-        <% Html.RenderPartial("_VinculacionDifusion", Model.Form); %>
+        <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
     
     </div><!--end lista-->
     

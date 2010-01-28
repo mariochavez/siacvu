@@ -14,7 +14,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var vinculacion in Model.Vinculacion){ %>
-        <div class="elementolista" id="accion_<%=Html.Encode(vinculacion.GuidNumber)%><%=Html.Encode(vinculacion.Id)%><%=Html.Encode(vinculacion.TipoProducto)%>">
+        <div class="elementolista" id="accion_<%=Html.Encode(vinculacion.Id)%>_<%=Html.Encode(vinculacion.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(vinculacion.Nombre)%></span></h5>
                 <h6>
@@ -38,7 +38,7 @@
 				<p>
 			        <% if (vinculacion.FirmaAceptacion2 != 1 && vinculacion.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", vinculacion.Id, vinculacion.TipoProducto)%></span>
-				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", vinculacion.Id, vinculacion.TipoProducto, vinculacion.GuidNumber, new { @class = "remote put" })%></span>
+				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", vinculacion.Id, vinculacion.TipoProducto, 1, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", vinculacion.Id, vinculacion.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>

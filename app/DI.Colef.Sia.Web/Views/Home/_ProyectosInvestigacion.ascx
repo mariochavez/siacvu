@@ -13,7 +13,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var proyecto in Model.Proyectos){ %>
-        <div class="elementolista" id="accion_<%=Html.Encode(proyecto.GuidNumber)%><%=Html.Encode(proyecto.Id)%><%=Html.Encode(proyecto.TipoProducto)%>">
+        <div class="elementolista" id="accion_<%=Html.Encode(proyecto.Id)%>_<%=Html.Encode(proyecto.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(proyecto.Nombre)%></span></h5>
                 <h6>
@@ -30,22 +30,18 @@
 
 			<div class="elementobotones">
 				<p>
-				    
-			        <% if (proyecto.FirmaAceptacion2 != 1 && proyecto.FirmaAceptacion1 == 0){ %>
-			            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(23, proyecto.TipoProducto), "Editar " + proyecto.Id)%></span>
-				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", proyecto.Id, proyecto.TipoProducto, proyecto.GuidNumber, new { @class = "remote put" })%></span>
-                        <span><%=Html.CustomActionLink("Home", "Show", "Ver", proyecto.Id, proyecto.TipoProducto)%></span>
-                    <% } %>
-                    <%if(Page.User.IsInRole("Investigadores")){ %>
-                        <% if (proyecto.FirmaAceptacion1 == 1){ %>
-                            <span><%=Html.CustomActionLink("Home", "Show", "Ver", proyecto.Id, proyecto.TipoProducto)%></span>
-                        <% } %>
-                    <% } %>
-                    <% if(Page.User.IsInRole("DGAA")){ %>
-                        <% if (proyecto.FirmaAceptacion1 == 1){ %>
-                            <span><%=Html.CustomActionLink("Home", "Edit", "Editar", proyecto.Id, proyecto.TipoProducto)%></span>
-                        <% } %>                    
-                    <% } %>
+				    <%if (Page.User.IsInRole("DGAA") && proyecto.IsFirmed()) { %>
+				        <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(proyecto.Id, proyecto.TipoProducto), "Editar")%></span>
+				    <% } else if(Page.User.IsInRole("Investigadores")) { %>
+				        <% if(!proyecto.IsFirmed() && !proyecto.IsValidated()) { %>
+				            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(proyecto.Id, proyecto.TipoProducto), "Editar")%></span>
+				            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Sign(proyecto.Id, proyecto.TipoProducto), "Firmar")%></span>
+				        <% } else if(proyecto.IsFirmed() && !proyecto.IsValidated()) { %>
+				            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Show(proyecto.Id, proyecto.TipoProducto), "Ver")%></span>
+				        <%} else if(proyecto.IsValidated()) { %>
+				            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(proyecto.Id, proyecto.TipoProducto), "Editar")%></span>
+				        <% } %>
+				    <% } %>
                	</p>
 			</div><!--end elementobotones-->
         		

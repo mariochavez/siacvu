@@ -13,7 +13,7 @@
 	</div><!--end elementolista-->
 <% } else { %>
     <% foreach (var recursoHumano in Model.FormacionRecursosHumanos){ %>
-        <div class="elementolista" id="accion_<%=Html.Encode(recursoHumano.GuidNumber)%><%=Html.Encode(recursoHumano.Id)%><%=Html.Encode(recursoHumano.TipoProducto)%>">
+        <div class="elementolista" id="accion_<%=Html.Encode(recursoHumano.Id)%>_<%=Html.Encode(recursoHumano.TipoProducto)%>">
             <div class="elementodescripcion">
                 <h5><span><%=Html.Encode(recursoHumano.Nombre)%></span></h5>
                 <h6>
@@ -32,7 +32,7 @@
 				<p>
 			        <% if (recursoHumano.FirmaAceptacion2 != 1 && recursoHumano.FirmaAceptacion1 == 0){ %>
 				        <span><%=Html.CustomActionLink("Home", "Edit", "Editar", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
-				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", recursoHumano.Id, recursoHumano.TipoProducto, recursoHumano.GuidNumber, new { @class = "remote put" })%></span>
+				        <span><%=Html.CustomActionLink("Home", "Sign", "Firmar", recursoHumano.Id, recursoHumano.TipoProducto, 1, new { @class = "remote put" })%></span>
                         <span><%=Html.CustomActionLink("Home", "Show", "Ver", recursoHumano.Id, recursoHumano.TipoProducto)%></span>
                     <% } %>
                     <%if(Page.User.IsInRole("Investigadores")){ %>

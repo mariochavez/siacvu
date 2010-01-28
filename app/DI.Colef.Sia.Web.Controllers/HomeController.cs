@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize(Roles = "Investigadores")]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
-        public ActionResult Sign(int id, int tipoProducto, int guidNumber)
+        public ActionResult Sign(int id, int tipoProducto)
         {
             var producto = productoService.SignAndGetNombreProducto(id, tipoProducto, CurrentUser());
 
@@ -55,8 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            {
                                NombreProducto = producto,
                                IdProducto = id,
-                               TipoProducto = tipoProducto,
-                               GuidNumber = guidNumber
+                               TipoProducto = tipoProducto
                            };
 
             return Rjs(data);
@@ -89,17 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         private HomeForm GetProductosBandeja(int filterId, int filterType)
         {
-            var produccionAcademica = new List<ProductoDTO>();
-            var formacionRecursosHumanos = new List<ProductoDTO>();
-            var proyectos = new List<ProductoDTO>();
-            var vinculaciones = new List<ProductoDTO>();
-            object[] productos = new[]
-                                     {
-                                         new ArrayList(),
-                                         new ArrayList(),
-                                         new ArrayList(),
-                                         new ArrayList()
-                                     };
+            var productos = new object[4];
 
             if (User.IsInRole("Investigadores"))
                 productos = productoService.GetProductosBandeja(CurrentUser());
@@ -113,44 +102,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     productos = productoService.GetProductosBandeja(true, filterId, filterType);
             }
 
-            foreach (var producto in (IEnumerable)productos[0])
-            {
-                var productoAcademico = producto as ProductoDTO;
-                var buffer = Guid.NewGuid().ToByteArray();
-                productoAcademico.GuidNumber = BitConverter.ToInt32(buffer, 0);
-                produccionAcademica.Add(productoAcademico);
-            }
-
-            foreach (var producto in (IEnumerable)productos[1])
-            {
-                var recursoAcademico = producto as ProductoDTO;
-                var buffer = Guid.NewGuid().ToByteArray();
-                recursoAcademico.GuidNumber = BitConverter.ToInt32(buffer, 0);
-                formacionRecursosHumanos.Add(recursoAcademico);
-            }
-
-            foreach (var producto in (IEnumerable)productos[2])
-            {
-                var proyecto = producto as ProductoDTO;
-                var buffer = Guid.NewGuid().ToByteArray();
-                proyecto.GuidNumber = BitConverter.ToInt32(buffer, 0);
-                proyectos.Add(proyecto);
-            }
-
-            foreach (var producto in (IEnumerable)productos[3])
-            {
-                var vinculacion = producto as ProductoDTO;
-                var buffer = Guid.NewGuid().ToByteArray();
-                vinculacion.GuidNumber = BitConverter.ToInt32(buffer, 0);
-                vinculaciones.Add(vinculacion);
-            }
-
             var data = new HomeForm
                            {
-                               ProduccionAcademica = produccionAcademica.ToArray(),
-                               FormacionRecursosHumanos = formacionRecursosHumanos.ToArray(),
-                               Proyectos = proyectos.ToArray(),
-                               Vinculacion = vinculaciones.ToArray(),
+                               ProduccionAcademica =  (ProductoDTO[]) productos[0],
+                               FormacionRecursosHumanos = (ProductoDTO[]) productos[1],
+                               Proyectos = (ProductoDTO[]) productos[2],
+                               Vinculacion = (ProductoDTO[]) productos[3],
                                Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores()),
                                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                                FilterType = filterType
