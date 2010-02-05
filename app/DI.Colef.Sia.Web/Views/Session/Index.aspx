@@ -22,10 +22,7 @@
     <div id="barra">
         <div id="asistente">
             <h3>Asistente de inicio de sesi&oacute;n</h3>
-            <p>Introduzca el <strong>usuario</strong> que le fu&eacute; asignado por el &aacute;rea de sistemas.</p>
-            <p>Introduzca la <strong>clave secreta</strong> que le fu&eacute; entregada junto con su usuario. Unicamente existe una combinaci&oacute;n v&aacute;lida de ambos valores.</p>
-            <p>Si activa la casilla <strong>recu&eacute;rdame</strong>, el navegador va a poder recordar sus credenciales por un espacio de tiempo limitado, lo que le permitir regresar a su sesi&oacute;n durante este periodo sin tener que ingresar sus credenciales nuevamente.</p>
-            <p>Si usted se encuentra trabajando en un computador de uso compartido, se le recomienda no activar <strong>recu&eacute;rdame</strong>, por ning&uacute;n motivo.</p>
+            <p>Introduzca el <strong>usuario</strong> y <strong>clave secreta</strong> que le fu&eacute; asignado por el &aacute;rea de sistemas.</p>
         </div><!--end asistente-->
         
     </div><!--end barra-->
