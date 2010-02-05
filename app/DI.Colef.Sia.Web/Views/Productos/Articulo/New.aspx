@@ -6,15 +6,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2><%=Html.ProductoNewTitle(TipoProductoEnum.Articulo) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo art&iacute;culo en revistas de investigaci&oacute;n dentro del sistema.
+	        Favor de llenar los siguientes campos para registrar un nuevo <%=Html.ProductoNameSingular(TipoProductoEnum.Articulo) %> dentro del sistema.
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

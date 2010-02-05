@@ -1,10 +1,9 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm
     {
         public int Id { get; set; }
+
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
         public string Volumen { get; set; }

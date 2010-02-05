@@ -69,20 +69,24 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return actions;
         }
 
-        public static string ProductoNewTitle(this HtmlHelper html, int tipoProducto)
+        public static string ProductoNewTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            var producto = (TipoProductoEnum) tipoProducto;
             string productoNewTitle = "Registrar {0}";
-            
 
-            switch (producto)
+            return String.Format(productoNewTitle, ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoNameSingular(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productName = String.Empty;
+            switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productoNewTitle = string.Format(productoNewTitle, "Artículo en revista de investigación");
+                    productName = "Artículo en revista de investigación";
                     break;
             }
 
-            return productoNewTitle;
+            return productName;
         }
     }
 }

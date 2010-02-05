@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using Machine.Specifications;
 using Rhino.Mocks;
@@ -22,7 +23,7 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
     [Subject("View Helpers")]
     public class when_humanize_articulo_produt_name : mock_htmlhelper
     {
-        static int tipoProducto = 1;
+        static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
         static string title = String.Empty;
 
         static string expectedTitle = "Registrar Artículo en revista de investigación";
