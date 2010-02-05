@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using System.Web.Routing;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -38,7 +37,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var data = new GenericViewData<HomeForm>
                            {
                                Title = "Sistema de administración académica",
-                               Form = GetProductosBandeja()
+                               Form = GetProductosEnProcesoBandeja()
                            };
 
             return View(data);
@@ -66,7 +65,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult FilterProductsByInvestigador(int select)
         {
-            var data = select == 0 ? GetProductosBandeja() : GetProductosBandeja(select, 1);
+            var data = select == 0 ? GetProductosEnProcesoBandeja() : GetProductosEnProcesoBandeja(select, 1);
 
             return Rjs("FilterProducts", data);
         }
@@ -76,31 +75,32 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult FilterProductsByDepartamento(int select)
         {
-            var data = select == 0 ? GetProductosBandeja() : GetProductosBandeja(select, 2);
+            var data = select == 0 ? GetProductosEnProcesoBandeja() : GetProductosEnProcesoBandeja(select, 2);
 
             return Rjs("FilterProducts", data);
         }
 
-        private HomeForm GetProductosBandeja()
+        private HomeForm GetProductosEnProcesoBandeja()
         {
-            return GetProductosBandeja(0, 0);
+            return GetProductosEnProcesoBandeja(0, 0);
         }
 
-        private HomeForm GetProductosBandeja(int filterId, int filterType)
+        private HomeForm GetProductosEnProcesoBandeja(int filterId, int filterType)
         {
-            var productos = new object[4];
+            object[] productos = productoService.GetProductosPendientesBandeja(CurrentUser());
 
-            if (User.IsInRole("Investigadores"))
-                productos = productoService.GetProductosBandeja(CurrentUser());
-            if (User.IsInRole("DGAA"))
-            {
-                if (filterId == 0 && filterType == 0)
-                    productos = productoService.GetProductosBandeja(true);
-                if(filterId != 0 && filterType == 1)
-                    productos = productoService.GetProductosBandeja(true, filterId, filterType);
-                if (filterId != 0 && filterType == 2)
-                    productos = productoService.GetProductosBandeja(true, filterId, filterType);
-            }
+            //if (User.IsInRole("Investigadores"))
+            //    productos = productoService.GetProductosBandeja(CurrentUser());
+            //if (User.IsInRole("DGAA"))
+            //{
+                
+            //    //if (filterId == 0 && filterType == 0)
+            //    //    productos = productoService.GetProductosEnProcesoBandeja(true);
+            //    //if(filterId != 0 && filterType == 1)
+            //    //    productos = productoService.GetProductosEnProcesoBandeja(true, filterId, filterType);
+            //    //if (filterId != 0 && filterType == 2)
+            //    //    productos = productoService.GetProductosEnProcesoBandeja(true, filterId, filterType);
+            //}
 
             var data = new HomeForm
                            {
@@ -132,6 +132,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected ActionResult RedirectToProducto(int id, int tipoProducto, string action)
         {
             RedirectToRouteResult route = null;
+
+            route = RedirectToRoute("Productos",
+                                    new RouteValueDictionary(new {controller = "Articulo", id = id, action = action}));
 
             switch (tipoProducto)
             {

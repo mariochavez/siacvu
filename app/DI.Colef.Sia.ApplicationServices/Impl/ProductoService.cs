@@ -45,9 +45,14 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.participacionMedioService = participacionMedioService;
         }
 
-        public object[] GetProductosBandeja(Usuario usuario)
+        public object[] GetProductosPendientesBandeja(Usuario usuario)
         {
-            return productoQuerying.GetBandejaProductos(usuario);
+            return productoQuerying.GetBandejaProductos(usuario, TipoBandeja.WorkInProgress);
+        }
+
+        public object[] GetProductosFinalizadosBandeja(Usuario usuario)
+        {
+            return productoQuerying.GetBandejaProductos(usuario, TipoBandeja.Finished);
         }
 
         public object[] GetProductosBandeja(bool isDgaa)

@@ -129,7 +129,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             var tableName = String.Empty;
             var propertiesInfo = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (var propertyInfo in
-                propertiesInfo.Where(propertyInfo => propertyInfo.Name.StartsWith(reference) && !propertyInfo.PropertyType.IsInterface))
+                propertiesInfo.Where(propertyInfo => propertyInfo.Name.StartsWith(reference) && !propertyInfo.PropertyType.IsInterface && !propertyInfo.PropertyType.IsArray && propertyInfo.PropertyType.Name != typeof(String).Name))
             {
                 tableName = propertyInfo.Name;
                 break;

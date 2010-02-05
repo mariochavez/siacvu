@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Web.Areas;
 
@@ -25,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             if (producto.IsRejected())
                 info += String.Format("<br />trabajo rechazado de validación");
             else if (!producto.IsFirmed() && !producto.IsValidated())
-                info += String.Format("<br />aún sin firmar, trabajo en proceso");
+                info += String.Format("<br /><span>aún sin firmar, trabajo en proceso</span>");
             else if(producto.IsFirmed() && !producto.IsValidated())
                 info += String.Format("<br />trabajo firmado en proceso de validación");
 
@@ -66,18 +67,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return actions;
-            //<%if (Page.User.IsInRole("DGAA") && producto.IsFirmed()) { %>
-            //            <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(producto.Id, producto.TipoProducto), "Editar")%></span>
-            //        <% } else if(Page.User.IsInRole("Investigadores")) { %>
-            //            <% if(!producto.IsFirmed() && !producto.IsValidated()) { %>
-            //                <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(producto.Id, producto.TipoProducto), "Editar")%></span>
-            //                <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Sign(producto.Id, producto.TipoProducto), "Firmar")%></span>
-            //            <% } else if(producto.IsFirmed() && !producto.IsValidated()) { %>
-            //                <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Show(producto.Id, producto.TipoProducto), "Ver")%></span>
-            //            <%} else if(producto.IsValidated()) { %>
-            //                <span><%=Html.ActionLinkForAreas<HomeController>(x => x.Edit(producto.Id, producto.TipoProducto), "Editar")%></span>
-            //            <% } %>
-            //        <% } %>
+        }
+
+        public static string ProductoNewTitle(this HtmlHelper html, int tipoProducto)
+        {
+            var producto = (TipoProductoEnum) tipoProducto;
+            string productoNewTitle = "Registrar {0}";
+            
+
+            switch (producto)
+            {
+                case TipoProductoEnum.Articulo:
+                    productoNewTitle = string.Format(productoNewTitle, "Artículo en revista de investigación");
+                    break;
+            }
+
+            return productoNewTitle;
         }
     }
 }

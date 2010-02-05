@@ -14,5 +14,7 @@ var html = '
 $('#accion_<%=Html.Encode(Model.IdProducto)%>_<%=Html.Encode(Model.TipoProducto)%> .elementobotones').html(html);
 $('#accion_<%=Html.Encode(Model.IdProducto)%>_<%=Html.Encode(Model.TipoProducto)%> .elementobotones a').removeLoading();
 showMessage('El <%=HumanizeHelper.GetNombreProducto(Model.TipoProducto) %> <%=Html.Encode(Model.NombreProducto) %> ha sido enviado a firma');
+$('#accion_<%=Html.Encode(Model.IdProducto)%>_<%=Html.Encode(Model.TipoProducto)%> div.elementodescripcion h6 span').html('trabajo firmado en proceso de validaci&oacute;n');
+
 $('#accion_<%=Html.Encode(Model.IdProducto)%>_<%=Html.Encode(Model.TipoProducto)%>').effect("highlight", {}, 3000);
 

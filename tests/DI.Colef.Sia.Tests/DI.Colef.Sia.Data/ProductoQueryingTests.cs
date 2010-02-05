@@ -35,7 +35,7 @@ namespace Tests.DI.Colef.Sia.Data
                 pi.SetValue(usuario, roles, null);
 
                 productoQuerying = new ProductoQuerying();
-                productosDto = productoQuerying.GetBandejaProductos(usuario);
+                productosDto = productoQuerying.GetBandejaProductos(usuario, TipoBandeja.WorkInProgress);
             };
 
         It should_return_products = () =>

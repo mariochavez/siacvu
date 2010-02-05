@@ -17,7 +17,7 @@
                 <h6>
                     <%=Html.ProductoInformation(producto) %>
                     <% if(Page.User.IsInRole("DGAA")){ %>
-                        Realizado por <%=Html.Encode(producto.InvestigadorNombre)%><br />
+                        <br />Realizado por <%=Html.Encode(producto.InvestigadorNombre)%>
                     <% } %>
                 </h6>
             </div><!--end elementodescripcion-->

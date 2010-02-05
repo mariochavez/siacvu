@@ -13,6 +13,12 @@ using Expression = NHibernate.Criterion.Expression;
 
 namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 {
+    public enum TipoBandeja
+    {
+        WorkInProgress,
+        Finished
+    }
+
     public class ProductoQuerying : IProductoQuerying
     {
         protected virtual ISession Session
@@ -51,26 +57,30 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return productoList.ToArray();
         }
 
-        public object[] GetBandejaProductos(Usuario usuario)
+        public object[] GetBandejaProductos(Usuario usuario, TipoBandeja tipoBandeja)
         {
             var bandejaTrabajo = new object[4];
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo))
-                .Add(BuildCriteria<Libro>(usuario, x => x.Nombre, x => x.ContenidoLibro))
-                .Add(BuildCriteria<Capitulo>(usuario, x => x.NombreCapitulo, x => x.TipoCapitulo))
-                .Add(BuildCriteria<ArticuloDifusion>(usuario, x => x.Titulo, x => x.TipoArticulo))
-                .Add(BuildCriteria<Reporte>(usuario, x => x.Titulo, x => x.TipoReporte))
-                .Add(BuildCriteria<Resena>(usuario, x => x.NombreProducto, x => x.TipoResena))
-                .Add(BuildCriteria<ObraTraducida>(usuario, x => x.Nombre, x => x.TipoObraTraducida));
+                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<Libro>(usuario, x => x.Nombre, x => x.ContenidoLibro).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<Capitulo>(usuario, x => x.NombreCapitulo, x => x.TipoCapitulo).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<ArticuloDifusion>(usuario, x => x.Titulo, x => x.TipoArticulo).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<Reporte>(usuario, x => x.Titulo, x => x.TipoReporte).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<Resena>(usuario, x => x.NombreProducto, x => x.TipoResena).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<ObraTraducida>(usuario, x => x.Nombre, x => x.TipoObraTraducida).FilterBandeja(usuario, tipoBandeja));
 
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso));
+                .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<TesisDirigida>(usuario, x => x.Titulo, x => x.TipoTesis).FilterBandeja(usuario, tipoBandeja));
 
             IMultiCriteria proyectos = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Proyecto>(usuario, x => x.Nombre, x => x.TipoProyecto));
+                .Add(BuildCriteria<Proyecto>(usuario, x => x.Nombre, x => x.TipoProyecto).FilterBandeja(usuario, tipoBandeja));
 
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen));
+                .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<OrganoExterno>(usuario, x => x.Nombre, x => x.TipoOrgano).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<Evento>(usuario, x => x.Nombre, x => x.TipoEvento).FilterBandeja(usuario, tipoBandeja))
+                .Add(BuildCriteria<ParticipacionMedio>(usuario, x => x.Titulo, x => x.TipoParticipacion).FilterBandeja(usuario, tipoBandeja));
 
             var produccionAcademicaResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in produccionAcademica.List())
@@ -420,6 +430,27 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                     .Add(Expression.Eq("Aceptacion1", 1));
 
                 criteria.Add(Subqueries.PropertyIn("Firma", productoEnFirma));
+            }
+
+            return criteria;
+        }
+    }
+
+    public static class CriteriaFilters
+    {
+        public static ICriteria FilterBandeja(this ICriteria criteria, Usuario usuario, TipoBandeja tipoBandeja)
+        {
+            var isInvestigador = (from role in usuario.Roles
+                          where role.Nombre == "Investigador"
+                          select role).FirstOrDefault() != null;
+
+            if (!isInvestigador && tipoBandeja == TipoBandeja.WorkInProgress)
+            {
+                criteria.Add(Expression.And(Expression.Eq("f.Aceptacion1", 1), Expression.Eq("f.Aceptacion2", 0)));
+            }
+            else if(isInvestigador && tipoBandeja == TipoBandeja.WorkInProgress)
+            {
+                criteria.Add(Expression.Eq("f.Aceptacion2", 0));
             }
 
             return criteria;
