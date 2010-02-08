@@ -68,6 +68,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return actions;
         }
+		
+		public static string ProductoListTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
+		{
+		    string productoListTitle = "Administración de {0}";
+			
+			return String.Format(productoListTitle, ProductoNamePlural(html, tipoProducto));
+		}
 
         public static string ProductoNewTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
@@ -76,13 +83,107 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             return String.Format(productoNewTitle, ProductoNameSingular(html, tipoProducto));
         }
 
+        public static string ProductoEditTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoEditTitle = "Para modificar {0} utilice los siguientes campos para realizar cambios dentro del sistema.";
+
+            return String.Format(productoEditTitle, ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoShowTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoShowTitle = "Aquí se muestra la información detallada de {0} como está en el sistema.";
+
+            return String.Format(productoShowTitle, ProductoNameSingular(html, tipoProducto));
+        }
+
         public static string ProductoNameSingular(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
             string productName = String.Empty;
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículo en revista de investigación";
+                    productName = "el Artículo en revista de investigación";
+                    break;
+                case TipoProductoEnum.ArticuloDifusion:
+                    productName = "el Artículo en revista de difusión";
+                    break;
+                case TipoProductoEnum.Capitulo:
+                    productName = "el Capítulo en libro";
+                    break;
+                case TipoProductoEnum.Curso:
+                    productName = "el Curso";
+                    break;
+                case TipoProductoEnum.Dictamen:
+                    productName = "el Dictamen";
+                    break;
+                case TipoProductoEnum.Evento:
+                    productName = "el Evento";
+                    break;
+                case TipoProductoEnum.Libro:
+                    productName = "el Libro";
+                    break;
+                case TipoProductoEnum.ObraTraducida:
+                    productName = "la Obra traducida";
+                    break;
+                case TipoProductoEnum.OrganoExterno:
+                    productName = "el Órgano externo";
+                    break;
+                case TipoProductoEnum.ParticipacionMedio:
+                    productName = "la Participación en medio";
+                    break;
+                case TipoProductoEnum.Reporte:
+                    productName = "el Reporte técnico";
+                    break;
+                case TipoProductoEnum.TesisDirigida:
+                    productName = "tesis dirigida";
+                    break;
+            }
+
+            return productName;
+        }
+
+        public static string ProductoNamePlural(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productName = string.Empty;
+
+            switch (tipoProducto)
+            {
+                case TipoProductoEnum.Articulo:
+                    productName = "Artículos";
+                    break;
+                case TipoProductoEnum.ArticuloDifusion:
+                    productName = "Artículos en revista de difusión";
+                    break;
+                case TipoProductoEnum.Capitulo:
+                    productName = "Capítulos en libros";
+                    break;
+                case TipoProductoEnum.Curso:
+                    productName = "Curso";
+                    break;
+                case TipoProductoEnum.Dictamen:
+                    productName = "Dictamenes";
+                    break;
+                case TipoProductoEnum.Evento:
+                    productName = "Eventos";
+                    break;
+                case TipoProductoEnum.Libro:
+                    productName = "Libros";
+                    break;
+                case TipoProductoEnum.ObraTraducida:
+                    productName = "Obras traducidas";
+                    break;
+                case TipoProductoEnum.OrganoExterno:
+                    productName = "Órganos externos";
+                    break;
+                case TipoProductoEnum.ParticipacionMedio:
+                    productName = "Participaciones en medios";
+                    break;
+                case TipoProductoEnum.Reporte:
+                    productName = "el Reportes técnicos";
+                    break;
+                case TipoProductoEnum.TesisDirigida:
+                    productName = "tesis dirigidas";
                     break;
             }
 
