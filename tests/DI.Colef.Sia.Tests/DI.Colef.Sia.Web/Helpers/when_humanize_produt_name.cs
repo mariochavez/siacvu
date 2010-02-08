@@ -96,5 +96,4 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
                                                               title.ShouldEqual(expectedTitle);
                                                           };
     }
-
 }
