@@ -85,16 +85,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string ProductoEditTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoEditTitle = "Para modificar {0} utilice los siguientes campos para realizar cambios dentro del sistema.";
+            string productoEditTitle = "Para modificar {0} {1} utilice los siguientes campos para realizar cambios dentro del sistema.";
 
-            return String.Format(productoEditTitle, ProductoNameSingular(html, tipoProducto));
+            return String.Format(productoEditTitle, GetArticuloIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoShowTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoShowTitle = "Aquí se muestra la información detallada de {0} como está en el sistema.";
+            string productoShowTitle = "Aquí se muestra la información detallada de {0} {1} como está en el sistema.";
 
-            return String.Format(productoShowTitle, ProductoNameSingular(html, tipoProducto));
+            return String.Format(productoShowTitle, GetArticuloIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoNameSingular(this HtmlHelper html, TipoProductoEnum tipoProducto)
@@ -103,40 +103,43 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "el Artículo en revista de investigación";
+                    productName = "Artículo en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "el Artículo en revista de difusión";
+                    productName = "Artículo en revista de difusión";
                     break;
                 case TipoProductoEnum.Capitulo:
-                    productName = "el Capítulo en libro";
+                    productName = "Capítulo en libro";
                     break;
                 case TipoProductoEnum.Curso:
-                    productName = "el Curso";
+                    productName = "Curso";
                     break;
                 case TipoProductoEnum.Dictamen:
-                    productName = "el Dictamen";
+                    productName = "Dictamen";
                     break;
                 case TipoProductoEnum.Evento:
-                    productName = "el Evento";
+                    productName = "Organización y participación de evento académico";
                     break;
                 case TipoProductoEnum.Libro:
-                    productName = "el Libro";
+                    productName = "Libro";
                     break;
                 case TipoProductoEnum.ObraTraducida:
-                    productName = "la Obra traducida";
+                    productName = "Obra traducida";
                     break;
                 case TipoProductoEnum.OrganoExterno:
-                    productName = "el Órgano externo";
+                    productName = "Órgano externo";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "la Participación en medio";
+                    productName = "Difusión del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
-                    productName = "el Reporte técnico";
+                    productName = "Reporte técnico/Documento de trabajo";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "tesis dirigida";
+                    productName = "Tesis dirigida";
+                    break;
+                case TipoProductoEnum.Resena:
+                    productName = "Reseña/Nota crítica";
                     break;
             }
 
@@ -150,7 +153,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículos";
+                    productName = "Artículos en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
                     productName = "Artículos en revista de difusión";
@@ -188,6 +191,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             }
 
             return productName;
+        }
+
+        static string GetArticuloIdioma(TipoProductoEnum tipoProducto)
+        {
+            string articuloIdioma = "el";
+            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                articuloIdioma = "la";
+            return articuloIdioma;
         }
     }
 	

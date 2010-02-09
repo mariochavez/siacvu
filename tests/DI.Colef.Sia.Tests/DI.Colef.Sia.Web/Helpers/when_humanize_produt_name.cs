@@ -26,14 +26,14 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
         static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
         static string title = String.Empty;
 
-        static string expectedTitle = "Registrar el Artículo en revista de investigación";
+        static string expectedTitle = "Registrar Artículo en revista de investigación";
 
         Because of = () =>
                          {
                              title = ProductoHelper.ProductoNewTitle(htmlHelper, tipoProducto);
                          };
 
-        It should_be_same_as_expectd_title = () =>
+        It should_be_same_as_expected_title = () =>
                                                  {
                                                      title.ShouldEqual(expectedTitle);
                                                  };
@@ -44,8 +44,8 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
 	{
 	    static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
 		static string title = String.Empty;
-		
-		static string expectedTitle = "Administración de Artículos";
+
+        static string expectedTitle = "Administración de Artículos en revista de investigación";
 		
 		Because of = () =>
 		                 {
