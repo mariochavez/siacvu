@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ArticuloForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
@@ -10,14 +11,15 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+        <%=Html.ProductoEditTitle(TipoProductoEnum.Articulo) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del art&iacute;culo en revistas de investigaci&oacute;n como est&aacute; en el sistema.
+            Aqu&iacute; se muestra la informaci&oacute;n detallada del 
+            <%=Html.ProductoNameSingular(TipoProductoEnum.Articulo) %> como est&aacute; en el sistema.
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
