@@ -1,19 +1,23 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ArticuloForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2>Administraci&oacute;n de <%=Html.Encode(Model.GetObjectIndexTitle())%></h2>
+    <h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %></h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar <%=Html.Encode(Model.GetObjectNew())%></h3>
+        <h3>Agregar 
+            <%=Html.ProductoNamePlural(TipoProductoEnum.Articulo) %></h3>
         <p>
-            Si usted es Investigador, puede agregar <%=Html.Encode(Model.GetObjectNew())%>, presionando en el bot&oacute;n de t&iacute;tulo <strong><%=Html.Encode(Model.GetObjectNameNewButton())%></strong>.
+            Si usted es Investigador, puede agregar 
+            <%=Html.ProductoNamePlural(TipoProductoEnum.Articulo) %>, presionando en el bot&oacute;n de t&iacute;tulo <strong><%=Html.Encode(Model.GetObjectNameNewButton())%></strong>.
 		</p>
 		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">

@@ -26,7 +26,7 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
         static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
         static string title = String.Empty;
 
-        static string expectedTitle = "Registrar el Artículo en revista de investigación";
+        static string expectedTitle = "Registrar Artículos en revista de investigación";
 
         Because of = () =>
                          {
@@ -44,8 +44,8 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
 	{
 	    static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
 		static string title = String.Empty;
-		
-		static string expectedTitle = "Administración de Artículos";
+
+        static string expectedTitle = "Administración de Artículos en revista de investigación";
 		
 		Because of = () =>
 		                 {
@@ -63,8 +63,7 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
         static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
         static string title = string.Empty;
 
-        private static string expectedTitle =
-            "Para modificar el Artículo en revista de investigación utilice los siguientes campos para realizar cambios dentro del sistema.";
+        private static string expectedTitle = "Modificar el Artículo en revistas de investigación";
 
         private Because of = () =>
                                  {
@@ -83,8 +82,7 @@ namespace Tests.DI.Colef.Sia.Web.Helpers
         static TipoProductoEnum tipoProducto = TipoProductoEnum.Articulo;
         static string title = string.Empty;
 
-        private static string expectedTitle =
-            "Aquí se muestra la información detallada de el Artículo en revista de investigación como está en el sistema.";
+        private static string expectedTitle = "Detalle de el Artículo en revistas de investigación";
 
         private Because of = () =>
                                  {

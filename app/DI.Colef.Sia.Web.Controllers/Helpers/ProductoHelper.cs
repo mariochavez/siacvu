@@ -80,19 +80,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string productoNewTitle = "Registrar {0}";
 
-            return String.Format(productoNewTitle, ProductoNameSingular(html, tipoProducto));
+            return String.Format(productoNewTitle, ProductoNamePlural(html, tipoProducto));
         }
 
         public static string ProductoEditTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoEditTitle = "Para modificar {0} utilice los siguientes campos para realizar cambios dentro del sistema.";
+            string productoEditTitle = "Modificar {0}";
 
             return String.Format(productoEditTitle, ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoShowTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoShowTitle = "Aquí se muestra la información detallada de {0} como está en el sistema.";
+            string productoShowTitle = "Detalle de {0}";
 
             return String.Format(productoShowTitle, ProductoNameSingular(html, tipoProducto));
         }
@@ -103,10 +103,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "el Artículo en revista de investigación";
+                    productName = "el Artículo en revistas de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "el Artículo en revista de difusión";
+                    productName = "el Artículo en revistas de difusión";
                     break;
                 case TipoProductoEnum.Capitulo:
                     productName = "el Capítulo en libro";
@@ -150,7 +150,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículos";
+                    productName = "Artículos en revista de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
                     productName = "Artículos en revista de difusión";
