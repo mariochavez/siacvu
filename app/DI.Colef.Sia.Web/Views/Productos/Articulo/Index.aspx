@@ -8,7 +8,8 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %></h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
