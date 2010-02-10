@@ -41,28 +41,41 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             if ((isDGAA && producto.IsFirmed()) || (!isDGAA && producto.IsValidated()))
                 actions += String.Format("<span>{0}</span>",
-                                         html.ActionLinkForAreas<HomeController>(
-                                             x => x.Edit(producto.Id, producto.TipoProducto), "Editar"));
-            else if(!isDGAA)
+                                         html.ActionLink("Editar", "Edit",
+                                                         new
+                                                             {
+                                                                 producto.Id,
+                                                                 producto.TipoProducto
+                                                             }));
+            else if (!isDGAA)
             {
-                if(!producto.IsFirmed() && !producto.IsValidated())
+                if (!producto.IsFirmed() && !producto.IsValidated())
                 {
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLinkForAreas<HomeController>(
-                                                 x => x.Edit(producto.Id, producto.TipoProducto), "Editar"));
+                                             html.ActionLink("Editar", "Edit",
+                                                             new
+                                                                 {
+                                                                     producto.Id,
+                                                                     producto.TipoProducto
+                                                                 }));
                     actions += String.Format("<span>{0}</span>",
                                              html.ActionLink("Firmar", "Sign",
                                                              new
                                                                  {
-                                                                     Id = producto.Id,
-                                                                     TipoProducto = producto.TipoProducto
+                                                                     producto.Id,
+                                                                     producto.TipoProducto
                                                                  },
-                                                             new {@class = "remote put"})
+                                                             new { @class = "remote put" })
                         );
-                }else if(producto.IsFirmed() && !producto.IsValidated())
+                }
+                else if (producto.IsFirmed() && !producto.IsValidated())
                     actions += String.Format("<span>{0}</span>",
-                                             html.ActionLinkForAreas<HomeController>(
-                                                 x => x.Show(producto.Id, producto.TipoProducto), "Ver"));
+                                             html.ActionLink("Ver", "Show",
+                                                             new
+                                                                 {
+                                                                     producto.Id,
+                                                                     producto.TipoProducto
+                                                                 }));
 
             }
 

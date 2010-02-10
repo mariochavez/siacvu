@@ -120,69 +120,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id, int tipoProducto)
         {
-            return RedirectToProducto(id, tipoProducto, "Edit");
+            return new RedirectToAreaRouteResult("Productos", ((TipoProductoEnum)tipoProducto).ToString(), "Edit", new { id = id });
         }
 
         [Authorize]
         public ActionResult Show(int id, int tipoProducto)
         {
-            return RedirectToProducto(id, tipoProducto, "Show");
-        }
-
-        protected ActionResult RedirectToProducto(int id, int tipoProducto, string action)
-        {
-            RedirectToRouteResult route = null;
-
-            route = RedirectToRoute("Productos",
-                                    new RouteValueDictionary(new {controller = "Articulo", id = id, action = action}));
-
-            switch (tipoProducto)
-            {
-                case 1:
-                    route = RedirectToAction(action, "Productos/Articulo", new { id = id });
-                    break;
-                case 2:
-                    route = RedirectToAction(action, "Productos/Capitulo", new { id = id });
-                    break;
-                case 3:
-                    route = RedirectToAction(action, "Productos/Curso", new { id = id });
-                    break;
-                case 4:
-                    route = RedirectToAction(action, "Productos/Dictamen", new { id = id });
-                    break;
-                case 6:
-                    route = RedirectToAction(action, "Productos/Evento", new { id = id });
-                    break;
-                case 7:
-                    route = RedirectToAction(action, "Productos/Libro", new { id = id });
-                    break;
-                case 8:
-                    route = RedirectToAction(action, "Productos/OrganoExterno", new { id = id });
-                    break;
-                case 10:
-                    route = RedirectToAction(action, "Productos/ParticipacionMedio", new { id = id });
-                    break;
-                case 11:
-                    route = RedirectToAction(action, "Productos/Reporte", new { id = id });
-                    break;
-                case 12:
-                    route = RedirectToAction(action, "Productos/Resena", new { id = id });
-                    break;
-                case 13:
-                    route = RedirectToAction(action, "Productos/TesisDirigida", new { id = id });
-                    break;
-                case 15:
-                    route = RedirectToAction(action, "Proyecto", new { id = id });
-                    break;
-                case 16:
-                    route = RedirectToAction(action, "Productos/ArticuloDifusion", new { id = id });
-                    break;
-                case 20:
-                    route = RedirectToAction(action, "Productos/ObraTraducida", new { id = id });
-                    break;
-            }
-
-            return route;
+            return new RedirectToAreaRouteResult("Productos", ((TipoProductoEnum)tipoProducto).ToString(), "Show", new { id = id });
         }
 
         protected Usuario CurrentUser()
