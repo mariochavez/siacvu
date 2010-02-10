@@ -8,16 +8,17 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %></h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
         <h3>Agregar 
-            <%=Html.ProductoNamePlural(TipoProductoEnum.Articulo) %></h3>
+            <%=Html.ProductoListSubTitle(TipoProductoEnum.Articulo) %>
+        </h3>
         <p>
-            Si usted es Investigador, puede agregar 
-            <%=Html.ProductoNamePlural(TipoProductoEnum.Articulo) %>, presionando en el bot&oacute;n de t&iacute;tulo <strong><%=Html.Encode(Model.GetObjectNameNewButton())%></strong>.
+            <%=Html.ProductoListMessage(TipoProductoEnum.Articulo) %>
 		</p>
 		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">

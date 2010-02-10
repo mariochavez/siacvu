@@ -1,5 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ObraTraducidaForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
@@ -7,15 +9,18 @@
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.ObraTraducida) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nueva obra traducida</h3>
+        <h3>
+            <%=Html.ProductoListSubTitle(TipoProductoEnum.ObraTraducida) %>
+        </h3>
         <p>
-            Puede agregar una nueva obra traducida dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva obra traducida</strong>.
+            <%=Html.ProductoListMessage(TipoProductoEnum.ObraTraducida) %>
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<ObraTraducidaController>(x => x.New(), "+ Nueva obra traducida") %></span>

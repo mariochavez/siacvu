@@ -98,16 +98,55 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
         public static string ProductoEditTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoEditTitle = "Para modificar {0} {1} utilice los siguientes campos para realizar cambios dentro del sistema.";
+            string productoEditTitle = "Modificar{0} {1}";
 
-            return String.Format(productoEditTitle, GetArticuloIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
+            return String.Format(productoEditTitle, null, ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoShowTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
         {
-            string productoShowTitle = "Aquí se muestra la información detallada de {0} {1} como está en el sistema.";
+            string productoShowTitle = "Consulta de{0} {1}";
 
-            return String.Format(productoShowTitle, GetArticuloIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
+            return String.Format(productoShowTitle, null, ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoListSubTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoListSubTitle = "Agregar {0}";
+
+            return String.Format(productoListSubTitle, ProductoNamePlural(html, tipoProducto));
+        }
+
+        public static string ProductoEditMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoEditMessage = "Para modificar{0} {1} utilice los siguientes campos para realizar cambios dentro del sistema.";
+
+            return String.Format(productoEditMessage, GetArticuloDefinidoIdioma(tipoProducto),
+                                 ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoListMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoListMessage = "Puede agregar{0} {1}, presionando en el botón de título + Nuevo.";
+
+            return String.Format(productoListMessage, GetArticuloIndefinidoIdioma(tipoProducto), ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoNewMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoNewMessage = "Favor de llenar los siguientes campos para registrar{0}{1} {2} dentro del sistema. ";
+
+            return String.Format(productoNewMessage, GetArticuloIndefinidoIdioma(tipoProducto),
+                                 GetProductoNewGenderText(tipoProducto),
+                                 ProductoNameSingular(html, tipoProducto));
+        }
+
+        public static string ProductoShowMessage(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            string productoShowMessage = "Aquí se muestra la información detallada de{0} {1} como está en el sistema.";
+
+            return String.Format(productoShowMessage, GetArticuloDefinidoIdioma(tipoProducto),
+                                 ProductoNameSingular(html, tipoProducto));
         }
 
         public static string ProductoNameSingular(this HtmlHelper html, TipoProductoEnum tipoProducto)
@@ -166,22 +205,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
             switch (tipoProducto)
             {
                 case TipoProductoEnum.Articulo:
-                    productName = "Artículos en revista de investigación";
+                    productName = "Artículos en revistas de investigación";
                     break;
                 case TipoProductoEnum.ArticuloDifusion:
-                    productName = "Artículos en revista de difusión";
+                    productName = "Artículos en revistas de difusión";
                     break;
                 case TipoProductoEnum.Capitulo:
                     productName = "Capítulos en libros";
                     break;
                 case TipoProductoEnum.Curso:
-                    productName = "Curso";
+                    productName = "Cursos";
                     break;
                 case TipoProductoEnum.Dictamen:
                     productName = "Dictamenes";
                     break;
                 case TipoProductoEnum.Evento:
-                    productName = "Eventos";
+                    productName = "Organización y participación de eventos académicos";
                     break;
                 case TipoProductoEnum.Libro:
                     productName = "Libros";
@@ -193,27 +232,47 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Órganos externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
-                    productName = "Participaciones en medios";
+                    productName = "Difusiónes del conocimiento";
                     break;
                 case TipoProductoEnum.Reporte:
-                    productName = "el Reportes técnicos";
+                    productName = "Reportes técnicos/Documentos de trabajo";
                     break;
                 case TipoProductoEnum.TesisDirigida:
-                    productName = "tesis dirigidas";
+                    productName = "Tesis dirigidas";
+                    break;
+				case TipoProductoEnum.Resena:
+                    productName = "Reseñas/Notas críticas";
                     break;
             }
 
             return productName;
         }
 
-        static string GetArticuloIdioma(TipoProductoEnum tipoProducto)
+        static string GetArticuloDefinidoIdioma(TipoProductoEnum tipoProducto)
         {
-            string articuloIdioma = "el";
+            string articuloIdioma = " el";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
                 || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
-                articuloIdioma = "la";
+                articuloIdioma = " la";
             return articuloIdioma;
         }
+
+        static string GetArticuloIndefinidoIdioma(TipoProductoEnum tipoProducto)
+        {
+            string articuloIndefinidoIdioma = " un";
+            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio 
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                articuloIndefinidoIdioma = " una";
+            return articuloIndefinidoIdioma;
+        }
+
+        static string GetProductoNewGenderText(TipoProductoEnum tipoProducto)
+        {
+            string generoNuevo = " nuevo";
+            if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                generoNuevo = " nueva";
+            return generoNuevo;
+        }
     }
-	
 }

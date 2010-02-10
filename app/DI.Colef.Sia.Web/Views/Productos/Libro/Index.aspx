@@ -1,20 +1,25 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<LibroForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.Libro) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Libros</h3>
+        <h3>
+            <%=Html.ProductoListSubTitle(TipoProductoEnum.Libro) %>
+        </h3>
         <p>
-            Si usted es Investigador, puede agregar un nuevo libro, presionando
-            en el bot&oacute;n de t&iacute;tulo <strong>+ Nuevo</strong>.
+            <%=Html.ProductoListMessage(TipoProductoEnum.Libro) %>
 		</p>
 		<% if (User.IsInRole("Investigadores")) { %>
         <div class="botonzon">

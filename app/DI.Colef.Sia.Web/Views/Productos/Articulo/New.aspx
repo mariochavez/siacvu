@@ -9,13 +9,15 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.ProductoNewTitle(TipoProductoEnum.Articulo) %></h2>
+    <h2>
+    <%=Html.ProductoNewTitle(TipoProductoEnum.Articulo) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para registrar un nuevo <%=Html.ProductoNameSingular(TipoProductoEnum.Articulo) %> dentro del sistema.
+	        <%=Html.ProductoNewMessage(TipoProductoEnum.Articulo) %>
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>
