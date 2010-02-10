@@ -16,14 +16,10 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
         <h3>
-        Agregar
-            <%=Html.ProductoNamePlural(TipoProductoEnum.Capitulo) %>
+            <%=Html.ProductoListSubTitle(TipoProductoEnum.Capitulo) %>
         </h3>
         <p>
-            Si usted es Investigador, puede agregar
-            <%=Html.ProductoNamePlural(TipoProductoEnum.Capitulo) %>, presionando en el bot&oacute;n
-            de t&iacute;tulo <strong>
-                <%=Html.Encode(Model.GetObjectNameNewButton())%>
+            <%=Html.ProductoListMessage(TipoProductoEnum.Capitulo) %>
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<CapituloController>(x => x.New(), "+ Nuevo capítulo en libro")%></span>

@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ParticipacionMedioForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
@@ -7,12 +9,16 @@
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>
+        <%=Html.ProductoEditTitle(TipoProductoEnum.ParticipacionMedio) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
-		<p>Para modificar la participaci&oacute;n en medio utilice los siguientes campos para realizar cambios dentro del sistema.</p>
+		<p>
+            <%=Html.ProductoEditMessage(TipoProductoEnum.ParticipacionMedio) %>
+		</p>
 	</div><!--end introduccion-->	
 </asp:Content>
 

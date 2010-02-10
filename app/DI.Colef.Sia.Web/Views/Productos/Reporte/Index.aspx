@@ -1,20 +1,25 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ReporteForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
-    <h2><%=Html.Encode(Model.Title) %></h2>
+    <h2>
+        <%=Html.ProductoListTitle(TipoProductoEnum.Reporte) %>
+    </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar nuevo reporte t&eacute;cnico</h3>
+        <h3>
+            <%=Html.ProductoListSubTitle(TipoProductoEnum.Reporte) %>
+        </h3>
         <p>
-            Puede agregar un nuevo reporte t&eacute;cnico dentro de la lista de administraci&oacute;n presionando
-            en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo reporte t&eacute;cnico</strong>.
+            <%=Html.ProductoListMessage(TipoProductoEnum.Reporte) %>
 		</p>
         <div class="botonzon">
             <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo reporte técnico")%></span>

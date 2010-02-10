@@ -16,8 +16,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para dar de alta un nuevo 
-            <%=Html.ProductoNameSingular(TipoProductoEnum.ArticuloDifusion) %> dentro del sistema.
+            <%=Html.ProductoNewMessage(TipoProductoEnum.ArticuloDifusion) %>
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

@@ -11,15 +11,14 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoEditTitle(TipoProductoEnum.ArticuloDifusion) %>
+        <%=Html.ProductoShowTitle(TipoProductoEnum.ArticuloDifusion) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del 
-            <%=Html.ProductoNameSingular(TipoProductoEnum.ArticuloDifusion) %> como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.ArticuloDifusion) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

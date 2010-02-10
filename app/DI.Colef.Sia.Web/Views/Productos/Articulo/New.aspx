@@ -17,8 +17,7 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
 	<div id="introduccion">
 	    <p>
-	        Favor de llenar los siguientes campos para registrar un nuevo 
-	        <%=Html.ProductoNameSingular(TipoProductoEnum.Articulo) %> dentro del sistema.
+	        <%=Html.ProductoNewMessage(TipoProductoEnum.Articulo) %>
 	    </p>
 	</div><!--end introduccion-->
 </asp:Content>

@@ -11,16 +11,14 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoEditTitle(TipoProductoEnum.Capitulo) %>
+        <%=Html.ProductoShowTitle(TipoProductoEnum.Capitulo) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada del
-            <%=Html.ProductoNameSingular(TipoProductoEnum.Capitulo) %>
-            como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.Capitulo) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>
