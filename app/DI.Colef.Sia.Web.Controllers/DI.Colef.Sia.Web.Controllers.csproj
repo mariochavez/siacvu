@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="MvcContrib, Version=0.0.1.96, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\MvcContrib.dll</HintPath>
@@ -113,6 +117,7 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Results\RedirectToAreaRouteResult.cs" />
     <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />
     <Compile Include="Helpers\IndexValueHelper.cs" />

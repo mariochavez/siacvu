@@ -441,7 +441,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public static ICriteria FilterBandeja(this ICriteria criteria, Usuario usuario, TipoBandeja tipoBandeja)
         {
             var isInvestigador = (from role in usuario.Roles
-                          where role.Nombre == "Investigador"
+                          where role.Nombre == "Investigadores"
                           select role).FirstOrDefault() != null;
 
             if (!isInvestigador && tipoBandeja == TipoBandeja.WorkInProgress)
