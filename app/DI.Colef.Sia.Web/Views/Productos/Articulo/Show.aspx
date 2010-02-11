@@ -54,7 +54,7 @@
             
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del art&iacute;culo</label>
+                    <label>T&iacute;tulo del art&iacute;culo</label>
                     <span class="valor"><%=Html.Encode(Model.Form.Titulo)%>&nbsp;</span>
                 </p>
                 <p>

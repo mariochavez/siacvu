@@ -55,7 +55,8 @@
     <!--DATOS PUBLICACION-->
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del libro</label>
+                    <label>
+                        T&iacute;tulo del libro</label>
                     <span class="valor"><%= Html.Encode(Model.Form.Nombre) %>&nbsp;</span>
                 </p>
                 <p>

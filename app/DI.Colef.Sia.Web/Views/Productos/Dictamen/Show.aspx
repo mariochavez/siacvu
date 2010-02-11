@@ -53,7 +53,8 @@
                 </p>
                 <h4>Datos del dictamen</h4>
                 <p>
-	                <label>Nombre del producto dictaminado</label>
+	                <label>
+                        T&iacute;tulo del producto dictaminado</label>
 	                <span class="valor"><%= Html.Encode(Model.Form.Nombre)%>&nbsp;</span>
                 </p>
                 <p>

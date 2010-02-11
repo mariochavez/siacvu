@@ -56,11 +56,11 @@
     <!-- DATOS DE LA PUBLICACION -->            
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <p>
-                    <label>Nombre del cap&iacute;tulo</label>
+                    <label>T&iacute;tulo del cap&iacute;tulo</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreCapitulo) %>&nbsp;</span>
                 </p>
                 <p>
-                    <label>Nombre del libro</label>
+                    <label>T&iacute;tulo del libro</label>
                     <span class="valor"><%= Html.Encode(Model.Form.NombreLibro)%>&nbsp;</span>
                 </p>
                 <p>
