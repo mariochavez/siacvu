@@ -79,7 +79,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var route = routeFromMvc;
             var indexOfController = routeFromMvc.IndexOf(controllerUrlName);
-            if (indexOfController > 0)
+            var includeArea = routeFromMvc.IndexOf(areaUrl);
+            if (indexOfController > 0 && includeArea < 0)
             {
                 route = routeFromMvc.Substring(0, indexOfController) + areaUrl + "/" +
                         routeFromMvc.Substring(indexOfController);

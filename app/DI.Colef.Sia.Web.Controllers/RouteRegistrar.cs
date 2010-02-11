@@ -56,11 +56,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //    new { action = "Index", id = "" }, new { id = @"\d{1,6}" }
             //    );
 
-            //routes.MapRoute(
-            //    "Default",
-            //    "{controller}/{action}",
-            //    new { action = "Index" }
-            //    );
+            routes.MapRoute(
+                               null,
+                               "{controller}/{action}",
+                               new {action = "Index"}
+                );
 
             //routes.MapRoute(
             //  "Root",
