@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<DistincionForm>>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
@@ -9,14 +11,14 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.Encode(Model.Title) %>
+        <%=Html.ProductoShowTitle(TipoProductoEnum.Distincion) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            Aqu&iacute; se muestra la informaci&oacute;n detallada de la distinci&oacute;n como est&aacute; en el sistema.
+            <%=Html.ProductoShowMessage(TipoProductoEnum.Distincion) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

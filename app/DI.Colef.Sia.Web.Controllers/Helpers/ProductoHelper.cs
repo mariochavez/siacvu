@@ -179,7 +179,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Obra traducida";
                     break;
                 case TipoProductoEnum.OrganoExterno:
-                    productName = "Órgano externo";
+                    productName = "Participación Honorífica en Órganos Colegiados Externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
                     productName = "Difusión del conocimiento";
@@ -192,6 +192,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     break;
                 case TipoProductoEnum.Resena:
                     productName = "Reseña/Nota crítica";
+                    break;
+                case TipoProductoEnum.OrganoInterno:
+                    productName = "Participación en órgano Interno";
+                    break;
+                case TipoProductoEnum.Distincion:
+                    productName = "Distincion académica";
                     break;
             }
 
@@ -229,7 +235,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     productName = "Obras traducidas";
                     break;
                 case TipoProductoEnum.OrganoExterno:
-                    productName = "Órganos externos";
+                    productName = "Participaciónes Honoríficas en Órganos Colegiados Externos";
                     break;
                 case TipoProductoEnum.ParticipacionMedio:
                     productName = "Difusiónes del conocimiento";
@@ -242,6 +248,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     break;
 				case TipoProductoEnum.Resena:
                     productName = "Reseñas/Notas críticas";
+                    break;
+                case TipoProductoEnum.OrganoInterno:
+                    productName = "Participaciónes en órganos Internos";
+                    break;
+                case TipoProductoEnum.Distincion:
+                    productName = "Distinciones académicas";
                     break;
             }
 

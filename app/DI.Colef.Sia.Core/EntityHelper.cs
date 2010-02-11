@@ -19,7 +19,9 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         TesisDirigida = 13,
         Proyecto = 15,
         ArticuloDifusion = 16,
-        ObraTraducida = 20
+        ObraTraducida = 20,
+        OrganoInterno = 14,
+        Distincion = 5
     }
 
     public class EntityHelper
@@ -69,6 +71,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
                 case "ObraTraducida":
                     return TipoProductoEnum.ObraTraducida;
+                case "OrganoInterno":
+                    return TipoProductoEnum.OrganoInterno;
+                case "Distincion":
+                    return TipoProductoEnum.Distincion;
             }
 
             return 0;
