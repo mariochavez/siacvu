@@ -2,7 +2,8 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <p>
-	<label>Nombre del producto dictaminado</label>
+	<label>
+        T&iacute;tulo del producto dictaminado</label>
     <%=Html.TextBox("Nombre", Model.Nombre, new { @class = "input420-bold-requerido", maxlength = 100 })%>
     <%=Html.ValidationMessage("Nombre")%>
 </p>
