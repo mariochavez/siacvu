@@ -49,7 +49,7 @@
 		
 		<div id="menu">
 			<ul>
-				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Bandeja de trabajo") %></li>	
+				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Bandeja de pendientes") %></li>	
 			</ul>
 		</div><!--end menu-->	
 			
