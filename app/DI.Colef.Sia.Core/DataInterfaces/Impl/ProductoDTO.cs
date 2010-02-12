@@ -8,19 +8,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         public string Nombre { get; set; }
         public int TipoProducto { get; set; }
         public DateTime CreadoEl { get; set; }
-        //public int TipoPublicacion { get; set; }
-        //public int EstatusProducto { get; set; }
-        //public RevistaPublicacion RevistaPublicacion { get; set; }
-        //public Institucion Institucion { get; set; }
-        //public TipoDictamen TipoDictamen { get; set; }
-        //public TipoOrgano TipoOrgano { get; set; }
-        //public TipoEvento TipoEvento { get; set; }
-        //public TipoParticipacion TipoParticipacion { get; set; }
-        //public Firma Firma { get; set; }
-        //public Usuario Usuario { get; set; }
-        public int Aceptacion2 { get; set; }
-        public int Aceptacion1 { get; set; }
-        //public int GuidNumber { get; set; }
+        //public int Aceptacion2 { get; set; }
+        //public int Aceptacion1 { get; set; }
 
         public int Estatus { get; set; }
         public string RevistaNombre { get; set; }

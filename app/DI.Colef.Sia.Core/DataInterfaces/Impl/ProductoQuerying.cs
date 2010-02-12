@@ -232,7 +232,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 criteria.CreateAlias(tipoTable, "t");
 
             var isInvestigador = (from role in usuario.Roles
-                          where role.Nombre == "Investigador"
+                          where role.Nombre == "Investigadores"
                           select role).FirstOrDefault() != null;
 
             var revistaTable = EntityHelper.GetRevistaTable<T>();
