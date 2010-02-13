@@ -104,10 +104,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             var data = new HomeForm
                            {
-                               ProduccionAcademica =  (ProductoDTO[]) productos[0],
+                               ProduccionAcademica = (ProductoDTO[]) productos[0],
                                FormacionRecursosHumanos = (ProductoDTO[]) productos[1],
                                Proyectos = (ProductoDTO[]) productos[2],
                                Vinculacion = (ProductoDTO[]) productos[3],
+                               Eventos = (ProductoDTO[]) productos[4],
                                Investigadores = investigadorMapper.Map(investigadorService.GetActiveInvestigadores()),
                                Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                                FilterType = filterType

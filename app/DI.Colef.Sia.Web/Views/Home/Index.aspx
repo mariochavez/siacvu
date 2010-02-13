@@ -70,6 +70,9 @@
         
         <h4>Actividades de vinculaci&oacute;n y difusi&oacute;n</h4>
         <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
+		
+		<h4>Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos</h4>
+        <% Html.RenderPartial("_Productos", Model.Form.Eventos); %>
     
     </div><!--end lista-->
     

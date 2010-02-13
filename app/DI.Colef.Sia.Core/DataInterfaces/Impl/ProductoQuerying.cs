@@ -79,8 +79,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen).FilterBandeja(usuario, tipoBandeja))
                 .Add(BuildCriteria<OrganoExterno>(usuario, x => x.Nombre, x => x.TipoOrgano).FilterBandeja(usuario, tipoBandeja))
-                .Add(BuildCriteria<Evento>(usuario, x => x.Nombre, x => x.TipoEvento).FilterBandeja(usuario, tipoBandeja))
                 .Add(BuildCriteria<ParticipacionMedio>(usuario, x => x.Titulo, x => x.TipoParticipacion).FilterBandeja(usuario, tipoBandeja));
+
+            IMultiCriteria eventos = Session.CreateMultiCriteria()
+                .Add(BuildCriteria<Evento>(usuario, x => x.Nombre, x => x.TipoEvento).FilterBandeja(usuario, tipoBandeja));
 
             var produccionAcademicaResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in produccionAcademica.List())
@@ -106,10 +108,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
                 vinculacionDifusionResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
             }
 
+            var eventosResultado = new List<ProductoDTO>();
+            foreach (ArrayList producto in eventos.List())
+            {
+                eventosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+            }
+
             bandejaTrabajo[0] = produccionAcademicaResultado.ToArray();
             bandejaTrabajo[1] = formacionRecursosHumanosResultado.ToArray();
             bandejaTrabajo[2] = proyectosResultado.ToArray();
             bandejaTrabajo[3] = vinculacionDifusionResultado.ToArray();
+            bandejaTrabajo[4] = eventosResultado.ToArray();
 
             return bandejaTrabajo;
         }

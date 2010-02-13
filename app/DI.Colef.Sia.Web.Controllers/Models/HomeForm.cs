@@ -12,6 +12,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public ProductoDTO[] Vinculacion { get; set; }
 
+        public ProductoDTO[] Eventos { get; set;}
+
         public string NombreProducto { get; set; }
 
         public int IdProducto { get; set; }
