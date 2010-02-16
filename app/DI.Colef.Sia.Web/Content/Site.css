@@ -655,6 +655,10 @@ a.editabusqueda {
 	color: #555;
 }
 
+#forma label.right {
+	float: none;
+}
+
 .input100 {
 	width: 100px;
 	padding: 3px;

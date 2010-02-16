@@ -50,11 +50,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             //    new { action = "Index", id = "" }, new { id = @"\d{1,6}", tipoproducto = @"\d{1,6}" }
             //    );
 
-            //routes.MapRoute(
-            //    null,
-            //    "{controller}/{id}/{action}",
-            //    new { action = "Index", id = "" }, new { id = @"\d{1,6}" }
-            //    );
+            routes.MapRoute(
+                null,
+                "{controller}/{id}/{action}",
+                new { action = "Index", id = "" }, new { id = @"\d{1,6}" }
+                );
 
             routes.MapRoute(
                                null,

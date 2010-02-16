@@ -59,7 +59,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
         public object[] GetBandejaProductos(Usuario usuario, TipoBandeja tipoBandeja)
         {
-            var bandejaTrabajo = new object[4];
+            var bandejaTrabajo = new object[5];
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
                 .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo).FilterBandeja(usuario, tipoBandeja))
                 .Add(BuildCriteria<Libro>(usuario, x => x.Nombre, x => x.ContenidoLibro).FilterBandeja(usuario, tipoBandeja))
