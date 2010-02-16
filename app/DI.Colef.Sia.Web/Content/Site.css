@@ -532,6 +532,10 @@ a.editabusqueda {
 	border-bottom: 1px solid #EFF1E7;
 }
 
+#lista h4 a {
+	text-decoration: none;
+	color: #555;
+}
 
 .elementolista {
 	height: 120px;

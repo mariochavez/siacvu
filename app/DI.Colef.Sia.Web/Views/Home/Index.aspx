@@ -59,20 +59,30 @@
     <% } %>
     
     <div id="lista">
-        <h4>Producci&oacute;n acad&eacute;mica</h4>
-        <% Html.RenderPartial("_Productos", Model.Form.ProduccionAcademica); %>
+        <h4><a href="#prodacademica" class="collapsable">Producci&oacute;n acad&eacute;mica</a></h4>
+        <span id="prodacademica">
+            <% Html.RenderPartial("_Productos", Model.Form.ProduccionAcademica); %>
+        </span>
         
-        <h4>Proyectos de investigaci&oacute;n</h4>
-        <% Html.RenderPartial("_Productos", Model.Form.Proyectos); %>
+        <h4><a href="#proyectos" class="collapsable">Proyectos de investigaci&oacute;n</a></h4>
+        <span id="proyectos">
+            <% Html.RenderPartial("_Productos", Model.Form.Proyectos); %>
+        </span>
         
-        <h4>Formaci&oacute;n de recursos humanos</h4>
-        <% Html.RenderPartial("_Productos", Model.Form.FormacionRecursosHumanos); %>
+        <h4><a href="#recursoshumanos" class="collapsable">Formaci&oacute;n de recursos humanos</a></h4>
+        <span id="recursoshumanos">
+            <% Html.RenderPartial("_Productos", Model.Form.FormacionRecursosHumanos); %>
+        </span>
         
-        <h4>Actividades de vinculaci&oacute;n y difusi&oacute;n</h4>
-        <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
+        <h4><a href="#vinculacion" class="collapsable">Actividades de vinculaci&oacute;n y difusi&oacute;n</a></h4>
+        <span id="vinculacion">
+            <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
+        </span>
 		
-		<h4>Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos</h4>
-        <% Html.RenderPartial("_Productos", Model.Form.Eventos); %>
+		<h4><a href="#eventos" class="collapsable">Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos</a></h4>
+		<span id="eventos">
+            <% Html.RenderPartial("_Productos", Model.Form.Eventos); %>
+        </span>
     
     </div><!--end lista-->
     
