@@ -10,7 +10,7 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-    <%=Html.ProductoNewTitle(TipoProductoEnum.Articulo) %>
+	    <%=Html.ProductoNewTitle(TipoProductoEnum.Articulo) %>
     </h2>
 </asp:Content>
 

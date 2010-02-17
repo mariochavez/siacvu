@@ -49,16 +49,8 @@
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoResenas, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautoresInternos = Model.Form.CoautorInternoResenas }); %>
-	            <p>
-	                <label>Investigador</label>
-	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
-	            </p>
-                <p id="CoautorSeOrdenaAlfabeticamente_field">
-	                <label>Posici&oacute;n del coautor</label>
-                    <%=Html.TextBox("PosicionCoautor", Model.Form.PosicionCoautor, new { @class = "input100-requerido", maxlength = 2 })%>
-                    <span class="cvu"></span>
-	                <%=Html.ValidationMessage("PosicionCoautor")%>
-                </p>
+	            
+				<% Html.RenderPartial("_AutorEntry", Model.Form); %>
 	            <p>
 	                <label>Total de investigadores</label>
 	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>

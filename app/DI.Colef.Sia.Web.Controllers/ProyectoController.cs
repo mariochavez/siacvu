@@ -868,7 +868,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         private ProyectoForm SetupNewForm(ProyectoForm form)
         {
             form = form ?? new ProyectoForm();
-            var nombreInvestigador = String.Empty;
 
             if (form.Id == 0)
             {
@@ -876,14 +875,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] { };
 
                 if (User.IsInRole("Investigadores"))
-                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
-                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
-                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+                }
             }
-            else
-                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
-
-            form.InvestigadorNombre = nombreInvestigador;
 
             form.ResponsableProyecto = new ResponsableProyectoForm();
             form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();

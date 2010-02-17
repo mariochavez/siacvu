@@ -788,8 +788,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CapituloForm();
 
-            var nombreInvestigador = String.Empty;
-
             if (form.Id == 0)
             {
                 form.CoautorExternoCapitulos = new CoautorExternoProductoForm[] {};
@@ -798,14 +796,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.AutorExternoCapitulos = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
-                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
-                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+				{
+				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+				}
             }
-            else
-                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
-
-            form.InvestigadorNombre = nombreInvestigador;
 
             //Lista de Catalogos Pendientes
             form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);

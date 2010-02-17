@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ReporteForm
+    public class ReporteForm : BaseForm
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
@@ -15,7 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-        public int PosicionCoautor { get; set; }
         public string Numero { get; set; }
         public string FechaPublicacion { get; set; }
         public bool TieneProyecto { get; set; }
@@ -43,17 +42,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int AreaTematicaId { get; set; }
         public string AreaTematicaNombre { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string InvestigadorNombre1 { get; private set; }
-        public string InvestigadorNombre
-        {
-            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
-            set { InvestigadorNombre1 = value; }
-        }
 
         public int TotalCoautores
         {

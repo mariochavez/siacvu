@@ -11,14 +11,14 @@
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2>
-        <%=Html.ProductoEditTitle(TipoProductoEnum.Articulo) %>
+        <%=Html.ProductoShowTitle(TipoProductoEnum.Articulo) %>
     </h2>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="introduccion">
         <p>
-            <%=Html.ProductoEditMessage(TipoProductoEnum.Articulo) %>
+            <%=Html.ProductoShowMessage(TipoProductoEnum.Articulo) %>
 		</p>
     </div><!--end introduccion-->
 </asp:Content>

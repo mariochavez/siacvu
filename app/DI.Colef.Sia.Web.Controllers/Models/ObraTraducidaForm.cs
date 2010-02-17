@@ -2,7 +2,7 @@ using System;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ObraTraducidaForm
+    public class ObraTraducidaForm : BaseForm
     {
 		public int Id { get; set; }
 		public string Nombre { get; set; }
@@ -28,7 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int NoCitas { get; set; }
 		public string ISBN { get; set; }
 		public int Reimpresion { get; set; }
-        public int PosicionCoautor { get; set; }
 		public int Tiraje { get; set; }
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
@@ -57,18 +56,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string InvestigadorNombre1 { get; private set; }
-        public string InvestigadorNombre
-        {
-            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
-            set { InvestigadorNombre1 = value; }
-        }
-
+		
         public int TotalCoautores
         {
             get

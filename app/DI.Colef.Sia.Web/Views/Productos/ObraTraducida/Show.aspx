@@ -84,15 +84,13 @@
                 <p>
                     <label>Investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+					<label class="right">Posici&oacute;n</label>
+                    <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                 </p>
 	            <p>
 	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>	          
+	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          
 	            </p>
-	            <p>
-	                <label>Posici&oacute;n del coautor</label>
-                    <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
-                </p>
                 
     <!-- ESTATUS DE LA PUBLICACION -->
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>

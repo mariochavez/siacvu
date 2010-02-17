@@ -819,7 +819,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private ObraTraducidaForm SetupNewForm(ObraTraducidaForm form)
         {
 			form = form ?? new ObraTraducidaForm();
-            var nombreInvestigador = String.Empty;
 
             if (form.Id == 0)
             {
@@ -829,14 +828,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 form.AutorExternoObraTraducidas = new AutorExternoProductoForm[] {};
 
                 if (User.IsInRole("Investigadores"))
-                    nombreInvestigador = String.Format("{0} {1} {2}", CurrentInvestigador().Usuario.Nombre,
-                                                       CurrentInvestigador().Usuario.ApellidoPaterno,
-                                                       CurrentInvestigador().Usuario.ApellidoMaterno);
+				{
+				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+				}
             }
-            else
-                nombreInvestigador = String.Format("{0}", form.InvestigadorNombre);
-
-            form.InvestigadorNombre = nombreInvestigador;
 
             form.TiposObraTraducidas = customCollection.TipoObraTraducidaCustomCollection();
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();

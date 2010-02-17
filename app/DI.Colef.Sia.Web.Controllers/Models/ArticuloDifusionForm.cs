@@ -1,15 +1,15 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ArticuloDifusionForm
+    public class ArticuloDifusionForm : BaseForm
     {
         public int Id { get; set; }
+		
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
         public string Volumen { get; set; }
         public string Numero { get; set; }
         public int PaginaInicial { get; set; }
         public int PaginaFinal { get; set; }
-        public int PosicionCoautor { get; set; }
         public string PalabraClave1 { get; set; }
         public string PalabraClave2 { get; set; }
         public string PalabraClave3 { get; set; }
@@ -50,18 +50,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string InvestigadorNombre1 { get; private set; }
-        public string InvestigadorNombre
-        {
-            get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
-            set { InvestigadorNombre1 = value; }
-        }
-
+        
         public int TotalCoautores
         {
             get
