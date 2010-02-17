@@ -23,6 +23,8 @@ function setupDocument() {
 
     Coautores.setup();
 
+    Collapsable.setup();
+
     $('.trigger').click(function() {
         $('#slide').toggle('fast');
         $(this).toggleClass('active');
@@ -121,6 +123,22 @@ function deleteElement(html, selectorString, listName) {
         $(listName + ' div:first').before(html);
     }
 }
+
+var Collapsable = {
+    setup: function() {
+        $('a.collapsable').live('click', function() {
+            var panel = $(this).attr('href');
+            $(panel).toggle()
+
+            if ($(panel).is(':visible'))
+                $(panel + ' > div').effect("highlight", {}, 1000);
+            else
+                $(this).effect("highlight", {}, 1000);
+                
+            return false;
+        });
+    }
+};
 
 var CheckOrden = {
     setup: function() {
