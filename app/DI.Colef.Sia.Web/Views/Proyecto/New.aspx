@@ -45,7 +45,7 @@
 	            <% Html.RenderPartial("_ParticipanteEmptyListMessage", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipantesInternos = Model.Form.ParticipanteInternoProyectos }); %>
 	            <p>
 	                <label>Investigador</label>
-	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
+	                <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
 	            </p>
                 <p id="ParticipanteSeOrdenaAlfabeticamente_field">
 	                <label>Posici&oacute;n del participante</label>

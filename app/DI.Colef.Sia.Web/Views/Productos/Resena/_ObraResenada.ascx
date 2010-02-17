@@ -15,7 +15,7 @@
 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoResenas, AutoresInternos = Model.AutorInternoResenas }); %>
 <p>
     <label>Investigador</label>
-    <span class="valor"><%=Html.Encode(Model.InvestigadorNombre1) %></span>
+    <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
 </p>
 <p id="AutorSeOrdenaAlfabeticamente_field">
     <label>Posici&oacute;n del autor</label>

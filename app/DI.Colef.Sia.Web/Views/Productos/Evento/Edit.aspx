@@ -79,7 +79,7 @@
 
 	                <p>
 	                    <label>Investigador</label>
-	                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre1) %></span>
+	                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
 	                </p>
                     <p id="CoautorSeOrdenaAlfabeticamente_field">
 	                    <label>Posici&oacute;n del coautor</label>
