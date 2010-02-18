@@ -59,27 +59,55 @@
     <% } %>
     
     <div id="lista">
-        <h4><a href="#prodacademica" class="collapsable">Producci&oacute;n acad&eacute;mica</a></h4>
+        
+        <h4>
+            <a href="#prodacademica" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ProduccionAcademica.Length) %>">
+                <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                Producci&oacute;n acad&eacute;mica 
+                <span><%=Html.Encode(Model.Form.ProduccionAcademica.Length)%> producto(s)</span></a>
+        </h4>
+        
         <span id="prodacademica">
             <% Html.RenderPartial("_Productos", Model.Form.ProduccionAcademica); %>
         </span>
         
-        <h4><a href="#proyectos" class="collapsable">Proyectos de investigaci&oacute;n</a></h4>
+        <h4>
+            <a href="#proyectos" class="collapsable <%=Html.CollapsePanelClass(Model.Form.Proyectos.Length) %>">
+                <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                Proyectos de investigaci&oacute;n
+                <span><%=Html.Encode(Model.Form.Proyectos.Length)%> producto(s)</span></a>
+        </h4>
         <span id="proyectos">
             <% Html.RenderPartial("_Productos", Model.Form.Proyectos); %>
         </span>
         
-        <h4><a href="#recursoshumanos" class="collapsable">Formaci&oacute;n de recursos humanos</a></h4>
+        <h4>
+            <a href="#recursoshumanos" class="collapsable <%=Html.CollapsePanelClass(Model.Form.FormacionRecursosHumanos.Length) %> ">
+                <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                Formaci&oacute;n de recursos humanos
+                <span><%=Html.Encode(Model.Form.FormacionRecursosHumanos.Length)%> producto(s)</span></a>
+        </h4>
+        
         <span id="recursoshumanos">
             <% Html.RenderPartial("_Productos", Model.Form.FormacionRecursosHumanos); %>
         </span>
         
-        <h4><a href="#vinculacion" class="collapsable">Actividades de vinculaci&oacute;n y difusi&oacute;n</a></h4>
+        <h4>
+            <a href="#vinculacion" class="collapsable <%=Html.CollapsePanelClass(Model.Form.Vinculacion.Length) %>">
+                <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                Actividades de vinculaci&oacute;n y difusi&oacute;n
+                <span><%=Html.Encode(Model.Form.Vinculacion.Length)%> producto(s)</span></a>
+        </h4>
         <span id="vinculacion">
             <% Html.RenderPartial("_Productos", Model.Form.Vinculacion); %>
         </span>
 		
-		<h4><a href="#eventos" class="collapsable">Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos</a></h4>
+		<h4>
+		    <a href="#eventos" class="collapsable <%=Html.CollapsePanelClass(Model.Form.Eventos.Length) %>">
+		        <span class="ui-icon ui-icon-circle-arrow-s"></span>
+		        Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos
+		        <span><%=Html.Encode(Model.Form.Eventos.Length)%> producto(s)</span></a>
+		</h4>
 		<span id="eventos">
             <% Html.RenderPartial("_Productos", Model.Form.Eventos); %>
         </span>

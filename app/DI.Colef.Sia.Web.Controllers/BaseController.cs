@@ -402,7 +402,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected RedirectToRouteResult RedirectToIndex(string message)
         {
             SetMessage(message);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected RedirectToRouteResult RedirectToIndex(string message, bool error)
@@ -411,7 +411,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 SetError(String.Format("El {0} {1}", GetObjectName(false), message));
             else
                 SetMessage(String.Format("El {0} {1}", GetObjectName(false), message));
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected RedirectToRouteResult RedirectToEdit(int id)

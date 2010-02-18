@@ -79,11 +79,11 @@
     <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
   </PropertyGroup>
   <PropertyGroup>
-    <SolutionDir>C:\Net\Projects\DecisionesInteligentes.Colef\</SolutionDir>
+    <SolutionDir>c:\Net\Projects\DecisionesInteligentes.Colef\</SolutionDir>
     <SolutionExt>.sln</SolutionExt>
     <SolutionFileName>DI.Colef.Sia.sln</SolutionFileName>
     <SolutionName>DI.Colef.Sia</SolutionName>
-    <SolutionPath>C:\Net\Projects\DecisionesInteligentes.Colef\DI.Colef.Sia.sln</SolutionPath>
+    <SolutionPath>c:\Net\Projects\DecisionesInteligentes.Colef\DI.Colef.Sia.sln</SolutionPath>
   </PropertyGroup>
   <PropertyGroup>
     <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>

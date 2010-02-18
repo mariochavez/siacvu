@@ -128,15 +128,34 @@ var Collapsable = {
     setup: function() {
         $('a.collapsable').live('click', function() {
             var panel = $(this).attr('href');
-            $(panel).toggle()
+            $(panel).toggle();
 
-            if ($(panel).is(':visible'))
-                $(panel + ' > div').effect("highlight", {}, 1000);
-            else
-                $(this).effect("highlight", {}, 1000);
-                
+            Collapsable.setIcons(this, panel);
+
             return false;
         });
+
+        $('a.collapsed').each(function() {
+            var panel = $(this).attr('href');
+            $(panel).toggle();
+
+            Collapsable.setIcons(this, panel);
+        });
+    },
+    setIcons: function(link, panel) {
+        var icon = $(link).children('span.ui-icon');
+        if ($(panel).is(':visible')) {
+            $(panel + ' > div').effect("highlight", {}, 1000);
+            if ($(icon).hasClass('ui-icon-circle-arrow-e')) {
+                $(icon).removeClass('ui-icon-circle-arrow-e').addClass('ui-icon-circle-arrow-s');
+            }
+        }
+        else {
+            $(link).effect("highlight", {}, 1000);
+            if ($(icon).hasClass('ui-icon-circle-arrow-s')) {
+                $(icon).removeClass('ui-icon-circle-arrow-s').addClass('ui-icon-circle-arrow-e');
+            }
+        }
     }
 };
 

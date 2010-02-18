@@ -81,8 +81,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 
             return actions;
         }
-		
-		public static string ProductoListTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
+
+        public static string CollapsePanelClass(this HtmlHelper html, int elements)
+        {
+            return elements == 0 ? "collapsed" : String.Empty;
+        }
+
+        public static string ProductoListTitle(this HtmlHelper html, TipoProductoEnum tipoProducto)
 		{
 		    string productoListTitle = "Administración de {0}";
 			
