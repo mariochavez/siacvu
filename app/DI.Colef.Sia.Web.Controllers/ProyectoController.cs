@@ -109,6 +109,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
+            if (CurrentInvestigador() == null)
+                return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
+
             var data = CreateViewDataWithTitle(Title.New);
             data.Form = SetupNewForm();
 
