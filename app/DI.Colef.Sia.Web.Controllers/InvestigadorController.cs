@@ -96,7 +96,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return RedirectToIndex("no ha sido encontrado", true);
 
             data.Form = investigadorMapper.Map(investigador);
-            data.Form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
+            // TODO: Dependencias
+            //data.Form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             ViewData["AreaTematicaId"] = data.Form.AreaTematicaId;
 
             ViewData.Model = data;
@@ -339,18 +340,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeAreaTematica(int select)
         {
-            if (areaTematicaMapper == null)
-                return Content("Action not supported");
+            // TODO: Dependencias
+            return Rjs("", null);
 
-            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            //if (areaTematicaMapper == null)
+            //    return Content("Action not supported");
 
-            var form = new ShowFieldsForm
-            {
-                AreaTematicaId = areaTematicaForm.Id,
-                AreaTematicaLineaTematicaNombre = areaTematicaForm.LineaTematicaNombre
-            };
+            //var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
 
-            return Rjs("ChangeAreaTematica", form);
+            //var form = new ShowFieldsForm
+            //{
+            //    AreaTematicaId = areaTematicaForm.Id,
+            //    AreaTematicaLineaTematicaNombre = areaTematicaForm.LineaTematicaNombre
+            //};
+
+            //return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize(Roles = "Dgaa")]
@@ -595,7 +599,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            Sedes = sedeMapper.Map(catalogoService.GetActiveSedes()),
                            Departamentos = departamentoMapper.Map(catalogoService.GetActiveDepartamentos()),
                            SNIs = sniMapper.Map(catalogoService.GetActiveSNIs()),
-                           AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),
+                           //AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas()),
                            UsuarioApellidoMaterno = usuario != null ? usuario.ApellidoMaterno : String.Empty,
                            UsuarioApellidoPaterno = usuario != null ? usuario.ApellidoPaterno : String.Empty,
                            UsuarioNombre = usuario != null ? usuario.Nombre : String.Empty,

@@ -67,9 +67,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly INivelMapper nivelMapper;
         protected readonly IRamaMapper ramaMapper;
         protected readonly IClaseMapper claseMapper;
+        protected IAreaTematicaMapper areaTematicaMapper;
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
-                              ICatalogoService catalogoService) : 
+                              ICatalogoService catalogoService) :
             this(usuarioService, searchService, catalogoService, null, null, null, null, null, null, null, null)
         {
         }
@@ -156,6 +157,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         public virtual ActionResult Search(int searchId)
         {
             return RedirectToEdit(searchId);
+        }
+
+        [Authorize()]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ChangeLineaTematica(int select)
+        {
+            if (areaTematicaMapper == null)
+                return Content("Action not supported");
+
+            var list = new List<CatalogoForm> {new CatalogoForm() {Id = 0, Nombre = "Seleccione ..."}};
+            list.AddRange(areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(select)));
+            var form = new BaseForm
+                           {
+                               AreasTematicas = list.ToArray()
+                           };
+
+            return Rjs("ChangeLineaTematica", form);
         }
 
         [Authorize]
@@ -636,6 +654,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return objectName;
         }
 
+        [Obsolete("Este codigo ya es manejado directamente con helpers en la vista")]
         protected GenericViewData<TForm> CreateViewDataWithTitle(Title title)
         {
             string message = String.Empty;

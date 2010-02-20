@@ -533,6 +533,8 @@
     <Content Include="Views\Productos\Articulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Capitulo\_DatosFinal.ascx" />
     <Content Include="Views\Productos\Libro\_DatosFinal.ascx" />
+    <Content Include="Views\Shared\ChangeLineaTematica.js.ascx" />
+    <Content Include="Views\Shared\_LineaAreaTematica.ascx" />
     <Content Include="Views\Shared\_AutorEntry.ascx" />
     <Content Include="Views\Shared\_ParticipanteEmptyListMessage.ascx" />
     <Content Include="Views\Shared\_AutorEmptyListMessage.ascx" />
