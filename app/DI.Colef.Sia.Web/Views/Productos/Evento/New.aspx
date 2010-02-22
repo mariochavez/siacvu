@@ -59,27 +59,24 @@
 	                    <span class="cvu"></span>
 	                    <%=Html.ValidationMessage("TituloTrabajo")%>
                     </p>
-                    
-                    <h4>Coautores del evento<span class="cvu"></span></h4>
+                                        
+                    <h4>
+                        <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
+                          <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                          Coautores del art&iacute;culo de investigaci&oacute;n 
+                          <span><%=Html.Encode(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length)%> coautor(es)
+                          </span>
+                          <span class="cvu"></span>
+                        </a>
+                    </h4>
+                    <span id="coautores">
                     <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
 				    <% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautoresInternos = Model.Form.CoautorInternoEventos }); %>
-	                <p>
-	                    <label>Investigador</label>
-	                    <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
-	                </p>
-                    <p id="CoautorSeOrdenaAlfabeticamente_field">
-	                    <label>Posici&oacute;n del coautor</label>
-                        <%=Html.TextBox("PosicionCoautor", Model.Form.PosicionCoautor, new { @class = "input100-requerido", maxlength = 2 })%>
-                        <span class="cvu"></span>
-	                    <%=Html.ValidationMessage("PosicionCoautor")%>
-                    </p>
-	                <p>
-	                    <label>Total de investigadores</label>
-	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>
-	                    <span class="cvu"></span>
-	                </p>
+	                
+                    <% Html.RenderPartial("_AutorEntry", Model.Form); %>
+                    </span>
                 </div>
                 
                 <p>

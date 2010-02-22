@@ -107,23 +107,24 @@
                         <span class="valor"><%= Html.Encode(Model.Form.TituloTrabajo)%>&nbsp;</span>
                     </p>
                     
-                    <h4>Coautores del evento</h4>
+                <h4>
+                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length) %>">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Coautores del art&iacute;culo
+                        de investigaci&oacute;n <span>
+                            <%=Html.Encode(Model.Form.CoautorExternoEventos.Length + Model.Form.CoautorInternoEventos.Length)%>
+                            coautor(es) </span><span class="cvu"></span></a>
+                </h4>
+                <span id="coautores">
 				    <% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoEventos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	                <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoEventos, CoautoresInternos = Model.Form.CoautorInternoEventos }); %>
                     <p>
                         <label>Investigador</label>
                         <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
+                        <label class="right">Posici&oacute;n</label>
+                        <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                     </p>
-                    
-                    <p>
-	                    <label>Total de investigadores</label>
-	                    <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          
-	                </p>
-	                <p>
-	                    <label>Posici&oacute;n del coautor</label>
-	                    <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor) %></span>
-	                </p>
+                    </span>
 	            <% } %>
 	            <p>
                     <label>Obra publicada</label>

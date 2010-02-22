@@ -644,6 +644,11 @@ a.editabusqueda {
 	color: #555;
 }
 
+#forma h4 a {
+	text-decoration: none;
+	color: #555;
+}
+
 #forma p.waiting {
     display:none;
     padding: 15px 0 0 170px;
