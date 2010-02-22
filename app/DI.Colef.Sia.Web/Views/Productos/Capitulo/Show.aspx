@@ -73,23 +73,26 @@
                 </p>
                 
     <!-- Coautores de la publicacion -->            
-	            <h4>Coautores del cap&iacute;tulo</h4>
+	            
+                <h4>
+                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                        Coautores del cap&iacute;tulo
+                        <span>
+                            <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%>
+                            coautor(es) </span><span class="cvu"></span></a>
+                </h4>
+                <span id="coautores">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoCapitulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoCapitulos, CoautoresInternos = Model.Form.CoautorInternoCapitulos }); %>
-                <p>
+	            <p>
                     <label>Investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
-                </p>
-	            <p>
-	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>	          
-	            </p>
-	            <p>
-	                <label>Posici&oacute;n del coautor</label>
+                    <label class="right">Posici&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
-                </p>
-                
+	            </p>
+                </span>
     <!-- ESTATUS DE LA PUBLICACION -->
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
