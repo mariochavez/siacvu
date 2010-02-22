@@ -9,6 +9,6 @@
 </p>
 <p>
     <label>&Aacute;rea tem&aacute;tica institucional</label>
-    <%=Html.DropDownList("AreaTematicaId", Model.LineasTematicas.CreateSelectList<CatalogoForm>("Id", "Nombre"),
+    <%=Html.DropDownList("AreaTematicaId", Model.AreasTematicas.CreateSelectList<CatalogoForm>("Id", "Nombre"),
             "Seleccione ...")%>
 </p>

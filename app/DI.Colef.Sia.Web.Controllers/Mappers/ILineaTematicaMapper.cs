@@ -4,7 +4,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
 
-    public interface ILineaTematicaMapper : IMapper<LineaTematica, CatalogoForm>
+    public interface ILineaTematicaMapper : IMapper<LineaTematica, LineaTematicaForm>
     {
     }
 }

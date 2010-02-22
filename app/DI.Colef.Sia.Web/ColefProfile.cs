@@ -876,10 +876,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
         public void CreateCombosMaps()
         {
-            Mapper.CreateMap<LineaTematica, CatalogoForm>()
+            Mapper.CreateMap<LineaTematica, LineaTematicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<AreaTematica, CatalogoForm>()
+            Mapper.CreateMap<AreaTematica, AreaTematicaForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

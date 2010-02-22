@@ -4,18 +4,18 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class LineaTematicaMapper : AutoFormMapper<LineaTematica, CatalogoForm>, ILineaTematicaMapper
+    public class LineaTematicaMapper : AutoFormMapper<LineaTematica, LineaTematicaForm>, ILineaTematicaMapper
     {
         public LineaTematicaMapper(IRepository<LineaTematica> repository) : base(repository)
         {
         }
 
-        protected override int GetIdFromMessage(CatalogoForm message)
+        protected override int GetIdFromMessage(LineaTematicaForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CatalogoForm message, LineaTematica model)
+        protected override void MapToModel(LineaTematicaForm message, LineaTematica model)
         {
 			model.Nombre = message.Nombre;
         }

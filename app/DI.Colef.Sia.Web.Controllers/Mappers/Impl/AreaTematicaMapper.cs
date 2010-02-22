@@ -4,21 +4,25 @@ using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 {
-    public class AreaTematicaMapper : AutoFormMapper<AreaTematica, CatalogoForm>, IAreaTematicaMapper
+    public class AreaTematicaMapper : AutoFormMapper<AreaTematica, AreaTematicaForm>, IAreaTematicaMapper
     {
-        public AreaTematicaMapper(IRepository<AreaTematica> repository)
+        readonly IRepository<LineaTematica> repositoryLineaTematica;
+
+        public AreaTematicaMapper(IRepository<AreaTematica> repository, IRepository<LineaTematica> repositoryLineaTematica)
             : base(repository)
         {
+            this.repositoryLineaTematica = repositoryLineaTematica;
         }
 
-        protected override int GetIdFromMessage(CatalogoForm message)
+        protected override int GetIdFromMessage(AreaTematicaForm message)
         {
             return message.Id;
         }
 
-        protected override void MapToModel(CatalogoForm message, AreaTematica model)
+        protected override void MapToModel(AreaTematicaForm message, AreaTematica model)
         {
 			model.Nombre = message.Nombre;
+            model.LineaTematica = repositoryLineaTematica.Get(message.LineaTematicaId);
         }
     }
 }
