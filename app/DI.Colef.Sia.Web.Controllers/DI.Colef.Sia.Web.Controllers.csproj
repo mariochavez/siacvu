@@ -139,6 +139,7 @@
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
     <Compile Include="Models\BaseForm.cs" />
+    <Compile Include="Models\ComboForm.cs" />
     <Compile Include="Results\RedirectToAreaRouteResult.cs" />
     <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />

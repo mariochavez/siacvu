@@ -8,6 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -18,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
@@ -41,14 +41,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   IInvestigadorExternoMapper investigadorExternoMapper,
                                   IArchivoService archivoService,
                                   IInvestigadorService investigadorService
-            ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
+            ) : base(usuarioService, searchService, catalogoService, null, null, disciplinaMapper, subdisciplinaMapper
+            , null,null, null,null)
         {
             this.coautorInternoArticuloMapper = coautorInternoArticuloMapper;
             this.articuloService = articuloService;
             this.articuloMapper = articuloMapper;
             this.coautorExternoArticuloMapper = coautorExternoArticuloMapper;
             this.tipoArchivoMapper = tipoArchivoMapper;
-            this.areaTematicaMapper = areaTematicaMapper;
+            base.areaTematicaMapper = areaTematicaMapper;
             this.customCollection = customCollection;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
@@ -62,10 +63,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var articulos = articuloService.GetAllArticulos();
+            var data = new GenericViewData<ArticuloForm>
+                           {
+                               List = articuloMapper.Map(articuloService.GetAllArticulos())
+                           };
 
-            data.List = articuloMapper.Map(articulos);
             return View(data);
         }
 
@@ -76,9 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
+            var data = new GenericViewData<ArticuloForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -87,11 +87,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            CoautorInternoArticulo coautorInternoArticulo;
-            int posicionAutor;
-            var coautorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
+            var data = new GenericViewData<ArticuloForm>();
             var articulo = articuloService.GetArticuloById(id);
 
             if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
@@ -110,6 +106,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                                 "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
                                                 articulo.Titulo));
             }
+
+            CoautorInternoArticulo coautorInternoArticulo;
+            int posicionAutor;
+            var coautorExists = 0;
 
             if (User.IsInRole("Investigadores"))
             {
@@ -336,16 +336,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         public ActionResult ChangeAreaTematica(int select)
         {
             var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            var lineaTematicaForm =
-                lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+            //var lineaTematicaForm =
+            //    lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var form = new ShowFieldsForm
-                           {
-                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-                               AreaTematicaId = areaTematicaForm.Id
-                           };
+            //var form = new ShowFieldsForm
+            //               {
+            //                   AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+            //                   AreaTematicaId = areaTematicaForm.Id
+            //               };
 
-            return Rjs("ChangeAreaTematica", form);
+            //return Rjs("ChangeAreaTematica", form);
+            
+            // TODO: Hay que reimplementar este metodo 
+            return Rjs("", null);
         }
 
         [Authorize]
@@ -550,11 +553,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
                 }
+
+                form.PosicionCoautor = 1;
             }
 
             form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
             form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+            form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
 
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);

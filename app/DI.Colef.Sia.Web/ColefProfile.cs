@@ -56,6 +56,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             CreateIdiomasInvestigadorMaps();
             CreateParticipacionAcademiaMaps();
 
+            CreateCombosMaps();
+
             Mapper.CreateMap<Usuario, UsuarioForm>()
                 .ForMember(d => d.FechaIngreso,
                            o => o.AddFormatter<StandardDateFormatter>())
@@ -732,9 +734,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Disciplina,
                            o => o.Ignore());
 
-            Mapper.CreateMap<LineaTematica, LineaTematicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+            //Mapper.CreateMap<LineaTematica, LineaTematicaForm>()
+            //    .ForMember(d => d.Modificacion,
+            //               o => o.ResolveUsing<ModificadoResolver>());
 
             Mapper.CreateMap<TipoParticipacion, TipoParticipacionForm>()
                 .ForMember(d => d.Modificacion,
@@ -847,11 +849,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<FondoConacyt, FondoConacytForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
-            Mapper.CreateMap<AreaTematica, AreaTematicaForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>())
-                .ForMember(d => d.LineaTematica,
-                           o => o.Ignore());
+            //Mapper.CreateMap<AreaTematica, AreaTematicaForm>()
+            //    .ForMember(d => d.Modificacion,
+            //               o => o.ResolveUsing<ModificadoResolver>())
+            //    .ForMember(d => d.LineaTematica,
+            //               o => o.Ignore());
 
             Mapper.CreateMap<TipoArchivo, TipoArchivoForm>()
                 .ForMember(d => d.Modificacion,
@@ -868,6 +870,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
             Mapper.CreateMap<AreaInvestigacion, AreaInvestigacionForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+        }
+
+        public void CreateCombosMaps()
+        {
+            Mapper.CreateMap<LineaTematica, CatalogoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+            Mapper.CreateMap<AreaTematica, CatalogoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
         }

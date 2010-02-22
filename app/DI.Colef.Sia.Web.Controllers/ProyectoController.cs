@@ -387,17 +387,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeAreaTematica(int select)
         {
-            var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
+            // TODO: Dependencias
+            return Rjs("", null);
+            //var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
+            //var lineaTematicaForm = lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
 
-            var form = new ShowFieldsForm
-                           {
-                               AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
+            //var form = new ShowFieldsForm
+            //               {
+            //                   AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
 
-                               AreaTematicaId = areaTematicaForm.Id
-                           };
+            //                   AreaTematicaId = areaTematicaForm.Id
+            //               };
 
-            return Rjs("ChangeAreaTematica", form);
+            //return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize]

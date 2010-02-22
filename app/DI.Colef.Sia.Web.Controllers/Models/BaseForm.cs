@@ -11,5 +11,11 @@
         {
             get { return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre); }
         }
+
+        public int LineaTematicaId { get; set; }
+        public int AreaTematicaId { get; set; }
+
+        public CatalogoForm[] LineasTematicas { get; set; }
+        public CatalogoForm[] AreasTematicas { get; set; }
     }
 }
