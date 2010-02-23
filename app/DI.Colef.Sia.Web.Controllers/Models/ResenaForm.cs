@@ -34,9 +34,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
         public int AreaId { get; set; }
         public int DisciplinaId { get; set; }
         public int SubdisciplinaId { get; set; }

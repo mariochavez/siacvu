@@ -493,6 +493,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
+            form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
             if (form.Id == 0)
             {
                 form.CoautorExternoArticulos = new CoautorExternoProductoForm[] { };
@@ -506,22 +516,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 }
 
                 form.PosicionCoautor = 1;
-
-                form.AreasTematicas = areaTematicaMapper.Map(catalogoService.GetActiveAreaTematicas());
             } else
             {
                 form.AreasTematicas =
                     areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
-
-            form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
-            form.TiposArticulos = customCollection.TipoProductoCustomCollection(1);
-            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
-            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             return form;
         }
@@ -554,8 +553,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
                                       ProyectoNombre = form.Proyecto.Nombre,
-                                      //AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      //AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,

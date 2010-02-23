@@ -8,13 +8,13 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     [HandleError]
     public class ResenaController : BaseController<Resena, ResenaForm>
     {
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
@@ -86,11 +86,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            ViewData["Pais"] = (from p in data.Form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
-            data.Form.PosicionCoautor = 1;
-            data.Form.PosicionAutor = 1;
+            var data = new GenericViewData<ResenaForm> {Form = SetupNewForm()};
 
             return View(data);
         }
@@ -105,23 +101,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var coautorExists = 0;
             int posicionAutor;
             var autorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<ResenaForm>();
 
             var resena = resenaService.GetResenaById(id);
 
-            if (resena.Firma.Aceptacion1 == 1 && resena.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("La reseña {0} esta en firma y no puede ser editada", resena.NombreProducto));
-            if (User.IsInRole("DGAA"))
-            {
-                if ((resena.Firma.Aceptacion1 == 1 && resena.Firma.Aceptacion2 == 1) ||
-                    (resena.Firma.Aceptacion1 == 0 && resena.Firma.Aceptacion2 == 0) ||
-                    (resena.Firma.Aceptacion1 == 0 && resena.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "La reseña {0} ya fue aceptada o no ha sido enviada a firma",
-                                                resena.NombreProducto));
-            }
+            var verifyMessage = VerifyProductoStatus(resena.Firma, resena.NombreProducto);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
 
             if (User.IsInRole("Investigadores"))
             {
@@ -138,6 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var resenaForm = resenaMapper.Map(resena);
+            resenaForm.LineaTematicaId = resena.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(resenaForm);
 
@@ -821,6 +808,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ResenaForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TiposResenas = customCollection.TipoResenaCustomCollection();
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
             if (form.Id == 0)
             {
                 form.CoautorExternoResenas = new CoautorExternoProductoForm[] {};
@@ -834,15 +831,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
                 }
+
+                ViewData["Pais"] = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
+                form.PosicionCoautor = 1;
+                form.PosicionAutor = 1;
             }
-
-            form.TiposResenas = customCollection.TipoResenaCustomCollection();
-            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
-            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+            else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+            }
 
             return form;
         }
@@ -856,6 +854,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         static ResenaForm SetupShowForm(ResenaForm form)
