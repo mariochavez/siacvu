@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
-<p>
+<p style="display:none;">
     <label></label>
     <%= Html.CheckBox(Model.CheckboxName, Model.CheckboxValue, new { @class = "order", rel = Model.Rel })%> ¿Los investigadores se ordenan alfab&eacute;ticamente? 
     <br /><label></label><span>(Marque en caso positivo)</span>

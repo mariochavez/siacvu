@@ -55,13 +55,13 @@
                 <% Html.RenderPartial("_InformacionGeneral", Model.Form); %>
                 
             <h4>
-                <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
+                <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
                     <span>
                         <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
                         coautor(es) </span><span class="cvu"></span></a>
             </h4>
-            <span id="coautores">
+            <span id="coautores_area">
                 <% Html.RenderPartial("_EditResponsable", Model.Form); %>
                 <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "ParticipanteSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.ParticipanteSeOrdenaAlfabeticamente, Rel = "NewParticipanteInternoLink, NewParticipanteExternoLink", SubFormName = "participante", UrlActionExterno = "NewParticipanteExterno", UrlActionInterno = "NewParticipanteInterno", Link1Id = "NewParticipanteInternoLink", Link2Id = "NewParticipanteExternoLink", InvestigadorType = "participantes" }); %>
                 <% Html.RenderPartial("_EditParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ModelId = Model.Form.Id, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
