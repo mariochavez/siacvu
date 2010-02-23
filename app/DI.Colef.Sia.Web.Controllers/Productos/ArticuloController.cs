@@ -90,22 +90,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = new GenericViewData<ArticuloForm>();
             var articulo = articuloService.GetArticuloById(id);
 
-            if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return
-                    RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado",
-                                                      articulo.Titulo));
-
-            if (User.IsInRole("DGAA"))
-            {
-                if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
-                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 0) ||
-                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
-                    )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
-                                                articulo.Titulo));
-            }
+            var verifyMessage = VerifyProductoStatus(articulo.Firma, articulo.Titulo);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
 
             CoautorInternoArticulo coautorInternoArticulo;
             int posicionAutor;
@@ -125,7 +112,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             articuloForm.LineaTematicaId = articulo.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(articuloForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -169,23 +155,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var articulo = articuloService.GetArticuloById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
+            var archivo = MapArchivo();
 
             if (form["TipoArchivo"] == "Aceptado")
             {

@@ -486,12 +486,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return true;
         }
 
+        [Obsolete("Prefirir el helper ProductoHelper")]
         protected string GetObjectName(bool pluralize)
         {
             return GetObjectName(pluralize, 0);
         }
 
-
+        [Obsolete("Prefirir el helper ProductoHelper")]
         protected string GetObjectName(bool pluralize, int titleType)
         {
             var spanishInflector = new SpanishInflector();
@@ -519,6 +520,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return objectName;
         }
 
+        [Obsolete("Prefirir el helper ProductoHelper")]
         protected string GetPluralObjectName(string objectName)
         {
             switch (objectName)
@@ -549,6 +551,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return objectName;
         }
 
+        [Obsolete("Prefirir el helper ProductoHelper")]
         protected string GetSingularObjectName(string objectName, int titleType)
         {
             string newPrefix;
@@ -715,6 +718,29 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             file.InputStream.Read(datos, 0, datos.Length);
             archivo.Datos = datos;
             return archivo;
+        }
+
+        protected string VerifyProductoStatus(Firma firma, string titulo)
+        {
+            string message = String.Empty;
+            if (firma.Aceptacion1 == 1 && firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
+                message = String.Format("El {0} {1} esta en firma y no puede ser editado",
+                                        ProductoHelper.ProductoNameSingular(EntityHelper.GetTipoProducto<TModel>()),
+                                        titulo);
+
+            if (User.IsInRole("DGAA"))
+            {
+                if ((firma.Aceptacion1 == 1 && firma.Aceptacion2 == 1) ||
+                    (firma.Aceptacion1 == 0 && firma.Aceptacion2 == 0) ||
+                    (firma.Aceptacion1 == 0 && firma.Aceptacion2 == 2)
+                    )
+                    message = String.Format(
+                        "El {0} {1} ya fue aceptado o no ha sido enviado a firma",
+                        ProductoHelper.ProductoNameSingular(EntityHelper.GetTipoProducto<TModel>()),
+                        titulo);
+            }
+
+            return message;
         }
     }
 }

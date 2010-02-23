@@ -4,7 +4,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
     {
         public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
-
-//        public LineaTematicaForm[] LineasTematicas { get; set; }
     }
 }

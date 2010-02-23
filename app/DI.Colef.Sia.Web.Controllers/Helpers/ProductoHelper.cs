@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
-using SharpArch.Web.Areas;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
@@ -155,6 +154,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         }
 
         public static string ProductoNameSingular(this HtmlHelper html, TipoProductoEnum tipoProducto)
+        {
+            return ProductoNameSingular(tipoProducto);
+        }
+
+        public static string ProductoNameSingular(TipoProductoEnum tipoProducto)
         {
             string productName = String.Empty;
             switch (tipoProducto)
