@@ -77,6 +77,7 @@ jQuery.dynamicui = function(select, options) {
                 } else {
                     $(field).slideDown('fast', function() {
                         $(field).fadeIn('fast');
+                        $(field).effect("highlight", {}, 1000);
                     });
                 }
             }
