@@ -1,7 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" AutoEventWireup="true"
     Inherits="System.Web.Mvc.ViewPage<GenericViewData<ProyectoForm>>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
@@ -46,7 +47,14 @@
                     <span class="valor"><%= Html.Encode(Model.Form.TipoProyectoNombre)%>&nbsp;</span>
                 </p>
                 
-                <h4>Investigadores participantes</h4>
+                <h4>
+                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
+                        <span>
+                            <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
+                            coautor(es) </span><span class="cvu"></span></a>
+                </h4>
+                <span id="coautores">
                 <% Html.RenderPartial("_ShowResponsable", Model.Form);%>
 				<% Html.RenderPartial("_ShowParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
@@ -54,15 +62,10 @@
                 <p>
                     <label>Investigador</label>
                     <span class="valor"><%=Html.Encode(Model.Form.InvestigadorNombre) %></span>
-                </p>
-	            <p>
-	                <label>Total de investigadores</label>
-	                <span id="totalautores" class="valor"><%=Html.Encode(Model.Form.TotalParticipantes) %></span>	          
-	            </p>
-	            <p>
-	                <label>Posici&oacute;n del participante</label>
+                    <label class="right">Posici&oacute;n del participante</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionParticipante)%>&nbsp;</span>
                 </p>
+                </span>
                 
                 <h4>Calendario del proyecto</h4>
                 <p>
