@@ -78,7 +78,7 @@
                 
     <!-- Coautores de la publicacion -->            
                 <h4>
-                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
+                    <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoObraTraducidas.Length + Model.Form.CoautorInternoObraTraducidas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
                         Coautores de la obra traducida
                         <span>
@@ -86,7 +86,7 @@
                         </span><span class="cvu"></span>
                      </a>
                 </h4>
-                <span id="coautores">
+                <span id="coautores_area">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoObraTraducidas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoObraTraducidas, CoautoresInternos = Model.Form.CoautorInternoObraTraducidas }); %>

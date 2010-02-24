@@ -48,13 +48,13 @@
                 </p>
                 
                 <h4>
-                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
+                    <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>Investigadores participantes
                         <span>
                             <%=Html.Encode(Model.Form.ParticipanteExternoProyectos.Length + Model.Form.ParticipanteInternoProyectos.Length)%>
                             coautor(es) </span><span class="cvu"></span></a>
                 </h4>
-                <span id="coautores">
+                <span id="coautores_area">
                 <% Html.RenderPartial("_ShowResponsable", Model.Form);%>
 				<% Html.RenderPartial("_ShowParticipanteInterno", new ParticipanteForm { ParticipantesInternos = Model.Form.ParticipanteInternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowParticipanteExterno", new ParticipanteForm { ParticipantesExternos = Model.Form.ParticipanteExternoProyectos, ParticipanteSeOrdenaAlfabeticamente = Model.Form.ParticipanteSeOrdenaAlfabeticamente }); %>

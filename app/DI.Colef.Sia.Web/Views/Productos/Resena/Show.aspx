@@ -63,7 +63,7 @@
                 </p>
                                 
                 <h4>
-                    <a href="#coautores" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
+                    <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoResenas.Length + Model.Form.CoautorInternoResenas.Length) %>">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
                         Coautores de la rese&ntilde;a
                         <span>
@@ -72,7 +72,7 @@
                         <span class="cvu"></span>
                     </a>
                 </h4>
-                <span id="coautores">
+                <span id="coautores_area">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoResenas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoResenas, CoautoresInternos = Model.Form.CoautorInternoResenas }); %>

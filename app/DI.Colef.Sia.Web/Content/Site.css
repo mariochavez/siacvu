@@ -649,6 +649,11 @@ a.editabusqueda {
 	color: #555;
 }
 
+#forma h4 span.ui-icon {
+	float:left;
+	margin:2px;
+}
+
 #forma p.waiting {
     display:none;
     padding: 15px 0 0 170px;
