@@ -67,8 +67,10 @@
                         <span class="ui-icon ui-icon-circle-arrow-s"></span>
                         Coautores del art&iacute;culo de difusi&oacute;n
                         <span>
-                            <%=Html.Encode(Model.Form.TotalCoautores)%>
-                            coautor(es)</span> <span class="cvu"></span></a>
+                        <%=Html.Encode(Model.Form.TotalCoautores)%> coautor(es)
+                        </span> 
+                        <span class="cvu"></span>
+                    </a>
                 </h4>
                 <span id="coautores">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoArticulos, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
@@ -121,8 +123,19 @@
                 <% if (Model.Form.TieneProyecto) { %>                    
                     <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } %>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+
+                <p>
+                    <label>L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; 
+                    </span>
+                </p>
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; 
+                    </span>
+                </p>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 

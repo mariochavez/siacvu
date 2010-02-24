@@ -109,7 +109,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var articuloForm = articuloMapper.Map(articulo);
-            articuloForm.LineaTematicaId = articulo.AreaTematica.LineaTematica.Id;
+            if(articulo.AreaTematica != null)
+                articuloForm.LineaTematicaId = articulo.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(articuloForm);
             FormSetCombos(data.Form);

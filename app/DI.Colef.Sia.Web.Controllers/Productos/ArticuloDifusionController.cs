@@ -8,6 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -18,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoArticuloMapper coautorExternoArticuloMapper;
         readonly ICoautorInternoArticuloMapper coautorInternoArticuloMapper;
         readonly ITipoArchivoMapper tipoArchivoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
@@ -72,10 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
-            data.Form.TipoArticulo = 2;
+            var data = new GenericViewData<ArticuloDifusionForm> { Form = SetupNewForm() };
 
             return View(data);
         }
@@ -84,29 +81,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<ArticuloDifusionForm>();
+            var articulo = articuloService.GetArticuloById(id);
+
+            var verifyMessage = VerifyProductoStatus(articulo.Firma, articulo.Titulo);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             CoautorInternoArticulo coautorInternoArticulo;
             int posicionAutor;
             var coautorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var articulo = articuloService.GetArticuloById(id);
-
-            if (articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return
-                    RedirectToHomeIndex(String.Format("El artículo {0} esta en firma y no puede ser editado",
-                                                      articulo.Titulo));
-
-            if (User.IsInRole("DGAA"))
-            {
-                if ((articulo.Firma.Aceptacion1 == 1 && articulo.Firma.Aceptacion2 == 1) ||
-                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 0) ||
-                    (articulo.Firma.Aceptacion1 == 0 && articulo.Firma.Aceptacion2 == 2)
-                    )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El artículo {0} ya fue aceptado o no ha sido enviado a firma",
-                                                articulo.Titulo));
-            }
 
             if (User.IsInRole("Investigadores"))
             {
@@ -119,9 +103,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var articuloForm = articuloMapper.Map(articulo);
+            if (articulo.AreaTematica != null)
+                articuloForm.LineaTematicaId = articulo.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(articuloForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -145,7 +130,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ArticuloDifusionForm>();
 
             var articulo = articuloService.GetArticuloById(id);
 
@@ -538,6 +523,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ArticuloDifusionForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
             if (form.Id == 0)
             {
                 form.CoautorExternoArticulos = new CoautorExternoProductoForm[] { };
@@ -549,14 +543,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
 				}
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-
-            form.TipoArchivos = tipoArchivoMapper.Map(catalogoService.GetActiveTipoArchivos());
-            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
-            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             return form;
         }
@@ -569,6 +560,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         private static ArticuloDifusionForm SetupShowForm(ArticuloDifusionForm form)
@@ -586,8 +580,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,
                                       ProyectoNombre = form.Proyecto.Nombre,
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
