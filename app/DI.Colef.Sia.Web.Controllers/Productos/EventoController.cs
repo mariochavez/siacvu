@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Collections;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -23,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEventoService eventoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
@@ -32,9 +32,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
         public EventoController(IEventoService eventoService, IEventoMapper eventoMapper,
                                 ICatalogoService catalogoService,
-                                ILineaTematicaMapper lineaTematicaMapper,
+                                IAreaTematicaMapper areaTematicaMapper, ICustomCollection customCollection,
+                                ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                 IArchivoService archivoService,
-                                IAreaTematicaMapper areaTematicaMapper,
                                 ISesionEventoMapper sesionEventoMapper,
                                 IUsuarioService usuarioService,
                                 IAmbitoMapper ambitoMapper,
@@ -79,9 +79,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
+            var data = new GenericViewData<EventoForm> { Form = SetupNewForm() };
 
             return View(data);
         }
@@ -90,27 +88,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<EventoForm>();
+            var evento = eventoService.GetEventoById(id);
+
+            var verifyMessage = VerifyProductoStatus(evento.Firma, evento.Nombre);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             CoautorInternoEvento coautorInternoEvento;
             int posicionAutor;
             var coautorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var evento = eventoService.GetEventoById(id);
-
-            if (evento.Firma.Aceptacion1 == 1 && evento.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El evento {0} esta en firma y no puede ser editado", evento.Nombre));
-            
-            if (User.IsInRole("DGAA"))
-            {
-                if ((evento.Firma.Aceptacion1 == 1 && evento.Firma.Aceptacion2 == 1) ||
-                    (evento.Firma.Aceptacion1 == 0 && evento.Firma.Aceptacion2 == 0) ||
-                    (evento.Firma.Aceptacion1 == 0 && evento.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El evento {0} ya fue aceptado o no ha sido enviado a firma",
-                                                evento.Nombre));
-            }
 
             if (User.IsInRole("Investigadores"))
             {
@@ -123,9 +110,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var eventoForm = eventoMapper.Map(evento);
+            if (evento.AreaTematica != null)
+                eventoForm.LineaTematicaId = evento.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(eventoForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -149,7 +137,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<EventoForm>();
 
             var evento = eventoService.GetEventoById(id);
             var eventoForm = eventoMapper.Map(evento);
@@ -662,7 +650,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         private EventoForm SetupNewForm(EventoForm form)
         {
             form = form ?? new EventoForm();
-            var nombreInvestigador = String.Empty;
+
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionEventos());
+            form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());
 
             if (form.Id == 0)
             {
@@ -675,11 +667,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
 				}
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-
-            //Lista de Catalogos Pendientes
-            form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionEventos());
-            form.TiposEventos = tipoEventoMapper.Map(catalogoService.GetActiveTipoEventos());
 
             return form;
         }
@@ -688,6 +680,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoEvento"] = form.TipoEventoId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         private EventoForm SetupShowForm(EventoForm form)
@@ -699,9 +694,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,
-
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       IsShowForm = true,
                                   };

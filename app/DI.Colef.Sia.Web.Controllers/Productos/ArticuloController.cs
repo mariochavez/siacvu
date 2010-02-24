@@ -139,7 +139,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var data = new GenericViewData<ArticuloForm>();
 
             var articulo = articuloService.GetArticuloById(id);
-
             var articuloForm = articuloMapper.Map(articulo);
 
             data.Form = SetupShowForm(articuloForm);

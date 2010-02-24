@@ -49,9 +49,9 @@
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
                     Coautores del cap&iacute;tulo
-                    <span>
-                        <%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%>
-                        coautor(es) </span><span class="cvu"></span></a>
+                    <span><%=Html.Encode(Model.Form.CoautorExternoCapitulos.Length + Model.Form.CoautorInternoCapitulos.Length)%> coautor(es) </span>
+                    <span class="cvu"></span>
+                </a>
                 </h4>
                 <span id="coautores_area">
                 <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
@@ -111,7 +111,7 @@
 	                <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar", new{id="regresar"})%>
 	            </p>
 	        <% } %>
-	    </div>    <!--end forma-->
+	    </div><!--end forma-->
     
 	</div><!--end textos-->
 

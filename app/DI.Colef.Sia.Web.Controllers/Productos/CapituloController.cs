@@ -15,7 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class CapituloController : BaseController<Capitulo, CapituloForm>
     {
         readonly IAreaMapper areaMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IAutorInternoCapituloMapper autorInternoCapituloMapper;
         readonly ICapituloMapper capituloMapper;
@@ -73,10 +72,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
-            data.Form.PosicionAutor = 1;
+            var data = new GenericViewData<CapituloForm> {Form = SetupNewForm() };
 
             return View(data);
         }
@@ -85,30 +81,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<CapituloForm>();
+            var capitulo = capituloService.GetCapituloById(id);
+
+            var verifyMessage = VerifyProductoStatus(capitulo.Firma, capitulo.NombreCapitulo);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             CoautorInternoCapitulo coautorInternoCapitulo;
             AutorInternoCapitulo autorInternoCapitulo;
             int posicionCoautor;
             var coautorExists = 0;
             int posicionAutor;
             var autorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var capitulo = capituloService.GetCapituloById(id);
-
-            if (capitulo.Firma.Aceptacion1 == 1 && capitulo.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El capítulo {0} esta en firma y no puede ser editado", capitulo.NombreCapitulo));
-            if (User.IsInRole("DGAA"))
-            {
-                if ((capitulo.Firma.Aceptacion1 == 1 && capitulo.Firma.Aceptacion2 == 1) ||
-                    (capitulo.Firma.Aceptacion1 == 0 && capitulo.Firma.Aceptacion2 == 0) ||
-                    (capitulo.Firma.Aceptacion1 == 0 && capitulo.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El capítulo {0} ya fue aceptado o no ha sido enviado a firma",
-                                                capitulo.NombreCapitulo));
-            }
-
+            
             if (User.IsInRole("Investigadores"))
             {
                 coautorExists =
@@ -124,9 +110,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var capituloForm = capituloMapper.Map(capitulo);
+            if(capitulo.AreaTematica != null)
+                capituloForm.LineaTematicaId = capitulo.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(capituloForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -162,7 +149,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<CapituloForm>();
 
             var capitulo = capituloService.GetCapituloById(id);
             var capituloForm = capituloMapper.Map(capitulo);
@@ -790,6 +777,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new CapituloForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+            form.TiposLibro = customCollection.TipoLibroCustomCollection();
+
+            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
+            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
+            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
             if (form.Id == 0)
             {
                 form.CoautorExternoCapitulos = new CoautorExternoProductoForm[] {};
@@ -803,21 +800,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
 				}
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-
-            //Lista de Catalogos Pendientes
-            form.TiposCapitulos = customCollection.TipoProductoCustomCollection(2);
-            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.TiposLibro = customCollection.TipoLibroCustomCollection();
-
-            form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
-            form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
-            form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
 
             return form;
         }
 
-        void FormSetCombos(CapituloForm form)
+        private void FormSetCombos(CapituloForm form)
         {
             ViewData["TipoCapitulo"] = form.TipoCapitulo;
             ViewData["EstadoProducto"] = form.EstadoProducto;
@@ -826,6 +818,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         static CapituloForm SetupShowForm(CapituloForm form)
@@ -834,9 +829,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-
                                       SubdisciplinaNombre = form.SubdisciplinaNombre,
                                       DisciplinaNombre = form.DisciplinaNombre,
                                       AreaNombre = form.AreaNombre,

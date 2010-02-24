@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<EventoForm>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
 <p>
     <label>Nombre del evento</label>
@@ -9,7 +9,7 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 
-<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, IsShowForm = false }); %>
+<% Html.RenderPartial("_DatosFinal", Model); %>
 
 <p>
     <label>Tipo de evento</label>

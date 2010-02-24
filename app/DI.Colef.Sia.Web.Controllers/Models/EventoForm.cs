@@ -27,9 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
         public int TipoEvento { get; set; }
         public int TipoEventoId { get; set; }
         public string TipoEventoNombre { get; set; }

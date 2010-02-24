@@ -154,15 +154,28 @@
                     <label></label>
                     <span class="valor">¿Existe proyecto de investigaci&oacute;n de referencia? <%= HumanizeHelper.Boolean(Model.Form.TieneProyecto) %>&nbsp;</span>
                 </p>
+
                 <% if (Model.Form.TieneProyecto) { %>      
 	                <% Html.RenderPartial("_ShowProyecto", Model.Form.ShowFields); %>
                 <% } %>
-                
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+
+                <p>
+                    <label>L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; 
+                    </span>
+                </p>
+                <p>
+                    <label>&Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; 
+                    </span>
+                </p>
+
                 <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
                 <p class="submit">
-                    <%=Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
+                    <%= Html.ActionLink<CapituloController>(x => x.Index(), "Regresar") %>
                 </p>
             </div><!--end campos-->
         </div><!--end lista-->

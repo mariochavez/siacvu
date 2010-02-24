@@ -1,5 +1,3 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class CapituloForm : BaseForm
@@ -47,9 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string SubdisciplinaNombre { get; set; }
         public string DisciplinaNombre { get; set; }
         public string AreaNombre { get; set; }
-
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
 
         public int TotalCoautores
         {
