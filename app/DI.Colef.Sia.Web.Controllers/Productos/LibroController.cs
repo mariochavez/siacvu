@@ -23,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IArchivoService archivoService;
         readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILibroMapper libroMapper;
         readonly ILibroService libroService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
@@ -44,10 +43,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
                                IEditorialLibroMapper editorialLibroMapper,
+                               IAreaTematicaMapper areaTematicaMapper,
                                ILineaTematicaMapper lineaTematicaMapper, 
+                               IAreaMapper areaMapper,
                                IDisciplinaMapper disciplinaMapper,
-                               ISubdisciplinaMapper subdisciplinaMapper, IAreaMapper areaMapper,
-                               IInvestigadorExternoMapper investigadorExternoMapper, IAreaTematicaMapper areaTematicaMapper,
+                               ISubdisciplinaMapper subdisciplinaMapper,
+                               IInvestigadorExternoMapper investigadorExternoMapper,
                                IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
@@ -87,9 +88,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
+            var data = new GenericViewData<LibroForm> { Form = SetupNewForm() };
 
             ViewData["Edicion"] = (from e in data.Form.Ediciones where e.Nombre == "Primera edición" select e.Id).FirstOrDefault();
 
@@ -100,26 +99,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<LibroForm>();
+            var libro = libroService.GetLibroById(id);
+
+            var verifyMessage = VerifyProductoStatus(libro.Firma, libro.Nombre);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             CoautorInternoLibro coautorInternoLibro;
             int posicionAutor;
             var coautorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var libro = libroService.GetLibroById(id);
-
-            if (libro.Firma.Aceptacion1 == 1 && libro.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El libro {0} esta en firma y no puede ser editado", libro.Nombre));
-            if (User.IsInRole("DGAA"))
-            {
-                if ((libro.Firma.Aceptacion1 == 1 && libro.Firma.Aceptacion2 == 1) ||
-                    (libro.Firma.Aceptacion1 == 0 && libro.Firma.Aceptacion2 == 0) ||
-                    (libro.Firma.Aceptacion1 == 0 && libro.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El libro {0} ya fue aceptado o no ha sido enviado a firma",
-                                                libro.Nombre));
-            }
 
             if (User.IsInRole("Investigadores"))
             {
@@ -132,9 +121,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var libroForm = libroMapper.Map(libro);
+            if (libro.AreaTematica != null)
+                libroForm.LineaTematicaId = libro.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(libroForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -158,10 +148,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<LibroForm>();
 
             var libro = libroService.GetLibroById(id);
-
             var libroForm = libroMapper.Map(libro);
 
             data.Form = SetupShowForm(libroForm);
@@ -665,18 +654,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new LibroForm();
 
-            if (form.Id == 0)
-            {
-                form.CoautorExternoLibros = new CoautorExternoProductoForm[] { };
-                form.CoautorInternoLibros = new CoautorInternoProductoForm[] { };
-
-                if (User.IsInRole("Investigadores"))
-				{
-				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
-                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
-                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-				}
-            }
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
 
             form.Ediciones = customCollection.EdicionCustomCollection();
             form.TiposProductos = customCollection.TipoProductoCustomCollection(7);
@@ -688,6 +666,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             form.Areas = areaMapper.Map(catalogoService.GetActiveAreas());
             form.Disciplinas = GetDisciplinasByAreaId(form.AreaId);
             form.Subdisciplinas = GetSubdisciplinasByDisciplinaId(form.DisciplinaId);
+
+            if (form.Id == 0)
+            {
+                form.CoautorExternoLibros = new CoautorExternoProductoForm[] { };
+                form.CoautorInternoLibros = new CoautorInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+				{
+				    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+				}
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+            }
 
             return form;
         }
@@ -704,6 +699,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["AreaId"] = form.AreaId;
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
         static LibroForm SetupShowForm(LibroForm form)
@@ -717,8 +715,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       RevistaPublicacionIndice1Nombre = form.RevistaPublicacion.Indice1Nombre,
                                       RevistaPublicacionIndice2Nombre = form.RevistaPublicacion.Indice2Nombre,
                                       RevistaPublicacionIndice3Nombre = form.RevistaPublicacion.Indice3Nombre,
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       ProyectoNombre = form.Proyecto.Nombre,
 
