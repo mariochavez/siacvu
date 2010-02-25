@@ -27,7 +27,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IReporteService reporteService;
         readonly IProyectoService proyectoService;
         readonly ICustomCollection customCollection;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInstitucionMapper institucionMapper;
         readonly IInstitucionReporteMapper institucionReporteMapper;
@@ -84,9 +83,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
-            data.Form.PosicionCoautor = 1;
+            var data = new GenericViewData<ReporteForm> { Form = SetupNewForm() };
 
             return View(data);
         }
@@ -95,26 +92,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<ReporteForm>();
+            var reporte = reporteService.GetReporteById(id);
+
+            var verifyMessage = VerifyProductoStatus(reporte.Firma, reporte.Titulo);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             CoautorInternoReporte coautorInternoReporte;
             int posicionAutor;
             var coautorExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var reporte = reporteService.GetReporteById(id);
-
-            if (reporte.Firma.Aceptacion1 == 1 && reporte.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El reporte técnico {0} esta en firma y no puede ser editado", reporte.Titulo));
-            if (User.IsInRole("DGAA"))
-            {
-                if ((reporte.Firma.Aceptacion1 == 1 && reporte.Firma.Aceptacion2 == 1) ||
-                    (reporte.Firma.Aceptacion1 == 0 && reporte.Firma.Aceptacion2 == 0) ||
-                    (reporte.Firma.Aceptacion1 == 0 && reporte.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El reporte técnico {0} ya fue aceptado o no ha sido enviado a firma",
-                                                reporte.Titulo));
-            }
 
             if (User.IsInRole("Investigadores"))
             {
@@ -127,9 +114,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var reporteForm = reporteMapper.Map(reporte);
+            if (reporte.AreaTematica != null)
+                reporteForm.LineaTematicaId = reporte.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(reporteForm);
-
             FormSetCombos(data.Form);
 
             if (coautorExists != 0)
@@ -153,11 +141,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ReporteForm>();
 
             var reporte = reporteService.GetReporteById(id);
-
             var reporteForm = reporteMapper.Map(reporte);
+
             data.Form = SetupShowForm(reporteForm);
 
             ViewData.Model = data;
@@ -613,6 +601,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ReporteForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
+            form.TiposReportes = customCollection.TipoReporteCustomCollection();
+            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
+            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
+            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
+            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
+
             if (form.Id == 0)
             {
                 form.CoautorExternoReportes = new CoautorExternoProductoForm[] { };
@@ -624,14 +620,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
 				}
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
             }
-
-            //Lista de Catalogos Pendientes
-            form.TiposReportes = customCollection.TipoReporteCustomCollection();
-            form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
-            form.Proyectos = proyectoMapper.Map(proyectoService.GetActiveProyectos());
-            form.CoautoresExternos = investigadorExternoMapper.Map(catalogoService.GetActiveInvestigadorExternos());
-            form.CoautoresInternos = investigadorMapper.Map(investigadorService.GetActiveInvestigadores());
 
             return form;
         }
@@ -640,9 +633,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             ViewData["TipoReporte"] = form.TipoReporte;
             ViewData["EstadoProducto"] = form.EstadoProducto;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
-        private ReporteForm SetupShowForm(ReporteForm form)
+        private static ReporteForm SetupShowForm(ReporteForm form)
         {
             form = form ?? new ReporteForm();
 
@@ -650,9 +646,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   {
                                       InstitucionNombre = form.Institucion.Nombre,
                                       InstitucionPaisNombre = form.Institucion.PaisNombre,
-
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
 
                                       EstadoProducto = form.EstadoProducto,
                                       FechaAceptacion = form.FechaAceptacion,

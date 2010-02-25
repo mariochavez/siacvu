@@ -19,7 +19,7 @@
 </p>
 
 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.PalabraClave1, PalabraClave2 = Model.PalabraClave2, PalabraClave3 = Model.PalabraClave3, IsShowForm = false }); %>
-<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_LineaAreaTematica", Model); %>
 
 <p>
 	<label>Instituci&oacute;n responsable/Nombre del medio</label>

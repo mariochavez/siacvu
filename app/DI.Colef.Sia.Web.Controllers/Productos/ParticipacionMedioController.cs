@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly IParticipacionMedioService participacionMedioService;
         readonly IDirigidoAMapper dirigidoAMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IAreaMapper areaMapper;
@@ -63,8 +62,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<ParticipacionMedioForm> { Form = SetupNewForm() };
             
             return View(data);
         }
@@ -73,24 +71,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
-
+            var data = new GenericViewData<ParticipacionMedioForm>();
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
 
-            if (participacionMedio.Firma.Aceptacion1 == 1 && participacionMedio.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("La participación en medio {0} esta en firma y no puede ser editada", participacionMedio.Titulo));
-            
-            if (User.IsInRole("DGAA"))
-            {
-                if ((participacionMedio.Firma.Aceptacion1 == 1 && participacionMedio.Firma.Aceptacion2 == 1) ||
-                    (participacionMedio.Firma.Aceptacion1 == 0 && participacionMedio.Firma.Aceptacion2 == 0) ||
-                    (participacionMedio.Firma.Aceptacion1 == 0 && participacionMedio.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "La participación en medio {0} ya fue aceptada o no ha sido enviada a firma",
-                                                participacionMedio.Titulo));
-            }
+            var verifyMessage = VerifyProductoStatus(participacionMedio.Firma, participacionMedio.Titulo);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
 
             if (User.IsInRole("Investigadores"))
             {
@@ -99,6 +85,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var participacionMedioForm = participacionMedioMapper.Map(participacionMedio);
+            if (participacionMedio.AreaTematica != null)
+                participacionMedioForm.LineaTematicaId = participacionMedio.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(participacionMedioForm);
             FormSetCombos(data.Form);
@@ -111,10 +99,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ParticipacionMedioForm>();
 
             var participacionMedio = participacionMedioService.GetParticipacionMedioById(id);
-
             var participacionForm = participacionMedioMapper.Map(participacionMedio);
 
             data.Form = SetupShowForm(participacionForm);
@@ -254,9 +241,25 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             form = form ?? new ParticipacionMedioForm();
 
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
+
             form.Ambitos = ambitoMapper.Map(catalogoService.GetActiveAmbitos());
             form.DirigidosA = dirigidoAMapper.Map(catalogoService.GetActiveDirigidoAs());
             form.TiposParticipaciones = tipoParticipacionMapper.Map(catalogoService.GetTipoParticipacionParticipacionMedios());
+
+            if (form.Id == 0)
+            {
+                if (User.IsInRole("Investigadores"))
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+                }
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+            }
 
             return form;
         }
@@ -266,17 +269,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             ViewData["Ambito"] = form.AmbitoId;
             ViewData["DirigidoA"] = form.DirigidoAId;
             ViewData["TipoParticipacion"] = form.TipoParticipacionId;
+
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
         }
 
-        private ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
+        private static ParticipacionMedioForm SetupShowForm(ParticipacionMedioForm form)
         {
             form = form ?? new ParticipacionMedioForm();
 
             form.ShowFields = new ShowFieldsForm
                                   {
-                                      AreaTematicaNombre = form.AreaTematica.Nombre,
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematica.LineaTematicaNombre,
-
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,

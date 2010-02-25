@@ -70,7 +70,18 @@
                 </p>
                 
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <p>
+                    <label>
+                        L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
+                </p>
+                <p>
+                    <label>
+                        &Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
+                </p>
                 
                 <p>
                     <label>Instituci&oacute;n responsable/Nombre del medio</label>

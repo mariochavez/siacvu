@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ParticipacionMedioForm
+    public class ParticipacionMedioForm : BaseForm
     {
 		public int Id { get; set; }
         public string Titulo { get; set; }
@@ -18,9 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
         public int DirigidoA { get; set; }
         public int DirigidoAId { get; set; }
         public string DirigidoANombre { get; set; }
@@ -32,18 +29,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Ambito { get; set; }
         public int AmbitoId { get; set; }
         public string AmbitoNombre { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string InvestigadorNombre
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
-        }
 
         /* Catalogos */
 		public AmbitoForm[] Ambitos { get; set; }

@@ -40,9 +40,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-
         public int TotalCoautores
         {
             get

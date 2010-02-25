@@ -43,19 +43,23 @@
 
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
-
-                <h4>Coautores del reporte t&eacute;cnico</h4>
+                
+                <h4>
+                  <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoReportes.Length + Model.Form.CoautorInternoReportes.Length) %>">
+                  <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                  Coautores del reporte t&eacute;cnico
+                  <span><%=Html.Encode(Model.Form.CoautorExternoReportes.Length + Model.Form.CoautorInternoReportes.Length)%> coautor(es) </span>
+                  <span class="cvu"></span>
+                  </a>
+                </h4>
+                <span id="coautores_area">
                 <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "CoautorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewCoautorInternoLink, NewCoautorExternoLink", SubFormName = "coautor", UrlActionExterno = "NewCoautorExterno", UrlActionInterno = "NewCoautorInterno", Link1Id = "NewCoautorInternoLink", Link2Id = "NewCoautorExternoLink" }); %>
 				<% Html.RenderPartial("_EditCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_EditCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, ModelId = Model.Form.Id, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, CoautoresInternos = Model.Form.CoautorInternoReportes }); %>
 	            
 				<% Html.RenderPartial("_AutorEntry", Model.Form); %>
-	            <p>
-	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores) %></span>
-	                <span class="cvu"></span>
-	            </p>
+                </span>
 
 	            <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
@@ -75,7 +79,7 @@
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
                 
-                <% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.Form.AreaTematicaId, AreaTematicaNombre = Model.Form.AreaTematicaNombre, IsShowForm = false }); %>
+                <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
 				
 				<% Html.RenderPartial("_ProgressBar"); %>

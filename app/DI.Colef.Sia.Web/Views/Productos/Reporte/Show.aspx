@@ -63,8 +63,16 @@
                     <label>Tipo de publicaci&oacute;n</label>
                     <span class="valor"><%= HumanizeHelper.TipoReporte(Model.Form.TipoReporte)%>&nbsp;</span>
                 </p>
-                
-                <h4>Coautores del resporte t&eacute;cnico</h4>
+
+                <h4>
+                    <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoReportes.Length + Model.Form.CoautorInternoReportes.Length) %>">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>
+                        Coautores del art&iacute;culo de investigaci&oacute;n 
+                        <span><%=Html.Encode(Model.Form.CoautorExternoReportes.Length + Model.Form.CoautorInternoReportes.Length)%> coautor(es) </span>
+                        <span class="cvu"></span>
+                    </a>
+                </h4>
+                <span id="coautores_area">
 				<% Html.RenderPartial("_ShowCoautorInterno", new CoautorForm { CoautoresInternos = Model.Form.CoautorInternoReportes, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_ShowCoautorExterno", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, CoautorSeOrdenaAlfabeticamente = Model.Form.CoautorSeOrdenaAlfabeticamente }); %>
 	            <% Html.RenderPartial("_CoautorEmptyListMessage", new CoautorForm { CoautoresExternos = Model.Form.CoautorExternoReportes, CoautoresInternos = Model.Form.CoautorInternoReportes }); %>
@@ -74,10 +82,7 @@
 					<label class="right">Posici&oacute;n</label>
                     <span class="valor"><%=Html.Encode(Model.Form.PosicionCoautor)%>&nbsp;</span>
                 </p>
-	            <p>
-	                <label>Total de investigadores</label>
-	                <span id="totalcoautores" class="valor"><%=Html.Encode(Model.Form.TotalCoautores)%></span>	          
-	            </p>
+                </span>
                 
                 <% Html.RenderPartial("_ShowEstadoProducto", Model.Form.ShowFields); %>
                 
@@ -99,7 +104,18 @@
                     </span><br />
                 </p>
                 
-                <% Html.RenderPartial("_ShowAreaTematica", Model.Form.ShowFields); %>
+                <p>
+                    <label>
+                        L&iacute;nea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.LineaTematicaNombre) %>&nbsp; </span>
+                </p>
+                <p>
+                    <label>
+                        &Aacute;rea tem&aacute;tica institucional</label>
+                    <span class="valor">
+                        <%= Html.Encode(Model.Form.AreaTematica.Nombre) %>&nbsp; </span>
+                </p>
                 <% Html.RenderPartial("_ShowPalabrasClave", Model.Form.ShowFields); %>
                 
                 <p class="submit">
