@@ -9,7 +9,7 @@
     <%=Html.ValidationMessage("NombreCapitulo")%>
 </p>
 <p>
-    <label>Nombre del libro</label>
+    <label>T&iacute;tulo del libro</label>
     <%=Html.TextBox("NombreLibro", Model.NombreLibro, new { @class = "input420", maxlength = 100 })%>
     <span class="cvu"></span>
     <%=Html.ValidationMessage("NombreLibro")%>
