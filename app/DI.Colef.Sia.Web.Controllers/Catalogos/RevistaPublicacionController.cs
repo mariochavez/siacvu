@@ -36,7 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<RevistaPublicacionForm>();
 
             var revistaPublicacions = catalogoService.GetAllRevistaPublicaciones();
             data.List = revistaPublicacionMapper.Map(revistaPublicacions);
@@ -48,7 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
+            var data = new GenericViewData<RevistaPublicacionForm>();
             data.Form = SetupNewForm();
             return View(data);
         }
@@ -57,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<RevistaPublicacionForm>();
 
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             var revistaPublicacionForm = revistaPublicacionMapper.Map(revistaPublicacion);
@@ -74,7 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<RevistaPublicacionForm>();
 
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(id);
             data.Form = revistaPublicacionMapper.Map(revistaPublicacion);
