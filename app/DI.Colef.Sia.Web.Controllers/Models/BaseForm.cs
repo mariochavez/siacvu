@@ -17,5 +17,8 @@
 
         public CatalogoForm[] LineasTematicas { get; set; }
         public CatalogoForm[] AreasTematicas { get; set; }
+
+        public int RevistaPublicacionId { get; set; }
+        public string RevistaPublicacionTitulo { get; set; }
     }
 }
