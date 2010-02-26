@@ -78,7 +78,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             var revistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
             if (revistaPublicacion != null && String.Compare(revistaPublicacion.Titulo, message.RevistaPublicacionTitulo) >=0)
             {
-                model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+                model.RevistaPublicacion = revistaPublicacion;
                 model.RevistaPublicacionTitulo = String.Empty;
             }
             else

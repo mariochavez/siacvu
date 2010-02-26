@@ -8,8 +8,8 @@
                 new { @class = "autocomplete buscar-requerido", url = Html.BuildUrlFromExpressionForAreas<RevistaPublicacionController>(x => x.Search("")), maxlength = 100 })%>
     <%=Html.Hidden("RevistaPublicacionId", Model.RevistaPublicacionId, new { rel = "#RevistaPublicacionTitulo", url = Url.Action("ChangeRevista") })%>
     <span class="cvu"></span>
-    <%if(!Model.RevistaPublicacionExists) { %>
-        <span class="field-alert">Esta instituci&oacute;n no esta registrada en el cat&aacute;logo</span>
+    <%if (!Model.RevistaPublicacionExists && !String.IsNullOrEmpty(Model.RevistaPublicacionTitulo)) { %>
+        <span class="field-alert">Esta revista no esta registrada en el cat&aacute;logo</span>
     <% } %>
 </p>
 <%if(!Model.RevistaPublicacionExists) { %>

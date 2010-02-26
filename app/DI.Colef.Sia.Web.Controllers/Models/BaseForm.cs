@@ -31,7 +31,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         {
             get
             {
-                return RevistaPublicacionId > 0 && !String.IsNullOrEmpty(RevistaPublicacionTitulo);
+                return RevistaPublicacionId > 0;
             }
         }
     }
