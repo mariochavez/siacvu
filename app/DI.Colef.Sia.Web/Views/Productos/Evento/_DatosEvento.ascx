@@ -9,7 +9,7 @@
     <%=Html.ValidationMessage("Nombre")%>
 </p>
 
-<% Html.RenderPartial("_DatosFinal", Model); %>
+<% Html.RenderPartial("_LineaAreaTematica", Model); %>
 
 <p>
     <label>Tipo de evento</label>
