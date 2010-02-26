@@ -68,9 +68,7 @@
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                         ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
-                <%-- 
-                <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.Form.RevistaPublicacionId, RevistaPublicacionTitulo = Model.Form.RevistaPublicacionTitulo, RevistaLabel = "T&iacute;tulo de la revista", IsShowForm = false, UrlAction = "SearchFilteredRevista", Rel = "#TipoArticulo" }); %>
-                --%>
+
                 <% Html.RenderPartial("_RevistaPublicacion", Model.Form); %>
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
