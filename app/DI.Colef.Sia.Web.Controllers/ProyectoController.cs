@@ -8,6 +8,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 {
@@ -36,7 +37,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly IAreaTematicaMapper areaTematicaMapper;
         readonly ICustomCollection customCollection;
         readonly IAreaMapper areaMapper;
         readonly IConvenioService convenioService;
@@ -112,8 +112,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             if (CurrentInvestigador() == null)
                 return NoInvestigadorProfile("Por tal motivo no puede crear nuevos productos.");
 
-            var data = CreateViewDataWithTitle(Title.New);
-            data.Form = SetupNewForm();
+            var data = new GenericViewData<ProyectoForm> { Form = SetupNewForm() };
 
             if (User.IsInRole("DGAA"))
             {
@@ -133,27 +132,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
+            var data = new GenericViewData<ProyectoForm>();
+            var proyecto = proyectoService.GetProyectoById(id);
+
+            var verifyMessage = VerifyProductoStatus(proyecto.Firma, proyecto.Nombre);
+            if (!String.IsNullOrEmpty(verifyMessage))
+                return RedirectToHomeIndex(verifyMessage);
+
             ParticipanteInternoProyecto participanteInternoProyecto;
             int posicionParticipante;
             var participanteExists = 0;
-            var data = CreateViewDataWithTitle(Title.Edit);
-
-            var proyecto = proyectoService.GetProyectoById(id);
-
-            if (proyecto.Firma.Aceptacion1 == 1 && proyecto.Firma.Aceptacion2 == 0 && User.IsInRole("Investigadores"))
-                return RedirectToHomeIndex(String.Format("El proyecto {0} esta en firma y no puede ser editado", proyecto.Nombre));
-            
-            if (User.IsInRole("DGAA"))
-            {
-                if ((proyecto.Firma.Aceptacion1 == 1 && proyecto.Firma.Aceptacion2 == 1) ||
-                    (proyecto.Firma.Aceptacion1 == 0 && proyecto.Firma.Aceptacion2 == 0) ||
-                    (proyecto.Firma.Aceptacion1 == 0 && proyecto.Firma.Aceptacion2 == 2)
-                   )
-                    return
-                        RedirectToHomeIndex(String.Format(
-                                                "El proyecto {0} ya fue aceptado o no ha sido enviado a firma",
-                                                proyecto.Nombre));
-            }
 
             if (User.IsInRole("Investigadores"))
             {
@@ -166,9 +154,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
 
             var proyectoForm = proyectoMapper.Map(proyecto);
+            if (proyecto.AreaTematica != null)
+                proyectoForm.AreaTematica.LineaTematicaId = proyecto.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(proyectoForm);
-
             FormSetCombos(data.Form);
 
             if (participanteExists != 0)
@@ -192,7 +181,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Show(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Show);
+            var data = new GenericViewData<ProyectoForm>();
 
             var proyecto = proyectoService.GetProyectoById(id);
             var proyectoForm = proyectoMapper.Map(proyecto);
@@ -874,23 +863,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             form = form ?? new ProyectoForm();
 
-            if (form.Id == 0)
-            {
-                form.ParticipanteExternoProyectos = new ParticipanteExternoProductoForm[] { };
-                form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] { };
-
-                if (User.IsInRole("Investigadores"))
-                {
-                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
-                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
-                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
-                }
-            }
-
-            form.ResponsableProyecto = new ResponsableProyectoForm();
-            form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
-
-            form.UserRole = User.IsInRole("Investigadores") ? "Investigador" : "DGAA";
+            form.LineasTematicas = lineaTematicaMapper.Map(catalogoService.GetActiveLineaTematicas());
 
             //Lista de Catalogos
             form.TiposProyectos = tipoProyectoMapper.Map(catalogoService.GetActiveTipoProyectos());
@@ -907,6 +880,28 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             form.Sectores = sectorMapper.Map(catalogoService.GetActiveSectores());
             form.SectoresEconomicos = sectorMapper.Map(catalogoService.GetActiveSectoresEconomicos());
 
+            if (form.Id == 0)
+            {
+                form.ParticipanteExternoProyectos = new ParticipanteExternoProductoForm[] { };
+                form.ParticipanteInternoProyectos = new ParticipanteInternoProductoForm[] { };
+
+                if (User.IsInRole("Investigadores"))
+                {
+                    form.UsuarioNombre = CurrentInvestigador().Usuario.Nombre;
+                    form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
+                    form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
+                }
+            } else
+            {
+                form.AreasTematicas =
+                    areaTematicaMapper.Map(catalogoService.GetAreaTematicasByLineaTematicaId(form.LineaTematicaId));
+            }
+
+            form.ResponsableProyecto = new ResponsableProyectoForm();
+            form.RecursoFinancieroProyecto = new RecursoFinancieroProyectoForm();
+
+            form.UserRole = User.IsInRole("Investigadores") ? "Investigador" : "DGAA";
+            
             if (User.IsInRole("DGAA"))
             {
                 if (form.Id == 0)
@@ -950,6 +945,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             ViewData["DisciplinaId"] = form.DisciplinaId;
             ViewData["SubdisciplinaId"] = form.SubdisciplinaId;
 
+            ViewData["LineaTematicaId"] = form.LineaTematicaId;
+            ViewData["AreaTematicaId"] = form.AreaTematicaId;
+
             if (User.IsInRole("DGAA"))
             {
                 ViewData["SectorId"] = form.SectorId;
@@ -962,7 +960,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             }
         }
 
-        private ProyectoForm SetupShowForm(ProyectoForm form)
+        private static ProyectoForm SetupShowForm(ProyectoForm form)
         {
             form = form ?? new ProyectoForm();
 
@@ -979,9 +977,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ClaseNombre = form.ClaseNombre,
                                       RamaNombre = form.RamaNombre,
                                       SectorEconomicoNombre = form.SectorEconomicoNombre,
-
-                                      AreaTematicaLineaTematicaNombre = form.AreaTematicaLineaTematicaNombre,
-                                      AreaTematicaNombre = form.AreaTematicaNombre,
 
                                       IsShowForm = true
                                   };
