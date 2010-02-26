@@ -851,6 +851,12 @@ a.editabusqueda {
 	display: block;
 }
 
+#forma span.field-alert {
+	margin: 0 0 0 168px;
+	color: #BA5C2B;
+	display: block;
+}
+
 #firmaform span.field-validation-error {
 	margin: 0 0 0 10px;
 	color: #FF0000;

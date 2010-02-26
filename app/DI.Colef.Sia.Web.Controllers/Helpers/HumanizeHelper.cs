@@ -189,7 +189,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                     nombreFormaParticipacion = "Co-director";
                     break;
                 case 3:
-                    nombreFormaParticipacion = "Lector o sinodal";
+                    nombreFormaParticipacion = "Lector";
+                    break;
+                case 4:
+                    nombreFormaParticipacion = "Sinodal";
                     break;
                 default:
                     return "";

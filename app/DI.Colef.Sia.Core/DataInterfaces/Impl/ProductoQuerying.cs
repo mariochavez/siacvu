@@ -87,31 +87,31 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             var produccionAcademicaResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in produccionAcademica.List())
             {
-                produccionAcademicaResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+                produccionAcademicaResultado.AddRange(producto.Cast<ProductoDTO>());
             }
 
             var formacionRecursosHumanosResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in formacionRecursosHumanos.List())
             {
-                formacionRecursosHumanosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+                formacionRecursosHumanosResultado.AddRange(producto.Cast<ProductoDTO>());
             }
 
             var proyectosResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in proyectos.List())
             {
-                proyectosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+                proyectosResultado.AddRange(producto.Cast<ProductoDTO>());
             }
 
             var vinculacionDifusionResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in vinculacionDifusion.List())
             {
-                vinculacionDifusionResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+                vinculacionDifusionResultado.AddRange(producto.Cast<ProductoDTO>());
             }
 
             var eventosResultado = new List<ProductoDTO>();
             foreach (ArrayList producto in eventos.List())
             {
-                eventosResultado.AddRange(Enumerable.Cast<ProductoDTO>(producto));
+                eventosResultado.AddRange(producto.Cast<ProductoDTO>());
             }
 
             bandejaTrabajo[0] = produccionAcademicaResultado.ToArray();
@@ -122,11 +122,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
             return bandejaTrabajo;
         }
-
-        //public object[] GetBandejaProductos(Usuario usuario)
-        //{
-        //    return GetProductosBandeja(usuario, false, 0, 0);
-        //}
 
         public object[] GetBandejaProductos(bool isDgaa)
         {

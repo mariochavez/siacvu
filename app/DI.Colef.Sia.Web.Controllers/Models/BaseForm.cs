@@ -1,4 +1,6 @@
-﻿namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
+﻿using System;
+
+namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class BaseForm
     {
@@ -20,5 +22,17 @@
 
         public int RevistaPublicacionId { get; set; }
         public string RevistaPublicacionTitulo { get; set; }
+        public string RevistaPublicacionInstitucionNombre { get; set; }
+        public string RevistaPublicacionIndice1Nombre { get; set; }
+        public string RevistaPublicacionIndice2Nombre { get; set; }
+        public string RevistaPublicacionIndice3Nombre { get; set; }
+
+        public bool RevistaPublicacionExists
+        {
+            get
+            {
+                return RevistaPublicacionId > 0 && !String.IsNullOrEmpty(RevistaPublicacionTitulo);
+            }
+        }
     }
 }
