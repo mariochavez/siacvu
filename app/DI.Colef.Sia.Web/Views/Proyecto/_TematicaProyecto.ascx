@@ -8,7 +8,7 @@
     <%=Html.ValidationMessage("ObjetivoGeneral")%>
 </p>
 
-<% Html.RenderPartial("_ShowAreaTematica", new ShowFieldsForm { AreaTematicaId = Model.AreaTematicaId, AreaTematicaNombre = Model.AreaTematicaNombre, ModelId = Model.Id, IsShowForm = false}); %>
+<% Html.RenderPartial("_LineaAreaTematica", Model); %>
 
 <p>
     <label>Impacto en la pol&iacute;tica p&uacute;blica</label>

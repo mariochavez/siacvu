@@ -70,10 +70,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         //Seccion Tematica del proyecto
         public string ObjetivoGeneral { get; set; }
 
-        public int AreaTematicaId { get; set; }
-        public string AreaTematicaNombre { get; set; }
-        public string AreaTematicaLineaTematicaNombre { get; set; }
-
         public int ImpactoPoliticaPublica { get; set; }
 
         public CustomSelectForm[] ImpactoPuliticaPublicas { get; set; }
