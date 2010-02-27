@@ -73,16 +73,16 @@
                 <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-                
-                <p>
-                    <label>Obra publicada</label>
-                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteArticulo_DocumentoProbatorio" id="ComprobanteArticulo_DocumentoProbatorio" class="fileUpload"/>
+                <div id="obra_field">
+                    <p>
+                        <label>Art&iacute;culo publicado</label>
+                        <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
+                    </p>
+                    <div style="padding: 0 0 10px 20px">
+                        <input type="file" name="ComprobanteArticulo_DocumentoProbatorio" id="ComprobanteArticulo_DocumentoProbatorio" class="fileUpload"/>
+                    </div>
+                    <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
                 </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
 				
 				<% Html.RenderPartial("_ProgressBar"); %>

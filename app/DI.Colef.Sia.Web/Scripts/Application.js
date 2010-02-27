@@ -358,7 +358,7 @@ var AutoComplete = {
                 matchSubset: 1,
                 matchContains: 1,
                 cacheLength: 10,
-                autoFill: true,
+                autoFill: false,
                 selectFirst: true,
                 //extraParams: { extraParam: paramValue },
                 mustMatch: 0, //1
