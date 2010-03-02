@@ -81,15 +81,18 @@
                 
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
+
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Proyecto publicado</label>
                     <span id="span_comprobantetematica_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">
                     <input type="file" name="ComprobanteTematicaProyecto_DocumentoProbatorio" id="ComprobanteTematicaProyecto_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="ComprobanteTematica_FileQueue" style="display:none;" rel="#span_comprobantetematica_documento"></div>
-                
+                </div>
+
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <% Html.RenderPartial("_ProductoAcademicoContemplado", Model.Form); %>
                 

@@ -61,6 +61,7 @@
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 
+                <div id="obra_field">
                 <p>
                     <label>Documento probatorio</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
@@ -69,7 +70,8 @@
                     <input type="file" name="ComprobanteTesisDirigida_DocumentoProbatorio" id="ComprobanteTesisDirigida_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-				
+				</div>
+
 				<% Html.RenderPartial("_ProgressBar"); %>
 
                 <p class="submit">

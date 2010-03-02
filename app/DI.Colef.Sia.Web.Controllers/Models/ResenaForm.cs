@@ -45,9 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoResena { get; set; }
         public int EstadoProducto { get; set; }
 
-        public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionTitulo { get; set; }
-
         public int Pais { get; set; }
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }

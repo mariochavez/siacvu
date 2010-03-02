@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class DictamenForm
+    public class DictamenForm : BaseForm
     {
 		public int Id { get; set; }
         public bool Activo { get; set; }
@@ -23,21 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FondoConacyt { get; set; }
         public int FondoConacytId { get; set; }
         public string FondoConacytNombre { get; set; }
-
-        public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionTitulo { get; set; }
-
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
-
-        public string InvestigadorNombre
-        {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
-        }
 
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }

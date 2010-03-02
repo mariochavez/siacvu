@@ -77,9 +77,10 @@
 	            <div id="TipoObraTraducida_fields">	                
 				    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
-	            
+                
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Obra traducida publicada</label>
                     <span id="span_comprobante_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteObraTraducidaNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteObraTraducidaId), Model.Form.ComprobanteObraTraducidaNombre, new { target = "_blank" })%> 
@@ -92,7 +93,8 @@
                     <input type="file" name="ComprobanteObraTraducida_DocumentoProbatorio" id="ComprobanteObraTraducida_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
+                </div>
+
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
                 

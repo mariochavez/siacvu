@@ -70,21 +70,22 @@
                     <% Html.RenderPartial("_ObraResenada", Model.Form); %>
                 </div>
                 
-			    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.Form.RevistaPublicacionId, RevistaPublicacionTitulo = Model.Form.RevistaPublicacionTitulo, RevistaLabel = "Revista en que se publica", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
-                
+                <% Html.RenderPartial("_RevistaPublicacion", Model.Form); %>
                 <div class="EstatusPublicado">
-			        <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-			    </div>
-			    
+                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
+
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Reseña publicada</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">
                     <input type="file" name="ComprobanteResena_DocumentoProbatorio" id="ComprobanteResena_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
+                </div>
+
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>

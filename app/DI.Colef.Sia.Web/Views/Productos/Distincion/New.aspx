@@ -44,15 +44,17 @@
                 <h4>Datos de la distinci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosDistincion", Model.Form); %>
                 
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Documento probatorio</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">
                     <input type="file" name="ComprobanteDistincion_DocumentoProbatorio" id="ComprobanteDistincion_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-				
+				</div>
+
 				<% Html.RenderPartial("_ProgressBar"); %>
         				
                 <p class="submit">

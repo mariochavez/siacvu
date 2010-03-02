@@ -1,3 +1,4 @@
+using System;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -26,6 +27,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
+        public override DictamenForm Map(Dictamen model)
+        {
+            var message = base.Map(model);
+            if (message.RevistaPublicacionId > 0)
+                message.RevistaPublicacionTitulo = model.RevistaPublicacion.Titulo;
+
+            return message;
+        }
+
         protected override void MapToModel(DictamenForm message, Dictamen model)
         {
             model.Nombre = message.Nombre;
@@ -34,6 +44,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 			model.TipoDictamen = catalogoService.GetTipoDictamenById(message.TipoDictamen);
             model.FondoConacyt = catalogoService.GetFondoConacytById(message.FondoConacyt);
             model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            if (revistaPublicacion != null && String.Compare(revistaPublicacion.Titulo, message.RevistaPublicacionTitulo) >= 0)
+            {
+                model.RevistaPublicacion = revistaPublicacion;
+                model.RevistaPublicacionTitulo = String.Empty;
+            }
+            else
+            {
+                model.RevistaPublicacionTitulo = message.RevistaPublicacionTitulo;
+                model.RevistaPublicacion = null;
+            }
         }
 
         public Dictamen Map(DictamenForm message, Usuario usuario)

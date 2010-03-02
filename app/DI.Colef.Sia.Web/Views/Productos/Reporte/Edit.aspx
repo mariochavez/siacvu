@@ -79,8 +79,9 @@
                 <h4 class="DocumentoTrabajo">Contenido del documento de trabajo</h4>
 				<% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
 				
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Reporte t&eacute;cnico/documento de trabajo publicado</label>
                     <span id="span_comprobante_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteReporteNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteReporteId), Model.Form.ComprobanteReporteNombre, new { target = "_blank" })%> 
@@ -93,7 +94,8 @@
                     <input type="file" name="ComprobanteReporte_DocumentoProbatorio" id="ComprobanteReporte_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
+                </div>
+
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
                 

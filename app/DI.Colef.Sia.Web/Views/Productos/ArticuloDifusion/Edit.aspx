@@ -76,10 +76,13 @@
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                         ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
                 
-                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-				
+                <% Html.RenderPartial("_RevistaPublicacion", Model.Form); %>
+                <div class="EstatusPublicado">
+                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Art&iacute;culo de difusi&oacute;n publicado</label>
                     <span id="span_comprobante_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteArticuloNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteArticuloId), Model.Form.ComprobanteArticuloNombre, new { target = "_blank" })%> 
@@ -92,7 +95,7 @@
                     <input type="file" name="ComprobanteArticulo_DocumentoProbatorio" id="ComprobanteArticulo_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
+                </div>
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 
                 <% Html.RenderPartial("_ProgressBar"); %>

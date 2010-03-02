@@ -50,10 +50,8 @@
                 <a href="#coautores_area" class="collapsable <%=Html.CollapsePanelClass(Model.Form.CoautorExternoArticulos.Length + Model.Form.CoautorInternoArticulos.Length) %>">
                     <span class="ui-icon ui-icon-circle-arrow-s"></span>
                     Coautores del art&iacute;culo de difusi&oacute;n
-                    <span>
-                        <%=Html.Encode(Model.Form.TotalCoautores)%>
-                        coautor(es)</span> <span class="cvu">
-                    </span>
+                    <span><%=Html.Encode(Model.Form.TotalCoautores)%> coautor(es)</span> 
+                    <span class="cvu"></span>
                 </a>
             </h4>
             <span id="coautores_area">
@@ -70,17 +68,20 @@
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                         ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
                 
-                <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
-                
+                <% Html.RenderPartial("_RevistaPublicacion", Model.Form); %>
+                <div class="EstatusPublicado">
+                    <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
+                </div>
+                <div id="obra_field">
                 <p>
-                    <label>Obra publicada</label>
+                    <label>Art&iacute;culo de difusi&oacute;n publicado</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
                 </p>
                 <div style="padding: 0 0 10px 20px">
                     <input type="file" name="ComprobanteArticulo_DocumentoProbatorio" id="ComprobanteArticulo_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                
+                </div>
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
 				
 				<% Html.RenderPartial("_ProgressBar"); %>

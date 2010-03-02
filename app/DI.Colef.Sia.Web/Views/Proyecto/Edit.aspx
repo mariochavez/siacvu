@@ -100,8 +100,11 @@
                 
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
+                
+                <div id="obra_field">
                 <p>
-                    <label>Documento probatorio</label>
+                    <%--<label>Documento probatorio</label>--%>
+                    <label>Proyecto publicado</label>
                     <span id="span_comprobantetematica_documento" class="valor">
                         <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTematicaProyectoNombre)) { %> 
     	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTematicaProyectoId), Model.Form.ComprobanteTematicaProyectoNombre, new { target = "_blank" })%> 
@@ -114,7 +117,8 @@
                     <input type="file" name="ComprobanteTematicaProyecto_DocumentoProbatorio" id="ComprobanteTematicaProyecto_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="ComprobanteTematica_FileQueue" style="display:none;" rel="#span_comprobantetematica_documento"></div>
-                
+                </div>
+
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <% Html.RenderPartial("_ProductoAcademicoContemplado", Model.Form); %>
                 

@@ -39,6 +39,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
+        public override ResenaForm Map(Resena model)
+        {
+            var message = base.Map(model);
+            if (message.RevistaPublicacionId > 0)
+                message.RevistaPublicacionTitulo = model.RevistaPublicacion.Titulo;
+
+            return message;
+        }
+
         protected override void MapToModel(ResenaForm message, Resena model)
         {
             model.Numero = message.Numero;
@@ -76,7 +85,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
-            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            if (revistaPublicacion != null && String.Compare(revistaPublicacion.Titulo, message.RevistaPublicacionTitulo) >= 0)
+            {
+                model.RevistaPublicacion = revistaPublicacion;
+                model.RevistaPublicacionTitulo = String.Empty;
+            }
+            else
+            {
+                model.RevistaPublicacionTitulo = message.RevistaPublicacionTitulo;
+                model.RevistaPublicacion = null;
+            }
+
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
             model.Pais = catalogoService.GetPaisById(message.Pais);
 

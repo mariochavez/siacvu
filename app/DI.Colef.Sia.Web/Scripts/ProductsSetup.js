@@ -10,7 +10,7 @@
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
@@ -60,7 +60,7 @@ function obraTraducidaSetup() {
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
@@ -87,7 +87,7 @@ function obraTraducidaSetup() {
 function capituloSetup() {
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
@@ -220,7 +220,7 @@ function participacionMedioSetup() {
 function reporteSetup() {    
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
@@ -265,7 +265,7 @@ function resenaSetup() {
 
     $('#EstadoProducto').dynamicui(
             [
-                ['Publicado', ['.EstatusPublicado']],
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Aceptado', ['.EstatusAceptado', '#documentoprobatorio_field']]
             ]
         );
@@ -293,6 +293,7 @@ function proyectoSetup(role) {
     if (role == "DGAA") {
         $('#EstadoProyecto').dynamicui(
             [
+                ['Publicado', ['.EstatusPublicado, #obra_field']],
                 ['Terminado', ['#EstadoTerminado']]
             ]
         );

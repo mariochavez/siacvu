@@ -44,6 +44,7 @@
                 <h4>Datos del dictamen</h4>
                 <% Html.RenderPartial("_DatosDictamen", Model.Form); %>
                 
+                <div id="obra_field">
                 <p>
                     <label>Documento probatorio</label>
                     <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
@@ -52,7 +53,8 @@
                     <input type="file" name="ComprobanteDictamen_DocumentoProbatorio" id="ComprobanteDictamen_DocumentoProbatorio" class="fileUpload"/>
                 </div>
                 <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-				
+				</div>
+
 				<% Html.RenderPartial("_ProgressBar"); %>
 
                 <p class="submit">

@@ -124,6 +124,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var resenaForm = resenaMapper.Map(resena);
+            if (resena.AreaTematica != null)
             resenaForm.LineaTematicaId = resena.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(resenaForm);
