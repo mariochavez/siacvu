@@ -15,7 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class LibroController : BaseController<Libro, LibroForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IEventoMapper eventoMapper;
@@ -52,7 +51,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             this.archivoService = archivoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
@@ -74,10 +73,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var libros = libroService.GetAllLibros();
+            var data = new GenericViewData<LibroForm>();
+            var libros = new Libro[] { };
+
+            if (User.IsInRole("Investigadores"))
+                libros = libroService.GetAllLibros(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                libros = libroService.GetAllLibros();
 
             data.List = libroMapper.Map(libros);
+
             return View(data);
         }
 
@@ -534,20 +539,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorInterno", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewEditorial(int id)
-        {
-            var libro = libroService.GetLibroById(id);
-
-            var form = new EditorialForm { Controller = "Libro", IdName = "LibroId" };
-
-            if (libro != null)
-                form.Id = libro.Id;
-
-            return Rjs("NewEditorial", form);
-        }
-
         [CustomTransaction]
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -643,6 +634,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var eventoForm = eventoMapper.Map(evento);
 
             return Rjs("AddEvento", eventoForm);
+        }
+
+        protected override Libro GetModelById(int id)
+        {
+            return libroService.GetLibroById(id);
         }
 
         private LibroForm SetupNewForm()

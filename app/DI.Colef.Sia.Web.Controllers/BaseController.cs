@@ -58,7 +58,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
-        protected readonly ICatalogoService catalogoService;
+        protected ICatalogoService catalogoService;
         protected readonly IInstitucionMapper institucionMapper;
         protected readonly ISedeMapper sedeMapper;
         protected readonly IDisciplinaMapper disciplinaMapper;
@@ -68,6 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly IRamaMapper ramaMapper;
         protected readonly IClaseMapper claseMapper;
         protected IAreaTematicaMapper areaTematicaMapper;
+        protected IPaisMapper paisMapper;
 
         public BaseController(IUsuarioService usuarioService, ISearchService searchService,
                               ICatalogoService catalogoService) :
@@ -293,6 +294,39 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("ChangeRama", form);
         }
 
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult NewEditorial(int id)
+        {
+            if (paisMapper == null)
+                return Rjs("ModelError");
+
+            var model = GetModelById(id);
+            //new EditorialForm { Controller = "Libro", IdName = "LibroId" };
+            var form = new EditorialForm
+                           {
+                               Paises = paisMapper.Map(catalogoService.GetAllPaises())
+                           };
+
+            ViewData["Editorial.PaisId"] = GetDefaultPaisId(form.Paises);
+            if (model != null)
+                form.Id = model.Id;
+
+            return Rjs("NewEditorial", form);
+        }
+
+        protected virtual TModel GetModelById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected int GetDefaultPaisId(PaisForm[] paises)
+        {
+            return (from p in paises
+                    where p.Nombre == "México"
+                    select p.Id).SingleOrDefault();
+        }
+
         protected DisciplinaForm[] GetDisciplinasByAreaId(int id)
         {
             return id == 0
@@ -387,6 +421,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return usuarioService.GetInvestigadorByUsuario(usuario);
         }
 
+        [Obsolete("Este metodo no debe ser usado mas")]
         protected Pais GetDefaultPais()
         {
             var paises = catalogoService.GetActivePaises();

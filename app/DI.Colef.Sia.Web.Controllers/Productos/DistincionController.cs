@@ -47,7 +47,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<DistincionForm>();
             var distincions = new Distincion[] { };
 
             if (User.IsInRole("Investigadores"))

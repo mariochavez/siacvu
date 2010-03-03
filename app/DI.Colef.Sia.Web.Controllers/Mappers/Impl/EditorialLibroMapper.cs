@@ -21,9 +21,26 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             return message.Id;
         }
 
+        public override EditorialProductoForm Map(EditorialLibro model)
+        {
+            var message = base.Map(model);
+            if (message.EditorialId > 0)
+                message.EditorialNombre = model.Editorial.Nombre;
+
+            return message;
+        }
+
         protected override void MapToModel(EditorialProductoForm message, EditorialLibro model)
         {
-            model.Editorial = catalogoService.GetEditorialById(message.EditorialId);
+            var editorial = catalogoService.GetEditorialById(message.EditorialId);
+            if (editorial != null && String.Compare(editorial.Nombre, message.EditorialNombre) >= 0)
+            {
+                model.Editorial = editorial;
+            }else
+            {
+                model.EditorialNombre = message.EditorialNombre;
+                model.Editorial = null;
+            }
 
             if (model.IsTransient())
             {

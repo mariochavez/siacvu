@@ -8,3 +8,7 @@
     <%=Html.Hidden("Editorial.EditorialId", 0, new { rel = "#Editorial_Nombre" })%>
     <%=Html.ValidationMessage("Editorial.Nombre")%>
 </p>
+<p>
+    <label>Pa&iacute;s</label>
+    <%=Html.TextBox("Editorial.PaisId", "Mexico") %>
+</p>
