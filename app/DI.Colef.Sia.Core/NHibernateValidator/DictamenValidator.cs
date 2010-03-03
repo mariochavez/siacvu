@@ -50,13 +50,13 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                 //Tipo Dictamen - Articulo
                 if (lowerCaseName.Contains("artículo"))
                 {
-                    if (dictamen.RevistaPublicacion == null)
-                    {
-                        constraintValidatorContext.AddInvalid(
-                            "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
+                    //if (dictamen.RevistaPublicacion == null)
+                    //{
+                    //    constraintValidatorContext.AddInvalid(
+                    //        "no puede ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
 
-                        isValid = false;
-                    }
+                    //    isValid = false;
+                    //}
                 }
 
                 //Tipo Dictamen - Proyecto de investigacion CONACyT
