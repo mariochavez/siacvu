@@ -7,6 +7,7 @@ using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Security;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
@@ -54,16 +55,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var cursos = new Curso[] { };
-
-            if (User.IsInRole("Investigadores"))
-                cursos = cursoService.GetAllCursos(CurrentUser());
-
-            if (User.IsInRole("DGAA"))
-                cursos = cursoService.GetAllCursos();
-
-            data.List = cursoMapper.Map(cursos);
+            var data = new GenericViewData<CursoForm>
+            {
+                List = cursoMapper.Map(cursoService.GetAllCursos())
+            };
 
             return View(data);
         }

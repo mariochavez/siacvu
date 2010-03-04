@@ -38,7 +38,7 @@
                 <% Html.RenderPartial("_DatosEstanciaInstitucionExterna", Model.Form); %>
                 
                 <p class="submit">
-                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.Index(), "Regresar")%>
+                    <%=Html.SubmitButton("Guardar", "Guardar cambios") %> &oacute; <%=Html.ActionLink<EstanciaInstitucionExternaController>(x => x.Index(), "Regresar", new { id = "regresar" })%>
                 </p>
             <% } %>
 	    </div><!--end forma-->	

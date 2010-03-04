@@ -47,15 +47,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var distincions = new Distincion[] { };
-
-            if (User.IsInRole("Investigadores"))
-                distincions = distincionService.GetAllDistinciones(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                distincions = distincionService.GetAllDistinciones();
-
-            data.List = distincionMapper.Map(distincions);
+            var data = new GenericViewData<DistincionForm>
+            {
+                List = distincionMapper.Map(distincionService.GetAllDistinciones())
+            };
 
             return View(data);
         }

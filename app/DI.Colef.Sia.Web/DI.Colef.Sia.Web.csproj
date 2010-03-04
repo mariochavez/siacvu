@@ -183,6 +183,7 @@
     <Content Include="NHibernate.config">
     </Content>
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
     <Content Include="Views\Shared\_RevistaPublicacion.ascx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\DebugFormSubmission.ascx" />

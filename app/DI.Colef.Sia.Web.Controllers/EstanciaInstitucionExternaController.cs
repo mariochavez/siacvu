@@ -37,15 +37,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var movilidadAcademicas = new EstanciaInstitucionExterna[] { };
-
-            if (User.IsInRole("Investigadores"))
-                movilidadAcademicas = estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas(CurrentUser());
-            if (User.IsInRole("DGAA"))
-                movilidadAcademicas = estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas();
-
-            data.List = estanciaInstitucionExternaMapper.Map(movilidadAcademicas);
+            var data = new GenericViewData<EstanciaInstitucionExternaForm>
+            {
+                List = estanciaInstitucionExternaMapper.Map(estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas())
+            };
 
             return View(data);
         }
@@ -121,7 +116,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             estanciaInstitucionExternaService.SaveEstanciaInstitucionExterna(movilidadAcademica);
 
-            return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+            //return RedirectToIndex(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+
+            SetMessage(String.Format("Estancia en institución externa {0} ha sido creada", movilidadAcademica.Institucion.Nombre));
+
+            return Rjs("Save", movilidadAcademica.Id);
         }
 
         [CustomTransaction]

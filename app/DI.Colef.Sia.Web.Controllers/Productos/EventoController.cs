@@ -69,7 +69,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = new GenericViewData<EventoForm>
+            {
+                List = eventoMapper.Map(eventoService.GetAllEventos())
+            };
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]

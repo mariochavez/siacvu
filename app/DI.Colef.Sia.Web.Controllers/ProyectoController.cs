@@ -102,7 +102,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = new GenericViewData<ProyectoForm>
+                           {
+                               List = proyectoMapper.Map(proyectoService.GetAllProyectos())
+                           };
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]

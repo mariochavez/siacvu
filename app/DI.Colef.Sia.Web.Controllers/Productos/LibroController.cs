@@ -74,10 +74,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
-            var libros = libroService.GetAllLibros();
+            var data = new GenericViewData<LibroForm>
+            {
+                List = libroMapper.Map(libroService.GetAllLibros())
+            };
 
-            data.List = libroMapper.Map(libros);
             return View(data);
         }
 

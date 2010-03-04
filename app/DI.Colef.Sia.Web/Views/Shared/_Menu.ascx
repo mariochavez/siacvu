@@ -7,14 +7,14 @@
 		<h3>&Aacute;reas</h3>
 		<ul>
 		    <% if(Page.User.IsInRole("Investigadores")) { %>
-			    <li><%=Html.ActionLinkForAreas<ProyectoController>(x => x.New(), "Proyectos de investigaci&oacute;n")%></li>
+			    <li><%=Html.ActionLinkForAreas<ProyectoController>(x => x.Index(), "Proyectos de investigaci&oacute;n")%></li>
 			    <li><a href="#cientifica">Producci&oacute;n cient&iacute;fica</a></li>
-			    <li><%=Html.ActionLinkForAreas<DictamenController>(x => x.New(), "Dict&aacute;menes") %></li>
+			    <li><%=Html.ActionLinkForAreas<DictamenController>(x => x.Index(), "Dict&aacute;menes") %></li>
 			    <li><a href="#recursoshumano">Formaci&oacute;n de recursos humanos</a></li>
-			    <li><%=Html.ActionLinkForAreas<EventoController>(x => x.New(), "Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos")%></li>
-			    <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.New(), "Difusi&oacute;n del conocimiento")%></li>
+			    <li><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos")%></li>
+			    <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Difusi&oacute;n del conocimiento")%></li>
 			    <li><a href="#academia">Formaci&oacute;n acad&eacute;mica y trabajo cient&iacute;fico</a></li>
-			    <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.New(), "Distinciones acad&eacute;micas")%></li>
+			    <li><%=Html.ActionLinkForAreas<DistincionController>(x => x.Index(), "Distinciones acad&eacute;micas")%></li>
 			<% } %>
 			<li><a href="#organos">Participaci&oacute;n en &oacute;rganos colegiados</a></li>
 			<li><a href="#movilidad">Movilidad acad&eacute;mica</a></li>
@@ -29,12 +29,12 @@
 		<h3>Producci&oacute;n acad&eacute;mica</h3>
 		<ul>
 			<li><%=Html.ActionLinkForAreas<LibroController>(x => x.Index(), "Libros")%></li>
-			<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.New(), "Cap&iacute;tulos en libros")%></li>
+			<li><%=Html.ActionLinkForAreas<CapituloController>(x => x.Index(), "Cap&iacute;tulos en libros")%></li>
 			<li><%=Html.ActionLinkForAreas<ArticuloController>(x => x.Index(), "Art&iacute;culos en revistas de investigaci&oacute;n")%></li>
-			<li><%=Html.ActionLinkForAreas<ArticuloDifusionController>(x => x.New(), "Art&iacute;culos en revistas de difusi&oacute;n")%></li>
-			<li><%=Html.ActionLinkForAreas<ResenaController>(x => x.New(), "Rese&ntilde;as-Notas cr&iacute;ticas")%></li>
-			<li><%=Html.ActionLinkForAreas<ReporteController>(x => x.New(), "Reportes t&eacute;cnicos-Documentos de trabajo")%></li>
-			<li><%=Html.ActionLinkForAreas<ObraTraducidaController>(x => x.New(), "Obras traducidas")%></li>
+			<li><%=Html.ActionLinkForAreas<ArticuloDifusionController>(x => x.Index(), "Art&iacute;culos en revistas de difusi&oacute;n")%></li>
+			<li><%=Html.ActionLinkForAreas<ResenaController>(x => x.Index(), "Rese&ntilde;as-Notas cr&iacute;ticas")%></li>
+			<li><%=Html.ActionLinkForAreas<ReporteController>(x => x.Index(), "Reportes t&eacute;cnicos-Documentos de trabajo")%></li>
+			<li><%=Html.ActionLinkForAreas<ObraTraducidaController>(x => x.Index(), "Obras traducidas")%></li>
 			<li><a href="#areas" class="back">Regrear a men&uacute; principal</a></li>
 		</ul>
 	
@@ -42,8 +42,8 @@
 	<div id="recursoshumano" style="display: none;">
 		<h3>Formaci&oacute;n de recursos humanos</h3>
 		<ul>
-			<li><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.New(), "Tesis dirigidas")%></li>
-			<li><%=Html.ActionLinkForAreas<CursoController>(x => x.New(), "Cursos")%></li>
+			<li><%=Html.ActionLinkForAreas<TesisDirigidaController>(x => x.Index(), "Tesis dirigidas")%></li>
+			<li><%=Html.ActionLinkForAreas<CursoController>(x => x.Index(), "Cursos")%></li>
 			<li><a href="#areas" class="back">Regrear a men&uacute; principal</a></li>
 		</ul>
 	
@@ -64,10 +64,10 @@
 		<h3>Participaci&oacute;n en &oacute;rganos colegiados</h3>
 		<ul>
 		    <% if(Page.User.IsInRole("DGAA")) { %>
-			    <li><%=Html.ActionLinkForAreas<OrganoInternoController>(x => x.New(), "Participaci&oacute;n en &oacute;rganos Internos")%></li>
+			    <li><%=Html.ActionLinkForAreas<OrganoInternoController>(x => x.Index(), "Participaci&oacute;n en &oacute;rganos Internos")%></li>
 			<% } %>
 			<% if(Page.User.IsInRole("Investigadores")) { %>
-			    <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.New(), "Participaci&oacute;n Honor&iacute;fica en &Oacute;rganos Colegiados Externos")%></li>
+			    <li><%=Html.ActionLinkForAreas<OrganoExternoController>(x => x.Index(), "Participaci&oacute;n Honor&iacute;fica en &Oacute;rganos Colegiados Externos")%></li>
 			<% } %>
 			<li><a href="#areas" class="back">Regrear a men&uacute; principal</a></li>
 		</ul>
@@ -77,10 +77,10 @@
 		<h3>Movilidad acad&eacute;mica</h3>
 		<ul>
 		    <% if(Page.User.IsInRole("Investigadores")) { %>
-			    <li><%=Html.ActionLinkForAreas<EstanciaInstitucionExternaController>(x => x.New(), "Estancias en instituciones externas")%></li>
+			    <li><%=Html.ActionLinkForAreas<EstanciaInstitucionExternaController>(x => x.Index(), "Estancias en instituciones externas")%></li>
 			<% } %>
 			<% if(Page.User.IsInRole("DGAA")) { %>
-			    <li><%=Html.ActionLinkForAreas<EstanciaAcademicaExternaController>(x => x.New(), "Estancias acad&eacute;micas externas")%></li>
+			    <li><%=Html.ActionLinkForAreas<EstanciaAcademicaExternaController>(x => x.Index(), "Estancias acad&eacute;micas externas")%></li>
 			<% } %>
 			<li><a href="#areas" class="back">Regrear a men&uacute; principal</a></li>
 		</ul>

@@ -74,7 +74,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            return RedirectToHomeIndex();
+            var data = new GenericViewData<ObraTraducidaForm>
+            {
+                List = obraTraducidaMapper.Map(obraTraducidaService.GetAllObraTraducidas())
+            };
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]
