@@ -63,10 +63,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<ArticuloForm>
-                           {
-                               List = articuloMapper.Map(articuloService.GetAllArticulos())
-                           };
+            var data = new GenericViewData<ArticuloForm>();
+            var articulos = new Articulo[] { };
+
+            if (User.IsInRole("Investigadores"))
+                articulos = articuloService.GetAllArticulos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                articulos = articuloService.GetAllArticulos();
+
+            data.List = articuloMapper.Map(articulos);
 
             return View(data);
         }
