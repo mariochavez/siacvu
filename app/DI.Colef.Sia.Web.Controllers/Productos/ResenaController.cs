@@ -76,10 +76,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<ResenaForm>
-            {
-                List = resenaMapper.Map(resenaService.GetAllResenas())
-            };
+            var data = new GenericViewData<ResenaForm>();
+            var resenas = new Resena[] { };
+
+            if (User.IsInRole("Investigadores"))
+                resenas = resenaService.GetAllResenas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                resenas = resenaService.GetAllResenas();
+
+            data.List = resenaMapper.Map(resenas);
 
             return View(data);
         }

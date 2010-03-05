@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using SharpArch.Core.PersistenceSupport;
 
 namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
@@ -8,11 +9,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 	public class ProyectoService : IProyectoService
     {
         readonly IRepository<Proyecto> proyectoRepository;
+        readonly IProductoQuerying productoQuerying;
 	    readonly IFirmaService firmaService;
 
-        public ProyectoService(IRepository<Proyecto> proyectoRepository, IFirmaService firmaService)
+        public ProyectoService(IRepository<Proyecto> proyectoRepository, IProductoQuerying productoQuerying, IFirmaService firmaService)
         {
             this.proyectoRepository = proyectoRepository;
+            this.productoQuerying = productoQuerying;
             this.firmaService = firmaService;
         }
 
@@ -68,5 +71,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (commit)
                 proyectoRepository.DbContext.CommitChanges();
         }
+
+	    public Proyecto[] GetAllProyectos(Usuario currentUser)
+	    {
+            return productoQuerying.GetProductosByUsuario<Proyecto>(currentUser, "CoautorInternoLibros");
+	    }
     }
 }

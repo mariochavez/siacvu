@@ -73,5 +73,10 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (useCommit)
                 articuloRepository.DbContext.CommitChanges();
         }
+
+        public ArticuloDifusion[] GetAllArticulos(Usuario currentUser)
+        {
+            return productoQuerying.GetProductosByUsuario<ArticuloDifusion>(currentUser, "CoautorInternoArticulos");
+        }
     }
 }

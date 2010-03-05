@@ -69,10 +69,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<EventoForm>
-            {
-                List = eventoMapper.Map(eventoService.GetAllEventos())
-            };
+            var data = new GenericViewData<EventoForm>();
+            var eventos = new Evento[] { };
+
+            if (User.IsInRole("Investigadores"))
+                eventos = eventoService.GetAllEventos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                eventos = eventoService.GetAllEventos();
+
+            data.List = eventoMapper.Map(eventos);
 
             return View(data);
         }

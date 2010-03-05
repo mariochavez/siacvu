@@ -73,10 +73,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<ReporteForm>
-            {
-                List = reporteMapper.Map(reporteService.GetAllReportes())
-            };
+            var data = new GenericViewData<ReporteForm>();
+            var reportes = new Reporte[] { };
+
+            if (User.IsInRole("Investigadores"))
+                reportes = reporteService.GetAllReportes(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                reportes = reporteService.GetAllReportes();
+
+            data.List = reporteMapper.Map(reportes);
 
             return View(data);
         }

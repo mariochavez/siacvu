@@ -102,10 +102,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<ProyectoForm>
-                           {
-                               List = proyectoMapper.Map(proyectoService.GetAllProyectos())
-                           };
+            var data = new GenericViewData<ProyectoForm>();
+            var proyectos = new Proyecto[] { };
+
+            if (User.IsInRole("Investigadores"))
+                proyectos = proyectoService.GetAllProyectos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                proyectos = proyectoService.GetAllProyectos();
+
+            data.List = proyectoMapper.Map(proyectos);
 
             return View(data);
         }

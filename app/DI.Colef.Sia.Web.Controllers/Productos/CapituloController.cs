@@ -62,10 +62,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<CapituloForm>
-            {
-                List = capituloMapper.Map(capituloService.GetAllCapitulos())
-            };
+            var data = new GenericViewData<CapituloForm>();
+            var capitulos = new Capitulo[] { };
+
+            if (User.IsInRole("Investigadores"))
+                capitulos = capituloService.GetAllCapitulos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                capitulos = capituloService.GetAllCapitulos();
+
+            data.List = capituloMapper.Map(capitulos);
 
             return View(data);
         }

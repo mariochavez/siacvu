@@ -59,10 +59,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<TesisDirigidaForm>
-            {
-                List = tesisDirigidaMapper.Map(tesisDirigidaService.GetAllTesisDirigidas())
-            };
+            var data = new GenericViewData<TesisDirigidaForm>();
+            var tesisDirigidas = new TesisDirigida[] { };
+
+            if (User.IsInRole("Investigadores"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                tesisDirigidas = tesisDirigidaService.GetAllTesisDirigidas();
+
+            data.List = tesisDirigidaMapper.Map(tesisDirigidas);
 
             return View(data);
         }

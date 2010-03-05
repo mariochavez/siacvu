@@ -52,10 +52,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<ParticipacionMedioForm>
-            {
-                List = participacionMedioMapper.Map(participacionMedioService.GetAllParticipacionMedios())
-            };
+            var data = new GenericViewData<ParticipacionMedioForm>();
+            var participacionMedios = new ParticipacionMedio[] { };
+
+            if (User.IsInRole("Investigadores"))
+                participacionMedios = participacionMedioService.GetAllParticipacionMedios(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                participacionMedios = participacionMedioService.GetAllParticipacionMedios();
+
+            data.List = participacionMedioMapper.Map(participacionMedios);
 
             return View(data);
         }

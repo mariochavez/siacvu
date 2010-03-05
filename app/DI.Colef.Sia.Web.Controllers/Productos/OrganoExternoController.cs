@@ -48,10 +48,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<OrganoExternoForm>
-            {
-                List = organoExternoMapper.Map(organoExternoService.GetAllOrganoExternos())
-            };
+            var data = new GenericViewData<OrganoExternoForm>();
+            var organoExternos = new OrganoExterno[] { };
+
+            if (User.IsInRole("Investigadores"))
+                organoExternos = organoExternoService.GetAllOrganoExternos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                organoExternos = organoExternoService.GetAllOrganoExternos();
+
+            data.List = organoExternoMapper.Map(organoExternos);
 
             return View(data);
         }
