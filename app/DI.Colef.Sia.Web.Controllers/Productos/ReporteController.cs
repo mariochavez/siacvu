@@ -73,7 +73,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            return RedirectToHomeIndex();
+            var data = new GenericViewData<ReporteForm>
+            {
+                List = reporteMapper.Map(reporteService.GetAllReportes())
+            };
+
+            return View(data);
         }
 
         [Authorize(Roles = "Investigadores")]
