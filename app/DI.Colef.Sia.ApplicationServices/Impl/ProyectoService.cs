@@ -74,7 +74,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
 
 	    public Proyecto[] GetAllProyectos(Usuario currentUser)
 	    {
-            return productoQuerying.GetProductosByUsuario<Proyecto>(currentUser, "CoautorInternoLibros");
+            return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Usuario", currentUser } })).ToArray();
 	    }
     }
 }
