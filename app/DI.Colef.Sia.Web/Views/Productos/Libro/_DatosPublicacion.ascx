@@ -44,7 +44,7 @@
 <div id="eventoForm" class="display:hidden;"></div>
 
 <div class="revista_field">
-    <% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
+    <% Html.RenderPartial("_RevistaPublicacion", Model); %>
 </div>
 <p class="revista_field">
     <label>N&uacute;mero</label>
