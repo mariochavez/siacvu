@@ -2,8 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class LibroForm : BaseForm
     {
-		public int Id { get; set; }
-		
         public string Nombre { get; set; }
         public string ISBN { get; set; }
         public string FechaAceptacion { get; set; }
@@ -43,9 +41,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EventoNombre { get; set; }
         public string EventoFechaEvento { get; set; }
 
-        public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionTitulo { get; set; }
-
         public int EstadoProducto { get; set; }
 
         public int AreaId { get; set; }
@@ -75,6 +70,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public CoautorExternoProductoForm[] CoautorExternoLibros { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoLibros { get; set; }
         public EditorialProductoForm[] EditorialLibros { get; set; }
+
+        public override EditorialProductoForm[] Editoriales
+        {
+            get { return EditorialLibros; }
+        }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

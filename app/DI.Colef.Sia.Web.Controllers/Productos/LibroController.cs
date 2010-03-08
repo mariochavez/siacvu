@@ -20,7 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
         readonly IArchivoService archivoService;
-        readonly IEditorialLibroMapper editorialLibroMapper;
         readonly ICustomCollection customCollection;
         readonly ILibroMapper libroMapper;
         readonly ILibroService libroService;
@@ -29,6 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
+        readonly IEditorialProductoMapper<EditorialLibro> editorialLibroMapper;
 
         public LibroController(ILibroService libroService,
                                IArchivoService archivoService,
@@ -41,17 +41,21 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IRevistaPublicacionMapper revistaPublicacionMapper,
                                IEventoMapper eventoMapper,
                                IEventoService eventoService,
-                               IEditorialLibroMapper editorialLibroMapper,
+                               IEditorialProductoMapper<EditorialLibro> editorialLibroMapper,
                                IAreaTematicaMapper areaTematicaMapper,
                                ILineaTematicaMapper lineaTematicaMapper, 
                                IAreaMapper areaMapper,
                                IDisciplinaMapper disciplinaMapper,
+                               IPaisMapper paisMapper,
                                ISubdisciplinaMapper subdisciplinaMapper,
                                IInvestigadorExternoMapper investigadorExternoMapper,
                                IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
             base.catalogoService = catalogoService;
+            base.paisMapper = paisMapper;
+
+            this.editorialLibroMapper = editorialLibroMapper;
             this.archivoService = archivoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
@@ -61,7 +65,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.coautorInternoLibroMapper = coautorInternoLibroMapper;
             this.eventoMapper = eventoMapper;
             this.eventoService = eventoService;
-            this.editorialLibroMapper = editorialLibroMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaMapper = areaMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
@@ -126,8 +129,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             }
 
             var libroForm = libroMapper.Map(libro);
-            if (libro.AreaTematica != null)
-                libroForm.LineaTematicaId = libro.AreaTematica.LineaTematica.Id;
 
             data.Form = SetupNewForm(libroForm);
             FormSetCombos(data.Form);
@@ -224,23 +225,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var libro = libroService.GetLibroById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
+            var archivo = MapArchivo();
 
             if (form["TipoArchivo"] == "Aceptado")
             {
@@ -335,25 +320,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                            };
 
             return Rjs("ChangeRevista", form);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeAreaTematica(int select)
-        {
-            // TODO: Dependencias
-            return Rjs("", null);
-            //var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            //var lineaTematicaForm =
-            //    lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
-
-            //var form = new ShowFieldsForm
-            //               {
-            //                   AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-            //                   AreaTematicaId = areaTematicaForm.Id
-            //               };
-
-            //return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize]
@@ -539,62 +505,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteCoautorInterno", form);
         }
 
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int libroId)
-        {
-            var editorialLibro = editorialLibroMapper.Map(form);
-
-            ModelState.AddModelErrors(editorialLibro.ValidationResults(), false, "Editorial", String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            if (libroId != 0)
-            {
-                editorialLibro.CreadoPor = CurrentUser();
-                editorialLibro.ModificadoPor = CurrentUser();
-
-                var libro = libroService.GetLibroById(libroId);
-                var alreadyHasIt =
-                    libro.EditorialLibros.Where(
-                        x => x.Editorial.Id == editorialLibro.Editorial.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    libro.AddEditorial(editorialLibro);
-                    libroService.SaveLibro(libro);
-                }
-            }
-
-            var editorialLibroForm = editorialLibroMapper.Map(editorialLibro);
-            editorialLibroForm.ParentId = libroId;
-
-            return Rjs("AddEditorial", editorialLibroForm);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEditorial(int id, int editorialId)
-        {
-            var libro = libroService.GetLibroById(id);
-
-            if (libro != null)
-            {
-                var editorial = libro.EditorialLibros.Where(x => x.Editorial.Id == editorialId).First();
-                libro.DeleteEditorial(editorial);
-
-                libroService.SaveLibro(libro);
-            }
-
-            var form = new EditorialForm {EditorialId = editorialId};
-
-            return Rjs("DeleteEditorial", form);
-        }
-
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult NewEvento(int id)
@@ -634,6 +544,49 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var eventoForm = eventoMapper.Map(evento);
 
             return Rjs("AddEvento", eventoForm);
+        }
+
+        protected override void DeleteEditorialInModel(Libro model, int editorialId)
+        {
+            if (model != null)
+            {
+                var editorial = model.EditorialLibros.Where(x => x.Id == editorialId).First();
+                model.DeleteEditorial(editorial);
+
+                libroService.SaveLibro(model);
+            }
+        }
+
+        protected override bool SaveEditorialToModel(Libro model, EditorialProducto editorialProducto)
+        {
+            var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
+
+            var alreadyHasIt =
+                model.EditorialLibros.Where(
+                    x => ((x.Editorial != null && editorialId > 0 && x.Editorial.Id == editorialId) ||
+                          (x.EditorialNombre == editorialProducto.EditorialNombre))
+                         && x.Pais.Id == editorialProducto.Pais.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                model.AddEditorial(editorialProducto);
+                libroService.SaveLibro(model, true);
+            }
+
+            return alreadyHasIt == 0;
+        }
+
+        protected override EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            return editorialLibroMapper.Map(form);
+        }
+
+        protected override EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            var editorialLibroForm = editorialLibroMapper.Map(model as EditorialLibro);
+            editorialLibroForm.ParentId = parentId;
+
+            return editorialLibroForm;
         }
 
         protected override Libro GetModelById(int id)

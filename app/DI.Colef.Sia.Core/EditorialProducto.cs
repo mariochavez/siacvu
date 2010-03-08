@@ -1,12 +1,12 @@
 using System;
-using NHibernate.Validator.Constraints;
+using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using SharpArch.Core.DomainModel;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
+    [EditorialProductoValidator]
     public class EditorialProducto : Entity, IBaseEntity
     {
-        [NotNull]
         public virtual Editorial Editorial { get; set; }
 
         public virtual int TipoProducto { get; set; }

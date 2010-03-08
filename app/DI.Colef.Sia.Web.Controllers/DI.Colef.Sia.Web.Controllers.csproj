@@ -192,12 +192,12 @@
     <Compile Include="Mappers\ITesisPosgradoMapper.cs" />
     <Compile Include="Mappers\IConsejoComisionMapper.cs" />
     <Compile Include="Mappers\IDireccionRegionalMapper.cs" />
-    <Compile Include="Mappers\IEditorialLibroMapper.cs" />
+    <Compile Include="Mappers\IEditorialProductoMapper.cs" />
     <Compile Include="Mappers\IEditorialMapper.cs" />
     <Compile Include="Mappers\IInstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\TesisPosgradoMapper.cs" />
     <Compile Include="Mappers\Impl\ConsejoComisionMapper.cs" />
-    <Compile Include="Mappers\Impl\EditorialLibroMapper.cs" />
+    <Compile Include="Mappers\Impl\EditorialProductoMapper.cs" />
     <Compile Include="Mappers\Impl\EditorialMapper.cs" />
     <Compile Include="Mappers\Impl\InstitucionEventoMapper.cs" />
     <Compile Include="Mappers\Impl\OrganoInternoMapper.cs" />

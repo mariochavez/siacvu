@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
@@ -54,7 +55,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         }
     }
 
-    public class BaseController<TModel, TForm> : BaseController where TModel : Entity
+    public class BaseController<TModel, TForm> : BaseController where TModel : Entity, new()
     {
         protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
@@ -302,7 +303,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                 return Rjs("ModelError");
 
             var model = GetModelById(id);
-            //new EditorialForm { Controller = "Libro", IdName = "LibroId" };
+
             var form = new EditorialForm
                            {
                                Paises = paisMapper.Map(catalogoService.GetAllPaises())
@@ -315,9 +316,71 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return Rjs("NewEditorial", form);
         }
 
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int modelId)
+        {
+            var editorialProducto = MapEditorialMessage(form);
+
+            ModelState.AddModelErrors(editorialProducto.ValidationResults(), false, "Editorial", String.Empty);
+            if (!ModelState.IsValid)
+            {
+                return Rjs("ModelError");
+            }
+
+            var added = true;
+            if (modelId != 0)
+            {
+                editorialProducto.CreadoPor = CurrentUser();
+                editorialProducto.ModificadoPor = CurrentUser();
+
+                var model = GetModelById(modelId);
+                added = SaveEditorialToModel(model, editorialProducto);
+            }
+
+            var editorialProductoForm = added ? MapEditorialModel(editorialProducto, modelId): new EditorialProductoForm();
+
+            return Rjs(added ? "AddEditorial" : "HideEditorialForm", editorialProductoForm);
+        }
+
+        [CustomTransaction]
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Delete)]
+        public ActionResult DeleteEditorial(int id, int editorialId)
+        {
+            var model = GetModelById(id);
+
+            DeleteEditorialInModel(model, editorialId);
+
+            var form = new EditorialForm { EditorialId = editorialId };
+
+            return Rjs("DeleteEditorial", form);
+        }
+
+        protected virtual void DeleteEditorialInModel(TModel model, int editorialId)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual bool SaveEditorialToModel(TModel model, EditorialProducto editorialProducto)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            throw new NotSupportedException();
+        }
+
+        protected virtual EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            throw new NotSupportedException();
+        }
+
         protected virtual TModel GetModelById(int id)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         protected int GetDefaultPaisId(PaisForm[] paises)

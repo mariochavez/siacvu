@@ -1,5 +1,6 @@
 ﻿using System;
 using Castle.Windsor;
+using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using SharpArch.Core.PersistenceSupport.NHibernate;
 using SharpArch.Data.NHibernate;
 using SharpArch.Core.PersistenceSupport;
@@ -56,6 +57,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.CastleWindsor
                     .FromAssemblyNamed("DecisionesInteligentes.Colef.Sia.Web.Controllers")
                     .If(x => x.Name.EndsWith("Mapper"))
                     .WithService.FirstNonGenericCoreInterface("DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers"));
+
+            container.AddComponent("editorialProductoMapper",
+                                   typeof (IEditorialProductoMapper<>), typeof (EditorialProductoMapper<>));
         }
 
         private static void AddApplicationServicesTo(IWindsorContainer container)

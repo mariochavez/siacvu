@@ -4,6 +4,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class BaseForm
     {
+        public int Id { get; set; }
+
         public int PosicionCoautor { get; set; }
         public string UsuarioNombre { get; set; }
         public string UsuarioApellidoPaterno { get; set; }
@@ -33,6 +35,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             {
                 return RevistaPublicacionId > 0;
             }
+        }
+
+        public virtual EditorialProductoForm[] Editoriales
+        {
+            get { throw new NotSupportedException(); }
         }
     }
 }

@@ -73,7 +73,7 @@
                     FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
                     ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
             
-            <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.Form.EditorialLibros, ModelId = Model.Form.Id }); %>
+            <% Html.RenderPartial("_EditEditorial", Model.Form); %>
             
             <div class="EstatusPublicado">
                 <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
