@@ -351,7 +351,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         {
             var model = GetModelById(id);
 
-            DeleteEditorialInModel(model, editorialId);
+            if(model != null)
+                DeleteEditorialInModel(model, editorialId);
 
             var form = new EditorialForm { EditorialId = editorialId };
 
