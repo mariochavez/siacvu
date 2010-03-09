@@ -19,7 +19,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IDictamenService dictamenService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
-        readonly IEditorialDictamenMapper editorialDictamenMapper;
+        readonly IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IArchivoService archivoService;
 
@@ -28,7 +28,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICatalogoService catalogoService,
                                   IArchivoService archivoService,
                                   IUsuarioService usuarioService,
-                                  IEditorialDictamenMapper editorialDictamenMapper,
+                                  IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper,
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   IFondoConacytMapper fondoConacytMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
@@ -263,78 +263,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DgaaSign", data);
         }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewEditorial(int id)
-        {
-            var dictamen = dictamenService.GetDictamenById(id);
-
-            var form = new EditorialForm { Controller = "Dictamen", IdName = "DictamenId" };
-
-            if (dictamen != null)
-                form.Id = dictamen.Id;
-
-            return Rjs("NewEditorial", form);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int dictamenId)
-        {
-            var editorialDictamen = editorialDictamenMapper.Map(form);
-
-            ModelState.AddModelErrors(editorialDictamen.ValidationResults(), false, "Editorial", String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            if (dictamenId != 0)
-            {
-                editorialDictamen.CreadoPor = CurrentUser();
-                editorialDictamen.ModificadoPor = CurrentUser();
-
-                var dictamen = dictamenService.GetDictamenById(dictamenId);
-
-                var alreadyHasIt =
-                    dictamen.EditorialDictamenes.Where(
-                        x => x.Editorial.Id == editorialDictamen.Editorial.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    dictamen.AddEditorial(editorialDictamen);
-                    dictamenService.SaveDictamen(dictamen);
-                }
-            }
-
-            var editorialDictamenForm = editorialDictamenMapper.Map(editorialDictamen);
-            editorialDictamenForm.ParentId = dictamenId;
-
-            return Rjs("AddEditorial", editorialDictamenForm);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEditorial(int id, int editorialId)
-        {
-            var dictamen = dictamenService.GetDictamenById(id);
-
-            if (dictamen != null)
-            {
-                var editorial = dictamen.EditorialDictamenes.Where(x => x.Editorial.Id == editorialId).First();
-                dictamen.DeleteEditorial(editorial);
-
-                dictamenService.SaveDictamen(dictamen);
-            }
-
-            var form = new EditorialForm { ModelId = id, EditorialId = editorialId };
-
-            return Rjs("DeleteEditorial", form);
-        }
-
+        
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public override ActionResult Search(string q)
@@ -400,6 +329,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             };
 
             return form;
+        }
+
+        protected override void DeleteEditorialInModel(Dictamen model, int editorialId)
+        {
+            if (model != null)
+            {
+                var editorial = model.EditorialDictamenes.Where(x => x.Id == editorialId).First();
+                model.DeleteEditorial(editorial);
+
+                dictamenService.SaveDictamen(model);
+            }
+        }
+
+        protected override bool SaveEditorialToModel(Dictamen model, EditorialProducto editorialProducto)
+        {
+            var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
+
+            var alreadyHasIt =
+                model.EditorialDictamenes.Where(
+                    x => ((x.Editorial != null && editorialId > 0 && x.Editorial.Id == editorialId) ||
+                          (x.EditorialNombre == editorialProducto.EditorialNombre))
+                         && x.Pais.Id == editorialProducto.Pais.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                model.AddEditorial(editorialProducto);
+                dictamenService.SaveDictamen(model, true);
+            }
+
+            return alreadyHasIt == 0;
+        }
+
+        protected override EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            return editorialDictamenMapper.Map(form);
+        }
+
+        protected override EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            var editorialDictamenForm = editorialDictamenMapper.Map(model as EditorialDictamen);
+            editorialDictamenForm.ParentId = parentId;
+
+            return editorialDictamenForm;
+        }
+
+        protected override Dictamen GetModelById(int id)
+        {
+            return dictamenService.GetDictamenById(id);
         }
     }
 }

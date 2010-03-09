@@ -26,7 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper;
         readonly ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper;
         readonly ICustomCollection customCollection;
-        readonly IEditorialObraTraducidaMapper editorialObraTraducidaMapper;
+        readonly IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
@@ -46,7 +46,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper,
                                     ICustomCollection customCollection,
                                     ILineaTematicaMapper lineaTematicaMapper,
-                                    IEditorialObraTraducidaMapper editorialObraTraducidaMapper,
+                                    IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper,
                                     IInvestigadorExternoMapper investigadorExternoMapper,
                                     IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService)
@@ -740,77 +740,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DeleteAutorExterno", form);
         }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewEditorial(int id)
-        {
-            var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
-
-            var form = new EditorialForm { Controller = "ObraTraducida", IdName = "ObraTraducidaId" };
-
-            if (obraTraducida != null)
-                form.Id = obraTraducida.Id;
-
-            return Rjs("NewEditorial", form);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int obraTraducidaId)
-        {
-            var editorialObraTraducida = editorialObraTraducidaMapper.Map(form);
-
-            ModelState.AddModelErrors(editorialObraTraducida.ValidationResults(), false, "Editorial", String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            if (obraTraducidaId != 0)
-            {
-                editorialObraTraducida.CreadoPor = CurrentUser();
-                editorialObraTraducida.ModificadoPor = CurrentUser();
-
-                var obraTraducida = obraTraducidaService.GetObraTraducidaById(obraTraducidaId);
-
-                var alreadyHasIt =
-                    obraTraducida.EditorialObraTraducidas.Where(
-                        x => x.Editorial.Id == editorialObraTraducida.Editorial.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    obraTraducida.AddEditorial(editorialObraTraducida);
-                    obraTraducidaService.SaveObraTraducida(obraTraducida);
-                }
-            }
-
-            var editorialObraTraducidaForm = editorialObraTraducidaMapper.Map(editorialObraTraducida);
-            editorialObraTraducidaForm.ParentId = obraTraducidaId;
-
-            return Rjs("AddEditorial", editorialObraTraducidaForm);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEditorial(int id, int editorialId)
-        {
-            var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
-
-            if (obraTraducida != null)
-            {
-                var editorial = obraTraducida.EditorialObraTraducidas.Where(x => x.Editorial.Id == editorialId).First();
-                obraTraducida.DeleteEditorial(editorial);
-
-                obraTraducidaService.SaveObraTraducida(obraTraducida);
-            }
-
-            var form = new EditorialForm { ModelId = id, EditorialId = editorialId };
-
-            return Rjs("DeleteEditorial", form);
-        }
                 
         private ObraTraducidaForm SetupNewForm()
         {
@@ -895,6 +824,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             };
 
             return form;
+        }
+
+        protected override void DeleteEditorialInModel(ObraTraducida model, int editorialId)
+        {
+            if (model != null)
+            {
+                var editorial = model.EditorialObraTraducidas.Where(x => x.Id == editorialId).First();
+                model.DeleteEditorial(editorial);
+
+                obraTraducidaService.SaveObraTraducida(model);
+            }
+        }
+
+        protected override bool SaveEditorialToModel(ObraTraducida model, EditorialProducto editorialProducto)
+        {
+            var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
+
+            var alreadyHasIt =
+                model.EditorialObraTraducidas.Where(
+                    x => ((x.Editorial != null && editorialId > 0 && x.Editorial.Id == editorialId) ||
+                          (x.EditorialNombre == editorialProducto.EditorialNombre))
+                         && x.Pais.Id == editorialProducto.Pais.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                model.AddEditorial(editorialProducto);
+                obraTraducidaService.SaveObraTraducida(model, true);
+            }
+
+            return alreadyHasIt == 0;
+        }
+
+        protected override EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            return editorialObraTraducidaMapper.Map(form);
+        }
+
+        protected override EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            var editorialObraTraducidaForm = editorialObraTraducidaMapper.Map(model as EditorialObraTraducida);
+            editorialObraTraducidaForm.ParentId = parentId;
+
+            return editorialObraTraducidaForm;
+        }
+
+        protected override ObraTraducida GetModelById(int id)
+        {
+            return obraTraducidaService.GetObraTraducidaById(id);
         }
     }
 }

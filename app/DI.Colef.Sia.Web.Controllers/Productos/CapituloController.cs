@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly ICustomCollection customCollection;
-        readonly IEditorialCapituloMapper editorialCapituloMapper;
+        readonly IEditorialProductoMapper<EditorialLibro> editorialCapituloMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper,
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                  IEditorialCapituloMapper editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IEditorialProductoMapper<EditorialLibro> editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
                                   IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
@@ -706,78 +706,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             return Rjs("DeleteAutorExterno", form);
         }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewEditorial(int id)
-        {
-            var capitulo = capituloService.GetCapituloById(id);
-
-            var form = new EditorialForm {Controller = "Capitulo", IdName = "CapituloId"};
-
-            if (capitulo != null)
-                form.Id = capitulo.Id;
-
-            return Rjs("NewEditorial", form);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int capituloId)
-        {
-            var editorialCapitulo = editorialCapituloMapper.Map(form);
-
-            ModelState.AddModelErrors(editorialCapitulo.ValidationResults(), false, "Editorial", String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            if (capituloId != 0)
-            {
-                editorialCapitulo.CreadoPor = CurrentUser();
-                editorialCapitulo.ModificadoPor = CurrentUser();
-
-                var capitulo = capituloService.GetCapituloById(capituloId);
-
-                var alreadyHasIt =
-                    capitulo.EditorialCapitulos.Where(
-                        x => x.Editorial.Id == editorialCapitulo.Editorial.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    capitulo.AddEditorial(editorialCapitulo);
-                    capituloService.SaveCapitulo(capitulo);
-                }
-            }
-
-            var editorialCapituloForm = editorialCapituloMapper.Map(editorialCapitulo);
-            editorialCapituloForm.ParentId = capituloId;
-
-            return Rjs("AddEditorial", editorialCapituloForm);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEditorial(int id, int editorialId)
-        {
-            var capitulo = capituloService.GetCapituloById(id);
-
-            if (capitulo != null)
-            {
-                var editorial = capitulo.EditorialCapitulos.Where(x => x.Editorial.Id == editorialId).First();
-                capitulo.DeleteEditorial(editorial);
-
-                capituloService.SaveCapitulo(capitulo);
-            }
-
-            var form = new EditorialForm {ModelId = id, EditorialId = editorialId};
-
-            return Rjs("DeleteEditorial", form);
-        }
-
+        
         private CapituloForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -856,6 +785,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   };
 
             return form;
+        }
+
+        protected override void DeleteEditorialInModel(Capitulo model, int editorialId)
+        {
+            if(model != null)
+            {
+                var editorial = model.EditorialCapitulos.Where(x => x.Id == editorialId).First();
+                model.DeleteEditorial(editorial);
+
+                capituloService.SaveCapitulo(model);
+            }
+        }
+
+        protected override bool SaveEditorialToModel(Capitulo model, EditorialProducto editorialProducto)
+        {
+            var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
+
+            var alreadyHasIt =
+                model.EditorialCapitulos.Where(
+                    x => ((x.Editorial != null && editorialId > 0 && x.Editorial.Id == editorialId) ||
+                          (x.EditorialNombre == editorialProducto.EditorialNombre))
+                         && x.Pais.Id == editorialProducto.Pais.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                model.AddEditorial(editorialProducto);
+                capituloService.SaveCapitulo(model, true);
+            }
+
+            return alreadyHasIt == 0;
+        }
+
+        protected override EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            return editorialCapituloMapper.Map(form);
+        }
+
+        protected override EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            var editorialCapituloForm = editorialCapituloMapper.Map(model as EditorialCapitulo);
+            editorialCapituloForm.ParentId = parentId;
+
+            return editorialCapituloForm;
+        }
+
+        protected override Capitulo GetModelById(int id)
+        {
+            return capituloService.GetCapituloById(id);
         }
     }
 }
