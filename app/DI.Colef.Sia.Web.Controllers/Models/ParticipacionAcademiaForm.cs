@@ -36,7 +36,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         /* Catalogos */
         public PaisForm[] Paises { get; set; }
-        public EditorialForm[] Editoriales { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

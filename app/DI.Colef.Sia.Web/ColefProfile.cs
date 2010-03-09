@@ -131,6 +131,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
             Mapper.CreateMap<Archivo, ArchivoForm>()
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
+
+            Mapper.CreateMap<EditorialProducto, EditorialProductoForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
         }
 
         private void CreateArticuloDifusionMaps()
@@ -615,9 +619,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web
                 .ForMember(d => d.Modificacion,
                            o => o.ResolveUsing<ModificadoResolver>());
 
-            Mapper.CreateMap<EditorialLibro, EditorialProductoForm>()
-                .ForMember(d => d.Modificacion,
-                           o => o.ResolveUsing<ModificadoResolver>());
+            //Mapper.CreateMap<EditorialLibro, EditorialProductoForm>()
+            //    .ForMember(d => d.Modificacion,
+            //               o => o.ResolveUsing<ModificadoResolver>());
         }
 
         void CreateParticipacionMedioMaps()

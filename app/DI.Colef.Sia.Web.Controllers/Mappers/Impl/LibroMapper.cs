@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -14,8 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorExternoLibroMapper coautorExternoLibroMapper;
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IProyectoService proyectoService;
-        readonly IEditorialLibroMapper editorialLibroMapper;
-        private Usuario usuarioLibro = null;
+        readonly IEditorialProductoMapper<EditorialLibro> editorialLibroMapper;
+        private Usuario usuarioLibro;
 		
         public LibroMapper(IRepository<Libro> repository,
 		    ICatalogoService catalogoService,
@@ -23,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             ICoautorInternoLibroMapper coautorInternoLibroMapper,
             IEventoService eventoService,
             IProyectoService proyectoService,
-            IEditorialLibroMapper editorialLibroMapper) 
+            IEditorialProductoMapper<EditorialLibro> editorialLibroMapper) 
 			: base(repository)
         {
             this.eventoService = eventoService;
@@ -37,6 +38,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override int GetIdFromMessage(LibroForm message)
         {
             return message.Id;
+        }
+
+        public override LibroForm Map(Libro model)
+        {
+            var message = base.Map(model);
+            message.EditorialLibros = editorialLibroMapper.Map(model.EditorialLibros.Cast<EditorialProducto>().ToArray());
+            if (model.AreaTematica != null)
+                message.LineaTematicaId = model.AreaTematica.LineaTematica.Id;
+
+            return message;
         }
 
         protected override void MapToModel(LibroForm message, Libro model)
@@ -161,7 +172,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
 
                 model.AddEditorial(editorialProducto);
             }
-
 
             return model;
         }

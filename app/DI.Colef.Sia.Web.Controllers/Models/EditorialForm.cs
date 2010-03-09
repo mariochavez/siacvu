@@ -20,6 +20,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PaisId { get; set; }
         public string PaisNombre { get; set; }
 
+        public int ModelId { get; set; }
+        public int EditorialId { get; set; }
+        public string EditorialNombre { get; set; }
+
         //Catalogos
         public PaisForm[] Paises { get; set; }
         public CustomSelectForm[] TipoEditoriales { get; set; }
@@ -29,7 +33,5 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string IdName { get; set; }
 
         public EditorialProductoForm[] Editoriales { get; set; }
-        public int ModelId { get; set; }
-        public int EditorialId { get; set; }
     }
 }

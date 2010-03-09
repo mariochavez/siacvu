@@ -10,6 +10,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string EditorialNombre { get; set; }
 
         public int PaisId { get; set; }
+        public string PaisNombre { get; set; }
         public int ParentId { get; set; }
+
+        public bool EditorialExists
+        {
+            get
+            {
+                return EditorialId > 0;
+            }
+        }
     }
 }

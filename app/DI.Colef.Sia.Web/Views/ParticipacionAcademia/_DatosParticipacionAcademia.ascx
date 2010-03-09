@@ -5,8 +5,7 @@
 	<label>Nombre del producto</label>
 	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NombreProducto")%>
-							
-<% Html.RenderPartial("_RevistaPublicacion", Model); %>
+    <% Html.RenderPartial("_RevistaPublicacion", Model); %>
 
 <p>
     <label>Volumen</label>

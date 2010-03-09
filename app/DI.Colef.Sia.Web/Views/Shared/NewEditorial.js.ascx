@@ -7,8 +7,8 @@ var cssclass = 'remote';
 var rel = '#editorialform';
 
 var html = '
-    <% using (Html.BeginForm("AddEditorial", Model.Controller, FormMethod.Post, new { id = "editorialform" })){ %>
-    <%=Html.Hidden(Model.IdName, Model.Id)%>
+    <% using (Html.BeginForm("AddEditorial", null, FormMethod.Post, new { id = "editorialform" })){ %>
+    <%=Html.Hidden("modelId", Model.Id)%>
     <% Html.RenderPartial("_NewEditorial"); %>
     <div class="minilistaboton" id="submit">
         <p>
@@ -23,4 +23,6 @@ var html = '
 $('#editorialForm').html(html);
 $('#editorialNew').hide();
 $('#editorialForm').show();
-AutoComplete.config($('#Editorial_Nombre'));
+AutoComplete.config($('#Editorial_EditorialNombre'));
+
+$('#editorialForm').effect("highlight", {}, 1500);

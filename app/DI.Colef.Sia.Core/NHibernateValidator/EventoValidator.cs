@@ -17,19 +17,10 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
 
     public class EventoValidator : BaseValidatorAttribute<EventoValidatorAttribute>
     {
-        public override void Initialize(EventoValidatorAttribute parameters)
-        {
-        }
-
         public override bool IsValid(object value, IConstraintValidatorContext constraintValidatorContext)
         {
             var isValid = true;
             var evento = value as Evento;
-
-            if (!evento.IsTransient())
-            {
-
-            }
 
             if(evento.TipoParticipacion != null)
                 isValid &= ValidateTipoParticipacion(evento, constraintValidatorContext);

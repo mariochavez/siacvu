@@ -29,7 +29,7 @@
     <span class="cvu"></span>
 </p>
 
-<% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.EditorialResenas, ModelId = Model.Id } ); %>
+<% Html.RenderPartial("_EditEditorial", Model.Form); %>
     
 <p>
     <label>Pa&iacute;s</label>

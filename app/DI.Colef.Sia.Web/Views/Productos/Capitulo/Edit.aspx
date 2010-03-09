@@ -97,7 +97,7 @@
 	                <span class="cvu"></span>
 	            </p>
 
-                <% Html.RenderPartial("_EditEditorial", new EditorialForm { Editoriales = Model.Form.EditorialCapitulos, ModelId = Model.Form.Id }); %>
+                <% Html.RenderPartial("_EditEditorial", Model.Form); %> 
 	            
 	            <div class="EstatusPublicado">
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>

@@ -359,7 +359,7 @@ var AutoComplete = {
                 matchContains: 1,
                 cacheLength: 10,
                 autoFill: false,
-                selectFirst: true,
+                selectFirst: false,
                 //extraParams: { extraParam: paramValue },
                 mustMatch: 0, //1
                 onItemSelect: AutoComplete.selectItem,

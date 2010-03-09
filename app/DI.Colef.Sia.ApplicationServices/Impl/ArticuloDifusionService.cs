@@ -30,6 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             return ((List<ArticuloDifusion>)articuloRepository.GetAll()).ToArray();
         }
 
+        public ArticuloDifusion[] GetAllArticulos(Usuario currentUser)
+        {
+            return productoQuerying.GetProductosByUsuario<ArticuloDifusion>(currentUser, "CoautorInternoArticulos");
+        }
+
         public ArticuloDifusion[] GetActiveArticulos()
         {
             return ((List<ArticuloDifusion>)articuloRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();

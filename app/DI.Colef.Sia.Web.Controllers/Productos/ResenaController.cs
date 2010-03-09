@@ -27,7 +27,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAutorInternoResenaMapper autorInternoResenaMapper;
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
-        readonly IEditorialResenaMapper editorialResenaMapper;
+        readonly IEditorialProductoMapper<EditorialResena> editorialResenaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
 
@@ -38,7 +38,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper,
                                 IAutorExternoResenaMapper autorExternoResenaMapper,
-                                IEditorialResenaMapper editorialResenaMapper,
+                                IEditorialProductoMapper<EditorialResena> editorialResenaMapper,
                                 ICatalogoService catalogoService,
                                 IAreaTematicaMapper areaTematicaMapper,
                                 IUsuarioService usuarioService,
@@ -739,77 +739,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             return Rjs("DeleteAutorExterno", form);
         }
 
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult NewEditorial(int id)
-        {
-            var resena = resenaService.GetResenaById(id);
-
-            var form = new EditorialForm { Controller = "Resena", IdName = "ResenaId" };
-
-            if (resena != null)
-                form.Id = resena.Id;
-
-            return Rjs("NewEditorial", form);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddEditorial([Bind(Prefix = "Editorial")] EditorialProductoForm form, int resenaId)
-        {
-            var editorialResena = editorialResenaMapper.Map(form);
-
-            ModelState.AddModelErrors(editorialResena.ValidationResults(), false, "Editorial", String.Empty);
-            if (!ModelState.IsValid)
-            {
-                return Rjs("ModelError");
-            }
-
-            if (resenaId != 0)
-            {
-                editorialResena.CreadoPor = CurrentUser();
-                editorialResena.ModificadoPor = CurrentUser();
-
-                var resena = resenaService.GetResenaById(resenaId);
-
-                var alreadyHasIt =
-                    resena.EditorialResenas.Where(
-                        x => x.Editorial.Id == editorialResena.Editorial.Id).Count();
-
-                if (alreadyHasIt == 0)
-                {
-                    resena.AddEditorial(editorialResena);
-                    resenaService.SaveResena(resena);
-                }
-            }
-
-            var editorialResenaForm = editorialResenaMapper.Map(editorialResena);
-            editorialResenaForm.ParentId = resenaId;
-
-            return Rjs("AddEditorial", editorialResenaForm);
-        }
-
-        [CustomTransaction]
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Delete)]
-        public ActionResult DeleteEditorial(int id, int editorialId)
-        {
-            var resena = resenaService.GetResenaById(id);
-
-            if (resena != null)
-            {
-                var editorial = resena.EditorialResenas.Where(x => x.Editorial.Id == editorialId).First();
-                resena.DeleteEditorial(editorial);
-
-                resenaService.SaveResena(resena);
-            }
-
-            var form = new EditorialForm { ModelId = id, EditorialId = editorialId };
-
-            return Rjs("DeleteEditorial", form);
-        }
-
         private ResenaForm SetupNewForm()
         {
             return SetupNewForm(null);
@@ -905,6 +834,54 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   };
 
             return form;
+        }
+
+        protected override void DeleteEditorialInModel(Resena model, int editorialId)
+        {
+            if (model != null)
+            {
+                var editorial = model.EditorialResenas.Where(x => x.Id == editorialId).First();
+                model.DeleteEditorial(editorial);
+
+                resenaService.SaveResena(model);
+            }
+        }
+
+        protected override bool SaveEditorialToModel(Resena model, EditorialProducto editorialProducto)
+        {
+            var editorialId = editorialProducto.Editorial != null ? editorialProducto.Editorial.Id : 0;
+
+            var alreadyHasIt =
+                model.EditorialResenas.Where(
+                    x => ((x.Editorial != null && editorialId > 0 && x.Editorial.Id == editorialId) ||
+                          (x.EditorialNombre == editorialProducto.EditorialNombre))
+                         && x.Pais.Id == editorialProducto.Pais.Id).Count();
+
+            if (alreadyHasIt == 0)
+            {
+                model.AddEditorial(editorialProducto);
+                resenaService.SaveResena(model, true);
+            }
+
+            return alreadyHasIt == 0;
+        }
+
+        protected override EditorialProducto MapEditorialMessage(EditorialProductoForm form)
+        {
+            return editorialResenaMapper.Map(form);
+        }
+
+        protected override EditorialProductoForm MapEditorialModel(EditorialProducto model, int parentId)
+        {
+            var editorialResenaForm = editorialResenaMapper.Map(model as EditorialResena);
+            editorialResenaForm.ParentId = parentId;
+
+            return editorialResenaForm;
+        }
+
+        protected override Resena GetModelById(int id)
+        {
+            return resenaService.GetResenaById(id);
         }
     }
 }
