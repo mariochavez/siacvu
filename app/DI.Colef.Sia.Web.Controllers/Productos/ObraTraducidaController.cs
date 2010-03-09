@@ -74,10 +74,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index() 
         {
-            var data = new GenericViewData<ObraTraducidaForm>
-            {
-                List = obraTraducidaMapper.Map(obraTraducidaService.GetAllObraTraducidas())
-            };
+            var data = new GenericViewData<ObraTraducidaForm>();
+            var obrasTraducidas = new ObraTraducida[] { };
+
+            if (User.IsInRole("Investigadores"))
+                obrasTraducidas = obraTraducidaService.GetAllObraTraducidas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                obrasTraducidas = obraTraducidaService.GetAllObraTraducidas();
+
+            data.List = obraTraducidaMapper.Map(obrasTraducidas);
 
             return View(data);
         }

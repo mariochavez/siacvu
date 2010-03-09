@@ -1,6 +1,6 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class ParticipacionAcademiaForm
+    public class ParticipacionAcademiaForm : BaseForm
     {
         public int Id { get; set; }
         public string NombreProducto { get; set; }
@@ -29,18 +29,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 
-        public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionTitulo { get; set; }
-
         public int InstitucionId { get; set; }
         public string InstitucionNombre { get; set; }
-
-        public int LineaTematicaId { get; set; }
         public string LineaTematicaNombre { get; set; }
 
         /* Catalogos */
         public PaisForm[] Paises { get; set; }
-        public EditorialForm[] Editoriales { get; set; }
         public CustomSelectForm[] EstadosProductos { get; set; }
         public CustomSelectForm[] Volumenes { get; set; }
         public ProyectoForm[] Proyectos { get; set; }

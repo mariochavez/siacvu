@@ -37,10 +37,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<EstanciaInstitucionExternaForm>
-            {
-                List = estanciaInstitucionExternaMapper.Map(estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas())
-            };
+            var data = new GenericViewData<EstanciaInstitucionExternaForm>();
+            var estanciaInstitucionExternas = new EstanciaInstitucionExterna[] { };
+
+            if (User.IsInRole("Investigadores"))
+                estanciaInstitucionExternas = estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                estanciaInstitucionExternas = estanciaInstitucionExternaService.GetAllEstanciaInstitucionExternas();
+
+            data.List = estanciaInstitucionExternaMapper.Map(estanciaInstitucionExternas);
 
             return View(data);
         }

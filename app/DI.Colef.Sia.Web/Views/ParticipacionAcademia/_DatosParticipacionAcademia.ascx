@@ -6,7 +6,7 @@
 	<%=Html.TextBox("NombreProducto", Model.NombreProducto, new { @class = "input420-bold-requerido", maxlength = 100 })%>
 	<%=Html.ValidationMessage("NombreProducto")%>
 							
-<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>
+    <% Html.RenderPartial("_RevistaPublicacion", Model); %>
 
 <p>
     <label>Volumen</label>

@@ -25,8 +25,13 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         {
             return ((List<Proyecto>)proyectoRepository.GetAll()).ToArray();
         }
-        
-        public Proyecto[] GetActiveProyectos()
+
+	    public Proyecto[] GetAllProyectos(Usuario currentUser)
+	    {
+            return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Usuario", currentUser } })).ToArray();
+	    }
+
+	    public Proyecto[] GetActiveProyectos()
         {
             return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Activo", true } })).ToArray();
         }

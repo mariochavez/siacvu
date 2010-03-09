@@ -49,10 +49,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<DictamenForm>
-            {
-                List = dictamenMapper.Map(dictamenService.GetAllDictamenes())
-            };
+            var data = new GenericViewData<DictamenForm>();
+            var dictamenes = new Dictamen[] { };
+
+            if (User.IsInRole("Investigadores"))
+                dictamenes = dictamenService.GetAllDictamenes(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                dictamenes = dictamenService.GetAllDictamenes();
+
+            data.List = dictamenMapper.Map(dictamenes);
 
             return View(data);
         }

@@ -21,7 +21,6 @@
 	<%=Html.ValidationMessage("TipoDictamen") %>
 </p>
 <div id="articulo_field">
-    <%--<% Html.RenderPartial("_ShowRevista", new ShowFieldsForm { RevistaPublicacionId = Model.RevistaPublicacionId, RevistaPublicacionTitulo = Model.RevistaPublicacionTitulo, RevistaLabel = "Nombre de la revista", IsShowForm = false, UrlAction = "Search", Rel = "" }); %>--%>
     <% Html.RenderPartial("_RevistaPublicacion", Model); %>
     <div class="EstatusPublicado">
         <%--<% Html.RenderPartial("_ReferenciaBibliografica", Model); %>--%>

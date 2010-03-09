@@ -55,10 +55,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = new GenericViewData<CursoForm>
-            {
-                List = cursoMapper.Map(cursoService.GetAllCursos())
-            };
+            var data = new GenericViewData<CursoForm>();
+            var cursos = new Curso[] { };
+
+            if (User.IsInRole("Investigadores"))
+                cursos = cursoService.GetAllCursos(CurrentUser());
+            if (User.IsInRole("DGAA"))
+                cursos = cursoService.GetAllCursos();
+
+            data.List = cursoMapper.Map(cursos);
 
             return View(data);
         }
