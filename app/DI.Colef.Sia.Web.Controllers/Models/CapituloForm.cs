@@ -64,6 +64,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public override EditorialProductoForm[] Editoriales
+        {
+            get { return EditorialCapitulos; }
+        }
+
         public CoautorExternoProductoForm[] CoautorExternoCapitulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoCapitulos { get; set; }
         public AutorInternoProductoForm[] AutorInternoCapitulos { get; set; }

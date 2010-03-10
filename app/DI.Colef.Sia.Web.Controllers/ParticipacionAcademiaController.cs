@@ -15,8 +15,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IParticipacionAcademiaService participacionAcademiaService;
         readonly IParticipacionAcademiaMapper participacionAcademiaMapper;
-        readonly ICatalogoService catalogoService;
-        readonly IPaisMapper paisMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
         //readonly IInstitucionMapper institucionMapper;
@@ -33,11 +31,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                ICustomCollection customCollection, IInstitucionMapper institucionMapper, ISedeMapper sedeMapper
             ) : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
+            base.paisMapper = paisMapper;
+
             this.editorialMapper = editorialMapper;
             this.participacionAcademiaService = participacionAcademiaService;
             this.participacionAcademiaMapper = participacionAcademiaMapper;
-            this.paisMapper = paisMapper;
             this.customCollection = customCollection;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
         }

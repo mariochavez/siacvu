@@ -76,10 +76,5 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             if (commit)
                 proyectoRepository.DbContext.CommitChanges();
         }
-
-	    public Proyecto[] GetAllProyectos(Usuario currentUser)
-	    {
-            return ((List<Proyecto>)proyectoRepository.FindAll(new Dictionary<string, object> { { "Usuario", currentUser } })).ToArray();
-	    }
     }
 }
