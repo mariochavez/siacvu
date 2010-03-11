@@ -27,7 +27,7 @@
     </div>
 </div>
 <div id="libro_field">
-    <% Html.RenderPartial("_EditEditorial", Model.Form); %>
+    <% Html.RenderPartial("_EditEditorial", Model); %>
 </div>
 <p id="proyecto_field">
 	<label>Tipo de proyecto</label>

@@ -24,15 +24,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int FondoConacytId { get; set; }
         public string FondoConacytNombre { get; set; }
 
+        public EditorialProductoForm[] EditorialDictamenes { get; set; }
+
+        public override EditorialProductoForm[] Editoriales
+        {
+            get { return EditorialDictamenes; }
+        }
+
         /* Show */
         public ShowFieldsForm ShowFields { get; set; }
         public RevistaPublicacionForm RevistaPublicacion { get; set; }
 
-        public EditorialProductoForm[] EditorialDictamenes { get; set; }
-
-        /* New */
-        public EditorialProductoForm EditorialProducto { get; set; }
-        
         /* Catalogos */
         public TipoDictamenForm[] TiposDictamenes { get; set; }
         public FondoConacytForm[] FondosConacyt { get; set; }
