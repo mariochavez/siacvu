@@ -22,7 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoCapituloMapper coautorExternoCapituloMapper;
         readonly ICoautorInternoCapituloMapper coautorInternoCapituloMapper;
         readonly ICustomCollection customCollection;
-        readonly IEditorialProductoMapper<EditorialLibro> editorialCapituloMapper;
+        readonly IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
@@ -38,10 +38,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ICustomCollection customCollection, IAreaTematicaMapper areaTematicaMapper,
                                   ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper,
                                   IDisciplinaMapper disciplinaMapper, ISubdisciplinaMapper subdisciplinaMapper,
-                                  IEditorialProductoMapper<EditorialLibro> editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
-                                  IInvestigadorService investigadorService)
+                                  IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper, IInvestigadorExternoMapper investigadorExternoMapper,
+                                  IInvestigadorService investigadorService,
+                                  IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
+            base.paisMapper = paisMapper;
+
             this.capituloService = capituloService;
             this.archivoService = archivoService;
             this.capituloMapper = capituloMapper;

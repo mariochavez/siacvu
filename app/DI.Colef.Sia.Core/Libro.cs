@@ -130,6 +130,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual RevistaPublicacion RevistaPublicacion { get; set; }
 
+        public virtual string RevistaPublicacionTitulo { get; set; }
+
 		public virtual decimal Puntuacion { get; set; }
 
         [NotNull]

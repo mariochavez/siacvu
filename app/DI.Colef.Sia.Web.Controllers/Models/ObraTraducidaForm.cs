@@ -1,10 +1,7 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ObraTraducidaForm : BaseForm
     {
-		public int Id { get; set; }
 		public string Nombre { get; set; }
 		public string NombreTraductor { get; set; }
 		public string ApellidoPaterno { get; set; }
@@ -51,9 +48,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int IdiomaId { get; set; }
         public string IdiomaNombre { get; set; }
 
-        public int RevistaPublicacionId { get; set; }
-        public string RevistaPublicacionTitulo { get; set; }
-		
         public int TotalCoautores
         {
             get
@@ -80,11 +74,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public EditorialProductoForm[] EditorialObraTraducidas { get; set; }
+        public override EditorialProductoForm[] Editoriales
+        {
+            get { return EditorialObraTraducidas; }
+        }
+
         public CoautorExternoProductoForm[] CoautorExternoObraTraducidas { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoObraTraducidas { get; set; }
         public AutorInternoProductoForm[] AutorInternoObraTraducidas { get; set; }
         public AutorExternoProductoForm[] AutorExternoObraTraducidas { get; set; }
-        public EditorialProductoForm[] EditorialObraTraducidas { get; set; }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

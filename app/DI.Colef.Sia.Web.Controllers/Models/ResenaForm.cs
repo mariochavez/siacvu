@@ -1,10 +1,7 @@
-using System;
-
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ResenaForm : BaseForm
     {
-        public int Id { get; set; }
         public string Numero { get; set; }
         public string NombreProducto { get; set; }
         public int PaginaInicial { get; set; }
@@ -67,12 +64,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
             }
         }
 
+        public EditorialProductoForm[] EditorialResenas { get; set; }
+        public override EditorialProductoForm[] Editoriales
+        {
+            get { return EditorialResenas; }
+        }
+
         /* New */
         public CoautorExternoProductoForm[] CoautorExternoResenas { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoResenas { get; set; }
         public AutorInternoProductoForm[] AutorInternoResenas { get; set; }
         public AutorExternoProductoForm[] AutorExternoResenas { get; set; }
-        public EditorialProductoForm[] EditorialResenas { get; set; }
+        
 
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }

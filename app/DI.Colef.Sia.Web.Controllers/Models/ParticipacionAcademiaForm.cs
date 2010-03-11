@@ -26,6 +26,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EditorialId { get; set; }
         public string EditorialNombre { get; set; }
 
+        public new EditorialForm[] Editoriales { get; set; }
+
         public int ProyectoId { get; set; }
         public string ProyectoNombre { get; set; }
 

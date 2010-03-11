@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -10,11 +11,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
     public class DictamenMapper : AutoFormMapper<Dictamen, DictamenForm>, IDictamenMapper
     {
 		readonly ICatalogoService catalogoService;
-        readonly IEditorialDictamenMapper editorialDictamenMapper;
+        readonly IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper;
 
 		public DictamenMapper(IRepository<Dictamen> repository,
 		    ICatalogoService catalogoService,
-            IEditorialDictamenMapper editorialDictamenMapper
+            IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper
 		) 
 			: base(repository)
         {
@@ -32,6 +33,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             var message = base.Map(model);
             if (message.RevistaPublicacionId > 0)
                 message.RevistaPublicacionTitulo = model.RevistaPublicacion.Titulo;
+
+            message.EditorialDictamenes = editorialDictamenMapper.Map(model.EditorialDictamenes.Cast<EditorialProducto>().ToArray());
 
             return message;
         }

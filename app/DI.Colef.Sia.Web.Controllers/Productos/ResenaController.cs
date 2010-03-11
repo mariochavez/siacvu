@@ -20,7 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IPaisMapper paisMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
         readonly IAreaMapper areaMapper;
@@ -54,6 +53,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService
             ) : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper)
         {
+            base.paisMapper = paisMapper;
+
             this.areaTematicaMapper = areaTematicaMapper;
             this.archivoService = archivoService;
             this.areaMapper = areaMapper;
@@ -61,7 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.resenaService = resenaService;
             this.resenaMapper = resenaMapper;
             this.customCollection = customCollection;
-            this.paisMapper = paisMapper;
             this.autorInternoResenaMapper = autorInternoResenaMapper;
             this.autorExternoResenaMapper = autorExternoResenaMapper;
             this.editorialResenaMapper = editorialResenaMapper;
