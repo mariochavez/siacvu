@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -14,7 +15,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly IAutorInternoResenaMapper autorInternoResenaMapper;
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
-        readonly IEditorialResenaMapper editorialResenaMapper;
+        readonly IEditorialProductoMapper<EditorialResena> editorialResenaMapper;
         private Usuario usuarioResena = null;
         
         public ResenaMapper(IRepository<Resena> repository,
@@ -23,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                             ICoautorInternoResenaMapper coautorInternoResenaMapper,
                             IAutorInternoResenaMapper autorInternoResenaMapper,
                             IAutorExternoResenaMapper autorExternoResenaMapper,
-                            IEditorialResenaMapper editorialResenaMapper
+                            IEditorialProductoMapper<EditorialResena> editorialResenaMapper
             ) : base(repository)
         {
             this.catalogoService = catalogoService;
@@ -44,6 +45,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             var message = base.Map(model);
             if (message.RevistaPublicacionId > 0)
                 message.RevistaPublicacionTitulo = model.RevistaPublicacion.Titulo;
+            message.EditorialResenas = editorialResenaMapper.Map(model.EditorialResenas.Cast<EditorialProducto>().ToArray());
 
             return message;
         }

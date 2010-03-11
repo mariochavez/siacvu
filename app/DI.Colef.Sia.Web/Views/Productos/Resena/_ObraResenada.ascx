@@ -29,7 +29,7 @@
     <span class="cvu"></span>
 </p>
 
-<% Html.RenderPartial("_EditEditorial", Model.Form); %>
+<% Html.RenderPartial("_EditEditorial", Model); %>
     
 <p>
     <label>Pa&iacute;s</label>
