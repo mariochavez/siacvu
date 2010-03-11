@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     {
 		readonly IObraTraducidaService obraTraducidaService;
         readonly IObraTraducidaMapper obraTraducidaMapper;
-        readonly ICatalogoService catalogoService;
         readonly IIdiomaMapper idiomaMapper;
         readonly IArchivoService archivoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
@@ -30,6 +29,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
+        readonly IPaisMapper paisMapper;
     
         public ObraTraducidaController(IObraTraducidaService obraTraducidaService, 
 			                        IObraTraducidaMapper obraTraducidaMapper,
@@ -48,10 +48,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     ILineaTematicaMapper lineaTematicaMapper,
                                     IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper,
                                     IInvestigadorExternoMapper investigadorExternoMapper,
-                                    IInvestigadorService investigadorService
+                                    IInvestigadorService investigadorService,
+                                    IPaisMapper paisMapper
             ) : base(usuarioService, searchService, catalogoService)
         {
-			this.catalogoService = catalogoService;
+			base.catalogoService = catalogoService;
+            base.paisMapper = paisMapper;
+
             this.archivoService = archivoService;
             this.obraTraducidaService = obraTraducidaService;
             this.obraTraducidaMapper = obraTraducidaMapper;
@@ -249,23 +252,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
+            var archivo = MapArchivo();
 
             if (form["TipoArchivo"] == "Aceptado")
             {
@@ -342,25 +329,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         {
             var data = searchService.Search<ObraTraducida>(x => x.Nombre, q);
             return Content(data);
-        }
-
-        [Authorize]
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ChangeAreaTematica(int select)
-        {
-            // TODO: Dependencias
-            return Rjs("", null);
-            //var areaTematicaForm = areaTematicaMapper.Map(catalogoService.GetAreaTematicaById(select));
-            //var lineaTematicaForm =
-            //    lineaTematicaMapper.Map(catalogoService.GetLineaTematicaById(areaTematicaForm.LineaTematicaId));
-
-            //var form = new ShowFieldsForm
-            //{
-            //    AreaTematicaLineaTematicaNombre = lineaTematicaForm.Nombre,
-            //    AreaTematicaId = areaTematicaForm.Id
-            //};
-
-            //return Rjs("ChangeAreaTematica", form);
         }
 
         [Authorize]

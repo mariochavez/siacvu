@@ -89,7 +89,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
 
             model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);
-            model.RevistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            if (revistaPublicacion != null && String.Compare(revistaPublicacion.Titulo, message.RevistaPublicacionTitulo) >= 0)
+            {
+                model.RevistaPublicacion = revistaPublicacion;
+                model.RevistaPublicacionTitulo = String.Empty;
+            }
+            else
+            {
+                model.RevistaPublicacionTitulo = message.RevistaPublicacionTitulo;
+                model.RevistaPublicacion = null;
+            }
             model.Proyecto = proyectoService.GetProyectoById(message.ProyectoId);
             model.Evento = eventoService.GetEventoById(message.EventoId);
 
