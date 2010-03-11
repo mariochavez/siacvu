@@ -10,6 +10,5 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         ArticuloDifusion[] GetActiveArticulos();
         void SaveArticulo(ArticuloDifusion articulo);
         void SaveArticulo(ArticuloDifusion articulo, bool useCommit);
-        ArticuloDifusion[] GetAllArticulos(Usuario currentUser);
     }
 }

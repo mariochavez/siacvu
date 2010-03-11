@@ -193,7 +193,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
             //Lista de Catalogos Pendientes
             form.Paises = paisMapper.Map(catalogoService.GetActivePaises());
-            form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
+            //form.Editoriales = editorialMapper.Map(catalogoService.GetActiveEditorials());
             form.EstadosProductos = customCollection.EstadoProductoCustomCollection();
             return form;
         }
