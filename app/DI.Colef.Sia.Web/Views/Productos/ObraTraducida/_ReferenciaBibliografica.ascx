@@ -38,7 +38,7 @@
     <%=Html.ValidationMessage("TipoLibro")%>
 </p>
 <div class="CapituloLibro_fields">
-    <% Html.RenderPartial("_EditEditorial", Model.Form); %>
+    <% Html.RenderPartial("_EditEditorial", Model); %>
 </div>
 <p class="Capitulo_fields">
     <label>Resumen</label>

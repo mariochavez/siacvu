@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -14,15 +15,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper;
         readonly IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper;
         readonly IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper;
-        readonly IEditorialObraTraducidaMapper editorialObraTraducidaMapper;
-        private Usuario usuarioObraTraducida = null;
+        readonly IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper;
+        private Usuario usuarioObraTraducida;
 
 		public ObraTraducidaMapper(IRepository<ObraTraducida> repository,
             ICoautorExternoObraTraducidaMapper coautorExternoObraTraducidaMapper,
             ICoautorInternoObraTraducidaMapper coautorInternoObraTraducidaMapper,
             IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper,
             IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper,
-            IEditorialObraTraducidaMapper editorialObraTraducidaMapper,
+            IEditorialProductoMapper<EditorialObraTraducida> editorialObraTraducidaMapper,
             ICatalogoService catalogoService
 		) : base(repository)
         {
@@ -37,6 +38,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override int GetIdFromMessage(ObraTraducidaForm message)
         {
             return message.Id;
+        }
+
+        public override ObraTraducidaForm Map(ObraTraducida model)
+        {
+            var message = base.Map(model);
+            if (message.RevistaPublicacionId > 0)
+                message.RevistaPublicacionTitulo = model.RevistaPublicacion.Titulo;
+
+            message.EditorialObraTraducidas = editorialObraTraducidaMapper.Map(model.EditorialObraTraducidas.Cast<EditorialProducto>().ToArray());
+            if (model.AreaTematica != null)
+                message.LineaTematicaId = model.AreaTematica.LineaTematica.Id;
+
+            return message;
         }
 
         protected override void MapToModel(ObraTraducidaForm message, ObraTraducida model)
@@ -87,6 +101,18 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                 model.FechaAceptacion = message.FechaAceptacion.FromYearDateToDateTime();
 
             model.FechaPublicacion = message.FechaPublicacion.FromYearDateToDateTime();
+
+            var revistaPublicacion = catalogoService.GetRevistaPublicacionById(message.RevistaPublicacionId);
+            if (revistaPublicacion != null && String.Compare(revistaPublicacion.Titulo, message.RevistaPublicacionTitulo) >= 0)
+            {
+                model.RevistaPublicacion = revistaPublicacion;
+                model.RevistaPublicacionTitulo = String.Empty;
+            }
+            else
+            {
+                model.RevistaPublicacionTitulo = message.RevistaPublicacionTitulo;
+                model.RevistaPublicacion = null;
+            }
 
 		    model.Idioma = catalogoService.GetIdiomaById(message.Idioma);
 		    model.AreaTematica = catalogoService.GetAreaTematicaById(message.AreaTematicaId);

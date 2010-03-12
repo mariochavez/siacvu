@@ -26,11 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
             var isValid = true;
             var obraTraducida = value as ObraTraducida;
 
-            if (!obraTraducida.IsTransient())
-            {
-
-            }
-
             if (obraTraducida.EstadoProducto != 0)
                 isValid &= ValidateProductoEstado(obraTraducida, constraintValidatorContext);
 
@@ -78,7 +73,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.RevistaPublicacion == null)
+                if (obraTraducida.RevistaPublicacion == null && String.IsNullOrEmpty(obraTraducida.RevistaPublicacionTitulo))
                 {
                     constraintValidatorContext.AddInvalid(
                         "no debe ser nulo, vacío o cero|RevistaPublicacionTitulo", "RevistaPublicacionTitulo");
@@ -130,21 +125,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator
                     isValid = false;
                 }
 
-                if (obraTraducida.PaginaInicial > obraTraducida.PaginaFinal)
-                {
-                    constraintValidatorContext.AddInvalid(
-                        "página inicial debe ser menor a la final|PaginaInicial", "PaginaInicial");
-                    constraintValidatorContext.AddInvalid(
-                        "página final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
-                    isValid = false;
-                }
+                //if (obraTraducida.PaginaInicial > obraTraducida.PaginaFinal)
+                //{
+                //    constraintValidatorContext.AddInvalid(
+                //        "página inicial debe ser menor a la final|PaginaInicial", "PaginaInicial");
+                //    constraintValidatorContext.AddInvalid(
+                //        "página final debe ser mayor a la inicial|PaginaFinal", "PaginaFinal");
+                //    isValid = false;
+                //}
 
-                if (obraTraducida.PaginaInicial == 0 && obraTraducida.PaginaFinal == 0)
-                {
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
-                    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
-                    isValid = false;
-                }
+                //if (obraTraducida.PaginaInicial == 0 && obraTraducida.PaginaFinal == 0)
+                //{
+                //    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaInicial", "PaginaInicial");
+                //    constraintValidatorContext.AddInvalid("página inicial y final no pueden ser cero|PaginaFinal", "PaginaFinal");
+                //    isValid = false;
+                //}
 
                 if (obraTraducida.Tiraje == 0)
                 {

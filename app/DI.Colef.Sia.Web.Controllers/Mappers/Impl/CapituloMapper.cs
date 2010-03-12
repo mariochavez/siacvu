@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -15,8 +16,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorInternoCapituloMapper autorInternoCapituloMapper;
         readonly IAutorExternoCapituloMapper autorExternoCapituloMapper;
         readonly IProyectoService proyectoService;
-        readonly IEditorialCapituloMapper editorialCapituloMapper;
-        private Usuario usuarioCapitulo = null;
+        readonly IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper;
+        private Usuario usuarioCapitulo;
 
 		public CapituloMapper(IRepository<Capitulo> repository,
 		                      ICatalogoService catalogoService,
@@ -24,7 +25,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
                               ICoautorInternoCapituloMapper coautorInternoCapituloMapper,
                               IAutorInternoCapituloMapper autorInternoCapituloMapper,
                               IAutorExternoCapituloMapper autorExternoCapituloMapper,
-                              IProyectoService proyectoService, IEditorialCapituloMapper editorialCapituloMapper) 
+                              IProyectoService proyectoService, IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper) 
 			: base(repository)
         {
 			this.catalogoService = catalogoService;
@@ -39,6 +40,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         protected override int GetIdFromMessage(CapituloForm message)
         {
             return message.Id;
+        }
+
+        public override CapituloForm Map(Capitulo model)
+        {
+            var message = base.Map(model);
+            message.EditorialCapitulos = editorialCapituloMapper.Map(model.EditorialCapitulos.Cast<EditorialProducto>().ToArray());
+            if (model.AreaTematica != null)
+                message.LineaTematicaId = model.AreaTematica.LineaTematica.Id;
+
+            return message;
         }
 
         protected override void MapToModel(CapituloForm message, Capitulo model)

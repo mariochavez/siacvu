@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class DictamenController : BaseController<Dictamen, DictamenForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IDictamenMapper dictamenMapper;
         readonly IDictamenService dictamenService;
         readonly ITipoDictamenMapper tipoDictamenMapper;
@@ -32,11 +31,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                   ITipoDictamenMapper tipoDictamenMapper,
                                   IFondoConacytMapper fondoConacytMapper,
                                   IRevistaPublicacionMapper revistaPublicacionMapper,
-                                  ISearchService searchService)
+                                  ISearchService searchService, IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
+            base.catalogoService = catalogoService;
+            base.paisMapper = paisMapper;
+
             this.editorialDictamenMapper = editorialDictamenMapper;
-            this.catalogoService = catalogoService;
             this.dictamenService = dictamenService;
             this.archivoService = archivoService;
             this.dictamenMapper = dictamenMapper;
@@ -183,23 +184,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var dictamen = dictamenService.GetDictamenById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
+            var archivo = MapArchivo();
 
             if (form["TipoArchivo"] == "ComprobanteDictamen")
             {
