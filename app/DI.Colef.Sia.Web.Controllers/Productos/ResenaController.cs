@@ -774,7 +774,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
                 ViewData["Pais"] = (from p in form.Paises where p.Nombre == "México" select p.Id).FirstOrDefault();
                 form.PosicionCoautor = 1;
-                form.PosicionAutor = 1;
             }
             else
             {

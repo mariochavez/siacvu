@@ -22,7 +22,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.Reporte) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo reporte técnico")%></span>
+            <span><%=Html.ActionLink<ReporteController>(x => x.New(), "+ Nuevo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

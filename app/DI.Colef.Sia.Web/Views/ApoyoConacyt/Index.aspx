@@ -14,10 +14,10 @@
         <h3>Agregar nuevo apoyo del CONACyT</h3>
         <p>
             Puede agregar un nuevo apoyo del CONACyT dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo apoyo del CONACyT</strong>.
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ApoyoConacytController>(x => x.New(), "+ Nuevo apoyo del CONACyT") %></span>
+            <span><%=Html.ActionLink<ApoyoConacytController>(x => x.New(), "+ Nuevo") %></span>
         </div>
     </div>
 </asp:Content>

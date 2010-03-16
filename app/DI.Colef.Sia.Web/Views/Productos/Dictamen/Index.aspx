@@ -22,7 +22,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.Dictamen) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<DictamenController>(x => x.New(), "+ Nuevo dictamen")%></span>
+            <span><%=Html.ActionLink<DictamenController>(x => x.New(), "+ Nuevo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

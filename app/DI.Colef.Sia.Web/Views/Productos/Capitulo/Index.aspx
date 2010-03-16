@@ -22,7 +22,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.Capitulo) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<CapituloController>(x => x.New(), "+ Nuevo capítulo en libro")%></span>
+            <span><%=Html.ActionLink<CapituloController>(x => x.New(), "+ Nuevo")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

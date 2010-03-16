@@ -14,10 +14,10 @@
         <h3>Agregar nuevo proyecto</h3>
         <p>
             Puede agregar un nuevo proyecto dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo proyecto</strong>.
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ProyectoController>(x => x.New(), "+ Nuevo proyecto") %></span>
+            <span><%=Html.ActionLink<ProyectoController>(x => x.New(), "+ Nuevo") %></span>
         </div>
     </div>
 </asp:Content>

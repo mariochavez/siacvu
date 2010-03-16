@@ -3,6 +3,10 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 
+var coutoresTotal = $('#coautorinternoList div[id^=coautorinterno_]').length;
+coutoresTotal += $('#coautorexternoList div[id^=coautorexterno_]').length;
+coutoresTotal+= 2;
+
 var cssclass = 'remote';
 var rel = '#coautorinternoform';
 
@@ -22,8 +26,11 @@ var html = '
 
 $('#coautorForm').html(html);
 $('#coautorNew').hide();
+$('#CoautorInterno_Posicion').val(coutoresTotal);
 $('#coautorForm').show();
+
 DateTimePicker.setup();
+
 AutoComplete.config($('#CoautorInterno_Nombre'));
 $('#CoautorInterno_Nombre')[0].autocompleter.setExtraParams({ extraParam: <%=Model.CreadoPorId%> });
 $('#CoautorInterno_CoautorSeOrdenaAlfabeticamente').attr('value', $('#CoautorSeOrdenaAlfabeticamente').is(':checked'));
