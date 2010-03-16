@@ -300,6 +300,12 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Editorial[] GetActiveEditorials();
         void SaveEditorial(Editorial editorial);
 
+        //Glosario
+        Glosario GetGlosarioById(int id);
+        Glosario[] GetAllGlosarios();
+        void SaveGlosario(Glosario glosario);
+
+
         //Vinculacion APyD
         VinculacionAPyD GetVinculacionAPyDById(int id);
         VinculacionAPyD[] GetAllVinculacionAPyDs();

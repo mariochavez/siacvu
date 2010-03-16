@@ -98,6 +98,7 @@
     <Compile Include="ArticuloDifusion.cs" />
     <Compile Include="DataInterfaces\Impl\ProductoDTO.cs" />
     <Compile Include="EntityHelper.cs" />
+    <Compile Include="Glosario.cs" />
     <Compile Include="IParticipante.cs" />
     <Compile Include="NHibernateValidator\AutorExternoProductoValidator.cs" />
     <Compile Include="NHibernateValidator\AutorInternoProductoValidator.cs" />

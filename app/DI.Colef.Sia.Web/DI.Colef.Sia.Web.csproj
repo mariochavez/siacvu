@@ -176,12 +176,22 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Catalogos\Glosario\_Form.ascx.cs">
+      <DependentUpon>_Form.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\Glosario\_Form.ascx.designer.cs">
+      <DependentUpon>_Form.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
     </Content>
+    <Content Include="Views\Catalogos\Glosario\Edit.aspx" />
+    <Content Include="Views\Catalogos\Glosario\Index.aspx" />
+    <Content Include="Views\Catalogos\Glosario\New.aspx" />
+    <Content Include="Views\Catalogos\Glosario\_Form.ascx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
     <Content Include="Views\Shared\HideEditorialForm.js.ascx" />
