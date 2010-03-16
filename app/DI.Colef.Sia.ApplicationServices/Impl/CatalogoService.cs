@@ -26,6 +26,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         readonly IRepository<DirigidoA> dirigidoARepository;
         readonly IRepository<Disciplina> disciplinaRepository;
         readonly IRepository<Editorial> editorialRepository;
+        readonly IRepository<Glosario> glosarioRepository;
         readonly IRepository<EstadoPais> estadoPaisRepository;
         readonly IRepository<Estado> estadoRepository;
         readonly IRepository<EstatusFormacionAcademica> estatusFormacionAcademicaRepository;
@@ -107,7 +108,8 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
                                IRepository<AreaTematica> areaTematicaRepository,
                                IRepository<TipoArchivo> tipoArchivoRepository,
                                IRepository<VinculacionAPyD> vinculacionAPyDRepository,
-                               IRepository<DireccionRegional> direccionRegionalRepository)
+                               IRepository<DireccionRegional> direccionRegionalRepository,
+                               IRepository<Glosario> glosarioRepository)
         {
             this.monedaRepository = monedaRepository;
             this.departamentoRepository = departamentoRepository;
@@ -137,6 +139,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             this.programaEstudioRepository = programaEstudioRepository;
             this.sectorRepository = sectorRepository;
             this.editorialRepository = editorialRepository;
+            this.glosarioRepository = glosarioRepository;
             this.tipoEstanciaRepository = tipoEstanciaRepository;
             this.nivelRepository = nivelRepository;
             this.organizacionRepository = organizacionRepository;
@@ -1555,6 +1558,28 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             editorial.ModificadoEl = DateTime.Now;
 
             editorialRepository.SaveOrUpdate(editorial);
+        }
+
+        public Glosario GetGlosarioById(int id)
+        {
+            return glosarioRepository.Get(id);
+        }
+
+        public Glosario[] GetAllGlosarios()
+        {
+            return ((List<Glosario>) OrderCatalog<Glosario>(x => x.Campo)).ToArray();
+        }
+
+        public void SaveGlosario(Glosario glosario)
+        {
+            if(glosario.Id == 0)
+            {
+                glosario.Activo = true;
+                glosario.CreadoEl = DateTime.Now;
+            }
+            glosario.ModificadoEl = DateTime.Now;
+
+            glosarioRepository.SaveOrUpdate(glosario);
         }
 
         public VinculacionAPyD GetVinculacionAPyDById(int id)

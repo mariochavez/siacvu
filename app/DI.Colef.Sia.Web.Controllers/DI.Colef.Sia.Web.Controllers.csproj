@@ -128,6 +128,7 @@
     <Compile Include="Catalogos\EditorialController.cs" />
     <Compile Include="Catalogos\EstatusFormacionAcademicaController.cs" />
     <Compile Include="Catalogos\FondoConacytController.cs" />
+    <Compile Include="Catalogos\GlosarioController.cs" />
     <Compile Include="Catalogos\MonedaController.cs" />
     <Compile Include="Catalogos\RamaController.cs" />
     <Compile Include="Catalogos\SubprogramaConacytController.cs" />
@@ -138,8 +139,11 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Mappers\IGlosarioMapper.cs" />
+    <Compile Include="Mappers\Impl\GlosarioMapper.cs" />
     <Compile Include="Models\BaseForm.cs" />
     <Compile Include="Models\ComboForm.cs" />
+    <Compile Include="Models\GlosarioForm.cs" />
     <Compile Include="Results\RedirectToAreaRouteResult.cs" />
     <Compile Include="Helpers\EntitiesNamesHelper.cs" />
     <Compile Include="Helpers\IdValueHelper.cs" />
