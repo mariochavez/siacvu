@@ -491,6 +491,14 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694455FC17D
 alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC944C3F9455FC17D]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FKC944C3F9455FC17D
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC944C3F9F1C29126]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FKC944C3F9F1C29126
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKF616EE83455FC17D]') AND parent_object_id = OBJECT_ID('TipoEstancias'))
 alter table TipoEstancias  drop constraint FKF616EE83455FC17D
 
@@ -2379,6 +2387,8 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'Glosarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Glosarios
+
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEstancias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEstancias
 
     if exists (select * from dbo.sysobjects where id = object_id(N'AutorInternoProductos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table AutorInternoProductos
@@ -3019,6 +3029,19 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
        ComprobanteEstanciaFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Glosarios (
+        Id INT IDENTITY NOT NULL,
+       Campo NVARCHAR(255) null,
+       Descripcion NVARCHAR(400) null,
+       Contexto NVARCHAR(255) null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5180,6 +5203,16 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
 
     alter table EstanciaAcademicaExternas 
         add constraint FKD3887694F1C29126 
+        foreign key (ModificadoPorFk) 
+        references Usuarios
+
+    alter table Glosarios 
+        add constraint FKC944C3F9455FC17D 
+        foreign key (CreadoPorFk) 
+        references Usuarios
+
+    alter table Glosarios 
+        add constraint FKC944C3F9F1C29126 
         foreign key (ModificadoPorFk) 
         references Usuarios
 

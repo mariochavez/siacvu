@@ -10,14 +10,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
 {
     public class GlosarioController : BaseController<Glosario, GlosarioForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IGlosarioMapper glosarioMapper;
 
         public GlosarioController(IUsuarioService usuarioService, ISearchService searchService, 
                                   ICatalogoService catalogoService, IGlosarioMapper glosarioMapper) 
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             this.glosarioMapper = glosarioMapper;
         }
 
@@ -25,7 +24,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Index()
         {
-            var data = CreateViewDataWithTitle(Title.Index);
+            var data = new GenericViewData<GlosarioForm>();
 
             var glosarios = catalogoService.GetAllGlosarios();
             data.List = glosarioMapper.Map(glosarios);
@@ -33,22 +32,20 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View(data);
         }
 
-        //[Authorize(Roles = "DGAA")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult New()
         {
-            var data = CreateViewDataWithTitle(Title.New);
-
-            data.Form = new GlosarioForm();
+            var data = new GenericViewData<GlosarioForm> {Form = new GlosarioForm()};
 
             return View(data);
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Edit(int id)
         {
-            var data = CreateViewDataWithTitle(Title.Edit);
+            var data = new GenericViewData<GlosarioForm>();
 
             var glosario = catalogoService.GetGlosarioById(id);
             var glosarioForm = glosarioMapper.Map(glosario);
@@ -60,7 +57,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return View();
         }
 
-        //[Authorize(Roles = "DGAA")]
+        [Authorize]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -71,7 +68,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             glosario.CreadoPor = CurrentUser();
             glosario.ModificadoPor = CurrentUser();
 
-            if(IsValidateModel(glosario, form, Title.New))
+            if(!IsValidateModel(glosario, form, Title.New))
             {
                 var glosarioForm = glosarioMapper.Map(glosario);
 
@@ -84,7 +81,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Glosario {0} ha sido creado", glosario.Campo));
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [CustomTransaction]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
@@ -108,7 +105,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return RedirectToIndex(String.Format("Glosario {0} ha sido modificado", glosario.Campo));
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Activate(int id)
@@ -123,7 +120,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Catalogos
             return Rjs(form);
         }
 
-        [Authorize(Roles = "DGAA")]
+        [Authorize]
         [CustomTransaction]
         [AcceptVerbs(HttpVerbs.Put)]
         public ActionResult Deactivate(int id)

@@ -9,13 +9,5 @@
 
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
-
-        public int ModelId { get; set; }
-        public int GlosarioId { get; set; }
-        public string GlosarioCampo { get; set; }
-
-        /*Fields for has many*/
-        public string Controller { get; set; }
-        public string IdName { get; set; }
     }
 }

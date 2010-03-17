@@ -1,11 +1,9 @@
 ﻿using System;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
-using SharpArch.Core.NHibernateValidator;
 
 namespace DecisionesInteligentes.Colef.Sia.Core
 {
-    [HasUniqueDomainSignature]
     public class Glosario : Entity, IBaseEntity
     {
         [NotNullNotEmpty]

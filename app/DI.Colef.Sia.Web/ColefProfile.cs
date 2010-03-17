@@ -58,6 +58,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web
 
             CreateCombosMaps();
 
+            Mapper.CreateMap<Glosario, GlosarioForm>()
+                .ForMember(d => d.Modificacion,
+                           o => o.ResolveUsing<ModificadoResolver>());
+
             Mapper.CreateMap<Usuario, UsuarioForm>()
                 .ForMember(d => d.FechaIngreso,
                            o => o.AddFormatter<StandardDateFormatter>())
