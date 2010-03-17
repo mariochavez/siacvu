@@ -15,7 +15,7 @@
     <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoObraTraducidas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
     <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
     <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoObraTraducidas, AutoresInternos = Model.AutorInternoObraTraducidas }); %>
-    <p>
+<%--    <p>
         <label>Investigador</label>
         <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
     </p>
@@ -29,7 +29,7 @@
         <label>Total de investigadores</label>
         <span id="totalautores" class="valor"><%=Html.Encode(Model.TotalAutores) %></span>
         <span class="cvu"></span>
-    </p>
+    </p>--%>
 </div>
 <p class="Capitulo_fields">
     <label>Tipo de libro</label>

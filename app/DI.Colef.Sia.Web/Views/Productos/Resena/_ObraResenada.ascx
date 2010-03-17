@@ -13,7 +13,7 @@
 <% Html.RenderPartial("_EditAutorInterno", new AutorForm { AutoresInternos = Model.AutorInternoResenas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_EditAutorExterno", new AutorForm { AutoresExternos = Model.AutorExternoResenas, ModelId = Model.Id, AutorSeOrdenaAlfabeticamente = Model.AutorSeOrdenaAlfabeticamente }); %>
 <% Html.RenderPartial("_AutorEmptyListMessage", new AutorForm { AutoresExternos = Model.AutorExternoResenas, AutoresInternos = Model.AutorInternoResenas }); %>
-<p>
+<%--<p>
     <label>Investigador</label>
     <span class="valor"><%=Html.Encode(Model.InvestigadorNombre) %></span>
 </p>
@@ -27,7 +27,8 @@
     <label>Total de investigadores</label>
     <span id="totalautores" class="valor"><%=Html.Encode(Model.TotalAutores) %></span>
     <span class="cvu"></span>
-</p>
+</p>--%>
+<p></p>
 
 <% Html.RenderPartial("_EditEditorial", Model); %>
     

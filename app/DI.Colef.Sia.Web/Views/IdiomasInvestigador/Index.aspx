@@ -14,10 +14,10 @@
         <h3>Agregar nuevo idioma del investigador</h3>
         <p>
             Puede agregar un nuevo idioma del investigador dentro de la lista de administraci&oacute;n
-            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo idioma del investigador</strong>.
+            presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<IdiomasInvestigadorController>(x => x.New(), "+ Nuevo idioma del investigador") %></span>
+            <span><%=Html.ActionLink<IdiomasInvestigadorController>(x => x.New(), "+ Nuevo") %></span>
         </div>
     </div>
 </asp:Content>

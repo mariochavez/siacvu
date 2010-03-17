@@ -23,7 +23,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.OrganoInterno) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<OrganoInternoController>(x => x.New(), "+ Nuevo órgano interno") %></span>
+            <span><%=Html.ActionLink<OrganoInternoController>(x => x.New(), "+ Nuevo") %></span>
         </div>
     </div>
 </asp:Content>

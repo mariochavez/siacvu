@@ -22,7 +22,7 @@
             <%=Html.ProductoListMessage(TipoProductoEnum.ParticipacionMedio) %>
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nueva participación en medio")%></span>
+            <span><%=Html.ActionLink<ParticipacionMedioController>(x => x.New(), "+ Nueva")%></span>
         </div>
     </div><!--end subcontenido-->
 </asp:Content>

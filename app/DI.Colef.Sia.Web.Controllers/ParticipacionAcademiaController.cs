@@ -17,7 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IParticipacionAcademiaMapper participacionAcademiaMapper;
         readonly IEditorialMapper editorialMapper;
         readonly ICustomCollection customCollection;
-        //readonly IInstitucionMapper institucionMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
 
         public ParticipacionAcademiaController(IParticipacionAcademiaService participacionAcademiaService,

@@ -13,11 +13,11 @@
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
 	    <h3>Agregar nuevo investigador</h3>
-		<p>Puede agregar un nuevo investigador dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo investigador</strong>.</p>
+		<p>Puede agregar un nuevo investigador dentro de la lista de administraci&oacute;n presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.</p>
 			
 		<div class="botonzon">
 		    <span>
-		        <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Nuevo investigador", new { title = "Nuevo investigador" })%>
+		        <%=Html.ActionLink<InvestigadorController>(x => x.New(), "+ Nuevo", new { title = "Nuevo investigador" })%>
 		    </span>
 		</div>
 	

@@ -630,6 +630,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                     form.UsuarioApellidoPaterno = CurrentInvestigador().Usuario.ApellidoPaterno;
                     form.UsuarioApellidoMaterno = CurrentInvestigador().Usuario.ApellidoMaterno;
 				}
+                form.PosicionCoautor = 1;
             } else
             {
                 form.AreasTematicas =

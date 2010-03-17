@@ -16,7 +16,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers
         readonly IAutorInternoResenaMapper autorInternoResenaMapper;
         readonly IAutorExternoResenaMapper autorExternoResenaMapper;
         readonly IEditorialProductoMapper<EditorialResena> editorialResenaMapper;
-        private Usuario usuarioResena = null;
+        private Usuario usuarioResena;
         
         public ResenaMapper(IRepository<Resena> repository,
                             ICatalogoService catalogoService, 
