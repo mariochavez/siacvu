@@ -14,10 +14,10 @@
         <h3>Agregar nuevo Glosario</h3>
         <p>
             Puede agregar un nuevo glosario dentro de la lista de administraci&oacute;n de 
-            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nueva Glosario</strong>.
+            catalogos presionando en el bot&oacute;n derecho de t&iacute;tulo <strong>+ Nuevo</strong>.
 		</p>
         <div class="botonzon">
-            <span><%=Html.ActionLink<GlosarioController>(x => x.New(), "+ Nuevo glosario") %></span>
+            <span><%=Html.ActionLink<GlosarioController>(x => x.New(), "+ Nuevo") %></span>
         </div>
     </div>
 </asp:Content>
@@ -58,14 +58,7 @@
 
                     <div class="elementobotones">
 						<p>
-							<span><%=Html.ActionLink<GlosarioController>(x => x.Edit(glosario.Id), "Editar") %></span>
-	                        <span>
-	                            <% if (glosario.Activo) { %>
-	                                <%=Html.ActionLink("Desactivar", "Deactivate", new { id = glosario.Id }, new { @class = "remote put" })%>
-	                            <% } else { %>
-	                                <%=Html.ActionLink("Activar", "Activate", new { id = glosario.Id }, new { @class = "remote put" })%>
-	                            <% } %>
-	                        </span>
+							<span><%=Html.ActionLink<GlosarioController>(x => x.Edit(glosario.Id), "Editar") %></span>	                        
 	                   	</p>
 					</div><!--end elementobotones-->
 		
