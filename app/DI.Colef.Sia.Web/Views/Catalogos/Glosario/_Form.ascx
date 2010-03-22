@@ -6,21 +6,18 @@
 
 <p>
     <label>Nombre del Campo</label>
-    <%=Html.TextArea("Campo", Model.Campo, new {@class = "input250-requerido", maxlenght = 40}) %>
-    <span>(Se debe ingresar un nombre)</span>
+    <%=Html.TextBox("Campo", Model.Campo, new {@class = "input420-bold-requerido", maxlenght = 40}) %>
     <%=Html.ValidationMessage("Campo") %>
 </p>
 
 <p>
-    <label>Nombre de la Descripcion</label>
-    <%=Html.TextArea("Descripcion", Model.Descripcion, new {@class = "input250-requerido", maxlenght = 40}) %>
-    <span>(Se debe ingresar un nombre)</span>
+    <label>Descripcion</label>
+    <%=Html.TextBox("Descripcion", Model.Descripcion, new { @class = "input420-bold-requerido", maxlenght = 40 })%>
     <%=Html.ValidationMessage("Descripcion") %>
 </p>
 
 <p>
-    <label>Nombre del Contexto</label>
-    <%=Html.TextArea("Contexto", Model.Contexto, new { @class = "input250-requerido", maxlenght = 40 })%>
-    <span>(Se debe ingresar un nombre)</span>
+    <label>Contexto</label>
+    <%=Html.TextBox("Contexto", Model.Contexto, new { @class = "input420-bold-requerido", maxlenght = 40 })%>
     <%=Html.ValidationMessage("Contexto")%>
 </p>
