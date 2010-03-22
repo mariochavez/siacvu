@@ -34,6 +34,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Bandeja()
+        {
             var data = new GenericViewData<HomeForm>
                            {
                                Title = "Sistema de administración académica",
