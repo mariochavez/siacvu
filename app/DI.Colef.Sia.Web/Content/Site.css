@@ -1,22 +1,59 @@
 ﻿body {
 	margin: 0;
-	font-family: Calibri, Helvetica, sans-serif;
-	background: #CDCCB2 url(./Images/Pagina-bg.gif) 0 0 repeat-x;
+	font-family: Verdana,Geneva,sans-serif;
+	background: #FDF4E5 none repeat scroll 0 0;
 }
 
 .body-sesion {
 	margin: 0;
-	font-family: Calibri, Helvetica, sans-serif;
+	font-family: Verdana,Geneva,sans-serif;
 	background: #CDCCB2;
+}
+
+#pagina {
+    margin:auto;
+    width:980px;
+}
+
+h1, h2, h3, h4, h5 {
+    margin:0;
+    padding:0;
 }
 
 /*---<cabecera>---*/
 
 #cabecera {	
-	width: 980px;
-	height: 70px;
-	margin: 0 auto;	
+	background-color:#BA5C2B;
+    background-image:url(images/colef-logo.gif);
+    background-position:right center;
+    background-repeat:no-repeat;
+    color:#FFFFFF;
+    height:70px;
+    width:980px;	
 }
+
+#cabecera p {
+    float:left;
+    font-size:18px;
+    height:70px;
+    line-height:70px;
+    margin:0 10px 0 0;
+    padding:0 0 0 40px;
+    width:320px;
+}
+
+#cabecera h3 {
+    color:#955942;
+    float:left;
+    font-size:32px;
+    font-weight:100;
+    line-height:70px;
+}
+
+#cabecera span {
+    color:#D29D61;
+}
+
 
 #titulo h1 {
 	float: left;
@@ -55,11 +92,19 @@
 }
 
 #seccion {
-	width: 980px;	
-	height: 60px;
-	margin: 0 auto;
-	background-color: #252525;
-	position: relative;
+    background-color:#955942;
+    float:left;
+    height:75px;
+    width:980px;
+}
+
+#seccion h1 {
+    color:#FFFFFF;
+    font-style:italic;
+    font-weight:100;
+    height:50px;
+    line-height:50px;
+    padding-left:40px;
 }
 
 #seccion-sesion {
@@ -79,9 +124,34 @@
 }
 
 #menu {
-    float: right;
-    margin: 0 10px 0 0;
-    height: 60px;
+    color:#FFFFFF;
+    display:inline;
+    float:right;
+    font-size:14px;
+    font-weight:bold;
+    height:25px;
+    line-height:25px;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0 10px 0 0;
+    text-align:right;
+}
+
+#menu li {
+    display:inline;
+}
+
+#menu li a {
+    color:#FFFFFF;
+    margin-left:4px;
+    margin-right:4px;
+    text-decoration:none;
+}
+
+#menu li a:hover {
+    color:#D29D61;
 }
 
 #menu ul {
@@ -338,8 +408,19 @@ a.active.trigger {
 /*---<end slide>---*/
 
 #cuerpo {
-	width: 980px;	
-	margin: 0 auto;
+    background-color:#FFFFFF;
+    background-image:url(images/contenido-bg.jpg);
+    background-position:center center;
+    background-repeat:repeat-y;
+    float:left;
+    margin-top:10px;
+    width:980px;
+}
+
+#tituloseccion {
+    background-color:#FFFFFF;
+    height:40px;
+    width:980px;
 }
 
 #introduccion {

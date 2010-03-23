@@ -1,4 +1,4 @@
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
+﻿<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Master Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewMasterPage" %>
@@ -32,37 +32,20 @@
 </head>
 
 <body>
-<div id="Pagina">
+<div id="pagina">
 	<div id="cabecera">
-		<div id="titulo">
-			<h1><img alt="Colegio de la Frontera Norte" src="<%=ResolveUrl("~/Content/Images/colef-logo.gif") %>" /></h1>
-		</div><!--end titulo-->
-		
-		<%Html.RenderPartial("_UserInfo"); %>		
-			
+		<p>Sistema de Informaci&oacute;n Acad&eacute;mica</p>
+        <h3>SIA<span>CVU</span></h3>
 	</div><!--end cabecera-->	
 	
 	<div id="seccion">
-		<div id="tituloseccion">
-		    <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
-		</div><!--end tituloseccion-->
-		
-		<div id="menu">
-			<ul>
-				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Bandeja de pendientes") %></li>	
-			</ul>
-		</div><!--end menu-->	
-			
+        <%Html.RenderPartial("_UserInfo"); %>
 	</div><!--end seccion-->
 
-	<div id="cuerpo">
-	
-	    <asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />	
-		
+	<div id="cuerpo">		
 		<div id="contenido">
+            <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-            			
-            <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
 		</div><!--end contenido-->			
 		
 		<div id="pie">
@@ -80,5 +63,11 @@
 	
 </div><!--end Pagina-->
 <%Html.RenderPartial("_menu"); %>
+
+<div style="display:none;">
+
+<asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />	
+<asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
+</div>
 </body>
 </html>
