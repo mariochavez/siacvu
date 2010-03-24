@@ -40,6 +40,7 @@
             <% using (Html.BeginForm("Create", "TesisDirigida", FormMethod.Post, new { @class = "remote" })){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "tesisDirigida", new { url = Url.Action("Glosario") })%>
                 
                 <h4>Participaci&oacute;n en tesis</h4>
                 <p>

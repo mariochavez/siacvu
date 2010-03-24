@@ -52,7 +52,8 @@
 	        <% using (Html.BeginForm("Update", "ArticuloDifusion", FormMethod.Post, new { @class = "remote" })){ %>
 	            <%=Html.AntiForgeryToken() %>
 	            <%=Html.Hidden("Id", Model.Form.Id) %>	            
-	            
+                <%=Html.Hidden("Contexto", "articuloDifusion", new { url = Url.Action("Glosario") })%>
+
                 <h4>Datos de la publicaci&oacute;n</h4>
                 <% Html.RenderPartial("_DatosPublicacion", Model.Form); %>
                 

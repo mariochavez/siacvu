@@ -1690,6 +1690,17 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
             areaInvestigacionRepository.SaveOrUpdate(areaInvestigacion);
         }
 
+        public string  GetGlosario(string contexto, string campo)
+        {
+            var criteria = DetachedCriteria.For<Glosario>()
+                .Add(Restrictions.Eq("Contexto",contexto))
+                .Add(Restrictions.Eq("Campo",campo));
+
+            var glosario = criteria.GetExecutableCriteria(Session).List<Glosario>();
+
+            return glosario.Count > 0 ? glosario[0].Descripcion : "Palabra no descrita en el glosario";
+        }
+
         #endregion
 
         protected IList<T> OrderCatalog<T>(Expression<Func<T, object>> expression)

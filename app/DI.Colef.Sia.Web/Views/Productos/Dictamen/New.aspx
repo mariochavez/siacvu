@@ -40,6 +40,7 @@
             <% using (Html.BeginForm("Create", "Dictamen", FormMethod.Post, new { @class = "remote" })){ %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "dictamen", new { url = Url.Action("Glosario") })%>
                 
                 <h4>Datos del dictamen</h4>
                 <% Html.RenderPartial("_DatosDictamen", Model.Form); %>

@@ -50,6 +50,7 @@
             <% using (Html.BeginForm("Update", "ParticipacionMedio", FormMethod.Post, new { @class = "remote" })){ %>
 		        <%=Html.AntiForgeryToken()%>
                 <%=Html.Hidden("Id", Model.Form.Id)%>
+                <%=Html.Hidden("Contexto", "participacionMedio", new { url = Url.Action("Glosario") })%>
                 
                 <h4>Datos de la participaci&oacute;n en medio</h4>
                 <% Html.RenderPartial("_DatosParticipacionMedio", Model.Form); %>
