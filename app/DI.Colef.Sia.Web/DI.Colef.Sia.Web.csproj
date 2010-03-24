@@ -185,6 +185,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\bg-ColumnaA.gif" />
+    <Content Include="Content\Images\bg-ColumnaB.gif" />
+    <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="NHibernate.config">
@@ -231,7 +234,6 @@
     <Content Include="Content\Images\boton-bg.gif" />
     <Content Include="Content\Images\botonzon-bg.gif" />
     <Content Include="Content\Images\caja-busqueda-bg.gif" />
-    <Content Include="Content\Images\colef-logo.gif" />
     <Content Include="Content\Images\contenido-bg.gif" />
     <Content Include="Content\Images\corner_left.png" />
     <Content Include="Content\Images\corner_right.png" />

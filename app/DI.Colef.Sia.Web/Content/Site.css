@@ -417,6 +417,13 @@ a.active.trigger {
     width:980px;
 }
 
+#bottomcuerpo {
+    background-color:#FFFFFF;
+    float:left;
+    height:20px;
+    width:980px;
+}
+
 #tituloseccion {
     background-color:#FFFFFF;
     height:40px;
@@ -514,9 +521,63 @@ a.active.trigger {
 
 #contenido {
 	width: 980px;
-	margin: 10px 0 0 0;
-	overflow: hidden;
-	background: #fff url(./Images/contenido-bg.gif) 0 0 repeat-y;
+}
+
+#ColumnaA {
+    float:left;
+    margin:auto;
+    width:490px;
+}
+
+.FondoMenuLadoA {
+    background-image:url(images/bg-ColumnaA.gif);
+    background-position:right top;
+    background-repeat:no-repeat;
+}
+
+#ColumnaB {
+    float:left;
+    margin:auto;
+    width:490px;
+}
+
+.FondoMenuLadoB {
+    background-image:url(images/bg-ColumnaB.gif);
+    background-position:left top;
+    background-repeat:repeat-y;
+}
+
+.modulo {
+    clear:both;
+    margin:auto 20px auto 25px;
+    padding:10px 10px 20px;
+    width:365px;
+}
+
+.modulo h1 {
+    color:#955942;
+    font-size:20px;
+    padding-left:40px;
+}
+
+.modulo ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:5px 0 0;
+    padding-left:40px;
+}
+
+.modulo li a {
+    color:#333333;
+    line-height:20px;
+    text-decoration:none;
+}
+
+.modulo li a:hover {
+    color:#955942;
+    font-weight: bold;
+    text-decoration:underline;
 }
 
 #textos {
@@ -1106,49 +1167,19 @@ a.minilistacancelar {
 /*---<pie>---*/
 
 #pie {
-	width: 980px;
-	height: 70px;
-	margin: 10px auto;
-	background-color: #252525;
+    background-color:#D29D61;
+    float:left;
+    height:35px;
+    margin:30px auto 10px;
+    width:980px;
 }
 
-#copy {
-	float: left;
-	width: 680px;
-}
-
-#copy p {
-	margin: 0;
-	padding: 25px 0 0 20px;
-	font-size: 10pt;
-	font-weight: bold;
-	line-height: 15pt;
-	color: #BA5C2B;
-}
-
-#powered {
-	float: left;
-	width: 300px;
-}
-
-#powered p {
-	margin: 0;
-	padding: 25px 20px 0 0;
-	font-size: 10pt;
-	font-weight: bold;
-	line-height: 15pt;
-	text-align: right;
-	color: #BA5C2B;
-}
-
-#powered p a {
-	font-weight: bold;
-	text-decoration: none;
-	color: #CDCCB2;
-}
-
-#powered p a:hover {
-	color: #fff;
+#pie p {
+    color:#FFFFFF;
+    font-size:10pt;
+    font-weight:bold;
+    margin:0;
+    padding:10px;
 }
 
 /* ***************************************************************************
