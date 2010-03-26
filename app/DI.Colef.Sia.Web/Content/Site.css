@@ -1152,3 +1152,23 @@ div.progress_bar div.progress {
 }
 /*.uploadifyQueueItem { }
 .uploadifyQueueItem img { }*/
+
+/* curriculum */
+
+#curriculum span {
+	margin: 0 5px; /* 10px */
+	font-size: 11pt;
+	line-height: 15pt;
+	color: #CDCCB2;
+}
+
+#curriculum span.titulovalor {
+	color:#555555;
+    margin: 0 1px;
+    font-weight:bold;
+}
+
+#curriculum span.valor {
+    color:#555555;
+    margin: 0 1px;
+}
