@@ -304,6 +304,7 @@ namespace DecisionesInteligentes.Colef.Sia.ApplicationServices
         Glosario GetGlosarioById(int id);
         Glosario[] GetAllGlosarios();
         void SaveGlosario(Glosario glosario);
+        string GetGlosario(string contexto, string campo);
 
 
         //Vinculacion APyD

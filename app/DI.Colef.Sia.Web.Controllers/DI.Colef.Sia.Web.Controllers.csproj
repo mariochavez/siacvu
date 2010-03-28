@@ -139,6 +139,7 @@
     <Compile Include="Collections\ICustomCollection.cs" />
     <Compile Include="Collections\Impl\CustomCollection.cs" />
     <Compile Include="EstanciaAcademicaExternaController.cs" />
+    <Compile Include="Helpers\CurriculumHelper.cs" />
     <Compile Include="Mappers\IGlosarioMapper.cs" />
     <Compile Include="Mappers\Impl\GlosarioMapper.cs" />
     <Compile Include="Models\BaseForm.cs" />

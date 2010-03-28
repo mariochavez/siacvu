@@ -41,6 +41,7 @@
             <% using (Html.BeginForm("Create", "Curso", FormMethod.Post, new { @class = "remote" })){ %>			
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "curso", new { url = Url.Action("Glosario") })%>
                 
                 <h4>Datos del curso</h4>
                 <p>
