@@ -30,43 +30,84 @@
     <div id="textos">
     
         <% Html.RenderPartial("_Message"); %>
-	    <div id="forma">
+	    <div id="curriculum">
 	    
             <div id="campos">
 
-                <h4>Informaci&oacute;n personal</h4>
+                <h4><center>CURRICULUM VITAE</center></h4>
 		        <p>
-			        <span class="valor"><%=Html.Encode(Model.Form.NombreCompleto) %></span><br/>
-			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].GradoAcademicoNombre) %> en <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].Programa) %></span><br/>
-			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionNombre)%>, <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionPaisNombre)%></span><br/>
-			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.CategoriasInvestigador[0].CategoriaNombre) %></span><br/>
-			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNIsInvestigador[0].SNINombre) %></span><br/>
-			        <span class="valor">El Colegio de la Frontera Norte</span><br/>
-			        <span class="valor"><%=Html.Encode(Model.Form.CargosInvestigador[0].DepartamentoNombre) %></span><br/>
-			        <span class="valor"><%=Html.Encode(Model.Form.CargosInvestigador[0].SedeDireccionRegionalNombre) %></span><br/>
-			        <span class="valor">Sede: <%=Html.Encode(Model.Form.CargosInvestigador[0].SedeNombre) %></span><br/>
-			        <%if (Model.Form.CargosInvestigador[0].SedeNombre.Contains("Tijuana")) {%>
-			            <span class="valor">Km 18.5 Carretera Escénica Tijuana - Ensenada, San Antonio del Mar,</span><br/>
-			            <span class="valor">Tijuana, Baja California, México. C.P. 22560</span><br/>
-			            <span class="valor">P.O. Box "L", Chula Vista, CA. 91912-1257, USA</span><br/>
-			        <% } %>
-			        <%if (Model.Form.CargosInvestigador[0].SedeNombre.Contains("Ciudad Juárez")) {%>
-			            <span class="valor">Av. Insurgentes No. 3708, Col. Los Nogales. Ciudad Juárez, Chihuahua,</span><br/>
-			            <span class="valor">México. C.P. 32350</span><br/>
-			            <span class="valor">PMB 6248, Edgemere 761 El Paso Texas 79925. USA</span><br/>
-			        <% } %>
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.NombreCompleto) %></span><br />
+			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].GradoAcademicoNombre) %> en <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].Programa) %></span><br />
+			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionNombre)%>, <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionPaisNombre)%></span><br />
+			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.CategoriasInvestigador[0].CategoriaNombre) %></span><br />
+			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNIsInvestigador[0].SNINombre) %></span><br />
+                    <br />
+			        <span class="titulovalor">El Colegio de la Frontera Norte</span><br/>
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].DepartamentoNombre) %></span><br/>
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].SedeDireccionRegionalNombre) %></span><br/>
+			        <span class="titulovalor">Sede: <%=Html.Encode(Model.Form.CargosInvestigador[0].SedeNombre) %></span><br/>
 			        
-			        
-			        
-			        
-			        
-			        <%if (Model.Form.CargosInvestigador[0].SedeNombre.Contains("")) {%>
-			            <span class="valor"></span><br/>
-			            <span class="valor"></span><br/>
-			            <span class="valor"></span><br/>
-			        <% } %>
-			        
-		        </p>
+                    <%=Html.InvestigadorSede(Model.Form.CargosInvestigador[0].SedeNombre)%><br />
+
+                    <span class="titulovalor">&Aacute;reas de t&eacute;matica: </span><span class="valor"><%=Html.Encode(Model.Form.AreaTematicaNombre) %></span><br />
+                    <span class="titulovalor">Temas de inter&eacute;s: </span><span class="valor"></span><br />
+                    <br />
+                 </p>
+
+                 <p>   
+                    <span class="titulovalor">Publicaciones</span><br />
+                    <br />
+                 </p>
+
+                 <hr />
+
+                 <p>
+                    <span class="titulovalor">Docencia</span><br />
+                    <br />
+                 </p>
+                 
+                 <hr />
+                
+                <p>
+                    <span class="titulovalor">Tesis dirigidas</span><br />
+                    <br />
+                </p>
+
+                <hr />
+
+                <p>
+                    <span class="titulovalor">Movilidad Académica</span><br />
+                    <br />
+                </p>
+
+                <hr />
+
+                <p>
+                    <span class="titulovalor">Participación en Órganos Colegiados (sólo las externas)</span><br />
+                    <br />
+                </p>
+
+                <hr />
+
+                <p>
+                    <span class="titulovalor">Distinciones académicas</span><br />
+                    <br />
+                </p>
+
+                <hr />
+
+                <p>
+                    <span class="titulovalor">Proyectos de Investigación</span><br />
+                    <br />
+                </p>
+
+                <hr />
+
+                <p>
+                    <span class="titulovalor">Eventos Académicos</span><br />
+                    <br />
+                </p>
+		        
 	            
                 <p class="submit">
                     <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>

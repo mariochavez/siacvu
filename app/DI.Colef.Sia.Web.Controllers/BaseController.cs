@@ -161,6 +161,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return RedirectToEdit(searchId);
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public virtual ActionResult Glosario(string contexto, string campo)
+        {
+            return Content(catalogoService.GetGlosario(contexto, campo));
+        }
+
         [Authorize()]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ChangeLineaTematica(int select)

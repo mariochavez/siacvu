@@ -10,6 +10,7 @@ function setupDocument() {
     DateTimePicker.setup();
     SubForm.setup();
     RemoteLinkV2.setup();
+    Glosario.setup();
 
     $('div.elementodescripcion:odd').addClass('elementolista-dos');
     setupSublistRows();
@@ -121,6 +122,30 @@ function deleteElement(html, selectorString, listName) {
         });
     } else {
         $(listName + ' div:first').before(html);
+    }
+}
+
+var Glosario = {
+    setup: function () {
+        var contexto = $('#Contexto').val();
+        var url = $('#Contexto').attr('url');
+        $('#forma  p  label').each(function () {
+            $(this).qtip({
+                content: {
+                    url: url,
+                    data: {
+                        contexto: contexto,
+                        campo: $(this).text()
+                    }
+                },
+                style: {
+                    background: '#FAFAD2',
+                    border: { color: 'orange', width: 3, radius: 5 },
+                    tip: { corner: 'leftTop' }
+
+                }
+            });
+        });
     }
 }
 

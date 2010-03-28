@@ -1,4 +1,4 @@
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
+﻿<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers"%>
 <%@ Master Language="C#" AutoEventWireup="true" 
     Inherits="System.Web.Mvc.ViewMasterPage" %>
@@ -22,6 +22,7 @@
     <script src="<%= ResolveUrl("~") %>Scripts/swfobjects.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/jquery.uploadify.v2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/Upload.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= ResolveUrl("~") %>Scripts/jquery.qtip-1.0.0-rc3.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/Application.js" type="text/javascript" charset="utf-8"></script>
     <script src="<%= ResolveUrl("~") %>Scripts/ProductsSetup.js" type="text/javascript" charset="utf-8"></script>
 
