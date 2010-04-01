@@ -64,7 +64,6 @@
                 
                   <% Html.RenderPartial("_AutorEntry", Model.Form); %>
                 </span>
-	            
 	            <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
                         FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
@@ -84,6 +83,8 @@
                     </div>
                     <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
                 </div>
+	            <% Html.RenderPartial("_EditArchivo", new ArchivoForm()); %>
+
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
 				
 				<% Html.RenderPartial("_ProgressBar"); %>
@@ -97,7 +98,7 @@
 	</div><!--end textos-->
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         setupDocument();
 
         articuloSetup();
@@ -106,12 +107,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
-
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteArticulo_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 

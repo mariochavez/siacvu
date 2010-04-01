@@ -2,7 +2,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <div class="minilista" id="fileQueue">
-    <h5>Archivo</h5>
+    <h5>Documentos y/o comprobantes</h5>
 
     <% if (Model.Archivos != null && Model.Archivos.Length > 0) { %>
         <% for(int i = 0; i < Model.Archivos.Length; i++) { %>
@@ -27,12 +27,6 @@
 </div><!--end minilista-->
 
 <div>
-	Subir archivos <input type="file" name="uploadify" id="uploadify" />
+	<input type="file" name="uploadify" id="uploadify" />
 </div>
 
-<div class="progress_container">
-	<div class="status_message"></div>
-	<div class="progress_bar">
-		<div class="progress" style="width: 0px;"></div>
-	</div>
-</div>

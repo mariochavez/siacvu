@@ -1047,6 +1047,7 @@ a.editabusqueda {
     color: #BA5C2B;
     font-weight:bold;
     text-decoration: none;
+    padding: 0px 2px 0px;
 }
 
 .sublista h6 a:hover, .sublista-dos h6 a.selected {

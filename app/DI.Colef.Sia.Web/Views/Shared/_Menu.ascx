@@ -51,15 +51,17 @@
             <li><%=Html.ActionLinkForAreas<EventoController>(x => x.Index(), "Organizaci&oacute;n y participaci&oacute;n de eventos acad&eacute;micos")%></li>
         </ul>
     </div>
-
+<% if(Page.User.IsInRole("DGAA")) { %>
     <div class="modulo left">
     
-        <h1>Difusi&oacute;n del conocimiento</h1>
+        <h1>Mantenimiento</h1>
         <ul>
-            <li><%=Html.ActionLinkForAreas<ParticipacionMedioController>(x => x.Index(), "Difusi&oacute;n del conocimiento")%></li>
+            <li><%=Html.ActionLinkForAreas<RevistaPublicacionController>(x => x.Index(), "Revistas")%></li>
+			<li><%=Html.ActionLinkForAreas<InstitucionController>(x => x.Index(), "Instituciones")%></li>
+			<li><%=Html.ActionLinkForAreas<EditorialController>(x => x.Index(), "Editoriales")%></li>
         </ul>
     </div>
-
+<% } %>
 </div>
 
 <div class="FondoMenuLadoB" id="ColumnaB">
