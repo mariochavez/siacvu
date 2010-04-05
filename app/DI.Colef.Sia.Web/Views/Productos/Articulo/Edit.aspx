@@ -100,6 +100,7 @@
                     </div>
                     <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
                 </div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 
                 <% Html.RenderPartial("_ProgressBar"); %>
@@ -122,12 +123,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteArticulo_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 

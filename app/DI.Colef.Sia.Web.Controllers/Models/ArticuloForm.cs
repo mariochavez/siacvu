@@ -2,8 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloForm : BaseForm
     {
-        public int Id { get; set; }
-
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
         public string Volumen { get; set; }
@@ -56,7 +54,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public CoautorExternoProductoForm[] CoautorExternoArticulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoArticulos { get; set; }
-        public ArchivoForm[] ArchivoArticulos { get; set; }
+        public ArchivoForm[] ArchivosArticulo { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosArticulo; }
+        }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

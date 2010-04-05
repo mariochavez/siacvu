@@ -135,6 +135,16 @@ alter table Archivos  drop constraint FK3EA477E3F1C29126
 
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK985F0C9F8034FBE5]') AND parent_object_id = OBJECT_ID('ArchivoArticulo'))
+alter table ArchivoArticulo  drop constraint FK985F0C9F8034FBE5
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK985F0C9FFAA5EC92]') AND parent_object_id = OBJECT_ID('ArchivoArticulo'))
+alter table ArchivoArticulo  drop constraint FK985F0C9FFAA5EC92
+
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC297AC0799B907D0]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
 alter table CursoInvestigadores  drop constraint FKC297AC0799B907D0
 
@@ -612,6 +622,16 @@ alter table EstanciaAcademicaExternas  drop constraint FKD3887694455FC17D
 
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKD3887694F1C29126]') AND parent_object_id = OBJECT_ID('EstanciaAcademicaExternas'))
 alter table EstanciaAcademicaExternas  drop constraint FKD3887694F1C29126
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC944C3F9455FC17D]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FKC944C3F9455FC17D
+
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC944C3F9F1C29126]') AND parent_object_id = OBJECT_ID('Glosarios'))
+alter table Glosarios  drop constraint FKC944C3F9F1C29126
 
 
 
@@ -2934,6 +2954,8 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoArticulo
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CursoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CursoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'VinculacionAPyDes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table VinculacionAPyDes
@@ -2961,6 +2983,8 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
     if exists (select * from dbo.sysobjects where id = object_id(N'ObraTraducidas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ObraTraducidas
 
     if exists (select * from dbo.sysobjects where id = object_id(N'EstanciaAcademicaExternas') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table EstanciaAcademicaExternas
+
+    if exists (select * from dbo.sysobjects where id = object_id(N'Glosarios') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Glosarios
 
     if exists (select * from dbo.sysobjects where id = object_id(N'TipoEstancias') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table TipoEstancias
 
@@ -3306,6 +3330,12 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
        primary key (Id)
     )
 
+    create table ArchivoArticulo (
+        Archivo INT not null,
+       ArticuloFk INT null,
+       primary key (Archivo)
+    )
+
     create table VinculacionAPyDes (
         Id INT IDENTITY NOT NULL,
        Nombre NVARCHAR(250) null,
@@ -3572,6 +3602,19 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
        ComprobanteEstanciaFk INT null,
        DepartamentoFk INT null,
        SedeFk INT null,
+       CreadoPorFk INT null,
+       ModificadoPorFk INT null,
+       primary key (Id)
+    )
+
+    create table Glosarios (
+        Id INT IDENTITY NOT NULL,
+       Campo NVARCHAR(255) null,
+       Descripcion NVARCHAR(400) null,
+       Contexto NVARCHAR(255) null,
+       CreadoEl DATETIME null,
+       ModificadoEl DATETIME null,
+       Activo BIT null,
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
@@ -5123,6 +5166,16 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
         add constraint FKD05EF07F977C6E8C 
         foreign key (PaisFk) 
         references Paises
+
+    alter table ArchivoArticulo 
+        add constraint FK985F0C9F8034FBE5 
+        foreign key (Archivo) 
+        references Archivos
+
+    alter table ArchivoArticulo 
+        add constraint FK985F0C9FFAA5EC92 
+        foreign key (ArticuloFk) 
+        references Articulos
 
     alter table OrganoInternos 
         add constraint FKE914ED0E9BC08F5B 

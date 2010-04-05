@@ -22,7 +22,7 @@
         if (message === undefined) message = 'Trabajando ...';
         return this.each(function() {
             //$(this).removeLoading().parent().after(new Loading().html());
-            $('#Pagina').after(new Loading().html(message));
+            $('#pagina').after(new Loading().html(message));
         });
     }
 })(jQuery);

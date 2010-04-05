@@ -805,9 +805,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected Archivo MapArchivo()
         {
+            return MapArchivo<Archivo>();
+        }
+
+        protected T MapArchivo<T>() where T:Archivo, new()
+        {
             var file = Request.Files["fileData"];
 
-            var archivo = new Archivo
+            var archivo = new T
             {
                 Activo = true,
                 Contenido = file.ContentType,

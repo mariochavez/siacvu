@@ -88,6 +88,12 @@
                     'tipoArchivo': 1//$(uploadify).attr('id').split('_')[0]
                 });
 
+        var queueSize = $('#uploadify').uploadifySettings('queueSize');
+        if (queueSize == 0) {
+            window.location.href = $('#regresar').attr('href');
+            return;
+        }
+
         $('.progress_container').show();
         $('#progressbar').progressbar({ value: 0 });
         $('#uploadify').uploadifyUpload();
@@ -111,6 +117,8 @@
         $('#fileQueue img').each(function () {
             $(this).show();
         });
+
+        window.location.href = $('#regresar').attr('href');
     },
     onError: function (event, queueID, fileObj, errorObj) {
         alert('Error');

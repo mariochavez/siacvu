@@ -107,6 +107,14 @@ alter table Archivos  drop constraint FK3EA477E3455FC17D
 alter table Archivos  drop constraint FK3EA477E3F1C29126
 
 
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK985F0C9F8034FBE5]') AND parent_object_id = OBJECT_ID('ArchivoArticulo'))
+alter table ArchivoArticulo  drop constraint FK985F0C9F8034FBE5
+
+
+    if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FK985F0C9FFAA5EC92]') AND parent_object_id = OBJECT_ID('ArchivoArticulo'))
+alter table ArchivoArticulo  drop constraint FK985F0C9FFAA5EC92
+
+
     if exists (select 1 from sys.objects where object_id = OBJECT_ID(N'[FKC297AC0799B907D0]') AND parent_object_id = OBJECT_ID('CursoInvestigadores'))
 alter table CursoInvestigadores  drop constraint FKC297AC0799B907D0
 
@@ -2359,6 +2367,8 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
 
     if exists (select * from dbo.sysobjects where id = object_id(N'Archivos') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table Archivos
 
+    if exists (select * from dbo.sysobjects where id = object_id(N'ArchivoArticulo') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table ArchivoArticulo
+
     if exists (select * from dbo.sysobjects where id = object_id(N'CursoInvestigadores') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table CursoInvestigadores
 
     if exists (select * from dbo.sysobjects where id = object_id(N'VinculacionAPyDes') and OBJECTPROPERTY(id, N'IsUserTable') = 1) drop table VinculacionAPyDes
@@ -2741,6 +2751,12 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
        CreadoPorFk INT null,
        ModificadoPorFk INT null,
        primary key (Id)
+    )
+
+    create table ArchivoArticulo (
+        Archivo INT not null,
+       ArticuloFk INT null,
+       primary key (Archivo)
     )
 
     create table CursoInvestigadores (
@@ -4725,6 +4741,16 @@ alter table ArticuloDifusiones  drop constraint FK58CB3C00F1C29126
         add constraint FK3EA477E3F1C29126 
         foreign key (ModificadoPorFk) 
         references Usuarios
+
+    alter table ArchivoArticulo 
+        add constraint FK985F0C9F8034FBE5 
+        foreign key (Archivo) 
+        references Archivos
+
+    alter table ArchivoArticulo 
+        add constraint FK985F0C9FFAA5EC92 
+        foreign key (ArticuloFk) 
+        references Articulos
 
     alter table CursoInvestigadores 
         add constraint FKC297AC0799B907D0 

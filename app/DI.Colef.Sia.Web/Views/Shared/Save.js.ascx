@@ -14,7 +14,7 @@ $('textarea').removeClass('input-validation-error');
 $('select').removeClass('input-validation-error');
 
 if($('.fileUpload').length > 0) {
-    Upload.startUpload();
+    UploadMulti.upload();
 } else {
     window.location.href = $('#regresar').attr('href');
 }

@@ -41,5 +41,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         {
             get { throw new NotSupportedException(); }
         }
+
+        public virtual ArchivoForm[] Archivos
+        {
+            get { throw new NotSupportedException(); }
+        }
     }
 }

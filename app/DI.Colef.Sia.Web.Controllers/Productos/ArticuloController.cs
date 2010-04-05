@@ -157,25 +157,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddFile(FormCollection form)
         {
-            //var id = Convert.ToInt32(form["Id"]);
-            //var articulo = articuloService.GetArticuloById(id);
+            var id = Convert.ToInt32(form["Id"]);
+            var articulo = articuloService.GetArticuloById(id);
 
-            //var archivo = MapArchivo();
+            var archivo = MapArchivo<ArchivoArticulo>();
 
-            //if (form["TipoArchivo"] == "Aceptado")
-            //{
-            //    archivo.TipoProducto = articulo.TipoProducto;
-            //    archivoService.Save(archivo);
-            //    articulo.ComprobanteAceptado = archivo;
-            //}
-            //else if (form["TipoArchivo"] == "ComprobanteArticulo")
-            //{
-            //    archivo.TipoProducto = articulo.TipoProducto;
-            //    archivoService.Save(archivo);
-            //    articulo.ComprobanteArticulo = archivo;
-            //}
-
-            //articuloService.SaveArticulo(articulo);
+            articulo.AddArchivo(archivo);
+            articuloService.SaveArticulo(articulo);
 
             return Content("Uploaded");
         }

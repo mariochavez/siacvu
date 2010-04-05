@@ -83,7 +83,7 @@
                     </div>
                     <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
                 </div>
-	            <% Html.RenderPartial("_EditArchivo", new ArchivoForm()); %>
+	            <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
 				
