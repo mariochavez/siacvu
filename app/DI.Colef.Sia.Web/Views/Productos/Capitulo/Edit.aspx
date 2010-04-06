@@ -104,22 +104,7 @@
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
 
-                <div id="obra_field">
-                <p>
-                    <label>Capitulo publicado</label>
-                    <span id="span_comprobante_documento" class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCapituloNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCapituloId), Model.Form.ComprobanteCapituloNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteCapitulo_DocumentoProbatorio" id="ComprobanteCapitulo_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                </div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
                 
@@ -143,12 +128,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteCapitulo_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 </asp:Content>

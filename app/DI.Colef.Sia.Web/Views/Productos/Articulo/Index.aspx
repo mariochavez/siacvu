@@ -7,14 +7,16 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
+    <div id="tituloseccion">
     <h2>
         <%=Html.ProductoListTitle(TipoProductoEnum.Articulo) %>
     </h2>
+    </div>
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
     <div id="subcontenido">
-        <h3>Agregar 
+        <h3> 
             <%=Html.ProductoListSubTitle(TipoProductoEnum.Articulo) %>
         </h3>
         <p>

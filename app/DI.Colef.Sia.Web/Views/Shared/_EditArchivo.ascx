@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<DecisionesInteligentes.Colef.Sia.Web.Controllers.Models.BaseForm>" %>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
-<div class="minilista" id="fileQueue">
+<div class="minilista fileUpload" id="fileQueue">
     <h5>Documentos y/o comprobantes</h5>
 
     <% if (Model.Archivos != null && Model.Archivos.Length > 0) { %>

@@ -114,13 +114,15 @@ h1, h2, h3, h4, h5 {
 }
 
 #tituloseccion h2 {
-	float: left;
-	margin: 0;
-	padding: 15px 0 0 20px;
-	font-size: 16pt;
-	text-transform: uppercase;
-	letter-spacing: 1pt;
-	color: #fff;
+    background-color:#D29D61;
+    color:#7C2C31;
+    float:left;
+    font-size:16pt;
+    font-weight:100;
+    margin-left:40px;
+    padding:5px 14px;
+    text-align:center;
+    width:600px;
 }
 
 #menu {
@@ -431,8 +433,10 @@ a.active.trigger {
 }
 
 #introduccion {
-	margin: 10px 0 0 0;
-	background-color: #BA5C2B;
+	background-color:#BA5C2B;
+    margin:auto;
+    text-align:center;
+    width:800px;
 }
 
 #introduccion h3 {
@@ -452,10 +456,11 @@ a.active.trigger {
 	color: #fff;
 }
 
-#subcontenido {
-	width: 980px;
+#subcontenido 
+{
+    width: 800px;
+	margin:auto;
 	overflow: hidden;
-	margin: 10px 0 0 0;
 	background: #BA5C2B url(./Images/subcontenido-bg.gif) 0 0 repeat-y;
 }
 
@@ -470,7 +475,7 @@ a.active.trigger {
 
 #subcontenido p {
 	float: left;
-	width: 650px;
+	width: 645px;
 	margin: 0;
 	padding: 10px 20px;
 	font-size: 11pt;
@@ -483,7 +488,7 @@ a.active.trigger {
 .botonzon {
 	float: left;
 	margin: 6px 0 0 0;
-	width: 290px;
+	width: 110px;
 	height: 28px;
 	text-align: center;
 }
@@ -581,8 +586,8 @@ a.active.trigger {
 }
 
 #textos {
-	float: left;
-	width: 680px;
+	margin:10px;
+    width:960px;
 }
 
 /*---<mensaje-error>---*/
@@ -1127,6 +1132,7 @@ a.minilistacancelar {
 	font-size: 11pt;
 	line-height: 15pt;
 	color: #555;
+	margin:0 0 0 170px !important;
 }
 
 .submit a {
@@ -1240,6 +1246,7 @@ a.minilistacancelar {
 div.progress_container {
   padding: 10px 0 10px 130px;
   display: none;
+  width: 600px;
 }
 div.status_message {
   font-size: 12px;

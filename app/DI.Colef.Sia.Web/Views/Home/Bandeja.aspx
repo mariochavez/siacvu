@@ -12,17 +12,8 @@
 </asp:Content>
 
 <asp:Content ID="introductionContent" ContentPlaceHolderID="IntroduccionPlaceHolder" runat="server">
-    <div id="subcontenido">
-	    <h3>Panel de administraci&oacute;n</h3>
-		<p>Para crear o modificar productos utilice el men&uacute; de la parte superior llamado <strong>Productos</strong>.</p>
-		
-		<!-- 	
-		<div class="botonzon">
-		    <span>
-		        
-		    </span>
-		</div>
-	    -->
+    <div id="introduccion">
+		<p>Listado de productos reghistrados, pero que a&uacute;n se encuentran en proceso.</p>
 	</div><!--end subcontenido-->
 </asp:Content>
 

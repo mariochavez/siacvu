@@ -59,15 +59,7 @@
                 
                 <h4>Calendario del proyecto</h4>
                 <% Html.RenderPartial("_CalendarioProyecto", Model.Form); %>
-                <p>
-                    <label>Documento probatorio</label>
-                    <span id="span_comprobantecalendario_documento" class="valor">&nbsp;</span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteCalendarioProyecto_DocumentoProbatorio" id="ComprobanteCalendarioProyecto_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="ComprobanteCalendario_FileQueue" style="display:none;" rel="#span_comprobantecalendario_documento"></div>
-                
+              
                 <h4>Fuentes de financiamiento</h4>
                 <% Html.RenderPartial("_FuenteFinanciamiento", Model.Form); %>
                 
@@ -82,16 +74,7 @@
                 <h4>Tem&aacute;tica del proyecto</h4>
                 <% Html.RenderPartial("_TematicaProyecto", Model.Form); %>
 
-                <div id="obra_field">
-                <p>
-                    <label>Proyecto publicado</label>
-                    <span id="span_comprobantetematica_documento" class="valor">&nbsp;</span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteTematicaProyecto_DocumentoProbatorio" id="ComprobanteTematicaProyecto_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="ComprobanteTematica_FileQueue" style="display:none;" rel="#span_comprobantetematica_documento"></div>
-                </div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <% Html.RenderPartial("_ProductoAcademicoContemplado", Model.Form); %>
@@ -129,12 +112,10 @@
             var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
             var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
             var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+            var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
             var action = '<%=Url.Action("AddFile") %>';
 
-            UploadFile.setup('#ComprobanteCalendarioProyecto_DocumentoProbatorio', 'ComprobanteCalendario_FileQueue',
-            uploader, cancelImg, action, auth);
-            UploadFile.setup('#ComprobanteTematicaProyecto_DocumentoProbatorio', 'ComprobanteTematica_FileQueue',
-            uploader, cancelImg, action, auth);
+            UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
         });
     </script>
 

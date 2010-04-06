@@ -23,26 +23,6 @@
         <span>(Formato yyyy)</span>
         <%=Html.ValidationMessage("FechaPublicacion")%>
     </p>
-    <div id="documentoprobatorio_field">        
-        <p>
-            <label>Carta de aceptaci&oacute;n</label>
-            <span id="span_aceptado_documento" class="valor">
-                <% if(Model.ModelId != 0){ %>
-                    <%if(!String.IsNullOrEmpty(Model.ComprobanteAceptadoNombre)) { %> 
-	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobanteAceptadoId), Model.ComprobanteAceptadoNombre, new { target = "_blank" })%> 
-	                <% }else{ %>
-	                    &nbsp;
-	                <% } %>
-                <% } else { %>
-                    &nbsp;
-                <% } %>
-            </span><br />
-        </p>
-        <div style="padding: 0 0 10px 20px">
-            <input type="file" name="Aceptado_DocumentoProbatorio" id="Aceptado_DocumentoProbatorio" class="fileUpload"/>
-        </div>
-    </div> 
-    <div id="Aceptado_FileQueue" style="display:none;" rel="#span_aceptado_documento"></div>
 <% } else { %>
     <p>
         <label>Estatus de la publicaci&oacute;n</label>
@@ -61,18 +41,4 @@
             <span>Formato (yyyy)</span>
         </p>
     <% } %>
-    <p>
-        <label>Carta de aceptaci&oacute;n</label>
-        <span class="valor">
-            <% if(Model.ModelId != 0){ %>
-                <%if(!String.IsNullOrEmpty(Model.ComprobanteAceptadoNombre)) { %> 
-                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.ComprobanteAceptadoId), Model.ComprobanteAceptadoNombre, new { target = "_blank" })%> 
-                <% }else{ %>
-                    &nbsp;
-                <% } %>
-            <% } else { %>
-                &nbsp;
-            <% } %>
-        </span><br />
-    </p>
 <% } %>

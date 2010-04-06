@@ -44,8 +44,11 @@
 	</div><!--end seccion-->
 
 	<div id="cuerpo">
-        <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />	
+        <div id="tituloseccion">
+            <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
+        </div>	
 		<div id="contenido">
+            <asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
             <div id="bottomcuerpo"> </div>
 		</div><!--end contenido-->				
@@ -59,8 +62,6 @@
 </div><!--end Pagina-->
 
 <div style="display:none;">
-
-<asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />	
 <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
 </div>
 </body>
