@@ -1,8 +1,7 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class EstanciaAcademicaExternaForm
+    public class EstanciaAcademicaExternaForm : BaseForm
     {
-		public int Id { get; set; }
 		public string LineasInvestigacion { get; set; }
         public string Actividades { get; set; }
         public string Logros { get; set; }
@@ -29,15 +28,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int Departamento { get; set; }
         public int DepartamentoId { get; set; }
 
-        public int ComprobanteEstanciaId { get; set; }
-        public string ComprobanteEstanciaNombre { get; set; }
-
         public string SedeDireccionRegionalNombre { get; set; }
 
         public string SedeNombre { get; set; }
         public int SedeId { get; set; }
         public int Sede { get; set; }
+        public ArchivoForm[] ArchivosEstanciaAcademicaExterna { get; set; }
 
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosEstanciaAcademicaExterna; }
+        }
         /* Catalogos */
         public GradoAcademicoForm[] GradosAcademicos { get; set; }
         public TipoEstanciaForm[] TiposEstancias { get; set; }

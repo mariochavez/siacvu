@@ -15,10 +15,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class ReporteController : BaseController<Reporte, ReporteForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoReporteMapper coautorExternoReporteMapper;
         readonly ICoautorInternoReporteMapper coautorInternoReporteMapper;
-        readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
@@ -28,7 +26,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IProyectoService proyectoService;
         readonly ICustomCollection customCollection;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IInstitucionMapper institucionMapper;
         readonly IInstitucionReporteMapper institucionReporteMapper;
 
         public ReporteController(IReporteService reporteService,
@@ -51,8 +48,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                  IInstitucionReporteMapper institucionReporteMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
-            this.archivoService = archivoService;
+            base.catalogoService = catalogoService;
+            base.institucionMapper = institucionMapper;
             this.customCollection = customCollection;
             this.reporteService = reporteService;
             this.reporteMapper = reporteMapper;
@@ -65,7 +62,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.proyectoService = proyectoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.institucionMapper = institucionMapper;
             this.institucionReporteMapper = institucionReporteMapper;
         }
 
@@ -221,36 +217,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var reporte = reporteService.GetReporteById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = reporte.TipoProducto;
-                archivoService.Save(archivo);
-                reporte.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteReporte")
-            {
-                archivo.TipoProducto = reporte.TipoProducto;
-                archivoService.Save(archivo);
-                reporte.ComprobanteReporte = archivo;
-            }
+            var archivo = MapArchivo<ArchivoReporte>();
+            reporte.AddArchivo(archivo);
 
             reporteService.SaveReporte(reporte);
 
@@ -662,8 +630,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
 
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,

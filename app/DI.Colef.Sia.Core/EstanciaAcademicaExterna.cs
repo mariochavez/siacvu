@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -10,7 +11,25 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 80; // 80 Representa Libro
 
+        public EstanciaAcademicaExterna()
+        {
+            ArchivosEstanciaAcademicaExterna = new List<ArchivoEstanciaAcademicaExterna>();
+        }
+
         public virtual int TipoProductoLibro { get { return tipoProducto; } }
+        
+        public virtual IList<ArchivoEstanciaAcademicaExterna> ArchivosEstanciaAcademicaExterna { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosEstanciaAcademicaExterna.Add((ArchivoEstanciaAcademicaExterna) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosEstanciaAcademicaExterna.Remove((ArchivoEstanciaAcademicaExterna) archivo);
+        }
 
         [NotNull]
         public virtual Usuario Usuario { get; set; }
@@ -33,9 +52,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 		public virtual string Actividades { get; set; }
 
 		public virtual string Logros { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteEstancia { get; set; }
 
         public virtual Departamento Departamento { get; set; }
 

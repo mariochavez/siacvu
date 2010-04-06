@@ -2,9 +2,8 @@ using System;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class CursoForm
+    public class CursoForm : BaseForm
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public int TipoCurso { get; set; }
         public string FechaInicial { get; set; }
@@ -18,9 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneConvenio { get; set; }
         public bool PertenecePNPC { get; set; }
         public bool EsPrivada { get; set; }
-
-        public int ComprobanteCursoId { get; set; }
-        public string ComprobanteCursoNombre { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -53,16 +49,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public bool IsShowForm { get; set; }
 
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
+        public ArchivoForm[] ArchivosCurso { get; set; }
 
-        public string InvestigadorNombre
+        public override ArchivoForm[] Archivos
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return ArchivosCurso; }
         }
 
         /*Show*/

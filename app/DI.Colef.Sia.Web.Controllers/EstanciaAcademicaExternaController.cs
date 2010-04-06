@@ -13,12 +13,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     public class EstanciaAcademicaExternaController : BaseController<EstanciaAcademicaExterna, EstanciaAcademicaExternaForm>
     {
 		readonly IEstanciaAcademicaExternaService estanciaAcademicaExternaService;
-        readonly IArchivoService archivoService;
         readonly IEstanciaAcademicaExternaMapper estanciaAcademicaExternaMapper;
-        readonly ICatalogoService catalogoService;
         readonly ITipoEstanciaMapper tipoEstanciaMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
-        readonly ISedeMapper sedeMapper;
         readonly IDepartamentoMapper departamentoMapper;
 
         public EstanciaAcademicaExternaController(IEstanciaAcademicaExternaService estanciaAcademicaExternaService,
@@ -33,9 +30,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                                   IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
-            this.archivoService = archivoService;
-            this.catalogoService = catalogoService;
-            this.sedeMapper = sedeMapper;
+            base.catalogoService = catalogoService;
+            base.sedeMapper = sedeMapper;
             this.departamentoMapper = departamentoMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.estanciaAcademicaExternaService = estanciaAcademicaExternaService;
@@ -159,12 +155,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var id = Convert.ToInt32(form["Id"]);
             var estanciaAcademicaExterna = estanciaAcademicaExternaService.GetEstanciaAcademicaExternaById(id);
 
-            Archivo archivo = MapArchivo();
+            var archivo = MapArchivo<ArchivoEstanciaAcademicaExterna>();
 
-            archivo.TipoProducto = estanciaAcademicaExterna.TipoProductoLibro;
-            archivoService.Save(archivo);
-            estanciaAcademicaExterna.ComprobanteEstancia = archivo;
-
+            estanciaAcademicaExterna.AddArchivo(archivo);
             estanciaAcademicaExternaService.SaveEstanciaAcademicaExterna(estanciaAcademicaExterna);
 
             return Content("Uploaded");

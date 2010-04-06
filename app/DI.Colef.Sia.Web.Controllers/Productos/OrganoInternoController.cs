@@ -18,10 +18,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IOrganoInternoMapper organoInternoMapper;
         readonly IInvestigadorMapper investigadorMapper;
         readonly IInvestigadorService investigadorService;
-        readonly ICatalogoService catalogoService;
         readonly IConsejoComisionMapper consejoComisionMapper;
         readonly ICustomCollection customCollection;
-        readonly IArchivoService archivoService;
     
         public OrganoInternoController(IOrganoInternoService organoInternoService, 
 			IOrganoInternoMapper organoInternoMapper,
@@ -35,11 +33,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             IConsejoComisionMapper consejoComisionMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-			this.catalogoService = catalogoService;
+			base.catalogoService = catalogoService;
             this.investigadorService = investigadorService;
             this.investigadorMapper = investigadorMapper;
             this.customCollection = customCollection;
-            this.archivoService = archivoService;
             this.organoInternoService = organoInternoService;
             this.organoInternoMapper = organoInternoMapper;
 			this.consejoComisionMapper = consejoComisionMapper;
@@ -153,30 +150,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var organoInterno = organoInternoService.GetOrganoInternoById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteOrganoInterno")
-            {
-                archivo.TipoProducto = organoInterno.TipoProducto;
-                archivoService.Save(archivo);
-                organoInterno.ComprobanteOrganoInterno = archivo;
-            }
+            var archivo = MapArchivo<ArchivoOrganoInterno>();
+            organoInterno.AddArchivo(archivo);
 
             organoInternoService.SaveOrganoInterno(organoInterno);
 

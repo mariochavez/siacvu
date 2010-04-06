@@ -18,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorExternoResenaMapper coautorExternoResenaMapper;
         readonly ICoautorInternoResenaMapper coautorInternoResenaMapper;
         readonly ICustomCollection customCollection;
-        readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IResenaMapper resenaMapper;
         readonly IResenaService resenaService;
@@ -56,7 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             base.paisMapper = paisMapper;
 
             this.areaTematicaMapper = areaTematicaMapper;
-            this.archivoService = archivoService;
             this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.resenaService = resenaService;
@@ -249,36 +247,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var resena = resenaService.GetResenaById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = resena.TipoProducto;
-                archivoService.Save(archivo);
-                resena.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteResena")
-            {
-                archivo.TipoProducto = resena.TipoProducto;
-                archivoService.Save(archivo);
-                resena.ComprobanteResena = archivo;
-            }
+            var archivo = MapArchivo<ArchivoResena>();
+            resena.AddArchivo(archivo);
 
             resenaService.SaveResena(resena);
 
@@ -821,8 +791,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
 
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,

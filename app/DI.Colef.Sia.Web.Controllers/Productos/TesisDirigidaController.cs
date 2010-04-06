@@ -14,7 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     [HandleError]
     public class TesisDirigidaController : BaseController<TesisDirigida, TesisDirigidaForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
         readonly ITesisDirigidaMapper tesisDirigidaMapper;
         readonly ITesisDirigidaService tesisDirigidaService;
@@ -23,9 +22,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ITesisPosgradoMapper tesisPosgradoMapper;
         readonly ITesisPosgradoService tesisPosgradoService;
         readonly ISectorMapper sectorMapper;
-        readonly IArchivoService archivoService;
         readonly IAreaMapper areaMapper;
-        readonly IInstitucionMapper institucionMapper;
 
         public TesisDirigidaController(ITesisDirigidaService tesisDirigidaService,
                                ITesisDirigidaMapper tesisDirigidaMapper,
@@ -41,18 +38,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IDisciplinaMapper disciplinaMapper, IAreaMapper areaMapper, IInstitucionMapper institucionMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
+            base.institucionMapper = institucionMapper;
             this.tesisDirigidaService = tesisDirigidaService;
             this.tesisDirigidaMapper = tesisDirigidaMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
             this.vinculacionApyDMapper = vinculacionApyDMapper;
             this.customCollection = customCollection;
-            this.archivoService = archivoService;
             this.tesisPosgradoMapper = tesisPosgradoMapper;
             this.tesisPosgradoService = tesisPosgradoService;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -190,30 +186,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var tesisDirigida = tesisDirigidaService.GetTesisDirigidaById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteTesisDirigida")
-            {
-                archivo.TipoProducto = tesisDirigida.TipoProducto;
-                archivoService.Save(archivo);
-                tesisDirigida.ComprobanteTesisDirigida = archivo;
-            }
+            var archivo = MapArchivo<ArchivoTesisDirigida>();
+            tesisDirigida.AddArchivo(archivo);
 
             tesisDirigidaService.SaveTesisDirigida(tesisDirigida);
 

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
@@ -16,13 +15,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class DistincionController : BaseController<Distincion, DistincionForm>
     {
         readonly IAmbitoMapper ambitoMapper;
-        readonly ICatalogoService catalogoService;
         readonly IDistincionMapper distincionMapper;
         readonly IDistincionService distincionService;
         readonly IEstadoPaisMapper estadoPaisMapper;
-        readonly IPaisMapper paisMapper;
         readonly ITipoDistincionMapper tipoDistincionMapper;
-        readonly IArchivoService archivoService;
 
         public DistincionController(IDistincionService distincionService, IDistincionMapper distincionMapper,
                                     ICatalogoService catalogoService, IUsuarioService usuarioService,
@@ -33,13 +29,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                     IInstitucionMapper institucionMapper, ISedeMapper sedeMapper)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
+            base.paisMapper = paisMapper;
+
             this.distincionService = distincionService;
             this.distincionMapper = distincionMapper;
             this.tipoDistincionMapper = tipoDistincionMapper;
             this.ambitoMapper = ambitoMapper;
-            this.archivoService = archivoService;
-            this.paisMapper = paisMapper;
             this.estadoPaisMapper = estadoPaisMapper;
         }
 
@@ -162,30 +158,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var distincion = distincionService.GetDistincionById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteDistincion")
-            {
-                archivo.TipoProducto = distincion.TipoProducto;
-                archivoService.Save(archivo);
-                distincion.ComprobanteDistincion = archivo;
-            }
+            var archivo = MapArchivo<ArchivoDistincion>();
+            distincion.AddArchivo(archivo);
 
             distincionService.SaveDistincion(distincion);
 

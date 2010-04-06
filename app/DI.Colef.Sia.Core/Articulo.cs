@@ -84,12 +84,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         [Valid]
         public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
 
-        [Valid]
-        public virtual Archivo ComprobanteAceptado { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteArticulo { get; set; }
-
         public virtual IList<ArchivoArticulo> ArchivosArticulo { get; private set; }
 
         [Valid]

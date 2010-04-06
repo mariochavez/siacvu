@@ -21,6 +21,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             CoautorExternoEventos = new List<CoautorExternoEvento>();
             CoautorInternoEventos = new List<CoautorInternoEvento>();
             InstitucionEventos = new List<InstitucionEvento>();
+            ArchivosEvento = new List<ArchivoEvento>();
+        }
+
+        public virtual IList<ArchivoEvento> ArchivosEvento { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosEvento.Add((ArchivoEvento) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosEvento.Remove((ArchivoEvento) archivo);
         }
 
         public virtual void AddSesion(SesionEvento sesionEvento)
@@ -65,9 +79,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoEventos.Remove((CoautorExternoEvento) coautorExterno);
         }
-
-        [Valid]
-        public virtual Archivo ComprobanteEvento { get; set; }
 
         [Valid]
         public virtual Firma Firma { get; set; }

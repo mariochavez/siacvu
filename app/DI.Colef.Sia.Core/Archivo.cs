@@ -29,8 +29,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual bool Activo { get; set; }
     }
 
-    public class ArchivoArticulo : Archivo
-    {
-        
-    }
+    public class ArchivoArticulo : Archivo { }
+    public class ArchivoArticuloDifusion : Archivo { }
+    public class ArchivoCapitulo : Archivo { }
+    public class ArchivoCurso : Archivo { }
+    public class ArchivoDictamen : Archivo { }
+    public class ArchivoDistincion : Archivo { }
+    public class ArchivoEvento : Archivo { }
+    public class ArchivoLibro : Archivo { }
+    public class ArchivoObraTraducida : Archivo { }
+    public class ArchivoOrganoExterno : Archivo { }
+    public class ArchivoOrganoInterno : Archivo { }
+    public class ArchivoReporte : Archivo { }
+    public class ArchivoResena : Archivo { }
+    public class ArchivoTesisDirigida : Archivo { }
+    public class ArchivoProyecto : Archivo { }
+    public class ArchivoEstanciaAcademicaExterna : Archivo { }
 }

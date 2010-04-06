@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IArchivoService archivoService;
         readonly IInvestigadorService investigadorService;
 
         public ArticuloController(IArticuloService articuloService,
@@ -55,7 +54,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
-            this.archivoService = archivoService;
             this.investigadorService = investigadorService;
         }
 
@@ -550,8 +548,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,

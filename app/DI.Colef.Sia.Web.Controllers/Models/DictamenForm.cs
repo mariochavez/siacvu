@@ -2,7 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class DictamenForm : BaseForm
     {
-		public int Id { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
         public string DepartamentoNombre { get; set; }
@@ -13,9 +12,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 		public int TipoDictamen { get; set; }
         public int TipoDictamenId { get; set; }
         public string TipoDictamenNombre { get; set; }
-
-        public int ComprobanteDictamenId { get; set; }
-        public string ComprobanteDictamenNombre { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -29,6 +25,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public override EditorialProductoForm[] Editoriales
         {
             get { return EditorialDictamenes; }
+        }
+
+        public ArchivoForm[] ArchivosDictamen { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosDictamen; }
         }
 
         /* Show */

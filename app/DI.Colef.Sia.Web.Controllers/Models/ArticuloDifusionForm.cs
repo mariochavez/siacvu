@@ -2,8 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ArticuloDifusionForm : BaseForm
     {
-        public int Id { get; set; }
-		
         public string FechaAceptacion { get; set; }
         public string Titulo { get; set; }
         public string Volumen { get; set; }
@@ -19,11 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneProyecto { get; set; }
         public string Modificacion { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
-
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-        public string ComprobanteArticuloNombre { get; set; }
-        public int ComprobanteArticuloId { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -56,7 +49,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 
         public CoautorExternoProductoForm[] CoautorExternoArticulos { get; set; }
         public CoautorInternoProductoForm[] CoautorInternoArticulos { get; set; }
-        public ArchivoForm[] ArchivoArticulos { get; set; }
+        public ArchivoForm[] ArchivosArticulo { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosArticulo; }
+        }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

@@ -19,7 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICoautorInternoLibroMapper coautorInternoLibroMapper;
         readonly IEventoMapper eventoMapper;
         readonly IEventoService eventoService;
-        readonly IArchivoService archivoService;
         readonly ICustomCollection customCollection;
         readonly ILibroMapper libroMapper;
         readonly ILibroService libroService;
@@ -56,7 +55,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             base.paisMapper = paisMapper;
 
             this.editorialLibroMapper = editorialLibroMapper;
-            this.archivoService = archivoService;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.customCollection = customCollection;
             this.libroService = libroService;
@@ -225,20 +223,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var libro = libroService.GetLibroById(id);
 
-            var archivo = MapArchivo();
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = libro.TipoProductoLibro;
-                archivoService.Save(archivo);
-                libro.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteLibro")
-            {
-                archivo.TipoProducto = libro.TipoProductoLibro;
-                archivoService.Save(archivo);
-                libro.ComprobanteLibro = archivo;
-            }
+            var archivo = MapArchivo<ArchivoLibro>();
+            libro.AddArchivo(archivo);
 
             libroService.SaveLibro(libro);
 
@@ -676,8 +662,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
 
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,

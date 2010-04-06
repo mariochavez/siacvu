@@ -2,9 +2,8 @@ using System;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class TesisDirigidaForm
+    public class TesisDirigidaForm : BaseForm
     {
-        public int Id { get; set; }
         public string Titulo { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
@@ -18,9 +17,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool TieneConvenio { get; set; }
 
         public int TipoTesis { get; set; }
-
-        public int ComprobanteTesisDirigidaId { get; set; }
-        public string ComprobanteTesisDirigidaNombre { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -55,16 +51,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TesisPosgradoId { get; set; }
         public bool IsShowForm { get; set; }
 
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
+        public ArchivoForm[] ArchivosTesisDirigida { get; set; }
 
-        public string InvestigadorNombre
+        public override ArchivoForm[] Archivos
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return ArchivosTesisDirigida; }
         }
 
         /*Show*/

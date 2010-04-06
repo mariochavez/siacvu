@@ -20,7 +20,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 			CoautorExternoLibros = new List<CoautorExternoLibro>();
             CoautorInternoLibros = new List<CoautorInternoLibro>();
             EditorialLibros = new List<EditorialLibro>();
+            ArchivosLibro = new List<ArchivoLibro>();
 		}
+
+	    public virtual IList<ArchivoLibro> ArchivosLibro { get; private set; }
+	    
+	    public virtual void AddArchivo(Archivo archivo)
+	    {
+	        archivo.TipoProducto = tipoProducto;
+	        ArchivosLibro.Add((ArchivoLibro) archivo);
+	    }
+
+	    public virtual void DeleteArchivo(Archivo archivo)
+	    {
+	        ArchivosLibro.Remove((ArchivoLibro) archivo);
+	    }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
@@ -81,12 +95,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual string PalabraClave3 { get; set; }
 
         public virtual Area Area { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteAceptado { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteLibro { get; set; }
 
         public virtual Disciplina Disciplina { get; set; }
 

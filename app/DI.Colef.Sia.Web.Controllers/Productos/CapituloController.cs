@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICustomCollection customCollection;
         readonly IEditorialProductoMapper<EditorialCapitulo> editorialCapituloMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IArchivoService archivoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
 
@@ -46,7 +45,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             base.paisMapper = paisMapper;
 
             this.capituloService = capituloService;
-            this.archivoService = archivoService;
             this.capituloMapper = capituloMapper;
             this.coautorExternoCapituloMapper = coautorExternoCapituloMapper;
             this.coautorInternoCapituloMapper = coautorInternoCapituloMapper;
@@ -236,36 +234,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var capitulo = capituloService.GetCapituloById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = capitulo.TipoProducto;
-                archivoService.Save(archivo);
-                capitulo.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteCapitulo")
-            {
-                archivo.TipoProducto = capitulo.TipoProducto;
-                archivoService.Save(archivo);
-                capitulo.ComprobanteCapitulo = archivo;
-            }
+            var archivo = MapArchivo<ArchivoCapitulo>();
+            capitulo.AddArchivo(archivo);
 
             capituloService.SaveCapitulo(capitulo);
 
@@ -782,8 +752,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
 
                                       IsShowForm = true
                                   };

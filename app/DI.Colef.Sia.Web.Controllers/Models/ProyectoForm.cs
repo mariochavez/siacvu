@@ -4,7 +4,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ProyectoForm : BaseForm
     {
-        public int Id { get; set; }
         public bool Activo { get; set; }
         public string Modificacion { get; set; }
 
@@ -33,8 +32,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CustomSelectForm[] EstatusProyectos { get; set; }
 
         public string FechaConclusion { get; set; }
-        public string ComprobanteCalendarioProyectoNombre { get; set; }
-        public int ComprobanteCalendarioProyectoId { get; set; }
 
         //Seccion fuentes del financiamiento del proyecto
         public bool ConRecursos { get; set; }
@@ -138,6 +135,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public ProductoGeneradoProyectoForm[] ProductoGeneradoProyectos { get; set; }
         public ProductoGeneradoProyectoForm ProductoGeneradoProyecto { get; set; }
         public CustomSelectForm[] ProductosGenerados { get; set; }
+        public ArchivoForm[] ArchivosProyecto { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosProyecto; }
+        }
 
         /*Show*/
         public ShowFieldsForm ShowFields { get; set; }

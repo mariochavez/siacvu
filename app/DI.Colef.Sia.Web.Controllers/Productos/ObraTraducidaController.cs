@@ -18,7 +18,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 		readonly IObraTraducidaService obraTraducidaService;
         readonly IObraTraducidaMapper obraTraducidaMapper;
         readonly IIdiomaMapper idiomaMapper;
-        readonly IArchivoService archivoService;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IAutorExternoObraTraducidaMapper autorExternoObraTraducidaMapper;
         readonly IAutorInternoObraTraducidaMapper autorInternoObraTraducidaMapper;
@@ -29,7 +28,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IInvestigadorService investigadorService;
-        readonly IPaisMapper paisMapper;
     
         public ObraTraducidaController(IObraTraducidaService obraTraducidaService, 
 			                        IObraTraducidaMapper obraTraducidaMapper,
@@ -55,7 +53,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 			base.catalogoService = catalogoService;
             base.paisMapper = paisMapper;
 
-            this.archivoService = archivoService;
             this.obraTraducidaService = obraTraducidaService;
             this.obraTraducidaMapper = obraTraducidaMapper;
 			this.idiomaMapper = idiomaMapper;
@@ -252,20 +249,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var obraTraducida = obraTraducidaService.GetObraTraducidaById(id);
 
-            var archivo = MapArchivo();
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = obraTraducida.TipoProducto;
-                archivoService.Save(archivo);
-                obraTraducida.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteObraTraducida")
-            {
-                archivo.TipoProducto = obraTraducida.TipoProducto;
-                archivoService.Save(archivo);
-                obraTraducida.ComprobanteObraTraducida = archivo;
-            }
+            var archivo = MapArchivo<ArchivoObraTraducida>();
+            obraTraducida.AddArchivo(archivo);
 
             obraTraducidaService.SaveObraTraducida(obraTraducida);
 
@@ -775,8 +760,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                 FechaAceptacion = form.FechaAceptacion,
                 FechaPublicacion = form.FechaPublicacion,
                 ModelId = form.Id,
-                ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
 
                 RevistaPublicacionTitulo = form.RevistaPublicacion.Titulo,
                 RevistaPublicacionInstitucionNombre = form.RevistaPublicacion.InstitucionNombre,

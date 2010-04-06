@@ -15,6 +15,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             CoautorExternoArticulos = new List<CoautorExternoArticulo>();
             CoautorInternoArticulos = new List<CoautorInternoArticulo>();
+            ArchivosArticuloDifusion = new List<ArchivoArticuloDifusion>();
+        }
+
+        public virtual IList<ArchivoArticuloDifusion> ArchivosArticuloDifusion { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosArticuloDifusion.Add((ArchivoArticuloDifusion)archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosArticuloDifusion.Remove((ArchivoArticuloDifusion)archivo);
         }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
@@ -69,12 +83,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual IList<CoautorInternoArticulo> CoautorInternoArticulos { get; private set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteAceptado { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteArticulo { get; set; }
 
         [Valid]
         public virtual Firma Firma { get; set; }

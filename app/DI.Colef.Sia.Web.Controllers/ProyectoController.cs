@@ -17,23 +17,15 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IProyectoService proyectoService;
         readonly IProyectoMapper proyectoMapper;
-        readonly ICatalogoService catalogoService;
         readonly ITipoProyectoMapper tipoProyectoMapper;
         readonly IConvenioMapper convenioMapper;
-        readonly IInvestigadorMapper investigadorMapper;
         readonly IResponsableProyectoMapper responsableProyectoMapper;
         readonly IParticipanteInternoProyectoMapper participanteInternoProyectoMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly IParticipanteExternoProyectoMapper participanteExternoProyectoMapper;
-        readonly ISedeMapper sedeMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAmbitoMapper ambitoMapper;
         readonly IMonedaMapper monedaMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly INivelEstudioMapper nivelEstudioMapper;
         readonly ISectorMapper sectorMapper;
-        readonly IDepartamentoMapper departamentoMapper;
-        readonly IInvestigadorService investigadorService;
         readonly IRecursoFinancieroProyectoMapper recursoFinancieroProyectoMapper;
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IGradoAcademicoMapper gradoAcademicoMapper;
@@ -43,7 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly IVinculacionAPyDMapper vinculacionAPyDMapper;
         readonly IEstudianteProyectoMapper estudianteProyectoMapper;
         readonly IProductoGeneradoProyectoMapper productoGeneradoProyectoMapper;
-        readonly IArchivoService archivoService;
 
         public ProyectoController(IProyectoService proyectoService, IProyectoMapper proyectoMapper, ICatalogoService catalogoService, 
                                   IUsuarioService usuarioService, ITipoProyectoMapper tipoProyectoMapper, IConvenioMapper convenioMapper, 
@@ -66,27 +57,22 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper, ramaMapper, claseMapper)
         {
         
-            this.catalogoService = catalogoService;
-            this.archivoService = archivoService;
+            base.catalogoService = catalogoService;
+            base.institucionMapper = institucionMapper;
+            base.sedeMapper = sedeMapper;
+
             this.customCollection = customCollection;
             this.proyectoService = proyectoService;
             this.proyectoMapper = proyectoMapper;
             this.tipoProyectoMapper = tipoProyectoMapper;
             this.convenioMapper = convenioMapper;
-            this.investigadorMapper = investigadorMapper;
             this.responsableProyectoMapper = responsableProyectoMapper;
             this.participanteInternoProyectoMapper = participanteInternoProyectoMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
             this.participanteExternoProyectoMapper = participanteExternoProyectoMapper;
-            this.sedeMapper = sedeMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.ambitoMapper = ambitoMapper;
             this.monedaMapper = monedaMapper;
-            this.institucionMapper = institucionMapper;
-            this.nivelEstudioMapper = nivelEstudioMapper;
             this.sectorMapper = sectorMapper;
-            this.departamentoMapper = departamentoMapper;
-            this.investigadorService = investigadorService;
             this.recursoFinancieroProyectoMapper = recursoFinancieroProyectoMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.gradoAcademicoMapper = gradoAcademicoMapper;
@@ -270,37 +256,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             var id = Convert.ToInt32(form["Id"]);
             var proyecto = proyectoService.GetProyectoById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteCalendarioProyecto")
-            {
-                archivo.TipoProducto = proyecto.TipoProducto;
-                archivoService.Save(archivo);
-                proyecto.ComprobanteCalendarioProyecto = archivo;
-            }
-
-            if (form["TipoArchivo"] == "ComprobanteTematicaProyecto")
-            {
-                archivo.TipoProducto = proyecto.TipoProducto;
-                archivoService.Save(archivo);
-                proyecto.ComprobanteTematicaProyecto = archivo;
-            }
+            var archivo = MapArchivo<ArchivoProyecto>();
+            proyecto.AddArchivo(archivo);
 
             proyectoService.SaveProyecto(proyecto);
 

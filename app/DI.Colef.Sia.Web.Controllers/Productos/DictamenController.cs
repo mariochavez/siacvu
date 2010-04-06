@@ -20,7 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IFondoConacytMapper fondoConacytMapper;
         readonly IEditorialProductoMapper<EditorialDictamen> editorialDictamenMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
-        readonly IArchivoService archivoService;
 
         public DictamenController(IDictamenService dictamenService,
                                   IDictamenMapper dictamenMapper,
@@ -39,7 +38,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 
             this.editorialDictamenMapper = editorialDictamenMapper;
             this.dictamenService = dictamenService;
-            this.archivoService = archivoService;
             this.dictamenMapper = dictamenMapper;
             this.fondoConacytMapper = fondoConacytMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
@@ -184,14 +182,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var dictamen = dictamenService.GetDictamenById(id);
 
-            var archivo = MapArchivo();
-
-            if (form["TipoArchivo"] == "ComprobanteDictamen")
-            {
-                archivo.TipoProducto = dictamen.TipoProducto;
-                archivoService.Save(archivo);
-                dictamen.ComprobanteDictamen = archivo;
-            }
+            var archivo = MapArchivo<ArchivoDictamen>();
+            dictamen.AddArchivo(archivo);
 
             dictamenService.SaveDictamen(dictamen);
 

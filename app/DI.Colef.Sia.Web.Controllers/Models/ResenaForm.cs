@@ -19,12 +19,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
         public int PosicionAutor { get; set; }
 
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-
-        public int ComprobanteResenaId { get; set; }
-        public string ComprobanteResenaNombre { get; set; }
-
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
 
@@ -68,6 +62,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public override EditorialProductoForm[] Editoriales
         {
             get { return EditorialResenas; }
+        }
+
+        public ArchivoForm[] ArchivosResena { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosResena; }
         }
 
         /* New */
