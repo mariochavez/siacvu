@@ -13,3 +13,4 @@ Logs/
 build/
 build.zip
 NHibernate.config
+.eprj
