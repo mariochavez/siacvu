@@ -1,4 +1,5 @@
 using System.Linq;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Extensions;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
@@ -178,5 +179,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public TipoArchivoForm[] TipoArchivos { get; set; }
 
         public string ExpedienteSNI { get; set; }
+
+
+        public object[] ListaProductos { get; set; }
     }
 }

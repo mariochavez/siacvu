@@ -34,6 +34,7 @@
             <% using (Html.BeginForm("Create", "FormacionAcademica")) { %>
 		        <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "formacionAcademica", new { url = Url.Action("Glosario")}) %>
                 
                 <% Html.RenderPartial("_DatosFormacionAcademica", Model.Form); %>
 

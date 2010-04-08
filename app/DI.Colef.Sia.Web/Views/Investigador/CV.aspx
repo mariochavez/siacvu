@@ -6,6 +6,7 @@
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
 <%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
 <%@ Import Namespace="DI.Colef.Sia.Web.Controllers" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Core.DataInterfaces" %>
 
 <asp:Content ID="titleContent" ContentPlaceHolderID="TituloPlaceHolder" runat="server">
     <h2><%=Html.Encode(Model.Title) %></h2>
@@ -29,86 +30,37 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <div id="textos">
     
-        <% Html.RenderPartial("_Message"); %>
+        <%
+            Html.RenderPartial("_Message");%>
 	    <div id="curriculum">
 	    
             <div id="campos">
 
                 <h4><center>CURRICULUM VITAE</center></h4>
 		        <p>
-			        <span class="titulovalor"><%=Html.Encode(Model.Form.NombreCompleto) %></span><br />
-			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].GradoAcademicoNombre) %> en <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].Programa) %></span><br />
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.NombreCompleto)%></span><br />
+			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].GradoAcademicoNombre)%> en <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].Programa)%></span><br />
 			        <span class="valor"><%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionNombre)%>, <%=Html.Encode(Model.Form.GradosAcademicosInvestigador[0].InstitucionPaisNombre)%></span><br />
-			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.CategoriasInvestigador[0].CategoriaNombre) %></span><br />
-			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNIsInvestigador[0].SNINombre) %></span><br />
+			        <span class="valor">Profesor/Investigador <%=Html.Encode(Model.Form.CategoriasInvestigador[0].CategoriaNombre)%></span><br />
+			        <span class="valor">Sistema Nacional de Investigadores <%=Html.Encode(Model.Form.SNIsInvestigador[0].SNINombre)%></span><br />
                     <br />
 			        <span class="titulovalor">El Colegio de la Frontera Norte</span><br/>
-			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].DepartamentoNombre) %></span><br/>
-			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].SedeDireccionRegionalNombre) %></span><br/>
-			        <span class="titulovalor">Sede: <%=Html.Encode(Model.Form.CargosInvestigador[0].SedeNombre) %></span><br/>
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].DepartamentoNombre)%></span><br/>
+			        <span class="titulovalor"><%=Html.Encode(Model.Form.CargosInvestigador[0].SedeDireccionRegionalNombre)%></span><br/>
+			        <span class="titulovalor">Sede: <%=Html.Encode(Model.Form.CargosInvestigador[0].SedeNombre)%></span><br/>
 			        
                     <%=Html.InvestigadorSede(Model.Form.CargosInvestigador[0].SedeNombre)%><br />
 
-                    <span class="titulovalor">&Aacute;reas de t&eacute;matica: </span><span class="valor"><%=Html.Encode(Model.Form.AreaTematicaNombre) %></span><br />
+                    <span class="titulovalor">&Aacute;reas de t&eacute;matica: </span><span class="valor"><%=Html.Encode(Model.Form.AreaTematicaNombre)%></span><br />
                     <span class="titulovalor">Temas de inter&eacute;s: </span><span class="valor"></span><br />
                     <br />
                  </p>
 
-                 <p>   
+                <% if ((Model.Form.ListaProductos[0] as CurriculumDTO[]).Length > 0){ %>
                     <span class="titulovalor">Publicaciones</span><br />
-                    <br />
-                 </p>
-
-                 <hr />
-
-                 <p>
-                    <span class="titulovalor">Docencia</span><br />
-                    <br />
-                 </p>
-                 
-                 <hr />
-                
-                <p>
-                    <span class="titulovalor">Tesis dirigidas</span><br />
-                    <br />
-                </p>
-
-                <hr />
-
-                <p>
-                    <span class="titulovalor">Movilidad Académica</span><br />
-                    <br />
-                </p>
-
-                <hr />
-
-                <p>
-                    <span class="titulovalor">Participación en Órganos Colegiados (sólo las externas)</span><br />
-                    <br />
-                </p>
-
-                <hr />
-
-                <p>
-                    <span class="titulovalor">Distinciones académicas</span><br />
-                    <br />
-                </p>
-
-                <hr />
-
-                <p>
-                    <span class="titulovalor">Proyectos de Investigación</span><br />
-                    <br />
-                </p>
-
-                <hr />
-
-                <p>
-                    <span class="titulovalor">Eventos Académicos</span><br />
-                    <br />
-                </p>
-		        
-	            
+                    <% Html.RenderPartial("_Productos", Model.Form.ListaProductos[0]);%><br />
+                <% } %>
+ 
                 <p class="submit">
                     <%=Html.ActionLink<InvestigadorController>(x => x.Index(), "Regresar")%>
                 </p>

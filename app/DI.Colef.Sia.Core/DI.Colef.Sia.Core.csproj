@@ -96,6 +96,9 @@
   <ItemGroup>
     <Compile Include="AreaInvestigacion.cs" />
     <Compile Include="ArticuloDifusion.cs" />
+    <Compile Include="DataInterfaces\ICurriculumQuerying.cs" />
+    <Compile Include="DataInterfaces\Impl\CurriculumDTO.cs" />
+    <Compile Include="DataInterfaces\Impl\CurriculumQuerying.cs" />
     <Compile Include="DataInterfaces\Impl\ProductoDTO.cs" />
     <Compile Include="EntityHelper.cs" />
     <Compile Include="Glosario.cs" />

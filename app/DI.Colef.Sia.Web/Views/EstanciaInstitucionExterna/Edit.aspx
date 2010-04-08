@@ -34,6 +34,7 @@
             <% using (Html.BeginForm("Update", "EstanciaInstitucionExterna")){ %>
                 <%=Html.AntiForgeryToken() %>
                 <%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "estanciaInstitucionExterna", new { url = Url.Action("Glosario") })%>
                 
                 <% Html.RenderPartial("_DatosEstanciaInstitucionExterna", Model.Form); %>
                 

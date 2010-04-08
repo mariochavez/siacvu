@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
@@ -29,6 +30,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         readonly ISNIInvestigadorMapper sniInvestigadorMapper;
         readonly ISNIMapper sniMapper;
         readonly IUsuarioMapper usuarioMapper;
+        private readonly ICurriculumService curriculumService;
 
         public InvestigadorController(IInvestigadorService investigadorService, IUsuarioService usuarioService,
                                       ICatalogoService catalogoService, IInvestigadorMapper investigadorMapper,
@@ -42,7 +44,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                                       ISNIInvestigadorMapper sniInvestigadorMapper, 
                                       IPuestoMapper puestoMapper,
                                       ISearchService searchService, IArchivoService archivoService,
-            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper)
+            IInstitucionMapper institucionMapper, IAreaTematicaMapper areaTematicaMapper, ISedeMapper sedeMapper, ICurriculumService curriculumService)
             : base(usuarioService, searchService, catalogoService, institucionMapper, sedeMapper)
         {
             this.investigadorService = investigadorService;
@@ -61,6 +63,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             this.puestoMapper = puestoMapper;
             this.archivoService = archivoService;
             this.areaTematicaMapper = areaTematicaMapper;
+            this.curriculumService = curriculumService;
         }
 
         [Authorize(Roles = "Dgaa")]
@@ -120,17 +123,19 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult CV(int id)
         {
-            if (!User.IsInRole("Dgaa") && CurrentUser().Id != id)
-                return NotAuthorized();
+            //if (!User.IsInRole("Dgaa") && CurrentUser().Id != id)
+            //    return NotAuthorized();
 
             var data = CreateViewDataWithTitle(Title.CV);
 
             var investigador = investigadorService.GetInvestigadorById(id);
             data.Form = investigadorMapper.Map(investigador);
+
+            data.Form.ListaProductos = curriculumService.GetListaProductos(investigador.Usuario);
 
             ViewData.Model = data;
             return View("CV");

@@ -35,6 +35,7 @@
 	        <% using (Html.BeginForm("Update", "IdiomasInvestigador", new { Id = Model.Form.Id })) { %>
 	            <%=Html.AntiForgeryToken() %>
 				<%=Html.Hidden("Id", Model.Form.Id) %>
+                <%=Html.Hidden("Contexto", "idiomaInvestigacion", new { url = Url.Action("Glosario")}) %>
 				
                 <% Html.RenderPartial("_DatosIdiomaInvestigador", Model.Form); %>
 	            

@@ -39,6 +39,7 @@
             <% using (Html.BeginForm("Create", "GrupoInvestigacion")) { %>
             <%=Html.AntiForgeryToken() %>
             <%=Html.Hidden("Id", Model.Form.Id) %>
+            <%=Html.Hidden("Contexto", "grupoInvestigacion", new { url = Url.Action("Glosario")}) %>
             
             <p>
                 <label>Nombre del grupo de investigaci&oacute;n</label>
