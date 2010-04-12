@@ -107,6 +107,17 @@ h1, h2, h3, h4, h5 {
     padding-left:40px;
 }
 
+#seccion h3 
+{
+    float:left;
+    font-size:18px;
+    height:70px;
+    color:#D29D61;
+    margin:0 10px 0 0;
+    padding:0 0 0 40px;
+    width:320px;
+}
+
 #seccion-sesion {
     width: 980px;	
 	height: 10px;

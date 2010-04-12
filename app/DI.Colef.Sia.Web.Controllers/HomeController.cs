@@ -36,6 +36,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                            {
                                Title = "Menú"
                            };
+
             return View(data);
         }
 

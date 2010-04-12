@@ -11,11 +11,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
     {
         readonly IFormsAuthentication formsAuthentication;
         readonly IAuthenticationService authenticationService;
+        readonly IProductoService productoService;
 
-        public SessionController(IFormsAuthentication formsAuthentication, IAuthenticationService authenticationService)
+        public SessionController(IFormsAuthentication formsAuthentication, 
+            IAuthenticationService authenticationService, IProductoService productoService)
         {
             this.formsAuthentication = formsAuthentication;
             this.authenticationService = authenticationService;
+            this.productoService = productoService;
         }
 
         public ActionResult Index()
@@ -45,6 +48,7 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
                     if (!String.IsNullOrEmpty(returnUrl))
                         return Redirect(returnUrl);
 
+                    Session["puntos"] = productoService.GetPuntosSieva(currentUser);
                     return Redirect(Url.Action("Index", "Home"));
                 }
 

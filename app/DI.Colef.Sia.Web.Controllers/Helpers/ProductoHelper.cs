@@ -8,6 +8,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
     public static class ProductoHelper
     {
+        public static string SievaPuntos(this HtmlHelper html)
+        {
+            var sessionData = html.ViewContext.HttpContext.Session["puntos"];
+            var puntos = sessionData != null ? (decimal) sessionData : 0;
+            return String.Format("Puntos SIEVA: {0}", puntos);
+        }
+
         public static string ProductoInformation(this HtmlHelper html, ProductoDTO producto)
         {
             var info = String.Empty;
