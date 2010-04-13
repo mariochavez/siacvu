@@ -60,8 +60,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
         protected readonly IUsuarioService usuarioService;
         protected readonly ISearchService searchService;
         protected ICatalogoService catalogoService;
-        protected readonly IInstitucionMapper institucionMapper;
-        protected readonly ISedeMapper sedeMapper;
+        protected IInstitucionMapper institucionMapper;
+        protected ISedeMapper sedeMapper;
         protected readonly IDisciplinaMapper disciplinaMapper;
         protected readonly ISubdisciplinaMapper subdisciplinaMapper;
         protected readonly IOrganizacionMapper organizacionMapper;
@@ -805,9 +805,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         protected Archivo MapArchivo()
         {
+            return MapArchivo<Archivo>();
+        }
+
+        protected T MapArchivo<T>() where T:Archivo, new()
+        {
             var file = Request.Files["fileData"];
 
-            var archivo = new Archivo
+            var archivo = new T
             {
                 Activo = true,
                 Contenido = file.ContentType,

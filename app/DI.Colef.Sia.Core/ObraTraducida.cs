@@ -22,7 +22,21 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             AutorInternoObraTraducidas = new List<AutorInternoObraTraducida>();
             AutorExternoObraTraducidas = new List<AutorExternoObraTraducida>();
             EditorialObraTraducidas = new List<EditorialObraTraducida>();
+            ArchivosObraTraducida = new List<ArchivoObraTraducida>();
 		}
+
+        public virtual IList<ArchivoObraTraducida> ArchivosObraTraducida { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosObraTraducida.Add((ArchivoObraTraducida) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosObraTraducida.Remove((ArchivoObraTraducida) archivo);
+        }
 
         public virtual void AddCoautorExterno(CoautorExternoProducto coautorExterno)
         {
@@ -87,12 +101,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         [Valid]
         public virtual Firma Firma { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteAceptado { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteObraTraducida { get; set; }
 
         public virtual bool AutorSeOrdenaAlfabeticamente { get; set; }
 

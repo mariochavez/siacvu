@@ -16,6 +16,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public Dictamen()
         {
             EditorialDictamenes = new List<EditorialDictamen>();
+            ArchivosDictamen = new List<ArchivoDictamen>();
+        }
+
+        public virtual IList<ArchivoDictamen> ArchivosDictamen { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosDictamen.Add((ArchivoDictamen) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosDictamen.Remove((ArchivoDictamen) archivo);
         }
 
         public virtual void AddEditorial(EditorialProducto editorial)
@@ -28,9 +42,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         {
             EditorialDictamenes.Remove((EditorialDictamen)editorial);
         }
-
-        [Valid]
-        public virtual Archivo ComprobanteDictamen { get; set; }
 
         [Valid]
         public virtual Firma Firma { get; set; }

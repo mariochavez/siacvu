@@ -95,6 +95,36 @@ namespace Tests.DI.Colef.Sia.Data
         
     }
 
+    [Subject(typeof(ProductoQuerying))]
+    [Tags("sieva")]
+    public class when_testing_projections_for_sieva : ConnectionSetup
+    {
+        static IProjection projection;
+        static ICriteria criteria;
+        static decimal value;
+
+        Because of = () =>
+                         {
+                             projection = Projections.Sum("Puntuacion");
+
+                             criteria = NHibernateSession.Current.CreateCriteria(typeof (Articulo))
+                                 .CreateAlias("Firma", "f")
+                                 .CreateAlias("Usuario", "u")
+                                 .Add(Expression.Eq("f.Aceptacion2", 1))
+                                 .Add(Expression.Ge("f.Firma2", new DateTime(DateTime.Now.Year, 1, 1)))
+                                 .SetProjection(projection);
+
+                             value = criteria.SetCacheable(true)
+                                 .UniqueResult<decimal>();
+                         };
+
+        It should_have_data = () =>
+                                  {
+                                      value.ShouldEqual(0);
+                                  };
+        
+    }
+
     public class DataDTO
     {
         public int Id { get; set; }

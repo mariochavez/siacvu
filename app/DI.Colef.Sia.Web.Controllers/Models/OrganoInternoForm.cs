@@ -1,8 +1,7 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class OrganoInternoForm
+    public class OrganoInternoForm : BaseForm
     {
-		public int Id { get; set; }
 		public string FechaInicial { get; set; }
 		public string FechaFinal { get; set; }
 		public int Periodo { get; set; }
@@ -14,13 +13,16 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public InvestigadorForm Investigador { get; set; }
         public int InvestigadorId { get; set; }
 
-        public int ComprobanteOrganoInternoId { get; set; }
-        public string ComprobanteOrganoInternoNombre { get; set; }
-
         public int ConsejoComision { get; set; }
         public int ConsejoComisionId { get; set; }
         public string ConsejoComisionNombre { get; set; }
-		
+        public ArchivoForm[] ArchivosOrganoInterno { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosOrganoInterno; }
+        }
+
 		/* Catalogos */
         public InvestigadorForm[] Investigadores { get; set; }
 		public ConsejoComisionForm[] ConsejosComisiones { get; set; }

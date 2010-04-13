@@ -1,20 +1,15 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<ArchivoForm>" %>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Extensions"%>
-<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers.Models"%>
-<div class="minilista" id="fileQueue">
-    <h5>Archivo</h5>
+﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<DecisionesInteligentes.Colef.Sia.Web.Controllers.Models.BaseForm>" %>
+<%@ Import Namespace="DecisionesInteligentes.Colef.Sia.Web.Controllers" %>
+<div class="minilista fileUpload" id="fileQueue">
+    <h5>Documentos y/o comprobantes</h5>
 
     <% if (Model.Archivos != null && Model.Archivos.Length > 0) { %>
         <% for(int i = 0; i < Model.Archivos.Length; i++) { %>
 	        <div class="sublista" id="archivo_<%=Html.Encode(Model.Archivos[i].Id) %>">
 	            <h6>
-	                <a href="<%=Url.Action("deletearchivo", null, new{ id = Model.ModelId, archivoId = Model.Archivos[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
-	                <%=Html.Encode(Model.Archivos[i].Nombre)%>
+	                <a href="<%=Url.Action("deletearchivo", null, new{ id = Model.Id, archivoId = Model.Archivos[i].Id}) %>" class="remote delete"><img src="<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>" /></a>
+	                <%=Html.ActionLinkForAreas<ArchivoController>(x => x.Show(Model.Archivos[i].Id), Html.Encode(Model.Archivos[i].Nombre))%>
 	                <%=Html.Hidden("Archivo[" + i + "].Id", Model.Archivos[i].Id)%>
-	                <span>
-                        Tipo de archivo <%=Html.Encode(Model.Archivos[i].TipoArchivoNombre)%>
-                        <%=Html.Hidden("Archivo[" + i + "].TipoArchivoId", Model.Archivos[i].TipoArchivoId)%>
-                    </span>
 	            </h6>
 			</div><!--end sublista-->
         <% } %>
@@ -27,12 +22,6 @@
 </div><!--end minilista-->
 
 <div>
-	Subir archivos <input type="file" name="uploadify" id="uploadify" />
+	<input type="file" name="uploadify" id="uploadify" />
 </div>
 
-<div class="progress_container">
-	<div class="status_message"></div>
-	<div class="progress_bar">
-		<div class="progress" style="width: 0px;"></div>
-	</div>
-</div>

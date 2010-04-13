@@ -2,7 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class ReporteForm : BaseForm
     {
-        public int Id { get; set; }
         public string Titulo { get; set; }
         public int NoPaginas { get; set; }
         public string Descripcion { get; set; }
@@ -21,12 +20,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoReporte { get; set; }
         public int EstadoProducto { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
-
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-
-        public int ComprobanteReporteId { get; set; }
-        public string ComprobanteReporteNombre { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -47,6 +40,13 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
                 return (CoautorExternoReportes == null ? 0 : CoautorExternoReportes.Length) +
                     (CoautorInternoReportes == null ? 0 : CoautorInternoReportes.Length) + 1;
             }
+        }
+
+        public ArchivoForm[] ArchivosReporte { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosReporte; }
         }
 
         /* New */

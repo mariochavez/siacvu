@@ -57,6 +57,38 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
             return productoList.ToArray();
         }
 
+        public decimal GetPuntosSieva(Usuario usuario)
+        {
+            IMultiCriteria allProducts = Session.CreateMultiCriteria()
+                .Add(BuildCriteriaForSieva<Articulo>(usuario))
+                .Add(BuildCriteriaForSieva<Libro>(usuario))
+                .Add(BuildCriteriaForSieva<Capitulo>(usuario))
+                .Add(BuildCriteriaForSieva<ArticuloDifusion>(usuario))
+                .Add(BuildCriteriaForSieva<Reporte>(usuario))
+                .Add(BuildCriteriaForSieva<Resena>(usuario))
+                .Add(BuildCriteriaForSieva<ObraTraducida>(usuario))
+                .Add(BuildCriteriaForSieva<Curso>(usuario))
+                .Add(BuildCriteriaForSieva<TesisDirigida>(usuario))
+                .Add(BuildCriteriaForSieva<Dictamen>(usuario))
+                .Add(BuildCriteriaForSieva<ParticipacionMedio>(usuario))
+                .Add(BuildCriteriaForSieva<Evento>(usuario));
+
+            IList products = allProducts
+                .SetCacheable(true)
+                .List();
+
+            decimal puntos = 0;
+            foreach (var product in products)
+            {
+                foreach (var punto in (IEnumerable) product)
+                {
+                    puntos += punto == null ? 0 : (decimal)punto;
+                }   
+            }
+
+            return puntos;
+        }
+
         public object[] GetBandejaProductos(Usuario usuario, TipoBandeja tipoBandeja)
         {
             var bandejaTrabajo = new object[5];
@@ -435,6 +467,41 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
 
                 criteria.Add(Subqueries.PropertyIn("Firma", productoEnFirma));
             }
+
+            return criteria;
+        }
+
+        public ICriteria BuildCriteriaForSieva<T>(Usuario usuario)
+        {
+            var isInvestigador = (from role in usuario.Roles
+                                  where role.Nombre == "Investigadores"
+                                  select role).FirstOrDefault() != null;
+
+            var projection = Projections.Sum("Puntuacion");
+
+            var criteria = NHibernateSession.Current.CreateCriteria(typeof(T))
+                .CreateAlias("Firma", "f")
+                .CreateAlias("Usuario", "u")
+                .Add(Expression.Eq("f.Aceptacion2", 1))
+                .Add(Expression.Ge("f.Firma2", new DateTime(DateTime.Now.Year, 1, 1)))
+                .SetProjection(projection);
+
+            if (isInvestigador)
+            {
+                var coautorTable = EntityHelper.GetCoautorTable<T>();
+                if (!String.IsNullOrEmpty(coautorTable))
+                {
+                    criteria
+                        .CreateAlias(coautorTable, "co", JoinType.LeftOuterJoin)
+                        .CreateAlias("co.Investigador", "i", JoinType.LeftOuterJoin)
+                        .CreateAlias("i.Usuario", "iu", JoinType.LeftOuterJoin)
+                        .Add(Expression.Or(Expression.Eq("u.Id", usuario.Id), Expression.Eq("iu.Id", usuario.Id)));
+                }
+                else
+                    criteria.Add(Expression.Eq("u.Id", usuario.Id));
+            }
+            else
+                criteria.Add(Expression.Eq("u.Id", usuario.Id));
 
             return criteria;
         }

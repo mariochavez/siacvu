@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -12,10 +13,25 @@ namespace DecisionesInteligentes.Colef.Sia.Core
     {
         const int tipoProducto = 5; // 5 Representa Distincion
 
+        public Distincion()
+        {
+            ArchivosDistincion = new List<ArchivoDistincion>();
+        }
+
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        [Valid]
-        public virtual Archivo ComprobanteDistincion { get; set; }
+        public virtual IList<ArchivoDistincion> ArchivosDistincion { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosDistincion.Add((ArchivoDistincion) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosDistincion.Remove((ArchivoDistincion) archivo);
+        }
 
         public virtual TipoDistincion TipoDistincion { get; set; }
 

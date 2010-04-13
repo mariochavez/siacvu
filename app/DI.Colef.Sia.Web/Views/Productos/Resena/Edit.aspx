@@ -73,8 +73,7 @@
                 
 	            <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
-                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
-                        ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
+                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>
                 
                 <div id="resenaBibliografica_field">
                     <h4>Referencia de la obra reseñada</h4>
@@ -86,22 +85,7 @@
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
 
-                <div id="obra_field">
-                <p>
-                    <label>Reseña publicada</label>
-                    <span id="span_comprobante_documento" class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteResenaNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteResenaId), Model.Form.ComprobanteResenaNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteResena_DocumentoProbatorio" id="ComprobanteResena_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                </div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <% Html.RenderPartial("_LineaAreaTematica", Model.Form); %>
                 <% Html.RenderPartial("_ShowPalabrasClave", new ShowFieldsForm { PalabraClave1 = Model.Form.PalabraClave1, PalabraClave2 = Model.Form.PalabraClave2, PalabraClave3 = Model.Form.PalabraClave3, IsShowForm = false }); %>
@@ -126,12 +110,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteResena_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 </asp:Content>

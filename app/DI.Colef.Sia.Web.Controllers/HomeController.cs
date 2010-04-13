@@ -1,11 +1,9 @@
 ﻿using System.Web.Mvc;
-using System.Web.Routing;
 using DecisionesInteligentes.Colef.Sia.ApplicationServices;
 using DecisionesInteligentes.Colef.Sia.Core;
 using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Mappers;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.Models;
-using DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos;
 using DecisionesInteligentes.Colef.Sia.Web.Controllers.ViewData;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
@@ -33,6 +31,17 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
 
         [Authorize]
         public ActionResult Index()
+        {
+            var data = new GenericViewData<HomeForm>
+                           {
+                               Title = "Menú"
+                           };
+
+            return View(data);
+        }
+
+        [Authorize]
+        public ActionResult Bandeja()
         {
             var data = new GenericViewData<HomeForm>
                            {

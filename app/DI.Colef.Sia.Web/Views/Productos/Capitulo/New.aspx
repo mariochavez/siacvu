@@ -65,8 +65,7 @@
 				
 	            <% Html.RenderPartial("_ShowEstadoProducto", 
                     new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
-                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
-                        ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
+                        FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>
 	            
 	            <h4><span id="coautores" class="titulovalor">Compiladores</span> del libro</h4>
 	            <% Html.RenderPartial("_AddButtons", new ShowFieldsForm { ModelId = Model.Form.Id, CheckboxName = "AutorSeOrdenaAlfabeticamente", CheckboxValue = Model.Form.CoautorSeOrdenaAlfabeticamente, Rel = "NewAutorInternoLink, NewAutorExternoLink", SubFormName = "autor", UrlActionExterno = "NewAutorExterno", UrlActionInterno = "NewAutorInterno", Link1Id = "NewAutorInternoLink", Link2Id = "NewAutorExternoLink" }); %>
@@ -95,16 +94,7 @@
                     <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
                 </div>
 
-                <div id="obra_field">
-                <p>
-                    <label>Capitulo publicado</label>
-                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteCapitulo_DocumentoProbatorio" id="ComprobanteCapitulo_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-                </div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
                 <% Html.RenderPartial("_DatosFinal", Model.Form); %>
 				
@@ -128,12 +118,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteCapitulo_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 

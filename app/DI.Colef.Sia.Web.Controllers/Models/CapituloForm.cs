@@ -21,12 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public bool AutorSeOrdenaAlfabeticamente { get; set; }
 
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-
-        public int ComprobanteCapituloId { get; set; }
-        public string ComprobanteCapituloNombre { get; set; }
-
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
 
@@ -73,6 +67,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public AutorInternoProductoForm[] AutorInternoCapitulos { get; set; }
         public AutorExternoProductoForm[] AutorExternoCapitulos { get; set; }
         public EditorialProductoForm[] EditorialCapitulos { get; set; }
+        public ArchivoForm[] ArchivosCapitulo { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosCapitulo; }
+        }
 		
 		/* New */
 		public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

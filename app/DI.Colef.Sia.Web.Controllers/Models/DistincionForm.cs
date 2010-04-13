@@ -1,8 +1,7 @@
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class DistincionForm
+    public class DistincionForm : BaseForm
     {
-        public int Id { get; set; }
         public string Descripcion { get; set; }
         public string Titulo { get; set; }
         public string FechaOtorgamiento { get; set; }
@@ -15,9 +14,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int TipoDistincion { get; set; }
         public int TipoDistincionId { get; set; }
         public string TipoDistincionNombre { get; set; }
-
-        public int ComprobanteDistincionId { get; set; }
-        public string ComprobanteDistincionNombre { get; set; }
 
         public string InstitucionNombre { get; set; }
         public int InstitucionId { get; set; }
@@ -34,16 +30,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int EstadoPaisId { get; set; }
         public string EstadoPaisNombre { get; set; }
 
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
+        public ArchivoForm[] ArchivosDistincion { get; set; }
 
-        public string InvestigadorNombre
+        public override ArchivoForm[] Archivos
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return ArchivosDistincion; }
         }
 
         /* Catalogos */

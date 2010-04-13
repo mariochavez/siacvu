@@ -1,22 +1,59 @@
 ﻿body {
 	margin: 0;
-	font-family: Calibri, Helvetica, sans-serif;
-	background: #CDCCB2 url(./Images/Pagina-bg.gif) 0 0 repeat-x;
+	font-family: Verdana,Geneva,sans-serif;
+	background: #FDF4E5 none repeat scroll 0 0;
 }
 
 .body-sesion {
 	margin: 0;
-	font-family: Calibri, Helvetica, sans-serif;
+	font-family: Verdana,Geneva,sans-serif;
 	background: #CDCCB2;
+}
+
+#pagina {
+    margin:auto;
+    width:980px;
+}
+
+h1, h2, h3, h4, h5 {
+    margin:0;
+    padding:0;
 }
 
 /*---<cabecera>---*/
 
 #cabecera {	
-	width: 980px;
-	height: 70px;
-	margin: 0 auto;	
+	background-color:#BA5C2B;
+    background-image:url(images/colef-logo.gif);
+    background-position:right center;
+    background-repeat:no-repeat;
+    color:#FFFFFF;
+    height:70px;
+    width:980px;	
 }
+
+#cabecera p {
+    float:left;
+    font-size:18px;
+    height:70px;
+    line-height:70px;
+    margin:0 10px 0 0;
+    padding:0 0 0 40px;
+    width:320px;
+}
+
+#cabecera h3 {
+    color:#955942;
+    float:left;
+    font-size:32px;
+    font-weight:100;
+    line-height:70px;
+}
+
+#cabecera span {
+    color:#D29D61;
+}
+
 
 #titulo h1 {
 	float: left;
@@ -55,11 +92,30 @@
 }
 
 #seccion {
-	width: 980px;	
-	height: 60px;
-	margin: 0 auto;
-	background-color: #252525;
-	position: relative;
+    background-color:#955942;
+    float:left;
+    height:75px;
+    width:980px;
+}
+
+#seccion h1 {
+    color:#FFFFFF;
+    font-style:italic;
+    font-weight:100;
+    height:50px;
+    line-height:50px;
+    padding-left:40px;
+}
+
+#seccion h3 
+{
+    float:left;
+    font-size:18px;
+    height:70px;
+    color:#D29D61;
+    margin:0 10px 0 0;
+    padding:0 0 0 40px;
+    width:320px;
 }
 
 #seccion-sesion {
@@ -69,19 +125,46 @@
 }
 
 #tituloseccion h2 {
-	float: left;
-	margin: 0;
-	padding: 15px 0 0 20px;
-	font-size: 16pt;
-	text-transform: uppercase;
-	letter-spacing: 1pt;
-	color: #fff;
+    background-color:#D29D61;
+    color:#7C2C31;
+    float:left;
+    font-size:16pt;
+    font-weight:100;
+    margin-left:40px;
+    padding:5px 14px;
+    text-align:center;
+    width:600px;
 }
 
 #menu {
-    float: right;
-    margin: 0 10px 0 0;
-    height: 60px;
+    color:#FFFFFF;
+    display:inline;
+    float:right;
+    font-size:14px;
+    font-weight:bold;
+    height:25px;
+    line-height:25px;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0 10px 0 0;
+    text-align:right;
+}
+
+#menu li {
+    display:inline;
+}
+
+#menu li a {
+    color:#FFFFFF;
+    margin-left:4px;
+    margin-right:4px;
+    text-decoration:none;
+}
+
+#menu li a:hover {
+    color:#D29D61;
 }
 
 #menu ul {
@@ -338,13 +421,33 @@ a.active.trigger {
 /*---<end slide>---*/
 
 #cuerpo {
-	width: 980px;	
-	margin: 0 auto;
+    background-color:#FFFFFF;
+    background-image:url(images/contenido-bg.jpg);
+    background-position:center center;
+    background-repeat:repeat-y;
+    float:left;
+    margin-top:10px;
+    width:980px;
+}
+
+#bottomcuerpo {
+    background-color:#FFFFFF;
+    float:left;
+    height:20px;
+    width:980px;
+}
+
+#tituloseccion {
+    background-color:#FFFFFF;
+    height:40px;
+    width:980px;
 }
 
 #introduccion {
-	margin: 10px 0 0 0;
-	background-color: #BA5C2B;
+	background-color:#BA5C2B;
+    margin:auto;
+    text-align:center;
+    width:800px;
 }
 
 #introduccion h3 {
@@ -364,10 +467,11 @@ a.active.trigger {
 	color: #fff;
 }
 
-#subcontenido {
-	width: 980px;
+#subcontenido 
+{
+    width: 800px;
+	margin:auto;
 	overflow: hidden;
-	margin: 10px 0 0 0;
 	background: #BA5C2B url(./Images/subcontenido-bg.gif) 0 0 repeat-y;
 }
 
@@ -382,7 +486,7 @@ a.active.trigger {
 
 #subcontenido p {
 	float: left;
-	width: 650px;
+	width: 645px;
 	margin: 0;
 	padding: 10px 20px;
 	font-size: 11pt;
@@ -395,7 +499,7 @@ a.active.trigger {
 .botonzon {
 	float: left;
 	margin: 6px 0 0 0;
-	width: 290px;
+	width: 110px;
 	height: 28px;
 	text-align: center;
 }
@@ -433,14 +537,68 @@ a.active.trigger {
 
 #contenido {
 	width: 980px;
-	margin: 10px 0 0 0;
-	overflow: hidden;
-	background: #fff url(./Images/contenido-bg.gif) 0 0 repeat-y;
+}
+
+#ColumnaA {
+    float:left;
+    margin:auto;
+    width:490px;
+}
+
+.FondoMenuLadoA {
+    background-image:url(images/bg-ColumnaA.gif);
+    background-position:right top;
+    background-repeat:no-repeat;
+}
+
+#ColumnaB {
+    float:left;
+    margin:auto;
+    width:490px;
+}
+
+.FondoMenuLadoB {
+    background-image:url(images/bg-ColumnaB.gif);
+    background-position:left top;
+    background-repeat:repeat-y;
+}
+
+.modulo {
+    clear:both;
+    margin:auto 20px auto 25px;
+    padding:10px 10px 20px;
+    width:365px;
+}
+
+.modulo h1 {
+    color:#955942;
+    font-size:20px;
+    padding-left:40px;
+}
+
+.modulo ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:5px 0 0;
+    padding-left:40px;
+}
+
+.modulo li a {
+    color:#333333;
+    line-height:20px;
+    text-decoration:none;
+}
+
+.modulo li a:hover {
+    color:#955942;
+    font-weight: bold;
+    text-decoration:underline;
 }
 
 #textos {
-	float: left;
-	width: 680px;
+	margin:10px;
+    width:960px;
 }
 
 /*---<mensaje-error>---*/
@@ -905,6 +1063,7 @@ a.editabusqueda {
     color: #BA5C2B;
     font-weight:bold;
     text-decoration: none;
+    padding: 0px 2px 0px;
 }
 
 .sublista h6 a:hover, .sublista-dos h6 a.selected {
@@ -984,6 +1143,7 @@ a.minilistacancelar {
 	font-size: 11pt;
 	line-height: 15pt;
 	color: #555;
+	margin:0 0 0 170px !important;
 }
 
 .submit a {
@@ -1025,49 +1185,19 @@ a.minilistacancelar {
 /*---<pie>---*/
 
 #pie {
-	width: 980px;
-	height: 70px;
-	margin: 10px auto;
-	background-color: #252525;
+    background-color:#D29D61;
+    float:left;
+    height:35px;
+    margin:30px auto 10px;
+    width:980px;
 }
 
-#copy {
-	float: left;
-	width: 680px;
-}
-
-#copy p {
-	margin: 0;
-	padding: 25px 0 0 20px;
-	font-size: 10pt;
-	font-weight: bold;
-	line-height: 15pt;
-	color: #BA5C2B;
-}
-
-#powered {
-	float: left;
-	width: 300px;
-}
-
-#powered p {
-	margin: 0;
-	padding: 25px 20px 0 0;
-	font-size: 10pt;
-	font-weight: bold;
-	line-height: 15pt;
-	text-align: right;
-	color: #BA5C2B;
-}
-
-#powered p a {
-	font-weight: bold;
-	text-decoration: none;
-	color: #CDCCB2;
-}
-
-#powered p a:hover {
-	color: #fff;
+#pie p {
+    color:#FFFFFF;
+    font-size:10pt;
+    font-weight:bold;
+    margin:0;
+    padding:10px;
 }
 
 /* ***************************************************************************
@@ -1127,6 +1257,7 @@ a.minilistacancelar {
 div.progress_container {
   padding: 10px 0 10px 130px;
   display: none;
+  width: 600px;
 }
 div.status_message {
   font-size: 12px;

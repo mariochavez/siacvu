@@ -694,7 +694,6 @@ RemoteFormV2 = {
         var data = $(this).serialize();
 
         $('p.submit').slideUp();
-        //$('p.waiting').show();
         $('p.submit').showLoading('Guardando ...');
         $.ajax({
             url: url,

@@ -24,7 +24,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IAreaMapper areaMapper;
         readonly IRevistaPublicacionMapper revistaPublicacionMapper;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
-        readonly IArchivoService archivoService;
         readonly IInvestigadorService investigadorService;
 
         public ArticuloDifusionController(IArticuloDifusionService articuloService,
@@ -54,7 +53,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.areaMapper = areaMapper;
             this.revistaPublicacionMapper = revistaPublicacionMapper;
             this.investigadorExternoMapper = investigadorExternoMapper;
-            this.archivoService = archivoService;
             this.investigadorService = investigadorService;
         }
 
@@ -160,36 +158,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var articulo = articuloService.GetArticuloById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "Aceptado")
-            {
-                archivo.TipoProducto = articulo.TipoProducto;
-                archivoService.Save(archivo);
-                articulo.ComprobanteAceptado = archivo;
-            }
-            else if (form["TipoArchivo"] == "ComprobanteArticulo")
-            {
-                archivo.TipoProducto = articulo.TipoProducto;
-                archivoService.Save(archivo);
-                articulo.ComprobanteArticulo = archivo;
-            }
+            var archivo = MapArchivo<ArchivoArticuloDifusion>();
+            articulo.AddArchivo(archivo);
 
             articuloService.SaveArticulo(articulo);
 
@@ -595,8 +565,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                       FechaAceptacion = form.FechaAceptacion,
                                       FechaPublicacion = form.FechaPublicacion,
                                       ModelId = form.Id,
-                                      ComprobanteAceptadoId = form.ComprobanteAceptadoId,
-                                      ComprobanteAceptadoNombre = form.ComprobanteAceptadoNombre,
                                       PalabraClave1 = form.PalabraClave1,
                                       PalabraClave2 = form.PalabraClave2,
                                       PalabraClave3 = form.PalabraClave3,

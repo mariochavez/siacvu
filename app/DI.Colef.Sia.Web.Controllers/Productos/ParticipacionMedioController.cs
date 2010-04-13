@@ -13,15 +13,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class ParticipacionMedioController : BaseController<ParticipacionMedio, ParticipacionMedioForm>
     {
         readonly IAmbitoMapper ambitoMapper;
-        readonly ICatalogoService catalogoService;
         readonly IParticipacionMedioMapper participacionMedioMapper;
         readonly IParticipacionMedioService participacionMedioService;
         readonly IDirigidoAMapper dirigidoAMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly ILineaTematicaMapper lineaTematicaMapper;
-        readonly IAreaMapper areaMapper;
-        readonly IDisciplinaMapper disciplinaMapper;
-        readonly ISubdisciplinaMapper subdisciplinaMapper;
 
         public ParticipacionMedioController(IParticipacionMedioService participacionMedioService,
                                             IParticipacionMedioMapper participacionMedioMapper,
@@ -31,11 +27,14 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                             ITipoParticipacionMapper tipoParticipacionMapper,
                                             IAreaTematicaMapper areaTematicaMapper,
                                             IDirigidoAMapper dirigidoAMapper,
-                                            ISearchService searchService, ILineaTematicaMapper lineaTematicaMapper, IAreaMapper areaMapper, IDisciplinaMapper disciplinaMapper,
+                                            ISearchService searchService, 
+                                            ILineaTematicaMapper lineaTematicaMapper, 
+                                            IAreaMapper areaMapper, 
+                                            IDisciplinaMapper disciplinaMapper,
                                 ISubdisciplinaMapper subdisciplinaMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             this.areaTematicaMapper = areaTematicaMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
             this.participacionMedioService = participacionMedioService;
@@ -43,9 +42,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.ambitoMapper = ambitoMapper;
             this.dirigidoAMapper = dirigidoAMapper;
             this.lineaTematicaMapper = lineaTematicaMapper;
-            this.areaMapper = areaMapper;
-            this.disciplinaMapper = disciplinaMapper;
-            this.subdisciplinaMapper = subdisciplinaMapper;
         }
 
         [Authorize]

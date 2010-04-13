@@ -23,6 +23,20 @@ namespace DecisionesInteligentes.Colef.Sia.Core
             RecursoFinancieroProyectos = new List<RecursoFinancieroProyecto>();
             EstudianteProyectos = new List<EstudianteProyecto>();
             ProductoGeneradoProyectos = new List<ProductoGeneradoProyecto>();
+            ArchivosProyecto = new List<ArchivoProyecto>();
+        }
+
+        public virtual IList<ArchivoProyecto> ArchivosProyecto { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosProyecto.Add((ArchivoProyecto) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosProyecto.Remove((ArchivoProyecto) archivo);
         }
 
         public virtual void AddResponsable(ResponsableProyecto responsableProyecto)
@@ -121,9 +135,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core
         public virtual int EstadoProyecto { get; set; } //Catalogo Fijo
 
         public virtual DateTime FechaConclusion { get; set; }
-
-        [Valid]
-        public virtual Archivo ComprobanteCalendarioProyecto { get; set; }
 
         //Seccion fuentes del financiamiento del proyecto
         public virtual bool ConRecursos { get; set; }

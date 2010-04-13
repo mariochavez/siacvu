@@ -16,7 +16,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class EventoController : BaseController<Evento, EventoForm>
     {
         readonly IAmbitoMapper ambitoMapper;
-        readonly ICatalogoService catalogoService;
         readonly ICoautorExternoEventoMapper coautorExternoEventoMapper;
         readonly ISesionEventoMapper sesionEventoMapper;
         readonly ICoautorInternoEventoMapper coautorInternoEventoMapper;
@@ -24,7 +23,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly IEventoService eventoService;
         readonly IInvestigadorExternoMapper investigadorExternoMapper;
         readonly ITipoEventoMapper tipoEventoMapper;
-        readonly IArchivoService archivoService;
         readonly ILineaTematicaMapper lineaTematicaMapper;
         readonly ITipoParticipacionMapper tipoParticipacionMapper;
         readonly IInstitucionEventoMapper institucionEventoMapper;
@@ -48,13 +46,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                 IInvestigadorService investigadorService)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             this.lineaTematicaMapper = lineaTematicaMapper;
             this.areaTematicaMapper = areaTematicaMapper;
             this.sesionEventoMapper = sesionEventoMapper;
             this.eventoService = eventoService;
             this.eventoMapper = eventoMapper;
-            this.archivoService = archivoService;
             this.ambitoMapper = ambitoMapper;
             this.tipoEventoMapper = tipoEventoMapper;
             this.tipoParticipacionMapper = tipoParticipacionMapper;
@@ -219,30 +216,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var evento = eventoService.GetEventoById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteEvento")
-            {
-                archivo.TipoProducto = evento.TipoProducto;
-                archivoService.Save(archivo);
-                evento.ComprobanteEvento = archivo;
-            }
+            var archivo = MapArchivo<ArchivoEvento>();
+            evento.AddArchivo(archivo);
 
             eventoService.SaveEvento(evento);
 

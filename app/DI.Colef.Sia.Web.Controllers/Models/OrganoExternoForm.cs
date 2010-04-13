@@ -2,9 +2,8 @@ using System;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
-    public class OrganoExternoForm
+    public class OrganoExternoForm : BaseForm
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Siglas { get; set; }
         public string Participacion { get; set; }
@@ -38,16 +37,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int AmbitoId { get; set; }
         public string AmbitoNombre { get; set; }
 
-        public string UsuarioNombre { get; set; }
-        public string UsuarioApellidoPaterno { get; set; }
-        public string UsuarioApellidoMaterno { get; set; }
+        public ArchivoForm[] ArchivosOrganoExterno { get; set; }
 
-        public string InvestigadorNombre
+        public override ArchivoForm[] Archivos
         {
-            get
-            {
-                return string.Format("{0} {1} {2}", UsuarioApellidoPaterno, UsuarioApellidoMaterno, UsuarioNombre);
-            }
+            get { return ArchivosOrganoExterno; }
         }
 
         /* Catalogos */

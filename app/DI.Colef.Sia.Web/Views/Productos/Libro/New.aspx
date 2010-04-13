@@ -71,24 +71,14 @@
             
             <% Html.RenderPartial("_ShowEstadoProducto", 
                 new ShowFieldsForm { EstadosProductos = Model.Form.EstadosProductos, FechaAceptacion = Model.Form.FechaAceptacion, 
-                    FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id, 
-                    ComprobanteAceptadoId = Model.Form.ComprobanteAceptadoId, ComprobanteAceptadoNombre = Model.Form.ComprobanteAceptadoNombre}); %>
+                    FechaPublicacion = Model.Form.FechaPublicacion, IsShowForm = false, ModelId = Model.Form.Id}); %>
             
             <% Html.RenderPartial("_EditEditorial", Model.Form); %>
             
             <div class="EstatusPublicado">
                 <% Html.RenderPartial("_ReferenciaBibliografica", Model.Form); %>
             </div>
-            <div id="obra_field">
-            <p>
-                <label>Libro publicado</label>
-                <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
-            </p>
-            <div style="padding: 0 0 10px 20px">
-                <input type="file" name="ComprobanteLibro_DocumentoProbatorio" id="ComprobanteLibro_DocumentoProbatorio" class="fileUpload"/>
-            </div>
-            <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-			</div>
+            <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 			<% Html.RenderPartial("_DatosFinal", Model.Form); %>
 			
 			<% Html.RenderPartial("_ProgressBar"); %>
@@ -111,12 +101,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#Aceptado_DocumentoProbatorio', 'Aceptado_FileQueue',
-            uploader, cancelImg, action, auth);
-        UploadFile.setup('#ComprobanteLibro_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 

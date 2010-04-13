@@ -68,9 +68,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public RamaForm[] Ramas { get; set; }
         public ClaseForm[] Clases { get; set; }
 
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-
         public string UrlAction { get; set; }
         public string Rel { get; set; }
 

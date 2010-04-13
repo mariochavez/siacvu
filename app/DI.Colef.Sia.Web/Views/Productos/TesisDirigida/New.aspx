@@ -62,16 +62,7 @@
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", new ShowFieldsForm { Areas = Model.Form.Areas, Disciplinas = Model.Form.Disciplinas, Subdisciplinas = Model.Form.Subdisciplinas, IsShowForm = false }); %>
                 
-                <div id="obra_field">
-                <p>
-                    <label>Documento probatorio</label>
-                    <span id="span_comprobante_documento" class="valor">&nbsp;</span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteTesisDirigida_DocumentoProbatorio" id="ComprobanteTesisDirigida_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
-				</div>
+                <% Html.RenderPartial("_EditArchivo", Model.Form); %>
 
 				<% Html.RenderPartial("_ProgressBar"); %>
 
@@ -91,10 +82,10 @@
         var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
         var uploader = '<%=ResolveUrl("~/Scripts/uploadify.swf") %>';
         var cancelImg = '<%=ResolveUrl("~/Content/Images/eliminar-icon.png") %>';
+        var uploadImg = '<%=ResolveUrl("~/Content/Images/adjuntar.png") %>';
         var action = '<%=Url.Action("AddFile") %>';
 
-        UploadFile.setup('#ComprobanteTesisDirigida_DocumentoProbatorio', 'Comprobante_FileQueue',
-            uploader, cancelImg, action, auth);
+        UploadMulti.setup('#uploadify', 'fileQueue', uploader, cancelImg, uploadImg, action, auth);
     });
 </script>
 </asp:Content>

@@ -2,7 +2,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
 {
     public class EventoForm : BaseForm
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
         public string TituloTrabajo { get; set; }
         public bool Invitacion { get; set; }
@@ -15,14 +14,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public string DepartamentoNombre { get; set; }
         public string SedeNombre { get; set; }
         public string ObjetivoEvento { get; set; }
-        public int PosicionCoautor { get; set; }
         public int FinanciamientoInterno { get; set; }
         public int FinanciamientoExterno { get; set; }
         public int SesionesTrabajo { get; set; }
         public bool CoautorSeOrdenaAlfabeticamente { get; set; }
-
-        public int ComprobanteEventoId { get; set; }
-        public string ComprobanteEventoNombre { get; set; }
 
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
@@ -48,6 +43,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm[] CoautorInternoEventos { get; set; }
         public InstitucionProductoForm[] InstitucionEventos { get; set; }
         public SesionEventoForm[] SesionEventos { get; set; }
+        public ArchivoForm[] ArchivosEvento { get; set; }
+
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosEvento; }
+        }
 
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }

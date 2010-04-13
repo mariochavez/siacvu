@@ -78,7 +78,7 @@
     </Reference>
     <Reference Include="Machine.Specifications, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Machine.Specifications.dll</HintPath>
+      <HintPath>..\..\..\..\Tools\machine.specifications\Build\Debug\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

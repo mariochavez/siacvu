@@ -8,5 +8,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces
         object[] GetBandejaProductos(Usuario usuario, TipoBandeja tipoBandeja);
         object[] GetBandejaProductos(bool isDgaa);
         object[] GetBandejaProductos(bool isDgaa, int filterId, int filterType);
+        decimal GetPuntosSieva(Usuario usuario);
     }
 }

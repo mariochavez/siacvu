@@ -13,7 +13,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
 {
     public class CursoController : BaseController<Curso, CursoForm>
     {
-        readonly ICatalogoService catalogoService;
         readonly ICursoMapper cursoMapper;
         readonly ICursoService cursoService;
         readonly INivelEstudioMapper nivelEstudioMapper;
@@ -22,8 +21,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
         readonly ICursoInvestigadorMapper cursoInvestigadorMapper;
         readonly ISectorMapper sectorMapper;
         readonly IAreaMapper areaMapper;
-        readonly IInstitucionMapper institucionMapper;
-        readonly IArchivoService archivoService;
 
         public CursoController(ICursoService cursoService,
                                ICursoMapper cursoMapper,
@@ -38,7 +35,9 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                IInstitucionMapper institucionMapper, IAreaMapper areaMapper)
             : base(usuarioService, searchService, catalogoService, disciplinaMapper, subdisciplinaMapper, organizacionMapper, nivelMapper)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
+            base.institucionMapper = institucionMapper;
+
             this.nivelEstudioMapper = nivelEstudioMapper;
             this.cursoService = cursoService;
             this.cursoMapper = cursoMapper;
@@ -47,8 +46,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             this.cursoInvestigadorService = cursoInvestigadorService;
             this.sectorMapper = sectorMapper;
             this.areaMapper = areaMapper;
-            this.archivoService = archivoService;
-            this.institucionMapper = institucionMapper;
         }
 
         [Authorize]
@@ -189,30 +186,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var curso = cursoService.GetCursoById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteCurso")
-            {
-                archivo.TipoProducto = curso.TipoProducto;
-                archivoService.Save(archivo);
-                curso.ComprobanteCurso = archivo;
-            }
+            var archivo = MapArchivo<ArchivoCurso>();
+            curso.AddArchivo(archivo);
 
             cursoService.SaveCurso(curso);
 

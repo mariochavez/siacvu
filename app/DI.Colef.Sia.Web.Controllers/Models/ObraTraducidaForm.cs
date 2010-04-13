@@ -35,12 +35,6 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public int PosicionAutor { get; set; }
         public int NoPaginas { get; set; }
 
-        public int ComprobanteAceptadoId { get; set; }
-        public string ComprobanteAceptadoNombre { get; set; }
-
-        public int ComprobanteObraTraducidaId { get; set; }
-        public string ComprobanteObraTraducidaNombre { get; set; }
-
         public int FirmaAceptacion2 { get; set; }
         public string FirmaDescripcion { get; set; }
 
@@ -84,7 +78,12 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Models
         public CoautorInternoProductoForm[] CoautorInternoObraTraducidas { get; set; }
         public AutorInternoProductoForm[] AutorInternoObraTraducidas { get; set; }
         public AutorExternoProductoForm[] AutorExternoObraTraducidas { get; set; }
+        public ArchivoForm[] ArchivosObraTraducida { get; set; }
 
+        public override ArchivoForm[] Archivos
+        {
+            get { return ArchivosObraTraducida; }
+        }
         /* New */
         public CoautorExternoProductoForm CoautorExternoProducto { get; set; }
         public CoautorInternoProductoForm CoautorInternoProducto { get; set; }

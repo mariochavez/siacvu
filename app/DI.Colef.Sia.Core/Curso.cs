@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DecisionesInteligentes.Colef.Sia.Core.NHibernateValidator;
 using NHibernate.Validator.Constraints;
 using SharpArch.Core.DomainModel;
@@ -12,8 +13,23 @@ namespace DecisionesInteligentes.Colef.Sia.Core
 
         public virtual int TipoProducto { get { return tipoProducto; } }
 
-        [Valid]
-        public virtual Archivo ComprobanteCurso { get; set; }
+        public Curso()
+        {
+            ArchivosCurso = new List<ArchivoCurso>();
+        }
+        
+        public virtual IList<ArchivoCurso> ArchivosCurso { get; private set; }
+
+        public virtual void AddArchivo(Archivo archivo)
+        {
+            archivo.TipoProducto = tipoProducto;
+            ArchivosCurso.Add((ArchivoCurso) archivo);
+        }
+
+        public virtual void DeleteArchivo(Archivo archivo)
+        {
+            ArchivosCurso.Remove((ArchivoCurso) archivo);
+        }
 
         [Valid]
         public virtual Firma Firma { get; set; }

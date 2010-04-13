@@ -15,13 +15,10 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
     public class OrganoExternoController : BaseController<OrganoExterno, OrganoExternoForm>
     {
         readonly IAmbitoMapper ambitoMapper;
-        readonly ICatalogoService catalogoService;
         readonly IOrganoExternoMapper organoExternoMapper;
         readonly IOrganoExternoService organoExternoService;
         readonly ISectorMapper sectorMapper;
-        readonly IArchivoService archivoService;
         readonly ITipoOrganoMapper tipoOrganoMapper;
-        readonly IPaisMapper paisMapper;
         
         public OrganoExternoController(IOrganoExternoService organoExternoService,
                                        IOrganoExternoMapper organoExternoMapper,
@@ -34,12 +31,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
                                        ISearchService searchService, IPaisMapper paisMapper)
             : base(usuarioService, searchService, catalogoService)
         {
-            this.catalogoService = catalogoService;
+            base.catalogoService = catalogoService;
             this.organoExternoService = organoExternoService;
             this.organoExternoMapper = organoExternoMapper;
             this.tipoOrganoMapper = tipoOrganoMapper;
             this.sectorMapper = sectorMapper;
-            this.archivoService = archivoService;
             this.ambitoMapper = ambitoMapper;
             this.paisMapper = paisMapper;
         }
@@ -176,30 +172,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Productos
             var id = Convert.ToInt32(form["Id"]);
             var organoExterno = organoExternoService.GetOrganoExternoById(id);
 
-            var file = Request.Files["fileData"];
-
-            var archivo = new Archivo
-                              {
-                                  Activo = true,
-                                  Contenido = file.ContentType,
-                                  CreadoEl = DateTime.Now,
-                                  CreadoPor = CurrentUser(),
-                                  ModificadoEl = DateTime.Now,
-                                  ModificadoPor = CurrentUser(),
-                                  Nombre = file.FileName,
-                                  Tamano = file.ContentLength
-                              };
-
-            var datos = new byte[file.ContentLength];
-            file.InputStream.Read(datos, 0, datos.Length);
-            archivo.Datos = datos;
-
-            if (form["TipoArchivo"] == "ComprobanteOrganoExterno")
-            {
-                archivo.TipoProducto = organoExterno.TipoProducto;
-                archivoService.Save(archivo);
-                organoExterno.ComprobanteOrganoExterno = archivo;
-            }
+            var archivo = MapArchivo<ArchivoOrganoExterno>();
+            organoExterno.AddArchivo(archivo);
 
             organoExternoService.SaveOrganoExterno(organoExterno);
 

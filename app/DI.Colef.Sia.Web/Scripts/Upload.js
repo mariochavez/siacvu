@@ -1,199 +1,126 @@
-﻿var totalSize = 0;
-
-function progress(event, queueID, fileObj, data) {
-    $('.status_message').html('Subiendo ' + fileObj.name + '...');
-    var stepSize = 200 / totalSize;
-    var step = (stepSize * data.allBytesLoaded) * 2;
-
-    $('.progress').attr('style', 'width: ' + step + 'px;');
-
-    return false;
-}
-
-function complete(event, queueID, fileObj, response, data) {
-    var fileInfo = JSON.parse(response);
-    return false;
-}
-
-function completeAll(event, data) {
-    $('.status_message').html('');
-    $('.progress').attr('style', 'width: 0px;');
-
-    $('.progress_container').hide();
-
-    $('#fileQueue img').each(function() {
-        $(this).show();
-    });
-}
-
-function selectOnce(event, data) {
-    totalSize = data.allBytesTotal;
-
-    $('span.percentage').each(function() {
-        $(this).remove();
-    });
-
-    $('div.uploadifyProgress').each(function() {
-        $(this).remove();
-    });
-
-    if ($('#archivoEmptyListForm').is(':visible')) {
-        $('#archivoEmptyListForm').hide();
-    }
-
-    $('div.cancel').each(function() {
-        var action = $(this).children()[0];
-        var id = $(action).attr('href').match(/\('(\w*)'\)/)[1];
-        var filename = $('#uploadify' + id + ' > span').text();
-
-        $('#uploadify' + id).addClass('sublista');
-
-        $(action).attr('href', id);
-        $(action).click(removeFromQueue);
-
-        $('#uploadify' + id + ' > span').remove();
-        $('#uploadify' + id).append('<h6></h6>');
-        $('#uploadify' + id + ' > h6').append(action);
-        $('#uploadify' + id + ' > h6 > a').after(filename);
-
-        $(this).remove();
-    });
-
-    setupSublistRows();    
-}
-
-function removeFromQueue() {
-    var id = $(this).attr('href');
-    $('#uploadify').uploadifyCancel(id);
-
-    if ($('#fileQueue > div.uploadifyQueueItem').length == 1) {
-        $('#archivoEmptyListForm').show();
-    }
-
-    setupSublistRows();
-    
-    return false;
-}
-
-function startUpload() {
-    if ($('#fileQueue > div.uploadifyQueueItem').length == 0) {
-        window.location.href = $('#regresar').attr('href');
-        return;
-    }
-    
-    $('#fileQueue img').each(function() {
-        $(this).hide();
-    });
-
-    $('.progress_container').show();
-
-    $('#uploadify').uploadifySettings(
-        'scriptData', { '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(), 'investigadorId': $('#Id').val() }
-    );
-    
-    $('#uploadify').uploadifyUpload();
-}
-
-function error(event, queueID, fileObj, errorObj) {
-    alert('Error');
-}
-
-var Upload = {
+﻿var UploadMulti = {
+    totalSize: 0,
     fileData: null,
     queue: null,
-    queues: 0,
-    onSelect: function(event, queueID, fileObj) {
-        Upload.fileData = fileObj;
-        Upload.queue = queueID;
+    setup: function (fileUpload, queue, uploader, cancelImg, uploadImg, action, auth) {
+        $(fileUpload).uploadify({
+            'uploader': uploader,
+            'script': action,
+            'cancelImg': cancelImg,
+            'folder': action,
+            'queueID': queue,
+            'auto': false,
+            'multi': true,
+            'buttonText': '',
+            'buttonImg': uploadImg,
+            'width': 190,
+            'onSelect': UploadMulti.onSelect,
+            'onSelectOnce': UploadMulti.onSelectOnce,
+            'onProgress': UploadMulti.onProgress,
+            'onComplete': UploadMulti.onComplete,
+            'onAllComplete': UploadMulti.onAllComplete,
+            'onCancel': UploadMulti.onCancel,
+            'onError': UploadMulti.onError,
+            'scriptData': { token: auth }
+        });
     },
-    onCancel: function(event, queueID, fileObj, data) {
-        var display = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem').parent().attr('rel');
-        $(display).html('&nbsp;');
+    onSelect: function (event, queueID, fileObj) {
+        UploadMulti.fileData = fileObj;
+        UploadMulti.queue = queueID;
     },
-    onSelectOnce: function(event, data) {
-        if (Upload.fileData == null)
-            return;
+    onSelectOnce: function (event, data) {
+        UploadMulti.totalSize = data.allBytesTotal;
 
-        var display = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem').parent().attr('rel');
-        $(display).html(Upload.fileData.name + '<span>(' + Upload.fileData.size + ')</span>');
-        var remove = $('div[id$="' + Upload.queue + '"].uploadifyQueueItem > div.cancel > a');
-        $(display + ' > span').append(remove);
-    },
-    onProgress: function(event, queueID, fileObj, data) {
-        $('.status_message').html('Subiendo ' + fileObj.name + '...');
-        var stepSize = 200 / fileObj.size;
-        var step = (stepSize * data.allBytesLoaded) * 2;
+        $('span.percentage').each(function () {
+            $(this).remove();
+        });
 
-        $('.progress').attr('style', 'width: ' + step + 'px;');
+        $('div.uploadifyProgress').each(function () {
+            $(this).remove();
+        });
+
+        if ($('#archivoEmptyListForm').is(':visible')) {
+            $('#archivoEmptyListForm').hide();
+        }
+
+        $('div.cancel').each(function () {
+            var action = $(this).children()[0];
+            var id = $(action).attr('href').match(/\('(\w*)'\)/)[1];
+            var filename = $('#uploadify' + id + ' > span').text();
+
+            $('#uploadify' + id).addClass('sublista');
+
+            $(action).attr('href', id);
+            $(action).click(UploadMulti.removeFromQueue);
+
+            $('#uploadify' + id + ' > span').remove();
+            $('#uploadify' + id).append('<h6></h6>');
+            $('#uploadify' + id + ' > h6').append(action);
+            $('#uploadify' + id + ' > h6 > a').after(filename);
+
+            $(this).remove();
+        });
+
+        setupSublistRows();
+    },
+    removeFromQueue: function () {
+        var id = $(this).attr('href');
+        $('#uploadify').uploadifyCancel(id);
 
         return false;
     },
-    onAllComplete: function(event, data) {
-        $('.progress').attr('style', 'width: 0px;');
-        Upload.continueUpload();
-    },
-    startUpload: function() {
-        Upload.queues = $('.fileUpload').length;
+    onCancel: function (event, queueID, fileObj, data) {
+        $('#fileQueue > #uploadify' + queueID).remove();
 
-        Upload.upload();
-    },
-    continueUpload: function() {
-        Upload.queues--;
-
-        Upload.upload();
-    },
-    upload: function() {
-        if (Upload.queues == 0) {
-            Upload.finished();
-            return;
+        if ($('#fileQueue > div.uploadifyQueueItem').length == 0) {
+            $('#archivoEmptyListForm').show();
         }
 
-        var uploadify = Upload.fetchObject($('.fileUpload'), [Upload.queues - 1]);
-
-        if (uploadify == null) {
-            Upload.finished();
-            return;
-        }
-
-        var queueSize = 0;
-        try {
-            queueSize = uploadify.uploadifySettings('queueSize');
-        } catch (err) {
-            queueSize = 0;
-        };
-
-        if (queueSize > 0) {
-            uploadify.uploadifySettings(
+        UploadMulti.totalSize -= fileObj.size;
+        setupSublistRows();
+    },
+    upload: function () {
+        $('#uploadify').uploadifySettings(
                 'scriptData',
                 {
                     '__RequestVerificationToken': $('input:hidden[name=__RequestVerificationToken]').val(),
                     'Id': $('#Id').val(),
-                    'tipoArchivo': $(uploadify).attr('id').split('_')[0]
+                    'tipoArchivo': 1//$(uploadify).attr('id').split('_')[0]
                 });
 
-            $('.progress_container').show();
-            uploadify.uploadifyUpload();
+        var queueSize = $('#uploadify').uploadifySettings('queueSize');
+        if (queueSize == 0) {
+            window.location.href = $('#regresar').attr('href');
+            return;
         }
-        else
-            Upload.continueUpload();
+
+        $('.progress_container').show();
+        $('#progressbar').progressbar({ value: 0 });
+        $('#uploadify').uploadifyUpload();
     },
-    finished: function() {
-        if ($('.progress').length > 0) {
-            $('.progress').attr('style', 'width: 0px;');
-            $('.progress_container').hide();
-        }
+    onProgress: function (event, queueID, fileObj, data) {
+        $('.status_message').html('Subiendo ' + fileObj.name + '...');
+
+        stepSize = 100 / UploadMulti.totalSize;
+        step = (stepSize * data.allBytesLoaded);
+
+        $('#progressbar').progressbar("option", "value", step);
+
+        return false;
+    },
+    onComplete: function (event, queueID, fileObj, response, data) {
+        return false;
+    },
+    onAllComplete: function (event, data) {
+        $('.progress_container').hide();
+
+        $('#fileQueue img').each(function () {
+            $(this).show();
+        });
+
         window.location.href = $('#regresar').attr('href');
     },
-    fetchObject: function(object, position) {
-        var counter = 0;
-
-        if (position > object.length)
-            return null;
-
-        return object.eq(position);
-    },
-    error: function(event, queueID, fileObj, errorObj) {
-        alert('Ocurrió un error al subir archivos adjuntos, es posible que no se hayan grabado.');
-        window.location.href = $('#regresar').attr('href');
+    onError: function (event, queueID, fileObj, errorObj) {
+        alert('Error');
     }
-}
+};

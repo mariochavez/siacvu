@@ -33,53 +33,36 @@
 </head>
 
 <body>
-<div id="Pagina">
+<div id="pagina">
 	<div id="cabecera">
-		<div id="titulo">
-			<h1><img alt="Colegio de la Frontera Norte" src="<%=ResolveUrl("~/Content/Images/colef-logo.gif") %>" /></h1>
-		</div><!--end titulo-->
-		
-		<%Html.RenderPartial("_UserInfo"); %>		
-			
+		<p>Sistema de Informaci&oacute;n Acad&eacute;mica</p>
+        <h3>SIA<span>CVU</span></h3>
 	</div><!--end cabecera-->	
 	
 	<div id="seccion">
-		<div id="tituloseccion">
-		    <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
-		</div><!--end tituloseccion-->
-		
-		<div id="menu">
-			<ul>
-				<li><%=Html.ActionLinkForAreas<HomeController>(x => x.Index(), "Bandeja de pendientes") %></li>	
-			</ul>
-		</div><!--end menu-->	
-			
+        <%Html.RenderPartial("_UserInfo"); %>
 	</div><!--end seccion-->
 
 	<div id="cuerpo">
-	
-	    <asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />	
-		
+        <div id="tituloseccion">
+            <asp:ContentPlaceHolder ID="TituloPlaceHolder" runat="server" />
+        </div>	
 		<div id="contenido">
+            <asp:ContentPlaceHolder ID="IntroduccionPlaceHolder" runat="server" />
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server" />
-            			
-            <asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
-		</div><!--end contenido-->			
-		
-		<div id="pie">
-			<div id="copy">
-				<p>&copy; 2009 Colegio de la Frontera Norte</p>
-			</div><!--end copy-->
-			
-			<div id="powered">
-				<p></p>	
-			</div><!--end powered-->	
-			
-		</div><!--end pie-->	
+            <div id="bottomcuerpo"> </div>
+		</div><!--end contenido-->				
 		
 	</div><!--end cuerpo-->	
+    
+	<div id="pie">
+			<p>&copy; 2009 Colegio de la Frontera Norte</p>
+	</div><!--end pie-->
 	
 </div><!--end Pagina-->
-<%Html.RenderPartial("_menu"); %>
+
+<div style="display:none;">
+<asp:ContentPlaceHolder ID="SidebarContentPlaceHolder" runat="server" />
+</div>
 </body>
 </html>
