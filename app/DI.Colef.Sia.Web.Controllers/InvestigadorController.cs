@@ -123,22 +123,23 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers
             return View();
         }
 
-        //[Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult CV(int id)
         {
-            //if (!User.IsInRole("Dgaa") && CurrentUser().Id != id)
-            //    return NotAuthorized();
-
             var data = CreateViewDataWithTitle(Title.CV);
 
             var investigador = investigadorService.GetInvestigadorById(id);
-            data.Form = investigadorMapper.Map(investigador);
 
-            data.Form.ListaProductos = curriculumService.GetListaProductos(investigador.Usuario);
+            if (investigador != null)
+            {
+                data.Form = investigadorMapper.Map(investigador);
+                data.Form.ListaProductos = curriculumService.GetListaProductos(investigador.Usuario);
 
-            ViewData.Model = data;
-            return View("CV");
+                ViewData.Model = data;
+                return View("CV");
+            }
+
+            return RedirectToIndex(String.Format("El investigador con el Id = {0} no existe", id));
         }
 
         [Authorize]

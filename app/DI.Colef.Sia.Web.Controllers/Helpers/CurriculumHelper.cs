@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using DecisionesInteligentes.Colef.Sia.Core.DataInterfaces;
 
 namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
 {
@@ -41,6 +43,11 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
                         "<span class='valor'></span><br/>" +
                         "<span class='valor'></span><br/>";
             return info;
+        }
+
+        public static CurriculumDTO[] ListaProductoTipo(this HtmlHelper html, CurriculumDTO[] listaProductos, int tipoProducto)
+        {
+            return (from productos in listaProductos where productos.TipoProducto.Equals(tipoProducto) select productos).ToArray();
         }
     }
 }

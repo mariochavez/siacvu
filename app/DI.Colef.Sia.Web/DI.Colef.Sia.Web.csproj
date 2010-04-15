@@ -199,7 +199,11 @@
     <Content Include="Views\Catalogos\Glosario\_Form.ascx" />
     <Content Include="Views\Home\Bandeja.aspx" />
     <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Views\Investigador\_Productos.ascx" />
+    <Content Include="Views\Investigador\_Evento.ascx" />
+    <Content Include="Views\Investigador\_VinculacionDifusion.ascx" />
+    <Content Include="Views\Investigador\_Proyectos.ascx" />
+    <Content Include="Views\Investigador\_FormacionRecursosHumanos.ascx" />
+    <Content Include="Views\Investigador\_ProducccionAcademica.ascx" />
     <Content Include="Views\Productos\ArticuloDifusion\Index.aspx" />
     <Content Include="Views\Shared\HideEditorialForm.js.ascx" />
     <Content Include="Views\Shared\_RevistaPublicacion.ascx" />

@@ -7,7 +7,6 @@ using System.Reflection;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
-using SharpArch.Core.DomainModel;
 using SharpArch.Data.NHibernate;
 using Expression = NHibernate.Criterion.Expression;
 
@@ -29,28 +28,28 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
             var listaProductos = new object[5];
 
             IMultiCriteria produccionAcademica = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo, x => x.TipoArticulo).FilterBandeja())
-                .Add(BuildCriteria<Libro>(usuario, x => x.Nombre, x => x.ContenidoLibro).FilterBandeja())
-                .Add(BuildCriteria<Capitulo>(usuario, x => x.NombreCapitulo, x => x.TipoCapitulo).FilterBandeja())
-                .Add(BuildCriteria<ArticuloDifusion>(usuario, x => x.Titulo, x => x.TipoArticulo).FilterBandeja())
-                .Add(BuildCriteria<Reporte>(usuario, x => x.Titulo, x => x.TipoReporte).FilterBandeja())
-                .Add(BuildCriteria<Resena>(usuario, x => x.NombreProducto, x => x.TipoResena).FilterBandeja())
-                .Add(BuildCriteria<ObraTraducida>(usuario, x => x.Nombre, x => x.TipoObraTraducida).FilterBandeja());
+                .Add(BuildCriteria<Articulo>(usuario, x => x.Titulo))
+                .Add(BuildCriteria<Libro>(usuario, x => x.Nombre))
+                .Add(BuildCriteria<Capitulo>(usuario, x => x.NombreCapitulo))
+                .Add(BuildCriteria<ArticuloDifusion>(usuario, x => x.Titulo))
+                .Add(BuildCriteria<Reporte>(usuario, x => x.Titulo))
+                .Add(BuildCriteria<Resena>(usuario, x => x.NombreProducto))
+                .Add(BuildCriteria<ObraTraducida>(usuario, x => x.Nombre));
 
             IMultiCriteria formacionRecursosHumanos = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Curso>(usuario, x => x.Nombre, x => x.TipoCurso).FilterBandeja())
-                .Add(BuildCriteria<TesisDirigida>(usuario, x => x.Titulo, x => x.TipoTesis).FilterBandeja());
+                .Add(BuildCriteria<Curso>(usuario, x => x.Nombre))
+                .Add(BuildCriteria<TesisDirigida>(usuario, x => x.Titulo));
 
             IMultiCriteria proyectos = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Proyecto>(usuario, x => x.Nombre, x => x.TipoProyecto).FilterBandeja());
+                .Add(BuildCriteria<Proyecto>(usuario, x => x.Nombre));
 
             IMultiCriteria vinculacionDifusion = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre, x => x.TipoDictamen).FilterBandeja())
-                .Add(BuildCriteria<OrganoExterno>(usuario, x => x.Nombre, x => x.TipoOrgano).FilterBandeja())
-                .Add(BuildCriteria<ParticipacionMedio>(usuario, x => x.Titulo, x => x.TipoParticipacion).FilterBandeja());
+                .Add(BuildCriteria<Dictamen>(usuario, x => x.Nombre))
+                .Add(BuildCriteria<OrganoExterno>(usuario, x => x.Nombre))
+                .Add(BuildCriteria<ParticipacionMedio>(usuario, x => x.Titulo));
 
             IMultiCriteria eventos = Session.CreateMultiCriteria()
-                .Add(BuildCriteria<Evento>(usuario, x => x.Nombre, x => x.TipoEvento).FilterBandeja());
+                .Add(BuildCriteria<Evento>(usuario, x => x.Nombre));
 
             var produccionAcademicaResultado = new List<CurriculumDTO>();
             foreach (ArrayList producto in produccionAcademica.List())
@@ -91,7 +90,7 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
             return listaProductos;
         }
 
-        ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName, Expression<Func<T, object>> productType)
+        ICriteria BuildCriteria<T>(Usuario usuario, Expression<Func<T, object>> productName)
         {
             var projection = Projections.ProjectionList()
                 .Add(Projections.Property("Id"), "Id")
@@ -106,28 +105,17 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                 .Add(Projections.Property("f.Aceptacion1"), "FirmaAceptacion1")
                 .Add(Projections.Property("f.Aceptacion2"), "FirmaAceptacion2");
 
-            var estadoTable = EntityHelper.GetEstadoTable<T>();
-            if (!String.IsNullOrEmpty(estadoTable))
-                projection.Add(Projections.Property(estadoTable), "Estatus");
 
-            var tipoTable = String.Empty;
-            if (productType != null)
+            var fechaPublicacion = GetPropertyName();
+            if (!String.IsNullOrEmpty(fechaPublicacion))
             {
-                if (GetPropertyType(productType) == typeof(int))
-                    projection.Add(Projections.Property(GetPropertyName(productType)), "Tipo");
-                else if (GetPropertyType(productType).BaseType == typeof(Entity))
-                {
-                    tipoTable = GetPropertyName(productType);
-                    projection.Add(Projections.Property("t.Nombre"), "TipoNombre");
-                }
+                projection.Add(Projections.Property("FechaPublicacion"), "FechaPublicacion");    
             }
+            
 
             var criteria = Session.CreateCriteria(typeof(T))
                 .CreateAlias("Usuario", "u")
                 .CreateAlias("Firma", "f");
-
-            if (!String.IsNullOrEmpty(tipoTable))
-                criteria.CreateAlias(tipoTable, "t");
 
             var isInvestigador = (from role in usuario.Roles
                                   where role.Nombre == "Investigadores"
@@ -166,6 +154,8 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                     criteria.Add(Expression.Eq("u.Id", usuario.Id));
             }
 
+            criteria.Add(Expression.Eq("f.Aceptacion1", 1));
+
             criteria.SetProjection(Projections.Distinct(projection))
                 .AddOrder(Order.Desc("CreadoEl"))
                 .SetResultTransformer(NHibernate.Transform.Transformers.AliasToBean(typeof(CurriculumDTO)));
@@ -176,11 +166,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
         string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression)
         {
             return GetPropertyInfo(expression).Member.Name;
-        }
-
-        Type GetPropertyType<TEntity>(Expression<Func<TEntity, object>> expression)
-        {
-            return GetPropertyInfo(expression).Type;
         }
 
         MemberExpression GetPropertyInfo<TEntity>(Expression<Func<TEntity, object>> expression)
@@ -198,16 +183,6 @@ namespace DecisionesInteligentes.Colef.Sia.Core.DataInterfaces.Impl
                 throw new InvalidOperationException("Not a member access.");
 
             return memberExpression;
-        }
-    }
-
-    public static class CriteriaFilters
-    {
-        public static ICriteria FilterBandeja(this ICriteria criteria)
-        {
-            criteria.Add(Expression.Eq("f.Aceptacion2", 1));
-
-            return criteria;
         }
     }
 }

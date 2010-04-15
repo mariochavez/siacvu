@@ -1293,10 +1293,17 @@ div.progress_bar div.progress {
 	color: #CDCCB2;
 }
 
-#curriculum span.titulovalor {
+#curriculum span.tituloValor {
 	color:#555555;
     margin: 0 1px;
     font-weight:bold;
+}
+
+#curriculum span.encabezadoValor {
+	color:#555555;
+    margin: 0 1px;
+    font-weight:bold;
+    font-size: 14pt;
 }
 
 #curriculum span.valor {
