@@ -113,16 +113,7 @@
                 <% if (Model.Form.TipoObraTraducida == 3){ %>
                     <% Html.RenderPartial("_ShowCapitulo", Model.Form); %>
                 <% } %>
-                <p>
-                    <label>Obra publicada</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteObraTraducidaNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteObraTraducidaId), Model.Form.ComprobanteObraTraducidaNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p>
                     <label>

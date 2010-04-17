@@ -140,9 +140,10 @@ var Glosario = {
                 },
                 style: {
                     background: '#FAFAD2',
-                    border: { color: 'orange', width: 3, radius: 5 },
-                    tip: { corner: 'leftTop' }
-
+                    border: { color: 'orange', width: 2, radius: 5 },
+                    tip: { corner: 'leftTop' },
+                    width: 250,
+                    'font-size': 9
                 }
             });
         });

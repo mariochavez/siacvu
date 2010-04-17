@@ -100,16 +100,7 @@
                         <span class="valor"><%= Html.Encode(Model.Form.Municipio)%>&nbsp;</span>
                     </p>
                 <% } %>
-                <p>
-                    <label>Obra publicada</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteDistincionNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteDistincionId), Model.Form.ComprobanteDistincionNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<DistincionController>(x => x.Index(), "Regresar") %>

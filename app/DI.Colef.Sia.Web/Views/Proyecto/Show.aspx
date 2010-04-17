@@ -94,16 +94,7 @@
                         <span>Formato (dd/mm/yyyy)</span>
                     </p>
                 <% } %>
-                <p>
-                    <label>Obra publicada</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCalendarioProyectoNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCalendarioProyectoId), Model.Form.ComprobanteCalendarioProyectoNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <h4>Fuentes de financiamiento</h4>
                 <p>
@@ -192,17 +183,6 @@
                 </p>
                 
                 <% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
-                
-                <p>
-                    <label>Documento probatorio</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteTematicaProyectoNombre)) { %> 
-    	                    <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteTematicaProyectoId), Model.Form.ComprobanteTematicaProyectoNombre, new { target = "_blank" })%> 
-    	                <% } else { %>
-    	                    &nbsp;
-    	                <% } %>
-                    </span><br />
-                </p>
                 
                 <h4>Productos acad&eacute;micos contemplados</h4>
                 <p>

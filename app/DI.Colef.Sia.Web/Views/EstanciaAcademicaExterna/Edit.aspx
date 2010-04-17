@@ -38,20 +38,7 @@
 				
 				<% Html.RenderPartial("_DatosEstanciaAcademicaExterna", Model.Form); %>
 	            
-	            <p>
-                    <label>Documento probatorio</label>
-                    <span id="span_comprobante_documento" class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteEstanciaNombre)) { %> 
-	                        <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteEstanciaId), Model.Form.ComprobanteEstanciaNombre, new { target = "_blank" })%> 
-	                    <% } else { %>
-	                        &nbsp;
-	                    <% } %>
-                    </span><br />
-                </p>
-                <div style="padding: 0 0 10px 20px">
-                    <input type="file" name="ComprobanteEstancia_DocumentoProbatorio" id="ComprobanteEstancia_DocumentoProbatorio" class="fileUpload"/>
-                </div>
-                <div id="Comprobante_FileQueue" style="display:none;" rel="#span_comprobante_documento"></div>
+	            <% Html.RenderPartial("_EditArchivo", Model.Form); %>
             
                 <% Html.RenderPartial("_ProgressBar"); %>
                 

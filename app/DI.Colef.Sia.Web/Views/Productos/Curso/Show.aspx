@@ -70,16 +70,7 @@
                 
             	<% Html.RenderPartial("_ShowSubdisciplina", Model.Form.ShowFields); %>
                 
-                <p>
-                    <label>Documento probatorio</label>
-                    <span class="valor">
-                        <%if(!String.IsNullOrEmpty(Model.Form.ComprobanteCursoNombre)) { %> 
-                            <%=Html.ActionLink<ArchivoController>(x => x.Show(Model.Form.ComprobanteCursoId), Model.Form.ComprobanteCursoNombre, new { target = "_blank" })%> 
-                        <% } else { %>
-                            &nbsp;
-                        <% } %>
-                    </span><br />
-                </p>
+                <% Html.RenderPartial("_ShowArchivo", Model.Form); %>
                 
                 <p class="submit">
                     <%=Html.ActionLink<CursoController>(x => x.Index(), "Regresar") %>

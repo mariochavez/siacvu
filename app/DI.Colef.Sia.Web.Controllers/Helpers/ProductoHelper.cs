@@ -280,7 +280,8 @@ namespace DecisionesInteligentes.Colef.Sia.Web.Controllers.Helpers
         {
             string articuloIdioma = " el";
             if (tipoProducto == TipoProductoEnum.ObraTraducida || tipoProducto == TipoProductoEnum.ParticipacionMedio
-                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena)
+                || tipoProducto == TipoProductoEnum.TesisDirigida || tipoProducto == TipoProductoEnum.Resena
+                || tipoProducto == TipoProductoEnum.Distincion)
                 articuloIdioma = " la";
             return articuloIdioma;
         }
